@@ -7,7 +7,7 @@ unchanged. The omitted Hahn–Banach and general smooth-space paragraphs are not
 used by the tangent lesson.
 
 Its scalar, finite-dimensional and compact calculus inputs are the already
-proved stationary prerequisite chain.
+proved [stationary prerequisite chain](../../20261004-free-stationary-phase/quadratic-stationary-phase.md#f0-the-exact-earlier-programme-proofs).
 The [notation and foundational axioms](../../20261004-free-stationary-phase/provider-context.md)
 are retained; Section 19 below additionally declares Zorn's principle and proves
 the choice consequence used in the Baire recursion. No norm-extension theorem

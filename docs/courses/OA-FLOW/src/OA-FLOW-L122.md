@@ -17,7 +17,7 @@ The ordinary complex spectrum in the algebra \(M\), or in the Banach algebra of 
 <a id="ia-inputs"></a>
 ## Exact earlier proof inputs
 
-The eleven direct earlier scopes are CF1 (choice and maximality), CF2 (Banach spectrum and geometric series), CF4 (characters), CF6 (isometric continuous calculus and automorphism contractivity), PC1 (corners, supports and polar decomposition), PC2 (central support and nonzero bridges), GCC SETTING, GCC TOOLS, GCC DEFINITION, L115 CONVENTIONS, and [OPSP FORMULA](OA-FLOW-L89.md#oa-flow.opsp.formula).
+The eleven direct earlier scopes are [CF1](OA-FLOW-CF.md#oa-flow.cf.1) (choice and maximality), [CF2](OA-FLOW-CF.md#oa-flow.cf.2) (Banach spectrum and geometric series), [CF4](OA-FLOW-CF.md#oa-flow.cf.4) (characters), [CF6](OA-FLOW-CF.md#oa-flow.cf.6) (isometric continuous calculus and automorphism contractivity), [PC1](OA-FLOW-PC.md#oa-flow.projection.pc1) (corners, supports and polar decomposition), [PC2](OA-FLOW-PC.md#oa-flow.projection.pc2) (central support and nonzero bridges), GCC SETTING, GCC TOOLS, GCC DEFINITION, L115 CONVENTIONS, and [OPSP FORMULA](OA-FLOW-L89.md#oa-flow.opsp.formula).
 
 For OPSP the scope includes its full source setting and proof O1–O9, the actual [AF0](OA-FLOW-AF.md#af-0) specified-dual hypotheses, and the full [AT1–3](OA-FLOW-AT.md#oa-flow.at.3) bridge. Those contexts are necessary: mere ultraweak continuity must be connected to norm continuity of every orbit in the actual predual. They are complete inherited contexts within the eleven-root closure, not extra direct proof roots. Opening descriptions, source comparisons and illustrations are never proof providers.
 

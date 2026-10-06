@@ -4,7 +4,7 @@ A core inclusion can have two different centers. A finite common basis transfers
 
 The last result identifies exactly what relative Følner gives: an arbitrarily small weighted stationarity defect. The stronger joint-density estimate needed for general localization remains a further mathematical question.
 
-We use [pull-down and partial bases](finite-bases-and-positive-index.md), Lemma 3.1 and Theorem 3.2; the common cup-factor basis and canonical full corners, Lemmas 52.1–52.2; and [finite support averaging](larger-factor-central-balancing.md), Lemma 58.2 and the trace estimate (58.11). Tracial expectations, projection prescription and comparison, and tracial \(L^1\) duality retain the precise programme prerequisites declared in those lessons. No direct-integral theorem is needed.
+We use [pull-down and partial bases](finite-bases-and-positive-index.md), Lemma 3.1 and Theorem 3.2; [the common cup-factor basis and canonical full corners](canonical-core-traces-and-integer-rounding.md), Lemmas 52.1–52.2; and [finite support averaging](larger-factor-central-balancing.md), Lemma 58.2 and the trace estimate (58.11). Tracial expectations, projection prescription and comparison, and tracial \(L^1\) duality retain the precise programme prerequisites declared in those lessons. No direct-integral theorem is needed.
 
 The human source for the rounding problem is Sorin Popa, [*Classification of amenable subfactors of type II*](https://doi.org/10.1007/BF02392646), Theorem 4.2.2, printed pp. 213–214. The proofs below are authored here.
 
@@ -294,4 +294,4 @@ In Example 68.2, set \(\zeta=(1,3)\) on the smaller center and \(\beta=P_0\zeta\
 
 ---
 
-Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition released under CC0 1.0. Author self-check.
+Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition released under CC0 1.0. Self-checked by the writing AI.

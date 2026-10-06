@@ -28,13 +28,13 @@ The following are prerequisite contracts. Their proofs, coefficient ranges and e
 
 | Contract | Required content | Provider and scope |
 |---|---|---|
-| SH02-OPS-SIX | Bounded six operations, proper base change, projection, internal Hom adjunction, smooth product base change, orientation traces and coherent units/counits | [Exceptional operations](exceptional-operations.md) and Manifold duality; used with their stated finite-dimensional hypotheses |
-| SH02-CB-EXTERNAL-HOM, SH02-CB-BIDUALITY, SH02-CB-INTERNAL-HOM | External Hom exchange and Verdier biduality under the precise cohomological constructibility hypotheses | Cohomological biduality; constructibility is required exactly where invoked |
-| SH02-GAM-KERNEL | \(\phi_\gamma^{-1}R\phi_{\gamma *}A\simeq Rq_{1*}(q_2^{-1}A)_{Z_\gamma}\), \(Z_\gamma=\{y-x\in\gamma\}\) | Cone topology; the displayed cone-kernel identification is required |
-| SH02-FF-LINEAR-KERNEL, SH02-FF-MATES, SH02-FF-BASE, SH02-FF-PRODUCT | The four bundle Fourier exchanges and external product, with orientations and coherent adjunction mates | Fourier functoriality; actual maps and orientation normalizations are required |
+| SH02-OPS-SIX | Bounded six operations, proper base change, projection, internal Hom adjunction, smooth product base change, orientation traces and coherent units/counits | [Exceptional operations](exceptional-operations.md) and [Manifold duality](manifold-duality.md); used with their stated finite-dimensional hypotheses |
+| SH02-CB-EXTERNAL-HOM, SH02-CB-BIDUALITY, SH02-CB-INTERNAL-HOM | External Hom exchange and Verdier biduality under the precise cohomological constructibility hypotheses | [Cohomological biduality](cohomological-biduality.md); constructibility is required exactly where invoked |
+| SH02-GAM-KERNEL | \(\phi_\gamma^{-1}R\phi_{\gamma *}A\simeq Rq_{1*}(q_2^{-1}A)_{Z_\gamma}\), \(Z_\gamma=\{y-x\in\gamma\}\) | [Cone topology](cone-topology.md); the displayed cone-kernel identification is required |
+| SH02-FF-LINEAR-KERNEL, SH02-FF-MATES, SH02-FF-BASE, SH02-FF-PRODUCT | The four bundle Fourier exchanges and external product, with orientations and coherent adjunction mates | [Fourier functoriality](fourier-functoriality.md); actual maps and orientation normalizations are required |
 | SH02-SP-CONIC, SH02-SP-SECTIONS, SH02-SP-SUPPORTS, SH02-SP-ZERO | Bounded conic specialization, normal-cone neighborhood tests and both zero-section recoveries | [Specialization](specialization.md); section and support systems are used in their stated scope |
 | SH02-SP-DIRECT, SH02-SP-PROPER, SH02-SP-INVERSE, SH02-SP-ADJUNCTION, SH02-SP-EXTERNAL, SH02-SP-TENSOR | Specialization comparisons with exact properness, smoothness, tensor and adjunction statements | [Specialization](specialization.md); each comparison retains its own isomorphism hypotheses |
-| SH02-MIC-DIRECT, SH02-MIC-INVERSE, SH02-MIC-TRANSVERSE, SH02-MIC-ADJUNCTIONS, SH02-MIC-EXTERNAL | The microlocal comparison transformations used in the graph, product and composition arguments | Microlocalization; the specified transformations and their relative proofs are required |
+| SH02-MIC-DIRECT, SH02-MIC-INVERSE, SH02-MIC-TRANSVERSE, SH02-MIC-ADJUNCTIONS, SH02-MIC-EXTERNAL | The microlocal comparison transformations used in the graph, product and composition arguments | [Microlocalization](microlocalization.md); the specified transformations and their relative proofs are required |
 | SH02-MIC-TRACE-EXCHANGE | Identification of Fourier-transported vertical arrows in the direct and inverse functorial squares with the separately defined relative traces and forget-support maps | Proofs in SH02-MEP-SUPPORT, SH02-MEP-TRACE and SH02-MEP-MATE-UNTWIST, relative to the finite operation and specialization cut |
 
 Comparison constructions are made on injective/flat replacements in the bounded-below derived category when necessary. All statements in this lesson have bounded input complexes. A boundedness assertion also depends on the finite-dimension contracts above; it is not inferred merely from the symbol \(R\mathcal Hom\). No result here asserts an unbounded extension.
@@ -95,7 +95,7 @@ The subscript means tensor with the constant sheaf of the indicated locally clos
 
 ### SH02-MH-RECOVERY — Zero direction and punctured directions
 
-Use the exact recoveries of SH02-MIC-ZERO. Thus ordinary recovery is the no-cut Fourier map followed by the specialization support counit. In codimension \(c\), compact recovery is \((-1)^c\) times the specified zero-cone FS14 map, followed by the inverse specialization restriction unit. There are natural identifications
+Use the exact recoveries of [SH02-MIC-ZERO](microlocalization.md#SH02-MIC-ZERO). Thus ordinary recovery is the no-cut Fourier map followed by the specialization support counit. In codimension \(c\), compact recovery is \((-1)^c\) times the specified zero-cone FS14 map, followed by the inverse specialization restriction unit. There are natural identifications
 \[
 s^{-1}\mu_MF\simeq R\pi_*\mu_MF\simeq i^!F,
 \qquad s^!\mu_MF\simeq R\pi_!\mu_MF\simeq i^{-1}F\otimes\omega_{M/X}.
@@ -162,7 +162,7 @@ For bounded inputs the two graph Hom objects, and hence ordinary microlocal Hom,
 \mathsf M_X(A,B)\in D^b_{\mathbb R_{>0}}(k_{T^*X}).
 \tag{MH0}
 \]
-Here \(\mathsf M_X(A,B)\) denotes \(\mu hom(A,B)\), a notation used below. This assertion has the precise amplitude dependency SH02-MD-BOUNDED-HOM in Manifold duality, followed by SH02-MIC-DEFINITION in Microlocalization. Both dependencies must hold in the stated coefficient and boundedness ranges.
+Here \(\mathsf M_X(A,B)\) denotes \(\mu hom(A,B)\), a notation used below. This assertion has the precise amplitude dependency SH02-MD-BOUNDED-HOM in [Manifold duality](manifold-duality.md), followed by SH02-MIC-DEFINITION in [Microlocalization](microlocalization.md). Both dependencies must hold in the stated coefficient and boundedness ranges.
 
 **Proof relative to those contracts.** Put \(n=\dim X\), \(m=\dim Y\), and \(g=\operatorname{gld}k\). Suppose \(F\in D^{[a,b]}\) and \(G\in D^{[c,d]}\). The smooth projection formula gives \(p^!F=p^{-1}F\otimes\omega_Y\), with bounds \([a-m,b-m]\). On the \((n+m)\)-manifold \(X\times Y\), SH02-MD-BOUNDED-HOM therefore puts
 \[
@@ -772,7 +772,7 @@ s(t,\xi)=(t;\xi,3\xi).
 \]
 Set \(\eta=(\xi,3\xi)\) in MH29. Its middle component is \(\eta-df^*\xi=0\), and its last component is \(-(1+6t)\xi=-dh_t^*\xi\). At \(t=-1/6\) the last component is zero for every \(\xi\). No invertibility of \(dh\) was used or should be inferred from composition.
 
-**Problem 2: duality reverses the direction.** Assume \(A,B\in D^b(k_X)\) are cohomologically constructible in the precise sense of Cohomological biduality. Prove
+**Problem 2: duality reverses the direction.** Assume \(A,B\in D^b(k_X)\) are cohomologically constructible in the precise sense of [Cohomological biduality](cohomological-biduality.md). Prove
 \[
 \mathsf M_X(A,B)\simeq\mathsf M_X(D_XB,D_XA)^a.
 \tag{MH37}

@@ -32,7 +32,7 @@ Combining it with the already proved positive spectral comparison will give exac
 \]
 This is a necessary trichotomy for each given factor. It is neither an existence theorem for any of these classes nor a classification up to isomorphism.
 
-The actual complete earlier inputs are [CI-3](OA-FLOW-CI.md#oa-flow.ci.3), [SF, SB-4–6 and SF-1](OA-FLOW-SF.md#oa-flow.sf.sb4), MW-4, ST-2, the **already bounded** star-derivation construction in L35, Sections 2–6, [CZ-1 and CZ-4](OA-FLOW-CZ.md#oa-flow.cz.1), [KT-5](OA-FLOW-KT.md#oa-flow.kt.5), [GW-1/4](OA-FLOW-GW.md#oa-flow.gw.1), [CP-4–6](OA-FLOW-CP.md#oa-flow.cp.4), and the scalar completeness/order arguments in CF. In particular L34 automatic boundedness is not a premise.
+The actual complete earlier inputs are [CI-3](OA-FLOW-CI.md#oa-flow.ci.3), [SF, SB-4–6 and SF-1](OA-FLOW-SF.md#oa-flow.sf.sb4), [MW-4](OA-FLOW-MW.md#oa-flow.mw.4), [ST-2](OA-FLOW-ST12.md#oa-flow.st.2), the **already bounded** star-derivation construction in [L35, Sections 2–6](OA-FLOW-L35.md#oa-flow.gi.fourier), [CZ-1 and CZ-4](OA-FLOW-CZ.md#oa-flow.cz.1), [KT-5](OA-FLOW-KT.md#oa-flow.kt.5), [GW-1/4](OA-FLOW-GW.md#oa-flow.gw.1), [CP-4–6](OA-FLOW-CP.md#oa-flow.cp.4), and the scalar completeness/order arguments in [CF](OA-FLOW-CF.md#oa-flow.cf.1). In particular L34 automatic boundedness is not a premise.
 
 We also use the actual complete [CS-0–4](OA-FLOW-CS.md) closed additive subgroup proof and [MG-0–4](OA-FLOW-MG.md), including its full self-adjoint spectral-support proof and its all-faithful-weight comparison at the stated type III/separable-predual scope. The GNS norm fact for a positive functional is [GNS Theorem 4.1](OA-FLOW-GNS.md#gns-theorem-4-1). Exact body and range hashes accompany this chapter.
 
@@ -52,7 +52,7 @@ Let \(\psi\) be a faithful n.s.f. weight, with full GNS data \((H_\psi,\pi_\psi,
 J_\psi\Delta_\psi J_\psi=\Delta_\psi^{-1}
 \tag{MT4}
 \]
-holds with equality of the complete spectral domains, by [CI-3](OA-FLOW-CI.md#oa-flow.ci.3). The representation is faithful and normal by MW-4; it is isometric and has von Neumann range with normal inverse by ST-2.
+holds with equality of the complete spectral domains, by [CI-3](OA-FLOW-CI.md#oa-flow.ci.3). The representation is faithful and normal by [MW-4](OA-FLOW-MW.md#oa-flow.mw.4); it is isometric and has von Neumann range with normal inverse by [ST-2](OA-FLOW-ST12.md#oa-flow.st.2).
 
 Suppose \(0\notin\operatorname{Sp}(\Delta_\psi)\). The spectrum of a positive self-adjoint operator is closed and lies in \([0,\infty)\). The exact resolvent and spectral-projection arguments are proved in [MG-1](OA-FLOW-MG.md#oa-flow.mg.1): a real resolvent neighborhood has zero spectral projection, and the spectral measure is concentrated on the operator spectrum. Hence some \(0<c<1\) has
 
@@ -90,7 +90,7 @@ The logarithm has domain all of \(H_\psi\); \(\Delta_\psi^{it}=e^{itL}\) follows
 <a id="oa-flow.mt.2"></a>
 ## MT-2. A bounded logarithm supplies an already bounded inner derivation
 
-Write \(\pi=\pi_\psi\). MW-4 gives on the entire algebra
+Write \(\pi=\pi_\psi\). [MW-4](OA-FLOW-MW.md#oa-flow.mw.4) gives on the entire algebra
 
 <a id="equation-mt8"></a>
 

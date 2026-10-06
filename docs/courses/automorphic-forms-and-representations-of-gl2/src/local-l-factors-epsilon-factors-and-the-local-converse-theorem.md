@@ -1,6 +1,6 @@
 # Local L-factors, epsilon factors and the local converse theorem
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The germs of a Kirillov function determine the possible poles of its Mellin integral. Its Weyl transform determines the functional equation. Dividing by the two pole-removing factors leaves a unit of a Laurent-polynomial ring, which explains why the epsilon factor is a monomial. Finally, Mellin transforms for all character twists recover every Weyl coefficient and hence the representation.
 

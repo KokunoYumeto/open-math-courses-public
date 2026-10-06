@@ -1,6 +1,6 @@
 # Strict spectral representations on the stable kernel
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-check in progress; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
 
 A spectral decomposition of a groupoid representation initially supplies its fibre operators almost everywhere. The stable kernel requires an actual Borel representation on every arrow of a saturated reduction. We construct that representation, verifying the lifted measure, the sign of the spectral translation, the Borel dimension choices and the Polish unitary targets. The spectral field is initially an equivalence class for a product measure: choosing its representatives is part of the construction.
 

@@ -1,6 +1,6 @@
 # Completely bounded extension and factorization
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 Complete positivity requires a map to preserve every matrix positive cone. Complete boundedness asks a different question: how much can the map enlarge a matrix norm? A completely bounded map can reverse the sign of a positive element. Its extension theorem must therefore control matrix norms without imposing positivity on the extension.
 

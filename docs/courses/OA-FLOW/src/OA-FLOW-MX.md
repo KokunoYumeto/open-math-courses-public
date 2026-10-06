@@ -4,7 +4,7 @@ This chapter supplies the exact operator-space foundation for the spectral sum a
 
 *Written in Codex (OpenAI), 2026. No human review is claimed. Newly written original expression is dedicated under CC0.*
 
-The earlier inputs are BS0–4 for specified-dual vector actions, BS6 for the preadjoint integration mechanism, LF0–7 for Fourier products, local cutoffs and closed ideals, [L24 §§2–5](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) for Haar representatives, translations and full-domain integrals, [HR5](OA-FLOW-HR.md#hr-05) for qualified Radon-product interchange, [H1](OA-FLOW-HARMONIC.md#l138-h1) for Fourier uniqueness, and [H2–4](OA-FLOW-HARMONIC-LATE.md#l138-h2) for the scalar Fourier unitary and paired dual Haar measure. Finite compact partitions are proved in [H0](OA-FLOW-TOPOLOGY.md#l138-h0). Norm separation uses CF1; the norm completion needed here is constructed in MX0.
+The earlier inputs are BS0–4 for specified-dual vector actions, BS6 for the preadjoint integration mechanism, LF0–7 for Fourier products, local cutoffs and closed ideals, [L24 §§2–5](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) for Haar representatives, translations and full-domain integrals, [HR5](OA-FLOW-HR.md#hr-05) for qualified Radon-product interchange, [H1](OA-FLOW-HARMONIC.md#l138-h1) for Fourier uniqueness, and [H2–4](OA-FLOW-HARMONIC-LATE.md#l138-h2) for the scalar Fourier unitary and paired dual Haar measure. Finite compact partitions are proved in [H0](OA-FLOW-TOPOLOGY.md#l138-h0). Norm separation uses [CF1](OA-FLOW-CF.md#oa-flow.cf.1); the norm completion needed here is constructed in MX0.
 
 Throughout this packet, write
 

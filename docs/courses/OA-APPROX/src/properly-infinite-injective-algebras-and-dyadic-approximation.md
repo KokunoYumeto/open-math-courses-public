@@ -1,6 +1,6 @@
 # Properly infinite injective algebras and dyadic approximation
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 Finite completely positive models record operators in a matrix algebra. In a properly infinite algebra, their reconstruction map can be implemented by one isometry. Approximating that isometry by unitaries then moves the matrix algebra itself into a position that approximates the original operators.
 

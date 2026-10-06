@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tensor operators and tensor weights · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-TG.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 91 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="tensor-operators-their-full-domains-and-tensor-weights">Tensor operators, their full domains, and tensor weights</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>An algebraic tensor product supplies a core, rather than the final domain of an unbounded operator. We first determine its closure and adjoint. We then construct the tensor weight, including its nonfaithful support corner, and calculate its modular group. Hilbert spaces, representations and index sets are arbitrary throughout. Inner products are linear in their first variable.</p>
+<p>The source antecedents are Takesaki, <em>Theory of Operator Algebras II</em>, VIII.4, Lemma 4.1, Definition 4.2 and Proposition 4.3. The arguments below also supply the spatial representation comparison required to apply that definition to a prescribed concrete algebra. The results used from other lessons, and the foundations they rest on, are not proved here.</p>
+<h2 id="positive-tensors-and-a-graph-core"><span id="oa-mod-tg-01"></span><span id="OA-MOD-TG-01"></span>Positive tensors and a graph core</h2>
+<p>Let <span class="math" data-tex="\(A_i\geq0\)">\(A_i\geq0\)</span> be positive self-adjoint operators on <span class="math" data-tex="\(H_i\)">\(H_i\)</span>, <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>. The initial operator on <span class="math" data-tex="\(D(A_1)\odot D(A_2)\)">\(D(A_1)\odot D(A_2)\)</span> sends <span class="math" data-tex="\(\xi\otimes\eta\)">\(\xi\otimes\eta\)</span> to <span class="math" data-tex="\(A_1\xi\otimes A_2\eta\)">\(A_1\xi\otimes A_2\eta\)</span>. We construct its positive self-adjoint closure without a separability assumption or an implicit product-measure theorem.</p>
+<p>Set <span class="math" data-tex="\(R_i=(1+A_i)^{-1}\)">\(R_i=(1+A_i)^{-1}\)</span>, and on <span class="math" data-tex="\(H=H_1\otimes H_2\)">\(H=H_1\otimes H_2\)</span> set <span class="math" data-tex="\(R=R_1\otimes I\)">\(R=R_1\otimes I\)</span>, <span class="math" data-tex="\(Q=I\otimes R_2\)">\(Q=I\otimes R_2\)</span>. These bounded positive contractions commute, so <span class="math" data-tex="\(Z=R+iQ\)">\(Z=R+iQ\)</span> is normal. Use its spectral measure <span class="math" data-tex="\(E\)">\(E\)</span> from SK-04. Its real and imaginary coordinate functions give <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span>. Both lifts are injective: expand a vector along any orthonormal basis of the other factor; if the lifted operator annihilates that vector, it annihilates every coordinate. Each vector has only countably many nonzero coordinates even for an uncountable basis. Thus the coordinate axes <span class="math" data-tex="\(r=0\)">\(r=0\)</span> and <span class="math" data-tex="\(q=0\)">\(q=0\)</span> have zero spectral projection.</p>
+<p>On the remaining spectral set put <span class="math" data-tex="\(a(r)=r^{-1}-1\)">\(a(r)=r^{-1}-1\)</span>, <span class="math" data-tex="\(b(q)=q^{-1}-1\)">\(b(q)=q^{-1}-1\)</span>. Give these functions any finite value on the null axes. SK-05 defines the positive self-adjoint operator</p>
+<span class="math math-display" data-tex="\[
+C=(ab)(E),\qquad
+D(C)=\left\{\zeta\in H:\int a(r)^2b(q)^2\,d\langle E(r,q)\zeta,\zeta\rangle&lt;\infty\right\}.
+\tag{TG.1}
+\]">\[
+C=(ab)(E),\qquad
+D(C)=\left\{\zeta\in H:\int a(r)^2b(q)^2\,d\langle E(r,q)\zeta,\zeta\rangle&lt;\infty\right\}.
+\tag{TG.1}
+\]</span>
+<p>Here and below the integral uses the finite positive spectral measure of the particular vector. No common countable decomposition of <span class="math" data-tex="\(H\)">\(H\)</span> is needed.</p>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+P_n=1_{[0,n]}(A_1),\quad Q_n=1_{[0,n]}(A_2),\quad
+E_n=P_n\otimes Q_n.
+\tag{TG.2}
+\]">\[
+P_n=1_{[0,n]}(A_1),\quad Q_n=1_{[0,n]}(A_2),\quad
+E_n=P_n\otimes Q_n.
+\tag{TG.2}
+\]</span>
+<p>Coordinate spectral projections for <span class="math" data-tex="\(Z\)">\(Z\)</span> equal the corresponding lifts of those for <span class="math" data-tex="\(R_i\)">\(R_i\)</span>: this follows first for polynomials, then for continuous functions, and then for bounded Borel functions by spectral bounded convergence. Products give the rectangular projection in (TG.2). On <span class="math" data-tex="\(E_nH\)">\(E_nH\)</span>, coordinate inversion is bounded and gives</p>
+<span class="math math-display" data-tex="\[
+C|_{E_nH}=(A_1P_n)\otimes(A_2Q_n)|_{E_nH},\qquad
+\|C|_{E_nH}\|\leq n^2.
+\tag{TG.3}
+\]">\[
+C|_{E_nH}=(A_1P_n)\otimes(A_2Q_n)|_{E_nH},\qquad
+\|C|_{E_nH}\|\leq n^2.
+\tag{TG.3}
+\]</span>
+<p>The projections increase strongly to <span class="math" data-tex="\(I\)">\(I\)</span>, commute with <span class="math" data-tex="\(C\)">\(C\)</span>, and for every <span class="math" data-tex="\(\zeta\in D(C)\)">\(\zeta\in D(C)\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+E_n\zeta\longrightarrow\zeta,\qquad CE_n\zeta\longrightarrow C\zeta.
+\tag{TG.4}
+\]">\[
+E_n\zeta\longrightarrow\zeta,\qquad CE_n\zeta\longrightarrow C\zeta.
+\tag{TG.4}
+\]</span>
+<p>The second convergence follows by applying monotone convergence to the integrable function in (TG.1) on the complements of the rectangles.</p>
+<p>Finite sums from <span class="math" data-tex="\(P_nH_1\odot Q_nH_2\)">\(P_nH_1\odot Q_nH_2\)</span> are Hilbert dense in <span class="math" data-tex="\(E_nH\)">\(E_nH\)</span>. The bound (TG.3) makes this approximation also a graph approximation. Combining it with (TG.4) proves that <span class="math" data-tex="\(D(A_1)\odot D(A_2)\)">\(D(A_1)\odot D(A_2)\)</span> is a graph core for <span class="math" data-tex="\(C\)">\(C\)</span>. To check agreement on every elementary vector in that larger algebraic domain, truncate both factors. Their tensor vectors and tensor images converge in norm; closedness of <span class="math" data-tex="\(C\)">\(C\)</span> identifies the limit. Consequently</p>
+<span class="math math-display" data-tex="\[
+A_1\otimes A_2:=C
+=\overline{A_1\odot A_2}.
+\tag{TG.5}
+\]">\[
+A_1\otimes A_2:=C
+=\overline{A_1\odot A_2}.
+\tag{TG.5}
+\]</span>
+<p>The same calculus gives its support and its square:</p>
+<span class="math math-display" data-tex="\[
+s(C)=s(A_1)\otimes s(A_2),\qquad
+C^2=\overline{A_1^2\odot A_2^2}.
+\tag{TG.6}
+\]">\[
+s(C)=s(A_1)\otimes s(A_2),\qquad
+C^2=\overline{A_1^2\odot A_2^2}.
+\tag{TG.6}
+\]</span>
+<p>Indeed the product vanishes precisely where one coordinate eigenvalue is zero; the kernel is the closed sum of <span class="math" data-tex="\(\ker A_1\otimes H_2\)">\(\ker A_1\otimes H_2\)</span> and <span class="math" data-tex="\(H_1\otimes\ker A_2\)">\(H_1\otimes\ker A_2\)</span>. For the square, use <span class="math" data-tex="\(a^2b^2\)">\(a^2b^2\)</span> and the same rectangles, now bounded by <span class="math" data-tex="\(n^4\)">\(n^4\)</span>; its domain is the integral condition with <span class="math" data-tex="\(a^4b^4\)">\(a^4b^4\)</span>. If both factors are injective, the bounded functions <span class="math" data-tex="\((ab)^{it}=a^{it}b^{it}\)">\((ab)^{it}=a^{it}b^{it}\)</span> on the nonzero spectral set similarly give</p>
+<span class="math math-display" data-tex="\[
+(A_1\otimes A_2)^{it}=A_1^{it}\otimes A_2^{it},\qquad t\in\mathbb R.
+\tag{TG.7}
+\]">\[
+(A_1\otimes A_2)^{it}=A_1^{it}\otimes A_2^{it},\qquad t\in\mathbb R.
+\tag{TG.7}
+\]</span>
+<p>To justify the factorization, first work on rectangles bounded away from both zero and infinity, where continuous functional calculus applies, and then exhaust their spectral supports. All imaginary powers are unitary in this injective case. Kernels require support projections rather than an arbitrary convention for <span class="math" data-tex="\(0^{it}\)">\(0^{it}\)</span>.</p>
+<p>The domain (TG.1) can be strictly larger than the intersection of the two separate lifted domains. TG-06 calculates an explicit example. Even the entire Hilbert space can be the domain when one factor is zero.</p>
+<h2 id="closed-tensors-adjoints-and-polar-supports">Closed tensors, adjoints, and polar supports</h2>
+<p>Let <span class="math" data-tex="\(T_i\)">\(T_i\)</span> be densely defined closed linear operators on <span class="math" data-tex="\(H_i\)">\(H_i\)</span>. Use QF-03 on the closed forms <span class="math" data-tex="\(\|T_i\xi\|^2\)">\(\|T_i\xi\|^2\)</span> to obtain <span class="math" data-tex="\(A_i=|T_i|\)">\(A_i=|T_i|\)</span>, with <span class="math" data-tex="\(D(A_i)=D(T_i)\)">\(D(A_i)=D(T_i)\)</span>. The map <span class="math" data-tex="\(A_i\xi\mapsto T_i\xi\)">\(A_i\xi\mapsto T_i\xi\)</span> is isometric and extends by zero on <span class="math" data-tex="\(\ker A_i\)">\(\ker A_i\)</span> to a partial isometry <span class="math" data-tex="\(V_i\)">\(V_i\)</span>. Thus <span class="math" data-tex="\(T_i=V_iA_i\)">\(T_i=V_iA_i\)</span> on the full domain. Set <span class="math" data-tex="\(C=A_1\otimes A_2\)">\(C=A_1\otimes A_2\)</span>, <span class="math" data-tex="\(V=V_1\otimes V_2\)">\(V=V_1\otimes V_2\)</span>, and <span class="math" data-tex="\(p=s(A_1)\otimes s(A_2)\)">\(p=s(A_1)\otimes s(A_2)\)</span>. By (TG.6), <span class="math" data-tex="\(p=s(C)=V^*V\)">\(p=s(C)=V^*V\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+T=VC,\qquad D(T)=D(C),\qquad \|T\zeta\|=\|C\zeta\|.
+\tag{TG.8}
+\]">\[
+T=VC,\qquad D(T)=D(C),\qquad \|T\zeta\|=\|C\zeta\|.
+\tag{TG.8}
+\]</span>
+<p>This is closed: convergence of <span class="math" data-tex="\(\zeta_j\)">\(\zeta_j\)</span> and <span class="math" data-tex="\(T\zeta_j\)">\(T\zeta_j\)</span> implies convergence of <span class="math" data-tex="\(C\zeta_j=V^*T\zeta_j\)">\(C\zeta_j=V^*T\zeta_j\)</span>, and then closedness of <span class="math" data-tex="\(C\)">\(C\)</span> applies. The graph-core proof of TG-01 and the norm equality prove</p>
+<span class="math math-display" data-tex="\[
+T_1\otimes T_2:=\overline{T_1\odot T_2}=VC.
+\tag{TG.9}
+\]">\[
+T_1\otimes T_2:=\overline{T_1\odot T_2}=VC.
+\tag{TG.9}
+\]</span>
+<p>Its complete adjoint domain is</p>
+<span class="math math-display" data-tex="\[
+T^*=CV^*,\qquad D(T^*)=\{\eta\in H:V^*\eta\in D(C)\}.
+\tag{TG.10}
+\]">\[
+T^*=CV^*,\qquad D(T^*)=\{\eta\in H:V^*\eta\in D(C)\}.
+\tag{TG.10}
+\]</span>
+<p>This follows directly from the definition of the adjoint and self-adjointness of <span class="math" data-tex="\(C\)">\(C\)</span>. In particular every vector in <span class="math" data-tex="\(\ker V^*\)">\(\ker V^*\)</span> belongs to this domain, irrespective of whether it lies in <span class="math" data-tex="\(D(C)\)">\(D(C)\)</span>.</p>
+<p>We prove equality with the tensor of the two adjoints, rather than only an inclusion of cores. Put <span class="math" data-tex="\(q_i=V_iV_i^*\)">\(q_i=V_iV_i^*\)</span>. On <span class="math" data-tex="\(q_iH_i\)">\(q_iH_i\)</span>, let <span class="math" data-tex="\(B_i\)">\(B_i\)</span> be the unitary transport of <span class="math" data-tex="\(A_i|_{s(A_i)H_i}\)">\(A_i|_{s(A_i)H_i}\)</span> by <span class="math" data-tex="\(V_i\)">\(V_i\)</span>; put it equal to zero on <span class="math" data-tex="\((1-q_i)H_i\)">\((1-q_i)H_i\)</span>. This is a positive self-adjoint operator, with</p>
+<span class="math math-display" data-tex="\[
+D(B_i)=\{\eta:V_i^*\eta\in D(A_i)\},\qquad
+T_i^*=A_iV_i^*=V_i^*B_i.
+\tag{TG.11}
+\]">\[
+D(B_i)=\{\eta:V_i^*\eta\in D(A_i)\},\qquad
+T_i^*=A_iV_i^*=V_i^*B_i.
+\tag{TG.11}
+\]</span>
+<p>The formula for <span class="math" data-tex="\(T_i^*\)">\(T_i^*\)</span> is the one-factor adjoint argument of (TG.10). The displayed factorization has the correct polar support, since <span class="math" data-tex="\(s(B_i)=q_i\)">\(s(B_i)=q_i\)</span>.</p>
+<p>Let <span class="math" data-tex="\(B=B_1\otimes B_2\)">\(B=B_1\otimes B_2\)</span>. Its support is <span class="math" data-tex="\(q=q_1\otimes q_2=VV^*\)">\(q=q_1\otimes q_2=VV^*\)</span>. Spectral transport on this support identifies <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(VCV^*\)">\(VCV^*\)</span>, while on <span class="math" data-tex="\((1-q)H\)">\((1-q)H\)</span> it is zero. Hence</p>
+<span class="math math-display" data-tex="\[
+D(B)=\{\eta:V^*\eta\in D(C)\},\qquad V^*B=CV^*.
+\tag{TG.12}
+\]">\[
+D(B)=\{\eta:V^*\eta\in D(C)\},\qquad V^*B=CV^*.
+\tag{TG.12}
+\]</span>
+<p>Applying (TG.9) to the polar factorizations in (TG.11) now proves the full assertion</p>
+<span class="math math-display" data-tex="\[
+(T_1\otimes T_2)^*
+=\overline{T_1^*\odot T_2^*}=T_1^*\otimes T_2^*.
+\tag{TG.13}
+\]">\[
+(T_1\otimes T_2)^*
+=\overline{T_1^*\odot T_2^*}=T_1^*\otimes T_2^*.
+\tag{TG.13}
+\]</span>
+<p>This is Lemma VIII.4.1 at its densely defined closed-operator scope. It includes noninjective operators and zero factors.</p>
+<p>For the antilinear operators used next, suppose <span class="math" data-tex="\(S_i=J_iD_i\)">\(S_i=J_iD_i\)</span>, with <span class="math" data-tex="\(J_i\)">\(J_i\)</span> antiunitary conjugations and <span class="math" data-tex="\(D_i\)">\(D_i\)</span> positive injective self-adjoint operators. The elementary prescription <span class="math" data-tex="\(J(\xi\otimes\eta)=J_1\xi\otimes J_2\eta\)">\(J(\xi\otimes\eta)=J_1\xi\otimes J_2\eta\)</span> is well defined and antilinear: moving a scalar between factors conjugates it in either position. Tensor inner products show that it extends to an antiunitary conjugation. The operator</p>
+<span class="math math-display" data-tex="\[
+S=J(D_1\otimes D_2),\qquad
+S^*=(D_1\otimes D_2)J
+\tag{TG.14}
+\]">\[
+S=J(D_1\otimes D_2),\qquad
+S^*=(D_1\otimes D_2)J
+\tag{TG.14}
+\]</span>
+<p>has the full domain given by (TG.1), and adjoint domain given by its preimage under <span class="math" data-tex="\(J\)">\(J\)</span>. The same rectangular graph-core proof applies to <span class="math" data-tex="\(S\)">\(S\)</span>. For the adjoint, conjugate the positive factors: <span class="math" data-tex="\(JD J\)">\(JD J\)</span>, with <span class="math" data-tex="\(D=D_1\otimes D_2\)">\(D=D_1\otimes D_2\)</span>, is the tensor of <span class="math" data-tex="\(J_iD_iJ_i\)">\(J_iD_iJ_i\)</span>. Its rectangular core, followed by <span class="math" data-tex="\(J\)">\(J\)</span>, proves that <span class="math" data-tex="\(S^*\)">\(S^*\)</span> is the closure of <span class="math" data-tex="\(S_1^*\odot S_2^*\)">\(S_1^*\odot S_2^*\)</span>. This supplies the antilinear adjoint assertion actually needed below.</p>
+<h2 id="comparing-spatial-representations">Comparing spatial representations</h2>
+<p>The tensor weight must live on the prescribed algebra <span class="math" data-tex="\(M\bar\otimes N\)">\(M\bar\otimes N\)</span>, even when its support corners are represented in different GNS spaces. We supply the required representation comparison using the existing normal-functional standard-form theorem SF-10/11, the cyclic argument of FU-01, and the image theorem WH-02. Their existing prerequisite contracts remain in force.</p>
+<p>Fix a standard representation of <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(L\)">\(L\)</span>. Every normal unital representation on <span class="math" data-tex="\(H\)">\(H\)</span> embeds isometrically as a reducing subrepresentation of <span class="math" data-tex="\(L\otimes\ell^2(I)\)">\(L\otimes\ell^2(I)\)</span> for some arbitrary set <span class="math" data-tex="\(I\)">\(I\)</span>. To prove this, choose a maximal orthogonal family of cyclic reducing subspaces of <span class="math" data-tex="\(H\)">\(H\)</span>. Their sum is all of <span class="math" data-tex="\(H\)">\(H\)</span>, since any nonzero orthogonal complement contains another cyclic subspace. On each cyclic subspace, its normal vector functional is represented by a cone vector <span class="math" data-tex="\(v\in L\)">\(v\in L\)</span>. The map <span class="math" data-tex="\(av\mapsto a\xi\)">\(av\mapsto a\xi\)</span> preserves all inner products, hence extends to an intertwining isometry of the corresponding cyclic subspaces. This is the left-action version of the explicit proof in FU-01. Its orthogonal sum gives the claimed embedding. Denote its range projection by <span class="math" data-tex="\(e\)">\(e\)</span>.</p>
+<p>The commutant of <span class="math" data-tex="\(M\otimes I\)">\(M\otimes I\)</span> on this amplification consists of bounded matrices with entries in <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>. Finite coordinate compressions prove this assertion: commutation is equivalent to commutation of each matrix entry, and those compressions converge strongly to the whole operator. If the original representation is faithful, <span class="math" data-tex="\(e\)">\(e\)</span> has central support one in this commutant. Indeed, the projection onto the closed span of all commutant translates of <span class="math" data-tex="\(e\)">\(e\)</span>'s range is central in the commutant. Its complement is also in <span class="math" data-tex="\(M\otimes I\)">\(M\otimes I\)</span>, hence equals <span class="math" data-tex="\(z\otimes I\)">\(z\otimes I\)</span> for a central projection <span class="math" data-tex="\(z\in M\)">\(z\in M\)</span>. It annihilates <span class="math" data-tex="\(e\)">\(e\)</span>'s range, so faithfulness gives <span class="math" data-tex="\(z=0\)">\(z=0\)</span>.</p>
+<p>Apply this construction to faithful normal representations of <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, with standard spaces <span class="math" data-tex="\(L_M,L_N\)">\(L_M,L_N\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+P=(M\odot N)&#x27;&#x27;\subseteq B(L_M\otimes L_N).
+\tag{TG.15}
+\]">\[
+P=(M\odot N)&#x27;&#x27;\subseteq B(L_M\otimes L_N).
+\tag{TG.15}
+\]</span>
+<p>After regrouping tensor factors, the amplifications act on <span class="math" data-tex="\((L_M\otimes L_N)\otimes\ell^2(I\times J)\)">\((L_M\otimes L_N)\otimes\ell^2(I\times J)\)</span>. Their joint range projection <span class="math" data-tex="\(e\otimes f\)">\(e\otimes f\)</span> commutes with the amplification of <span class="math" data-tex="\(P\)">\(P\)</span>. Compression gives a normal representation of <span class="math" data-tex="\(P\)">\(P\)</span> on <span class="math" data-tex="\(H\otimes K\)">\(H\otimes K\)</span>.</p>
+<p>It is faithful. If <span class="math" data-tex="\(x\in P\)">\(x\in P\)</span> annihilates this range, its amplification annihilates all translates of that range by the two amplified commutants, since it commutes with those operators. Their translates span the whole Hilbert space: each individual range is total under its commutant by the preceding central-support argument, and elementary tensors of those total subspaces are total. Thus <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. WH-02 makes the compression an isomorphism onto a von Neumann algebra. Its image is exactly the algebra generated by the original elementary tensors: one inclusion holds because it contains them, and the other follows by normality and ultraweak density of the algebraic generators in <span class="math" data-tex="\(P\)">\(P\)</span>. We have proved a normal spatial comparison that fixes every <span class="math" data-tex="\(a\otimes b\)">\(a\otimes b\)</span>.</p>
+<p>Consequently faithful normal changes of the two representations transport their spatial tensor products uniquely. Uniqueness follows from normality and density of elementary tensors. This also gives</p>
+<span class="math math-display" data-tex="\[
+(e_0Me_0)\bar\otimes(f_0Nf_0)
+\simeq (e_0\otimes f_0)(M\bar\otimes N)(e_0\otimes f_0)
+\tag{TG.16}
+\]">\[
+(e_0Me_0)\bar\otimes(f_0Nf_0)
+\simeq (e_0\otimes f_0)(M\bar\otimes N)(e_0\otimes f_0)
+\tag{TG.16}
+\]</span>
+<p>for arbitrary projections <span class="math" data-tex="\(e_0,f_0\)">\(e_0,f_0\)</span>: in the original concrete spaces the corner is generated by compressed elementary tensors, by ultraweak density; the two restricted representations are faithful on the corners. No formula for the full commutant of a spatial tensor product was assumed in this argument. Zero corners are included.</p>
+<h2 id="tensor-hilbert-algebras-and-tomita-domains"><span id="OA-MOD-TG-04"></span><span id="oa-mod-tg-04"></span>Tensor Hilbert algebras and Tomita domains</h2>
+<p>Let <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> be faithful normal semifinite weights on <span class="math" data-tex="\(M,N\)">\(M,N\)</span>. In their faithful normal GNS representations put</p>
+<span class="math math-display" data-tex="\[
+\mathcal A_1=\Lambda_\varphi(\mathfrak n_\varphi\cap\mathfrak n_\varphi^*),\qquad
+\mathcal A_2=\Lambda_\psi(\mathfrak n_\psi\cap\mathfrak n_\psi^*).
+\tag{TG.17}
+\]">\[
+\mathcal A_1=\Lambda_\varphi(\mathfrak n_\varphi\cap\mathfrak n_\varphi^*),\qquad
+\mathcal A_2=\Lambda_\psi(\mathfrak n_\psi\cap\mathfrak n_\psi^*).
+\tag{TG.17}
+\]</span>
+<p>These are full left Hilbert algebras by WH-09/10. Give <span class="math" data-tex="\(\mathcal A=\mathcal A_1\odot\mathcal A_2\)">\(\mathcal A=\mathcal A_1\odot\mathcal A_2\)</span> its factorwise product and involution and its tensor inner product. A simple left multiplication is <span class="math" data-tex="\(L_\xi\otimes L_\eta\)">\(L_\xi\otimes L_\eta\)</span>; a finite sum is bounded by the sum of the product operator norms. The inner-product adjoint identity is verified on elementary tensors and then by linearity. Products span a dense subspace, since the product span is dense in each factor. It remains to prove closability and identify the full closed involution.</p>
+<p>Write <span class="math" data-tex="\(S_i=J_i\Delta_i^{1/2}\)">\(S_i=J_i\Delta_i^{1/2}\)</span> for the two closed Tomita operators from MF-01/06. Their cores are <span class="math" data-tex="\(\mathcal A_i\)">\(\mathcal A_i\)</span>. Since <span class="math" data-tex="\(J_i\)">\(J_i\)</span> preserves norm, these are also graph cores for <span class="math" data-tex="\(D_i=\Delta_i^{1/2}\)">\(D_i=\Delta_i^{1/2}\)</span>. By TG-01, <span class="math" data-tex="\(D(D_1)\odot D(D_2)\)">\(D(D_1)\odot D(D_2)\)</span> is a core for <span class="math" data-tex="\(D=D_1\otimes D_2\)">\(D=D_1\otimes D_2\)</span>. Replacing each factor of each finite sum by its graph approximation from <span class="math" data-tex="\(\mathcal A_i\)">\(\mathcal A_i\)</span> proves that <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is itself a core: the errors in both the tensor vector and its product image tend to zero. Therefore its sharp map has precisely the closure</p>
+<span class="math math-display" data-tex="\[
+S=JD,\qquad F=S^*=DJ,\qquad J=J_1\otimes J_2.
+\tag{TG.18}
+\]">\[
+S=JD,\qquad F=S^*=DJ,\qquad J=J_1\otimes J_2.
+\tag{TG.18}
+\]</span>
+<p>The domains in this equality are the full integral domain of (TG.1) and its <span class="math" data-tex="\(J\)">\(J\)</span>-preimage, respectively. TG-02 also identifies <span class="math" data-tex="\(F\)">\(F\)</span> with the closure of the factorwise adjoint involutions. This proves all left Hilbert algebra axioms, rather than assuming them to invoke the weight construction.</p>
+<p>Its generated left algebra is <span class="math" data-tex="\(M\bar\otimes N\)">\(M\bar\otimes N\)</span>. For detail, the finite positive contraction nets of WG-008 belong to the two finite-star algebras and converge strongly to their identities in GNS. Thus bounded strong limits of <span class="math" data-tex="\(L_\xi\otimes L_{e_\alpha}\)">\(L_\xi\otimes L_{e_\alpha}\)</span> give <span class="math" data-tex="\(L_\xi\otimes I\)">\(L_\xi\otimes I\)</span>, and similarly give <span class="math" data-tex="\(I\otimes L_\eta\)">\(I\otimes L_\eta\)</span>. Their von Neumann algebras generate the spatial tensor product. The reverse inclusion follows from the displayed simple multiplication operators. TG-03 transports this assertion to any prescribed faithful concrete representations.</p>
+<p>Apply WH-03–08 to the tensor Hilbert algebra, completing it before taking the weight. This yields a faithful normal semifinite weight <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and a canonical GNS identification with <span class="math" data-tex="\(H_\varphi\otimes H_\psi\)">\(H_\varphi\otimes H_\psi\)</span>. Under it,</p>
+<span class="math math-display" data-tex="\[
+\Lambda_\theta(x\otimes y)=\Lambda_\varphi(x)\otimes\Lambda_\psi(y)
+\quad(x\in\mathfrak n_\varphi\cap\mathfrak n_\varphi^*,\ y\in\mathfrak n_\psi\cap\mathfrak n_\psi^*).
+\tag{TG.19}
+\]">\[
+\Lambda_\theta(x\otimes y)=\Lambda_\varphi(x)\otimes\Lambda_\psi(y)
+\quad(x\in\mathfrak n_\varphi\cap\mathfrak n_\varphi^*,\ y\in\mathfrak n_\psi\cap\mathfrak n_\psi^*).
+\tag{TG.19}
+\]</span>
+<p>Indeed the elementary tensor is the multiplication vector of the elementary operator, and WH-08 identifies that multiplication vector with its GNS vector. Full completion leaves the closed sharp operator unchanged, so polar uniqueness, (TG.6) and (TG.18) give</p>
+<span class="math math-display" data-tex="\[
+J_\theta=J_\varphi\otimes J_\psi,\qquad
+\Delta_\theta=\Delta_\varphi\otimes\Delta_\psi,\qquad
+\Delta_\theta^{it}=\Delta_\varphi^{it}\otimes\Delta_\psi^{it}.
+\tag{TG.20}
+\]">\[
+J_\theta=J_\varphi\otimes J_\psi,\qquad
+\Delta_\theta=\Delta_\varphi\otimes\Delta_\psi,\qquad
+\Delta_\theta^{it}=\Delta_\varphi^{it}\otimes\Delta_\psi^{it}.
+\tag{TG.20}
+\]</span>
+<p>The middle equality denotes the closed tensor, with its full spectral domain, rather than the algebraic tensor. The last equality follows from (TG.7).</p>
+<p>MF-06 now implements the modular automorphisms. On elementary operators its conjugation formula gives</p>
+<span class="math math-display" data-tex="\[
+\sigma_t^\theta(a\otimes b)=\sigma_t^\varphi(a)\otimes\sigma_t^\psi(b),\qquad
+\sigma_t^\theta=\sigma_t^\varphi\bar\otimes\sigma_t^\psi.
+\tag{TG.21}
+\]">\[
+\sigma_t^\theta(a\otimes b)=\sigma_t^\varphi(a)\otimes\sigma_t^\psi(b),\qquad
+\sigma_t^\theta=\sigma_t^\varphi\bar\otimes\sigma_t^\psi.
+\tag{TG.21}
+\]</span>
+<p>TG-03 supplies the normal spatial automorphism on the right. Equality on the entire von Neumann algebra follows by normality and ultraweak density. This proves Proposition VIII.4.3, including normality, semifiniteness and faithfulness of its tensor weight.</p>
+<h2 id="all-positive-values-and-nonfaithful-support-corners">All positive values and nonfaithful support corners</h2>
+<p>The construction of TG-04 defines <span class="math" data-tex="\(\varphi\otimes\psi\)">\(\varphi\otimes\psi\)</span> in the faithful case. WH-10 shows that the associated weight is unique for the specified full Hilbert algebra, and TG-03 makes this definition independent of the faithful normal concrete representations.</p>
+<p>For every <span class="math" data-tex="\(a\in M_+,b\in N_+\)">\(a\in M_+,b\in N_+\)</span> it satisfies</p>
+<span class="math math-display" data-tex="\[
+(\varphi\otimes\psi)(a\otimes b)=\varphi(a)\psi(b),\qquad 0\cdot\infty=0.
+\tag{TG.22}
+\]">\[
+(\varphi\otimes\psi)(a\otimes b)=\varphi(a)\psi(b),\qquad 0\cdot\infty=0.
+\tag{TG.22}
+\]</span>
+<p>When both values are finite, their square roots belong to the finite-star algebras; (TG.19) and the GNS norm prove the formula. Infinite values need a separate argument. A finite positive cone need not provide positive approximants below an arbitrary positive operator.</p>
+<p>Let <span class="math" data-tex="\(\omega\leq\varphi\)">\(\omega\leq\varphi\)</span> and <span class="math" data-tex="\(\nu\leq\psi\)">\(\nu\leq\psi\)</span> be bounded normal positive functionals. OW-02/03 provide implementing vectors <span class="math" data-tex="\(\eta_\omega,\eta_\nu\)">\(\eta_\omega,\eta_\nu\)</span> and positive contractions <span class="math" data-tex="\(h_\omega^{1/2},h_\nu^{1/2}\)">\(h_\omega^{1/2},h_\nu^{1/2}\)</span> in the respective commutants, such that</p>
+<span class="math math-display" data-tex="\[
+x\eta_\omega=h_\omega^{1/2}\Lambda_\varphi(x),\qquad
+y\eta_\nu=h_\nu^{1/2}\Lambda_\psi(y)
+\tag{TG.23}
+\]">\[
+x\eta_\omega=h_\omega^{1/2}\Lambda_\varphi(x),\qquad
+y\eta_\nu=h_\nu^{1/2}\Lambda_\psi(y)
+\tag{TG.23}
+\]</span>
+<p>on the respective finite left ideals. Thus these vectors are right bounded for the factor Hilbert algebras. The tensor vector <span class="math" data-tex="\(\eta=\eta_\omega\otimes\eta_\nu\)">\(\eta=\eta_\omega\otimes\eta_\nu\)</span> is right bounded for their algebraic tensor, with right multiplication operator
+<span class="math" data-tex="\(R_\eta=h_\omega^{1/2}\otimes h_\nu^{1/2}\)">\(R_\eta=h_\omega^{1/2}\otimes h_\nu^{1/2}\)</span>, of norm at most one; verify the equality on finite sums of elementary vectors. The mixed bounded-vector identity WH-04 extends it to every vector of the completed left multiplication domain. No adjoint-domain membership of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is required for that identity.</p>
+<p>For <span class="math" data-tex="\(X\geq0\)">\(X\geq0\)</span> with <span class="math" data-tex="\(\theta(X)&lt;\infty\)">\(\theta(X)&lt;\infty\)</span>, write <span class="math" data-tex="\(X^{1/2}=\lambda_\xi\)">\(X^{1/2}=\lambda_\xi\)</span>. The normal vector functional <span class="math" data-tex="\(\Omega(X)=\langle X\eta,\eta\rangle\)">\(\Omega(X)=\langle X\eta,\eta\rangle\)</span> then satisfies</p>
+<span class="math math-display" data-tex="\[
+\Omega(X)=\|\lambda_\xi\eta\|^2=\|R_\eta\xi\|^2\leq\|\xi\|^2=\theta(X).
+\tag{TG.24}
+\]">\[
+\Omega(X)=\|\lambda_\xi\eta\|^2=\|R_\eta\xi\|^2\leq\|\xi\|^2=\theta(X).
+\tag{TG.24}
+\]</span>
+<p>For infinite <span class="math" data-tex="\(\theta(X)\)">\(\theta(X)\)</span> the same domination is automatic. On elementary operators this functional equals <span class="math" data-tex="\(\omega(a)\nu(b)\)">\(\omega(a)\nu(b)\)</span>. NW-11 recovers each normal weight from its dominated bounded normal functionals. Taking the two independent suprema in (TG.24) gives <span class="math" data-tex="\(\theta(a\otimes b)\geq\varphi(a)\psi(b)\)">\(\theta(a\otimes b)\geq\varphi(a)\psi(b)\)</span>. If either value is infinite and the other is strictly positive this forces infinity. In the faithful case a zero value forces the corresponding positive operator to be zero, so the convention in (TG.22) is correct. Together with the finite case this proves every extended value.</p>
+<p>Now let <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> be arbitrary normal semifinite weights, with supports <span class="math" data-tex="\(e=s(\varphi)\)">\(e=s(\varphi)\)</span>, <span class="math" data-tex="\(f=s(\psi)\)">\(f=s(\psi)\)</span>. WS-05/06 give faithful normal semifinite restrictions <span class="math" data-tex="\(\varphi_e,\psi_f\)">\(\varphi_e,\psi_f\)</span> to their corners and the identities <span class="math" data-tex="\(\varphi(a)=\varphi_e(eae)\)">\(\varphi(a)=\varphi_e(eae)\)</span>, <span class="math" data-tex="\(\psi(b)=\psi_f(fbf)\)">\(\psi(b)=\psi_f(fbf)\)</span>. Put <span class="math" data-tex="\(P=e\otimes f\)">\(P=e\otimes f\)</span>. Use TG-03/04 to construct the faithful tensor weight <span class="math" data-tex="\(\theta_P\)">\(\theta_P\)</span> on the corner in (TG.16), and define on the whole algebra</p>
+<span class="math math-display" data-tex="\[
+\theta(X)=\theta_P(PXP),\qquad X\in(M\bar\otimes N)_+.
+\tag{TG.25}
+\]">\[
+\theta(X)=\theta_P(PXP),\qquad X\in(M\bar\otimes N)_+.
+\tag{TG.25}
+\]</span>
+<p>Additivity and homogeneity follow from linearity of compression. Normality follows because compression preserves bounded increasing positive suprema. Its support is exactly <span class="math" data-tex="\(P\)">\(P\)</span>: the complement has zero weight; if a projection <span class="math" data-tex="\(q\)">\(q\)</span> has zero weight, faithfulness in the corner gives <span class="math" data-tex="\(PqP=0\)">\(PqP=0\)</span>, hence <span class="math" data-tex="\(qP=0\)">\(qP=0\)</span>.</p>
+<p>It is semifinite. Choose finite positive contractions <span class="math" data-tex="\(u_\alpha\uparrow e\)">\(u_\alpha\uparrow e\)</span>, <span class="math" data-tex="\(v_\beta\uparrow f\)">\(v_\beta\uparrow f\)</span> for the corner weights using WG-008. Their product contractions increase strongly to <span class="math" data-tex="\(P\)">\(P\)</span> and have finite tensor weight by (TG.22). The finite positive contractions</p>
+<span class="math math-display" data-tex="\[
+u_\alpha\otimes v_\beta+(1-P)\uparrow1
+\tag{TG.26}
+\]">\[
+u_\alpha\otimes v_\beta+(1-P)\uparrow1
+\tag{TG.26}
+\]</span>
+<p>therefore prove semifiniteness by the finite-cone criterion WG-008/WS-02. If either support is zero, (TG.25) is simply the zero weight; the same conclusion holds. Compressing an elementary positive tensor in (TG.25) reduces (TG.22) to its faithful corner case, so it also proves the all-positive formula for nonfaithful weights.</p>
+<p>Definition VIII.4.2 is precisely (TG.25), with the corner weight associated to the algebraic tensor of the two full support-corner Hilbert algebras. Its support and that specified corner weight determine it uniquely by WS-05. The modular group formula (TG.21) applies to the faithful weights, or to their faithful support restrictions. It does not assert that the full GNS space of a nonfaithful weight equals its support-corner GNS space: a noncentral support can leave additional left-action directions. TG-06 exhibits this distinction.</p>
+<h2 id="domain-calculations-and-solved-examples">Domain calculations and solved examples</h2>
+<p><strong>A zero factor.</strong> If <span class="math" data-tex="\(T_1=0\)">\(T_1=0\)</span> on <span class="math" data-tex="\(H_1\)">\(H_1\)</span> and <span class="math" data-tex="\(T_2\)">\(T_2\)</span> is any densely defined closed operator, the initial tensor is zero on the dense subspace <span class="math" data-tex="\(H_1\odot D(T_2)\)">\(H_1\odot D(T_2)\)</span>. Its graph closure is the zero operator on all of <span class="math" data-tex="\(H_1\otimes H_2\)">\(H_1\otimes H_2\)</span>. Both sides of (TG.13) are zero with full domain. Retaining the initial algebraic domain would fail this test.</p>
+<p><strong>Cancellation between positive factors.</strong> On <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, let <span class="math" data-tex="\(Ae_n=ne_n\)">\(Ae_n=ne_n\)</span> and <span class="math" data-tex="\(Be_m=m^{-1}e_m\)">\(Be_m=m^{-1}e_m\)</span>. The second operator is bounded and injective. TG-01 gives</p>
+<span class="math math-display" data-tex="\[
+D(A\otimes B)=\left\{\zeta:\sum_{n,m\geq1}(n/m)^2|\zeta_{nm}|^2&lt;\infty\right\}.
+\tag{TG.27}
+\]">\[
+D(A\otimes B)=\left\{\zeta:\sum_{n,m\geq1}(n/m)^2|\zeta_{nm}|^2&lt;\infty\right\}.
+\tag{TG.27}
+\]</span>
+<p>The vector <span class="math" data-tex="\(\zeta=\sum_{n\geq1}n^{-1}e_n\otimes e_n\)">\(\zeta=\sum_{n\geq1}n^{-1}e_n\otimes e_n\)</span> lies in this domain and <span class="math" data-tex="\((A\otimes B)\zeta=\zeta\)">\((A\otimes B)\zeta=\zeta\)</span>. It does not lie in <span class="math" data-tex="\(D(A\otimes I)\)">\(D(A\otimes I)\)</span>, since its lifted energy is <span class="math" data-tex="\(\sum_n1\)">\(\sum_n1\)</span>. Its square truncations <span class="math" data-tex="\(\zeta_N\)">\(\zeta_N\)</span> satisfy the exact estimate</p>
+<span class="math math-display" data-tex="\[
+\|\zeta-\zeta_N\|^2+\|(A\otimes B)(\zeta-\zeta_N)\|^2
+=2\sum_{n&gt;N}n^{-2}\leq2/N.
+\tag{TG.28}
+\]">\[
+\|\zeta-\zeta_N\|^2+\|(A\otimes B)(\zeta-\zeta_N)\|^2
+=2\sum_{n&gt;N}n^{-2}\leq2/N.
+\tag{TG.28}
+\]</span>
+<p>This is graph convergence for the product, despite the infinite separate energy. The private reproducible figure for this unit shows the ratio <span class="math" data-tex="\(n/m\)">\(n/m\)</span>, this diagonal vector and the exact tail bound. Its finite grid is labeled as a sample; the domain and estimate are established by (TG.27–28), not inferred from pixels. Public figure binding remains pending.</p>
+<p><strong>A matrix modular calculation.</strong> Let <span class="math" data-tex="\(M=N=M_2(\mathbb C)\)">\(M=N=M_2(\mathbb C)\)</span>, <span class="math" data-tex="\(\varphi(x)=\operatorname{Tr}(hx)\)">\(\varphi(x)=\operatorname{Tr}(hx)\)</span>, <span class="math" data-tex="\(\psi(y)=\operatorname{Tr}(ky)\)">\(\psi(y)=\operatorname{Tr}(ky)\)</span>, with <span class="math" data-tex="\(h=\operatorname{diag}(1,4)\)">\(h=\operatorname{diag}(1,4)\)</span>, <span class="math" data-tex="\(k=\operatorname{diag}(1,9)\)">\(k=\operatorname{diag}(1,9)\)</span>. In basis order <span class="math" data-tex="\((1,1),(1,2),(2,1),(2,2)\)">\((1,1),(1,2),(2,1),(2,2)\)</span>, the tensor density is <span class="math" data-tex="\(h\otimes k=\operatorname{diag}(1,9,4,36)\)">\(h\otimes k=\operatorname{diag}(1,9,4,36)\)</span>. Identifying GNS vectors with <span class="math" data-tex="\(xh^{1/2}\)">\(xh^{1/2}\)</span> and <span class="math" data-tex="\(yk^{1/2}\)">\(yk^{1/2}\)</span> in Hilbert–Schmidt spaces verifies (TG.19). The modular operator multiplies <span class="math" data-tex="\(E_{ij}\otimes E_{rs}\)">\(E_{ij}\otimes E_{rs}\)</span> by <span class="math" data-tex="\((h_i/h_j)(k_r/k_s)\)">\((h_i/h_j)(k_r/k_s)\)</span>. In particular <span class="math" data-tex="\(E_{12}\otimes E_{21}\)">\(E_{12}\otimes E_{21}\)</span> has eigenvalue <span class="math" data-tex="\(9/4\)">\(9/4\)</span>, and its modular automorphism multiplier is <span class="math" data-tex="\((9/4)^{it}\)">\((9/4)^{it}\)</span>. This checks both the factor order and the sign of <span class="math" data-tex="\(t\)">\(t\)</span> in (TG.21).</p>
+<p><strong>A nonfaithful corner is smaller than the full GNS representation.</strong> On <span class="math" data-tex="\(B(\mathbb C^2)\)">\(B(\mathbb C^2)\)</span> take <span class="math" data-tex="\(\varphi(x)=\langle xe_1,e_1\rangle\)">\(\varphi(x)=\langle xe_1,e_1\rangle\)</span>. Its support is <span class="math" data-tex="\(e=|e_1\rangle\langle e_1|\)">\(e=|e_1\rangle\langle e_1|\)</span>, and its faithful support corner is one dimensional. However its full GNS Hilbert space is <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, via <span class="math" data-tex="\(\Lambda_\varphi(x)=xe_1\)">\(\Lambda_\varphi(x)=xe_1\)</span>, with the ordinary two-dimensional left action. Taking the same weight on the second factor gives a one-dimensional faithful corner at <span class="math" data-tex="\(e\otimes e\)">\(e\otimes e\)</span>, while the full tensor functional has GNS space <span class="math" data-tex="\(\mathbb C^2\otimes\mathbb C^2\)">\(\mathbb C^2\otimes\mathbb C^2\)</span>. Formula (TG.25) gives exactly that vector functional, and zero on the complementary support, without conflating the two GNS spaces.</p>
+<p><strong>Problem: why does the adjoint domain contain the final-kernel directions?</strong> In (TG.10), let <span class="math" data-tex="\(\eta\in\ker V^*\)">\(\eta\in\ker V^*\)</span>. Then <span class="math" data-tex="\(V^*\eta=0\in D(C)\)">\(V^*\eta=0\in D(C)\)</span>, and <span class="math" data-tex="\(T^*\eta=0\)">\(T^*\eta=0\)</span>. An asserted domain <span class="math" data-tex="\(D(T^*)=D(C)\)">\(D(T^*)=D(C)\)</span> could exclude such a vector. The correct positive operator for the adjoint polar factor is <span class="math" data-tex="\(B\)">\(B\)</span> in (TG.12), which vanishes on precisely these directions.</p>
+<p><strong>Problem: does the all-positive tensor formula follow from positive finite approximants below each input?</strong> No such approximation was assumed. For example a diagonal trace-density weight can be infinite on a rank-one projection whose range vector lies outside its form domain; every nonzero positive operator below that projection has the same one-dimensional support and is still infinite. The proof in TG-05 instead uses dominated bounded normal functionals and their right-bounded implementing vectors. Those functionals recover every positive value by NW-11.</p>
+<p>The exact source correspondence is: TG-01/02 prove VIII.4.1; TG-03 supplies spatial transport; TG-04/05 construct VIII.4.2 including nonfaithful supports and prove VIII.4.3; TG-06 checks domains, signs and support distinctions. Source pages are printed 133–134, PDF pages 153–154 of the registered Takesaki II authority. These are original author arguments at the named course providers.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-MP.html">← Modular partitions and the full finite domain</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-GFR.html">Compatible measurable GNS fields and both representation transports →</a></span></nav>
+<p class="small source-link"><a href="src/tensor-closed-operators-and-weights.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

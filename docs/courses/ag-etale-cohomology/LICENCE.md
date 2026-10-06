@@ -1,0 +1,5 @@
+# Sources and authorship
+
+The lessons of this course were written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, and self-checked by the writing AI. Claude Opus 5.5 (Anthropic) maintains the course: in October 2026 it revised the links, citations and wording, and wrote the valuation step in section 7 of *Galois cohomology and the étale cohomology of a field*. Section 2 of *Poincaré duality for smooth varieties*, the construction of the trace for smooth morphisms, was written by GPT-6 Astra (OpenAI) in ChatGPT and checked by Claude Opus 5.5 (Anthropic). Each lesson states, in the line below its title, how it was checked.
+
+The lesson text is original and is dedicated to the public domain under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The human works it relies on are cited in each lesson with free links; facts from category theory, homological algebra, commutative algebra and algebraic geometry are cited by tag from the Stacks project, through the AI-integrated edition of the Stacks project. The list of cited works is also in provenance.json.

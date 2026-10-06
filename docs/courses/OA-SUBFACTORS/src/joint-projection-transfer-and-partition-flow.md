@@ -4,7 +4,7 @@
 
 The new boundary hypothesis is not derived from unrestricted relative Følner. Neither general core rounding nor the general bicommutant theorem is claimed complete. The human source for the problem is Sorin Popa, *Classification of amenable subfactors of type II*, [DOI 10.1007/BF02392646](https://doi.org/10.1007/BF02392646), Theorem 4.2.2, printed pp. 213–214. The arguments and diagram below are original.
 
-We use the actual core pair \(S\subset R\), canonical algebras \(A=\langle N,e\rangle\subset B=\langle M,e\rangle\), and full finite corner \(e=e_R^M\) from 52.1–52.2. The normalized common basis and joint-center identification are 68.1–68.3. The finite trace ideal, normal positive \(L^1\) density, Cauchy–Schwarz and type II central prescription retain the exact programme providers of 52 and [58](larger-factor-central-balancing.md). The commutator trace estimate is (58.11). We give every additional argument here. No factoriality of either core algebra, extremality, or ambient separability is assumed.
+We use the actual core pair \(S\subset R\), canonical algebras \(A=\langle N,e\rangle\subset B=\langle M,e\rangle\), and full finite corner \(e=e_R^M\) from [52.1–52.2](canonical-core-traces-and-integer-rounding.md). The normalized common basis and joint-center identification are 68.1–68.3. The finite trace ideal, normal positive \(L^1\) density, Cauchy–Schwarz and type II central prescription retain the exact programme providers of [52](canonical-core-traces-and-integer-rounding.md) and [58](larger-factor-central-balancing.md). The commutator trace estimate is (58.11). We give every additional argument here. No factoriality of either core algebra, extremality, or ambient separability is assumed.
 
 ## A positive joint density depends on both \(p\) and \(g\)
 
@@ -337,4 +337,4 @@ In the finite matrix model, replace the two projection blocks by \(p_1=e_{11}\) 
 
 ---
 
-Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition CC0 1.0. Author self-check. The course remains in development.
+Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition CC0 1.0. Self-checked by the writing AI. The course remains in development.

@@ -50,7 +50,7 @@ minor. Repeat the induction in that smooth complementary bundle.
 For manifolds we assume Hausdorff, second countable, finite-dimensional
 smooth manifolds without boundary. The inverse-function, compactness,
 smooth cutoff, parameter-integral and change-of-variables proofs are in
-the earlier stationary prerequisite chain.
+the earlier [stationary prerequisite chain](../20261004-free-stationary-phase/quadratic-stationary-phase.md#f0-the-exact-earlier-programme-proofs).
 We explicitly derive the constant-rank and embedding consequences needed
 below. C5 constructs the finite partitions needed for integration
 directly from the earlier smooth cutoffs.

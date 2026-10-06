@@ -4,7 +4,7 @@ An imaginary-time endpoint can be recognized without applying a weight to an inf
 
 The exact earlier proof used below is The single-weight generator has an exact finite-pair test, the lower-strip finite-pair criterion. Its modular specialization uses the normal automorphisms already constructed in The modular fundamental theorem, the full-domain results A closed intertwining relation is a bounded operator strip and A strip endpoint acts on the whole finite left ideal, and Two facts about closed strips, strip uniqueness. It does not require the separate classification of general linear isometries discussed in AG-01. The bounded-comparison route uses the preceding Hilbert completion and extension proof.
 
-For source comparison, see Masamichi Takesaki, *Theory of Operator Algebras II*, Exercise VIII.2(2) in the approved receipt-backed edition. The organization here is by adjoint reflection, finite products and examples. The external source is a reference for the mathematics; the proof is supplied through the exact earlier argument and the steps below.
+For source comparison, see Masamichi Takesaki, *Theory of Operator Algebras II*, Exercise VIII.2(2). The organization here is by adjoint reflection, finite products and examples. The external source is a reference for the mathematics; the proof is supplied through the exact earlier argument and the steps below.
 
 ## The domains and the upper-strip criterion
 

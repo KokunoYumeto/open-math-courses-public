@@ -206,10 +206,10 @@ No triangulation-existence theorem is hidden in this lemma: the compatible finit
 
 The main proof below uses supported real tests and finite sums. The stronger critical-support argument later in the lesson is retained as an alternative; its full vanishing-cycle comparison and nonisolated analytic theorem are not prerequisites of the main proof. The four inputs below are supplied by these lessons, with their exact external theorem statements and coefficient ranges kept visible:
 
-- Analytic geometry for finite maps supplies compatible strata, finite analytic images and closed conormals.
+- [Analytic geometry for finite maps](finite-map-analytic-geometry.md#SH02-FAG-UNIT) supplies compatible strata, finite analytic images and closed conormals.
 - [Normal Morse data and change of coefficients](normal-morse-coefficients.md#SH02-NMC-UNIT) supplies the finite normal pairs, their stabilization and the coefficient comparison.
-- Perverse degrees and normal Morse complexes supplies the field-perverse degree and normal-Morse exactness.
-- An isolated holomorphic test and its Morse filtration supplies the controlled cluster, actual relative filtration and positive integer count.
+- [Perverse degrees and normal Morse complexes](perverse-normal-morse-inputs.md#SH02-PNM-UNIT) supplies the field-perverse degree and normal-Morse exactness.
+- [An isolated holomorphic test and its Morse filtration](isolated-holomorphic-morse-tests.md#SH02-IHM-UNIT) supplies the controlled cluster, actual relative filtration and positive integer count.
 
 For the primary proof, use these inputs with the [finite conormal-image argument](#SH02-FH-CONORMAL-IMAGE), [quadratic test construction](#SH02-FH-HOLOMORPHIC-TEST), [field argument](#SH02-FH-FIELD-FINITE) and [coefficient recovery](#SH02-FH-RING-FINITE). The [full critical-support route](#SH02-FH-GEOMETRIC-CONTRACT) is a separate, stronger direction; its FH13 and FH14 remain open and are not needed for FH30.
 
@@ -529,7 +529,7 @@ This is FH23 with values in $\mathbb Z$, and proves more than its Euler-characte
 
 For a sign check take $P=K_{\mathbb C}[1]$ and $g(z)=z^2$. The negative region of $\operatorname{Re}g$ has two local components. Its relative complex with the disc is $K[-1]$, and the shift $[1]$ gives the local test $K$ in degree zero. The complex intersection with the zero section has multiplicity one. A point sheaf with a constant test also gives a degree-zero vector space and intersection multiplicity one. These checks include a zero pulled-back covector and agree with the stated normalization.
 
-The construction of the controlled pair and perturbation is supplied by the isolated-test lesson at the precise scope stated above. A genericity statement alone would not prove FH55, and a field-valued trace would not prove the integer equality. This deduction explicitly records both distinctions.
+The construction of the controlled pair and perturbation is supplied by [the isolated-test lesson](isolated-holomorphic-morse-tests.md#SH02-IHM-BOUNDARY) at the precise scope stated above. A genericity statement alone would not prove FH55, and a field-valued trace would not prove the integer equality. This deduction explicitly records both distinctions.
 
 ## SH02-FH-FIELD-FINITE — Reverse inclusion from isolated source tests
 

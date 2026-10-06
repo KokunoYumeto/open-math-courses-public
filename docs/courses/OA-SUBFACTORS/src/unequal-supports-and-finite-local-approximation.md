@@ -362,4 +362,4 @@ Sorin Popa, *Classification of amenable subfactors of type II*, [DOI 10.1007/BF0
 
 Constant-multiplicity rounding/common-support BF, the second local form with a projection close to one central support, unrestricted global approximation and generating-tunnel implications, the full bicommutant equivalence, general represented/opposite models and corrected arbitrary-depth reconstruction remain assigned. The factorial specializations already proved in 58–60 are unchanged. The finite local theorem alone is not declared to close these stronger conclusions.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Author self-check. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0).*

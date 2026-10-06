@@ -1,6 +1,6 @@
 # Real and complex representations: weights, gamma factors and classical forms
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 At a real place, a representation can be read from a ladder of rotation weights. Raising and lowering either connect the whole ladder, stop at one endpoint, or stop at both. Reflection exchanges the positive and negative ladders. These possibilities explain the principal series, discrete series and finite-dimensional representations, and they also determine which classical forms can occur.
 

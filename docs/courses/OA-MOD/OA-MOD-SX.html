@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recovering a weight from spatial energy · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-SX.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 71 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="recovering-a-weight-from-spatial-energy">Recovering a weight from spatial energy</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>A positive self-adjoint operator assigns an energy to every vector, with infinity outside its square-root domain. To recover a weight, that energy must measure the positive coefficient operator rather than a chosen decomposition of it. This includes decompositions with infinite energy. We first prove an extension theorem for an ideal, then apply it to spatial coefficients. The covariance criterion is connected to the independent weight-cocycle reconstruction theorem.</p>
+<p>The mathematical antecedents are Takesaki, <em>Theory of Operator Algebras II</em>, IX.3, Theorem 3.11 and Lemma 3.12, together with VIII.3, Theorem 3.8. The finite-energy condition printed in IX.3.11(iii) needs a correction: by itself it does not imply weight reconstruction. Sections SX-08–10 give an explicit counterexample, including a contradiction to extension by any weight. The valid coefficient criterion below compares all extended energies. The covariance characterization retains arbitrary Hilbert spaces and possibly nonfaithful numerators.</p>
+<h2 id="the-data-that-must-determine-the-weight"><span id="oa-mod-sx-01"></span><span id="OA-MOD-SX-01"></span>The data that must determine the weight</h2>
+<p>Let <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span> be a concrete unital von Neumann algebra, put <span class="math" data-tex="\(N=M&#x27;\)">\(N=M&#x27;\)</span>, and let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be normal, semifinite and faithful on <span class="math" data-tex="\(N\)">\(N\)</span>. No separability or sigma-finiteness condition is imposed. Inner products are linear in the first variable. Use the bounded-vector construction of <a href="OA-MOD-SC.html#oa-mod-sc-01">Conventions and the actual prerequisites</a>:</p>
+<span class="math math-display" data-tex="\[
+R_\psi(\xi)\Lambda_\psi(y)=y\xi,
+\qquad
+\theta(\xi,\eta)=R_\psi(\xi)R_\psi(\eta)^*,
+\qquad \xi,\eta\in D_\psi.
+\tag{SX.1}
+\]">\[
+R_\psi(\xi)\Lambda_\psi(y)=y\xi,
+\qquad
+\theta(\xi,\eta)=R_\psi(\xi)R_\psi(\eta)^*,
+\qquad \xi,\eta\in D_\psi.
+\tag{SX.1}
+\]</span>
+<p>The coefficient ideal is</p>
+<span class="math math-display" data-tex="\[
+\mathcal J=\operatorname{span}\{\theta(\xi,\eta):\xi,\eta\in D_\psi\}.
+\tag{SX.2}
+\]">\[
+\mathcal J=\operatorname{span}\{\theta(\xi,\eta):\xi,\eta\in D_\psi\}.
+\tag{SX.2}
+\]</span>
+<p>By SD-04 and SC-04 it is an algebraic two-sided *-ideal, its positive cone consists of finite sums of diagonal coefficients, and it has positive contractions <span class="math" data-tex="\(u_a\uparrow1\)">\(u_a\uparrow1\)</span> strongly. In particular,</p>
+<span class="math math-display" data-tex="\[
+x^{1/2}u_a x^{1/2}\in\mathcal J_+,
+\qquad x^{1/2}u_a x^{1/2}\uparrow x
+\quad(x\in M_+).
+\tag{SX.3}
+\]">\[
+x^{1/2}u_a x^{1/2}\in\mathcal J_+,
+\qquad x^{1/2}u_a x^{1/2}\uparrow x
+\quad(x\in M_+).
+\tag{SX.3}
+\]</span>
+<p>For a positive self-adjoint operator <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+Q_A(\xi)=
+\begin{cases}
+\|A^{1/2}\xi\|^2,&amp;\xi\in D(A^{1/2}),\\
++\infty,&amp;\xi\notin D(A^{1/2}).
+\end{cases}
+\tag{SX.4}
+\]">\[
+Q_A(\xi)=
+\begin{cases}
+\|A^{1/2}\xi\|^2,&amp;\xi\in D(A^{1/2}),\\
++\infty,&amp;\xi\notin D(A^{1/2}).
+\end{cases}
+\tag{SX.4}
+\]</span>
+<p>This extended function is lower semicontinuous for Hilbert-norm convergence, including arbitrary nets: spectral truncations express it as the supremum of the continuous functions <span class="math" data-tex="\(\|A^{1/2}1_{[0,n]}(A)\xi\|^2\)">\(\|A^{1/2}1_{[0,n]}(A)\xi\|^2\)</span>. Its finite domain with the form norm is complete.</p>
+<p>Our coefficient consistency condition is the following statement about <strong>all</strong> finite families in <span class="math" data-tex="\(D_\psi\)">\(D_\psi\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=1}^r\theta(\xi_j,\xi_j)
+=\sum_{k=1}^s\theta(\eta_k,\eta_k)
+\quad\Longrightarrow\quad
+\sum_{j=1}^rQ_A(\xi_j)=\sum_{k=1}^sQ_A(\eta_k)
+\text{ in }[0,\infty].
+\tag{SX.5}
+\]">\[
+\sum_{j=1}^r\theta(\xi_j,\xi_j)
+=\sum_{k=1}^s\theta(\eta_k,\eta_k)
+\quad\Longrightarrow\quad
+\sum_{j=1}^rQ_A(\xi_j)=\sum_{k=1}^sQ_A(\eta_k)
+\text{ in }[0,\infty].
+\tag{SX.5}
+\]</span>
+<p>The empty family is allowed. Thus the zero coefficient must have energy zero. We separately require</p>
+<span class="math math-display" data-tex="\[
+F=D_\psi\cap D(A^{1/2})
+\quad\text{to be a core for }A^{1/2}.
+\tag{SX.6}
+\]">\[
+F=D_\psi\cap D(A^{1/2})
+\quad\text{to be a core for }A^{1/2}.
+\tag{SX.6}
+\]</span>
+<p>This is approximation in the graph norm, not only density in <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>The direct analytic inputs are SC-04–10, the finite-domain projection theorem WS-02, bounded Douglas factorization from BK/SD, and the closed-form and spectral results FC, QF and SK. The covariance direction additionally uses SI's modular identification, WH-13's existence of NSF reference weights, and the separately proved inverse weight-cocycle theorem CX. These are exact course dependencies; their own scalar foundations are not proved here.</p>
+<h2 id="a-positive-supremum-becomes-normal-before-it-becomes-additive">A positive supremum becomes normal before it becomes additive</h2>
+<p>Let <span class="math" data-tex="\(J\)">\(J\)</span> be an algebraic two-sided *-ideal in a von Neumann algebra <span class="math" data-tex="\(B\)">\(B\)</span>. Assume it has positive contractions <span class="math" data-tex="\(u_a\uparrow1\)">\(u_a\uparrow1\)</span>. A weight on <span class="math" data-tex="\(J_+=J\cap B_+\)">\(J_+=J\cap B_+\)</span> means an additive, nonnegative homogeneous function <span class="math" data-tex="\(w:J_+\to[0,\infty]\)">\(w:J_+\to[0,\infty]\)</span>, with <span class="math" data-tex="\(w(0)=0\)">\(w(0)=0\)</span> and <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>. Suppose that</p>
+<span class="math math-display" data-tex="\[
+w(z)\le\liminf_i w(b_i z b_i^*)
+\tag{SX.7}
+\]">\[
+w(z)\le\liminf_i w(b_i z b_i^*)
+\tag{SX.7}
+\]</span>
+<p>for every <span class="math" data-tex="\(z\in J_+\)">\(z\in J_+\)</span> and every net <span class="math" data-tex="\(b_i\in B\)">\(b_i\in B\)</span> converging strongly to <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Extension theorem.</strong> There is exactly one normal weight on <span class="math" data-tex="\(B\)">\(B\)</span> extending <span class="math" data-tex="\(w\)">\(w\)</span>, namely</p>
+<span class="math math-display" data-tex="\[
+\Phi(x)=\sup\{w(z):z\in J_+,\ z\le x\},
+\qquad x\in B_+.
+\tag{SX.8}
+\]">\[
+\Phi(x)=\sup\{w(z):z\in J_+,\ z\le x\},
+\qquad x\in B_+.
+\tag{SX.8}
+\]</span>
+<p>No semifiniteness assumption on <span class="math" data-tex="\(w\)">\(w\)</span> is needed for this assertion.</p>
+<p><strong>Agreement and homogeneity.</strong> If <span class="math" data-tex="\(x\in J_+\)">\(x\in J_+\)</span> and <span class="math" data-tex="\(z\in J_+\)">\(z\in J_+\)</span> satisfies <span class="math" data-tex="\(z\le x\)">\(z\le x\)</span>, then <span class="math" data-tex="\(x-z\in J_+\)">\(x-z\in J_+\)</span>. Additivity of <span class="math" data-tex="\(w\)">\(w\)</span> gives <span class="math" data-tex="\(w(z)\le w(x)\)">\(w(z)\le w(x)\)</span>. The choice <span class="math" data-tex="\(z=x\)">\(z=x\)</span> proves <span class="math" data-tex="\(\Phi(x)=w(x)\)">\(\Phi(x)=w(x)\)</span>. The function <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is monotone by inclusion of the sets in its supremum. Rescaling those sets proves positive homogeneity for positive scalars; the value at zero follows from the order condition and gives the zero-scalar convention.</p>
+<p><strong>Preservation of increasing suprema.</strong> Suppose <span class="math" data-tex="\(x_i\uparrow x\)">\(x_i\uparrow x\)</span> in <span class="math" data-tex="\(B_+\)">\(B_+\)</span>, and put <span class="math" data-tex="\(p=s(x)\)">\(p=s(x)\)</span>. Douglas factorization gives contractions <span class="math" data-tex="\(c_i\in B\)">\(c_i\in B\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+c_i x^{1/2}=x_i^{1/2},\qquad c_i=c_i p.
+\tag{SX.9}
+\]">\[
+c_i x^{1/2}=x_i^{1/2},\qquad c_i=c_i p.
+\tag{SX.9}
+\]</span>
+<p>For clarity, the factorization follows by extending the contraction from <span class="math" data-tex="\(\operatorname{ran}x^{1/2}\)">\(\operatorname{ran}x^{1/2}\)</span> that sends <span class="math" data-tex="\(x^{1/2}\xi\)">\(x^{1/2}\xi\)</span> to <span class="math" data-tex="\(x_i^{1/2}\xi\)">\(x_i^{1/2}\xi\)</span>; its adjoint form, or the commutant test, puts the resulting bounded operator in <span class="math" data-tex="\(B\)">\(B\)</span>. It is zero on <span class="math" data-tex="\((1-p)H\)">\((1-p)H\)</span>.</p>
+<p>Bounded monotone convergence and continuous functional calculus give <span class="math" data-tex="\(x_i^{1/2}\to x^{1/2}\)">\(x_i^{1/2}\to x^{1/2}\)</span> strongly. Equation (SX.9) therefore shows that <span class="math" data-tex="\(c_i\to p\)">\(c_i\to p\)</span> on the dense subspace <span class="math" data-tex="\(\operatorname{ran}x^{1/2}\)">\(\operatorname{ran}x^{1/2}\)</span> of <span class="math" data-tex="\(pH\)">\(pH\)</span>. The uniform contraction bound extends this to strong convergence on <span class="math" data-tex="\(pH\)">\(pH\)</span>, and both maps vanish on its complement. Set <span class="math" data-tex="\(b_i=c_i+(1-p)\)">\(b_i=c_i+(1-p)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+b_i\longrightarrow1\text{ strongly},\qquad b_i x b_i^*=x_i.
+\tag{SX.10}
+\]">\[
+b_i\longrightarrow1\text{ strongly},\qquad b_i x b_i^*=x_i.
+\tag{SX.10}
+\]</span>
+<p>For each <span class="math" data-tex="\(z\in J_+\)">\(z\in J_+\)</span> with <span class="math" data-tex="\(z\le x\)">\(z\le x\)</span>, the element <span class="math" data-tex="\(b_i z b_i^*\)">\(b_i z b_i^*\)</span> belongs to <span class="math" data-tex="\(J_+\)">\(J_+\)</span> and is at most <span class="math" data-tex="\(x_i\)">\(x_i\)</span>. Condition (SX.7) gives</p>
+<span class="math math-display" data-tex="\[
+w(z)\le\liminf_i w(b_i z b_i^*)
+\le\sup_i\Phi(x_i).
+\]">\[
+w(z)\le\liminf_i w(b_i z b_i^*)
+\le\sup_i\Phi(x_i).
+\]</span>
+<p>Taking the supremum over <span class="math" data-tex="\(z\)">\(z\)</span> and using monotonicity for the reverse inequality yields</p>
+<span class="math math-display" data-tex="\[
+\Phi(x)=\sup_i\Phi(x_i).
+\tag{SX.11}
+\]">\[
+\Phi(x)=\sup_i\Phi(x_i).
+\tag{SX.11}
+\]</span>
+<p>We have proved this identity before using additivity of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.</p>
+<p><strong>Additivity.</strong> Choose the increasing approximants</p>
+<span class="math math-display" data-tex="\[
+x_a=x^{1/2}u_a x^{1/2}\uparrow x,
+\qquad y_b=y^{1/2}u_b y^{1/2}\uparrow y.
+\]">\[
+x_a=x^{1/2}u_a x^{1/2}\uparrow x,
+\qquad y_b=y^{1/2}u_b y^{1/2}\uparrow y.
+\]</span>
+<p>On the product directed set, <span class="math" data-tex="\(x_a+y_b\uparrow x+y\)">\(x_a+y_b\uparrow x+y\)</span>, and all three approximating elements belong to <span class="math" data-tex="\(J_+\)">\(J_+\)</span>. Apply (SX.11), agreement on the ideal, and additivity of <span class="math" data-tex="\(w\)">\(w\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi(x+y)
+&amp;=\sup_{a,b}w(x_a+y_b)\\
+&amp;=\sup_{a,b}\bigl(w(x_a)+w(y_b)\bigr)\\
+&amp;=\sup_a w(x_a)+\sup_b w(y_b)
+=\Phi(x)+\Phi(y).
+\end{aligned}
+\tag{SX.12}
+\]">\[
+\begin{aligned}
+\Phi(x+y)
+&amp;=\sup_{a,b}w(x_a+y_b)\\
+&amp;=\sup_{a,b}\bigl(w(x_a)+w(y_b)\bigr)\\
+&amp;=\sup_a w(x_a)+\sup_b w(y_b)
+=\Phi(x)+\Phi(y).
+\end{aligned}
+\tag{SX.12}
+\]</span>
+<p>The scalar identity holds in <span class="math" data-tex="\([0,\infty]\)">\([0,\infty]\)</span>: two finite target lower bounds can always be attained at separate indices, and if a supremum is infinite its target bound is arbitrary. Thus <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is a weight, and (SX.11) now proves its normality.</p>
+<p><strong>Uniqueness.</strong> Any normal extension <span class="math" data-tex="\(\widetilde\Phi\)">\(\widetilde\Phi\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\widetilde\Phi(x)
+=\sup_a w(x^{1/2}u_a x^{1/2})=\Phi(x)
+\]">\[
+\widetilde\Phi(x)
+=\sup_a w(x^{1/2}u_a x^{1/2})=\Phi(x)
+\]</span>
+<p>by normality and (SX.11). This proves uniqueness on the whole positive cone, including infinite values. ∎</p>
+<p>The order of the proof matters. Positive approximants alone would not justify declaring the supremum in (SX.8) additive. Condition (SX.7) first supplies the limiting identity that makes the additivity calculation valid.</p>
+<h2 id="an-operator-supplies-the-ideal-weight">An operator supplies the ideal weight</h2>
+<p>Assume (SX.5). For a positive element of the coefficient ideal define</p>
+<span class="math math-display" data-tex="\[
+w\!\left(\sum_{j=1}^r\theta(\xi_j,\xi_j)\right)
+=\sum_{j=1}^rQ_A(\xi_j),\qquad \xi_j\in D_\psi.
+\tag{SX.13}
+\]">\[
+w\!\left(\sum_{j=1}^r\theta(\xi_j,\xi_j)\right)
+=\sum_{j=1}^rQ_A(\xi_j),\qquad \xi_j\in D_\psi.
+\tag{SX.13}
+\]</span>
+<p>Every element of <span class="math" data-tex="\(\mathcal J_+\)">\(\mathcal J_+\)</span> has such a representation. Condition (SX.5) makes the definition independent of that representation, including the possibility that its value is infinite.</p>
+<p><strong>Lemma.</strong> Formula (SX.13) is a weight on <span class="math" data-tex="\(\mathcal J_+\)">\(\mathcal J_+\)</span> and satisfies (SX.7).</p>
+<p><strong>Proof.</strong> Concatenating two coefficient families proves additivity. Multiplying every vector by <span class="math" data-tex="\(\sqrt t\)">\(\sqrt t\)</span> proves homogeneity for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>; the empty family proves <span class="math" data-tex="\(w(0)=0\)">\(w(0)=0\)</span>. These arguments use nonnegative extended sums only.</p>
+<p>Fix <span class="math" data-tex="\(z=\sum_{j=1}^r\theta(\xi_j,\xi_j)\)">\(z=\sum_{j=1}^r\theta(\xi_j,\xi_j)\)</span>, and let <span class="math" data-tex="\(b_i\to1\)">\(b_i\to1\)</span> strongly in <span class="math" data-tex="\(M\)">\(M\)</span>. Bounded-vector covariance gives</p>
+<span class="math math-display" data-tex="\[
+b_i z b_i^*
+=\sum_{j=1}^r\theta(b_i\xi_j,b_i\xi_j),
+\tag{SX.14}
+\]">\[
+b_i z b_i^*
+=\sum_{j=1}^r\theta(b_i\xi_j,b_i\xi_j),
+\tag{SX.14}
+\]</span>
+<p>and every <span class="math" data-tex="\(b_i\xi_j\)">\(b_i\xi_j\)</span> belongs to <span class="math" data-tex="\(D_\psi\)">\(D_\psi\)</span>. The vectors converge in <span class="math" data-tex="\(H\)">\(H\)</span> to <span class="math" data-tex="\(\xi_j\)">\(\xi_j\)</span>. Lower semicontinuity of (SX.4) and the elementary finite-sum inequality for liminf give</p>
+<span class="math math-display" data-tex="\[
+w(z)=\sum_j Q_A(\xi_j)
+\le\liminf_i\sum_jQ_A(b_i\xi_j)
+=\liminf_iw(b_i z b_i^*).
+\tag{SX.15}
+\]">\[
+w(z)=\sum_j Q_A(\xi_j)
+\le\liminf_i\sum_jQ_A(b_i\xi_j)
+=\liminf_iw(b_i z b_i^*).
+\tag{SX.15}
+\]</span>
+<p>This includes an infinite summand: for any finite threshold, eventual lower bounds for that summand force the total above the threshold. For finitely many finite lower bounds, a common upper index gives the inequality. Thus (SX.7) holds for arbitrary nets. ∎</p>
+<p>Apply SX-02 with <span class="math" data-tex="\(J=\mathcal J\)">\(J=\mathcal J\)</span>. It gives a unique normal weight <span class="math" data-tex="\(\varphi_A\)">\(\varphi_A\)</span> extending the ideal energy, and the explicit recovery formula is</p>
+<span class="math math-display" data-tex="\[
+\varphi_A(x)=\sup\left\{
+\sum_{j=1}^rQ_A(\xi_j):
+\xi_j\in D_\psi,\ 
+\sum_{j=1}^r\theta(\xi_j,\xi_j)\le x
+\right\}.
+\tag{SX.16}
+\]">\[
+\varphi_A(x)=\sup\left\{
+\sum_{j=1}^rQ_A(\xi_j):
+\xi_j\in D_\psi,\ 
+\sum_{j=1}^r\theta(\xi_j,\xi_j)\le x
+\right\}.
+\tag{SX.16}
+\]</span>
+<p>Neither countable decomposability of the algebra nor a sequence of positive approximants is assumed.</p>
+<h2 id="the-core-supplies-semifiniteness-and-the-exact-derivative"><span id="oa-mod-sx-04"></span><span id="OA-MOD-SX-04"></span>The core supplies semifiniteness and the exact derivative</h2>
+<p><strong>Theorem.</strong> A positive self-adjoint <span class="math" data-tex="\(A\)">\(A\)</span> is the spatial derivative of a normal semifinite weight if and only if (SX.5) and (SX.6) hold. The weight is unique and is given by (SX.16).</p>
+<p><strong>Reconstruction.</strong> SX-03 constructs a normal weight <span class="math" data-tex="\(\varphi_A\)">\(\varphi_A\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\varphi_A(\theta(\xi,\xi))=Q_A(\xi)
+\quad(\xi\in D_\psi).
+\tag{SX.17}
+\]">\[
+\varphi_A(\theta(\xi,\xi))=Q_A(\xi)
+\quad(\xi\in D_\psi).
+\tag{SX.17}
+\]</span>
+<p>Its finite bounded-vector domain is consequently exactly <span class="math" data-tex="\(F\)">\(F\)</span>. By SC-05 the Hilbert closure of this domain is <span class="math" data-tex="\(e_{\varphi_A}H\)">\(e_{\varphi_A}H\)</span>, where <span class="math" data-tex="\(e_{\varphi_A}\)">\(e_{\varphi_A}\)</span> is the weight's finite-domain projection. The core assumption makes <span class="math" data-tex="\(F\)">\(F\)</span> dense in <span class="math" data-tex="\(H\)">\(H\)</span>. Hence <span class="math" data-tex="\(e_{\varphi_A}=1\)">\(e_{\varphi_A}=1\)</span>, and WS-02 proves semifiniteness.</p>
+<p>On <span class="math" data-tex="\(F\)">\(F\)</span>, the initial spatial form is the restriction of the closed square-root form of <span class="math" data-tex="\(A\)">\(A\)</span>, by (SX.17) and polarization. Condition (SX.6) says that closing this restriction recovers that entire form with its exact domain <span class="math" data-tex="\(D(A^{1/2})\)">\(D(A^{1/2})\)</span>. SC-07 and QF's uniqueness therefore identify the spatial derivative with <span class="math" data-tex="\(A\)">\(A\)</span>, including its operator domain.</p>
+<p><strong>Necessity.</strong> Conversely, if <span class="math" data-tex="\(A=d\varphi/d\psi\)">\(A=d\varphi/d\psi\)</span> for a normal semifinite <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, SC-07 gives the core condition and the identity (SX.17) for every bounded vector, with infinity included. Weight additivity makes equal finite coefficient sums have equal sums of extended energies, proving (SX.5).</p>
+<p><strong>Uniqueness and support.</strong> Equality of all coefficient energies gives equality of the normal weights by SC-04's increasing positive approximants, as also proved in SC-10. SC-09 gives</p>
+<span class="math math-display" data-tex="\[
+s(\varphi_A)=s(A),\qquad
+\varphi_A\text{ is faithful}\ \Longleftrightarrow\ \ker A=0.
+\tag{SX.18}
+\]">\[
+s(\varphi_A)=s(A),\qquad
+\varphi_A\text{ is faithful}\ \Longleftrightarrow\ \ker A=0.
+\tag{SX.18}
+\]</span>
+<p>The zero operator corresponds to the zero weight. Its square-root domain is all of <span class="math" data-tex="\(H\)">\(H\)</span>, its extended energy is everywhere zero, and the dense bounded-vector space is a core. ∎</p>
+<p>The extension theorem itself applies to nonsemifinite normal weights. In the present theorem, semifiniteness follows from the specified densely defined operator and its core; it is a proved conclusion, rather than a property inferred from the word “energy”.</p>
+<h2 id="imaginary-powers-determine-a-positive-operator">Imaginary powers determine a positive operator</h2>
+<p><strong>Lemma.</strong> If <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are injective positive self-adjoint operators on a Hilbert space and <span class="math" data-tex="\(A^{it}=B^{it}\)">\(A^{it}=B^{it}\)</span> for every real <span class="math" data-tex="\(t\)">\(t\)</span>, then <span class="math" data-tex="\(A=B\)">\(A=B\)</span>, with the same domains.</p>
+<p><strong>Proof.</strong> SK gives self-adjoint operators <span class="math" data-tex="\(L=\log A\)">\(L=\log A\)</span>, <span class="math" data-tex="\(K=\log B\)">\(K=\log B\)</span> and <span class="math" data-tex="\(A=e^L\)">\(A=e^L\)</span>, <span class="math" data-tex="\(B=e^K\)">\(B=e^K\)</span>, with their spectral domains. For a self-adjoint <span class="math" data-tex="\(L\)">\(L\)</span>, the scalar integral and bounded spectral calculus give</p>
+<span class="math math-display" data-tex="\[
+(L-i)^{-1}\xi
+=i\int_0^\infty e^{-t}e^{-itL}\xi\,dt.
+\tag{SX.19}
+\]">\[
+(L-i)^{-1}\xi
+=i\int_0^\infty e^{-t}e^{-itL}\xi\,dt.
+\tag{SX.19}
+\]</span>
+<p>The integral converges in Hilbert norm because its integrand has norm at most <span class="math" data-tex="\(e^{-t}\|\xi\|\)">\(e^{-t}\|\xi\|\)</span>. One can verify the identity first on each bounded spectral interval, by the scalar formula <span class="math" data-tex="\(i/(1+i\lambda)=(\lambda-i)^{-1}\)">\(i/(1+i\lambda)=(\lambda-i)^{-1}\)</span>, and then pass through the spectral cutoffs using the uniform integrable bound. This justifies the integral without a separate theorem about unitary-group generators.</p>
+<p>The imaginary-power assumption makes the resolvents of <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span> equal. A resolvent determines its operator: its range is the operator domain, and on a vector <span class="math" data-tex="\(\eta=(L-i)^{-1}\xi\)">\(\eta=(L-i)^{-1}\xi\)</span> its value is <span class="math" data-tex="\(L\eta=\xi+i\eta\)">\(L\eta=\xi+i\eta\)</span>. Thus <span class="math" data-tex="\(L=K\)">\(L=K\)</span>. Applying the same Borel function <span class="math" data-tex="\(e^\lambda\)">\(e^\lambda\)</span> proves <span class="math" data-tex="\(A=B\)">\(A=B\)</span> with equal domains. ∎</p>
+<p>For a supported positive operator, imaginary powers are first taken on the complement of its kernel and then extended by zero. Their value at time zero is its support projection. Equality of these families therefore also determines the support and the whole positive operator.</p>
+<h2 id="two-weights-on-the-same-support">Two weights on the same support</h2>
+<p>Let <span class="math" data-tex="\(p\in M\)">\(p\in M\)</span> be a projection. If <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is NSF on <span class="math" data-tex="\(pMp\)">\(pMp\)</span>, extend it to a weight on <span class="math" data-tex="\(M\)">\(M\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\overline\alpha(x)=\alpha(pxp),\qquad x\in M_+.
+\tag{SX.20}
+\]">\[
+\overline\alpha(x)=\alpha(pxp),\qquad x\in M_+.
+\tag{SX.20}
+\]</span>
+<p>This weight is normal because compression preserves positive increasing suprema. It is semifinite: finite positive contractions <span class="math" data-tex="\(e_i\uparrow p\)">\(e_i\uparrow p\)</span> for <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> give finite positive contractions <span class="math" data-tex="\(e_i+(1-p)\uparrow1\)">\(e_i+(1-p)\uparrow1\)</span> for <span class="math" data-tex="\(\overline\alpha\)">\(\overline\alpha\)</span>. Its support is exactly <span class="math" data-tex="\(p\)">\(p\)</span>. Indeed <span class="math" data-tex="\(\overline\alpha(x^*x)=0\)">\(\overline\alpha(x^*x)=0\)</span> holds precisely when <span class="math" data-tex="\(xp=0\)">\(xp=0\)</span>, by faithfulness of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, so its largest null projection is <span class="math" data-tex="\(1-p\)">\(1-p\)</span>.</p>
+<p>Write <span class="math" data-tex="\(B_\alpha=d\overline\alpha/d\psi\)">\(B_\alpha=d\overline\alpha/d\psi\)</span>. By SC-09 and SI-09, it is zero on <span class="math" data-tex="\((1-p)H\)">\((1-p)H\)</span> and its restriction <span class="math" data-tex="\(B_{\alpha,p}\)">\(B_{\alpha,p}\)</span> to <span class="math" data-tex="\(pH\)">\(pH\)</span> is positive and injective. This restriction implements <span class="math" data-tex="\(\sigma^\alpha\)">\(\sigma^\alpha\)</span> on <span class="math" data-tex="\(pMp\)">\(pMp\)</span>, and its conjugation on <span class="math" data-tex="\(y|_{pH}\)">\(y|_{pH}\)</span>, for <span class="math" data-tex="\(y\in N\)">\(y\in N\)</span>, is <span class="math" data-tex="\(\sigma_{-t}^\psi(y)|_{pH}\)">\(\sigma_{-t}^\psi(y)|_{pH}\)</span>. This formulation uses the original denominator. It does not assign an unspecified weight to the possibly nonfaithful image of <span class="math" data-tex="\(N\)">\(N\)</span> on <span class="math" data-tex="\(pH\)">\(pH\)</span>.</p>
+<p><strong>Supported ratio lemma.</strong> If <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> are NSF on <span class="math" data-tex="\(pMp\)">\(pMp\)</span>, then their intrinsic balanced-matrix cocycle is</p>
+<span class="math math-display" data-tex="\[
+[D\beta:D\alpha]_t
+=B_{\beta,p}^{it}B_{\alpha,p}^{-it}
+\quad\text{on }pH.
+\tag{SX.21}
+\]">\[
+[D\beta:D\alpha]_t
+=B_{\beta,p}^{it}B_{\alpha,p}^{-it}
+\quad\text{on }pH.
+\tag{SX.21}
+\]</span>
+<p>The intrinsic cocycle is defined on the abstract corner <span class="math" data-tex="\(pMp\)">\(pMp\)</span>, with its identity <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Proof.</strong> Apply the original commutant reference <span class="math" data-tex="\(\psi\)">\(\psi\)</span> to the representation of <span class="math" data-tex="\(M_2(M)\)">\(M_2(M)\)</span> on <span class="math" data-tex="\(H\oplus H\)">\(H\oplus H\)</span>. Its commutant is <span class="math" data-tex="\(\{y\oplus y:y\in N\}\)">\(\{y\oplus y:y\in N\}\)</span>, identified faithfully with <span class="math" data-tex="\(N\)">\(N\)</span>. Use the normal semifinite numerator</p>
+<span class="math math-display" data-tex="\[
+\Phi([x_{ij}])=\overline\alpha(x_{11})+\overline\beta(x_{22}).
+\]">\[
+\Phi([x_{ij}])=\overline\alpha(x_{11})+\overline\beta(x_{22}).
+\]</span>
+<p>Its support is <span class="math" data-tex="\(P=\operatorname{diag}(p,p)\)">\(P=\operatorname{diag}(p,p)\)</span>, and its restriction to <span class="math" data-tex="\(PM_2(M)P\)">\(PM_2(M)P\)</span> is the faithful diagonal weight <span class="math" data-tex="\(\alpha\oplus\beta\)">\(\alpha\oplus\beta\)</span>.</p>
+<p>A vector <span class="math" data-tex="\((\xi_1,\xi_2)\)">\((\xi_1,\xi_2)\)</span> is denominator-bounded exactly when both components belong to <span class="math" data-tex="\(D_\psi\)">\(D_\psi\)</span>. Its coefficient matrix has entries <span class="math" data-tex="\(R_\psi(\xi_i)R_\psi(\xi_j)^*\)">\(R_\psi(\xi_i)R_\psi(\xi_j)^*\)</span>. The numerator evaluates this matrix as the sum of the two component energies. Its finite bounded-vector domain is therefore the direct sum of the two component finite domains. Each is a form core by SC-07; approximating the two components separately proves that their direct sum is a core for the orthogonal sum of the closed forms. Hence closed-form uniqueness gives</p>
+<span class="math math-display" data-tex="\[
+\frac{d\Phi}{d\psi}=B_\alpha\oplus B_\beta.
+\]">\[
+\frac{d\Phi}{d\psi}=B_\alpha\oplus B_\beta.
+\]</span>
+<p>SI-09 identifies its conjugation on the support corner with <span class="math" data-tex="\(\sigma^{\alpha\oplus\beta}\)">\(\sigma^{\alpha\oplus\beta}\)</span>. At the corner matrix unit <span class="math" data-tex="\(E_{21}\otimes p\)">\(E_{21}\otimes p\)</span> this gives</p>
+<span class="math math-display" data-tex="\[
+\sigma_t^{\alpha\oplus\beta}(E_{21}\otimes p)
+=\bigl(B_{\beta,p}^{it}B_{\alpha,p}^{-it}\bigr)
+(E_{21}\otimes p).
+\]">\[
+\sigma_t^{\alpha\oplus\beta}(E_{21}\otimes p)
+=\bigl(B_{\beta,p}^{it}B_{\alpha,p}^{-it}\bigr)
+(E_{21}\otimes p).
+\]</span>
+<p>The left-hand side is exactly the defining matrix-unit formula for <span class="math" data-tex="\([D\beta:D\alpha]_t\)">\([D\beta:D\alpha]_t\)</span>, as in SI-14 on the algebra <span class="math" data-tex="\(pMp\)">\(pMp\)</span>. This proves (SX.21) with the same intrinsic definition. All modular actions used here are those of the displayed faithful corner weights. ∎</p>
+<h2 id="the-covariance-characterization-with-the-kernel-retained">The covariance characterization, with the kernel retained</h2>
+<p>For <span class="math" data-tex="\(A\ge0\)">\(A\ge0\)</span> self-adjoint, let <span class="math" data-tex="\(p=s(A)\)">\(p=s(A)\)</span>, and define <span class="math" data-tex="\(U_t\)">\(U_t\)</span> to be <span class="math" data-tex="\(A^{it}\)">\(A^{it}\)</span> on <span class="math" data-tex="\(pH\)">\(pH\)</span>, extended by zero on <span class="math" data-tex="\((1-p)H\)">\((1-p)H\)</span>. In particular <span class="math" data-tex="\(U_0=p\)">\(U_0=p\)</span>.</p>
+<p><strong>Characterization theorem.</strong> The following conditions are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(A=d\varphi/d\psi\)">\(A=d\varphi/d\psi\)</span> for a normal semifinite weight <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>.</li>
+<li>For every <span class="math" data-tex="\(y\in N\)">\(y\in N\)</span> and every real <span class="math" data-tex="\(t\)">\(t\)</span>,</li>
+</ol>
+<span class="math math-display" data-tex="\[
+U_t\sigma_t^\psi(y)=yU_t.
+\tag{SX.22}
+\]">\[
+U_t\sigma_t^\psi(y)=yU_t.
+\tag{SX.22}
+\]</span>
+<ol start="3">
+<li>The full extended-energy condition (SX.5) and the graph-core condition (SX.6) hold.</li>
+</ol>
+<p>The numerator is unique and has support <span class="math" data-tex="\(p\)">\(p\)</span>. The diagram of the proved implications is</p>
+<span class="math math-display" data-tex="\[
+\text{normal semifinite numerator}
+\ \Longleftrightarrow\
+\text{covariance (SX.22)}
+\ \Longleftrightarrow\
+\text{all-energy consistency and graph core}.
+\tag{SX.23}
+\]">\[
+\text{normal semifinite numerator}
+\ \Longleftrightarrow\
+\text{covariance (SX.22)}
+\ \Longleftrightarrow\
+\text{all-energy consistency and graph core}.
+\tag{SX.23}
+\]</span>
+<p><strong>Proof of the direct implications.</strong> The equivalence of conditions 1 and 3 is SX-04. If condition 1 holds, SC gives <span class="math" data-tex="\(p=s(\varphi)\)">\(p=s(\varphi)\)</span>, and SI-09 proves (SX.22) with exactly the supported convention above. No faithfulness of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is needed.</p>
+<p><strong>Construction from covariance.</strong> At <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, (SX.22) reads <span class="math" data-tex="\(py=yp\)">\(py=yp\)</span> for every <span class="math" data-tex="\(y\in N\)">\(y\in N\)</span>. Thus <span class="math" data-tex="\(p\in N&#x27;=M\)">\(p\in N&#x27;=M\)</span>; this is a consequence of the condition. If <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, positivity gives <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, and the zero weight is the required numerator. Assume <span class="math" data-tex="\(p\ne0\)">\(p\ne0\)</span>, and write <span class="math" data-tex="\(A_p\)">\(A_p\)</span> for the injective positive restriction to <span class="math" data-tex="\(pH\)">\(pH\)</span>.</p>
+<p>Choose an NSF weight <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(pMp\)">\(pMp\)</span>, which exists by WH-13 at arbitrary cardinality. Extend it to <span class="math" data-tex="\(\overline\omega\)">\(\overline\omega\)</span> as in SX-06, and let <span class="math" data-tex="\(B=d\overline\omega/d\psi\)">\(B=d\overline\omega/d\psi\)</span>, with injective supported restriction <span class="math" data-tex="\(B_p\)">\(B_p\)</span>. The covariance condition and SI-09 say that both <span class="math" data-tex="\(A_p^{it}\)">\(A_p^{it}\)</span> and <span class="math" data-tex="\(B_p^{it}\)">\(B_p^{it}\)</span> implement <span class="math" data-tex="\(y|_{pH}\mapsto\sigma_{-t}^\psi(y)|_{pH}\)">\(y|_{pH}\mapsto\sigma_{-t}^\psi(y)|_{pH}\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+u_t=A_p^{it}B_p^{-it}
+\]">\[
+u_t=A_p^{it}B_p^{-it}
+\]</span>
+<p>commutes with every <span class="math" data-tex="\(y|_{pH}\)">\(y|_{pH}\)</span>. Extending it by zero to the complement gives an element of <span class="math" data-tex="\(pMp\)">\(pMp\)</span>: the extended operator commutes with <span class="math" data-tex="\(N\)">\(N\)</span>, and its support is contained in <span class="math" data-tex="\(p\)">\(p\)</span>. It is a unitary in this corner, whose identity is <span class="math" data-tex="\(p\)">\(p\)</span>. The family is strongly* continuous by the spectral continuity of both imaginary-power groups.</p>
+<p>Since <span class="math" data-tex="\(\sigma_s^\omega\)">\(\sigma_s^\omega\)</span> is implemented by <span class="math" data-tex="\(B_p^{is}\)">\(B_p^{is}\)</span>, multiplication gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u_s\sigma_s^\omega(u_t)
+&amp;=A_p^{is}B_p^{-is}
+B_p^{is}A_p^{it}B_p^{-it}B_p^{-is}\\
+&amp;=A_p^{i(s+t)}B_p^{-i(s+t)}=u_{s+t}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+u_s\sigma_s^\omega(u_t)
+&amp;=A_p^{is}B_p^{-is}
+B_p^{is}A_p^{it}B_p^{-it}B_p^{-is}\\
+&amp;=A_p^{i(s+t)}B_p^{-i(s+t)}=u_{s+t}.
+\end{aligned}
+\]</span>
+<p>This is the cocycle law; no commutation between <span class="math" data-tex="\(A_p\)">\(A_p\)</span> and <span class="math" data-tex="\(B_p\)">\(B_p\)</span> has been used.</p>
+<p>The inverse weight-cocycle theorem <a href="OA-MOD-CX.html#oa-mod-cx-10">Existence, uniqueness and the prescribed cocycle</a>, applied to the NSF weight <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on the algebra <span class="math" data-tex="\(pMp\)">\(pMp\)</span>, supplies an NSF weight <span class="math" data-tex="\(\chi\)">\(\chi\)</span> on that corner with <span class="math" data-tex="\([D\chi:D\omega]_t=u_t\)">\([D\chi:D\omega]_t=u_t\)</span>. This is the substantive converse theorem: it is not inferred merely from the cocycle identity.</p>
+<p>Extend <span class="math" data-tex="\(\chi\)">\(\chi\)</span> to <span class="math" data-tex="\(\varphi(x)=\chi(pxp)\)">\(\varphi(x)=\chi(pxp)\)</span>, and let <span class="math" data-tex="\(C=d\varphi/d\psi\)">\(C=d\varphi/d\psi\)</span>. SX-06 shows that <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is normal and semifinite with support <span class="math" data-tex="\(p\)">\(p\)</span>, and its supported ratio formula gives</p>
+<span class="math math-display" data-tex="\[
+C_p^{it}B_p^{-it}=[D\chi:D\omega]_t
+=A_p^{it}B_p^{-it}.
+\]">\[
+C_p^{it}B_p^{-it}=[D\chi:D\omega]_t
+=A_p^{it}B_p^{-it}.
+\]</span>
+<p>Cancel the right unitary and apply SX-05. We obtain <span class="math" data-tex="\(C_p=A_p\)">\(C_p=A_p\)</span> with equality of their domains. Both whole-space operators have the zero summand on <span class="math" data-tex="\((1-p)H\)">\((1-p)H\)</span>, so <span class="math" data-tex="\(C=A\)">\(C=A\)</span>. This proves condition 1. Uniqueness and the support assertion were already proved in SX-04. ∎</p>
+<p>This proof keeps the denominator on the original commutant throughout. It needs neither a faithful state nor a weight on an unidentified quotient of that commutant. The finite-energy-only condition refuted next is not one of the equivalent conditions in this theorem.</p>
+<h2 id="a-dense-form-domain-made-of-analytic-functions">A dense form domain made of analytic functions</h2>
+<p>We now test the weaker condition that compares (SX.5) only when every vector is already in <span class="math" data-tex="\(F\)">\(F\)</span>. The following construction will satisfy that condition and the full core requirement, while failing to define any weight.</p>
+<p>Choose numbers</p>
+<span class="math math-display" data-tex="\[
+\lambda_n\in\left(\frac1{n+1},\frac1n\right),\qquad n\ge1,
+\tag{SX.24}
+\]">\[
+\lambda_n\in\left(\frac1{n+1},\frac1n\right),\qquad n\ge1,
+\tag{SX.24}
+\]</span>
+<p>which are linearly independent over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. At each step the rational span of the previous finite set is countable, so it cannot exhaust the required interval. This recursive construction gives <span class="math" data-tex="\(\lambda_n\to0\)">\(\lambda_n\to0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\lambda_n+\lambda_m=\lambda_r+\lambda_s
+\quad\Longrightarrow\quad
+\{n,m\}=\{r,s\}
+\text{ as unordered pairs with multiplicity}.
+\tag{SX.25}
+\]">\[
+\lambda_n+\lambda_m=\lambda_r+\lambda_s
+\quad\Longrightarrow\quad
+\{n,m\}=\{r,s\}
+\text{ as unordered pairs with multiplicity}.
+\tag{SX.25}
+\]</span>
+<p>We record the scalar uniqueness fact used twice below. If <span class="math" data-tex="\(t_j\in[0,L]\)">\(t_j\in[0,L]\)</span>, <span class="math" data-tex="\(\sum_j|d_j|&lt;\infty\)">\(\sum_j|d_j|&lt;\infty\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\sum_jd_j e^{t_jx}=0\quad(0\le x\le1),
+\tag{SX.26}
+\]">\[
+\sum_jd_j e^{t_jx}=0\quad(0\le x\le1),
+\tag{SX.26}
+\]</span>
+<p>then <span class="math" data-tex="\(\sum_{j:t_j=t}d_j=0\)">\(\sum_{j:t_j=t}d_j=0\)</span> for each real <span class="math" data-tex="\(t\)">\(t\)</span>. Indeed the series converges uniformly on compact complex sets and has a power series with coefficients <span class="math" data-tex="\(\sum_jd_jt_j^k/k!\)">\(\sum_jd_jt_j^k/k!\)</span>. Vanishing on an interval makes all coefficients zero: a least nonzero coefficient would prevent zeros from accumulating at zero. Thus <span class="math" data-tex="\(\sum_jd_jP(t_j)=0\)">\(\sum_jd_jP(t_j)=0\)</span> for every polynomial <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>Here is a direct reminder of the needed polynomial approximation. On <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, the Bernstein polynomial of a continuous <span class="math" data-tex="\(f\)">\(f\)</span> is</p>
+<span class="math math-display" data-tex="\[
+B_mf(x)=\sum_{k=0}^m f(k/m)\binom mk x^k(1-x)^{m-k}.
+\]">\[
+B_mf(x)=\sum_{k=0}^m f(k/m)\binom mk x^k(1-x)^{m-k}.
+\]</span>
+<p>The coefficients form a probability distribution with mean <span class="math" data-tex="\(x\)">\(x\)</span> and variance <span class="math" data-tex="\(x(1-x)/m\)">\(x(1-x)/m\)</span>. For <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, split the sum according to <span class="math" data-tex="\(|k/m-x|\le\delta\)">\(|k/m-x|\le\delta\)</span>. Uniform continuity bounds the first contribution to <span class="math" data-tex="\(|B_mf(x)-f(x)|\)">\(|B_mf(x)-f(x)|\)</span> by the modulus of continuity at <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The other contribution is at most <span class="math" data-tex="\(2\|f\|_\infty/(4m\delta^2)\)">\(2\|f\|_\infty/(4m\delta^2)\)</span>, by the variance bound. First choose <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and then <span class="math" data-tex="\(m\)">\(m\)</span>, proving uniform convergence. Rescaling gives polynomial approximation on <span class="math" data-tex="\([0,L]\)">\([0,L]\)</span>.</p>
+<p>Consequently <span class="math" data-tex="\(\sum_jd_j f(t_j)=0\)">\(\sum_jd_j f(t_j)=0\)</span> for every continuous <span class="math" data-tex="\(f\)">\(f\)</span> on that interval. Apply this to the triangular functions</p>
+<span class="math math-display" data-tex="\[
+f_\varepsilon(s)=\max\{0,1-|s-t|/\varepsilon\}.
+\]">\[
+f_\varepsilon(s)=\max\{0,1-|s-t|/\varepsilon\}.
+\]</span>
+<p>As <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>, dominated convergence for the absolutely summable series gives exactly the asserted sum at the atom <span class="math" data-tex="\(t\)">\(t\)</span>. This proves the uniqueness fact, even when the points <span class="math" data-tex="\(t_j\)">\(t_j\)</span> accumulate or are repeated.</p>
+<p>Now take</p>
+<span class="math math-display" data-tex="\[
+H=L^2([0,1],dx),\qquad M=N=L^\infty([0,1],dx),
+\qquad \psi(a)=\int_0^1a(x)\,dx.
+\tag{SX.27}
+\]">\[
+H=L^2([0,1],dx),\qquad M=N=L^\infty([0,1],dx),
+\qquad \psi(a)=\int_0^1a(x)\,dx.
+\tag{SX.27}
+\]</span>
+<p>The algebra acts by multiplication and is its own commutant. Indeed, if <span class="math" data-tex="\(T\)">\(T\)</span> commutes with every bounded multiplier, put <span class="math" data-tex="\(g=T1\)">\(g=T1\)</span>. Then <span class="math" data-tex="\(Tf=fg\)">\(Tf=fg\)</span> for bounded <span class="math" data-tex="\(f\)">\(f\)</span>. The estimate <span class="math" data-tex="\(\|fg\|_2\le\|T\|\|f\|_2\)">\(\|fg\|_2\le\|T\|\|f\|_2\)</span>, tested on indicators, gives <span class="math" data-tex="\(g\in L^\infty\)">\(g\in L^\infty\)</span>. Density of bounded functions in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> now identifies <span class="math" data-tex="\(T\)">\(T\)</span> with multiplication by <span class="math" data-tex="\(g\)">\(g\)</span>. The denominator is faithful, normal and finite. Its bounded vectors are exactly <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span>: the estimate <span class="math" data-tex="\(\|y\xi\|_2\le C\|y\|_2\)">\(\|y\xi\|_2\le C\|y\|_2\)</span> for bounded <span class="math" data-tex="\(y\)">\(y\)</span> implies <span class="math" data-tex="\(|\xi|\le C\)">\(|\xi|\le C\)</span> almost everywhere by testing indicators. Conversely this essential bound gives the estimate. Therefore</p>
+<span class="math math-display" data-tex="\[
+R_\psi(\xi)=\text{multiplication by }\xi,
+\qquad \theta(\xi,\xi)=\text{multiplication by }|\xi|^2.
+\tag{SX.28}
+\]">\[
+R_\psi(\xi)=\text{multiplication by }\xi,
+\qquad \theta(\xi,\xi)=\text{multiplication by }|\xi|^2.
+\tag{SX.28}
+\]</span>
+<p>Define a bounded linear operator from <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span> to <span class="math" data-tex="\(H\)">\(H\)</span> by</p>
+<span class="math math-display" data-tex="\[
+(Kc)(x)=\sum_{n\ge1}2^{-n}c_n e^{\lambda_n x}.
+\tag{SX.29}
+\]">\[
+(Kc)(x)=\sum_{n\ge1}2^{-n}c_n e^{\lambda_n x}.
+\tag{SX.29}
+\]</span>
+<p>Cauchy–Schwarz gives <span class="math" data-tex="\(\sum_n2^{-n}|c_n|\le(\sum_n4^{-n})^{1/2}\|c\|_2\)">\(\sum_n2^{-n}|c_n|\le(\sum_n4^{-n})^{1/2}\|c\|_2\)</span>. Since <span class="math" data-tex="\(0&lt;\lambda_n&lt;1\)">\(0&lt;\lambda_n&lt;1\)</span>, the same estimate shows uniform convergence on compact complex sets. Each <span class="math" data-tex="\(Kc\)">\(Kc\)</span> is the restriction of an entire function, and in particular is bounded and continuous on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. It also proves boundedness of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Injectivity.</strong> If <span class="math" data-tex="\(Kc=0\)">\(Kc=0\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>, continuity makes its representative zero throughout <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. The scalar uniqueness fact, applied to distinct points <span class="math" data-tex="\(t_n=\lambda_n\)">\(t_n=\lambda_n\)</span> and coefficients <span class="math" data-tex="\(d_n=2^{-n}c_n\)">\(d_n=2^{-n}c_n\)</span>, gives <span class="math" data-tex="\(c_n=0\)">\(c_n=0\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Dense range.</strong> If <span class="math" data-tex="\(g\in H\)">\(g\in H\)</span> is orthogonal to the range, the function</p>
+<span class="math math-display" data-tex="\[
+G(z)=\int_0^1 e^{zx}\overline{g(x)}\,dx
+\]">\[
+G(z)=\int_0^1 e^{zx}\overline{g(x)}\,dx
+\]</span>
+<p>has a globally convergent power series and vanishes at every <span class="math" data-tex="\(\lambda_n\)">\(\lambda_n\)</span>. These nonzero points accumulate at zero, so all its Taylor coefficients vanish by the same least-coefficient argument. Thus <span class="math" data-tex="\(g\)">\(g\)</span> is orthogonal to every polynomial. Continuous functions are dense in this scalar <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space, as in SK-02, and the polynomial approximation just proved makes polynomials dense there. Hence <span class="math" data-tex="\(g=0\)">\(g=0\)</span>.</p>
+<p>On the dense range of <span class="math" data-tex="\(K\)">\(K\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+D(q)=\operatorname{ran}K,\qquad q(Kc,Kd)=\langle c,d\rangle_{\ell^2}.
+\tag{SX.30}
+\]">\[
+D(q)=\operatorname{ran}K,\qquad q(Kc,Kd)=\langle c,d\rangle_{\ell^2}.
+\tag{SX.30}
+\]</span>
+<p>Injectivity makes this well-defined. It is a closed positive form. To verify closedness, a form-Cauchy sequence <span class="math" data-tex="\(Kc_j\)">\(Kc_j\)</span> has <span class="math" data-tex="\(c_j\to c\)">\(c_j\to c\)</span> in <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>; boundedness of <span class="math" data-tex="\(K\)">\(K\)</span> gives convergence to <span class="math" data-tex="\(Kc\)">\(Kc\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>, and both components of the form norm then converge. QF-03 supplies a positive self-adjoint operator <span class="math" data-tex="\(A\)">\(A\)</span> with</p>
+<span class="math math-display" data-tex="\[
+D(A^{1/2})=\operatorname{ran}K,\qquad Q_A(Kc)=\|c\|_2^2.
+\tag{SX.31}
+\]">\[
+D(A^{1/2})=\operatorname{ran}K,\qquad Q_A(Kc)=\|c\|_2^2.
+\tag{SX.31}
+\]</span>
+<p>In fact <span class="math" data-tex="\(A\ge\|K\|^{-2}I\)">\(A\ge\|K\|^{-2}I\)</span>, because <span class="math" data-tex="\(\|Kc\|\le\|K\|\|c\|\)">\(\|Kc\|\le\|K\|\|c\|\)</span>. It is injective and bounded below by a positive scalar. Its entire form domain is contained in <span class="math" data-tex="\(D_\psi=L^\infty\)">\(D_\psi=L^\infty\)</span>; hence <span class="math" data-tex="\(F=D(A^{1/2})\)">\(F=D(A^{1/2})\)</span> and the core requirement is satisfied in the strongest possible way.</p>
+<h2 id="every-finite-energy-comparison-passes">Every finite-energy comparison passes</h2>
+<p>Take finite families <span class="math" data-tex="\(c^{(1)},\ldots,c^{(r)}\)">\(c^{(1)},\ldots,c^{(r)}\)</span> and <span class="math" data-tex="\(d^{(1)},\ldots,d^{(s)}\)">\(d^{(1)},\ldots,d^{(s)}\)</span> in <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>. Suppose that their coefficient sums agree:</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=1}^r|Kc^{(j)}(x)|^2
+=\sum_{k=1}^s|Kd^{(k)}(x)|^2
+\quad\text{for almost every }x\in[0,1].
+\tag{SX.32}
+\]">\[
+\sum_{j=1}^r|Kc^{(j)}(x)|^2
+=\sum_{k=1}^s|Kd^{(k)}(x)|^2
+\quad\text{for almost every }x\in[0,1].
+\tag{SX.32}
+\]</span>
+<p>The two sides are continuous, so equality holds everywhere. Expand their difference as</p>
+<span class="math math-display" data-tex="\[
+\sum_{n,m\ge1} a_{nm}e^{(\lambda_n+\lambda_m)x}=0,
+\tag{SX.33}
+\]">\[
+\sum_{n,m\ge1} a_{nm}e^{(\lambda_n+\lambda_m)x}=0,
+\tag{SX.33}
+\]</span>
+<p>where</p>
+<span class="math math-display" data-tex="\[
+a_{nm}=2^{-n-m}\left(
+\sum_j c_n^{(j)}\overline{c_m^{(j)}}
+-\sum_k d_n^{(k)}\overline{d_m^{(k)}}
+\right).
+\tag{SX.34}
+\]">\[
+a_{nm}=2^{-n-m}\left(
+\sum_j c_n^{(j)}\overline{c_m^{(j)}}
+-\sum_k d_n^{(k)}\overline{d_m^{(k)}}
+\right).
+\tag{SX.34}
+\]</span>
+<p>This double sequence is absolutely summable. For each vector <span class="math" data-tex="\(c\)">\(c\)</span>, the sum of the absolute values of its contribution is <span class="math" data-tex="\((\sum_n2^{-n}|c_n|)^2&lt;\infty\)">\((\sum_n2^{-n}|c_n|)^2&lt;\infty\)</span>, and there are only finitely many such contributions. Therefore expansion, rearrangement and the uniqueness fact of SX-08 all apply.</p>
+<p>At the exponent <span class="math" data-tex="\(2\lambda_n\)">\(2\lambda_n\)</span>, condition (SX.25) permits only the diagonal term <span class="math" data-tex="\((n,n)\)">\((n,n)\)</span>. Thus (SX.33) implies</p>
+<span class="math math-display" data-tex="\[
+\sum_j|c_n^{(j)}|^2=\sum_k|d_n^{(k)}|^2
+\quad\text{for every }n.
+\tag{SX.35}
+\]">\[
+\sum_j|c_n^{(j)}|^2=\sum_k|d_n^{(k)}|^2
+\quad\text{for every }n.
+\tag{SX.35}
+\]</span>
+<p>Summing these nonnegative equalities gives</p>
+<span class="math math-display" data-tex="\[
+\sum_j Q_A(Kc^{(j)})
+=\sum_j\|c^{(j)}\|_2^2
+=\sum_k\|d^{(k)}\|_2^2
+=\sum_k Q_A(Kd^{(k)}).
+\tag{SX.36}
+\]">\[
+\sum_j Q_A(Kc^{(j)})
+=\sum_j\|c^{(j)}\|_2^2
+=\sum_k\|d^{(k)}\|_2^2
+=\sum_k Q_A(Kd^{(k)}).
+\tag{SX.36}
+\]</span>
+<p>Every vector in the form domain has exactly such a representation. Thus the operator satisfies the finite-only coefficient condition for every eligible finite family, not merely for the displayed basis vectors.</p>
+<h2 id="the-same-data-violate-positivity-of-a-weight">The same data violate positivity of a weight</h2>
+<p>Let <span class="math" data-tex="\(e_n\)">\(e_n\)</span> be the standard basis of <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>, put <span class="math" data-tex="\(\xi_n=Ke_n\)">\(\xi_n=Ke_n\)</span>, and write <span class="math" data-tex="\(f_n=|\xi_n|^2\)">\(f_n=|\xi_n|^2\)</span> for its positive coefficient. Then</p>
+<span class="math math-display" data-tex="\[
+f_n(x)=4^{-n}e^{2\lambda_nx},\qquad Q_A(\xi_n)=1.
+\tag{SX.37}
+\]">\[
+f_n(x)=4^{-n}e^{2\lambda_nx},\qquad Q_A(\xi_n)=1.
+\tag{SX.37}
+\]</span>
+<p>Because <span class="math" data-tex="\(\lambda_2&lt;\lambda_1\)">\(\lambda_2&lt;\lambda_1\)</span> and <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0\le f_2\le\frac14 f_1.
+\tag{SX.38}
+\]">\[
+0\le f_2\le\frac14 f_1.
+\tag{SX.38}
+\]</span>
+<p>If a weight <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> agreed with these finite coefficient energies, it would have <span class="math" data-tex="\(\varphi(f_1)=\varphi(f_2)=1\)">\(\varphi(f_1)=\varphi(f_2)=1\)</span>. Additivity and positivity of a weight imply monotonicity, so (SX.38) would give <span class="math" data-tex="\(1\le1/4\)">\(1\le1/4\)</span>, a contradiction. No weight, even without normality or semifiniteness, extends the finite data.</p>
+<p>The missing infinite-energy comparison is also explicit. Let</p>
+<span class="math math-display" data-tex="\[
+\xi=\xi_1,\qquad
+\eta(x)=\operatorname{sgn}(x-1/2)\xi_1(x).
+\tag{SX.39}
+\]">\[
+\xi=\xi_1,\qquad
+\eta(x)=\operatorname{sgn}(x-1/2)\xi_1(x).
+\tag{SX.39}
+\]</span>
+<p>Both vectors belong to <span class="math" data-tex="\(D_\psi\)">\(D_\psi\)</span>, and their coefficients agree. The first has energy one. The second has no continuous representative: equality almost everywhere with a continuous function on each side would force its two one-sided limits at <span class="math" data-tex="\(1/2\)">\(1/2\)</span> to be the opposite nonzero values <span class="math" data-tex="\(-\xi_1(1/2)\)">\(-\xi_1(1/2)\)</span> and <span class="math" data-tex="\(\xi_1(1/2)\)">\(\xi_1(1/2)\)</span>. Every element of <span class="math" data-tex="\(\operatorname{ran}K\)">\(\operatorname{ran}K\)</span> has a continuous representative. Hence</p>
+<span class="math math-display" data-tex="\[
+Q_A(\xi)=1,\qquad Q_A(\eta)=+\infty,
+\qquad\theta(\xi,\xi)=\theta(\eta,\eta).
+\tag{SX.40}
+\]">\[
+Q_A(\xi)=1,\qquad Q_A(\eta)=+\infty,
+\qquad\theta(\xi,\xi)=\theta(\eta,\eta).
+\tag{SX.40}
+\]</span>
+<p>This contradicts (SX.5), while SX-09 proves all comparisons restricted to finite energy.</p>
+<p>The example has a faithful finite denominator and a strictly positive operator with full support. Those additional assumptions therefore do not repair the finite-only criterion. The corrected theorem is SX-04: equality must include the extended values of all bounded-vector decompositions. The finite-only statement remains necessary for a spatial derivative, but it is not a sufficient characterization.</p>
+<h2 id="two-small-coefficient-tests">Two small coefficient tests</h2>
+<p><strong>A scalar numerator algebra.</strong> Let <span class="math" data-tex="\(H=\mathbb C^2\)">\(H=\mathbb C^2\)</span>, let <span class="math" data-tex="\(M=\mathbb CI\)">\(M=\mathbb CI\)</span>, and let <span class="math" data-tex="\(N=B(\mathbb C^2)\)">\(N=B(\mathbb C^2)\)</span> carry the ordinary trace <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Its GNS space is the Hilbert–Schmidt space, and</p>
+<span class="math math-display" data-tex="\[
+R_\psi(\xi)a=a\xi,\qquad
+R_\psi(\xi)^*v=v\xi^*,\qquad
+\theta(\xi,\xi)=\|\xi\|^2I.
+\tag{SX.41}
+\]">\[
+R_\psi(\xi)a=a\xi,\qquad
+R_\psi(\xi)^*v=v\xi^*,\qquad
+\theta(\xi,\xi)=\|\xi\|^2I.
+\tag{SX.41}
+\]</span>
+<p>The adjoint formula follows by taking the Hilbert–Schmidt trace pairing with an arbitrary matrix <span class="math" data-tex="\(a\)">\(a\)</span>; applying <span class="math" data-tex="\(R_\psi(\xi)\)">\(R_\psi(\xi)\)</span> then gives the coefficient formula.</p>
+<p>A normal semifinite weight on <span class="math" data-tex="\(\mathbb CI\)">\(\mathbb CI\)</span> has the form <span class="math" data-tex="\(\varphi(cI)=tc\)">\(\varphi(cI)=tc\)</span> with <span class="math" data-tex="\(0\le t&lt;\infty\)">\(0\le t&lt;\infty\)</span>, so its derivative is <span class="math" data-tex="\(tI\)">\(tI\)</span>. Conversely the coefficient criterion forces every positive operator to have the same energy on all unit vectors, hence to be scalar by polarization. For <span class="math" data-tex="\(A=\operatorname{diag}(1,3)\)">\(A=\operatorname{diag}(1,3)\)</span>, the vectors <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span> have the same coefficient <span class="math" data-tex="\(I\)">\(I\)</span> and different energies. Thus the failure is detected by a single finite comparison. Since the trace modular group is trivial, covariance would also require all imaginary powers to commute with <span class="math" data-tex="\(B(\mathbb C^2)\)">\(B(\mathbb C^2)\)</span>, which would make <span class="math" data-tex="\(A\)">\(A\)</span> scalar by SX-05 and the commutant test.</p>
+<p><strong>A scalar denominator algebra.</strong> On the same <span class="math" data-tex="\(H\)">\(H\)</span>, instead let <span class="math" data-tex="\(M=B(\mathbb C^2)\)">\(M=B(\mathbb C^2)\)</span>, <span class="math" data-tex="\(N=\mathbb CI\)">\(N=\mathbb CI\)</span>, and <span class="math" data-tex="\(\psi(cI)=\kappa c\)">\(\psi(cI)=\kappa c\)</span> with <span class="math" data-tex="\(\kappa&gt;0\)">\(\kappa&gt;0\)</span>. Realize the denominator GNS map as <span class="math" data-tex="\(\Lambda_\psi(cI)=\sqrt\kappa c\)">\(\Lambda_\psi(cI)=\sqrt\kappa c\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+R_\psi(\xi)z=\kappa^{-1/2}z\xi,
+\qquad\theta(\xi,\xi)=\kappa^{-1}|\xi\rangle\langle\xi|.
+\tag{SX.42}
+\]">\[
+R_\psi(\xi)z=\kappa^{-1/2}z\xi,
+\qquad\theta(\xi,\xi)=\kappa^{-1}|\xi\rangle\langle\xi|.
+\tag{SX.42}
+\]</span>
+<p>For every positive matrix <span class="math" data-tex="\(A\)">\(A\)</span>, the reconstructed weight is</p>
+<span class="math math-display" data-tex="\[
+\varphi_A(x)=\kappa\operatorname{Tr}(Ax),\qquad x\ge0.
+\tag{SX.43}
+\]">\[
+\varphi_A(x)=\kappa\operatorname{Tr}(Ax),\qquad x\ge0.
+\tag{SX.43}
+\]</span>
+<p>Indeed its value on (SX.42) is <span class="math" data-tex="\(\langle A\xi,\xi\rangle\)">\(\langle A\xi,\xi\rangle\)</span>, and every positive matrix is a finite sum of rank-one coefficients. This verifies the extension and its uniqueness directly. Its support is the range projection of <span class="math" data-tex="\(A\)">\(A\)</span>, so a rank-one <span class="math" data-tex="\(A\)">\(A\)</span> gives a nonfaithful weight. The covariance identity imposes no further restriction here, because the commutant consists of scalars.</p>
+<h2 id="problems-with-complete-solutions">Problems with complete solutions</h2>
+<p><strong>1. A positive difference missing from the finite-energy cone.</strong> In SX-08–10, put <span class="math" data-tex="\(d=f_1/4-f_2\)">\(d=f_1/4-f_2\)</span>. Show that <span class="math" data-tex="\(d\ge0\)">\(d\ge0\)</span>, but <span class="math" data-tex="\(d\)">\(d\)</span> is not a finite sum of coefficients of vectors in <span class="math" data-tex="\(D(A^{1/2})\)">\(D(A^{1/2})\)</span>.</p>
+<p><strong>Solution.</strong> Positivity is (SX.38). If <span class="math" data-tex="\(d=\sum_j\theta(\zeta_j,\zeta_j)\)">\(d=\sum_j\theta(\zeta_j,\zeta_j)\)</span> with every <span class="math" data-tex="\(\zeta_j\)">\(\zeta_j\)</span> in the finite domain, then</p>
+<span class="math math-display" data-tex="\[
+\theta(\xi_1/2,\xi_1/2)
+=\theta(\xi_2,\xi_2)+\sum_j\theta(\zeta_j,\zeta_j).
+\]">\[
+\theta(\xi_1/2,\xi_1/2)
+=\theta(\xi_2,\xi_2)+\sum_j\theta(\zeta_j,\zeta_j).
+\]</span>
+<p>All displayed vectors would be finite energy. SX-09 would force
+<span class="math" data-tex="\(1/4=1+\sum_jQ_A(\zeta_j)\)">\(1/4=1+\sum_jQ_A(\zeta_j)\)</span>, impossible. The finite-energy coefficient cone therefore need not contain the positive differences of its own elements. This explains precisely why finite additivity on that cone does not imply monotonicity for the ambient order.</p>
+<p><strong>2. Strong convergence does not justify moving an adjoint through a limit.</strong> On <span class="math" data-tex="\(\ell^2(\{0,1,2,\ldots\})\)">\(\ell^2(\{0,1,2,\ldots\})\)</span>, put <span class="math" data-tex="\(b_n=I+|e_0\rangle\langle e_n|\)">\(b_n=I+|e_0\rangle\langle e_n|\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Determine the strong limits of <span class="math" data-tex="\(b_n\)">\(b_n\)</span> and the behavior of <span class="math" data-tex="\(b_n^*e_0\)">\(b_n^*e_0\)</span>. For <span class="math" data-tex="\(\omega(x)=\langle xe_0,e_0\rangle\)">\(\omega(x)=\langle xe_0,e_0\rangle\)</span>, compare <span class="math" data-tex="\(\omega(I)\)">\(\omega(I)\)</span> with <span class="math" data-tex="\(\omega(b_n b_n^*)\)">\(\omega(b_n b_n^*)\)</span>.</p>
+<p><strong>Solution.</strong> The error <span class="math" data-tex="\((b_n-I)\xi=\langle\xi,e_n\rangle e_0\)">\((b_n-I)\xi=\langle\xi,e_n\rangle e_0\)</span> tends in norm to zero for every <span class="math" data-tex="\(\xi\in\ell^2\)">\(\xi\in\ell^2\)</span>, so <span class="math" data-tex="\(b_n\to I\)">\(b_n\to I\)</span> strongly. But <span class="math" data-tex="\(b_n^*e_0=e_0+e_n\)">\(b_n^*e_0=e_0+e_n\)</span>, whose distance from <span class="math" data-tex="\(e_0\)">\(e_0\)</span> is always one. Thus the adjoints do not converge strongly. Also</p>
+<span class="math math-display" data-tex="\[
+b_n b_n^*=I+|e_0\rangle\langle e_n|
++|e_n\rangle\langle e_0|+|e_0\rangle\langle e_0|,
+\]">\[
+b_n b_n^*=I+|e_0\rangle\langle e_n|
++|e_n\rangle\langle e_0|+|e_0\rangle\langle e_0|,
+\]</span>
+<p>so <span class="math" data-tex="\(\omega(b_n b_n^*)=2\)">\(\omega(b_n b_n^*)=2\)</span>, whereas <span class="math" data-tex="\(\omega(I)=1\)">\(\omega(I)=1\)</span>. The inequality in (SX.7) can be strict, even for a bounded normal weight. A proof using a purported strong limit <span class="math" data-tex="\(b_n z b_n^*\to z\)">\(b_n z b_n^*\to z\)</span> would be invalid.</p>
+<p>In general, the restriction of any normal weight satisfies (SX.7). To prove this without that invalid limit, write a dominated normal functional as <span class="math" data-tex="\(\omega=\sum_k\omega_{v_k}\)">\(\omega=\sum_k\omega_{v_k}\)</span> using SC-02 and NW-11. Strong convergence of <span class="math" data-tex="\(b_i\)">\(b_i\)</span> gives weak convergence <span class="math" data-tex="\(b_i^*v_k\to v_k\)">\(b_i^*v_k\to v_k\)</span>. Weak lower semicontinuity of the Hilbert norm, followed by finite partial sums, gives</p>
+<span class="math math-display" data-tex="\[
+\omega(z)=\sum_k\|z^{1/2}v_k\|^2
+\le\liminf_i\sum_k\|z^{1/2}b_i^*v_k\|^2
+=\liminf_i\omega(b_i z b_i^*).
+\]">\[
+\omega(z)=\sum_k\|z^{1/2}v_k\|^2
+\le\liminf_i\sum_k\|z^{1/2}b_i^*v_k\|^2
+=\liminf_i\omega(b_i z b_i^*).
+\]</span>
+<p>Take the supremum over all dominated normal functionals. This proves the necessary inequality for an arbitrary normal weight, with infinity included. No uniform bound on the entire index set of a convergent net is used.</p>
+<p><strong>3. Normal ideal extension need not be semifinite.</strong> Let <span class="math" data-tex="\(B=B(\ell^2)\)">\(B=B(\ell^2)\)</span>, let <span class="math" data-tex="\(J\)">\(J\)</span> be the finite-rank ideal, and define <span class="math" data-tex="\(w(0)=0\)">\(w(0)=0\)</span>, <span class="math" data-tex="\(w(z)=\infty\)">\(w(z)=\infty\)</span> for every nonzero <span class="math" data-tex="\(z\in J_+\)">\(z\in J_+\)</span>. Verify (SX.7) and compute the normal extension.</p>
+<p><strong>Solution.</strong> A sum of positive elements is zero precisely when both are zero, so this is an ideal weight. If <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>, choose <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(z^{1/2}v\ne0\)">\(z^{1/2}v\ne0\)</span>. For <span class="math" data-tex="\(b_i\to1\)">\(b_i\to1\)</span> strongly, <span class="math" data-tex="\(b_i z^{1/2}v\to z^{1/2}v\ne0\)">\(b_i z^{1/2}v\to z^{1/2}v\ne0\)</span>. Thus <span class="math" data-tex="\(b_i z b_i^*\ne0\)">\(b_i z b_i^*\ne0\)</span> eventually, because it equals <span class="math" data-tex="\((b_i z^{1/2})(b_i z^{1/2})^*\)">\((b_i z^{1/2})(b_i z^{1/2})^*\)</span>. Both sides of (SX.7) are then infinite. The case <span class="math" data-tex="\(z=0\)">\(z=0\)</span> is immediate.</p>
+<p>If <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span> is nonzero, choose a unit vector <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(x^{1/2}v\ne0\)">\(x^{1/2}v\ne0\)</span>. The rank-one operator</p>
+<span class="math math-display" data-tex="\[
+z=|x^{1/2}v\rangle\langle x^{1/2}v|
+=x^{1/2}|v\rangle\langle v|x^{1/2}
+\]">\[
+z=|x^{1/2}v\rangle\langle x^{1/2}v|
+=x^{1/2}|v\rangle\langle v|x^{1/2}
+\]</span>
+<p>satisfies <span class="math" data-tex="\(0&lt;z\le x\)">\(0&lt;z\le x\)</span>. Hence (SX.8) gives <span class="math" data-tex="\(\Phi(x)=\infty\)">\(\Phi(x)=\infty\)</span> for every nonzero positive <span class="math" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-tex="\(\Phi(0)=0\)">\(\Phi(0)=0\)</span>. This weight is normal: a positive increasing net with nonzero supremum has a nonzero member, and consequently an infinite supremum of weight values. Its finite cone is only <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, so it is not semifinite. A dense finite-energy core, used in SX-04, excludes exactly this possibility in operator reconstruction.</p>
+<p><strong>4. Scaling the reference does not change the numerator.</strong> Suppose <span class="math" data-tex="\(A=d\varphi/d\psi\)">\(A=d\varphi/d\psi\)</span> and <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. Show directly from coefficients that the same numerator is reconstructed from <span class="math" data-tex="\(A/c\)">\(A/c\)</span> with denominator <span class="math" data-tex="\(c\psi\)">\(c\psi\)</span>.</p>
+<p><strong>Solution.</strong> Identify the two GNS spaces by <span class="math" data-tex="\(\Lambda_{c\psi}(y)\mapsto\sqrt c\,\Lambda_\psi(y)\)">\(\Lambda_{c\psi}(y)\mapsto\sqrt c\,\Lambda_\psi(y)\)</span>. The bounded-vector spaces agree, and the coefficient for the new reference is <span class="math" data-tex="\(c^{-1}\theta_\psi(\xi,\xi)\)">\(c^{-1}\theta_\psi(\xi,\xi)\)</span>. Its <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-value is <span class="math" data-tex="\(c^{-1}Q_A(\xi)=Q_{A/c}(\xi)\)">\(c^{-1}Q_A(\xi)=Q_{A/c}(\xi)\)</span>, with the same finite domain and core. Thus SX-04 reconstructs <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. Equality also follows from SS-11, but the computation displays the factor in the actual inverse formula. Setting <span class="math" data-tex="\(c=0\)">\(c=0\)</span> would remove faithfulness of the reference and is outside the construction.</p>
+<h2 id="correspondence-and-further-questions">Correspondence and further questions</h2>
+<p>The ideal extension proof establishes existence, arbitrary-net normality, additivity on the whole positive cone, and uniqueness of the normal extension. The spatial application proves semifiniteness from the actual finite-energy core and identifies the entire square-root form and self-adjoint operator. These claims supply the valid mathematical content behind the ideal-weight reconstruction argument in IX.3.12. The stronger all-energy condition is stated explicitly; SX-08–10 proves why the finite-only condition printed in IX.3.11 cannot supply it.</p>
+<p>The covariance criterion uses the inverse weight-cocycle theorem at its full NSF generality and then treats a nonfaithful numerator on its support. It does not assume that the original concrete representation is standard. No crossed-product dual weight, action cocycle or cohomology result is asserted here.</p>
+<p>A useful research route is to identify smaller collections of coefficient comparisons which still force compatibility with positive order and infinite energy. SX-12, Problem 1 identifies one necessary difficulty: the finite-energy coefficient cone may fail to be hereditary. Any proposed replacement test must address that difficulty and the full graph-core condition before it can be a reconstruction theorem. This is a route for investigating alternative formulations; the covariance and all-energy characterizations already stated are known mathematics with the course proofs given here and in the named dependencies.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-CX.html">← Reconstructing a weight from a modular cocycle</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-CZ.html">Fixed observations, density weights and modular time →</a></span></nav>
+<p class="small source-link"><a href="src/spatial-weight-reconstruction.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

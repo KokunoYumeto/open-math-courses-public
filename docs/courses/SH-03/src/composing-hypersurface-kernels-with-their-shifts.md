@@ -4,7 +4,7 @@ Two hypersurfaces can define sheaf operators whose composite is again supported 
 
 Use Normal forms and the shift of a submanifold transform and Microlocal composition at prescribed covectors. Coefficients lie in \(D^b(k)\) for a commutative ring \(k\) of finite global dimension. All statements concern local germs at the indicated covectors. Ordinary global convolution requires its own support and admissibility checks.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## Transverse cotangent projections give a local composition
 

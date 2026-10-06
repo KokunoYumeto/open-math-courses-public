@@ -324,7 +324,7 @@ Left Haar substitution gives invariance:
 \]
 If the average is nonzero on an orbit, that orbit meets \(K\). Its value is therefore a value at a point of \(K\), where the continuous function \(\mathcal E(F)\) is bounded. It is zero on every orbit missing \(K\). This proves the global bound and (P6), including complex-valued \(F\).
 
-Here are the \(C^*\)-algebra consequences in full. Compact cutoffs show that \(C_c(\Gamma)\) is norm dense in \(C_0(\Gamma)\). A countable family of compact bumps as in (P10), with rational complex star polynomials, is norm dense: adjoin constants on the one-point compactification, apply continuous polynomial density, and subtract the value at infinity. Hence \(C_0(\Gamma)\) is separable.
+Here are the \(C^*\)-algebra consequences in full. Compact cutoffs show that \(C_c(\Gamma)\) is norm dense in \(C_0(\Gamma)\). A countable family of compact bumps as in (P10), with rational complex star polynomials, is norm dense: adjoin constants on the one-point compactification, apply [continuous polynomial density](OA-FLOW-CF.md#oa-flow.cf.5), and subtract the value at infinity. Hence \(C_0(\Gamma)\) is separable.
 
 It is invariant because each group element is a homeomorphism. Its action is point-norm continuous. For \(F\in C_c(\Gamma)\), take a compact identity neighborhood \(W\subseteq G\). The compact set \(WK\cup K\) contains every support relevant to \(F(g^{-1}\,\cdot)-F\) for \(g\in W\). Joint continuity on that compact set makes
 \[

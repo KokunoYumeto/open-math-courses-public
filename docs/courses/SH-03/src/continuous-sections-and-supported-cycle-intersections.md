@@ -2,7 +2,7 @@
 
 A section of a cotangent bundle has a canonical supported class even when the section is only continuous. Intersecting that class with a Lagrangian cycle gives a dualizing class on their actual intersection. A proper trace carries it to the base. The resulting class agrees with an ordinary descent of the cycle, with both output supports retained.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Use Intersections of supported subanalytic cycles for the evaluated supported cup, compact integration and excess intersections. Lagrangian cycles and proper cotangent images and Pulling back Lagrangian cycles through a graph supply the cycle coefficient and normalized point, zero-section and closed conormal cycles. The exact current SH-02 imports are exceptional composition, closed support, tensor projection and normalized trace, together with the actual ordinary unit for a vector-bundle projection.
 

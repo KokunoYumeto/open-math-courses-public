@@ -6,7 +6,7 @@
 
 Adding a generator to a noncommutative torus doubles the total number of K-theory generators. Adding an implementing unitary for a linear torus automorphism can instead create torsion. The same exact sequence explains both phenomena: the first action is homotopic to the identity, whereas the second retains an integral matrix on the coordinate classes.
 
-We use Lesson 18's PV sequence and [Lesson 12's circle construction](KT-OPK-12.md#5-adding-circles-with-arbitrary-coefficients). The trace calculation for a two-generator rotation algebra is Lesson 20. All matrix trace extensions are unnormalized.
+We use [Lesson 18's PV sequence](KT-OPK-18.md) and [Lesson 12's circle construction](KT-OPK-12.md#5-adding-circles-with-arbitrary-coefficients). The trace calculation for a two-generator rotation algebra is [Lesson 20](KT-OPK-20.md). All matrix trace extensions are unnormalized.
 
 ## 1. Building the universal torus one generator at a time
 

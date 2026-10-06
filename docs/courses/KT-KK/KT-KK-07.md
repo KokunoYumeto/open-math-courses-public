@@ -2,7 +2,6 @@
 
 *Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-*Draft. The arbitrary-source compact-homology extension comparison is stated without proof; the separable comparison is proved below.*
 
 An even cycle has two represented modules and an operator between them. One can make the representations particularly simple, leaving the information in a Fredholm operator, or make the operator particularly simple, leaving the information in two homomorphisms. An odd cycle has a compression description closely related to the Busby invariant of an extension. These descriptions are useful because they connect the cycle definition to ordinary K-theory and to explicit operators.
 
@@ -772,7 +771,7 @@ The first diagonal entry differs compactly from \(\psi(a)\). Hence the sum of th
 To prove surjectivity without a separability assumption on \(A\), let \(\tau\) have an inverse \(\rho\) in \(\operatorname{Ext}(A,B)\). By the definition of that quotient, there are split maps \(\sigma_0,\sigma_1\) such that
 \(\tau\oplus\rho\oplus\sigma_0\) is strongly equivalent to \(\sigma_1\), allowing zero split summands. Choose a homomorphism lift of \(\sigma_1\). Transporting it by the multiplier unitary implementing the strong equivalence gives a representation \(\psi\) on a finite sum of standard modules whose quotient is block diagonal with entries \(\tau,\rho,\sigma_0\). Let \(P\) be its first block projection. The off-diagonal entries of \(\psi(a)\) are compact, so \([P,\psi(a)]\) is compact. The first compression gives \(\tau\), with zero on the other blocks. Removing those zero split summands in Ext and folding the standard modules proves surjectivity. \(\square\)
 
-This construction gives both maps on representatives that one expects in the extension picture. Identifying their full equivalence relations still requires injectivity of (5.3); surjectivity and the existence of a complementary inverse alone do not prove it.
+This construction gives both maps on representatives that one expects in the extension picture. Theorem 5.2 identifies the separable compact-homology comparison. Appendix B, Theorem B.E.1, proves the full operator-homotopy comparison for arbitrary sources, while Theorem B.D.1 disproves arbitrary-source compact injectivity.
 
 **Theorem 5.2 (extension comparison for separable source).** If \(A\) is separable and \(B\) is \(\sigma\)-unital, both trivially graded, (5.3) is an isomorphism. If \(A\) is also nuclear, its target is all of \(\operatorname{Ext}(A,B)\). More generally, for arbitrary trivially graded \(A\), two odd pairs defining the same Ext-class are operator homotopic after degenerate additions.
 
@@ -811,7 +810,7 @@ At its first endpoint the second original representation has projection zero, he
 
 For separable \(A\), Theorem 9.4 identifies that equivalence with compact homology. Thus equality of the images in (5.3) implies equality of the \(c\)-classes. The map is injective, hence an isomorphism. \(\square\)
 
-The operator path (5.7) by itself does not identify \(\sim_c\) with \(\sim_{\mathrm{oh}}\) for nonseparable \(A\). The arbitrary-source compact-homology assertion needs its own argument; the separability hypothesis in the proved isomorphism has not been suppressed.
+The operator path (5.7) by itself does not identify \(\sim_c\) with \(\sim_{\mathrm{oh}}\) for nonseparable \(A\). Appendix B, Theorem B.D.1, proves that the arbitrary-source compact-homology assertion is false. Its split compression has a nonzero finite invariant surviving common-cycle cancellation. Theorem B.E.1 proves the arbitrary-source operator-homotopy isomorphism.
 
 ## 6. Two familiar classes
 
@@ -1108,7 +1107,7 @@ The theorem compares \(c\) with operator homotopy. Comparing them with arbitrary
 
 **10.3. First-variable homotopy.** For pointwise norm-continuously homotopic graded homomorphisms \(f_0,f_1:A'\to A\), construct the cycle homotopy proving \(f_0^*=f_1^*\).
 
-**10.4. The two extension constructions.** Starting from an odd compression pair, construct its invertible extension. Starting from a split stabilization of an invertible extension, construct its odd compression pair. Prove independence and that the two constructions are inverse for the full compact-homology relation.
+**10.4. The two extension constructions.** Starting from an odd compression pair, construct its invertible extension. Starting from a split stabilization of an invertible extension, construct its odd compression pair. Prove independence and both inverse identities for operator homotopy. Prove the compact-homology identities for separable sources, and determine whether they hold for arbitrary sources.
 
 ## 11. Solutions
 
@@ -1151,7 +1150,7 @@ Conjugate a homomorphic lift of \(\sigma_1\) by the witnessing multiplier unitar
 
 Different inverse, split-map, lifting or module-identification choices produce compression pairs with the same Ext-class. Standardize their projection ranges and complements as in Theorem 5.2. Strong equivalence identifies their quotient compression lifts. Equations (5.6)–(5.8) then give an operator homotopy with the one fixed representation \(\psi_0\oplus\psi_1\). This proves independence in \(KK_{\mathrm{oh}}^1\) for arbitrary \(A\). If \(A\) is separable, local Theorem 9.4 identifies precisely that equivalence with compact homology, so it also proves independence in \(KK_c^1\).
 
-Start now with an original odd pair, compress it, and apply the reverse construction. The original pair and the reconstructed pair have the same Ext-class. The same fixed-representation comparison, followed by Theorem 9.4 for separable \(A\), identifies their compact-homology classes. This proves the second composition and the full isomorphism of Theorem 5.2 under its stated hypotheses. The arbitrary-source compact-homology comparison is the broader assertion recorded below; the operator path alone does not prove that assertion.
+Start now with an original odd pair, compress it, and apply the reverse construction. The original pair and the reconstructed pair have the same Ext-class. The same fixed-representation comparison, followed by Theorem 9.4 for separable \(A\), identifies their compact-homology classes. This proves the second composition and the full isomorphism of Theorem 5.2 under its stated hypotheses. For arbitrary sources the compact-homology comparison is false: Appendix B, Theorem B.D.1, gives a split compression whose compact-homology invariant is one. The reconstruction of its zero extension may be chosen degenerate, whose invariant is zero. Thus no unrestricted compact inverse exists. Theorem B.E.1 proves both arbitrary-source operator-homotopy inverse identities and independence of every choice.
 
 ## Appendix A. The local technical and ideal-homotopy proofs
 
@@ -1500,15 +1499,300 @@ For logical independence, the elementary polygonal lifting used here needs no re
 In \(C/J_A\), \(G_t^2=1\) and \(G_t=G_t^*\), so its square and adjoint defects are locally compact for all \(a\in A\). Membership in \(C\) gives its compact graded commutators. It is therefore the required operator homotopy. Its image in \(D/J_I\) equals that of \(F_t\), proving (A.5.9). \(\square\)
 
 
+## Appendix B. The exact extension comparison and a compact-homology obstruction
+
+Let \(A,B\) be trivially graded complex C*-algebras, with \(B\) sigma-unital. All cycle modules are countably generated. We use exactly the relations of [Lesson07, Section1](KT-KK-07.html#1-which-equivalence-relation): compact perturbation changes the operator on one fixed represented module; degenerate summands and module-unitary equivalence are also allowed; compact homology additionally cancels a common, possibly nondegenerate, cycle. These conventions matter even for unital sources and scalar coefficients.
+
+Compression gives a surjection
+\[
+\kappa_c:KK_c^1(A,B)\longrightarrow\operatorname{Ext}(A,B)^{-1}
+\tag{B.A.1}
+\]
+for every such \(A,B\). It need not be injective when \(A\) is nonseparable. The exact arbitrary-source isomorphism is instead
+\[
+\kappa_{\mathrm{oh}}:KK_{\mathrm{oh}}^1(A,B)
+\xrightarrow{\cong}\operatorname{Ext}(A,B)^{-1}.
+\tag{B.A.2}
+\]
+For separable \(A\), the proved compact-homology comparison in [Lesson07, Theorem9.4](KT-KK-07.html#9-cobordism-and-compact-homology) identifies \(KK_c\) with \(KK_{\mathrm{oh}}\), and therefore makes (B.A.1) an isomorphism too. Sections B.B–B.D prove the obstruction to removing that hypothesis; Section B.E proves (B.A.2) directly; Section B.F gives the corresponding full exercise solution.
+
+### B.A. The exact objects and elementary compactness facts
+
+An ordinary odd cycle is a triple \((E,\psi,T)\) satisfying
+\[
+(T-T^*)\psi(a),\quad (T^2-1)\psi(a),\quad[T,\psi(a)]
+\in\mathcal K(E)\qquad(a\in A).
+\tag{B.A.3}
+\]
+This is precisely the graded cycle with coefficient \(B\widehat\otimes C_1\): the two central coefficient summands are interchanged by the grading, its representation is \(\psi\oplus\psi\), and its odd operator is \(T\oplus(-T)\). The complete identification, including countable generation and each equivalence relation, is proved in [Lesson07, Proposition3.1](KT-KK-07.html#3-the-odd-scalar-picture). We use no larger Hilbert modules than that definition permits. For \(B=\mathbb C\), countable generation is exactly Hilbert-space separability: the finite rational complex linear combinations of a countable generating family form a countable dense set.
+
+The local normalization in that proposition uses only compact perturbations and a zero-representation degenerate summand. Thus a cycle has a representative with \(T=T^*=T^{-1}\). For \(P=(T+1)/2\), the Busby map on the whole ambient standard module is
+\[
+\tau_{\psi,P}(a)=q(P\psi(a)P),\qquad
+q:\mathcal L(H_B)\longrightarrow\mathcal L(H_B)/\mathcal K(H_B),
+\quad H_B=\ell^2\otimes B.
+\tag{B.A.4}
+\]
+Standardization adds a zero-representation degenerate \(H_B\) and applies [Lesson05, Theorem6.2](KT-KK-05.html#theorem-6-2-graded-stabilization). Sigma-unitality of \(B\) makes \(H_B\) countably generated. A projection range is countably generated by the projected generating family; no assertion about arbitrary closed submodules is used.
+
+For ordinary Hilbert spaces we will use the following elementary compactness observations. Compact operators are the norm closure of finite-rank operators. If \(\xi_n\) is orthonormal, then \(K\xi_n\to0\) for compact \(K\): for a rank-one operator this follows from Bessel's inequality, hence for finite ranks and their norm limits. If bounded projections \(p_N\to0\) strongly, then \(p_NK,Kp_N\to0\) in norm; check rank-one operators first. A block diagonal operator \(\bigoplus_nK_n\) is compact when each \(K_n\) is compact and \(\|K_n\|\to0\), since finite diagonal truncations approximate it in norm. Conversely, if a block diagonal operator is compact, its block norms tend to zero, by the preceding projection observation. Tensoring two compact Hilbert-space operators gives a compact operator, by finite-rank approximation. Finally
+\[
+1_H\otimes R\text{ compact},\quad \dim H=\infty
+\quad\Longrightarrow\quad R=0:
+\tag{B.A.5}
+\]
+if \(Rm\ne0\), the orthonormal vectors \(e_n\otimes m/\|m\|\) have images of the same nonzero norm. These statements include arbitrary finite or countably infinite multiplicity spaces.
+
+### B.B. The source algebra and all its permitted representations
+
+Fix a separable infinite-dimensional Hilbert space \(H=\ell^2(\mathbb N)\), and put \(L=H\oplus H\). Define
+\[
+\mathfrak A=
+\left\{\begin{pmatrix}a&k\\l&b\end{pmatrix}:
+a,b\in\mathcal B(H),\ k,l\in\mathcal K(H)\right\}
+\subset\mathcal B(L).
+\tag{B.B.1}
+\]
+This is a unital closed *-algebra: its adjoints have the same form, and the two-sided compact ideal preserves the compact off-diagonal condition under multiplication. It contains
+\(J=\mathcal K(L)\) as an ideal, and taking the two diagonal entries modulo compacts gives the exact quotient
+\[
+\mathfrak A/J\cong Q(H)\oplus Q(H),\qquad
+Q(H)=\mathcal B(H)/\mathcal K(H).
+\tag{B.B.2}
+\]
+The quotient map is surjective by diagonal lifts; its kernel is exactly the matrices whose four entries are compact. The algebra is nonseparable, since its first diagonal corner contains all diagonal operators on \(\ell^2\), including an uncountable family of projections at pairwise distance one. It is nevertheless unital and hence sigma-unital.
+
+**Lemma B.B.1.** The Calkin algebra \(Q(H)\) is simple and has no nonzero representation on a separable Hilbert space.
+
+**Proof.** Let \(t\in\mathcal B(H)\) be noncompact and let \(c=\operatorname{dist}(t,\mathcal K(H))>0\). For every finite-rank orthogonal projection \(p\),
+\(\|t(1-p)\|\ge c\), since \(tp\) is compact. Inductively choose unit vectors \(x_n\), orthogonal to all previous \(x_j,t^*t x_j\), with \(\|tx_n\|\ge c/2\). The extra constraints form a finite-dimensional space, so the preceding bound permits each choice. The \(x_n\) are orthonormal and the \(tx_n\) are mutually orthogonal. For the isometry \(V:e_n\mapsto x_n\), the operator \(tV\) is bounded below by \(c/2\). Its range is closed. Define \(W\) on this range by \(W(tx_n)=e_n\) and define it to be zero on the orthogonal complement. Orthogonality gives \(\|W\|\le2/c\), and \(WtV=1\). Consequently every nonzero \(q(t)\) generates the unit as a two-sided ideal. This proves simplicity without a spectral-subspace theorem.
+
+Enumerate the finite binary strings by distinct natural numbers. For each infinite binary sequence \(r\), let \(I_r\subset\mathbb N\) be the indices of its finite prefixes. Every \(I_r\) is infinite; for distinct sequences \(r,s\), the intersection \(I_r\cap I_s\) is finite. The corresponding diagonal projections \(p_r\) are noncompact, and
+\(q(p_r)q(p_s)=0\) for \(r\ne s\). Thus \(Q(H)\) contains uncountably many nonzero mutually orthogonal projections. A nonzero representation of the simple algebra would be faithful, and would send all these projections to nonzero mutually orthogonal projections. Selecting a unit vector in each range would give an uncountable orthonormal family in a separable Hilbert space. This is impossible: in a countable dense set choose distinct points within distance \(1/3\) of those vectors. Therefore the representation must be zero. \(\square\)
+
+**Lemma B.B.2 (all representations).** Every unital representation of \(\mathfrak A\) on a separable Hilbert space is unitarily equivalent to
+\[
+a\longmapsto a\otimes1_M\quad\text{on }L\otimes M
+\tag{B.B.3}
+\]
+for a finite or countably infinite-dimensional Hilbert space \(M\). Every intertwiner between two such representations is \(1_L\otimes U\), with \(U\) a multiplicity-space intertwiner. An arbitrary, possibly degenerate, representation is the sum of (B.B.3) and a zero representation.
+
+**Proof.** For a representation \(\psi\) on \(E\), the closed subspace \(E_J=\overline{\psi(J)E}\) reduces \(\psi(\mathfrak A)\), since \(J\) is a two-sided *-ideal. On its orthogonal complement, the representation kills \(J\) and factors through (B.B.2). Each of the two Calkin summands acts on a separable space, so Lemma B.B.1 makes this factor representation zero. In the unital case the complement is therefore zero.
+
+Choose matrix units \(e_{ij}\) for \(\mathcal K(L)\), put \(M=\psi(e_{11})E\), and map
+\[
+e_i\otimes m\longmapsto\psi(e_{i1})m.
+\tag{B.B.4}
+\]
+The matrix-unit identities prove that this map is isometric on finite sums. Finite coordinate projections of \(J\) converge strongly to the identity on \(E_J\): they converge first on \(\psi(J)E\) by norm approximation of compact operators, then on its closure by their uniform bound. Hence (B.B.4) is onto \(E_J\). It identifies the representation of \(J\) with its defining amplification. For \(a\in\mathfrak A\), multiply \(\psi(a)\) on the left and right by matrix units. All its matrix entries then equal those of \(a\otimes1_M\), which proves (B.B.3).
+
+An intertwiner of the amplified representations intertwines all \(e_{ij}\otimes1\). Commutation with \(e_{ii}\otimes1\) makes it diagonal by \(L\)-coordinates; intertwining \(e_{ij}\otimes1\) makes all its diagonal entries equal. It is precisely \(1_L\otimes U\). Finally an arbitrary representation splits at \(\psi(1)\), where its complement is zero; apply the unital argument on its range. Separability makes \(M\) separable, so every module used here is permitted. \(\square\)
+
+### B.C. The type-I commutant modulo compact operators
+
+**Lemma B.C.1.** Let \(H=\ell^2(\mathbb N)\), let \(M\) be separable, and let \(T\in\mathcal B(H\otimes M)\). If
+\[
+[T,a\otimes1_M]\in\mathcal K(H\otimes M)
+\quad\text{for every }a\in\mathcal B(H),
+\tag{B.C.1}
+\]
+there is a unique \(S\in\mathcal B(M)\) such that
+\[
+T=1_H\otimes S+K,\qquad K\in\mathcal K(H\otimes M).
+\tag{B.C.2}
+\]
+
+**Proof.** The zero multiplicity space is immediate. Write \(p_i=e_{ii}\otimes1_M\), and write \(T_{ii}\in\mathcal B(M)\) for its diagonal blocks. The block diagonal operator \(D=\bigoplus_iT_{ii}\) is bounded by \(\|T\|\). Put \(C=T-D\). For every \(i\), the row \(p_iC=p_iT(1-p_i)\) and column \(Cp_i=(1-p_i)Tp_i\) are compact, by (B.C.1) for \(e_{ii}\). Thus both the row and column cutoffs for finitely many coordinates are compact.
+
+Suppose \(C\) were noncompact, with \(\eta=\operatorname{dist}(C,\mathcal K)>0\). For every \(N\), deleting the first \(N\) rows and columns changes \(C\) by a compact operator. Therefore its remaining tail compression has norm at least \(\eta\). Finite coordinate projections converge strongly to one, so within each tail there is a finite coordinate set \(I\) with
+\(\|p_I C p_I\|>\eta/2\). Choose successive finite sets \(I_n\), each beyond every preceding coordinate; they are disjoint. Write \(C_n=p_{I_n}Cp_{I_n}\). Its diagonal blocks are zero.
+
+Average \(R C_n R\) over all diagonal sign matrices \(R\) on the finite coordinate set \(I_n\), acting as scalar signs on each \(M\)-block. Every off-diagonal entry has mean zero, so this average is zero. Hence \(C_n\) is the average of \(C_n-RC_nR\), and some sign matrix \(R_n\) satisfies
+\[
+\|[C_n,R_n]\|=\|C_n-R_nC_nR_n\|
+\ge\|C_n\|>\eta/2.
+\tag{B.C.3}
+\]
+Choose a unit vector \(\xi_n\in p_{I_n}(H\otimes M)\) with \(\|[C_n,R_n]\xi_n\|>\eta/4\). Assemble the chosen signs on the disjoint \(I_n\), and take sign \(+1\) elsewhere, obtaining one diagonal unitary \(d\in\mathcal B(H)\). Its commutator with \(D\) is zero, and
+\[
+p_{I_n}[T,d\otimes1]p_{I_n}=[C_n,R_n].
+\tag{B.C.4}
+\]
+The \(\xi_n\) are orthonormal. Equations (B.C.3)–(B.C.4) contradict compactness of \([T,d\otimes1]\). Thus \(C\) is compact.
+
+It follows that \([D,a\otimes1]\) is compact for every \(a\). In particular, compression of the commutator with \(e_{ij}\otimes1\) shows that \(T_{ii}-T_{jj}\) is compact on \(M\). The sequence \(T_{ii}\) is norm-Cauchy. Indeed, if it were not, choose disjoint pairs \(i_n,j_n\to\infty\) with
+\(\|T_{i_ni_n}-T_{j_nj_n}\|>\epsilon>0\). Let a coordinate permutation swap each such pair. Its commutator with \(D\), on those coordinate blocks, has these differences. Taking unit vectors in the separate blocks with image norms greater than \(\epsilon/2\) would contradict compactness of that commutator.
+
+Let \(S=\lim_iT_{ii}\) in norm. Every \(T_{ii}-S\) is compact, as a norm limit of \(T_{ii}-T_{jj}\). Its norm tends to zero with \(i\). The block diagonal compactness observation in Section A proves \(D-1_H\otimes S\) compact. Together with compactness of \(C\), this proves (B.C.2). Uniqueness is (B.A.5). All choices were on countable coordinate sets; no finite-dimensional multiplicity restriction was imposed. \(\square\)
+
+**Lemma B.C.2 (the exact residual involutions).** For any odd cycle \((E,\psi,T)\) over \((\mathfrak A,\mathbb C)\), its nonzero represented part has the form (B.B.3). On this part there are unique self-adjoint involutions \(S_0,S_1\in\mathcal B(M)\), with compact difference, such that
+\[
+T=\begin{pmatrix}1_H\otimes S_0&0\\0&1_H\otimes S_1\end{pmatrix}
+\pmod{\mathcal K(L\otimes M)}.
+\tag{B.C.5}
+\]
+
+**Proof.** The projection \(r=\psi(1)\) has compact commutator with \(T\). Replace \(T\) by \(rTr+(1-r)T(1-r)\); its difference from \(T\), multiplied by every \(\psi(a)\), is compact. The represented and zero-representation summands are now separated. The zero summand is degenerate, regardless of its operator. Both are separable Hilbert spaces, and removing that degenerate summand is allowed. The representation on \(rE\) is (B.B.3) by Lemma B.B.2.
+
+The source projection \(\operatorname{diag}(1_H,0)\) has compact commutator with \(T\), so its two off-diagonal \(H\)-blocks are compact. Each diagonal \(T\)-block commutes modulo compacts with all \(a\otimes1_M\), \(a\in\mathcal B(H)\). Lemma B.C.1 yields (B.C.5), with unique \(S_i\). On the unital represented part the adjoint and square defects of \(T\) are compact. Substitution in (B.C.5) and (B.A.5) force \(S_i=S_i^*\) and \(S_i^2=1_M\) exactly.
+
+Take a rank-one off-diagonal source element \(\left(\begin{smallmatrix}0&e_{11}\\0&0\end{smallmatrix}\right)\). Its commutator with (B.C.5) is \(e_{11}\otimes(S_0-S_1)\), hence is compact. Compressing to the corresponding one-dimensional \(H\)-coordinates proves that \(S_0-S_1\) is compact on \(M\). Conversely, any such pair of involutions defines a cycle by (B.C.5): diagonal source entries commute exactly, and off-diagonal compact entries have compact commutators by tensor compactness. \(\square\)
+
+**Proposition B.C.3 (a cancellative finite invariant).** For an odd cycle over \((\mathfrak A,\mathbb C)\), define
+\[
+\mu(T)=\dim\ker(S_0-S_1-2\,1_M).
+\tag{B.C.6}
+\]
+This is a finite nonnegative integer, additive under direct sum, invariant under every compact-perturbation relation, zero on degenerate cycles, and invariant under compact homology.
+
+**Proof.** The difference \(S_0-S_1\) is compact and self-adjoint. An infinite orthonormal family in its eigenvalue-\(2\) space would have images of norm \(2\), contradicting the compactness observation in Section A. Thus (B.C.6) is finite. For \(M=0\) define it to be zero.
+
+A unitary intertwining the represented cycles restricts on their unital parts to \(1_L\otimes U\) by Lemma B.B.2. The uniqueness in Lemma B.C.1 makes the two residual involutions conjugate by the same \(U\). Thus it preserves (B.C.6). A locally compact perturbation, applied to \(a=1\in\mathfrak A\), changes the operator on its represented part by a compact operator. It leaves both \(S_i\) unchanged by their uniqueness. If a cycle is degenerate, its operator commutes exactly with \(\psi(\mathfrak A)\). Intertwining all the matrix units of \(J\) then makes that operator \(1_L\otimes S\); hence \(S_0=S_1\) and \(\mu=0\). Adding a degenerate cycle therefore preserves the invariant.
+
+Direct sum replaces the two residual involutions by their respective direct sums, and the eigenvalue-\(2\) kernel is the direct sum of the two kernels. Hence \(\mu\) is additive and well defined in \(KK_{\mathrm{cp}}^1\). If \(x\oplus z\sim_{\mathrm{cp}}y\oplus z\), it gives
+\(\mu(x)+\mu(z)=\mu(y)+\mu(z)\). All integers are finite, so cancellation yields \(\mu(x)=\mu(y)\). This is precisely invariance under \(\sim_c\). Infinite multiplicities of the individual \(S_i\) cannot absorb a nonzero finite eigenvalue multiplicity of their compact difference. \(\square\)
+
+### B.D. Split compression does not imply compact null-homology
+
+**Theorem B.D.1 (counterexample to arbitrary-source injectivity).** Let \(\mathfrak A\) be (B.B.1), let \(B=\mathbb C\), let \(\psi:\mathfrak A\hookrightarrow\mathcal B(L)\) be inclusion, and put
+\[
+P=\begin{pmatrix}1_H&0\\0&0\end{pmatrix},\quad
+F=2P-1_L=\begin{pmatrix}1_H&0\\0&-1_H\end{pmatrix},\quad
+x=(L,\psi,F),\quad y=(L,\psi,-F).
+\tag{B.D.1}
+\]
+Then
+\[
+\kappa_c([x]+[y])=0,
+\qquad [x]+[y]\ne0\text{ in }KK_c^1(\mathfrak A,\mathbb C).
+\tag{B.D.2}
+\]
+In particular (B.A.1) is not injective in general, even for a unital source and scalar coefficients. The compact-homology semigroup in this example is not a group.
+
+**Proof.** The module \(L\) is separable and countably generated over \(\mathbb C\). The operators in (B.D.1) are exact self-adjoint involutions. For \(a=\left(\begin{smallmatrix}a_{00}&k\\l&a_{11}\end{smallmatrix}\right)\in\mathfrak A\),
+\[
+[F,a]=\begin{pmatrix}0&2k\\-2l&0\end{pmatrix}\in\mathcal K(L).
+\tag{B.D.3}
+\]
+Thus both triples are permitted odd cycles. On their compression ranges, their Busby maps are \(a\mapsto q_H(a_{00})\) and \(a\mapsto q_H(a_{11})\). Each original ambient compression additionally has a zero Busby summand, which is split and is discarded in Ext. On the sum of the two ranges their sum is
+\[
+a\longmapsto q_L\!\begin{pmatrix}a_{00}&0\\0&a_{11}\end{pmatrix}
+=q_L(a).
+\tag{B.D.4}
+\]
+The defining representation \(\psi\) is a homomorphic lift, so (B.D.4) is split. The two compressed classes are consequently inverses in Ext, and their sum has zero image under (B.A.1).
+
+For \(x\oplus y\), identify \(L\oplus L\) with \(L\otimes\mathbb C^2\). Its residual involutions and their difference are
+\[
+S_0=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\qquad
+S_1=\begin{pmatrix}-1&0\\0&1\end{pmatrix},\qquad
+S_0-S_1=\begin{pmatrix}2&0\\0&-2\end{pmatrix}.
+\tag{B.D.5}
+\]
+Proposition B.C.3 gives \(\mu(x\oplus y)=1\), while the zero class has invariant zero. This proves the second assertion in (B.D.2). In fact \(\mu(x)=1\), and the invariant is nonnegative and additive on \(KK_c^1\). Thus \(x\) has no additive inverse there, proving the final assertion. \(\square\)
+
+![Two residual involutions retain a finite eigenvalue multiplicity although their compressed extensions sum to a split map.](figures/KT-KK-07-compact-extension-obstruction.png)
+
+*Figure B.D.1.* The two multiplicity coordinates in (B.D.5) have differences \(+2\) and \(-2\). The eigenvalue-\(2\) space has dimension one, giving the compact-homology invariant (B.C.6). By (B.D.4), the compressed Busby sum is \(q_L\psi\), with homomorphic lift \(\psi\). The two conclusions concern different, explicitly defined equivalence relations.
+
+The same pair has an operator null-homotopy. On the fixed representation \(\psi\oplus\psi\), the path
+\[
+F_\theta=
+\begin{pmatrix}F\cos\theta&1_L\sin\theta\\
+1_L\sin\theta&-F\cos\theta\end{pmatrix},
+\qquad0\le\theta\le\pi/2,
+\tag{B.D.6}
+\]
+consists of self-adjoint involutions: the off-diagonal square terms cancel and the diagonal squares are \(\cos^2\theta+\sin^2\theta\). Its commutator is the two diagonal compact commutators from (B.D.3), multiplied by \(\cos\theta\); its off-diagonal commutators vanish. At \(\pi/2\) it is the flip, which commutes with \(\psi\oplus\psi\), so the endpoint is degenerate. The path proves zero in \(KK_{\mathrm{oh}}^1\), while Theorem B.D.1 proves nonzero in \(KK_c^1\). It is therefore also a concrete obstruction to replacing the separability hypothesis in Theorem9.4 by sigma-unitality of the source.
+
+### B.E. The corrected extension theorem, including arbitrary sources
+
+**Theorem B.E.1.** For arbitrary trivially graded \(A\) and sigma-unital trivially graded \(B\), compression is a surjection (B.A.1) and induces the isomorphism (B.A.2). For separable \(A\), (B.A.1) is an isomorphism. If \(A\) is separable and nuclear, the target is all of \(\operatorname{Ext}(A,B)\).
+
+**Proof.** We give the arbitrary-source argument first. For a normalized pair \((\psi,P)\), the compression defect is
+\[
+(P\psi(a)P)(P\psi(b)P)-P\psi(ab)P
+=-P\psi(a)(1-P)\psi(b)P\in\mathcal K(E).
+\tag{B.E.1}
+\]
+It is *-preserving, so (B.A.4) is a homomorphism. Module-unitary equivalence gives multiplier-unitary conjugacy after standardization. If \((P-P')\psi(a)\) is compact for every \(a\), its adjoint version is compact on the other side, and expansion makes the two compressions equal in the quotient. For a compact perturbation before normalization, the two operators have the same image in the pseudolocal algebra modulo its locally compact ideal, as proved in [Lesson06, Proposition3.1 and Theorem3.2](KT-KK-06.html#3-perturbation-and-normalization). Self-adjoint contraction normalization and the doubled functional-calculus formula preserve that equality; the normalized projections therefore have precisely the compact difference just checked. A degenerate pair has \(P\) commuting exactly with \(\psi(A)\), so its compression lifts homomorphically and is split.
+
+Put \(Q=1-P\). The self-adjoint unitary
+\[
+R=\begin{pmatrix}P&Q\\Q&P\end{pmatrix}
+\tag{B.E.2}
+\]
+conjugates the sum of the two complementary compressions to the compression with first block \(P\psi(a)P+Q\psi(a)Q\) and second block zero. The first block differs compactly from \(\psi(a)\). Their Busby sum is therefore strongly equivalent to \(q\psi\oplus0\), a split map. This proves invertibility of every image. Since the invertible part of Ext is a group, equality after a common cycle addition cancels in the target. Compression thus gives (B.A.1).
+
+Conversely let \(\tau\) be an invertible Ext-class and choose an inverse \(\rho\). The exact stable-strong relation defining Ext, proved in [Lesson02, Propositions1.1–1.2](KT-KK-02.html#proposition-1-2-the-stabilized-semigroup-has-zero), gives split maps \(\sigma_0,\sigma_1\) with
+\[
+\tau\oplus\rho\oplus\sigma_0\sim_s\sigma_1.
+\tag{B.E.3}
+\]
+Choose a homomorphic lift of \(\sigma_1\) and transport it by the witnessing multiplier unitary. On a finite sum of standard modules the resulting representation \(\psi\) has block diagonal quotient \(\operatorname{diag}(\tau,\rho,\sigma_0)\). The projection \(P\) onto its first block has compact commutator with \(\psi(a)\) for every \(a\). The pair \((\psi,2P-1)\) is an odd cycle whose compression is \(\tau\) with zero split blocks. Folding the finite sum proves surjectivity. This construction uses a homomorphic lift already supplied by the inverse relation; it does not dilate an uncountable-source Stinespring module.
+
+Next compression respects operator homotopies for arbitrary \(A\). Given a norm-continuous operator path on fixed \((E,\psi)\), apply self-adjoint contraction normalization pointwise and the doubling (3.2) of Lesson07. Continuous functional calculus is norm-continuous on this uniformly bounded path, by uniform polynomial approximation. We obtain a norm-continuous path of actual involutions on the fixed representation \(\Psi=\psi\oplus0\), with endpoint changes consisting only of the allowed compact perturbations and degenerate additions. Its projections \(P_t\) lie in the unital C*-algebra
+\[
+\mathcal D_\Psi=\{v\in\mathcal L(E\oplus E):[v,\Psi(a)]\in\mathcal K(E\oplus E) (a\in A)\}.
+\tag{B.E.4}
+\]
+Closure, adjoints and multiplication follow from the compact ideal and the commutator product rule.
+
+For \(\|P_t-P_s\|<1\), the invertible element
+\[
+c_{t,s}=P_tP_s+(1-P_t)(1-P_s),\qquad
+c_{t,s}-1=(P_t-P_s)(2P_s-1),
+\tag{B.E.5}
+\]
+belongs to \(\mathcal D_\Psi\) and intertwines \(P_s,P_t\). Its polar unitary \(u_{t,s}=c_{t,s}(c_{t,s}^*c_{t,s})^{-1/2}\) does too: \(c_{t,s}^*c_{t,s}\) commutes with \(P_s\). A finite subdivision and multiplication of the previous endpoint unitaries give a path \(U_t\in\mathcal D_\Psi\) with \(U_0=1\) and \(U_tP_0U_t^*=P_t\). Its quotient commutes with \(q\Psi(A)\). Consequently
+\[
+q(P_t\Psi(a)P_t)=q(U_t)q(P_0\Psi(a)P_0)q(U_t)^*.
+\tag{B.E.6}
+\]
+After adding a zero standard module, these are precisely strongly equivalent Busby maps. Thus compression is constant under operator homotopy and defines \(\kappa_{\mathrm{oh}}\).
+
+For injectivity of this map, put two pairs in standard two-block form with projection \(\operatorname{diag}(1,0)\), by adding zero-representation standard modules to their projection ranges and complements and stabilizing each. If their Ext-classes agree, add the split maps in the defining stable-strong equivalence as degenerate pairs with projection \(1\). The multiplier unitary implementing that equivalence acts on the first range of one pair and as identity on its complement. After this change, let \(V_i:H_B\to E_i\) be the range isometries and write
+\[
+L_i(a)=V_i^*\psi_i(a)V_i,\qquad
+L_0(a)-L_1(a)\in\mathcal K(H_B).
+\tag{B.E.7}
+\]
+Keep \(\Psi=\psi_0\oplus\psi_1\) fixed and put
+\[
+V_s=\binom{\cos s\,V_0}{\sin s\,V_1},\quad
+P_s=V_sV_s^*,\quad
+L_s=\cos^2s\,L_0+\sin^2s\,L_1,
+\qquad0\le s\le\pi/2.
+\tag{B.E.8}
+\]
+The original compact commutators give \(\psi_i(a)V_i-V_iL_i(a)\) compact. Equation (B.E.7) then gives \(\Psi(a)V_s-V_sL_s(a)\) compact. Multiplication by \(V_s^*\), and the adjoint equation for \(a^*\), prove \([P_s,\Psi(a)]\) compact. The operators \(2P_s-1\) form a norm-continuous operator homotopy. At its two endpoints, the unused representation summand has projection zero and is degenerate. The other summand is the corresponding original pair with its split additions. Thus equal Ext-classes give equal \(KK_{\mathrm{oh}}^1\)-classes for arbitrary \(A\), proving (B.A.2).
+
+When \(A\) is separable, [Lesson07, Theorem9.4](KT-KK-07.html#9-cobordism-and-compact-homology) gives \(KK_c\cong KK_{\mathrm{oh}}\). Its full preceding proofs are Proposition9.2, Lemma9.3 and [AppendixA.5](KT-KK-07.html#a-5-extending-an-operator-homotopy-from-an-ideal): operator null-homotopies become cobordisms by the proved ideal homotopy extension for the separable source \(A\widehat\otimes\mathcal T\). Applying this established theorem to the path (B.E.8) makes (B.A.1) injective. No extension theorem is used in that compact-homology proof. Finally [Lesson02, Corollary3.1](KT-KK-02.html#corollary-3-1-the-extension-group-of-a-nuclear-algebra) proves, by its complete positive lifting and countable dilation arguments, that every extension is invertible for separable nuclear \(A\). This gives the last statement. \(\square\)
+
+The positive results retain arbitrary coefficient algebras \(B\) subject to the stated sigma-unitality. The negative result uses \(B=\mathbb C\), which already satisfies that hypothesis; strengthening coefficient assumptions cannot repair arbitrary-source compact injectivity. Nor can merely assuming that the source is sigma-unital, since (B.B.1) is unital.
+
+### B.F. Solution to the two extension constructions
+
+**Solution to Exercise10.4.** For arbitrary trivially graded \(A\) and sigma-unital trivially graded \(B\), the two constructions are inverse for operator homotopy. They are inverse for compact homology when \(A\) is separable. The unrestricted compact-homology request is false under the stated definitions, as Theorem B.D.1 proves.
+
+Starting from an odd cycle, use Proposition3.1 to obtain an exact involution \(2P-1\) and standardize its module. Define the extension by (B.A.4). Its multiplicative defect is (B.E.1); its adjoint relation is exact. Equation (B.E.2) makes the complementary compression an inverse extension. Unitary equivalence conjugates the Busby map by a multiplier unitary, compact perturbation leaves it equal in the quotient, and a degenerate addition is split. The invertible target permits common-cycle cancellation. These facts establish the map on the full compact-homology relation without separability.
+
+Starting from an invertible extension, choose the inverse and split stabilization (B.E.3), transport a homomorphic lift of the split right-hand side by its witnessing unitary, and use its first block projection \(P\). Its quotient is block diagonal, so \([P,\psi(a)]\) is compact and \(2P-1\) is an odd cycle. Compression returns the chosen Busby map with only zero split summands. Thus the extension-to-cycle-to-extension composition is identity. All its modules are finite sums of countably generated standard modules.
+
+Different inverse, splitting, lift or standard-module choices yield pairs with the same Ext-class. Add the split pairs witnessing that equality; standardize both projection ranges and complements; implement their quotient-compression equivalence on the first range. Their lifts satisfy (B.E.7). The fixed-representation path (B.E.8) identifies their operator-homotopy classes, proving independence of every choice. Starting with an original odd pair and performing both constructions also gives the same Ext-class; the identical argument proves that the resulting operator-homotopy class is the original one. This proves both inverse identities in (B.A.2).
+
+For separable \(A\), apply the already proved Theorem9.4 to that exact fixed-representation path. It gives independence and both inverse identities in \(KK_c^1\), rather than merely in \(KK_{\mathrm{oh}}^1\). For a nonseparable source there is no corresponding inference. Specifically, \(x\oplus y\) in (B.D.1) compresses to the zero Ext-class. The reverse construction of this zero class may choose zero split maps, producing a degenerate cycle, while \(\mu(x\oplus y)=1\) and every degenerate cycle has \(\mu=0\). Therefore cycle-to-extension-to-cycle fails to return the compact-homology class, and no inverse map with the requested compact-homology identities can exist in that generality.
+
+### B.G. Source and proof locators
+
+The freely readable [Blackadar author edition, Sections17.2 and17.6](https://www.bruceblackadar.com/Mathematics/book6.pdf) supplies the literal compact-perturbation and common-cycle definitions and the compression formulation. Its Proposition17.6.5 states the unrestricted compact-homology isomorphism. Under those same definitions and countably generated modules, Theorem B.D.1 disproves that unrestricted statement. The separable version remains valid. The source's brief equivalence-relation assertion is not a proof of arbitrary-source injectivity.
+
+All new Hilbert-space premises of the counterexample are proved in Sections B.A–B.C: Calkin simplicity and the separable-representation obstruction in Lemma B.B.1; every permitted source representation in Lemma B.B.2; the full infinite-multiplicity commutant assertion in Lemma B.C.1; residual involutions and compact difference in Lemma B.C.2; the finite invariant and common-cycle cancellation in Proposition B.C.3. The counterexample and its distinct operator null-homotopy are (B.D.1)–(B.D.6). The positive comparison and exercise solution use the exact earlier normalization, standardization, Ext definition, separable compact-homology and nuclear inversion proofs linked at their uses. The compact placement/support lemmas of Lesson07 concern ordinary homotopies of compact homomorphisms; they are not compact-operator-perturbation statements and do not change the invariant (B.C.6).
+
 ## What this lesson does not prove
 
 The scalar Fredholm pictures, including the suspension source, are proved for operator homotopy. The proof for \(S\) uses its unitary Busby-map description and a fixed-representation compression rotation. Its use of Theorem 5.2 concerns only that operator-homotopy implication; it does not use arbitrary-source compact homology.
 
-For arbitrary trivially graded \(A\) and \(\sigma\)-unital trivially graded \(B\), [Blackadar, author edition, Proposition 17.6.5](https://www.bruceblackadar.com/Mathematics/book6.pdf) states
-\[
-KK_c^1(A,B)\cong\operatorname{Ext}(A,B)^{-1}.
-\]
-Theorem 5.2 proves this isomorphism for separable \(A\), and proves its operator-homotopy comparison implication for arbitrary \(A\). Proposition 5.1 supplies both representative constructions without separability. Identifying their arbitrary-source compact-homology classes is not proved here. Accordingly Solution 10.4 proves the full compact-homology comparison for separable \(A\) and only the representative and operator-homotopy assertions for arbitrary \(A\). The broader assertion is not used as a premise in any proof above.
 
 For arbitrary graded \(A,B\), [Blackadar, author edition, Proposition 17.8.7 and Corollary 17.8.8](https://www.bruceblackadar.com/Mathematics/book6.pdf) also state natural source and diagonal compact-operator stability for \(KK_{\mathrm{oh}}\) and \(KK_c\). Those stronger source-relation statements are not proved here and are not used as premises. Theorems 8.2–8.3 prove the assigned stability of \(KK_h\) for arbitrary graded coefficients; coefficient stability alone is proved for all four quotients by the compact-left argument. Corollary 8.4 uses only the proved \(KK_h\) stability.
 

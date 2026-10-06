@@ -133,7 +133,33 @@ C_\lambda(\eta\wedge\zeta)=0
 
 whenever the product has degree \(p\).
 
-**Proof.** A closed current pairs with de Rham cohomology because it vanishes on exact forms; de Rham's theorem identifies the dual pairing with real homology on compact \(V\). The restriction of the displayed product to \(F\) is zero, so positivity along \(F\) makes its value zero. \(\square\)
+**Proof.** On compact \(V\), every smooth form has compact support. Closedness therefore defines a linear functional
+
+\[
+L:H^p_{\mathrm{dR}}(V)\longrightarrow\mathbb R,
+\qquad L([\alpha])=C_\lambda(\alpha),
+\]
+
+because replacing a closed form by \(\alpha+d\beta\) leaves this value unchanged. The [de Rham comparison proof, Part A, equation (A.11)](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-17.html#a-differential-forms-and-the-cohomology-comparison) gives the natural isomorphism \(\mathcal I:H^p_{\mathrm{dR}}(V)\to H^p(V;\mathbb R)\) by simplex integration. Its assumptions hold here: \(V\) is finite dimensional, Hausdorff, second countable, smooth and without boundary. Thus \(\ell=L\circ\mathcal I^{-1}\) is a functional on singular cohomology.
+
+To identify that functional with a homology class, we need the finite-dimensional evaluation pairing, not just the comparison isomorphism. Parts A.2–A.3 of the same proof construct a good cover and identify cohomology with its constants Čech complex. Compactness lets us choose a finite subcover; its finite intersections remain smoothly contractible. Each degree of the resulting constants complex is a finite product of copies of \(\mathbb R\). Hence \(H^p(V;\mathbb R)\) is finite dimensional.
+
+For clarity, the field-coefficient evaluation argument in [Thom classes and Euler classes, Section 5](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-06.html#5-coefficient-groups-without-a-compactness-shortcut) applies to \(C_*=C_*(V;\mathbb R)\). Write \(Z_p=\ker\partial_p\) and \(B_p=\operatorname{im}\partial_{p+1}\). A cocycle is a functional on \(C_p\) vanishing on \(B_p\), and therefore restricts to a functional on \(Z_p/B_p\). Every functional on \(Z_p/B_p\) extends from \(Z_p\) to \(C_p\) by choosing a vector-space complement. If a cocycle vanishes on \(Z_p\), it factors as \(b\circ\partial_p\), where \(b\) is defined on \(B_{p-1}\); extending \(b\) to \(C_{p-1}\) exhibits the cocycle as a coboundary. In degree zero the kernel is already zero. This proves the canonical isomorphism
+
+\[
+H^p(V;\mathbb R)\longrightarrow H_p(V;\mathbb R)^*,
+\qquad [a]\longmapsto([z]\longmapsto a(z)).
+\]
+
+Linear functionals separate vectors: a nonzero vector can be included in a basis and assigned value one. Consequently the canonical evaluation map from \(H_p(V;\mathbb R)\) into its double dual is injective. The dual is finite dimensional by the displayed isomorphism, so the homology group is finite dimensional too. Evaluation is then an isomorphism onto the double dual: for a basis \(e_i\) and its dual basis \(e_i^*\), a functional \(\varphi\) on the dual is evaluation on \(\sum_i\varphi(e_i^*)e_i\). It follows that there is a unique class \([C_\lambda]\) satisfying
+
+\[
+\big\langle\mathcal I([\alpha]),[C_\lambda]\big\rangle
+=C_\lambda(\alpha)
+\qquad(d\alpha=0).
+\]
+
+Uniqueness makes this class independent of the cover and of the auxiliary complements or bases. No orientation of the ambient manifold is needed for this argument. Finally, \((\eta\wedge\zeta)|_F=0\); applying positivity along \(F\) to that form and its negative gives the asserted zero value. \(\square\)
 
 The same local proof gives a statement that needs no ambient smoothness: positive functionals on compactly supported leafwise densities for a \(C^{\infty,0}\) foliation, annihilating leafwise divergences, correspond to invariant transverse Radon measures. Use densities in Proposition 2.2. A change of orientation is then unnecessary. Ordinary homology is an additional conclusion for smooth oriented foliations, rather than part of this density formulation.
 

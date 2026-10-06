@@ -10,6 +10,8 @@ The lesson assumes the basic language of sheaves on a topological space (section
 
 Basic references are [Schapira, *Categories and Homological Algebra*], [Schapira, *Algebra and Topology*] and [Stacks]. Resolutions of unbounded complexes by K-injective and K-flat complexes go back to [Spaltenstein 1988].
 
+<span id="SH-FND-DC-01"></span><span id="sh-fnd-dc-01"></span>
+
 ## 1. Conventions and background
 
 ### Conventions
@@ -67,6 +69,8 @@ The sheafification and isomorphism criteria below have exact earlier programme p
   \]
   is a chain map and termwise onto. Its kernel identifies with \(A^n\oplus A^{n+1}\) in degree \(n\), with differential \((a,a')\mapsto(d_Aa+a',-d_Aa')\). The degree-minus-one map \(h(a,a')=(0,a)\) satisfies \(dh+hd=1\). Hence the kernel is contractible, and the cohomology exact sequence makes \(q\) a quasi-isomorphism. Transport the cone triangle \(A\to B\to\operatorname{Cone}(i)\to A[1]\) along \(q\), which is invertible in \(D\). Its first two arrows are the given ones. A commuting diagram of short exact sequences gives a commuting diagram of these cones and their maps \(q\); inverting \(q\) proves naturality. With the alternative convention for the last cone arrow, negate the last arrow throughout, as explained in Section 13. This proof uses the defining cone triangles of the derived category, not an assumption about injective resolutions. \(\square\)
 
+<span id="SH-FND-DC-02"></span><span id="sh-fnd-dc-02"></span>
+
 ## 2. Module sheaves form an abelian category
 
 **Theorem 2.1.** Let \(\mathcal O\) be any sheaf of rings on \(X\).
@@ -87,6 +91,8 @@ The sheafification and isomorphism criteria below have exact earlier programme p
 (4) Exactness at \(G\) means that \(\operatorname{Im}(F\to G)\to\operatorname{Ker}(G\to H)\) is an isomorphism. Both sides are built from kernels and cokernels. By (2), the map at \(x\) is the same map for the stalk sequence. If every stalk sequence is exact, (I) gives exactness. Conversely, exact functors preserve exactness. A sheaf whose stalks all vanish is zero, since each section then vanishes on an open cover. Hence \(\varphi\) is a monomorphism iff \(\operatorname{Ker}\varphi=0\) iff every \(\ker\varphi_x=0\). The same holds with cokernels. An isomorphism is a morphism that is both. \(\square\)
 
 The proof never uses commutativity of \(\mathcal O\). In particular, Theorem 2.1 holds for the constant sheaf \(k_X\) of any unital ring \(k\), commutative or not.
+
+<span id="SH-FND-DC-03"></span><span id="sh-fnd-dc-03"></span>
 
 ## 3. Limits, colimits, stalks, and sections of sums
 
@@ -119,6 +125,8 @@ since colimits commute with colimits.
 
 The proofs use no commutativity of \(\mathcal O\). A related fact, not used here, is the analogue of (5) for filtered colimits: on a compact Hausdorff space \(X\), global sections commute with filtered colimits of sheaves. The key step is that sections over a compact subset are germs of sections over its open neighbourhoods [Schapira, *Algebra and Topology*, Proposition 5.6.1].
 
+<span id="SH-FND-DC-04"></span><span id="sh-fnd-dc-04"></span>
+
 ## 4. Exact inverse image
 
 **Theorem 4.1.** Let \(f:X\to Y\) be continuous and \(\mathcal O_Y\) a sheaf of rings on \(Y\).
@@ -147,6 +155,8 @@ The maps commute with restriction and are \(\mathcal O_Y(W)\)-linear through the
 Conversely, suppose \(\beta:G\to f_*F\) is \(\mathcal O_Y\)-linear. Locally a section \(s\) of \(f^{-1}G\) on \(V\) is represented by a section \(g\in G(W)\), with \(f(V)\subset W\). Send it to \(\beta_W(g)|_V\). If two representatives have the same germ at \(x\), their germs in \(G_{f(x)}\) agree, so they agree on some smaller neighbourhood \(W'\) of \(f(x)\). Their proposed images therefore agree near \(x\). This proves independence of representatives; the proposed local images glue uniquely. Multiplication is checked after locally representing the scalar by a section of \(\mathcal O_Y\), so the glued map is \(f^{-1}\mathcal O_Y\)-linear. The two constructions undo one another on local representatives, and hence everywhere. They commute with maps of \(G\) and \(F\); this is the adjunction. \(\square\)
 
 **Remark 4.2.** For a morphism of ringed spaces \(f:(X,\mathcal O_X)\to(Y,\mathcal O_Y)\), the module pullback \(f^*=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}(-)\) is only right exact, and Example 5 shows that it can fail to be exact. When the structure map \(f^{-1}\mathcal O_Y\to\mathcal O_X\) is an isomorphism, it identifies \(f^*\) with the exact functor \(f^{-1}\). The comparison is through this specified structure map, not an unlabelled equality of coefficient sheaves.
+
+<span id="SH-FND-DC-05"></span><span id="sh-fnd-dc-05"></span>
 
 ## 5. Enough injectives, functorially
 
@@ -201,6 +211,8 @@ where \(I_{\mathcal O_x}\) is the functor (5.1) for the ring \(\mathcal O_x\), a
 **Corollary 5.5.** (1) Every injective \(\mathcal O\)-module is flabby. (2) For \(U\) open, the restriction of an injective \(\mathcal O\)-module \(I\) to \(U\) is an injective \(\mathcal O|_U\)-module.
 
 **Proof.** (1) For \(V\subset W\), Lemma 5.2(3) gives a monomorphism \(j_{V!}\mathcal O_V\to j_{W!}\mathcal O_W\). Applying the exact functor \(\operatorname{Hom}(-,I)\) turns it into the restriction \(I(W)\to I(V)\), which is therefore onto. Take \(W=X\). (2) By Lemma 5.2(2), \(\operatorname{Hom}_{\mathcal O|_U}(-,I|_U)\cong\operatorname{Hom}_{\mathcal O}(j_!(-),I)\). This is a composite of exact functors. \(\square\)
+
+<span id="SH-FND-DC-06"></span><span id="sh-fnd-dc-06"></span>
 
 ## 6. Right derived functors on bounded-below complexes
 
@@ -315,6 +327,8 @@ For a bounded-below \(J\), fix an integer \(r\) and use
 \longrightarrow \sigma_{\le r+1}J\longrightarrow0.
 \]
 The last complex is bounded. The first, and also its image under \(\Phi\), vanish in degrees below \(r+2\). By (1) it has an injective resolution vanishing below \(r+2\), so its derived image also has no cohomology below \(r+2\). The two long exact sequences therefore identify degree-\(r\) cohomology of both middle terms with that of the bounded last terms. The already proved bounded case gives the desired isomorphism in degree \(r\). This holds for every \(r\), proving (4). Part (5) now follows by applying the construction with the injective embeddings of Theorem 5.4. No countability, commutativity, spectral sequence, or exactness of infinite products of sheaves was used. \(\square\)
+
+<span id="SH-FND-DC-07"></span><span id="sh-fnd-dc-07"></span>
 
 ## 7. K-injective resolutions of unbounded complexes
 
@@ -531,6 +545,8 @@ whose sum is \((q,a)\). This checks the sign of both the off-diagonal map in (7.
 
 **Remark 7.6 (no bounded output).** Theorem 7.2 asserts no bounded output. Exercise 4 gives a bounded input with unbounded \(R\operatorname{Hom}\).
 
+<span id="SH-FND-DC-08"></span><span id="sh-fnd-dc-08"></span>
+
 ## 8. K-flat resolutions
 
 Throughout Sections 8–9, \(\mathcal O\) is commutative. Tensor products of complexes mean **direct-sum totalizations**, with the differential fixed in Section 1. No boundedness, finite global dimension, separation, or compactness condition on \(X\) is imposed.
@@ -626,6 +642,8 @@ The stages can create new cycles; the next stage kills them. A germ involves a f
 
 *Mathematical sources.* Compare [AI Integrated Stacks Project, cohomology.tex, section “Flat resolutions”], especially the lemmas labelled \(\texttt{lemma-K-flat-resolution}\), \(\texttt{lemma-colimit-K-flat}\), and \(\texttt{lemma-bounded-flat-K-flat}\); their upstream tags include 06YF and 06YD. That treatment constructs compatible bounded-above resolutions. The proof above instead starts with a surjective disk complex and attaches local cycles directly. It is an expository alternative, not a claim of a new resolution theorem. The classical reference is [Spaltenstein 1988].
 
+<span id="SH-FND-DC-09"></span><span id="sh-fnd-dc-09"></span>
+
 ## 9. The derived tensor product
 
 A K-flat replacement protects a tensor computation even when the other variable is unbounded and nonflat. There are two different invariance statements to check.
@@ -688,6 +706,8 @@ The lesson Supporting verifications for open prerequisites already proves the as
 
 *Mathematical sources.* The two invariance statements correspond to the pinned AI Integrated Stacks Project lemmas labelled \(\texttt{lemma-K-flat-quasi-isomorphism}\) and \(\texttt{lemma-derived-tor-quasi-isomorphism-other-side}\), and its derived tensor construction (upstream tags 06YA, 06YG and 06YH). We have supplied their arguments here rather than replacing the proofs by links.
 
+<span id="SH-FND-DC-10"></span><span id="sh-fnd-dc-10"></span>
+
 ## 10. Pullback and pushforward are adjoint on unbounded complexes
 
 **Theorem 10.1.** For every morphism \(f:(X,\mathcal O_X)\to(Y,\mathcal O_Y)\) of commutative ringed spaces, \(Lf^*:D(\mathcal O_Y)\to D(\mathcal O_X)\) is left adjoint to \(Rf_*\), bifunctorially.
@@ -711,6 +731,8 @@ natural in \(B\in D(\mathcal O_Y)\) and \(E\in D(\mathcal O_X)\). This includes 
 \]
 Naturality in \(B\) and in \(E\) holds because the chain-level adjunction is natural for maps of complexes, and a change of K-injective model is a homotopy equivalence. This proves (10.1). \(\square\)
 
+<span id="SH-FND-DC-11"></span><span id="sh-fnd-dc-11"></span>
+
 ## 11. Internal derived Hom
 
 In this section \(\mathcal O\) is commutative.
@@ -722,6 +744,8 @@ In this section \(\mathcal O\) is commutative.
 We use Theorem 11.1 without proof. The chain-level proofs that later lessons rely on are given in the lesson Supporting verifications for open prerequisites: currying, the K-injectivity of \(\mathcal Hom^\bullet(P,I)\) for K-flat \(P\), the adjunction \(\operatorname{Hom}_D(T,R\mathcal Hom(B,C))\cong\operatorname{Hom}_D(T\otimes^LB,C)\), and open restriction.
 
 Two warnings. The output can be unbounded above for bounded inputs (Exercise 4). And for a continuous map that is not an open embedding, the comparison between internal derived Hom and inverse image need not be an isomorphism; see the closing example of Supporting verifications for open prerequisites.
+
+<span id="SH-FND-DC-12"></span><span id="sh-fnd-dc-12"></span>
 
 ## 12. The composition map
 
@@ -737,6 +761,8 @@ c_{K,L,M}:R\mathcal Hom(L,M)\otimes^L R\mathcal Hom(K,L)\longrightarrow R\mathca
 The morphism \(c\) is induced by the composition of Hom complexes. Its properties are proved in the lesson Supporting verifications for open prerequisites: \(c\) is the transpose of evaluating into \(L\) and then into \(M\); it is associative and unital; and it is natural in \(K\) and \(M\).
 
 In \(L\) the right notion is dinaturality, which is also proved there. The object \(L\) occurs covariantly in one factor and contravariantly in the other, so the domain of \(c\) is not a functor of \(L\), and "natural in \(L\)" has no meaning.
+
+<span id="SH-FND-DC-13"></span><span id="sh-fnd-dc-13"></span>
 
 ## 13. The localization triangle, and signs
 
@@ -781,6 +807,8 @@ Two conventions for distinguished triangles are in use. For a chain map \(f:A\to
 **Proof.** Let \(z\), \(y\), \(x\) be as stated. Then \(a(dx)=d\,dy=0\), so \(dx=0\), because \(a\) is injective. The element \((y,-x)\) is a cycle of \(\operatorname{Cone}(a)\), since \(d(y,-x)=(dy-a(x),dx)=(0,0)\). Also \(q(y,-x)=z\) and \(p(y,-x)=-x\). So \(H^n(p)H^n(q)^{-1}[z]=[-x]=-\delta[z]\). For the comparison of the two conventions, let \((\varphi_1,\varphi_2,\varphi_3)\) be an isomorphism of triangles from \((f,i,p)\) to \((u,v,w)\). Then the same maps give an isomorphism from \((f,i,-p)\) to \((u,v,-w)\). So the two classes differ exactly by the sign of the third arrow, in \(K(\mathcal A)\) and hence in \(D(\mathcal A)\). \(\square\)
 
 **Remark 13.4 (working with both conventions).** When a formula taken from a text that uses the first convention contains the third arrow of a triangle, for instance a connecting morphism of a triangle of derived functors, negate that arrow before combining it with (13.3). Negating two arrows of a triangle gives an isomorphic triangle, so it is enough to track one sign per triangle (Exercise 5).
+
+<span id="SH-FND-DC-14"></span><span id="sh-fnd-dc-14"></span>
 
 ## 14. Worked examples
 

@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inner modular flow and rigidity of finite weight data · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-VR.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 79 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="inner-modular-flow-and-rigidity-of-finite-weight-data">Inner modular flow and rigidity of finite weight data</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>A continuous unitary group implementing a modular flow can be removed by changing density. This produces a trace, and characterizes semifinite von Neumann algebras. Identifying two weights requires another argument: normal weights are lower semicontinuous, but need not be continuous even on a dense finite algebra. We prove two precise recognition results and construct a dense finite algebra on which distinct faithful weights agree.</p>
+<p>The source antecedents are Takesaki, <em>Theory of Operator Algebras II</em>, VIII.3, Theorem 3.14 and Propositions 3.15–3.16. All statements below concern normal weights; the reference is faithful and semifinite. In the invariant recognition result, semifiniteness of the other weight follows from its stipulated finite algebra, and faithfulness is proved rather than assumed.</p>
+<p>The inputs are WG's finite domains and semifiniteness criterion, WS's support of a normal functional, NW's normal bounded sandwiches, lower semicontinuity and closed GNS graph, HAP-05's contractive approximation from a nonunital algebra, CX-03's full analytic right multiplication, CZ-05/08/09/11's centralizers and affiliated density changes, and PT-03/06/08's continuous generators and invariant density theorem. QF's closed-form representation is used only in the final counterexample. No countable exhaustion of the algebra, faithful state on the whole algebra, or trace measurability of a density is assumed.</p>
+<h2 id="nonvacuous-weights-and-the-meaning-of-a-trivial-flow"><span id="oa-mod-vr-01"></span><span id="OA-MOD-VR-01"></span>Nonvacuous weights and the meaning of a trivial flow</h2>
+<p>Every von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span> has a faithful normal semifinite weight. Here is a construction which allows arbitrary cardinality. A nonzero corner has a nonzero normal positive functional: take a nonzero vector in that corner in a faithful normal concrete representation. Its support is a nonzero projection, and its restriction to its support corner is faithful, by WS-04–06. Choose a maximal orthogonal family of such support projections <span class="math" data-tex="\(p_i\)">\(p_i\)</span>, with normalized faithful normal states <span class="math" data-tex="\(\rho_i\)">\(\rho_i\)</span> on <span class="math" data-tex="\(p_iMp_i\)">\(p_iMp_i\)</span>. Their join is one; otherwise the complementary corner supplies one more member. Define</p>
+<span class="math math-display" data-tex="\[
+\theta(x)=\sum_i\rho_i(p_i x p_i),\qquad x\in M_+,
+\qquad \sum_i=\sup_{F\subseteq I\ {\rm finite}}\sum_{i\in F}.
+\tag{VR.1}
+\]">\[
+\theta(x)=\sum_i\rho_i(p_i x p_i),\qquad x\in M_+,
+\qquad \sum_i=\sup_{F\subseteq I\ {\rm finite}}\sum_{i\in F}.
+\tag{VR.1}
+\]</span>
+<p>This is an additive homogeneous weight, and is normal because the supremum over finite sums commutes with increasing positive suprema. If <span class="math" data-tex="\(\theta(x)=0\)">\(\theta(x)=0\)</span>, each <span class="math" data-tex="\(p_i x p_i=0\)">\(p_i x p_i=0\)</span>, hence <span class="math" data-tex="\(x^{1/2}p_i=0\)">\(x^{1/2}p_i=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, and <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. For <span class="math" data-tex="\(p_F=\sum_{i\in F}p_i\)">\(p_F=\sum_{i\in F}p_i\)</span>,
+<span class="math" data-tex="\(\theta(p_Fxp_F)\leq |F|\|x\|\)">\(\theta(p_Fxp_F)\leq |F|\|x\|\)</span>, and these bounded positive compressions tend sigma-strongly to <span class="math" data-tex="\(x\)">\(x\)</span>. The finite positive domain is therefore sigma-weakly dense, giving semifiniteness by WG-008. The empty family handles the zero algebra.</p>
+<p>A faithful normal semifinite weight <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is a trace exactly when its modular group is trivial. The trace-to-trivial direction is PT-08's KMS identification. For the converse, <span class="math" data-tex="\(M_\theta=M\)">\(M_\theta=M\)</span>. The entire right multiplier formula, now with constant modular orbit, is</p>
+<span class="math math-display" data-tex="\[
+\Lambda_\theta(av)=J_\theta v^*J_\theta\Lambda_\theta(a),
+\qquad a\in\mathfrak n_\theta,\ v\in M.
+\tag{VR.2}
+\]">\[
+\Lambda_\theta(av)=J_\theta v^*J_\theta\Lambda_\theta(a),
+\qquad a\in\mathfrak n_\theta,\ v\in M.
+\tag{VR.2}
+\]</span>
+<p>Let <span class="math" data-tex="\(y=w|y|\)">\(y=w|y|\)</span> be the bounded polar decomposition, and suppose
+<span class="math" data-tex="\(\theta(y^*y)&lt;\infty\)">\(\theta(y^*y)&lt;\infty\)</span>. Then <span class="math" data-tex="\(|y|\in\mathfrak n_\theta\)">\(|y|\in\mathfrak n_\theta\)</span>, and (VR.2) gives</p>
+<span class="math math-display" data-tex="\[
+\theta(yy^*)=\|\Lambda_\theta(|y|w^*)\|^2
+=\|J_\theta wJ_\theta\Lambda_\theta(|y|)\|^2
+=\|\Lambda_\theta(|y|)\|^2=\theta(y^*y).
+\tag{VR.3}
+\]">\[
+\theta(yy^*)=\|\Lambda_\theta(|y|w^*)\|^2
+=\|J_\theta wJ_\theta\Lambda_\theta(|y|)\|^2
+=\|\Lambda_\theta(|y|)\|^2=\theta(y^*y).
+\tag{VR.3}
+\]</span>
+<p>The norm equality uses <span class="math" data-tex="\(w^*w|y|=|y|\)">\(w^*w|y|=|y|\)</span>, and (VR.2) also shows that right multiplication by <span class="math" data-tex="\(w^*w\)">\(w^*w\)</span> fixes <span class="math" data-tex="\(\Lambda_\theta(|y|)\)">\(\Lambda_\theta(|y|)\)</span>. If instead <span class="math" data-tex="\(\theta(yy^*)\)">\(\theta(yy^*)\)</span> is finite, apply the same argument to <span class="math" data-tex="\(y^*\)">\(y^*\)</span>. Thus either both values are finite and equal or both are infinite. This is the trace identity on all bounded <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<h2 id="a-continuous-inner-modular-group-characterizes-semifiniteness"><span id="OA-MOD-VR-02"></span><span id="oa-mod-vr-02"></span>A continuous inner modular group characterizes semifiniteness</h2>
+<p><strong>Theorem.</strong> For an arbitrary von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span>, the following are equivalent.</p>
+<ol>
+<li><span class="math" data-tex="\(M\)">\(M\)</span> admits a faithful normal semifinite trace.</li>
+<li>For every faithful normal semifinite weight <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, there is a sigma-strongly continuous one-parameter unitary group <span class="math" data-tex="\(u_t\in M\)">\(u_t\in M\)</span> with <span class="math" data-tex="\(\sigma_t^\varphi=\operatorname{Ad}(u_t)\)">\(\sigma_t^\varphi=\operatorname{Ad}(u_t)\)</span>.</li>
+<li>For at least one faithful normal semifinite weight, such an implementing unitary group exists.</li>
+</ol>
+<p>The group law and continuity in conditions 2–3 are part of the assertion; individual innerness at each time is insufficient for this proof. Moreover, for each fixed faithful normal semifinite trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, every normal semifinite weight <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, including a nonfaithful or zero weight, has a unique representation</p>
+<span class="math math-display" data-tex="\[
+\chi=\tau_h,\qquad h\geq0\text{ self-adjoint and affiliated with }M.
+\tag{VR.4}
+\]">\[
+\chi=\tau_h,\qquad h\geq0\text{ self-adjoint and affiliated with }M.
+\tag{VR.4}
+\]</span>
+<p>No trace measurability or bounded inverse is required.</p>
+<p><strong>Proof.</strong> Given the trace, PT-08 proves (VR.4), because its modular group is trivial. If <span class="math" data-tex="\(\chi=\varphi\)">\(\chi=\varphi\)</span> is faithful, <span class="math" data-tex="\(h\)">\(h\)</span> is injective by CZ-08. CZ-11 then gives</p>
+<span class="math math-display" data-tex="\[
+\sigma_t^\varphi(x)=h^{it}xh^{-it},\qquad u_t=h^{it}.
+\tag{VR.5}
+\]">\[
+\sigma_t^\varphi(x)=h^{it}xh^{-it},\qquad u_t=h^{it}.
+\tag{VR.5}
+\]</span>
+<p>These spectral unitaries form a strongly continuous group. This proves <span class="math" data-tex="\(1\Rightarrow2\)">\(1\Rightarrow2\)</span>, including the final density assertion and its uniqueness. VR-01 ensures that <span class="math" data-tex="\(2\Rightarrow3\)">\(2\Rightarrow3\)</span> is nonvacuous.</p>
+<p>Suppose condition 3 holds. Since <span class="math" data-tex="\(u_su_t=u_tu_s\)">\(u_su_t=u_tu_s\)</span>,
+<span class="math" data-tex="\(\sigma_s^\varphi(u_t)=u_su_tu_s^*=u_t\)">\(\sigma_s^\varphi(u_t)=u_su_tu_s^*=u_t\)</span>. Thus the entire implementing group lies in <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span>. PT-03, applied with the opposite sign of its generator, supplies an injective positive affiliated <span class="math" data-tex="\(k\)">\(k\)</span> with</p>
+<span class="math math-display" data-tex="\[
+u_t=k^{-it},\qquad k\text{ affiliated with }M_\varphi.
+\tag{VR.6}
+\]">\[
+u_t=k^{-it},\qquad k\text{ affiliated with }M_\varphi.
+\tag{VR.6}
+\]</span>
+<p>Equivalently, if <span class="math" data-tex="\(u_t=e^{itA}\)">\(u_t=e^{itA}\)</span>, take <span class="math" data-tex="\(k=e^{-A}\)">\(k=e^{-A}\)</span>. The operator <span class="math" data-tex="\(k\)">\(k\)</span> is densely defined and has zero kernel; neither <span class="math" data-tex="\(k\)">\(k\)</span> nor its inverse need be bounded. CZ-08 constructs the faithful normal semifinite weight <span class="math" data-tex="\(\tau=\varphi_k\)">\(\tau=\varphi_k\)</span>, and CZ-11 computes</p>
+<span class="math math-display" data-tex="\[
+\sigma_t^\tau
+=\operatorname{Ad}(k^{it})\circ\sigma_t^\varphi
+=\operatorname{Ad}(k^{it}k^{-it})
+=\operatorname{id}.
+\tag{VR.7}
+\]">\[
+\sigma_t^\tau
+=\operatorname{Ad}(k^{it})\circ\sigma_t^\varphi
+=\operatorname{Ad}(k^{it}k^{-it})
+=\operatorname{id}.
+\tag{VR.7}
+\]</span>
+<p>VR-01 proves that <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is a trace. This proves <span class="math" data-tex="\(3\Rightarrow1\)">\(3\Rightarrow1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="dense-finite-data-do-determine-bounded-sandwiches">Dense finite data do determine bounded sandwiches</h2>
+<p>Let <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> be normal weights, and let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be a sigma-weakly dense *-subalgebra contained in both finite linear domains, on which their linear extensions agree. For <span class="math" data-tex="\(a,b\in\mathcal A\)">\(a,b\in\mathcal A\)</span>, the functionals</p>
+<span class="math math-display" data-tex="\[
+\omega^\theta_{a,b}(x)=\theta(a^*xb),\qquad x\in M,\quad
+\theta\in\{\varphi,\psi\},
+\tag{VR.8}
+\]">\[
+\omega^\theta_{a,b}(x)=\theta(a^*xb),\qquad x\in M,\quad
+\theta\in\{\varphi,\psi\},
+\tag{VR.8}
+\]</span>
+<p>are bounded and normal, with norm at most
+<span class="math" data-tex="\(\theta(a^*a)^{1/2}\theta(b^*b)^{1/2}\)">\(\theta(a^*a)^{1/2}\theta(b^*b)^{1/2}\)</span>. The domains are valid: <span class="math" data-tex="\(\mathcal A\subseteq\mathfrak m_\theta\subseteq\mathfrak n_\theta\cap\mathfrak n_\theta^*\)">\(\mathcal A\subseteq\mathfrak m_\theta\subseteq\mathfrak n_\theta\cap\mathfrak n_\theta^*\)</span>, and the left ideal and product rules put <span class="math" data-tex="\(a^*xb\)">\(a^*xb\)</span> in <span class="math" data-tex="\(\mathfrak m_\theta\)">\(\mathfrak m_\theta\)</span>. The bounded positive sandwich for <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, and polarization, prove normality, as in NW and PV.</p>
+<p>For <span class="math" data-tex="\(x\in\mathcal A\)">\(x\in\mathcal A\)</span>, also <span class="math" data-tex="\(a^*xb\in\mathcal A\)">\(a^*xb\in\mathcal A\)</span>, so the two normal functionals coincide there. Sigma-weak density now yields</p>
+<span class="math math-display" data-tex="\[
+\varphi(a^*xb)=\psi(a^*xb),\qquad
+x\in M,\ a,b\in\mathcal A.
+\tag{VR.9}
+\]">\[
+\varphi(a^*xb)=\psi(a^*xb),\qquad
+x\in M,\ a,b\in\mathcal A.
+\tag{VR.9}
+\]</span>
+<p>This extends bounded functionals, not the unbounded weights themselves. It does not yet identify their values on arbitrary positives.</p>
+<h2 id="gaussian-cutoffs-retain-the-common-finite-tests">Gaussian cutoffs retain the common finite tests</h2>
+<p>Assume now that <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is faithful normal semifinite, that <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is normal, and</p>
+<span class="math math-display" data-tex="\[
+\psi\circ\sigma_t^\varphi=\psi,\qquad
+\sigma_t^\varphi(\mathcal A)=\mathcal A\quad(t\in\mathbb R),
+\tag{VR.10}
+\]">\[
+\psi\circ\sigma_t^\varphi=\psi,\qquad
+\sigma_t^\varphi(\mathcal A)=\mathcal A\quad(t\in\mathbb R),
+\tag{VR.10}
+\]</span>
+<p>with the finite algebra and equality of VR-03. Write <span class="math" data-tex="\(\sigma=\sigma^\varphi\)">\(\sigma=\sigma^\varphi\)</span>.</p>
+<p>HAP-05 supplies contractions <span class="math" data-tex="\(b_j\in\mathcal A\)">\(b_j\in\mathcal A\)</span> tending sigma-strongly* to one. Indeed apply that theorem in a faithful normal representation in which bounded strong* convergence gives the intrinsic topology, or amplify it to test any prescribed finite family of normal positive seminorms. Then
+<span class="math" data-tex="\(a_j=b_j^*b_j\in\mathcal A_+\)">\(a_j=b_j^*b_j\in\mathcal A_+\)</span>, <span class="math" data-tex="\(0\leq a_j\leq1\)">\(0\leq a_j\leq1\)</span>, and <span class="math" data-tex="\(a_j\to1\)">\(a_j\to1\)</span> sigma-strongly*. No monotonicity of this net in the original nonclosed algebra is required. Put</p>
+<span class="math math-display" data-tex="\[
+e_j=\pi^{-1/2}\int_{\mathbb R}e^{-t^2}\sigma_t(a_j)\,dt,\qquad
+\sigma_z(e_j)=\pi^{-1/2}\int_{\mathbb R}e^{-(t-z)^2}\sigma_t(a_j)\,dt.
+\tag{VR.11}
+\]">\[
+e_j=\pi^{-1/2}\int_{\mathbb R}e^{-t^2}\sigma_t(a_j)\,dt,\qquad
+\sigma_z(e_j)=\pi^{-1/2}\int_{\mathbb R}e^{-(t-z)^2}\sigma_t(a_j)\,dt.
+\tag{VR.11}
+\]</span>
+<p>These are weak-star integrals, with <span class="math" data-tex="\(e_j\)">\(e_j\)</span> positive contractive and entire, by CZ-02/CX-03. For each fixed <span class="math" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\sigma_z(e_j)\|\leq e^{(\operatorname{Im}z)^2},
+\qquad \sigma_z(e_j)\longrightarrow1\quad\hbox{sigma-strongly*}.
+\tag{VR.12}
+\]">\[
+\|\sigma_z(e_j)\|\leq e^{(\operatorname{Im}z)^2},
+\qquad \sigma_z(e_j)\longrightarrow1\quad\hbox{sigma-strongly*}.
+\tag{VR.12}
+\]</span>
+<p>To prove the convergence for arbitrary nets, represent <span class="math" data-tex="\(\sigma_t\)">\(\sigma_t\)</span> by <span class="math" data-tex="\(\Delta_\varphi^{it}\)">\(\Delta_\varphi^{it}\)</span>. On a compact time interval, a uniformly bounded strongly convergent net converges uniformly on the compact vector orbit <span class="math" data-tex="\(\{\Delta_\varphi^{-it}\xi\}\)">\(\{\Delta_\varphi^{-it}\xi\}\)</span>. The Gaussian tail is bounded independently of <span class="math" data-tex="\(j\)">\(j\)</span>. Its complex kernel has integral one. This proves strong convergence at each <span class="math" data-tex="\(z\)">\(z\)</span>; apply the conjugate kernel to the adjoints, and amplification to normal positive seminorms, to obtain the stated topology. This argument uses neither sequential dominated convergence for nets nor monotone cutoffs.</p>
+<p>We must also justify the weight values of these integrals. For <span class="math" data-tex="\(\theta=\varphi\)">\(\theta=\varphi\)</span> or <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, the curve
+<span class="math" data-tex="\(t\mapsto\Lambda_\theta(\sigma_t(a_j))\)">\(t\mapsto\Lambda_\theta(\sigma_t(a_j))\)</span> has constant norm. It is norm continuous for <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> by modular covariance. For <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, its squared differences equal those for <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, since every difference and its squared modulus belong to <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Thus the same continuity holds without presuming a modular group for <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Its Gaussian GNS integral exists. Finite Riemann sums converge both sigma-strongly in <span class="math" data-tex="\(M\)">\(M\)</span> and in GNS norm; truncate the time interval first and then its tails. NW-12's closed GNS graph gives</p>
+<span class="math math-display" data-tex="\[
+e_j\in\mathfrak n_\theta\cap\mathfrak n_\theta^*,\qquad
+\Lambda_\theta(e_j)=\pi^{-1/2}\int_{\mathbb R}
+e^{-t^2}\Lambda_\theta(\sigma_t(a_j))\,dt.
+\tag{VR.13}
+\]">\[
+e_j\in\mathfrak n_\theta\cap\mathfrak n_\theta^*,\qquad
+\Lambda_\theta(e_j)=\pi^{-1/2}\int_{\mathbb R}
+e^{-t^2}\Lambda_\theta(\sigma_t(a_j))\,dt.
+\tag{VR.13}
+\]</span>
+<p>For every <span class="math" data-tex="\(s,t\)">\(s,t\)</span>, the elements <span class="math" data-tex="\(\sigma_s(a_j),\sigma_t(a_j)\)">\(\sigma_s(a_j),\sigma_t(a_j)\)</span> are in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Apply (VR.9) to their matrix coefficients and integrate the two GNS vectors in (VR.13). The coefficient bounds are uniform in <span class="math" data-tex="\(s,t\)">\(s,t\)</span>, so the integrals are absolutely convergent. It follows that</p>
+<span class="math math-display" data-tex="\[
+\varphi(e_jxe_j)=\psi(e_jxe_j),\qquad x\in M.
+\tag{VR.14}
+\]">\[
+\varphi(e_jxe_j)=\psi(e_jxe_j),\qquad x\in M.
+\tag{VR.14}
+\]</span>
+<p>Both sides are finite linear values on their actual sandwich domains. This proof does not interchange a general unbounded weight with an operator integral.</p>
+<h2 id="invariance-and-a-dense-invariant-finite-algebra-force-equality">Invariance and a dense invariant finite algebra force equality</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be faithful normal semifinite on <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(\psi\)">\(\psi\)</span> a normal weight invariant under <span class="math" data-tex="\(\sigma^\varphi\)">\(\sigma^\varphi\)</span>. Suppose there is a sigma-weakly dense invariant *-subalgebra
+<span class="math" data-tex="\(\mathcal A\subseteq\mathfrak m_\varphi\cap\mathfrak m_\psi\)">\(\mathcal A\subseteq\mathfrak m_\varphi\cap\mathfrak m_\psi\)</span> on which the weights agree. Then <span class="math" data-tex="\(\psi=\varphi\)">\(\psi=\varphi\)</span> on all <span class="math" data-tex="\(M_+\)">\(M_+\)</span>. In particular <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is faithful.</p>
+<p>The membership in <span class="math" data-tex="\(\mathfrak m_\psi\)">\(\mathfrak m_\psi\)</span> makes the asserted linear equality meaningful. It also proves semifiniteness of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, since that domain is sigma-weakly dense.</p>
+<p><strong>Proof.</strong> Use VR-04's <span class="math" data-tex="\(e_j\)">\(e_j\)</span>. If <span class="math" data-tex="\(x\in M_+\)">\(x\in M_+\)</span> and <span class="math" data-tex="\(\varphi(x)&lt;\infty\)">\(\varphi(x)&lt;\infty\)</span>, the full right multiplier lemma gives</p>
+<span class="math math-display" data-tex="\[
+\Lambda_\varphi(x^{1/2}e_j)
+=R_j\Lambda_\varphi(x^{1/2}),\qquad
+R_j=J_\varphi\sigma_{-i/2}(e_j)J_\varphi.
+\tag{VR.15}
+\]">\[
+\Lambda_\varphi(x^{1/2}e_j)
+=R_j\Lambda_\varphi(x^{1/2}),\qquad
+R_j=J_\varphi\sigma_{-i/2}(e_j)J_\varphi.
+\tag{VR.15}
+\]</span>
+<p>Here <span class="math" data-tex="\(e_j=e_j^*\)">\(e_j=e_j^*\)</span>, and the right product belongs to <span class="math" data-tex="\(\mathfrak n_\varphi\)">\(\mathfrak n_\varphi\)</span>. By (VR.12), <span class="math" data-tex="\(R_j\to1\)">\(R_j\to1\)</span> strongly, with a uniform bound. Consequently</p>
+<span class="math math-display" data-tex="\[
+\varphi(e_jxe_j)\longrightarrow\varphi(x).
+\tag{VR.16}
+\]">\[
+\varphi(e_jxe_j)\longrightarrow\varphi(x).
+\tag{VR.16}
+\]</span>
+<p>The bounded positives <span class="math" data-tex="\(e_jxe_j\)">\(e_jxe_j\)</span> tend sigma-strongly to <span class="math" data-tex="\(x\)">\(x\)</span>. Normal lower semicontinuity, (VR.14) and (VR.16) imply <span class="math" data-tex="\(\psi(x)\leq\varphi(x)\)">\(\psi(x)\leq\varphi(x)\)</span>. The inequality is automatic when <span class="math" data-tex="\(\varphi(x)=\infty\)">\(\varphi(x)=\infty\)</span>, so <span class="math" data-tex="\(\psi\leq\varphi\)">\(\psi\leq\varphi\)</span> on all positives.</p>
+<p>PT-06 now supplies a possibly singular density <span class="math" data-tex="\(h\geq0\)">\(h\geq0\)</span>, affiliated with <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span>, such that <span class="math" data-tex="\(\psi=\varphi_h\)">\(\psi=\varphi_h\)</span>. In fact</p>
+<span class="math math-display" data-tex="\[
+0\leq h\leq1.
+\tag{VR.17}
+\]">\[
+0\leq h\leq1.
+\tag{VR.17}
+\]</span>
+<p>For otherwise some <span class="math" data-tex="\(p=1_{(1+\delta,\infty)}(h)\)">\(p=1_{(1+\delta,\infty)}(h)\)</span>, <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, is nonzero. It belongs to <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span>, and CZ-09 makes <span class="math" data-tex="\(\varphi|_{pMp}\)">\(\varphi|_{pMp}\)</span> faithful normal semifinite. Choose <span class="math" data-tex="\(0\ne y\in(pMp)_+\)">\(0\ne y\in(pMp)_+\)</span> with <span class="math" data-tex="\(\varphi(y)&lt;\infty\)">\(\varphi(y)&lt;\infty\)</span>. The density <span class="math" data-tex="\(h\)">\(h\)</span> dominates <span class="math" data-tex="\((1+\delta)p\)">\((1+\delta)p\)</span> in form order. CZ-08 then yields
+<span class="math" data-tex="\(\psi(y)\geq(1+\delta)\varphi(y)&gt;\varphi(y)\)">\(\psi(y)\geq(1+\delta)\varphi(y)&gt;\varphi(y)\)</span>, contradicting <span class="math" data-tex="\(\psi\leq\varphi\)">\(\psi\leq\varphi\)</span>. Thus every such spectral projection vanishes, proving (VR.17).</p>
+<p>For any <span class="math" data-tex="\(x\in\mathfrak m_\varphi^+\)">\(x\in\mathfrak m_\varphi^+\)</span>, put <span class="math" data-tex="\(B=J_\varphi h^{1/2}J_\varphi\)">\(B=J_\varphi h^{1/2}J_\varphi\)</span>. The bounded density formula and the full right multiplication by the fixed <span class="math" data-tex="\(h^{1/2}\)">\(h^{1/2}\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\psi(x)=\|B\Lambda_\varphi(x^{1/2})\|^2,\qquad
+\psi(e_jxe_j)=\|B R_j\Lambda_\varphi(x^{1/2})\|^2.
+\tag{VR.18}
+\]">\[
+\psi(x)=\|B\Lambda_\varphi(x^{1/2})\|^2,\qquad
+\psi(e_jxe_j)=\|B R_j\Lambda_\varphi(x^{1/2})\|^2.
+\tag{VR.18}
+\]</span>
+<p>In particular, the second value tends to the first. Equality (VR.14) and (VR.16) prove
+<span class="math" data-tex="\(\psi(x)=\varphi(x)\)">\(\psi(x)=\varphi(x)\)</span> for every such finite positive <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>If <span class="math" data-tex="\(h\ne1\)">\(h\ne1\)</span>, (VR.17) supplies a nonzero
+<span class="math" data-tex="\(q=1_{[0,1-\delta]}(h)\)">\(q=1_{[0,1-\delta]}(h)\)</span> for some <span class="math" data-tex="\(0&lt;\delta&lt;1\)">\(0&lt;\delta&lt;1\)</span>.
+Again choose a nonzero finite positive <span class="math" data-tex="\(y\in qMq\)">\(y\in qMq\)</span>. On that corner the bounded density is at most <span class="math" data-tex="\((1-\delta)q\)">\((1-\delta)q\)</span>, so CZ-07 gives</p>
+<span class="math math-display" data-tex="\[
+\psi(y)\leq(1-\delta)\varphi(y)&lt;\varphi(y),
+\tag{VR.19}
+\]">\[
+\psi(y)\leq(1-\delta)\varphi(y)&lt;\varphi(y),
+\tag{VR.19}
+\]</span>
+<p>contradicting the equality just proved. Hence <span class="math" data-tex="\(h=1\)">\(h=1\)</span>, and the all-positive density identity proves <span class="math" data-tex="\(\psi=\varphi\)">\(\psi=\varphi\)</span>, including infinite values. This also proves faithfulness; it was not used to construct a whole-algebra modular group for <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="equal-modular-groups-remove-invariance-of-the-finite-algebra">Equal modular groups remove invariance of the finite algebra</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> be faithful normal semifinite weights with
+<span class="math" data-tex="\(\sigma^\varphi=\sigma^\psi\)">\(\sigma^\varphi=\sigma^\psi\)</span>. If they agree on a sigma-weakly dense *-subalgebra
+<span class="math" data-tex="\(\mathcal A\subseteq\mathfrak m_\varphi\cap\mathfrak m_\psi\)">\(\mathcal A\subseteq\mathfrak m_\varphi\cap\mathfrak m_\psi\)</span>, then they agree on all <span class="math" data-tex="\(M_+\)">\(M_+\)</span>. The algebra need not be invariant.</p>
+<p><strong>Proof.</strong> The weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is invariant under the common modular group, so PT-05 supplies a unique injective <span class="math" data-tex="\(h\geq0\)">\(h\geq0\)</span> affiliated with <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\psi=\varphi_h,\qquad
+\sigma_t^\psi=\operatorname{Ad}(h^{it})\circ\sigma_t^\varphi.
+\tag{VR.20}
+\]">\[
+\psi=\varphi_h,\qquad
+\sigma_t^\psi=\operatorname{Ad}(h^{it})\circ\sigma_t^\varphi.
+\tag{VR.20}
+\]</span>
+<p>Equality of the automorphism groups implies <span class="math" data-tex="\(h^{it}\in Z(M)\)">\(h^{it}\in Z(M)\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>. PT-03's generator uniqueness, or spectral reconstruction of <span class="math" data-tex="\(\log h\)">\(\log h\)</span>, places all spectral projections of <span class="math" data-tex="\(h\)">\(h\)</span> in <span class="math" data-tex="\(Z(M)\)">\(Z(M)\)</span>. Thus <span class="math" data-tex="\(h\)">\(h\)</span> is centrally affiliated.</p>
+<p>VR-03 still applies to <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. For <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span> and any central projection <span class="math" data-tex="\(p\)">\(p\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\psi(a^*pa)=\varphi(a^*pa)&lt;\infty.
+\tag{VR.21}
+\]">\[
+\psi(a^*pa)=\varphi(a^*pa)&lt;\infty.
+\tag{VR.21}
+\]</span>
+<p>If <span class="math" data-tex="\(h\ne1\)">\(h\ne1\)</span>, some nonzero central spectral projection lies either in <span class="math" data-tex="\((1+\delta,\infty)\)">\((1+\delta,\infty)\)</span>, <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, or in <span class="math" data-tex="\([0,1-\delta]\)">\([0,1-\delta]\)</span>, <span class="math" data-tex="\(0&lt;\delta&lt;1\)">\(0&lt;\delta&lt;1\)</span>. For the first choice, <span class="math" data-tex="\(a^*pa=pa^*ap\)">\(a^*pa=pa^*ap\)</span>, and density order gives</p>
+<span class="math math-display" data-tex="\[
+\varphi(a^*pa)=\psi(a^*pa)
+\geq(1+\delta)\varphi(a^*pa).
+\tag{VR.22}
+\]">\[
+\varphi(a^*pa)=\psi(a^*pa)
+\geq(1+\delta)\varphi(a^*pa).
+\tag{VR.22}
+\]</span>
+<p>For the second, compression of the density to <span class="math" data-tex="\(pMp\)">\(pMp\)</span> gives the reverse estimate
+<span class="math" data-tex="\(\psi(a^*pa)\leq(1-\delta)\varphi(a^*pa)\)">\(\psi(a^*pa)\leq(1-\delta)\varphi(a^*pa)\)</span>. In either case faithfulness forces <span class="math" data-tex="\(pa=0\)">\(pa=0\)</span> for every <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span>. Multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> is sigma-weakly continuous; density then gives <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, a contradiction. Thus <span class="math" data-tex="\(h=1\)">\(h=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equal groups alone allow any injective central density in (VR.20). The finite algebra fixes that remaining normalization. On a factor the ambiguity is a single positive scalar; on an arbitrary center it may be an unbounded positive central operator.</p>
+<h2 id="distinct-faithful-weights-on-the-same-dense-finite-algebra">Distinct faithful weights on the same dense finite algebra</h2>
+<p>Let <span class="math" data-tex="\(H=\ell^2(\mathbb N)\)">\(H=\ell^2(\mathbb N)\)</span>, <span class="math" data-tex="\(M=B(H)\)">\(M=B(H)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+A e_n=n^2e_n,\qquad
+\mathcal D=D(A^{1/2})=\{\xi:\sum_{n\geq1}n^2|\xi_n|^2&lt;\infty\},
+\qquad q_A(\xi)=\sum_{n\geq1}n^2|\xi_n|^2.
+\tag{VR.23}
+\]">\[
+A e_n=n^2e_n,\qquad
+\mathcal D=D(A^{1/2})=\{\xi:\sum_{n\geq1}n^2|\xi_n|^2&lt;\infty\},
+\qquad q_A(\xi)=\sum_{n\geq1}n^2|\xi_n|^2.
+\tag{VR.23}
+\]</span>
+<p>The functional <span class="math" data-tex="\(L(\xi)=\sum_n\xi_n\)">\(L(\xi)=\sum_n\xi_n\)</span> is well defined on <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> and continuous in its form norm, since</p>
+<span class="math math-display" data-tex="\[
+|L(\xi)|^2\leq\left(\sum_{n\geq1}n^{-2}\right)q_A(\xi).
+\tag{VR.24}
+\]">\[
+|L(\xi)|^2\leq\left(\sum_{n\geq1}n^{-2}\right)q_A(\xi).
+\tag{VR.24}
+\]</span>
+<p>Restrict <span class="math" data-tex="\(q_A\)">\(q_A\)</span> to <span class="math" data-tex="\(\mathcal D_B=\ker L\)">\(\mathcal D_B=\ker L\)</span>. This is a closed positive form, bounded below by the Hilbert norm squared. Its domain is Hilbert-norm dense: the finitely supported zero-sum space
+<span class="math" data-tex="\(\mathcal D_0\)">\(\mathcal D_0\)</span> is dense. Indeed, to approximate a finitely supported <span class="math" data-tex="\(\eta\)">\(\eta\)</span> with coordinate sum <span class="math" data-tex="\(s\)">\(s\)</span>, subtract <span class="math" data-tex="\(s/m\)">\(s/m\)</span> at each of <span class="math" data-tex="\(m\)">\(m\)</span> new coordinates. The resulting vector has zero sum and Hilbert distance <span class="math" data-tex="\(|s|/\sqrt m\)">\(|s|/\sqrt m\)</span> from <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p>QF's representation theorem gives a positive self-adjoint <span class="math" data-tex="\(B\geq1\)">\(B\geq1\)</span> with</p>
+<span class="math math-display" data-tex="\[
+D(B^{1/2})=\mathcal D_B,\qquad
+\|B^{1/2}\xi\|^2=q_A(\xi)\quad(\xi\in\mathcal D_B).
+\tag{VR.25}
+\]">\[
+D(B^{1/2})=\mathcal D_B,\qquad
+\|B^{1/2}\xi\|^2=q_A(\xi)\quad(\xi\in\mathcal D_B).
+\tag{VR.25}
+\]</span>
+<p>Both <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are affiliated with <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span> and injective. With the usual faithful normal semifinite trace, put
+<span class="math" data-tex="\(\varphi=\tau_A,\ \psi=\tau_B\)">\(\varphi=\tau_A,\ \psi=\tau_B\)</span>. CZ-08/PT-08 prove that these weights are faithful normal semifinite.</p>
+<p>Let <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span> be the finite span of rank-one operators
+<span class="math" data-tex="\(|\xi\rangle\langle\eta|\)">\(|\xi\rangle\langle\eta|\)</span> with <span class="math" data-tex="\(\xi,\eta\in\mathcal D_0\)">\(\xi,\eta\in\mathcal D_0\)</span>.
+Products and adjoints stay in this algebra. It is sigma-weakly dense in <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>: rank-one operators from the dense vector space approximate all rank-one operators in norm, and finite-rank projections tend strongly to one; the compressions of a bounded operator are finite rank and converge sigma-weakly.</p>
+<p>For a rank-one positive,</p>
+<span class="math math-display" data-tex="\[
+\tau_T(|\xi\rangle\langle\xi|)
+=\begin{cases}\|T^{1/2}\xi\|^2,&amp;\xi\in D(T^{1/2}),\\
++\infty,&amp;\xi\notin D(T^{1/2}),\end{cases}
+\qquad T\in\{A,B\}.
+\tag{VR.26}
+\]">\[
+\tau_T(|\xi\rangle\langle\xi|)
+=\begin{cases}\|T^{1/2}\xi\|^2,&amp;\xi\in D(T^{1/2}),\\
++\infty,&amp;\xi\notin D(T^{1/2}),\end{cases}
+\qquad T\in\{A,B\}.
+\tag{VR.26}
+\]</span>
+<p>To verify this identity, evaluate each bounded regularization <span class="math" data-tex="\(T_\varepsilon\)">\(T_\varepsilon\)</span> by the rank-one trace identity, obtaining <span class="math" data-tex="\(\langle T_\varepsilon\xi,\xi\rangle\)">\(\langle T_\varepsilon\xi,\xi\rangle\)</span>, and take its increasing spectral limit. Thus the two weights are finite and equal on rank-one positives from <span class="math" data-tex="\(\mathcal D_0\)">\(\mathcal D_0\)</span>. Polarization places all of <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span> in both finite linear domains and proves equality there. Nevertheless,</p>
+<span class="math math-display" data-tex="\[
+\varphi(|e_1\rangle\langle e_1|)=1,\qquad
+\psi(|e_1\rangle\langle e_1|)=+\infty,
+\tag{VR.27}
+\]">\[
+\varphi(|e_1\rangle\langle e_1|)=1,\qquad
+\psi(|e_1\rangle\langle e_1|)=+\infty,
+\tag{VR.27}
+\]</span>
+<p>because <span class="math" data-tex="\(L(e_1)=1\)">\(L(e_1)=1\)</span>. This is a dense finite algebra with two different faithful normal semifinite weights.</p>
+<p>The algebra fails precisely the invariance assumption used in VR-04. Put <span class="math" data-tex="\(v=e_1-e_2\)">\(v=e_1-e_2\)</span>. Formula (VR.5) sends the rank-one positive of <span class="math" data-tex="\(v\)">\(v\)</span> to that of
+<span class="math" data-tex="\(e_1-4^{it}e_2\)">\(e_1-4^{it}e_2\)</span>, whose coordinate sum is nonzero whenever <span class="math" data-tex="\(4^{it}\ne1\)">\(4^{it}\ne1\)</span>. Every operator of <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span> has range in <span class="math" data-tex="\(\mathcal D_0\)">\(\mathcal D_0\)</span>, so that image is outside <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span>. VR-06 also shows that the two modular groups cannot be equal.</p>
+<p>There is a quantitative picture of the lost form-domain condition. Set</p>
+<span class="math math-display" data-tex="\[
+\xi^{(m)}=e_1-\frac1m\sum_{n=2}^{m+1}e_n,\qquad
+\|\xi^{(m)}-e_1\|^2=\frac1m,\qquad
+q_A(\xi^{(m)})=q_B(\xi^{(m)})
+=1+\frac{(m+1)(m+2)(2m+3)/6-1}{m^2}.
+\tag{VR.28}
+\]">\[
+\xi^{(m)}=e_1-\frac1m\sum_{n=2}^{m+1}e_n,\qquad
+\|\xi^{(m)}-e_1\|^2=\frac1m,\qquad
+q_A(\xi^{(m)})=q_B(\xi^{(m)})
+=1+\frac{(m+1)(m+2)(2m+3)/6-1}{m^2}.
+\tag{VR.28}
+\]</span>
+<p>The vectors converge in Hilbert norm to <span class="math" data-tex="\(e_1\)">\(e_1\)</span>, and their rank-one positives converge in operator norm, while their common energies tend to infinity. The endpoint has energy <span class="math" data-tex="\(1\)">\(1\)</span> for one closed form and infinite energy for the other. Normality supplies lower semicontinuity; it does not identify these two limits.</p>
+<h2 id="problems-with-complete-solutions">Problems with complete solutions</h2>
+<p><strong>Problem 1. Check the sign of the trace-producing density.</strong> On <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, let <span class="math" data-tex="\(\varphi(x)=\operatorname{Tr}(dx)\)">\(\varphi(x)=\operatorname{Tr}(dx)\)</span>, <span class="math" data-tex="\(d=\operatorname{diag}(1,4)\)">\(d=\operatorname{diag}(1,4)\)</span>, and choose <span class="math" data-tex="\(u_t=d^{it}\)">\(u_t=d^{it}\)</span>. Find the <span class="math" data-tex="\(k\)">\(k\)</span> in (VR.6) and <span class="math" data-tex="\(\varphi_k\)">\(\varphi_k\)</span>. What happens if the implementer is replaced by <span class="math" data-tex="\(c^{it}u_t\)">\(c^{it}u_t\)</span>, <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>?</p>
+<p><strong>Solution.</strong> The correct density is <span class="math" data-tex="\(k=d^{-1}\)">\(k=d^{-1}\)</span>; its positive square root commutes with <span class="math" data-tex="\(d\)">\(d\)</span>, and trace cyclicity gives
+<span class="math" data-tex="\(\varphi_k(x)=\operatorname{Tr}(x)\)">\(\varphi_k(x)=\operatorname{Tr}(x)\)</span> for every positive matrix. The new implementer has generator <span class="math" data-tex="\(\log d+(\log c)1\)">\(\log d+(\log c)1\)</span>, so its cancelling density is <span class="math" data-tex="\(c^{-1}d^{-1}\)">\(c^{-1}d^{-1}\)</span>, and its trace is <span class="math" data-tex="\(c^{-1}\operatorname{Tr}\)">\(c^{-1}\operatorname{Tr}\)</span>. An inner implementation produces a trace but does not select its scalar normalization.</p>
+<p><strong>Problem 2. Identify the central ambiguity exactly.</strong> On
+<span class="math" data-tex="\(M=\prod_{i\in I}M_2(\mathbb C)\)">\(M=\prod_{i\in I}M_2(\mathbb C)\)</span>, let
+<span class="math" data-tex="\(\varphi(x)=\sum_i\operatorname{Tr}(d_i x_i)\)">\(\varphi(x)=\sum_i\operatorname{Tr}(d_i x_i)\)</span> with each <span class="math" data-tex="\(d_i&gt;0\)">\(d_i&gt;0\)</span>, and
+<span class="math" data-tex="\(\psi(x)=\sum_i c_i\operatorname{Tr}(d_i x_i)\)">\(\psi(x)=\sum_i c_i\operatorname{Tr}(d_i x_i)\)</span> with finite <span class="math" data-tex="\(c_i&gt;0\)">\(c_i&gt;0\)</span>. Show that the groups agree even if <span class="math" data-tex="\(c_i\)">\(c_i\)</span> has no common upper or lower bound. If the weights agree on the finite-coordinate matrix algebra, determine every <span class="math" data-tex="\(c_i\)">\(c_i\)</span>.</p>
+<p><strong>Solution.</strong> The density <span class="math" data-tex="\(h_i=c_i1_2\)">\(h_i=c_i1_2\)</span> is injective and centrally affiliated, with full spectral square-summability domain in the block Hilbert space. Formula (VR.20) gives identical block modular groups. Finite-coordinate positives have finite weight, proving semifiniteness without countability of <span class="math" data-tex="\(I\)">\(I\)</span>. Testing the identity in a single block gives
+<span class="math" data-tex="\((c_i-1)\operatorname{Tr}(d_i)=0\)">\((c_i-1)\operatorname{Tr}(d_i)=0\)</span>, hence <span class="math" data-tex="\(c_i=1\)">\(c_i=1\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. The groups retain the relative eigenvalues in each <span class="math" data-tex="\(d_i\)">\(d_i\)</span>; the finite tests retain the mass of each block.</p>
+<p><strong>Problem 3. Why the counterexample survives norm density of vectors.</strong> Verify the norm convergence of the rank-one positives in (VR.28), and explain why it does not contradict normality of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>.</p>
+<p><strong>Solution.</strong> For bounded vectors,</p>
+<span class="math math-display" data-tex="\[
+\big\||\xi\rangle\langle\xi|-|\eta\rangle\langle\eta|\big\|
+\leq(\|\xi\|+\|\eta\|)\|\xi-\eta\|.
+\tag{VR.29}
+\]">\[
+\big\||\xi\rangle\langle\xi|-|\eta\rangle\langle\eta|\big\|
+\leq(\|\xi\|+\|\eta\|)\|\xi-\eta\|.
+\tag{VR.29}
+\]</span>
+<p>Apply this with <span class="math" data-tex="\(\xi=\xi^{(m)}\)">\(\xi=\xi^{(m)}\)</span>, <span class="math" data-tex="\(\eta=e_1\)">\(\eta=e_1\)</span>, and
+<span class="math" data-tex="\(\|\xi^{(m)}\|^2=1+1/m\)">\(\|\xi^{(m)}\|^2=1+1/m\)</span>. The right side tends to zero. The energies in (VR.28) grow asymptotically as <span class="math" data-tex="\(m/3\)">\(m/3\)</span>; their lower limit is infinite, consistent with <span class="math" data-tex="\(\psi\)">\(\psi\)</span>'s infinite endpoint. The finite endpoint for <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is also consistent with lower semicontinuity. No monotone positive approximation or uniformly bounded energy was asserted.</p>
+<p><strong>Problem 4. Locate the only unbounded limit used in recognition.</strong> Why can VR-05 pass from the finite tests to all positives, when VR-07 cannot?</p>
+<p><strong>Solution.</strong> The invariant algebra supplies entire <span class="math" data-tex="\(e_j\)">\(e_j\)</span> whose right multiplication on the GNS space is the uniformly bounded family <span class="math" data-tex="\(R_j\to1\)">\(R_j\to1\)</span>. The common sandwich values therefore converge in the actual finite-energy norm. Lower semicontinuity first gives a global domination; spectral testing then bounds the invariant density, and the same GNS convergence forces it to be one. VR-07's approximants have unbounded energy and its dense algebra is not invariant. They supply neither the analytic right-multiplier convergence nor the central density conclusion.</p>
+<p>These results author the full source statements VIII.3.14–3.16, retaining arbitrary normal semifinite weights in the trace-density clause and proving faithfulness in invariant recognition. Closed half-strip domination, analytic cocycle endpoints and the remaining VIII.3 results lie outside this lesson. The proofs here are relative to the named prerequisites, which are not proved in this lesson.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-PT.html">← Recognizing invariant weights by their densities</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-HS.html">Weight domination and exact half-strip endpoints →</a></span></nav>
+<p class="small source-link"><a href="src/inner-flow-and-weight-rigidity.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

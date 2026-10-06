@@ -15,7 +15,7 @@ These are actual preceding algebra proofs, including the convention on crossed p
 Our arithmetic prerequisites are [Local reciprocity and norm groups](local-reciprocity-and-norm-groups.md), [The norm-index bound and Hasse's norm theorem](the-norm-index-bound-and-hasses-norm-theorem.md), and [The global reciprocity law](the-global-reciprocity-law.md). Their proofs precede the present Brauer reformulation. The invariant is normalized by **arithmetic** Frobenius: an unramified cyclic algebra with Frobenius generator and uniformizer parameter has invariant \(1/n\).
 
 
-**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-24) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-24) shows which results are proved in published lessons and which full proofs are still missing. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
 
 ## 1. Cohomological tools for a finite extension
 

@@ -15360,6 +15360,1359 @@ The norm calculation above does not rule out such a class: it excludes one natur
 
 Further reading: [Hilsum–Skandalis, *Morphismes K-orientés d'espaces de feuilles et fonctorialité en théorie de Kasparov*](https://www.numdam.org/article/ASENS_1987_4_20_3_325_0.pdf), pp. 326–327 and 350–355; [Connes–Moscovici, *The local index formula in noncommutative geometry*](https://repo-archives.ihes.fr/FONDS_IHES/I_Prepublications/CONNES/1994-1998/M_95_19/M_95_19.pdf), preprint pp. 12–16; [Emerson, *An Introduction to C*-Algebras and Noncommutative Geometry*](https://doi.org/10.1007/978-3-031-59850-0), Section 11.5, pp. 524–529, especially Lemma 11.5.8 and Theorem 11.5.10.
 
+## 11J. A scalar index-one class from a proper factorization
+
+Original exposition and proofs in this reading are dedicated to the public domain under CC0. The group is discrete and countable, and all coefficient algebras are separable and graded. Hilbert-module inner products are linear in the second variable.
+
+We use the construction, naturality and product law for full and reduced descent proved in Descent and the K-theory of crossed products, Sections 1–3, especially Theorems 2.2 and 3.2 and equation (3.9). The ordinary and equivariant products and their associativity are proved in Equivariant KK-theory and the Green–Julg theorem. The norm conventions are those of Reduced crossed products and Fell's absorption principle. These results are used with their coefficient algebras retained.
+
+### 11J.1. A proper coefficient has only one crossed-product norm
+
+A proper \(\Gamma\)-algebra means an algebra \(P\) with an equivariant nondegenerate central homomorphism
+\[
+ C_0(X)\longrightarrow ZM(P)
+ \tag{AU.1}
+\]
+for a second-countable locally compact Hausdorff proper \(\Gamma\)-space \(X\). Properness means that \((g,x)\mapsto(gx,x)\) is proper. Finite stabilizers are allowed.
+
+**Lemma 11J.1 (a square-normalized cutoff).** There is a nonnegative continuous function \(c:X\to[0,1]\) such that
+\[
+ \sum_{g\in\Gamma}c(g^{-1}x)^2=1.
+ \tag{AU.2}
+\]
+For each compact \(K\subset X\), only finitely many \(g\) have \(c(g^{-1}x)\ne0\) at some \(x\in K\).
+
+**Proof.** The quotient \(Q=X/\Gamma\) is locally compact Hausdorff and second countable. The closed orbit relation and openness of the quotient prove this, as in Lemma 9.1 of Proper actions, free actions and the orbit space. In particular \(Q\) is paracompact. For each orbit choose a nonnegative compactly supported bump \(\phi_i\) on \(X\), positive at a point of that orbit. The open sets
+\(V_i=q(\{\phi_i>0\})\) cover \(Q\). Choose a locally finite partition of unity \(\rho_i\) subordinate to a locally finite refinement of these sets, relabeling the corresponding bumps. We may arrange \(\operatorname{supp}\rho_i\subset V_i\); the partition is obtained by a locally finite relatively compact shrinking and normalizing its nonnegative bumps.
+
+Set
+\[
+ b(x)=\sum_i \rho_i(q(x))\phi_i(x),\qquad
+ S(x)=\sum_g b(g^{-1}x)^2.
+ \tag{AU.3}
+\]
+The first sum is locally finite. On a compact \(K\subset X\), only finitely many indices \(i\) can occur, because the partition is locally finite on the compact \(q(K)\). For each such \(i\), properness makes the transporter from \(\operatorname{supp}\phi_i\) to \(K\) finite. Thus the second sum is locally finite near every compact set. Every orbit has some point where \(b>0\), since an index with \(\rho_i(q(x))>0\) has \(q(x)\in V_i\). Consequently \(S\) is continuous and strictly positive. It is invariant by reindexing. The function \(c=b/S^{1/2}\) satisfies (AU.2), lies in \([0,1]\), and has the asserted local support property. No compactness of \(Q\) is assumed. \(\square\)
+
+**Theorem 11J.2 (proper coefficient quotient).** The canonical surjection
+\[
+ q_P:P\rtimes_{\max}\Gamma\longrightarrow P\rtimes_r\Gamma
+ \tag{AU.4}
+\]
+is an actual *-isomorphism.
+
+**Proof.** Let \((\pi,U)\) be any nondegenerate covariant representation on \(H\). Central nondegeneracy in (AU.1) extends \(\pi\) to the bounded continuous central multipliers used below. Put \(c_g(x)=c(g^{-1}x)\). The finite partial sums of \(\sum c_g^2\) converge strictly to \(1\): they are bounded by \(1\), and are eventually exactly \(1\) on each compact set. Multiplication by a compactly supported \(C_0(X)\)-function therefore converges in norm; its products with \(P\) are dense by (AU.1). This proves strict convergence on \(P\). A nondegenerate representation carries bounded strict convergence to strong convergence. Hence
+\[
+ J:H\longrightarrow H\otimes\ell^2\Gamma,\qquad
+ J\xi=\sum_g\pi(c_g)\xi\otimes\delta_g
+ \tag{AU.5}
+\]
+is an isometry. There is no convergence claim for the unweighted sum of the multipliers themselves.
+
+Centrality gives \(J\pi(a)=(\pi(a)\otimes1)J\). Our convention is \(\alpha_h(f)(x)=f(h^{-1}x)\). Thus
+\(\alpha_h(c_{h^{-1}g})=c_g\), and covariance gives
+\[
+ JU_h=(U_h\otimes\lambda_h)J,\qquad
+ \lambda_h\delta_g=\delta_{hg}.
+ \tag{AU.6}
+\]
+Indeed the output coordinate \(g\) on the right is
+\(U_h\pi(c_{h^{-1}g})\xi=\pi(c_g)U_h\xi\).
+Every integrated polynomial in \((\pi,U)\) is therefore a compression of its diagonal amplification.
+
+The unitary
+\[
+ W(\xi\otimes\delta_g)=U_g^{-1}\xi\otimes\delta_g
+ \tag{AU.7}
+\]
+sends that diagonal amplification to the regular covariant representation:
+the coefficient at coordinate \(g\) is \(\pi(\alpha_{g^{-1}}(a))\), and a group element acts by \(1\otimes\lambda_h\). The regular norm bounds the norm of this representation even when \(\pi\) is not faithful: this is the representation-independence assertion in the reduced-crossed-product reading. Thus every full covariant norm is at most the reduced norm. The reverse inequality holds because regular covariant representations are among the full ones. Equality on the dense finite convolution algebra proves injectivity of (AU.4), and its defining quotient is onto. Grading is preserved throughout. \(\square\)
+
+### 11J.2. The forgetful unit is sufficient
+
+Write \(M=C_{\max}^*\Gamma\), \(R=C_r^*\Gamma\), \(q:M\to R\). Write \(u_m:\mathbb C\to M\) and \(u_r:\mathbb C\to R\) for the unit inclusions. The trivial character \(\epsilon:M\to\mathbb C\) exists on the full algebra, with \(\epsilon(u_g)=1\).
+
+**Theorem 11J.3 (the proper-factorization construction).** Suppose \(P\) is a proper algebra as above and
+\[
+ \eta\in KK^\Gamma(\mathbb C,P),\qquad
+ d\in KK^\Gamma(P,\mathbb C),\qquad
+ \operatorname{For}(\eta\otimes_Pd)=1_{\mathbb C}.
+ \tag{AU.8}
+\]
+The classes here have even degree; \(P\) may have a nontrivial grading. There is an even class
+\[
+ \begin{aligned}
+ \kappa={}&j_r(\eta)\otimes_{P\rtimes_r\Gamma}[q_P]^{-1}\\
+ &\otimes_{P\rtimes_{\max}\Gamma}j_{\max}(d)
+       \otimes_M[\epsilon]\ \in KK(R,\mathbb C)
+ \end{aligned}
+ \tag{AU.9}
+\]
+such that
+\[
+ [u_r]\otimes_R\kappa=1_{\mathbb C}.
+ \tag{AU.10}
+\]
+Here \([q_P]^{-1}\) is the class of the inverse *-isomorphism from Theorem 11J.2. It is not an assumed inverse for \(q\).
+
+**Proof.** The coefficient square (3.9) of the descent reading gives, with all intermediate algebras displayed,
+\[
+ [q]\otimes_R j_r(\eta)
+   =j_{\max}(\eta)\otimes_{P\rtimes_{\max}\Gamma}[q_P].
+ \tag{AU.11}
+\]
+After multiplying by the remaining factors in (AU.9), cancellation of the actual coefficient isomorphism and the product law for full descent give
+\[
+ [q]\otimes_R\kappa
+   =j_{\max}(\gamma)\otimes_M[\epsilon],
+ \qquad \gamma=\eta\otimes_Pd.
+ \tag{AU.12}
+\]
+This is an identity from \(M\) to \(\mathbb C\).
+
+We verify explicitly the scalar evaluation of its right side. Represent \(\gamma\) by an equivariant graded Hilbert-space cycle \((H,U,F)\), on its unital essential part, with \(F\) self-adjoint, odd and contractive. Full scalar descent has core \(C_c(\Gamma,H)\), right coefficient \(M\), and inner product
+\[
+ \langle\xi,\zeta\rangle(h)
+     =\sum_g\langle\xi(g),\zeta(gh)\rangle_H.
+ \tag{AU.13}
+\]
+After tensoring the right coefficient with \(\epsilon\), the map
+\[
+ \xi\otimes z\longmapsto z\sum_g\xi(g)
+ \tag{AU.14}
+\]
+is isometric: applying \(\epsilon\) to (AU.13) sums over \(g,h\), giving the Hilbert-space inner product of the two finite vector sums. This map respects right balancing, since augmenting a convolution multiplies its vector sum by \(\epsilon\) of the coefficient. Vectors supported at the identity prove that it has dense range and hence is onto. The descended operator is pointwise \(F\), so (AU.14) carries it to \(F\). Left multiplication by a group element \(h\) sends \(\xi(g)\) to \(U_h\xi(h^{-1}g)\); its vector sum is \(U_h\sum_g\xi(g)\). Thus the balanced cycle retains the representation \(U\) of \(M\). Pulling its source back by \(u_m\) removes that representation and leaves precisely the ordinary graded cycle \((H,F)\). The same argument handles degenerate summands and homotopies. Consequently
+\[
+ [u_m]\otimes_Mj_{\max}(\gamma)\otimes_M[\epsilon]
+       =\operatorname{For}(\gamma).
+ \tag{AU.15}
+\]
+Finally \(q u_m=u_r\), and (AU.12), (AU.15) and (AU.8) prove (AU.10). No reduced trivial character was used. \(\square\)
+
+**Corollary 11J.4 (an integral unit splitting).** The class \([1_R]\) generates a direct \(\mathbb Z\)-summand of \(K_0(R)\).
+
+**Proof.** The index pairing \(\ell(x)=x\otimes_R\kappa\) is a homomorphism \(K_0(R)\to K_0(\mathbb C)=\mathbb Z\), and (AU.10) says \(\ell([1_R])=1\). For every \(x\),
+\[
+ x=\ell(x)[1_R]+\bigl(x-\ell(x)[1_R]\bigr),
+ \qquad K_0(R)=\mathbb Z[1_R]\oplus\ker\ell.
+ \tag{AU.16}
+\]
+The second summand lies in \(\ker\ell\), and a multiple of the unit in that kernel has coefficient zero. This is an integral splitting, without a universal-coefficient theorem. \(\square\)
+
+An infinite-order unit, or a unit that is not a nontrivial integer multiple, is a weaker algebraic assertion than the splitting in (AU.16). A real trace with value \(1\) on the unit is not a substitute for the integral homomorphism \(\ell\), and an arbitrary homomorphism on \(K_0\) has not thereby been lifted to a KK-class.
+
+### 11J.3. Ordinary identity and equivariant identity
+
+The hypothesis (AU.8) concerns the ordinary forgetful class. It does not require \(\gamma=1\) in \(KK^\Gamma(\mathbb C,\mathbb C)\). If that stronger identity holds, (AU.12) becomes \([q]\otimes_R\kappa=[\epsilon]\). Together with the dual Green–Julg correspondence for discrete groups, that is a weakly regular representative of the equivariant unit and implies K-amenability. Neither this stronger identity nor invertibility of the group quotient follows from (AU.10).
+
+For precision, suppose \(\Gamma\) is infinite and has property \(T\). Its full Kazhdan projection \(p\) satisfies \(q(p)=0\) and \(\epsilon(p)=1\). The full proof is Proposition 8.4 of Descent and the K-theory of crossed products: a finite Kazhdan gap gives a continuous spectral projection, and the regular representation has no invariant vector. For every class \(\kappa\in KK(R,\mathbb C)\), \(p\otimes_M[q]\otimes_R\kappa=0\). Therefore \([q]\otimes_R\kappa\ne[\epsilon]\). This obstruction addresses the equivariant identity, not the ordinary unit index. It does not contradict Theorem 11J.3 with only the forgetful hypothesis.
+
+
+### 11J.4. The exact existence premise and diagram
+
+Theorem 11J.3 proves the scalar consequence of a supplied proper factorization with forgetful product one. It does not construct that factorization for an arbitrary countable group or holonomy groupoid. The latter existence theorem is an additional prerequisite. For related geometric constructions see Guentner, Higson and Weinberger, [*The Novikov Conjecture for Linear Groups*](https://math.hawaii.edu/~erik/papers/linear.pdf), Theorem 4.1 and Section 6, and Tu, [*La conjecture de Baum–Connes pour les feuilletages moyennables*](https://citeseerx.ist.psu.edu/document?doi=486238991671dba031f9cb078eeba25443307a0a&repid=rep1&type=pdf), Sections 6–9. These reading references do not replace a proof of the required existence premise.
+
+![The cutoff isometry and the four typed factors of the scalar unit-index construction](../figures/proper-auxiliary.png)
+
+**Figure 11J.1.** Lemma 11J.1, Theorems 11J.2–11J.3 and Corollary 11J.4, equations (AU.1)–(AU.16). Panel A shows the exact square normalization, compression isometry and absorption unitary; all finite stabilizers are retained. Panel B shows the sources and targets of all four KK factors and the exact forgetful evaluation. The inverse is the proper coefficient quotient's actual inverse; no inverse of the group quotient is assumed. This is an algebraic diagram, not a claim that all such factorizations exist. Original mathematical expression is CC0 1.0; bundled glyphs retain their component terms.
+
+[Editable SVG](../figures/proper-auxiliary.svg) · [Reproducible source](../reproduction/proper-regular-auxiliary/draw_proper.py).
+
+## 11K. Regularization by a scalar index-one auxiliary
+
+The regular representation supplies the reduced norm. It does not, by itself, supply the auxiliary Fredholm index or a Dirac operator on a holonomy graph. The following result separates these assertions. It applies to every countable discrete action satisfying its stated auxiliary premise, rather than to a selected family of groups.
+
+The KK products, scalar classification and homotopy rules used below are proved in K-theory of the leaf space, Section 0, especially Scalar classification through the stable corona. The prescribed inverse coefficient is the one in Theorem 7.17, under The actual coefficient transfer of a Thom inverse. These are proof prerequisites, not replacements by literature citations.
+
+### 11K.1. An exact norm-preserving map
+
+Let \(\Gamma\) be a countable discrete group acting by automorphisms \(\alpha\) on a separable unital C*-algebra \(A\). Write
+
+\[
+ B_m=A\rtimes_{\max}\Gamma,\qquad B_r=A\rtimes_r\Gamma,
+ \qquad R=C_r^*(\Gamma),\qquad q:B_m\longrightarrow B_r.
+ \tag{RA.1}
+\]
+
+The convention is \(u_ga u_g^{-1}=\alpha_g(a)\), and \(\lambda_g\delta_h=\delta_{gh}\). Denote the coefficient inclusions by \(i_m:A\to B_m\) and \(i_r:A\to B_r\). All tensor products of algebras in this subsection are minimal spatial tensor products.
+
+**Theorem 11K.1 (regular diagonal map).** The formula
+
+\[
+ \Delta_r\!\left(\sum_g a_gu_g\right)
+       =\sum_g i_m(a_g)u_g\otimes\lambda_g
+ \tag{RA.2}
+\]
+
+extends to an isometric *-homomorphism \(B_r\to B_m\otimes R\). In particular
+
+\[
+ \Delta_r i_r(a)=i_m(a)\otimes1_R.
+ \tag{RA.3}
+\]
+
+No amenability, exactness, nuclearity, freeness or invariant measure is assumed.
+
+**Proof.** Choose a faithful unital representation \(\rho\) of \(B_m\) on a Hilbert space \(H\). Set \(\pi=\rho i_m\) and \(U_g=\rho(u_g)\). The coefficient inclusion is faithful: a faithful representation of \(A\) has its regular covariant extension, whose restriction to the identity coordinate is that representation. Its norm is among the norms defining the maximal completion. Therefore \(\pi\) is faithful on \(A\).
+
+On \(H\otimes\ell^2(\Gamma)\), define the onto unitary
+
+\[
+ W(\xi\otimes\delta_h)=U_h^{-1}\xi\otimes\delta_h,
+ \qquad W^*(\xi\otimes\delta_h)=U_h\xi\otimes\delta_h.
+ \tag{RA.4}
+\]
+
+Coordinate substitution gives
+
+\[
+ \begin{aligned}
+  \bigl(W(\pi(a)\otimes1)W^*\eta\bigr)_h
+       &=\pi(\alpha_{h^{-1}}(a))\eta_h,\\
+  W(U_g\otimes\lambda_g)W^*&=1_H\otimes\lambda_g.
+ \end{aligned}
+ \tag{RA.5}
+\]
+
+For the second equation, the output at \(h\) before applying \(W\) is \(U_gU_{g^{-1}h}\eta_{g^{-1}h}=U_h\eta_{g^{-1}h}\). The factor \(U_h^{-1}\) cancels it. Thus the represented right-hand side of (RA.2) is unitarily the regular covariant representation associated to the faithful \(\pi\). Its norm is the defining reduced norm of the polynomial.
+
+The representation \(\rho\otimes\lambda\) is faithful on the minimal tensor product, by its spatial-norm construction from faithful factor representations. Consequently (RA.2) has exactly that reduced norm in \(B_m\otimes R\). Covariance verifies multiplication and involution on polynomials: the term for \((a_gu_g)(b_hu_h)\) is \(a_g\alpha_g(b_h)u_{gh}\otimes\lambda_{gh}\). It agrees with multiplying their two images. Completion therefore gives an isometric *-homomorphism. Formula (RA.3) is its identity-coordinate term. \(\square\)
+
+This proof is an explicit absorption argument. It does not assert that the original geometric representation \((\pi,U)\) is reduced. The representation being regularized acts on the larger tensor Hilbert space.
+
+### 11K.2. Exactly which auxiliary index is sufficient
+
+Let \(u:\mathbb C\to R\) be the unit homomorphism. An **ordinary scalar index-one auxiliary** means an even class \(\kappa\in KK(R,\mathbb C)\) satisfying
+
+\[
+ [u]\otimes_R\kappa=1_{\mathbb C}
+       \quad\hbox{in }KK(\mathbb C,\mathbb C).
+ \tag{RA.6}
+\]
+
+By scalar classification this is equivalent to \(\langle[1_R],\kappa\rangle=+1\). A representative is a graded scalar Fredholm module with a representation of \(R\); its group representation is thus weakly contained in the regular representation. Equation (RA.6) is a KK left inverse for the unit inclusion. Theorem 11J.3 supplies it from a proper factorization with forgetful product one. It is not a consequence of countability or the existence of \(\lambda\).
+
+**Theorem 11K.2 (reduced replacement preserving the ordinary normal class).** Let \(d_m\in KK^q(B_m,\mathbb C)\), with its complete coefficient and grading, and suppose (RA.6). Then
+
+\[
+ d_r=[\Delta_r]\otimes_{B_m\otimes R}(d_m\boxtimes\kappa)
+       \in KK^q(B_r,\mathbb C)
+ \tag{RA.7}
+\]
+
+satisfies the entire ordinary restriction identity
+
+\[
+ [i_r]\otimes_{B_r}d_r=[i_m]\otimes_{B_m}d_m
+       \quad\hbox{in }KK^q(A,\mathbb C).
+ \tag{RA.8}
+\]
+
+If \(b\in KK^q(\mathbb C,A)\) has prescribed normal Bott product \(b\otimes_A[i_m]\otimes d_m=+1\), then
+
+\[
+ (b\otimes_A[i_r])\otimes_{B_r}d_r=+1.
+ \tag{RA.9}
+\]
+
+**Proof.** Let \(j:B_m\to B_m\otimes R\), \(j(x)=x\otimes1\). Equation (RA.3) gives \(\Delta_r i_r=j i_m\). Naturality and associativity of the proved KK product imply
+
+\[
+ \begin{aligned}
+ [i_r]\otimes d_r
+   &=[i_m]\otimes[j]\otimes(d_m\boxtimes\kappa)\\
+   &=[i_m]\otimes\bigl(d_m\boxtimes([u]\otimes_R\kappa)\bigr)\\
+   &=[i_m]\otimes d_m.
+ \end{aligned}
+ \tag{RA.10}
+\]
+
+The second equality is the tensor functoriality on the second, scalar auxiliary factor. That factor is even and equals the scalar unit by (RA.6). No two odd factors were interchanged, and no orientation sign has been inserted. Compose this full equality with the original \(b\), in its original coordinate order, to obtain (RA.9). \(\square\)
+
+The theorem preserves much more than a single integer: it preserves the ordinary \(A\)-K-homology restriction as a class. It does **not** assert \([q]\otimes d_r=d_m\), nor an equivariant restriction identity. The stronger claims require their own hypotheses.
+
+For a compact transversal \(N\), take \(A=C(N)\). If the given restriction is the full inverse normal class, its right Clifford block and its spin-c line are retained in the first factor of (RA.7). With \(k_q=q(q-1)/2\), its local finite module remains
+
+\[
+ \Pi^{k_q}C_q,\qquad
+ c_{\rm phys}(e_j)=(-1)^{k_q+1}L_{t_j},\qquad
+ zs\longmapsto z^{-1}\rho_t(s).
+ \tag{RA.11}
+\]
+
+These are Theorem 7.17's actual inverse, not a newly chosen positive spinor convention. The determinant of the inverse line has phase \(z^{-2}\); it cannot recover the full phase \(z^{-1}\). The even auxiliary changes neither the transverse degree nor that inverse order. Under a diagonal return its additional scalar representation acts as a separate tensor factor; it does not erase the normal factor's coherent transport. This observation does not make its equivariant KK class the identity.
+
+### 11K.3. An analytic realization when the additional operator data are supplied
+
+The abstract class (RA.7) is not a claimed finite-order graph differential operator. Here is a complete unbounded realization at the discrete-action level under precise extra premises.
+
+Assume a full degree-\(q\) normal cycle \(d_m\) is represented in the usual graded Clifford picture by \((H_N,D_N,\pi_N,U)\). Retain the finite right \(C_q\) block until its prescribed parity encoding. Assume:
+
+- \(D_N\) is odd and self-adjoint, with compact resolvent, and has a supplied core \(\mathcal C_N\). Its coefficient representation and grading are fixed.
+- On a dense \(\Gamma\)-invariant smooth *-algebra \(A_0\subset A\), \(\pi_N(a)\) preserves its domain and \([D_N,\pi_N(a)]\) is bounded. Each \(U_g\) is even, preserves the domain, and \([D_N,U_g]\) is bounded.
+- \(\kappa\) has a graded representative \((H_K,\gamma_K,D_K,V)\), where \(D_K\) is odd, self-adjoint with compact resolvent and core \(\mathcal C_K\), \(V\) factors through \(R\), each \(V_g\) is even, preserves the domain, and \([D_K,V_g]\) is bounded. Its scalar index is \(+1\).
+
+For a compact metric spin-c manifold, the normal commutator hypotheses admit a noninvariant connection. The given coherent metric spin-c lift transports the first-order Clifford symbol. The difference of the transported Dirac and the original Dirac therefore has zero principal symbol, so is a smooth zeroth-order endomorphism. Compactness bounds it. This does not assume an invariant connection, and does not provide a uniform bound as \(g\) varies; a finite group polynomial needs only its finitely many bounds.
+
+Theorem 11L.1 and Corollary 11L.2 supply the stated auxiliary operator, domain and core from any given even scalar class \(\kappa\). They preserve its exact unit pairing and reduced representation. Thus these auxiliary operator data do not impose a further existence premise once the class is supplied. The specified normal cycle and its graph transport still require their own construction.
+
+Place the even auxiliary first and the old normal Clifford block second. Define
+
+\[
+ \begin{aligned}
+  H&=H_K\widehat\otimes H_N,\\
+  D&=D_K\widehat\otimes1+\gamma_K\widehat\otimes D_N,\\
+  \Pi\!\left(\sum_g a_gu_g\right)
+      &=\sum_g V_g\widehat\otimes\pi_N(a_g)U_g,\\
+  \operatorname{Dom}D
+      &=\operatorname{Dom}(D_K\otimes1)
+           \cap\operatorname{Dom}(1\otimes D_N).
+ \end{aligned}
+ \tag{RA.12}
+\]
+
+All operators here use the displayed ordinary Hilbert-space action of the graded sum, including \(\gamma_K\) exactly once. The finite right Clifford action is unchanged.
+
+**Proposition 11K.3.** The closure on \(\mathcal C_K\odot\mathcal C_N\) is self-adjoint on exactly (RA.12), has compact resolvent, and its bounded transform is a degree-\(q\) reduced scalar Kasparov cycle. It represents (RA.7) for the supplied \(d_m,\kappa\).
+
+**Proof: closure, domain and compactness.** The two odd summands anticommute. On the algebraic core,
+
+\[
+ D^2=D_K^2\otimes1+1\otimes D_N^2,\qquad
+ \|D\xi\|^2=\|(D_K\otimes1)\xi\|^2
+                   +\|(1\otimes D_N)\xi\|^2.
+ \tag{RA.13}
+\]
+
+Here are the compact spectral facts needed for the closure. For a nonzero positive compact operator \(T\), let \(\lambda=\|T\|\) and choose unit vectors \(v_n\) with \(\langle Tv_n,v_n\rangle\to\lambda\). Positivity and \(T^2\leq\lambda T\) give \(\|(T-\lambda)v_n\|^2\leq\lambda(\lambda-\langle Tv_n,v_n\rangle)\to0\). Compactness gives a convergent subsequence of \(Tv_n\); the displayed estimate then gives a unit limit of \(v_n\), which is a \(\lambda\)-eigenvector. Remove its whole eigenspace and repeat on the orthogonal complement. Every positive eigenspace is finite-dimensional: otherwise its orthonormal vectors have images a fixed distance apart. The successive positive eigenvalues tend to zero by the same compactness test. The residual orthogonal space is the kernel, because its restricted norm is bounded by all successive eigenvalues; if the procedure stops, a positive residual norm would yield another eigenvector by the first argument. This proves the needed compact positive spectral theorem.
+
+Apply it to \(T=(1+D_K^2)^{-1}\) and \((1+D_N^2)^{-1}\). Their kernels are zero. A positive \(T\)-eigenvector belongs to \(\operatorname{Ran}T\subset\operatorname{Dom}D^2\) and satisfies \(D^2v=(\lambda^{-1}-1)v\). Thus each squared spectral window is finite-dimensional and invariant under \(D\) and its grading; finite-dimensional self-adjoint diagonalization supplies its \(D\)-eigenvectors. The scalar functional calculus and its product/domain rules are proved in Spectral products, transport and inverse domains, through its linked earlier ordinary calculus proofs.
+
+On each joint window, the expression in (RA.12) is a finite-dimensional self-adjoint matrix and its square is (RA.13). The orthogonal direct sum of these matrices is self-adjoint: its two resolvents are the direct sums of the inverses of the blocks, each bounded by one at \(\pm i\), and their ranges give its full closed domain.
+
+The square-norm identity says that this domain is exactly the intersection in (RA.12). Joint spectral truncations converge in its graph norm. The stated factor cores approximate each finite elementary tensor with both factor graph norms, so their algebraic tensor is a core for that closed operator. This establishes the claimed closure, rather than merely a formal square.
+
+There are only finitely many joint eigenvectors satisfying \(\nu_K^2+\nu_N^2\leq L\), for each finite \(L\). Spectral truncation of \((1+D^2)^{-1/2}\) therefore gives finite-rank approximations with error at most \((1+L)^{-1/2}\). It is an ordinary scalar compact operator. Keeping a finite-dimensional Clifford coefficient does not turn this argument into compactness only relative to an infinite coefficient algebra. Consequently the resolvents and \(F^2-1=-(1+D^2)^{-1}\), for \(F=D(1+D^2)^{-1/2}\), are scalar compact.
+
+**Proof: norm and domain-preserving commutators.** The representation is the tensor representation of (RA.2), with the two factors flipped to put the even auxiliary first. Theorem 11K.1 makes it contractive for the exact reduced crossed-product norm; faithfulness of this particular tensor representation is unnecessary. It remains a *-representation of every \(B_r\). For each coefficient term, direct substitution gives
+
+\[
+ \begin{aligned}
+ [D,V_g\otimes\pi_N(a)U_g]
+   ={}&[D_K,V_g]\otimes\pi_N(a)U_g\\
+     &+\gamma_KV_g\otimes
+       \bigl([D_N,\pi_N(a)]U_g+\pi_N(a)[D_N,U_g]\bigr).
+ \end{aligned}
+ \tag{RA.14}
+\]
+
+These are bounded operators. The factor domain assumptions preserve the intersection domain; (RA.13) extends the same assertion from elementary tensors to its graph closure. Thus every smooth finite polynomial preserves the actual domain and has a bounded commutator.
+
+Put \(s=(1+t^2)^{1/2}\). The bounded transform is the strong limit of
+\((2/\pi)\int_0^T D(D^2+s^2)^{-1}\,dt\). The resolvent identity gives a commutator integrand equal to
+
+\
+ -\frac1\pi\left((D-is)^{-1}[D,a^{-1}
+                  +(D+is)^{-1}D,a^{-1}\right).
+ \tag{RA.15}
+\]
+
+Its norm is at most \(2\|[D,a]\|/(\pi(1+t^2))\); it is compact, because either resolvent is scalar compact. Hence its integral converges in compact-operator norm, and the strong limit identifies it with \([F,a]\). Self-adjointness is exact. Polynomial density, boundedness of \(F\), and contractivity of \(\Pi\) extend all compact defects to every \(a\in B_r\). In particular every localized defect is an ordinary scalar compact, not merely a module or measured-trace defect.
+
+**Proof: the represented product.** Before restricting along \(\Delta_r\), use the tensor representation of \(R\otimes B_m\). A homogeneous vector \(\xi\) in a bounded squared spectral window of \(D_K\) defines the graded creation map \(T_\xi\eta=\xi\otimes\eta\). In the normal spectral variable \(\nu\), the off-diagonal creation term from \(D_K\xi\) is divided by \((1+\nu_K^2+\nu^2)^{1/2}\), and tends to zero as \(|\nu|\to\infty\). The diagonal term differs from the signed normal phase by
+\(\nu/(1+\nu_K^2+\nu^2)^{1/2}-\nu/(1+\nu^2)^{1/2}\), which also tends to zero. Each finite auxiliary window has only finitely many such columns. Normal compact resolvent therefore makes the creation difference and its adjoint compact. Density of these homogeneous windows, with \(\|T_\xi\|=\|\xi\|\), proves the connection equations for every creation vector.
+
+For \(F_K=D_K(1+D_K^2)^{-1/2}\), the product positivity is the exact positive operator
+
+\[
+ \{F_K\otimes1,F\}
+  =\frac{2D_K^2\otimes1}
+       {(1+D_K^2\otimes1)^{1/2}
+        (1+D_K^2\otimes1+1\otimes D_N^2)^{1/2}}\geq0.
+ \tag{RA.16}
+\]
+
+The cross term cancels by oddness of \(D_K\). The two positive denominators commute by their joint spectral construction. For a creation vector \(\xi\otimes b\) in the first module \(H_K\otimes B_m\), its creation map is \(T_\xi\pi_N(b)\). The already proved connection error for \(T_\xi\), multiplied by \(\pi_N(b)\), is compact; the additional error is \(T_\xi[F_N,\pi_N(b)]\), up to its prescribed homogeneous sign, and is compact because the supplied \(d_m\) is a Kasparov cycle. Finite sums of these vectors are dense in that entire module. Thus the connection is for the full first module, not only its scalar columns. The connection and positivity criterion of Section 0 proves that this is the actual external product \(\kappa\boxtimes d_m\). Flipping the even auxiliary past the degree-\(q\) factor incurs no Koszul sign. Pullback along the flipped \(\Delta_r\) gives exactly (RA.7). This proves the proposition, including its degree, inverse coefficient and original local pairing. \(\square\)
+
+For a compact-base suspension with its specified flat return charts, the complete graph-column induction proved in A general sufficient interface, and its precise limit applies to (RA.12). Its normalized counting and plaque-bump correspondence is still required. An arbitrary holonomy groupoid has not been replaced here by a globally acting discrete group, nor have arbitrary graph overlaps or a wholly local finite-order graph expression been constructed.
+
+### 11K.4. Two automatic regular constructions that do not give index one
+
+**Proposition 11K.4.** On an infinite group, neither the bare regular factor nor its elementary paired confining length operator supplies (RA.6).
+
+**Proof.** If \(K\neq0\) is a compact operator, then \(K\otimes1_{\ell^2\Gamma}\) is not compact. Choose a unit vector \(v\) with \(Kv\neq0\) and distinct \(g_n\). The images \(Kv\otimes\delta_{g_n}\) are orthogonal with fixed positive norm, so have no convergent subsequence. Thus \(D_N\otimes1\) leaves infinite regular multiplicity in its localized normal resolvents whenever the localized normal factor is nonzero. Regular norm continuity alone does not prove scalar compactness.
+
+For a finitely generated \(\Gamma\), take word length \(\ell\) and \(w(g)=1+\ell(g)\). On \(H_K^+=H_K^-=\ell^2(\Gamma)\), represent the group by \(\lambda\oplus\lambda\), grade by \(\operatorname{diag}(1,-1)\), and put
+
+\[
+ D_w=\begin{pmatrix}0&M_w\\M_w&0\end{pmatrix},\qquad
+ \operatorname{Dom}D_w=
+ \{(\xi,\eta):w\xi,w\eta\in\ell^2(\Gamma)\}.
+ \tag{RA.17}
+\]
+
+It is the orthogonal sum of self-adjoint two-by-two matrices, with eigenvalues \(\pm w(g)\). Finite word balls prove compact resolvent. Its finite-support core is a graph core. Since \(|\ell(hg)-\ell(g)|\leq\ell(h)\), each group commutator is bounded and preserves this domain. It is therefore an actual reduced even scalar cycle by the same resolvent integral. But \(M_w\) is onto and has bounded inverse \(M_{1/w}\): its kernel and cokernel are zero. Its scalar index is zero, so (RA.6) fails. For a countable group, enumerate its nonidentity elements and their inverses with positive integer weights tending to infinity, assigning the same weight to an element and its inverse. Define \(\ell(g)\) to be the minimum total weight among finite words representing \(g\), with \(\ell(e)=0\). Every element has such a word, and the minimum exists among nonnegative integers. At a fixed total weight, only finitely many letters and finitely many words can occur. Thus the sublevels are finite. Concatenation and reversal prove \(\ell(gh)\leq\ell(g)+\ell(h)\) and \(\ell(g^{-1})=\ell(g)\); hence \( |\ell(hg)-\ell(g)|\leq\ell(h)\). This supplies the same example without finite generation.
+
+Adding an unmatched positive **trivial** representation would change the scalar index to one, but also adds that representation to the group action. If it were weakly regular, the algebraic trivial character would extend to \(R\). The fully proved invariant-mean argument in A general necessary condition for the geometric representation would make \(\Gamma\) amenable. Thus this repair fails for a nonamenable group. A different unmatched construction inside a genuinely reduced Fredholm module requires a proof of its compact group commutators and unit index; an arbitrary enumeration and unilateral shift do not supply those assertions. \(\square\)
+
+### 11K.5. Ordinary index one and the equivariant unit
+
+An even Fredholm module for \(R\) also determines an equivariant Fredholm class \(e_\kappa\in KK^\Gamma(\mathbb C,\mathbb C)\): the group acts by its represented unitaries and its commutators with the phase are compact. Condition (RA.6) says only
+
+\[
+ \operatorname{Res}^{\Gamma}_{\{e\}}e_\kappa=1_{\mathbb C}.
+ \tag{RA.18}
+\]
+
+Representing the equivariant unit \(e_\kappa=1_\Gamma\) by weakly regular representations is the stronger K-amenability premise. The scalar classification theorem proves (RA.18); it does not promote it to this equivariant identity. If a target prescribes an equivariant normal class \(d_N^\Gamma\), the diagonal external product has class \(d_N^\Gamma\otimes e_\kappa\). Equality with \(d_N^\Gamma\) requires this exact product identity. The full spin-c coefficient in its first factor and its inverse phase can be retained even when that global equivariant identity is absent.
+
+Here is a complete conditional test that separates the two assertions without importing an arithmetic lattice theorem.
+
+**Proposition 11K.5 (Kazhdan projection and a specified descent).** Suppose \(\Gamma\) is infinite, and a finite set \(S\subset\Gamma\) and \(c>0\) satisfy the following uniform spectral-gap hypothesis: in every unitary representation \(U\),
+
+\[
+ \sum_{s\in S}\|(1-U_s)\xi\|^2\geq c\|\xi\|^2
+ \quad\text{for }\xi\perp H^\Gamma,
+ \qquad \ker\sum_{s\in S}(1-U_s)^*(1-U_s)=H^\Gamma.
+ \tag{RA.19}
+\]
+
+Then there is a projection \(p\in C^*_{\max}(\Gamma)\) whose image in every representation is the orthogonal projection onto its invariant vectors, and whose reduced image is zero. No weakly regular equivariant Fredholm class can equal \(1_\Gamma\). Nevertheless this argument does not exclude (RA.6), which pairs with the full unit rather than \(p\).
+
+If \(d_m\in KK^0(B_m,\mathbb C)\) satisfies a nonzero pairing with the image of \(p\) in \(B_m\), then that specified \(d_m\) has no reduced descent. It can still have a reduced replacement of Theorem 11K.2 if its auxiliary premise holds.
+
+**Proof.** Put \(L=\sum_{s\in S}(1-u_s)^*(1-u_s)\) in the full group algebra. In a faithful universal representation, (RA.19) splits it into zero on the invariant space and an operator at least \(c\) on its orthogonal complement. Its spectrum is contained in \(\{0\}\cup[c,4|S|]\). Choose a real continuous function \(h\) which is one at zero and zero on that interval. Functional calculus gives the projection \(p=h(L)\). Functional calculus commutes with every representation. Thus its represented projection is precisely onto invariants; the trivial representation sends it to one.
+
+There is no nonzero invariant vector in \(\ell^2\Gamma\): an invariant vector is constant on \(\Gamma\), and a nonzero constant is not square-summable on an infinite group. The regular image of \(p\) is consequently zero. The same is true in every representation factoring through \(R\).
+
+To see that this tests equivariant **classes**, integrate an equivariant scalar Fredholm cycle into a Fredholm cycle of \(C^*_{\max}(\Gamma)\). Compact group commutators imply compact commutators for finite polynomials; density extends them to the full algebra. An equivariant KK homotopy gives the same integration on its entire interval module, so the resulting ordinary maximal class is homotopy invariant. The equivariant unit integrates to the trivial character, whose \(p\)-pairing is one. A weakly regular cycle integrates to a class pulled back from \(R\), whose \(p\)-pairing is zero. They cannot be equal.
+
+For a general quotient \(q:B_m\to B_r\), associativity gives, for every \(x\in K_*(B_m)\) and putative descent \(d_m=[q]\otimes d_r\),
+
+\[
+ x\otimes_{B_m}d_m=q_*x\otimes_{B_r}d_r.
+ \tag{RA.20}
+\]
+
+The image of \(p\) is killed by this quotient, so a nonzero pairing contradicts (RA.20). If an invariant compact-resolvent even geometric Dirac represents \(d_m\), the pairing is the Fredholm index on its invariant subspace: its represented \(p\) is that subspace's projection and commutes with the Dirac and grading. This index must actually be calculated for the specified full inverse normal coefficient; a global index of some differently twisted Dirac is not a substitute.
+
+By contrast, an ordinary unit-index auxiliary asks for \(\langle[1_R],\kappa\rangle=1\). Its maximal pullback pairs \(p\) as zero and the unit as one. There is no contradiction between these two integers. Theorem 11K.2 does not promise to reproduce the obstructed maximal class, so the obstruction to **that descent** does not invalidate its distinct reduced replacement. \(\square\)
+
+In particular, a proposed arithmetic suspension needs complete providers for infinitude, the uniform gap, the faithful compact action and the exact invariant Dirac index. Even after these are supplied, the argument refutes only the specified maximal descent unless the target itself forces equality with that maximal class. The local Bott pairing in Connes's question does not state such an equality.
+
+### 11K.6. A proper intermediate algebra and the exact local identity
+
+There is a second useful formulation, independent of a globally acting group. Let \(q_A:A_m\to A_r\), \(q_P:P_m\to P_r\) be quotient maps, and suppose \([q_P]\) has a proved KK inverse \(v\in KK(P_r,P_m)\). Let
+
+\[
+ \eta_m\in KK^k(A_m,P_m),\quad
+ \eta_r\in KK^k(A_r,P_r),\quad
+ D_m\in KK^k(P_m,A_m),
+ \qquad [q_A]\otimes\eta_r=\eta_m\otimes[q_P].
+ \tag{RA.21}
+\]
+
+For \(d_m\in KK^q(A_m,\mathbb C)\), put
+
+\[
+ \gamma_m=\eta_m\otimes D_m,\qquad
+ d_r=\eta_r\otimes v\otimes D_m\otimes d_m.
+ \tag{RA.22}
+\]
+
+All tensor products are in this displayed typed order. Associativity, naturality and \([q_P]\otimes v=1_{P_m}\) prove
+
+\[
+ [q_A]\otimes d_r=\gamma_m\otimes d_m.
+ \tag{RA.23}
+\]
+
+Consequently a specified local class \(b_m\in KK^q(\mathbb C,A_m)\) has reduced pairing one if
+
+\[
+ b_m\otimes\gamma_m=b_m,
+ \qquad b_m\otimes d_m=+1.
+ \tag{RA.24}
+\]
+
+Indeed its reduced image is \(b_m\otimes[q_A]\), and its product with (RA.22) is \(b_m\otimes\gamma_m\otimes d_m=+1\). These equalities require neither \(\gamma_m=1_{A_m}\) nor equality of the new maximal pullback with \(d_m\). They do require a proved intermediate quotient inverse and the **actual local** identity (RA.24), together with any extra full-class restriction required by the problem.
+
+Calling an intermediate algebra proper does not prove these typed identities or construct an unbounded graph representative. Kasparov–Skandalis's primary paper constructs a proper intermediate algebra and Dirac/dual-Dirac elements under its proper bolic-action hypotheses; its Theorem 5.2 concerns reduced assembly injectivity, and Section 8 constructs its Dirac element. Those hypotheses are additional geometric inputs, not consequences stated for every holonomy-invariant transverse spin-c groupoid. This is a literature comparison, not an invocation of its unproved prerequisites as a proof of the present missing existence assertion. [Primary paper, pp. 165–167, 179–183 and 200–201](https://arxiv.org/pdf/math/0402374).
+
+### 11K.7. The metric-bundle properness test
+
+**Proposition 11K.6 (compact invariant metric section).** Let an infinite discrete \(\Gamma\) act smoothly on a nonempty compact manifold \(N\), preserving a Riemannian metric \(g\). Let \(P\to N\) be the bundle of positive-definite metrics with the transported action. Then the action on \(P\) is not proper, even if the action on \(N\) is free.
+
+**Proof.** The invariant metric gives an equivariant section \(s(n)=g_n\). It is an embedding: the bundle projection composed with it is the identity. Its image is compact and closed because \(N\) is compact and \(P\) is Hausdorff. For the action map \(m(\gamma,p)=(\gamma p,p)\), the compact subset \(K=s(N)\times s(N)\subset P\times P\) has exact inverse image
+
+\[
+ m^{-1}(K)=\Gamma\times s(N).
+ \tag{RA.25}
+\]
+
+Indeed the second coordinate forces \(p\in s(N)\), and equivariance puts \(\gamma p\) in the same section; the converse is immediate. This inverse image has the infinite discrete \(\Gamma\) as a continuous surjective image, so it cannot be compact. Properness would require that inverse image to be compact. No ergodicity, stabilizer assumption or freeness was used. \(\square\)
+
+The eligible free \(F_2\) action on \(SU(2)\times S^1\) in Section 11I is an actual compact spin-c example of this lemma. The transverse linear cocycle has compact image, while the displayed metric-bundle action is nonproper. The different regular tree class in Section 11A remains valid.
+
+Hilsum–Skandalis's Proposition 4.7, printed p. 355, compares its **maximal** constructions in the almost-isometric case. Its amenable group is the transverse vector bundle's structural subgroup of a linear group. The gamma class of that structural group pulls back to the identity. It is not an assertion that the holonomy groupoid is amenable, that its full-to-reduced quotient is a KK equivalence, or that its metric-bundle action is proper. The full-algebra convention is stated on pp. 326–327. Proposition 11K.6 explains the properness distinction by a complete geometric proof.
+
+### 11K.8. Exact disposition for arbitrary eligible holonomy
+
+The norm part of the regular-auxiliary proposal is proved by Theorem 11K.1. For a discrete action, an even scalar unit-index class suffices to preserve the entire ordinary normal restriction and its original Bott \(+1\), by Theorem 11K.2. Proposition 11K.3 supplies the exact self-adjoint domain, core, commutators and ordinary scalar compactness. Section 11L supplies its auxiliary operator data from the given scalar class; the specified normal data and subsequent graph realization remain necessary. Proposition 11K.4 proves why the most immediate regular/confining substitutes fail to supply its index. Proposition 11K.5 separates the obstruction to a prescribed maximal descent from a different normalized reduced class and from its equivariant unit requirement.
+
+What remains for the arbitrary eligible holonomy question is a construction of the necessary auxiliary for that whole scope, with its exact normal restriction requirement; coherent groupoid field, overlap and domain data; the actual normalized counting/plaque correspondence; and an identification with a suitable operator on the actual graph. A compact-generated pseudogroup is not silently a global discrete action, and a regular Hilbert module over its coefficient algebra is not silently a scalar Fredholm cycle with ordinary compact defects. A measured or module index is not the scalar index in (RA.6).
+
+The metric bundle is not an automatic proper substitute, by Proposition 11K.6. Hilsum–Skandalis's almost-isometric structural group is a subgroup of the transverse linear group. Its amenability does not identify it with the discrete holonomy group or furnish the missing proper action. Their Proposition 4.7 is a maximal construction and comparison.
+
+Thus no full-scope reduced graph construction or counterexample to Connes's entire stated problem is proved here. The general maximal construction is established in Hilsum–Skandalis; an assertion that the whole historical transverse fundamental-class problem remains open in the current literature is not justified by this remaining analytic interface.
+
+Original proof expression: CC0 1.0. Human reading references: [Connes, original question and local class, pp. 28–29](https://alainconnes.org/wp-content/uploads/foliationsfine.pdf); [Hilsum–Skandalis, full-algebra convention pp. 326–327, metric-bundle identities pp. 339–340 and Proposition 4.7 p. 355](https://www.numdam.org/article/ASENS_1987_4_20_3_325_0.pdf); [Kasparov–Skandalis, proper bolic-action construction](https://arxiv.org/pdf/math/0402374). Emerson's receipted book, Section 11.5, pp. 524–529, gives the translation oscillator's equivariant unit identity under its stated group-in-the-line hypothesis; that group has not been changed to an arbitrary return group here.
+
+### 11K.9. Reproducible illustration
+
+![The exact regular diagonal map and its distinct scalar and equivariant requirements](../figures/regular-auxiliary.png)
+
+**Figure 11K.1.** Theorem 11K.1 and equations (RA.2)–(RA.11), Proposition 11K.4 and the invariant metric-section lemma. Panel A gives the actual absorption unitary and its exact norm equality. Panel B records equality of the whole ordinary normal restriction, the full inverse phase and grading, and the separate equivariant product premise. Panel C is a schematic of the compact metric section; the three arrows represent selected returns of an infinite group, rather than the whole positive-metric fibre or a finite group. Its displayed inverse image is exact. Panel D displays four members of an infinite orthogonal sequence with fixed positive norm, proving failure of bare tensor compactness, and the actual paired-length spectrum and zero index. No existence of an arbitrary unit-index auxiliary is inferred. The structural-group distinction is in Hilsum–Skandalis, Proposition 4.7, p. 355; the original local normalization is in Connes, pp. 28–29. Original diagram and generator, CC0 1.0; bundled glyphs retain their complete component notice.
+
+[Editable SVG](../figures/regular-auxiliary.svg) · [Reproducible source](../reproduction/proper-regular-auxiliary/draw_auxiliary.py).
+
+## 11L. Compact-resolvent representatives with prescribed group commutators
+
+The existence of a scalar KK class and the choice of an unbounded operator representing it are separate questions. Once the class is given, a countable discrete group creates no additional obstruction to choosing compact resolvent and bounded commutators with every group element. The following construction also gives a unital reduced representation and an explicit invariant graph core.
+
+The controlled inverse and bounded-transform arguments are proved in *Unbounded Kasparov modules and spectral triples*, Section 3, Lemma 3.1 and Theorem 3.2. Their inputs are the full convex and nested-cutoff proofs in *Kasparov's technical theorem*, Section 1, the compact-operator and countability proof in *Graded C*-algebras, Clifford algebras and graded Hilbert modules*, Lemma 2.0, and the parity-preserving normalization in *Kasparov modules and the groups KK(A,B)*, Theorem 3.2. We spell out the prescribed-family choice and the removal of the zero-representation summand. That removal is needed because an exact odd unitary obtained by doubling need not have a unital source representation.
+
+### 11L.1. The complete auxiliary provider
+
+Give a unital C*-algebra the trivial grading. A representation below is complex-linear and *-preserving. Compactness means ordinary Hilbert-space compactness.
+
+**Theorem 11L.1 (a prescribed countable family).** Let \(A\) be a separable unital C*-algebra, let \(S\subset A\) be countable, and let \(\kappa\in KK(A,\mathbb C)\) be even. There are a separable graded Hilbert space \(H_K\), an even unital representation \(\pi_K:A\to\mathcal B(H_K)\), and a closed densely defined odd self-adjoint operator \(D_K\) such that
+
+\[
+ (D_K\pm i)^{-1}\in\mathcal K(H_K),\qquad
+ [H_K,\pi_K,D_K(1+D_K^2)^{-1/2}]=\kappa.
+ \tag{UP.1}
+\]
+
+Every member of the unital *-algebra generated by \(S\) preserves \(\operatorname{Dom}D_K\) and has a bounded commutator with \(D_K\). The family may be enlarged by any prescribed countable dense subset of \(A\). Consequently the operator is an unbounded Kasparov representative on a dense unital *-algebra. No finite summability, prescribed eigenvalue growth, differential order or uniform commutator bound over \(S\) is asserted. A finite-dimensional or zero representative is allowed.
+
+**Proof: the prescribed countable tests.** Start with a countably generated graded scalar Kasparov cycle representing \(\kappa\). Such a scalar module is a separable Hilbert space. The normalization theorem just linked replaces it, without changing its class, by a cycle \((\widetilde H,\phi,F)\) with
+
+\[
+ F=F^*=F^{-1},\quad F\text{ odd},\quad
+ [F,\phi(a)]\in\mathcal K(\widetilde H)\quad(a\in A).
+ \tag{UP.2}
+\]
+
+The normalization can add an oppositely graded summand with zero representation. Thus \(P=\phi(1)\) is an even orthogonal projection, and need not be the identity.
+
+Choose a countable family \((a_j)\) containing \(S\), its adjoints, \(1\), and a countable dense subset and its adjoints. In the controlled inverse proof, this is the family to be used from the outset. Nothing there requires choosing the family independently of \(S\). With an even positive injective compact \(h\) of dense range commuting with \(F\), its nested quasicentral cutoffs \(u_n\in C^*(h)\) can satisfy
+
+\[
+ \begin{split}
+ u_{n+1}u_n&=u_n,\qquad u_n\longrightarrow1\text{ strongly},\\
+ \|[u_n,\phi(a_j)]\|&\leq2^{-n},\\
+ \|F,\phi(a_j)\|&\leq2^{-n}
+                      \quad(j\leq n).
+ \end{split}
+ \tag{UP.3}
+\]
+
+Here the commutator tests derive the compact ideal, and the second test is a compact approximate-identity test. Both are covered by the linked nested-cutoff proof. Each cutoff vanishes on a neighborhood of zero in \(\sigma(h)\). The continuous inverse defined on the nonzero spectrum is
+
+\[
+ r=1+\sum_{n\geq1}(1-u_n),\qquad l=r^{-1},\qquad
+ D=Fl^{-1},\qquad\operatorname{Dom}D=\operatorname{Ran}l.
+ \tag{UP.4}
+\]
+
+The sum is locally finite away from zero. Nesting makes every later cutoff equal to one wherever a previous one is positive. Each finite group of cutoffs vanishes sufficiently near zero, so \(r\to\infty\) there. Accordingly \(l\) extends by zero at zero and is an even injective compact operator of dense range commuting with \(F\).
+
+For clarity, the domain assertion follows from a convergent inverse equation, rather than a bounded-sequence test. Put \(R_N=1+\sum_{n=1}^N(1-u_n)\). Then \(lR_N\to1\) strongly and \(R_N\xi\to l^{-1}\xi\) for \(\xi\in\operatorname{Ran}l\). For fixed \(j\), (UP.3) makes \([R_N,\phi(a_j)]\) converge in norm. Thus
+
+\[
+ R_N\phi(a_j)\xi\longrightarrow
+       \phi(a_j)l^{-1}\xi+C_j\xi.
+ \tag{UP.5}
+\]
+
+Multiply this equation by \(l\). Its left side tends to \(\phi(a_j)\xi\), proving that this vector lies in \(\operatorname{Ran}l\), with the displayed inverse image. Similarly \([F,\phi(a_j)]R_N\) converges in norm. Therefore
+
+\[
+ [D,\phi(a_j)]
+   =F[l^{-1},\phi(a_j)]+[F,\phi(a_j)]l^{-1}
+ \tag{UP.6}
+\]
+
+extends boundedly. Products satisfy the domain Leibniz rule. Adjoints were included among the tests, so the whole generated *-algebra has the asserted domain and commutator properties.
+
+The inverse resolvents and bounded transform are exactly
+
+\[
+ (D\pm i)^{-1}=l(F\mp il)(1+l^2)^{-1},\qquad
+ F_D=F(1+l^2)^{-1/2}.
+ \tag{UP.7}
+\]
+
+The two resolvent formulas prove self-adjointness on \(\operatorname{Ran}l\), as in the linked theorem; they are compact. The difference \(F_D-F\) is compact because its scalar coefficient \((1+l^2)^{-1/2}-1\) vanishes at zero. Hence \((\widetilde H,\phi,F_D)\) still represents \(\kappa\).
+
+**Proof: bounded off-diagonal removal.** Since \(1\) was a controlled test, \(P\) preserves \(\operatorname{Dom}D\) and \(C=[D,P]\) extends boundedly. Put \(Q=1-P\). The domain decomposes as \(P\operatorname{Dom}D\oplus Q\operatorname{Dom}D\). On it define the off-diagonal part
+
+\[
+ B=PDQ+QDP=C(2P-1),\qquad D_0=D-B.
+ \tag{UP.8}
+\]
+
+The right-hand formula gives an everywhere bounded extension of \(B\), of norm at most \(\|C\|\). Symmetry of \(D\) gives \(C^*=-C\), first by testing domain vectors and then by density. Its diagonal blocks vanish, so \(C(2P-1)=-(2P-1)C\). Consequently \(B^*=B\). Both \(C\) and \(B\) are odd because \(P\) is even. Moreover \([B,P]=C\), so \(D_0\) commutes with \(P\) on the full domain.
+
+We include the perturbation and class checks. The operator \(D_0\), on \(\operatorname{Dom}D\), is symmetric and closed, since its graph norm is equivalent to that of \(D\). For \(\rho>\|B\|\),
+
+\[
+ (D_0\pm i\rho)^{-1}
+  =(D\pm i\rho)^{-1}
+       \bigl(1-B(D\pm i\rho)^{-1}\bigr)^{-1}.
+ \tag{UP.9}
+\]
+
+The final inverse exists by its Neumann series. Surjectivity of both operators and the symmetric adjoint-domain argument prove self-adjointness of \(D_0\). Formula (UP.9) gives compact resolvents at these two points. The resolvent identity then gives compactness at every nonreal point. Every controlled \(a\) preserves the same domain, and
+
+\[
+ [D_0,\phi(a)]=[D,\phi(a)]-[B,\phi(a)]
+ \tag{UP.10}
+\]
+
+is bounded.
+
+For a self-adjoint operator \(T\), write
+\(Q_\rho(T)=T(T^2+\rho^2)^{-1}
+=\tfrac12((T-i\rho)^{-1}+(T+i\rho)^{-1})\).
+The bounded-transform integral in the linked Theorem 2.2 is a strong integral. Its difference here converges in norm, since the resolvent identity gives
+
+\[
+ \|Q_\rho(D_0)-Q_\rho(D)\|\leq\|B\|\rho^{-2},
+ \quad
+ F_{D_0}-F_D=\frac2\pi\int_0^\infty
+    \bigl(Q_{\sqrt{1+t^2}}(D_0)
+          -Q_{\sqrt{1+t^2}}(D)\bigr)\,dt.
+ \tag{UP.11}
+\]
+
+Each integrand is compact, and the bound is integrable. Thus the difference is compact. The compact perturbation proof in *Kasparov modules and the groups KK(A,B)*, Proposition 3.1 shows that \((\widetilde H,\phi,F_{D_0})\) represents the same class.
+
+**Proof: the essential compression.** The domain commutation with \(P\) and the uniqueness of resolvent solutions show that both resolvents of \(D_0\) commute with \(P\). Therefore the two summands reduce \(D_0\). Define
+
+\[
+ \begin{split}
+ H_K&=P\widetilde H,\qquad
+ \pi_K(a)=\phi(a)|_{H_K},\\
+ D_K&=D_0|_{H_K},\qquad
+ \operatorname{Dom}D_K=P\operatorname{Dom}D.
+ \end{split}
+ \tag{UP.12}
+\]
+
+This operator is odd and self-adjoint, with compact resolvents obtained by restricting those of \(D_0\). Its representation is even and unital. Source operators commute with \(P\), so (UP.10) restricts to the required bounded commutators on \(H_K\), including domain preservation. Functional calculus is block diagonal. The other block has identically zero source representation, hence is a degenerate Kasparov cycle; Proposition 2.3 of the same lesson proves its class is zero. The remaining block therefore represents exactly \(\kappa\), proving (UP.1). \(\square\)
+
+### 11L.2. All elements of a countable discrete group
+
+**Corollary 11L.2 (the reduced scalar auxiliary).** Let \(\Gamma\) be any countable discrete group and \(R=C_r^*(\Gamma)\). For every even \(\kappa\in KK(R,\mathbb C)\) there is a representative as in (UP.1), with an even unitary representation
+
+\[
+ V_g=\pi_K(\lambda_g),\qquad
+ V_g\operatorname{Dom}D_K=\operatorname{Dom}D_K,\qquad
+ C_g=[D_K,V_g]\in\mathcal B(H_K)\quad(g\in\Gamma).
+ \tag{UP.13}
+\]
+
+It factors through the reduced algebra. The dense algebra can be taken to contain the complete complex group algebra \(\mathbb C\Gamma\). There is a countably generated algebraic graded graph core invariant under every \(V_g\).
+
+**Proof.** The linear span of the countable family \(\{\lambda_g:g\in\Gamma\}\) is norm dense in \(R\), so \(R\) is separable and unital. Apply Theorem 11L.1 with this entire family, rather than only a selected generating set. Unitality gives \(V_g^*V_g=V_gV_g^*=1\), and multiplication gives \(V_gV_h=V_{gh}\). Apply domain preservation to both \(g\) and \(g^{-1}\) to get the equality in (UP.13). For a finite group-algebra element,
+
+\[
+ [D_K,\pi_K(\textstyle\sum_g c_g\lambda_g)]
+       =\sum_g c_g C_g,
+ \qquad
+ C_{gh}=C_gV_h+V_gC_h.
+ \tag{UP.14}
+\]
+
+Both equations hold on the full domain and extend boundedly. Each fixed group element has a finite bound; these formulas impose no common bound as \(g\) varies. Reduced continuity is retained because \(\pi_K\) is a representation of \(R\) itself.
+
+For the core, choose a countable dense set \((x_j)\) in \(H_K\), and put \(\xi_j=(D_K-i)^{-1}x_j\). The map \(D_K-i\) is an isometry from its domain with norm \((\|\xi\|^2+\|D_K\xi\|^2)^{1/2}\) onto \(H_K\). Hence the span of the \(\xi_j\) is graph dense. Let \(\gamma_K\) be the grading, and \(P_\pm=(1\pm\gamma_K)/2\). These two projections preserve the domain and are bounded for its graph norm because \(D_K\gamma_K=-\gamma_KD_K\). Now set
+
+\[
+ \mathcal C_K=\operatorname{span}_{\mathbb C}
+       \{V_gP_\pm\xi_j:g\in\Gamma,\ j\geq1\}.
+ \tag{UP.15}
+\]
+
+All these vectors lie in the domain. The core is graded, contains the graph-dense original span, and is invariant under all group elements. Countability makes its displayed generating family countable. Explicitly,
+
+\[
+ \|V_g\xi\|_{\operatorname{Dom}D_K}
+       \leq(1+\|C_g\|)\|\xi\|_{\operatorname{Dom}D_K}.
+ \tag{UP.16}
+\]
+
+This follows by applying the triangle inequality to the two-component vector \((V_gD_K\xi+C_g\xi,V_g\xi)\). Thus each group operator also acts continuously on the complete graph domain. The core is not asserted to be invariant under \(D_K\) itself or under higher powers of \(D_K\). Neither assertion is needed for a graph core. \(\square\)
+
+### 11L.3. The scalar sign and the product premise
+
+The construction preserves the whole class \(\kappa\), rather than merely its unit pairing. In particular, if the supplied class satisfies
+
+\[
+ \langle[1_R],\kappa\rangle=+1,
+ \tag{UP.17}
+\]
+
+then the compressed representative has the same sign. One can also see the scalar Fredholm operator directly. Its bounded transform is odd, so write \(F_K^+:H_K^+\to H_K^-\) for the positive-to-negative block. It is Fredholm by the proved scalar classification in *K-theory of the leaf space*, Scalar classification through the stable corona. The even operator \((1+D_K^2)^{-1/2}\) maps \(H_K\) bijectively onto \(\operatorname{Dom}D_K\): it is \((D_K-i)^{-1}\) times the everywhere unitary continuous-calculus function \((D_K-i)(1+D_K^2)^{-1/2}\). Consequently
+
+\[
+ F_K^+=D_K^+(1+D_K^2)^{-1/2}|_{H_K^+},
+ \qquad \operatorname{ind}D_K^+=\operatorname{ind}F_K^+=+1.
+ \tag{UP.18}
+\]
+
+Here the domain of \(D_K^+\) carries its graph norm. The equality of indices follows from equality of ranges and the bijective domain change; its kernel and cokernel are the same finite-dimensional spaces. If (UP.17) is not assumed, the identical argument gives the actual integer \(\langle[1_R],\kappa\rangle\).
+
+This supplies precisely the auxiliary-operator premise of the regular scalar product: compact resolvent, an odd self-adjoint operator, an even reduced group representation, full domain preservation, bounded commutators and a graph core. In the auxiliary-first product
+
+\[
+ D_K\widehat\otimes1+\gamma_K\widehat\otimes D_N,
+ \tag{UP.19}
+\]
+
+the supplied even scalar class contributes no extra Clifford degree or exchange sign. The normal factor retains its actual inverse phase \(z^{-1}\), determinant coefficient, grading and local Bott value \(+1\). Existence of a class satisfying (UP.17), the full normal/holonomy field construction, and any prescribed equivariant restriction identity are separate premises. This theorem does not manufacture those premises or a finite-order differential operator on a holonomy graph.
+
+### 11L.4. A finite model of the compression
+
+The compression is not cosmetic. Consider \(\widetilde H^+=\mathbb C^2\), \(\widetilde H^-=\mathbb C^2\), with ordered coordinates \((e_1^+,e_2^+,e_1^-,e_2^-)\), and put
+
+\[
+ T=\begin{pmatrix}2&1\\1&3\end{pmatrix},\quad
+ F=\begin{pmatrix}0&I_2\\I_2&0\end{pmatrix},\quad
+ l=\begin{pmatrix}T^{-1}&0\\0&T^{-1}\end{pmatrix},\quad
+ P=\operatorname{diag}(1,1,1,0),\quad \phi(a)=aP.
+ \tag{UP.20}
+\]
+
+The positive matrix \(T\) has eigenvalues \((5\pm\sqrt5)/2\), so \(l\) is positive and invertible. Its scalar compactness is automatic in finite dimension. It commutes with \(F\), and \(D=Fl^{-1}\) has lower-left block \(T\). Equation (UP.8) removes only the couplings to \(e_2^-\). On \(P\widetilde H\) the compressed positive-to-negative block is
+
+\[
+ D_K^+=\begin{pmatrix}2&1\end{pmatrix}:\mathbb C^2\to\mathbb C.
+ \tag{UP.21}
+\]
+
+Its kernel is the line spanned by \((1,-2)\), its range is all of \(\mathbb C\), and its index is \(+1\). Although \(F\) before compression is an exact odd unitary, its representation is not unital. After compression the representation is unital and the index-one kernel remains. This is an exact finite-dimensional illustration of the construction, not a model for the growth or summability of the general operator.
+
+### 11L.5. The exact finite compression diagram
+
+![The full off-diagonal removal and the index-one essential compression](../figures/auxiliary-essential-compression.png)
+
+**Figure 11L.1.** Theorem 11L.1, equations (UP.8)–(UP.12), and the exact finite model (UP.20)–(UP.21). The panels show every entry of the doubled operator, its removed off-diagonal part and its three-dimensional essential compression, in the stated coordinate order. Orange outlines mark the fourth coordinate, whose source representation is zero. The represented positive and negative dimensions are two and one; the row (2,1) has the displayed kernel and no cokernel. The norm √10 is the exact norm of the removed coupling vector (1,3). The finite diagram illustrates the general class-preserving proof; it asserts no eigenvalue growth or summability. Original mathematical expression is CC0 1.0; bundled glyphs retain their component terms.
+
+[Editable SVG](../figures/auxiliary-essential-compression.svg) · [Reproducible source](../reproduction/proper-regular-auxiliary/draw_proper.py).
+
+## 11M. Regular fields, unit-space balancing and the graph Dirac interface
+
+Sections 11J–11L prove the proper-factorization unit calculation and the scalar regular-auxiliary realization for a discrete action, with a single group algebra and an ordinary external KK product. An arbitrary holonomy groupoid has range
+and source units. These cannot be replaced by one group without changing
+the construction. We give the correct regular-field norm argument and two
+precise limitations of a proposed groupoid transfer. They concern the tensor
+and the operator, respectively; they do not exclude every normalized reduced
+graph class.
+
+### 11M.1. The original normalization and the stronger auxiliary premise
+
+In Connes's survey, page 28 defines the transverse class using an
+orientation-preserving disk and its positive Bott generator. Page 29 asks
+for a graph Dirac K-homology class whose pairing with that class is one,
+under the holonomy-invariant normal spin-c hypothesis. Thus the required
+integer is the **original oriented local transverse Bott pairing**. The
+normal inverse coefficient, its grading, determinant phase and final right
+Clifford factor must be the prescribed ones of Section 11E.9.
+
+Neither source passage separately requires an auxiliary to represent the
+equivariant unit, or a fixed maximal class to descend, or a full restriction
+to every function on a chosen closed transversal to equal one supplied
+normal cycle. These can be sufficient comparison premises for a particular
+route. They are stronger data than the original pairing requirement.
+Proposition 11I.2 and Section 11K.5 distinguish ordinary scalar index from equivariant
+index; it does not turn an equivariant-unit equality into a necessary
+condition for every solution of the survey problem.
+
+### 11M.2. Why ordinary balancing is the wrong algebra
+
+**Proposition 11M.1 (the diagonal needs different unit-space typing).**
+Let the pair groupoid on two units have algebra \(A=M_2(\mathbb C)\), and
+let \(D=\mathbb C^2\subset A\) be its diagonal unit algebra. Quotienting
+\(A\otimes A\) by the two-sided ideal generated by
+\(d\otimes1-1\otimes d\), \(d\in D\), gives the zero algebra.
+Nevertheless
+
+\[
+ \Delta(e_{ij})=e_{ij}\otimes e_{ij},\qquad
+ P=e_{11}\otimes e_{11}+e_{22}\otimes e_{22}
+ \tag{GR.1}
+\]
+
+defines an injective homomorphism into the corner
+\(P(A\otimes A)P\), carrying the unit to \(P\).
+This corner is not that balanced quotient.
+
+There is also a continuous obstruction to treating the corner as an
+ordinary scalar product-space diagonal. Let \(M\) be a nonempty compact
+positive-dimensional smooth manifold with a smooth positive volume measure,
+and put \(H=L^2(M)\). Any operator \(T\in B(H\otimes H)\) satisfying
+
+\[
+ (M_h\otimes1)T=(1\otimes M_h)T,
+ \qquad h\in C(M),
+ \tag{GR.2}
+\]
+
+is zero. In particular no nonzero homomorphism from the pair-groupoid
+algebra \(K(H)\) into this ordinary product representation can have every
+image satisfy (GR.2).
+
+**Proof.** Identify \(A\otimes A\) with the matrices on the basis
+\(v_{11},v_{12},v_{21},v_{22}\). For \(p=e_{11}\), the balancing generator
+\(p\otimes1-1\otimes p\) has diagonal entries \(0,1,-1,0\).
+Multiplying it on the left by \(E_{a,12}\) and on the right by
+\(E_{12,b}\) gives every matrix unit \(E_{a,b}\). Its two-sided ideal is
+therefore the entire algebra. This also explains the defect in regarding
+\(A\) as a central \(D\)-algebra: the unit functions are not central
+when arrows change the unit.
+
+On the other hand,
+\((e_{ij}\otimes e_{ij})(e_{kl}\otimes e_{kl})
+=\delta_{jk}e_{il}\otimes e_{il}\), and involution reverses the two
+indices. The four displayed matrices act as the matrix units on
+\(\operatorname{span}\{v_{11},v_{22}\}\); hence their map is injective,
+their unit is \(P\), and this is precisely the corner. The compressed
+balancing generators vanish, while the uncompressed quotient is zero.
+
+For the continuous assertion identify \(H\otimes H=L^2(M\times M)\)
+using the product volume. Choose a countable collection \(h_j\in C(M)\)
+separating points; for example a countable dense collection in \(C(M)\)
+does so. For every vector \(v\), equation (GR.2) says
+\((h_j(x)-h_j(y))(Tv)(x,y)=0\) almost everywhere for every \(j\).
+Discard the countable union of these null sets. Outside it, \(Tv\) is
+supported where all \(h_j(x)=h_j(y)\), namely on the diagonal.
+That diagonal has product measure zero: every singleton has zero smooth
+volume, so the nonnegative iterated integral of its indicator is zero.
+Thus \(Tv=0\), for every \(v\), proving the claim. No theorem about all
+homomorphisms \(K(H)\to B(H\otimes H)\) is asserted: the specific unit
+compatibility (GR.2) is essential. \(\square\)
+
+The pair groupoid of a compact manifold is already a holonomy groupoid
+of the one-leaf foliation, with zero normal bundle and its invariant
+spin-c structure. Its scalar K-homology is not obstructed by this
+proposition. Passing to a point transversal gives its familiar rank-one
+Morita corner. What fails is the proposed **ordinary** balanced tensor
+or product-measure diagonal, not that Morita construction. For a
+positive-dimensional transversal, a fibrewise Hilbert tensor uses a
+measure over one unit variable, rather than product measure over two
+independent copies. The next theorem uses that correct space explicitly.
+
+### 11M.3. A genuine groupoid regular-field absorption
+
+Let \(\mathcal G\rightrightarrows X\) be a second-countable Hausdorff
+étale groupoid. Write
+\(\mathcal G^x=r^{-1}(x)\),
+\(\mathcal G_x=s^{-1}(x)\). Let \(\mu\) be a sigma-finite positive
+Borel measure on \(X\) invariant under every partial bisection, and let
+\(V_x\) be a measurable finite-dimensional Hermitian field with a
+measurable unitary groupoid action
+
+\[
+ U_\gamma:V_{s\gamma}\longrightarrow V_{r\gamma},
+ \qquad U_{\gamma\eta}=U_\gamma U_\eta.
+ \tag{GR.3}
+\]
+
+This can be the **whole** normal inverse field, with its right Clifford
+action and grading; it is not just its determinant or a minimal spinor.
+The regular auxiliary is the field
+\(\ell^2(\mathcal G^x)\), with
+\(L_\gamma\delta_\eta=\delta_{\gamma\eta}\) for
+\(r\eta=s\gamma\). Each \(L_\gamma\) maps between its specified
+unit fibres. It is not a single representation of one global group.
+
+Define the two counting measures on the arrow space by
+
+\[
+ \int b\,d\nu_r=\int_X\sum_{r g=x}b(g)\,d\mu(x),
+ \qquad
+ \int b\,d\nu_s=\int_X\sum_{s g=x}b(g)\,d\mu(x).
+ \tag{GR.4}
+\]
+
+All sums retain the arrow labels, including distinct isotropy arrows.
+
+**Theorem 11M.2 (typed regular-field norm).** On
+
+\[
+ \mathscr H_r=\int_X^\oplus
+       V_x\otimes\ell^2(\mathcal G^x)\,d\mu(x)
+       =L^2(\mathcal G,\nu_r;r^*V),
+ \tag{GR.5}
+\]
+
+the convolution expression
+
+\[
+ (\Pi_U(f)\xi)(g)
+    =\sum_{r\gamma=r g}f(\gamma)U_\gamma\xi(\gamma^{-1}g),
+       \qquad f\in C_c(\mathcal G),
+ \tag{GR.6}
+\]
+
+has the actual reduced norm bound
+\(\|\Pi_U(f)\|\le\|f\|_r\). It extends to a representation of
+\(C_r^*(\mathcal G)\). The onto unitary proving it is
+
+\[
+ (J\xi)(g)=U_g^{-1}\xi(g),\qquad
+ J:\mathscr H_r\longrightarrow
+    \int_X^\oplus\bigl(\ell^2(\mathcal G_x)\otimes V_x\bigr)\,d\mu(x).
+ \tag{GR.7}
+\]
+
+This is a fibrewise absorption statement. It does not provide a
+homomorphism into an ordinary spatial tensor of two groupoid algebras,
+an auxiliary Fredholm operator, or a scalar Kasparov cycle.
+
+**Proof.** A countable open bisection cover exists by second countability
+and étaleness. Subtract preceding members to partition the arrows into
+countably many Borel partial bisections, without duplicating a label.
+On one such piece, the source-to-range map preserves \(\mu\) by
+invariance. Integrating a nonnegative function over its range or over
+its source therefore gives the same number. Summing the pieces by
+monotone convergence proves \(\nu_r=\nu_s\), including infinite
+integrals. This is the only measure interchange in (GR.7).
+
+Each \(U_g\) is unitary and measurable. Hence (GR.7) preserves the
+norm by (GR.4), carries the coefficient at \(r g\) to the coefficient
+at \(s g\), and has the measurable onto inverse
+\((J^{-1}\eta)(g)=U_g\eta(g)\). If the normal inverse transitions
+are \(z^{-1}\rho_t(s)\), these entire transitions enter \(U_g\);
+applying their inverse in \(J\) identifies the two pullbacks. It does
+not trivialize the original line, replace its determinant phase, or
+alter the grading or final right Clifford action.
+
+The cocycle identity gives, with all maps typed,
+\[
+ U_g^{-1}U_\gamma U_{\gamma^{-1}g}=1_{V_{s g}}.
+ \tag{GR.8}
+\]
+Consequently \(J\Pi_U(f)J^{-1}\) is
+\[
+ (\lambda(f)\eta)(g)
+       =\sum_{r\gamma=r g}f(\gamma)\eta(\gamma^{-1}g).
+ \tag{GR.9}
+\]
+The source of \(\gamma^{-1}g\) is \(s g\), so this decomposes over
+the source unit \(x\) as \(\lambda_x(f)\otimes1_{V_x}\), the regular
+source-column representation. On each fibre its norm is at most
+\(\|\lambda_x(f)\|\): expand in an orthonormal basis of the finite
+coefficient space and sum the squared component norms. The direct
+integral norm is at most the supremum over \(x\), which is the
+defining reduced norm. Compact support has a finite bisection cover,
+so its convolution sums first define bounded operators on the dense
+finite-section core; equivalently the regular bound just proved
+extends that formula. Matrix multiplication of the sums proves the
+convolution law. Taking the adjoint and using \(\nu_r=\nu_s\) gives
+the groupoid involution, or follows from the regular form (GR.9).
+Norm completion proves the representation assertion. \(\square\)
+
+**Lemma 11M.5 (the eligible metric separates holonomy arrows).**
+For a smooth foliation on a second-countable Hausdorff manifold with a holonomy-invariant
+positive transverse metric, its holonomy groupoid is Hausdorff.
+The holonomy groupoid of any countable complete transversal is also
+second-countable, Hausdorff and étale. Its local Riemannian volume has the invariance
+required in (GR.4).
+
+**Proof.** A transversal obtains its metric from its tangent
+identification with the normal bundle. Metric invariance says
+that each transverse holonomy map is a local Riemannian isometry.
+A local isometry's germ is determined by its value and first
+derivative. Here is the needed local argument. The Koszul formula
+determines the Levi-Civita connection from the metric, Lie brackets
+and derivatives of the metric; a local metric isometry preserves
+each of its terms and therefore the connection. It carries a
+geodesic with initial velocity \(v\) to the geodesic with initial
+velocity its derivative applied to \(v\).
+
+For completeness these initial data give unique short geodesics.
+In a relatively compact coordinate box the smooth Christoffel
+coefficients and their first derivatives are bounded. The integral
+equation for position and velocity on a sufficiently short interval
+is a contraction on a closed uniform ball of continuous paths;
+its coefficient Lipschitz constant times the interval length is
+less than one. Successive substitution converges uniformly,
+gives a solution, and gives uniqueness by the same contraction
+estimate. For sufficiently small initial \(v\), the solution
+exists up to time one and stays in the box: the velocity equation
+has a bound \(C|\dot x|^2\), so integration keeps
+\(|\dot x|\le2|v|\) and \(|x(t)-x(0)|\le2|v|\) after reducing
+the velocity ball. Differencing the integral equation first bounds
+the change of its solution by a constant times the change of \(v\).
+Its derivative is the unique solution of the linear variational
+integral equation with coefficient the derivative of the smooth
+position/velocity vector field along the solution. On each short
+interval this linear integral equation is a contraction too.
+Subtracting that candidate linear change from the actual change
+leaves a remainder bounded by the contraction constant times
+itself, plus \(o(|\Delta v|)\), by the uniform first-order
+remainder for the vector field on the compact box. Absorbing
+the contraction factor proves differentiability. The same
+estimate and continuity of the vector-field derivative prove
+continuous dependence of this derivative on \(v\); concatenate
+the finitely many short intervals up to time one. At the constant
+zero-velocity solution the variational equation is explicit:
+the linearized position is \(tv\), and the quadratic velocity
+term has zero linearization. Thus the time-one position map has
+derivative the identity at \(v=0\). On a smaller ball its remainder
+in the time-one map \(v\mapsto x+v+R(v)\) thus has Lipschitz
+constant at most \(1/2\). For \(w\) in a sufficiently small
+ball, \(v=w-R(v)\) is again a contraction of the velocity
+ball into itself. Hence these geodesic endpoints fill a
+neighbourhood of \(x\).
+
+Two local isometries with the same value and derivative at \(x\)
+therefore agree on all of these endpoints, by uniqueness of the
+transported geodesic. They have the same germ. A holonomy arrow
+is determined by its source, range and transverse holonomy germ.
+Consequently the continuous map sending an arrow to
+its source, range and derivative between their normal fibres
+is injective. Continuity follows in the defining smooth graph
+charts: the transverse holonomy map and its derivative vary
+smoothly there. The bundle of normal linear isometries over the
+product of the unit manifold with itself is Hausdorff. Distinct
+arrow images therefore have disjoint open neighbourhoods,
+whose inverse images separate the arrows. This proves
+Hausdorffness; an embedding or properness of that map is not
+needed.
+
+For an immersed disjoint union of transversal charts \(T\),
+the restricted groupoid is the fibre product
+\(T\times_r G\times_s T\). It is a subspace of a Hausdorff
+product. Its local holonomy charts are bisections, making it
+étale. A countable small foliation atlas generates its holonomy
+charts by finite words of overlap maps. There are countably
+many such words; restricting their domains to a countable
+coordinate basis supplies a countable bisection basis. Thus
+the transversal groupoid is second-countable, as required
+in Theorem 11M.2. Its bisection maps are the local isometries already
+proved, so change of variables preserves Riemannian volume.
+A countable collection of relatively compact charts gives a
+sigma-finite unit measure. This proves the lemma. \(\square\)
+
+Thus Theorem 11M.2 supplies its regular-field norm calculation
+for complete transversals throughout this eligible metric scope,
+without an additional unproved Hausdorffness premise. The
+full spin-c phases still enter the unitary \(U_g\); the lemma
+only separates the underlying holonomy arrows by their metric
+jets and does not erase central phases in the coefficient.
+The smooth full holonomy graph has positive-dimensional source
+fibres and is not being silently declared étale. Its comparison uses
+the actual holonomy Morita correspondence, not a global-action
+replacement.
+
+### 11M.4. The canonical regular unit vector does not normalize an auxiliary
+
+**Proposition 11M.4 (the canonical doubled family has index zero).**
+In the continuous regular field \(E_x=\ell^2(\mathcal G^x)\) of a
+Hausdorff étale groupoid, let \(e_x=\delta_{1_x}\) and
+
+\[
+ P_x=|e_x\rangle\langle e_x|,
+ \qquad L_\gamma e_{s\gamma}=\delta_\gamma.
+ \tag{GR.19}
+\]
+
+The unit vector is not invariant at a nonunit arrow. Its covariance
+defect is nevertheless finite rank. On the identically acted-on
+graded double \(E\oplus E\), the canonical self-adjoint odd family
+
+\[
+ T=\begin{pmatrix}0&2P-1\\2P-1&0\end{pmatrix}
+ \tag{GR.20}
+\]
+
+has fibrewise chiral index zero and is homotopic to a degenerate
+family through locally compact square and covariance defects.
+It does not supply an ordinary scalar index-one auxiliary.
+
+**Proof.** Left translation sends \(1_{s\gamma}\) to \(\gamma\).
+Hence \(L_\gamma P_{s\gamma}L_\gamma^{-1}\) is the projection
+onto \(\delta_\gamma\), whose difference from \(P_{r\gamma}\)
+has rank at most two. The field \(e\) is continuous: the units are
+open and closed in a Hausdorff étale groupoid, so multiplying the
+unit indicator by any compactly supported continuous unit function
+gives a continuous compactly supported regular section. Rank-one
+operators made from these sections show that \(aP\) is compact
+for \(a\in C_0(X)\). On a bisection the same description applies
+to \(\delta_\gamma\), proving continuity and local compactness of
+the translated defect. Noninvariance itself therefore does not
+prohibit a permissible compact covariance defect.
+
+The off-diagonal block \(2P-1\) is an invertible involution. Its
+kernel and cokernel are both zero. More explicitly set
+
+\[
+ B_u=-1+2uP,
+ \quad T_u=\begin{pmatrix}0&B_u\\B_u&0\end{pmatrix},
+ \quad B_u^2-1=4u(u-1)P,
+ \qquad 0\le u\le1.
+ \tag{GR.21}
+\]
+
+This is norm continuous. Its square defect after unit localization
+is compact, and its translated defect is \(2u\) times the
+rank-at-most-two defect above. Unit multiplication commutes with
+every \(B_u\). At \(u=0\) the off-diagonal block is \(-1\),
+with zero square, adjoint, commutator and covariance defects. At
+\(u=1/2\) its kernel and cokernel are each exactly the same unit
+line, so its index remains zero there as well. This proves the
+claimed homotopy and index. It does not exclude a different
+index-one family or require that such a family be an equivariant
+unit. \(\square\)
+
+### 11M.5. A regular representation and bounded commutators still need compacts
+
+**Theorem 11M.3 (the unconfined normal graph operator fails the scalar test).**
+There is a compact connected suspension with holonomy-invariant positive
+normal metric and a coherent full unitary spin-c lift for which the
+unconfined normal Dirac on the entire smooth graph has:
+
+- the actual reduced regular convolution representation;
+- a self-adjoint maximal normal-derivative domain with a smooth compact core;
+- bounded unbounded-operator commutators with every smooth compact graph kernel;
+- but a fixed smooth compact convolution kernel for which
+  \(\Pi(k)(1+D^2)^{-1}\) is not an ordinary scalar compact operator.
+
+Therefore regular absorption and the normal symbol alone do not give
+this graph Kasparov cycle or its prescribed Bott pairing.
+
+**Proof: geometry and full coefficient.** Let
+\(N=\mathbb R/2\pi\mathbb Z\), choose
+\(\alpha=2\pi(\sqrt2-1)\), \(\beta=\pi/5\), and let
+\(j\in\mathbb Z\) act by
+
+\[
+ (t,n)\longmapsto(t+j,n+j\alpha),\qquad
+ V=(\mathbb R\times N)/\mathbb Z.
+ \tag{GR.10}
+\]
+
+The leaf tangent is the \(t\) direction. The quotient is compact
+because \([0,1]\times N\) meets every orbit, and it is a smooth
+manifold because integer translations act freely and properly on
+the first factor. The normal metric is \(dn^2\), the orientation
+is increasing \(n\), and every return is an isometry with derivative
+one. The lift \([1,e^{ij\beta}]\) is coherent; its determinant is
+\(e^{2ij\beta}\). For this rank-one normal bundle, in its complete
+inverse module use the full \(C_1\) coefficient and final right \(C_1\) action of
+Section 11E.9, with inverse transition \(e^{-ij\beta}\rho_t(1)\)
+and inverse determinant \(e^{-2ij\beta}\). We retain the prescribed
+physical inverse Clifford generator, call it \(A\), with
+\(A=A^*\), \(A^2=1\), and the existing grading/sign calibration.
+No minimal-spinor substitution or determinant-only comparison is made.
+
+The actual holonomy graph is
+\[
+ G=(\mathbb R_t\times\mathbb R_r\times N)/\mathbb Z,
+ \qquad j(t,r,n)=(t+j,r+j,n+j\alpha).
+ \tag{GR.11}
+\]
+The arrow represented by \((t,r,n)\) goes from \([r,n]\) to
+\([t,n]\). There are no nonidentity leaf loops: irrationality makes
+every leaf an injectively immersed copy of \(\mathbb R\). Distinct
+returns have distinct transverse germs, so (GR.11) retains exactly
+the holonomy arrows. The transversal at \(t=0\) has groupoid
+\(N\rtimes\mathbb Z\); this is the actual suspension example,
+not a model for every holonomy groupoid.
+
+On the graph, coefficient functions obey the inverse transition
+\[
+ \psi(t+j,r+j,n+j\alpha)=e^{-ij\beta}\psi(t,r,n).
+ \tag{GR.12}
+\]
+The invariant density is \(dt\,dr\,dn\), with the fixed finite
+Clifford coefficient. A fundamental range strip identifies the scalar
+Hilbert space with
+\(L^2([0,1]_t\times\mathbb R_r\times N;C_1)\).
+The graph action is
+\[
+ (\Pi(k)\psi)(t,r,n)=\int_{\mathbb R}
+             k(t,t',n)\psi(t',r,n)\,dt'.
+ \tag{GR.13}
+\]
+Here \(k(t,t',n)\) is the deck-invariant scalar kernel of the
+arrow from \([t',n]\) to \([t,n]\), with the unitary inverse
+coefficient transport in the chosen cover frame. In that frame the
+transport along this lifted leaf is identity; the deck phases in
+(GR.12) remain in the global coefficient.
+
+**Proof: reduced norm and closed domain.** The same quotient volume
+can instead be integrated in a fundamental **source** strip
+\(0\le r<1\). This is verified by partitioning into integer strips
+and applying the measure-preserving deck maps; nonnegative sums
+justify the interchange. Fixing \([r,n]\), (GR.13) is precisely the
+regular integral-kernel representation on its full source fibre
+\(\mathbb R_t\), tensored with the fixed finite normal coefficient.
+Thus
+\(\|\Pi(k)\|\le\sup_{v\in V}\|\lambda_v(k)\|=\|k\|_r\).
+No geometric representation on the compact transversal is substituted
+for this regular representation.
+
+In the range strip put
+\[
+ D=A(-i\partial_n),\qquad
+ \operatorname{Dom}D=
+ \{\psi\in L^2:G\text{-distributional }\partial_n\psi\in L^2\}.
+ \tag{GR.14}
+\]
+The symbol is the prescribed inverse normal generator, with no
+\(t\) or \(r\) derivative. The constant deck phase and rotation
+in (GR.12) make this a globally defined physical first-order
+normal expression. Fourier series on the closed normal circle
+identify its domain with
+\(\sum_{m\in\mathbb Z}(1+m^2)\|\psi_m\|_{L^2(t,r;C_1)}^2<\infty\).
+The operator on coefficient \(m\) is the self-adjoint matrix
+\(mA\). The bounded inverse matrices \((mA\pm i)^{-1}\) have
+norm at most one and produce a domain vector for every \(L^2\)
+right-hand side, because
+\(\|mA u\|^2+\|u\|^2=\|(mA\pm i)u\|^2\).
+Hence both ranges \(D\pm i\) are all of \(L^2\), proving
+self-adjointness on exactly (GR.14).
+
+For the core, first truncate Fourier modes and \(r\) tails.
+In the range strip cut off a small neighbourhood of the endpoints
+\(t=0,1\). This costs no derivative term, since \(D\) has no
+\(t\) derivative; absolute continuity of the normal graph-norm
+integral makes the removed tails small. Mollify \(t,r\) and use
+finite Fourier normal sections. The resulting compact smooth
+sections supported in the interior of the strip extend by
+(GR.12) to globally smooth compact sections of the quotient.
+They converge in the graph norm. This proves the core and does
+not select arbitrary extensions at open transverse chart ends:
+the normal variable here is a closed circle. A general open
+transversal is not given this closed normal domain by the norm
+absorption theorem.
+
+On that core differentiation under (GR.13) gives
+\[
+ [D,\Pi(k)]=-iA\Pi(\partial_n k).
+ \tag{GR.15}
+\]
+The phases are constant and \(A\) commutes with them. The differentiated
+kernel is again smooth with compact quotient support. Its two
+regular Schur bounds are finite, so (GR.15) extends to a bounded
+scalar operator. The core identity and closure show that \(\Pi(k)\)
+preserves (GR.14) and that the commutator identity holds there.
+
+**Proof: one fixed localized defect.** Choose a real
+\(\xi\in C_c^\infty(I)\), \(I=(1/4,3/4)\),
+with \(\int\xi(t)^2dt=1\). Define
+\[
+ k(t,t',n)=\sum_{j\in\mathbb Z}
+                \xi(t-j)\xi(t'-j).
+ \tag{GR.16}
+\]
+The sum is locally finite, deck invariant, and independent of \(n\).
+It descends to a smooth compact graph kernel: its quotient support
+has representatives in \(\overline I\times\overline I\times N\).
+It is self-adjoint and idempotent under convolution. To check
+idempotence, the disjoint integer supports remove all mixed indices
+and each surviving integral of \(\xi^2\) equals one. In the
+fundamental range strip its action is exactly the rank-one plaque
+projection in \(t\), tensored with identities on \(r,n\) and the
+unchanged normal coefficient.
+
+Take a constant normal section \(u\) of norm one in
+\(L^2(N;C_1)\), and a real
+\(\zeta\in C_c^\infty((-1/8,1/8))\) of norm one. For distinct
+integers \(j\), prescribe in the fundamental range strip
+\[
+ \psi_j(t,r,n)=\xi(t)\zeta(r-j)u(n).
+ \tag{GR.17}
+\]
+Extending by (GR.12) gives smooth compact graph sections. Their
+supports in \(r\) are disjoint in this strip, so the \(\psi_j\)
+are orthonormal. They satisfy
+\(D\psi_j=0\) and \(\Pi(k)\psi_j=\psi_j\). Therefore
+\[
+ \Pi(k)(1+D^2)^{-1}\psi_j=\psi_j,
+ \qquad \|\psi_j-\psi_l\|=\sqrt2\quad(j\ne l).
+ \tag{GR.18}
+\]
+The image of this unit sequence has no convergent subsequence.
+The fixed localized square defect is not compact. For the bounded
+phase \(F=D(1+D^2)^{-1/2}\),
+\(\Pi(k)(1-F^2)=\Pi(k)(1+D^2)^{-1}\), so a necessary scalar
+Kasparov condition fails. No Bott pairing of this failed cycle
+can be assigned. This proves every assertion. \(\square\)
+
+![Unit-space tensor typing and the undifferentiated source multiplicity](../figures/groupoid-regular-interface.png)
+
+**Figure 11M.1.** Proposition 11M.1, Theorems 11M.2–11M.3 and
+(GR.1)–(GR.21). The finite corner and zero balanced quotient are
+different objects. The typed triangle retains the source of
+\(\gamma^{-1}g\) and the full coefficient transport of (GR.8).
+The graph panel uses the actual range strip \(0\le t<1\), displays
+only finitely many supports of (GR.17) in the entire source line,
+and suppresses the closed normal circle and finite Clifford factor.
+The fixed kernel averages the range coordinate; it does not average
+the source coordinate. Every displayed unit vector and image has
+norm one, and every distinct pair of images has distance \(\sqrt2\).
+These finite panels illustrate the fully proved infinite sequence;
+they do not replace its proof. [Editable SVG](../figures/groupoid-regular-interface.svg)
+· [Generator](../reproduction/groupoid-regular-interface/draw_interface.py)
+· [Component terms](../reproduction/groupoid-regular-interface/COMPONENT-TERMS.md).
+
+### 11M.6. What the regular auxiliary would still have to supply
+
+Theorem 11M.2 settles the scalar reduced-norm calculation for its
+correctly typed regular field. It supplies no odd auxiliary generator
+with an even local index-one comparison, and no connection between
+such a generator and the normal differential operator. Proposition
+GR.4 proves that merely doubling the canonical regular unit line
+does not supply that integer. Theorem 11M.3
+proves that the zero auxiliary fails even on an eligible entire
+smooth graph, despite its exact normal symbol, self-adjoint domain
+and bounded convolution commutators. The translation oscillator
+of Section 11E successfully replaces it for this particular
+suspension; hence this example is not a counterexample to the
+historical graph problem.
+
+A proposed general transfer must specify the fibrewise/correspondence
+tensor and its representation, not the zero quotient in Proposition
+GR.1. It must construct a globally compatible auxiliary and a closed
+physical graph operator, or prove an exact comparison to one. Open
+transversal ends, determinant connections and all domain/core
+conditions survive that requirement. The actual normalized
+counting/plaque Morita correspondence then has to carry the
+prescribed transverse Bott class to a cycle whose pairing is one.
+Neither a measurable absorption unitary, nor a fibrewise compact
+resolvent, nor an ordinary scalar auxiliary index establishes these
+global operator and class comparisons by itself. Conversely, the
+source does not authorize declaring a stronger equivariant-unit
+identity necessary for every possible solution. The arbitrary
+eligible reduced graph construction remains outside the results
+proved here.
+
+Human-source context: Connes, *A survey of foliations and operator
+algebras*, [pages 28–29 in the author's text](https://alainconnes.org/wp-content/uploads/foliationsfine.pdf),
+for the original transverse class, its pairing and graph problem.
+The regular-field, tensor, metric-jet and localized-defect proofs
+above are independently written. Existing exact comparison routes
+are Checked Morita product, plaque restriction and local normalization,
+the actual oscillator graph construction of Sections 11E.14–11E.19,
+and Exact Morita class, full coefficient and the positive local pairing,
+with their stated domains and hypotheses.
+
 ## 12. Exercises
 
 **Exercise 1 (basic).** In the product foliation \(\mathbb R\times S^1\), choose a real compactly supported function \(\psi\) with \(\int|\psi|^2=1\). Compute the square of the kernel \(e(t,t',u)=\psi(t)\psi(t')\), and its trace for transverse measure \(a\,du\), where \(du\) has total mass one.
@@ -17164,6 +18517,277 @@ Use \(v_\chi=\frac14\sum_s\chi(s)u_s\), with \(s=a,a^{-1},b,b^{-1}\). The phase 
 Emerson's specified group \(G\subseteq\mathbb R\) has an actual continuous deformation of its translation action, \(x\mapsto x+tg\), to the trivial action. The oscillator's scalar index identifies the equivariant unit only after that homotopy. An arbitrary groupoid has no such supplied action deformation. The finite-group comparison is an abstract equivariant-index example, not a germ-effective foliation counterexample. A hyperbolic transverse derivative cannot preserve a positive metric and a unitary spin-c lift, so that example misses the historical hypothesis. To refute the original problem one would have to exclude every eligible normalized reduced representative, rather than one phase, one representation, or one ineligible action.
 
 **Rubric.** Two scalar indices: 1; invariant two-component index and different values: 3; actual translation homotopy and its group scope: 2; both exclusion limits: 2.
+
+
+### Exercises 134–139. Proper coefficients and the regular diagonal (66 points)
+
+**Exercise 134 (10 points).** For the cutoff in Lemma 11J.1, derive the coordinate identity (AU.6), prove that the isometry (AU.5) exists in an arbitrary nondegenerate covariant representation, and explain why a finite stabilizer causes no exception.
+
+**Solution.** The functions \(c_g(x)=c(g^{-1}x)\) satisfy
+\(\alpha_h(c_{h^{-1}g})(x)=c(g^{-1}hh^{-1}x)=c_g(x)\).
+Thus the coordinate \(g\) of \((U_h\otimes\lambda_h)J\xi\) is
+\(U_h\pi(c_{h^{-1}g})\xi=\pi(c_g)U_h\xi\), exactly that of \(JU_h\xi\) (3 points). Square normalization gives
+\(\sum_g\|\pi(c_g)\xi\|^2=\|\xi\|^2\); the strict-to-strong argument following (AU.5) justifies this equality and norm convergence of the orthogonal coordinate sum (4 points). If a finite group \(F\) acts on a point, take \(c=|F|^{-1/2}\). The sum in (AU.2) has \(|F|\) terms and equals \(1\). Hence the same proof works with finite stabilizers; no free-action Morita equivalence is being asserted (3 points).
+
+**Exercise 135 (10 points).** Track the source and coefficient of every factor in (AU.9). Prove the direct-summand assertion, and identify precisely where replacing \([q_P]^{-1}\) by a hypothetical \([q]^{-1}\) would change the assumptions.
+
+**Solution.** The four factors run respectively
+\[
+ R\longrightarrow P\rtimes_r\Gamma
+ \longrightarrow P\rtimes_{\max}\Gamma
+ \longrightarrow M\longrightarrow\mathbb C
+\]
+in the KK category. All have even degree, so their product has even degree and no interchange sign is introduced (4 points). Multiplication by \([u_r]\) evaluates to \(1\); the resulting pairing \(\ell\) decomposes every \(K_0\)-class by (AU.16), and its restriction to \(\mathbb Z[1_R]\) is the identity (4 points). The coefficient quotient is an actual isomorphism proved from a proper action. An inverse of the group quotient would instead assert K-amenability for a discrete group; this is an extra premise, and can fail by the Kazhdan projection argument (2 points).
+
+**Exercise 136 (10 points).** Suppose an infinite property-\(T\) group has a proper factorization satisfying (AU.8). Determine both the scalar unit pairing of \(\kappa\) and the pairing of \([q]^*\kappa\) with its Kazhdan projection. Explain why these values are compatible.
+
+**Solution.** Theorem 11J.3 gives \([1_R]\otimes_R\kappa=1\) (3 points). Since \(q(p)=0\), the pullback class pairs with \([p]\) as
+\([p]\otimes_M[q]\otimes_R\kappa=0\) (3 points). The trivial full character pairs with \([p]\) as \(1\), so the pullback cannot equal that character, and the equivariant product \(\gamma\) cannot have the stronger unit identity that would force equality (3 points). The unit \(1_M\) and the spectral projection \(p\) are different K-classes; no equality of their pairings was asserted. Thus ordinary normalization and failure of K-amenability coexist (1 point).
+
+**Exercise 137 (12 points).** For the convention \(\alpha_g(a)=U_gaU_g^{-1}\), verify both conjugations in (RA.5), including the inverse on \(U_h\). Then prove the restriction identity (RA.8), and identify exactly which index assumption fixes the original Bott sign.
+
+**Solution.** Applying \(W^*\), then \(\pi(a)\otimes1\), then \(W\), gives \(U_h^{-1}\pi(a)U_h=\pi(\alpha_{h^{-1}}a)\) in coordinate \(h\). For \(U_g\otimes\lambda_g\), the output before \(W\) is \(U_gU_{g^{-1}h}\eta_{g^{-1}h}=U_h\eta_{g^{-1}h}\), which \(W\) sends to \(\eta_{g^{-1}h}\). Thus the group action becomes \(1\otimes\lambda_g\); replacing \(U_h^{-1}\) by \(U_h\) would not make this cancellation. Faithful spatial factor representations make this the exact reduced norm. Since \(\Delta_r i_r(a)=i_m(a)\otimes1\), functoriality gives \(i_r^*d_r=(i_m^*d_m)\boxtimes u^*\kappa=i_m^*d_m\). The required auxiliary equality is \(u^*\kappa=1\), not merely that it is Fredholm or has a finite-dimensional kernel. It is even and has scalar index \(+1\); no odd factors are exchanged, so the original Bott pairing and sign remain \(+1\).
+
+**Rubric.** 4 points for the two coordinate conjugations; 4 for the typed whole KK restriction calculation; 4 for the exact auxiliary unit, parity and sign.
+
+**Exercise 138 (12 points).** Prove that the paired proper-length operator (RA.17) is an actual reduced even scalar cycle but cannot serve in Theorem 11K.2. Explain why adding an unmatched trivial positive line is not a valid general correction. State the exact full inverse phase that must remain in a normal product.
+
+**Solution.** The finite-coordinate closure is the orthogonal sum of matrices with eigenvalues \(\pm(1+\ell(g))\); its graph domain is precisely the two weighted \(\ell^2\) spaces in (RA.17). Finite word balls make both resolvents compact. The word-length inequality bounds \([M_w,\lambda_h]\) by \(\ell(h)\), preserving the domain, and the two-resolvent integral gives compact phase commutators. The bounded transform thus has all scalar Kasparov defects on \(C_r^*\Gamma\). The off-diagonal map \(M_w\) is bijective with bounded inverse, so the index is zero. The desired restriction would be multiplied by zero rather than by one. An unmatched trivial positive line would add index one but forces the trivial group representation into the auxiliary. Reduced continuity of that line implies an invariant mean by Theorem 11I.1, so this fails on nonamenable groups. A genuine different reduced auxiliary needs its own proof. In the normal factor, \(zs\) becomes \(z^{-1}\rho_t(s)\), with grading \(\Pi^{q(q-1)/2}\) and physical generators \((-1)^{q(q-1)/2+1}L_{t_j}\). The inverse determinant \(z^{-2}\) cannot replace \(z^{-1}\).
+
+**Rubric.** 4 points for closure/compactness/commutators; 4 for index zero and the trivial-line norm failure; 4 for the entire inverse coefficient, grading and generator sign.
+
+**Exercise 139 (12 points).** Under (RA.19), construct the Kazhdan projection by functional calculus and determine its reduced image. If a fixed maximal normal class pairs it nontrivially, which assertion is refuted? Explain why an ordinary scalar unit-index auxiliary and the proper-intermediate formula (RA.22) are not automatically excluded.
+
+**Solution.** The positive \(L=\sum_{s\in S}(1-u_s)^*(1-u_s)\) has spectrum in \(\{0\}\cup[c,4|S|]\). A continuous function equal to one at zero and zero on the latter interval gives \(p=h(L)\), a projection onto invariant vectors in every representation. An infinite regular representation has no nonzero invariant vector, so \(q(p)=0\). A descent of a maximal class would give \([p]\otimes d_m=q_*[p]\otimes d_r=0\), contradicting its nonzero pairing. This refutes descent of that specified class; it does not refute every reduced graph class with original local Bott pairing one. A reduced auxiliary has \(p\)-pairing zero and may still have full-unit pairing one; those conditions are different. In the proper-intermediate route the pullback is \(\gamma_m\otimes d_m\), not automatically \(d_m\). Its local normalization follows from the separately proved \(b_m\otimes\gamma_m=b_m\) and \(b_m\otimes d_m=1\). The needed quotient inverse, local identity, exact normal restriction and graph-operator data remain explicit premises. Neither formula turns an invariant metric bundle into a proper space.
+
+**Rubric.** 4 points for construction and reduced image of \(p\); 4 for the exact specified-class scope; 4 for the two distinct auxiliary/proper-intermediate premises and their limitations.
+
+### Exercises 140–142. Prescribed commutators and unital compression (36 points)
+
+**Exercise 140 — removing the unrepresented block (12 points).**
+
+Let \(D=D^*\) be odd, let \(P\) be an even projection preserving its domain, and suppose \([D,P]\) is bounded. Prove that \(B=D,P\) is the bounded odd self-adjoint off-diagonal part of \(D\). Show that \(D-B\) reduces \(P\), and explain why compact resolvent and the represented KK class survive the compression when the representation vanishes on \((1-P)H\).
+
+**Solution.** Put \(Q=1-P\). On the full domain, \([D,P]=QDP-PDQ\). Multiplication by \(2P-1\) gives \(B=QDP+PDQ\). The two terms are mutual adjoints on domain vectors, and density gives self-adjointness of the bounded extension. Oddness follows because \(D\) is odd and \(P,Q\) are even. Direct block multiplication yields \([B,P]=[D,P]\), so \([D-B,P]=0\). The bounded symmetric perturbation proof (UP.9) gives self-adjointness on the same domain and compact resolvents. Their restrictions give compact resolvent on \(PH\). Formula (UP.11) makes the two bounded transforms differ compactly. The unrepresented block has zero source representation, hence is degenerate; removing it preserves the original KK class. Unitality on \(PH\) follows from restricting the source identity \(P\).
+
+**Rubric.** Correct block and adjoint computation: 4 points; self-adjoint compact-resolvent perturbation and reduction: 4 points; bounded-transform class and zero-block argument: 4 points.
+
+**Exercise 141 — the complete group core (12 points).**
+
+Under Corollary 11L.2, construct a countably generated algebraic graded core invariant under every \(V_g\). Prove graph density and the bound (UP.16). Explain why bounded commutators for every fixed element do not assert a bound uniform in the group.
+
+**Solution.** Choose dense \((x_j)\) in \(H_K\) and \(\xi_j=(D_K-i)^{-1}x_j\). The identity \(\|(D_K-i)\xi\|^2=\|\xi\|^2+\|D_K\xi\|^2\) and surjectivity of the resolvent equation make their span graph dense. Split them by the grading projections \(P_\pm\), and span all \(V_gP_\pm\xi_j\). Each lies in the domain by (UP.13); the grading projections preserve the graph norm because the grading anticommutes with \(D_K\). The span contains the original graph-dense family and is invariant under all \(V_h\) by the group multiplication law. Its family is countable. The two-component triangle inequality gives
+
+\[
+ \bigl\|(D_KV_g\xi,V_g\xi)\bigr\|
+ \leq\bigl\|(V_gD_K\xi,V_g\xi)\bigr\|+\|C_g\xi\|
+ \leq(1+\|C_g\|)\|\xi\|_{\operatorname{Dom}D_K}.
+\]
+
+The cutoff construction controls each enumerated element after a finite initial segment; its finite initial commutator contributions can depend on that element. It supplies no common bound as \(g\) varies, nor invariance under higher powers of \(D_K\).
+
+**Rubric.** Resolvent graph-density argument: 4 points; graded countable invariant core: 4 points; precise graph bound and scope: 4 points.
+
+**Exercise 142 — the index survives unital compression (12 points).**
+
+Use the matrices in (UP.20). Compute \(D\), its removed block \(B\), and \(D_0=D-B\). Find the compressed kernel and cokernel, its index, and the exact norm of \([D,P]\). Explain why the exact odd unitary \(F\) on the doubled space does not force the compressed index to vanish.
+
+**Solution.** In the displayed coordinate order,
+
+\[
+ D=\begin{pmatrix}0&0&2&1\\0&0&1&3\\2&1&0&0\\1&3&0&0\end{pmatrix},\quad
+ B=\begin{pmatrix}0&0&0&1\\0&0&0&3\\0&0&0&0\\1&3&0&0\end{pmatrix},\quad
+ D_0=\begin{pmatrix}0&0&2&0\\0&0&1&0\\2&1&0&0\\0&0&0&0\end{pmatrix}.
+\]
+
+The compressed map \(D_K^+\) is the row \((2,1)\), so its kernel is \(\mathbb C(1,-2)\), its cokernel is zero and its index is \(+1\). The off-diagonal vector linking the unrepresented coordinate to the positive coordinates is \((1,3)\), of norm \(\sqrt{10}\); therefore both \(\|[D,P]\|\) and \(\|B\|\) are \(\sqrt{10}\). The doubled \(F\) acts on equal-dimensional grading spaces, but the scalar representation there is \(aP\), not the identity representation. Compression retains two positive and one negative represented coordinate. The zero-representation coordinate carries no represented KK contribution, so removing it need not preserve equality of grading dimensions and does preserve the represented index.
+
+**Rubric.** All three correct matrices: 4 points; kernel, cokernel and sign: 4 points; commutator norm and representation distinction: 4 points.
+
+### Exercises 143–145. The regular groupoid interface (42 points)
+
+**Exercise 143 — two distinct diagonals (10 points).**
+
+(a) **5 points.** In \(M_2\otimes M_2\), calculate the ideal
+generated by \(e_{11}\otimes1-1\otimes e_{11}\). Separately verify
+the corner homomorphism \(e_{ij}\mapsto e_{ij}\otimes e_{ij}\),
+its identity and injectivity.
+
+(b) **5 points.** For a nonatomic smooth volume on a compact
+positive-dimensional manifold \(M\), prove that (GR.2) forces
+every bounded \(T\) on \(L^2(M^2)\) to vanish. Explain precisely
+why this does not rule out the one-leaf groupoid's rank-one Morita
+class.
+
+**Solution.** (a) In the ordered tensor basis \(11,12,21,22\),
+the generator is \(\operatorname{diag}(0,1,-1,0)\). Consequently
+\(E_{a,12}(e_{11}\otimes1-1\otimes e_{11})E_{12,b}=E_{a,b}\)
+for every \(a,b\). These are all matrix units, so the ideal is all
+\(M_4\) and the quotient is zero. In contrast the four matrices
+\(e_{ij}\otimes e_{ij}\) multiply with the matrix-unit rule,
+have the required adjoints, and act faithfully on the span of
+the tensor basis vectors \(11,22\). Their sum of diagonal units
+is \(P\), not the full identity of \(M_4\). The range is exactly
+\(PM_4P\). Compression to this corner and quotienting by the
+uncompressed ideal are different operations. Award 3 points for
+the full ideal calculation and 2 for all corner claims.
+
+(b) Choose countably many continuous \(h_j\) separating points.
+For a fixed input \(v\), (GR.2) makes its output \(Tv\) vanish
+where any \(h_j(x)-h_j(y)\ne0\), after discarding a countable
+union of null sets. Thus it is supported on the diagonal.
+Fubini applied to its indicator gives diagonal product measure
+zero, since every singleton has volume zero. Hence \(Tv=0\)
+and \(T=0\). This uses product measure on two independent unit
+variables and the specific equation (GR.2). The pair groupoid
+is Morita equivalent to a point and admits its usual nonzero
+rank-one corner; neither that corner nor its scalar class has
+been required to act on this product-measure diagonal. Award
+3 points for the complete null-set argument and 2 for the
+precise limitation.
+
+**Exercise 144 — typed absorption and the regular unit line (16 points).**
+
+(a) **7 points.** Suppose \(\gamma:y\to x\) and \(g:z\to x\)
+in the groupoid of Theorem 11M.2. Type every map in (GR.8), prove
+\(\nu_r=\nu_s\) without erasing isotropy labels, and establish
+the onto absorption unitary and its actual reduced norm bound.
+
+(b) **5 points.** For the canonical unit line of Proposition
+GR.4, calculate the covariance defect and the index of (GR.20).
+Verify the entire homotopy (GR.21) and explain why its compact
+covariance defect is compatible with the proof.
+
+(c) **4 points.** Show that a holonomy-invariant positive
+transverse metric makes the underlying holonomy groupoid
+Hausdorff. Explain why this does not imply properness or remove
+the full spin-c coefficient phases.
+
+**Solution.** (a) The arrow \(\gamma^{-1}g:z\to y\) has
+transport \(U_{\gamma^{-1}g}:V_z\to V_y\), followed by
+\(U_\gamma:V_y\to V_x\), then \(U_g^{-1}:V_x\to V_z\).
+The cocycle law makes their composition \(1_{V_z}\).
+A countable open bisection cover can be made disjoint by
+subtracting earlier pieces. Integrating a nonnegative arrow
+function on one resulting Borel partial bisection over its
+range or source gives equal values, by the invariant unit
+measure. Summing proves \(\nu_r=\nu_s\) by monotone convergence.
+Distinct isotropy arrows remain distinct pieces or distinct
+labels in the sums; no orbit counting replaces arrow counting.
+Thus \(J\xi(g)=U_g^{-1}\xi(g)\) preserves norms, is measurable
+and has onto inverse \(J^{-1}\eta(g)=U_g\eta(g)\).
+Conjugation gives precisely (GR.9), whose source \(z\) is
+unchanged throughout convolution. Its source fibre is
+\(\lambda_z(f)\otimes1_{V_z}\), bounded by
+\(\sup_z\|\lambda_z(f)\|=\|f\|_r\). This uses the complete
+coefficient, not merely its determinant character. Award 2
+points for typing, 2 for the measure proof and 3 for the onto
+unitary and actual reduced bound.
+
+(b) The translated unit vector is \(\delta_\gamma\).
+The covariance defect is the difference of its rank-one
+projection and the rank-one projection onto \(1_{r\gamma}\),
+so has rank at most two. The involution \(2P-1\) is invertible;
+its chiral kernel and cokernel vanish and its index is zero.
+For the stated path \(B_u\), direct multiplication gives
+\(B_u^2-1=4u(u-1)P\). After \(C_0(X)\) localization this is
+compact. The translated defect is \(2u\) times the already
+computed finite-rank defect, with continuous coefficients on
+each bisection. At \(u=0\), \(B_0=-1\) and all defects vanish;
+at \(u=1/2\), the same unit line is both kernel and cokernel.
+Thus the path supplies no index one. Noninvariance was not
+mistaken for an obstruction to compact covariance; a different
+Fredholm family remains possible. Award 2 points for the
+projection/index calculation and 3 for every homotopy defect
+and its limitation.
+
+(c) On transversals, holonomy maps are local metric isometries.
+They preserve the Levi-Civita connection by the Koszul formula,
+so preserve short geodesics and their initial velocities.
+Local geodesic existence and uniqueness follows from the
+bounded-coefficient integral equation contraction, and the
+time-one position map fills a neighbourhood of its starting
+point by the \(v\mapsto v+R(v)\) contraction argument of
+Lemma 11M.5. Hence two local isometries with the same value
+and derivative have the same germ. Source, range and normal
+derivative therefore give a continuous injection of the
+holonomy arrows into a Hausdorff bundle of linear isometries.
+Pullbacks of disjoint image neighbourhoods separate any
+two arrows. This requires no properness of the injection
+or groupoid. The derivative records the metric germ, whereas
+the specified spin-c coefficient action also contains the
+full inverse central phase; that coefficient is retained
+by \(J\). Award 3 points for the germ/separation proof
+and 1 for the two precise limitations.
+
+**Exercise 145 — an eligible smooth graph with a localized failure (16 points).**
+
+(a) **4 points.** Verify the actual holonomy graph (GR.11),
+the invariant normal metric and the full inverse coefficient
+phases (GR.12), including the determinant.
+
+(b) **6 points.** Prove the stated reduced convolution bound,
+the exact self-adjoint domain and smooth compact core of
+(GR.14), and the bounded commutator (GR.15).
+
+(c) **6 points.** Check that the fixed \(k\) of (GR.16) is
+smooth, compact on the quotient, self-adjoint and a convolution
+idempotent. Prove the infinite localized noncompactness test
+(GR.17)–(GR.18) and identify the conclusion's exact scope.
+
+**Solution.** (a) Irrationality makes the leaf through \([r,n]\)
+an injectively immersed copy of \(\mathbb R\); equality after
+a nonzero integer return would require \(j\alpha=0\) modulo
+\(2\pi\). All leaf paths with the given lifted endpoints have
+the same germ, and distinct returns have distinct rotational
+germs. Thus the quotient of the triples in (GR.11) is exactly
+the holonomy graph. Rotations preserve \(dn^2\) and increasing
+\(n\). The coherent lift \([1,e^{ij\beta}]\) has determinant
+\(e^{2ij\beta}\); the complete inverse \(C_1\) coefficient
+has phase \(e^{-ij\beta}\rho_t(1)\) and inverse determinant
+\(e^{-2ij\beta}\). Its final right Clifford factor and the
+calibrated \(A\) are retained. Award 2 points for the graph
+identification and 2 for all metric/coefficient claims.
+
+(b) Partition the quotient integral into deck strips and use
+the measure-preserving translations to integrate in the
+source strip \(0\le r<1\). Each fixed physical source then
+carries exactly its regular \(L^2(\mathbb R_t)\) convolution
+operator with the finite coefficient. Taking the supremum of
+the regular norms gives the reduced bound. In the range strip,
+normal Fourier coefficients give matrices \(mA\) and exact
+domain \(\sum_m(1+m^2)\|\psi_m\|^2<\infty\). Since
+\(\|(mA\pm i)^{-1}\|\le1\) and
+\(\|mAu\|^2+\|u\|^2=\|(mA\pm i)u\|^2\), both ranges
+are all of \(L^2\); the maximal normal domain is self-adjoint.
+Truncate Fourier and \(r\) tails, remove small \(t\)-endpoint
+neighbourhoods at no \(t\)-derivative cost, then mollify
+\(t,r\). Extend by the constant phase (GR.12). This gives
+smooth compact graph sections converging in the normal graph
+norm. Differentiation on this core gives \(-iA\Pi(\partial_nk)\).
+The differentiated compact smooth kernel has finite regular
+Schur bounds. Closing the core identity proves domain
+preservation and the bounded commutator on the exact domain.
+Award 2 points for each of the norm, domain/core and
+commutator arguments.
+
+(c) The integer translates of \(\xi\) have disjoint supports.
+The sum (GR.16) is locally finite and deck invariant, and its
+quotient support is contained in the compact image of
+\(\overline I^2\times N\). Reality gives the adjoint. In the
+convolution square, disjointness removes mixed translates;
+each diagonal term integrates to \(\int\xi^2=1\). Thus
+\(k*k=k\). For a constant normal \(u\), the sections \(\psi_j\)
+have disjoint \(r\) supports, norm one, \(D\psi_j=0\), and
+\(\Pi(k)\psi_j=\psi_j\). Hence their images under the fixed
+localized resolvent are orthonormal, with pairwise distance
+\(\sqrt2\), and cannot contain a convergent subsequence.
+This proves failure of an ordinary scalar compactness condition
+for this particular unconfined normal operator on the actual
+eligible smooth graph. It does not refute the historical
+problem: the Section 11E translation oscillator repairs this
+same suspension. Award 3 points for all kernel properties,
+2 for the infinite-sequence proof and 1 for the exact scope.
 
 ## References
 

@@ -6,7 +6,7 @@ An induced algebra places one copy of the subgroup algebra at every coset. In it
 
 The group may be any discrete group, and the von Neumann algebra and its Hilbert spaces may be nonseparable. Infinite sums of orthogonal projections below mean nets over finite subsets. No faithful normal state is assumed. The zero algebra gives zero on both sides of every crossed-product formula; we state the proof for a nonzero algebra.
 
-The elementary operator tools are Positivity and order, Hilbert space facts and the concrete positive-operator criterion, and Inner product completions. Each later use of a normal representation, bounded density or tensor transport is linked to its earlier proof below.
+The elementary operator tools are [Positivity and order](OA-FLOW-CF.md#oa-flow.cf.7), [Hilbert space facts and the concrete positive-operator criterion](OA-FLOW-CF.md#oa-flow.cf.8), and [Inner product completions](OA-FLOW-CF.md#oa-flow.cf.10). Each later use of a normal representation, bounded density or tensor transport is linked to its earlier proof below.
 
 <a id="oa-flow.discrete.setting"></a>
 ## The induced algebra in coordinates
@@ -194,7 +194,7 @@ Take the direct sums over \(i\). The representations \(\rho=\bigoplus_i\pi_{\var
 \(\bigoplus_i(\ell^2(H)\otimes K_i)\cong\ell^2(H)\otimes\bigoplus_iK_i\)
 is an isometry on dense finite-coordinate vectors and hence a unitary. Under this interchange, (D25) becomes the regular representation built from the faithful normal \(\rho\).
 
-An ultraweakly continuous faithful representation proves that \(\sigma(Q)\) is a von Neumann algebra and that \(\sigma^{-1}\) on its image is normal. Since the Fourier algebra is ultraweakly dense in \(Q\), normality and the two generator identities identify its image exactly with the regular crossed product of \(N\) on \(\rho\). [Normal representation independence](OA-FLOW-NR.md#oa-flow.nr.4) identifies this normally with \(N\rtimes_\beta H\). This proves (D10) a second time. When \(N\) has one faithful normal state, the family may consist of that state alone, and (D9) is the corresponding single-state proof.
+[An ultraweakly continuous faithful representation](OA-FLOW-ST12.md#oa-flow.st.2) proves that \(\sigma(Q)\) is a von Neumann algebra and that \(\sigma^{-1}\) on its image is normal. Since the Fourier algebra is ultraweakly dense in \(Q\), normality and the two generator identities identify its image exactly with the regular crossed product of \(N\) on \(\rho\). [Normal representation independence](OA-FLOW-NR.md#oa-flow.nr.4) identifies this normally with \(N\rtimes_\beta H\). This proves (D10) a second time. When \(N\) has one faithful normal state, the family may consist of that state alone, and (D9) is the corresponding single-state proof.
 
 <a id="oa-flow.discrete.matrix-units"></a>
 ## Moving between cosets gives the full matrix algebra

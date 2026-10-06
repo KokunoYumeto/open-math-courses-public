@@ -2,7 +2,7 @@
 
 A correspondence can move information from one point to another before taking a trace. Its local class lives where the two maps coincide. Compactness of their common support makes the trace finite even when the original sheaf has noncompact support and infinite-dimensional global cohomology.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Learn first Constructible traces and local Euler indices, Closed supports and evaluated proper transport, and Proper characteristic classes and the compact index. We use their actual diagonal comparison, graded evaluation, exceptional counit and compatibility of supported evaluation with the proper trace. Perfect operations and finite microlocal coefficients proves the compact supported-cohomology finiteness needed here. The supported cycle intersection supplies the graph interpretation. These are written programme proofs relative to their stated foundations; transitive prerequisite closure remains open.
 

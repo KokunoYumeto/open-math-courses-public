@@ -13,7 +13,7 @@ Let \(M\ne0\) be a type III factor with separable predual. Suppose
 \]
 For every given faithful normal semifinite weight \(\psi\) on \(M\), the modular automorphism \(\sigma_P^\psi\) is inner: there is a unitary \(b\in M\) such that \(\sigma_P^\psi(x)=bxb^*\) for every \(x\in M\). This is an actual whole-algebra identity. No periodic-weight existence or classification theorem is a premise or conclusion of this chapter.
 
-The actual earlier inputs are the complete [CS-3/4 corner and spectral-translation proofs](OA-FLOW-CS.md), the precisely scoped [MG-4 positive \(S/\Gamma\) comparison](OA-FLOW-MG.md), [RF-1](OA-FLOW-RF.md#oa-flow.rf.1) and [AL-1–3](OA-FLOW-AL.md#oa-flow.al.1) for real filters, Fourier uniqueness and element-hull detection, CF-1 for compact integrals and Banach differentiation, the already bounded star-derivation construction in L35 Sections2–6, and [CT-2](OA-FLOW-CT.md#oa-flow.ct.2)/PC-7/PC-8 for the actual type III corner equivalence. The modular action's normality and pointwise continuity are proved on full n.s.f. domains in MW-4. Exact individual proof ranges, scalar prerequisites and earlier order are recorded separately. Automatic boundedness is not needed: the derivation below is explicitly a norm-convergent bounded operator series.
+The actual earlier inputs are the complete [CS-3/4 corner and spectral-translation proofs](OA-FLOW-CS.md), the precisely scoped [MG-4 positive \(S/\Gamma\) comparison](OA-FLOW-MG.md), [RF-1](OA-FLOW-RF.md#oa-flow.rf.1) and [AL-1–3](OA-FLOW-AL.md#oa-flow.al.1) for real filters, Fourier uniqueness and element-hull detection, [CF-1](OA-FLOW-CF.md#oa-flow.cf.1) for compact integrals and Banach differentiation, the already bounded star-derivation construction in [L35 Sections2–6](OA-FLOW-L35.md#oa-flow.gi.fourier), and [CT-2](OA-FLOW-CT.md#oa-flow.ct.2)/[PC-7](OA-FLOW-PC.md#oa-flow.projection.pc7)/[PC-8](OA-FLOW-PC.md#oa-flow.projection.pc8) for the actual type III corner equivalence. The modular action's normality and pointwise continuity are proved on full n.s.f. domains in [MW-4](OA-FLOW-MW.md#oa-flow.mw.4). Exact individual proof ranges, scalar prerequisites and earlier order are recorded separately. Automatic boundedness is not needed: the derivation below is explicitly a norm-convergent bounded operator series.
 
 The human primary source actually read is [Connes (1973), Lemmas2.3.5–2.3.10 and the proof of Theorem2.3.1, printed179–182](https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=48). Its small-corner route motivates the construction. The complete circle-filter bound and norm-logarithm proof below supply the needed innerness step locally, rather than importing its cited near-spectrum theorem.
 
@@ -45,7 +45,7 @@ is a downward-directed family of closed sets with intersection \(a\mathbb Z\). T
 <a id="oa-flow.ip.1"></a>
 ## IP-1. Compactness produces a narrow periodic corner spectrum
 
-Fix \(0<\eta<a/2\), and put \(K=[-a/2,-\eta]\cup[\eta,a/2]\). It is compact and disjoint from \(a\mathbb Z=\bigcap\mathcal F\). Hence for each \(r\in K\) some \(F_r\in\mathcal F\) excludes \(r\). The open complements \(\mathbb R\setminus F_r\) cover \(K\); CF-1's compactness proof gives a finite subcover. Downward directedness, applied finitely many times, produces one \(F\in\mathcal F\) contained in all the corresponding finitely many sets. Therefore \(F\cap K=\varnothing\).
+Fix \(0<\eta<a/2\), and put \(K=[-a/2,-\eta]\cup[\eta,a/2]\). It is compact and disjoint from \(a\mathbb Z=\bigcap\mathcal F\). Hence for each \(r\in K\) some \(F_r\in\mathcal F\) excludes \(r\). The open complements \(\mathbb R\setminus F_r\) cover \(K\); [CF-1](OA-FLOW-CF.md#oa-flow.cf.1)'s compactness proof gives a finite subcover. Downward directedness, applied finitely many times, produces one \(F\in\mathcal F\) contained in all the corresponding finitely many sets. Therefore \(F\cap K=\varnothing\).
 
 Write this actual \(F\) as \(\operatorname{Sp}(\alpha^e)+[-\varepsilon,\varepsilon]\), with \(e\ne0\) fixed. Translate any \(r\in F\) by an integer multiple of \(a\) into \([-a/2,a/2]\). Periodicity keeps the representative in \(F\); avoidance of \(K\) forces it into \((-\eta,\eta)\). Consequently
 
@@ -205,7 +205,7 @@ We prove a local general lemma for any unital \(C^*\)-algebra \(B\) and star aut
 \]
 converges in the complete bounded-operator space. It is complex linear, annihilates \(1\), and commutes with star, since all its coefficients are real.
 
-For completeness, \(\exp D=\beta\) follows without an imported analytic functional calculus. Put \(X=\beta-I\) and \(Z(s)=\log(I+sX)\), \(0\le s\le1\). The logarithm and derivative series converge uniformly because \(\|sX\|\le\epsilon<1\). Their termwise derivative is \(Z'(s)=X(I+sX)^{-1}\), by the geometric series; it commutes with \(Z(s)\). Differentiating the norm-convergent exponential on this compact path gives \((e^{Z(s)})'=e^{Z(s)}Z'(s)\). Differentiating the inverse by its inverse identity gives \(((I+sX)^{-1})'=-(I+sX)^{-1}X(I+sX)^{-1}\). The product \(e^{Z(s)}(I+sX)^{-1}\) consequently has derivative zero, and equals \(I\) at zero. CF-1's Banach fundamental theorem makes it constant. At \(s=1\) this proves \(\exp D=\beta\).
+For completeness, \(\exp D=\beta\) follows without an imported analytic functional calculus. Put \(X=\beta-I\) and \(Z(s)=\log(I+sX)\), \(0\le s\le1\). The logarithm and derivative series converge uniformly because \(\|sX\|\le\epsilon<1\). Their termwise derivative is \(Z'(s)=X(I+sX)^{-1}\), by the geometric series; it commutes with \(Z(s)\). Differentiating the norm-convergent exponential on this compact path gives \((e^{Z(s)})'=e^{Z(s)}Z'(s)\). Differentiating the inverse by its inverse identity gives \(((I+sX)^{-1})'=-(I+sX)^{-1}X(I+sX)^{-1}\). The product \(e^{Z(s)}(I+sX)^{-1}\) consequently has derivative zero, and equals \(I\) at zero. [CF-1](OA-FLOW-CF.md#oa-flow.cf.1)'s Banach fundamental theorem makes it constant. At \(s=1\) this proves \(\exp D=\beta\).
 
 The Leibniz identity is a separate issue. Let \(\mathcal E\) be the Banach space of bounded complex bilinear maps \(B\times B\to B\), with norm \(\sup_{\|x\|,\|y\|\le1}\|F(x,y)\|\). It is complete: a norm-Cauchy sequence converges uniformly on the two unit balls, its pointwise limits are bilinear, and the norm bounds extend by scaling. Write \(m(x,y)=xy\), and define bounded operators on \(\mathcal E\) by
 
@@ -235,7 +235,7 @@ Here is a full proof of the needed sum identity. Put \(X_1=L-I\), \(Y_1=R-I\), s
  =X_1(I+sX_1)^{-1}+Y_1(I+sY_1)^{-1}.
  \tag{IP19}
 \]
-The last equality follows by expanding \(H'=X_1(I+sY_1)+(I+sX_1)Y_1\) and multiplying the two commuting inverses. Integrate from zero to one using CF-1; the individual logarithm derivatives are the two terms. All three logarithms vanish at zero. Therefore \(\log(LR)=\log L+\log R\).
+The last equality follows by expanding \(H'=X_1(I+sY_1)+(I+sX_1)Y_1\) and multiplying the two commuting inverses. Integrate from zero to one using [CF-1](OA-FLOW-CF.md#oa-flow.cf.1); the individual logarithm derivatives are the two terms. All three logarithms vanish at zero. Therefore \(\log(LR)=\log L+\log R\).
 
 The series applied to \(m\) have explicit values:
 
@@ -261,7 +261,7 @@ Apply this lemma to \(B=eMe\). L35 Sections2–6's complete bounded-star-derivat
 \]
 No automatic-boundedness theorem is used at this application. The exponential is the corner exponential, whose constant term is \(e\), not the ambient unit \(1\).
 
-To identify \(\exp D\) with this implementer on the complete corner, \(F(t)=\exp_{eMe}(ith)x\exp_{eMe}(-ith)\) is norm differentiable by its absolutely convergent series and satisfies \(F'(t)=D(F(t))\), \(F(0)=x\). Differentiating \(e^{-tD}F(t)\) gives zero; CF-1 again makes it constant. Hence \(e^{tD}(x)=F(t)\), and at \(t=1\),
+To identify \(\exp D\) with this implementer on the complete corner, \(F(t)=\exp_{eMe}(ith)x\exp_{eMe}(-ith)\) is norm differentiable by its absolutely convergent series and satisfies \(F'(t)=D(F(t))\), \(F(0)=x\). Differentiating \(e^{-tD}F(t)\) gives zero; [CF-1](OA-FLOW-CF.md#oa-flow.cf.1) again makes it constant. Hence \(e^{tD}(x)=F(t)\), and at \(t=1\),
 
 <a id="equation-ip22"></a>
 
@@ -300,7 +300,7 @@ For every \(x\in M\), \(vxv^*\in eMe\). Equation ([IP22](OA-FLOW-IP.md#equation-
 \]
 Multiply on the left by \(\alpha_P(v^*)\) and on the right by \(\alpha_P(v)\); their initial-projection identities reduce this to \(\alpha_P(x)=bxb^*\), on all of \(M\).
 
-For the stated type III factor with separable predual, [CT-2](OA-FLOW-CT.md#oa-flow.ct.2) supplies exactly such a \(v\), by the actual PC-7/8 countability/comparison proof. Its countability input is proved there: vector states of an orthogonal family of nonzero projections have mutual predual norm distance at least one; balls of radius one third centered in a countable dense subset can each contain at most one, so the family is countable. PC-8 then makes every nonzero projection equivalent to \(1\). No finite-projection, trace-existence or factor-classification theorem is used. Applying ([IP23](OA-FLOW-IP.md#equation-ip23)) completes the theorem in ([IP1](OA-FLOW-IP.md#equation-ip1)).
+For the stated type III factor with separable predual, [CT-2](OA-FLOW-CT.md#oa-flow.ct.2) supplies exactly such a \(v\), by the actual [PC-7](OA-FLOW-PC.md#oa-flow.projection.pc7)/8 countability/comparison proof. Its countability input is proved there: vector states of an orthogonal family of nonzero projections have mutual predual norm distance at least one; balls of radius one third centered in a countable dense subset can each contain at most one, so the family is countable. [PC-8](OA-FLOW-PC.md#oa-flow.projection.pc8) then makes every nonzero projection equivalent to \(1\). No finite-projection, trace-existence or factor-classification theorem is used. Applying ([IP23](OA-FLOW-IP.md#equation-ip23)) completes the theorem in ([IP1](OA-FLOW-IP.md#equation-ip1)).
 
 The conclusion is innerness at the specified \(P\). It does not assert a least positive inner period, a fixed-centralizer implementer, or that the given weight already has period \(P\).
 
@@ -331,7 +331,7 @@ The norm equality follows by the same off-diagonal contraction and evaluation on
 
 **Exercise1.** Why does merely knowing the Banach spectrum of \(\beta\) lies near one not give ([IP15](OA-FLOW-IP.md#equation-ip15))? **Solution.** A spectral set alone bounds no operator norm of \(\beta-I\). Here ([IP15](OA-FLOW-IP.md#equation-ip15)) follows from equality with an explicit absolutely summable discrete-filter series and its norm bound, ([IP5](OA-FLOW-IP.md#equation-ip5)) and ([IP13](OA-FLOW-IP.md#equation-ip13)). The proof never makes the unsupported inference from spectral radius to norm.
 
-**Exercise2.** Where is the type III separable-predual hypothesis used after ([IP2](OA-FLOW-IP.md#equation-ip2))? **Solution.** All steps through ([IP22](OA-FLOW-IP.md#equation-ip22)) use the factor's already proved directed fixed-corner spectra and normal real action, with \(\Gamma=a\mathbb Z\). The final extension uses the actual equivalence \(e\sim1\). [CT-2](OA-FLOW-CT.md#oa-flow.ct.2) and PC-7/8 supply that equivalence at the stated hypothesis. Without a proved such equivalence, this chapter asserts only corner innerness.
+**Exercise2.** Where is the type III separable-predual hypothesis used after ([IP2](OA-FLOW-IP.md#equation-ip2))? **Solution.** All steps through ([IP22](OA-FLOW-IP.md#equation-ip22)) use the factor's already proved directed fixed-corner spectra and normal real action, with \(\Gamma=a\mathbb Z\). The final extension uses the actual equivalence \(e\sim1\). [CT-2](OA-FLOW-CT.md#oa-flow.ct.2) and [PC-7](OA-FLOW-PC.md#oa-flow.projection.pc7)/8 supply that equivalence at the stated hypothesis. Without a proved such equivalence, this chapter asserts only corner innerness.
 
 **Exercise3.** Why is \(u\) not claimed to be a unitary of the ambient algebra? **Solution.** Its exact products are \(u^*u=uu^*=e\). It is a unitary in \(eMe\). Formula ([IP23](OA-FLOW-IP.md#equation-ip23)), together with \(v^*v=1\), converts it to the actual ambient unitary \(b\). Replacing the corner exponential's constant term by \(1\) would obscure this support calculation.
 

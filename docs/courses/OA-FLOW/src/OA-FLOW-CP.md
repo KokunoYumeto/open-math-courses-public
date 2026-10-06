@@ -1,6 +1,6 @@
 # Concrete preduals from Hilbert tensors: the bounded CP-01–06 provider
 
-*Retained original programme exposition: OpenAI Codex (AI), CC0-1.0. Exact prerequisite rebinding and this bounded selection: GPT-6 Astra (OpenAI), Ultra, 2026-10-04. Historical model variants are not inferred. See component terms and the exact adoption record.*
+*Retained original programme exposition: OpenAI Codex (AI), CC0-1.0. Exact prerequisite rebinding and this bounded selection: GPT-6 Astra (OpenAI), Ultra, 2026-10-04. Historical model variants are not inferred. See [component terms](../LICENSE.md) and the exact adoption record.*
 
 This is an adoptable selection of the actual CP-01–06 proof bodies, with their Hilbert, Hahn–Banach and concrete-topology prerequisites rebound to precise local CF/SF proofs. It includes no CP-07–14 body or conclusion. It is not a newly invented account of the original development history. Every later use must refer to these earlier proofs and the exact corresponding normality convention.
 
@@ -12,7 +12,7 @@ Inner products are linear in their first variable. Thus the vector coefficient o
 
 The Hilbert inputs are now the local proofs in [SF-0 and SB-0](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0): orthogonal projection, Hilbert representation and bounded adjoints. A bounded sesquilinear form \(b\), linear in its first variable, has a unique representing bounded operator: for fixed \(\xi\), apply Hilbert representation to the conjugate-linear functional \(\eta\mapsto b(\xi,\eta)\), obtaining a vector \(T\xi\) with \(b(\xi,\eta)=\langle T\xi,\eta\rangle\). Uniqueness proves linearity of \(T\), and the form bound proves boundedness with the same least bound. This proves the bounded-form input for arbitrary Hilbert spaces, including zero spaces.
 
-We use the complete real and complex norm-preserving Hahn–Banach proof in CF Section 1. For \(z\ne0\), extend the functional \(\lambda z\mapsto\lambda\|z\|\). This gives
+We use the complete real and complex norm-preserving Hahn–Banach proof in [CF Section 1](OA-FLOW-CF.md#OA-FLOW.CF.1). For \(z\ne0\), extend the functional \(\lambda z\mapsto\lambda\|z\|\). This gives
 \[
 \|z\|=\sup_{\|f\|\le1}|f(z)|,\qquad f\in X^*,
 \tag{CP.1}

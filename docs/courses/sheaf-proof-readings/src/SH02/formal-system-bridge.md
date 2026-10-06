@@ -1,6 +1,6 @@
 # SH02-FSB — Formal stabilization over arbitrary neighborhood sets
 
-Original English supporting lesson for SH-02, dedicated under CC0 1.0 Universal. This reading proves the displayed formal and derived comparison statements used in local sheaf duality. Basic category and derived-functor foundations remain explicit prerequisites; this scoped source repair does not certify all surrounding SH-01 foundations.
+Original programme text: CC0 1.0 Universal. This reading proves the displayed formal and derived comparison statements used in local sheaf duality. Basic category and derived-functor foundations remain explicit prerequisites; this scoped source repair does not certify all surrounding SH-01 foundations.
 
 A neighborhood calculation often becomes constant only after transition maps have discarded temporary terms. The right notion of stabilization records those maps. This lesson first constructs that formal notion, then separates it from the derived inverse limit of an actual module diagram. The distinction allows the neighborhood set to be arbitrarily large and directed.
 
@@ -8,7 +8,7 @@ A neighborhood calculation often becomes constant only after transition maps hav
 
 All indexing sets are small, nonempty directed partially ordered sets. An inverse system in a locally small category $\mathcal C$ is a functor $A:I^{\mathrm{op}}\to\mathcal C$; write $a_{ji}:A_j\to A_i$ for $j\geq i$. A direct system is a functor $I\to\mathcal C$. We use a fixed universe for these sets and a larger universe when forming functor categories. The categories needed below are $\operatorname{Mod}(k)$ and the ordinary derived category $D(k)$, where $k$ is a unital commutative ring. The categorical and inverse-limit results in this lesson do not require finite global dimension.
 
-The formal calculus through SH02-FSB-FUNCTORS supports SH02-CB-IMP-PRO-CALCULUS. The derived module-diagram calculation in SH02-FSB-COFINALITY and SH02-FSB-PRISM supports SH02-CB-IMP-DERIVED-COFINALITY. Basic categories, complexes, projective or injective resolutions, and the derived functors they define remain prerequisite material. The proofs below identify the resolutions and comparison maps needed here.
+The formal calculus through SH02-FSB-FUNCTORS supports [SH02-CB-IMP-PRO-CALCULUS](cohomological-biduality.md#SH02-CB-IMP-PRO-CALCULUS). The derived module-diagram calculation in SH02-FSB-COFINALITY and SH02-FSB-PRISM supports [SH02-CB-IMP-DERIVED-COFINALITY](cohomological-biduality.md#SH02-CB-IMP-DERIVED-COFINALITY). Basic categories, complexes, projective or injective resolutions, and the derived functors they define remain prerequisite material. The proofs below identify the resolutions and comparison maps needed here.
 
 ## SH02-FSB-HOM — Formal maps and constant objects
 
@@ -311,11 +311,11 @@ For a strict pro-isomorphism $f$, SH02-FSB-INVERSE makes its levelwise kernel an
 
 A constant module system $cM$ has $R\varprojlim_I cM\simeq M$. Its cochain model is Hom from the augmented free nerve chains of $I$ into $M$. Those chains resolve $k$: every finite augmented cycle can be coned to a common upper bound. Since $k$ and all chain modules are projective, the comparison-lifting argument in SH02-FSB-COFINALITY makes this resolution homotopy equivalent to $k$ in degree zero. Applying Hom proves the asserted cohomology in all degrees.
 
-This proves the complete arbitrary-directed step used in SH02-CB-NET-ACYCLICITY. The finite-predecessor construction there is valid; the resolution and prism above provide its missing explicit categorical support. Surjective transitions are a different condition. For arbitrary directed systems they need not force higher inverse limits to vanish, as shown by [Stacks, Tag 0ANX](https://stacks.math.columbia.edu/tag/0ANX).
+This proves the complete arbitrary-directed step used in [SH02-CB-NET-ACYCLICITY](cohomological-biduality.md#SH02-CB-NET-ACYCLICITY). The finite-predecessor construction there is valid; the resolution and prism above provide its missing explicit categorical support. Surjective transitions are a different condition. For arbitrary directed systems they need not force higher inverse limits to vanish, as shown by [Stacks, Tag 0ANX](https://stacks.math.columbia.edu/tag/0ANX).
 
 ## SH02-FSB-COSTALK — What the sheaf argument needs from this bridge
 
-We now specify how these facts enter SH02-CB-COSTALK-CONTINUITY. Let $X$ be locally compact Hausdorff, let $x\in X$, and let $F\in D^b(k_X)$. For this compatibility argument a common lower bound is enough. Compact neighborhoods $K$ of $x$ are ordered by shrinking. Their intersection is $\{x\}$, and they form a directed set; neither assertion uses a countable basis.
+We now specify how these facts enter [SH02-CB-COSTALK-CONTINUITY](cohomological-biduality.md#SH02-CB-COSTALK-CONTINUITY). Let $X$ be locally compact Hausdorff, let $x\in X$, and let $F\in D^b(k_X)$. For this compatibility argument a common lower bound is enough. Compact neighborhoods $K$ of $x$ are ordered by shrinking. Their intersection is $\{x\}$, and they form a directed set; neither assertion uses a countable basis.
 
 The sheaf foundations used here are [exact filtered colimits and stalks](open-prerequisites.md#SH02-IMP-COLIMITS), [injective resolutions](open-prerequisites.md#SH02-IMP-INJECTIVE), and the [closed-support construction](open-prerequisites.md#SH02-IMP-LOCALIZATION). Write $k_K$ for the constant sheaf on the closed set $K$ extended to $X$, and use the restriction map $k_K\to k_L$ when $L\subset K$. These sheaves form a direct system with
 
@@ -396,7 +396,7 @@ For ordinary sections, the germ maps from the same injective resolution give a c
 
 **1. An ordinary zero limit.** Let $A_n=\bigoplus_{m\geq n}k$ with the inclusion transitions, and assume $k\ne0$. Its inverse limit is zero: a compatible element would lie in every tail of the direct sum. Nevertheless no transition map is zero, so SH02-FSB-REPRESENTED shows that the formal pro-object is nonzero. This explains why a calculation of the ordinary limit cannot replace formal stabilization.
 
-**2. Changing coefficients.** Suppose $A\simeq cQ$ in $\operatorname{Pro}(D(k))$ and fix $M\in D(k)$. Determine the formal system obtained by applying $R\operatorname{Hom}_k(-,M)$. The answer is an ind-system represented by $R\operatorname{Hom}_k(Q,M)$, by SH02-FSB-FUNCTORS. This conclusion needs no perfectness hypothesis. Perfectness is needed for a later replacement of this Hom by $Q^\vee\otimes^L M$, and that separate statement is proved in SH02-CB-PERFECT. No interchange with an ordinary inverse limit occurs in this calculation.
+**2. Changing coefficients.** Suppose $A\simeq cQ$ in $\operatorname{Pro}(D(k))$ and fix $M\in D(k)$. Determine the formal system obtained by applying $R\operatorname{Hom}_k(-,M)$. The answer is an ind-system represented by $R\operatorname{Hom}_k(Q,M)$, by SH02-FSB-FUNCTORS. This conclusion needs no perfectness hypothesis. Perfectness is needed for a later replacement of this Hom by $Q^\vee\otimes^L M$, and that separate statement is proved in [SH02-CB-PERFECT](cohomological-biduality.md#SH02-CB-PERFECT). No interchange with an ordinary inverse limit occurs in this calculation.
 
 ## SH02-FSB-REFERENCES — Scope of the supporting sources
 
@@ -404,7 +404,7 @@ The formal definitions and representative facts were compared with the native St
 
 The ordinary cofinality statements in [Tag 04E7](https://stacks.math.columbia.edu/tag/04E7) and [Tag 002R](https://stacks.math.columbia.edu/tag/002R) have omitted proofs in that revision. SH02-FSB-REINDEX supplies the required directed-set comparison explicitly. Their ordinary-limit statements do not supply the derived comparison: SH02-FSB-COFINALITY constructs its projective resolution and comparison map, while SH02-FSB-PRISM gives the contraction needed for pro-zero systems without a countable-cofinality assumption.
 
-[Tag 08RZ](https://stacks.math.columbia.edu/tag/08RZ) uses product cochains on strings of composable arrows to compute category cohomology. [Tag 08S0](https://stacks.math.columbia.edu/tag/08S0) describes the related Ext cochains under pointwise projective or injective hypotheses. Our proof uses the explicitly defined free representable module diagrams, their augmentation and the contraction of the upper comma sets, then proves the sheaf compatibility maps in the compact-neighborhood application below. Thus these source comparisons do not stand in for the formal-to-costalk argument or for a full unbounded derived-category foundation.
+[Tag 08RZ](https://stacks.math.columbia.edu/tag/08RZ) uses product cochains on strings of composable arrows to compute category cohomology. [Tag 08S0](https://stacks.math.columbia.edu/tag/08S0) describes the related Ext cochains under pointwise projective or injective hypotheses. Our proof uses the explicitly defined free representable module diagrams, their augmentation and the contraction of the upper comma sets, then proves the sheaf compatibility maps in the compact-neighborhood application below. 
 
 For a warning about arbitrary indexing, [Tag 0ANX](https://stacks.math.columbia.edu/tag/0ANX) gives a surjective directed system with vanishing ordinary limit and nonzero first derived limit. The tail example in SH02-FSB-CHECKS has a different purpose: its transition maps are injective, and its elementary calculation separates an ordinary zero limit from a formally zero object. Neither example permits an unproved interchange of a derived functor with an inverse limit.
 

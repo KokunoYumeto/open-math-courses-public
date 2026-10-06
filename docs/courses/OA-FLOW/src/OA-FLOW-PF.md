@@ -22,7 +22,7 @@ We prove that its centralizer \(N=M_\phi\) is a type II factor, with faithful no
 
 The supplied period is a hypothesis. No implication from ([PF1](OA-FLOW-PF.md#equation-pf1)) to existence of a period or an inner period is asserted. All Hilbert spaces remain arbitrary; the separable-predual hypothesis is used in the proved type III corner isomorphism.
 
-The actual earlier inputs are [PW4–6](OA-FLOW-PW.md#pw-4) for the compact expectation, the full restricted trace and the spectral lattice bound; [CT1–2](OA-FLOW-CT.md#oa-flow.ct.1) for all-weight graph transport and nonzero type III corners; [CZ5](OA-FLOW-CZ.md#oa-flow.cz.5) for the complete modular restriction to a centralizer projection; MW4, WR3 and [CI3](OA-FLOW-CI.md#oa-flow.ci.3) for full finite-star GNS and polar domains; [SF's spectral-domain theorem](OA-FLOW-SF.md#oa-flow.sf.sb4), [Borel conventions](OA-FLOW-SF.md#oa-flow.sf.sb6) and [vector integration](OA-FLOW-SF.md#oa-flow.sf.sf3); [TS1's full-domain resolvent and dense-range argument](OA-FLOW-TS.md#oa-flow.ts.1); [CC0](OA-FLOW-CC.md#oa-flow.cc.0) for normalized circle measure and the explicit Fejér kernels; [GW1–4](OA-FLOW-GW.md#oa-flow.gw.1), especially [GW4](OA-FLOW-GW.md#oa-flow.gw.4); PC1–5, PC7 and PC8; and [CP6](OA-FLOW-CP.md#oa-flow.cp.6), CF1 and [SC4–5](OA-FLOW-SC.md#sc-04) for topology, compactness, scalar and vector limits. All invoked results have written local proofs.
+The actual earlier inputs are [PW4–6](OA-FLOW-PW.md#pw-4) for the compact expectation, the full restricted trace and the spectral lattice bound; [CT1–2](OA-FLOW-CT.md#oa-flow.ct.1) for all-weight graph transport and nonzero type III corners; [CZ5](OA-FLOW-CZ.md#oa-flow.cz.5) for the complete modular restriction to a centralizer projection; [MW4](OA-FLOW-MW.md#oa-flow.mw.4), [WR3](OA-FLOW-WR.md#oa-flow.wr.3) and [CI3](OA-FLOW-CI.md#oa-flow.ci.3) for full finite-star GNS and polar domains; [SF's spectral-domain theorem](OA-FLOW-SF.md#oa-flow.sf.sb4), [Borel conventions](OA-FLOW-SF.md#oa-flow.sf.sb6) and [vector integration](OA-FLOW-SF.md#oa-flow.sf.sf3); [TS1's full-domain resolvent and dense-range argument](OA-FLOW-TS.md#oa-flow.ts.1); [CC0](OA-FLOW-CC.md#oa-flow.cc.0) for normalized circle measure and the explicit Fejér kernels; [GW1–4](OA-FLOW-GW.md#oa-flow.gw.1), especially [GW4](OA-FLOW-GW.md#oa-flow.gw.4); [PC1–5](OA-FLOW-PC.md#oa-flow.projection.pc1), [PC7](OA-FLOW-PC.md#oa-flow.projection.pc7) and [PC8](OA-FLOW-PC.md#oa-flow.projection.pc8); and [CP6](OA-FLOW-CP.md#oa-flow.cp.6), [CF1](OA-FLOW-CF.md#oa-flow.cf.1) and [SC4–5](OA-FLOW-SC.md#sc-04) for topology, compactness, scalar and vector limits. All invoked results have written local proofs.
 
 The freely accessible human comparison is [Connes, Theorem 2.4.1 and Lemma 2.4.2, original printed pp.186–187](https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=55), with [the support/polar discussion at printed pp.216–217](https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=85). We use the source's bridge mechanism after proving its needed degree in each corner directly from ([PF1](OA-FLOW-PF.md#equation-pf1)), CT and finite GNS density. The general \(S/\Gamma\) theorem is not an input.
 
@@ -142,7 +142,7 @@ Let \(\psi=\phi|_{fMf}\). It is faithful finite normal, with \(\psi(f)=\tau(f)\)
  S(fMf)=S(M)\subseteq\operatorname{Sp}(\Delta_\psi).
  \tag{PF13}
 \]
-For clarity, CT uses the actual type III partial isometry \(v^*v=1,\ vv^*=f\), available by PC8 and the countability proved from separable predual. The normal isomorphism \(x\mapsto vxv^*\) bijects all faithful normal semifinite weights. Its GNS unitary carries the two full initial involution graphs onto one another, then their closures, adjoints and positive products. It consequently preserves the entire modular spectra before taking their intersection. No state-only intersection or classification invariance theorem is substituted.
+For clarity, CT uses the actual type III partial isometry \(v^*v=1,\ vv^*=f\), available by [PC8](OA-FLOW-PC.md#oa-flow.projection.pc8) and the countability proved from separable predual. The normal isomorphism \(x\mapsto vxv^*\) bijects all faithful normal semifinite weights. Its GNS unitary carries the two full initial involution graphs onto one another, then their closures, adjoints and positive products. It consequently preserves the entire modular spectra before taking their intersection. No state-only intersection or classification invariance theorem is substituted.
 
 By [PW6](OA-FLOW-PW.md#oa-flow.pw.6) applied to \(\psi\), the spectral projection of \(\Delta_\psi\) off \(\{\lambda^j:j\in\mathbb Z\}\) is zero; its projection at zero is also zero. Denote
 
@@ -162,7 +162,7 @@ Use the finite GNS vector \(\Omega=\Lambda_\psi(f)\). Every element of \(fMf\) l
  P_n(x)\Omega=Q_nx\Omega .                                   \tag{PF15}
 \]
 To prove this without a formal interchange, first apply the vector integral
-\(\int e^{iant}\Delta_\psi^{it}\,dm(t)\) to \(Q_jH_\psi\): its value is \(\int e^{ia(n-j)t}\,dm(t)\) times the vector, hence \(\delta_{nj}\) times that vector. The orthogonal sum \(\sum_jQ_j=I\) converges strongly, by the countable spectral support and the zero kernel. Finite sums of their ranges are dense, while both the integral and \(Q_n\) are contractions. This proves equality of these bounded operators on the whole Hilbert space. Finally MW4 gives \(\alpha_t(x)\Omega=\Delta_\psi^{it}x\Omega\), so the actual vector Riemann sums prove ([PF15](OA-FLOW-PF.md#equation-pf15)).
+\(\int e^{iant}\Delta_\psi^{it}\,dm(t)\) to \(Q_jH_\psi\): its value is \(\int e^{ia(n-j)t}\,dm(t)\) times the vector, hence \(\delta_{nj}\) times that vector. The orthogonal sum \(\sum_jQ_j=I\) converges strongly, by the countable spectral support and the zero kernel. Finite sums of their ranges are dense, while both the integral and \(Q_n\) are contractions. This proves equality of these bounded operators on the whole Hilbert space. Finally [MW4](OA-FLOW-MW.md#oa-flow.mw.4) gives \(\alpha_t(x)\Omega=\Delta_\psi^{it}x\Omega\), so the actual vector Riemann sums prove ([PF15](OA-FLOW-PF.md#equation-pf15)).
 
 If \(P_n(x)\Omega=0\) for every \(x\), density would give \(Q_n=0\). Hence some \(P_n(x)\neq0\), lying in \(fMf\subseteq qMq\). Thus we have proved
 
@@ -180,7 +180,7 @@ The possibly infinite value \(\phi(q)\) was never assumed finite.
 <a id="oa-flow.pf.3"></a>
 ## PF-3. Canceling a degree supplies a bridge inside the centralizer
 
-Take arbitrary nonzero projections \(e_1,e_2\in N\). Since \(M\) is a factor, both have central support one. PC2's proved central-support criterion gives a nonzero \(x\in e_1Me_2\). By ([PF10](OA-FLOW-PF.md#equation-pf10)) some
+Take arbitrary nonzero projections \(e_1,e_2\in N\). Since \(M\) is a factor, both have central support one. [PC2](OA-FLOW-PC.md#oa-flow.projection.pc2)'s proved central-support criterion gives a nonzero \(x\in e_1Me_2\). By ([PF10](OA-FLOW-PF.md#equation-pf10)) some
 
 <a id="equation-pf17"></a>
 
@@ -272,7 +272,7 @@ For the forward construction below, “finite” is the Murray–von Neumann def
 
 For the converse first take \(p=1_B\) and assume it is finite. The compression and threshold argument ([PF11](OA-FLOW-PF.md#equation-pf11))–([PF12](OA-FLOW-PF.md#equation-pf12)), now for \(T\), supplies \(0\neq f\) with \(T(f)<\infty\). This projection is finite by the preceding paragraph. We perform the following recursive comparison in the factor \(B\).
 
-Start with residual \(r_0=1_B\). If \(r_j\precsim f\), stop. Otherwise the factor case of PC2 gives \(f\precsim r_j\), so choose a projection \(f_{j+1}\leq r_j\) equivalent to \(f\), and put \(r_{j+1}=r_j-f_{j+1}\). Choice is available from CF1. If the recursion stops at a finite stage \(m\), equivalence, trace order and finite additivity give
+Start with residual \(r_0=1_B\). If \(r_j\precsim f\), stop. Otherwise the factor case of [PC2](OA-FLOW-PC.md#oa-flow.projection.pc2) gives \(f\precsim r_j\), so choose a projection \(f_{j+1}\leq r_j\) equivalent to \(f\), and put \(r_{j+1}=r_j-f_{j+1}\). Choice is available from [CF1](OA-FLOW-CF.md#oa-flow.cf.1). If the recursion stops at a finite stage \(m\), equivalence, trace order and finite additivity give
 
 <a id="equation-pf25"></a>
 
@@ -282,7 +282,7 @@ Start with residual \(r_0=1_B\). If \(r_j\precsim f\), stop. Otherwise the facto
 \]
 This includes stopping at \(m=0\).
 
-If the recursion never stops, the \(f_j\) are a countable orthogonal family of nonzero equivalent projections. Choose \(v_j^*v_j=f_j,\ v_jv_j^*=f_{j+1}\). PC1 gives their full strong-star sum \(w=\sum_{j\geq1}v_j\in B\), and, with \(r=\sum_{j\geq1}f_j\),
+If the recursion never stops, the \(f_j\) are a countable orthogonal family of nonzero equivalent projections. Choose \(v_j^*v_j=f_j,\ v_jv_j^*=f_{j+1}\). [PC1](OA-FLOW-PC.md#oa-flow.projection.pc1) gives their full strong-star sum \(w=\sum_{j\geq1}v_j\in B\), and, with \(r=\sum_{j\geq1}f_j\),
 
 <a id="equation-pf26"></a>
 
@@ -292,9 +292,9 @@ If the recursion never stops, the \(f_j\) are a countable orthogonal family of n
 \]
 Both supports are orthogonal to \(1_B-r\). Consequently \(v=w+(1_B-r)\) satisfies \(v^*v=1_B\), \(vv^*=1_B-f_1<1_B\), contradicting finiteness of the unit. Thus the stopping alternative must occur, proving \(T(1_B)<\infty\).
 
-For a general nonzero \(p\), PC4 makes \(pBp\) a factor. The trace restricted to this corner is faithful normal semifinite by ([PF11](OA-FLOW-PF.md#equation-pf11))'s compression argument. A projection is finite as the unit of its corner exactly when it is finite in \(B\), since the same implementing partial isometries lie in \(pBp\). The just proved unit assertion in \(pBp\) proves the remaining direction of ([PF24](OA-FLOW-PF.md#equation-pf24)). The zero projection is immediate.
+For a general nonzero \(p\), [PC4](OA-FLOW-PC.md#oa-flow.projection.pc4) makes \(pBp\) a factor. The trace restricted to this corner is faithful normal semifinite by ([PF11](OA-FLOW-PF.md#equation-pf11))'s compression argument. A projection is finite as the unit of its corner exactly when it is finite in \(B\), since the same implementing partial isometries lie in \(pBp\). The just proved unit assertion in \(pBp\) proves the remaining direction of ([PF24](OA-FLOW-PF.md#equation-pf24)). The zero projection is immediate.
 
-Apply this lemma to \(B=N,T=\tau\). Semifiniteness of \(\tau\), and ([PF12](OA-FLOW-PF.md#equation-pf12)), imply that every nonzero projection in \(N\) contains a nonzero finite projection. Together with factoriality and the absence of minimal projections, this is precisely the type II case. If \(\tau(1)<\infty\), the unit is finite by ([PF24](OA-FLOW-PF.md#equation-pf24)), so this is type \(\mathrm{II}_1\); \(\tau/\tau(1)\) is its faithful normal tracial state. If \(\tau(1)=\infty\), the unit is infinite by the proved converse. Since \(N\) is a factor, its only nonzero central compression is itself, so it is properly infinite in the exact PC5 convention, and this is type \(\mathrm{II}_\infty\). Thus
+Apply this lemma to \(B=N,T=\tau\). Semifiniteness of \(\tau\), and ([PF12](OA-FLOW-PF.md#equation-pf12)), imply that every nonzero projection in \(N\) contains a nonzero finite projection. Together with factoriality and the absence of minimal projections, this is precisely the type II case. If \(\tau(1)<\infty\), the unit is finite by ([PF24](OA-FLOW-PF.md#equation-pf24)), so this is type \(\mathrm{II}_1\); \(\tau/\tau(1)\) is its faithful normal tracial state. If \(\tau(1)=\infty\), the unit is infinite by the proved converse. Since \(N\) is a factor, its only nonzero central compression is itself, so it is properly infinite in the exact [PC5](OA-FLOW-PC.md#oa-flow.projection.pc5) convention, and this is type \(\mathrm{II}_\infty\). Thus
 
 <a id="equation-pf27"></a>
 
@@ -315,7 +315,7 @@ Restriction \(R:M_*\to N_*\) is a contraction. It is onto: if \(g\in N_*\), then
 
 In particular \(N\) is countably decomposable. For each member \(p_j\) of an orthogonal family of nonzero projections choose a unit vector in its range. The resulting normal vector states \(g_j\) satisfy \(g_j(p_j)=1\) and \(g_k(p_j)=0\) for \(k\neq j\). Their mutual norm distances are at least one. In a separable normed space, a countable dense set of balls of radius \(1/3\) covers the space, and each such ball contains at most one of these states. Thus the family is countable.
 
-If \(p,q\in N\) both have infinite \(\tau\)-value, ([PF24](OA-FLOW-PF.md#equation-pf24)) makes them infinite. Their corners are factors by PC4, so each is properly infinite; both have central support \(1\) in \(N\). They are countably decomposable because \(1_N\) is. PC7 gives subequivalence in both directions, and PC3 turns that into
+If \(p,q\in N\) both have infinite \(\tau\)-value, ([PF24](OA-FLOW-PF.md#equation-pf24)) makes them infinite. Their corners are factors by [PC4](OA-FLOW-PC.md#oa-flow.projection.pc4), so each is properly infinite; both have central support \(1\) in \(N\). They are countably decomposable because \(1_N\) is. [PC7](OA-FLOW-PC.md#oa-flow.projection.pc7) gives subequivalence in both directions, and [PC3](OA-FLOW-PC.md#oa-flow.projection.pc3) turns that into
 
 <a id="equation-pf28"></a>
 
@@ -323,7 +323,7 @@ If \(p,q\in N\) both have infinite \(\tau\)-value, ([PF24](OA-FLOW-PF.md#equatio
  \tau(p)=\tau(q)=\infty\quad\Longrightarrow\quad p\sim q
                  \text{ inside }N .                         \tag{PF28}
 \]
-This is the qualified projection comparison used here. It does not identify projections of infinite trace in an arbitrary non-countably-decomposable algebra. For later reference, if \(p,q\) have the same finite trace, PC2 compares them; after orienting the comparison, the unmatched positive projection has zero trace and hence vanishes. Thus they too are equivalent. Only these stated cases are needed.
+This is the qualified projection comparison used here. It does not identify projections of infinite trace in an arbitrary non-countably-decomposable algebra. For later reference, if \(p,q\) have the same finite trace, [PC2](OA-FLOW-PC.md#oa-flow.projection.pc2) compares them; after orienting the comparison, the unmatched positive projection has zero trace and hence vanishes. Thus they too are equivalent. Only these stated cases are needed.
 
 <a id="pf-7"></a>
 

@@ -4,7 +4,7 @@
 
 A smooth curve over the fraction field of a discrete valuation ring can acquire singularities at the closed point. A stable model records the limit by nodes and keeps every rational component sufficiently attached to the rest of the curve. Such a model may require a finite extension of the fraction field. Once it exists, its identification with the original generic curve determines it uniquely. Existence after extension and uniqueness together give properness of the stable-curve stack.
 
-Lesson 9 proved that \(\overline{\mathcal M}_g\) is a smooth Deligne–Mumford stack, locally of finite presentation over \(\mathbb Z\), with separated finitely presented diagonal, and that its smooth-curve open \(\mathcal M_g\) is dense. Here \(g\geq2\). We prove global finite type, separatedness and properness. We prove stable reduction by the earlier curve semistable construction, stabilization and gluing over the finite integral closure. Surface resolution, minimal regular models and the numerical Picard estimates have their exact earlier programme route in the Néron-models lesson; stable-model uniqueness is proved here.
+[Lesson 9](the-stack-of-curves.md) proved that \(\overline{\mathcal M}_g\) is a smooth Deligne–Mumford stack, locally of finite presentation over \(\mathbb Z\), with separated finitely presented diagonal, and that its smooth-curve open \(\mathcal M_g\) is dense. Here \(g\geq2\). We prove global finite type, separatedness and properness. We prove stable reduction by the earlier curve semistable construction, stabilization and gluing over the finite integral closure. Surface resolution, minimal regular models and the numerical Picard estimates have their exact earlier programme route in the Néron-models lesson; stable-model uniqueness is proved here.
 
 A prestable curve is proper, connected and nodal, with geometrically connected fibres in a family. A stable curve has ample dualizing line bundle. Families may have arbitrary scheme bases and algebraic-space total spaces. Over a field the proper curves considered here are schemes. A model of \(C/K\) includes a specified isomorphism between its generic fibre and \(C\); every isomorphism of models must respect that specification.
 
@@ -1058,7 +1058,7 @@ We have proved that \(\mathcal M_g\) and \(\overline{\mathcal M}_g\) are geometr
 
 ### 8.5. The compactified coarse space
 
-The stable stack has finite inertia as an entire morphism: its diagonal is proper and unramified, hence finite, and inertia is its base change. Theorem 6.9 of *Quotient stacks and Deligne–Mumford stacks* therefore gives
+The stable stack has finite inertia as an entire morphism: its diagonal is proper and unramified, hence finite, and inertia is its base change. Theorem 6.9 of [*Quotient stacks and Deligne–Mumford stacks*](quotient-and-dm-stacks.md) therefore gives
 \[
 \overline{\mathcal M}_g\longrightarrow\overline M_g.
 \tag{8.1}

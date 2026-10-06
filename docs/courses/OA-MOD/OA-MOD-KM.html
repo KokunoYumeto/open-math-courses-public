@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The KMS boundary condition determines the modular group · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-KM.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 54 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-kms-boundary-condition-determines-the-modular-group">The KMS boundary condition determines the modular group</h1>
+
+<p>A weight is usually infinite on the identity, so its modular boundary condition must specify which products have finite values. We begin with that domain, construct the strip function from the two modular half powers, and prove that the boundary condition determines the automorphism group. The uniqueness argument uses Gaussian vectors in bounded spectral subspaces of the modular operator and a periodicity argument. It requires neither a faithful state nor a theorem introducing generators of unitary groups.</p>
+<p>The source antecedents are Takesaki, <em>Theory of Operator Algebras II</em>, VIII.1, Definition 1.1, Theorem 1.2, Definition 1.3 and Corollary 1.4. All theorem statements below concern arbitrary von Neumann algebras and faithful normal semifinite weights unless another hypothesis is stated explicitly.</p>
+<p>For a comparison exposition, see Hiai, <a href="https://arxiv.org/abs/2004.02383v1"><em>Concise lectures on selected topics of von Neumann algebras</em>, version 1</a>, Theorem 2.14 for the state case and Section 7.1(C) for the weight statement. Half-power continuation, analytic averaging and imaginary periodicity are classical mechanisms. The proof here applies periodicity to Gaussian GNS vectors in spectral bands of the already constructed modular operator.</p>
+<h2 id="the-finite-products-and-the-strip-convention"><span id="oa-mod-km-01"></span><span id="OA-MOD-KM-01"></span>The finite products and the strip convention</h2>
+<p>Let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be a faithful normal semifinite weight on a von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span>. Use WG and WH for the finite left ideal, finite linear domain and finite *-algebra</p>
+<span class="math math-display" data-tex="\[
+\mathfrak n_\varphi=\{x\in M:\varphi(x^*x)&lt;\infty\},\qquad
+\mathfrak m_\varphi=\operatorname{span}\{y^*x:x,y\in\mathfrak n_\varphi\},\qquad
+\mathfrak a_\varphi=\mathfrak n_\varphi\cap\mathfrak n_\varphi^*.
+\tag{KM.1}
+\]">\[
+\mathfrak n_\varphi=\{x\in M:\varphi(x^*x)&lt;\infty\},\qquad
+\mathfrak m_\varphi=\operatorname{span}\{y^*x:x,y\in\mathfrak n_\varphi\},\qquad
+\mathfrak a_\varphi=\mathfrak n_\varphi\cap\mathfrak n_\varphi^*.
+\tag{KM.1}
+\]</span>
+<p>The same symbol <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> denotes the linear extension to <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span>. Its GNS map satisfies</p>
+<span class="math math-display" data-tex="\[
+\langle\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+=\varphi(y^*x),\qquad x,y\in\mathfrak n_\varphi,
+\tag{KM.2}
+\]">\[
+\langle\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+=\varphi(y^*x),\qquad x,y\in\mathfrak n_\varphi,
+\tag{KM.2}
+\]</span>
+<p>with inner product linear in the first variable. We identify <span class="math" data-tex="\(M\)">\(M\)</span> with its faithful normal GNS image when writing operators on <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span>. The representation is faithful and has the bounded-set topology properties proved in WH-02.</p>
+<p>Set <span class="math" data-tex="\(\overline{\mathcal S}=\{z\in\mathbb C:0\leq\operatorname{Im}z\leq1\}\)">\(\overline{\mathcal S}=\{z\in\mathbb C:0\leq\operatorname{Im}z\leq1\}\)</span>, with interior <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. An algebraic one-parameter group <span class="math" data-tex="\(\beta_t\)">\(\beta_t\)</span> of *-automorphisms satisfies the <strong>modular KMS condition</strong> for <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> when:</p>
+<ol>
+<li><span class="math" data-tex="\(\varphi\circ\beta_t=\varphi\)">\(\varphi\circ\beta_t=\varphi\)</span> on <span class="math" data-tex="\(M_+\)">\(M_+\)</span> for every real <span class="math" data-tex="\(t\)">\(t\)</span>.</li>
+<li>For every <span class="math" data-tex="\(x,y\in\mathfrak a_\varphi\)">\(x,y\in\mathfrak a_\varphi\)</span>, there is a bounded continuous scalar function <span class="math" data-tex="\(F_{x,y}\)">\(F_{x,y}\)</span> on <span class="math" data-tex="\(\overline{\mathcal S}\)">\(\overline{\mathcal S}\)</span>, holomorphic on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, with</li>
+</ol>
+<span class="math math-display" data-tex="\[
+F_{x,y}(t)=\varphi(\beta_t(x)y),\qquad
+F_{x,y}(t+i)=\varphi(y\beta_t(x))\quad(t\in\mathbb R).
+\tag{KM.3}
+\]">\[
+F_{x,y}(t)=\varphi(\beta_t(x)y),\qquad
+F_{x,y}(t+i)=\varphi(y\beta_t(x))\quad(t\in\mathbb R).
+\tag{KM.3}
+\]</span>
+<p>Invariance implies that <span class="math" data-tex="\(\beta_t\)">\(\beta_t\)</span> preserves each domain in (KM.1). The first product in (KM.3) is <span class="math" data-tex="\((\beta_t(x)^*)^*y\)">\((\beta_t(x)^*)^*y\)</span>; both factors in this form lie in <span class="math" data-tex="\(\mathfrak n_\varphi\)">\(\mathfrak n_\varphi\)</span>. The second is <span class="math" data-tex="\((y^*)^*\beta_t(x)\)">\((y^*)^*\beta_t(x)\)</span>, with the same property. Thus both scalar values are defined in <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span>. No value of the weight on an arbitrary nonpositive element of <span class="math" data-tex="\(M\)">\(M\)</span> is intended.</p>
+<p>The bounded strip uniqueness and maximum principle in MA-08 give uniqueness of <span class="math" data-tex="\(F_{x,y}\)">\(F_{x,y}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\sup_{z\in\overline{\mathcal S}}|F_{x,y}(z)|
+\leq\max\left\{
+\varphi(yy^*)^{1/2}\varphi(x^*x)^{1/2},
+\varphi(y^*y)^{1/2}\varphi(xx^*)^{1/2}
+\right\}.
+\tag{KM.4}
+\]">\[
+\sup_{z\in\overline{\mathcal S}}|F_{x,y}(z)|
+\leq\max\left\{
+\varphi(yy^*)^{1/2}\varphi(x^*x)^{1/2},
+\varphi(y^*y)^{1/2}\varphi(xx^*)^{1/2}
+\right\}.
+\tag{KM.4}
+\]</span>
+<p>Here the two terms may be listed in either order: Cauchy–Schwarz on the lower boundary gives <span class="math" data-tex="\(\varphi(y^*y)^{1/2}\varphi(xx^*)^{1/2}\)">\(\varphi(y^*y)^{1/2}\varphi(xx^*)^{1/2}\)</span>, and on the upper boundary gives the other term. Invariance makes these bounds uniform in <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>We initially impose no continuity on <span class="math" data-tex="\(\beta\)">\(\beta\)</span> beyond the scalar strip condition. KM-03 will derive strong continuity of its GNS implementers and pointwise sigma-strong* continuity of <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. In particular the uniqueness assertion also applies to automorphism groups for which continuity is part of the definition.</p>
+<p>The exact prerequisites are WG/WH for (KM.1–2), the full finite-star Hilbert algebra and its graph core; TC for closed-involution polar uniqueness; MF-06 for the existing modular group and weight invariance; SK-05, SK-07–09 for spectral bands, transported functional calculus and powers; and MA-08–09, MA-16 for bounded strips, half-power continuation and Gaussian entire vectors. Scalar Liouville follows from the Cauchy estimate as recalled in KM-05. The proofs of these prerequisites are not given here.</p>
+<h2 id="existence-from-the-two-half-powers"><span id="OA-MOD-KM-02"></span><span id="oa-mod-km-02"></span>Existence from the two half powers</h2>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be the closed involution of the full Hilbert algebra
+<span class="math" data-tex="\(\mathcal A=\Lambda_\varphi(\mathfrak a_\varphi)\)">\(\mathcal A=\Lambda_\varphi(\mathfrak a_\varphi)\)</span>, and let</p>
+<span class="math math-display" data-tex="\[
+S=J\Delta^{1/2},\qquad D(S)=D(\Delta^{1/2}),\qquad U_t=\Delta^{it}.
+\]">\[
+S=J\Delta^{1/2},\qquad D(S)=D(\Delta^{1/2}),\qquad U_t=\Delta^{it}.
+\]</span>
+<p>The automorphisms constructed in MF are</p>
+<span class="math math-display" data-tex="\[
+\sigma_t^\varphi(x)=\pi_\varphi^{-1}
+(U_t\pi_\varphi(x)U_{-t}).
+\tag{KM.5}
+\]">\[
+\sigma_t^\varphi(x)=\pi_\varphi^{-1}
+(U_t\pi_\varphi(x)U_{-t}).
+\tag{KM.5}
+\]</span>
+<p>They satisfy the modular KMS condition (KM.3).</p>
+<p><strong>Proof.</strong> MF-06 proves weight invariance on all of <span class="math" data-tex="\(M_+\)">\(M_+\)</span>, including infinite values, and the exact GNS covariance
+<span class="math" data-tex="\(\Lambda_\varphi(\sigma_t^\varphi(x))=U_t\Lambda_\varphi(x)\)">\(\Lambda_\varphi(\sigma_t^\varphi(x))=U_t\Lambda_\varphi(x)\)</span> for <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>. For <span class="math" data-tex="\(x,y\in\mathfrak a_\varphi\)">\(x,y\in\mathfrak a_\varphi\)</span>, put
+<span class="math" data-tex="\(\xi=\Lambda_\varphi(y)\)">\(\xi=\Lambda_\varphi(y)\)</span> and <span class="math" data-tex="\(\eta=\Lambda_\varphi(x^*)\)">\(\eta=\Lambda_\varphi(x^*)\)</span>. Both lie in <span class="math" data-tex="\(D(\Delta^{1/2})\)">\(D(\Delta^{1/2})\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+F_{x,y}(z)=
+\left\langle\Delta^{-iz/2}\xi,
+\Delta^{i\overline z/2}\eta\right\rangle
+\quad(z\in\overline{\mathcal S}).
+\tag{KM.6}
+\]">\[
+F_{x,y}(z)=
+\left\langle\Delta^{-iz/2}\xi,
+\Delta^{i\overline z/2}\eta\right\rangle
+\quad(z\in\overline{\mathcal S}).
+\tag{KM.6}
+\]</span>
+<p>Each power uses only a real exponent between zero and one half. MA-09 makes the first vector a bounded continuous, interior holomorphic function on the closed upper strip; the second is antiholomorphic there. The antilinearity of the second slot makes their pairing holomorphic. Both vectors have uniformly bounded norms on the strip, so (KM.6) has the required boundedness and continuity.</p>
+<p>On the lower boundary, the unitary group law gives</p>
+<span class="math math-display" data-tex="\[
+F_{x,y}(t)=\langle\xi,U_t\eta\rangle
+=\varphi(\sigma_t^\varphi(x)y).
+\tag{KM.7}
+\]">\[
+F_{x,y}(t)=\langle\xi,U_t\eta\rangle
+=\varphi(\sigma_t^\varphi(x)y).
+\tag{KM.7}
+\]</span>
+<p>On the upper boundary, spectral transport and the antiunitarity of <span class="math" data-tex="\(J\)">\(J\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_{x,y}(t+i)
+&amp;=\langle\Delta^{1/2}\xi,\Delta^{1/2}U_t\eta\rangle\\
+&amp;=\langle SU_t\eta,S\xi\rangle\\
+&amp;=\langle\Lambda_\varphi(\sigma_t^\varphi(x)),
+\Lambda_\varphi(y^*)\rangle
+=\varphi(y\sigma_t^\varphi(x)).
+\end{aligned}
+\tag{KM.8}
+\]">\[
+\begin{aligned}
+F_{x,y}(t+i)
+&amp;=\langle\Delta^{1/2}\xi,\Delta^{1/2}U_t\eta\rangle\\
+&amp;=\langle SU_t\eta,S\xi\rangle\\
+&amp;=\langle\Lambda_\varphi(\sigma_t^\varphi(x)),
+\Lambda_\varphi(y^*)\rangle
+=\varphi(y\sigma_t^\varphi(x)).
+\end{aligned}
+\tag{KM.8}
+\]</span>
+<p>These identities prove the condition for every required pair. The maximum principle gives the sharper boundary bound (KM.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="an-invariant-competing-group-acts-continuously-on-the-gns-space">An invariant competing group acts continuously on the GNS space</h2>
+<p>Suppose <span class="math" data-tex="\(\beta_t\)">\(\beta_t\)</span> satisfies (KM.3). Invariance defines unitaries by</p>
+<span class="math math-display" data-tex="\[
+V_t\Lambda_\varphi(x)=\Lambda_\varphi(\beta_t(x))
+\quad(x\in\mathfrak n_\varphi).
+\tag{KM.9}
+\]">\[
+V_t\Lambda_\varphi(x)=\Lambda_\varphi(\beta_t(x))
+\quad(x\in\mathfrak n_\varphi).
+\tag{KM.9}
+\]</span>
+<p>They form a strongly continuous group. They implement <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, preserve <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span>, and commute with <span class="math" data-tex="\(S,J\)">\(S,J\)</span> and every spectral projection of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>.</p>
+<p><strong>Proof.</strong> The GNS norm in (KM.2) and invariance prove that (KM.9) is a well-defined isometry on the dense GNS subspace. Applying <span class="math" data-tex="\(-t\)">\(-t\)</span> makes its extension a surjective isometry. The group law holds on that dense subspace and hence on <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span>. For <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span> and <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>, left-ideal covariance gives</p>
+<span class="math math-display" data-tex="\[
+V_t\pi_\varphi(a)V_{-t}\Lambda_\varphi(x)
+=\pi_\varphi(\beta_t(a))\Lambda_\varphi(x).
+\tag{KM.10}
+\]">\[
+V_t\pi_\varphi(a)V_{-t}\Lambda_\varphi(x)
+=\pi_\varphi(\beta_t(a))\Lambda_\varphi(x).
+\tag{KM.10}
+\]</span>
+<p>Thus the equality holds as an equality of bounded operators.</p>
+<p>If <span class="math" data-tex="\(\xi=\Lambda_\varphi(x)\)">\(\xi=\Lambda_\varphi(x)\)</span>, <span class="math" data-tex="\(\eta=\Lambda_\varphi(y)\)">\(\eta=\Lambda_\varphi(y)\)</span> with <span class="math" data-tex="\(x,y\in\mathfrak a_\varphi\)">\(x,y\in\mathfrak a_\varphi\)</span>, the lower boundary of the KMS function for the pair <span class="math" data-tex="\((y^*,x)\)">\((y^*,x)\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\varphi(\beta_t(y^*)x)=\langle\xi,V_t\eta\rangle.
+\tag{KM.11}
+\]">\[
+\varphi(\beta_t(y^*)x)=\langle\xi,V_t\eta\rangle.
+\tag{KM.11}
+\]</span>
+<p>It is continuous in <span class="math" data-tex="\(t\)">\(t\)</span>. Since <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is dense and the operator norms are one, approximation extends this weak continuity to every pair of Hilbert vectors. The identity for the squared distance of two unitary orbit vectors then gives strong continuity.</p>
+<p>On <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, preservation of the adjoint in <span class="math" data-tex="\(M\)">\(M\)</span> gives <span class="math" data-tex="\(SV_t=V_tS\)">\(SV_t=V_tS\)</span>, and <span class="math" data-tex="\(V_t\mathcal A=\mathcal A\)">\(V_t\mathcal A=\mathcal A\)</span>. Since <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is a graph core for <span class="math" data-tex="\(S\)">\(S\)</span>, closedness and approximation give</p>
+<span class="math math-display" data-tex="\[
+V_tD(S)=D(S),\qquad V_tSV_{-t}=S.
+\tag{KM.12}
+\]">\[
+V_tD(S)=D(S),\qquad V_tSV_{-t}=S.
+\tag{KM.12}
+\]</span>
+<p>The polar decomposition of the left side is
+<span class="math" data-tex="\((V_tJV_{-t})(V_t\Delta^{1/2}V_{-t})\)">\((V_tJV_{-t})(V_t\Delta^{1/2}V_{-t})\)</span>. Uniqueness of the closed-involution polar factors therefore gives</p>
+<span class="math math-display" data-tex="\[
+V_tJV_{-t}=J,\qquad V_t\Delta^{1/2}V_{-t}=\Delta^{1/2}.
+\tag{KM.13}
+\]">\[
+V_tJV_{-t}=J,\qquad V_t\Delta^{1/2}V_{-t}=\Delta^{1/2}.
+\tag{KM.13}
+\]</span>
+<p>These identities include domains. Spectral transport SK-08 implies commutation with every spectral projection and every power of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, on its domain.</p>
+<p>Equation (KM.10) and strong continuity show that each operator orbit is bounded and strongly* continuous. A *-automorphism of a von Neumann algebra is normal: it preserves the positive order and hence all bounded increasing suprema. WH-02 transports the bounded-set continuity back from the faithful normal representation, yielding pointwise sigma-strong* continuity of <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="extending-the-boundary-identity-to-the-whole-form-domain">Extending the boundary identity to the whole form domain</h2>
+<p>For any <span class="math" data-tex="\(\xi,\eta\in D(S)\)">\(\xi,\eta\in D(S)\)</span>, there is a unique bounded continuous function <span class="math" data-tex="\(G_{\xi,\eta}\)">\(G_{\xi,\eta}\)</span> on <span class="math" data-tex="\(\overline{\mathcal S}\)">\(\overline{\mathcal S}\)</span>, holomorphic on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, such that</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G_{\xi,\eta}(t)&amp;=\langle\xi,V_t\eta\rangle,\\
+G_{\xi,\eta}(t+i)&amp;=\langle SV_t\eta,S\xi\rangle
+=\langle\Delta^{1/2}\xi,\Delta^{1/2}V_t\eta\rangle.
+\end{aligned}
+\tag{KM.14}
+\]">\[
+\begin{aligned}
+G_{\xi,\eta}(t)&amp;=\langle\xi,V_t\eta\rangle,\\
+G_{\xi,\eta}(t+i)&amp;=\langle SV_t\eta,S\xi\rangle
+=\langle\Delta^{1/2}\xi,\Delta^{1/2}V_t\eta\rangle.
+\end{aligned}
+\tag{KM.14}
+\]</span>
+<p>Its supremum norm is at most
+<span class="math" data-tex="\(\max\{\|\xi\|\|\eta\|,\|S\xi\|\|S\eta\|\}\)">\(\max\{\|\xi\|\|\eta\|,\|S\xi\|\|S\eta\|\}\)</span>.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, use (KM.11) and the upper boundary of the same pair; (KM.2) gives exactly the first expression on the second line of (KM.14). The last expression follows from <span class="math" data-tex="\(S=J\Delta^{1/2}\)">\(S=J\Delta^{1/2}\)</span>. For general <span class="math" data-tex="\(\xi,\eta\in D(S)\)">\(\xi,\eta\in D(S)\)</span>, choose <span class="math" data-tex="\(\xi_n,\eta_n\in\mathcal A\)">\(\xi_n,\eta_n\in\mathcal A\)</span> converging in the <span class="math" data-tex="\(S\)">\(S\)</span>-graph norm. On the lower boundary the difference between the functions for indices <span class="math" data-tex="\(n,m\)">\(n,m\)</span> is bounded uniformly in <span class="math" data-tex="\(t\)">\(t\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\|\xi_n-\xi_m\|\,\|\eta_n\|
++\|\xi_m\|\,\|\eta_n-\eta_m\|.
+\]">\[
+\|\xi_n-\xi_m\|\,\|\eta_n\|
++\|\xi_m\|\,\|\eta_n-\eta_m\|.
+\]</span>
+<p>On the upper boundary the analogous bound has <span class="math" data-tex="\(S\)">\(S\)</span> applied to each vector, because <span class="math" data-tex="\(SV_t=V_tS\)">\(SV_t=V_tS\)</span> and <span class="math" data-tex="\(V_t\)">\(V_t\)</span> is unitary. Both bounds tend to zero. The bounded-strip maximum principle makes the entire sequence Cauchy in the supremum norm on the closed strip. Its uniform limit is bounded and continuous there and holomorphic inside; the limits of the two edges are (KM.14). Uniqueness and the stated bound follow from MA-08. The sequence is used only in the metrizable graph norm, not as a replacement for arbitrary von Neumann algebra nets. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="uniqueness-by-an-imaginary-shift-and-periodicity"><span id="OA-MOD-KM-05"></span><span id="oa-mod-km-05"></span>Uniqueness by an imaginary shift and periodicity</h2>
+<p>Every group <span class="math" data-tex="\(\beta\)">\(\beta\)</span> satisfying (KM.3) equals <span class="math" data-tex="\(\sigma^\varphi\)">\(\sigma^\varphi\)</span>.</p>
+<p><strong>Proof.</strong> Write</p>
+<span class="math math-display" data-tex="\[
+P_n=1_{[e^{-n},e^n]}(\Delta),\qquad H_n=P_nH_\varphi
+\quad(n\geq1).
+\tag{KM.15}
+\]">\[
+P_n=1_{[e^{-n},e^n]}(\Delta),\qquad H_n=P_nH_\varphi
+\quad(n\geq1).
+\tag{KM.15}
+\]</span>
+<p>These projections commute with every <span class="math" data-tex="\(V_t\)">\(V_t\)</span> by (KM.13), and increase strongly to the identity because <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is injective. On <span class="math" data-tex="\(H_n\)">\(H_n\)</span>, the restriction <span class="math" data-tex="\(\Delta_n\)">\(\Delta_n\)</span> is bounded positive and has bounded inverse; its powers at every complex exponent are bounded. Every vector of <span class="math" data-tex="\(H_n\)">\(H_n\)</span> belongs to <span class="math" data-tex="\(D(\Delta)\subseteq D(S)\)">\(D(\Delta)\subseteq D(S)\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(v\in H_\varphi\)">\(v\in H_\varphi\)</span>, <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, and <span class="math" data-tex="\(n\)">\(n\)</span>. Define an entire vector function, without introducing any nonreal bounded operator <span class="math" data-tex="\(V_z\)">\(V_z\)</span>, by</p>
+<span class="math math-display" data-tex="\[
+h(w)=\sqrt{r/\pi}\int_{\mathbb R}e^{-r(t-w)^2}V_tP_nv\,dt
+\quad(w\in\mathbb C).
+\tag{KM.16}
+\]">\[
+h(w)=\sqrt{r/\pi}\int_{\mathbb R}e^{-r(t-w)^2}V_tP_nv\,dt
+\quad(w\in\mathbb C).
+\tag{KM.16}
+\]</span>
+<p>MA-16 gives the norm integral, holomorphy and the identities</p>
+<span class="math math-display" data-tex="\[
+h(w)\in H_n,\qquad V_th(w)=h(w+t),\qquad
+\|h(t+is)\|\leq e^{rs^2}\|P_nv\|.
+\tag{KM.17}
+\]">\[
+h(w)\in H_n,\qquad V_th(w)=h(w+t),\qquad
+\|h(t+is)\|\leq e^{rs^2}\|P_nv\|.
+\tag{KM.17}
+\]</span>
+<p>For fixed <span class="math" data-tex="\(w\)">\(w\)</span> and <span class="math" data-tex="\(\xi\in D(S)\)">\(\xi\in D(S)\)</span>, compare <span class="math" data-tex="\(G_{\xi,h(w)}\)">\(G_{\xi,h(w)}\)</span> from KM-04 with the scalar function</p>
+<span class="math math-display" data-tex="\[
+z\longmapsto\langle\xi,h(w+\overline z)\rangle.
+\tag{KM.18}
+\]">\[
+z\longmapsto\langle\xi,h(w+\overline z)\rangle.
+\tag{KM.18}
+\]</span>
+<p>This function is holomorphic, since conjugating the parameter and using the antilinear second inner-product slot cancel. It is continuous and bounded on the closed upper strip by (KM.17). On its lower boundary it equals <span class="math" data-tex="\(\langle\xi,V_th(w)\rangle\)">\(\langle\xi,V_th(w)\rangle\)</span>. Bounded-strip boundary uniqueness identifies it with <span class="math" data-tex="\(G_{\xi,h(w)}\)">\(G_{\xi,h(w)}\)</span>. At <span class="math" data-tex="\(z=i\)">\(z=i\)</span>, (KM.14) therefore gives</p>
+<span class="math math-display" data-tex="\[
+\langle\xi,h(w-i)\rangle
+=\langle\Delta^{1/2}\xi,\Delta^{1/2}h(w)\rangle
+=\langle\xi,\Delta h(w)\rangle.
+\tag{KM.19}
+\]">\[
+\langle\xi,h(w-i)\rangle
+=\langle\Delta^{1/2}\xi,\Delta^{1/2}h(w)\rangle
+=\langle\xi,\Delta h(w)\rangle.
+\tag{KM.19}
+\]</span>
+<p>The last equality has its domain because <span class="math" data-tex="\(h(w)\in H_n\subseteq D(\Delta)\)">\(h(w)\in H_n\subseteq D(\Delta)\)</span>. Density of <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span> yields the vector identity</p>
+<span class="math math-display" data-tex="\[
+h(w-i)=\Delta_nh(w)\quad(w\in\mathbb C).
+\tag{KM.20}
+\]">\[
+h(w-i)=\Delta_nh(w)\quad(w\in\mathbb C).
+\tag{KM.20}
+\]</span>
+<p>Consider now the <span class="math" data-tex="\(H_n\)">\(H_n\)</span>-valued entire function</p>
+<span class="math math-display" data-tex="\[
+q(w)=\Delta_n^{-iw}h(w).
+\tag{KM.21}
+\]">\[
+q(w)=\Delta_n^{-iw}h(w).
+\tag{KM.21}
+\]</span>
+<p>The factor is operator-norm entire by the bounded logarithm of <span class="math" data-tex="\(\Delta_n\)">\(\Delta_n\)</span>. The exponent calculation <span class="math" data-tex="\(-i(w-i)=-iw-1\)">\(-i(w-i)=-iw-1\)</span>, together with (KM.20), gives <span class="math" data-tex="\(q(w-i)=q(w)\)">\(q(w-i)=q(w)\)</span>. If <span class="math" data-tex="\(w=t+is\)">\(w=t+is\)</span> and <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|q(w)\|\leq\|\Delta_n^s\|\,\|h(w)\|
+\leq e^{n+r}\|P_nv\|.
+\tag{KM.22}
+\]">\[
+\|q(w)\|\leq\|\Delta_n^s\|\,\|h(w)\|
+\leq e^{n+r}\|P_nv\|.
+\tag{KM.22}
+\]</span>
+<p>Its imaginary period makes this a bound on the entire plane. Testing against any Hilbert vector gives a bounded entire scalar function, hence a constant: the scalar Cauchy derivative estimate on circles of radius <span class="math" data-tex="\(R\)">\(R\)</span> is at most the global bound divided by <span class="math" data-tex="\(R\)">\(R\)</span>, and letting <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span> gives zero derivative. Equality of all vector coefficients makes <span class="math" data-tex="\(q\)">\(q\)</span> constant. Thus</p>
+<span class="math math-display" data-tex="\[
+V_th(0)=h(t)=\Delta^{it}h(0)\quad(t\in\mathbb R).
+\tag{KM.23}
+\]">\[
+V_th(0)=h(t)=\Delta^{it}h(0)\quad(t\in\mathbb R).
+\tag{KM.23}
+\]</span>
+<p>For fixed <span class="math" data-tex="\(n,v\)">\(n,v\)</span>, Gaussian approximation MA-16 gives <span class="math" data-tex="\(h(0)\to P_nv\)">\(h(0)\to P_nv\)</span> as <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span>. Both operators in (KM.23) are unitary, so the identity extends to <span class="math" data-tex="\(P_nv\)">\(P_nv\)</span>. Finally <span class="math" data-tex="\(P_nv\to v\)">\(P_nv\to v\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+V_t=\Delta^{it}\quad\text{on }H_\varphi.
+\tag{KM.24}
+\]">\[
+V_t=\Delta^{it}\quad\text{on }H_\varphi.
+\tag{KM.24}
+\]</span>
+<p>Comparing their bounded implementers in (KM.10) and (KM.5), and using faithfulness of <span class="math" data-tex="\(\pi_\varphi\)">\(\pi_\varphi\)</span>, proves <span class="math" data-tex="\(\beta_t=\sigma_t^\varphi\)">\(\beta_t=\sigma_t^\varphi\)</span> for every real <span class="math" data-tex="\(t\)">\(t\)</span>. The argument used bounded spectral bands of the already known modular operator; it did not replace <span class="math" data-tex="\(M\)">\(M\)</span> or <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> by sigma-finite corners. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Combining KM-02 and KM-05 proves the full existence and uniqueness statement: every faithful normal semifinite weight has exactly one automorphism group satisfying (KM.3). This is its <strong>modular automorphism group</strong>. Its bounded strip functions are often called its two-point functions.</p>
+<h2 id="coordinate-changes-and-positive-scalar-multiples"><span id="OA-MOD-KM-06"></span><span id="oa-mod-km-06"></span>Coordinate changes and positive scalar multiples</h2>
+<p>Let <span class="math" data-tex="\(\theta:N\to M\)">\(\theta:N\to M\)</span> be a *-isomorphism of von Neumann algebras, let <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, and set <span class="math" data-tex="\(\psi=c\,\varphi\circ\theta\)">\(\psi=c\,\varphi\circ\theta\)</span> on <span class="math" data-tex="\(N_+\)">\(N_+\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\sigma_t^\psi=\theta^{-1}\circ\sigma_t^\varphi\circ\theta.
+\tag{KM.25}
+\]">\[
+\sigma_t^\psi=\theta^{-1}\circ\sigma_t^\varphi\circ\theta.
+\tag{KM.25}
+\]</span>
+<p>In particular multiplying a faithful normal semifinite weight by a positive finite scalar does not change its modular group.</p>
+<p><strong>Proof.</strong> WT-02–03 prove that <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is faithful, normal and semifinite and that <span class="math" data-tex="\(\theta\)">\(\theta\)</span> bijects all the finite domains. Define the group on the right of (KM.25) to be <span class="math" data-tex="\(\gamma_t\)">\(\gamma_t\)</span>. For <span class="math" data-tex="\(a\in N_+\)">\(a\in N_+\)</span>, weight invariance gives</p>
+<span class="math math-display" data-tex="\[
+\psi(\gamma_t(a))=c\,\varphi(\sigma_t^\varphi(\theta(a)))
+=c\,\varphi(\theta(a))=\psi(a),
+\]">\[
+\psi(\gamma_t(a))=c\,\varphi(\sigma_t^\varphi(\theta(a)))
+=c\,\varphi(\theta(a))=\psi(a),
+\]</span>
+<p>including the value <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>. If <span class="math" data-tex="\(x,y\in\mathfrak a_\psi\)">\(x,y\in\mathfrak a_\psi\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+H_{x,y}(z)=c\,F^\varphi_{\theta(x),\theta(y)}(z).
+\tag{KM.26}
+\]">\[
+H_{x,y}(z)=c\,F^\varphi_{\theta(x),\theta(y)}(z).
+\tag{KM.26}
+\]</span>
+<p>It has exactly the two boundary values required by (KM.3) for <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> and <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, since <span class="math" data-tex="\(\theta\)">\(\theta\)</span> preserves multiplication and the finite linear extension. KM-05 applied to <span class="math" data-tex="\(\psi\)">\(\psi\)</span> proves (KM.25). This supplies a proof even when the isomorphism is presented abstractly rather than by a unitary on a common Hilbert space. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is also an exact relation between the GNS polar data. The inverse-direction unitary of WT-05 is</p>
+<span class="math math-display" data-tex="\[
+W:H_\psi\longrightarrow H_\varphi,
+\qquad W\Lambda_\psi(x)=\sqrt c\,\Lambda_\varphi(\theta(x)).
+\tag{KM.27}
+\]">\[
+W:H_\psi\longrightarrow H_\varphi,
+\qquad W\Lambda_\psi(x)=\sqrt c\,\Lambda_\varphi(\theta(x)).
+\tag{KM.27}
+\]</span>
+<p>It maps the finite-star graph cores onto each other. Because <span class="math" data-tex="\(\sqrt c\)">\(\sqrt c\)</span> is real and <span class="math" data-tex="\(\theta(x^*)=\theta(x)^*\)">\(\theta(x^*)=\theta(x)^*\)</span>, it intertwines the initial antilinear involutions. Passing to their closures and using polar uniqueness gives, with the domains transported by <span class="math" data-tex="\(W\)">\(W\)</span>,</p>
+<span class="math math-display" data-tex="\[
+WS_\psi W^*=S_\varphi,\qquad
+WJ_\psi W^*=J_\varphi,\qquad
+W\Delta_\psi W^*=\Delta_\varphi.
+\tag{KM.28}
+\]">\[
+WS_\psi W^*=S_\varphi,\qquad
+WJ_\psi W^*=J_\varphi,\qquad
+W\Delta_\psi W^*=\Delta_\varphi.
+\tag{KM.28}
+\]</span>
+<p>Thus equality of modular groups under scalar rescaling is consistent with the change in the GNS norm; the square-root normalization in (KM.27) accounts for that change.</p>
+<h2 id="the-same-condition-on-a-c--algebra-and-its-time-convention"><span id="oa-mod-km-07"></span><span id="OA-MOD-KM-07"></span>The same condition on a C*-algebra and its time convention</h2>
+<p>The boundary condition itself makes sense beyond faithful normal semifinite weights. Let <span class="math" data-tex="\(A\)">\(A\)</span> be a C*-algebra, possibly nonunital, and let <span class="math" data-tex="\(\omega:A_+\to[0,\infty]\)">\(\omega:A_+\to[0,\infty]\)</span> be a lower semicontinuous weight. Here lower semicontinuity means that every set <span class="math" data-tex="\(\{a\in A_+:\omega(a)\leq C\}\)">\(\{a\in A_+:\omega(a)\leq C\}\)</span>, for finite real <span class="math" data-tex="\(C\)">\(C\)</span>, is norm closed. Form <span class="math" data-tex="\(\mathfrak n_\omega\)">\(\mathfrak n_\omega\)</span>, <span class="math" data-tex="\(\mathfrak m_\omega\)">\(\mathfrak m_\omega\)</span>, and <span class="math" data-tex="\(\mathfrak a_\omega\)">\(\mathfrak a_\omega\)</span> as in (KM.1), using <span class="math" data-tex="\(A\)">\(A\)</span> in place of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>For a group <span class="math" data-tex="\(\gamma_t\)">\(\gamma_t\)</span> of *-automorphisms of <span class="math" data-tex="\(A\)">\(A\)</span>, the modular KMS condition consists of invariance on all of <span class="math" data-tex="\(A_+\)">\(A_+\)</span> and the bounded strip condition (KM.3) for all <span class="math" data-tex="\(x,y\in\mathfrak a_\omega\)">\(x,y\in\mathfrak a_\omega\)</span>. No faithfulness, semifiniteness or normal extension is part of this definition. The finite-domain Cauchy–Schwarz inequality still proves that both boundary products and the bound (KM.4) are meaningful. If the phrase C*-dynamical system is used, we additionally require <span class="math" data-tex="\(t\mapsto\gamma_t(a)\)">\(t\mapsto\gamma_t(a)\)</span> to be norm continuous for each <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>; the boundary condition can be stated without that additional terminology.</p>
+<p>Here is the sign and scale when a physical time evolution <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> is fixed. For a state <span class="math" data-tex="\(\omega\)">\(\omega\)</span> and an inverse temperature <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, define its KMS condition relative to <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by requiring the modular condition for</p>
+<span class="math math-display" data-tex="\[
+\gamma_t=\alpha_{-bt}.
+\tag{KM.29}
+\]">\[
+\gamma_t=\alpha_{-bt}.
+\tag{KM.29}
+\]</span>
+<p>Equivalently, <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is invariant under <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and, for every <span class="math" data-tex="\(a,d\in A\)">\(a,d\in A\)</span>, there is a bounded continuous function on <span class="math" data-tex="\(0\leq\operatorname{Im}z\leq b\)">\(0\leq\operatorname{Im}z\leq b\)</span>, holomorphic inside, whose boundaries are</p>
+<span class="math math-display" data-tex="\[
+G_{a,d}(t)=\omega(a\alpha_t(d)),\qquad
+G_{a,d}(t+ib)=\omega(\alpha_t(d)a).
+\tag{KM.30}
+\]">\[
+G_{a,d}(t)=\omega(a\alpha_t(d)),\qquad
+G_{a,d}(t+ib)=\omega(\alpha_t(d)a).
+\tag{KM.30}
+\]</span>
+<p>Indeed, the transformation</p>
+<span class="math math-display" data-tex="\[
+G_{a,d}(z)=F^\gamma_{d,a}(-z/b+i)
+\tag{KM.31}
+\]">\[
+G_{a,d}(z)=F^\gamma_{d,a}(-z/b+i)
+\tag{KM.31}
+\]</span>
+<p>is an affine holomorphic change of variable taking one closed strip onto the other and interchanging its boundary lines. Substitution verifies (KM.30); the inverse change gives the converse. The state is finite everywhere, so its finite-star algebra is all of <span class="math" data-tex="\(A\)">\(A\)</span>. In the convention of (KM.3), the modular group itself corresponds to inverse temperature <span class="math" data-tex="\(-1\)">\(-1\)</span>; equation (KM.29) is the conversion to a positive inverse temperature for a separately named time evolution.</p>
+<p>KM-05 does not claim uniqueness in the generality of this definition. For example, the zero weight on <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span> is invariant and has zero two-point functions for every automorphism group, including all groups <span class="math" data-tex="\(a\mapsto u_t a u_t^*\)">\(a\mapsto u_t a u_t^*\)</span> for continuous unitary groups <span class="math" data-tex="\(u_t\)">\(u_t\)</span>. Its lack of faithfulness removes the GNS faithfulness used at the end of KM-05. Lifting a faithful semifinite lower semicontinuous C*-weight to a normal weight on its GNS von Neumann algebra is a separate theorem, with its own closability and extension obligations.</p>
+<h2 id="a-block-model-with-infinite-mass-and-arbitrarily-fast-modular-motion"><span id="oa-mod-km-08"></span><span id="OA-MOD-KM-08"></span>A block model with infinite mass and arbitrarily fast modular motion</h2>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be any set, with no countability hypothesis. Choose <span class="math" data-tex="\(\lambda_i\geq0\)">\(\lambda_i\geq0\)</span> for each <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+M=\prod_{i\in I}M_2(\mathbb C),\qquad
+h_i=\begin{pmatrix}1&amp;0\\0&amp;e^{\lambda_i}\end{pmatrix},\qquad
+\varphi(a)=\sum_{i\in I}\operatorname{Tr}(h_i a_i)\quad(a\in M_+).
+\tag{KM.32}
+\]">\[
+M=\prod_{i\in I}M_2(\mathbb C),\qquad
+h_i=\begin{pmatrix}1&amp;0\\0&amp;e^{\lambda_i}\end{pmatrix},\qquad
+\varphi(a)=\sum_{i\in I}\operatorname{Tr}(h_i a_i)\quad(a\in M_+).
+\tag{KM.32}
+\]</span>
+<p>The positive sum means the supremum of its sums over finite subsets of <span class="math" data-tex="\(I\)">\(I\)</span>. It defines a faithful normal semifinite weight. Additivity follows by taking a common finite subset approximating the two positive sums; homogeneity is immediate. Faithfulness follows from invertibility of each positive <span class="math" data-tex="\(h_i\)">\(h_i\)</span>. For a bounded increasing positive net, each finite block sum preserves its supremum by finite-dimensional continuity. The two suprema, over the original net and over finite subsets of <span class="math" data-tex="\(I\)">\(I\)</span>, commute because both are the supremum over their product set. This proves normality for arbitrary nets. Finite central block cuts <span class="math" data-tex="\(p_Fa\)">\(p_Fa\)</span>, where <span class="math" data-tex="\(F\subset I\)">\(F\subset I\)</span> is finite, have finite weight and increase strongly to <span class="math" data-tex="\(a\)">\(a\)</span>, proving semifiniteness. If <span class="math" data-tex="\(I\)">\(I\)</span> is infinite, <span class="math" data-tex="\(\varphi(1)=+\infty\)">\(\varphi(1)=+\infty\)</span>.</p>
+<p>The GNS realization is</p>
+<span class="math math-display" data-tex="\[
+H_\varphi=\bigoplus_{i\in I}\operatorname{HS}(\mathbb C^2),\qquad
+\Lambda_\varphi(x)=(x_i h_i^{1/2})_i,
+\qquad \pi_\varphi(a)(Z_i)_i=(a_iZ_i)_i.
+\tag{KM.33}
+\]">\[
+H_\varphi=\bigoplus_{i\in I}\operatorname{HS}(\mathbb C^2),\qquad
+\Lambda_\varphi(x)=(x_i h_i^{1/2})_i,
+\qquad \pi_\varphi(a)(Z_i)_i=(a_iZ_i)_i.
+\tag{KM.33}
+\]</span>
+<p>The Hilbert–Schmidt inner product is <span class="math" data-tex="\(\operatorname{Tr}(W^*Z)\)">\(\operatorname{Tr}(W^*Z)\)</span>. Formula (KM.33) is isometric by (KM.2), and it has dense range because it contains every finitely supported family of matrices. On each such block the antilinear involution is</p>
+<span class="math math-display" data-tex="\[
+S_i Z=h_i^{-1/2}Z^*h_i^{1/2},
+\quad J_iZ=Z^*,
+\quad \Delta_iZ=h_iZh_i^{-1}.
+\tag{KM.34}
+\]">\[
+S_i Z=h_i^{-1/2}Z^*h_i^{1/2},
+\quad J_iZ=Z^*,
+\quad \Delta_iZ=h_iZh_i^{-1}.
+\tag{KM.34}
+\]</span>
+<p>The direct sum of the <span class="math" data-tex="\(S_i\)">\(S_i\)</span> has domain <span class="math" data-tex="\(\{Z:\sum_i\|S_iZ_i\|_2^2&lt;\infty\}\)">\(\{Z:\sum_i\|S_iZ_i\|_2^2&lt;\infty\}\)</span>. It is closed because convergence of a vector and its image implies the corresponding identities on every finite-dimensional block. Finite block truncations converge in its graph norm and belong to the initial finite-star algebra. Conversely, for every <span class="math" data-tex="\(x\in\mathfrak a_\varphi\)">\(x\in\mathfrak a_\varphi\)</span>, the vector <span class="math" data-tex="\(Z=\Lambda_\varphi(x)\)">\(Z=\Lambda_\varphi(x)\)</span> belongs to that direct-sum domain, with image <span class="math" data-tex="\(\Lambda_\varphi(x^*)\)">\(\Lambda_\varphi(x^*)\)</span>. These two inclusions identify its closure with the GNS involution. Thus (KM.34) determines the full modular polar data, with the direct-sum spectral domains of SK.</p>
+<p>Theorem KM-05 now identifies the unique KMS group explicitly:</p>
+<span class="math math-display" data-tex="\[
+(\sigma_t^\varphi(a))_i=h_i^{it}a_i h_i^{-it}.
+\tag{KM.35}
+\]">\[
+(\sigma_t^\varphi(a))_i=h_i^{it}a_i h_i^{-it}.
+\tag{KM.35}
+\]</span>
+<p>For the upper off-diagonal matrix unit <span class="math" data-tex="\(e_{12}^{(i)}\)">\(e_{12}^{(i)}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sigma_t^\varphi(e_{12}^{(i)})=e^{-it\lambda_i}e_{12}^{(i)}.
+\tag{KM.36}
+\]">\[
+\sigma_t^\varphi(e_{12}^{(i)})=e^{-it\lambda_i}e_{12}^{(i)}.
+\tag{KM.36}
+\]</span>
+<p>For instance, choose distinct indices <span class="math" data-tex="\(i_n\)">\(i_n\)</span> with <span class="math" data-tex="\(\lambda_{i_n}\to\infty\)">\(\lambda_{i_n}\to\infty\)</span>, and let <span class="math" data-tex="\(a_i=e_{12}\)">\(a_i=e_{12}\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. At <span class="math" data-tex="\(t_n=\pi/\lambda_{i_n}\)">\(t_n=\pi/\lambda_{i_n}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\sigma_{t_n}^\varphi(a)-a\|=2.
+\tag{KM.37}
+\]">\[
+\|\sigma_{t_n}^\varphi(a)-a\|=2.
+\tag{KM.37}
+\]</span>
+<p>Thus a modular orbit need not be norm continuous, although KM-03 guarantees pointwise sigma-strong* continuity. The group still satisfies the strip condition on its precise finite-star domain. There is no contradiction: a bounded two-point function tests finite weight products, not the operator norm of every orbit.</p>
+<h2 id="three-exercises-with-solutions">Three exercises with solutions</h2>
+<p><strong>Problem 1: detect the sign on a single block.</strong> In (KM.32) take one index, <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, <span class="math" data-tex="\(x=e_{12}\)">\(x=e_{12}\)</span> and <span class="math" data-tex="\(y=e_{21}\)">\(y=e_{21}\)</span>. Compute the KMS function, verify its two boundaries, and decide whether the reversed group <span class="math" data-tex="\(\sigma_{-t}^\varphi\)">\(\sigma_{-t}^\varphi\)</span> satisfies the same modular condition for <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>.</p>
+<p><strong>Solution.</strong> We have <span class="math" data-tex="\(\varphi(e_{11})=1\)">\(\varphi(e_{11})=1\)</span>, <span class="math" data-tex="\(\varphi(e_{22})=e^\lambda\)">\(\varphi(e_{22})=e^\lambda\)</span>, and hence the unique function for the modular group is</p>
+<span class="math math-display" data-tex="\[
+F_{x,y}(z)=e^{-i\lambda z}.
+\tag{KM.38}
+\]">\[
+F_{x,y}(z)=e^{-i\lambda z}.
+\tag{KM.38}
+\]</span>
+<p>It is bounded on the unit upper strip. The lower boundary is <span class="math" data-tex="\(e^{-i\lambda t}\)">\(e^{-i\lambda t}\)</span>, while the upper boundary is <span class="math" data-tex="\(e^\lambda e^{-i\lambda t}\)">\(e^\lambda e^{-i\lambda t}\)</span>, exactly as required. For the reversed group the lower boundary would be <span class="math" data-tex="\(e^{i\lambda t}\)">\(e^{i\lambda t}\)</span>. Boundary uniqueness forces the candidate <span class="math" data-tex="\(e^{i\lambda z}\)">\(e^{i\lambda z}\)</span>; at height one its coefficient is <span class="math" data-tex="\(e^{-\lambda}\)">\(e^{-\lambda}\)</span>, whereas the required coefficient is <span class="math" data-tex="\(e^\lambda\)">\(e^\lambda\)</span>. They differ because <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>. Weight invariance alone therefore does not determine the sign.</p>
+<p><strong>Problem 2: two finite ideals are really needed.</strong> On <span class="math" data-tex="\(B(\ell^2(\mathbb N_0))\)">\(B(\ell^2(\mathbb N_0))\)</span>, define the faithful normal semifinite weight</p>
+<span class="math math-display" data-tex="\[
+\varphi(a)=\sum_{k=0}^{\infty}4^k\langle ae_k,e_k\rangle
+\quad(a\geq0).
+\tag{KM.39}
+\]">\[
+\varphi(a)=\sum_{k=0}^{\infty}4^k\langle ae_k,e_k\rangle
+\quad(a\geq0).
+\tag{KM.39}
+\]</span>
+<p>Find a bounded rank-one <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span> but <span class="math" data-tex="\(x^*\notin\mathfrak n_\varphi\)">\(x^*\notin\mathfrak n_\varphi\)</span>.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(v=e_0\)">\(v=e_0\)</span>, <span class="math" data-tex="\(u=\sum_{k\geq1}2^{-k}e_k\)">\(u=\sum_{k\geq1}2^{-k}e_k\)</span>, and define <span class="math" data-tex="\(x\xi=\langle\xi,v\rangle u\)">\(x\xi=\langle\xi,v\rangle u\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+x^*x=\|u\|^2|v\rangle\langle v|,
+\qquad xx^*=|u\rangle\langle u|,
+\]">\[
+x^*x=\|u\|^2|v\rangle\langle v|,
+\qquad xx^*=|u\rangle\langle u|,
+\]</span>
+<p>so <span class="math" data-tex="\(\varphi(x^*x)=\|u\|^2&lt;\infty\)">\(\varphi(x^*x)=\|u\|^2&lt;\infty\)</span> and
+<span class="math" data-tex="\(\varphi(xx^*)=\sum_{k\geq1}4^k4^{-k}=+\infty\)">\(\varphi(xx^*)=\sum_{k\geq1}4^k4^{-k}=+\infty\)</span>.
+The formula (KM.39) is a weight because it is a positive sum of vector functionals; it is normal by commuting the directed positive suprema and faithful because all diagonal coefficients of a positive zero-weight operator vanish. For semifiniteness, its finite-rank matrix units span a sigma-weakly dense subalgebra of <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span>. Thus the example has the hypotheses of KM-01 and shows why replacing <span class="math" data-tex="\(\mathfrak a_\varphi\)">\(\mathfrak a_\varphi\)</span> by <span class="math" data-tex="\(\mathfrak n_\varphi\)">\(\mathfrak n_\varphi\)</span> in all boundary pairs would require a new assertion with new domains.</p>
+<p><strong>Problem 3: the same group does not determine the weight.</strong> Give two faithful normal semifinite weights which have equal modular groups but are not positive scalar multiples.</p>
+<p><strong>Solution.</strong> On <span class="math" data-tex="\(M=\mathbb C\oplus\mathbb C\)">\(M=\mathbb C\oplus\mathbb C\)</span>, take
+<span class="math" data-tex="\(\varphi(a,b)=a+b\)">\(\varphi(a,b)=a+b\)</span> and <span class="math" data-tex="\(\psi(a,b)=a+2b\)">\(\psi(a,b)=a+2b\)</span> for positive <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>. Both are faithful finite weights. The identity group satisfies (KM.3) for each, since the algebra is commutative and the constant function <span class="math" data-tex="\(F_{x,y}(z)=\varphi(xy)\)">\(F_{x,y}(z)=\varphi(xy)\)</span>, respectively <span class="math" data-tex="\(\psi(xy)\)">\(\psi(xy)\)</span>, has both required boundaries. KM-05 makes both modular groups the identity. Their values on <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> would force a common scalar to be one, but their values on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> then disagree. The uniqueness theorem fixes the group from a specified weight; it does not invert that assignment.</p>
+<h2 id="what-the-characterization-supplies-next">What the characterization supplies next</h2>
+<p>The unit proves the full existence and uniqueness characterization for a faithful normal semifinite weight, exact transport under algebra isomorphisms and positive rescaling, and the broader C*-algebra definition with its time convention. Its continuity conclusion follows from the boundary condition itself. The proof passes through the full finite-star graph core and bounded spectral bands on the given GNS Hilbert space, so no countability reduction is hidden in the construction.</p>
+<p>Three distinct next questions use this result. First, lifting a C*-weight requires proving a closed involution and comparing the lifted weight, not merely copying its scalar strip functions. Second, describing elements fixed by the modular group requires matching the fixed-point algebra to finite-domain trace identities. Third, comparing two different weights requires relative modular operators and weight cocycles. The present uniqueness proof can recognize a proposed automorphism group once its KMS condition has been established; it does not supply any of those additional constructions automatically.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-SI.html">← Spatial energy and modular time</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-KL.html">From a C*-modular condition to the GNS von Neumann algebra →</a></span></nav>
+<p class="small source-link"><a href="src/modular-kms-characterization.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

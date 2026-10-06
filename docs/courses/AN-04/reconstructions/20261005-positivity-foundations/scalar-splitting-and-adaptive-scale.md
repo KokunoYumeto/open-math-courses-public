@@ -23,7 +23,7 @@ g_Y(T)\le C g_X(T)\bigl(1+g_Y^\sigma(X-Y)\bigr)^M.
 \]
 A permissible metric has both properties and \(h_g\le1\). A weight is temperate when its ratio in either direction is bounded by a fixed power of this distance. Symbol seminorms use the multilinear derivatives evaluated on directions of metric length at most one.
 
-The [included moving-ellipsoid proof, Sections 1–4](../20261004-free-intrinsic-graph/prerequisites/metric-localization.md) supplies the countable cover, local finiteness, fixed overlap and derivative bounds, including frozen and moving norms. The [current proof map](proof-map.json) connects every use of finite-dimensional compactness, the spectral theorem, Taylor's formula, smooth cutoffs and the implicit function theorem to complete earlier programme proofs. In particular, the implicit map is [U001 P3](../20261004-free-stationary-phase/proof-map.html#P3), and the spectral theorem is U001 Q5.
+The [included moving-ellipsoid proof, Sections 1–4](../20261004-free-intrinsic-graph/prerequisites/metric-localization.md) supplies the countable cover, local finiteness, fixed overlap and derivative bounds, including frozen and moving norms. The [current proof map](proof-map.json) connects every use of finite-dimensional compactness, the spectral theorem, Taylor's formula, smooth cutoffs and the implicit function theorem to complete earlier programme proofs. In particular, the implicit map is [U001 P3](../20261004-free-stationary-phase/proof-map.html#P3), and the spectral theorem is [U001 Q5](../20261004-free-stationary-phase/quadratic-stationary-phase.md#q5-diagonalizing-a-real-symmetric-matrix).
 
 ## S1. The gradient bound for a nonnegative function
 

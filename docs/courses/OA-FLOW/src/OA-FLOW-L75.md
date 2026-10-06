@@ -6,7 +6,7 @@ A conditional measure describes the distribution inside a fibre. Its constructio
 
 The [Haar-class orbit kernels](OA-FLOW-L69.md#oa-flow.orbits.conditional) used an available orbit measure. Here the map is arbitrary: no group action, reference measure on its fibres, or choice of one point from each fibre is assumed. The result applies to standard Borel spaces, meaning measurable spaces isomorphic to Polish spaces with their Borel sigma-algebras. All kernels below act on Borel sets. Completions enter only when taking equivalence classes of functions.
 
-We use the earlier construction of [Lebesgue measure and its translation rule](OA-FLOW-SC.md#sc-02), [scalar L2 completeness](OA-FLOW-SC.md#sc-07), [measure continuity and monotone convergence](OA-FLOW-SC.md#sc-04), [integral convergence estimates](OA-FLOW-SC.md#sc-05), and the Hilbert Cauchy–Schwarz inequality. Borel coding and finite densities are linked at the precise points where they enter.
+We use the earlier construction of [Lebesgue measure and its translation rule](OA-FLOW-SC.md#sc-02), [scalar L2 completeness](OA-FLOW-SC.md#sc-07), [measure continuity and monotone convergence](OA-FLOW-SC.md#sc-04), [integral convergence estimates](OA-FLOW-SC.md#sc-05), and [the Hilbert Cauchy–Schwarz inequality](OA-FLOW-CF.md#oa-flow.cf.8). Borel coding and finite densities are linked at the precise points where they enter.
 
 <a id="oa-flow.kernel.setting"></a>
 ## Disintegrating a Borel probability
@@ -95,7 +95,7 @@ For each rational \(r\) define a finite Borel measure on \(Y\) by
  \qquad 0\le\lambda_r\le\nu.
  \tag{P8}
 \]
-The finite Radon–Nikodym proof from Hilbert representation gives a Borel function \(a_r\) with
+The [finite Radon–Nikodym proof from Hilbert representation](../../OA-MOD/OA-MOD-DC.html#oa-mod-dc-05) gives a Borel function \(a_r\) with
 \[
  \lambda_r(D)=\int_Da_r(y)\,d\nu(y),
  \qquad 0\le a_r(y)\le1.

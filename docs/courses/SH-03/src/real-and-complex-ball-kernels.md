@@ -1,12 +1,28 @@
 # Real and complex ball kernels
 
-The contact-transformation criterion becomes concrete when a kernel is constant on one side of a smooth boundary. We will calculate a real kernel whose cotangent action moves a point one unit in its covector direction, then a complex kernel with a chosen square-root branch. Proper-support integration determines their shifts. In particular, an ordinary fiber cohomology calculation would give the wrong transforms.
+A boundary kernel carries three kinds of data: the side on which its sheaf lives, the direction selected in the cotangent bundle, and the degree produced by integration with compact supports. We separate these data in two explicit calculations. For a real sphere, changing the side can reverse the motion or change the global transform without changing the motion. For a complex quadratic boundary, a square-root branch selects the motion, while an oriented family of real balls determines the shift.
 
-Use When a kernel quantizes a contact transformation, the signed boundary tests, and the closed-submanifold microlocal Hom formula stated there. These examples use arbitrary commutative unital finite-global-dimension coefficients. Fix \(n\geq1\). For trivial coefficients on a smooth contractible chart or on a smooth half-space, cohomological constructibility follows from its local finite relative-cell models; these are the basic constructibility and orientation inputs of the preceding lessons.
+We first compare the three real supports and compute their operators. An open–closed triangle then relates the closed exterior to the normalized ball kernels in the literature, with its exact degree shift and localization domain. The complex calculation follows from its own support equations and cotangent selection. Four solved exercises test the radius, side, branch and degree separately.
+
+Use When a kernel quantizes a contact transformation and the signed boundary tests. These examples use arbitrary commutative unital finite-global-dimension coefficients. Fix \(n\geq1\). The contact criterion requires a cohomologically constructible kernel, its microsupport condition over either selected region, and the actual identity-induced microlocal endomorphism map. We check these separately; properness of the cotangent graph does not assert properness of the ordinary kernel support.
+
+The closed-submanifold microlocal Hom calculation, together with its identity section, supplies the local identity test. Formal cohomological constructibility follows from the proved submanifold models and convex half-space models: their local ordinary and compact-support systems stabilize with perfect representatives. The smooth coordinate and closed-embedding descriptions below reduce these supports to those models.
 
 The displayed geometric microsupport equalities assume \(k\ne0\). For the zero ring all sheaves and microsupports are zero, the same geometric graphs still satisfy the containment conditions of the contact criterion, and the operator identities and equivalences concern zero categories.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Original text by GPT-6.1 Sol and GPT-6 Astra (OpenAI), Ultra, September–October 2026. New original text is public domain (CC0).*
+
+## Choosing a side of the sphere
+
+For radius \(R>0\), write \(h_R(x,y)=|x-y|^2-R^2\). At the sphere, the boundary tests give the following signs relative to \(dh_R\). The second physical kernel covector is negated when it is read as an input covector.
+
+| Support of the constant kernel | Boundary sign | Motion |
+| --- | --- | --- |
+| Closed interior | Negative | Inward |
+| Open interior | Positive | Outward |
+| Closed exterior | Positive | Outward |
+
+The displacement has length \(R\). A cohomological shift changes the degree of an operator but leaves its microsupport unchanged. Thus the two outward rows need a further comparison: their common cotangent graph does not identify their ordinary sheaf operators. We compute the closed exterior first, then give the comparison map itself.
 
 ## A real kernel with an outward covector
 
@@ -25,7 +41,7 @@ This is the constant sheaf on the **closed exterior** of the unit ball in the di
 \qquad\text{(2)}
 \]
 
-To justify this use of the one-dimensional test in \(2n\) dimensions, complete \(h\) to smooth coordinates near the boundary. The sheaf is the inverse image of \(k_{[0,\infty)}\) under the coordinate submersion. Its microsupport pulls back from the positive ray with zero tangential components. In the interior of \(S\), it is locally constant; outside \(S\), it is zero. Thus the only other microsupport points are zero covectors over \(S\).
+To justify this use of the one-dimensional test in \(2n\) dimensions, complete \(h\) to smooth coordinates near the boundary. The sheaf is the inverse image of \(k_{0,\infty)}\) under the coordinate submersion. The exact [submersion pullback formula pulls its microsupport back from the positive ray with zero tangential components. In the interior of \(S\), it is locally constant; outside \(S\), it is zero. Thus the only other microsupport points are zero covectors over \(S\).
 
 On the punctured cotangent regions, the twisted relation (2) is the graph of
 
@@ -62,11 +78,35 @@ Let \(A=\{x:|x|\geq1\}\). The following are ordinary sheaf-operator identities, 
 \qquad\text{(5)}
 \]
 
-For the first, the input is supported at \(y=0\); projection of the restricted support identifies it with \(A\), without a shift. For the second, proper base change for \(!\) gives the stalk at \(x\) as compact-support cohomology of the closed exterior \(\{y:|x-y|\geq1\}\). It is zero. To check this with its map, use the open-ball triangle in \(\mathbb R^n\). Compact-support cohomology of both the open ball and \(\mathbb R^n\) is \(k[-n]\); extension by zero gives their orientation isomorphism, so the remaining closed exterior has zero compact-support cohomology. Every output stalk is zero.
+For the first, the input is supported at \(y=0\); projection of the restricted support identifies it with \(A\), without a shift. For the second, the proper-support fibre formula for \(!\) gives the stalk at \(x\) as compact-support cohomology of the closed exterior \(\{y:|x-y|\geq1\}\). It is zero. To check this with its map, use the open-ball triangle in \(\mathbb R^n\). Compact-support cohomology of both the open ball and \(\mathbb R^n\) is \(k[-n]\); extension by zero gives their orientation isomorphism, so the remaining closed exterior has zero compact-support cohomology. The comparison is induced by the common point-support class in the two coordinate balls, as proved there; equality of the abstract cohomology groups alone would not identify this map. Every output stalk is zero.
 
 Finally the input triangle
 \(k_{Y\setminus\{0\}}\to k_Y\to k_{\{0\}}\xrightarrow{+1}\)
 is sent to a triangle whose middle term is zero and whose third term is \(k_A\). Its first term is therefore \(k_A[-1]\). The shift places the copy of \(k\) in degree one. This third test is an input on the punctured base space, rather than a hypersurface input.
+
+## Comparing the exterior with the normalized ball kernel
+
+Let \(P=\mathbb R^n\times\mathbb R^n\), \(U_R=\{|x-y|<R\}\) and \(E_R=P\setminus U_R\), with \(R>0\). Set \(B_R=k_{U_R}\) and \(C_R=k_{E_R}\). The open–closed sequence is exact on every stalk, and gives the triangle
+
+\[
+B_R\longrightarrow k_P\longrightarrow C_R
+\xrightarrow{\partial}B_R[1].
+\tag{BK1}
+\]
+
+The middle kernel is locally constant, so its microsupport lies in the zero section. In the kernel category localized at any selected punctured cotangent region it is zero. The cone of the connecting morphism \(\partial\) is a shift of that middle term; hence \(\partial\) itself becomes an isomorphism. With the outward normalized kernel \(Q_R=B_R[n]\), we obtain
+
+\[
+C_R\xrightarrow[\partial]{\sim}B_R[1]=Q_R[1-n]
+\quad\text{on the selected punctured cotangent regions.}
+\tag{BK2}
+\]
+
+The kernel \(Q_R\) occurs at time \(-R\) in Guillermou–Kashiwara–Schapira, [Example 3.10](https://arxiv.org/abs/1005.1517v4), p. 25. Their positive time moves against the covector direction. Guillermou's [Example 2.1.4](https://arxiv.org/abs/1905.07341v3), pp. 31–32, reverses this time convention, so its time \(+R\) is the same outward kernel. Both examples use the open ball shifted by the dimension for this outward motion; the closed interior gives the inverse motion. The boundary signs in the preceding table also prove these directions directly, without invoking a general isotopy theorem.
+
+The localization in (BK2) matters. Proper-support integration of \(Q_R\) against a constant input gives a constant output: each oriented open ball has compact-support complex \(k[-n]\), and the normalization \([n]\) cancels this degree. Translations identify the fibres and their orientation generators, so this is an isomorphism of constant sheaves, not just a stalk count. In contrast, the closed exterior sends the constant input to zero by the actual orientation isomorphism in the preceding integration test. Applying the transform to (BK1) is another way to see the latter vanishing. Constant objects are already zero in the punctured localization, so these two global answers agree with the localized comparison.
+
+These real examples fix the normalized-ball antecedent and the time convention. The comparison with the exterior is the explicit connecting-map proof (BK1)–(BK2). The complex quadratic support below requires its own calculation.
 
 ## A complex square-root branch
 
@@ -109,7 +149,7 @@ Z_+=\{\operatorname{Im}h=0,\ \operatorname{Re}h<-1\},
 
 The kernel is on a locally closed real subset, extended by zero. The open strict inequality in (9) is essential. Near its closed support, \(dh\ne0\), so \(a=\operatorname{Re}(h+1)\), \(b=\operatorname{Im}(h+1)\) are two independent real coordinates. The local kernel is \(k_{\{a<0,b=0\}}\) times the constant sheaf in the remaining coordinates.
 
-The open-negative-half-line has a positive boundary covector; the closed \(b=0\) condition permits either normal sign. Translating this product calculation through (6) yields
+The open-negative-half-line has a positive boundary covector; the closed \(b=0\) condition permits either normal sign. First pull back the half-line calculation along the coordinate submersion inside \(b=0\), then use the closed-embedding microsupport equality. This proves the required product case without assuming equality for arbitrary external tensor products. To translate through (6), a real normal \(\alpha\,da+\beta\,db\) corresponds to \(\kappa=\alpha-i\beta\); in particular \(\operatorname{Re}\kappa=\alpha\). We obtain
 
 \[
 \operatorname{SS}(K)=
@@ -145,7 +185,7 @@ Let \(N=\{w\in\mathbb C^n:\operatorname{Im}w=0\}\). Then
 \qquad\text{(12)}
 \]
 
-Here \(|y|^2=\sum_j y_j^2\) is a real Euclidean norm. To prove the formula, apply proper base change at \(z=x+iy\). Its compact-support fiber is
+Here \(|y|^2=\sum_j y_j^2\) is a real Euclidean norm. To prove the formula, apply the proper-support fibre formula at \(z=x+iy\). Its compact-support fiber is
 
 \[
 \{w\in\mathbb R^n:
@@ -153,9 +193,45 @@ Here \(|y|^2=\sum_j y_j^2\) is a real Euclidean norm. To prove the formula, appl
 \qquad\text{(13)}
 \]
 
-It is empty for \(|y|^2\leq1\). When \(|y|^2>1\), translate by \(x\) to identify it with the open ball of radius \(\sqrt{|y|^2-1}\) in the \((n-1)\)-plane \(y^\perp\). Its compact-support cohomology is its orientation line in degree \(n-1\), giving shift \([1-n]\).
+Let \(U=\{z=x+iy:|y|>1\}\), let \(j:U\hookrightarrow\mathbb C^n\), and put \(m=n-1\). Write \(F=\Phi_K(k_N)\). The proper-support fibre formula identifies \(F_z\) with the compactly supported cohomology of (13). In particular all stalks outside \(U\), including its boundary, are zero. For \(z\in U\), put \(r(z)=\sqrt{|y|^2-1}>0\).
 
-The planes form a smooth oriented vector bundle over this open region: orient \(y^\perp\) using the standard orientation of \(\mathbb R^n\) and the positive normal vector \(y/|y|\). Radial scaling identifies the varying balls with its unit open-ball bundle. Thus their compact-support orientation cohomology glues to the constant complex \(k[1-n]\). All stalks on the complement, including \(|y|^2=1\), are zero by the empty-fiber calculation. The open–closed triangle identifies the output with extension by zero of that constant complex, proving (12). For \(n=1\), the ball in a zero-dimensional plane is a point and the shift is zero. The strict inequality and dimension therefore remain correct at this edge case.
+Over \(U\), the spaces \(E_z=y^\perp\) form a rank-\(m\) real vector bundle \(E\): the fibrewise orthogonal projection is the smooth matrix
+
+\[
+P_y=I-\frac{yy^{\mathsf T}}{|y|^2}.
+\]
+
+Its image has constant rank \(m\). The map
+
+\[
+(z,v)\longmapsto (z,w=x-r(z)v),\qquad
+v\in E_z,\quad |v|<1,
+\]
+
+identifies its unit open-ball bundle with the support of the integration kernel over \(U\). Thus \(j^{-1}F\) is the proper-support image of the constant sheaf of this ball bundle.
+
+Orient \(E\) by the standard orientation of \(\mathbb R^n\) and the positive unit normal \(y/|y|\), with one fixed order for tangent and normal factors. On a small base chart choose an oriented orthonormal frame of \(E\). The ball bundle becomes the product with an open \(m\)-ball, and the proper-support product computation gives \(k[-m]\) on that chart. On an overlap the two orthonormal frames differ by an orientation-preserving linear transformation. Its action on top compactly supported cohomology is the determinant sign, hence \(+1\), by the proved orientation-coordinate comparison. These local generators consequently glue to the constant sheaf \(k_U\) in degree \(m\); every other cohomology sheaf is zero. The truncation isomorphism for a complex with just this one cohomology sheaf therefore gives
+
+\[
+j^{-1}F\simeq k_U[-m]=k_U[1-n].
+\]
+
+This uses the orientation line, and does not assert that \(E\) itself has a global frame. In rank zero the fibres are points; their degree-zero generator gives the same conclusion directly, on each component of \(U\).
+
+Let \(i:\mathbb C^n\setminus U\hookrightarrow\mathbb C^n\). Since inverse image is exact and every stalk of \(i^{-1}F\) vanishes, \(i^{-1}F=0\). The open–closed localization triangle
+
+\[
+j_!j^{-1}F\longrightarrow F\longrightarrow i_*i^{-1}F
+\xrightarrow{+1}
+\]
+
+then identifies the **adjunction map** \(j_!j^{-1}F\to F\) as an isomorphism. It follows that
+
+\[
+F\simeq j_!k_U[1-n]=k_{\{|\operatorname{Im}z|^2>1\}}[1-n].
+\]
+
+The strict inequality, the zero boundary stalks and the degree-zero answer when \(n=1\) are all retained. The argument determines the local-system gluing and the boundary attachment; it does not infer a sheaf merely from its stalk groups.
 
 ## Exercises with complete solutions
 
@@ -195,4 +271,8 @@ Evaluate (12) for \(n=1\) and \(n=2\), and describe what happens at \(|y|=1\). W
 
 ## References
 
-Real and complex ball kernels are basic examples of contact transformations for sheaves; see M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §6.3. The inequalities, cotangent conventions, square-root domain and degree shifts are retained explicitly in the calculations above.
+The classical contact-kernel theory is due to M. Kashiwara and P. Schapira; see [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §6.3. The local equivalence and identity conditions used here are proved in the programme criterion linked at the beginning.
+
+S. Guillermou, M. Kashiwara and P. Schapira, [*Sheaf quantization of Hamiltonian isotopies and applications to nondisplaceability*](https://arxiv.org/abs/1005.1517v4), version 4 (2011), Example 3.10, p. 25, supplies the normalized real ball family. S. Guillermou, [*Sheaves and symplectic geometry of cotangent bundles*](https://arxiv.org/abs/1905.07341v3), version 3 (2022), Example 2.1.4, pp. 31–32, gives the reversed time convention and explains how compact-support convolution and attachment maps determine the family. Its final uniqueness assertion for a nonzero triangle is stated over a field; no such uniqueness assertion is used here.
+
+The closed-exterior comparison, the complex bilinear square-root selection and the real-subspace transform are the calculations given in this lesson, relative to the exact boundary, operation, microlocal Hom and orientation proofs linked at their uses. The two cited real examples are credited for their stated real kernels, rather than for the complex model.

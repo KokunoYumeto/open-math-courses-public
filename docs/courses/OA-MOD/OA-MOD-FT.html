@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ergodic factors and trace normalization · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-FT.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 88 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="ergodic-factors-and-trace-normalization">Ergodic factors and trace normalization</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>A finite invariant functional rules out the trace-scaling freedom of an automorphism on a semifinite factor. Once this is proved, ergodicity forces its possibly unbounded trace density to be scalar. The source target is Takesaki, <em>Theory of Operator Algebras II</em>, Exercise VIII.3(4). Exercises VIII.3(5) and (9) retain their separate solution obligations.</p>
+<p>Inputs are WG-008's finite positive cutoffs, PT-08's full trace-density theorem, VE-01's uniqueness up to scale on a factor, SF-12's standard implementation, and SK-05–08's Borel calculus, domains and spectral transport. All weight identities on positive elements include infinite values. A normal automorphism means a normal unital *-automorphism.</p>
+<p>One additional input, <strong>FT-DEP-FACTOR-TRACE</strong>, is stated exactly in FT-01: a nonzero factor with a nonzero finite projection admits a faithful normal semifinite trace. Its primary locators are Takesaki, <em>Theory of Operator Algebras I</em>, Corollary V.1.20 and Theorem V.2.15, printed pages 297 and 317. The exact programme trace-existence proof is imported at <a href="OA-MOD-TE.html#oa-mod-te-11">The programme arbitrary-algebra trace-existence theorem through Exact theorem owners and the FT/MB applications</a>, and its factor consequence is recorded there. The complete existing affine group proof is reproduced with attribution at TE-14–16. TE-01 names the written programme predual compactness proof and its Banach foundations. The exercise below uses that precise factor consequence. The prerequisites of these imported proofs are not proved here.</p>
+<h2 id="finite-projections-and-the-exact-trace-existence-input"><span id="oa-mod-ft-01"></span><span id="OA-MOD-FT-01"></span>Finite projections and the exact trace-existence input</h2>
+<p>A projection <span class="math" data-tex="\(e\in M\)">\(e\in M\)</span> is <strong>finite</strong> if</p>
+<span class="math math-display" data-tex="\[
+v^*v=e,\quad vv^*=f\leq e,\quad v\in M
+\quad\Longrightarrow\quad f=e.
+\tag{FT.1}
+\]">\[
+v^*v=e,\quad vv^*=f\leq e,\quad v\in M
+\quad\Longrightarrow\quad f=e.
+\tag{FT.1}
+\]</span>
+<p>An algebra is of type III when it has no nonzero finite projection. A factor has scalar center. These are the projection and type conventions of Takesaki I, Definitions V.1.15 and V.1.17.</p>
+<p>Here is the trace direction with its corner argument included. Suppose <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is a faithful normal semifinite trace and <span class="math" data-tex="\(\tau(e)&lt;\infty\)">\(\tau(e)&lt;\infty\)</span>. For a partial isometry as in (FT.1), the trace identity gives <span class="math" data-tex="\(\tau(f)=\tau(vv^*)=\tau(v^*v)=\tau(e)\)">\(\tau(f)=\tau(vv^*)=\tau(v^*v)=\tau(e)\)</span>. Additivity on <span class="math" data-tex="\(e=f+(e-f)\)">\(e=f+(e-f)\)</span>, finite subtraction and faithfulness imply <span class="math" data-tex="\(e=f\)">\(e=f\)</span>. Thus every finite-trace projection is finite in the projection sense.</p>
+<p>In fact every nonzero projection <span class="math" data-tex="\(e\)">\(e\)</span> dominates such a nonzero projection. Choose finite positive contractions <span class="math" data-tex="\(q_i\uparrow1\)">\(q_i\uparrow1\)</span> from WG-008. The positive elements <span class="math" data-tex="\(y_i=e q_i e\)">\(y_i=e q_i e\)</span> converge strongly to <span class="math" data-tex="\(e\)">\(e\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\tau(y_i)=\tau(q_i^{1/2}e q_i^{1/2})
+\leq\tau(q_i)&lt;\infty.
+\tag{FT.2}
+\]">\[
+\tau(y_i)=\tau(q_i^{1/2}e q_i^{1/2})
+\leq\tau(q_i)&lt;\infty.
+\tag{FT.2}
+\]</span>
+<p>The equality uses the trace identity on the bounded operator <span class="math" data-tex="\(q_i^{1/2}e\)">\(q_i^{1/2}e\)</span>. Some <span class="math" data-tex="\(y_i\ne0\)">\(y_i\ne0\)</span>. Choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> so that <span class="math" data-tex="\(f=1_{[\delta,\infty)}(y_i)\ne0\)">\(f=1_{[\delta,\infty)}(y_i)\ne0\)</span>. Spectral calculus gives <span class="math" data-tex="\(f\leq e\)">\(f\leq e\)</span> and <span class="math" data-tex="\(\delta f\leq y_i\)">\(\delta f\leq y_i\)</span>, hence <span class="math" data-tex="\(\tau(f)\leq\delta^{-1}\tau(y_i)&lt;\infty\)">\(\tau(f)\leq\delta^{-1}\tau(y_i)&lt;\infty\)</span>. The first paragraph makes <span class="math" data-tex="\(f\)">\(f\)</span> finite. In particular a nonzero algebra carrying such a trace cannot be type III; the same argument excludes any nonzero type III central summand. The use of the trace in (FT.2) matters: this is not a general corner assertion for an arbitrary semifinite weight.</p>
+<p>The input used in the other direction is precisely</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M\ne0\text{ a factor},\quad
+\exists e\ne0\text{ finite in }M\\
+\Longrightarrow\quad
+\exists\tau\text{ faithful normal semifinite trace on }M.
+\end{gathered}
+\tag{FT.3}
+\]">\[
+\begin{gathered}
+M\ne0\text{ a factor},\quad
+\exists e\ne0\text{ finite in }M\\
+\Longrightarrow\quad
+\exists\tau\text{ faithful normal semifinite trace on }M.
+\end{gathered}
+\tag{FT.3}
+\]</span>
+<p><strong>FT-DEP-FACTOR-TRACE</strong> is the factor consequence recorded in <a href="OA-MOD-TE.html#oa-mod-te-12">Exact theorem owners and the FT/MB applications</a> of the exact programme arbitrary-algebra equivalence imported at <a href="OA-MOD-TE.html#oa-mod-te-11">The programme arbitrary-algebra trace-existence theorem</a>. The trace course, Theorem 6.7, owns the existence proof; Lemma 6.1 and Theorem 6.2 give its full normal corner-extension input. The complete existing affine group proof is reproduced with attribution in TE-14–16. TE-01 routes the unrestricted predual compactness clause to the written programme proof in PD-17 and its Banach foundations. The trace direction just written remains a separate direct argument.</p>
+<h2 id="automorphisms-transport-the-density-and-the-trace-scale">Automorphisms transport the density and the trace scale</h2>
+<p>Let <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> be a factor carrying a faithful normal semifinite trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Any other faithful normal semifinite trace has trivial modular group by PT-08 and therefore equals <span class="math" data-tex="\(c\tau\)">\(c\tau\)</span>, for a unique <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, by VE-01. For a normal automorphism <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, the weight <span class="math" data-tex="\(\tau\circ\alpha\)">\(\tau\circ\alpha\)</span> is a faithful normal semifinite trace: faithfulness, normality and the trace identity transport directly, while <span class="math" data-tex="\(\alpha^{-1}(q_i)\uparrow1\)">\(\alpha^{-1}(q_i)\uparrow1\)</span> transports the finite cutoffs. Consequently there is a unique positive number <span class="math" data-tex="\(c_\alpha\)">\(c_\alpha\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\tau\circ\alpha=c_\alpha\tau,\qquad
+c_{\alpha\beta}=c_\alpha c_\beta.
+\tag{FT.4}
+\]">\[
+\tau\circ\alpha=c_\alpha\tau,\qquad
+c_{\alpha\beta}=c_\alpha c_\beta.
+\tag{FT.4}
+\]</span>
+<p>No invariance of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> under <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has been presumed.</p>
+<p>Write a faithful normal semifinite weight as <span class="math" data-tex="\(\varphi=\tau_h\)">\(\varphi=\tau_h\)</span>, using PT-08. Its density <span class="math" data-tex="\(h\)">\(h\)</span> is positive, self-adjoint, injective and affiliated with <span class="math" data-tex="\(M\)">\(M\)</span>. To specify the automorphism on unbounded operators, work in standard form and use SF-12's canonical unitary <span class="math" data-tex="\(U_\alpha\)">\(U_\alpha\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\alpha(h)=U_\alpha hU_\alpha^*,\qquad
+D(\alpha(h))=U_\alpha D(h),\qquad
+E_{\alpha(h)}(B)=\alpha(E_h(B)).
+\tag{FT.5}
+\]">\[
+\alpha(h)=U_\alpha hU_\alpha^*,\qquad
+D(\alpha(h))=U_\alpha D(h),\qquad
+E_{\alpha(h)}(B)=\alpha(E_h(B)).
+\tag{FT.5}
+\]</span>
+<p>SK-08 proves this spectral transport; the same convention applies to every Borel function of <span class="math" data-tex="\(h\)">\(h\)</span>. In particular it transports square roots and <span class="math" data-tex="\(h_\varepsilon=h(1+\varepsilon h)^{-1}\)">\(h_\varepsilon=h(1+\varepsilon h)^{-1}\)</span>.</p>
+<p>Put <span class="math" data-tex="\(H=\alpha^{-1}(h)\)">\(H=\alpha^{-1}(h)\)</span>. On every <span class="math" data-tex="\(x\in M_+\)">\(x\in M_+\)</span>, the bounded regularizations in PT-08 give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\tau_h\circ\alpha)(x)
+&amp;=\sup_{\varepsilon&gt;0}
+(\tau\circ\alpha)(H_\varepsilon^{1/2}xH_\varepsilon^{1/2})\\
+&amp;=c_\alpha\tau_H(x)
+=\tau_{c_\alpha H}(x).
+\end{aligned}
+\tag{FT.6}
+\]">\[
+\begin{aligned}
+(\tau_h\circ\alpha)(x)
+&amp;=\sup_{\varepsilon&gt;0}
+(\tau\circ\alpha)(H_\varepsilon^{1/2}xH_\varepsilon^{1/2})\\
+&amp;=c_\alpha\tau_H(x)
+=\tau_{c_\alpha H}(x).
+\end{aligned}
+\tag{FT.6}
+\]</span>
+<p>The last equality uses <span class="math" data-tex="\((cH)_\varepsilon=cH_{c\varepsilon}\)">\((cH)_\varepsilon=cH_{c\varepsilon}\)</span> and reindexes the supremum. Thus it is an equality on all positives, rather than only on a finite ideal. If <span class="math" data-tex="\(\varphi\circ\alpha=\varphi\)">\(\varphi\circ\alpha=\varphi\)</span>, density uniqueness in PT-08 gives</p>
+<span class="math math-display" data-tex="\[
+h=c_\alpha\alpha^{-1}(h),\qquad
+\alpha(h)=c_\alpha h.
+\tag{FT.7}
+\]">\[
+h=c_\alpha\alpha^{-1}(h),\qquad
+\alpha(h)=c_\alpha h.
+\tag{FT.7}
+\]</span>
+<p>These are equalities of closed operators with their full domains. In particular <span class="math" data-tex="\(U_\alpha D(h)=D(h)\)">\(U_\alpha D(h)=D(h)\)</span>.</p>
+<h2 id="finite-mass-eliminates-a-nontrivial-scaling-character">Finite mass eliminates a nontrivial scaling character</h2>
+<p>Now assume <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is a faithful normal positive functional and <span class="math" data-tex="\(\varphi\circ\alpha=\varphi\)">\(\varphi\circ\alpha=\varphi\)</span>. Since <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span>, its mass satisfies <span class="math" data-tex="\(0&lt;\varphi(1)&lt;\infty\)">\(0&lt;\varphi(1)&lt;\infty\)</span>. We will prove <span class="math" data-tex="\(c_\alpha=1\)">\(c_\alpha=1\)</span>, without assuming <span class="math" data-tex="\(\tau(1)&lt;\infty\)">\(\tau(1)&lt;\infty\)</span> or that <span class="math" data-tex="\(h\)">\(h\)</span> is bounded.</p>
+<p>Injectivity of <span class="math" data-tex="\(h\)">\(h\)</span> makes <span class="math" data-tex="\(A=\log h\)">\(A=\log h\)</span> a densely defined self-adjoint operator. Its domain is the spectral domain
+<span class="math" data-tex="\(\{\xi:\int_{(0,\infty)}|\log s|^2\,d\langle E_h(s)\xi,\xi\rangle&lt;\infty\}\)">\(\{\xi:\int_{(0,\infty)}|\log s|^2\,d\langle E_h(s)\xi,\xi\rangle&lt;\infty\}\)</span>.
+Equation (FT.7) and spectral transport give</p>
+<span class="math math-display" data-tex="\[
+\alpha(A)=A+\delta I,\qquad
+\delta=\log c_\alpha.
+\tag{FT.8}
+\]">\[
+\alpha(A)=A+\delta I,\qquad
+\delta=\log c_\alpha.
+\tag{FT.8}
+\]</span>
+<p>This equality retains the full domain <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>. Suppose <span class="math" data-tex="\(\delta\ne0\)">\(\delta\ne0\)</span>, and set <span class="math" data-tex="\(\ell=|\delta|\)">\(\ell=|\delta|\)</span>. For <span class="math" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+I_k=[k\ell,(k+1)\ell),\qquad P_k=1_{I_k}(A),
+\qquad \alpha(P_k)=P_{k-\operatorname{sgn}(\delta)}.
+\tag{FT.9}
+\]">\[
+I_k=[k\ell,(k+1)\ell),\qquad P_k=1_{I_k}(A),
+\qquad \alpha(P_k)=P_{k-\operatorname{sgn}(\delta)}.
+\tag{FT.9}
+\]</span>
+<p>The sign follows because <span class="math" data-tex="\(1_{I_k}(A+\delta I)=1_{I_k-\delta}(A)\)">\(1_{I_k}(A+\delta I)=1_{I_k-\delta}(A)\)</span>. The projections are mutually orthogonal and sum strongly to 1. Normality and positivity of the functional therefore give</p>
+<span class="math math-display" data-tex="\[
+\sum_{k\in\mathbb Z}\varphi(P_k)=\varphi(1)\in(0,\infty).
+\tag{FT.10}
+\]">\[
+\sum_{k\in\mathbb Z}\varphi(P_k)=\varphi(1)\in(0,\infty).
+\tag{FT.10}
+\]</span>
+<p>Invariance under <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> makes all the nonnegative summands equal. If their common value is zero, (FT.10) has zero right side. If it is positive, the sum is infinite. Both contradict (FT.10). Hence</p>
+<span class="math math-display" data-tex="\[
+c_\alpha=1,\qquad \tau\circ\alpha=\tau,
+\qquad\alpha(h)=h.
+\tag{FT.11}
+\]">\[
+c_\alpha=1,\qquad \tau\circ\alpha=\tau,
+\qquad\alpha(h)=h.
+\tag{FT.11}
+\]</span>
+<p>The finite mass used here is <span class="math" data-tex="\(\varphi(1)\)">\(\varphi(1)\)</span>, not the trace's total mass. The countable partition is the spectral partition of one self-adjoint operator; it requires no separability or sequence of finite projections exhausting the algebra.</p>
+<h2 id="ergodic-invariance-forces-a-trace-or-type-iii"><span id="oa-mod-ft-04"></span><span id="OA-MOD-FT-04"></span>Ergodic invariance forces a trace or type III</h2>
+<p><strong>Theorem, Exercise VIII.3(4), at FT-DEP-FACTOR-TRACE.</strong> Let <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> be a factor and <span class="math" data-tex="\(\varphi\in M_*^+\)">\(\varphi\in M_*^+\)</span> faithful. Put</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Aut}_\varphi(M)
+=\{\alpha\in\operatorname{Aut}(M):\varphi\circ\alpha=\varphi\}.
+\tag{FT.12}
+\]">\[
+\operatorname{Aut}_\varphi(M)
+=\{\alpha\in\operatorname{Aut}(M):\varphi\circ\alpha=\varphi\}.
+\tag{FT.12}
+\]</span>
+<p>Suppose this group acts ergodically, meaning that its fixed algebra is <span class="math" data-tex="\(\mathbb C1\)">\(\mathbb C1\)</span>. Then <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is a trace or <span class="math" data-tex="\(M\)">\(M\)</span> is of type III.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(M\)">\(M\)</span> is type III, the alternative holds. Otherwise the definition in FT-01 supplies a nonzero finite projection. Invoke the exact structural input (FT.3) to choose a faithful normal semifinite trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, and write <span class="math" data-tex="\(\varphi=\tau_h\)">\(\varphi=\tau_h\)</span>. For every <span class="math" data-tex="\(\alpha\in\operatorname{Aut}_\varphi(M)\)">\(\alpha\in\operatorname{Aut}_\varphi(M)\)</span>, FT-03 gives <span class="math" data-tex="\(\alpha(h)=h\)">\(\alpha(h)=h\)</span>. Its bounded spectral projections</p>
+<span class="math math-display" data-tex="\[
+p_n=1_{[1/n,n]}(h)\quad(n\geq1)
+\tag{FT.13}
+\]">\[
+p_n=1_{[1/n,n]}(h)\quad(n\geq1)
+\tag{FT.13}
+\]</span>
+<p>are therefore fixed by every such automorphism. Ergodicity gives <span class="math" data-tex="\(p_n\in\{0,1\}\)">\(p_n\in\{0,1\}\)</span>. Since <span class="math" data-tex="\(h\)">\(h\)</span> is injective, <span class="math" data-tex="\(p_n\uparrow1\)">\(p_n\uparrow1\)</span>. They cannot all be zero, so <span class="math" data-tex="\(p_n=1\)">\(p_n=1\)</span> for some <span class="math" data-tex="\(n\)">\(n\)</span>. Spectral calculus now makes <span class="math" data-tex="\(h\)">\(h\)</span> a bounded element of <span class="math" data-tex="\(M\)">\(M\)</span>, defined on the whole Hilbert space, with <span class="math" data-tex="\(n^{-1}1\leq h\leq n1\)">\(n^{-1}1\leq h\leq n1\)</span>. Its inverse is bounded as well. Only at this point may ergodicity be applied to <span class="math" data-tex="\(h\)">\(h\)</span> itself: <span class="math" data-tex="\(h=a1\)">\(h=a1\)</span> for some <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. Thus on every positive element</p>
+<span class="math math-display" data-tex="\[
+\varphi=a\tau,\qquad \tau(1)=a^{-1}\varphi(1)&lt;\infty.
+\tag{FT.14}
+\]">\[
+\varphi=a\tau,\qquad \tau(1)=a^{-1}\varphi(1)&lt;\infty.
+\tag{FT.14}
+\]</span>
+<p>The functional <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is a trace. FT-01 also shows that the identity projection is finite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular an infinite semifinite factor cannot admit an ergodic group of automorphisms preserving a faithful normal positive functional. The proof needs neither a bounded density at the start nor a normalized state. Its one structural trace-existence input remains visible in (FT.3).</p>
+<h2 id="scope-checks-and-examples">Scope checks and examples</h2>
+<p><strong>A nontracial matrix functional is not ergodic.</strong> In <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, let <span class="math" data-tex="\(\tau=\operatorname{Tr}\)">\(\tau=\operatorname{Tr}\)</span>, <span class="math" data-tex="\(h=\operatorname{diag}(1,4)\)">\(h=\operatorname{diag}(1,4)\)</span>, and <span class="math" data-tex="\(\varphi(x)=\operatorname{Tr}(hx)\)">\(\varphi(x)=\operatorname{Tr}(hx)\)</span>. FT-03 shows that every <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-preserving automorphism fixes <span class="math" data-tex="\(h\)">\(h\)</span>, hence fixes the nontrivial projection <span class="math" data-tex="\(E_{11}=1_{\{1\}}(h)\)">\(E_{11}=1_{\{1\}}(h)\)</span>. Its fixed algebra is not scalar. The trace defect is explicit:</p>
+<span class="math math-display" data-tex="\[
+\varphi(E_{12}E_{21})=1,\qquad
+\varphi(E_{21}E_{12})=4.
+\tag{FT.15}
+\]">\[
+\varphi(E_{12}E_{21})=1,\qquad
+\varphi(E_{21}E_{12})=4.
+\tag{FT.15}
+\]</span>
+<p>This argument does not require a classification of matrix automorphisms.</p>
+<p><strong>A faithful finite trace does give ergodicity on a factor.</strong> Every inner automorphism <span class="math" data-tex="\(x\mapsto uxu^*\)">\(x\mapsto uxu^*\)</span> preserves such a trace. An element fixed by all these automorphisms commutes with every unitary. It therefore commutes with all of <span class="math" data-tex="\(M\)">\(M\)</span>: a self-adjoint contraction <span class="math" data-tex="\(b\)">\(b\)</span> is the real part of the unitary <span class="math" data-tex="\(b+i(1-b^2)^{1/2}\)">\(b+i(1-b^2)^{1/2}\)</span>, and every element is a complex linear combination of self-adjoint contractions. The fixed algebra of <span class="math" data-tex="\(\operatorname{Aut}_\varphi(M)\)">\(\operatorname{Aut}_\varphi(M)\)</span> is consequently contained in the center <span class="math" data-tex="\(\mathbb C1\)">\(\mathbb C1\)</span>, and contains that center.</p>
+<p><strong>Finite mass does not bound the density.</strong> Here is a conditional spectral model that specifies all its hypotheses. Suppose a finite factor with normalized faithful normal trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span> has mutually orthogonal projections <span class="math" data-tex="\(p_n\)">\(p_n\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, with strong sum 1 and <span class="math" data-tex="\(\tau(p_n)=3\,4^{-n}\)">\(\tau(p_n)=3\,4^{-n}\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+h\xi=\sum_{n\geq1}2^n p_n\xi,\qquad
+D(h)=\left\{\xi:\sum_{n\geq1}4^n\|p_n\xi\|^2&lt;\infty\right\}.
+\tag{FT.16}
+\]">\[
+h\xi=\sum_{n\geq1}2^n p_n\xi,\qquad
+D(h)=\left\{\xi:\sum_{n\geq1}4^n\|p_n\xi\|^2&lt;\infty\right\}.
+\tag{FT.16}
+\]</span>
+<p>Spectral calculus makes <span class="math" data-tex="\(h\)">\(h\)</span> positive, self-adjoint, injective and affiliated. Each <span class="math" data-tex="\(p_n\ne0\)">\(p_n\ne0\)</span>, so <span class="math" data-tex="\(h\)">\(h\)</span> is unbounded. Nevertheless PT-08 and normal monotone evaluation give</p>
+<span class="math math-display" data-tex="\[
+\tau(1)=\sum_{n\geq1}3\,4^{-n}=1,\qquad
+\tau_h(1)=\sum_{n\geq1}3\,2^{-n}=3.
+\tag{FT.17}
+\]">\[
+\tau(1)=\sum_{n\geq1}3\,4^{-n}=1,\qquad
+\tau_h(1)=\sum_{n\geq1}3\,2^{-n}=3.
+\tag{FT.17}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\tau_h\)">\(\tau_h\)</span> is a faithful normal finite functional with unbounded density. Its invariant automorphisms fix each <span class="math" data-tex="\(p_n\)">\(p_n\)</span>, so they cannot act ergodically. Existence of projections with these prescribed traces is a hypothesis of this example, not an additional theorem asserted here. The spectral domain and the exact sums explain why the boundedness step in FT-04 must come after ergodicity.</p>
+<p>The accompanying reproducible draft figure shows the hypothetical logarithmic translation and its mass contradiction, the exact matrix density and fixed projection, and the conditional unbounded spectral model. These panels explain FT-03–05; they do not replace the all-positive transport identity or the full closed-operator domains in the proofs.</p>
+<p>Compare Masamichi Takesaki, <em>Theory of Operator Algebras I</em>, Definitions V.1.15 and V.1.17; Corollary V.1.20; Theorem V.2.15. Masamichi Takesaki, <em>Theory of Operator Algebras II</em>, Exercise VIII.3(4). Source pages are inspected privately; the prose, proofs and figure are original drafts.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-TE.html">← Finite corners, faithful traces, and affine group fixed points</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-MB.html">Semifinite corners and bounded modular operators →</a></span></nav>
+<p class="small source-link"><a href="src/ergodic-factors-and-trace-normalization.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

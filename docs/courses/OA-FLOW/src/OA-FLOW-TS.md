@@ -78,7 +78,7 @@ The exact local corner/type proof gives
  S(pMp)=S(M)=[0,\infty).
  \tag{TS6}
 \]
-For clarity, its proof chooses \(v^*v=1,\ vv^*=p\) using PC-8. Conjugation \(x\mapsto vxv^*\) is a normal unital isomorphism onto \(pMp\). Pullback bijects **all** faithful n.s.f. weights; the induced GNS unitary maps the two full initial finite-star graphs onto each other, hence also their closures, adjoints and positive products. It transports the complete modular operators and their resolvents. Intersecting over that bijection is precisely ([TS6](OA-FLOW-TS.md#equation-ts6)), including zero. There is no restriction of the intersection to states.
+For clarity, its proof chooses \(v^*v=1,\ vv^*=p\) using [PC-8](OA-FLOW-PC.md#oa-flow.projection.pc8). Conjugation \(x\mapsto vxv^*\) is a normal unital isomorphism onto \(pMp\). Pullback bijects **all** faithful n.s.f. weights; the induced GNS unitary maps the two full initial finite-star graphs onto each other, hence also their closures, adjoints and positive products. It transports the complete modular operators and their resolvents. Intersecting over that bijection is precisely ([TS6](OA-FLOW-TS.md#equation-ts6)), including zero. There is no restriction of the intersection to states.
 
 By the elementary meaning of an intersection, ([TS6](OA-FLOW-TS.md#equation-ts6)) implies
 

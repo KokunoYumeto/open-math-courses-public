@@ -1,6 +1,6 @@
 # Corner and matrix invariance of the modular spectral intersection
 
-This original CC0-1.0 proof uses the complete projection results PC-5, PC-7 and PC-8, the finite-domain GNS construction [GW-1–2](OA-FLOW-GW.md#oa-flow.gw.1) and [GW-3](OA-FLOW-GW.md#oa-flow.gw.3), the closed involution WR-3, and its polar operator [CI-3](OA-FLOW-CI.md#oa-flow.ci.3). The spectral and resolvent domains are proved in [SF, SB-4–6](OA-FLOW-SF.md#oa-flow.sf.sb4). These are earlier proofs in this collection.
+This original CC0-1.0 proof uses the complete projection results [PC-5](OA-FLOW-PC.md#oa-flow.projection.pc5), [PC-7](OA-FLOW-PC.md#oa-flow.projection.pc7) and [PC-8](OA-FLOW-PC.md#oa-flow.projection.pc8), the finite-domain GNS construction [GW-1–2](OA-FLOW-GW.md#oa-flow.gw.1) and [GW-3](OA-FLOW-GW.md#oa-flow.gw.3), the closed involution [WR-3](OA-FLOW-WR.md#oa-flow.wr.3), and its polar operator [CI-3](OA-FLOW-CI.md#oa-flow.ci.3). The spectral and resolvent domains are proved in [SF, SB-4–6](OA-FLOW-SF.md#oa-flow.sf.sb4). These are earlier proofs in this collection.
 
 <a id="normal-isomorphism-spectral-intersection"></a>
 
@@ -43,7 +43,7 @@ The domains are transported by the graph unitary, so this is an equality of the 
 
 A von Neumann algebra with separable predual is countably decomposable. Indeed, choose a unit vector in the range of each member of an orthogonal family of nonzero projections. Their vector states are normal by [CP-4](OA-FLOW-CP.md#oa-flow.cp.4). Any two states are at norm distance at least one, by evaluation on the first projection. A countable dense subset of the predual gives a cover by balls of radius one third, each containing at most one of these states. Hence the orthogonal family is countable.
 
-Now let $M$ be a type III factor with separable predual and $0\ne p\in M$. The complete countably decomposable comparison proof PC-8 gives $v^*v=1$, $vv^*=p$. The map $x\mapsto vxv^*$ is a normal unital star isomorphism from $M$ onto $pMp$; its inverse is $y\mapsto v^*yv$. The graph calculation proves $S(pMp)=S(M)$. Thus a type III1 factor, defined by $S(M)=0,\infty)$, has the same type in every nonzero corner.
+Now let $M$ be a type III factor with separable predual and $0\ne p\in M$. The complete countably decomposable comparison proof [PC-8](OA-FLOW-PC.md#oa-flow.projection.pc8) gives $v^*v=1$, $vv^*=p$. The map $x\mapsto vxv^*$ is a normal unital star isomorphism from $M$ onto $pMp$; its inverse is $y\mapsto v^*yv$. The graph calculation proves $S(pMp)=S(M)$. Thus a type III1 factor, defined by $S(M)=[0,\infty)$, has the same type in every nonzero corner.
 
 <a id="finite-matrix-amplification"></a>
 
@@ -51,7 +51,7 @@ Now let $M$ be a type III factor with separable predual and $0\ne p\in M$. The c
 
 ## Finite matrix amplification
 
-Split $1=p_1+p_2$ into two nonzero orthogonal projections. Such a split follows from the explicit halving and filling proof [PC-5. Choose $v_i^*v_i=1$, $v_iv_i^*=p_i$ using the same type III comparison theorem. Then $v_i^*v_j=\delta_{ij}1$. The maps
+Split $1=p_1+p_2$ into two nonzero orthogonal projections. Such a split follows from the explicit halving and filling proof [PC-5](OA-FLOW-PC.md#oa-flow.projection.pc5). Choose $v_i^*v_i=1$, $v_iv_i^*=p_i$ using the same type III comparison theorem. Then $v_i^*v_j=\delta_{ij}1$. The maps
 
 $$
  \Theta:M_2(M)\longrightarrow M,\qquad

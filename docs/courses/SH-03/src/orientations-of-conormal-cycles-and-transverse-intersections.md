@@ -2,7 +2,7 @@
 
 A normalized conormal cycle is an orientation-valued cycle. Its cotangent-fibre coefficient lets the local descriptions agree across charts that reverse orientation. Keeping that coefficient also explains why the ordered intersection with a differential graph is the sign of the Hessian on the submanifold.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Read Lagrangian cycles and proper cotangent images for the supported cycle coefficient, and Pulling back Lagrangian cycles through a graph for the normalized point, zero section and closed conormal. The normal-chart proof for conormal pullback fixes the actual Thom units and embedding traces. Intersections of supported subanalytic cycles supplies the ordered supported cup and point trace. Continuous sections and supported cycle intersections supplies the section unit and its coefficient map. Their exact written prerequisites retain their stated lower and transitive obligations.
 

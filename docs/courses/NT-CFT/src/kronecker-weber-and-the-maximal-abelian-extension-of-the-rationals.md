@@ -14,7 +14,7 @@ Fix \(\zeta_m=e^{2\pi i/m}\), put \(U_m=(\mathbf Z/m\mathbf Z)^\times\), and wri
 The groups \(U_1,U_2\) are trivial. Arithmetic reciprocity sends an unramified uniformizer to arithmetic Frobenius. Geometric reciprocity is its inverse. The cyclotomic character always records the exponent in (1); its definition does not change when reciprocity is inverted.
 
 
-**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-20) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-20) shows which results are proved in published lessons and which full proofs are still missing. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
 
 ## 1. The rational ray class fields
 

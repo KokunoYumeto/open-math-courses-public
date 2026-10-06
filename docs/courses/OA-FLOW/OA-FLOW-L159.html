@@ -1,0 +1,505 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The faithful-state core: finite trace vectors, averaging and scaling · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-ST.html">Previous lesson</a><a href="OA-FLOW-FP.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L159.md">Lesson source</a></nav><p class="notice">Original local proof and mathematical owner review at exact earlier inputs; CI/BD/HA-R/CP and the faithful-state ST route now have actual earlier proof bodies. The arbitrary-weight case is not treated here. Human review and formal verification are not asserted.</p><h1 id="the-faithful-state-core-finite-trace-vectors-averaging-and-scaling">The faithful-state core: finite trace vectors, averaging and scaling</h1>
+<p><em>New local reconstruction by GPT-6 Astra (OpenAI), Ultra, 2026-10-04. Any rights in this new exposition and its new figure source are dedicated under CC0-1.0. Self-checked by the writing AI.</em></p>
+<p>Let <span class="math" data-tex="$M$">$M$</span> be a von Neumann algebra with separable predual and let <span class="math" data-tex="$\varphi$">$\varphi$</span> be a faithful normal state. We construct the regular crossed product of its modular action, a normal faithful semifinite trace, and a normal faithful semifinite operator-valued average on its entire positive cone. The trace is built first from a compatible family of finite vector traces. The subsequent averaging calculation identifies its density and gives the coefficient-square and bounded-resolvent formulas. No factor, type III or injectivity assumption is made.</p>
+<p>The local supporting manuscript <a href="OA-FLOW-FF.html">Fourier and closed-form foundations for the state core, FF-1–5</a>, proves every Fourier, vector integration, closed-form and extended-cone assertion used below, at its exact earlier scalar and spectral inputs. The modular theorem is the existing <a href="OA-FLOW-MF06.html">MF-06 proof, §§1–6</a>, with the full-completion input proved by <a href="OA-FLOW-WH04.html">WH-04, §§2–4</a>. The faithful-state GNS normality proof is <a href="OA-FLOW-ST.html#oa-flow.st.3">ST-3</a>; its faithful image and normal inverse are proved in <a href="OA-FLOW-ST12.html#oa-flow.st.2">ST-2</a>. These are exact programme proof inputs, not references to a theorem statement in a free paper. The actual earlier CI/BD/HA-R, scalar bridge and SF proofs supply those general Hilbert-algebra inputs. The arbitrary-weight case is not treated here.</p>
+<p>For accessible human context, see <a href="https://arxiv.org/pdf/2004.02383v1">Hiai's author notes, §2.1 and §8.1</a> and <a href="https://math.mit.edu/~jerison/103/handouts/fourierint1.13.pdf">Jerison's MIT Fourier handout</a>. The calculations below and FF-1–5 supply the proofs actually used; their bibliographic presence is not a certificate of an older draft's development.</p>
+<p><a id="OA-FLOW.FSCORE.INPUT"></a><a id="oa-flow.fscore.input"></a></p>
+<h2 id="OA-FLOW.FSCORE.INPUT.heading">1. State coordinates and the exact modular data</h2>
+<p>The GNS space is the completion of <span class="math" data-tex="$M$">$M$</span> for <span class="math" data-tex="$\langle x,y\rangle=\varphi(y^*x)$">$\langle x,y\rangle=\varphi(y^*x)$</span>; faithfulness makes this an inner product. Left multiplication satisfies <span class="math" data-tex="$\|xy\|_\varphi\leq\|x\|\|y\|_\varphi$">$\|xy\|_\varphi\leq\|x\|\|y\|_\varphi$</span>, since <span class="math" data-tex="$x^*x\leq\|x\|^2I$">$x^*x\leq\|x\|^2I$</span>. It therefore gives a bounded *-representation. The vector <span class="math" data-tex="$\xi=1$">$\xi=1$</span> is cyclic, has norm one, and is separating: <span class="math" data-tex="$x\xi=0$">$x\xi=0$</span> implies <span class="math" data-tex="$\varphi(x^*x)=0$">$\varphi(x^*x)=0$</span>, so <span class="math" data-tex="$x=0$">$x=0$</span>. For <span class="math" data-tex="$a_\alpha\uparrow a$">$a_\alpha\uparrow a$</span>, normality of <span class="math" data-tex="$\varphi$">$\varphi$</span> gives
+<span class="math" data-tex="$\varphi(x^*(a-a_\alpha)x)\downarrow0$">$\varphi(x^*(a-a_\alpha)x)\downarrow0$</span> on the dense GNS vectors. The inequality <span class="math" data-tex="$D_\alpha^2\leq\|a\|D_\alpha$">$D_\alpha^2\leq\|a\|D_\alpha$</span> for the represented positive differences and their common bound give strong convergence first there and then on all vectors. This proves order normality on the displayed net. The full ultraweak continuity follows from the independently proved <a href="OA-FLOW-ST.html#oa-flow.st.3">ST-3</a> vector-coefficient and norm-closed-predual argument; faithfulness follows already by testing <span class="math" data-tex="$\xi$">$\xi$</span>. The earlier <a href="OA-FLOW-ST12.html#oa-flow.st.2">ST-2</a> compact-ball linear criterion identifies the represented image as a von Neumann algebra and proves ultraweak continuity of its inverse. We henceforth denote it by <span class="math" data-tex="$M$">$M$</span>.</p>
+<p>The space <span class="math" data-tex="$H$">$H$</span> is separable without needing a compactness argument. On the unit ball of <span class="math" data-tex="$M$">$M$</span>, choose a countable norm-dense family of predual functionals. Its evaluations embed that ball into a countable product of scalar disks and determine its ultraweak topology: approximation in predual norm is uniform on the ball. This topology is second countable, so choose a countable dense set in it. The images of that set under <span class="math" data-tex="$x\mapsto x\xi$">$x\mapsto x\xi$</span> have dense linear span in <span class="math" data-tex="$H$">$H$</span>: a vector orthogonal to them defines a normal functional vanishing on the entire unit ball, and hence is orthogonal to <span class="math" data-tex="$M\xi$">$M\xi$</span>. The norm closure is therefore all of <span class="math" data-tex="$H$">$H$</span>.</p>
+<p>The commutant orbit <span class="math" data-tex="$M'\xi$">$M'\xi$</span> is dense. Indeed its closed-span projection commutes with <span class="math" data-tex="$M'$">$M'$</span>, belongs to <span class="math" data-tex="$M$">$M$</span>, and fixes <span class="math" data-tex="$\xi$">$\xi$</span>; separatingness forces that projection to be <span class="math" data-tex="$I$">$I$</span>. This also proves closability of <span class="math" data-tex="$x\xi\mapsto x^*\xi$">$x\xi\mapsto x^*\xi$</span>: if <span class="math" data-tex="$x_n\xi\to0$">$x_n\xi\to0$</span> and <span class="math" data-tex="$x_n^*\xi\to v$">$x_n^*\xi\to v$</span>, pairing the second sequence with <span class="math" data-tex="$y'\xi$">$y'\xi$</span>, <span class="math" data-tex="$y'\in M'$">$y'\in M'$</span>, moves <span class="math" data-tex="$x_n$">$x_n$</span> to the first sequence and gives zero. The dense commutant orbit implies <span class="math" data-tex="$v=0$">$v=0$</span>.</p>
+<p>The algebra <span class="math" data-tex="$M\xi$">$M\xi$</span> is a left Hilbert algebra: multiplication is bounded on the left, the adjoint identity follows from <span class="math" data-tex="$\varphi(z^*xy)=\langle y\xi,x^*z\xi\rangle$">$\varphi(z^*xy)=\langle y\xi,x^*z\xi\rangle$</span>, its products span it because it has a unit, and its involution is closable by the preceding paragraph. Thus WH-04 and MF-06 apply to its full completion without changing the closed involution or the generated algebra. They give</p>
+<p><a id="FS-01"></a><a id="mjx-eqn:FS-01"></a></p>
+<p><span class="math math-display" data-tex="$$
+S=J\Delta^{1/2},\quad J^2=I,\quad JMJ=M',
+\quad \Delta^{it}M\Delta^{-it}=M,\quad J\Delta J=\Delta^{-1}.
+\tag{C1}
+$$">$$
+S=J\Delta^{1/2},\quad J^2=I,\quad JMJ=M',
+\quad \Delta^{it}M\Delta^{-it}=M,\quad J\Delta J=\Delta^{-1}.
+\tag{C1}
+$$</span>
+Here <span class="math" data-tex="$J$">$J$</span> is antiunitary and <span class="math" data-tex="$\Delta$">$\Delta$</span> is positive injective self-adjoint. The adjoint pairing with the unit shows <span class="math" data-tex="$S\xi=S^*\xi=\xi$">$S\xi=S^*\xi=\xi$</span>; hence <span class="math" data-tex="$\Delta\xi=\xi$">$\Delta\xi=\xi$</span> and <span class="math" data-tex="$J\xi=\xi$">$J\xi=\xi$</span>. For <span class="math" data-tex="$x\in M$">$x\in M$</span>, the Tomita relation applied to <span class="math" data-tex="$x^*\xi$">$x^*\xi$</span> gives</p>
+<p><a id="FS-02"></a><a id="mjx-eqn:FS-02"></a></p>
+<p><span class="math math-display" data-tex="$$
+Jx\xi=\Delta^{1/2}x^*\xi.
+\tag{C2}
+$$">$$
+Jx\xi=\Delta^{1/2}x^*\xi.
+\tag{C2}
+$$</span>
+This is a statement on the actual half-power domain. Antiunitary spectral transport also gives <span class="math" data-tex="$J\Delta^{it}J=\Delta^{it}$">$J\Delta^{it}J=\Delta^{it}$</span>, and for <span class="math" data-tex="$L=\log\Delta$">$L=\log\Delta$</span>,
+<span class="math" data-tex="$JE_L(B)J=E_L(-B)$">$JE_L(B)J=E_L(-B)$</span>. Put <span class="math" data-tex="$\sigma_t(x)=\Delta^{it}x\Delta^{-it}$">$\sigma_t(x)=\Delta^{it}x\Delta^{-it}$</span>. This is strongly star continuous, and <span class="math" data-tex="$\varphi\circ\sigma_t=\varphi$">$\varphi\circ\sigma_t=\varphi$</span> because <span class="math" data-tex="$\Delta^{it}\xi=\xi$">$\Delta^{it}\xi=\xi$</span>.</p>
+<p><a id="OA-FLOW.FSCORE.REGULAR"></a><a id="oa-flow.fscore.regular"></a><a id="FS-03"></a><a id="mjx-eqn:FS-03"></a></p>
+<h2 id="OA-FLOW.FSCORE.REGULAR.heading">2. The regular model and the commutant tests</h2>
+<p>Set <span class="math" data-tex="$\mathcal H=L^2(\mathbb R,H;ds)$">$\mathcal H=L^2(\mathbb R,H;ds)$</span>. Throughout use the unitary positive-sign transform
+<span class="math math-display" data-tex="$$
+(\mathcal Ff)(r)=(2\pi)^{-1/2}\int e^{irs}f(s)\,ds.
+$$">$$
+(\mathcal Ff)(r)=(2\pi)^{-1/2}\int e^{irs}f(s)\,ds.
+$$</span>
+FF-2–3 prove its unitary extension and the vector formulas with this normalization. Define</p>
+<p><a id="FS-04"></a><a id="mjx-eqn:FS-04"></a><a id="FS-05"></a><a id="mjx-eqn:FS-05"></a></p>
+<p><span class="math math-display" data-tex="$$
+(\pi(x)f)(s)=\sigma_{-s}(x)f(s),\qquad
+(\lambda(t)f)(s)=f(s-t),\qquad
+C=\{\pi(M),\lambda(\mathbb R)\}''.
+\tag{C3}
+$$">$$
+(\pi(x)f)(s)=\sigma_{-s}(x)f(s),\qquad
+(\lambda(t)f)(s)=f(s-t),\qquad
+C=\{\pi(M),\lambda(\mathbb R)\}''.
+\tag{C3}
+$$</span>
+The map <span class="math" data-tex="$\pi$">$\pi$</span> is a faithful normal unital representation. For normality, a vector functional is the integral of the functionals
+<span class="math" data-tex="$x\mapsto\langle x\Delta^{is}f(s),\Delta^{is}g(s)\rangle$">$x\mapsto\langle x\Delta^{is}f(s),\Delta^{is}g(s)\rangle$</span>.
+Their predual norms are bounded by <span class="math" data-tex="$\|f(s)\|\|g(s)\|$">$\|f(s)\|\|g(s)\|$</span>, an integrable function. For simple <span class="math" data-tex="$f,g$">$f,g$</span>, the paths on each finite-measure support can be approximated in integral norm by compact continuous predual paths and truncations; strong continuity of <span class="math" data-tex="$\Delta^{is}$">$\Delta^{is}$</span> makes those paths norm continuous as vector functionals. General <span class="math" data-tex="$L^2$">$L^2$</span> vectors follow by simple approximation and Cauchy–Schwarz, uniformly on the unit ball of <span class="math" data-tex="$M$">$M$</span>. FF-3 therefore puts the integral in the predual. Faithfulness follows from <span class="math" data-tex="$\|\sigma_{-s}(x)\|=\|x\|$">$\|\sigma_{-s}(x)\|=\|x\|$</span>, or directly by countably many constant vector tests on finite intervals. <a href="OA-FLOW-ST12.html#oa-flow.st.2">ST-2</a> supplies the normal inverse on <span class="math" data-tex="$\pi(M)$">$\pi(M)$</span>.</p>
+<p>Translation substitution gives <span class="math" data-tex="$\lambda(t)\pi(x)\lambda(t)^*=\pi(\sigma_t(x))$">$\lambda(t)\pi(x)\lambda(t)^*=\pi(\sigma_t(x))$</span>. Thus the span <span class="math" data-tex="$\mathcal A$">$\mathcal A$</span> of <span class="math" data-tex="$\pi(x)\lambda(t)$">$\pi(x)\lambda(t)$</span> is a unital *-algebra. Here is the complete closure argument needed below. For a finite or square-summable family <span class="math" data-tex="$u=(u_j)$">$u=(u_j)$</span>, let <span class="math" data-tex="$Q$">$Q$</span> project onto the closure of <span class="math" data-tex="$\{(a u_j)_j:a\in\mathcal A\}$">$\{(a u_j)_j:a\in\mathcal A\}$</span> in the Hilbert direct sum. This subspace reduces every diagonal <span class="math" data-tex="$a$">$a$</span>, so every matrix entry <span class="math" data-tex="$Q_{ij}$">$Q_{ij}$</span> belongs to <span class="math" data-tex="$\mathcal A'$">$\mathcal A'$</span>. If <span class="math" data-tex="$T\in\mathcal A''=C$">$T\in\mathcal A''=C$</span>, its diagonal amplification commutes with <span class="math" data-tex="$Q$">$Q$</span>. Since <span class="math" data-tex="$1\in\mathcal A$">$1\in\mathcal A$</span>, the vector <span class="math" data-tex="$u$">$u$</span> belongs to the range of <span class="math" data-tex="$Q$">$Q$</span>; hence <span class="math" data-tex="$(Tu_j)_j$">$(Tu_j)_j$</span> is a norm limit of such algebra orbit vectors. Finite families prove strong density.</p>
+<p>For ultraweak density, the <a href="OA-FLOW-SF.html#oa-flow.sf2.normal-functional-series">SF-2 vector-series description</a> writes a test functional as <span class="math" data-tex="$\psi(T)=\sum_j\langle Tu_j,v_j\rangle$">$\psi(T)=\sum_j\langle Tu_j,v_j\rangle$</span> with square-summable families <span class="math" data-tex="$u,v$">$u,v$</span>; rescaling each pair equally and inversely gives this from the summable-product convention. If <span class="math" data-tex="$\psi$">$\psi$</span> vanishes on <span class="math" data-tex="$\mathcal A$">$\mathcal A$</span>, the direct-sum approximation just proved and Cauchy–Schwarz show <span class="math" data-tex="$\psi(T)=0$">$\psi(T)=0$</span> for every <span class="math" data-tex="$T\in C$">$T\in C$</span>. This annihilator assertion implies ultraweak density without a further separation theorem: otherwise finitely many defining functionals would map <span class="math" data-tex="$T$">$T$</span> outside the closure of their image of <span class="math" data-tex="$\mathcal A$">$\mathcal A$</span> in <span class="math" data-tex="$\mathbb C^m$">$\mathbb C^m$</span>. That image is a linear subspace of a finite-dimensional space, hence closed; a linear functional annihilating it but not the image of <span class="math" data-tex="$T$">$T$</span> gives a contradictory ultraweak annihilator. Thus <span class="math" data-tex="$\mathcal A$">$\mathcal A$</span> is ultraweakly dense in <span class="math" data-tex="$C$">$C$</span>.</p>
+<p>Let <span class="math" data-tex="$P=\mathcal F^{-1}M_r\mathcal F$">$P=\mathcal F^{-1}M_r\mathcal F$</span>, so <span class="math" data-tex="$\lambda(t)=e^{itP}$">$\lambda(t)=e^{itP}$</span>. Its spectral projections belong to <span class="math" data-tex="$C$">$C$</span>, by the spectral commutation criterion. With
+<span class="math math-display" data-tex="$$
+(D_qf)(s)=e^{-iqs}f(s),\qquad \theta_q=\operatorname{Ad}D_q|_C,
+$$">$$
+(D_qf)(s)=e^{-iqs}f(s),\qquad \theta_q=\operatorname{Ad}D_q|_C,
+$$</span>
+one obtains</p>
+<p><a id="FS-06"></a><a id="mjx-eqn:FS-06"></a></p>
+<p><span class="math math-display" data-tex="$$
+\theta_q(\pi(x))=\pi(x),\qquad
+\theta_q(\lambda(t))=e^{-iqt}\lambda(t),\qquad
+\theta_q(P)=P-q.
+\tag{C4}
+$$">$$
+\theta_q(\pi(x))=\pi(x),\qquad
+\theta_q(\lambda(t))=e^{-iqt}\lambda(t),\qquad
+\theta_q(P)=P-q.
+\tag{C4}
+$$</span>
+In particular <span class="math" data-tex="$e_I=1_I(P)$">$e_I=1_I(P)$</span> satisfies <span class="math" data-tex="$\theta_q(e_I)=e_{I+q}$">$\theta_q(e_I)=e_{I+q}$</span>. Constant operators from <span class="math" data-tex="$M'$">$M'$</span>, and the unitaries</p>
+<p><a id="FS-08"></a><a id="mjx-eqn:FS-08"></a></p>
+<p><span class="math math-display" data-tex="$$
+(V_tf)(s)=\Delta^{it}f(s+t),
+\tag{C5}
+$$">$$
+(V_tf)(s)=\Delta^{it}f(s+t),
+\tag{C5}
+$$</span>
+commute with <span class="math" data-tex="$C$">$C$</span>. This follows by substitution on both generators; on <span class="math" data-tex="$\pi(x)$">$\pi(x)$</span> use <span class="math" data-tex="$\Delta^{it}\sigma_{-(s+t)}(x)=\sigma_{-s}(x)\Delta^{it}$">$\Delta^{it}\sigma_{-(s+t)}(x)=\sigma_{-s}(x)\Delta^{it}$</span>.</p>
+<p>We will also need the exact fixed algebra</p>
+<p><a id="FS-07"></a><a id="mjx-eqn:FS-07"></a></p>
+<p><span class="math math-display" data-tex="$$
+C^\theta=\pi(M).
+\tag{C6}
+$$">$$
+C^\theta=\pi(M).
+\tag{C6}
+$$</span>
+Here is a direct proof. If <span class="math" data-tex="$a\in C^\theta$">$a\in C^\theta$</span>, it commutes with every <span class="math" data-tex="$D_q$">$D_q$</span>. Integrating <span class="math" data-tex="$e^{-t}D_{\pm t}$">$e^{-t}D_{\pm t}$</span> for <span class="math" data-tex="$t\geq0$">$t\geq0$</span> gives the resolvents of scalar position multiplication, by the elementary Laplace integral; the vector integral is justified by its integrable norm bound. Thus <span class="math" data-tex="$a$">$a$</span> commutes with those resolvents and hence all scalar Borel multipliers by the proved spectral calculus.</p>
+<p>Choose a countable orthonormal basis of <span class="math" data-tex="$H$">$H$</span>. Each matrix entry of <span class="math" data-tex="$a$">$a$</span> is an operator on scalar <span class="math" data-tex="$L^2(\mathbb R)$">$L^2(\mathbb R)$</span> commuting with all scalar multipliers. Such an operator is multiplication by a bounded scalar function: on a finite interval <span class="math" data-tex="$E$">$E$</span>, apply it to <span class="math" data-tex="$1_E$">$1_E$</span>, use commutation with <span class="math" data-tex="$1_B$">$1_B$</span> for <span class="math" data-tex="$B\subseteq E$">$B\subseteq E$</span>, and extend from simple functions. The norm estimate on all <span class="math" data-tex="$B$">$B$</span> forces the resulting function to have essential bound at most the operator norm. Overlapping intervals give consistent functions and an exhaustion gives the global multiplier.</p>
+<p>Apply this to all matrix entries. Tests on the countable family of finite rational linear combinations of basis vectors, and scalar indicators of finite intervals, give outside one null set a bounded operator field <span class="math" data-tex="$a(s)$">$a(s)$</span> with <span class="math" data-tex="$\|a(s)\|\leq\|a\|$">$\|a(s)\|\leq\|a\|$</span>. Its weakly measurable matrix entries define a strongly measurable action on each vector, by finite-coordinate approximation and the uniform bound. The original operator acts by this field. Commutation with constant <span class="math" data-tex="$M'$">$M'$</span> places <span class="math" data-tex="$a(s)$">$a(s)$</span> in <span class="math" data-tex="$M$">$M$</span> almost everywhere: the unit ball of <span class="math" data-tex="$M'$">$M'$</span>, in the strong topology on the separable space, is second countable as a subspace of a countable product of copies of <span class="math" data-tex="$H$">$H$</span>; choose countably many dense tests and then use strong approximation.</p>
+<p>Commutation with (C5) gives <span class="math" data-tex="$a(s+t)=\sigma_{-t}(a(s))$">$a(s+t)=\sigma_{-t}(a(s))$</span> for almost every <span class="math" data-tex="$s$">$s$</span>, separately for each <span class="math" data-tex="$t$">$t$</span>. Hence <span class="math" data-tex="$z(s)=\sigma_s(a(s))$">$z(s)=\sigma_s(a(s))$</span> is translation invariant as a bounded measurable field, with equality in the corresponding scalar <span class="math" data-tex="$L^\infty$">$L^\infty$</span> classes. A bounded scalar function invariant under all translations is constant almost everywhere. To prove this without a differentiation theorem, convolve it with <span class="math" data-tex="$\gamma_\varepsilon$">$\gamma_\varepsilon$</span>: the result is continuous, by translation continuity of the <span class="math" data-tex="$L^1$">$L^1$</span> kernel, and translation invariant, hence constant. These convolutions converge in <span class="math" data-tex="$L^1$">$L^1$</span> on every compact interval. Indeed truncate the original bounded function on a larger interval, use FF-1 for its <span class="math" data-tex="$L^1$">$L^1$</span> convergence, and control the omitted part by the Gaussian tail. A convergent subsequence of the bounded constants then proves the assertion.</p>
+<p>Apply this scalar argument to every matrix entry of <span class="math" data-tex="$z(s)$">$z(s)$</span>. Outside one common null set all entries are constant. The resulting bounded operator <span class="math" data-tex="$x$">$x$</span> equals <span class="math" data-tex="$z(s)$">$z(s)$</span> there, hence belongs to <span class="math" data-tex="$M$">$M$</span>. Therefore <span class="math" data-tex="$a(s)=\sigma_{-s}(x)$">$a(s)=\sigma_{-s}(x)$</span> and <span class="math" data-tex="$a=\pi(x)$">$a=\pi(x)$</span>. The opposite inclusion follows from (C4). This proves (C6) without a general crossed-product fixed-point theorem.</p>
+<p><a id="OA-FLOW.FSCORE.CORNERS"></a><a id="oa-flow.fscore.corners"></a></p>
+<h2 id="OA-FLOW.FSCORE.CORNERS.heading">3. A finite trace vector for each spectral interval</h2>
+<p>For a bounded interval <span class="math" data-tex="$I$">$I$</span>, define</p>
+<p><a id="FS-21"></a><a id="mjx-eqn:FS-21"></a></p>
+<p><span class="math math-display" data-tex="$$
+b_I(r)=e^{-r/2}1_I(r),\qquad
+\eta_I=\mathcal F^{-1}\bigl((2\pi)^{-1/2}b_I\,\xi\bigr),\qquad
+T_I(a)=\langle a\eta_I,\eta_I\rangle\quad(a\in e_ICe_I).
+\tag{C7}
+$$">$$
+b_I(r)=e^{-r/2}1_I(r),\qquad
+\eta_I=\mathcal F^{-1}\bigl((2\pi)^{-1/2}b_I\,\xi\bigr),\qquad
+T_I(a)=\langle a\eta_I,\eta_I\rangle\quad(a\in e_ICe_I).
+\tag{C7}
+$$</span>
+Intervals of zero length give the zero corner. In all other cases <span class="math" data-tex="$T_I$">$T_I$</span> is a finite normal positive functional of mass</p>
+<p><a id="FS-22"></a><a id="mjx-eqn:FS-22"></a></p>
+<p><span class="math math-display" data-tex="$$
+T_I(e_I)=\frac1{2\pi}\int_Ie^{-r}\,dr.
+\tag{C8}
+$$">$$
+T_I(e_I)=\frac1{2\pi}\int_Ie^{-r}\,dr.
+\tag{C8}
+$$</span>
+We prove it is a faithful trace directly, before using any averaged weight.</p>
+<p>Define the antiunitary
+<span class="math math-display" data-tex="$$
+(\mathcal Jf)(s)=\Delta^{-is}Jf(-s).
+$$">$$
+(\mathcal Jf)(s)=\Delta^{-is}Jf(-s).
+$$</span>
+Its square is the identity, using the anti-linear identity <span class="math" data-tex="$J\Delta^{it}J=\Delta^{it}$">$J\Delta^{it}J=\Delta^{it}$</span>. For <span class="math" data-tex="$a=e_I\pi(x)\lambda(t)e_I$">$a=e_I\pi(x)\lambda(t)e_I$</span>, scalar Fourier substitution on each spectral component of <span class="math" data-tex="$L$">$L$</span> gives</p>
+<p><a id="FS-23"></a><a id="mjx-eqn:FS-23"></a></p>
+<p><span class="math math-display" data-tex="$$
+(\mathcal Fa\eta_I)(r)
+=\frac{1_I(r)}{\sqrt{2\pi}}
+ \int e^{it(r-u)}b_I(r-u)\,dE_L(u)x\xi.
+\tag{C9}
+$$">$$
+(\mathcal Fa\eta_I)(r)
+=\frac{1_I(r)}{\sqrt{2\pi}}
+ \int e^{it(r-u)}b_I(r-u)\,dE_L(u)x\xi.
+\tag{C9}
+$$</span>
+Indeed <span class="math" data-tex="$\pi(x)\lambda(t)\eta_I(s)=f_I(s-t)\Delta^{-is}x\xi$">$\pi(x)\lambda(t)\eta_I(s)=f_I(s-t)\Delta^{-is}x\xi$</span>, where <span class="math" data-tex="$\mathcal Ff_I=b_I/\sqrt{2\pi}$">$\mathcal Ff_I=b_I/\sqrt{2\pi}$</span>; on spectral value <span class="math" data-tex="$u$">$u$</span>, multiplication by <span class="math" data-tex="$e^{-isu}$">$e^{-isu}$</span> shifts the Fourier variable by <span class="math" data-tex="$u$">$u$</span>.</p>
+<p>We calculate the antiunitary action with all signs retained. On a vector with <span class="math" data-tex="$L$">$L$</span>-spectral value <span class="math" data-tex="$u$">$u$</span>, <span class="math" data-tex="$\mathcal J$">$\mathcal J$</span> changes a scalar Fourier coefficient <span class="math" data-tex="$F(r)$">$F(r)$</span> to <span class="math" data-tex="$\overline{F(r+u)}$">$\overline{F(r+u)}$</span>, and <span class="math" data-tex="$J$">$J$</span> changes that spectral value to <span class="math" data-tex="$-u$">$-u$</span>. This follows by transforming <span class="math" data-tex="$e^{isu}\overline{f(-s)}$">$e^{isu}\overline{f(-s)}$</span>. Apply this to (C9), rename <span class="math" data-tex="$-u$">$-u$</span> as <span class="math" data-tex="$u$">$u$</span>, and use (C2):</p>
+<p><a id="FS-24"></a><a id="mjx-eqn:FS-24"></a></p>
+<p><span class="math math-display" data-tex="$$
+(\mathcal F\mathcal Ja\eta_I)(r)
+=\frac{b_I(r)e^{-itr}}{\sqrt{2\pi}}
+ \int 1_I(r-u)e^{u/2}\,dE_L(u)x^*\xi.
+\tag{C10}
+$$">$$
+(\mathcal F\mathcal Ja\eta_I)(r)
+=\frac{b_I(r)e^{-itr}}{\sqrt{2\pi}}
+ \int 1_I(r-u)e^{u/2}\,dE_L(u)x^*\xi.
+\tag{C10}
+$$</span>
+The scalar identity
+<span class="math math-display" data-tex="$$
+b_I(r)1_I(r-u)e^{u/2}=1_I(r)b_I(r-u)
+$$">$$
+b_I(r)1_I(r-u)e^{u/2}=1_I(r)b_I(r-u)
+$$</span>
+turns (C10) into the Fourier formula for <span class="math" data-tex="$a^*\eta_I$">$a^*\eta_I$</span>. In checking the phase, <span class="math" data-tex="$a^*=e_I\pi(\sigma_{-t}(x^*))\lambda(-t)e_I$">$a^*=e_I\pi(\sigma_{-t}(x^*))\lambda(-t)e_I$</span>, and <span class="math" data-tex="$\sigma_{-t}(x^*)\xi=\Delta^{-it}x^*\xi$">$\sigma_{-t}(x^*)\xi=\Delta^{-it}x^*\xi$</span>, giving the additional factor <span class="math" data-tex="$e^{-itu}$">$e^{-itu}$</span>. Therefore
+<span class="math math-display" data-tex="$$
+\mathcal Ja\eta_I=a^*\eta_I.
+\tag{C11}
+$$">$$
+\mathcal Ja\eta_I=a^*\eta_I.
+\tag{C11}
+$$</span></p>
+<p>These spectral formulas define square-integrable vectors, not pointwise products of unbounded operators. Their simultaneous supports require <span class="math" data-tex="$r,r-u\in I$">$r,r-u\in I$</span>, so <span class="math" data-tex="$u$">$u$</span> lies in the bounded difference interval <span class="math" data-tex="$I-I$">$I-I$</span>; <span class="math" data-tex="$e^{u/2}$">$e^{u/2}$</span> is bounded there. To justify the manipulations, first restrict the vector spectral measure to this bounded set, approximate its scalar arguments by finite spectral step functions, and use the squared spectral norm formula. At an interval endpoint the possible failure set in the pair <span class="math" data-tex="$(r,u)$">$(r,u)$</span> has zero iterated measure: for each fixed <span class="math" data-tex="$u$">$u$</span> it contains only finitely many <span class="math" data-tex="$r$">$r$</span>. Scalar interchange and DCT for Lebesgue measure times the finite vector spectral measure justify the limits. Uniform bounds on the displayed compact supports supply their common integrable majorants. This also justifies the initial Fourier substitution and avoids any unrestricted product with <span class="math" data-tex="$\Delta^{1/2}$">$\Delta^{1/2}$</span>.</p>
+<p>The linear span <span class="math" data-tex="$\mathcal V_I$">$\mathcal V_I$</span> of the compressed generators is *-closed and ultraweakly dense in <span class="math" data-tex="$e_ICe_I$">$e_ICe_I$</span>, by the density in Section 2 and normality of compression. Equation (C11) extends to that span by anti-linearity. Its norm identity gives <span class="math" data-tex="$T_I(a^*a)=T_I(aa^*)$">$T_I(a^*a)=T_I(aa^*)$</span> there. Polarizing this quadratic identity gives <span class="math" data-tex="$T_I(c^*d)=T_I(dc^*)$">$T_I(c^*d)=T_I(dc^*)$</span> for <span class="math" data-tex="$c,d\in\mathcal V_I$">$c,d\in\mathcal V_I$</span>. Since the span is *-closed, this is cyclicity on <span class="math" data-tex="$\mathcal V_I\times\mathcal V_I$">$\mathcal V_I\times\mathcal V_I$</span>. For a fixed first argument, normality and separate ultraweak continuity of multiplication extend cyclicity to the full corner in the second argument, and then in the first. Thus <span class="math" data-tex="$T_I$">$T_I$</span> is a trace; no assertion that <span class="math" data-tex="$\mathcal V_I$">$\mathcal V_I$</span> is an algebra was required.</p>
+<p>It is faithful. If <span class="math" data-tex="$a\in(e_ICe_I)_+$">$a\in(e_ICe_I)_+$</span> and <span class="math" data-tex="$T_I(a)=0$">$T_I(a)=0$</span>, then <span class="math" data-tex="$a^{1/2}\eta_I=0$">$a^{1/2}\eta_I=0$</span>. The operators in (C5) and constant <span class="math" data-tex="$M'$">$M'$</span> commute with <span class="math" data-tex="$a^{1/2}$">$a^{1/2}$</span>. For <span class="math" data-tex="$y'\in M'$">$y'\in M'$</span>, use <span class="math" data-tex="$y'_t=\Delta^{-it}y'\Delta^{it}\in M'$">$y'_t=\Delta^{-it}y'\Delta^{it}\in M'$</span>; the Fourier transform of <span class="math" data-tex="$V_ty'_t\eta_I$">$V_ty'_t\eta_I$</span> is
+<span class="math math-display" data-tex="$$
+(2\pi)^{-1/2}e^{-itr}b_I(r)y'\xi.
+$$">$$
+(2\pi)^{-1/2}e^{-itr}b_I(r)y'\xi.
+$$</span>
+The span of <span class="math" data-tex="$e^{-itr}b_I(r)$">$e^{-itr}b_I(r)$</span>, <span class="math" data-tex="$t\in\mathbb R$">$t\in\mathbb R$</span>, is dense in <span class="math" data-tex="$L^2(I)$">$L^2(I)$</span>. An orthogonal vector would give, by Cauchy–Schwarz, an <span class="math" data-tex="$L^1$">$L^1$</span> function supported on <span class="math" data-tex="$I$">$I$</span> with zero Fourier transform; FF-2 and <span class="math" data-tex="$b_I&gt;0$">$b_I&gt;0$</span> almost everywhere on <span class="math" data-tex="$I$">$I$</span> force it to vanish. Since <span class="math" data-tex="$M'\xi$">$M'\xi$</span> is dense, the commutant orbit just displayed spans <span class="math" data-tex="$e_I\mathcal H$">$e_I\mathcal H$</span>. Thus <span class="math" data-tex="$a^{1/2}$">$a^{1/2}$</span> vanishes on that entire corner space and <span class="math" data-tex="$a=0$">$a=0$</span>.</p>
+<p><a id="OA-FLOW.FSCORE.TRACE"></a><a id="oa-flow.fscore.trace"></a></p>
+<h2 id="OA-FLOW.FSCORE.TRACE.heading">4. The global trace and its scaling</h2>
+<p>For any <span class="math" data-tex="$a\in C_+$">$a\in C_+$</span>, put <span class="math" data-tex="$t_I(a)=\langle a\eta_I,\eta_I\rangle$">$t_I(a)=\langle a\eta_I,\eta_I\rangle$</span>, now as a functional on all of <span class="math" data-tex="$C$">$C$</span>. If <span class="math" data-tex="$I\subseteq J$">$I\subseteq J$</span>, then <span class="math" data-tex="$\eta_I=e_I\eta_J$">$\eta_I=e_I\eta_J$</span>, and the restrictions <span class="math" data-tex="$T_J|_{e_ICe_I}=T_I$">$T_J|_{e_ICe_I}=T_I$</span>. Moreover</p>
+<p><a id="FS-26"></a><a id="mjx-eqn:FS-26"></a></p>
+<p><span class="math math-display" data-tex="$$
+t_I(a)=T_J(e_I(e_Jae_J)e_I)\leq T_J(e_Jae_J)=t_J(a).
+\tag{C12}
+$$">$$
+t_I(a)=T_J(e_I(e_Jae_J)e_I)\leq T_J(e_Jae_J)=t_J(a).
+\tag{C12}
+$$</span>
+The inequality is finite traciality applied to the positive element <span class="math" data-tex="$e_Jae_J$">$e_Jae_J$</span>: move its square root across the trace and use <span class="math" data-tex="$0\leq e_I\leq e_J$">$0\leq e_I\leq e_J$</span>. This orders scalar functionals on the whole positive cone; it does not assert that the compressed operators are ordered.</p>
+<p>Take <span class="math" data-tex="$e_n=1_{[-n,n]}(P)$">$e_n=1_{[-n,n]}(P)$</span> and define</p>
+<p><a id="FS-25"></a><a id="mjx-eqn:FS-25"></a></p>
+<p><span class="math math-display" data-tex="$$
+\tau(a)=\sup_n t_{[-n,n]}(a)\qquad(a\in C_+).
+\tag{C13}
+$$">$$
+\tau(a)=\sup_n t_{[-n,n]}(a)\qquad(a\in C_+).
+\tag{C13}
+$$</span>
+The finite normal functionals increase. A common upper index proves additivity of their supremum, even when a value is infinite. Homogeneity is immediate; commuting the two directed suprema proves normality for arbitrary bounded increasing nets. The restriction to any bounded spectral corner is <span class="math" data-tex="$T_I$">$T_I$</span>, and
+<span class="math math-display" data-tex="$$
+\tau(e_na e_n)=t_{[-n,n]}(a)\uparrow\tau(a).
+\tag{C14}
+$$">$$
+\tau(e_na e_n)=t_{[-n,n]}(a)\uparrow\tau(a).
+\tag{C14}
+$$</span>
+Faithfulness follows from the faithful corner traces and <span class="math" data-tex="$e_n\uparrow I$">$e_n\uparrow I$</span>. Also <span class="math" data-tex="$Ce_n$">$Ce_n$</span> is in the finite left ideal: <span class="math" data-tex="$\tau(e_nx^*xe_n)\leq\|x\|^2\tau(e_n)&lt;\infty$">$\tau(e_nx^*xe_n)\leq\|x\|^2\tau(e_n)&lt;\infty$</span>; its strong density proves semifiniteness.</p>
+<p>The trace identity holds globally. For <span class="math" data-tex="$x\in C$">$x\in C$</span>, finite-corner traciality applied to <span class="math" data-tex="$e_kxe_j$">$e_kxe_j$</span> gives
+<span class="math math-display" data-tex="$$
+\tau(e_jx^*e_kxe_j)=\tau(e_kxe_jx^*e_k).
+$$">$$
+\tau(e_jx^*e_kxe_j)=\tau(e_kxe_jx^*e_k).
+$$</span>
+For fixed <span class="math" data-tex="$j$">$j$</span>, let <span class="math" data-tex="$k\to\infty$">$k\to\infty$</span>. The left operators increase, so normality applies; the right scalar values converge by (C14) applied to <span class="math" data-tex="$xe_jx^*$">$xe_jx^*$</span>. Thus <span class="math" data-tex="$\tau(e_jx^*xe_j)=\tau(xe_jx^*)$">$\tau(e_jx^*xe_j)=\tau(xe_jx^*)$</span>. Let <span class="math" data-tex="$j\to\infty$">$j\to\infty$</span>, using (C14) on the left and normality for the increasing operators <span class="math" data-tex="$xe_jx^*$">$xe_jx^*$</span> on the right. We obtain</p>
+<p><a id="FS-27"></a><a id="mjx-eqn:FS-27"></a></p>
+<p><span class="math math-display" data-tex="$$
+\tau(x^*x)=\tau(xx^*)\qquad(x\in C).
+\tag{C15}
+$$">$$
+\tau(x^*x)=\tau(xx^*)\qquad(x\in C).
+\tag{C15}
+$$</span>
+Hence <span class="math" data-tex="$\tau$">$\tau$</span> is a normal faithful semifinite trace.</p>
+<p>The scaling is already visible at the vector level. Fourier modulation gives</p>
+<p><a id="OA-FLOW.FSCORE.DENSITY"></a><a id="oa-flow.fscore.density"></a></p>
+<p><span class="math math-display" data-tex="$$
+D_s^*\eta_I=e^{-s/2}\eta_{I-s},
+\qquad t_I(\theta_s(a))=e^{-s}t_{I-s}(a).
+$$">$$
+D_s^*\eta_I=e^{-s/2}\eta_{I-s},
+\qquad t_I(\theta_s(a))=e^{-s}t_{I-s}(a).
+$$</span>
+The shifted bounded intervals and the centered ones are cofinal under inclusion, and (C12) orders the functionals. Taking suprema gives</p>
+<p><a id="FS-30"></a><a id="mjx-eqn:FS-30"></a></p>
+<p><span class="math math-display" data-tex="$$
+\tau\circ\theta_s=e^{-s}\tau.
+\tag{C16}
+$$">$$
+\tau\circ\theta_s=e^{-s}\tau.
+\tag{C16}
+$$</span>
+For a nonnegative Borel <span class="math" data-tex="$f$">$f$</span>, the finite vector masses and scalar spectral multiplication give</p>
+<p><a id="FS-31"></a><a id="mjx-eqn:FS-31"></a></p>
+<p><span class="math math-display" data-tex="$$
+\widehat\tau(f(P))=\frac1{2\pi}\int_{\mathbb R}e^{-r}f(r)\,dr.
+\tag{C17}
+$$">$$
+\widehat\tau(f(P))=\frac1{2\pi}\int_{\mathbb R}e^{-r}f(r)\,dr.
+\tag{C17}
+$$</span>
+For precision, first take bounded <span class="math" data-tex="$f$">$f$</span> supported in a bounded interval and use (C7); then apply the increasing truncations <span class="math" data-tex="$\min(f,m)1_{[-n,n]}$">$\min(f,m)1_{[-n,n]}$</span> and MCT. This defines the indicated spectral extension with infinite values allowed.</p>
+<p><a id="OA-FLOW.FSCORE.SCALAR"></a><a id="oa-flow.fscore.scalar"></a><a id="OA-FLOW.FSCORE.AVERAGE"></a><a id="oa-flow.fscore.average"></a></p>
+<h2 id="OA-FLOW.FSCORE.SCALAR.heading">5. The average on the entire positive cone</h2>
+<p>For <span class="math" data-tex="$a\in C_+$">$a\in C_+$</span>, form</p>
+<p><a id="FS-16"></a><a id="mjx-eqn:FS-16"></a></p>
+<p><span class="math math-display" data-tex="$$
+q_a(v)=\int_{\mathbb R}\langle aD_q^*v,D_q^*v\rangle\,\frac{dq}{2\pi}.
+\tag{C18}
+$$">$$
+q_a(v)=\int_{\mathbb R}\langle aD_q^*v,D_q^*v\rangle\,\frac{dq}{2\pi}.
+\tag{C18}
+$$</span>
+Its finite domain may be nondense. FF-3–4 prove its graph completeness and represent it uniquely by a positive self-adjoint operator on the closure of that domain plus an infinite part on its orthogonal complement. A unitary in <span class="math" data-tex="$C'$">$C'$</span> preserves this form, because it commutes with the integrands <span class="math" data-tex="$\theta_q(a)$">$\theta_q(a)$</span>; each <span class="math" data-tex="$D_s$">$D_s$</span> preserves it by translation of <span class="math" data-tex="$q$">$q$</span>. Their actions intertwine the graph inclusion, so commute with its <span class="math" data-tex="$jj^*$">$jj^*$</span>, its finite-part projection, and its spectral resolution. Thus the entire extended-positive spectral element belongs to
+<span class="math math-display" data-tex="$$
+C\cap\{D_s:s\in\mathbb R\}'=C^\theta=\pi(M).
+$$">$$
+C\cap\{D_s:s\in\mathbb R\}'=C^\theta=\pi(M).
+$$</span>
+Call it <span class="math" data-tex="$\mathcal P(a)$">$\mathcal P(a)$</span>. The precise cone operations and their normal covariance were proved in FF-5.</p>
+<p>For a bounded interval <span class="math" data-tex="$I$">$I$</span>, scalar integration of the translates of <span class="math" data-tex="$1_I(r)$">$1_I(r)$</span> gives</p>
+<p><a id="FS-09"></a><a id="mjx-eqn:FS-09"></a><a id="FS-10"></a><a id="mjx-eqn:FS-10"></a></p>
+<p><span class="math math-display" data-tex="$$
+\int_{\mathbb R}\theta_q(e_I)\,\frac{dq}{2\pi}
+=\frac{|I|}{2\pi}I.
+\tag{C19}
+$$">$$
+\int_{\mathbb R}\theta_q(e_I)\,\frac{dq}{2\pi}
+=\frac{|I|}{2\pi}I.
+\tag{C19}
+$$</span>
+This identity means equality after every vector test, justified by nonnegative scalar interchange and the spectral measure of <span class="math" data-tex="$P$">$P$</span>. Hence for <span class="math" data-tex="$0\leq a\leq\|a\|e_I$">$0\leq a\leq\|a\|e_I$</span>, the average is bounded by <span class="math" data-tex="$\|a\||I|/(2\pi)$">$\|a\||I|/(2\pi)$</span>. It agrees with the increasing limit of the compact-interval ultraweak integrals, giving a bounded map <span class="math" data-tex="$\mathcal P_I:e_ICe_I\to\pi(M)$">$\mathcal P_I:e_ICe_I\to\pi(M)$</span>. Additivity on positives extends it linearly; the same integral inequality at every matrix level proves complete positivity.</p>
+<p>The whole-cone map is additive and homogeneous by (C18). For <span class="math" data-tex="$x\in\pi(M)$">$x\in\pi(M)$</span>, the equality <span class="math" data-tex="$D_qx=xD_q$">$D_qx=xD_q$</span> gives
+<span class="math math-display" data-tex="$$
+\mathcal P(x^*ax)=x^*\mathcal P(a)x.
+\tag{C20}
+$$">$$
+\mathcal P(x^*ax)=x^*\mathcal P(a)x.
+\tag{C20}
+$$</span>
+This is equality of the closed forms, including infinite values. It is normal. On every compact <span class="math" data-tex="$q$">$q$</span>-interval, the vector functionals of <span class="math" data-tex="$D_q^*v$">$D_q^*v$</span> form a norm-continuous predual path, so their integral is normal by FF-3. For <span class="math" data-tex="$a_\alpha\uparrow a$">$a_\alpha\uparrow a$</span>, interchange its supremum with the supremum of the compact integrals; every vector form then increases to <span class="math" data-tex="$q_a$">$q_a$</span>, which is the cone supremum by FF-5. Faithfulness follows directly: if <span class="math" data-tex="$\mathcal P(a)=0$">$\mathcal P(a)=0$</span>, each continuous nonnegative integrand in (C18) is zero, so at <span class="math" data-tex="$q=0$">$q=0$</span> we get <span class="math" data-tex="$\langle av,v\rangle=0$">$\langle av,v\rangle=0$</span> for all <span class="math" data-tex="$v$">$v$</span>. Finally (C19) and
+<span class="math" data-tex="$\mathcal P(e_nx^*xe_n)\leq\|x\|^2\mathcal P(e_n)$">$\mathcal P(e_nx^*xe_n)\leq\|x\|^2\mathcal P(e_n)$</span>
+put <span class="math" data-tex="$Ce_n$">$Ce_n$</span> in the bounded-output left ideal and prove semifiniteness. We have proved a normal faithful semifinite operator-valued weight on all of <span class="math" data-tex="$C_+$">$C_+$</span>, not merely a coefficient-algebra formula.</p>
+<h2 id="6-scalar-composition-and-the-density-of-the-trace">6. Scalar composition and the density of the trace</h2>
+<p>Choose <span class="math" data-tex="$g(s)=\pi^{-1/4}e^{-s^2/2}$">$g(s)=\pi^{-1/4}e^{-s^2/2}$</span>, so <span class="math" data-tex="$g&gt;0$">$g&gt;0$</span>, <span class="math" data-tex="$g\in L^1\cap L^2$">$g\in L^1\cap L^2$</span>, and <span class="math" data-tex="$\|g\|_2=1$">$\|g\|_2=1$</span>, by FF-1. Let <span class="math" data-tex="$\zeta_g(s)=g(s)\xi$">$\zeta_g(s)=g(s)\xi$</span> and define</p>
+<p><a id="FS-11"></a><a id="mjx-eqn:FS-11"></a></p>
+<p><span class="math math-display" data-tex="$$
+\Phi(a)=\int_{\mathbb R}\langle aD_q^*\zeta_g,D_q^*\zeta_g\rangle\,\frac{dq}{2\pi}.
+\tag{C21}
+$$">$$
+\Phi(a)=\int_{\mathbb R}\langle aD_q^*\zeta_g,D_q^*\zeta_g\rangle\,\frac{dq}{2\pi}.
+\tag{C21}
+$$</span>
+It is a normal weight by the same compact-integral argument. Translation in <span class="math" data-tex="$q$">$q$</span> gives <span class="math" data-tex="$\Phi\circ\theta_s=\Phi$">$\Phi\circ\theta_s=\Phi$</span>; the same substitution in (C18) gives <span class="math" data-tex="$\mathcal P\circ\theta_s=\mathcal P$">$\mathcal P\circ\theta_s=\mathcal P$</span>. On <span class="math" data-tex="$\pi(M)$">$\pi(M)$</span>, the vector functional of <span class="math" data-tex="$\zeta_g$">$\zeta_g$</span> is <span class="math" data-tex="$\varphi\circ\pi^{-1}$">$\varphi\circ\pi^{-1}$</span>, because <span class="math" data-tex="$\varphi$">$\varphi$</span> is invariant. Spectral evaluation of the very same form (C18), with its infinite part, gives the whole-cone identity</p>
+<p><a id="FS-12"></a><a id="mjx-eqn:FS-12"></a><a id="FS-17"></a><a id="mjx-eqn:FS-17"></a></p>
+<p><span class="math math-display" data-tex="$$
+\Phi=\widehat\varphi\circ\pi^{-1}\circ\mathcal P.
+\tag{C22}
+$$">$$
+\Phi=\widehat\varphi\circ\pi^{-1}\circ\mathcal P.
+\tag{C22}
+$$</span>
+Here <span class="math" data-tex="$\pi^{-1}$">$\pi^{-1}$</span> transports the entire spectral resolution, as justified by <a href="OA-FLOW-ST12.html#oa-flow.st.2">ST-2</a> and FF-5.</p>
+<p>The weight is faithful. If its value at <span class="math" data-tex="$a\geq0$">$a\geq0$</span> is zero, continuity makes <span class="math" data-tex="$a^{1/2}D_q^*\zeta_g=0$">$a^{1/2}D_q^*\zeta_g=0$</span> for every <span class="math" data-tex="$q$">$q$</span>. The functions <span class="math" data-tex="$e^{iqs}g(s)$">$e^{iqs}g(s)$</span> span a dense subspace of scalar <span class="math" data-tex="$L^2(\mathbb R)$">$L^2(\mathbb R)$</span>: an orthogonal vector times <span class="math" data-tex="$g$">$g$</span> is in <span class="math" data-tex="$L^1$">$L^1$</span>, and FF-2 gives its vanishing. Commutation with constant <span class="math" data-tex="$M'$">$M'$</span>, whose orbit on <span class="math" data-tex="$\xi$">$\xi$</span> is dense, then shows <span class="math" data-tex="$a^{1/2}=0$">$a^{1/2}=0$</span>. Formula (C19) gives <span class="math" data-tex="$\Phi(e_I)=|I|/(2\pi)$">$\Phi(e_I)=|I|/(2\pi)$</span>, so <span class="math" data-tex="$Ce_n$">$Ce_n$</span> is a strongly dense finite left ideal and <span class="math" data-tex="$\Phi$">$\Phi$</span> is semifinite.</p>
+<p><a id="OA-FLOW.FSCORE.VECTOR"></a><a id="oa-flow.fscore.vector"></a></p>
+<p>We need one exact Fourier identity. For <span class="math" data-tex="$b\in L^2(\mathbb R)\cap L^\infty(\mathbb R)$">$b\in L^2(\mathbb R)\cap L^\infty(\mathbb R)$</span>, set
+<span class="math math-display" data-tex="$$
+\eta_b=\mathcal F^{-1}\bigl((2\pi)^{-1/2}b\,\xi\bigr).
+$$">$$
+\eta_b=\mathcal F^{-1}\bigl((2\pi)^{-1/2}b\,\xi\bigr).
+$$</span>
+The convolution theorem FF-2 gives</p>
+<p><a id="FS-20"></a><a id="mjx-eqn:FS-20"></a></p>
+<p><span class="math math-display" data-tex="$$
+b(P)D_q^*\zeta_g
+=\int_{\mathbb R}e^{iqt}g(t)\lambda(t)\eta_b\,dt.
+\tag{C23}
+$$">$$
+b(P)D_q^*\zeta_g
+=\int_{\mathbb R}e^{iqt}g(t)\lambda(t)\eta_b\,dt.
+\tag{C23}
+$$</span>
+The integral has integrable vector norm, and FF-3 defines it. For general <span class="math" data-tex="$b$">$b$</span>, approximate its inverse transform in <span class="math" data-tex="$L^2$">$L^2$</span> by integrable functions; convolution by <span class="math" data-tex="$g(t)e^{iqt}$">$g(t)e^{iqt}$</span> is bounded on <span class="math" data-tex="$L^2$">$L^2$</span>, and its Fourier multiplier is bounded, so FF-2 extends the identity. Apply <span class="math" data-tex="$a^{1/2}$">$a^{1/2}$</span>, then vector Plancherel in <span class="math" data-tex="$q$">$q$</span> with measure <span class="math" data-tex="$dq/(2\pi)$">$dq/(2\pi)$</span>. Since <span class="math" data-tex="$\lambda(t)\eta_b=V_{-t}\eta_b$">$\lambda(t)\eta_b=V_{-t}\eta_b$</span> and <span class="math" data-tex="$V_{-t}$">$V_{-t}$</span> commutes with <span class="math" data-tex="$a$">$a$</span>, one obtains
+<span class="math math-display" data-tex="$$
+\Phi(b(P)^*a b(P))
+=\int |g(t)|^2\|a^{1/2}\lambda(t)\eta_b\|^2\,dt
+=\langle a\eta_b,\eta_b\rangle.
+\tag{C24}
+$$">$$
+\Phi(b(P)^*a b(P))
+=\int |g(t)|^2\|a^{1/2}\lambda(t)\eta_b\|^2\,dt
+=\langle a\eta_b,\eta_b\rangle.
+\tag{C24}
+$$</span>
+In particular the scalar sandwich is a finite normal functional on all of <span class="math" data-tex="$C$">$C$</span>. For <span class="math" data-tex="$b=b_I$">$b=b_I$</span> it is exactly the trace-vector functional <span class="math" data-tex="$t_I$">$t_I$</span> constructed earlier.</p>
+<p><a id="OA-FLOW.FSCORE.SANDWICH"></a><a id="oa-flow.fscore.sandwich"></a></p>
+<p>We now justify all cutoff order statements. The finite normal functional
+<span class="math" data-tex="$\nu_q(a)=\langle aD_q^*\zeta_g,D_q^*\zeta_g\rangle$">$\nu_q(a)=\langle aD_q^*\zeta_g,D_q^*\zeta_g\rangle$</span>
+satisfies <span class="math" data-tex="$\nu_q(ca)=\nu_q(ac)$">$\nu_q(ca)=\nu_q(ac)$</span> for <span class="math" data-tex="$c\in\{\lambda(t)\}''$">$c\in\{\lambda(t)\}''$</span>. To see this first for <span class="math" data-tex="$q=0$">$q=0$</span>, note <span class="math" data-tex="$\lambda(-t)\zeta_g=V_t\zeta_g$">$\lambda(-t)\zeta_g=V_t\zeta_g$</span>; because <span class="math" data-tex="$V_t\in C'$">$V_t\in C'$</span>, the vector functional is invariant under conjugation by <span class="math" data-tex="$\lambda(t)$">$\lambda(t)$</span>. Apply that invariance to <span class="math" data-tex="$a\lambda(t)$">$a\lambda(t)$</span> to get the commuting identity. Ultraweak density and normality extend it from the linear span of the <span class="math" data-tex="$\lambda(t)$">$\lambda(t)$</span> to their von Neumann algebra. Composition with <span class="math" data-tex="$\theta_q$">$\theta_q$</span> preserves it, since <span class="math" data-tex="$\theta_q(\lambda(t))$">$\theta_q(\lambda(t))$</span> is a scalar multiple of <span class="math" data-tex="$\lambda(t)$">$\lambda(t)$</span>.</p>
+<p>If <span class="math" data-tex="$b,c\geq0$">$b,c\geq0$</span> are bounded functions of <span class="math" data-tex="$P$">$P$</span> with <span class="math" data-tex="$b^2\leq c^2$">$b^2\leq c^2$</span>, put <span class="math" data-tex="$d=(c^2-b^2)^{1/2}$">$d=(c^2-b^2)^{1/2}$</span>. Inside each finite functional,
+<span class="math" data-tex="$\nu_q(cac)-\nu_q(bab)=\nu_q(dad)\geq0$">$\nu_q(cac)-\nu_q(bab)=\nu_q(dad)\geq0$</span>.
+Integrate before making any comparison of infinite weight values. This proves</p>
+<p><a id="FS-13"></a><a id="mjx-eqn:FS-13"></a><a id="FS-14"></a><a id="mjx-eqn:FS-14"></a><a id="FS-15"></a><a id="mjx-eqn:FS-15"></a></p>
+<p><span class="math math-display" data-tex="$$
+\Phi(bab)\leq\Phi(cac),\qquad
+\Phi(e_na e_n)\uparrow\Phi(a).
+\tag{C25}
+$$">$$
+\Phi(bab)\leq\Phi(cac),\qquad
+\Phi(e_na e_n)\uparrow\Phi(a).
+\tag{C25}
+$$</span>
+For the second assertion the values under each <span class="math" data-tex="$\nu_q$">$\nu_q$</span> increase by the first calculation and converge to <span class="math" data-tex="$\nu_q(a)$">$\nu_q(a)$</span> by bounded strong convergence; scalar MCT in <span class="math" data-tex="$q$">$q$</span> finishes the proof.</p>
+<p>On a bounded interval, <span class="math" data-tex="$h_I=e^{P/2}e_I$">$h_I=e^{P/2}e_I$</span> has a bounded inverse in the corner, and (C24) with <span class="math" data-tex="$b_I$">$b_I$</span> gives
+<span class="math math-display" data-tex="$$
+\Phi(a)=\tau(h_Ia h_I)\quad(a\in(e_ICe_I)_+).
+$$">$$
+\Phi(a)=\tau(h_Ia h_I)\quad(a\in(e_ICe_I)_+).
+$$</span>
+Consequently on the entire positive cone the exact density statement is</p>
+<p><a id="FS-28"></a><a id="mjx-eqn:FS-28"></a><a id="FS-29"></a><a id="mjx-eqn:FS-29"></a></p>
+<p><span class="math math-display" data-tex="$$
+\Phi(a)=\sup_n\tau(e^{P/2}e_na e_ne^{P/2}).
+\tag{C26}
+$$">$$
+\Phi(a)=\sup_n\tau(e^{P/2}e_na e_ne^{P/2}).
+\tag{C26}
+$$</span>
+Every multiplier inside this supremum is bounded. The notation <span class="math" data-tex="$\Phi=\tau(e^P\,\cdot\,)$">$\Phi=\tau(e^P\,\cdot\,)$</span> means (C26), rather than an unexamined unbounded operator product. The construction also shows that choosing another strictly positive normalized Gaussian gives the same weight, since the bounded-corner values and (C25) determine it.</p>
+<p><a id="OA-FLOW.FSCORE.COEFFICIENT"></a><a id="oa-flow.fscore.coefficient"></a></p>
+<h2 id="OA-FLOW.FSCORE.COEFFICIENT.heading">7. The operator-valued coefficient-square formula</h2>
+<p>Suppose <span class="math" data-tex="$x:\mathbb R\to M$">$x:\mathbb R\to M$</span> is bounded, strongly star continuous and compactly supported. Its bounded integrated operator and coefficient square are
+<span class="math math-display" data-tex="$$
+X=\int\lambda(t)\pi(x(t))\,dt,\qquad A=\int x(t)^*x(t)\,dt.
+\tag{C27}
+$$">$$
+X=\int\lambda(t)\pi(x(t))\,dt,\qquad A=\int x(t)^*x(t)\,dt.
+\tag{C27}
+$$</span>
+The first acts by vector integration and the second may be read ultraweakly; compact support and a uniform norm bound justify both. Substituting <span class="math" data-tex="$u=s-t$">$u=s-t$</span> in the regular action gives
+<span class="math math-display" data-tex="$$
+(XD_q^*\zeta_g)(s)=\int e^{iqu}g(u)\Delta^{-iu}x(s-u)\xi\,du.
+$$">$$
+(XD_q^*\zeta_g)(s)=\int e^{iqu}g(u)\Delta^{-iu}x(s-u)\xi\,du.
+$$</span>
+For each <span class="math" data-tex="$s$">$s$</span>, this is the Fourier integral of an integrable square-integrable <span class="math" data-tex="$H$">$H$</span>-valued function. FF-2–3 and nonnegative scalar interchange, with the compact coefficient support and Gaussian bound, give</p>
+<p><a id="FS-18"></a><a id="mjx-eqn:FS-18"></a></p>
+<p><span class="math math-display" data-tex="$$
+\Phi(X^*X)
+=\int |g(u)|^2\int\|\Delta^{-iu}x(s-u)\xi\|^2\,ds\,du
+=\int\varphi(x(t)^*x(t))\,dt.
+\tag{C28}
+$$">$$
+\Phi(X^*X)
+=\int |g(u)|^2\int\|\Delta^{-iu}x(s-u)\xi\|^2\,ds\,du
+=\int\varphi(x(t)^*x(t))\,dt.
+\tag{C28}
+$$</span>
+The measure <span class="math" data-tex="$dq/(2\pi)$">$dq/(2\pi)$</span> accounts for the absence of a normalization factor in the displayed <span class="math" data-tex="$u$">$u$</span>-integral.</p>
+<p>Let <span class="math" data-tex="$h=\pi^{-1}(\mathcal P(X^*X))$">$h=\pi^{-1}(\mathcal P(X^*X))$</span>. Apply (C28) to <span class="math" data-tex="$x(t)b$">$x(t)b$</span>, for each <span class="math" data-tex="$b\in M$">$b\in M$</span>, and use the full sandwich identity (C20). The result is
+<span class="math math-display" data-tex="$$
+\widehat\varphi(b^*hb)=\varphi(b^*Ab).
+\tag{C29}
+$$">$$
+\widehat\varphi(b^*hb)=\varphi(b^*Ab).
+\tag{C29}
+$$</span>
+In the faithful state GNS representation, let <span class="math" data-tex="$H_h$">$H_h$</span> be the finite-part positive operator of <span class="math" data-tex="$h$">$h$</span>. Its half-power form on <span class="math" data-tex="$b\xi$">$b\xi$</span> is bounded by <span class="math" data-tex="$\|A\|\|b\xi\|^2$">$\|A\|\|b\xi\|^2$</span>. This dense set first removes the infinite-part subspace. For a sequence <span class="math" data-tex="$b_n\xi\to v$">$b_n\xi\to v$</span>, the same bound applied to differences makes <span class="math" data-tex="$H_h^{1/2}b_n\xi$">$H_h^{1/2}b_n\xi$</span> Cauchy. Closedness gives <span class="math" data-tex="$v\in D(H_h^{1/2})$">$v\in D(H_h^{1/2})$</span> and the bounded extension on every vector. Polarization of (C29) then gives <span class="math" data-tex="$H_h=A$">$H_h=A$</span>. Therefore</p>
+<p><a id="FS-19"></a><a id="mjx-eqn:FS-19"></a></p>
+<p><span class="math math-display" data-tex="$$
+\mathcal P(X^*X)=\pi\!\left(\int x(t)^*x(t)\,dt\right).
+\tag{C30}
+$$">$$
+\mathcal P(X^*X)=\pi\!\left(\int x(t)^*x(t)\,dt\right).
+\tag{C30}
+$$</span>
+Agreement on a dense set was used together with the closed-domain bound, not as an unsupported uniqueness assertion for unbounded operators.</p>
+<p><a id="OA-FLOW.FSCORE.RESOLVENT"></a><a id="oa-flow.fscore.resolvent"></a></p>
+<h2 id="OA-FLOW.FSCORE.RESOLVENT.heading">8. Bounded resolvents recover the trace uniquely</h2>
+<p>Let <span class="math" data-tex="$h=e^P$">$h=e^P$</span>, positive injective and affiliated with <span class="math" data-tex="$C$">$C$</span>. For all <span class="math" data-tex="$a\in C_+$">$a\in C_+$</span>,</p>
+<p><a id="FS-32"></a><a id="mjx-eqn:FS-32"></a></p>
+<p><span class="math math-display" data-tex="$$
+\tau(a)=\lim_{\varepsilon\downarrow0}
+\Phi\bigl((h+\varepsilon)^{-1/2}a(h+\varepsilon)^{-1/2}\bigr).
+\tag{C31}
+$$">$$
+\tau(a)=\lim_{\varepsilon\downarrow0}
+\Phi\bigl((h+\varepsilon)^{-1/2}a(h+\varepsilon)^{-1/2}\bigr).
+\tag{C31}
+$$</span>
+To prove it, put <span class="math" data-tex="$k_\varepsilon(r)=(e^r+\varepsilon)^{-1/2}$">$k_\varepsilon(r)=(e^r+\varepsilon)^{-1/2}$</span>. Its square increases as <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span> decreases, so (C25) orders the right side; call its supremum <span class="math" data-tex="$L$">$L$</span>. Spectral cutoffs and (C25) give
+<span class="math math-display" data-tex="$$
+\Phi(k_\varepsilon(P)a k_\varepsilon(P))
+=\sup_n\Phi(e_nk_\varepsilon(P)a k_\varepsilon(P)e_n)
+\leq\tau(a),
+$$">$$
+\Phi(k_\varepsilon(P)a k_\varepsilon(P))
+=\sup_n\Phi(e_nk_\varepsilon(P)a k_\varepsilon(P)e_n)
+\leq\tau(a),
+$$</span>
+because <span class="math" data-tex="$1_{[-n,n]}k_\varepsilon^2\leq b_{[-n,n]}^2$">$1_{[-n,n]}k_\varepsilon^2\leq b_{[-n,n]}^2$</span> and (C24). Conversely on <span class="math" data-tex="$[-n,n]$">$[-n,n]$</span>,
+<span class="math math-display" data-tex="$$
+e^{-r}\leq(1+\varepsilon e^n)(e^r+\varepsilon)^{-1}.
+$$">$$
+e^{-r}\leq(1+\varepsilon e^n)(e^r+\varepsilon)^{-1}.
+$$</span>
+Two applications of (C25), first inside the band and then removing it, give
+<span class="math math-display" data-tex="$$
+t_{[-n,n]}(a)
+\leq(1+\varepsilon e^n)\Phi(k_\varepsilon(P)a k_\varepsilon(P)).
+$$">$$
+t_{[-n,n]}(a)
+\leq(1+\varepsilon e^n)\Phi(k_\varepsilon(P)a k_\varepsilon(P)).
+$$</span>
+If <span class="math" data-tex="$L=\infty$">$L=\infty$</span>, the upper bound already forces <span class="math" data-tex="$\tau(a)=\infty$">$\tau(a)=\infty$</span>. If <span class="math" data-tex="$L&lt;\infty$">$L&lt;\infty$</span>, fix <span class="math" data-tex="$n$">$n$</span>, let <span class="math" data-tex="$\varepsilon\downarrow0$">$\varepsilon\downarrow0$</span>, and then take the supremum in <span class="math" data-tex="$n$">$n$</span>. This proves (C31) in every case, with bounded multipliers throughout.</p>
+<p>The bounded-corner density condition determines the trace. If another normal trace <span class="math" data-tex="$\tau'$">$\tau'$</span> satisfies <span class="math" data-tex="$\Phi(c)=\tau'(h_I c h_I)$">$\Phi(c)=\tau'(h_I c h_I)$</span> on every bounded corner, insert <span class="math" data-tex="$c=b_{[-n,n]}(P)a b_{[-n,n]}(P)$">$c=b_{[-n,n]}(P)a b_{[-n,n]}(P)$</span>. Then
+<span class="math math-display" data-tex="$$
+t_{[-n,n]}(a)=\tau'(e_na e_n)
+=\tau'(a^{1/2}e_na^{1/2}).
+$$">$$
+t_{[-n,n]}(a)=\tau'(e_na e_n)
+=\tau'(a^{1/2}e_na^{1/2}).
+$$</span>
+The last operators increase to <span class="math" data-tex="$a$">$a$</span>. Normality and (C13) give <span class="math" data-tex="$\tau'=\tau$">$\tau'=\tau$</span>. Scaling alone is not asserted to determine the trace.</p>
+<p>The exact numerical interval example is
+<span class="math math-display" data-tex="$$
+\tau(e_{[0,1]})=\frac{1-e^{-1}}{2\pi},\qquad
+\tau(e_{[1,2]})=e^{-1}\tau(e_{[0,1]}).
+\tag{C32}
+$$">$$
+\tau(e_{[0,1]})=\frac{1-e^{-1}}{2\pi},\qquad
+\tau(e_{[1,2]})=e^{-1}\tau(e_{[0,1]}).
+\tag{C32}
+$$</span>
+It illustrates the scalar spectral density, not a geometry of the original algebra.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The joint spectral support of a unit interval is a bounded parallelogram; the trace density gives masses m and exp(-1)m to consecutive unit intervals." src="assets/core-reconstruction/assets/core-spectral-mechanism.svg" style="display:block;width:1280px;max-width:none"/></p>
+<p>The left panel shows the exact set <span class="math" data-tex="$r,r-u\in[0,1]$">$r,r-u\in[0,1]$</span> in (C9)–(C11), where the factor <span class="math" data-tex="$e^{u/2}$">$e^{u/2}$</span> remains bounded and the two trace-vector factors agree. The right panel plots the proved density <span class="math" data-tex="$e^{-r}/(2\pi)$">$e^{-r}/(2\pi)$</span>; its shaded areas are exactly the two values in (C32). The shift is <span class="math" data-tex="$\theta_1(e_{[0,1]})=e_{[1,2]}$">$\theta_1(e_{[0,1]})=e_{[1,2]}$</span>, consistent with <span class="math" data-tex="$\theta_1(P)=P-1$">$\theta_1(P)=P-1$</span>. <a href="assets/core-reconstruction/render_core_mechanism.py">Reproducible figure source</a>.</p>
+<p><a id="OA-FLOW.FSCORE.SCOPE"></a><a id="oa-flow.fscore.scope"></a></p>
+<h2 id="OA-FLOW.FSCORE.SCOPE.heading">9. Scope of the result</h2>
+<p>We have proved the regular fixed algebra, the normal faithful semifinite whole-cone average, its state composition, both coefficient-square identities, compatible faithful finite corner traces, their global trace, its density, scaling and spectral distribution, and bounded-resolvent recovery with density-conditioned uniqueness. All of these hold for the originally stated faithful normal state on an arbitrary von Neumann algebra with separable predual.</p>
+<p>This construction does not prove arbitrary-weight Hilbert-algebra reconstruction, relative modular or cocycle results, change of weight, arbitrary-LCA fixed points, nonfaithful support transport, regular absorption, or the converse recognition of an arbitrary scaling system as a core. The general Hilbert-algebra modular input uses the earlier CI/BD/HA-R/SF and scalar proofs.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-ST.html">Previous lesson</a><a href="OA-FLOW-FP.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L159.md">Lesson source</a></nav></main></body></html>

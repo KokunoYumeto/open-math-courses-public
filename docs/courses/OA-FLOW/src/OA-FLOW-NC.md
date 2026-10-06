@@ -2,15 +2,15 @@
 
 *Fresh local proof, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
 
-Inner products are linear in the first variable. Let \(\varphi\) be a faithful normal semifinite weight on an arbitrary von Neumann algebra \(M\). Use its actual [GW](OA-FLOW-GW.md#oa-flow.gw.1), [NF](OA-FLOW-NF.md#oa-flow.nf.5), WR and MW construction. Identify \(M\) with its faithful normal GNS image on \(H\), using ST-2. Put \(N=N_\varphi\), \(\mathcal A=\Lambda(N\cap N^*)\), \(S=J\Delta^{1/2}\), \(F=S^*=J\Delta^{-1/2}\), and \(j(x)=JxJ\). All domains and full bounded-vector identifications are those of WR, [HA-R](OA-FLOW-HA-R.md#oa-flow.ha-r.4) and [WH-04, Sections 2–4](OA-FLOW-WH04.md#oa-flow.wh04.2).
+Inner products are linear in the first variable. Let \(\varphi\) be a faithful normal semifinite weight on an arbitrary von Neumann algebra \(M\). Use its actual [GW](OA-FLOW-GW.md#oa-flow.gw.1), [NF](OA-FLOW-NF.md#oa-flow.nf.5), [WR](OA-FLOW-WR.md#oa-flow.wr.4) and [MW](OA-FLOW-MW.md#oa-flow.mw.1) construction. Identify \(M\) with its faithful normal GNS image on \(H\), using [ST-2](OA-FLOW-ST12.md#oa-flow.st.2). Put \(N=N_\varphi\), \(\mathcal A=\Lambda(N\cap N^*)\), \(S=J\Delta^{1/2}\), \(F=S^*=J\Delta^{-1/2}\), and \(j(x)=JxJ\). All domains and full bounded-vector identifications are those of WR, [HA-R](OA-FLOW-HA-R.md#oa-flow.ha-r.4) and [WH-04, Sections 2–4](OA-FLOW-WH04.md#oa-flow.wh04.2).
 
-Other actual inputs are the closed-form representation FF-4, the complete spectral proof [SF, SB-0–6](OA-FLOW-SF.md#oa-flow.sf.sb0), [KT-3/4](OA-FLOW-KT.md#oa-flow.kt.3)'s Gaussian analytic core, and the whole finite-ideal analytic right-multiplication identity [GF-1](OA-FLOW-WS.md#oa-flow.weight-sum.gf1). The latter is used only for multiplication by bounded entire elements; no normal-weight sum decomposition is an input here.
+Other actual inputs are the closed-form representation [FF-4](OA-FLOW-FF.md#oa-flow.ff.5), the complete spectral proof [SF, SB-0–6](OA-FLOW-SF.md#oa-flow.sf.sb0), [KT-3/4](OA-FLOW-KT.md#oa-flow.kt.3)'s Gaussian analytic core, and the whole finite-ideal analytic right-multiplication identity [GF-1](OA-FLOW-WS.md#oa-flow.weight-sum.gf1). The latter is used only for multiplication by bounded entire elements; no normal-weight sum decomposition is an input here.
 
 The freely accessible human route is [Hiai, Theorem 3.2 and Lemma 3.3, printed pp.20–22](https://arxiv.org/pdf/2004.02383v1#page=20), stated there in the faithful-state setting. We prove the full finite-ideal version below. In particular the positive-extension step and its covariance are supplied locally, and no cyclic vector for \(1\), separability, or faithful-state reduction is assumed.
 
 <a id="oa-flow.nc.1"></a><a id="nc-1"></a>
 
-Exact additional locators: [WH04 Section2](OA-FLOW-WH04.md#oa-flow.wh04.2), [WH04 Section3](OA-FLOW-WH04.md#oa-flow.wh04.3), [WH04 Section4](OA-FLOW-WH04.md#oa-flow.wh04.4), FF-1 Gaussian integral, [KT-4 analytic core](OA-FLOW-KT.md#oa-flow.kt.4). The linked GF-1 result is only its full finite-ideal right-multiplication proof.
+Exact additional locators: [WH04 Section2](OA-FLOW-WH04.md#oa-flow.wh04.2), [WH04 Section3](OA-FLOW-WH04.md#oa-flow.wh04.3), [WH04 Section4](OA-FLOW-WH04.md#oa-flow.wh04.4), [FF-1 Gaussian integral](OA-FLOW-FF.md#oa-flow.ff.2), [KT-4 analytic core](OA-FLOW-KT.md#oa-flow.kt.4). The linked GF-1 result is only its full finite-ideal right-multiplication proof.
 
 ## NC-1. The positive symmetric extension needed for cone duality
 
@@ -29,18 +29,18 @@ Its inclusion into \(H\) extends to a contraction \(i:V\to H\). This extension i
 \]
 Thus \(v\) is orthogonal in \(V\) to the dense subspace \(D_0\), and \(v=0\). On \(i(V)\) define the form transported from
 \(\langle v,w\rangle_V-\langle i(v),i(w)\rangle_H\).
-It is nonnegative, has graph norm exactly \(\|\cdot\|_V\), is densely defined and closed. FF-4 supplies a positive self-adjoint operator \(T\) with this form.
+It is nonnegative, has graph norm exactly \(\|\cdot\|_V\), is densely defined and closed. [FF-4](OA-FLOW-FF.md#oa-flow.ff.5) supplies a positive self-adjoint operator \(T\) with this form.
 
 It extends \(T_0\) on its full initial domain. For \(x\in D_0\), the equality
-\(q_0(x,y)=\langle T_0x,y\rangle\) extends by graph-norm continuity from \(y\in D_0\) to every \(y\in i(V)\); FF-4's form-operator criterion, explicitly proved in [HA-R4](OA-FLOW-HA-R.md#oa-flow.ha-r.4), gives \(x\in D(T)\) and \(Tx=T_0x\).
+\(q_0(x,y)=\langle T_0x,y\rangle\) extends by graph-norm continuity from \(y\in D_0\) to every \(y\in i(V)\); [FF-4](OA-FLOW-FF.md#oa-flow.ff.5)'s form-operator criterion, explicitly proved in [HA-R4](OA-FLOW-HA-R.md#oa-flow.ha-r.4), gives \(x\in D(T)\) and \(Tx=T_0x\).
 
-If a unitary \(u\) preserves \(D_0\) in both directions and commutes with \(T_0\) there, it acts unitarily on \(V\), intertwining \(i\). Consequently it commutes with \(ii^*\), the resolvent and all spectral projections of \(T\), by FF-4 and SF. Thus if all unitaries of a von Neumann algebra \(L\) have this property, \(T\) is affiliated with \(L'\). This proves the precise covariant positive extension we shall use.
+If a unitary \(u\) preserves \(D_0\) in both directions and commutes with \(T_0\) there, it acts unitarily on \(V\), intertwining \(i\). Consequently it commutes with \(ii^*\), the resolvent and all spectral projections of \(T\), by [FF-4](OA-FLOW-FF.md#oa-flow.ff.5) and SF. Thus if all unitaries of a von Neumann algebra \(L\) have this property, \(T\) is affiliated with \(L'\). This proves the precise covariant positive extension we shall use.
 
 <a id="oa-flow.nc.2"></a><a id="nc-2"></a>
 
 ## NC-2. Two full finite-ideal cones are dual
 
-Write \(B_l=\Lambda(N)\) and \(\lambda_{\Lambda(x)}=x\), by WR-4. Define
+Write \(B_l=\Lambda(N)\) and \(\lambda_{\Lambda(x)}=x\), by [WR-4](OA-FLOW-WR.md#oa-flow.wr.4). Define
 
 <a id="equation-nc2"></a>
 
@@ -71,7 +71,7 @@ For the full right algebra \(\mathcal D=B_r\cap D(F)\), put
  \tag{NC4}
 \]
 The full WF/WR opposite weight \(\rho\) on \(M'\) has finite ideal \(I_r=R(B_r)\) and vector map \(\theta(R_\eta)=\eta\). Applying the same positive cutoff argument to \(\rho\) shows that ([NC4](OA-FLOW-NC.md#equation-nc4)) is the closed cone generated by \((Fb)b\), \(b\in\mathcal D\), with the right algebra product of HA-R. More explicitly, for \(R_\eta=t\geq0\), the vector
-\(\eta_\epsilon=t(t+\epsilon)^{-1}\eta\) has multiplier \(t^2(t+\epsilon)^{-1}\). This multiplier has finite \(\rho\)-value, since it is at most \(\epsilon^{-1}t^2\). Its positive square root lies in \(I_r\cap I_r^*\), so its vector \(b\in\mathcal D\) gives \(\eta_\epsilon=(Fb)b\). The kernel projection of \(t\) kills \(\eta\), by injectivity of the full multiplier map, so \(\eta_\epsilon\to\eta\). MW-1's whole-vector identities give
+\(\eta_\epsilon=t(t+\epsilon)^{-1}\eta\) has multiplier \(t^2(t+\epsilon)^{-1}\). This multiplier has finite \(\rho\)-value, since it is at most \(\epsilon^{-1}t^2\). Its positive square root lies in \(I_r\cap I_r^*\), so its vector \(b\in\mathcal D\) gives \(\eta_\epsilon=(Fb)b\). The kernel projection of \(t\) kills \(\eta\), by injectivity of the full multiplier map, so \(\eta_\epsilon\to\eta\). [MW-1](OA-FLOW-MW.md#oa-flow.mw.1)'s whole-vector identities give
 
 <a id="equation-nc5"></a>
 
@@ -143,7 +143,7 @@ Define
 \]
 These expressions are well defined by the full spectral domains, and equal by ([NC9](OA-FLOW-NC.md#equation-nc9)). The cone is closed and convex. Antiunitary spectral transport and ([NC9](OA-FLOW-NC.md#equation-nc9)) give \(J\Delta^{1/4}\xi=\Delta^{1/4}\xi\) on \(C_l\), so \(J\) fixes \(P\) pointwise.
 
-MW covariance preserves positive bounded multipliers and hence both \(C_l,C_r\). Therefore \(\Delta^{it}P=P\). For \(G_n=\exp(-(\log\Delta)^2/n)\), the Gaussian formula from FF-1 expresses \(G_n\) as an integral of \(\Delta^{it}\) against a positive probability density. Compact Riemann sums and their norm limits show
+MW covariance preserves positive bounded multipliers and hence both \(C_l,C_r\). Therefore \(\Delta^{it}P=P\). For \(G_n=\exp(-(\log\Delta)^2/n)\), the Gaussian formula from [FF-1](OA-FLOW-FF.md#oa-flow.ff.2) expresses \(G_n\) as an integral of \(\Delta^{it}\) against a positive probability density. Compact Riemann sums and their norm limits show
 
 <a id="equation-nc11"></a>
 

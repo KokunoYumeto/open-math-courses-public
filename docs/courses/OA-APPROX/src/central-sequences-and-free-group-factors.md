@@ -1,6 +1,6 @@
 # Central sequences, fullness and free group factors
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 In the [hyperfinite finite factor](hyperfinite-finite-factors.md), a trace-zero operator can move farther and farther into the tensor tail and almost commute with every fixed operator. A free group factor has the opposite behavior: commutation with just two generators controls the entire distance from the scalars. We first develop the topological criterion that turns this estimate into closedness of the inner automorphism group.
 

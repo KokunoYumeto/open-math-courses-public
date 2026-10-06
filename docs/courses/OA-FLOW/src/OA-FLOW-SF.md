@@ -24,7 +24,7 @@ The adjoint of a densely defined operator is closed. If \(v_n\) tends to \(v\) a
 
 ## SB-0. Exact inputs and conventions
 
-The maximal principle follows from the explicit axiom-of-choice convention by the proof in CF Section 1. The scalar-measure proof inputs below retain their separate obligations.
+The maximal principle follows from the explicit axiom-of-choice convention by the proof in [CF Section 1](OA-FLOW-CF.md#oa-flow.cf.1). The scalar-measure proof inputs below retain their separate obligations.
 
 We use complex Hilbert spaces with the inner product linear in the first variable, their defining completeness, elementary real/complex arithmetic and metric compactness, and the maximal principle. Orthogonal projection and the closedness of adjoints are proved in SF-0 above. A bounded adjoint can be constructed from the Hilbert representation fact as follows. For a nonzero continuous linear functional, project onto its closed kernel; its orthogonal complement is one-dimensional, since subtracting a suitable multiple of one nonzero complementary vector puts any other vector in the kernel. Evaluating on that vector gives the unique representing vector, with the same norm. Apply this separately to the bounded functional \(x\mapsto\langle Tx,y\rangle\) to obtain \(T^*y\), its linearity and boundedness, and the adjoint identity. We use no independent spectral theorem in this Hilbert input.
 

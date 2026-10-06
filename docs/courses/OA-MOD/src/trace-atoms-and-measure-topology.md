@@ -16,7 +16,7 @@ Throughout, \(M\subseteq B(H)\) is a von Neumann algebra acting nondegenerately,
 
 The algebra \(S(M,\tau)\) consists of the closed densely defined affiliated operators characterized in MT11. Equalities of such operators include their domains.
 
-The same results are treated in with Masamichi Takesaki, *Theory of Operator Algebras II*, Chapter IX, §2, Exercises 1 and 3, p. 182, in the approved receipt-backed edition. The proofs below are organized around the common projection-cost argument and explicitly establish the diagonal operator domains.
+The same results are treated in with Masamichi Takesaki, *Theory of Operator Algebras II*, Chapter IX, §2, Exercises 1 and 3, p. 182. The proofs below are organized around the common projection-cost argument and explicitly establish the diagonal operator domains.
 
 ## A minimal projection has a finite positive trace
 

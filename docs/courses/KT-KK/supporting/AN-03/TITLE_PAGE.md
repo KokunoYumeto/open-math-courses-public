@@ -1,15 +1,10 @@
-# Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft
+# Elliptic and polynomial proof readings
 
-This is a modified version of the earlier course draft *Elliptic Operators & Boundary Problems*.
+Two readings from *Elliptic Operators & Boundary Problems* (AN-03), selected as supporting mathematics for *Kasparov's KK-theory*:
 
-**Entities responsible for the 2026 modifications:** AN-03 course-writing task and OpenAI Codex.
+- [Symbols, finite defects, and the index on a closed manifold](html/global-elliptic-symbol-index.html).
+- [Polynomial and contour interfaces for stable boundary models](html/stable-prerequisite-bridges.html).
 
-**Principal author entity of the earlier draft:** AN-03 course-writing task.
+Programme drafting: the AN-03 course-writing task in OpenAI Codex. Selection and reader presentation: GPT-6.1 Sol (OpenAI), Codex, Ultra. Human mathematical sources are credited in the readings.
 
-**Publisher:** AN-03 local course project.
-
-Copyright © 2026 AN-03 course project contributors.
-
-Permission is granted to copy, distribute and modify the 36 revised inherited units under the terms of the GNU Free Documentation License, Version 1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. A copy of that license is included in [COPYING](COPYING).
-
-The added CC0 lessons are separate works collected with those units. Their routes are identified in the course metadata. See Rights and licenses and [History](HISTORY.md).
+The independent programme text is dedicated under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/), to the extent rights are held. Cited works, software and fonts retain their own rights. See [rights and dedication](RIGHTS.md), [edition history](HISTORY.md) and the [reading index](index.html).

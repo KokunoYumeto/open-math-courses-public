@@ -6,7 +6,7 @@ Let \(k\) be a commutative ring of finite global dimension. Manifolds are Hausdo
 
 The application treated here belongs to the theory of direct images of \(\mathbb C\)-constructible sheaves under non-proper maps; see M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §4.4 and §8.6. The real cutoff proof and boundary estimates come from the microlocal foundations. We explain their maps, support arguments, endpoints and sharp threshold estimate, then prove the complex and perfect-coefficient conclusions. The general ordinary geometric bound holds with inclusions; equality fails in general, as the comparison below shows.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## The closed level and the horizontal covectors
 

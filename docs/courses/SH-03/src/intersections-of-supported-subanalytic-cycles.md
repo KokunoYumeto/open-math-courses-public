@@ -2,7 +2,7 @@
 
 An intersection starts as a cup product with support. Its degree measures codimension, its coefficient carries an orientation twist, and its support is the actual intersection of the two closed carriers. A dimension bound turns this class into a literal cycle. A different condition, compactness, permits its integration to a scalar.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Use Subanalytic chains and closed cycle supports, Supports, products and proper images of chains and The dualizing resolution by subanalytic chains for the supported-cycle identity, product signs, proper traces and coefficient resolution. The finite filtered reconstruction in The dualizing complex from oriented simplices will also identify the reverse trace map. The exact current SH-02 prerequisites are closed support as internal Hom, exceptional composition, compact-convex constant acyclicity, the integral orientation-square pairing and normalized trace.
 

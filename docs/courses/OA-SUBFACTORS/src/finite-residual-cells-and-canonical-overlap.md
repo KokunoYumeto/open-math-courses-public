@@ -42,7 +42,7 @@ Exact human source: Sorin Popa, *Classification of amenable subfactors of type I
 | [80.1–80.4](central-capacity-and-small-support-cuts.md) | Exact fixed-family central capacity cost, physical cuts and the square/error estimate after those cuts. |
 | [80.5](central-capacity-and-small-support-cuts.md) | Factorial smaller-core sufficiency; it is not an unrestricted relative-amenability implication. |
 
-The immediate auxiliary inputs are [8.1, inherited trace weights](finite-dimensional-markov-calculus.md), 53.1, finite-stage expectations, and [57.3, finite tunnel alignment](actual-supported-local-approximation.md). The existing finite central extraction theorem 85.7 does not itself supply the full partition. The present proofs use finite-factor projection prescription and comparison with their existing programme scope; they claim no blanket transitive prerequisite closure.
+The immediate auxiliary inputs are [8.1, inherited trace weights](finite-dimensional-markov-calculus.md), [53.1, finite-stage expectations](bounded-frames-with-central-support.md), and [57.3, finite tunnel alignment](actual-supported-local-approximation.md). The existing finite central extraction theorem 85.7 does not itself supply the full partition. The present proofs use finite-factor projection prescription and comparison with their existing programme scope; they claim no blanket transitive prerequisite closure.
 
 ## The positive trace monoid allows several residual cells
 

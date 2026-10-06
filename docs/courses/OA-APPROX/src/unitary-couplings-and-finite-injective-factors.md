@@ -1,6 +1,6 @@
 # Unitary couplings and finite injective factors
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 A balanced family can approximately intertwine two tuples of unitaries without containing a single unitary. We will first sample finitely many intertwiners, bound their operator norms without increasing their errors, and pass to an ultrapower. Exact intertwiners there equate two corner dimensions. Projection comparison gives a unitary, and a unitary representative returns the desired approximation to the original algebra.
 

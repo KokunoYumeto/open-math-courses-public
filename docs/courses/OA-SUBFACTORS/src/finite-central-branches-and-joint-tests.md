@@ -317,4 +317,4 @@ What remains unproved after the finite branch theorem and Proposition 72.5?
 
 ---
 
-Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition CC0. Author self-check. The general core localization goal remains active.
+Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition CC0. Self-checked by the writing AI. The general core localization goal remains active.

@@ -1,0 +1,295 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local Fourier and closed-form foundations for the state core · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-SF.html">Previous lesson</a><a href="OA-FLOW-CP.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-FF.md">Lesson source</a></nav><p class="notice">Original reconstruction by GPT-6 Astra (OpenAI), Ultra; independently owner-reviewed at the earlier GNS, scalar and SF inputs. FF-4 applies to arbitrary Hilbert spaces. Human review and formal verification are not asserted.</p><h1 id="local-fourier-and-closed-form-foundations-for-the-state-core">Local Fourier and closed-form foundations for the state core</h1>
+<p><em>Independent local reconstruction by GPT-6 Astra (OpenAI), Ultra, 2026-10-04. Any rights in the new exposition are dedicated under CC0-1.0. Self-checked by the writing AI.</em></p>
+<p>The earlier scalar measure inputs are proved in <a href="OA-FLOW-SC.html#sc-01">SC-01–02</a>, <a href="OA-FLOW-SC.html#sc-03">SC-03–07</a> and <a href="OA-FLOW-SC.html#sc-08">SC-08–09</a>: outer measure and Lebesgue measure, simple approximation, MCT/DCT, Hölder/Minkowski, Lp completeness, and one-variable calculus. Their precise replacements for the historical bindings are recorded in <span class="unlinked">the input ledger</span>. The additional input is the complete local <a href="#scalar-interchange">scalar interchange proof</a>: finite and sigma-finite Borel measures on real Borel sets, proved by the rectangle pi-lambda argument and MCT. Its complex version is used only when the integral of the absolute value is finite. Repeated application gives the finite iterated integrals used below; all nonnegative functions are Borel, and absolute integrability is checked before complex interchanges.</p>
+<p>The ordinary GNS representation used in FF-5 is proved in <a href="OA-FLOW-GNS.html#gns-theorem-5-1">GNS Theorem 5.1</a>; its normality for a normal positive functional is proved locally in FF-5. Hilbert projection and the adjoint construction are supplied by <a href="OA-FLOW-SF.html#oa-flow.shared-foundations.sf-0">SF-0 and SB-0 of the operator foundations</a>; SB-1–SB-6 there supply spectral calculus with full domains. No general Fourier, Bochner, Riesz–Markov or closed-form representation theorem is imported below.</p>
+<p>For human context, <a href="https://math.mit.edu/~jerison/103/handouts/fourierint1.13.pdf">Jerison's freely accessible MIT Fourier handout</a> states the Fourier conclusions, and <a href="https://arxiv.org/pdf/2004.02383v1">Hiai's author notes, Appendix A.2 and §8.1</a> discuss forms and extended-positive elements. These references replace none of the following proofs.</p>
+<p><a id="scalar-interchange"></a></p>
+<p><a id="oa-flow.ff.1"></a></p>
+<h2 id="OA-FLOW.FF.1">Scalar interchange of nonnegative integrals</h2>
+<p>We record the precise scalar interchange needed below. Let <span class="math" data-tex="$X,Y$">$X,Y$</span> be Borel subsets of the real line, with finite Borel measures <span class="math" data-tex="$m,n$">$m,n$</span>. If <span class="math" data-tex="$h:X\times Y\to[0,\infty]$">$h:X\times Y\to[0,\infty]$</span> is Borel, then both section integrals are measurable and</p>
+<p><span class="math math-display" data-tex="$$
+ \int_X\!\left(\int_Y h(x,y)\,dn(y)\right)dm(x)
+ =\int_Y\!\left(\int_X h(x,y)\,dm(x)\right)dn(y).
+ \tag{SC1}
+$$">$$
+ \int_X\!\left(\int_Y h(x,y)\,dn(y)\right)dm(x)
+ =\int_Y\!\left(\int_X h(x,y)\,dm(x)\right)dn(y).
+ \tag{SC1}
+$$</span></p>
+<p>The same statement holds for sigma-finite measures. If either iterated integral of <span class="math" data-tex="$|h|$">$|h|$</span> is finite, it also holds for complex <span class="math" data-tex="$h$">$h$</span>. We prove the statement from countable additivity, simple integration and monotone convergence; no product-measure existence theorem is needed.</p>
+<p>First, a family <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span> of subsets of a set <span class="math" data-tex="$Z$">$Z$</span> is called a lambda-system if it contains <span class="math" data-tex="$Z$">$Z$</span>, is closed under complements in <span class="math" data-tex="$Z$">$Z$</span>, and is closed under countable disjoint unions. Such a family is closed under <span class="math" data-tex="$B\setminus A$">$B\setminus A$</span> whenever <span class="math" data-tex="$A\subset B$">$A\subset B$</span> and both belong to the family: use the complement of the disjoint union <span class="math" data-tex="$A\cup(Z\setminus B)$">$A\cup(Z\setminus B)$</span>.</p>
+<p>Here is the elementary closure argument we will use. Suppose that a family <span class="math" data-tex="$\mathcal P$">$\mathcal P$</span> contains <span class="math" data-tex="$Z$">$Z$</span> and is closed under finite intersections, and let <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span> be the smallest lambda-system containing <span class="math" data-tex="$\mathcal P$">$\mathcal P$</span>, obtained by intersection of all such lambda-systems. For fixed <span class="math" data-tex="$A\in\mathcal P$">$A\in\mathcal P$</span>, the family</p>
+<p><span class="math math-display" data-tex="$$
+ \{B\in\mathcal D:A\cap B\in\mathcal D\}
+$$">$$
+ \{B\in\mathcal D:A\cap B\in\mathcal D\}
+$$</span></p>
+<p>is a lambda-system: the complement step uses <span class="math" data-tex="$A\setminus(A\cap B)$">$A\setminus(A\cap B)$</span> and the nested-difference property just proved. It contains <span class="math" data-tex="$\mathcal P$">$\mathcal P$</span>, so it is all of <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span>. Now fix any <span class="math" data-tex="$B\in\mathcal D$">$B\in\mathcal D$</span> and run the same argument on <span class="math" data-tex="$\{A\in\mathcal D:A\cap B\in\mathcal D\}$">$\{A\in\mathcal D:A\cap B\in\mathcal D\}$</span>; the first step shows it contains <span class="math" data-tex="$\mathcal P$">$\mathcal P$</span>. Thus <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span> is closed under intersections. Complements and intersections give finite unions and differences; disjointifying a countable union then proves closure under arbitrary countable unions. Hence <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span> is a sigma-algebra, and equals the sigma-algebra generated by <span class="math" data-tex="$\mathcal P$">$\mathcal P$</span>.</p>
+<p>Apply this with <span class="math" data-tex="$Z=X\times Y$">$Z=X\times Y$</span> and the rectangles <span class="math" data-tex="$A\times B$">$A\times B$</span>, where <span class="math" data-tex="$A,B$">$A,B$</span> are Borel. These generate the Borel sigma-algebra of <span class="math" data-tex="$X\times Y$">$X\times Y$</span>: open sets are countable unions of intersections with open rectangles having rational endpoints. Every Borel set <span class="math" data-tex="$E$">$E$</span> has Borel sections <span class="math" data-tex="$E_x$">$E_x$</span> and <span class="math" data-tex="$E^y$">$E^y$</span>, since the sets with that property form a sigma-algebra containing the rectangles.</p>
+<p>Let <span class="math" data-tex="$\mathcal C$">$\mathcal C$</span> be the Borel sets <span class="math" data-tex="$E$">$E$</span> for which <span class="math" data-tex="$x\mapsto n(E_x)$">$x\mapsto n(E_x)$</span> and <span class="math" data-tex="$y\mapsto m(E^y)$">$y\mapsto m(E^y)$</span> are measurable and their integrals agree. A rectangle belongs to <span class="math" data-tex="$\mathcal C$">$\mathcal C$</span>, with common integral <span class="math" data-tex="$m(A)n(B)$">$m(A)n(B)$</span>. The whole product also does. Complements preserve <span class="math" data-tex="$\mathcal C$">$\mathcal C$</span>, because the section measures are subtracted from the finite constants <span class="math" data-tex="$n(Y)$">$n(Y)$</span> and <span class="math" data-tex="$m(X)$">$m(X)$</span>, and both iterated integrals are subtracted from <span class="math" data-tex="$m(X)n(Y)$">$m(X)n(Y)$</span>. Countable disjoint unions preserve <span class="math" data-tex="$\mathcal C$">$\mathcal C$</span>, by countable additivity on each section and monotone convergence for the partial sums. Therefore <span class="math" data-tex="$\mathcal C$">$\mathcal C$</span> is a lambda-system, and the preceding closure argument proves that it contains all Borel sets.</p>
+<p>This proves (SC1) for indicators, and finite linear combinations prove it for nonnegative simple functions. Choose nonnegative simple <span class="math" data-tex="$h_k\uparrow h$">$h_k\uparrow h$</span>. Monotone convergence in the inner and outer integrals proves their measurability and (SC1) for <span class="math" data-tex="$h$">$h$</span>.</p>
+<p>For sigma-finite <span class="math" data-tex="$m,n$">$m,n$</span>, choose disjoint Borel partitions <span class="math" data-tex="$X=\bigsqcup_i X_i$">$X=\bigsqcup_i X_i$</span>, <span class="math" data-tex="$Y=\bigsqcup_jY_j$">$Y=\bigsqcup_jY_j$</span> into finite-measure pieces. Apply the finite result on every <span class="math" data-tex="$X_i\times Y_j$">$X_i\times Y_j$</span> and sum. Monotone convergence permits the sums through the integrals. The order of two nonnegative countable sums is immaterial, since both equal the supremum of the sums over finite subsets of pairs. This proves the sigma-finite version. Finally apply it to <span class="math" data-tex="$|h|$">$|h|$</span>, then to the positive and negative parts of the real and imaginary parts of an absolutely integrable complex <span class="math" data-tex="$h$">$h$</span>, to prove the last assertion. This also justifies the triangle inequality under all iterated scalar integrals below.</p>
+<p>The earlier scalar foundations are <a href="OA-FLOW-CF.html#OA-FLOW.CF.1">CF Section 1</a> and <a href="OA-FLOW-SC.html#sc-01">SC-01–05</a>: construction and normalization of Lebesgue measure, continuity of measures, simple integration and monotone/dominated convergence. These actual earlier proofs supply every scalar input of the additional interchange argument proved above.</p>
+<p><a id="oa-flow.ff.2"></a></p>
+<h2 id="OA-FLOW.FF.2">FF-1. Scalar density, translations and Gaussian approximate identities</h2>
+<p>Continuous compactly supported functions are dense in <span class="math" data-tex="$L^p(\mathbb R)$">$L^p(\mathbb R)$</span> for <span class="math" data-tex="$1\leq p&lt;\infty$">$1\leq p&lt;\infty$</span>. Here are the measure details. First use value and support truncation and simple approximation from the scalar input, reducing to an indicator of a bounded Borel set. The interval-cover construction of Lebesgue outer measure supplies open outer approximations with arbitrarily small measure excess. On a fixed compact interval, complementing an outer approximation gives a compact inner approximation. Thus choose compact <span class="math" data-tex="$F\subseteq E\subseteq O$">$F\subseteq E\subseteq O$</span>, with <span class="math" data-tex="$O$">$O$</span> bounded and open and <span class="math" data-tex="$|O\setminus F|&lt;\varepsilon$">$|O\setminus F|&lt;\varepsilon$</span>. A continuous function equal to one on <span class="math" data-tex="$F$">$F$</span>, zero off <span class="math" data-tex="$O$">$O$</span>, and between zero and one is given by the distance quotient
+<span class="math math-display" data-tex="$$
+\frac{d(x,\mathbb R\setminus O)}
+ {d(x,F)+d(x,\mathbb R\setminus O)}.
+$$">$$
+\frac{d(x,\mathbb R\setminus O)}
+ {d(x,F)+d(x,\mathbb R\setminus O)}.
+$$</span>
+For empty <span class="math" data-tex="$F$">$F$</span> use zero. Its <span class="math" data-tex="$L^p$">$L^p$</span> error from <span class="math" data-tex="$1_E$">$1_E$</span> is at most <span class="math" data-tex="$\varepsilon^{1/p}$">$\varepsilon^{1/p}$</span>. Linear combinations finish the density proof. The same approximants and truncations give simultaneous <span class="math" data-tex="$L^1$">$L^1$</span> and <span class="math" data-tex="$L^2$">$L^2$</span> approximation for a member of their intersection.</p>
+<p>Translations <span class="math" data-tex="$T_tf(s)=f(s-t)$">$T_tf(s)=f(s-t)$</span> are isometries on each of these spaces, by scalar change of variables. For a compactly supported continuous function, uniform continuity and a common bounded support for small translations give <span class="math" data-tex="$\|T_tf-f\|_p\to0$">$\|T_tf-f\|_p\to0$</span>. Approximation and the isometry extend this to every <span class="math" data-tex="$f\in L^p$">$f\in L^p$</span>.</p>
+<p>We calculate the Gaussian normalization without a planar change-of-variables theorem. Put <span class="math" data-tex="$I=\int_{\mathbb R}e^{-x^2}\,dx$">$I=\int_{\mathbb R}e^{-x^2}\,dx$</span>, finite by comparison outside a compact interval with <span class="math" data-tex="$e^{-|x|}$">$e^{-|x|}$</span>. The scalar interchange theorem gives
+<span class="math math-display" data-tex="$$
+I^2=\int_{\mathbb R^2}e^{-(x^2+y^2)}\,dx\,dy
+=\int_0^1 |\{(x,y):x^2+y^2&lt;-\log t\}|\,dt.
+$$">$$
+I^2=\int_{\mathbb R^2}e^{-(x^2+y^2)}\,dx\,dy
+=\int_0^1 |\{(x,y):x^2+y^2&lt;-\log t\}|\,dt.
+$$</span>
+The second equality applies interchange twice to the nonnegative indicator <span class="math" data-tex="$1_{\{0&lt;t&lt;e^{-(x^2+y^2)}\}}$">$1_{\{0&lt;t&lt;e^{-(x^2+y^2)}\}}$</span>. Disk sections give area
+<span class="math math-display" data-tex="$$
+\int_{-R}^R2\sqrt{R^2-x^2}\,dx=\pi R^2:
+$$">$$
+\int_{-R}^R2\sqrt{R^2-x^2}\,dx=\pi R^2:
+$$</span>
+substitute <span class="math" data-tex="$x=R\sin u$">$x=R\sin u$</span> and integrate <span class="math" data-tex="$2R^2\cos^2u$">$2R^2\cos^2u$</span> from <span class="math" data-tex="$-\pi/2$">$-\pi/2$</span> to <span class="math" data-tex="$\pi/2$">$\pi/2$</span>, using the already proved one-variable substitution. The case <span class="math" data-tex="$R=0$">$R=0$</span> is immediate. Hence <span class="math" data-tex="$I^2=\pi\int_0^1-\log t\,dt=\pi$">$I^2=\pi\int_0^1-\log t\,dt=\pi$</span>, so <span class="math" data-tex="$I=\sqrt\pi$">$I=\sqrt\pi$</span>.</p>
+<p>For real <span class="math" data-tex="$r$">$r$</span>, differentiate <span class="math" data-tex="$\int e^{-x^2}e^{irx}\,dx$">$\int e^{-x^2}e^{irx}\,dx$</span> under the integral; <span class="math" data-tex="$|x|e^{-x^2}$">$|x|e^{-x^2}$</span> is an integrable bound on the difference quotients. Integration by parts on bounded intervals, then the Gaussian tail bound, gives <span class="math" data-tex="$G'(r)=-(r/2)G(r)$">$G'(r)=-(r/2)G(r)$</span>. Since <span class="math" data-tex="$G(0)=\sqrt\pi$">$G(0)=\sqrt\pi$</span>, differentiation of <span class="math" data-tex="$e^{r^2/4}G(r)$">$e^{r^2/4}G(r)$</span> shows it is constant. Thus
+<span class="math math-display" data-tex="$$
+\int_{\mathbb R}e^{-x^2}e^{irx}\,dx=\sqrt\pi e^{-r^2/4}.
+\tag{FF1}
+$$">$$
+\int_{\mathbb R}e^{-x^2}e^{irx}\,dx=\sqrt\pi e^{-r^2/4}.
+\tag{FF1}
+$$</span></p>
+<p>For <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>, put
+<span class="math math-display" data-tex="$$
+\gamma_\varepsilon(t)=(4\pi\varepsilon)^{-1/2}e^{-t^2/(4\varepsilon)}.
+$$">$$
+\gamma_\varepsilon(t)=(4\pi\varepsilon)^{-1/2}e^{-t^2/(4\varepsilon)}.
+$$</span>
+It has integral one and its mass outside any fixed neighborhood of zero tends to zero as <span class="math" data-tex="$\varepsilon\downarrow0$">$\varepsilon\downarrow0$</span>, by rescaling and the integrable Gaussian tails. Convolution by this probability density is contractive on <span class="math" data-tex="$L^1$">$L^1$</span>, by the triangle inequality and scalar interchange, and on <span class="math" data-tex="$L^2$">$L^2$</span>, by
+<span class="math math-display" data-tex="$$
+|(\gamma_\varepsilon*f)(s)|^2
+\leq\int\gamma_\varepsilon(t)|f(s-t)|^2\,dt
+$$">$$
+|(\gamma_\varepsilon*f)(s)|^2
+\leq\int\gamma_\varepsilon(t)|f(s-t)|^2\,dt
+$$</span>
+and interchange. The same estimates for <span class="math" data-tex="$\gamma_\varepsilon*f-f$">$\gamma_\varepsilon*f-f$</span>, using the translation continuity just proved, yield
+<span class="math math-display" data-tex="$$
+\|\gamma_\varepsilon*f-f\|_p\longrightarrow0\quad(p=1,2).
+\tag{FF2}
+$$">$$
+\|\gamma_\varepsilon*f-f\|_p\longrightarrow0\quad(p=1,2).
+\tag{FF2}
+$$</span>
+Indeed split the probability integral into <span class="math" data-tex="$|t|&lt;\delta$">$|t|&lt;\delta$</span>, where the translation norm is small, and its complement, bounded by <span class="math" data-tex="$2\|f\|_p$">$2\|f\|_p$</span>; use the squared version of the bound for <span class="math" data-tex="$p=2$">$p=2$</span>. These arguments define the convolutions almost everywhere and justify every integral involved.</p>
+<p><a id="oa-flow.ff.3"></a></p>
+<h2 id="OA-FLOW.FF.3">FF-2. Fourier uniqueness and the full unitary transform</h2>
+<p>For <span class="math" data-tex="$f\in L^1(\mathbb R)$">$f\in L^1(\mathbb R)$</span>, write
+<span class="math math-display" data-tex="$$
+\mathcal F_+f(r)=(2\pi)^{-1/2}\int e^{irs}f(s)\,ds,
+\qquad \mathcal F_-f(r)=(2\pi)^{-1/2}\int e^{-irs}f(s)\,ds.
+$$">$$
+\mathcal F_+f(r)=(2\pi)^{-1/2}\int e^{irs}f(s)\,ds,
+\qquad \mathcal F_-f(r)=(2\pi)^{-1/2}\int e^{-irs}f(s)\,ds.
+$$</span>
+They are bounded continuous functions by DCT. Formula (FF1) implies the explicit identity
+<span class="math math-display" data-tex="$$
+\gamma_\varepsilon(t)=\frac1{2\pi}\int e^{-\varepsilon r^2}e^{irt}\,dr.
+\tag{FF3}
+$$">$$
+\gamma_\varepsilon(t)=\frac1{2\pi}\int e^{-\varepsilon r^2}e^{irt}\,dr.
+\tag{FF3}
+$$</span>
+If either sign of the Fourier integral of <span class="math" data-tex="$f\in L^1$">$f\in L^1$</span> is identically zero, substitute (FF3) in <span class="math" data-tex="$f*\gamma_\varepsilon$">$f*\gamma_\varepsilon$</span>. The double absolute integral is bounded by <span class="math" data-tex="$\|f\|_1(2\pi)^{-1}\int e^{-\varepsilon r^2}\,dr&lt;\infty$">$\|f\|_1(2\pi)^{-1}\int e^{-\varepsilon r^2}\,dr&lt;\infty$</span>. Scalar interchange shows <span class="math" data-tex="$f*\gamma_\varepsilon=0$">$f*\gamma_\varepsilon=0$</span> everywhere; (FF2) then gives <span class="math" data-tex="$f=0$">$f=0$</span> in <span class="math" data-tex="$L^1$">$L^1$</span>. This proves Fourier uniqueness, not only its continuous-function special case.</p>
+<p>For <span class="math" data-tex="$f\in C_c(\mathbb R)$">$f\in C_c(\mathbb R)$</span>, direct expansion and (FF3) give
+<span class="math math-display" data-tex="$$
+\int e^{-\varepsilon r^2}|\mathcal F_+f(r)|^2\,dr
+=\int f(s)\overline{(\gamma_\varepsilon*f)(s)}\,ds.
+\tag{FF4}
+$$">$$
+\int e^{-\varepsilon r^2}|\mathcal F_+f(r)|^2\,dr
+=\int f(s)\overline{(\gamma_\varepsilon*f)(s)}\,ds.
+\tag{FF4}
+$$</span>
+The triple absolute integral before the <span class="math" data-tex="$r$">$r$</span>-integration is bounded by
+<span class="math" data-tex="$(2\pi)^{-1}\|f\|_1^2\int e^{-\varepsilon r^2}\,dr$">$(2\pi)^{-1}\|f\|_1^2\int e^{-\varepsilon r^2}\,dr$</span>; hence all interchanges are justified. The right side tends to <span class="math" data-tex="$\|f\|_2^2$">$\|f\|_2^2$</span> by (FF2) and Cauchy–Schwarz. On the left, MCT as <span class="math" data-tex="$\varepsilon\downarrow0$">$\varepsilon\downarrow0$</span> gives
+<span class="math math-display" data-tex="$$
+\|\mathcal F_+f\|_2=\|f\|_2.
+\tag{FF5}
+$$">$$
+\|\mathcal F_+f\|_2=\|f\|_2.
+\tag{FF5}
+$$</span>
+Completeness and the proved <span class="math" data-tex="$C_c$">$C_c$</span> density extend <span class="math" data-tex="$\mathcal F_+$">$\mathcal F_+$</span> to an isometry on <span class="math" data-tex="$L^2$">$L^2$</span>; the same argument gives <span class="math" data-tex="$\mathcal F_-$">$\mathcal F_-$</span>. On <span class="math" data-tex="$L^1\cap L^2$">$L^1\cap L^2$</span>, simultaneous approximation gives uniform convergence of the integral transforms and <span class="math" data-tex="$L^2$">$L^2$</span> convergence of the extended transforms. A subsequence of an <span class="math" data-tex="$L^2$">$L^2$</span>-convergent sequence converges almost everywhere: choose a subsequence with summable <span class="math" data-tex="$L^2$">$L^2$</span> increments, apply Minkowski and MCT to the sum of their absolute values, and use its finite value almost everywhere. Consequently the integral and <span class="math" data-tex="$L^2$">$L^2$</span> definitions agree almost everywhere.</p>
+<p>We prove surjectivity. For <span class="math" data-tex="$f\in C_c$">$f\in C_c$</span>, <span class="math" data-tex="$\gamma_\varepsilon*f\in L^1\cap L^2$">$\gamma_\varepsilon*f\in L^1\cap L^2$</span>, and absolutely convergent scalar interchange proves the convolution identity
+<span class="math math-display" data-tex="$$
+\mathcal F_+(\gamma_\varepsilon*f)(r)
+=e^{-\varepsilon r^2}\mathcal F_+f(r).
+\tag{FF6}
+$$">$$
+\mathcal F_+(\gamma_\varepsilon*f)(r)
+=e^{-\varepsilon r^2}\mathcal F_+f(r).
+\tag{FF6}
+$$</span>
+Suppose <span class="math" data-tex="$u\in L^2$">$u\in L^2$</span> is orthogonal to the closed range of <span class="math" data-tex="$\mathcal F_+$">$\mathcal F_+$</span>. Its inner product with (FF6) is zero. The function <span class="math" data-tex="$u(r)e^{-\varepsilon r^2}$">$u(r)e^{-\varepsilon r^2}$</span> is in <span class="math" data-tex="$L^1\cap L^2$">$L^1\cap L^2$</span>. Expanding the inner product against <span class="math" data-tex="$\mathcal F_+f$">$\mathcal F_+f$</span> and interchanging, with absolute bound <span class="math" data-tex="$(2\pi)^{-1/2}\|f\|_1\|u e^{-\varepsilon r^2}\|_1$">$(2\pi)^{-1/2}\|f\|_1\|u e^{-\varepsilon r^2}\|_1$</span>, shows that the continuous function
+<span class="math math-display" data-tex="$$
+G_\varepsilon(s)=(2\pi)^{-1/2}
+ \int u(r)e^{-\varepsilon r^2}e^{-irs}\,dr
+$$">$$
+G_\varepsilon(s)=(2\pi)^{-1/2}
+ \int u(r)e^{-\varepsilon r^2}e^{-irs}\,dr
+$$</span>
+has integral against every <span class="math" data-tex="$\overline f$">$\overline f$</span>, <span class="math" data-tex="$f\in C_c$">$f\in C_c$</span>, equal to zero. A continuous function with that property vanishes: if its value at a point is nonzero, multiply it by a phase so that its real part is positive near that point, and test a nonnegative nonzero continuous bump there. Fourier uniqueness therefore gives <span class="math" data-tex="$u e^{-\varepsilon r^2}=0$">$u e^{-\varepsilon r^2}=0$</span> almost everywhere, so <span class="math" data-tex="$u=0$">$u=0$</span>. The isometric range is all of <span class="math" data-tex="$L^2$">$L^2$</span>. Reflection gives the same result for the other sign.</p>
+<p>Finally for <span class="math" data-tex="$f,g\in C_c$">$f,g\in C_c$</span>, the absolutely convergent double integral proves
+<span class="math math-display" data-tex="$$
+\langle\mathcal F_+ f,g\rangle
+=\langle f,\mathcal F_-g\rangle.
+$$">$$
+\langle\mathcal F_+ f,g\rangle
+=\langle f,\mathcal F_-g\rangle.
+$$</span>
+Density extends this adjoint identity to <span class="math" data-tex="$L^2$">$L^2$</span>. Surjective isometries have adjoint equal to inverse, so <span class="math" data-tex="$\mathcal F_-=\mathcal F_+^{-1}$">$\mathcal F_-=\mathcal F_+^{-1}$</span>. This fixes both sign and normalization. Translation and modulation formulas follow by a scalar substitution on <span class="math" data-tex="$L^1\cap L^2$">$L^1\cap L^2$</span>, then by density on <span class="math" data-tex="$L^2$">$L^2$</span>.</p>
+<p>If <span class="math" data-tex="$k\in L^1$">$k\in L^1$</span>, convolution by <span class="math" data-tex="$k$">$k$</span> is bounded on <span class="math" data-tex="$L^2$">$L^2$</span> with norm at most <span class="math" data-tex="$\|k\|_1$">$\|k\|_1$</span>. For a nonnegative normalized <span class="math" data-tex="$|k|$">$|k|$</span>, apply the <span class="math" data-tex="$L^2$">$L^2$</span> estimate in FF-1 with its phase included; for general mass rescale. Approximation from <span class="math" data-tex="$L^1\cap L^2$">$L^1\cap L^2$</span> and scalar interchange give
+<span class="math math-display" data-tex="$$
+\mathcal F_+(k*f)=\sqrt{2\pi}\,(\mathcal F_+k)(\mathcal F_+f)
+\quad(f\in L^2).
+\tag{FF7}
+$$">$$
+\mathcal F_+(k*f)=\sqrt{2\pi}\,(\mathcal F_+k)(\mathcal F_+f)
+\quad(f\in L^2).
+\tag{FF7}
+$$</span>
+No general Fourier inversion theorem was assumed to obtain these identities.</p>
+<p><a id="oa-flow.ff.4"></a></p>
+<h2 id="OA-FLOW.FF.4">FF-3. Vector and predual integrals used in the core</h2>
+<p>For a separable Hilbert space <span class="math" data-tex="$H$">$H$</span> with orthonormal basis <span class="math" data-tex="$(v_n)$">$(v_n)$</span>, measurable <span class="math" data-tex="$H$">$H$</span>-valued functions have measurable coordinates; conversely measurable coordinates with square-summable values define a measurable vector function by their finite coordinate sums. Their <span class="math" data-tex="$L^2$">$L^2$</span> norm is the sum of their coordinate <span class="math" data-tex="$L^2$">$L^2$</span> norms, by MCT. The complete scalar <span class="math" data-tex="$L^2$">$L^2$</span> spaces and the complete Hilbert direct sum therefore prove vector <span class="math" data-tex="$L^2$">$L^2$</span> completeness. Applying FF-2 coordinatewise gives a unitary Fourier transform on <span class="math" data-tex="$L^2(\mathbb R,H)$">$L^2(\mathbb R,H)$</span>. Countable nonnegative interchange shows that its norm is the scalar sum of the coordinate norms. For an integrable square-integrable vector function the transform agrees with its vector integral: approximate by finite coordinates and then simple integrable functions, using the integral norm bound below. Thus the vector Plancherel identity used later has been proved from scalar results.</p>
+<p>For completeness, a strongly measurable vector function <span class="math" data-tex="$F$">$F$</span> with <span class="math" data-tex="$\int\|F\|&lt;\infty$">$\int\|F\|&lt;\infty$</span> is integrated as follows. It has simple approximants converging pointwise with norm error tending to zero and dominated by an integrable function, after first truncating its support and values. This follows from a countable dense subset of the separable range and measurable nearest-point choices. Their vector integrals are Cauchy because the norm of a simple integral is at most the integral of its norm; DCT passes to the limit. The result is independent of the approximants, has the same norm bound, and commutes with bounded linear maps. For continuous functions on compact intervals it agrees with Riemann integration, because both use uniform step approximation. For a continuous function with integrable norm it agrees with the limit of its compact integrals.</p>
+<p>Vector <span class="math" data-tex="$L^2$">$L^2$</span> convergence also has an almost-everywhere convergent subsequence: choose summable <span class="math" data-tex="$L^2$">$L^2$</span> norm increments; the scalar sum of the pointwise vector norms belongs to scalar <span class="math" data-tex="$L^2$">$L^2$</span> by Minkowski and MCT. Its finiteness almost everywhere makes the vector series Cauchy there; Hilbert completeness gives the limit and the <span class="math" data-tex="$L^2$">$L^2$</span> tail estimate. This is the subsequence assertion needed for closed integral forms.</p>
+<p>When <span class="math" data-tex="$E$">$E$</span> is a Banach space and <span class="math" data-tex="$F:\mathbb R\to E$">$F:\mathbb R\to E$</span> is norm continuous with integrable norm, the same compact Riemann and tail construction defines its integral without a global separability assumption. A compact parameter image is separable by uniform continuity and rational meshes, and the real line is a countable union of compact intervals. In particular this applies to norm-continuous paths in a von Neumann predual. Their integrals remain in that Banach predual and therefore give normal functionals. Arbitrary measurable predual paths needed below are limits in integral norm of finite sums of such paths, by approximating the Hilbert vectors by simple functions; the displayed Cauchy–Schwarz estimates in the main proof justify that limit.</p>
+<p><a id="oa-flow.ff.5"></a></p>
+<h2 id="OA-FLOW.FF.5">FF-4. Closed nonnegative forms, including a nondense finite domain</h2>
+<p>A nonnegative extended form <span class="math" data-tex="$q$">$q$</span> on a Hilbert space is a function into <span class="math" data-tex="$[0,\infty]$">$[0,\infty]$</span> whose finite domain <span class="math" data-tex="$D_q$">$D_q$</span> is linear, and whose restriction there is a nonnegative quadratic form with the usual complex polarization. It is closed when <span class="math" data-tex="$D_q$">$D_q$</span>, equipped with
+<span class="math math-display" data-tex="$$
+\langle v,w\rangle_q=\langle v,w\rangle+q(v,w),
+$$">$$
+\langle v,w\rangle_q=\langle v,w\rangle+q(v,w),
+$$</span>
+is complete. We now prove its spectral representation, allowing <span class="math" data-tex="$D_q$">$D_q$</span> not to be dense.</p>
+<p>Put <span class="math" data-tex="$H_0=\overline{D_q}$">$H_0=\overline{D_q}$</span>, let <span class="math" data-tex="$V=D_q$">$V=D_q$</span> with this graph inner product, and let <span class="math" data-tex="$j:V\to H_0$">$j:V\to H_0$</span> be inclusion. It is bounded, injective, contractive, and has dense range. Thus <span class="math" data-tex="$B=jj^*$">$B=jj^*$</span> is a positive contraction on <span class="math" data-tex="$H_0$">$H_0$</span> with zero kernel. Its square root is provided by the proved spectral calculus. On <span class="math" data-tex="$\operatorname{Ran}j^*$">$\operatorname{Ran}j^*$</span> the rule
+<span class="math math-display" data-tex="$$
+j^*u\longmapsto B^{1/2}u
+$$">$$
+j^*u\longmapsto B^{1/2}u
+$$</span>
+is an isometry, since both squared norms equal <span class="math" data-tex="$\langle Bu,u\rangle$">$\langle Bu,u\rangle$</span>. The first range is dense in <span class="math" data-tex="$V$">$V$</span>, because <span class="math" data-tex="$(\operatorname{Ran}j^*)^\perp=\ker j=0$">$(\operatorname{Ran}j^*)^\perp=\ker j=0$</span>; the second is dense in <span class="math" data-tex="$H_0$">$H_0$</span>, because <span class="math" data-tex="$B^{1/2}$">$B^{1/2}$</span> has zero kernel. The isometry extends to a unitary <span class="math" data-tex="$W:V\to H_0$">$W:V\to H_0$</span>. Taking adjoints of <span class="math" data-tex="$Wj^*=B^{1/2}$">$Wj^*=B^{1/2}$</span> gives
+<span class="math math-display" data-tex="$$
+j=B^{1/2}W.
+\tag{FF8}
+$$">$$
+j=B^{1/2}W.
+\tag{FF8}
+$$</span>
+This is a proof of the particular polar factorization needed here, not a polar-decomposition import. It yields
+<span class="math math-display" data-tex="$$
+D_q=\operatorname{Ran}B^{1/2},\qquad
+\|B^{-1/2}v\|^2=\|v\|^2+q(v).
+$$">$$
+D_q=\operatorname{Ran}B^{1/2},\qquad
+\|B^{-1/2}v\|^2=\|v\|^2+q(v).
+$$</span>
+The exact inverse-range and spectral-domain calculus therefore gives a positive self-adjoint operator <span class="math" data-tex="$A=B^{-1}-I$">$A=B^{-1}-I$</span> on <span class="math" data-tex="$H_0$">$H_0$</span>, with
+<span class="math math-display" data-tex="$$
+D(A^{1/2})=D_q,\qquad q(v)=\|A^{1/2}v\|^2.
+\tag{FF9}
+$$">$$
+D(A^{1/2})=D_q,\qquad q(v)=\|A^{1/2}v\|^2.
+\tag{FF9}
+$$</span>
+Declare <span class="math" data-tex="$q(v)=\infty$">$q(v)=\infty$</span> off this domain, including whenever <span class="math" data-tex="$v$">$v$</span> has a nonzero component in <span class="math" data-tex="$H_0^\perp$">$H_0^\perp$</span>. The pair <span class="math" data-tex="$(A,H_0^\perp)$">$(A,H_0^\perp)$</span> is uniquely determined: the graph Hilbert space and its inclusion determine <span class="math" data-tex="$B$">$B$</span>, and then spectral calculus determines <span class="math" data-tex="$A$">$A$</span>.</p>
+<p>Conversely every such pair gives a closed form, because the graph norm of the closed operator <span class="math" data-tex="$A^{1/2}$">$A^{1/2}$</span> is complete. It is lower semicontinuous for the Hilbert norm: its form is the supremum of the continuous quadratic functions of the bounded spectral truncations
+<span class="math math-display" data-tex="$$
+h_n=\min(A,n)\ \text{ on }H_0,\qquad h_n=nI\ \text{ on }H_0^\perp.
+\tag{FF10}
+$$">$$
+h_n=\min(A,n)\ \text{ on }H_0,\qquad h_n=nI\ \text{ on }H_0^\perp.
+\tag{FF10}
+$$</span>
+If a form is initially known to be lower semicontinuous, its graph norm is complete. A graph-Cauchy sequence <span class="math" data-tex="$v_n$">$v_n$</span> converges in Hilbert norm to <span class="math" data-tex="$v$">$v$</span>; lower semicontinuity applied to <span class="math" data-tex="$v_n-v_m$">$v_n-v_m$</span>, with <span class="math" data-tex="$m\to\infty$">$m\to\infty$</span>, gives <span class="math" data-tex="$q(v_n-v)$">$q(v_n-v)$</span> bounded by the graph-Cauchy tail. It follows that <span class="math" data-tex="$v\in D_q$">$v\in D_q$</span> and <span class="math" data-tex="$v_n\to v$">$v_n\to v$</span> in graph norm. Thus either characterization of closedness is available.</p>
+<p>For the integral form <span class="math" data-tex="$q(v)=\int\|T_t v\|^2\,dt$">$q(v)=\int\|T_t v\|^2\,dt$</span>, where each <span class="math" data-tex="$T_t$">$T_t$</span> is bounded and the vector functions are measurable, graph completeness follows directly. A graph-Cauchy sequence gives a Hilbert limit <span class="math" data-tex="$v$">$v$</span> and a vector <span class="math" data-tex="$L^2$">$L^2$</span> limit <span class="math" data-tex="$F$">$F$</span>. The a.e. subsequence result of FF-3 identifies <span class="math" data-tex="$F(t)=T_tv$">$F(t)=T_tv$</span>, since <span class="math" data-tex="$T_t v_n\to T_tv$">$T_t v_n\to T_tv$</span> for each fixed <span class="math" data-tex="$t$">$t$</span>. This proves completeness and retains the possible infinite part.</p>
+<p><a id="oa-flow.ff.6"></a></p>
+<h2 id="OA-FLOW.FF.6">FF-5. The concrete extended-positive cone and its covariance</h2>
+<p>For a concrete von Neumann algebra <span class="math" data-tex="$N$">$N$</span>, define its extended-positive spectral elements to be the pairs of FF-4 whose finite-part spectral projections and infinite-part projection belong to <span class="math" data-tex="$N$">$N$</span>. Equivalently their closed forms are invariant under every unitary in <span class="math" data-tex="$N'$">$N'$</span>: one direction follows by spectral cutoffs, and the other follows because invariance gives a unitary on the graph Hilbert space, intertwines its inclusion, and therefore commutes with <span class="math" data-tex="$jj^*$">$jj^*$</span> and all its spectral projections. The unitary-span and bicommutant argument is proved in SB-6.</p>
+<p>Here are proofs that this cone has the required order, sum, sandwich and supremum operations and that faithful normal isomorphisms preserve them. They remove the unproved intrinsic-cone premise from the selected lesson. Regard
+<span class="math math-display" data-tex="$$
+R_q=(I+A)^{-1}\ \text{ on }H_0,\qquad R_q=0\ \text{ on }H_0^\perp
+$$">$$
+R_q=(I+A)^{-1}\ \text{ on }H_0,\qquad R_q=0\ \text{ on }H_0^\perp
+$$</span>
+as a bounded positive contraction in <span class="math" data-tex="$N$">$N$</span>. It determines <span class="math" data-tex="$q$">$q$</span> completely. Its two variational identities are
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\|v\|^2+q(v)
+ &amp;=\sup_w\bigl(2\operatorname{Re}\langle v,w\rangle
+                       -\langle R_qw,w\rangle\bigr),\\
+\langle R_qw,w\rangle
+ &amp;=\sup_{v\in D_q}\bigl(2\operatorname{Re}\langle w,v\rangle
+                       -\|v\|^2-q(v)\bigr).
+\end{aligned}
+\tag{FF11}
+$$">$$
+\begin{aligned}
+\|v\|^2+q(v)
+ &amp;=\sup_w\bigl(2\operatorname{Re}\langle v,w\rangle
+                       -\langle R_qw,w\rangle\bigr),\\
+\langle R_qw,w\rangle
+ &amp;=\sup_{v\in D_q}\bigl(2\operatorname{Re}\langle w,v\rangle
+                       -\|v\|^2-q(v)\bigr).
+\end{aligned}
+\tag{FF11}
+$$</span>
+To verify the first, write <span class="math" data-tex="$R=R_q$">$R=R_q$</span>. If the supremum is finite, scaling <span class="math" data-tex="$w$">$w$</span> by real and complex scalars shows that <span class="math" data-tex="$w\mapsto\langle v,w\rangle$">$w\mapsto\langle v,w\rangle$</span> vanishes on <span class="math" data-tex="$\ker R$">$\ker R$</span> and is bounded for the norm <span class="math" data-tex="$\|R^{1/2}w\|$">$\|R^{1/2}w\|$</span>. Hilbert representation on the closure of that range gives a vector <span class="math" data-tex="$z\perp\ker R$">$z\perp\ker R$</span> with <span class="math" data-tex="$v=R^{1/2}z$">$v=R^{1/2}z$</span>. Conversely such a vector makes the supremum <span class="math" data-tex="$\|z\|^2$">$\|z\|^2$</span>, by completing the square and using density of <span class="math" data-tex="$\operatorname{Ran}R^{1/2}$">$\operatorname{Ran}R^{1/2}$</span>. This equals the left side by FF-4. For the second write <span class="math" data-tex="$v=R^{1/2}z$">$v=R^{1/2}z$</span> with <span class="math" data-tex="$z\perp\ker R$">$z\perp\ker R$</span>, and complete the square in <span class="math" data-tex="$z$">$z$</span>; the maximum is attained at <span class="math" data-tex="$z=R^{1/2}w$">$z=R^{1/2}w$</span>, equivalently at <span class="math" data-tex="$v=Rw$">$v=Rw$</span>.</p>
+<p>It follows that
+<span class="math math-display" data-tex="$$
+q\leq r\ \text{ pointwise as forms}\quad\Longleftrightarrow\quad R_q\geq R_r.
+\tag{FF12}
+$$">$$
+q\leq r\ \text{ pointwise as forms}\quad\Longleftrightarrow\quad R_q\geq R_r.
+\tag{FF12}
+$$</span>
+The right-to-left implication uses the first variational identity and the left-to-right implication the second. In particular form order is encoded by an ordinary bounded-operator inequality.</p>
+<p>The sum <span class="math" data-tex="$q+r$">$q+r$</span>, and the sandwich <span class="math" data-tex="$v\mapsto q(xv)$">$v\mapsto q(xv)$</span> for bounded <span class="math" data-tex="$x$">$x$</span>, are lower semicontinuous nonnegative quadratic forms with linear finite domains. Their lower semicontinuity follows respectively from addition of nonnegative lower semicontinuous functions and from continuity of <span class="math" data-tex="$v\mapsto xv$">$v\mapsto xv$</span>; FF-4 therefore represents them. Their commutant invariance puts them in the same extended cone when <span class="math" data-tex="$q,r$">$q,r$</span> belong to it and <span class="math" data-tex="$x\in N$">$x\in N$</span>. An increasing directed supremum of such forms is again a lower semicontinuous quadratic form on its finite domain: the parallelogram identities and homogeneity pass through the directed supremum, using a common index for the finitely many terms involved. It too belongs to the cone.</p>
+<p>We need the exact convergence of their bounded resolvents. If <span class="math" data-tex="$q_\alpha\uparrow q$">$q_\alpha\uparrow q$</span>, (FF12) gives <span class="math" data-tex="$R_\alpha\downarrow R$">$R_\alpha\downarrow R$</span> strongly for a positive contraction <span class="math" data-tex="$R\in N$">$R\in N$</span>. To justify the strong limit, each scalar quadratic value has a decreasing limit; polarization and Hilbert representation give <span class="math" data-tex="$R$">$R$</span>, and
+<span class="math" data-tex="$\|(R_\alpha-R)v\|^2\leq\langle(R_\alpha-R)v,v\rangle$">$\|(R_\alpha-R)v\|^2\leq\langle(R_\alpha-R)v,v\rangle$</span> because <span class="math" data-tex="$0\leq R_\alpha-R\leq I$">$0\leq R_\alpha-R\leq I$</span>. Let <span class="math" data-tex="$v_\alpha=R_\alpha w\to Rw=v$">$v_\alpha=R_\alpha w\to Rw=v$</span>. By the second formula of (FF11), <span class="math" data-tex="$v_\alpha$">$v_\alpha$</span> minimizes
+<span class="math math-display" data-tex="$$
+J_\alpha(u)=\|u\|^2+q_\alpha(u)-2\operatorname{Re}\langle w,u\rangle
+$$">$$
+J_\alpha(u)=\|u\|^2+q_\alpha(u)-2\operatorname{Re}\langle w,u\rangle
+$$</span>
+and its minimum is <span class="math" data-tex="$-\langle R_\alpha w,w\rangle$">$-\langle R_\alpha w,w\rangle$</span>. For any fixed <span class="math" data-tex="$\beta$">$\beta$</span>, lower semicontinuity of <span class="math" data-tex="$q_\beta$">$q_\beta$</span> and <span class="math" data-tex="$\alpha\geq\beta$">$\alpha\geq\beta$</span> give <span class="math" data-tex="$J(v)\leq\liminf_\alpha J_\alpha(v_\alpha)$">$J(v)\leq\liminf_\alpha J_\alpha(v_\alpha)$</span> after taking the supremum over <span class="math" data-tex="$\beta$">$\beta$</span>. Comparison with any fixed test <span class="math" data-tex="$u$">$u$</span>, followed by its monotone limit, gives the reverse minimum bound. Thus <span class="math" data-tex="$v$">$v$</span> minimizes <span class="math" data-tex="$J$">$J$</span>, and (FF11) identifies <span class="math" data-tex="$v=R_qw$">$v=R_qw$</span>. Consequently
+<span class="math math-display" data-tex="$$
+R_{q_\alpha}\downarrow R_q\quad\text{strongly}.
+\tag{FF13}
+$$">$$
+R_{q_\alpha}\downarrow R_q\quad\text{strongly}.
+\tag{FF13}
+$$</span>
+The argument also covers nets and nondense domains. The minimum is finite, since <span class="math" data-tex="$u=0$">$u=0$</span> is an admissible test.</p>
+<p>Let <span class="math" data-tex="$\rho:N\to N_1$">$\rho:N\to N_1$</span> be a normal unital *-homomorphism. Transport the spectral resolution of a pair by <span class="math" data-tex="$\rho$">$\rho$</span>, including the infinite-part projection; bounded spectral transport was proved in SB-6. Its resolvent is <span class="math" data-tex="$\rho(R_q)$">$\rho(R_q)$</span>. For a sum use the increasing bounded forms <span class="math" data-tex="$h_n+k_n$">$h_n+k_n$</span>, with truncations from (FF10); their resolvents are <span class="math" data-tex="$(I+h_n+k_n)^{-1}$">$(I+h_n+k_n)^{-1}$</span>. Normality preserves their decreasing strong limit by the same positive-operator estimate, and a unital homomorphism preserves their bounded inverses. Formula (FF13) therefore proves transport of sums. The bounded forms <span class="math" data-tex="$x^*h_nx$">$x^*h_nx$</span> prove transport of sandwiches in the same way. Formula (FF12) proves order preservation; if <span class="math" data-tex="$\rho$">$\rho$</span> is faithful, its inverse on the image reflects the bounded inequalities, hence also form order. Formula (FF13) proves preservation of increasing suprema. These establish the asserted intrinsic operations under a faithful normal change of representation.</p>
+<p>Finally, for a normal positive functional <span class="math" data-tex="$\omega$">$\omega$</span>, its spectral value is
+<span class="math" data-tex="$\widehat\omega(q)=\sup_n\omega(h_n)$">$\widehat\omega(q)=\sup_n\omega(h_n)$</span>. This is the vector form in its normal GNS representation. The needed GNS normality can be verified directly: for <span class="math" data-tex="$a_\alpha\uparrow a$">$a_\alpha\uparrow a$</span>, the values <span class="math" data-tex="$\omega(x^*(a-a_\alpha)x)$">$\omega(x^*(a-a_\alpha)x)$</span> decrease to zero on the dense GNS vectors; the positive inequality <span class="math" data-tex="$D_\alpha^2\leq C D_\alpha$">$D_\alpha^2\leq C D_\alpha$</span> and a common operator bound give strong convergence there and then everywhere. Thus the GNS representation is order normal. Its spectral projections transport by the preceding argument, even when the representation has a kernel. In that representation <span class="math" data-tex="$\omega(h_n)=\langle\pi_\omega(h_n)\Omega,\Omega\rangle$">$\omega(h_n)=\langle\pi_\omega(h_n)\Omega,\Omega\rangle$</span>, and MCT gives the vector-form value, including the infinite part. The proved transport of sums, sandwiches and suprema now proves the usual evaluation rules. In particular if <span class="math" data-tex="$\omega$">$\omega$</span> is represented by a vector in the given representation, its extended evaluation is exactly that vector's closed-form value.</p>
+<p>These are the precise cone properties used by the construction of the operator-valued average. They follow from explicit closed forms and bounded resolvents, and do not depend on a sketch of a general cone representation theorem.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-SF.html">Previous lesson</a><a href="OA-FLOW-CP.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-FF.md">Lesson source</a></nav></main></body></html>

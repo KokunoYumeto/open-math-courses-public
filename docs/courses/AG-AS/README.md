@@ -7,10 +7,10 @@ This twelve-lesson course develops algebraic spaces from étale quotients, algeb
 - [Properties and morphisms](src/properties-and-morphisms.md): valuative properness and Chow's lemma over arbitrary quasi-compact quasi-separated algebraic-space targets, with flattening support.
 - [Stacks in groupoids](src/stacks-in-groupoids.md): descent, torsors, abelian banded gerbes and the sign of their second-cohomology class.
 - [Algebraic stacks](src/algebraic-stacks.md): presentations and diagonals, arbitrary-base genus-one cohomology and Weierstrass constructions.
-- Quotient and Deligne–Mumford stacks: finite-inertia coarse spaces and the integral elliptic coarse invariant in every characteristic.
-- Artin's axioms: algebraicity criteria, general Néron desingularization, G-ring permanence, polynomial and marked-family approximation, and Artin–Rees perturbation.
-- Moduli stacks are algebraic: coherent sheaves with proper support, Hom, Isom, Quot, Hilbert and Picard; coherent existence for arbitrary locally nilpotent inverse systems; polarized schemes and all proper flat curve spaces of dimension at most one.
-- The stack of curves: prestable, semistable and stable loci, local complete-intersection smoothing over arbitrary fields, and relative Gorenstein duality with coherent trace and every base change.
+- [Quotient and Deligne–Mumford stacks](src/quotient-and-dm-stacks.md): finite-inertia coarse spaces and the integral elliptic coarse invariant in every characteristic.
+- [Artin's axioms](src/artin-axioms.md): algebraicity criteria, general Néron desingularization, G-ring permanence, polynomial and marked-family approximation, and Artin–Rees perturbation.
+- [Moduli stacks are algebraic](src/moduli-stacks-are-algebraic.md): coherent sheaves with proper support, Hom, Isom, Quot, Hilbert and Picard; coherent existence for arbitrary locally nilpotent inverse systems; polarized schemes and all proper flat curve spaces of dimension at most one.
+- [The stack of curves](src/the-stack-of-curves.md): prestable, semistable and stable loci, local complete-intersection smoothing over arbitrary fields, and relative Gorenstein duality with coherent trace and every base change.
 - [Stable reduction and properness](src/stable-reduction-and-properness.md): arbitrary discrete valuation rings, the dense-test-locus stack valuative criterion retaining the specified generic arrow, and irreducibility by covers, braid moves and specialization.
 - [Simplicial sets, nerves and Kan complexes](src/simplicial-sets-nerves-and-kan-complexes.md): horn attachments, homotopy groups, fibre exactness and Kan Whitehead for every component and basepoint.
 - [Test categories and Grothendieck's homotopy programme](src/test-categories-and-homotopy-programme.md): Quillen's Theorem A, last-vertex comparison and singular evaluation for arbitrary topological spaces.

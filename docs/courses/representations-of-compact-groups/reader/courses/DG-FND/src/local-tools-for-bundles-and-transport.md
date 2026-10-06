@@ -1,6 +1,6 @@
 # Local tools for bundles and transport
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Draft; self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Original text dedicated to the public domain under CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Self-checked by the writing AI. Original text dedicated to the public domain under CC0 1.0.*
 
 Geometry uses local coordinates to build objects and then forgets those coordinates. This lesson proves the three local tools used in the first part of the course: local inversion, solutions of ordinary differential equations, and smooth partitions of unity. It also constructs the smooth quotient by an embedded closed Lie subgroup. These proofs make the later bundle constructions explicit.
 

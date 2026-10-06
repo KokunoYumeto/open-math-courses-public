@@ -16,9 +16,9 @@ No separability or countability hypothesis is imposed. All sums indexed by
 an arbitrary set mean nets over its finite subsets.
 
 We use the maximality principle and Hilbert projection and completion proofs
-in Continuous calculus, positivity and Hilbert spaces, Sections 1, 8 and 10,
+in [Continuous calculus, positivity and Hilbert spaces, Sections 1, 8 and 10](OA-FLOW-CF.md#oa-flow.cf.1),
 and the arbitrary orthogonal projection sums proved in
-Projection comparison and the countably decomposable type III case, PC-1.
+[Projection comparison and the countably decomposable type III case, PC-1](OA-FLOW-PC.md#oa-flow.projection.pc1).
 The Hilbert tensor construction is proved in
 [Compact topology and the Hilbert tensor construction, H0](OA-FLOW-TOPOLOGY.md#l138-h0).
 
@@ -95,9 +95,9 @@ exactly when the strong sum of the range projections is $1$.
 **Hilbert coordinates.** Here are the Hilbert-space details for arbitrary
 index sets. Order the orthonormal subsets of $K$ by inclusion. The union
 of a chain is orthonormal, so the
-maximality principle supplies a maximal family.
+[maximality principle](OA-FLOW-CF.md#oa-flow.cf.1) supplies a maximal family.
 If its closed linear span were proper, the
-Hilbert projection theorem would give a
+[Hilbert projection theorem](OA-FLOW-CF.md#oa-flow.cf.8) would give a
 nonzero vector perpendicular to that span; normalizing it would enlarge
 the family. Thus the family is a basis.
 
@@ -143,7 +143,7 @@ p_F=\sum_{i\in F}u_i u_i^*.
 \tag{U14}
 $$
 
-By PC-1, these projections converge
+By [PC-1](OA-FLOW-PC.md#oa-flow.projection.pc1), these projections converge
 strongly to their join $p\in M$. This is also immediate on each vector:
 the orthogonal vectors $p_i\xi$ have bounded finite sums of squared norms,
 so the same tail argument constructs their sum, the orthogonal projection
@@ -283,7 +283,7 @@ Expanding two finite sums of elementary tensors in (U27) gives
 $S(\eta)^*S(\zeta)=\langle\zeta,\eta\rangle1$.
 In particular the C\*-identity gives $\|S(\zeta)\|=\|\zeta\|$,
 so $S$ is injective and isometric. The extension theorem in
-Hilbert completion applies because $M$
+[Hilbert completion](OA-FLOW-CF.md#oa-flow.cf.10) applies because $M$
 is complete.  It extends to a unitary from
 $K\otimes_2L$ onto
 
@@ -392,7 +392,7 @@ $$
 
 Here $\bigoplus_iK_i$ is the Hilbert completion of the finitely supported
 families, with squared norm $\sum_i\|x_i\|^2$; existence and unique
-extension are proved in Hilbert completion.
+extension are proved in [Hilbert completion](OA-FLOW-CF.md#oa-flow.cf.10).
 For any two finite families, direct multiplication gives
 
 $$

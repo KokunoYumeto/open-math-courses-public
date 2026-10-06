@@ -2,7 +2,7 @@
 
 At a transverse fixed point, a nonlinear map and a constructible coefficient can be replaced by their normal models. The replacement of the map is its derivative. The replacement of the sheaf is specialization, which retains how its support approaches the point. We prove that this replacement preserves the evaluated local class, including its orientation and grading.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Learn first Lefschetz traces of constructible correspondences, Natural duality for specialization and microlocal Hom, and Homotopies and local cutoffs for Lefschetz contributions. We use the earlier specialization construction with its actual inverse-image comparison, adjunction mates, equal-time external/tensor comparisons, zero-section support maps and conic calibration. Those are exact written programme prerequisites, together with the constructibility theorem; their transitive foundations and independent review remain open.
 

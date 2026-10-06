@@ -1,6 +1,6 @@
 # The sharp noncommutative bilinear inequality
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).* 
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).* 
 
 The [preceding lesson](tensor-completion-injectivity-and-state-domination.md) supplies a universal state-domination constant. Complex interpolation and a fourth moment of independent phases improve any such constant to its geometric mean with the norm of the form. At the best constant, this forces the Grothendieck–Haagerup–Pisier bound.
 

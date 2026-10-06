@@ -79,7 +79,7 @@ supplies one. If \(a\in M_+\) and \(\psi(a)=0\), every \(f_n(a)\) is zero, so de
 
 ### The whole algebra over the specified diagonal
 
-Apply DC-7, existence over a specified central algebra to \((M,H,D)\). Its hypotheses are exactly that \(H\) is separable and \(D\subseteq Z(M)\) is unital. Together with DC-6, it gives a standard Borel probability base, completed when taking equivalence classes, and a faithful diagonal realization
+Apply [DC-7, existence over a specified central algebra](../../OA-MOD/OA-MOD-DC.html#existence-over-any-specified-central-abelian-subalgebra) to \((M,H,D)\). Its hypotheses are exactly that \(H\) is separable and \(D\subseteq Z(M)\) is unital. Together with [DC-6](../../OA-MOD/OA-MOD-DC.html#realizing-an-abelian-algebra-as-the-diagonal-algebra), it gives a standard Borel probability base, completed when taking equivalence classes, and a faithful diagonal realization
 
 \[
  H=\int_Y^\oplus H_y\,d\nu(y),\qquad
@@ -90,13 +90,13 @@ Apply DC-7, existence over a specified central algebra to \((M,H,D)\). Its hypot
 
 Here \(H_y\ne0\) is separable and \(M_y\subseteq B(H_y)\) is a nonzero unital von Neumann algebra almost everywhere. The middle identity denotes **all** measurable essentially bounded fields with values in \(M_y\), not just a chosen generating family. DC-7 proves it by constructing the measurable fiber commutants and identifying their entire integral commutant. The diagonal has no kernel on the retained base. Every \(M_y\) also has separable predual: [CP-6](OA-FLOW-CP.md#oa-flow.cp.6) realizes it as a quotient of \(H_y\widehat\otimes_\pi\overline{H_y}\), whose finite rational tensors from a countable dense subset are norm dense.
 
-Since \(\alpha_g\) fixes \(D\) pointwise, \(U_g\) commutes with every scalar multiplication \(M_f\). The DF-8 diagonal-commutant theorem therefore supplies, for each fixed \(g\), a measurable unitary field representing \(U_g\). Unitarity follows by decomposing \(U_g^*U_g=U_gU_g^*=I\) and using DF-8 uniqueness. At this stage its exceptional null set can depend on \(g\).
+Since \(\alpha_g\) fixes \(D\) pointwise, \(U_g\) commutes with every scalar multiplication \(M_f\). The [DF-8 diagonal-commutant theorem](../../OA-MOD/OA-MOD-DF.html#the-diagonal-commutant-is-exactly-the-decomposable-algebra) therefore supplies, for each fixed \(g\), a measurable unitary field representing \(U_g\). Unitarity follows by decomposing \(U_g^*U_g=U_gU_g^*=I\) and using DF-8 uniqueness. At this stage its exceptional null set can depend on \(g\).
 
 ### A compatible field of standard forms
 
-We can choose (A5) with the full standard-form data as well. The additional input is the proved MW-7 central weight disintegration. That theorem applies to a faithful normal semifinite weight on a separably acting algebra and **any** specified unital \(D\subseteq Z(M)\). In particular it applies to \(\varphi\) from (A4). Its [DI-13 reverse assembly](../../OA-MOD/OA-MOD-DI.html#reverse-assembly-over-a-specified-central-diagonal) begins with the whole algebra decomposition of \((M,H,D)\), localizes both closed involution graphs, and constructs the full fiber Hilbert algebras. The [GFR comparison](../../OA-MOD/OA-MOD-GFR.html#the-reverse-comparison-and-the-realization-obstruction) transports those fibers to their actual GNS spaces. Thus the resulting GNS, algebra and diagonal identifications are compatible with each other.
+We can choose (A5) with the full standard-form data as well. The additional input is the proved [MW-7 central weight disintegration](../../OA-MOD/OA-MOD-MW.html#central-disintegration-of-a-separable-weighted-algebra). That theorem applies to a faithful normal semifinite weight on a separably acting algebra and **any** specified unital \(D\subseteq Z(M)\). In particular it applies to \(\varphi\) from (A4). Its [DI-13 reverse assembly](../../OA-MOD/OA-MOD-DI.html#reverse-assembly-over-a-specified-central-diagonal) begins with the whole algebra decomposition of \((M,H,D)\), localizes both closed involution graphs, and constructs the full fiber Hilbert algebras. The [GFR comparison](../../OA-MOD/OA-MOD-GFR.html#the-reverse-comparison-and-the-realization-obstruction) transports those fibers to their actual GNS spaces. Thus the resulting GNS, algebra and diagonal identifications are compatible with each other.
 
-Initially write the fiber weights as \(\widetilde\varphi_y\) and the reference measure as \(\widetilde\nu\). MW-5 gives the identity for every positive element, including the unit. Hence the measurable function
+Initially write the fiber weights as \(\widetilde\varphi_y\) and the reference measure as \(\widetilde\nu\). [MW-5](../../OA-MOD/OA-MOD-MW.html#every-positive-value-and-the-exact-finite-left-ideal) gives the identity for every positive element, including the unit. Hence the measurable function
 
 \[
  h(y)=\widetilde\varphi_y(1),\qquad
@@ -107,7 +107,7 @@ Initially write the fiber weights as \(\widetilde\varphi_y\) and the reference m
 
 is a strictly positive density. Positivity uses nonzero fibers and faithfulness; finiteness follows from the displayed integral. Replace the base by \(d\nu=h\,d\widetilde\nu\) and the fiber weights by \(\varphi_y=h^{-1}\widetilde\varphi_y\). The resulting \(\varphi_y\) are faithful normal states. The density change and its GNS unitary are proved in MW-7: on the GNS core, the map \(\Lambda_{\widetilde\varphi_y}(a)\mapsto\Lambda_{\varphi_y}(a)\) has norm factor \(h(y)^{-1/2}\), precisely compensated by \(d\nu=h\,d\widetilde\nu\). We use these normalized coordinates in (A5).
 
-The full GNS-ideal assertion of MW-5 and the full closed-operator assertion of MW-4 now give
+The full GNS-ideal assertion of MW-5 and the full closed-operator assertion of [MW-4](../../OA-MOD/OA-MOD-MW.html#constructing-the-integral-weight-and-its-full-operators) now give
 
 \[
  \begin{aligned}
@@ -337,9 +337,9 @@ Let
 \]
 be a separable Hilbert direct integral over a standard Borel probability space, with separable fibers and a specified countable measurable fundamental family. Suppose \(U:G\to\mathcal U(\mathscr H)\) is strongly continuous and every \(U_g\) commutes with the diagonal \(L^\infty(X,\mu)\). We prove that there are continuous unitary representations \(V_x\) on the fibers such that, for each fixed \(g\), their field is measurable and integrates to \(U_g\). We will in fact obtain joint Borel matrix coefficients for the repaired field.
 
-The exact field inputs are the measurable orthonormal frame, its ambient realization, and the full diagonal-commutant theorem. Choose a frame \(e_n(x)\), with each vector either zero or norm one, whose nonzero members are an orthonormal basis of \(H_x\). Realize \(H_x\) as the corresponding coordinate subspace of \(\ell^2\). Its projection is diagonal with Borel zero-or-one entries. Countably many completed scalar coordinates can be replaced by Borel versions and their null carriers discarded once; thus these frame data can be taken Borel on a common Borel conull base. We work on that base. The zero fibers, if any, cause no difficulty.
+The exact field inputs are the [measurable orthonormal frame](../../OA-MOD/OA-MOD-DF.html#compact-orthonormal-frames-and-measurable-dimension), its [ambient realization](../../OA-MOD/OA-MOD-DF.html#ambient-realization-and-the-effros-closed-subspace-condition), and the [full diagonal-commutant theorem](../../OA-MOD/OA-MOD-DF.html#the-diagonal-commutant-is-exactly-the-decomposable-algebra). Choose a frame \(e_n(x)\), with each vector either zero or norm one, whose nonzero members are an orthonormal basis of \(H_x\). Realize \(H_x\) as the corresponding coordinate subspace of \(\ell^2\). Its projection is diagonal with Borel zero-or-one entries. Countably many completed scalar coordinates can be replaced by Borel versions and their null carriers discarded once; thus these frame data can be taken Borel on a common Borel conull base. We work on that base. The zero fibers, if any, cause no difficulty.
 
-Because \(\mu(X)=1\), every \(e_n\) is a vector of \(\mathscr H\). By the diagonal-commutant theorem, for each fixed \(g\), \(U_g\) has a measurable operator field. Its field is unitary almost everywhere: both equations \(U_g^*U_g=U_gU_g^*=1\) localize by the field integration and adjoint theorem, followed by its countable-frame uniqueness. These separate choices will be replaced by a joint one.
+Because \(\mu(X)=1\), every \(e_n\) is a vector of \(\mathscr H\). By the diagonal-commutant theorem, for each fixed \(g\), \(U_g\) has a measurable operator field. Its field is unitary almost everywhere: both equations \(U_g^*U_g=U_gU_g^*=1\) localize by the [field integration and adjoint theorem](../../OA-MOD/OA-MOD-DF.html#integrating-operator-fields-norm-domains-and-adjoints), followed by its countable-frame uniqueness. These separate choices will be replaced by a joint one.
 
 Choose a countable dense family \((v_j)\) in \(\mathscr H\) and Borel field representatives for its members. For \(n,k\ge1\) let
 \[
@@ -413,7 +413,7 @@ For \(f\in L^1(G)\), with a Borel representative, define on every fiber
  \tag{I25}
 \]
 These integrals exist for every \(x\), since the fibers are separable and \(u(t,x)\) is unitary and weakly Borel. The field \(T_f\) is Borel. Its frame coefficients are parameter integrals of the product-measurable functions
-\(f(t)\langle u(t,x)e_n(x),e_m(x)\rangle\), with absolute integral at most \(\|f\|_1\). Here the original construction (I18)–(I21) is measurable for \(\mathcal B(G)\otimes\mathcal B(X)\); this also follows from the interval argument above with one group coordinate. Finite coordinate sums show that \(T_f(x)\eta(x)\) is Borel for every Borel section \(\eta\), by the bounded-operator field criterion.
+\(f(t)\langle u(t,x)e_n(x),e_m(x)\rangle\), with absolute integral at most \(\|f\|_1\). Here the original construction (I18)–(I21) is measurable for \(\mathcal B(G)\otimes\mathcal B(X)\); this also follows from the interval argument above with one group coordinate. Finite coordinate sums show that \(T_f(x)\eta(x)\) is Borel for every Borel section \(\eta\), by the [bounded-operator field criterion](../../OA-MOD/OA-MOD-DF.html#pointwise-bounded-operator-fields-adjoints-and-exact-norm-tests).
 
 Let
 \[
@@ -457,7 +457,7 @@ This selection uses separability of \(\mathscr H\). It does not select or presum
 \]
 They are Borel and square integrable by (I25)–(I26).
 
-The vectors \(\zeta_j(x)\) are total in \(H_x\) on a common Borel conull set. To prove this, let \(P_x\) be the projection onto their closed span. The specified-subfield projection construction makes \(P_x\) a Borel projection field: it applies measurable Gram–Schmidt to the countable family and sums the resulting orthogonal rank-one projections. The event \(P_x=1\) is the countable Borel test
+The vectors \(\zeta_j(x)\) are total in \(H_x\) on a common Borel conull set. To prove this, let \(P_x\) be the projection onto their closed span. The [specified-subfield projection construction](../../OA-MOD/OA-MOD-DF.html#subfields-projections-conjugates-and-direct-sums) makes \(P_x\) a Borel projection field: it applies measurable Gram–Schmidt to the countable family and sums the resulting orthogonal rank-one projections. The event \(P_x=1\) is the countable Borel test
 \(\|(1-P_x)e_n(x)\|=0\) for all \(n\).
 If it failed on a positive-measure set, for some \(n\) the bounded Borel section
 \((1-P_x)e_n(x)\) would have positive \(L^2\) norm. This section is pointwise orthogonal to every \(\zeta_j(x)\), hence globally orthogonal to every \(\zeta_j\), contradicting (I29). Thus
@@ -548,7 +548,7 @@ The group \(Q\) acts on \(M\) by \(\overline\alpha_q=\operatorname{Ad}\overline 
 
 ### Measurable unitary fields with a Borel group parameter
 
-The DF-2 compact-frame construction gives measurable dimension strata
+The [DF-2 compact-frame construction](../../OA-MOD/OA-MOD-DF.html#compact-orthonormal-frames-and-measurable-dimension) gives measurable dimension strata
 \(Y_d=\{y:\dim H_y=d\}\), where \(d\in\{1,2,\ldots,\infty\}\), and an orthonormal frame on each. Completed measurable data can be replaced by Borel versions outside one null set: the frame has countably many coordinates, so one common deletion suffices for all its identities. We identify the fibers on \(Y_d\) with \(H^{(d)}=\mathbb C^d\) or \(\ell^2(\mathbb N)\), according as \(d\) is finite or infinite. Null strata can be discarded; on every remaining stratum normalize the restricted finite measure to a probability. This normalization is used only to describe its \(L^0\) topology. The global integral still uses \(\nu\).
 
 Decomposability and uniqueness from DF-8 define a map
@@ -670,7 +670,7 @@ The base is the standard finite base obtained by decomposing over the specified 
 \]
 Here \(U\) is the strongly continuous global representation. We must still show that all these fibre unitaries normalize their fibre algebras on a single conull base.
 
-The whole-algebra construction over a specified central subalgebra supplies countably many measurable contraction fields \(a_j(y)\) generating \(M_y\). Their integrals \(a_j\) belong to \(M\). Include their adjoints. The measurable commutant-generator construction gives measurable contractions \(b_l(y)\) generating \(M_y'\), again with adjoints included. Its exact integral commutant proof shows that their integrals \(b_l\) belong to \(M'\), and that
+The [whole-algebra construction over a specified central subalgebra](../../OA-MOD/OA-MOD-DC.html#existence-over-any-specified-central-abelian-subalgebra) supplies countably many measurable contraction fields \(a_j(y)\) generating \(M_y\). Their integrals \(a_j\) belong to \(M\). Include their adjoints. The [measurable commutant-generator construction](../../OA-MOD/OA-MOD-DC.html#countable-measurable-generators-for-fibre-commutants) gives measurable contractions \(b_l(y)\) generating \(M_y'\), again with adjoints included. Its [exact integral commutant proof](../../OA-MOD/OA-MOD-DC.html#the-integral-algebra-and-its-exact-commutant) shows that their integrals \(b_l\) belong to \(M'\), and that
 \[
  M'=\int_Y^\oplus M_y'\,d\nu(y).
  \tag{C3}
@@ -682,7 +682,7 @@ Choose a countable dense subgroup \(Q\subseteq G\): take the subgroup generated 
  [U_qa_jU_q^*,b_l]=0.
  \tag{C4}
 \]
-Indeed the first operator is in \(M\) and the second is in \(M'\). Products and adjoints of bounded decomposable fields integrate to the corresponding operator products and adjoints. The countable common-null localization proof, or its localized frame tests, therefore yields one conull set on which
+Indeed the first operator is in \(M\) and the second is in \(M'\). Products and adjoints of bounded decomposable fields integrate to the corresponding operator products and adjoints. The [countable common-null localization proof](../../OA-MOD/OA-MOD-DC.html#exact-common-null-set-localization-of-specified-data), or its localized frame tests, therefore yields one conull set on which
 \[
  [V_y(q)a_j(y)V_y(q)^*,b_l(y)]=0
  \qquad(q\in Q,\ j,l\ge1).
@@ -745,7 +745,7 @@ Taking the intersection of the whole-algebra equalities (C1) and (C3) gives
  Z(M)=\int_Y^\oplus Z(M_y)\,d\nu(y).
  \tag{C12}
 \]
-For completeness, a central global operator lies in both integral algebras. The uniqueness of decomposable fields identifies its two representatives off a null set, so its fibre belongs to both \(M_y\) and \(M_y'\). Conversely every essentially bounded measurable field in their intersection integrates to an element of both \(M\) and \(M'\). This is the full centre-field argument.
+For completeness, a central global operator lies in both integral algebras. The uniqueness of decomposable fields identifies its two representatives off a null set, so its fibre belongs to both \(M_y\) and \(M_y'\). Conversely every essentially bounded measurable field in their intersection integrates to an element of both \(M\) and \(M'\). This is the full [centre-field argument](../../OA-MOD/OA-MOD-DC.html#centers-and-the-factor-decomposition).
 
 On each retained fibre put
 \[
@@ -755,7 +755,7 @@ On each retained fibre put
 \]
 The last equality follows from strong continuity: commutation with every \(V_y(q)\) passes to the strong limit \(V_y(g)\). We verify measurability of this algebra field and of the tests for its nonscalar elements.
 
-Realize the measurable Hilbert field as \(H_y=P_y\ell^2\), using the ambient Hilbert-field realization. Extend each fibre operator by zero on \(H_y^\perp\). In the WOT compact metrizable unit ball of \(B(\ell^2)\), the unit ball of \(F_y\) is exactly the set of solutions of
+Realize the measurable Hilbert field as \(H_y=P_y\ell^2\), using the [ambient Hilbert-field realization](../../OA-MOD/OA-MOD-DF.html#ambient-realization-and-the-effros-closed-subspace-condition). Extend each fibre operator by zero on \(H_y^\perp\). In the WOT compact metrizable unit ball of \(B(\ell^2)\), the unit ball of \(F_y\) is exactly the set of solutions of
 \[
  \begin{gathered}
  T=P_yTP_y,\\
@@ -766,7 +766,7 @@ Realize the measurable Hilbert field as \(H_y=P_y\ell^2\), using the ambient Hil
 \]
 The first two commutation families say precisely that the restriction of \(T\) is in \(M_y'\cap M_y\). The last one is the fixedness condition. For each fixed \(y\), every matrix coefficient of the equations is WOT continuous in \(T\), since multiplication by a fixed bounded operator is WOT continuous. For each fixed \(T\), the coefficients are measurable in \(y\), by measurability of operator products and adjoints. Enumerate the coefficients against the ambient basis and their real and imaginary parts. These are countably many closed equations, with the zero operator as a solution at every point.
 
-The compact-equation selector and dense-selector proof applies to exactly these equations. It supplies measurable contraction sections \(z_k(y)\) such that
+The [compact-equation selector and dense-selector proof](../../OA-MOD/OA-MOD-DC.html#measurable-selectors-for-countably-many-continuous-closed-equations) applies to exactly these equations. It supplies measurable contraction sections \(z_k(y)\) such that
 \[
  \{z_k(y):k\ge1\}\quad\hbox{is WOT dense in }(F_y)_1
  \quad\hbox{for every retained }y.
@@ -786,7 +786,7 @@ To prove the inclusion from left to right, use (C12) and localize the equalities
 <a id="oa-flow.centerg.scalar"></a>
 ## Detecting and excluding nonscalar fixed centres
 
-Choose the compact measurable orthonormal frame \((e_r(y))\) supplied by the Hilbert-field frame construction: the nonzero vectors are an orthonormal basis, and zero vectors follow when the dimension is finite. In particular \(\|e_1(y)\|=1\) on our nonzero fibres. Following the explicit centre test in the preceding DC result, define
+Choose the compact measurable orthonormal frame \((e_r(y))\) supplied by the [Hilbert-field frame construction](../../OA-MOD/OA-MOD-DF.html#compact-orthonormal-frames-and-measurable-dimension): the nonzero vectors are an orthonormal basis, and zero vectors follow when the dimension is finite. In particular \(\|e_1(y)\|=1\) on our nonzero fibres. Following the explicit centre test in the preceding DC result, define
 \[
  c_k(y)=\langle z_k(y)e_1(y),e_1(y)\rangle,
  \qquad t_k(y)=z_k(y)-c_k(y)1_y.

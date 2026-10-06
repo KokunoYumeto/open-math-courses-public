@@ -51,7 +51,7 @@ Follow the final proofs back to the earlier applications they complete.
 - **Lesson 24.** [Brauer groups of local and global fields](src/brauer-groups-of-local-and-global-fields.md) — all: Brauer invariants, fundamental classes, Weil extensions and tower bounds.
 - **Lesson 12.** [Weil groups and one-dimensional representations](src/weil-groups-and-one-dimensional-representations.md) — 7: global compatibility, with lesson 17 in function fields and lesson 24 in number fields.
 - **Lesson 19.** [Hilbert and ring class fields, and quadratic prime forms](src/hilbert-and-ring-class-fields-and-quadratic-prime-forms.md) — 9: iteration of the Hilbert field, pointing to the full infinite-tower theorem in lesson 24.
-- **Lesson 21.** [Artin L-functions, conductors and discriminants](src/artin-l-functions-conductors-and-discriminants.md) — 8: global orthogonal consequence, with its separately stated external prerequisite.
+- **Lesson 21.** [Artin L-functions, conductors and discriminants](src/artin-l-functions-conductors-and-discriminants.md) — 8: global orthogonal consequence, with its precisely located programme prerequisites.
 
 ## Tracking hypotheses
 

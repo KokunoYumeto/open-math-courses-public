@@ -2,7 +2,7 @@
 
 A subanalytic chain records an orientation and a coefficient on each smooth piece of a given dimension. Its support includes limiting points of those pieces. A cycle satisfies an additional compatibility condition at those limiting points. The dualizing object expresses that condition even at a branch or a singularity, where an orientation line on a manifold would be insufficient.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 We use the subanalytic filtrations and local finiteness established in the preceding constructibility lessons, and the locally closed support, exceptional-composition and manifold-orientation lessons of SH-02. The dualizing complex from oriented simplices fixes the incidence signs used in the examples. Subanalytic chains were introduced for this purpose by M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §1. Proper images, products, the local contraction proving the full chain resolution, coefficient flatness and intersections are treated in the following lessons.
 

@@ -2,7 +2,7 @@
 
 A cotangent inverse image needs a map between dualizing coefficients, as well as an image of its carrier. The map comes from comparing a graph with a diagonal. Its adjoint is an isomorphism even when the derivative changes rank. Properness is a separate condition on the carrier to which the operation is applied.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Use Lagrangian cycles and proper cotangent images for the sheaf \(\mathcal L_X\), its coefficient \(E_X=\pi_X^{-1}\omega_X\), relative orientation and the direct image. Isotropic cotangent transport and discrete critical values supplies the geometric transport theorem. Our exact current SH-02 prerequisites are the graph-supported microlocalization formula, the two microlocal functorial squares and their specified adjunction compatibility, with their ordered orientation extraction.
 

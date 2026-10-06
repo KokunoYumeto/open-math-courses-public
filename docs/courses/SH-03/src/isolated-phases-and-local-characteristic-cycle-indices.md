@@ -8,7 +8,7 @@ For the signed ordinary boundary estimate and supported finite-band Morse map, u
 
 Throughout, \(X\) is a finite-dimensional real analytic manifold, Hausdorff and countable at infinity, \(k\) is a field of characteristic zero, and \(F\in D^b_{\mathbb R\text{-}c}(k_X)\) has perfect stalks. Complexes are globally bounded. The closed support is \(\pi\operatorname{SS}(F)\), which can contain a point where the ordinary stalk vanishes. All cotangent conicity uses positive scalars.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## The local number and the closed test
 

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compactness and convex closure for normal-weight proofs · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/notes/analytic-programme/convex-foundations-programme.html">
+<link rel="stylesheet" href="../../../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="../../reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../">All courses</a> <span aria-hidden="true">›</span> <a href="../../">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Proof note</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="compactness-and-convex-closure-for-normal-weight-proofs">Compactness and convex closure for normal-weight proofs</h1>
+<p><strong>Classical proof exposition assembled and corrected by OpenAI Codex, GPT-6 Astra / Ultra. Self-checked by the writing AI.</strong></p>
+<p>Bounded slices are often easier to control than an entire convex set. This note proves the passage from those slices to weak-star closedness, together with the real/complex and product-topology facts needed by the normal-weight construction. No separability, boundedness of the whole convex set, balancedness or sequential weak-star test is assumed.</p>
+<p>The full Hahn–Banach proof and point-separation argument are written in <a href="../real-coercivity/predual-prerequisites.html">NP1–NP2</a>. <a href="../../OA-MOD-AB.html#OA-MOD-AB-05">AB04–AB05</a> prove compact products and Banach–Alaoglu, including arbitrary normed preduals. The real and complex Hilbert representation arguments are in <a href="../real-coercivity/real-coercive-equations.html#the-real-hilbert-tools-used-below">the real Hilbert proof</a> and <a href="../../OA-MOD-BK.html#OA-MOD-BK-01">BK01</a>. The norm topology, complete scalar fields and maximal principle are the common entry assumptions.</p>
+<p>The Krein–Šmulian argument preserves the course's previously written finite-cover proof and its corrections. The human mathematical sources are Javier Falcó and Daniel Isert, <a href="https://link.springer.com/article/10.1007/s13163-025-00536-6"><em>G-strong subdifferentiability and applications to norm attaining subspaces</em>, §3.4</a>, an open-access article under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, and Jacob Lurie, <a href="https://people.math.harvard.edu/~lurie/261ynotes/lecture12.pdf"><em>Math 261y, Lecture 12</em>, Theorem 6, page 3</a>. The latter gives a second finite-cover construction. The full coefficient and affine-slice arguments needed here are written below. No citation substitutes for a proof.</p>
+<h2 id="cv1-extension-with-a-seminorm-and-convex-separation">CV1 — Extension with a seminorm and convex separation</h2>
+<p>NP1 proves the real dominated-extension theorem for every finite sublinear function. In particular, let <span class="math" data-tex="\(p\)">\(p\)</span> be a seminorm and let <span class="math" data-tex="\(h\)">\(h\)</span> be linear on a subspace with <span class="math" data-tex="\(|h|\leq p\)">\(|h|\leq p\)</span>. In the real case, extension dominated by <span class="math" data-tex="\(p\)">\(p\)</span>, applied also to <span class="math" data-tex="\(-x\)">\(-x\)</span>, has the same absolute bound. In the complex case, extend <span class="math" data-tex="\(\operatorname{Re}h\)">\(\operatorname{Re}h\)</span> as a real functional <span class="math" data-tex="\(f\leq p\)">\(f\leq p\)</span>, then set
+<span class="math math-display" data-tex="\[
+H(x)=f(x)-if(ix).
+\]">\[
+H(x)=f(x)-if(ix).
+\]</span>
+As in NP1, evaluation at <span class="math" data-tex="\(ix\)">\(ix\)</span> proves complex linearity and agreement with <span class="math" data-tex="\(h\)">\(h\)</span>. Choose <span class="math" data-tex="\(|\lambda|=1\)">\(|\lambda|=1\)</span> with <span class="math" data-tex="\(\lambda H(x)=|H(x)|\)">\(\lambda H(x)=|H(x)|\)</span>. Complex absolute homogeneity of the seminorm gives
+<span class="math math-display" data-tex="\[
+|H(x)|=f(\lambda x)\leq p(\lambda x)=p(x).
+\]">\[
+|H(x)|=f(\lambda x)\leq p(\lambda x)=p(x).
+\]</span>
+Thus continuity of <span class="math" data-tex="\(p\)">\(p\)</span> implies continuity of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>If a functional is continuous on a subspace for the topology induced by a locally convex space, some finite maximum <span class="math" data-tex="\(p_0\)">\(p_0\)</span> of continuous seminorms has <span class="math" data-tex="\(|h(x)|&lt;1\)">\(|h(x)|&lt;1\)</span> whenever <span class="math" data-tex="\(p_0(x)&lt;\varepsilon\)">\(p_0(x)&lt;\varepsilon\)</span> on that subspace, for an <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. When <span class="math" data-tex="\(p_0(x)&gt;0\)">\(p_0(x)&gt;0\)</span>, apply the bound to <span class="math" data-tex="\(tx\)">\(tx\)</span> for <span class="math" data-tex="\(0&lt;t&lt;\varepsilon/p_0(x)\)">\(0&lt;t&lt;\varepsilon/p_0(x)\)</span>, then let <span class="math" data-tex="\(t\)">\(t\)</span> increase to that endpoint. This gives <span class="math" data-tex="\(|h(x)|\leq p_0(x)/\varepsilon\)">\(|h(x)|\leq p_0(x)/\varepsilon\)</span>. When <span class="math" data-tex="\(p_0(x)=0\)">\(p_0(x)=0\)</span>, arbitrary positive <span class="math" data-tex="\(t\)">\(t\)</span> gives <span class="math" data-tex="\(h(x)=0\)">\(h(x)=0\)</span>. The preceding extension with the continuous seminorm <span class="math" data-tex="\(p_0/\varepsilon\)">\(p_0/\varepsilon\)</span> therefore proves continuous extension. No closedness or completeness of the subspace is required.</p>
+<p>NP2 proves strict separation of a point from a nonempty closed convex set, by a continuous real functional with a positive margin. It also proves that equal continuous real duals give equal closures of convex sets. We will apply precisely this point-separation statement to the norm closure of a convex image in <span class="math" data-tex="\(c_0\)">\(c_0\)</span>. This avoids requiring an additional open-set separation theorem.</p>
+<h2 id="cv2-weak-compactness-of-hilbert-balls">CV2 — Weak compactness of Hilbert balls</h2>
+<p><strong>Claim.</strong> Every closed norm ball of a real or complex Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span> is compact for its weak topology. No dimension or separability restriction is imposed.</p>
+<p><strong>Proof.</strong> Use the course convention that the inner product is linear in its first variable. Riesz representation gives the surjective isometry</p>
+<span class="math math-display" data-tex="\[
+J:H\longrightarrow H^*,\qquad (Jy)(x)=\langle x,y\rangle.
+\]">\[
+J:H\longrightarrow H^*,\qquad (Jy)(x)=\langle x,y\rangle.
+\]</span>
+<p>Over the complex scalars <span class="math" data-tex="\(J\)">\(J\)</span> is conjugate linear. For every fixed <span class="math" data-tex="\(x\)">\(x\)</span>, the function <span class="math" data-tex="\(y\mapsto (Jy)(x)=\overline{\langle y,x\rangle}\)">\(y\mapsto (Jy)(x)=\overline{\langle y,x\rangle}\)</span> is weakly continuous. Since weak* topology is the initial topology of all evaluations, <span class="math" data-tex="\(J\)">\(J\)</span> is continuous from weak <span class="math" data-tex="\(H\)">\(H\)</span> to weak* <span class="math" data-tex="\(H^*\)">\(H^*\)</span>. Conversely, every bounded linear functional on <span class="math" data-tex="\(H\)">\(H\)</span> is <span class="math" data-tex="\(y\mapsto\langle y,x\rangle\)">\(y\mapsto\langle y,x\rangle\)</span> for some <span class="math" data-tex="\(x\)">\(x\)</span>; its composite with <span class="math" data-tex="\(J^{-1}\)">\(J^{-1}\)</span> is <span class="math" data-tex="\(f\mapsto\overline{f(x)}\)">\(f\mapsto\overline{f(x)}\)</span>, which is weak* continuous. Thus <span class="math" data-tex="\(J^{-1}\)">\(J^{-1}\)</span> is continuous into weak <span class="math" data-tex="\(H\)">\(H\)</span>. This proves that <span class="math" data-tex="\(J\)">\(J\)</span> is a homeomorphism for these two topologies. Its isometry property carries a closed ball onto the corresponding closed ball in <span class="math" data-tex="\(H^*\)">\(H^*\)</span>, which is weak* compact by AB05. Pull back this compact set by <span class="math" data-tex="\(J^{-1}\)">\(J^{-1}\)</span>. The real case is the same with conjugation removed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="cv3-krein-šmulian-at-arbitrary-banach-space-generality">CV3 — Krein–Šmulian at arbitrary Banach-space generality</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be any real or complex Banach space, and let <span class="math" data-tex="\(C\subseteq X^*\)">\(C\subseteq X^*\)</span> be convex. Then <span class="math" data-tex="\(C\)">\(C\)</span> is weak* closed if and only if <span class="math" data-tex="\(C\cap r\overline B_{X^*}\)">\(C\cap r\overline B_{X^*}\)</span> is weak* closed for every <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Equivalently one may test all closed norm balls, or just the zero-centered balls of positive integer radius. No boundedness, balancedness, separability or prior closedness assumption on <span class="math" data-tex="\(C\)">\(C\)</span> is imposed.</p>
+<p><strong>Proof of the separation mechanism.</strong> Suppose <span class="math" data-tex="\(D\subseteq X^*\)">\(D\subseteq X^*\)</span> is nonempty and convex, all its bounded ball slices are weak* closed, and <span class="math" data-tex="\(D\cap\overline B_{X^*}=\varnothing\)">\(D\cap\overline B_{X^*}=\varnothing\)</span>. We will construct <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Re}f(x)\geq1\qquad(f\in D).
+\]">\[
+\operatorname{Re}f(x)\geq1\qquad(f\in D).
+\]</span>
+<p>For a set <span class="math" data-tex="\(A\subseteq X\)">\(A\subseteq X\)</span>, write <span class="math" data-tex="\(P(A)=\{f:|f(a)|\leq1\text{ for all }a\in A\}\)">\(P(A)=\{f:|f(a)|\leq1\text{ for all }a\in A\}\)</span>. Set <span class="math" data-tex="\(F_0=\{0\}\)">\(F_0=\{0\}\)</span>. We construct finite sets <span class="math" data-tex="\(F_n\subseteq n^{-1}\overline B_X\)">\(F_n\subseteq n^{-1}\overline B_X\)</span>, each containing zero, such that</p>
+<span class="math math-display" data-tex="\[
+D\cap n\overline B_{X^*}\cap P(F_0\cup\cdots\cup F_{n-1})=\varnothing
+\qquad(n\geq1).
+\tag{KS1}
+\]">\[
+D\cap n\overline B_{X^*}\cap P(F_0\cup\cdots\cup F_{n-1})=\varnothing
+\qquad(n\geq1).
+\tag{KS1}
+\]</span>
+<p>The case <span class="math" data-tex="\(n=1\)">\(n=1\)</span> is the assumed disjointness. Suppose <span class="math" data-tex="\(KS1\)">\(KS1\)</span> holds at <span class="math" data-tex="\(n\)">\(n\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+Q_n=D\cap(n+1)\overline B_{X^*}\cap P(F_0\cup\cdots\cup F_{n-1}).
+\]">\[
+Q_n=D\cap(n+1)\overline B_{X^*}\cap P(F_0\cup\cdots\cup F_{n-1}).
+\]</span>
+<p>This is weak* compact: the first ball slice is closed inside a weak* compact ball, and every polar constraint is weak* closed. Each <span class="math" data-tex="\(f\in Q_n\)">\(f\in Q_n\)</span> has <span class="math" data-tex="\(\|f\|&gt;n\)">\(\|f\|&gt;n\)</span>, by <span class="math" data-tex="\(KS1\)">\(KS1\)</span>. By the definition of operator norm there is <span class="math" data-tex="\(a\in n^{-1}\overline B_X\)">\(a\in n^{-1}\overline B_X\)</span> with <span class="math" data-tex="\(|f(a)|&gt;1\)">\(|f(a)|&gt;1\)</span>. Thus the weak* open sets <span class="math" data-tex="\(\{f:|f(a)|&gt;1\}\)">\(\{f:|f(a)|&gt;1\}\)</span>, indexed by such <span class="math" data-tex="\(a\)">\(a\)</span>, cover <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span>. Choose finitely many covering vectors, and add zero to obtain <span class="math" data-tex="\(F_n\)">\(F_n\)</span>. If <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span> is empty, take <span class="math" data-tex="\(F_n=\{0\}\)">\(F_n=\{0\}\)</span>. Intersecting <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span> with <span class="math" data-tex="\(P(F_n)\)">\(P(F_n)\)</span> gives the empty set, which is <span class="math" data-tex="\(KS1\)">\(KS1\)</span> at <span class="math" data-tex="\(n+1\)">\(n+1\)</span>.</p>
+<p>List the finite blocks <span class="math" data-tex="\(F_0,F_1,F_2,\ldots\)">\(F_0,F_1,F_2,\ldots\)</span> in order, keeping repetitions, to get a sequence <span class="math" data-tex="\((u_j)_{j\geq1}\)">\((u_j)_{j\geq1}\)</span>. Each block is nonempty; hence the sequence is infinite. It tends to zero in norm, because only finitely many vectors occur before any fixed block and every vector in <span class="math" data-tex="\(F_n\)">\(F_n\)</span> has norm at most <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. For any <span class="math" data-tex="\(f\in D\)">\(f\in D\)</span>, choose an integer <span class="math" data-tex="\(n\geq\|f\|\)">\(n\geq\|f\|\)</span>. Formula <span class="math" data-tex="\(KS1\)">\(KS1\)</span> shows that some vector in the first <span class="math" data-tex="\(n\)">\(n\)</span> blocks satisfies <span class="math" data-tex="\(|f(u_j)|&gt;1\)">\(|f(u_j)|&gt;1\)</span>.</p>
+<p>Define the bounded linear map</p>
+<span class="math math-display" data-tex="\[
+T:X^*\longrightarrow c_0(\mathbb F),\qquad Tf=(f(u_j))_{j\geq1},
+\quad\mathbb F=\mathbb R\text{ or }\mathbb C.
+\]">\[
+T:X^*\longrightarrow c_0(\mathbb F),\qquad Tf=(f(u_j))_{j\geq1},
+\quad\mathbb F=\mathbb R\text{ or }\mathbb C.
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(|f(u_j)|\leq\|f\|\|u_j\|\to0\)">\(|f(u_j)|\leq\|f\|\|u_j\|\to0\)</span>, and <span class="math" data-tex="\(\|Tf\|_\infty\leq\|f\|\sup_j\|u_j\|\)">\(\|Tf\|_\infty\leq\|f\|\sup_j\|u_j\|\)</span>. Every element of <span class="math" data-tex="\(T(D)\)">\(T(D)\)</span> has norm strictly greater than one. Continuity of the norm implies that its norm closure <span class="math" data-tex="\(C_0\)">\(C_0\)</span> is contained in <span class="math" data-tex="\(\{z:\|z\|_\infty\geq1\}\)">\(\{z:\|z\|_\infty\geq1\}\)</span>; in particular <span class="math" data-tex="\(0\notin C_0\)">\(0\notin C_0\)</span>. The closure is convex by NP2. Apply that note's point-separation theorem to <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, in the real normed space underlying <span class="math" data-tex="\(c_0(\mathbb F)\)">\(c_0(\mathbb F)\)</span>. Reverse the sign and divide by the resulting positive separation margin. This gives a continuous real linear functional <span class="math" data-tex="\(L\)">\(L\)</span> with <span class="math" data-tex="\(L(Tf)\geq1\)">\(L(Tf)\geq1\)</span> for every <span class="math" data-tex="\(f\in D\)">\(f\in D\)</span>. Its norm is finite and positive; it need not equal one.</p>
+<p>Here is the coefficient representation, including its needed norm bound. In the real case put <span class="math" data-tex="\(a_j=L(e_j)\)">\(a_j=L(e_j)\)</span>; in the complex case put <span class="math" data-tex="\(a_j=L(e_j)-iL(ie_j)\)">\(a_j=L(e_j)-iL(ie_j)\)</span>, where <span class="math" data-tex="\(e_j\)">\(e_j\)</span> is the <span class="math" data-tex="\(j\)">\(j\)</span>-th coordinate vector. For every finitely supported <span class="math" data-tex="\(z\)">\(z\)</span>, real linearity gives</p>
+<span class="math math-display" data-tex="\[
+L(z)=\operatorname{Re}\sum_j a_jz_j.
+\]">\[
+L(z)=\operatorname{Re}\sum_j a_jz_j.
+\]</span>
+<p>For every finite index set, choose the coordinates <span class="math" data-tex="\(z_j\)">\(z_j\)</span> of modulus one so that <span class="math" data-tex="\(a_jz_j=|a_j|\)">\(a_jz_j=|a_j|\)</span>, taking any modulus-one value if <span class="math" data-tex="\(a_j=0\)">\(a_j=0\)</span>, and put the remaining coordinates equal to zero. Since <span class="math" data-tex="\(\|z\|_\infty\leq1\)">\(\|z\|_\infty\leq1\)</span>, this yields <span class="math" data-tex="\(\sum_{j\in F}|a_j|\leq\|L\|\)">\(\sum_{j\in F}|a_j|\leq\|L\|\)</span>. Thus <span class="math" data-tex="\((a_j)\in\ell^1\)">\((a_j)\in\ell^1\)</span>. Truncations of any <span class="math" data-tex="\(z\in c_0\)">\(z\in c_0\)</span> converge in the sup norm, so continuity gives</p>
+<span class="math math-display" data-tex="\[
+L(z)=\operatorname{Re}\sum_{j=1}^{\infty}a_jz_j,
+\qquad \sum_{j=1}^{\infty}|a_j|=\|L\|.
+\]">\[
+L(z)=\operatorname{Re}\sum_{j=1}^{\infty}a_jz_j,
+\qquad \sum_{j=1}^{\infty}|a_j|=\|L\|.
+\]</span>
+<p>The last equality follows because the displayed representation also gives <span class="math" data-tex="\(\|L\|\leq\sum_j|a_j|\)">\(\|L\|\leq\sum_j|a_j|\)</span>. In the real case omit real parts and use signs instead of phases. The norm of any tail of <span class="math" data-tex="\(\sum_j a_ju_j\)">\(\sum_j a_ju_j\)</span> is at most <span class="math" data-tex="\((\sup_j\|u_j\|)\sum_{j\text{ in the tail}}|a_j|\)">\((\sup_j\|u_j\|)\sum_{j\text{ in the tail}}|a_j|\)</span>. The scalar tail tends to zero. The partial sums are therefore Cauchy, and completeness of <span class="math" data-tex="\(X\)">\(X\)</span> gives <span class="math" data-tex="\(x=\sum_j a_ju_j\in X\)">\(x=\sum_j a_ju_j\in X\)</span>. Each <span class="math" data-tex="\(f\in X^*\)">\(f\in X^*\)</span> is continuous, hence</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Re}f(x)
+=\operatorname{Re}\sum_j a_jf(u_j)=L(Tf)\geq1
+\qquad(f\in D).
+\tag{KS2}
+\]">\[
+\operatorname{Re}f(x)
+=\operatorname{Re}\sum_j a_jf(u_j)=L(Tf)\geq1
+\qquad(f\in D).
+\tag{KS2}
+\]</span>
+<p><strong>Proof of the full theorem.</strong> Assume the bounded-slice condition on <span class="math" data-tex="\(C\)">\(C\)</span>. Then <span class="math" data-tex="\(C\)">\(C\)</span> is norm closed. To see this, a norm-convergent sequence in <span class="math" data-tex="\(C\)">\(C\)</span> is bounded and converges weak*, so its limit belongs to one of the weak* closed ball slices. For a point in the norm closure, choose a point of <span class="math" data-tex="\(C\)">\(C\)</span> within <span class="math" data-tex="\(1/n\)">\(1/n\)</span> for each <span class="math" data-tex="\(n\)">\(n\)</span>; the resulting sequence converges in norm. The preceding observation puts its limit in <span class="math" data-tex="\(C\)">\(C\)</span>, proving norm closedness. This step does not make any assertion that weak* closure can be detected by sequences.</p>
+<p>If <span class="math" data-tex="\(C\)">\(C\)</span> is empty there is nothing to prove. Given <span class="math" data-tex="\(f_0\notin C\)">\(f_0\notin C\)</span>, norm closedness supplies <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> with <span class="math" data-tex="\((f_0+\delta\overline B_{X^*})\cap C=\varnothing\)">\((f_0+\delta\overline B_{X^*})\cap C=\varnothing\)</span>. Put <span class="math" data-tex="\(D=\delta^{-1}(C-f_0)\)">\(D=\delta^{-1}(C-f_0)\)</span>. It is nonempty, convex, and disjoint from the closed unit ball. Its slices have the required weak* closedness: for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, choose <span class="math" data-tex="\(R\geq\|f_0\|+\delta r\)">\(R\geq\|f_0\|+\delta r\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+D\cap r\overline B_{X^*}
+=\delta^{-1}\left(((C\cap R\overline B_{X^*})
+\cap(f_0+\delta r\overline B_{X^*}))-f_0\right).
+\]">\[
+D\cap r\overline B_{X^*}
+=\delta^{-1}\left(((C\cap R\overline B_{X^*})
+\cap(f_0+\delta r\overline B_{X^*}))-f_0\right).
+\]</span>
+<p>The set inside the parentheses is weak* compact, using the hypothesis and Banach–Alaoglu. Translation and multiplication by a nonzero scalar are weak* homeomorphisms, so the displayed slice is compact and therefore closed in the Hausdorff weak* topology. Apply <span class="math" data-tex="\(KS2\)">\(KS2\)</span> to <span class="math" data-tex="\(D\)">\(D\)</span>. There is a fixed <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> with <span class="math" data-tex="\(\operatorname{Re}(f-f_0)(x)\geq\delta\)">\(\operatorname{Re}(f-f_0)(x)\geq\delta\)</span> for every <span class="math" data-tex="\(f\in C\)">\(f\in C\)</span>. The set</p>
+<span class="math math-display" data-tex="\[
+\{g\in X^*: \operatorname{Re}(g-f_0)(x)&lt;\delta\}
+\]">\[
+\{g\in X^*: \operatorname{Re}(g-f_0)(x)&lt;\delta\}
+\]</span>
+<p>is a weak* open neighborhood of <span class="math" data-tex="\(f_0\)">\(f_0\)</span> disjoint from <span class="math" data-tex="\(C\)">\(C\)</span>. Every point outside <span class="math" data-tex="\(C\)">\(C\)</span> therefore lies outside its weak* closure. This proves weak* closedness. The converse follows by intersecting two weak* closed sets; the alternate ball formulations follow from CV4. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="cv4-products-real-parts-and-arbitrary-ball-centers">CV4 — Products, real parts and arbitrary ball centers</h2>
+<p><strong>Claim.</strong> If <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span> and <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span> are locally convex topologies on <span class="math" data-tex="\(V_j\)">\(V_j\)</span>, for <span class="math" data-tex="\(j=1,2\)">\(j=1,2\)</span>, with the same continuous scalar dual on each factor, then the product topologies <span class="math" data-tex="\(\tau_1\times\tau_2\)">\(\tau_1\times\tau_2\)</span> and <span class="math" data-tex="\(\rho_1\times\rho_2\)">\(\rho_1\times\rho_2\)</span> have the same convex closures.</p>
+<p><strong>Proof.</strong> A linear functional on <span class="math" data-tex="\(V_1\times V_2\)">\(V_1\times V_2\)</span> has the unique expression <span class="math" data-tex="\(L(x,y)=L_1(x)+L_2(y)\)">\(L(x,y)=L_1(x)+L_2(y)\)</span>, with <span class="math" data-tex="\(L_1(x)=L(x,0)\)">\(L_1(x)=L(x,0)\)</span> and <span class="math" data-tex="\(L_2(y)=L(0,y)\)">\(L_2(y)=L(0,y)\)</span>. If <span class="math" data-tex="\(L\)">\(L\)</span> is continuous, each restriction is continuous because the coordinate inclusions are continuous. If both restrictions are continuous, their sum after the coordinate projections is continuous. Equality of the duals on each factor therefore gives equality of the product duals. Apply NP2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(V\)">\(V\)</span> is a complex topological vector space and <span class="math" data-tex="\(u:V\to\mathbb R\)">\(u:V\to\mathbb R\)</span> is continuous and real linear, put <span class="math" data-tex="\(F(x)=u(x)-i u(ix)\)">\(F(x)=u(x)-i u(ix)\)</span>. Then <span class="math" data-tex="\(F(ix)=iF(x)\)">\(F(ix)=iF(x)\)</span>, and additivity and real homogeneity show that <span class="math" data-tex="\(F\)">\(F\)</span> is complex linear. It is continuous because <span class="math" data-tex="\(u\)">\(u\)</span> and multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> are continuous, and <span class="math" data-tex="\(\operatorname{Re}F=u\)">\(\operatorname{Re}F=u\)</span>. Conversely the real part of a continuous complex linear functional is continuous and real linear. This proves the real-part identification needed when comparing complex scalar duals for real-convex separation. It does not identify the continuous dual of <span class="math" data-tex="\(M_{\mathrm{sa}}\)">\(M_{\mathrm{sa}}\)</span> with a particular predual; that remains the separate predual contract.</p>
+<p>For a subset <span class="math" data-tex="\(C\subseteq X^*\)">\(C\subseteq X^*\)</span>, suppose <span class="math" data-tex="\(C\cap n\overline B_{X^*}\)">\(C\cap n\overline B_{X^*}\)</span> is weak* closed for every positive integer <span class="math" data-tex="\(n\)">\(n\)</span>. Every closed ball <span class="math" data-tex="\(\overline B(f,r)\)">\(\overline B(f,r)\)</span>, with <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, lies in <span class="math" data-tex="\(n\overline B_{X^*}\)">\(n\overline B_{X^*}\)</span> for an integer <span class="math" data-tex="\(n\geq\|f\|+r\)">\(n\geq\|f\|+r\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+C\cap\overline B(f,r)
+=(C\cap n\overline B_{X^*})\cap\overline B(f,r)
+\]">\[
+C\cap\overline B(f,r)
+=(C\cap n\overline B_{X^*})\cap\overline B(f,r)
+\]</span>
+<p>is weak* closed, because the ball is weak* closed by AB05. The converse is immediate by choosing the centered integer balls. Thus the two formulations of the bounded-slice hypothesis are equivalent. CV3 supplies the further passage from these slices to the whole convex set.</p>
+<h2 id="cv5-exact-use-for-weight-sublevel-sets">CV5 — Exact use for weight sublevel sets</h2>
+<p>The convex-analysis contract in NW01 requires extension, separation, weak-star compactness, weak compactness of Hilbert balls, and the full convex Krein–Šmulian theorem. CV1 together with NP1–NP2 supplies extension and separation; AB05 supplies dual-ball compactness; CV2 supplies Hilbert-ball compactness; CV3 proves the arbitrary real or complex Banach-space theorem; CV4 supplies the product and scalar-field conversions and arbitrary-center ball tests.</p>
+<p>These facts alone do not identify any concrete operator predual or its topology. CP06 supplies the onto predual duality, CP08–CP10 identify the continuous duals, and CP11 handles corners. Nor does this note prove that an order-normal weight has closed sublevel sets: those weight-theoretic arguments remain NW02–NW11. It supplies their convex-analysis input without assuming normality of a GNS representation, so it does not introduce the WG007/NP02 circularity that must be avoided.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="../../">Course contents</a><span></span></nav>
+<p class="small source-link"></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

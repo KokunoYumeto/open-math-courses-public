@@ -4,7 +4,7 @@ The complete lesson contains the full learner and full PR1–PR31 formal proof, 
 
 ## Download the unchanged original files
 
-The eleven original files below are byte-identical to the owner-admitted PR036 inputs. LICENSE.txt identifies the original-work dedication and retained component terms. The proof and learner downloads are full Markdown documents.
+The eleven original files below are byte-identical to the PR036 inputs. LICENSE.txt identifies the original-work dedication and retained component terms. The proof and learner downloads are full Markdown documents.
 
 - [geometry.json](../reproduce/L121/figures/geometry.json) — 2481 bytes; SHA-256 `0DE6E8D9A59DAE9470B5DD648E6217907FBEC6CA3E39BCDF8AABBA5A495E21FE`.
 - [normal-tube-phase-map.png](../reproduce/L121/figures/normal-tube-phase-map.png) — 79655 bytes; SHA-256 `D1A96575118FAEBAA542ED1CBE7D26AD143A5F123B3E57868F0D7B1B3641B72D`.
@@ -14,7 +14,7 @@ The eleven original files below are byte-identical to the owner-admitted PR036 i
 - [punctured-plane-cover.png](../reproduce/L121/figures/punctured-plane-cover.png) — 104910 bytes; SHA-256 `F61781F8E37EAAE7BCC8568E3922F2E522836EBE52B409DA60611590C9316524`.
 - [punctured-plane-cover.svg](../reproduce/L121/figures/punctured-plane-cover.svg) — 70997 bytes; SHA-256 `CCF13AC430ECA29D7DD273E3C6E36334ADC0ACACC844176DF308E45BEEB7A450`.
 - [make_figures.py](../reproduce/L121/make_figures.py) — 8984 bytes; SHA-256 `36E8159FFCDB54ED6B021345E73069E0CFA3FC546889AFA15D2C559E3ECC4771`.
-- projective-rational-periods-learner.md — 43141 bytes; SHA-256 `D70634480BC947E33D5DD7F9E1B63C9AD68F9BAF760CDDE078BA27FD493EB7CF`.
+- [projective-rational-periods-learner.md](../reproduce/L121/projective-rational-periods-learner.md) — 43141 bytes; SHA-256 `D70634480BC947E33D5DD7F9E1B63C9AD68F9BAF760CDDE078BA27FD493EB7CF`.
 - [projective-rational-periods-working-proof.md](../reproduce/L121/projective-rational-periods-working-proof.md) — 38481 bytes; SHA-256 `6D5AF96EE82B097A8BDF1A1A167BAE39C1C9A023096BAC4CE0778794254E4B06`.
 - [README-reproduce.md](../reproduce/L121/README-reproduce.md) — 1298 bytes; SHA-256 `7ADA00D0AB96319F3D895868E626EAB182CFD8225C65B7BADDC0E52D226A7B52`.
 - [LICENSE.txt](../reproduce/L121/LICENSE.txt) — 390 bytes; SHA-256 `747209EC407251B30C50DA5809DBF1C3CB25E50774FFEAEA98D575D4F3FC8FFA`.

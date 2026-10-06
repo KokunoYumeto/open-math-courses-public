@@ -1,6 +1,6 @@
 # Amenable actions, free centres, and isotropy obstructions
 
-*Original course text, October 2026. Author self-check only; not independently reviewed. New original expression and the native diagram are public domain (CC0).*
+*Original course text, October 2026. Self-checked by the writing AI. New original expression and the native diagram are public domain (CC0).*
 
 ## Introduction
 

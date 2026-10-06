@@ -57,9 +57,9 @@ shows why that stronger conclusion would be false.
 
 The initial cyclic representation is supplied by the
 [nonunital GNS theorem](OA-FLOW-GNS.md#gns-theorem-5-1). We also use the earlier constructions of
-continuous functional calculus,
-positivity and order, and
-unitization.
+[continuous functional calculus](OA-FLOW-CF.md#oa-flow.cf.6),
+[positivity and order](OA-FLOW-CF.md#oa-flow.cf.7), and
+[unitization](OA-FLOW-CF.md#oa-flow.cf.9).
 The proofs below provide the further precise links when they use measure
 representation, the abelian spectral model, and measurable Hilbert fields.
 
@@ -174,7 +174,7 @@ There is a normal positive unital contraction
  \psi(dE(b))=\psi(db)\qquad(d\in D,\ b\in D').
  \tag{A9}
 \]
-We construct it and prove its properties. First use the abelian diagonal model DC6 for \(D\), which applies because \(H\) is separable and nonzero. It gives a normal isomorphism \(\theta:L^\infty(Y,\lambda)\to D\), where \(\lambda\) is a Borel probability on a compact metric space. Set
+We construct it and prove its properties. First use the [abelian diagonal model DC6](../../OA-MOD/OA-MOD-DC.html#realizing-an-abelian-algebra-as-the-diagonal-algebra) for \(D\), which applies because \(H\) is separable and nonzero. It gives a normal isomorphism \(\theta:L^\infty(Y,\lambda)\to D\), where \(\lambda\) is a Borel probability on a compact metric space. Set
 \[
  \nu(F)=\psi(\theta(1_F)).
  \tag{A10}
@@ -191,7 +191,7 @@ The factors commute. More generally \(d\mapsto\psi(db)\) on \(D\) is the normal 
  0\leq\nu_b(F)\leq\|b\|\nu(F).
  \tag{A12}
 \]
-The full finite scalar Radon–Nikodym proof DC5 supplies a density \(h_b\). Testing the sets where \(h_b>\|b\|\) shows \(0\leq h_b\leq\|b\|\) almost everywhere. Define \(E(b)=\theta(h_b)\). Equality of the measures gives (A9), first for indicator \(d\), then simple \(d\), then every bounded \(d\) by uniform simple approximation.
+The full [finite scalar Radon–Nikodym proof DC5](../../OA-MOD/OA-MOD-DC.html#a-finite-radon-nikodym-density-from-hilbert-representation) supplies a density \(h_b\). Testing the sets where \(h_b>\|b\|\) shows \(0\leq h_b\leq\|b\|\) almost everywhere. Define \(E(b)=\theta(h_b)\). Equality of the measures gives (A9), first for indicator \(d\), then simple \(d\), then every bounded \(d\) by uniform simple approximation.
 
 Uniqueness of the density proves additivity and nonnegative homogeneity on \(D'_+\). This extends consistently to self-adjoint differences and then complex linearly to \(D'\): if \(b_1-b_2=c_1-c_2\) with all four elements positive, apply additivity to \(b_1+c_2=c_1+b_2\). The extension is positive, preserves adjoints and satisfies (A9). That identity determines \(E(b)\) uniquely in \(D\). Indeed, if \(z\in D\) pairs to zero against every \(d\in D\), take \(d=z^*\) and use faithfulness of \(\psi|_D\).
 
@@ -255,7 +255,7 @@ Normal vector functionals preserve these suprema because bounded increasing posi
 
 Apply the [continuous-core construction in L41](OA-FLOW-L41.md#oa-flow.cstd.setup) to the von Neumann algebra \(M=D\), with its whole centre \(D\) and the restricted action \(\gamma\). The separable predual and predual continuity required there were proved above. This produces a unital separable invariant \(C^*\)-subalgebra \(C_0\subseteq D\), with norm-continuous orbits and ultraweak closure \(D\).
 
-Here is the countable construction explicitly. Choose an ultraweakly dense sequence \((d_j)\) in the unit ball of \(D\) and a norm-dense sequence \((\omega_\ell)\) in the unit ball of \(D_*\). These choices are available from [CP6](OA-FLOW-CP.md#oa-flow.cp.6) and weak-star compactness ST1: on a bounded ball the countably many dense predual tests metrize the ultraweak topology. For each \(j,n\), choose an identity neighbourhood on which
+Here is the countable construction explicitly. Choose an ultraweakly dense sequence \((d_j)\) in the unit ball of \(D\) and a norm-dense sequence \((\omega_\ell)\) in the unit ball of \(D_*\). These choices are available from [CP6](OA-FLOW-CP.md#oa-flow.cp.6) and [weak-star compactness ST1](OA-FLOW-ST12.md#oa-flow.st.1): on a bounded ball the countably many dense predual tests metrize the ultraweak topology. For each \(j,n\), choose an identity neighbourhood on which
 \( |\omega_\ell(\gamma_s(d_j)-d_j)|<1/n\) for \(\ell\leq n\), and a nonnegative \(f_{j,n}\in C_c(G)\) supported there with Haar integral one. The [compact-bump construction](OA-FLOW-L24.md#oa-flow.grp.algebra) supplies these kernels for a locally compact Hausdorff group. Set
 \[
  d_{j,n}=\int_G f_{j,n}(s)\gamma_s(d_j)\,ds.
@@ -303,7 +303,7 @@ In this argument the centrality used is \(C\subseteq Z(B)\), which follows from 
 <a id="oa-flow.istate.base"></a>
 ## A compact probability model of the whole diagonal
 
-Let \(X=\operatorname{Spec}(C)\). The Gelfand theorem CF6 identifies \(C\) isometrically with \(C(X)\), writing \(\widehat c(x)=x(c)\). The space is compact Hausdorff and nonempty. It is metrizable: a countable norm-dense family in \(C\) separates characters, and evaluation embeds \(X\) into a countable product of compact metric disks. A continuous injection from a compact space into a Hausdorff space is a homeomorphism onto its image.
+Let \(X=\operatorname{Spec}(C)\). The [Gelfand theorem CF6](OA-FLOW-CF.md#oa-flow.cf.6) identifies \(C\) isometrically with \(C(X)\), writing \(\widehat c(x)=x(c)\). The space is compact Hausdorff and nonempty. It is metrizable: a countable norm-dense family in \(C\) separates characters, and evaluation embeds \(X\) into a countable product of compact metric disks. A continuous injection from a compact space into a Hausdorff space is a homeomorphism onto its image.
 
 The [Radon representation theorem HR2](OA-FLOW-HR.md#hr-02) gives a probability \(\mu\) with
 \[
@@ -328,7 +328,7 @@ It tends to zero, so \(T:G\times X\to X\) is jointly continuous. Invariance of \
  \tag{A27}
 \]
 
-We need a model of all of \(D\), not only its continuous subalgebra. The whole-algebra step in [L41](OA-FLOW-L41.md#oa-flow.cstd.setup), or equivalently [the compact-model theorem](../../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#4-the-compact-space-and-its-nonsingular-measure), applies to this particular faithful state and this particular \(C\). Its construction here is as follows. Let \(H_D=\overline{D\xi}\subseteq H\). This subspace reduces \(D\); restriction \(d\mapsto d|_{H_D}\) is normal, and faithful because \(d\xi=0\) implies \(\psi(d^*d)=0\). The faithful normal representation theorem ST2 makes its image a von Neumann algebra with normal inverse. The subspace \(C\xi\) is dense in \(H_D\): a vector orthogonal to it defines a normal vector functional vanishing on \(C\), hence on \(D\) by (A22), and hence is orthogonal to \(H_D\).
+We need a model of all of \(D\), not only its continuous subalgebra. The whole-algebra step in [L41](OA-FLOW-L41.md#oa-flow.cstd.setup), or equivalently [the compact-model theorem](../../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#4-the-compact-space-and-its-nonsingular-measure), applies to this particular faithful state and this particular \(C\). Its construction here is as follows. Let \(H_D=\overline{D\xi}\subseteq H\). This subspace reduces \(D\); restriction \(d\mapsto d|_{H_D}\) is normal, and faithful because \(d\xi=0\) implies \(\psi(d^*d)=0\). The [faithful normal representation theorem ST2](OA-FLOW-ST12.md#oa-flow.st.2) makes its image a von Neumann algebra with normal inverse. The subspace \(C\xi\) is dense in \(H_D\): a vector orthogonal to it defines a normal vector functional vanishing on \(C\), hence on \(D\) by (A22), and hence is orthogonal to \(H_D\).
 
 Equation (A24) makes
 \[
@@ -452,7 +452,7 @@ For all \(x\) one has
  \|h_b(x)-h_a(x)\|\leq\|b-a\|.
  \tag{G10}
 \]
-The Gram entries are continuous, every finite Gram matrix is positive, and the \(h_n(x)\) span a dense subspace of each \(K_x\). The countable Gram construction therefore gives the actual measurable Hilbert field: a section \(\eta\) is measurable exactly when every scalar test \(\langle\eta(x),h_n(x)\rangle\) is measurable. The field is obtained by quotienting and completing these very Gram matrices, so its fibres are the GNS spaces just specified, not unrelated Hilbert spaces of the same dimension.
+The Gram entries are continuous, every finite Gram matrix is positive, and the \(h_n(x)\) span a dense subspace of each \(K_x\). The [countable Gram construction](../../OA-MOD/OA-MOD-DF.html#countable-gram-data-determines-the-whole-measurable-structure) therefore gives the actual measurable Hilbert field: a section \(\eta\) is measurable exactly when every scalar test \(\langle\eta(x),h_n(x)\rangle\) is measurable. The field is obtained by quotienting and completing these very Gram matrices, so its fibres are the GNS spaces just specified, not unrelated Hilbert spaces of the same dimension.
 
 For completeness, the scalar tests also give the required measurability of norms. Enumerate the rational finite linear combinations \(d_l\) of the \(h_n\). Their values are dense in every fibre, and
 \[
@@ -463,7 +463,7 @@ For completeness, the scalar tests also give the required measurability of norms
 \]
 Consequently measurable sections are closed under measurable scalar multiplication, countable Borel pasting and fibrewise norm limits. The inequality in (G10) makes \(h_b\) measurable for every \(b\in B\), by norm approximation from the chosen sequence, and gives the uniform bound \(\|h_b(x)\|\leq\|b\|\). In particular \(x\mapsto\zeta_x=h_1(x)\) is a measurable unit section.
 
-For fixed \(b\in B\), the operator field \(\rho_x(b)\) is measurable: it sends \(h_n(x)\) to \(h_{bb_n}(x)\), a measurable section, and its norm is at most \(\|b\|\). The fundamental-section test for operator fields then applies to all measurable inputs. Indeed, measurable orthonormal coordinates express each input as a fibrewise limit of measurable finite sums, and the fibrewise operator bound allows passage to that limit.
+For fixed \(b\in B\), the operator field \(\rho_x(b)\) is measurable: it sends \(h_n(x)\) to \(h_{bb_n}(x)\), a measurable section, and its norm is at most \(\|b\|\). The [fundamental-section test for operator fields](../../OA-MOD/OA-MOD-DF.html#pointwise-bounded-operator-fields-adjoints-and-exact-norm-tests) then applies to all measurable inputs. Indeed, measurable orthonormal coordinates express each input as a fibrewise limit of measurable finite sums, and the fibrewise operator bound allows passage to that limit.
 
 These statements hold on all of \(X\). The positive functional
 \(\varphi_x=\psi_x\circ\pi\) on a nonunital \(A\) can still have norm less than one at some points. The [full-norm locus](#oa-flow.istate.nonunital), addressed next, is an invariant conull set on which it is a state and \(\rho_x\circ\pi\) is cyclic and nondegenerate on all of \(K_x\).
@@ -553,7 +553,7 @@ Now restrict to the invariant conull Borel set \(X_1\) established in the [full-
        \text{ is the cyclic GNS representation of }\varphi_x.
  \tag{G12}
 \]
-Use the restricted invariant probability, still denoted \(\mu\). The Hilbert direct-integral construction and localization proof gives the complete Hilbert space
+Use the restricted invariant probability, still denoted \(\mu\). The [Hilbert direct-integral construction and localization proof](../../OA-MOD/OA-MOD-DF.html#the-hilbert-direct-integral-localization-and-subsequences) gives the complete Hilbert space
 \(\mathcal K=\int_{X_1}^{\oplus}K_x\,d\mu(x)\) of square-integrable measurable sections.
 
 Define, initially on \(B\xi\),
@@ -860,7 +860,7 @@ At zero every member of \(A\) vanishes. At a positive \(x\), choose \(n\ge1/x\);
 
 The interval endpoints and open marker describe the exact sets in (E13)–(E15). The omitted point has a zero restricted functional despite the faithful integrated state. This diagram uses the same [reproduction code and exact data](../assets/invariant-state-fields/README.md) as the column diagram.
 
-This is an actual invariant-state instance with the trivial action of \(\mathbb R\). Its GNS representation is multiplication on \(L^2([0,1],dt)\), with cyclic vector \(1\). Functions vanishing at zero are dense in \(L^2\): continuous functions are dense by finite metric-measure regularity, and multiplying them by \(a_n\) gives convergence by dominated convergence. Thus \(1\) is cyclic and the representation of \(A\) is nondegenerate. Take the multiplication diagonal \(D=L^\infty([0,1])\). Its commutant is itself, by the whole diagonal-commutant theorem on one-dimensional fibres, or by the probability multiplication-commutant proof in [ED](OA-FLOW-ED.md#oa-flow.ergdec.multiplication). Here \(E\) is the identity and the expectation-closed unital algebra is \(B\).
+This is an actual invariant-state instance with the trivial action of \(\mathbb R\). Its GNS representation is multiplication on \(L^2([0,1],dt)\), with cyclic vector \(1\). Functions vanishing at zero are dense in \(L^2\): continuous functions are dense by finite metric-measure regularity, and multiplying them by \(a_n\) gives convergence by dominated convergence. Thus \(1\) is cyclic and the representation of \(A\) is nondegenerate. Take the multiplication diagonal \(D=L^\infty([0,1])\). Its commutant is itself, by the [whole diagonal-commutant theorem](../../OA-MOD/OA-MOD-DF.html#the-diagonal-commutant-is-exactly-the-decomposable-algebra) on one-dimensional fibres, or by the probability multiplication-commutant proof in [ED](OA-FLOW-ED.md#oa-flow.ergdec.multiplication). Here \(E\) is the identity and the expectation-closed unital algebra is \(B\).
 
 The GNS space of each \(\Psi_x\) on \(B\) is \(\mathbb C\). At \(x=0\), restricting its representation to \(A\) makes every operator zero on that nonzero space, so the restriction is degenerate and its vector functional has norm zero. At every point of \(X_1\), it is the one-dimensional cyclic GNS representation of a state. Removing the null boundary is therefore needed for the every-point state and nondegeneracy conclusions, even though it changes no global \(L^2\) class.
 

@@ -1,6 +1,6 @@
 # Almost-connected groups and the solvable radical
 
-*Original course text, October 2026. Author self-check in progress; not independently reviewed. New original expression is public domain (CC0).*
+*Original course text, October 2026. New original expression is public domain (CC0).*
 
 ## Introduction
 

@@ -47,12 +47,12 @@ Constructibility, sheaf operations and microlocal geometry. Each reading include
 - [SH02-MEP-UNIT. Following the comparison maps into the normal bundle](SH02-microlocal-endpoint-propagation.html) · [source](src/SH02/microlocal-endpoint-propagation.md)
 - [SH02-MHPR — Product recovery for microlocal composition](SH02-microlocal-hom-product-recovery.html) · [source](src/SH02/microlocal-hom-product-recovery.md)
 - [SH02-EXCEPTIONAL-OPERATIONS — Exceptional inverse image from a finite resolution](SH02-exceptional-operations.html) · [source](src/SH02/exceptional-operations.md)
-- [SH02-MD — Local orientations, dimension, and integration](SH02-manifold-duality.html) · source
-- [SH02-CB-UNIT — Finite local data and sheaf biduality](SH02-cohomological-biduality.html) · source
-- [SH02-GAM — Directional neighborhoods and a sheaf projector](SH02-cone-topology.html) · source
-- [Moving Fourier kernels across maps and products](SH02-fourier-functoriality.html) · source
+- [SH02-MD — Local orientations, dimension, and integration](SH02-manifold-duality.html) · [source](src/SH02/manifold-duality.md)
+- [SH02-CB-UNIT — Finite local data and sheaf biduality](SH02-cohomological-biduality.html) · [source](src/SH02/cohomological-biduality.md)
+- [SH02-GAM — Directional neighborhoods and a sheaf projector](SH02-cone-topology.html) · [source](src/SH02/cone-topology.md)
+- [Moving Fourier kernels across maps and products](SH02-fourier-functoriality.html) · [source](src/SH02/fourier-functoriality.md)
 - [Reading a sheaf at the normal scale](SH02-specialization.html) · [source](src/SH02/specialization.md)
-- [Covector tests of normal limits](SH02-microlocalization.html) · source
+- [Covector tests of normal limits](SH02-microlocalization.html) · [source](src/SH02/microlocalization.md)
 - [Composing sheaf operators through an intermediate space](SH02-kernel-calculus.html) · [source](src/SH02/kernel-calculus.md)
 - [Complex conicity and analytic Lagrangian closures](SH03-complex-conicity-and-analytic-lagrangian-closures.html) · [source](src/SH03/complex-conicity-and-analytic-lagrangian-closures.md)
 - [SH02-MST — Detecting and removing directional obstructions](SH02-microsupport-tests.html) · [source](src/SH02/microsupport-tests.md)
@@ -60,18 +60,18 @@ Constructibility, sheaf operations and microlocal geometry. Each reading include
 - [Truncation triangles and abelian hearts](SH03-truncation-triangles-and-abelian-hearts.html) · [source](src/SH03/truncation-triangles-and-abelian-hearts.md)
 - [Perverse descent and fibre dimension bounds](SH03-perverse-descent-and-fibre-dimension-bounds.html) · [source](src/SH03/perverse-descent-and-fibre-dimension-bounds.md)
 - [Complex middle perversity and exterior products](SH03-complex-middle-perversity-and-exterior-products.html) · [source](src/SH03/complex-middle-perversity-and-exterior-products.md)
-- [SH02-MC — Categories and operations in one cotangent direction](SH02-microlocal-categories.html) · source
-- [SH02-FTE-UNIT. Transposing the complete Fourier trace comparison](SH02-fourier-transpose-endpoint.html) · source
+- [SH02-MC — Categories and operations in one cotangent direction](SH02-microlocal-categories.html) · [source](src/SH02/microlocal-categories.md)
+- [SH02-FTE-UNIT. Transposing the complete Fourier trace comparison](SH02-fourier-transpose-endpoint.html) · [source](src/SH02/fourier-transpose-endpoint.md)
 - [SH02-PREREQ-OPEN — Open prerequisites and exact import contracts](SH02-open-prerequisites.html) · [source](src/SH02/open-prerequisites.md)
 - [SH02-CA — Extending sections on convex sets](SH02-convex-acyclicity.html) · [source](src/SH02/convex-acyclicity.md)
-- [Transport along a scaling action](SH02-conic-descent.html) · source
+- [Transport along a scaling action](SH02-conic-descent.html) · [source](src/SH02/conic-descent.md)
 - [SH02-FSB — Formal stabilization over arbitrary neighborhood sets](SH02-formal-system-bridge.html) · [source](src/SH02/formal-system-bridge.md)
-- [Fourier kernels as radial averaging](SH02-fourier-sato.html) · source
+- [Fourier kernels as radial averaging](SH02-fourier-sato.html) · [source](src/SH02/fourier-sato.md)
 - [SH02-FGC-UNIT. The graded line in a Fourier support comparison](SH02-fourier-graded-comparison.html) · [source](src/SH02/fourier-graded-comparison.md)
 - [SH02-NCD — Continuing cohomology through a moving boundary](SH02-noncharacteristic-deformation.html) · [source](src/SH02/noncharacteristic-deformation.md)
 - [SH02-MO-UNIT — Transporting directional obstructions](SH02-microsupport-operations.html) · [source](src/SH02/microsupport-operations.md)
 - [T-exact functors and adjoints between hearts](SH03-t-exact-functors-and-adjoints-between-hearts.html) · [source](src/SH03/t-exact-functors-and-adjoints-between-hearts.md)
-- [SH02-LFT. A linear map inside the Fourier comparison](SH02-linear-fourier-trace.html) · source
+- [SH02-LFT. A linear map inside the Fourier comparison](SH02-linear-fourier-trace.html) · [source](src/SH02/linear-fourier-trace.md)
 - [SH02-NDF-UNIT. The geometric normalization of Fourier adjunctions](SH02-fourier-literal-normalization.html) · [source](src/SH02/fourier-literal-normalization.md)
 - [SH02-PREREQ-PROOFS — Supporting verifications for open prerequisites](SH02-open-prerequisite-proofs.html) · [source](src/SH02/open-prerequisite-proofs.md)
 - [SH02-UR — Finite resolutions without a lower bound](SH02-unbounded-range-bridge.html) · [source](src/SH02/unbounded-range-bridge.md)
@@ -79,11 +79,11 @@ Constructibility, sheaf operations and microlocal geometry. Each reading include
 - [Fourier duality through a test complex on the base](SH02-fourier-duality-normalization.html) · [source](src/SH02/fourier-duality-normalization.md)
 - [SH02-SUB-UNIT — Reading a subset through its sheaf](SH02-subset-microsupport.html) · [source](src/SH02/subset-microsupport.md)
 - [SH02-FTC. Comparing traces after Fourier transformation](SH02-fourier-trace-comparisons.html) · [source](src/SH02/fourier-trace-comparisons.md)
-- [SH02-CHE-UNIT — Cotangent directions that survive a limiting operation](SH02-characteristic-estimates.html) · source
+- [SH02-CHE-UNIT — Cotangent directions that survive a limiting operation](SH02-characteristic-estimates.html) · [source](src/SH02/characteristic-estimates.md)
 - [SH02-UCE — Uniform tests for an unbounded Hom complex](SH02-unbounded-characteristic-estimates.html) · [source](src/SH02/unbounded-characteristic-estimates.md)
-- [SH02-SIX-BRIDGE — Proper supports and the bounded classical comparison](SH02-six-operations-import-bridge.html) · source
-- SH02-NG-UNIT — Normal geometry as a family with a central fibre · source
-- [SH02-AE-UNIT — Covectors at a boundary and at infinity](SH02-asymptotic-estimates.html) · source
+- [SH02-SIX-BRIDGE — Proper supports and the bounded classical comparison](SH02-six-operations-import-bridge.html) · [source](src/SH02/six-operations-import-bridge.md)
+- [SH02-NG-UNIT — Normal geometry as a family with a central fibre](SH02-normal-geometry.html) · [source](src/SH02/normal-geometry.md)
+- [SH02-AE-UNIT — Covectors at a boundary and at infinity](SH02-asymptotic-estimates.html) · [source](src/SH02/asymptotic-estimates.md)
 
 ## Learner route: from a diagram to a heart {#learner-route-from-a-diagram-to-a-heart}
 

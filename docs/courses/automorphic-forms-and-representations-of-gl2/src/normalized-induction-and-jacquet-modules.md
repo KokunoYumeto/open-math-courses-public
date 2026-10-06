@@ -1,6 +1,6 @@
 # Normalized induction and Jacquet modules
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Parabolic induction builds a representation from two characters of the diagonal torus. The Jacquet module measures what remains when upper unipotent translations are made trivial. Their adjunction tells us exactly why a noncuspidal irreducible representation embeds in a principal series. Keeping the square root of the modulus in both constructions is essential: it determines which character is a subrepresentation, which is a quotient, and what happens to the Steinberg representation.
 

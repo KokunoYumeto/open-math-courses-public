@@ -1,6 +1,6 @@
 # Multiplier ultraproducts and normal embeddings
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 The central sequence algebra uses sequences that asymptotically commute with normal functionals. A larger construction uses every bounded sequence that preserves the sequences vanishing strong*. This multiplier condition is essential for a nontracial algebra. We will prove that the resulting quotient is a von Neumann algebra, with normal copies of the original algebra and its central sequence algebra.
 

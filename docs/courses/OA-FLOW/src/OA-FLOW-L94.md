@@ -6,7 +6,7 @@ A scalar derivative can define an unbounded generator even when the orbit is not
 
 Let \(X=X_*^*\) be a complex dual Banach space with specified predual, and let \(\alpha:\mathbb R\to\operatorname{GL}(X)\) be a uniformly bounded group of weak-star continuous operators with norm-continuous predual orbits, with the specified-dual conventions of BS0–1. Write \(C_\alpha=\sup_t\|\alpha_t\|\). Put \(\beta_t\phi=\phi\circ\alpha_t\); the specified predual hypothesis makes this a strongly continuous group on \(X_*\).
 
-The exact earlier proofs used here are CF1 for scalar and Banach-valued fundamental calculus, [L24 Proposition4.1](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) for Banach-valued integration, L34 Lemma3.2 for the complete-metric Baire argument, [RF1](OA-FLOW-RF.md#oa-flow.rf.1) for smooth compact kernels, and BS0–1 for the dual action and its full integrated maps. The uniform-boundedness argument is included immediately below.
+The exact earlier proofs used here are [CF1](OA-FLOW-CF.md#oa-flow.cf.1) for scalar and Banach-valued fundamental calculus, [L24 Proposition4.1](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) for Banach-valued integration, [L34 Lemma3.2](OA-FLOW-L34.md#oa-flow.l34.3) for the complete-metric Baire argument, [RF1](OA-FLOW-RF.md#oa-flow.rf.1) for smooth compact kernels, and BS0–1 for the dual action and its full integrated maps. The uniform-boundedness argument is included immediately below.
 
 <a id="oa-flow.gen.bounds"></a>
 
@@ -18,7 +18,7 @@ The exact earlier proofs used here are CF1 for scalar and Banach-valued fundamen
 
 $$F_n=\{x:\sup_i\|T_i x\|\leq n\},\qquad n\geq1,$$
 
-cover $X$. By the complete-metric Baire proof in L34 Lemma3.2, some $F_n$ contains an open ball about a point $x_0$ of radius $r>0$. For $\|x\|\leq1$, both $x_0$ and $x_0+(r/2)x$ are in that ball. Hence
+cover $X$. By the complete-metric Baire proof in [L34 Lemma3.2](OA-FLOW-L34.md#oa-flow.l34.3), some $F_n$ contains an open ball about a point $x_0$ of radius $r>0$. For $\|x\|\leq1$, both $x_0$ and $x_0+(r/2)x$ are in that ball. Hence
 
 $$\frac r2\|T_i x\|\leq\|T_i(x_0+(r/2)x)\|+\|T_i x_0\|\leq2n.$$
 
@@ -38,7 +38,7 @@ Let \(f\) belong to \(C_c^1(\mathbb R)\), put \(L_t f(u)=f(u-t)\), and take nonz
  \tag{LR1}
 \]
 
-Choose \(R\) with the support of \(f\) and \(f'\) inside \([-R,R]\). For \(|t|\le1\), the integrand vanishes outside \([-R-1,R+1]\). CF1's compact uniform-continuity proof applied to \(f'\) gives a modulus \(\omega_{f\prime}(\varepsilon)\) tending to zero. Taking absolute values and integrating on this fixed interval gives
+Choose \(R\) with the support of \(f\) and \(f'\) inside \([-R,R]\). For \(|t|\le1\), the integrand vanishes outside \([-R-1,R+1]\). [CF1's compact uniform-continuity proof](OA-FLOW-CF.md#oa-flow.cf.1) applied to \(f'\) gives a modulus \(\omega_{f\prime}(\varepsilon)\) tending to zero. Taking absolute values and integrating on this fixed interval gives
 
 <a id="equation-lr2"></a>
 

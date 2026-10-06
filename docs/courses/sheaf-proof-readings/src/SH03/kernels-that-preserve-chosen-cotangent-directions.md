@@ -6,7 +6,7 @@ The ordinary convolution and its associativity are prerequisites from Composing 
 
 The main source mechanism is Kashiwara and Schapira's *Microlocal Study of Sheaves*, Proposition 6.3.1, Remark 6.3.2 and Proposition 6.3.3, pp. 108–111. Their compactness argument bounds the forgotten covectors in an enlarged sum and then applies their Theorem 4.4.2. Here that argument is written for tensor convolution, with an arbitrary second kernel in Theorem 2, and with the compact preimage and quotient arguments supplied separately. The source's printed kernel conditions use conic regions and, for its Hom transform, an antipode on the output projection. The present convention instead twists the input covector as in (2); its general open-region claims are justified by the local compact-neighborhood proofs below.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## Keeping only a cotangent region
 

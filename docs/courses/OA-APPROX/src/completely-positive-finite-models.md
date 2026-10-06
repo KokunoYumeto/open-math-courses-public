@@ -1,6 +1,6 @@
 # Completely positive finite models
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 A finite-dimensional model of an algebra need not preserve products. It can still preserve positivity after we couple the algebra to any matrix system. This is the reason completely positive maps are useful for approximation. They retain the order information that survives compression to a finite-dimensional Hilbert space.
 

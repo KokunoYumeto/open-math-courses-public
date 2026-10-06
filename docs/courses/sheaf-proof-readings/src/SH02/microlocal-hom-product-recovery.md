@@ -2,7 +2,7 @@
 
 Course SH-02, unit SH02-MHPR. Original AI-authored programme expression is dedicated under CC0 1.0 Universal. This lesson compares the specified Fourier, microlocal product and graph-composition maps with the selected recovery maps. The published mathematical antecedents and the scope of their comparison are stated at the end; human-authored source expression retains its own terms.
 
-The selected zero-direction recoveries in microlocalization are normalized by the actual ordinary no-cut map and the compact codimension-parity map. This lesson proves that the product map MIC19 and graph composition MH30/MH31 commute with those particular recoveries. It proves equality of natural transformations, including the coefficient braids, exceptional counits, support maps and relative traces. The argument uses arbitrary bounded sheaves over a commutative unital finite-global-dimension coefficient ring under the stated bounded six-operation and Fourier contracts. No constructibility, finite stalk generation, orientability, proper bundle projection, or noncharacteristic condition is added.
+The selected zero-direction recoveries in [microlocalization](microlocalization.md#SH02-MIC-ZERO) are normalized by the actual ordinary no-cut map and the compact codimension-parity map. This lesson proves that the product map MIC19 and graph composition MH30/MH31 commute with those particular recoveries. It proves equality of natural transformations, including the coefficient braids, exceptional counits, support maps and relative traces. The argument uses arbitrary bounded sheaves over a commutative unital finite-global-dimension coefficient ring under the stated bounded six-operation and Fourier contracts. No constructibility, finite stalk generation, orientability, proper bundle projection, or noncharacteristic condition is added.
 
 The proof has three parts. C1–C15 state and establish the selected product identities and their MH30 application. P1–P20 supply the full Fourier product normalization used in C5. S1–S14 give the typed ordinary and compact composition pastes, with raw graph-kernel endpoints. Their separate labels keep each map and its source order visible.
 
@@ -651,15 +651,15 @@ An unsigned reversed composition is not a chain map in general: \(d(ba)=(db)a+(-
 
 The result concerns the selected REC recoveries and the specified MIC19/MH30/MH31 composition. It establishes equality of the named maps by kernel restriction, units, counits, and their mates. It does not establish invertibility of an arbitrary SP external comparison, arbitrary transverse MIC comparison, or arbitrary exceptional external-product map. It does not replace a graph-Hom boundedness contract by a theorem for an unbounded internal Hom, does not add constructibility, and does not reprove the REC or MEP results. The individually stated operation, specialization, Fourier and graph-Hom prerequisites remain separate dependencies.
 
-The specific prerequisite maps used here are REC1–REC20 in SH02-MIC-ZERO, MIC12–MIC19 in microlocalization, MH21 and MH26–MH32 in [microlocal Hom](microlocal-hom.md), and the stated original R2/R4, FF20, FTE34, MEP5/O13 and specialization maps in their owning units. Each prerequisite retains its own hypotheses and proof obligations.
+The specific prerequisite maps used here are REC1–REC20 in [SH02-MIC-ZERO](microlocalization.md#SH02-MIC-ZERO), MIC12–MIC19 in [microlocalization](microlocalization.md), MH21 and MH26–MH32 in [microlocal Hom](microlocal-hom.md), and the stated original R2/R4, FF20, FTE34, MEP5/O13 and specialization maps in their owning units. Each prerequisite retains its own hypotheses and proof obligations.
 
 For direct navigation to the named inputs, see
-Fourier product,
+[Fourier product](fourier-functoriality.md#SH02-FF-PRODUCT),
 [specialization zero](specialization.md#SH02-SP-ZERO) and
 [external product](specialization.md#SH02-SP-EXTERNAL),
-microlocal recovery and
-external product,
-the Fourier trace endpoint,
+[microlocal recovery](microlocalization.md#SH02-MIC-ZERO) and
+[external product](microlocalization.md#SH02-MIC-EXTERNAL),
+[the Fourier trace endpoint](fourier-transpose-endpoint.md#SH02-FTE-TRACE),
 [normal counits](microlocal-endpoint-propagation.md#SH02-MEP-NORMAL-COUNITS),
 and [graph composition](microlocal-hom.md#SH02-MH-GRAPH-COMPOSITION).
 These dependencies retain their own scope and proof obligations; this

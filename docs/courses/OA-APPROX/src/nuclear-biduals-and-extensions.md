@@ -1,6 +1,6 @@
 # Nuclear biduals and extensions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 A C*-algebra is nuclear precisely when its universal enveloping von Neumann algebra is injective. This connects norm approximation in the original algebra to approximation tested by normal functionals in its bidual. It also gives a short proof that an extension is nuclear precisely when its ideal and quotient are nuclear.
 

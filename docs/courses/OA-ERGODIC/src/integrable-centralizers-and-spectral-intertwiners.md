@@ -1,6 +1,6 @@
 # Integrable centralizers and spectral intertwiners
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-check in progress; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
 
 The stable-kernel spectral representation is now a genuine Borel representation. To identify its random-operator algebra with an integrable centralizer, two further assertions need proofs: its square integrability, and the repair of the almost-equivariant fields obtained by spectral decomposition. We prove both, and verify the centralizer map in both directions, including normality.
 

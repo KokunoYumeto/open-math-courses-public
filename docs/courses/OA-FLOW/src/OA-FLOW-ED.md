@@ -64,7 +64,7 @@ The [measurable-action continuity proof](../../OA-ERGODIC/reader/measurable-acti
 \]
 gives a strongly continuous representation on the separable Hilbert space \(L^2(X,\mu)\). The derivative proof supplies a jointly Borel function whose slice is a density for every fixed parameter; its fixed-pair chain rule suffices for the operator representation law. The same result proves sigma-strong-star continuity of \(\alpha\).
 
-The algebra \(D\) is a von Neumann subalgebra: it is the intersection of the ultraweakly closed fixed spaces of the normal automorphisms. It acts on a separable Hilbert space. The compact metrizable operator-ball proof therefore supplies a countable family of self-adjoint contractions \(d_n\) generating \(D\). For example, choose a WOT-dense family in its self-adjoint unit ball. Define
+The algebra \(D\) is a von Neumann subalgebra: it is the intersection of the ultraweakly closed fixed spaces of the normal automorphisms. It acts on a separable Hilbert space. The [compact metrizable operator-ball proof](../../OA-MOD/OA-MOD-DC.html#the-unit-operator-ball-is-compact-in-countable-weak-coordinates) therefore supplies a countable family of self-adjoint contractions \(d_n\) generating \(D\). For example, choose a WOT-dense family in its self-adjoint unit ball. Define
 \[
  D_0=C^*(1,d_1,d_2,\ldots),\qquad D_0''=D.
  \tag{F3}
@@ -85,7 +85,7 @@ Let
  p_\Omega(\omega)=\omega|_{D_0}.
  \tag{F5}
 \]
-The unital commutative Gelfand representation makes both spaces compact Hausdorff and identifies \(B=C(\Omega)\), \(D_0=C(Y)\). Separability makes the spectra metrizable: values on a countable norm-dense subset determine each norm-one character, so the coordinate map embeds the compact spectrum into a countable product of compact metric disks; a continuous injection from a compact space into a Hausdorff space is a homeomorphism onto its image. The map \(p_\Omega\) is continuous because each coordinate evaluation on \(D_0\) is continuous. It is onto. Otherwise its compact image would be a proper closed subset of \(Y\); a nonzero continuous function vanishing on that image would have zero image in \(C(\Omega)\), contradicting the faithful inclusion \(D_0\subseteq B\).
+The [unital commutative Gelfand representation](OA-FLOW-CF.md#oa-flow.cf.6) makes both spaces compact Hausdorff and identifies \(B=C(\Omega)\), \(D_0=C(Y)\). Separability makes the spectra metrizable: values on a countable norm-dense subset determine each norm-one character, so the coordinate map embeds the compact spectrum into a countable product of compact metric disks; a continuous injection from a compact space into a Hausdorff space is a homeomorphism onto its image. The map \(p_\Omega\) is continuous because each coordinate evaluation on \(D_0\) is continuous. It is onto. Otherwise its compact image would be a proper closed subset of \(Y\); a nonzero continuous function vanishing on that image would have zero image in \(C(\Omega)\), contradicting the faithful inclusion \(D_0\subseteq B\).
 
 The action on \(\Omega\) is
 \[
@@ -124,7 +124,7 @@ Conjugating multiplication by this unitary identifies \(A\) with the von Neumann
 \]
 Its inverse is normal as well, since it is the restriction of inverse unitary conjugation between the two whole multiplication algebras.
 
-For each \(g\), the finite Radon measure \((T_g)_*m\) agrees on continuous functions with the transported normal state \(\varphi\circ\alpha_{g^{-1}}\). A normal positive functional \(\chi\) on the whole \(L^\infty(\Omega,m)\) has a finite measure \(E\mapsto\chi(1_E)\): normality applies to the bounded increasing partial sums of disjoint indicators and proves countable additivity. This measure is absolutely continuous with respect to \(m\), since an \(m\)-null indicator is the zero class. The finite Radon–Nikodym proof gives its \(L^1(m)\) density, and simple approximation represents \(\chi\) by that density. Faithfulness makes the density positive almost everywhere. Apply this to the transported state. Equality on continuous functions identifies the finite Radon measures, so \((T_g)_*m\sim m\). The defining action (F6) gives equivariance first on \(B\), and normality and ultraweak generation then give
+For each \(g\), the finite Radon measure \((T_g)_*m\) agrees on continuous functions with the transported normal state \(\varphi\circ\alpha_{g^{-1}}\). A normal positive functional \(\chi\) on the whole \(L^\infty(\Omega,m)\) has a finite measure \(E\mapsto\chi(1_E)\): normality applies to the bounded increasing partial sums of disjoint indicators and proves countable additivity. This measure is absolutely continuous with respect to \(m\), since an \(m\)-null indicator is the zero class. The [finite Radon–Nikodym proof](../../OA-MOD/OA-MOD-DC.html#a-finite-radon-nikodym-density-from-hilbert-representation) gives its \(L^1(m)\) density, and simple approximation represents \(\chi\) by that density. Faithfulness makes the density positive almost everywhere. Apply this to the transported state. Equality on continuous functions identifies the finite Radon measures, so \((T_g)_*m\sim m\). The defining action (F6) gives equivariance first on \(B\), and normality and ultraweak generation then give
 \[
  \pi(\alpha_g f)=\pi(f)\circ T_{g^{-1}}
  \qquad(g\in G,\ f\in A)
@@ -139,9 +139,9 @@ Set \(\nu=(p_\Omega)_*m\). Pullback defines a faithful unital normal map
  \qquad J(L^\infty(Y,\nu))=\pi(D).
  \tag{F12}
 \]
-We justify the normality and the last whole-algebra equality. For \(k\in L^1(m)_+\), the finite measure \((p_\Omega)_*(km)\) is absolutely continuous with respect to \(\nu\). The finite Radon–Nikodym proof gives its \(L^1(\nu)\) density. Extend by real and imaginary parts. Uniqueness of densities makes the resulting map \(J_*:L^1(m)\to L^1(\nu)\) linear, and testing functions of absolute value at most one gives \(\|J_*k\|_1\le\|k\|_1\). The identity
+We justify the normality and the last whole-algebra equality. For \(k\in L^1(m)_+\), the finite measure \((p_\Omega)_*(km)\) is absolutely continuous with respect to \(\nu\). The [finite Radon–Nikodym proof](../../OA-MOD/OA-MOD-DC.html#a-finite-radon-nikodym-density-from-hilbert-representation) gives its \(L^1(\nu)\) density. Extend by real and imaginary parts. Uniqueness of densities makes the resulting map \(J_*:L^1(m)\to L^1(\nu)\) linear, and testing functions of absolute value at most one gives \(\|J_*k\|_1\le\|k\|_1\). The identity
 \(\int J(h)k\,dm=\int hJ_*k\,d\nu\)
-shows that \(J\) is its adjoint and hence ultraweakly continuous. Its faithfulness follows directly from \(\nu=(p_\Omega)_*m\). The faithful normal image theorem makes its range a von Neumann algebra. That range contains \(J(C(Y))=\pi(D_0)\), so it contains \(\pi(D)\). Conversely every bounded Borel function on \(Y\) has uniformly bounded continuous \(L^2(\nu)\) approximants: use density of continuous functions and clip their real and imaginary parts to the bounds of the target. Their multiplications converge strongly, first on bounded vectors and then on all \(L^2\) vectors by truncation; the common bound also gives ultraweak convergence by summable vector-series tests. Normality of \(J\) therefore puts its entire range in the ultraweak closure of \(\pi(D_0)\), namely \(\pi(D)\). This proves (F12). Thus the continuous map \(p_\Omega\) represents the **whole** invariant sigma-algebra modulo null sets.
+shows that \(J\) is its adjoint and hence ultraweakly continuous. Its faithfulness follows directly from \(\nu=(p_\Omega)_*m\). The [faithful normal image theorem](OA-FLOW-ST12.md#oa-flow.st.2) makes its range a von Neumann algebra. That range contains \(J(C(Y))=\pi(D_0)\), so it contains \(\pi(D)\). Conversely every bounded Borel function on \(Y\) has uniformly bounded continuous \(L^2(\nu)\) approximants: use density of continuous functions and clip their real and imaginary parts to the bounds of the target. Their multiplications converge strongly, first on bounded vectors and then on all \(L^2\) vectors by truncation; the common bound also gives ultraweak convergence by summable vector-series tests. Normality of \(J\) therefore puts its entire range in the ultraweak closure of \(\pi(D_0)\), namely \(\pi(D)\). This proves (F12). Thus the continuous map \(p_\Omega\) represents the **whole** invariant sigma-algebra modulo null sets.
 
 <a id="oa-flow.ergdec.spatial"></a>
 ## Normal probability-algebra isomorphisms have Borel point realizations
@@ -172,7 +172,7 @@ Normality gives the exact bounded Borel-calculus identity
  \qquad(h:[0,1]\to\mathbb C\text{ bounded Borel}).
  \tag{S3}
 \]
-Here is a direct verification. Polynomial identities and the polynomial-density proof prove the assertion for continuous \(h\), equivalently preservation of continuous functional calculus by a unital star isomorphism. For an open subset \(O\subseteq[0,1]\), continuous functions \(0\le h_n\uparrow1_O\), for instance truncated multiples of the distance to the complement, give (S3) for \(1_O\) by normality. The cases of empty complement and empty set use the constant functions. The sets whose indicators satisfy (S3) are closed under complements and finite intersections, by linearity and multiplicativity, and under countable disjoint unions, by normality applied to increasing partial sums. Disjointifying an arbitrary union makes them a sigma-algebra. They contain the open sets and hence every Borel set. Uniform finite-valued approximation of a bounded Borel function now proves (S3). All assertions are equalities of classes; no common null set for all Borel \(h\) was taken.
+Here is a direct verification. Polynomial identities and the [polynomial-density proof](OA-FLOW-CF.md#oa-flow.cf.5) prove the assertion for continuous \(h\), equivalently preservation of continuous functional calculus by a unital star isomorphism. For an open subset \(O\subseteq[0,1]\), continuous functions \(0\le h_n\uparrow1_O\), for instance truncated multiples of the distance to the complement, give (S3) for \(1_O\) by normality. The cases of empty complement and empty set use the constant functions. The sets whose indicators satisfy (S3) are closed under complements and finite intersections, by linearity and multiplicativity, and under countable disjoint unions, by normality applied to increasing partial sums. Disjointifying an arbitrary union makes them a sigma-algebra. They contain the open sets and hence every Borel set. Uniform finite-valued approximation of a bounded Borel function now proves (S3). All assertions are equalities of classes; no common null set for all Borel \(h\) was taken.
 
 Since \(1_B(c)=1\), (S3) implies \(a\in B\) almost everywhere. Fix \(e_0\in E\), which exists because \(\lambda\) is a probability, and define the everywhere Borel map
 \[
@@ -373,7 +373,7 @@ The Gram functions are Borel:
  \tag{H7}
 \]
 
-We use the convention that the inner product is linear in its first variable. The DF-1 Gram construction now gives the measurable Hilbert field with these **actual** spaces \(H_y\): a section \(\xi(y)\in H_y\) is measurable precisely when all functions \(\langle\xi(y),h_n(y)\rangle\) are measurable. One can equivalently start from the Gram matrices, quotient finite sequences by their zero norm and complete; totality identifies that completion isometrically with (H5). In particular, no uniform rank or nondegeneracy assumption on the Gram matrices is needed. The compact-frame construction provides orthonormal frames on all finite- and infinite-dimensional strata. The Hilbert-integral construction therefore defines the whole space
+We use the convention that the inner product is linear in its first variable. The [DF-1 Gram construction](../../OA-MOD/OA-MOD-DF.html#countable-gram-data-determines-the-whole-measurable-structure) now gives the measurable Hilbert field with these **actual** spaces \(H_y\): a section \(\xi(y)\in H_y\) is measurable precisely when all functions \(\langle\xi(y),h_n(y)\rangle\) are measurable. One can equivalently start from the Gram matrices, quotient finite sequences by their zero norm and complete; totality identifies that completion isometrically with (H5). In particular, no uniform rank or nondegeneracy assumption on the Gram matrices is needed. The [compact-frame construction](../../OA-MOD/OA-MOD-DF.html#compact-orthonormal-frames-and-measurable-dimension) provides orthonormal frames on all finite- and infinite-dimensional strata. The [Hilbert-integral construction](../../OA-MOD/OA-MOD-DF.html#the-hilbert-direct-integral-localization-and-subsequences) therefore defines the whole space
 
 \[
  \mathscr H=\int_Y^\oplus H_y\,d\nu(y).
@@ -526,7 +526,7 @@ For a bounded jointly Borel function \(F:Y\times\Omega\to\mathbb C\), define
  \tag{H21}
 \]
 
-The sections on the right are measurable by (H9)–(H10). The DF-5 operator-field criterion therefore proves measurability of \(T_F\), and
+The sections on the right are measurable by (H9)–(H10). The [DF-5 operator-field criterion](../../OA-MOD/OA-MOD-DF.html#pointwise-bounded-operator-fields-adjoints-and-exact-norm-tests) therefore proves measurability of \(T_F\), and
 \(\|T_F(y)\|\leq\sup|F|\).
 This covers fixed bounded Borel multipliers by taking \(F(y,\omega)=b(\omega)\). It also covers extra Borel parameters, with jointly Borel matrix coefficients obtained by the same integral tests.
 
@@ -539,7 +539,7 @@ A more general version is available when \(F\) is not bounded on the product but
  \tag{H22}
 \]
 
-The right side is Borel by parameter integration. On its finite locus, (H10) still proves measurability of \(T_F(y)h_n(y)\). Set the field to zero on any discarded complement. It defines a bounded global decomposable operator exactly when its norm function is essentially bounded, by DF-7. Pointwise finite fiber norms alone do not imply that global boundedness.
+The right side is Borel by parameter integration. On its finite locus, (H10) still proves measurability of \(T_F(y)h_n(y)\). Set the field to zero on any discarded complement. It defines a bounded global decomposable operator exactly when its norm function is essentially bounded, by [DF-7](../../OA-MOD/OA-MOD-DF.html#integrating-operator-fields-norm-domains-and-adjoints). Pointwise finite fiber norms alone do not imply that global boundedness.
 
 The countable fields \(M_{f_n}^{(y)}\) generate the entire \(A_y\) for every \(y\). Fix \(y\) and let \(N_y=\{M_{f_n}^{(y)}:n\geq1\}''\). Uniform density and (H18) place \(M_f^{(y)}\) in \(N_y\) for every \(f\in C(\Omega)\). If \(O\subseteq\Omega\) is open and \(O\ne\Omega\), the continuous functions
 \(u_k(\omega)=\min\{1,kd(\omega,\Omega\setminus O)\}\) increase to \(1_O\). For \(O=\Omega\), use the constant one. Dominated convergence against \(|\xi|^2m_y\) shows that \(M_{u_k}^{(y)}\to M_{1_O}^{(y)}\) strongly on all \(H_y\), so the latter projection lies in \(N_y\).
@@ -586,7 +586,7 @@ Conversely, fix any field in (H25). It commutes fiberwise with \(M_b^{(y)}\) for
  \tag{H26}
 \]
 
-The first equality concerns the entire algebra of bounded measurable operator fields. Its converse required no selection of measurable functions representing arbitrary fiber multipliers. After the equality has been proved, uniqueness of decomposable fields from DF-8 also says that, for each specified field \(T\) in (H25), there exists a bounded Borel \(b\) on \(\Omega\) with \(T_y=M_b^{(y)}\) almost everywhere: take the global multiplier furnished by (H20) and then use (H24). This is a consequence of the operator argument.
+The first equality concerns the entire algebra of bounded measurable operator fields. Its converse required no selection of measurable functions representing arbitrary fiber multipliers. After the equality has been proved, uniqueness of decomposable fields from [DF-8](../../OA-MOD/OA-MOD-DF.html#the-diagonal-commutant-is-exactly-the-decomposable-algebra) also says that, for each specified field \(T\) in (H25), there exists a bounded Borel \(b\) on \(\Omega\) with \(T_y=M_b^{(y)}\) almost everywhere: take the global multiplier furnished by (H20) and then use (H24). This is a consequence of the operator argument.
 
 For an explicitly given bounded jointly Borel \(F\), there is an equally explicit global multiplier: set \(b(\omega)=F(p(\omega),\omega)\). Concentration in (H2) gives \(T_F(y)=M_b^{(y)}\) for every \(y\in Y_0\), so
 
@@ -612,7 +612,7 @@ Each conditional vector state is faithful and normal by (H19)–(H20). Thus the 
 
 The conditional Hilbert-space construction started with the measures from L75. There is a converse identification that starts with an abstract algebra decomposition and recovers those same conditional measures. We give its normalization and onto arguments explicitly.
 
-Keep the compact model \((\Omega,m)\), the continuous invariant factor \(p:\Omega\to Y\), and \(\nu=p_*m\). Let \(A=L^\infty(\Omega,m)\) act on \(H=L^2(\Omega,m)\), with probability vector \(\mathbf1\). Apply central decomposition over a specified algebra to \(D=p^*L^\infty(Y,\nu)\subseteq A\). It gives a whole algebra field
+Keep the compact model \((\Omega,m)\), the continuous invariant factor \(p:\Omega\to Y\), and \(\nu=p_*m\). Let \(A=L^\infty(\Omega,m)\) act on \(H=L^2(\Omega,m)\), with probability vector \(\mathbf1\). Apply [central decomposition over a specified algebra](../../OA-MOD/OA-MOD-DC.html#existence-over-any-specified-central-abelian-subalgebra) to \(D=p^*L^\infty(Y,\nu)\subseteq A\). It gives a whole algebra field
 \[
  H=\int_Z^\oplus K_z\,d\lambda(z),\qquad
  A=\int_Z^\oplus A_z\,d\lambda(z),
@@ -627,13 +627,13 @@ Replace the base measure by \(h\,d\lambda\) and each vector field by \(h^{-1/2}\
  =\int_Z\|\xi_z\|^2\,d\lambda(z),
  \tag{R2}
 \]
-and the inverse is multiplication by \(h^{1/2}\). Both maps have their full maximal \(L^2\) domains. They commute with all operator fields. The new probability vector has norm one in every retained fibre, and its state on the diagonal is exactly the new base probability. This is the square-root density change also proved in change-of-base uniqueness.
+and the inverse is multiplication by \(h^{1/2}\). Both maps have their full maximal \(L^2\) domains. They commute with all operator fields. The new probability vector has norm one in every retained fibre, and its state on the diagonal is exactly the new base probability. This is the square-root density change also proved in [change-of-base uniqueness](../../OA-MOD/OA-MOD-DC.html#change-of-base-and-the-square-root-density-in-general-uniqueness).
 
 The two identifications of \(D\), on \((Z,h\lambda)\) and on \((Y,\nu)\), preserve its original vector state. The [spatial lemma](#oa-flow.ergdec.spatial) identifies these probability bases by a Borel isomorphism on conull subsets. Transport the measurable fields through that map. We can therefore use the actual \((Y,\nu)\) from \(p\) in (R1), with a measurable unit vector \(\eta_y\) representing \(\mathbf1\). This is an explicit identification of bases, not a silent reuse of a variable name.
 
 Choose the countable generating fields in the central-decomposition proof from a countable unital rational-complex star algebra \(\mathcal C\subset C(\Omega)\), uniformly dense in \(C(\Omega)\). It generates the whole global multiplication algebra: continuous approximation to Borel indicators, proved in the [multiplication section](#oa-flow.ergdec.multiplication), gives the required strong closure. For the countable dense contraction family in central decomposition, use the radial truncations \(a/\max(1,|a|)\) of these continuous functions. Continuous functions bounded by one are strongly dense in the multiplication unit ball by bounded approximation to indicators and simple functions. Uniform density then makes these truncations strongly dense as well. Adjoin them to the countable rational-complex star algebra; the enlarged family remains countable and uniformly dense.
 
-Localize the countably many rational linear, product, adjoint and identity equations of \(\mathcal C\), and its norm bounds \(\|a_y\|\leq\|a\|_\infty\). The bounds follow by applying the exact decomposable norm formula to each chosen global operator. Outside one null set this gives a unital contractive star representation of \(\mathcal C\) on \(K_y\), extending uniquely by uniform completion to
+Localize the countably many rational linear, product, adjoint and identity equations of \(\mathcal C\), and its norm bounds \(\|a_y\|\leq\|a\|_\infty\). The bounds follow by applying the [exact decomposable norm formula](../../OA-MOD/OA-MOD-DF.html#integrating-operator-fields-norm-domains-and-adjoints) to each chosen global operator. Outside one null set this gives a unital contractive star representation of \(\mathcal C\) on \(K_y\), extending uniquely by uniform completion to
 \[
  \pi_y:C(\Omega)\longrightarrow A_y,
  \qquad \pi_y(C(\Omega))''=A_y.
@@ -643,7 +643,7 @@ The equality is the fibre-generator assertion in the central-decomposition const
 
 Choose Borel versions of the countably many fundamental-section inner products, the coordinates of \(\eta_y\), and the matrix coefficients of the countable generating fields. The [completion and Borel-version argument](OA-FLOW-L75.md#oa-flow.kernel.completion) permits this on one Borel conull base. Remove one Borel null superset of the countably many failed relations and totality exceptions. All subsequent continuous moments are Borel there by uniform approximation from this countable family. Outside this base use a fixed point mass on \(\Omega\) when defining the probability kernel below.
 
-The vectors \(\pi_y(a)\eta_y\), \(a\in\mathcal C\), are total in \(K_y\) almost everywhere. Indeed their global vectors are exactly \(a\in L^2(\Omega,m)\), whose span is dense. Form the measurable projection onto the closed span of the countable fibre vectors, using measurable subfield projections. A nonzero complementary field would, on one frame vector and a bounded finite-measure restriction, give a nonzero global vector orthogonal to every \(a\). This contradicts global density. Thus \(\eta_y\) is cyclic for \(A_y\). It is separating too: if \(b\eta_y=0\), abelianness gives \(b\pi_y(a)\eta_y=0\) on a total set, so \(b=0\). Its vector state is consequently faithful.
+The vectors \(\pi_y(a)\eta_y\), \(a\in\mathcal C\), are total in \(K_y\) almost everywhere. Indeed their global vectors are exactly \(a\in L^2(\Omega,m)\), whose span is dense. Form the measurable projection onto the closed span of the countable fibre vectors, using [measurable subfield projections](../../OA-MOD/OA-MOD-DF.html#subfields-projections-conjugates-and-direct-sums). A nonzero complementary field would, on one frame vector and a bounded finite-measure restriction, give a nonzero global vector orthogonal to every \(a\). This contradicts global density. Thus \(\eta_y\) is cyclic for \(A_y\). It is separating too: if \(b\eta_y=0\), abelianness gives \(b\pi_y(a)\eta_y=0\) on a total set, so \(b=0\). Its vector state is consequently faithful.
 
 The positive functional
 \[
@@ -675,7 +675,7 @@ There is also an explicit unitary identifying the Hilbert fibres. Define it init
  \quad(f\in C(\Omega)).
  \tag{R7}
 \]
-Equations (R4)–(R6) identify its inner products, so it is well defined and isometric on a dense domain. Fibre cyclicity makes its range dense, hence its extension is onto. The countable continuous fundamental family on the left is sent to the measurable total family on the right. The operator-field criterion therefore makes \(J_y\) and its adjoint measurable. On continuous functions it intertwines multiplication and \(\pi_y\); taking their entire generated von Neumann algebras yields
+Equations (R4)–(R6) identify its inner products, so it is well defined and isometric on a dense domain. Fibre cyclicity makes its range dense, hence its extension is onto. The countable continuous fundamental family on the left is sent to the measurable total family on the right. The [operator-field criterion](../../OA-MOD/OA-MOD-DF.html#pointwise-bounded-operator-fields-adjoints-and-exact-norm-tests) therefore makes \(J_y\) and its adjoint measurable. On continuous functions it intertwines multiplication and \(\pi_y\); taking their entire generated von Neumann algebras yields
 \[
  J_y L^\infty(\Omega,m_y)J_y^*=A_y.
  \tag{R8}
@@ -733,7 +733,7 @@ For each fixed \(g\), the field is measurable; its frame coefficients can in fac
 
 Choose a countable dense subgroup \(Q\subset G\), and enumerate the countable unital rational-complex star algebra \(\mathcal C\subset C(\Omega)\) used in constructing the conditional field. Its uniform closure is \(C(\Omega)\). For a bounded Borel \(f\), write \(M_f^{(y)}\) for multiplication on \(H_y\). This is a measurable field: its coefficients against continuous fundamental sections are conditional integrals, which are Borel by [L75's parameter integration theorem](OA-FLOW-L75.md#oa-flow.kernel.integration).
 
-For each \(q\in Q\) and \(f\in\mathcal C\), (Q1), (Q3) and (Q4) are an equality of two decomposable operators. Their fibre fields are equal almost everywhere. Explicitly, the difference annihilates each localized frame section; its squared norm integrates to zero on every Borel base set, so its countably many frame columns vanish almost everywhere. This is the field integration and uniqueness argument. Countably many \(q,f\) therefore give one Borel conull set \(Y_1\subseteq Y_0\) on which
+For each \(q\in Q\) and \(f\in\mathcal C\), (Q1), (Q3) and (Q4) are an equality of two decomposable operators. Their fibre fields are equal almost everywhere. Explicitly, the difference annihilates each localized frame section; its squared norm integrates to zero on every Borel base set, so its countably many frame columns vanish almost everywhere. This is the [field integration and uniqueness argument](../../OA-MOD/OA-MOD-DF.html#integrating-operator-fields-norm-domains-and-adjoints). Countably many \(q,f\) therefore give one Borel conull set \(Y_1\subseteq Y_0\) on which
 \[
  V_y(q)M_f^{(y)}V_y(q)^*
        =M_{f\circ T_{q^{-1}}}^{(y)}

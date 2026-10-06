@@ -1,6 +1,6 @@
 # Type I stages in irrational rotation factors
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-check only; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## Introduction
 

@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measures on a compact convex space · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-CB.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 132 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="measures-on-a-compact-convex-space">Measures on a compact convex space</h1>
+<p><strong>Self-checked by the writing AI.</strong> The proofs are complete relative to their declared inputs.</p>
+<p>The state space of a nonseparable algebra need not be metrizable. We therefore construct measures on compact Hausdorff spaces before discussing convex decompositions. The distinction between Borel sets and Baire sets is retained throughout.</p>
+<p>The earlier <a href="notes/analytic-programme/scalar-integration-programme.html">scalar integration programme</a>, Sections 0–2, proves the outer-measure extension and integration theorems on arbitrary measure spaces. <a href="OA-MOD-AB.html#oa-mod-ab-04">Filters and compact products and Dual-ball compactness and the bidual criterion</a> prove compact-product and dual-ball compactness. Those are the measure and compactness inputs below. Finite-dimensional Euclidean completeness and elementary real inequalities are understood. The argument uses the axiom of choice in its Zorn form.</p>
+<p>For comparison and credit, Bishop and de Leeuw's freely accessible <a href="https://aif.centre-mersenne.org/item/10.5802/aif.95.pdf">1959 paper</a>, especially Theorems 3.2 and 5.3 and Corollary 5.4, establishes the countable-test route to the nonmetrizable boundary statement. <a href="https://www.math.uwaterloo.ca/~krdavids/Preprints/DavidsonKennedy_hyperrigidity.v3.pdf">Davidson and Kennedy, §2.4</a>, distinguishes maximal measures and their boundary concentration. We give all the arguments needed here, including the compact Hausdorff representation theorem and the common-refinement criterion.</p>
+<h2 id="continuous-cutoffs-on-compact-hausdorff-spaces">Continuous cutoffs on compact Hausdorff spaces</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be compact Hausdorff. If <span class="math" data-tex="\(C\)">\(C\)</span> is closed and <span class="math" data-tex="\(U\)">\(U\)</span> is open with <span class="math" data-tex="\(C\subset U\)">\(C\subset U\)</span>, there is an open <span class="math" data-tex="\(V\)">\(V\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+C\subset V\subset\overline V\subset U.
+\tag{CB.1}
+\]">\[
+C\subset V\subset\overline V\subset U.
+\tag{CB.1}
+\]</span>
+<p>Here is the separation argument. For a point outside a compact set, separate it from each point of that set by disjoint open neighborhoods, and take a finite subcover on the compact side. The intersection of the finitely many neighborhoods on the first side has closure disjoint from the compact set. Apply this to each point of <span class="math" data-tex="\(C\)">\(C\)</span> and the compact set <span class="math" data-tex="\(X\setminus U\)">\(X\setminus U\)</span>, and take a finite union of the resulting neighborhoods. This proves (CB.1).</p>
+<p>It also supplies a continuous function <span class="math" data-tex="\(h:X\to[0,1]\)">\(h:X\to[0,1]\)</span> which equals one on <span class="math" data-tex="\(C\)">\(C\)</span> and whose support is contained in <span class="math" data-tex="\(U\)">\(U\)</span>. For clarity, the usual continuous separation construction is as follows. Between two disjoint closed sets, use (CB.1) recursively to assign open sets <span class="math" data-tex="\(V_r\)">\(V_r\)</span> to the dyadic numbers in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, with <span class="math" data-tex="\(\overline V_r\subset V_s\)">\(\overline V_r\subset V_s\)</span> when <span class="math" data-tex="\(r&lt;s\)">\(r&lt;s\)</span>. The first closed set is contained in <span class="math" data-tex="\(V_0\)">\(V_0\)</span>, and <span class="math" data-tex="\(V_1\)">\(V_1\)</span> avoids the second. Define <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> as the infimum of those <span class="math" data-tex="\(r\)">\(r\)</span> for which <span class="math" data-tex="\(x\in V_r\)">\(x\in V_r\)</span>, with infimum one for an empty set. Then <span class="math" data-tex="\(f=0\)">\(f=0\)</span> on the first set and <span class="math" data-tex="\(f=1\)">\(f=1\)</span> on the second. For <span class="math" data-tex="\(0&lt;a&lt;1\)">\(0&lt;a&lt;1\)</span>, the sets <span class="math" data-tex="\(f&lt;a\)">\(f&lt;a\)</span> are unions of <span class="math" data-tex="\(V_r\)">\(V_r\)</span> with <span class="math" data-tex="\(r&lt;a\)">\(r&lt;a\)</span>, and the sets <span class="math" data-tex="\(f&gt;a\)">\(f&gt;a\)</span> are unions of <span class="math" data-tex="\(X\setminus\overline V_r\)">\(X\setminus\overline V_r\)</span> with <span class="math" data-tex="\(r&gt;a\)">\(r&gt;a\)</span>. Hence <span class="math" data-tex="\(f\)">\(f\)</span> is continuous. First choose <span class="math" data-tex="\(W\)">\(W\)</span> with <span class="math" data-tex="\(C\subset W\subset\overline W\subset U\)">\(C\subset W\subset\overline W\subset U\)</span>, and apply this separation to <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(X\setminus W\)">\(X\setminus W\)</span>. The function <span class="math" data-tex="\(h=1-f\)">\(h=1-f\)</span> has support in <span class="math" data-tex="\(\overline W\subset U\)">\(\overline W\subset U\)</span>.</p>
+<p>We shall also need a finite partition on a compact set. Suppose <span class="math" data-tex="\(C\subset\bigcup_{j=1}^m U_j\)">\(C\subset\bigcup_{j=1}^m U_j\)</span>, with the <span class="math" data-tex="\(U_j\)">\(U_j\)</span> open. Shrink neighborhoods of the individual points of <span class="math" data-tex="\(C\)">\(C\)</span>, choose a finite subcover, and group their closures according to one containing <span class="math" data-tex="\(U_j\)">\(U_j\)</span>. This gives compact sets <span class="math" data-tex="\(C_j\subset U_j\)">\(C_j\subset U_j\)</span> whose union covers <span class="math" data-tex="\(C\)">\(C\)</span>; empty groups can be omitted. Choose cutoffs <span class="math" data-tex="\(h_j=1\)">\(h_j=1\)</span> on <span class="math" data-tex="\(C_j\)">\(C_j\)</span>, supported in <span class="math" data-tex="\(U_j\)">\(U_j\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_j=h_j/H,\\
+H=\max(1,\sum_k h_k)
+\end{gathered}
+\tag{CB.2}
+\]">\[
+\begin{gathered}
+g_j=h_j/H,\\
+H=\max(1,\sum_k h_k)
+\end{gathered}
+\tag{CB.2}
+\]</span>
+<p>The <span class="math" data-tex="\(g_j\)">\(g_j\)</span> are continuous and nonnegative, supported in <span class="math" data-tex="\(U_j\)">\(U_j\)</span>, and their sum is one on <span class="math" data-tex="\(C\)">\(C\)</span>. Thus a continuous <span class="math" data-tex="\(f\)">\(f\)</span> supported in <span class="math" data-tex="\(C\)">\(C\)</span> splits as <span class="math" data-tex="\(\sum_j fg_j\)">\(\sum_j fg_j\)</span>, with each term supported in the prescribed open set. No countable base for <span class="math" data-tex="\(X\)">\(X\)</span> has been used.</p>
+<h2 id="positive-functionals-are-regular-borel-measures">Positive functionals are regular Borel measures</h2>
+<p><strong>Theorem.</strong> A positive real-linear functional <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(C(X,\mathbb R)\)">\(C(X,\mathbb R)\)</span> has a unique finite regular Borel representing measure. Its total mass is <span class="math" data-tex="\(L(1)\)">\(L(1)\)</span>. This statement holds for every compact Hausdorff <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Positivity gives <span class="math" data-tex="\(|L(f)|\leq L(1)\|f\|_\infty\)">\(|L(f)|\leq L(1)\|f\|_\infty\)</span>, by comparison with the two constant functions. If <span class="math" data-tex="\(L(1)=0\)">\(L(1)=0\)</span>, the zero measure is the required measure; the construction below also covers it.</p>
+<p>For open <span class="math" data-tex="\(U\subset X\)">\(U\subset X\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+m(U)=\sup L(f),
+\tag{CB.3}
+\]">\[
+m(U)=\sup L(f),
+\tag{CB.3}
+\]</span>
+<p>where the supremum is over continuous <span class="math" data-tex="\(0\leq f\leq1\)">\(0\leq f\leq1\)</span> with support contained in <span class="math" data-tex="\(U\)">\(U\)</span>. In particular <span class="math" data-tex="\(m(X)=L(1)\)">\(m(X)=L(1)\)</span>. The partition in CB-01 shows that <span class="math" data-tex="\(m(U\cup V)\leq m(U)+m(V)\)">\(m(U\cup V)\leq m(U)+m(V)\)</span>: split each test function on its compact support. For disjoint open sets the reverse inequality follows by adding two nearly optimal tests, whose sum remains at most one. More generally, if <span class="math" data-tex="\(U\subset\bigcup_{j\geq1}U_j\)">\(U\subset\bigcup_{j\geq1}U_j\)</span>, any test support in <span class="math" data-tex="\(U\)">\(U\)</span> has a finite subcover; its finite partition gives
+<span class="math" data-tex="\(m(U)\leq\sum_j m(U_j)\)">\(m(U)\leq\sum_j m(U_j)\)</span>.</p>
+<p>For arbitrary <span class="math" data-tex="\(E\subset X\)">\(E\subset X\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\mu^*(E)=\inf_{U\supset E}m(U),
+\tag{CB.4}
+\]">\[
+\mu^*(E)=\inf_{U\supset E}m(U),
+\tag{CB.4}
+\]</span>
+<p>where <span class="math" data-tex="\(U\)">\(U\)</span> is open. This is an outer measure: for countably many <span class="math" data-tex="\(E_j\)">\(E_j\)</span>, choose open supersets whose values differ from <span class="math" data-tex="\(\mu^*(E_j)\)">\(\mu^*(E_j)\)</span> by at most <span class="math" data-tex="\(\varepsilon2^{-j}\)">\(\varepsilon2^{-j}\)</span>, and use the preceding open-cover inequality. Monotonicity and the empty-set condition are immediate. For open <span class="math" data-tex="\(U\)">\(U\)</span>, monotonicity gives <span class="math" data-tex="\(\mu^*(U)=m(U)\)">\(\mu^*(U)=m(U)\)</span>.</p>
+<p>An auxiliary inner approximation will prove measurability:</p>
+<span class="math math-display" data-tex="\[
+m(U)=\sup_{C\subset U}\mu^*(C),
+\tag{CB.5}
+\]">\[
+m(U)=\sup_{C\subset U}\mu^*(C),
+\tag{CB.5}
+\]</span>
+<p>where <span class="math" data-tex="\(C\)">\(C\)</span> is compact. The inequality from right to left is monotonicity. For the other one, if <span class="math" data-tex="\(f\)">\(f\)</span> is a test in (CB.3) and <span class="math" data-tex="\(C=\operatorname{supp}f\)">\(C=\operatorname{supp}f\)</span>, every open neighborhood of <span class="math" data-tex="\(C\)">\(C\)</span> admits <span class="math" data-tex="\(f\)">\(f\)</span> as a test. Hence <span class="math" data-tex="\(L(f)\leq\mu^*(C)\)">\(L(f)\leq\mu^*(C)\)</span>, and taking the supremum proves (CB.5).</p>
+<p>Fix open <span class="math" data-tex="\(U\)">\(U\)</span>, arbitrary <span class="math" data-tex="\(E\)">\(E\)</span>, and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Choose open <span class="math" data-tex="\(V\supset E\)">\(V\supset E\)</span> with <span class="math" data-tex="\(m(V)\leq\mu^*(E)+\varepsilon\)">\(m(V)\leq\mu^*(E)+\varepsilon\)</span>. Choose compact <span class="math" data-tex="\(C\subset V\cap U\)">\(C\subset V\cap U\)</span> with <span class="math" data-tex="\(\mu^*(C)\geq m(V\cap U)-\varepsilon\)">\(\mu^*(C)\geq m(V\cap U)-\varepsilon\)</span>, and shrink <span class="math" data-tex="\(C\subset W\subset\overline W\subset V\cap U\)">\(C\subset W\subset\overline W\subset V\cap U\)</span>. The disjoint open sets <span class="math" data-tex="\(W\)">\(W\)</span> and <span class="math" data-tex="\(V\setminus\overline W\)">\(V\setminus\overline W\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+m(V)\geq m(W)\\
+{}+m(V\setminus\overline W),\\
+m(W)\geq\mu^*(C).
+\end{gathered}
+\tag{CB.6}
+\]">\[
+\begin{gathered}
+m(V)\geq m(W)\\
+{}+m(V\setminus\overline W),\\
+m(W)\geq\mu^*(C).
+\end{gathered}
+\tag{CB.6}
+\]</span>
+<p>Since <span class="math" data-tex="\(E\setminus U\subset V\setminus\overline W\)">\(E\setminus U\subset V\setminus\overline W\)</span> and <span class="math" data-tex="\(E\cap U\subset V\cap U\)">\(E\cap U\subset V\cap U\)</span>, these inequalities imply
+<span class="math" data-tex="\(\mu^*(E\cap U)+\mu^*(E\setminus U)\leq\mu^*(E)+2\varepsilon\)">\(\mu^*(E\cap U)+\mu^*(E\setminus U)\leq\mu^*(E)+2\varepsilon\)</span>.
+Let <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decrease to zero. The reverse inequality is outer subadditivity, so <span class="math" data-tex="\(U\)">\(U\)</span> is Carathéodory measurable. The proved outer-measure theorem in the scalar programme now gives a finite measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on all Borel sets.</p>
+<p>Equation (CB.4) gives outer regularity, and (CB.5) gives inner regularity on open sets. Inner regularity on every Borel set follows from finiteness and outer approximation of its complement: if <span class="math" data-tex="\(U\supset X\setminus B\)">\(U\supset X\setminus B\)</span> has almost the same measure as that complement, then <span class="math" data-tex="\(X\setminus U\)">\(X\setminus U\)</span> is a compact subset of <span class="math" data-tex="\(B\)">\(B\)</span> with almost the same measure as <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>We verify the integral, rather than infer it from the construction. Suppose <span class="math" data-tex="\(0\leq f\leq M\)">\(0\leq f\leq M\)</span>, with <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span>, and let <span class="math" data-tex="\(\delta=M/n\)">\(\delta=M/n\)</span>. For <span class="math" data-tex="\(j=1,\ldots,n\)">\(j=1,\ldots,n\)</span>, put <span class="math" data-tex="\(U_j=\{f&gt;j\delta\}\)">\(U_j=\{f&gt;j\delta\}\)</span> and choose continuous tests <span class="math" data-tex="\(h_j\)">\(h_j\)</span> whose <span class="math" data-tex="\(L\)">\(L\)</span>-values approach <span class="math" data-tex="\(m(U_j)=\mu(U_j)\)">\(m(U_j)=\mu(U_j)\)</span>. Pointwise, <span class="math" data-tex="\(\delta\sum_jh_j\leq f\)">\(\delta\sum_jh_j\leq f\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+L(f)\geq\delta\sum_{j=1}^n\mu(U_j).
+\tag{CB.7}
+\]">\[
+L(f)\geq\delta\sum_{j=1}^n\mu(U_j).
+\tag{CB.7}
+\]</span>
+<p>The step function on the right differs from <span class="math" data-tex="\(f\)">\(f\)</span> by at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Letting <span class="math" data-tex="\(n\)">\(n\)</span> increase gives <span class="math" data-tex="\(L(f)\geq\int f\,d\mu\)">\(L(f)\geq\int f\,d\mu\)</span>. Apply the same inequality to <span class="math" data-tex="\(M-f\)">\(M-f\)</span>, using <span class="math" data-tex="\(\mu(X)=L(1)\)">\(\mu(X)=L(1)\)</span>, to get the reverse inequality. Adding constants proves representation for every real continuous function.</p>
+<p>For uniqueness, a finite regular Borel measure satisfies (CB.3) with <span class="math" data-tex="\(L(f)=\int f\)">\(L(f)=\int f\)</span>: approximate an open set internally by compact sets and use CB-01's cutoff equal to one on each compact set. Thus its values on open sets, and then on all Borel sets by outer regularity, are determined by <span class="math" data-tex="\(L\)">\(L\)</span>. Complex functionals obtained by complexifying a positive real functional have the corresponding complex integral representation.</p>
+<p>Two consequences will be used below. First, the pushforward of a finite regular Borel measure under a continuous map between compact Hausdorff spaces is again regular. For inner regularity, choose a compact subset of the inverse image of a Borel set; its compact image is contained in that Borel set and has at least the mass of the chosen subset. Outer regularity follows by complements and finiteness.</p>
+<p>Second, for a bounded upper-semicontinuous real function <span class="math" data-tex="\(u\)">\(u\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int u\,d\mu\\
+=\inf_{g\geq u}\int g\,d\mu,
+\end{gathered}
+\tag{CB.8}
+\]">\[
+\begin{gathered}
+\int u\,d\mu\\
+=\inf_{g\geq u}\int g\,d\mu,
+\end{gathered}
+\tag{CB.8}
+\]</span>
+<p>where <span class="math" data-tex="\(g\)">\(g\)</span> is continuous. After adding a constant assume <span class="math" data-tex="\(0\leq u\leq M\)">\(0\leq u\leq M\)</span>. Its upper-level sets <span class="math" data-tex="\(F_j=\{u\geq j\delta\}\)">\(F_j=\{u\geq j\delta\}\)</span> are compact. By outer regularity and CB-01 choose continuous <span class="math" data-tex="\(0\leq h_j\leq1\)">\(0\leq h_j\leq1\)</span>, equal to one on <span class="math" data-tex="\(F_j\)">\(F_j\)</span>, whose integrals exceed <span class="math" data-tex="\(\mu(F_j)\)">\(\mu(F_j)\)</span> by arbitrarily small amounts. The continuous function <span class="math" data-tex="\(\delta+\delta\sum_jh_j\)">\(\delta+\delta\sum_jh_j\)</span> majorizes <span class="math" data-tex="\(u\)">\(u\)</span>; its integral is at most <span class="math" data-tex="\(\int u+\delta\mu(X)\)">\(\int u+\delta\mu(X)\)</span> plus those small errors. Let the mesh and errors tend to zero. This proves (CB.8).</p>
+<h2 id="affine-coordinates-barycentres-and-envelopes">Affine coordinates, barycentres and envelopes</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a nonempty compact convex subset of a Hausdorff locally convex space, considered as a real space. Write <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> for its continuous real affine functions. They contain the constants and separate points. To justify separation, for a nonzero difference <span class="math" data-tex="\(v\)">\(v\)</span> choose a continuous seminorm <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(p(v)&gt;0\)">\(p(v)&gt;0\)</span>. The functional <span class="math" data-tex="\(tv\mapsto tp(v)\)">\(tv\mapsto tp(v)\)</span> on its real span is dominated by <span class="math" data-tex="\(p\)">\(p\)</span>. The full sublinear Hahn–Banach proof in <a href="notes/real-coercivity/predual-prerequisites.html#np1-norm-preserving-extension-and-the-norming-identity">NP1</a> extends it with the same domination. Applying domination to both signs gives <span class="math" data-tex="\(|\ell(w)|\leq p(w)\)">\(|\ell(w)|\leq p(w)\)</span>, so the extension is continuous and separates the original points. The evaluation map embeds <span class="math" data-tex="\(K\)">\(K\)</span> into <span class="math" data-tex="\(\mathbb R^{\mathcal A}\)">\(\mathbb R^{\mathcal A}\)</span>; it is a homeomorphism onto its image because it is a continuous injection from a compact space to a Hausdorff space. We may consequently work in these product coordinates.</p>
+<p><strong>Density of affine lattice expressions.</strong> Every continuous real function is a uniform limit of expressions obtained from finitely many members of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> by taking minima and maxima. To prove this, fix <span class="math" data-tex="\(f\in C(K,\mathbb R)\)">\(f\in C(K,\mathbb R)\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. For two points <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, an affine function separating them can be scaled and translated to equal <span class="math" data-tex="\(f\)">\(f\)</span> at both; if <span class="math" data-tex="\(x=y\)">\(x=y\)</span>, use the constant <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span>. Fixing <span class="math" data-tex="\(x\)">\(x\)</span>, the open sets on which these two-point functions exceed <span class="math" data-tex="\(f-\varepsilon\)">\(f-\varepsilon\)</span> cover <span class="math" data-tex="\(K\)">\(K\)</span>. A finite subcover and its maximum give a lattice expression <span class="math" data-tex="\(h_x&gt;f-\varepsilon\)">\(h_x&gt;f-\varepsilon\)</span> everywhere, with <span class="math" data-tex="\(h_x(x)=f(x)\)">\(h_x(x)=f(x)\)</span>. Near <span class="math" data-tex="\(x\)">\(x\)</span>, it is also less than <span class="math" data-tex="\(f+\varepsilon\)">\(f+\varepsilon\)</span>. A finite collection of these latter neighborhoods covers <span class="math" data-tex="\(K\)">\(K\)</span>; the minimum of their <span class="math" data-tex="\(h_x\)">\(h_x\)</span>'s approximates <span class="math" data-tex="\(f\)">\(f\)</span> within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> everywhere.</p>
+<p>Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> denote the continuous convex real functions. The linear space
+<span class="math" data-tex="\(\mathcal D=\mathcal C-\mathcal C\)">\(\mathcal D=\mathcal C-\mathcal C\)</span> is a vector lattice: for convex <span class="math" data-tex="\(f_1,f_2,g_1,g_2\)">\(f_1,f_2,g_1,g_2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\max\bigl(f_1-g_1,\\
+&amp;\qquad f_2-g_2\bigr)\\
+&amp;\quad=\max\bigl(f_1+g_2,\\
+&amp;\qquad f_2+g_1\bigr)\\
+&amp;\qquad{}-g_1-g_2.
+\end{aligned}
+\tag{CB.9}
+\]">\[
+\begin{aligned}
+&amp;\max\bigl(f_1-g_1,\\
+&amp;\qquad f_2-g_2\bigr)\\
+&amp;\quad=\max\bigl(f_1+g_2,\\
+&amp;\qquad f_2+g_1\bigr)\\
+&amp;\qquad{}-g_1-g_2.
+\end{aligned}
+\tag{CB.9}
+\]</span>
+<p>It contains the affine functions and their finite lattice expressions, so the preceding approximation proves that <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is uniformly dense in <span class="math" data-tex="\(C(K,\mathbb R)\)">\(C(K,\mathbb R)\)</span>.</p>
+<p>By CB-02 and AB-05, the regular Borel probability measures <span class="math" data-tex="\(\mathcal P(K)\)">\(\mathcal P(K)\)</span> form a compact space for convergence of integrals of continuous functions. Indeed they correspond exactly to the positive functionals of mass one in the weak-star compact unit ball of <span class="math" data-tex="\(C(K,\mathbb R)^*\)">\(C(K,\mathbb R)^*\)</span>. Positivity and the mass equation are closed conditions.</p>
+<p>Every <span class="math" data-tex="\(\mu\in\mathcal P(K)\)">\(\mu\in\mathcal P(K)\)</span> has a unique barycentre <span class="math" data-tex="\(b(\mu)\in K\)">\(b(\mu)\in K\)</span>, characterized by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a(b(\mu))=\int a\,d\mu\\
+(a\in\mathcal A).
+\end{gathered}
+\tag{CB.10}
+\]">\[
+\begin{gathered}
+a(b(\mu))=\int a\,d\mu\\
+(a\in\mathcal A).
+\end{gathered}
+\tag{CB.10}
+\]</span>
+<p>Here is the existence argument. Given finitely many continuous tests and an error tolerance, partition <span class="math" data-tex="\(K\)">\(K\)</span> into finitely many Borel sets on each of which those tests have small oscillation; choose one point in each nonempty positive-mass piece. The atomic measure with those masses approximates all the tests. Thus finite atomic probabilities are weak-star dense. Their finite convex-combination barycentres belong to <span class="math" data-tex="\(K\)">\(K\)</span>. Compactness supplies a cluster point, and each affine coordinate of it is the required integral. Coordinates separate points, proving uniqueness. This also proves continuity of <span class="math" data-tex="\(b:\mathcal P(K)\to K\)">\(b:\mathcal P(K)\to K\)</span>.</p>
+<p>The same finite-atom construction on a closed subset <span class="math" data-tex="\(C\)">\(C\)</span> proves density of finite atomic measures supported on <span class="math" data-tex="\(C\)">\(C\)</span> among positive measures supported there, with total mass fixed. Also <span class="math" data-tex="\(b(\mu)\)">\(b(\mu)\)</span> lies in the closed convex hull of the support: the finite approximations can be taken on that support.</p>
+<p>For <span class="math" data-tex="\(f\in\mathcal C\)">\(f\in\mathcal C\)</span>, finite Jensen inequalities and the preceding net approximation give</p>
+<span class="math math-display" data-tex="\[
+f(b(\mu))\leq\int f\,d\mu.
+\tag{CB.11}
+\]">\[
+f(b(\mu))\leq\int f\,d\mu.
+\tag{CB.11}
+\]</span>
+<p>No vector-valued integration or measurable choice of measures is involved.</p>
+<p>We record a useful envelope identity for any continuous real <span class="math" data-tex="\(g\)">\(g\)</span>, convex or not. For <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>, let <span class="math" data-tex="\(P_x=\{\mu:b(\mu)=x\}\)">\(P_x=\{\mu:b(\mu)=x\}\)</span>. This is a nonempty compact set. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\min_{\mu\in P_x}\mu(g)\\
+=\sup_{\substack{a\in\mathcal A\\a\leq g}}a(x).
+\end{gathered}
+\tag{CB.12}
+\]">\[
+\begin{gathered}
+\min_{\mu\in P_x}\mu(g)\\
+=\sup_{\substack{a\in\mathcal A\\a\leq g}}a(x).
+\end{gathered}
+\tag{CB.12}
+\]</span>
+<p>To prove the nontrivial inequality, consider the compact convex set
+<span class="math" data-tex="\(T=\{(b(\mu),\mu(g)):\mu\in\mathcal P(K)\}\)">\(T=\{(b(\mu),\mu(g)):\mu\in\mathcal P(K)\}\)</span>.
+A point <span class="math" data-tex="\((x,r)\)">\((x,r)\)</span> strictly below its fibre can be strictly separated from <span class="math" data-tex="\(T\)">\(T\)</span> by a function involving finitely many affine coordinates and the last real coordinate. For completeness, finite-coordinate separation here needs only Euclidean geometry: a basic product neighborhood separates the point from the compact set, so its finite-coordinate projection lies outside the corresponding compact convex projection of <span class="math" data-tex="\(T\)">\(T\)</span>. A nearest point in that Euclidean projection exists; expanding squared distance along each line segment gives a strict separating affine functional. Pull it back to <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>Orient the separator as <span class="math" data-tex="\(\ell(y)+ct\geq d&gt;\ell(x)+cr\)">\(\ell(y)+ct\geq d&gt;\ell(x)+cr\)</span>. Comparing with a point of <span class="math" data-tex="\(T\)">\(T\)</span> above the same <span class="math" data-tex="\(x\)">\(x\)</span> gives <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. At the point masses <span class="math" data-tex="\(\delta_y\)">\(\delta_y\)</span> it gives the continuous affine minorant <span class="math" data-tex="\(a(y)=(d-\ell(y))/c\leq g(y)\)">\(a(y)=(d-\ell(y))/c\leq g(y)\)</span>, and <span class="math" data-tex="\(a(x)&gt;r\)">\(a(x)&gt;r\)</span>. Let <span class="math" data-tex="\(r\)">\(r\)</span> increase to the minimum. The other inequality follows by integrating any affine minorant. Reversing signs proves the upper-envelope identity</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widehat g(x)&amp;=\max_{\mu\in P_x}\mu(g)\\
+&amp;=\inf_{\substack{a\in\mathcal A\\a\geq g}}a(x).
+\end{aligned}
+\tag{CB.13}
+\]">\[
+\begin{aligned}
+\widehat g(x)&amp;=\max_{\mu\in P_x}\mu(g)\\
+&amp;=\inf_{\substack{a\in\mathcal A\\a\geq g}}a(x).
+\end{aligned}
+\tag{CB.13}
+\]</span>
+<p>The function <span class="math" data-tex="\(\widehat g\)">\(\widehat g\)</span> is bounded, concave and upper semicontinuous. Concavity follows by mixing maximizing measures. For upper semicontinuity, if <span class="math" data-tex="\(x_i\to x\)">\(x_i\to x\)</span>, take cluster points of the corresponding maximizing measures; continuity of the barycentre and of integration of <span class="math" data-tex="\(g\)">\(g\)</span> gives the required upper bound.</p>
+<p>There is no hidden extreme-point existence theorem in the boundary arguments below. Every nonempty compact convex set has an extreme point: order its nonempty compact faces by reverse inclusion and use compactness to intersect a chain. A minimal face exists by Zorn. If it contained two different points, an affine function separating them would have a proper nonempty compact maximum face inside it, a contradiction. Thus the minimal face is a singleton. In particular, if <span class="math" data-tex="\(q:K\to L\)">\(q:K\to L\)</span> is a continuous affine surjection and <span class="math" data-tex="\(y\)">\(y\)</span> is extreme in <span class="math" data-tex="\(L\)">\(L\)</span>, its fibre is a compact face of <span class="math" data-tex="\(K\)">\(K\)</span>, so it contains an extreme point of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Finally, <span class="math" data-tex="\(x\)">\(x\)</span> is extreme exactly when <span class="math" data-tex="\(P_x=\{\delta_x\}\)">\(P_x=\{\delta_x\}\)</span>. A nontrivial finite decomposition already proves one direction. For the converse, suppose <span class="math" data-tex="\(x\)">\(x\)</span> is extreme and <span class="math" data-tex="\(\mu\in P_x\)">\(\mu\in P_x\)</span>. If a continuous affine function <span class="math" data-tex="\(a\)">\(a\)</span> were not constant <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-almost everywhere, splitting its distribution at a real threshold would give two positive-mass pieces with different <span class="math" data-tex="\(a\)">\(a\)</span>-means. Their normalized barycentres would give a nontrivial decomposition of <span class="math" data-tex="\(x\)">\(x\)</span>, impossible. Hence every <span class="math" data-tex="\(a\)">\(a\)</span> equals <span class="math" data-tex="\(a(x)\)">\(a(x)\)</span> almost everywhere. For each <span class="math" data-tex="\(y\ne x\)">\(y\ne x\)</span>, choose <span class="math" data-tex="\(a\)">\(a\)</span> distinguishing it from <span class="math" data-tex="\(x\)">\(x\)</span>; a neighborhood of <span class="math" data-tex="\(y\)">\(y\)</span> on which their values stay separated has measure zero. Every compact subset of <span class="math" data-tex="\(K\setminus\{x\}\)">\(K\setminus\{x\}\)</span> has a finite cover by such neighborhoods. Inner regularity therefore gives <span class="math" data-tex="\(\mu(K\setminus\{x\})=0\)">\(\mu(K\setminus\{x\})=0\)</span>.</p>
+<h2 id="maximal-measures-and-countable-variance-tests">Maximal measures and countable variance tests</h2>
+<p>The Choquet order on <span class="math" data-tex="\(\mathcal P(K)\)">\(\mathcal P(K)\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mu\preceq\nu
+\quad\Longleftrightarrow\\
+\mu(f)\leq\nu(f)\\
+(f\in\mathcal C).
+\end{gathered}
+\tag{CB.14}
+\]">\[
+\begin{gathered}
+\mu\preceq\nu
+\quad\Longleftrightarrow\\
+\mu(f)\leq\nu(f)\\
+(f\in\mathcal C).
+\end{gathered}
+\tag{CB.14}
+\]</span>
+<p>Both <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(-a\)">\(-a\)</span> are convex when <span class="math" data-tex="\(a\)">\(a\)</span> is affine, so comparable measures have the same barycentre. Antisymmetry follows from density of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> and uniqueness in CB-02. Thus this is an order, not merely a preorder.</p>
+<p>Every representing measure is dominated by a maximal one. The set of measures above it is compact: it is the intersection of the closed inequalities in (CB.14). For an ordered chain, the upper sets of its members have the finite intersection property, hence a common member by compactness. Zorn supplies a maximal measure. The same argument works in any compact barycentre fibre.</p>
+<p>Fix <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span> and a positive integer <span class="math" data-tex="\(m\)">\(m\)</span>. Define the compact set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x\in C_{a,m}\quad\Longleftrightarrow\\
+\text{some }\nu\in P_x\text{ has}\\
+\nu(a^2)-a(x)^2\\
+{}\geq1/m.
+\end{gathered}
+\tag{CB.15}
+\]">\[
+\begin{gathered}
+x\in C_{a,m}\quad\Longleftrightarrow\\
+\text{some }\nu\in P_x\text{ has}\\
+\nu(a^2)-a(x)^2\\
+{}\geq1/m.
+\end{gathered}
+\tag{CB.15}
+\]</span>
+<p>Compactness follows by projecting the closed condition in <span class="math" data-tex="\(K\times\mathcal P(K)\)">\(K\times\mathcal P(K)\)</span>. We claim that every maximal <span class="math" data-tex="\(\mu\)">\(\mu\)</span> satisfies <span class="math" data-tex="\(\mu(C_{a,m})=0\)">\(\mu(C_{a,m})=0\)</span>.</p>
+<p>Otherwise let <span class="math" data-tex="\(\rho\)">\(\rho\)</span> be its restriction to this compact set, with mass <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. Approximate <span class="math" data-tex="\(\rho\)">\(\rho\)</span> weak-star by finite atomic measures <span class="math" data-tex="\(\rho_i\)">\(\rho_i\)</span> of mass <span class="math" data-tex="\(c\)">\(c\)</span> supported there. Replace each atom at <span class="math" data-tex="\(x\)">\(x\)</span> by a witnessing measure in <span class="math" data-tex="\(P_x\)">\(P_x\)</span> from (CB.15), multiplied by the atom's mass. The resulting positive measure <span class="math" data-tex="\(\eta_i\)">\(\eta_i\)</span> dominates <span class="math" data-tex="\(\rho_i\)">\(\rho_i\)</span> on every continuous convex function by (CB.11), agrees on every affine function, and gains at least <span class="math" data-tex="\(c/m\)">\(c/m\)</span> on <span class="math" data-tex="\(a^2\)">\(a^2\)</span>. A weak-star cluster point <span class="math" data-tex="\(\eta\)">\(\eta\)</span> has all three properties relative to <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Thus <span class="math" data-tex="\(\mu-\rho+\eta\)">\(\mu-\rho+\eta\)</span> is a probability measure above <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, strictly above it on <span class="math" data-tex="\(a^2\)">\(a^2\)</span>. This contradicts maximality and proves the claim.</p>
+<p>If <span class="math" data-tex="\(K\)">\(K\)</span> is metrizable, choose a countable family <span class="math" data-tex="\(a_j\in\mathcal A\)">\(a_j\in\mathcal A\)</span> separating points. Such a family exists: the sets of pairs distinguished by individual affine functions form an open cover of <span class="math" data-tex="\(K\times K\setminus\{(x,x)\}\)">\(K\times K\setminus\{(x,x)\}\)</span>; a countable base gives a countable subcover. A nonextreme point has a nontrivial finite representing measure, and one of the <span class="math" data-tex="\(a_j\)">\(a_j\)</span>'s distinguishes its two endpoints. That measure has strictly positive variance for <span class="math" data-tex="\(a_j\)">\(a_j\)</span>. CB-03 gives the converse for extreme points. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K\setminus\operatorname{ext}K\\
+=\bigcup_{j,m\geq1} C_{a_j,m}.
+\end{gathered}
+\tag{CB.16}
+\]">\[
+\begin{gathered}
+K\setminus\operatorname{ext}K\\
+=\bigcup_{j,m\geq1} C_{a_j,m}.
+\end{gathered}
+\tag{CB.16}
+\]</span>
+<p>The extreme boundary is a Borel <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span>, and every maximal measure assigns it mass one.</p>
+<p>Conversely, a regular probability measure concentrated on the extreme boundary is maximal. Here the boundary must be measurable; in particular this applies in the metrizable case. Suppose <span class="math" data-tex="\(\mu\preceq\nu\)">\(\mu\preceq\nu\)</span>, and fix <span class="math" data-tex="\(f\in\mathcal C\)">\(f\in\mathcal C\)</span>. Every finite minimum <span class="math" data-tex="\(h\)">\(h\)</span> of continuous affine majorants of <span class="math" data-tex="\(f\)">\(f\)</span> is continuous concave, so</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\nu(f)&amp;\leq\nu(h)\\
+&amp;\leq\mu(h).
+\end{aligned}
+\tag{CB.17}
+\]">\[
+\begin{aligned}
+\nu(f)&amp;\leq\nu(h)\\
+&amp;\leq\mu(h).
+\end{aligned}
+\tag{CB.17}
+\]</span>
+<p>These minima decrease, as a directed family, to <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> from (CB.13). Their integrals have infimum <span class="math" data-tex="\(\mu(\widehat f)\)">\(\mu(\widehat f)\)</span>. To justify this net assertion, take a continuous <span class="math" data-tex="\(k&gt;\widehat f\)">\(k&gt;\widehat f\)</span>. At each point some member of the directed family is below <span class="math" data-tex="\(k\)">\(k\)</span>; compactness gives finitely many such choices, and their minimum is below <span class="math" data-tex="\(k\)">\(k\)</span> everywhere. Equation (CB.8), followed by adding arbitrarily small positive constants, gives the asserted infimum of integrals. At an extreme point, CB-03 gives <span class="math" data-tex="\(\widehat f=f\)">\(\widehat f=f\)</span>. Thus (CB.17) implies <span class="math" data-tex="\(\nu(f)\leq\mu(f)\)">\(\nu(f)\leq\mu(f)\)</span>, and (CB.14) gives equality. Density of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> proves <span class="math" data-tex="\(\nu=\mu\)">\(\nu=\mu\)</span>.</p>
+<h2 id="boundary-concentration-without-metrizability"><span id="oa-mod-cb-05"></span><span id="OA-MOD-CB-05"></span>Boundary concentration without metrizability</h2>
+<p>A <strong>Baire set</strong> is a member of the sigma-algebra generated by continuous real functions. These sets need not include all Borel sets. We shall prove that every maximal measure gives mass zero to every Baire set disjoint from <span class="math" data-tex="\(\operatorname{ext}K\)">\(\operatorname{ext}K\)</span>.</p>
+<p>Start with a closed <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span> set <span class="math" data-tex="\(S\)">\(S\)</span> containing no extreme point. By CB-01, there are continuous <span class="math" data-tex="\(0\leq g_n\leq1\)">\(0\leq g_n\leq1\)</span>, decreasing pointwise to <span class="math" data-tex="\(1_S\)">\(1_S\)</span>: take cutoffs equal to one on <span class="math" data-tex="\(S\)">\(S\)</span>, supported in the first <span class="math" data-tex="\(n\)">\(n\)</span> defining open neighborhoods, and take successive minima.</p>
+<p>We first prove an escape assertion: for each <span class="math" data-tex="\(x\in S\)">\(x\in S\)</span>, some <span class="math" data-tex="\(\nu\in P_x\)">\(\nu\in P_x\)</span> has <span class="math" data-tex="\(\nu(S)&lt;1\)">\(\nu(S)&lt;1\)</span>. Suppose the contrary for one <span class="math" data-tex="\(x\)">\(x\)</span>. Then <span class="math" data-tex="\(\nu(g_n)=1\)">\(\nu(g_n)=1\)</span> for every <span class="math" data-tex="\(\nu\in P_x\)">\(\nu\in P_x\)</span> and every <span class="math" data-tex="\(n\)">\(n\)</span>. By (CB.12), for each <span class="math" data-tex="\(n,m\)">\(n,m\)</span> choose an affine <span class="math" data-tex="\(a_{n,m}\leq g_n\)">\(a_{n,m}\leq g_n\)</span> with <span class="math" data-tex="\(a_{n,m}(x)&gt;1-1/m\)">\(a_{n,m}(x)&gt;1-1/m\)</span>.</p>
+<p>Using CB-03's lattice approximation, choose countably many affine functions whose lattice expressions uniformly approximate all the <span class="math" data-tex="\(g_n\)">\(g_n\)</span>. Add all the <span class="math" data-tex="\(a_{n,m}\)">\(a_{n,m}\)</span>. Their evaluation map <span class="math" data-tex="\(q:K\to L\)">\(q:K\to L\)</span> has compact convex metrizable image, after rescaling the countably many bounded coordinates if necessary. Each <span class="math" data-tex="\(g_n\)">\(g_n\)</span> is constant on the fibres and descends to a continuous function <span class="math" data-tex="\(\gamma_n\)">\(\gamma_n\)</span> on <span class="math" data-tex="\(L\)">\(L\)</span>. Continuity follows because a continuous surjection from a compact space to a Hausdorff space is a quotient map. The set <span class="math" data-tex="\(S\)">\(S\)</span> is saturated:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S=q^{-1}(q(S)),\\
+\gamma_n\downarrow1_{q(S)}.
+\end{gathered}
+\tag{CB.18}
+\]">\[
+\begin{gathered}
+S=q^{-1}(q(S)),\\
+\gamma_n\downarrow1_{q(S)}.
+\end{gathered}
+\tag{CB.18}
+\]</span>
+<p>Indeed the limiting values of all the <span class="math" data-tex="\(g_n\)">\(g_n\)</span> determine membership in <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>For any representing measure <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of <span class="math" data-tex="\(q(x)\)">\(q(x)\)</span>, integration of the descended affine <span class="math" data-tex="\(a_{n,m}\)">\(a_{n,m}\)</span>'s gives
+<span class="math" data-tex="\(\lambda(\gamma_n)\geq a_{n,m}(x)&gt;1-1/m\)">\(\lambda(\gamma_n)\geq a_{n,m}(x)&gt;1-1/m\)</span>.
+Let <span class="math" data-tex="\(m\)">\(m\)</span> increase, then <span class="math" data-tex="\(n\)">\(n\)</span> increase. Since <span class="math" data-tex="\(0\leq\gamma_n\leq1\)">\(0\leq\gamma_n\leq1\)</span>, scalar monotone convergence applied to <span class="math" data-tex="\(1-\gamma_n\)">\(1-\gamma_n\)</span> shows <span class="math" data-tex="\(\lambda(q(S))=1\)">\(\lambda(q(S))=1\)</span>. But CB-04 supplies such a <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> concentrated on <span class="math" data-tex="\(\operatorname{ext}L\)">\(\operatorname{ext}L\)</span>. That set is disjoint from <span class="math" data-tex="\(q(S)\)">\(q(S)\)</span>: an extreme point of <span class="math" data-tex="\(L\)">\(L\)</span> lifts to an extreme point of <span class="math" data-tex="\(K\)">\(K\)</span> by CB-03, and saturation would place that lift in <span class="math" data-tex="\(S\)">\(S\)</span>. This contradiction proves the escape assertion.</p>
+<p>For this <span class="math" data-tex="\(S\)">\(S\)</span>, choose a countable family of affine coordinates <span class="math" data-tex="\(b_j\)">\(b_j\)</span> that makes <span class="math" data-tex="\(S\)">\(S\)</span> saturated; the <span class="math" data-tex="\(g_n\)">\(g_n\)</span>-approximation construction just used provides one, without the <span class="math" data-tex="\(a_{n,m}\)">\(a_{n,m}\)</span>. If every <span class="math" data-tex="\(b_j\)">\(b_j\)</span> had zero variance in an escaping measure <span class="math" data-tex="\(\nu\in P_x\)">\(\nu\in P_x\)</span>, then each would equal <span class="math" data-tex="\(b_j(x)\)">\(b_j(x)\)</span> almost everywhere. Their countable intersection would have full measure, placing <span class="math" data-tex="\(\nu\)">\(\nu\)</span> on the fibre of <span class="math" data-tex="\(x\)">\(x\)</span>, which is contained in <span class="math" data-tex="\(S\)">\(S\)</span>. This contradicts escape. Hence</p>
+<span class="math math-display" data-tex="\[
+S\subset\bigcup_{j,m\geq1}C_{b_j,m}.
+\tag{CB.19}
+\]">\[
+S\subset\bigcup_{j,m\geq1}C_{b_j,m}.
+\tag{CB.19}
+\]</span>
+<p>CB-04 gives <span class="math" data-tex="\(\mu(S)=0\)">\(\mu(S)=0\)</span> for every maximal <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(B\)">\(B\)</span> be any Baire set disjoint from the extreme boundary. Its description uses only countably many continuous functions: the sets expressible through some countable subfamily form a sigma-algebra containing every generator. Thus there is a continuous map <span class="math" data-tex="\(q\)">\(q\)</span> onto a compact metric space <span class="math" data-tex="\(Y\)">\(Y\)</span> and a Borel set <span class="math" data-tex="\(D\subset Y\)">\(D\subset Y\)</span> such that <span class="math" data-tex="\(B=q^{-1}(D)\)">\(B=q^{-1}(D)\)</span>. The pushforward of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is regular by CB-02. If <span class="math" data-tex="\(\mu(B)&gt;0\)">\(\mu(B)&gt;0\)</span>, inner regularity supplies a compact <span class="math" data-tex="\(F\subset D\)">\(F\subset D\)</span> of positive pushforward mass. Then <span class="math" data-tex="\(q^{-1}(F)\)">\(q^{-1}(F)\)</span> is a closed <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span> subset of <span class="math" data-tex="\(B\)">\(B\)</span> with positive <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-mass, contradicting the preceding paragraph. This proves the Baire assertion.</p>
+<p>It provides a precise measure on the boundary even when the boundary is not Borel. Put <span class="math" data-tex="\(E=\operatorname{ext}K\)">\(E=\operatorname{ext}K\)</span>. A set in the sigma-algebra generated by <span class="math" data-tex="\(E\)">\(E\)</span> and the Baire sets has the form</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(B_1\cap E)\\
+{}\cup(B_2\cap E^c),
+\end{gathered}
+\tag{CB.20}
+\]">\[
+\begin{gathered}
+(B_1\cap E)\\
+{}\cup(B_2\cap E^c),
+\end{gathered}
+\tag{CB.20}
+\]</span>
+<p>with <span class="math" data-tex="\(B_1,B_2\)">\(B_1,B_2\)</span> Baire. Assign it the value <span class="math" data-tex="\(\mu(B_1)\)">\(\mu(B_1)\)</span>. This is well defined: two choices of <span class="math" data-tex="\(B_1\)">\(B_1\)</span> have symmetric difference disjoint from <span class="math" data-tex="\(E\)">\(E\)</span>, so that difference has measure zero. For disjoint sets of form (CB.20), the corresponding <span class="math" data-tex="\(B_1\)">\(B_1\)</span>'s intersect only in such null sets; ordinary countable additivity of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> then proves countable additivity of this extension. It agrees with <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on Baire sets and assigns <span class="math" data-tex="\(E\)">\(E\)</span> mass one. Equivalently, the boundary carries the measure
+<span class="math" data-tex="\(\mu_E(B\cap E)=\mu(B)\)">\(\mu_E(B\cap E)=\mu(B)\)</span> on traces of Baire sets. This does not assert that <span class="math" data-tex="\(E\)">\(E\)</span> itself belongs to the original Borel sigma-algebra.</p>
+<h2 id="common-refinements-give-a-unique-maximal-representing-measure"><span id="oa-mod-cb-06"></span><span id="OA-MOD-CB-06"></span>Common refinements give a unique maximal representing measure</h2>
+<p>We now give a criterion adapted to equilibrium states. Suppose every two finite convex decompositions of a point of <span class="math" data-tex="\(K\)">\(K\)</span> admit a common refinement. Explicitly, if
+<span class="math" data-tex="\(x=\sum_i t_i x_i=\sum_j s_j y_j\)">\(x=\sum_i t_i x_i=\sum_j s_j y_j\)</span>,
+there are nonnegative <span class="math" data-tex="\(r_{ij}\)">\(r_{ij}\)</span> and points <span class="math" data-tex="\(z_{ij}\in K\)">\(z_{ij}\in K\)</span> for nonzero coefficients such that the row sums are <span class="math" data-tex="\(t_i\)">\(t_i\)</span>, the column sums are <span class="math" data-tex="\(s_j\)">\(s_j\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+t_i x_i&amp;=\sum_jr_{ij}z_{ij},\\
+s_j y_j&amp;=\sum_ir_{ij}z_{ij}.
+\end{aligned}
+\tag{CB.21}
+\]">\[
+\begin{aligned}
+t_i x_i&amp;=\sum_jr_{ij}z_{ij},\\
+s_j y_j&amp;=\sum_ir_{ij}z_{ij}.
+\end{aligned}
+\tag{CB.21}
+\]</span>
+<p>The equations include their coefficient-sum conditions, so they are affine identities independent of the chosen origin. Zero coefficients are omitted.</p>
+<p>For <span class="math" data-tex="\(f\in\mathcal C\)">\(f\in\mathcal C\)</span>, define <span class="math" data-tex="\(Q_x(f)\)">\(Q_x(f)\)</span> as the supremum of <span class="math" data-tex="\(\sum_i t_i f(x_i)\)">\(\sum_i t_i f(x_i)\)</span> over all finite decompositions of <span class="math" data-tex="\(x\)">\(x\)</span>. It is finite, bounded between the minimum and maximum of <span class="math" data-tex="\(f\)">\(f\)</span>. Refining a decomposition increases its value on a convex function, by finite Jensen. Given almost optimal decompositions for <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span>, a common refinement is at least as good for each. Together with the reverse inequality obtained on each individual decomposition, this proves</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q_x(f+g)\\
+=Q_x(f)\\
+{}+Q_x(g).
+\end{gathered}
+\tag{CB.22}
+\]">\[
+\begin{gathered}
+Q_x(f+g)\\
+=Q_x(f)\\
+{}+Q_x(g).
+\end{gathered}
+\tag{CB.22}
+\]</span>
+<p>Positive homogeneity, monotonicity and <span class="math" data-tex="\(Q_x(f+c)=Q_x(f)+c\)">\(Q_x(f+c)=Q_x(f)+c\)</span> follow directly.</p>
+<p>Define <span class="math" data-tex="\(L_x(f-g)=Q_x(f)-Q_x(g)\)">\(L_x(f-g)=Q_x(f)-Q_x(g)\)</span> on <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Additivity shows this is independent of the representation: equality of two differences gives equality after cross-adding their convex terms. If <span class="math" data-tex="\(f-g\geq0\)">\(f-g\geq0\)</span>, monotonicity gives <span class="math" data-tex="\(L_x(f-g)\geq0\)">\(L_x(f-g)\geq0\)</span>. Thus <span class="math" data-tex="\(L_x\)">\(L_x\)</span> is positive, <span class="math" data-tex="\(L_x(1)=1\)">\(L_x(1)=1\)</span>, and <span class="math" data-tex="\(|L_x(h)|\leq\|h\|_\infty\)">\(|L_x(h)|\leq\|h\|_\infty\)</span>. Uniform approximation extends it uniquely to <span class="math" data-tex="\(C(K,\mathbb R)\)">\(C(K,\mathbb R)\)</span>: the norm bound makes the functional values Cauchy and independent of the approximating sequence. Positivity persists, since an approximation to a nonnegative function within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> becomes nonnegative after adding the constant <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. CB-02 gives a regular Borel probability <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span>. Affine functions have the same value on every decomposition of <span class="math" data-tex="\(x\)">\(x\)</span>, so (CB.10) shows that it represents <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>We prove that it dominates every other representing measure. Fix <span class="math" data-tex="\(\rho\in P_x\)">\(\rho\in P_x\)</span>, <span class="math" data-tex="\(f\in\mathcal C\)">\(f\in\mathcal C\)</span>, and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Cover <span class="math" data-tex="\(K\)">\(K\)</span> by finitely many relatively open convex neighborhoods whose closures have <span class="math" data-tex="\(f\)">\(f\)</span>-oscillation less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Such neighborhoods exist in the finite-coordinate product topology, by continuity of <span class="math" data-tex="\(f\)">\(f\)</span>. Partition <span class="math" data-tex="\(K\)">\(K\)</span> into finitely many Borel pieces subordinate to this cover. A piece of positive mass <span class="math" data-tex="\(t_i\)">\(t_i\)</span> has a normalized restricted measure with barycentre <span class="math" data-tex="\(x_i\)">\(x_i\)</span>. CB-03 places <span class="math" data-tex="\(x_i\)">\(x_i\)</span> in the closed convex hull of that piece, hence in the same closed convex neighborhood. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\rho(f)-S_f|\leq\varepsilon,\\
+S_f=\sum_i t_i f(x_i).
+\end{gathered}
+\tag{CB.23}
+\]">\[
+\begin{gathered}
+|\rho(f)-S_f|\leq\varepsilon,\\
+S_f=\sum_i t_i f(x_i).
+\end{gathered}
+\tag{CB.23}
+\]</span>
+<p>The barycentre identities give <span class="math" data-tex="\(x=\sum_i t_i x_i\)">\(x=\sum_i t_i x_i\)</span>. Thus <span class="math" data-tex="\(\rho(f)\leq Q_x(f)+\varepsilon=\mu_x(f)+\varepsilon\)">\(\rho(f)\leq Q_x(f)+\varepsilon=\mu_x(f)+\varepsilon\)</span>. Let <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decrease to zero. This proves <span class="math" data-tex="\(\rho\preceq\mu_x\)">\(\rho\preceq\mu_x\)</span>.</p>
+<p>Consequently <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> is the greatest representing measure in the Choquet order and is the unique maximal one. CB-05 gives its canonical boundary measure on traces of Baire sets. If <span class="math" data-tex="\(K\)">\(K\)</span> is metrizable, CB-04 identifies maximal measures with regular Borel measures concentrated on the extreme boundary. In that case every point has exactly one such boundary probability.</p>
+<p>This is the precise simplex conclusion we shall use. In the general compact Hausdorff case, uniqueness refers to the maximal regular Borel representing measure and the boundary measure induced from it. A claim about arbitrary measures on an unspecified sigma-algebra of a possibly non-Borel extreme boundary would be a different statement.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-KG.html">← The geometry of KMS states and their central densities</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-KS.html">Central decompositions and disjoint equilibrium representations →</a></span></nav>
+<p class="small source-link"><a href="src/compact-convex-boundary-measures.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

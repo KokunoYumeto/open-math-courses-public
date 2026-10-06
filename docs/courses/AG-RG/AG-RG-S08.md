@@ -2,7 +2,7 @@
 
 This lesson supplies the additional arguments consumed from the earlier group-scheme lessons, before their use in the following reductive-group lessons. The statements retain their field, characteristic, finiteness and base hypotheses. Definitions of a group scheme, a character, an fpqc form and a quasi-coherent representation are definitions, rather than theorem obligations.
 
-The earlier algebra proofs used below are the current programme lessons, with their actual locators specified at the point of use. Those locators refer to written proofs. External free sources at the end explain provenance; none replaces a proof below or the stated earlier proof. The separate general flat quotient proof is Flat quotient bootstrap, Theorem 8.2 and Corollary 8.3; the further field scheme-quotient argument remains in the earlier quotient lesson.
+The earlier algebra proofs used below are the current programme lessons, with their actual locators specified at the point of use. Those locators refer to written proofs. External free sources at the end explain provenance; none replaces a proof below or the stated earlier proof. The separate general flat quotient proof is [Flat quotient bootstrap](AG-RG-S07.md), Theorem 8.2 and Corollary 8.3; the further field scheme-quotient argument remains in the earlier quotient lesson.
 
 ## G.0. The component structure used in the field-group proof
 
@@ -58,7 +58,7 @@ For free comparison, the corresponding canonical identity-component statement is
 
 ## G.1. Dimension at a point after field extension
 
-We use the earlier proofs in AG-CA, *Krull dimension and Noether normalization*, Corollary 3.2, Theorems 4.2 and 6.1: normalization over a polynomial ring, dimension as transcendence degree for a finite-type domain, and dimension at a point as the largest dimension of a component through it. We also use *Associated primes and primary decomposition*, Theorem 3.2 and Theorem 1.2, for minimal primes being associated and the associated-prime description of zero divisors. For an integral inclusion, going up lifts every finite prime chain and incomparability makes the contraction of every strict chain strict, so the two dimensions agree. These two assertions have their complete earlier proofs in Descent and Zariski Main, Lemma P0.4; its normal going-down proof P0.8 supplies the further input used by the earlier normalization dimension argument.
+We use the earlier proofs in AG-CA, *Krull dimension and Noether normalization*, Corollary 3.2, Theorems 4.2 and 6.1: normalization over a polynomial ring, dimension as transcendence degree for a finite-type domain, and dimension at a point as the largest dimension of a component through it. We also use *Associated primes and primary decomposition*, Theorem 3.2 and Theorem 1.2, for minimal primes being associated and the associated-prime description of zero divisors. For an integral inclusion, going up lifts every finite prime chain and incomparability makes the contraction of every strict chain strict, so the two dimensions agree. These two assertions have their complete earlier proofs in [Descent and Zariski Main](AG-RG-S04.md), Lemma P0.4; its normal going-down proof P0.8 supplies the further input used by the earlier normalization dimension argument.
 
 **Lemma G.1.1 (flat going down).** If \(A\to B\) is flat, \(\mathfrak q\subset B\) contracts to \(\mathfrak p\subset A\), and \(\mathfrak p_0\subset\mathfrak p\), there is \(\mathfrak q_0\subset\mathfrak q\) contracting to \(\mathfrak p_0\).
 

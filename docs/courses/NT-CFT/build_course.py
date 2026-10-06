@@ -164,7 +164,7 @@ def render(global_index=False):
         reading_base='https://kokunoyumeto.github.io/open-math-courses/'
         for provider in load(HERE/'proof-dependencies.json')['records']:
             old='../'+provider['course']+'/'+provider['lesson']+'.html'
-            target=(reading_base+provider['programme_reader_path'] if provider['reader_available_in_this_edition'] and provider['course']!='LG-GAL' else reading_base+'courses/NT-CFT/proof-dependencies.html#'+provider['id'])
+            target=(reading_base+provider['programme_reader_path'] if provider['reader_available_in_this_edition'] else reading_base+'courses/NT-CFT/proof-dependencies.html#'+provider['id'])
             doc=doc.replace(old,target)
         doc=doc.replace('href="#references">freely readable proof guide</a>','href="free-proofs.html">freely readable proof guide</a>')
         doc=doc.replace('href="#references">proof guide</a>','href="free-proofs.html">proof guide</a>')

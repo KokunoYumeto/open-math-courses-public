@@ -18,7 +18,7 @@ We prove that an invariant conull Borel subset has a Borel quotient \(q:X_1\to Y
 
 The preceding [continuous-model transport theorem](OA-FLOW-L72.md#oa-flow.model.transport) supplies these hypotheses from its abstract abelian action. Here the continuous measured action and the dense cone are the explicit hypotheses.
 
-The analytic inputs are [scalar convergence and approximation](OA-FLOW-SC.md#sc-04), [Radon products](OA-FLOW-HR.md#hr-05), [Haar translation and inversion](OA-FLOW-L24.md#oa-flow.grp.translations), [compact cutoffs](OA-FLOW-TOPOLOGY.md#l138-h0), compact polynomial density, [compact Lusin approximation](OA-FLOW-QF.md#qf-6), and Hilbert representation of a bounded functional. The selection and conditional-probability constructions needed here are proved below.
+The analytic inputs are [scalar convergence and approximation](OA-FLOW-SC.md#sc-04), [Radon products](OA-FLOW-HR.md#hr-05), [Haar translation and inversion](OA-FLOW-L24.md#oa-flow.grp.translations), [compact cutoffs](OA-FLOW-TOPOLOGY.md#l138-h0), [compact polynomial density](OA-FLOW-CF.md#oa-flow.cf.5), [compact Lusin approximation](OA-FLOW-QF.md#qf-6), and [Hilbert representation of a bounded functional](OA-FLOW-CF.md#oa-flow.cf.8). The selection and conditional-probability constructions needed here are proved below.
 
 <a id="oa-flow.orbits.integration"></a>
 ## Borel parameter integrals
@@ -50,14 +50,14 @@ Its denominator is finite and strictly positive on \(X_0\), and \(f(g^{-1}x)>0\)
 <a id="oa-flow.orbits.selector"></a>
 ## A conull selector from an orbit probability kernel
 
-For precision, the elementary countability facts can be obtained without a metrization theorem. Choose a countable relatively compact open basis, with closure refinements. For each pair of basis members with the first closure contained in the second, select a compact continuous bump equal to one on that closure and supported in the second. The resulting countable family separates points and recovers neighborhoods. Writing these bumps as \(b_j\), with values in \([0,1]\), the metric \(d_X(x,x\prime)=\sum_j2^{-j}|b_j(x)-b_j(x\prime)|\) induces the original topology. Separation makes it a metric; the finite-coordinate neighborhoods are open, and a bump equal to one near a point and supported in a given neighborhood proves the converse topology inclusion. Rational complex star polynomials in these bumps form a countable dense subset of \(C_0(X)\): adjoin constants on the one-point compactification and apply compact polynomial density, then subtract the value at the added point. Thus choose a countable norm-dense family \((u_n)\) in the real unit ball of \(C_0(X)\).
+For precision, the elementary countability facts can be obtained without a metrization theorem. Choose a countable relatively compact open basis, with closure refinements. For each pair of basis members with the first closure contained in the second, select a compact continuous bump equal to one on that closure and supported in the second. The resulting countable family separates points and recovers neighborhoods. Writing these bumps as \(b_j\), with values in \([0,1]\), the metric \(d_X(x,x\prime)=\sum_j2^{-j}|b_j(x)-b_j(x\prime)|\) induces the original topology. Separation makes it a metric; the finite-coordinate neighborhoods are open, and a bump equal to one near a point and supported in a given neighborhood proves the converse topology inclusion. Rational complex star polynomials in these bumps form a countable dense subset of \(C_0(X)\): adjoin constants on the one-point compactification and apply [compact polynomial density](OA-FLOW-CF.md#oa-flow.cf.5), then subtract the value at the added point. Thus choose a countable norm-dense family \((u_n)\) in the real unit ball of \(C_0(X)\).
 
 Define the probability code
 \[
  T(x)=\left(\int_Xu_n\,dP_x\right)_{n\ge1}\in Q=[-1,1]^{\mathbb N}.
  \tag{K2}
 \]
-Use the compact metric \(d_Q(t,t')=\sum_n2^{-n}|t_n-t_n'|\). Compactness follows either from compact product construction or from successive subsequences in each coordinate and the uniform tail bound. The code is Borel: inverse images of coordinate cylinders are Borel, and the product has a countable basis. It is constant on orbits. Conversely \(T(x)=T(x')\) implies equality of integrals for every \(C_0(X)\) function by norm density, hence \(P_x=P_{x'}\) by [Radon uniqueness](OA-FLOW-HR.md#hr-02). These probabilities are Radon: a finite Borel measure on an lcsc metric space is regular by the [finite metric-measure regularity proof](OA-FLOW-IS.md#is-2), and a countable compact exhaustion makes it inner regular by compact sets. Different orbits are disjoint Borel sets carrying their respective probabilities; therefore equality of the probabilities implies \(Gx=Gx'\).
+Use the compact metric \(d_Q(t,t')=\sum_n2^{-n}|t_n-t_n'|\). Compactness follows either from [compact product construction](OA-FLOW-CF.md#oa-flow.cf.4) or from successive subsequences in each coordinate and the uniform tail bound. The code is Borel: inverse images of coordinate cylinders are Borel, and the product has a countable basis. It is constant on orbits. Conversely \(T(x)=T(x')\) implies equality of integrals for every \(C_0(X)\) function by norm density, hence \(P_x=P_{x'}\) by [Radon uniqueness](OA-FLOW-HR.md#hr-02). These probabilities are Radon: a finite Borel measure on an lcsc metric space is regular by the [finite metric-measure regularity proof](OA-FLOW-IS.md#is-2), and a countable compact exhaustion makes it inner regular by compact sets. Different orbits are disjoint Borel sets carrying their respective probabilities; therefore equality of the probabilities implies \(Gx=Gx'\).
 
 There are compact subsets \(K_j\subseteq X_0\) such that
 \[
@@ -135,7 +135,7 @@ Therefore \(\mu_0\sim\lambda\). This argument is before, and independent of, any
 <a id="oa-flow.orbits.density"></a>
 ## One finite scalar density
 
-Let \(\tau=\lambda+\mu_0\). The functional \(F\mapsto\int F\,d\lambda\) on \(L^2(\tau)\) is bounded, by scalar Cauchy–Schwarz and \(\lambda\le\tau\). The Hilbert representation theorem supplies \(a\in L^2(\tau)\) with \(\int F\,d\lambda=\int Fa\,d\tau\): take the complex conjugate of its representing vector under the inner-product convention linear in the first variable. Testing indicators shows that \(a\) is real, \(0\le a\le1\), and
+Let \(\tau=\lambda+\mu_0\). The functional \(F\mapsto\int F\,d\lambda\) on \(L^2(\tau)\) is bounded, by scalar Cauchy–Schwarz and \(\lambda\le\tau\). The [Hilbert representation theorem](OA-FLOW-CF.md#oa-flow.cf.8) supplies \(a\in L^2(\tau)\) with \(\int F\,d\lambda=\int Fa\,d\tau\): take the complex conjugate of its representing vector under the inner-product convention linear in the first variable. Testing indicators shows that \(a\) is real, \(0\le a\le1\), and
 \[
  \lambda(D)=\int_Da\,d\tau,\qquad
  \mu_0(D)=\int_D(1-a)\,d\tau.

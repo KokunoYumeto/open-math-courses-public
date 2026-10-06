@@ -85,7 +85,7 @@ A closed nonnegative form determines its self-adjoint operator with the exact sq
 
 Complete proofs develop conjugate-linear adjoints, graph closure, cyclic and separating vectors, the closed involution and its positive modulus, polar symmetry, and the domains and signs of spectral powers. Two matrix models and five solved problems make the domain distinctions explicit. The vector construction assumes a cyclic separating vector; the closed-involution results hold on arbitrary Hilbert spaces.
 
-Read the full lesson · Editable Markdown · Exact proof inputs · Sources and terms
+[Read the full lesson](tomita-closability.md) · Editable Markdown · Exact proof inputs · Sources and terms
 
 - Conventions and dependency contracts
 - Cyclicity and separation exchange through the commutant

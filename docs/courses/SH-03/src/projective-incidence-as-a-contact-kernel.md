@@ -4,7 +4,7 @@ A point of a projective space is a line. A point of its dual projective space is
 
 Use When a kernel quantizes a contact transformation and Dual kernels and an unchanged parameter. Their exact prerequisites include the closed-submanifold microsupport and microlocal Hom formulas and constructible relative duality. Here the projective geometry is calculated directly.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## Lines, hyperplanes and cotangent vectors
 

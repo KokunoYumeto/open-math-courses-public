@@ -1,6 +1,6 @@
 # Flat connections and infinitesimal holonomy
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Draft; self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Original text dedicated to the public domain under CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Self-checked by the writing AI. Original text dedicated to the public domain under CC0 1.0.*
 
 A flat connection has no local curvature, yet transport around a topologically nontrivial loop may still change a frame. Its remaining information is a representation of the fundamental group. At the other extreme, a curved connection has infinitesimal data at every point. For smooth connections these data can miss curvature arbitrarily nearby. For analytic connections, derivatives at one point determine the entire holonomy Lie algebra.
 

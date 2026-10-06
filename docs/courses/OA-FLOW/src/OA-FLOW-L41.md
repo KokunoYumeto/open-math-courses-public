@@ -110,7 +110,7 @@ We require a separable invariant algebra whose diagonal part still generates all
 \]
 Here \(A\) and \(C\) will be unital \(C^*\)-algebras, and all their orbit maps will be norm-continuous.
 
-Here is the construction, including its countability requirement. The compact-ball proof ST1, together with a dense sequence in \(M_*\), makes the unit ball of \(M\) compact metrizable in its ultraweak topology. The closed unit ball of \(D\) is an ultraweakly closed subset. Choose countable ultraweakly dense families in both balls and a norm-dense sequence \((\omega_\ell)\) in the unit ball of \(M_*\).
+Here is the construction, including its countability requirement. The compact-ball proof [ST1](OA-FLOW-ST12.md#oa-flow.st.1), together with a dense sequence in \(M_*\), makes the unit ball of \(M\) compact metrizable in its ultraweak topology. The closed unit ball of \(D\) is an ultraweakly closed subset. Choose countable ultraweakly dense families in both balls and a norm-dense sequence \((\omega_\ell)\) in the unit ball of \(M_*\).
 
 For each chosen element \(a\) and positive integer \(n\), continuity supplies an identity neighbourhood \(V_{a,n}\) such that
 \[
@@ -130,7 +130,7 @@ Thus \(b_{a,n}\) has a norm-continuous orbit. If \(a\in D\), then \(b_{a,n}\in D
 
 Let \(Q\subseteq G\) be countable and dense, containing the identity. Generate \(A\) by \(1\) and all \(\alpha_q(b_{a,n})\), for \(q\in Q\) and both chosen families of \(a\)'s. This is separable and contained in the norm-continuous part of \(M\), which is a closed invariant \(C^*\)-algebra by NR2. For every \(s\in G\), each orbit value \(\alpha_{sq}(b_{a,n})\) is a norm limit of values with parameter in \(Q\): for error \(1/k\), the inverse image of the corresponding norm ball is an open neighbourhood meeting \(Q\). Hence \(\alpha_s(A)\subseteq A\), and applying this to \(s^{-1}\) gives equality. The ultraweak limits above give \(A''=M\). The diagonal generators belong to \(C=A\cap D\) and generate \(D\), proving \(C''=D\). The intersection is closed, unital and separable, and invariance of both algebras proves its invariance. This argument uses finite predual tests, not a countable neighbourhood basis of \(G\).
 
-The Gelfand theorem CF6 identifies \(C\) with \(C(X)\) on its nonempty compact character space \(X=\operatorname{Spec}(C)\). A countable norm-dense family in \(C\) separates the characters, so evaluation embeds \(X\) into a countable product of compact metric disks. The continuous injection is a homeomorphism onto its compact image, making \(X\) metrizable. Define
+The [Gelfand theorem CF6](OA-FLOW-CF.md#oa-flow.cf.6) identifies \(C\) with \(C(X)\) on its nonempty compact character space \(X=\operatorname{Spec}(C)\). A countable norm-dense family in \(C\) separates the characters, so evaluation embeds \(X\) into a countable product of compact metric disks. The continuous injection is a homeomorphism onto its compact image, making \(X\) metrizable. Define
 \[
  (T_gx)(c)=x(\alpha_{g^{-1}}(c)),\qquad
  \widehat{\alpha_g(c)}(x)=\widehat c(T_g^{-1}x).
@@ -148,7 +148,7 @@ Let \(\mu\) be the Radon probability representing \(\varphi|_C\), as constructed
  \tag{A9}
 \]
 
-For a fixed \(g\), the faithful normal state \(\varphi\circ\alpha_{g^{-1}}\) restricted to \(D\), and transported through \(\rho\), has a strictly positive \(L^1(\mu)\) density. This follows also from the finite density proof DC5: its measure on projections is equivalent to \(\mu\), by faithfulness. On continuous functions this measure is \((T_g)_*\mu\), by (A8); uniqueness of the finite Radon measure gives equality. Thus each \(T_g\) is nonsingular. Normality and ultraweak density extend (A8) to
+For a fixed \(g\), the faithful normal state \(\varphi\circ\alpha_{g^{-1}}\) restricted to \(D\), and transported through \(\rho\), has a strictly positive \(L^1(\mu)\) density. This follows also from the finite density proof [DC5](../../OA-MOD/OA-MOD-DC.html#a-finite-radon-nikodym-density-from-hilbert-representation): its measure on projections is equivalent to \(\mu\), by faithfulness. On continuous functions this measure is \((T_g)_*\mu\), by (A8); uniqueness of the finite Radon measure gives equality. Thus each \(T_g\) is nonsingular. Normality and ultraweak density extend (A8) to
 \[
  \alpha_g(\rho(f))=\rho(f\circ T_g^{-1})
  \quad(f\in L^\infty(X,\mu)).
@@ -161,11 +161,11 @@ The action \(T\) is defined on all of the compact space \(X\), including any nul
 
 The static decomposition and the compact construction initially give two bases. We now identify them, while keeping track of the reference state.
 
-Apply DC7 to \((M,H,D)\). Its hypotheses are separability of \(H\) and centrality of the specified unital \(D\); it does not require \(D=Z(M)\), or pointwise invariance under \(G\). Its DC6 diagonal construction supplies a compact Borel base in \([0,1]\). Choose the countable generators in DC7 from \(A\): its norm-dense sequence generates \(M\), and its contraction ball is ultraweakly dense in the contraction ball of \(M\) by the [bounded-density theorem](OA-FLOW-BD.md#oa-flow.bd.4). The DC7 commutant proof then gives the entire integral algebra and fibre generation by \(A\).
+Apply [DC7](../../OA-MOD/OA-MOD-DC.html#existence-over-any-specified-central-abelian-subalgebra) to \((M,H,D)\). Its hypotheses are separability of \(H\) and centrality of the specified unital \(D\); it does not require \(D=Z(M)\), or pointwise invariance under \(G\). Its [DC6 diagonal construction](../../OA-MOD/OA-MOD-DC.html#realizing-an-abelian-algebra-as-the-diagonal-algebra) supplies a compact Borel base in \([0,1]\). Choose the countable generators in DC7 from \(A\): its norm-dense sequence generates \(M\), and its contraction ball is ultraweakly dense in the contraction ball of \(M\) by the [bounded-density theorem](OA-FLOW-BD.md#oa-flow.bd.4). The DC7 commutant proof then gives the entire integral algebra and fibre generation by \(A\).
 
-Next apply MW7 to the faithful normal state \(\varphi\) and this central diagonal. Its [DI13 construction](../../OA-MOD/OA-MOD-DI.html#reverse-assembly-over-a-specified-central-diagonal) starts with that whole algebra decomposition, localizes the actual left and right involution graphs, and recovers the full fibre Hilbert algebras and the same represented algebra. The compatible GNS realization is part of MW7's proof: the canonical fibre maps are made measurable by pulling back a fundamental family, and both operator transports satisfy the [GFR10 comparison](../../OA-MOD/OA-MOD-GFR.html#the-reverse-comparison-and-the-realization-obstruction). Thus a bare algebra decomposition is not being treated as a standard-form decomposition.
+Next apply [MW7](../../OA-MOD/OA-MOD-MW.html#central-disintegration-of-a-separable-weighted-algebra) to the faithful normal state \(\varphi\) and this central diagonal. Its [DI13 construction](../../OA-MOD/OA-MOD-DI.html#reverse-assembly-over-a-specified-central-diagonal) starts with that whole algebra decomposition, localizes the actual left and right involution graphs, and recovers the full fibre Hilbert algebras and the same represented algebra. The compatible GNS realization is part of MW7's proof: the canonical fibre maps are made measurable by pulling back a fundamental family, and both operator transports satisfy the [GFR10 comparison](../../OA-MOD/OA-MOD-GFR.html#the-reverse-comparison-and-the-realization-obstruction). Thus a bare algebra decomposition is not being treated as a standard-form decomposition.
 
-Write the initial base and weights as \((Y,\widetilde\nu)\) and \(\widetilde\varphi_y\), retaining a Borel realization \(Y\subseteq[0,1]\). Zero fibres and exceptional sets can first be removed. The all-positive evaluation formula MW5, applied to the identity, gives
+Write the initial base and weights as \((Y,\widetilde\nu)\) and \(\widetilde\varphi_y\), retaining a Borel realization \(Y\subseteq[0,1]\). Zero fibres and exceptional sets can first be removed. The all-positive evaluation formula [MW5](../../OA-MOD/OA-MOD-MW.html#every-positive-value-and-the-exact-finite-left-ideal), applied to the identity, gives
 \[
  r(y)=\widetilde\varphi_y(1),\qquad
  0<r(y)<\infty\ \text{a.e.},\qquad
@@ -197,7 +197,7 @@ Choose a countable norm-dense unital \(\mathbb Q(i)\)-star algebra in \(C\). Sel
 \]
 The middle equality follows by integrating every \(c\in C(X)\). The last follows first there and then on all of \(L^\infty\): both maps are normal, and continuous multiplication is ultraweakly dense. In particular pullback by \(\kappa\) is onto \(L^\infty(Y,\nu)\).
 
-The real coordinate \(s(y)=y\) on \(Y\subseteq[0,1]\) therefore has the form \(s=\ell\circ\kappa\) almost everywhere for a bounded Borel function \(\ell:X\to[0,1]\). A completed measurable representative can be replaced by a Borel one; this is the same scalar coding step used in the actual DC11 base-change proof. Put
+The real coordinate \(s(y)=y\) on \(Y\subseteq[0,1]\) therefore has the form \(s=\ell\circ\kappa\) almost everywhere for a bounded Borel function \(\ell:X\to[0,1]\). A completed measurable representative can be replaced by a Borel one; this is the same scalar coding step used in the actual [DC11 base-change proof](../../OA-MOD/OA-MOD-DC.html#change-of-base-and-the-square-root-density-in-general-uniqueness). Put
 \[
  \begin{split}
  Y_0&=\{y\in Y:\ell(\kappa(y))=y\},\\
@@ -221,7 +221,7 @@ Pull all fibre objects back through \(\ell\). Pullback of their fundamental sect
  \end{aligned}
  \tag{A16}
 \]
-The middle algebra consists of **all** measurable essentially bounded sections with values in \(M_x\). MW4 supplies the full closed-operator domains in (A16), their bounded Borel functional calculus, and the square-integrability domains of unbounded powers. MW5 supplies the GNS vector identity on the whole finite left ideal, which here includes every \(a\in M\).
+The middle algebra consists of **all** measurable essentially bounded sections with values in \(M_x\). [MW4](../../OA-MOD/OA-MOD-MW.html#constructing-the-integral-weight-and-its-full-operators) supplies the full closed-operator domains in (A16), their bounded Borel functional calculus, and the square-integrability domains of unbounded powers. MW5 supplies the GNS vector identity on the whole finite left ideal, which here includes every \(a\in M\).
 
 Each nonzero \(H_x\) is separable, and \(M_x\) has separable predual: [CP6](OA-FLOW-CP.md#oa-flow.cp.6) realizes that predual as a quotient of \(H_x\widehat\otimes_\pi\overline{H_x}\), which is separable. The representatives of a countable dense star algebra in \(A\) give contractive fibre representations, extended to all of \(A\) by norm continuity, and
 \[
@@ -262,7 +262,7 @@ The equality is spectral calculus on this domain; the last step uses \(S_xc\Omeg
 \]
 are norm-dense in \(P_x\). These sections are measurable: bounded spectral truncations of the quarter power in (A16) converge pointwise to them. Also \(\|v_j(x)\|\leq\|a_j\|\), so each belongs to \(H\).
 
-By [NC5](OA-FLOW-NC.md#oa-flow.nc.5) and [CR4](OA-FLOW-CR.md#oa-flow.cr.4), the global cone is the closure of \(\Delta_\varphi^{1/4}M_+\Omega\). Equation (A16) sends each such vector into the right side of (A19). That side is closed: an \(L^2\)-convergent sequence has a fibrewise almost-everywhere convergent subsequence by DF6, and each \(P_x\) is closed. This proves one inclusion.
+By [NC5](OA-FLOW-NC.md#oa-flow.nc.5) and [CR4](OA-FLOW-CR.md#oa-flow.cr.4), the global cone is the closure of \(\Delta_\varphi^{1/4}M_+\Omega\). Equation (A16) sends each such vector into the right side of (A19). That side is closed: an \(L^2\)-convergent sequence has a fibrewise almost-everywhere convergent subsequence by [DF6](../../OA-MOD/OA-MOD-DF.html#the-hilbert-direct-integral-localization-and-subsequences), and each \(P_x\) is closed. This proves one inclusion.
 
 Conversely, take a square-integrable section \(\eta(x)\in P_x\). For each \(n\), let \(j_n(x)\) be the least index with \(\|\eta(x)-v_{j_n(x)}(x)\|<1/n\). It is measurable by countable distance tests. Choose an integer \(k_n\) for which
 \(\int_{\{j_n>k_n\}}\|\eta(x)\|^2\,d\mu<1/n^2\), using dominated convergence. The finite paste
@@ -311,7 +311,7 @@ The defining pushforward identity gives
 The inverse sends \(\zeta\) to
 \(x\mapsto j_g(T_gx)^{-1/2}\zeta(T_gx)\), and the same identity proves its square integrability. Thus \(B_g\) is onto, including for unbounded densities. It satisfies \(B_gM_f=M_{f\circ T_g^{-1}}B_g\).
 
-By (A2) and (A10), \(U_g\) has that same diagonal covariance. Consequently \(U_gB_g^{-1}\), between the two integrals over \(X\), intertwines every scalar multiplication. The two-space proof DC10 applies: place this operator in the off-diagonal block on \(K_y\oplus H_y\), use the DF8 diagonal-commutant theorem, and decompose both identities for the unitary and its adjoint. It gives a measurable unitary field \(v_g(y):H_{T_g^{-1}y}\to H_y\), unique almost everywhere. Set \(u(g,x)=v_g(T_gx)\). Then
+By (A2) and (A10), \(U_g\) has that same diagonal covariance. Consequently \(U_gB_g^{-1}\), between the two integrals over \(X\), intertwines every scalar multiplication. The two-space proof [DC10](../../OA-MOD/OA-MOD-DC.html#uniqueness-over-the-same-diagonal-structure) applies: place this operator in the off-diagonal block on \(K_y\oplus H_y\), use the [DF8 diagonal-commutant theorem](../../OA-MOD/OA-MOD-DF.html#the-diagonal-commutant-is-exactly-the-decomposable-algebra), and decompose both identities for the unitary and its adjoint. It gives a measurable unitary field \(v_g(y):H_{T_g^{-1}y}\to H_y\), unique almost everywhere. Set \(u(g,x)=v_g(T_gx)\). Then
 \[
  \boxed{\ (U_g\eta)(y)=\sqrt{j_g(y)}\,
  u(g,T_g^{-1}y)\eta(T_g^{-1}y),\qquad
@@ -384,7 +384,7 @@ The first pointwise null set may depend on the chosen representative of \(m\); t
 
 Keep the [static standard-form field](#oa-flow.cstd.static) over the specified invariant unital algebra \(D\subseteq Z(M)\). Its probability base \((X,\mu)\) realizes the restriction of the faithful reference state \(\varphi\) to \(D\). The [cone-field identity](#oa-flow.cstd.cone) identifies the actual global natural cone with the square-integrable sections of the fibre cones \(P_x\). No invariance of \(\varphi\) is assumed, and the algebras \(M_x\) need not be factors.
 
-Fix a positive normal functional \(\psi\in M_*^+\), allowing \(\psi=0\). Its restriction to \(D=L^\infty(X,\mu)\) is a finite positive measure absolutely continuous with respect to \(\mu\): a \(\mu\)-null indicator is the zero element of \(D\), and its value under \(\psi\) is zero. The finite Radon–Nikodym theorem gives
+Fix a positive normal functional \(\psi\in M_*^+\), allowing \(\psi=0\). Its restriction to \(D=L^\infty(X,\mu)\) is a finite positive measure absolutely continuous with respect to \(\mu\): a \(\mu\)-null indicator is the zero element of \(D\), and its value under \(\psi\) is zero. The [finite Radon–Nikodym theorem](../../OA-MOD/OA-MOD-DC.html#a-finite-radon-nikodym-density-from-hilbert-representation) gives
 \[
  h_\psi=\frac{d(\psi|_D)}{d(\varphi|_D)}
        =\frac{d(\psi|_D)}{d\mu},\qquad
@@ -536,7 +536,7 @@ Here and below, a jointly Borel map between varying Hilbert fibres means a joint
 
 ### The inputs to the repair
 
-We use the actual static field and fixed-parameter arrows already constructed in this lesson. In particular, their operator unit balls have countable measurable strong-star dense sections, their cones have countable norm-dense sections, and their Hilbert dimensions are measurable. The operator sections are supplied by the [common strong-star dense contraction construction](../../OA-MOD/OA-MOD-GFR.html#a-common-countable-strong-dense-contraction-family); measurable dimension and coordinates are proved in Compact orthonormal frames and measurable dimension. Null-set defaults can first be chosen to be valid nonzero standard forms. No equivariant field theorem is needed as an input to this step.
+We use the actual static field and fixed-parameter arrows already constructed in this lesson. In particular, their operator unit balls have countable measurable strong-star dense sections, their cones have countable norm-dense sections, and their Hilbert dimensions are measurable. The operator sections are supplied by the [common strong-star dense contraction construction](../../OA-MOD/OA-MOD-GFR.html#a-common-countable-strong-dense-contraction-family); measurable dimension and coordinates are proved in [Compact orthonormal frames and measurable dimension](../../OA-MOD/OA-MOD-DF.html#compact-orthonormal-frames-and-measurable-dimension). Null-set defaults can first be chosen to be valid nonzero standard forms. No equivariant field theorem is needed as an input to this step.
 
 The two measurable repair results used below are the [Haar section theorem](../../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#1-repairing-an-equivariant-section), Theorem 1.2, and the [strict Polish cocycle theorem](../../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#3-making-a-measurable-cocycle-strict), Theorem 3.1. The former applies to a standard Borel target with a strict Borel family of bijections, over a strict nonsingular standard measured action. The latter applies to a jointly Borel cocycle with values in a Polish group whose cocycle law holds almost everywhere for each fixed parameter pair, when the parameter group is second countable and locally compact. We establish that group hypothesis before applying it. We also give the constructions that explain how they act on the present data.
 
@@ -588,7 +588,7 @@ Both \(U_q\) and \(W_q\) implement the same automorphism of the scalar diagonal.
  V_q=U_qW_q^*\in L^\infty(X_d)' .
  \tag{R9}
 \]
-The whole diagonal commutant theorem gives a unique measurable unitary field for \(V_q\). Unitarity follows by decomposing \(V_q^*V_q=V_qV_q^*=1\), not just by knowing its norm. The topology of this decomposable unitary group is exactly convergence in measure into \(\mathcal U(H_d)\). Indeed, strong convergence of the integrated unitaries and their adjoints gives convergence in \(L^2\) on each constant basis vector. These countably many tests give convergence in measure in a bounded metric testing a unitary and its adjoint. Conversely, convergence in that metric in measure gives \(L^2\) convergence on each constant basis vector, by the uniform unitary bound. It gives convergence on localized finite linear combinations, and their density gives strong convergence on all of \(\mathcal H_d\). The same holds for adjoints. On a unitary group the strong topology already makes inversion continuous.
+The [whole diagonal commutant theorem](../../OA-MOD/OA-MOD-DF.html#the-diagonal-commutant-is-exactly-the-decomposable-algebra) gives a unique measurable unitary field for \(V_q\). Unitarity follows by decomposing \(V_q^*V_q=V_qV_q^*=1\), not just by knowing its norm. The topology of this decomposable unitary group is exactly convergence in measure into \(\mathcal U(H_d)\). Indeed, strong convergence of the integrated unitaries and their adjoints gives convergence in \(L^2\) on each constant basis vector. These countably many tests give convergence in measure in a bounded metric testing a unitary and its adjoint. Conversely, convergence in that metric in measure gives \(L^2\) convergence on each constant basis vector, by the uniform unitary bound. It gives convergence on localized finite linear combinations, and their density gives strong convergence on all of \(\mathcal H_d\). The same holds for adjoints. On a unitary group the strong topology already makes inversion continuous.
 
 Thus the continuous map \(q\mapsto V_q\) is a Borel map into \(L^0(X_d,\mathcal U(H_d))\). The general representative construction in [Parameterized fields](../../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#5-localizing-the-automorphism-action), Lemma 5.1, provides a jointly Borel field \(D(q,y)\) for it. This part of that lemma requires only a standard probability base, a Polish value group and a Borel parameter map; it does not require a constant factor algebra. To recall the construction, choose a bounded complete metric on the value group and a countable dense family of Borel simple fields. For each class choose the first simple field within \(2^{-2n}\) at step \(n\), in the integral metric. The choice is Borel. The successive distances are summable, so for each class the chosen fields converge pointwise almost everywhere to a representative. The Cauchy set is jointly Borel; use the identity outside it. This gives the desired joint representative for every parameter's class.
 
@@ -729,7 +729,7 @@ For each fixed \(g\), testing against bounded nonnegative Borel \(f\) gives
  \end{aligned}
 \]
 The scalar Radon–Nikodym uniqueness proved in the
-finite density theorem
+[finite density theorem](../../OA-MOD/OA-MOD-DC.html#a-finite-radon-nikodym-density-from-hilbert-representation)
 therefore yields
 \[
  j'_g(y)=j_g(y)\frac{r(T_g^{-1}y)}{r(y)}
@@ -765,7 +765,7 @@ The static construction gives (T2) over the specified \(D\). The normalizer fact
 The strict construction makes these standard-form arrows and their composition exact on the retained invariant base. These steps prove the moving-field theorem.
 
 Two different uses of the centre should be distinguished. Taking \(D=Z(M)\) gives central factor fields by the
-factor criterion for the full centre.
+[factor criterion for the full centre](../../OA-MOD/OA-MOD-DC.html#centers-and-the-factor-decomposition).
 Taking \(D=Z(M)^\alpha\) makes the base stationary and yields the centrally ergodic components proved in
 [Decomposition over the fixed centre](OA-FLOW-L42.md#oa-flow.centerg.conclusion).
 For an intermediate invariant \(D\), neither assertion follows merely from (T2). For example, with the trivial action on \(M_2\oplus M_2\) and \(D=\mathbb C1\), the base is a single point and its fibre algebra is the nonfactor \(M_2\oplus M_2\). Its fixed centre is also larger than the scalars. This example satisfies all the moving-field hypotheses.

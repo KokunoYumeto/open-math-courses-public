@@ -4,7 +4,7 @@ Working programme proof with explicit prerequisite contracts; complete transitiv
 
 All manifolds below are finite dimensional, Hausdorff, countable at infinity and smooth. A submanifold is locally closed; work in an open ambient neighborhood where it is closed. The coefficient ring $k$ is commutative, unital and of finite global dimension. No constructibility, finite generation, perfectness or field hypothesis is imposed. Write $D(k_X)$ for the classical unbounded derived category. Write $\operatorname{SS}_{\mathrm u}$ for the neighborhood-uniform $C^1$ support-test definition in [the unbounded bridge](unbounded-range-bridge.md#SH02-UR-MICROSUPPORT). A vanishing test means vanishing in every cohomological degree on the same prescribed cotangent neighborhood.
 
-The geometric operations $f^\#$ and $\widehat+$ have the smooth-coordinate sequence definitions in characteristic estimates. In particular,
+The geometric operations $f^\#$ and $\widehat+$ have the smooth-coordinate sequence definitions in [characteristic estimates](characteristic-estimates.md#SH02-CHE-OPERATIONS). In particular,
 
 \[
 (x_0;\zeta_0)\in A\widehat+B
@@ -58,7 +58,7 @@ The bounded comparison is the compact-support comparison `SH02-AE-LIMITS`: on th
 
 ## SH02-UCE-DIRECTIONAL — The directional projector on the full derived category
 
-Let $E$ be a finite-dimensional real vector space, let $C\subset E$ be a closed convex cone, and let $q:E\to E_C$ be the identity into the topology of ordinary opens invariant under addition by $C$. The cone may contain lines. The following assertions of the directional-topology lesson hold with $D$ in place of $D^+$:
+Let $E$ be a finite-dimensional real vector space, let $C\subset E$ be a closed convex cone, and let $q:E\to E_C$ be the identity into the topology of ordinary opens invariant under addition by $C$. The cone may contain lines. The following assertions of [the directional-topology lesson](cone-topology.md) hold with $D$ in place of $D^+$:
 
 \[
 A\xrightarrow{\sim}Rq_*q^{-1}A,
@@ -472,4 +472,4 @@ There is a second range distinction in the deformation argument. The review's pr
 
 This supplement is organized by the obstacles to a larger derived range: finite windows for functor identities, uniform geometry for the original complex, ordinary-open rectangle duality, compact lenses, raw-normal recovery, and finally the diagonal. The three solved checks test an unbounded Hom on a point, a cone with empty interior and dependence on the support index. Classical mechanisms are attributed above; their reuse as mathematics is not a claim that the stronger-range theorem appears in the cited sources.
 
-The independently written programme text is CC0. The linked human works retain their own terms, including the Stacks Project's [GFDL terms](https://github.com/stacks/stacks-project/blob/a04446e57ec1fbc252a871afcec7752fb2807b14/COPYING). The exact Stacks theorem proves the acyclic-complex step only. Full proofs and review of the UR proper-support model, exceptional adjoint, projection formula, cohomological-dimension bounds, compact continuity and unbounded deformation; the GAM and MST geometry; and the MO and AE boundary comparisons remain part of the programme's transitive prerequisite work. The present source comparison does not certify that complete chain.
+The independently written programme text is CC0. The linked human works retain their own terms, including the Stacks Project's [GFDL terms](https://github.com/stacks/stacks-project/blob/a04446e57ec1fbc252a871afcec7752fb2807b14/COPYING). The exact Stacks theorem proves the acyclic-complex step only. Full proofs and review of the UR proper-support model, exceptional adjoint, projection formula, cohomological-dimension bounds, compact continuity and unbounded deformation; the GAM and MST geometry; and the MO and AE boundary comparisons remain part of the programme's transitive prerequisite work. 

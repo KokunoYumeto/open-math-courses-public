@@ -9,7 +9,7 @@ The equality of the two bounds gives Hasse's norm theorem and the local-global p
 We use [Hilbert's Theorem 90 and Kummer theory](hilberts-theorem-90-and-kummer-theory.md), [Idèles in extensions and their cohomology](ideles-in-extensions-and-their-cohomology.md), and [The Herbrand quotient of the idèle class group](the-herbrand-quotient-of-the-idele-class-group.md). Write \(J_F\) for the idèles, \(C_F=J_F/F^\times\), \(J_F^S\) for unrestricted components in \(S\) and unit components elsewhere, and \(E_S=F^\times\cap J_F^S\).
 
 
-**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-15) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-15) shows which results are proved in published lessons and which full proofs are still missing. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
 
 ## 1. The bound and the class field axiom
 

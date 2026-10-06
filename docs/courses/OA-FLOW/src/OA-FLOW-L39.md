@@ -74,7 +74,7 @@ than norm orthogonality of the two functionals.
 The proofs use the previously constructed
 [sequential approximate identity](OA-FLOW-L40.md#oa-flow.istate.approximation),
 [nonunital GNS representation](OA-FLOW-GNS.md#gns-theorem-5-1),
-continuous functional calculus, and
+[continuous functional calculus](OA-FLOW-CF.md#oa-flow.cf.6), and
 [scalar monotone convergence](OA-FLOW-SC.md#sc-04).
 Exact field, measure and operator-topology inputs are linked where they enter.
 
@@ -143,7 +143,7 @@ Each \(\mu_j\) is absolutely continuous with respect to the already chosen \(\mu
 \]
 The right side is a countably additive probability by normality. It is Radon by the [finite metric-measure regularity proof](OA-FLOW-IS.md#is-2), and its continuous integrals agree with the definition of \(\mu_j\), so Radon uniqueness proves (D7). If \(\mu(F)=0\), then \(\rho(1_F)=0\), proving the asserted absolute continuity.
 
-The finite Radon–Nikodym construction gives nonnegative finite Borel versions
+The [finite Radon–Nikodym construction](../../OA-MOD/OA-MOD-DC.html#a-finite-radon-nikodym-density-from-hilbert-representation) gives nonnegative finite Borel versions
 \[
  r_j=\frac{d\mu_j}{d\mu},\qquad
  E_j=\{x:r_j(x)>0\}.
@@ -157,7 +157,7 @@ Inside \(\ell^2(J)\), set
  \qquad s_j(x)=1_{E_j}(x)\delta_j.
  \tag{D9}
 \]
-The countable sections \(s_j\) specify the measurable structure by the Gram-field construction: their Gram entries are Borel, and they are total at each point. These fibres are nonzero almost everywhere and can have varying dimension. Combining (D6) with
+The countable sections \(s_j\) specify the measurable structure by the [Gram-field construction](../../OA-MOD/OA-MOD-DF.html#countable-gram-data-determines-the-whole-measurable-structure): their Gram entries are Borel, and they are total at each point. These fibres are nonzero almost everywhere and can have varying dimension. Combining (D6) with
 \[
  (f_j)_{j\in J}\longmapsto
        \bigl(\sqrt{r_j(x)}\,f_j(x)\bigr)_{j\in J}
@@ -176,7 +176,7 @@ Here the norm identity is the complete one:
  \tag{D12}
 \]
 Tonelli proves it also for countably many coordinates. For surjectivity, take an arbitrary square-integrable measurable section \(\eta=(\eta_j)\) of (D9), and put
-\(f_j=\eta_j/\sqrt{r_j}\) on \(E_j\), with value zero elsewhere. Its coordinates are measurable, and (D12) shows that the resulting \(f_j\)'s belong to the full Hilbert sum on the right. This is an inverse, not merely an isometry on a chosen dense subspace. The construction is the cyclic-subspace mechanism of the diagonal theorem, now performed using the prescribed \(C(X)\) and \(\mu\).
+\(f_j=\eta_j/\sqrt{r_j}\) on \(E_j\), with value zero elsewhere. Its coordinates are measurable, and (D12) shows that the resulting \(f_j\)'s belong to the full Hilbert sum on the right. This is an inverse, not merely an isometry on a chosen dense subspace. The construction is the [cyclic-subspace mechanism of the diagonal theorem](../../OA-MOD/OA-MOD-DC.html#realizing-an-abelian-algebra-as-the-diagonal-algebra), now performed using the prescribed \(C(X)\) and \(\mu\).
 
 On continuous functions the construction intertwines \(\rho(c)\) with scalar multiplication. In fact it identifies all of \(D\):
 \[
@@ -189,7 +189,7 @@ Both sides of the first formula are normal in \(f\). For scalar multiplication, 
 <a id="oa-flow.covrep.representations"></a>
 ## Genuine nondegenerate fibre representations
 
-We henceforth use \(V\) to display operators on \(\mathcal K\). Every \(\pi(a)\) commutes with \(D\). The whole diagonal commutant theorem consequently supplies a measurable field representing \(V\pi(a)V^*\), with
+We henceforth use \(V\) to display operators on \(\mathcal K\). Every \(\pi(a)\) commutes with \(D\). The [whole diagonal commutant theorem](../../OA-MOD/OA-MOD-DF.html#the-diagonal-commutant-is-exactly-the-decomposable-algebra) consequently supplies a measurable field representing \(V\pi(a)V^*\), with
 \[
  \|V\pi(a)V^*\|=\operatorname*{ess\,sup}_x\|\pi_x(a)\|.
  \tag{D14}
@@ -239,7 +239,7 @@ There is a useful inclusion even though no whole-algebra equality has been asser
  B_x\in\pi_x(A)''\quad\text{for almost every }x.
  \tag{D19}
 \]
-First, \(B\) commutes with \(D\), so its field exists by the diagonal commutant theorem. Choose a countable dense family \((\eta_j)\) in \(\mathcal K\) that includes all the \(s_j\)'s. Such a family exists by the separability and localization proof for direct integrals, since the base is standard and the fibres have countable fundamental sections.
+First, \(B\) commutes with \(D\), so its field exists by the diagonal commutant theorem. Choose a countable dense family \((\eta_j)\) in \(\mathcal K\) that includes all the \(s_j\)'s. Such a family exists by the [separability and localization proof for direct integrals](../../OA-MOD/OA-MOD-DF.html#the-hilbert-direct-integral-localization-and-subsequences), since the base is standard and the fibres have countable fundamental sections.
 
 The [bounded strong-star density theorem](OA-FLOW-BD.md#oa-flow.bd.4), applied to the norm closure of \(\pi(A)\), supplies approximants bounded by \(\|B\|\) in its von Neumann closure. Choose one approximant for each finite list \(V^*\eta_1,\ldots,V^*\eta_n\), testing both the operator and its adjoint. Approximate it sufficiently closely in operator norm by some \(\pi(a_n)\), and, if desired, approximate \(a_n\) further in \(A\) by an element of \(A_0\). We can arrange
 \[
@@ -289,7 +289,7 @@ Its inverse is
 \]
 The same change of variables proves square integrability of every inverse image. Nonsingularity preserves the null ideals, so both maps are well defined on Hilbert-space classes.
 
-Both \(W_g\) and \(\widetilde U_g\) conjugate the scalar diagonal by \(f\mapsto f\circ T_g^{-1}\). Hence \(\widetilde U_gW_g^{-1}\), from the pulled-back integral to \(\mathcal K\), intertwines corresponding scalar multipliers at the same point \(y\). The two-space diagonal intertwiner proof applies: put this intertwiner into the off-diagonal block of the sum field, apply the whole diagonal commutant theorem, and use both unitarity identities of the original two-space intertwiner. It yields measurable unitaries
+Both \(W_g\) and \(\widetilde U_g\) conjugate the scalar diagonal by \(f\mapsto f\circ T_g^{-1}\). Hence \(\widetilde U_gW_g^{-1}\), from the pulled-back integral to \(\mathcal K\), intertwines corresponding scalar multipliers at the same point \(y\). The [two-space diagonal intertwiner proof](../../OA-MOD/OA-MOD-DC.html#uniqueness-over-the-same-diagonal-structure) applies: put this intertwiner into the off-diagonal block of the sum field, apply the whole diagonal commutant theorem, and use both unitarity identities of the original two-space intertwiner. It yields measurable unitaries
 \[
  w_g(y):K_{T_g^{-1}y}\longrightarrow K_y
        \quad\text{for almost every }y.
@@ -383,7 +383,7 @@ The positive contractive functionals form
  \|\omega\|=\lim_{n\to\infty}\omega(e_n)\quad(\omega\in P),
  \tag{S1}
 \]
-where \((e_n)\) is the increasing positive contractive approximate identity constructed in [L40](OA-FLOW-L40.md#oa-flow.istate.approximation). The compact dual-ball proof applies to \(A^*\). Positivity is the closed condition \(\omega(a^*a)\geq0\) for every \(a\), so \(P\) is weak-star compact. If \((a_n)\) is norm dense in the unit ball of \(A\), the metric
+where \((e_n)\) is the increasing positive contractive approximate identity constructed in [L40](OA-FLOW-L40.md#oa-flow.istate.approximation). The [compact dual-ball proof](OA-FLOW-ST12.md#oa-flow.st.1) applies to \(A^*\). Positivity is the closed condition \(\omega(a^*a)\geq0\) for every \(a\), so \(P\) is weak-star compact. If \((a_n)\) is norm dense in the unit ball of \(A\), the metric
 \(d(\omega,\eta)=\sum_n2^{-n}|\omega(a_n)-\eta(a_n)|\)
 induces its weak-star topology. Indeed the uniform bound on the norms of the functionals extends convergence on the dense sequence to convergence on every \(a\in A\); the reverse implication follows by controlling finitely many summands and then the uniformly bounded tail. It is a metric because the dense sequence separates bounded functionals. In particular \(P\) is compact metrizable and \(d\) is complete.
 
@@ -445,10 +445,10 @@ Choose a countable norm-dense family \((b_n)\) in \(A\), including every \(e_n\)
  \|s_a(\omega)-s_b(\omega)\|\leq\|a-b\|.
  \tag{S6}
 \]
-The Gram functions are continuous, and the values of the \(s_n\)'s have dense linear span in each fibre. The countable Gram construction, as used in [L40's measurable GNS field](OA-FLOW-L40.md#oa-flow.istate.gns), therefore supplies a measurable Hilbert field. Explicitly, a section \(\eta\) is Borel if and only if every function \(\omega\mapsto\langle\eta(\omega),s_n(\omega)\rangle\) is Borel. Enumerating the rational finite linear combinations \(d_l\) of the \(s_n\)'s gives
+The Gram functions are continuous, and the values of the \(s_n\)'s have dense linear span in each fibre. The [countable Gram construction](../../OA-MOD/OA-MOD-DF.html#countable-gram-data-determines-the-whole-measurable-structure), as used in [L40's measurable GNS field](OA-FLOW-L40.md#oa-flow.istate.gns), therefore supplies a measurable Hilbert field. Explicitly, a section \(\eta\) is Borel if and only if every function \(\omega\mapsto\langle\eta(\omega),s_n(\omega)\rangle\) is Borel. Enumerating the rational finite linear combinations \(d_l\) of the \(s_n\)'s gives
 \(\|\eta(\omega)\|=\sup_l|\langle\eta(\omega),d_l(\omega)\rangle|/\|d_l(\omega)\|\), with \(0/0=0\). This proves measurable norms and closure under Borel scalar multiplication, countable pasting and pointwise norm limits.
 
-In particular every \(s_a\) is Borel by norm approximation in (S6), and (S5) makes \(\omega\mapsto\xi_\omega\) a Borel unit section. The measurable Gram–Schmidt construction gives a countable orthonormal frame, with measurable dimension strata: at each step take the least index having nonzero residual, normalize on that Borel event, and use zero once the residuals all vanish. Thus variable finite or infinite dimensions are included.
+In particular every \(s_a\) is Borel by norm approximation in (S6), and (S5) makes \(\omega\mapsto\xi_\omega\) a Borel unit section. The [measurable Gram–Schmidt construction](../../OA-MOD/OA-MOD-DF.html#compact-orthonormal-frames-and-measurable-dimension) gives a countable orthonormal frame, with measurable dimension strata: at each step take the least index having nonzero residual, normalize on that Borel event, and use zero once the residuals all vanish. Thus variable finite or infinite dimensions are included.
 
 For every \(a\in A\), the field \(\pi_\omega(a)\) is measurable and uniformly bounded, since
 \[
@@ -458,7 +458,7 @@ For every \(a\in A\), the field \(\pi_\omega(a)\) is measurable and uniformly bo
  \|\pi_\omega(a)\|\leq\|a\|.
  \tag{S7}
 \]
-The operator-field test extends the assertion from fundamental vectors to all measurable sections. Nondegeneracy holds at every state: on \(s_b(\omega)\), the vectors \(\pi_\omega(e_n)s_b(\omega)=s_{e_nb}(\omega)\) tend to \(s_b(\omega)\); the contraction bound extends this to all of \(H_\omega\).
+The [operator-field test](../../OA-MOD/OA-MOD-DF.html#pointwise-bounded-operator-fields-adjoints-and-exact-norm-tests) extends the assertion from fundamental vectors to all measurable sections. Nondegeneracy holds at every state: on \(s_b(\omega)\), the vectors \(\pi_\omega(e_n)s_b(\omega)=s_{e_nb}(\omega)\) tend to \(s_b(\omega)\); the contraction bound extends this to all of \(H_\omega\).
 
 <a id="oa-flow.covrep.canonical"></a>
 ## Canonical arrows and weighted global transport
@@ -527,9 +527,9 @@ Now choose any quasi-invariant Borel probability \(\mu\) on \(\Omega\); thus \((
  \Pi_\mu(a)=\int_\Omega^\oplus\pi_\omega(a)\,d\mu(\omega).
  \tag{S12}
 \]
-The direct-integral construction and (S7) give a bounded representation. It is nondegenerate: \(\pi_\omega(e_n)\to I\) strongly in every fibre and the integrand errors are bounded by \(4\|\eta(\omega)\|^2\), so [dominated convergence](OA-FLOW-SC.md#sc-05) gives \(\Pi_\mu(e_n)\eta\to\eta\).
+The [direct-integral construction](../../OA-MOD/OA-MOD-DF.html#the-hilbert-direct-integral-localization-and-subsequences) and (S7) give a bounded representation. It is nondegenerate: \(\pi_\omega(e_n)\to I\) strongly in every fibre and the integrand errors are bounded by \(4\|\eta(\omega)\|^2\), so [dominated convergence](OA-FLOW-SC.md#sc-05) gives \(\Pi_\mu(e_n)\eta\to\eta\).
 
-The finite Radon–Nikodym theorem gives positive finite Borel versions, up to null sets, of
+The [finite Radon–Nikodym theorem](../../OA-MOD/OA-MOD-DC.html#a-finite-radon-nikodym-density-from-hilbert-representation) gives positive finite Borel versions, up to null sets, of
 \[
  J_g^\mu=\frac{d(T_g)_*\mu}{d\mu},\qquad
  J_{gh}^\mu(\omega)

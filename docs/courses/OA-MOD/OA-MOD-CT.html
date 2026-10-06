@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Averaging, central traces and normality · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-CT.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 67 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="averaging-central-traces-and-normality">Averaging, central traces and normality</h1>
+<p><strong>Self-checked by the writing AI.</strong> The arguments rely on the stated results of earlier lessons.</p>
+<p>A finite algebra has a canonical way to replace an operator by an element of its center. There are two useful averaging topologies. Ultraweak compactness constructs this replacement from faithful finite traces. Norm approximation then makes it visible to every bounded trace, even a trace whose normality is not known. Keeping these two steps separate prevents a circular proof of normality.</p>
+<p>The classical statements correspond to Takesaki, <em>Theory of Operator Algebras I</em>, V.2, Proposition 2.5, Theorem 2.6 and Definition 2.7, printed pp. 311–314 (PDF pp. 319–322 in the approved edition). The existing programme lesson <a href="../OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html">Traces on von Neumann algebras</a>, Lemma 5.1, Theorems 5.2, 5.5 and 5.9, and Lemma 8.1–Theorem 8.2, supplies the canonical earlier treatment. Its author is Claude Opus 5.5 (Anthropic), September–October 2026, CC0. This lesson gives a connected explanatory route through those arguments and additional hypothesis checks; it does not claim new ownership of the programme theorems. The exact compared revisions and proof selections are recorded in the accompanying course evidence.</p>
+<p>Throughout, <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span> is a unital von Neumann algebra, <span class="math" data-tex="\(Z=Z(M)\)">\(Z=Z(M)\)</span>, and neither <span class="math" data-tex="\(H\)">\(H\)</span> nor <span class="math" data-tex="\(M\)">\(M\)</span> is assumed separable or sigma-finite. A finite trace means a positive tracial functional with <span class="math" data-tex="\(\tau(1)&lt;\infty\)">\(\tau(1)&lt;\infty\)</span>; its linear extension and cyclicity are proved in <a href="OA-MOD-TB.html#oa-mod-tb-01">Trace axioms and the two finite ideals</a>. Finiteness of the algebra instead means that every isometry in <span class="math" data-tex="\(M\)">\(M\)</span> is unitary. For the zero algebra all the maps below are the unique zero map.</p>
+<h2 id="a-norm-averaging-mechanism">A norm averaging mechanism</h2>
+<p>An averaging map is a linear map <span class="math" data-tex="\(A:M\to M\)">\(A:M\to M\)</span> of the form</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A(x)=\\
+\sum_{j=1}^m t_j u_jxu_j^*,\\
+t_j\geq0,\\
+\sum_jt_j=1.
+\end{gathered}
+\tag{CT.1}
+\]">\[
+\begin{gathered}
+A(x)=\\
+\sum_{j=1}^m t_j u_jxu_j^*,\\
+t_j\geq0,\\
+\sum_jt_j=1.
+\end{gathered}
+\tag{CT.1}
+\]</span>
+<p>where the <span class="math" data-tex="\(u_j\)">\(u_j\)</span> are unitaries. Such a map is positive, unital and contractive, fixes every element of <span class="math" data-tex="\(Z\)">\(Z\)</span>, and satisfies <span class="math" data-tex="\(A(ax)=aA(x)\)">\(A(ax)=aA(x)\)</span> for <span class="math" data-tex="\(a\in Z\)">\(a\in Z\)</span>. Compositions are again averaging maps: multiply the coefficients and the unitaries in their given order. Write <span class="math" data-tex="\(D(x)\)">\(D(x)\)</span> for the norm-closed convex hull of the unitary conjugates of <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>We use one exact earlier projection result: <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#oa-fnd-ty-03">Projections and types of von Neumann algebras, Theorem 5.5</a>. For projections <span class="math" data-tex="\(p,q\in M\)">\(p,q\in M\)</span>, it gives a central projection <span class="math" data-tex="\(z\)">\(z\)</span> with <span class="math" data-tex="\(zp\precsim zq\)">\(zp\precsim zq\)</span> and <span class="math" data-tex="\((1-z)q\precsim(1-z)p\)">\((1-z)q\precsim(1-z)p\)</span>. Its proof matches maximal orthogonal families of equivalent subprojections and uses the central orthogonality of their unmatched remainders. No trace is an input to that comparison theorem.</p>
+<p><strong>One-step estimate.</strong> If <span class="math" data-tex="\(h=h^*\)">\(h=h^*\)</span> and <span class="math" data-tex="\(\|h\|\leq1\)">\(\|h\|\leq1\)</span>, there are a self-adjoint unitary <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(c=c^*\in Z\)">\(c=c^*\in Z\)</span> such that, with <span class="math" data-tex="\(b=(h+uhu)/2\)">\(b=(h+uhu)/2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|c\|\leq\tfrac14,\\
+\|b-c\|\leq\tfrac34.
+\end{gathered}
+\tag{CT.2}
+\]">\[
+\begin{gathered}
+\|c\|\leq\tfrac14,\\
+\|b-c\|\leq\tfrac34.
+\end{gathered}
+\tag{CT.2}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(p=1_{(0,\infty)}(h)\)">\(p=1_{(0,\infty)}(h)\)</span>. Bounded spectral calculus, <a href="OA-MOD-BK.html#oa-mod-bk-01">The bounded prerequisite boundary</a>, gives <span class="math" data-tex="\(-(1-p)\leq h\leq p\)">\(-(1-p)\leq h\leq p\)</span>. Apply projection comparison to <span class="math" data-tex="\(p,1-p\)">\(p,1-p\)</span>, and choose partial isometries <span class="math" data-tex="\(v,w\in M\)">\(v,w\in M\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v^*v=pz,\\
+vv^*\leq(1-p)z,\\
+w^*w\\
+=(1-p)(1-z),\\
+ww^*\leq p(1-z).
+\end{gathered}
+\tag{CT.3}
+\]">\[
+\begin{gathered}
+v^*v=pz,\\
+vv^*\leq(1-p)z,\\
+w^*w\\
+=(1-p)(1-z),\\
+ww^*\leq p(1-z).
+\end{gathered}
+\tag{CT.3}
+\]</span>
+<p>The initial and final projections of <span class="math" data-tex="\(v\)">\(v\)</span> are orthogonal in <span class="math" data-tex="\(Mz\)">\(Mz\)</span>; those of <span class="math" data-tex="\(w\)">\(w\)</span> are orthogonal in <span class="math" data-tex="\(M(1-z)\)">\(M(1-z)\)</span>. Add the two unused remainders and put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r=(1-p)z-vv^*,\\
+s=p(1-z)-ww^*,\\
+u=v+v^*+r\\
+{}+w+w^*+s.
+\end{gathered}
+\tag{CT.4}
+\]">\[
+\begin{gathered}
+r=(1-p)z-vv^*,\\
+s=p(1-z)-ww^*,\\
+u=v+v^*+r\\
+{}+w+w^*+s.
+\end{gathered}
+\tag{CT.4}
+\]</span>
+<p>These are two orthogonal exchange blocks with identity on their complements. Multiplication gives <span class="math" data-tex="\(u=u^*\)">\(u=u^*\)</span>, <span class="math" data-tex="\(u^2=1\)">\(u^2=1\)</span>, <span class="math" data-tex="\(u(pz)u=vv^*\)">\(u(pz)u=vv^*\)</span>, and <span class="math" data-tex="\(u((1-p)(1-z))u=ww^*\)">\(u((1-p)(1-z))u=ww^*\)</span>.</p>
+<p>For <span class="math" data-tex="\(b=(h+uhu)/2\)">\(b=(h+uhu)/2\)</span>, the inequalities for <span class="math" data-tex="\(h\)">\(h\)</span> now give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+-z\leq bz\leq\tfrac12z,\\
+-\tfrac12(1-z)\\
+\leq b(1-z)\leq1-z.
+\end{gathered}
+\tag{CT.5}
+\]">\[
+\begin{gathered}
+-z\leq bz\leq\tfrac12z,\\
+-\tfrac12(1-z)\\
+\leq b(1-z)\leq1-z.
+\end{gathered}
+\tag{CT.5}
+\]</span>
+<p>Indeed the first upper bound is <span class="math" data-tex="\((pz+vv^*)/2\leq z/2\)">\((pz+vv^*)/2\leq z/2\)</span>, and the second lower bound is the negative half of <span class="math" data-tex="\((1-p)(1-z)+ww^*\)">\((1-p)(1-z)+ww^*\)</span>, which is at least <span class="math" data-tex="\(-(1-z)/2\)">\(-(1-z)/2\)</span>; the remaining bounds follow from <span class="math" data-tex="\(-1\leq h\leq1\)">\(-1\leq h\leq1\)</span>. Set <span class="math" data-tex="\(c=(1-2z)/4\)">\(c=(1-2z)/4\)</span>. Subtracting its two central components gives <span class="math" data-tex="\(-3/4\leq b-c\leq3/4\)">\(-3/4\leq b-c\leq3/4\)</span>, proving the estimate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Norm averaging theorem.</strong> For every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, <span class="math" data-tex="\(D(x)\cap Z\neq\varnothing\)">\(D(x)\cap Z\neq\varnothing\)</span>.</p>
+<p><strong>Proof for self-adjoint elements.</strong> Starting from <span class="math" data-tex="\(h_0=h\)">\(h_0=h\)</span>, scale the one-step estimate to choose an averaging map <span class="math" data-tex="\(A_{n+1}\)">\(A_{n+1}\)</span>, a central self-adjoint <span class="math" data-tex="\(c_{n+1}\)">\(c_{n+1}\)</span>, and a remainder</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h_{n+1}=A_{n+1}(h_n)\\
+{}-c_{n+1},\\
+\|h_{n+1}\|\\
+\leq(3/4)\|h_n\|,\\
+\|c_{n+1}\|\leq\|h_n\|/4.
+\end{gathered}
+\tag{CT.6}
+\]">\[
+\begin{gathered}
+h_{n+1}=A_{n+1}(h_n)\\
+{}-c_{n+1},\\
+\|h_{n+1}\|\\
+\leq(3/4)\|h_n\|,\\
+\|c_{n+1}\|\leq\|h_n\|/4.
+\end{gathered}
+\tag{CT.6}
+\]</span>
+<p>For <span class="math" data-tex="\(h_n=0\)">\(h_n=0\)</span> take the identity averaging map and <span class="math" data-tex="\(c_{n+1}=0\)">\(c_{n+1}=0\)</span>. If <span class="math" data-tex="\(B_n=A_n\cdots A_1\)">\(B_n=A_n\cdots A_1\)</span>, central elements are fixed, so induction gives <span class="math" data-tex="\(B_n(h)=h_n+\sum_{j=1}^n c_j\)">\(B_n(h)=h_n+\sum_{j=1}^n c_j\)</span>. The remainder tends to zero and the central series converges absolutely in norm. Thus the averaging maps send <span class="math" data-tex="\(h\)">\(h\)</span> in norm to a central element.</p>
+<p><strong>Passage to complex elements.</strong> Given <span class="math" data-tex="\(x=h+ik\)">\(x=h+ik\)</span>, with <span class="math" data-tex="\(h,k\)">\(h,k\)</span> self-adjoint, and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, first average <span class="math" data-tex="\(h\)">\(h\)</span> within <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> of a central self-adjoint element <span class="math" data-tex="\(a\)">\(a\)</span>. Then average the resulting image of <span class="math" data-tex="\(k\)">\(k\)</span> within <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> of a central self-adjoint element <span class="math" data-tex="\(b\)">\(b\)</span>. The second averaging map fixes <span class="math" data-tex="\(a\)">\(a\)</span> and is contractive, so their composition sends <span class="math" data-tex="\(x\)">\(x\)</span> within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of <span class="math" data-tex="\(a+ib\)">\(a+ib\)</span>.</p>
+<p>Approximation by central elements alone needs a convergence argument. Choose <span class="math" data-tex="\(B_1,c_1\)">\(B_1,c_1\)</span> with <span class="math" data-tex="\(\|B_1(x)-c_1\|\leq2^{-1}\)">\(\|B_1(x)-c_1\|\leq2^{-1}\)</span>. If <span class="math" data-tex="\(\|B_n(x)-c_n\|\leq2^{-n}\)">\(\|B_n(x)-c_n\|\leq2^{-n}\)</span>, apply the preceding approximation to this remainder with error <span class="math" data-tex="\(2^{-n-1}\)">\(2^{-n-1}\)</span>, obtaining an averaging map <span class="math" data-tex="\(A\)">\(A\)</span> and central <span class="math" data-tex="\(d_n\)">\(d_n\)</span>. Set <span class="math" data-tex="\(B_{n+1}=AB_n\)">\(B_{n+1}=AB_n\)</span> and <span class="math" data-tex="\(c_{n+1}=c_n+d_n\)">\(c_{n+1}=c_n+d_n\)</span>. Writing <span class="math" data-tex="\(e_{n+1}=B_{n+1}(x)-c_{n+1}\)">\(e_{n+1}=B_{n+1}(x)-c_{n+1}\)</span>, contractivity gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|e_{n+1}\|\\
+\leq2^{-n-1},\\
+\|d_n\|\\
+\leq2^{-n}+2^{-n-1}.
+\end{gathered}
+\tag{CT.7}
+\]">\[
+\begin{gathered}
+\|e_{n+1}\|\\
+\leq2^{-n-1},\\
+\|d_n\|\\
+\leq2^{-n}+2^{-n-1}.
+\end{gathered}
+\tag{CT.7}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(c_n\)">\(c_n\)</span> converges in <span class="math" data-tex="\(Z\)">\(Z\)</span>, and <span class="math" data-tex="\(B_n(x)\)">\(B_n(x)\)</span> has the same norm limit. Every <span class="math" data-tex="\(B_n(x)\)">\(B_n(x)\)</span> is a convex combination of unitary conjugates of <span class="math" data-tex="\(x\)">\(x\)</span>, so this limit belongs to <span class="math" data-tex="\(D(x)\)">\(D(x)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="constructing-the-central-value-on-a-faithful-finite-block">Constructing the central value on a faithful finite block</h2>
+<p>Assume for this section that <span class="math" data-tex="\(M\)">\(M\)</span> has a faithful normal finite trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Let <span class="math" data-tex="\(K(x)\)">\(K(x)\)</span> be the ultraweakly closed convex hull of the unitary conjugates of <span class="math" data-tex="\(x\)">\(x\)</span>. It is nonempty and compact: it is a closed subset of the radius-<span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span> ball, which is ultraweakly compact by <a href="OA-MOD-CP.html#oa-mod-cp-06">The concrete predual and its intrinsic norm</a> and <a href="OA-MOD-AB.html#oa-mod-ab-05">Dual-ball compactness and the bidual criterion</a>. The positive cone is ultraweakly closed by <a href="OA-MOD-CP.html#oa-mod-cp-07">Positive functionals, closed cones and norm closure</a>.</p>
+<p>Put <span class="math" data-tex="\(N(y)=\tau(y^*y)\)">\(N(y)=\tau(y^*y)\)</span>. This function is ultraweakly lower semicontinuous. To see it directly, if <span class="math" data-tex="\(y_i\to y\)">\(y_i\to y\)</span> ultraweakly, multiplication by the fixed <span class="math" data-tex="\(y^*\)">\(y^*\)</span> and normality of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> give <span class="math" data-tex="\(\tau(y^*y_i)\to N(y)\)">\(\tau(y^*y_i)\to N(y)\)</span>. Cauchy–Schwarz gives <span class="math" data-tex="\(|\tau(y^*y_i)|^2\leq N(y)N(y_i)\)">\(|\tau(y^*y_i)|^2\leq N(y)N(y_i)\)</span>. If <span class="math" data-tex="\(N(y)&gt;0\)">\(N(y)&gt;0\)</span>, division followed by a lower limit proves <span class="math" data-tex="\(N(y)\leq\liminf_iN(y_i)\)">\(N(y)\leq\liminf_iN(y_i)\)</span>; if <span class="math" data-tex="\(N(y)=0\)">\(N(y)=0\)</span>, positivity proves it. The normal functional and multiplication facts are <a href="OA-MOD-CP.html#oa-mod-cp-06">The concrete predual and its intrinsic norm through The sigma-strong seminorms are vector seminorms</a> and <a href="OA-MOD-NP.html#oa-mod-np-02">The scalar normality criterion</a>.</p>
+<p>The closed sublevel sets at <span class="math" data-tex="\(\inf_{K(x)}N+1/n\)">\(\inf_{K(x)}N+1/n\)</span> have the finite intersection property. Compactness therefore gives a minimizer. The parallelogram identity implies that two minimizers <span class="math" data-tex="\(y_1,y_2\)">\(y_1,y_2\)</span> satisfy <span class="math" data-tex="\(N(y_1-y_2)=0\)">\(N(y_1-y_2)=0\)</span>; faithfulness makes them equal. Unitary conjugation preserves both <span class="math" data-tex="\(K(x)\)">\(K(x)\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span>, so the unique minimizer commutes with every unitary. By <a href="OA-MOD-BK.html#oa-mod-bk-08">Testing commutation on unitaries</a>, it is central. Denote it by <span class="math" data-tex="\(T_\tau(x)\)">\(T_\tau(x)\)</span>.</p>
+<p>For every <span class="math" data-tex="\(a\in Z\)">\(a\in Z\)</span>, the normal functional <span class="math" data-tex="\(y\mapsto\tau(ay)\)">\(y\mapsto\tau(ay)\)</span> is constant on the unitary orbit, hence on its ultraweakly closed convex hull. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tau(aT_\tau(x))=\tau(ax),\\
+a\in Z.
+\end{gathered}
+\tag{CT.8}
+\]">\[
+\begin{gathered}
+\tau(aT_\tau(x))=\tau(ax),\\
+a\in Z.
+\end{gathered}
+\tag{CT.8}
+\]</span>
+<p>Conversely, at most one central element satisfies these equations: for two of them take <span class="math" data-tex="\(a\)">\(a\)</span> to be the adjoint of their difference and use faithfulness. This characterization proves complex linearity, <span class="math" data-tex="\(Z\)">\(Z\)</span>-linearity, and <span class="math" data-tex="\(T_\tau(a)=a\)">\(T_\tau(a)=a\)</span> for <span class="math" data-tex="\(a\in Z\)">\(a\in Z\)</span>. It also proves</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T_\tau(x^*x)\\
+=T_\tau(xx^*)\geq0.
+\end{gathered}
+\tag{CT.9}
+\]">\[
+\begin{gathered}
+T_\tau(x^*x)\\
+=T_\tau(xx^*)\geq0.
+\end{gathered}
+\tag{CT.9}
+\]</span>
+<p>For positivity, the hull of a positive element lies in the positive cone. For the equality, first take <span class="math" data-tex="\(a\in Z_+\)">\(a\in Z_+\)</span> and use the trace identity on <span class="math" data-tex="\(xa^{1/2}\)">\(xa^{1/2}\)</span> in (CT.8), then write a general central element as a linear combination of positive ones. Finally <span class="math" data-tex="\(T_\tau(x^*x)=0\)">\(T_\tau(x^*x)=0\)</span> implies <span class="math" data-tex="\(\tau(x^*x)=0\)">\(\tau(x^*x)=0\)</span>, hence <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Membership in <span class="math" data-tex="\(K(x)\)">\(K(x)\)</span> gives <span class="math" data-tex="\(\|T_\tau(x)\|\leq\|x\|\)">\(\|T_\tau(x)\|\leq\|x\|\)</span>.</p>
+<p>Normality can be proved here without any assertion about nonnormal traces. If <span class="math" data-tex="\(0\leq x_i\uparrow x\)">\(0\leq x_i\uparrow x\)</span>, the bounded increasing net <span class="math" data-tex="\(T_\tau(x_i)\)">\(T_\tau(x_i)\)</span> has a supremum <span class="math" data-tex="\(c\in Z_+\)">\(c\in Z_+\)</span> by <a href="OA-MOD-BK.html#oa-mod-bk-04">Bounded increasing positive nets have strong suprema</a>. For <span class="math" data-tex="\(a\in Z_+\)">\(a\in Z_+\)</span>, multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> preserves these increasing suprema, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tau(ac)\\
+=\sup_i\tau(aT_\tau(x_i))\\
+=\sup_i\tau(ax_i)\\
+=\tau(ax).
+\end{gathered}
+\tag{CT.10}
+\]">\[
+\begin{gathered}
+\tau(ac)\\
+=\sup_i\tau(aT_\tau(x_i))\\
+=\sup_i\tau(ax_i)\\
+=\tau(ax).
+\end{gathered}
+\tag{CT.10}
+\]</span>
+<p>Here <span class="math" data-tex="\(\tau(a\,\cdot\,)\)">\(\tau(a\,\cdot\,)\)</span> is the normal positive functional <span class="math" data-tex="\(\tau(a^{1/2}(\cdot)a^{1/2})\)">\(\tau(a^{1/2}(\cdot)a^{1/2})\)</span>. Extend the equality by linearity to every <span class="math" data-tex="\(a\in Z\)">\(a\in Z\)</span>; uniqueness in (CT.8) gives <span class="math" data-tex="\(c=T_\tau(x)\)">\(c=T_\tau(x)\)</span>. The positive-map theorem <a href="OA-MOD-NP.html#oa-mod-np-04">The positive-map equivalence</a> then gives ultraweak continuity of the linear map <span class="math" data-tex="\(T_\tau:M\to Z\)">\(T_\tau:M\to Z\)</span>.</p>
+<h2 id="arbitrary-finite-algebras-and-the-converse">Arbitrary finite algebras and the converse</h2>
+<p><strong>Existence theorem.</strong> If <span class="math" data-tex="\(M\)">\(M\)</span> is finite, there is a normal linear map <span class="math" data-tex="\(T:M\to Z\)">\(T:M\to Z\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T(x^*x)\\
+=T(xx^*),\\
+T(x^*x)\geq0,\\
+T(ax)=aT(x),\\
+a\in Z,\\
+T(1)=1,\\
+T(x^*x)=0\\
+\Longrightarrow x=0.
+\end{gathered}
+\tag{CT.11}
+\]">\[
+\begin{gathered}
+T(x^*x)\\
+=T(xx^*),\\
+T(x^*x)\geq0,\\
+T(ax)=aT(x),\\
+a\in Z,\\
+T(1)=1,\\
+T(x^*x)=0\\
+\Longrightarrow x=0.
+\end{gathered}
+\tag{CT.11}
+\]</span>
+<p>It is contractive, fixes <span class="math" data-tex="\(Z\)">\(Z\)</span> pointwise, and is onto <span class="math" data-tex="\(Z\)">\(Z\)</span>. Conversely, existence of such a map forces <span class="math" data-tex="\(M\)">\(M\)</span> to be finite.</p>
+<p><strong>Construction and return from the blocks.</strong> First, central summands of a finite algebra are finite: if <span class="math" data-tex="\(v\in Mz\)">\(v\in Mz\)</span> satisfies <span class="math" data-tex="\(v^*v=z\)">\(v^*v=z\)</span> for a central projection <span class="math" data-tex="\(z\)">\(z\)</span>, then <span class="math" data-tex="\(v+(1-z)\)">\(v+(1-z)\)</span> is an isometry of <span class="math" data-tex="\(M\)">\(M\)</span>. Its unitarity gives <span class="math" data-tex="\(vv^*=z\)">\(vv^*=z\)</span>. The exact earlier separating-trace theorem is <a href="OA-MOD-TE.html#oa-mod-te-06">Separating traces and the support of the selected trace</a>, importing Theorem 4.7 of the programme trace lesson. It says that finite normal traces separate the positive elements of any finite algebra. The complete proof uses its stated predual compactness and group fixed-point inputs; we do not replace that theorem by the minimization argument of CT-02, which already needs a faithful trace.</p>
+<p>Choose by Zorn's lemma a maximal family <span class="math" data-tex="\((\tau_j)_{j\in J}\)">\((\tau_j)_{j\in J}\)</span> of nonzero finite normal traces with mutually orthogonal supports <span class="math" data-tex="\(z_j\)">\(z_j\)</span>. These supports are central, and restriction to <span class="math" data-tex="\(Mz_j\)">\(Mz_j\)</span> is faithful, by <a href="OA-MOD-TB.html#oa-mod-tb-03">Null support is a different central projection</a>. Their sum is <span class="math" data-tex="\(1\)">\(1\)</span>: otherwise the finite summand <span class="math" data-tex="\(M(1-\sum_jz_j)\)">\(M(1-\sum_jz_j)\)</span> has a nonzero finite normal trace by the separating-trace theorem, which extends by the central compression to a trace with support orthogonal to all <span class="math" data-tex="\(z_j\)">\(z_j\)</span>. That contradicts maximality.</p>
+<p>CT-02 supplies <span class="math" data-tex="\(T_j:Mz_j\to Zz_j\)">\(T_j:Mz_j\to Zz_j\)</span>. For <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> the elements <span class="math" data-tex="\(T_j(xz_j)\)">\(T_j(xz_j)\)</span> act on orthogonal subspaces and have norms at most <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span>. Their finite sums therefore converge strongly to an operator of norm at most <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span>: the squared norm of each tail on a vector is bounded by <span class="math" data-tex="\(\|x\|^2\)">\(\|x\|^2\)</span> times the squared norm of the corresponding orthogonal tail of that vector. Strong closure of <span class="math" data-tex="\(M\)">\(M\)</span> and commutation with all its elements put the limit in <span class="math" data-tex="\(Z\)">\(Z\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T(x)z_j=T_j(xz_j),\\
+j\in J.
+\end{gathered}
+\tag{CT.12}
+\]">\[
+\begin{gathered}
+T(x)z_j=T_j(xz_j),\\
+j\in J.
+\end{gathered}
+\tag{CT.12}
+\]</span>
+<p>These equalities uniquely determine <span class="math" data-tex="\(T(x)\)">\(T(x)\)</span>, since <span class="math" data-tex="\(\sum_jz_j=1\)">\(\sum_jz_j=1\)</span>. They prove linearity, central linearity, normalization and positivity. They also transfer the trace identity, because <span class="math" data-tex="\((xz_j)^*(xz_j)=x^*xz_j\)">\((xz_j)^*(xz_j)=x^*xz_j\)</span> and <span class="math" data-tex="\((xz_j)(xz_j)^*=xx^*z_j\)">\((xz_j)(xz_j)^*=xx^*z_j\)</span>. If <span class="math" data-tex="\(T(x^*x)=0\)">\(T(x^*x)=0\)</span>, every <span class="math" data-tex="\(xz_j=0\)">\(xz_j=0\)</span>, so <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. If <span class="math" data-tex="\(x_i\uparrow x\)">\(x_i\uparrow x\)</span>, their central images have supremum <span class="math" data-tex="\(c\leq T(x)\)">\(c\leq T(x)\)</span>, and normality on each block gives <span class="math" data-tex="\(cz_j=T(x)z_j\)">\(cz_j=T(x)z_j\)</span>; hence <span class="math" data-tex="\(c=T(x)\)">\(c=T(x)\)</span>. Again NP-04 gives ultraweak continuity. Finally central linearity and <span class="math" data-tex="\(T(1)=1\)">\(T(1)=1\)</span> imply <span class="math" data-tex="\(T(a)=a\)">\(T(a)=a\)</span>, so the map is onto. No countability of <span class="math" data-tex="\(J\)">\(J\)</span> was used.</p>
+<p><strong>Converse.</strong> If <span class="math" data-tex="\(v^*v=1\)">\(v^*v=1\)</span>, the trace identity gives <span class="math" data-tex="\(T(1-vv^*)=0\)">\(T(1-vv^*)=0\)</span>. The positive element <span class="math" data-tex="\(1-vv^*\)">\(1-vv^*\)</span> is a projection, so faithfulness in (CT.11) makes it zero. Thus every isometry is unitary, which is finiteness. Only the trace identity and faithfulness are needed in this direction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="uniqueness-and-the-exact-normality-criterion">Uniqueness and the exact normality criterion</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be finite and let <span class="math" data-tex="\(T\)">\(T\)</span> be the map just constructed. It is constant on unitary orbits: for <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span>, apply its trace identity to <span class="math" data-tex="\(ux^{1/2}\)">\(ux^{1/2}\)</span>, and extend by linearity to all <span class="math" data-tex="\(x\)">\(x\)</span>. Since it is norm continuous, it is constant on <span class="math" data-tex="\(D(x)\)">\(D(x)\)</span>. CT-01 gives a central element <span class="math" data-tex="\(c\in D(x)\)">\(c\in D(x)\)</span>, and therefore <span class="math" data-tex="\(c=T(c)=T(x)\)">\(c=T(c)=T(x)\)</span>. In particular,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(x)\cap Z\\
+=\{T(x)\}.
+\end{gathered}
+\tag{CT.13}
+\]">\[
+\begin{gathered}
+D(x)\cap Z\\
+=\{T(x)\}.
+\end{gathered}
+\tag{CT.13}
+\]</span>
+<p>Every finite scalar trace <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, without a normality assumption, is bounded and constant on unitary orbits by TB-01. Norm continuity and (CT.13) give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sigma(x)=\sigma(T(x)),\\
+x\in M.
+\end{gathered}
+\tag{CT.14}
+\]">\[
+\begin{gathered}
+\sigma(x)=\sigma(T(x)),\\
+x\in M.
+\end{gathered}
+\tag{CT.14}
+\]</span>
+<p>This proves that restriction to <span class="math" data-tex="\(Z\)">\(Z\)</span> is a bijection between finite traces on <span class="math" data-tex="\(M\)">\(M\)</span> and positive functionals on <span class="math" data-tex="\(Z\)">\(Z\)</span>. Its inverse sends <span class="math" data-tex="\(\psi\)">\(\psi\)</span> to <span class="math" data-tex="\(\psi\circ T\)">\(\psi\circ T\)</span>: positivity and the trace identity follow from those of <span class="math" data-tex="\(T\)">\(T\)</span>, and its central restriction is <span class="math" data-tex="\(\psi\)">\(\psi\)</span>.</p>
+<p>Suppose now that <span class="math" data-tex="\(S:M\to Z\)">\(S:M\to Z\)</span> is linear, positive, has the trace identity, is <span class="math" data-tex="\(Z\)">\(Z\)</span>-linear, and satisfies <span class="math" data-tex="\(S(1)=1\)">\(S(1)=1\)</span>. Neither faithfulness nor normality is assumed. Positivity and unitality give <span class="math" data-tex="\(\|S(h)\|\leq\|h\|\)">\(\|S(h)\|\leq\|h\|\)</span> for self-adjoint <span class="math" data-tex="\(h\)">\(h\)</span>; decomposition into real and imaginary parts gives <span class="math" data-tex="\(\|S(x)\|\leq2\|x\|\)">\(\|S(x)\|\leq2\|x\|\)</span>, which suffices for continuity. The trace identity gives constancy on unitary orbits as above, while central linearity gives <span class="math" data-tex="\(S(c)=c\)">\(S(c)=c\)</span> for <span class="math" data-tex="\(c\in Z\)">\(c\in Z\)</span>. Taking a norm approximation to <span class="math" data-tex="\(T(x)\)">\(T(x)\)</span> from <span class="math" data-tex="\(D(x)\)">\(D(x)\)</span>, we obtain <span class="math" data-tex="\(S(x)=S(T(x))=T(x)\)">\(S(x)=S(T(x))=T(x)\)</span>. Thus the map in (CT.11) is unique; it is called the <strong>canonical center-valued trace</strong>. Its faithfulness and ultraweak continuity are automatic even for a proposed competitor with only the first three properties of (CT.11).</p>
+<p>For a finite algebra, (CT.14) already proves that <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is normal if and only if <span class="math" data-tex="\(\sigma|_Z\)">\(\sigma|_Z\)</span> is normal. The forward implication restricts increasing nets. For the reverse implication use the composition of the normal maps <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(\sigma|_Z\)">\(\sigma|_Z\)</span>.</p>
+<p><strong>Arbitrary-algebra theorem.</strong> A finite scalar trace <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> on any von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span> is normal exactly when its central restriction is normal. In particular every finite trace on a factor is normal.</p>
+<p><strong>Proof with the exact reduction.</strong> <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#oa-fnd-ty-10">The programme projection lesson, Theorem 7.2</a>, applied to the unit, supplies central projections <span class="math" data-tex="\(z_f,z_\infty\)">\(z_f,z_\infty\)</span> with sum <span class="math" data-tex="\(1\)">\(1\)</span>, such that <span class="math" data-tex="\(Mz_f\)">\(Mz_f\)</span> is finite and <span class="math" data-tex="\(Mz_\infty\)">\(Mz_\infty\)</span> is properly infinite. <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#oa-fnd-ty-17">Proposition 13.4 there</a> supplies <span class="math" data-tex="\(p\leq z_\infty\)">\(p\leq z_\infty\)</span> with <span class="math" data-tex="\(p\sim z_\infty-p\sim z_\infty\)">\(p\sim z_\infty-p\sim z_\infty\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\sigma(z_\infty)=2\sigma(z_\infty).
+\tag{CT.15}
+\]">\[
+\sigma(z_\infty)=2\sigma(z_\infty).
+\tag{CT.15}
+\]</span>
+<p>The value is finite, so it is zero. Cauchy–Schwarz then gives <span class="math" data-tex="\(\sigma(xz_\infty)=0\)">\(\sigma(xz_\infty)=0\)</span> for every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>. On the finite summand use (CT.14) to obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sigma(x)\\
+=\sigma\bigl(T_f(xz_f)\bigr).
+\end{gathered}
+\tag{CT.16}
+\]">\[
+\begin{gathered}
+\sigma(x)\\
+=\sigma\bigl(T_f(xz_f)\bigr).
+\end{gathered}
+\tag{CT.16}
+\]</span>
+<p>where <span class="math" data-tex="\(T_f:Mz_f\to Zz_f\)">\(T_f:Mz_f\to Zz_f\)</span> is its canonical trace. If <span class="math" data-tex="\(z_f=0\)">\(z_f=0\)</span> this equation simply says <span class="math" data-tex="\(\sigma=0\)">\(\sigma=0\)</span>. Otherwise central compression <span class="math" data-tex="\(M\to Mz_f\)">\(M\to Mz_f\)</span>, the map <span class="math" data-tex="\(T_f\)">\(T_f\)</span>, and restriction of a normal central functional to <span class="math" data-tex="\(Zz_f\)">\(Zz_f\)</span> are all normal; their composition is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Conversely normality restricts to the center. For a factor the center is <span class="math" data-tex="\(\mathbb C1\)">\(\mathbb C1\)</span>, on which every finite positive functional is normal. A finite factor has the unique normalized scalar trace determined by <span class="math" data-tex="\(T\)">\(T\)</span>; an infinite factor has only the zero finite trace. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="checks-on-the-hypotheses">Checks on the hypotheses</h2>
+<p><strong>Matrices over an abelian algebra.</strong> For an abelian von Neumann algebra <span class="math" data-tex="\(A\)">\(A\)</span>, the center of <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span> consists of scalar matrices: commuting with the diagonal matrix units kills off-diagonal entries, and commuting with all matrix units equates the diagonal entries. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T(x)=a1_n,\\
+a=\frac1n\sum_{j=1}^n x_{jj}.
+\end{gathered}
+\tag{CT.17}
+\]">\[
+\begin{gathered}
+T(x)=a1_n,\\
+a=\frac1n\sum_{j=1}^n x_{jj}.
+\end{gathered}
+\tag{CT.17}
+\]</span>
+<p>To check the trace identity, expand the diagonal sums of <span class="math" data-tex="\(x^*x\)">\(x^*x\)</span> and <span class="math" data-tex="\(xx^*\)">\(xx^*\)</span>; they agree because all entries lie in the abelian algebra <span class="math" data-tex="\(A\)">\(A\)</span>. The same expansion proves positivity. If their sum is zero, each positive summand <span class="math" data-tex="\(x_{ij}^*x_{ij}\)">\(x_{ij}^*x_{ij}\)</span> is zero, so every entry vanishes. Central linearity and normalization are immediate; CT-03 and CT-04 identify this as the canonical trace, and also prove finiteness without assuming it in advance.</p>
+<p><strong>Finite algebras can have nonnormal finite traces.</strong> Let <span class="math" data-tex="\(A=\ell^\infty(\mathbb N)\)">\(A=\ell^\infty(\mathbb N)\)</span>. The limit functional on the subspace of convergent sequences has norm one and sends <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>. The complete complex Hahn–Banach theorem in <a href="notes/real-coercivity/predual-prerequisites.html#np1-norm-preserving-extension-and-the-norming-identity">NP1</a> extends it to a norm-one functional <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(L(1)=1\)">\(L(1)=1\)</span>. This extension is positive. Indeed, for self-adjoint <span class="math" data-tex="\(h\)">\(h\)</span>, the norm-convergent exponential series gives <span class="math" data-tex="\(L(e^{ith})=1+itL(h)+O(t^2)\)">\(L(e^{ith})=1+itL(h)+O(t^2)\)</span>. The inequality <span class="math" data-tex="\(|L(e^{ith})|\leq1\)">\(|L(e^{ith})|\leq1\)</span> for both signs of small real <span class="math" data-tex="\(t\)">\(t\)</span> forces <span class="math" data-tex="\(L(h)\)">\(L(h)\)</span> to be real: the linear term of its squared modulus is <span class="math" data-tex="\(-2t\operatorname{Im}L(h)\)">\(-2t\operatorname{Im}L(h)\)</span>. Then, for <span class="math" data-tex="\(0\leq a\leq1\)">\(0\leq a\leq1\)</span>, <span class="math" data-tex="\(|1-L(a)|=|L(1-a)|\leq1\)">\(|1-L(a)|=|L(1-a)|\leq1\)</span> forces <span class="math" data-tex="\(L(a)\geq0\)">\(L(a)\geq0\)</span>. Scaling covers all positives.</p>
+<p>The algebra is abelian, so <span class="math" data-tex="\(L\)">\(L\)</span> is tracial. Finite-coordinate projections <span class="math" data-tex="\(p_k\uparrow1\)">\(p_k\uparrow1\)</span> have <span class="math" data-tex="\(L(p_k)=0\)">\(L(p_k)=0\)</span>, whereas <span class="math" data-tex="\(L(1)=1\)">\(L(1)=1\)</span>. Thus <span class="math" data-tex="\(L\)">\(L\)</span> is not normal. Here <span class="math" data-tex="\(T=\mathrm{id}\)">\(T=\mathrm{id}\)</span>, and its central restriction is precisely the same nonnormal functional. The criterion diagnoses the failure rather than asserting that all finite traces are normal.</p>
+<p><strong>Why the scalar trace must be finite.</strong> On <span class="math" data-tex="\(B(\ell^2(\mathbb N))\)">\(B(\ell^2(\mathbb N))\)</span> define a weight <span class="math" data-tex="\(\rho\)">\(\rho\)</span> by the usual matrix trace on positive finite-rank operators and by <span class="math" data-tex="\(\infty\)">\(\infty\)</span> on all other positive operators. Positive finite-rank operators are closed under addition, and a positive summand of a finite-rank positive operator has support inside its finite-dimensional range. This proves additivity including infinite values. Homogeneity uses <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>. Polar decomposition identifies the nonzero spectral parts of <span class="math" data-tex="\(x^*x\)">\(x^*x\)</span> and <span class="math" data-tex="\(xx^*\)">\(xx^*\)</span>, so either both have infinite rank, or both are finite rank with equal matrix trace. Hence <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a trace. On the center it takes value <span class="math" data-tex="\(\infty\)">\(\infty\)</span> at every positive scalar multiple of <span class="math" data-tex="\(1\)">\(1\)</span>, so it preserves increasing suprema there. But for</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d=\operatorname{diag}(d_j),\\
+d_j=2^{-j},\\
+j\geq1.
+\end{gathered}
+\tag{CT.18}
+\]">\[
+\begin{gathered}
+d=\operatorname{diag}(d_j),\\
+d_j=2^{-j},\\
+j\geq1.
+\end{gathered}
+\tag{CT.18}
+\]</span>
+<p>the finite-coordinate truncations increase to <span class="math" data-tex="\(d\)">\(d\)</span>, their traces tend to <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(\rho(d)=\infty\)">\(\rho(d)=\infty\)</span>. Thus normality of the central restriction alone does not suffice for an infinite-valued trace. The finite-rank matrix trace and its basis independence are the special case of <a href="OA-MOD-TB.html#oa-mod-tb-05">Matrix amplification without a countable basis</a> with scalar coefficient algebra.</p>
+<p><strong>No hidden sigma-finiteness.</strong> For uncountable <span class="math" data-tex="\(I\)">\(I\)</span>, the algebra <span class="math" data-tex="\(\ell^\infty(I)\)">\(\ell^\infty(I)\)</span> is finite and its canonical trace is the identity. It has uncountably many orthogonal nonzero coordinate projections, so it has no faithful normal state by <a href="OA-MOD-CY.html#oa-mod-cy-03">Projection countability recovers the observations</a>. The block construction in CT-03 still works, using all coordinate evaluations. A single faithful finite trace on the whole algebra was never part of its conclusion.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-TB.html">← Finite trace domains, central parts and amplification</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-FUS.html">Relative tensor products and fusion →</a></span></nav>
+<p class="small source-link"><a href="src/averaging-and-center-valued-traces.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -21,7 +21,7 @@ Here \(S(M)\) is the intersection of the full modular-operator spectra over all 
 \]
 Put \(N=M_\phi\), \(\tau=\phi|_{N_+}\), and \(\alpha_t=\sigma_t^\phi\). We construct a unitary \(U\in M\) with \(\alpha_t(U)=\lambda^{it}U\) and prove \(\phi(UxU^*)=\lambda\phi(x)\) on the entire positive cone. With \(\theta=\operatorname{Ad}U|_N\), we identify \(M\) normally with the actual regular \(N\rtimes_\theta\mathbb Z\), and identify its compact modular crossed product, its full trace and its second dual scaling. No implication from the type assumption to existence of the weight in ([GT2](OA-FLOW-GT.md#equation-gt2)) is used.
 
-The earlier local proofs used here are [PW4–5](OA-FLOW-PW.md#pw-4), especially the full-cone and finite-extension equalities PW26–PW29; [PF1–7](OA-FLOW-PF.md#pf-1), especially the qualified infinite-trace projection comparison [PF6](OA-FLOW-PF.md#oa-flow.pf.6); [BC1–5](OA-FLOW-BC.md#oa-flow.bc.1) for full balanced weights, closed domains and scalar modular factors; [CZ0](OA-FLOW-CZ.md#oa-flow.cz.0) for right centralizer multipliers and whole-weight invariance; [CT1 and CT3](OA-FLOW-CT.md#oa-flow.ct.1) for all-weight graph transport and the actual finite matrix isomorphism; [GW1–4](OA-FLOW-GW.md#oa-flow.gw.1), [NF5](OA-FLOW-NF.md#oa-flow.nf.5), ST2, and MW4 for exact GNS domains, normal representations and bounded topology; [CP6](OA-FLOW-CP.md#oa-flow.cp.6), [SF3](OA-FLOW-SF.md#oa-flow.sf.sf3) and [GNS7.1](OA-FLOW-GNS.md#gns-lemma-7-1) for vector-series tests, bounded integration and Hilbert direct sums. The complete discrete/compact normal duality and tensor trace are [VD0–6](OA-FLOW-VD.md#vd-discrete-regular), including VD's proved tensor commutant and onto Fourier/shear map.
+The earlier local proofs used here are [PW4–5](OA-FLOW-PW.md#pw-4), especially the full-cone and finite-extension equalities PW26–PW29; [PF1–7](OA-FLOW-PF.md#pf-1), especially the qualified infinite-trace projection comparison [PF6](OA-FLOW-PF.md#oa-flow.pf.6); [BC1–5](OA-FLOW-BC.md#oa-flow.bc.1) for full balanced weights, closed domains and scalar modular factors; [CZ0](OA-FLOW-CZ.md#oa-flow.cz.0) for right centralizer multipliers and whole-weight invariance; [CT1 and CT3](OA-FLOW-CT.md#oa-flow.ct.1) for all-weight graph transport and the actual finite matrix isomorphism; [GW1–4](OA-FLOW-GW.md#oa-flow.gw.1), [NF5](OA-FLOW-NF.md#oa-flow.nf.5), [ST2](OA-FLOW-ST12.md#oa-flow.st.2), and [MW4](OA-FLOW-MW.md#oa-flow.mw.4) for exact GNS domains, normal representations and bounded topology; [CP6](OA-FLOW-CP.md#oa-flow.cp.6), [SF3](OA-FLOW-SF.md#oa-flow.sf.sf3) and [GNS7.1](OA-FLOW-GNS.md#gns-lemma-7-1) for vector-series tests, bounded integration and Hilbert direct sums. The complete discrete/compact normal duality and tensor trace are [VD0–6](OA-FLOW-VD.md#vd-discrete-regular), including VD's proved tensor commutant and onto Fourier/shear map.
 
 The human development source actually read is [Connes, Theorem 4.3.2 and Corollary 4.3.3, original printed pp.220–222](https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=89). The balanced-centralizer comparison is reconstructed below with the local full-cone unitary invariance theorem. The source's existence, general comparison and subsequent classification assertions are not imported. The regular GNS surjectivity and exact double-dual identification are supplied by the written arguments below and VD, rather than inferred from generation alone.
 
@@ -239,14 +239,14 @@ Its positive Fejér kernels and vector continuity give this limit on every vecto
  M=(N\cup\{U\})'' .
  \tag{GT22}
 \]
-The equality also holds in the faithful normal \(\phi\)-GNS image, either by the same bounded Fejér proof or by ST2's bounded topology transport. Generation alone will not be used as a crossed-product isomorphism theorem.
+The equality also holds in the faithful normal \(\phi\)-GNS image, either by the same bounded Fejér proof or by [ST2](OA-FLOW-ST12.md#oa-flow.st.2)'s bounded topology transport. Generation alone will not be used as a crossed-product isomorphism theorem.
 
 <a id="gt-4"></a>
 
 <a id="oa-flow.gt.4"></a>
 ## GT-4. The onto regular GNS unitary
 
-Let \((H_\tau,\pi_\tau,\Lambda_\tau)\) and \((H_\phi,\pi_\phi,\Lambda_\phi)\) be the actual GNS constructions. [GW3](OA-FLOW-GW.md#oa-flow.gw.3)–4 and [NF5](OA-FLOW-NF.md#oa-flow.nf.5) prove that both representations are faithful normal and unital. ST2 makes their images von Neumann algebras and gives ultraweakly continuous inverses. These assertions apply to the infinite weights here; neither \(\Lambda_\tau(1)\) nor \(\Lambda_\phi(1)\) is used.
+Let \((H_\tau,\pi_\tau,\Lambda_\tau)\) and \((H_\phi,\pi_\phi,\Lambda_\phi)\) be the actual GNS constructions. [GW3](OA-FLOW-GW.md#oa-flow.gw.3)–4 and [NF5](OA-FLOW-NF.md#oa-flow.nf.5) prove that both representations are faithful normal and unital. [ST2](OA-FLOW-ST12.md#oa-flow.st.2) makes their images von Neumann algebras and gives ultraweakly continuous inverses. These assertions apply to the infinite weights here; neither \(\Lambda_\tau(1)\) nor \(\Lambda_\phi(1)\) is used.
 
 On the algebraic direct sum of copies of \(\Lambda_\tau(\mathfrak n_\tau)\), define
 
@@ -360,7 +360,7 @@ Equations ([GT22](OA-FLOW-GT.md#equation-gt22)) and ([GT29](OA-FLOW-GT.md#equati
  \qquad \Xi(\pi(d))=d,\quad\Xi(s)=U .
  \tag{GT31}
 \]
-This is an isomorphism on the complete von Neumann algebras. Unitary conjugation and the normal GNS isomorphism are ultraweakly continuous in both directions by the actual vector-series/ST2 proofs; hence \(\Xi\) and its inverse are normal on their entire domains. The notation \(N\rtimes_\theta\mathbb Z\) in ([GT31](OA-FLOW-GT.md#equation-gt31)) uses the specified faithful trace-GNS representation, so no representation-independence theorem is tacit.
+This is an isomorphism on the complete von Neumann algebras. Unitary conjugation and the normal GNS isomorphism are ultraweakly continuous in both directions by the actual vector-series/[ST2](OA-FLOW-ST12.md#oa-flow.st.2) proofs; hence \(\Xi\) and its inverse are normal on their entire domains. The notation \(N\rtimes_\theta\mathbb Z\) in ([GT31](OA-FLOW-GT.md#equation-gt31)) uses the specified faithful trace-GNS representation, so no representation-independence theorem is tacit.
 
 The regular compact action in [VD0](OA-FLOW-VD.md#oa-flow.vd.0) is \(\gamma_z(\pi(d))=\pi(d)\), \(\gamma_z(s)=\overline z\,s\). Let
 
@@ -370,7 +370,7 @@ The regular compact action in [VD0](OA-FLOW-VD.md#oa-flow.vd.0) is \(\gamma_z(\p
  \kappa_{e^{iat}}=\sigma_t^\phi .
  \tag{GT32}
 \]
-It is well defined by the period \(P\), and is pointwise strongly continuous on the circle in the faithful GNS representation by MW4. On the generators, ([GT9](OA-FLOW-GT.md#equation-gt9)) gives \(\Xi\gamma_{e^{iat}}\Xi^{-1}=\sigma_t^\phi\). The maps agree everywhere: they are normal, agree on all finite Laurent polynomials, and the bounded Fejér approximants converge ultraweakly to each element. Therefore
+It is well defined by the period \(P\), and is pointwise strongly continuous on the circle in the faithful GNS representation by [MW4](OA-FLOW-MW.md#oa-flow.mw.4). On the generators, ([GT9](OA-FLOW-GT.md#equation-gt9)) gives \(\Xi\gamma_{e^{iat}}\Xi^{-1}=\sigma_t^\phi\). The maps agree everywhere: they are normal, agree on all finite Laurent polynomials, and the bounded Fejér approximants converge ultraweakly to each element. Therefore
 
 <a id="equation-gt33"></a>
 

@@ -2,11 +2,12 @@
 
 *Written by GPT-6.1 Sol (OpenAI) and GPT-6 Astra (OpenAI). Self-checked by the writing AI. Original exposition: CC0.*
 
-This provider constructs the scalar finite calculus, cutoff summation, real Sobolev and elliptic-domain bridges used by AN06. For comparison, see [Lars Hörmander, *Fourier integral operators I*](https://projecteuclid.org/journalArticle/Download?urlid=10.1007%2FBF02392052), Section 2.1: Theorem 2.1.1 and (2.1.4), transpose (2.1.6), ordered product (2.1.9), and Theorem 2.1.2, Proposition 2.1.3 and (2.1.11)–(2.1.17) for changes of coordinates. The proofs below supply these scalar inputs within the programme. We use $\rho=1$, $\delta=0$, real orders, $D=-i\partial$ and inverse Fourier factor $(2\pi)^{-n}$. The later graph-FIO section links the subsequent programme proofs of phases, transverse composition and graph mapping; the finite scalar sections here are read first.
+Finite symbol expansions control composition, adjoints and coordinate changes. Combined with the order-zero operator bound, they give real Sobolev mapping and exact elliptic domains. We use $\rho=1$, $\delta=0$, real orders, $D=-i\partial$ and inverse Fourier factor $(2\pi)^{-n}$. Read the finite scalar sections first; the graph-FIO section then connects them to phase geometry and transverse composition.
 
 The order-zero input is the full local proof of [A finite-derivative bound for left quantization](finite-derivative-l2.md#finite-derivative-l2). Its [Euclidean product theorem](finite-derivative-l2.md#euclidean-products) and [Fourier inversion and Plancherel proofs](finite-derivative-l2.md#fourier-normalization) supply the integration and Fourier inputs below. Smooth coordinate inverses, change of variables and finite smooth partitions are proved in [Coordinate inverses, integration and surface measure](coordinate-inverses-and-integration.md#coordinate-integration). The [approximation provider, Sections 1–4](euclidean-approximation-and-convolution.md), supplies smooth approximation and weak differentiation. Taylor's formula used below follows by applying the one-dimensional fundamental theorem repeatedly to the function on the displayed line segment, giving its stated integral remainder. Operators on a closed manifold act on scalar half densities. Fix a finite smooth atlas and subordinate partition when defining Sobolev norms; all conclusions below hold for that actual atlas.
 
 <a id="finite-scalar-calculus"></a>
+
 ## Finite symbol calculus
 
 On a coordinate patch a symbol $a\in S^m_{1,0}$ satisfies, for every compact set of $x$ and every $\alpha,\beta$,
@@ -129,6 +130,7 @@ It is the exact formal adjoint identity on compact smooth inputs and by duality 
 A compact smooth kernel has a rapidly decreasing left symbol: write its left symbol as $\int e^{-i(x-y)\xi}K(x,y)\,dy$ and integrate any number of derivatives in $y$; factors produced by position and frequency differentiation remain compact smooth. Conversely, an $S^{-\infty}$ amplitude has a smooth kernel by absolute frequency integration after all derivatives. The statements extend under proper localization. In particular changing a diagonal cutoff changes the operator only by the retained smooth kernel and the local symbol only by $S^{-\infty}$.
 
 <a id="scalar-coordinate-change"></a>
+
 ## Coordinate changes and the scalar subprincipal symbol
 
 Write old coordinates as $x=\kappa(X)$, let $J(X)=D\kappa(X)$ and $j(X)=|\det J(X)|$. On half densities the coordinate map on coefficients is
@@ -207,6 +209,8 @@ Subtracting $(2i)^{-1}$ times (FC14) from (FC13) proves that $a_{\mathrm{sub}}$ 
 \]
 For the first identity, expand the second derivative of $a_{m_1}b_{m_2}$ in (FC12); its two cross terms combine with the $1/i$ term in (1) to give the displayed bracket. For the second, use (2) and conjugate $1/i$. In particular $[A,B]$ has order at most $m_1+m_2-1$ and principal symbol $(1/i)\{a_{m_1},b_{m_2}\}$. A finite partition patches the finite calculus and these intrinsic symbols on a closed manifold. These arguments concern scalar pseudodifferential operators; graph-FIO composition requires the additional proof identified below.
 
+<a id="scalar-classical-summation"></a>
+
 ## Classical summation
 
 Let $a_j\in S^{m-j}_{1,0}$, $j\geq0$, on one patch, with their $x$ support in one fixed compact set when support is needed. There is $a\in S^m_{1,0}$ such that
@@ -234,6 +238,8 @@ This is a locally finite smooth sum, because on a bounded $\xi$ set all sufficie
 
 These assertions include smooth parameter families. Suppose every parameter derivative of $a_j(t,x,\xi)$ belongs to $S^{m-j}$ with seminorms locally uniform in the finite-dimensional parameter $t$. Include the first $j$ parameter-compact sets and all parameter derivatives of order at most $j$ among the finitely many conditions choosing $R_j$. Choose each radius independently of $t$. The same summable estimates then hold locally uniformly in $t$ for every derivative, so the sum is smooth as a symbol-valued function and every differentiated error in (3) has order $m-N$. The local finiteness also proves ordinary joint smoothness. For finite products, adjoints and coordinate changes, apply parameter derivatives directly in (FC3), (FC6), (FC7) and (FC10), assuming the same locally uniform symbol-family bounds on their inputs. The product rule gives finitely many of the already bounded integrals; compact parameter sets keep the coordinate inverse bounds uniform. Dominated convergence proves smooth parameter dependence and the finite-seminorm remainder bounds for every such derivative. Thus differentiating the families used below requires no separate formal-series convergence assumption.
 
+<a id="scalar-real-sobolev"></a>
+
 ## Real Sobolev mapping
 
 For every real $s,m$, a properly supported scalar classical operator $A$ of order $m$ maps
@@ -241,7 +247,21 @@ For every real $s,m$, a properly supported scalar classical operator $A$ of orde
  A:H^s_{\rm comp}\longrightarrow H^{s-m}_{\rm loc}.
  \tag{5}
 \]
-On a closed manifold it is bounded $H^s\to H^{s-m}$. The proof uses $J^t=\langle D\rangle^t$, whose Fourier multiplier symbol is $\langle\xi\rangle^t\in S^t_{1,0}$ for every real $t$, and $\|u\|_{H^t}=\|J^tu\|_2$.
+On a closed manifold it is bounded $H^s\to H^{s-m}$. The proof uses $J^t=\langle D\rangle^t$, whose Fourier multiplier symbol is $\langle\xi\rangle^t\in S^t_{1,0}$ for every real $t$. On Euclidean space, define $H^t$ as the tempered distributions whose Fourier transform is a function with finite norm
+\[
+ \|u\|_{H^t}^2
+ =(2\pi)^{-n}\int\langle\xi\rangle^{2t}|\widehat u(\xi)|^2\,d\xi
+ =\|J^tu\|_2^2.
+\]
+Multiplication by $\langle\xi\rangle^{\pm t}$ preserves Schwartz space and acts on tempered distributions by duality: every derivative of these weights has polynomial growth. The proved Fourier isometry therefore identifies $J^t:H^t\to L^2$ as an isometric bijection with inverse $J^{-t}$; in particular $H^t$ is complete. Weighted Fourier Cauchy–Schwarz gives, for a compact smooth test $\phi$,
+\[
+ |\langle u,\phi\rangle|
+ =\left|(2\pi)^{-n}\int\widehat u(\xi)\widehat\phi(-\xi)\,d\xi\right|
+ \leq\|u\|_{H^t}\|\phi\|_{H^{-t}}.
+\]
+The distributional pairing here is linear in its test. The equality follows from the proved distributional Fourier inverse and the absolutely integrable weighted product. It proves the distributional convergence and local dual bound used below.
+
+A compactly supported distribution belongs to some $H^{-r}$. Indeed, continuity on tests supported in one fixed compact neighborhood gives $|\langle u,\phi\rangle|\le C\max_{|\alpha|\le N}\|\partial^\alpha\phi\|_\infty$ there for some finite $N$. To obtain this bound directly, take a basic zero-neighborhood on which the functional is bounded, containing finitely many such derivative constraints, and rescale each test into it. For a cutoff $\theta=1$ near the support of $u$, apply the bound to $\theta(x)e^{-ix\cdot\xi}$. Its Fourier transform is therefore a smooth function bounded by $C'\langle\xi\rangle^N$; difference quotients and all frequency derivatives follow by continuity on that same test space. The polar integration proof makes $\langle\xi\rangle^{-r}\widehat u$ square integrable when $r>N+n/2$. This also shows that every distribution on a compact manifold belongs to a sufficiently negative Sobolev space after finite localization.
 
 First insert compact coordinate cutoffs on the input and output. Formula (1) and its finite remainders show that
 \[
@@ -261,6 +281,7 @@ To justify reassembling different charts at real indices, let $V$ be a half-dens
 The Fourier multipliers and cutoffs are legitimate by the explicit smooth-tail estimates above. Density now proves boundedness of each localized coordinate change on every real $H^s$. Apply the inverse coordinate change for the reverse local comparison. Thus finite atlas norms agree up to constants. To see completeness and smooth density globally, map a distribution to the finite list of its partitioned coordinate representatives, each in its complete Fourier $H^s$ space. Reassemble a list by multiplying its $i$th representative by a cutoff equal to one near the support of the $i$th partition function, changing coordinates back and summing. This map is bounded by (FC16) and is a left inverse of localization, since the partition sums to one. Reassembly followed by localization is therefore a bounded projection onto the lists coming from one global distribution. That range is closed, hence complete. Approximate its entries by compact smooth functions and reassemble to obtain global smooth approximations. This proves the closed-manifold assertion of (5), including its actual Sobolev spaces. Constants for a bounded family depend on finitely many symbol seminorms by (1) and the finite-derivative theorem.
 
 <a id="two-endpoint-sobolev"></a>
+
 ### Two-endpoint Sobolev bounds
 
 The following proof applies to any compatible linear operator, without a symbol or a fractional-power construction. Suppose $a<b$ and $T:H^a(\mathbb R^n)\to H^a(\mathbb R^n)$ is bounded, with its restriction to $H^b$ bounded into $H^b$. For every $a<s<b$ it is bounded on $H^s$, with a bound depending only on the two endpoint norms and $a,b,s$. A family with uniform endpoint bounds has a uniform intermediate bound.
@@ -291,6 +312,8 @@ For a finite sum of input bands put $v_k=2^{sk}\|\Pi_k u\|_2$ and extend this se
 Here $C$ is the larger of the two displayed endpoint constants. Both tails of $h$ are geometric and $H=\sum_{\ell\in\mathbb Z}h_\ell<\infty$. Weighted Cauchy–Schwarz gives $(\sum_k h_{j-k}v_k)^2\le H\sum_k h_{j-k}v_k^2$. Summing in $j$, and interchanging nonnegative sums, proves $\sum_j(\sum_k h_{j-k}v_k)^2\le H^2\sum_kv_k^2$. Equation (FC18) therefore gives the asserted $H^s$ bound. Truncating the annular decomposition approximates every $H^s$ input in $H^s$ and also in $H^a$, because $s>a$. The output limit in $H^s$ agrees with its already defined $H^a$ image. This proves the extension and its compatibility, including negative endpoint indices.
 
 For a closed manifold, use the finite-atlas localization $L$ and reassembly $R$ constructed immediately after (FC16). These same maps are bounded at every real index and satisfy $RL=I$. The operator $LTR$ on the finite direct sum of Euclidean spaces has the two endpoint bounds. Apply the proof above with $\Pi_j$ acting componentwise and the direct-sum $L^2$ norm in place of the scalar norm; every estimate and the weighted sequence argument are unchanged. Reassembling its intermediate bound proves $T=R(LTR)L:H^s(X)\to H^s(X)$. The localization constants are fixed independently of $T$, so the uniform-family assertion also holds on the manifold. In particular compatible bounds at all integer indices imply bounds at every real index.
+
+<a id="scalar-elliptic-domains"></a>
 
 ## Elliptic parametrix domains
 
@@ -331,7 +354,7 @@ Read the finite scalar sections above first, followed by [Phase geometry, statio
 
 For a graph FIO of order $m$, [Section 8, (G15)–(G16)](transverse-composition-and-graph-operators.md#graph-sobolev), proves $A:H^s_{\rm comp}\to H^{s-m}_{\rm loc}$ for every real $s$. It conjugates with the actual Fourier Sobolev multipliers, accounts for their smooth tails, applies the proved graph product to $B^*B$, and then uses the finite scalar order-zero bound and smooth density. The finite-atlas reassembly above supplies the closed-manifold statement. For parameter families the undifferentiated bounds are locally uniform; differentiating a moving phase can raise the operator order and is explicitly accounted for there.
 
-[Section 9, (G17)](transverse-composition-and-graph-operators.md#graph-egorov), proves the elliptic inverse modulo smooth kernels and the ordered Egorov rule. For a unitary order-zero graph FIO $E$ with canonical graph $\chi$ and a scalar $V\in\Psi^r_{\rm cl}$, the operator $E^*VE$ is in $\Psi^r_{\rm cl}$ with principal symbol $v\circ\chi$. The line and density factors cancel by the actual identity $E^*E=I$. When the composed graph is the fixed identity, the same proof gives a smooth classical symbol family with all parameter derivatives of order $r$. Thus the convention for $E(t)=e^{-itL}$ is $e^{itL}Ve^{-itL}$ with $v\circ\chi_t$. The actual wave construction still needs its scalar-transport and general qualified-pullback proofs. 
+[Section 9, (G17)](transverse-composition-and-graph-operators.md#graph-egorov), proves the elliptic inverse modulo smooth kernels and the ordered Egorov rule. For a unitary order-zero graph FIO $E$ with canonical graph $\chi$ and a scalar $V\in\Psi^r_{\rm cl}$, the operator $E^*VE$ is in $\Psi^r_{\rm cl}$ with principal symbol $v\circ\chi$. The line and density factors cancel by the actual identity $E^*E=I$. When the composed graph is the fixed identity, the same proof gives a smooth classical symbol family with all parameter derivatives of order $r$. Thus the convention for $E(t)=e^{-itL}$ is $e^{itL}Ve^{-itL}$ with $v\circ\chi_t$. The wave construction also uses [Scalar transport and phase action](scalar-transport-and-phase-action.md) and [Wavefront-qualified pullback](wavefront-qualified-pullback.md).
 
 ## Compact Sobolev inclusion
 
@@ -344,9 +367,13 @@ up to the fixed Fourier normalization. Sobolev duality bounds this uniformly on 
 
 The high-frequency tail has the uniform bound
 \[
- \int_{|\xi|>R}\langle\xi\rangle^{2t}|\widehat u(\xi)|^2\,d\xi
+ (2\pi)^{-n}\int_{|\xi|>R}\langle\xi\rangle^{2t}|\widehat u(\xi)|^2\,d\xi
  \leq\langle R\rangle^{2(t-s)}\|u\|_{H^s}^2\longrightarrow0.
 \]
 Uniform convergence on the frequency ball and this tail estimate make the selected subsequence Cauchy in $H^t$. Completeness gives its limit. Successive selections over the finite atlas give one globally convergent subsequence. This proves compactness for the stated real indices.
 
-Together with (7), the closed-manifold elliptic map $P:H^s\to H^{s-m}$ is Fredholm. The remainders in $QP=I-S'$ and $PQ=I-R$ are compact on the corresponding spaces, because a smoothing operator factors through a higher Sobolev space. On $\ker P$ the identity equals the compact operator $S'$, so the unit ball is relatively compact and the Riesz-lemma proof in the [full Banach compact-Fredholm provider](compact-fredholm-families.md#compact-fredholm) gives a finite-dimensional kernel. Choose its bounded finite-dimensional projection and a closed complement. If no lower bound for $P$ held on that complement, unit vectors $u_j$ there with $Pu_j\to0$ would satisfy $u_j=QPu_j+S'u_j$ and hence have a convergent subsequence. Its limit would be a unit vector in both the complement and the kernel, a contradiction. This lower bound proves closed range. Applying the same compact-identity argument to $Q^*P^*=I-R^*$ makes the annihilator of that range finite-dimensional. Hahn–Banach identifies the dual of the quotient with this annihilator, so the quotient is finite-dimensional by the full elementary argument in the compact-Fredholm provider. Thus both defects are finite; no zero-index conclusion for every elliptic operator is asserted. For a bijective positive-order realization, its inverse $L^2\to H^m$ is bounded by the bounded inverse theorem or its graph estimate and then compact as a map $L^2\to L^2$. The exact positive eigenbasis and moment domains are the separate [compact positive inverse theorem](compact-spectrum-domains.md#compact-inverse-domains). Nothing in this provider proves generalized boundary propagation, a curved Dirichlet spectral diagonal estimate, or positive-excess trace composition.
+Together with (7), the closed-manifold elliptic map $P:H^s\to H^{s-m}$ is Fredholm. The remainders in $QP=I-S'$ and $PQ=I-R$ are compact on the corresponding spaces, because a smoothing operator factors through a higher Sobolev space. On $\ker P$ the identity equals the compact operator $S'$, so the unit ball is relatively compact and the Riesz-lemma proof in [Compact Fredholm operators and strongly continuous families](compact-fredholm-families.md#compact-fredholm) gives a finite-dimensional kernel. Choose its bounded finite-dimensional projection and a closed complement. If no lower bound for $P$ held on that complement, unit vectors $u_j$ there with $Pu_j\to0$ would satisfy $u_j=QPu_j+S'u_j$ and hence have a convergent subsequence. Its limit would be a unit vector in both the complement and the kernel, a contradiction. This lower bound proves closed range. Applying the same compact-identity argument to $Q^*P^*=I-R^*$ makes the annihilator of that range finite-dimensional. Hahn–Banach identifies the dual of the quotient with this annihilator, so the quotient is finite-dimensional by the full elementary argument in the compact-Fredholm reading. Thus both defects are finite; no zero-index conclusion for every elliptic operator is asserted. For a bijective positive-order realization, take $s=m$. Its kernel is zero, so the complement is all of $H^m$ and the just-proved lower bound gives $\|u\|_{H^m}\le C\|Pu\|_2$. Hence its inverse $L^2\to H^m$ is bounded, and compact as a map $L^2\to L^2$ by the inclusion above. The positive eigenbasis and exact moment domains are proved in [Compact positive inverses and diagonal domains](compact-spectrum-domains.md#compact-inverse-domains).
+
+## References
+
+- Lars Hörmander, [“Fourier integral operators I”](https://projecteuclid.org/journalArticle/Download?urlid=10.1007%2FBF02392052), *Acta Mathematica* 127 (1971), 79–183, Section 2.1: Theorem 2.1.1 and (2.1.4), transpose (2.1.6), ordered product (2.1.9), and Theorem 2.1.2, Proposition 2.1.3 and (2.1.11)–(2.1.17) for coordinate changes.

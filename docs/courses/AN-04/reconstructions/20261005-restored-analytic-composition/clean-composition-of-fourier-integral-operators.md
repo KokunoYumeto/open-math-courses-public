@@ -496,4 +496,4 @@ Its nonzero order-\(-1\) symbol is that of \(P\). This shows why pointwise nonze
 
 - [Hörmander IV, §25.2] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, corrected second printing, Springer, 1994, §25.2 Definition 25.2.1 and Theorems 25.2.2–25.2.3. The exact approved purchased reprint was read for this restoration.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Restoration and exact prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. The course owner checked this lesson and its programme proof chain; human mathematical review remains pending. Original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Restoration and exact prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Self-checked by the writing AI. Original text: public domain (CC0).*

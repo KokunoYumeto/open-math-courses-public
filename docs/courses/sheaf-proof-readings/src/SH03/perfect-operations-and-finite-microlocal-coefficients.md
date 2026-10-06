@@ -4,7 +4,7 @@ The weak operation theorem preserves the geometry of constructibility. Perfect c
 
 Use Constructible costalks and Verdier duality for canonical biduality, Perfect coefficients on compact fibres for proper perfect direct image, and Weak constructibility under sheaf operations for boundedness and the deformation/diagonal definitions. The existing prerequisites supply normalized exceptional adjunction, the two conic zero-section contractions, and the Fourier comparison between the negative cutoff and positive supported kernel. Their individual foundational dependencies remain explicit.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## Perfect inverse images, tensors and internal Hom
 

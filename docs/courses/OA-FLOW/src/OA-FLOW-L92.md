@@ -17,7 +17,7 @@ Assume first that \(s\mapsto\alpha_s\) is continuous in operator norm. Let \(a_V
 $$\|\alpha_{e_V}-I\|
 \le\sup_{t\in V}\|\alpha_t-I\|\longrightarrow0.\tag{N1}$$
 
-Therefore the operator identity belongs to the norm-closed filter algebra \(\mathcal B_\alpha\) of [the filter-character proof](OA-FLOW-L91.md#oa-flow.frequency.filtercharacters). When \(X\ne\{0\}\), this makes \(\mathcal B_\alpha\) a unital commutative Banach algebra. Its character space is compact in the Gelfand topology by the complete character-space proof CF4: the product of bounded coordinate discs is compact by the proved ultrafilter argument, and the character equations define a closed subset. Its identity \(I\) has norm one, so the hypotheses of that proof match exactly. By the homeomorphism (C6),
+Therefore the operator identity belongs to the norm-closed filter algebra \(\mathcal B_\alpha\) of [the filter-character proof](OA-FLOW-L91.md#oa-flow.frequency.filtercharacters). When \(X\ne\{0\}\), this makes \(\mathcal B_\alpha\) a unital commutative Banach algebra. Its character space is compact in the Gelfand topology by the complete character-space proof [CF4](OA-FLOW-CF.md#oa-flow.cf.4): the product of bounded coordinate discs is compact by the proved ultrafilter argument, and the character equations define a closed subset. Its identity \(I\) has norm one, so the hypotheses of that proof match exactly. By the homeomorphism (C6),
 
 <a id="equation-n2"></a>
 

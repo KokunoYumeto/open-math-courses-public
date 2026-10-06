@@ -1921,7 +1921,432 @@ The slope hypotheses define \(f\) on the full closed disc \(|y|\le|\rho|^{-1}\),
 
 The larger scale \(D(\theta+1/(p-1))-\delta\) also suffices: (9.4) gives \(L v_p(k!)\le D/(p-1)\), and a scalar of any additional nonnegative valuation preserves normality. For the projected slopes in (10.104), it suffices that \(v_p(u_i)>\theta+1/(p-1)\) and \(U-v_p(b)>\theta+1/(p-1)\). The ultrametric inequality then supplies the slope hypotheses above. Input derivative precision remains an explicit hypothesis in (10.108), distinct from this proof of normality.
 
-## 16. Exercises with solutions
+## 16. Prepared jets and derivative precision
+
+The interpolation argument can keep the precision of each derivative separately. We first obtain that precision from the prepared equations, without changing the selected Euler directions.
+
+### Differentiating along the projected curve
+
+**Lemma 10.38 (the loss in an ordinary divided jet).** Take the integral forms, matrix \(C\), selected column set \(J\), and derivations \(\delta_j\) of Lemma 10.23. Use those selected derivations as the \(D_j\) in (10.92), renumbering them if necessary. Let \(q\ne p\) be a prime, \(I,\nu\ge0\) be integers, and \(z_j\in\mathbb C_p\), \(1\le j<n\), satisfy \(v_p(z_j)>1/(p-1)\). Put \(\beta=v_p(b_n)\), and define
+
+\[
+\begin{aligned}
+w_i&=\frac1{b_nq^\nu}\sum_{j<n}C_{ij}z_j,\\
+\xi_a&=\frac1{b_nq^\nu}\sum_{j<n}\lambda_{aj}z_j\quad(a\in J),\\
+C_0&=\max\{v_p(v(k)),\beta\}.
+\end{aligned}
+\tag{10.109}
+\]
+
+Here the coefficients \(\lambda_{aj}\) are those in (10.64), with \(\lambda_{aj}=\mathbf1_{a=j}\) for selected columns. Suppose that \(v_p(w_i)>1/(p-1)\) for every \(i\). Define \(f(y;\boldsymbol t)\) by substituting \(Y_i=\exp(yw_i)\) in the prepared family (10.92). Fix \(s\in\mathbb Z_p\), an integer \(T\ge0\), and a real \(P_0\). If
+\(v_p(f(s;\boldsymbol t'))\ge P_0\) for every \(|\boldsymbol t'|\le T\), then
+
+\[
+v_p\bigl(f_j(s;\boldsymbol t)\bigr)\ge P_0-jC_0
+\quad\text{whenever }\ |\boldsymbol t|+j\le T,
+\qquad
+f_j=\frac1{j!}\frac{d^jf}{dy^j}.
+\tag{10.110}
+\]
+
+**Proof.** By (10.64), \(\sum_iw_iE_i=\sum_{a\in J}\xi_a\delta_a\). Each \(\lambda_{aj}\) is p-integral, and \(q\ne p\), so either \(\xi_a=0\) or
+\(v_p(\xi_a)>1/(p-1)-\beta\). Differentiating along the curve therefore applies the commuting operator
+\(V=\partial_X+\sum_{a\in J}\xi_a\delta_a\).
+This identity follows directly on a term \(P(X)Y^{\boldsymbol m}\): its restriction is \(P(y)\exp(y\sum_i m_iw_i)\), whose derivative has the stated two terms. The exponential laws and convergence in Propositions 9.3–9.4 justify this differentiation on the finite prepared sum.
+
+Write \(A=q^Iv(k)\). The additive prepared operator is \(\mathcal B_{t_0}=A^{t_0}\partial_X^{t_0}/t_0!\). For \(h\ge0\),
+\[
+\frac{\partial_X^h}{h!}\mathcal B_{t_0}
+=A^{-h}\binom{t_0+h}{h}\mathcal B_{t_0+h}.
+\]
+Its scalar has valuation at least \(-h v_p(v(k))\).
+
+For an indeterminate \(Z\), the defining product for \(\Delta\) gives
+\[
+Z\Delta(Z;t)=(t+1)\Delta(Z;t+1)-(t+1)\Delta(Z;t).
+\]
+Repeated use of this identity expresses \(Z^h\Delta(Z;t)\) as an integer linear combination of \(\Delta(Z;e)\), with \(t\le e\le t+h\). Substitution of an Euler derivation is legitimate because all the operators commute. Multiplication by \(\xi_a^h/h!\) gives coefficients of valuation at least \(-h\beta\): for \(h>0\), (9.4) gives
+\(h v_p(\xi_a)-v_p(h!)\ge-h\beta\); for \(h=0\), the coefficient is one. A zero \(\xi_a\) causes no problem.
+
+Expand \(V^j/j!\) over \(h_0+\sum_a h_a=j\). The multinomial coefficient cancels the denominator \(j!\), leaving the product of the divided powers just considered. Every resulting prepared index has total order at most \(|\boldsymbol t|+j\), and every scalar has valuation at least
+\(-h_0v_p(v(k))-\sum_a h_a\beta\ge-jC_0\).
+Evaluation at the same curve point \(s\), followed by the ultrametric inequality, proves (10.110). This proof retains the factorials; no extra \(v_p(j!)\) loss is needed. \(\square\)
+
+### Retaining the precision of each jet
+
+**Theorem 10.39 (interpolation with a linear jet loss).** Retain the normal function, integer node set, \(\rho\), \(\theta\), \(n\), \(\mu\), \(B\), and \(\kappa\in\{0,1\}\) of Theorem 10.34. Suppose \(C\ge0\) and
+\(v_p(F_j(\rho s))+j\theta\ge\Lambda-jC\) for every node \(s\) and \(0\le j<\mu\). Then
+
+\[
+v_p(F(\rho x))\ge
+\min\{n\mu\theta,\ \Lambda-\kappa\mu B-(\mu-1)\max\{B,C\}\}
+\qquad(x\in\mathbb Z_p\subset\mathbb Q_p).
+\tag{10.111}
+\]
+
+**Proof.** Use the explicit Hermite remainder in the proof of Theorem 10.34. Its term with jet index \(j\) contains a coefficient of degree \(h\le\mu-1-j\) in \(A_s\). That proof gives valuations at least \(-\kappa\mu B\) for \(L_s(x)^\mu\), and at least \(-hB\) for that coefficient. The remaining power of \(x-s\) is integral. The term thus has valuation at least
+\(\Lambda-jC-\kappa\mu B-(\mu-1-j)B\).
+Since \(0\le j\le\mu-1\),
+\[
+jC+(\mu-1-j)B\le(\mu-1)\max\{B,C\}.
+\]
+The ultrametric inequality gives the second bound in (10.111) for the full Hermite remainder. The normal quotient and its root product give the first bound \(n\mu\theta\), exactly as before. Their sum proves the claim. \(\square\)
+
+For \(C=0\) this is Theorem 10.34. For \(C>0\), first replacing all jets by their least precision would instead give the larger loss \((\mu-1)(C+B)+\kappa\mu B\). The exact Hermite formula avoids that loss by pairing each jet with only the inverse coefficients it actually uses.
+
+### The input precision for extrapolation
+
+**Corollary 10.40 (prepared vanishing supplies the required jets).** Retain the selected directions and notation of Lemma 10.38, the prepared coefficient vector \(c\ne0\), and \(\delta=\min_jv_p(c_j)\). Suppose the unprojected and projected functions \(\Phi\) and \(f\) satisfy Lemma 10.36 with \(b=b_n\), projection precision \(U\), and coefficient minimum \(\delta\). Suppose also that the slopes of \(f\) satisfy Proposition 10.37 for \(v_p(\rho)=\theta>0\). Let \(\Gamma\) be its exact scale in (10.106).
+
+At every node of Theorem 10.34, assume
+\(\Phi(s;\boldsymbol t')=0\) for all \(|\boldsymbol t'|\le T\). Fix \(\boldsymbol t\) with \(|\boldsymbol t|+\mu-1\le T\), and write \(M_0=\max\{B,C_0\}\). Then, for every \(x\in\mathbb Z_p\),
+
+\[
+v_p(f(x;\boldsymbol t))\ge
+\min\{n\mu\theta-\Gamma,\ U+\delta-\beta
+-\kappa\mu B-(\mu-1)M_0\}.
+\tag{10.112}
+\]
+
+In particular the following explicit budget suffices for
+\(v_p(f(x;\boldsymbol t))\ge n\mu\theta-\Gamma\):
+
+\[
+U+D\theta+L v_p(k!)\ge n\mu\theta+(\kappa+1)\mu M_0,
+\qquad D=kL.
+\tag{10.113}
+\]
+
+Under that budget the same lower bound holds for \(\Phi(x;\boldsymbol t)\). For the full interval, \(n=2R+1\) and \(\kappa=0\); for the q-deleted interval with \(q\mid R\), \(n=2(1-1/q)R\) and \(\kappa=1\).
+
+These hypotheses have a direct logarithmic model. Take \(z_1,\ldots,z_n\) with \(v_p(z_j)>\theta+1/(p-1)\), and put
+\[
+u_i=q^{-\nu}\sum_{j=1}^na_{ij}z_j,
+\qquad \mathcal L=\sum_{j=1}^nb_jz_j,
+\qquad a_i=q^{-\nu}a_{in}.
+\]
+Then \(a_i\in\mathbb Z_p\), and \(w_i=u_i-a_i\mathcal L/b_n\) is exactly (10.109). If \(v_p(\mathcal L)\ge U\) and \(U-\beta>\theta+1/(p-1)\), the hypotheses of both the projection and normality estimates follow from the ultrametric inequality. The chosen-minor argument supplies the integral coefficients used for the ordinary input jets.
+
+**Proof.** Vanishing of \(\Phi\) and (10.105) give
+\(v_p(f(s;\boldsymbol t'))\ge U+\delta-\beta\) for every required prepared index. Lemma 10.38 therefore gives the ordinary input jets with loss \(jC_0\). By (10.107), the corresponding normal jets have weighted precision
+\(\Gamma+U+\delta-\beta-jC_0\). Theorem 10.39 and subtraction of \(\Gamma\) prove (10.112).
+
+Here \(\beta\le C_0\le M_0\) and \(B\le M_0\). Consequently
+\(\beta+\kappa\mu B+(\mu-1)M_0\le(\kappa+1)\mu M_0\).
+Substitute \(\Gamma+\delta=D\theta+Lv_p(k!)\) in (10.113) to see that the second entry of the minimum in (10.112) is at least the first. It also follows that \(U+\delta-\beta\ge n\mu\theta-\Gamma\). The projection error (10.105) holds at \(x\), so \(\Phi=f+(\Phi-f)\) has the same lower bound. The node counts are those proved in Corollary 10.35. \(\square\)
+
+The coefficient minimum cancels from (10.113); it remains in the valuation conclusion through \(\Gamma\). One may instead choose the larger normalizing scale
+\(\Gamma'=D(\theta+1/(p-1))-\delta\) allowed by Proposition 10.37. Multiplying the normal function by a scalar of valuation \(\Gamma'-\Gamma\ge0\) repeats the proof with \(\Gamma'\) throughout. It gives the sufficient budget and its corresponding conclusion
+\[
+U+D\left(\theta+\frac1{p-1}\right)
+\ge n\mu\theta+(\kappa+1)\mu M_0
+\quad\Longrightarrow\quad
+v_p(f(x;\boldsymbol t)),\ v_p(\Phi(x;\boldsymbol t))\ge n\mu\theta-\Gamma'.
+\tag{10.114}
+\]
+Such a scalar exists: its required valuation is the nonnegative rational \(D/(p-1)-L v_p(k!)\), and a b-th root of \(p^a\) has valuation \(a/b\) in \(\mathbb C_p\). The conclusion with \(\Gamma'\) does not assert the stronger conclusion with \(\Gamma\).
+
+Finally, \(v_p(v(k))=\lfloor\log_p k\rfloor\): the highest p-power dividing a least common multiple is the highest p-power dividing one of its factors, and the largest such power among \(1,\ldots,k\) is \(p^{\lfloor\log_pk\rfloor}\). Also \(\beta\le\ln|b_n|/\ln p\). Thus \(M_0\le\max\{\ln(2R),\ln k,\ln|b_n|\}/\ln p\), a useful real-valued upper bound in (10.113)–(10.114). To deduce an algebraic zero from the valuation conclusion one must additionally compare it with the height of the nonzero prepared value. Those arithmetic and numerical comparisons are separate from this interpolation argument.
+
+## 17. When extrapolation forces an algebraic zero
+
+An analytic lower bound for a valuation forces an algebraic value to vanish only when it exceeds the upper bound for a nonzero value. We prove that upper bound with the exact local degree and with the denominators of the prepared polynomial retained.
+
+### A nonzero prepared value
+
+Use the height conventions of Section 14 and the product formula proved in [Places of number fields in extensions and the product formula](../../NT-LOC/NT-LOC-05.html). The height identities for powers and inverses are proved in [Heights of algebraic numbers](../../TR-TRANS/TR-TRANS-02.html#3-the-arithmetic-normalization-and-the-weil-height).
+
+**Theorem 10.41 (arithmetic precision of a prepared value).** Let \(K\) have degree \(d\), and let its chosen prime above \(p\) have ramification index \(e\) and residue degree \(f\). Take the prepared family (10.92) with a prime \(q\ne p\), integers \(I,J\ge0\), \(k,L\ge1\), a nonzero vector \(c\in K^N\), and integer Euler arguments \(\omega_j(\boldsymbol m)\). Let \(|m_i|\le A_i\), put \(N=kL|\mathcal M|\), \(D=kL\), and take \(x=s/q^J\), \(s\in\mathbb Z\), with \(|x|\le X\). Suppose \(\eta_i\in K^\times\) are units at the chosen prime. Evaluate (10.92) at \((x,\boldsymbol\eta)\), and call its value \(V\). Let \(|\boldsymbol t|\le T\), \(T\in\mathbb Z_{\ge0}\), and put
+
+\[
+\begin{aligned}
+\delta&=\min_jv_p(c_j),\qquad
+\Omega=\max\bigl(\{0\}\cup\{|\omega_j(\boldsymbol m)|\}\bigr),\\
+\mathcal B_I(X,T)&=
+\left(\frac{(q^{-I}X+2k-1+v(k))^k}{k!}\right)^L
+\max\{1,\Omega+T\}^{T},\\
+\Xi_{I,J,t_0}&=
+\begin{cases}
+0,&I+J=0,\\
+\max\{0,Lv_q(k!)+(I+J)(D-t_0)-t_0v_q(v(k))\},&I+J>0.
+\end{cases}
+\end{aligned}
+\tag{10.115}
+\]
+
+If \(V\ne0\), then
+
+\[
+\begin{aligned}
+v_p(V)-\delta\le\frac d{ef\ln p}
+\biggl(&\min\{h_\infty(c)+\ln N,\ h_2(c)+\tfrac12\ln N\}\\
+&+\ln\mathcal B_I(X,T)+\Xi_{I,J,t_0}\ln q
++2\sum_iA_i h(\eta_i)\biggr).
+\end{aligned}
+\tag{10.116}
+\]
+
+If \(t_0>D\), the value is zero automatically. The same estimate holds when the Euler arguments are any assigned integers bounded by \(\Omega\); their linear dependence on \(\boldsymbol m\) is not needed for this arithmetic assertion.
+
+**Proof.** Write each row entry as its rational prepared scalar times \(\boldsymbol\eta^{\boldsymbol m}\). The additive scalar is the coefficient of \(Z^{t_0}\) in
+\(\Delta(q^{-I}x+a+v(k)Z;k)^\ell\). The sum of the absolute values of the coefficients of this polynomial is at most
+\[
+\frac{\prod_{b=1}^k(q^{-I}|x|+a+b+v(k))^\ell}{(k!)^\ell}
+\le\left(\frac{(q^{-I}X+2k-1+v(k))^k}{k!}\right)^\ell.
+\]
+The displayed base is at least one: \(2k-1+v(k)\ge k\), and \(k^k\ge k!\). Since \(\ell\le L\), its L-th power bounds this coefficient. The product formula for \(\Delta(\omega;t_j)\) gives the remaining factor in \(\mathcal B_I\), as in Theorem 10.32. Thus every rational scalar has ordinary absolute value at most \(\mathcal B_I\).
+
+There is no denominator away from \(q\), by Lemma 10.28 at the argument \(q^{-I-J}s+a\); the Euler factors are integers. If \(I+J=0\), every scalar is an integer. Otherwise the coefficient of degree \(h\) of the ordinary divided derivative has denominator dividing \((k!)^\ell\), because differentiating a monomial and dividing by \(t_0!\) multiplies its coefficient by an integer binomial coefficient. Its degree is at most \(k\ell-t_0\). Evaluation at \(q^{-I-J}s+a\) costs at most \((I+J)(k\ell-t_0)\) in q-adic valuation. Multiplication by \(v(k)^{t_0}\) restores \(t_0v_q(v(k))\). Taking \(\ell\le L\) gives the clearing factor \(q^{\Xi_{I,J,t_0}}\). If \(t_0>D\), every additive derivative is zero.
+
+Choose a coefficient \(c_*\) of valuation \(\delta\), and put \(z=V/c_*\). At the chosen prime the maximum norm of the coefficient vector \(c/c_*\) is exactly one. For \(V\ne0\), the product formula therefore gives
+\[
+ef\ln p\,(v_p(V)-\delta)
+=-\ln|z|_{\mathfrak p}
+=\sum_{v\ne\mathfrak p}\ln|z|_v.
+\]
+The factor is \(ef\), since \(|z|_{\mathfrak p}=p^{-f\operatorname{ord}_{\mathfrak p}(z)}\) and \(\operatorname{ord}_{\mathfrak p}=ev_p\).
+
+At each archimedean embedding, the triangle inequality bounds the sum by \(N\) times the coefficient maximum times the entry maximum. Alternatively Cauchy–Schwarz gives the coefficient Euclidean norm times \(\sqrt N\) times the entry maximum. This last inequality follows by applying
+\((\sum u_jv_j)^2\le(\sum u_j^2)(\sum v_j^2)\) to the absolute values; its difference is \(\sum_{i<j}(u_iv_j-u_jv_i)^2\ge0\). At finite places the ultrametric inequality uses maximum norms and introduces no factor \(N\).
+
+Sum these bounds outside the chosen prime. The normalized coefficient norms contribute exactly \(d h_\infty(c)\), or \(d h_2(c)\), because their missing finite norm is one. There are \(d\) archimedean embeddings with a complex pair counted twice. The rational scalar contributes at most \(d\ln\mathcal B_I\) there. Its clearing factor contributes at most \(d\Xi_{I,J,t_0}\ln q\) over the primes above \(q\), by the local-degree identity for the element \(q\).
+
+At every other place, the torus contribution is bounded by
+\(\sum_iA_i\ln\max\{|\eta_i|_v,|\eta_i|_v^{-1}\}\). Its omitted contribution at the chosen prime is zero, since the \(\eta_i\) are units. Summing over all places gives \(2d\sum_iA_i h(\eta_i)\), by the inverse-height identity and product formula. Divide by \(ef\ln p\), and take the better of the two coefficient norm bounds, to obtain (10.116). Every step used only integrality and the absolute size of the Euler factors, proving the final assertion too. \(\square\)
+
+### Fractional nodes and the coefficient field
+
+**Proposition 10.42 (roots and a common local unit).** Let \(\vartheta_i\in K^\times\) be units at \(p\), and choose \(q^J\)-th roots \(\eta_i\) in a fixed algebraic embedding into \(\mathbb C_p\). Put \(F=K(\eta_1,\ldots,\eta_r)\). For \(x=s/q^J\), consider the prepared value with torus coordinates \(\eta_i^s\). Theorem 10.41 applies over \(F\). Its torus height term is at most \(2X\sum_iA_i h(\vartheta_i)\) when \(|x|\le X\), but its local-degree coefficient is
+
+\[
+\frac{[F:\mathbb Q]}{e_Ff_F}
+=\frac d{ef}\frac{[F:K]}{[F_{\mathfrak P}:K_{\mathfrak p}]}.
+\tag{10.117}
+\]
+
+One cannot replace this coefficient by \(d/(ef)\) without further information.
+
+If every exponent belongs to \(\boldsymbol m_*+q^J\mathbb Z^r\), where \(\boldsymbol m_*\) is one of the exponent vectors, define
+\(\widehat A_i=\max_{\boldsymbol m}|m_i-m_{*,i}|\le2A_i\). Then the common-factor identity is
+
+\[
+\begin{aligned}
+V&=\boldsymbol\eta^{s\boldsymbol m_*}V_0,\\
+V_0&=\sum_{\boldsymbol m,a,\ell}
+c_{\boldsymbol m,a,\ell}\,\mathcal S_{\boldsymbol m,a,\ell}(x;\boldsymbol t)
+\boldsymbol\vartheta^{s(\boldsymbol m-\boldsymbol m_*)/q^J}\in K,
+\qquad v_p(V)=v_p(V_0).
+\end{aligned}
+\tag{10.118}
+\]
+
+Here \(\mathcal S\) denotes the rational prepared scalar in (10.92). In this case (10.116) may instead use \(d/(ef)\) and the torus height term \(2X\sum_i\widehat A_i h(\vartheta_i)\), with the same \(\mathcal B_I\), clearing factor, and coefficient heights. For a logarithmic curve with \(\vartheta_i=\exp(u_i)\), choose \(\eta_i=\exp(u_i/q^J)\). The exponential laws of Proposition 9.4 give \(\eta_i^{q^J}=\vartheta_i\) and \(\exp(xu_i)=\eta_i^s\), identifying the fractional analytic value with the stated algebraic value.
+
+**Proof.** A root of a local unit is a local unit. The height power identity gives \(h(\eta_i)=h(\vartheta_i)/q^J\), and hence \(h(\eta_i^s)=|x|h(\vartheta_i)\). Heights of the coefficient vector are unchanged by extending the field: every archimedean embedding is repeated \([F:K]\) times, and the corresponding finite-place contribution is multiplied by that same factor, as proved by the local-degree identities in the earlier places lesson. Dividing by the field degree cancels that factor. The relative ramification and residue degrees multiply the original ones, and their product is \([F_{\mathfrak P}:K_{\mathfrak p}]\). This proves (10.117) and the assertion about applying the preceding theorem.
+
+In the coset case, \((\boldsymbol m-\boldsymbol m_*)/q^J\) is an integer vector. Factoring its common root monomial gives (10.118), term by term. The common factor is a local unit, so it changes no valuation. Apply the last assertion of Theorem 10.41 to \(V_0\): the Euler arguments stay their original integers, and the new exponent bound is \(\widehat A_i/q^J\). The torus coordinates are \(\vartheta_i^s\), of height \(|s|h(\vartheta_i)\). Their contribution is at most \(2|s|\sum_i(\widehat A_i/q^J)h(\vartheta_i)\le2X\sum_i\widehat A_i h(\vartheta_i)\). The rational scalars and coefficient vector have not changed. \(\square\)
+
+The two comparisons in Theorem 10.43 exclude every finite valuation in the case illustrated in Figure 10.6.
+
+![Disjoint upper and lower intervals for a finite valuation excess](../figures/arithmetic-precision-budget.png)
+
+*Figure 10.6. The prepared scalars are p-integral and the torus coordinates are local units, so \(\Phi/c_*\) is p-integral and the valuation excess \(\nu=v_p(\Phi(x;\boldsymbol t))-\delta\) is nonnegative. If the value is nonzero, the product-formula proof of Theorem 10.41 gives \(\nu\le\mathcal A_I(X,T')\). The analytic proof gives \(\nu\ge(n\mu-D)\theta-Lv_p(k!)\). The drawn endpoints \(\mathcal A=3,G=5\) illustrate these two intervals; they are not parameters of a specified auxiliary function. Their separation is exactly the strict second comparison in (10.120), and forces \(\Phi(x;\boldsymbol t)=0\). The zero value has infinite valuation and is outside the finite axis. Human-source context: the product-formula step in Yu's free2013 article, cited below. [Figure program](../figure_sources/arithmetic_precision_budget.py).*
+
+### An explicit zero-forcing step
+
+**Theorem 10.43 (extension of the prepared zeros).** Retain the hypotheses of Corollary 10.40 over the field \(K\), and suppose that at every integer \(x\) the unprojected function is the algebraic prepared value at \((x,\vartheta_1^x,\ldots,\vartheta_r^x)\), with \(\vartheta_i\in K^\times\) local units. Let \(T'=T-\mu+1\ge0\), and let \(X\ge0\) be real. Put
+
+\[
+\begin{aligned}
+Q_I&=\begin{cases}0,&I=0,\\L(kI+v_q(k!)),&I>0,\end{cases}\\
+\mathcal A_I(X,T')&=\frac d{ef\ln p}\biggl(
+\min\{h_\infty(c)+\ln N,\ h_2(c)+\tfrac12\ln N\}\\
+&\hspace{28mm}+\ln\mathcal B_I(X,T')+Q_I\ln q
++2X\sum_iA_i h(\vartheta_i)\biggr).
+\end{aligned}
+\tag{10.119}
+\]
+
+The node count \(n\), \(\kappa\), \(\theta\), and \(M_0=\max\{B,C_0\}\) are those of Corollary 10.40. If
+
+\[
+\begin{aligned}
+U+D\theta+L v_p(k!)&\ge n\mu\theta+(\kappa+1)\mu M_0,\\
+(n\mu-D)\theta-L v_p(k!)&>\mathcal A_I(X,T'),
+\end{aligned}
+\tag{10.120}
+\]
+
+then \(\Phi(x;\boldsymbol t)=0\) for every integer \(|x|\le X\) and every \(|\boldsymbol t|\le T'\). With the larger normalizing scale of (10.114), an alternative sufficient pair is
+
+\[
+\begin{aligned}
+U+D\left(\theta+\frac1{p-1}\right)&\ge n\mu\theta+(\kappa+1)\mu M_0,\\
+(n\mu-D)\theta-\frac D{p-1}&>\mathcal A_I(X,T').
+\end{aligned}
+\tag{10.121}
+\]
+
+**Proof.** The first line of (10.120) supplies the analytic budget of Corollary 10.40. At every stated index its conclusion gives
+\[
+v_p(\Phi(x;\boldsymbol t))-\delta
+\ge(n\mu-D)\theta-L v_p(k!).
+\]
+If the prepared value were nonzero, Theorem 10.41 with \(J=0\) would give the opposite upper bound \(\mathcal A_I(X,T')\): its torus coordinates have height \(|x|h(\vartheta_i)\), and its clearing exponent is at most \(Q_I\). The strict second line of (10.120) contradicts this. A prepared index with \(t_0>D\) already has zero value. These cases prove every claimed zero. The same argument using (10.114) instead proves (10.121). \(\square\)
+
+Both comparisons remove \(\delta\), so they are invariant under scaling the coefficient vector. The first comparison gives enough analytic precision; the second makes a nonzero algebraic value impossible. At fractional nodes one must additionally use the field or common-factor rule of Proposition 10.42. Applying this step repeatedly requires checking these inequalities, the slope conditions, and the available derivative orders at every stage.
+
+## 18. Retaining the derivative orders in the height budget
+
+The uniform estimate (10.115) bounds every coefficient by the sum of all coefficients. It also discards the factorials in the Euler binomials. Those bounds suffice for Theorem 10.43, but a numerical induction benefits from retaining the actual derivative order. We now do so, including the average over the symmetric initial nodes. The additive estimate below has the form of Lemma 1.6 in Yu's free 1990 paper; we give its full proof using only an elementary factorial inequality.
+
+### Positive polynomial majorants
+
+Let \(\Omega_j=\max_{\boldsymbol m\in\mathcal M}|\omega_j(\boldsymbol m)|\), for \(1\le j<r\), and let \(\Omega_\Sigma=\sum_{j<r}\Omega_j\). For an integer \(\Omega\ge0\), define \(E_0(\Omega)=1\), and, for \(h>0\), put \(E_h(0)=0\) and \(E_h(\Omega)=\binom{\Omega+h-1}{h}\) when \(\Omega\ge1\). Use empty products and sums when \(r=1\). Define the positive polynomial
+
+\[
+\begin{aligned}
+\mathcal P_{I,X}(Z)
+&=\left(\frac1{k!}\prod_{b=1}^k
+(q^{-I}X+k-1+b+v(k)Z)\right)^L\\
+&=\sum_{u=0}^{D}\mathcal C_{I,u}(X)Z^u,
+\qquad D=kL.
+\end{aligned}
+\tag{10.122}
+\]
+
+**Theorem 10.44 (an order-dependent scalar bound).** For the rational prepared scalar \(\mathcal S_{\boldsymbol m,a,\ell}(x;\boldsymbol t)\) in (10.92), with \(0\le a<k\), \(1\le\ell\le L\), \(|x|\le X\), and \(t_0\le D\), one has
+
+\[
+\begin{aligned}
+|\mathcal S_{\boldsymbol m,a,\ell}(x;\boldsymbol t)|
+&\le\mathcal H_I(X;\boldsymbol t)
+:=\mathcal C_{I,t_0}(X)\prod_{j<r}E_{t_j}(\Omega_j),\\
+\mathcal B_I^*(X,T)
+&:=\max_{|\boldsymbol t|\le T,\ t_0\le D}
+\mathcal H_I(X;\boldsymbol t).
+\end{aligned}
+\tag{10.123}
+\]
+
+An index with \(t_0>D\), or with \(t_j>0\) and \(\Omega_j=0\), has zero scalar. The maximum in (10.123) is at least one and satisfies
+
+\[
+\begin{aligned}
+\mathcal B_I^*(X,T)&\le\mathcal B_I(X,T),\\
+\mathcal B_I^*(X,T)&\le
+\left(\mathrm e\left(2+\frac{q^{-I}X}{k}\right)\right)^D
+\max_{\substack{u,h\ge0\text{ integers}\\u\le D,\ u+h\le T}}
+v(k)^u E_h(\Omega_\Sigma).
+\end{aligned}
+\tag{10.124}
+\]
+
+Here \(\mathcal B_I\) is (10.115); the second bound retains the division of the total order between the additive and Euler directions. For \(h>0\), one may further bound \(E_h(\Omega_\Sigma)\) by \([\mathrm e(1+\Omega_\Sigma/h)]^h\).
+
+**Proof.** At a given real or complex \(x\), replace each factor \(q^{-I}x+a+b\) by its absolute-value upper bound \(q^{-I}X+a+b\). Expansion of the product bounds the absolute value of each coefficient by the corresponding coefficient of this polynomial with nonnegative coefficients. Its constant coefficient after division by \(k!\) is at least one: each factor \(q^{-I}X+a+b\) is at least \(b\). Consequently increasing its power from \(\ell\) to \(L\) can only increase every coefficient. Increasing \(a\) to \(k-1\) has the same property. Taking the coefficient of \(Z^{t_0}\) gives \(\mathcal C_{I,t_0}(X)\).
+
+For an integer \(\omega\) with \(|\omega|\le\Omega\), the product defining \(\Delta(\omega;t)\) gives \(|\Delta(\omega;t)|\le E_t(\Omega)\). Indeed \(|\omega+b|\le\Omega+b\), for \(0\le b<t\), and the factorial \(t!\) is retained. If \(\Omega=0\) and \(t>0\), the first factor is zero. This proves (10.123) and the asserted zero cases. Every \(\mathcal C_{I,u}(X)\) is positive. At \(X=0\), it is the prepared Taylor coefficient at the integer \(k-1\), so it is an integer by Lemma 10.28 and is at least one. The coefficients increase with \(X\). In particular the index \(\boldsymbol t=0\) proves \(\mathcal B_I^*\ge1\).
+
+For the first inequality in (10.124), each \(\mathcal C_{I,u}(X)\) is at most \(\mathcal P_{I,X}(1)\). Bounding each of its \(k\) factors by \(q^{-I}X+2k-1+v(k)\) gives the additive part of (10.115). Put \(\Omega=\max_j\Omega_j\), with \(\Omega=0\) for an empty index set. The Euler product is at most \(\max\{1,\Omega+T\}^T\), as in Theorem 10.32. Hence this sharper maximum never exceeds the earlier one.
+
+We prove the additive estimate used for the second inequality. For every integer \(k\ge1\), monotonicity of \(\log x\) on each interval \([j-1,j]\) gives
+\(\log k!\ge\int_1^k\log x\,dx=k\log k-k+1\). Thus \(k!\ge\mathrm e(k/\mathrm e)^k\), including \(k=1\). At \(y\ge0\), coefficient comparison with \((Z+k)^{k\ell}/(k!)^\ell\) gives
+\[
+\begin{aligned}
+|\Theta(z;k,\ell,u)|
+&\le\frac{\binom{k\ell}{u}(|z|+k)^{k\ell-u}}{(k!)^\ell}\\
+&\le\frac{\ell^u}{u!}\,
+\frac{(|z|+k)^{k\ell}}{(k!)^\ell}
+\le\left(\frac{\mathrm e(|z|+k)}k\right)^{k\ell}.
+\end{aligned}
+\tag{10.125}
+\]
+The first comparison takes absolute values in the differentiated product. The second uses \(\binom{k\ell}{u}\le(k\ell)^u/u!\) and \(|z|+k\ge k\). The last uses the factorial bound and \(\ell^u/u!\le\mathrm e^\ell\), since this is one nonnegative term of the exponential series. Derivatives above degree \(k\ell\) are zero. Apply (10.125) with \(z=q^{-I}x+a\), multiply by \(v(k)^u\), and increase \(\ell\) to \(L\). The base \(\mathrm e(2+q^{-I}X/k)\) is greater than one. The same bound applies to \(\mathcal C_{I,u}(X)\), by using \(x=X,a=k-1,\ell=L\).
+
+Finally, \(E_h(\Omega)\) is the coefficient of \(Z^h\) in the product of \(\Omega\) copies of \(1+Z+Z^2+\cdots\). The coefficient counts distributions of \(h\) objects among \(\Omega\) slots, giving its binomial formula; for zero slots only the constant coefficient remains. Multiplying these series for \(\Omega_j\) shows that every fixed Euler product of total order \(h\) is at most \(E_h(\Omega_\Sigma)\), because it is one of the nonnegative summands of that coefficient. This proves the second inequality in (10.124). For \(h>0,\Omega_\Sigma\ge1\), its numerator product is at most \((\Omega_\Sigma+h)^h\); the factorial bound gives the further stated estimate. For \(\Omega_\Sigma=0\) the left side is zero. \(\square\)
+
+### Averaging the initial rows
+
+Keep the data of Theorem 10.32, and write \(H=\sum_i A_i h(\vartheta_i)\). Let \(r_0\) be the number of Euler indices with \(\Omega_j>0\). The potentially nonzero prepared indices and their row count are
+
+\[
+\begin{aligned}
+\mathcal J_T&=\{\boldsymbol t\ge0:|\boldsymbol t|\le T,\ t_0\le D,
+\ t_j=0\text{ if }\Omega_j=0\},\\
+J_T&=|\mathcal J_T|=
+\sum_{u=0}^{\min(D,T)}\binom{T-u+r_0}{r_0},
+\qquad M_*=(2S+1)J_T.
+\end{aligned}
+\tag{10.126}
+\]
+
+**Corollary 10.45 (a sharper initial coefficient budget).** If \(N>M_*\), the integral kernel in Theorem 10.32 exists with every originally specified zero and with
+
+\[
+\begin{aligned}
+h_\infty(c)\le h_2(c)\le&\ \tfrac12\log N+
+\frac{\log|\Delta_K|}{2d}\\
+&+\frac1{N-M_*}\sum_{s=-S}^S\sum_{\boldsymbol t\in\mathcal J_T}
+\left(\tfrac12\log N+
+\log\mathcal H_0(|s|;\boldsymbol t)+2|s|H\right).
+\end{aligned}
+\tag{10.127}
+\]
+
+A simpler consequence is
+
+\[
+\begin{aligned}
+h_2(c)\le&\ \tfrac12\log N+\frac{\log|\Delta_K|}{2d}\\
+&+\frac{M_*}{N-M_*}
+\left(\tfrac12\log N+\log\mathcal B_0^*(S,T)
++\frac{2S(S+1)}{2S+1}H\right).
+\end{aligned}
+\tag{10.128}
+\]
+
+When \(N>M\) in Theorem 10.32, the right side of (10.128) is no larger than the right side of (10.96).
+
+**Proof.** Removed indices have identically zero scalars by Theorem 10.44, so they impose no condition on \(c\). Fixing \(t_0=u\) leaves \(r_0\) Euler indices of total order at most \(T-u\). The divider argument from Theorem 10.32 counts them as \(\binom{T-u+r_0}{r_0}\), also when \(r_0=0\). This proves (10.126).
+
+At each retained row \((s,\boldsymbol t)\), the same adelic row-norm proof as in Theorem 10.32 now uses \(\mathcal H_0(|s|;\boldsymbol t)\). At finite places the prepared scalars are still integers. The row norm is therefore at most
+\(\sqrt N\mathcal H_0(|s|;\boldsymbol t)\exp(2|s|H)\).
+The scalar majorant is at least one: its positive additive coefficient at integer \(|s|+k-1\) is an integer by Lemma 10.28, and every retained Euler factor is a positive integer. Hence the displayed row bound is at least one, as required by the maximum in (8.40). A row that vanishes for additional reasons has norm zero and contributes the factor one there. Apply that proved weighted Siegel lemma with all weights one, retaining the separate row factors. Its logarithm is exactly (10.127), and its finite conditions give algebraic-integer coordinates. Dependent rows are already included in that lemma.
+
+The uniform scalar bound in (10.123) and the identity
+\(\sum_{s=-S}^S|s|=S(S+1)\) give (10.128). Finally \(M_*\le M\), \(\mathcal B_0^*\le\mathcal B\), and \(S(S+1)/(2S+1)\le S\). All summands are nonnegative. The function \(m/(N-m)\) increases for \(0\le m<N\), as cross multiplication shows. These facts prove the comparison with (10.96). The nonzero polynomial and its required ordinary jets follow from Proposition 10.31, exactly as before. \(\square\)
+
+### The smaller nonzero-value budget
+
+For the integer target nodes in Theorem 10.43, define, at each \(\boldsymbol t\in\mathcal J_{T'}\),
+
+\[
+\begin{aligned}
+\mathcal A_{I,\boldsymbol t}^*(X)=\frac d{ef\ln p}\biggl(&
+\min\{h_\infty(c)+\ln N,h_2(c)+\tfrac12\ln N\}\\
+&+\ln\mathcal H_I(X;\boldsymbol t)
++\Xi_{I,0,t_0}\ln q+2XH\biggr),\\
+\mathcal A_I^*(X,T')&=\max_{\boldsymbol t\in\mathcal J_{T'}}
+\mathcal A_{I,\boldsymbol t}^*(X).
+\end{aligned}
+\tag{10.129}
+\]
+
+**Corollary 10.46 (zero forcing with the retained orders).** Under the hypotheses of Theorem 10.43, its first analytic comparison and
+
+\[
+(n\mu-D)\theta-Lv_p(k!)>\mathcal A_I^*(X,T')
+\tag{10.130}
+\]
+
+force every zero asserted there. The analogous assertion holds with its larger normalizing scale and lower bound \((n\mu-D)\theta-D/(p-1)\). Moreover \(\mathcal A_I^*(X,T')\le\mathcal A_I(X,T')\).
+
+**Proof.** Repeating the product-formula proof of Theorem 10.41 uses the individual scalar bound \(\mathcal H_I(X;\boldsymbol t)\) instead of \(\mathcal B_I\), with its same exact clearing exponent. Thus a nonzero value at a retained index has valuation excess at most \(\mathcal A_{I,\boldsymbol t}^*\). The analytic lower bound contradicts (10.130). Every removed index is identically zero. The larger normalizing scale gives the stated second conclusion by the same argument. Finally \(\mathcal H_I(X;\boldsymbol t)\le\mathcal B_I(X,T')\) and \(\Xi_{I,0,t_0}\le Q_I\). Taking the maximum proves the comparison with (10.119). Fractional targets still require the field or common-factor conditions of Proposition 10.42. \(\square\)
+
+These refinements retain the exact factorials, lcm, derivative orders and mean node size. To obtain a numerical logarithm estimate, their bounds and the analytic slope and order conditions must all be checked for its chosen induction parameters.
+
+## 19. Exercises with solutions
 
 1. **Easy.** Explain exactly how nonunit bases can be reduced to unit bases. Give an example showing that the conclusion of Theorem 10.8 cannot be extended unchanged to nonunits.
 2. **Medium.** Derive (10.34) from (10.22), including the maximum in \(H\).
@@ -1950,6 +2375,16 @@ The larger scale \(D(\theta+1/(p-1))-\delta\) also suffices: (9.4) gives \(L v_p
 16. **Hard.** For the full node set with \(p=3,R=3,\mu=2,\theta=1\), what precision in (10.100) suffices for conclusion \(v_3(F(\rho x))\ge14\)? For \(p=2,q=3,R=3\), compute \(L_{-2}(0)\) in the q-deleted set and its valuation. Finally, why is the restriction \(x\in\mathbb Z_p\subset\mathbb Q_p\) essential to the full-set cardinal bound? Use \(p=2,R=1\) and an algebraic \(x\) with \(x^2=2\).
 
 17. **Medium.** In Proposition 10.37 take \(p=3,q=2,I=0,k=L=2,\rho=3\), and a single nonzero coefficient \(c=1\) at \(\boldsymbol m=0,a=0,\ell=2\). At prepared index zero, compute \(\gamma,\Gamma\), and the polynomial \(F(Z)\). Check (10.107) for \(s=0,j=1\). If a torus factor with slope \(w\) is added, compare the sufficient slope hypothesis for \(w=9\) and \(w=3\).
+
+18. **Hard.** At two, take the additive prepared polynomial \(f(y)=\Delta(y;2)=(y+1)(y+2)/2\), with \(I=0,k=2,L=1\) and no torus dependence. Show that its prepared values through order two at zero are integral, whereas its first ordinary divided jet has valuation \(-1\). Explain the exact role of \(C_0\). Next take full interpolation nodes with \(p=3,R=3,\mu=2,\theta=1\), and weighted jet precision \(\Lambda-jC\) with \(\Lambda=16,C=2\). Compare Theorems 10.34 and 10.39.
+
+19. **Medium.** At \(p=3\), take \(q=2,k=L=1,I=0,J=1,c=1\), no torus dependence, and \(x=1/2\). Compute the prepared value \(\Delta(x;1)\), the clearing exponent in (10.115), and the bound (10.116) with \(X=1/2,T=0\). Distinguish the denominator cost at two from the valuation at three.
+
+20. **Hard.** Let \(K=\mathbb Q,p=3,q=2,J=1,\vartheta=10\). Use the exponential and logarithm to choose a square root \(\eta\in\mathbb Q_3\) congruent to one. Determine the coefficient (10.117) for \(F=\mathbb Q(\eta)\). At \(s=1,x=1/2\), with \(k=L=1,I=0\), take exponents \(1,3\) and coefficients \(1,-1\). Factor the prepared value into its common local unit and a rational value, and compute its valuation. Compare the bounds from the root field and the common-factor rule, with \(X=1/2,T=0\).
+
+21. **Medium.** Use \(I=0,k=2,L=1,X=2,r=2,\Omega_1=1,T=2\). Compute \(\mathcal P_{0,2}(Z)\), \(\mathcal B_0^*(2,2)\), and the earlier \(\mathcal B_0(2,2)\). At \(x=2,a=1,\ell=1,\omega_1=1\), show that the three additive bounds are attained.
+
+22. **Hard.** In Corollary 10.45, take \(K=\mathbb Q,r=1,k=2,L=1,S=2,T=0\), \(\vartheta=2\), and \(\mathcal M=\{0,1,2\}\), so \(A=2\). Compute the separate-row bound (10.127) and the uniform averaged bound (10.128). Order the six columns by \((m,a)=(0,0),(0,1),(1,0),(1,1),(2,0),(2,1)\). Verify that \((2,-18,-57,36,1,0)\) is an integral kernel vector at all five nodes, and compute its two projective heights. Explain why the zero row at \(s=-2\) does not invalidate either bound.
 
 **Solution 1.** Put \(q_i=v(\alpha_i)\). If \(b_1q_1\ne b_2q_2\), the ultrametric inequality gives the exact valuation \(\min(b_1q_1,b_2q_2)\), so no cancellation estimate is needed. If they are equal, choose \(\pi=p^{1/e}\) in an algebraic extension and set \(\epsilon_i=\alpha_i\pi^{-e q_i}\). The exponents \(e q_i\) are integers, the \(\epsilon_i\) are units, and
 
@@ -2058,6 +2493,67 @@ For the last case the full nodes are \(-1,0,1\), and \(L_1(X)=X(X+1)/2\). The eq
 F(Z)=(Z+3)^2(Z+6)^2=Z^4+18Z^3+117Z^2+324Z+324.
 \]
 Its coefficients are 3-adically integral and its finite tail is zero, so it is normal. We have \(f_1(0)=3\) and \(F_1(0)=324\). Thus \(v_3(F_1(0))+1=5=\Gamma+v_3(f_1(0))\). The sufficient slope threshold is \(\theta+1/(p-1)=3/2\). It holds for \(w=9\), whose valuation is two, and fails for \(w=3\), whose valuation is one. Under scaling, the corresponding exponential is \(\exp(wZ/3)\); only the former meets the stated normal-series hypothesis.
+
+**Solution 18.** Here \(v(2)=2\), and the prepared values at zero are
+\[
+f(0)=1,\qquad v(2)f_1(0)=2\cdot\frac32=3,
+\qquad v(2)^2f_2(0)=4\cdot\frac12=2.
+\]
+Their 2-adic valuations are \(0,0,1\). Take \(P_0=0\) and \(\beta=0\); the additive part of Lemma 10.38 has \(C_0=v_2(v(2))=1\). It gives \(v_2(f_1(0))\ge-1\), with equality. Prepared integrality does not imply ordinary divided-jet integrality. For order two the bound \(-2\) is sufficient, while the actual valuation is \(-1\). This also illustrates why the lcm cost must be retained.
+
+For the interpolation example \(n=7,B=1,\kappa=0\). Theorem 10.39 gives \(\min\{14,16-\max\{1,2\}\}=14\). If one first discards the difference between the two jet precisions, their common bound is only \(\Lambda-C=14\). Theorem 10.34 then gives \(\min\{14,14-1\}=13\). Retaining each jet's precision saves the extra unit.
+
+**Solution 19.** The value is \(3/2\), with \(v_3(3/2)=1\). Here \(D=N=1\), \(v_2(1!)=v_2(v(1))=0\), and \(t_0=0\), so \(\Xi_{0,1,0}=1\). The clearing factor is two. The coefficient heights and torus term are zero, while \(\mathcal B_0(1/2,0)=5/2\). Thus (10.116) gives
+\[
+v_3(3/2)\le\frac{\ln(5/2)+\ln2}{\ln3}=\frac{\ln5}{\ln3}.
+\]
+This exceeds one, since \(5>3\). The denominator at two contributes to the global height budget, although it causes no loss in the local valuation at three.
+
+**Solution 20.** Since \(v_3(10-1)=2>1/2\), the proved logarithm and exponential laws give
+\(\eta=\exp(\tfrac12\log10)\in\mathbb Q_3\), \(\eta^2=10\), and \(v_3(\eta-1)=2\). The defining series have rational coefficients and converge in \(\mathbb Q_3\). The number ten is not a rational square, by its odd prime valuations, so \([F:\mathbb Q]=2\). The chosen completion is \(\mathbb Q_3\): the embedded field contains the dense subfield \(\mathbb Q\) and lies in \(\mathbb Q_3\). Hence \(e_F=f_F=1\), and (10.117) is two, whereas \(d/(ef)=1\) for \(K\).
+
+Both exponents are congruent to \(m_*=1\) modulo two. Their differences give exponents \(0,1\) after division by two. The common-factor identity is
+\[
+V=\frac32(\eta-\eta^3)
+=\eta\frac32(1-10)=-\eta\frac{27}{2},
+\qquad V_0=-\frac{27}{2}\in\mathbb Q.
+\]
+The root is a local unit, so both values have 3-adic valuation three.
+
+Here \(N=2\), \(h_\infty(c)=0\), \(h_2(c)=\tfrac12\ln2\), so the coefficient norm term is \(\ln2\). Also \(\mathcal B_0(1/2,0)=5/2\), \(\Xi=1\), \(h(10)=\ln10\), and the original exponent bound is \(A=3\). The root-field bound is therefore
+\(2(\ln2+\ln5+3\ln10)/\ln3=8\ln10/\ln3\).
+For the common-factor rule \(\widehat A=2\); it keeps the original field and gives
+\((\ln2+\ln5+2\ln10)/\ln3=3\ln10/\ln3\).
+Both bounds exceed the actual valuation three. The different local-degree coefficients are accounted for explicitly; membership in the same local field alone does not remove the global field-degree factor.
+
+**Solution 21.** Here \(v(2)=2\), and
+\[
+\mathcal P_{0,2}(Z)=\frac{(4+2Z)(5+2Z)}2=10+9Z+2Z^2.
+\]
+Every \(E_h(1)=1\). The maximum over total order at most two is therefore \(\mathcal B_0^*(2,2)=10\). The old bound is
+\(\mathcal B_0(2,2)=(7^2/2)3^2=441/2\).
+At the specified row, the polynomial whose coefficients are the prepared additive derivatives is exactly the displayed polynomial. Thus the values for \(t_0=0,1,2\), with zero Euler order, are \(10,9,2\). The order-dependent bounds are attained.
+
+**Solution 22.** Here \(D=2,N=6,J_0=1,M_*=5,H=2\ln2\), and the discriminant is one. The scalar majorants for \(|s|=0,1,2\) are \(3,6,10\), respectively. Since \(\sum_{s=-2}^2|s|=6\), (10.127) gives
+\[
+h_2(c)\le5\ln6+\ln3+2\ln10+24\ln2.
+\]
+The simpler (10.128), using \(\mathcal B_0^*(2,0)=10\), is
+\(h_2(c)\le3\ln6+5\ln10+24\ln2\).
+The first right side is smaller by \(\ln(1000/108)>0\). Using the maximum node size instead of its average would replace \(24\ln2\) by \(40\ln2\).
+
+At the five nodes the row matrix is
+\[
+\begin{pmatrix}
+0&0&0&0&0&0\\
+0&1&0&1/2&0&1/4\\
+1&3&1&3&1&3\\
+3&6&6&12&12&24\\
+6&10&24&40&96&160
+\end{pmatrix}.
+\]
+Multiplication by the given vector gives zero in every row. Its coordinates have greatest common divisor one, so all finite maximum norms are one. Consequently
+\(h_\infty(c)=\ln57\) and \(h_2(c)=\tfrac12\ln4874\), which satisfy both bounds. The first row is zero because the two shifted additive polynomials share the root \(-2\). The weighted Siegel lemma allows dependent and zero rows; \(M_*=5\) remains a valid upper bound for the number of equations.
 
 ## References
 

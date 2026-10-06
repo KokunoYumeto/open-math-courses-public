@@ -1,0 +1,627 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cohomology reduction for measurable flows · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L38.html">Previous lesson</a><a href="OA-FLOW-MX.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L37.md">Lesson source</a></nav><h1 id="OA-FLOW.FLOWCOCYCLE.SETTING">Cohomology reduction for measurable flows</h1>
+<p><em>Self-checked by the writing AI. New original prose and proof expression are dedicated under CC0.</em></p>
+<p>A return section converts a real flow into a countable relation. Cocycles require one preliminary step: identities that hold almost everywhere for each fixed time cannot simply be evaluated on that section. We first obtain strict representatives, reduce their return cocycles, and reconstruct the continuous motion. A second proof retains the original path-selector construction and makes the cohomological changes of coordinates explicit.</p>
+<p><a id="oa-flow.flowcocycle.setting"></a></p>
+<h2 id="the-statement-and-the-null-section-issue">The statement and the null-section issue</h2>
+<p>Let <span class="math" data-tex="\(F:\mathbb R\times X\to X\)">\(F:\mathbb R\times X\to X\)</span> be a strict jointly Borel action on a standard Borel space carrying a nonzero sigma-finite measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. Every <span class="math" data-tex="\(F_t\)">\(F_t\)</span> is nonsingular, meaning that it and its inverse preserve null sets. Assume the flow is <strong>properly ergodic</strong>: invariant Borel sets are null or conull, and the measure is not concentrated on one orbit. Replacing <span class="math" data-tex="\(\mu\)">\(\mu\)</span> by an equivalent probability changes none of these hypotheses or any almost-everywhere assertion below.</p>
+<p>Let <span class="math" data-tex="\(P\)">\(P\)</span> be a Polish group, let <span class="math" data-tex="\(H\)">\(H\)</span> be a Borel normal subgroup, and put <span class="math" data-tex="\(K=\overline H\)">\(K=\overline H\)</span>. The group <span class="math" data-tex="\(H\)">\(H\)</span> need not be closed, and <span class="math" data-tex="\(P\)">\(P\)</span> need not be locally compact or abelian. We are given jointly Borel maps <span class="math" data-tex="\(\rho_i:\mathbb R\times X\to P\)">\(\rho_i:\mathbb R\times X\to P\)</span>, <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>, satisfying
+<span class="math math-display" data-tex="\[
+ \rho_i(t+s,x)=\rho_i(t,F_sx)\rho_i(s,x)
+ \quad\text{for almost every }x,\text{ for each fixed }s,t.
+ \tag{F1}
+\]">\[
+ \rho_i(t+s,x)=\rho_i(t,F_sx)\rho_i(s,x)
+ \quad\text{for almost every }x,\text{ for each fixed }s,t.
+ \tag{F1}
+\]</span>
+Suppose also that
+<span class="math math-display" data-tex="\[
+ \rho_2(t,x)\rho_1(t,x)^{-1}\in K
+ \quad\text{for almost every }x,\text{ for each fixed }t.
+ \tag{F2}
+\]">\[
+ \rho_2(t,x)\rho_1(t,x)^{-1}\in K
+ \quad\text{for almost every }x,\text{ for each fixed }t.
+ \tag{F2}
+\]</span></p>
+<p><strong>Cocycle reduction theorem.</strong> There are Borel maps <span class="math" data-tex="\(f:X\to K\)">\(f:X\to K\)</span> and <span class="math" data-tex="\(h:\mathbb R\times X\to H\)">\(h:\mathbb R\times X\to H\)</span> such that
+<span class="math math-display" data-tex="\[
+ \rho_2(t,x)=h(t,x)f(F_tx)\rho_1(t,x)f(x)^{-1}
+ \quad\text{for almost every }x,\text{ for each fixed }t.
+ \tag{F3}
+\]">\[
+ \rho_2(t,x)=h(t,x)f(F_tx)\rho_1(t,x)f(x)^{-1}
+ \quad\text{for almost every }x,\text{ for each fixed }t.
+ \tag{F3}
+\]</span></p>
+<p>This is a statement about the given representatives, with the displayed quantifiers. It does not assert that those representatives satisfy an identity at every time on one common conull set. The discrepancy <span class="math" data-tex="\(h\)">\(h\)</span> is generally not an ordinary cocycle. If
+<span class="math" data-tex="\(\widetilde\rho_1(t,x)=f(F_tx)\rho_1(t,x)f(x)^{-1}\)">\(\widetilde\rho_1(t,x)=f(F_tx)\rho_1(t,x)f(x)^{-1}\)</span>, substitution in (F1) gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ h(t+s,x)={}&amp;h(t,F_sx)\widetilde\rho_1(t,F_sx)
+                 h(s,x)\widetilde\rho_1(t,F_sx)^{-1}
+ \end{aligned}
+ \tag{F4}
+\]">\[
+ \begin{aligned}
+ h(t+s,x)={}&amp;h(t,F_sx)\widetilde\rho_1(t,F_sx)
+                 h(s,x)\widetilde\rho_1(t,F_sx)^{-1}
+ \end{aligned}
+ \tag{F4}
+\]</span>
+almost everywhere for each fixed <span class="math" data-tex="\(s,t\)">\(s,t\)</span>. Normality of <span class="math" data-tex="\(H\)">\(H\)</span> keeps this product in <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>The false premise to avoid is that a fixed-time almost-everywhere identity remains valid after restriction to a return section. In suspension coordinates the section has ambient measure zero. Strictification must precede restriction. The <a href="../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#3-making-a-measurable-cocycle-strict">strict-version theorem proved by Haar repair</a> supplies one route; a complete cohomologous strictification is proved later in this lesson.</p>
+<p>We use <a href="OA-FLOW-L75.html#oa-flow.kernel.coding">standard Borel coding and Borel inverses</a>, and the proved <a href="../NCG-FOLIATIONS/transverse-measures-of-foliations.html#a-proof-of-the-countable-section-theorem">countable-section theorem</a>, Theorem 5.4 and Corollary 5.5. In particular, a Borel relation with countable vertical sections has a Borel projection and countably many Borel partial maps enumerating those sections. These precise assertions justify the finite-class and marker selections below. The scalar integration inputs are <a href="OA-FLOW-SC.html#sc-04">monotone convergence</a> and <a href="OA-FLOW-SC.html#sc-05">dominated convergence</a>, including its bounded finite-measure case. For a nonnegative Borel function on a product with a fixed sigma-finite measure, its parameter integral is Borel: indicator rectangles, the monotone-class theorem, and increasing simple approximation prove this successively, first on finite-measure pieces and then on their countable union.</p>
+<p><span id="OA-FLOW.FLOWCOCYCLE.SUSPENSION"></span><a id="oa-flow.flowcocycle.suspension"></a></p>
+<h2 id="suspension-coordinates-and-signed-crossings">Suspension coordinates and signed crossings</h2>
+<p>The <a href="OA-FLOW-L38.html#oa-flow.suspension.theorem">suspension theorem</a> gives an invariant conull Borel model
+<span class="math math-display" data-tex="\[
+ X_r=\{(z,u):z\in Z,\ 0\le u&lt;r(z)\},
+ \qquad [\mu_r]=[(\nu\times du)|_{X_r}],
+ \qquad r(z)\ge\delta&gt;0,
+ \tag{F5}
+\]">\[
+ X_r=\{(z,u):z\in Z,\ 0\le u&lt;r(z)\},
+ \qquad [\mu_r]=[(\nu\times du)|_{X_r}],
+ \qquad r(z)\ge\delta&gt;0,
+ \tag{F5}
+\]</span>
+where <span class="math" data-tex="\(Z\)">\(Z\)</span> is standard Borel, <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is a nonzero sigma-finite measure, <span class="math" data-tex="\(r\)">\(r\)</span> is finite and Borel, and <span class="math" data-tex="\(S:Z\to Z\)">\(S:Z\to Z\)</span> is an ergodic nonsingular Borel automorphism. The model map and its inverse are Borel and intertwine every time. Thus cocycles transfer by composition without any loss of joint Borel measurability, and conclusions can be transferred back.</p>
+<p>The base can be restricted to an invariant conull aperiodic set. Indeed, the periodic part is Borel and invariant. If it were conull, one of the countably many least positive periods would hold conull by ergodicity. The corresponding finite classes have a Borel root selector: enumerate each class and minimize a fixed injective Borel real code over it. Push an equivalent probability to these roots. Every Borel event in this pushforward has probability zero or one, because its inverse image is invariant. Such a probability on a standard Borel space is a point mass: push it further by an injective code into <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, and use nested dyadic intervals of probability one. The base is consequently concentrated on one finite orbit, and its suspension on one real orbit. This contradicts proper ergodicity. Remove the periodic part and keep the notation <span class="math" data-tex="\(Z,S,r\)">\(Z,S,r\)</span>.</p>
+<p>Define signed roof sums for every integer <span class="math" data-tex="\(n\)">\(n\)</span>:
+<span class="math math-display" data-tex="\[
+ R_n(z)=
+ \begin{cases}
+ \displaystyle\sum_{j=0}^{n-1}r(S^jz),&amp;n&gt;0,\\
+ 0,&amp;n=0,\\
+ \displaystyle-\sum_{j=n}^{-1}r(S^jz),&amp;n&lt;0.
+ \end{cases}
+ \qquad
+ R_{m+n}(z)=R_m(S^nz)+R_n(z).
+ \tag{F6}
+\]">\[
+ R_n(z)=
+ \begin{cases}
+ \displaystyle\sum_{j=0}^{n-1}r(S^jz),&amp;n&gt;0,\\
+ 0,&amp;n=0,\\
+ \displaystyle-\sum_{j=n}^{-1}r(S^jz),&amp;n&lt;0.
+ \end{cases}
+ \qquad
+ R_{m+n}(z)=R_m(S^nz)+R_n(z).
+ \tag{F6}
+\]</span>
+The identity follows by joining the successive oriented roof intervals; cancelling common terms proves it also when the indices have opposite signs. The lower bound makes the sums tend to the appropriate infinities. For <span class="math" data-tex="\(x=(z,u)\)">\(x=(z,u)\)</span> and <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>, there is therefore one integer <span class="math" data-tex="\(n=n(t,x)\)">\(n=n(t,x)\)</span> with
+<span class="math math-display" data-tex="\[
+ R_n(z)\le u+t&lt;R_{n+1}(z),\qquad
+ v=u+t-R_n(z),\qquad F_tx=(S^nz,v).
+ \tag{F7}
+\]">\[
+ R_n(z)\le u+t&lt;R_{n+1}(z),\qquad
+ v=u+t-R_n(z),\qquad F_tx=(S^nz,v).
+ \tag{F7}
+\]</span>
+The countably many Borel inequalities make <span class="math" data-tex="\(n,v\)">\(n,v\)</span> jointly Borel. Aperiodicity makes <span class="math" data-tex="\(n\)">\(n\)</span> unique for the base arrow <span class="math" data-tex="\((S^nz,z)\)">\((S^nz,z)\)</span> as well. We orient that arrow from <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(S^nz\)">\(S^nz\)</span>.</p>
+<p><span id="OA-FLOW.FLOWCOCYCLE.STRICT"></span><a id="oa-flow.flowcocycle.strict"></a></p>
+<h2 id="strictify-the-pair-in-one-polish-group">Strictify the pair in one Polish group</h2>
+<p>Independent changes of representatives should not be allowed to lose the subgroup condition. Package it into the target:
+<span class="math math-display" data-tex="\[
+ L=\{(p_1,p_2)\in P\times P:p_2p_1^{-1}\in K\}.
+ \tag{F8}
+\]">\[
+ L=\{(p_1,p_2)\in P\times P:p_2p_1^{-1}\in K\}.
+ \tag{F8}
+\]</span>
+It is closed. It is a subgroup because the quotient map to <span class="math" data-tex="\(P/K\)">\(P/K\)</span> makes it the equal-image subgroup of <span class="math" data-tex="\(P\times P\)">\(P\times P\)</span>; equivalently, direct multiplication and inversion use normality of <span class="math" data-tex="\(K\)">\(K\)</span>. A closed subgroup of a Polish group is Polish.</p>
+<p>Replace <span class="math" data-tex="\((\rho_1(t,x),\rho_2(t,x))\)">\((\rho_1(t,x),\rho_2(t,x))\)</span> by <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> wherever it is outside <span class="math" data-tex="\(L\)">\(L\)</span>. This is a jointly Borel modification. For each fixed <span class="math" data-tex="\(t\)">\(t\)</span>, the changed set is null by (F2). For each fixed <span class="math" data-tex="\(s,t\)">\(s,t\)</span>, its cocycle law can change only on the union of the three modification sets at <span class="math" data-tex="\(s,t+s\)">\(s,t+s\)</span>, and the inverse image under <span class="math" data-tex="\(F_s\)">\(F_s\)</span> of the modification set at <span class="math" data-tex="\(t\)">\(t\)</span>, together with the original law's null set. Nonsingularity makes this union null.</p>
+<p>Apply <a href="../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#3-making-a-measurable-cocycle-strict">Theorem 3.1, strict versions</a>, with acting group <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> and target <span class="math" data-tex="\(L\)">\(L\)</span>. Its hypotheses are exactly a strict nonsingular standard measured action of an lcsc group, a Polish target, joint Borel measurability, and the fixed-pair almost-everywhere cocycle law. Its path-space and Haar-repair proof yields an invariant conull Borel <span class="math" data-tex="\(E\subseteq X_r\)">\(E\subseteq X_r\)</span> and a strict jointly Borel pair <span class="math" data-tex="\((\sigma_1,\sigma_2):\mathbb R\times E\to L\)">\((\sigma_1,\sigma_2):\mathbb R\times E\to L\)</span>, satisfying
+<span class="math math-display" data-tex="\[
+ \sigma_i(t,\cdot)=\rho_i(t,\cdot)\quad\text{almost everywhere for each fixed }t,
+ \qquad
+ \sigma_2(t,x)\sigma_1(t,x)^{-1}\in K\quad(t\in\mathbb R,\ x\in E).
+ \tag{F9}
+\]">\[
+ \sigma_i(t,\cdot)=\rho_i(t,\cdot)\quad\text{almost everywhere for each fixed }t,
+ \qquad
+ \sigma_2(t,x)\sigma_1(t,x)^{-1}\in K\quad(t\in\mathbb R,\ x\in E).
+ \tag{F9}
+\]</span>
+The strict law includes the unit value and holds for all time pairs and all points of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>We can now pass to the section. Put <span class="math" data-tex="\(Z_0=\{z:(z,0)\in E\}\)">\(Z_0=\{z:(z,0)\in E\}\)</span>. This is Borel. Invariance gives <span class="math" data-tex="\((z,u)\in E\)">\((z,u)\in E\)</span> exactly when <span class="math" data-tex="\(z\in Z_0\)">\(z\in Z_0\)</span>, and <span class="math" data-tex="\(z\in Z_0\)">\(z\in Z_0\)</span> exactly when <span class="math" data-tex="\(Sz\in Z_0\)">\(Sz\in Z_0\)</span>. The complement's zero product measure in (F5), together with <span class="math" data-tex="\(r(z)&gt;0\)">\(r(z)&gt;0\)</span>, makes <span class="math" data-tex="\(\nu(Z\setminus Z_0)=0\)">\(\nu(Z\setminus Z_0)=0\)</span>. Restrict to this base. The strict pair is now defined at every section point and every point above it.</p>
+<p><span id="OA-FLOW.FLOWCOCYCLE.MARKERS"></span><a id="oa-flow.flowcocycle.markers"></a></p>
+<h2 id="finite-relations-from-decreasing-markers">Finite relations from decreasing markers</h2>
+<p>We give the complete countable construction needed for the return cocycles.</p>
+<p><strong>Marker lemma.</strong> If <span class="math" data-tex="\(S\)">\(S\)</span> is an aperiodic Borel automorphism of a standard Borel <span class="math" data-tex="\(Z\)">\(Z\)</span>, its orbit relation <span class="math" data-tex="\(R_S\)">\(R_S\)</span> is an increasing union of finite Borel equivalence relations.</p>
+<p><strong>Proof.</strong> Start with <span class="math" data-tex="\(Q_0=Z\)">\(Q_0=Z\)</span>. At stage <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, join distinct <span class="math" data-tex="\(x,y\in Q_{n-1}\)">\(x,y\in Q_{n-1}\)</span> when <span class="math" data-tex="\(y=S^kx\)">\(y=S^kx\)</span> for some integer <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(0&lt;|k|&lt;n\)">\(0&lt;|k|&lt;n\)</span>. This is a Borel graph with finitely many neighbours at each vertex.</p>
+<p>Here is the Borel selection used at that stage. Fix an injective Borel code <span class="math" data-tex="\(b:Z\to\{0,1\}^{\mathbb N}\)">\(b:Z\to\{0,1\}^{\mathbb N}\)</span>. At a vertex <span class="math" data-tex="\(x\)">\(x\)</span>, choose the least prefix length that distinguishes <span class="math" data-tex="\(b(x)\)">\(b(x)\)</span> from the codes of every neighbour. It exists because there are finitely many neighbours. Its choice is Borel: failure at a given length is a finite-section Borel projection, or directly the finite union of the tests at the finitely many iterates <span class="math" data-tex="\(S^kx\)">\(S^kx\)</span>. The pair consisting of that length and the prefix is a countable Borel coloring. Adjacent vertices cannot share a color.</p>
+<p>Enumerate the colors. At each color select all vertices having no already selected neighbour. Each such set is Borel, and same-color vertices are nonadjacent. Their countable union is a Borel independent set; every omitted vertex has a selected neighbour, because this was the reason for its rejection. Apply this rule to obtain a maximal independent <span class="math" data-tex="\(Q_n\subseteq Q_{n-1}\)">\(Q_n\subseteq Q_{n-1}\)</span>.</p>
+<p>Two distinct points of <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span> on one orbit are at least <span class="math" data-tex="\(n\)">\(n\)</span> integer steps apart. Every point of <span class="math" data-tex="\(Q_{n-1}\)">\(Q_{n-1}\)</span> is within <span class="math" data-tex="\(n-1\)">\(n-1\)</span> steps of <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span>, including distance zero for selected points. Induction gives
+<span class="math math-display" data-tex="\[
+ \text{every point of }Z\text{ is within }
+ L_n=\sum_{j=1}^n(j-1)
+ \text{ steps of a point of }Q_n.
+ \tag{F10}
+\]">\[
+ \text{every point of }Z\text{ is within }
+ L_n=\sum_{j=1}^n(j-1)
+ \text{ steps of a point of }Q_n.
+ \tag{F10}
+\]</span>
+For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> this simply says <span class="math" data-tex="\(Q_1=Z\)">\(Q_1=Z\)</span>. Thus, on each orbit, markers occur in both directions and have bounded finite gaps.</p>
+<p>The intersection <span class="math" data-tex="\(Q_\infty=\bigcap_nQ_n\)">\(Q_\infty=\bigcap_nQ_n\)</span> meets an orbit in at most one point: two points at a finite distance cannot meet every separation bound. Its saturation
+<span class="math math-display" data-tex="\[
+ B=\bigcup_{k\in\mathbb Z}S^kQ_\infty
+ \tag{F11}
+\]">\[
+ B=\bigcup_{k\in\mathbb Z}S^kQ_\infty
+ \tag{F11}
+\]</span>
+is Borel and invariant. On <span class="math" data-tex="\(Z\setminus B\)">\(Z\setminus B\)</span>, let the stage-<span class="math" data-tex="\(n\)">\(n\)</span> classes be the finite intervals starting at a <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span>-marker and ending just before the next marker. The last marker at or before a point is found by a bounded search using (F10); membership in an interval is consequently Borel. Finiteness follows from the bounded gaps. Since <span class="math" data-tex="\(Q_{n+1}\subseteq Q_n\)">\(Q_{n+1}\subseteq Q_n\)</span>, these relations increase. The adjacent pair <span class="math" data-tex="\(x,Sx\)">\(x,Sx\)</span> lies in different stage-<span class="math" data-tex="\(n\)">\(n\)</span> intervals exactly when <span class="math" data-tex="\(Sx\)">\(Sx\)</span> is a marker. As <span class="math" data-tex="\(Sx\notin Q_\infty\)">\(Sx\notin Q_\infty\)</span>, this obstruction disappears at some stage and remains absent thereafter. Any two orbit points are joined by finitely many adjacent pairs, so eventually lie in one class.</p>
+<p>On <span class="math" data-tex="\(B\)">\(B\)</span>, every point has a unique representation <span class="math" data-tex="\(S^kq\)">\(S^kq\)</span> with <span class="math" data-tex="\(q\in Q_\infty\)">\(q\in Q_\infty\)</span>; uniqueness uses aperiodicity. Countable search gives Borel <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span>. At stage <span class="math" data-tex="\(n\)">\(n\)</span>, put all coordinates <span class="math" data-tex="\(-n\le k\le n\)">\(-n\le k\le n\)</span> over a fixed <span class="math" data-tex="\(q\)">\(q\)</span> in one class and leave the other points as singletons. These are finite Borel equivalence relations, increasing to the whole relation on <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>Combine the two constructions on their invariant Borel pieces. The resulting finite relations have every unit, increase, and exhaust <span class="math" data-tex="\(R_S\)">\(R_S\)</span> exactly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof needs no ergodicity, invariant measure, or uniform bound on the sizes of all finite classes. It selects markers, not one representative of every nonsmooth orbit.</p>
+<p><span id="OA-FLOW.FLOWCOCYCLE.RETURNS"></span><a id="oa-flow.flowcocycle.returns"></a></p>
+<h2 id="reduce-the-returns-and-reconstruct-every-flow-arrow">Reduce the returns and reconstruct every flow arrow</h2>
+<p>For the strict pair define
+<span class="math math-display" data-tex="\[
+ a_i(z,u)=\sigma_i(u,(z,0)),\qquad
+ c_i(S^nz,z)=\sigma_i(R_n(z),(z,0)).
+ \tag{F12}
+\]">\[
+ a_i(z,u)=\sigma_i(u,(z,0)),\qquad
+ c_i(S^nz,z)=\sigma_i(R_n(z),(z,0)).
+ \tag{F12}
+\]</span>
+The graph of each <span class="math" data-tex="\(S^n\)">\(S^n\)</span> is Borel; the graphs are disjoint by aperiodicity, and their countable union is <span class="math" data-tex="\(R_S\)">\(R_S\)</span>. Thus the second formula is Borel on <span class="math" data-tex="\(R_S\)">\(R_S\)</span>. The strict law and (F6) make <span class="math" data-tex="\(c_i\)">\(c_i\)</span> a cocycle on this relation. The closed-pair condition gives <span class="math" data-tex="\(c_2c_1^{-1}\in K\)">\(c_2c_1^{-1}\in K\)</span> at every arrow.</p>
+<p>For <span class="math" data-tex="\(F_t(z,u)=(y,v)\)">\(F_t(z,u)=(y,v)\)</span>, the three successive arrows go down to <span class="math" data-tex="\((z,0)\)">\((z,0)\)</span>, through the return arrow to <span class="math" data-tex="\((y,0)\)">\((y,0)\)</span>, and up to <span class="math" data-tex="\((y,v)\)">\((y,v)\)</span>. Their times sum to <span class="math" data-tex="\(-u+R_n(z)+v=t\)">\(-u+R_n(z)+v=t\)</span>. The strict inverse and composition laws therefore give
+<span class="math math-display" data-tex="\[
+ \sigma_i(t,(z,u))=a_i(y,v)c_i(y,z)a_i(z,u)^{-1}.
+ \tag{F13}
+\]">\[
+ \sigma_i(t,(z,u))=a_i(y,v)c_i(y,z)a_i(z,u)^{-1}.
+ \tag{F13}
+\]</span>
+This includes negative crossings. In particular the gauge removing vertical transport uses the inverse at the range:
+<span class="math" data-tex="\(a_i(F_tx)^{-1}\sigma_i(t,x)a_i(x)=c_i(y,z)\)">\(a_i(F_tx)^{-1}\sigma_i(t,x)a_i(x)=c_i(y,z)\)</span>.</p>
+<p>The marker lemma supplies the exact finite exhaustion. Apply the fully proved <a href="../OA-ERGODIC/reader/compatible-lifts-and-cohomology-reduction.html#6-the-limiting-correction">finite-relation cohomology reduction, Theorem 6.1</a>, with its <a href="../OA-ERGODIC/reader/compatible-lifts-and-cohomology-reduction.html#4-a-small-correction-on-a-finite-class">small-correction and extension proofs</a>. The return system is nonsingular, and a probability equivalent to <span class="math" data-tex="\(\nu\)">\(\nu\)</span> supplies its standard measured base. The theorem gives Borel <span class="math" data-tex="\(g:Z\to K\)">\(g:Z\to K\)</span> and <span class="math" data-tex="\(\ell:R_S\to H\)">\(\ell:R_S\to H\)</span> with
+<span class="math math-display" data-tex="\[
+ c_2(y,z)=\ell(y,z)g(y)c_1(y,z)g(z)^{-1}.
+ \tag{F14}
+\]">\[
+ c_2(y,z)=\ell(y,z)g(y)c_1(y,z)g(z)^{-1}.
+ \tag{F14}
+\]</span>
+Its construction preserves each old arrow's discrepancy exactly when enlarging a finite stage; only the corrections on units converge. Hence <span class="math" data-tex="\(\ell\)">\(\ell\)</span> takes values in <span class="math" data-tex="\(H\)">\(H\)</span>, even when <span class="math" data-tex="\(H\)">\(H\)</span> is nonclosed. Neither ergodicity nor a uniform bound on finite class sizes is required by that proof.</p>
+<p>Put, for <span class="math" data-tex="\(x=(z,u)\)">\(x=(z,u)\)</span> and <span class="math" data-tex="\(F_tx=(y,v)\)">\(F_tx=(y,v)\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ k(z,u)&amp;=a_2(z,u)g(z)a_1(z,u)^{-1},\\
+ h_\sigma(t,x)&amp;=a_2(y,v)\ell(y,z)a_2(y,v)^{-1}.
+ \end{aligned}
+ \tag{F15}
+\]">\[
+ \begin{aligned}
+ k(z,u)&amp;=a_2(z,u)g(z)a_1(z,u)^{-1},\\
+ h_\sigma(t,x)&amp;=a_2(y,v)\ell(y,z)a_2(y,v)^{-1}.
+ \end{aligned}
+ \tag{F15}
+\]</span>
+All maps are Borel. Normality gives <span class="math" data-tex="\(h_\sigma\in H\)">\(h_\sigma\in H\)</span>. Also
+<span class="math math-display" data-tex="\[
+ k(z,u)=
+ \bigl[a_2(z,u)g(z)a_2(z,u)^{-1}\bigr]
+ \bigl[a_2(z,u)a_1(z,u)^{-1}\bigr]\in K,
+ \tag{F16}
+\]">\[
+ k(z,u)=
+ \bigl[a_2(z,u)g(z)a_2(z,u)^{-1}\bigr]
+ \bigl[a_2(z,u)a_1(z,u)^{-1}\bigr]\in K,
+ \tag{F16}
+\]</span>
+using normality for the first factor and the pair condition for the second.</p>
+<p>The factor order can be checked without commuting anything:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ &amp;k(y,v)\sigma_1(t,(z,u))k(z,u)^{-1}\\
+ &amp;\quad=a_2(y,v)g(y)c_1(y,z)g(z)^{-1}a_2(z,u)^{-1}.
+ \end{aligned}
+ \tag{F17}
+\]">\[
+ \begin{aligned}
+ &amp;k(y,v)\sigma_1(t,(z,u))k(z,u)^{-1}\\
+ &amp;\quad=a_2(y,v)g(y)c_1(y,z)g(z)^{-1}a_2(z,u)^{-1}.
+ \end{aligned}
+ \tag{F17}
+\]</span>
+Multiplication on the left by <span class="math" data-tex="\(h_\sigma\)">\(h_\sigma\)</span>, followed by (F14) and (F13), yields
+<span class="math math-display" data-tex="\[
+ \sigma_2(t,x)
+   =h_\sigma(t,x)k(F_tx)\sigma_1(t,x)k(x)^{-1}
+ \qquad(t\in\mathbb R,\ x\in E).
+ \tag{F18}
+\]">\[
+ \sigma_2(t,x)
+   =h_\sigma(t,x)k(F_tx)\sigma_1(t,x)k(x)^{-1}
+ \qquad(t\in\mathbb R,\ x\in E).
+ \tag{F18}
+\]</span>
+For the exact-representative strictification in (F9), take <span class="math" data-tex="\(f=k\)">\(f=k\)</span> and <span class="math" data-tex="\(h=h_\sigma\)">\(h=h_\sigma\)</span>, transfer them to the original invariant conull model, and extend them by the identity elsewhere. For each fixed <span class="math" data-tex="\(t\)">\(t\)</span>, the two equalities in (F9) then turn (F18) into (F3). This proves the theorem.</p>
+<p><span id="OA-FLOW.FLOWCOCYCLE.PATHS"></span><a id="oa-flow.flowcocycle.paths"></a></p>
+<h2 id="an-alternative-paths-and-a-selected-constant-orbit">An alternative: paths and a selected constant orbit</h2>
+<p>We now prove the cohomologous strictification used in the second route. It needs only a strict nonsingular Borel real flow on a standard sigma-finite space; proper ergodicity will be used only when the strict cocycle is reduced on a suspension. Let <span class="math" data-tex="\(L\)">\(L\)</span> be any Polish group with a compatible complete metric <span class="math" data-tex="\(d\)">\(d\)</span>, and write
+<span class="math math-display" data-tex="\[
+ w(t)=\tfrac12e^{-|t|},\qquad
+ \mathcal P=L^0(\mathbb R,L),\qquad
+ D(p,q)=\int_{\mathbb R}\min\{1,d(p(t),q(t))\}w(t)\,dt.
+ \tag{F19}
+\]">\[
+ w(t)=\tfrac12e^{-|t|},\qquad
+ \mathcal P=L^0(\mathbb R,L),\qquad
+ D(p,q)=\int_{\mathbb R}\min\{1,d(p(t),q(t))\}w(t)\,dt.
+ \tag{F19}
+\]</span>
+Paths are identified modulo Lebesgue null sets. The metric is convergence in the finite measure <span class="math" data-tex="\(w(t)dt\)">\(w(t)dt\)</span>, whose null sets are the Lebesgue null sets.</p>
+<p>The space <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> is Polish. For completeness, choose from a metric Cauchy sequence a subsequence whose consecutive distances are at most <span class="math" data-tex="\(2^{-2n}\)">\(2^{-2n}\)</span>. The set where its consecutive pointwise distance exceeds <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span> has probability at most <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span>. The measure of the union of these sets after index <span class="math" data-tex="\(N\)">\(N\)</span> tends to zero. Outside their limsup the path values are Cauchy in <span class="math" data-tex="\(d\)">\(d\)</span>, so have a pointwise limit in <span class="math" data-tex="\(L\)">\(L\)</span>. Set a default value on the remaining null set. The limit is measurable, and bounded convergence gives metric convergence of the subsequence; the Cauchy property gives convergence of the whole sequence.</p>
+<p>For separability, first approximate any measurable path by a countably valued path with values in a fixed countable dense subset of <span class="math" data-tex="\(L\)">\(L\)</span>, using first-index choices in balls of a prescribed radius. Truncate to finitely many values outside a set of small probability. Every Borel subset of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> is approximable in the probability <span class="math" data-tex="\(w(t)dt\)">\(w(t)dt\)</span> by the algebra of finite unions of rational intervals: the class of approximable sets contains that algebra and is closed under complements and countable unions by finite-measure truncation, so the monotone-class theorem applies. Completed-measurable sets have the same approximation by Borel versions. This produces a countable dense family of simple paths.</p>
+<p>Pointwise multiplication and inversion make <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> a Polish group. Indeed, convergence in measure has a pointwise almost-everywhere convergent subsequence; continuity of multiplication and inversion, followed by the same subsequence argument for every subsequence, proves continuity of these operations. Constant paths form a closed subgroup identified with <span class="math" data-tex="\(L\)">\(L\)</span>. On constants the metric is <span class="math" data-tex="\(\min\{1,d\}\)">\(\min\{1,d\}\)</span>, so the inverse identification, denoted <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, is continuous.</p>
+<p>Translation <span class="math" data-tex="\(T_sp(t)=p(t+s)\)">\(T_sp(t)=p(t+s)\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ D(T_sp,T_sq)\le e^{|s|}D(p,q).
+ \tag{F20}
+\]">\[
+ D(T_sp,T_sq)\le e^{|s|}D(p,q).
+ \tag{F20}
+\]</span>
+For simple paths on rational intervals, continuity in <span class="math" data-tex="\(s\)">\(s\)</span> follows by estimating the measure of the small intervals swept out by their endpoints. Density and (F20) extend it to all paths and give joint continuity in <span class="math" data-tex="\((s,p)\)">\((s,p)\)</span>. Translations commute with multiplication by right constants.</p>
+<p>For a jointly Borel <span class="math" data-tex="\(L\)">\(L\)</span>-valued cocycle <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, define
+<span class="math math-display" data-tex="\[
+ \Phi(x)=[t\mapsto\rho(t,x)]\in\mathcal P.
+ \tag{F21}
+\]">\[
+ \Phi(x)=[t\mapsto\rho(t,x)]\in\mathcal P.
+ \tag{F21}
+\]</span>
+Its distances to the countable dense simple paths are Borel parameter integrals. Consequently <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is Borel.</p>
+<p>Every right-constant orbit <span class="math" data-tex="\(pL=\{pa:a\in L\}\)">\(pL=\{pa:a\in L\}\)</span> is closed. If <span class="math" data-tex="\(pa_n\to q\)">\(pa_n\to q\)</span> in measure, choose a subsequence converging pointwise almost everywhere. At one time in that conull set,
+<span class="math" data-tex="\(a_n\to p(t)^{-1}q(t)=a\)">\(a_n\to p(t)^{-1}q(t)=a\)</span>; at every other good time the same limit gives <span class="math" data-tex="\(q=pa\)">\(q=pa\)</span>. Thus <span class="math" data-tex="\(q\in pL\)">\(q\in pL\)</span>.</p>
+<p>We construct a Borel choice depending only on this closed orbit. Fix dense sequences <span class="math" data-tex="\((a_j)\)">\((a_j)\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\((p_j)\)">\((p_j)\)</span> in <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>. For every open <span class="math" data-tex="\(V\subseteq\mathcal P\)">\(V\subseteq\mathcal P\)</span>,
+<span class="math math-display" data-tex="\[
+ pL\cap V\ne\varnothing
+ \quad\Longleftrightarrow\quad
+ pa_j\in V\text{ for some }j.
+ \tag{F22}
+\]">\[
+ pL\cap V\ne\varnothing
+ \quad\Longleftrightarrow\quad
+ pa_j\in V\text{ for some }j.
+ \tag{F22}
+\]</span>
+These are Borel tests. Choose the first centre <span class="math" data-tex="\(p_j\)">\(p_j\)</span> whose open ball of radius <span class="math" data-tex="\(1/2\)">\(1/2\)</span> meets <span class="math" data-tex="\(pL\)">\(pL\)</span>. At stage <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>, choose the first centre whose ball of radius <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span> meets <span class="math" data-tex="\(pL\)">\(pL\)</span> and whose distance from the preceding centre is less than <span class="math" data-tex="\(2^{-(n-1)}+2^{-n}\)">\(2^{-(n-1)}+2^{-n}\)</span>. Such a centre exists: start at a point of the orbit in the preceding open ball, then choose a dense centre sufficiently close to it. Every choice is Borel.</p>
+<p>The centre sequence is Cauchy, and its distances from the closed orbit tend to zero. Let <span class="math" data-tex="\(Q(p)\)">\(Q(p)\)</span> be its limit. It belongs to <span class="math" data-tex="\(pL\)">\(pL\)</span>, and it is Borel as a pointwise limit of Borel maps into a Polish space. Since all the tests depend only on the orbit,
+<span class="math math-display" data-tex="\[
+ Q(pa)=Q(p),\qquad Q(Q(p))=Q(p).
+ \tag{F23}
+\]">\[
+ Q(pa)=Q(p),\qquad Q(Q(p))=Q(p).
+ \tag{F23}
+\]</span>
+Hence <span class="math" data-tex="\(Y=\{p:Q(p)=p\}\)">\(Y=\{p:Q(p)=p\}\)</span> is a standard Borel subset of <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>, selecting exactly one path from each constant orbit. On <span class="math" data-tex="\(Y\)">\(Y\)</span>, put
+<span class="math math-display" data-tex="\[
+ A_sy=Q(T_sy).
+ \tag{F24}
+\]">\[
+ A_sy=Q(T_sy).
+ \tag{F24}
+\]</span>
+This is a jointly Borel action: translation takes constant orbits to constant orbits, so (F23) gives <span class="math" data-tex="\(A_sA_t=A_{s+t}\)">\(A_sA_t=A_{s+t}\)</span> and <span class="math" data-tex="\(A_0=\operatorname{id}\)">\(A_0=\operatorname{id}\)</span>.</p>
+<p><span id="OA-FLOW.FLOWCOCYCLE.REPAIR"></span><a id="oa-flow.flowcocycle.repair"></a></p>
+<h2 id="recover-one-equivariant-map-by-essential-values">Recover one equivariant map by essential values</h2>
+<p>Suppose a Borel <span class="math" data-tex="\(j:X\to Y\)">\(j:X\to Y\)</span> satisfies <span class="math" data-tex="\(j(F_sx)=A_sj(x)\)">\(j(F_sx)=A_sj(x)\)</span> almost everywhere for every fixed <span class="math" data-tex="\(s\)">\(s\)</span>. Put
+<span class="math math-display" data-tex="\[
+ \Theta_x(t)=A_{-t}j(F_tx).
+ \tag{F25}
+\]">\[
+ \Theta_x(t)=A_{-t}j(F_tx).
+ \tag{F25}
+\]</span>
+Fubini gives essential constancy with value <span class="math" data-tex="\(j(x)\)">\(j(x)\)</span> for almost every <span class="math" data-tex="\(x\)">\(x\)</span>. There is also an explicit Borel test for all sources at which essential constancy holds. Choose an injective Borel code <span class="math" data-tex="\(\chi:Y\to[0,1]\)">\(\chi:Y\to[0,1]\)</span> with Borel image and inverse. Take the mean of <span class="math" data-tex="\(\chi(\Theta_x(t))\)">\(\chi(\Theta_x(t))\)</span> against <span class="math" data-tex="\(w(t)dt\)">\(w(t)dt\)</span>, require its variance to be zero and its mean to lie in <span class="math" data-tex="\(\chi(Y)\)">\(\chi(Y)\)</span>. Each condition is Borel by parameter integration and Borel coding. Call the resulting set <span class="math" data-tex="\(X_0\)">\(X_0\)</span>; applying <span class="math" data-tex="\(\chi^{-1}\)">\(\chi^{-1}\)</span> to the mean gives a Borel <span class="math" data-tex="\(j':X_0\to Y\)">\(j':X_0\to Y\)</span>.</p>
+<p>Variance zero means the scalar function equals its mean almost everywhere, and injectivity of the code gives the unique essential value in <span class="math" data-tex="\(Y\)">\(Y\)</span>. Conversely any essentially constant path passes the test. Thus <span class="math" data-tex="\(X_0\)">\(X_0\)</span> is conull and <span class="math" data-tex="\(j'=j\)">\(j'=j\)</span> almost everywhere. The exact point actions give
+<span class="math math-display" data-tex="\[
+ \Theta_{F_sx}(t)=A_s\Theta_x(t+s).
+ \tag{F26}
+\]">\[
+ \Theta_{F_sx}(t)=A_s\Theta_x(t+s).
+ \tag{F26}
+\]</span>
+Translation preserves Lebesgue null sets. A bijection of <span class="math" data-tex="\(Y\)">\(Y\)</span> carries a path with one essential value to a path with one essential value, and its inverse proves the converse. Therefore <span class="math" data-tex="\(X_0\)">\(X_0\)</span> is invariant under every <span class="math" data-tex="\(F_s\)">\(F_s\)</span>, and (F26) identifies the values:
+<span class="math math-display" data-tex="\[
+ j'(F_sx)=A_sj'(x)\qquad(s\in\mathbb R,\ x\in X_0).
+ \tag{F27}
+\]">\[
+ j'(F_sx)=A_sj'(x)\qquad(s\in\mathbb R,\ x\in X_0).
+ \tag{F27}
+\]</span>
+No uncountable intersection of good sets was used.</p>
+<p><span id="OA-FLOW.FLOWCOCYCLE.COHOMOLOGOUS"></span><a id="oa-flow.flowcocycle.cohomologous"></a></p>
+<h2 id="a-strict-cocycle-in-the-same-measurable-cohomology-class">A strict cocycle in the same measurable cohomology class</h2>
+<p>Apply this repair to <span class="math" data-tex="\(j=Q\Phi\)">\(j=Q\Phi\)</span>, where <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is (F21). For a fixed <span class="math" data-tex="\(s\)">\(s\)</span>, the cocycle law and Fubini give
+<span class="math math-display" data-tex="\[
+ T_s\Phi(x)=\Phi(F_sx)\rho(s,x)
+ \quad\text{in }\mathcal P\text{ for almost every }x.
+ \tag{F28}
+\]">\[
+ T_s\Phi(x)=\Phi(F_sx)\rho(s,x)
+ \quad\text{in }\mathcal P\text{ for almost every }x.
+ \tag{F28}
+\]</span>
+Thus <span class="math" data-tex="\(j(F_sx)=A_sj(x)\)">\(j(F_sx)=A_sj(x)\)</span> almost everywhere, as required. Regard its repaired map <span class="math" data-tex="\(j'\)">\(j'\)</span> as a path-valued Borel function <span class="math" data-tex="\(\zeta:X_0\to Y\subseteq\mathcal P\)">\(\zeta:X_0\to Y\subseteq\mathcal P\)</span>. Exact equivariance says that <span class="math" data-tex="\(T_s\zeta(x)\)">\(T_s\zeta(x)\)</span> and <span class="math" data-tex="\(\zeta(F_sx)\)">\(\zeta(F_sx)\)</span> belong to the same constant orbit. Their quotient is consequently a constant path. Define
+<span class="math math-display" data-tex="\[
+ \sigma(s,x)=\Gamma\!\left(\zeta(F_sx)^{-1}T_s\zeta(x)\right),
+ \qquad
+ T_s\zeta(x)=\zeta(F_sx)\sigma(s,x).
+ \tag{F29}
+\]">\[
+ \sigma(s,x)=\Gamma\!\left(\zeta(F_sx)^{-1}T_s\zeta(x)\right),
+ \qquad
+ T_s\zeta(x)=\zeta(F_sx)\sigma(s,x).
+ \tag{F29}
+\]</span>
+The formula and continuity of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> on constants make <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> jointly Borel.</p>
+<p>For all <span class="math" data-tex="\(s,t,x\)">\(s,t,x\)</span>, translate the second equation in (F29) by <span class="math" data-tex="\(t\)">\(t\)</span>, apply it at <span class="math" data-tex="\(F_sx\)">\(F_sx\)</span>, and use commutation with right constants. One obtains
+<span class="math math-display" data-tex="\[
+ T_{t+s}\zeta(x)
+   =\zeta(F_{t+s}x)\sigma(t,F_sx)\sigma(s,x).
+\]">\[
+ T_{t+s}\zeta(x)
+   =\zeta(F_{t+s}x)\sigma(t,F_sx)\sigma(s,x).
+\]</span>
+The constant in (F29) is unique; hence <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> satisfies the strict cocycle law. At zero its value is the identity.</p>
+<p>On the conull Borel set where <span class="math" data-tex="\(j'=j\)">\(j'=j\)</span>, the paths <span class="math" data-tex="\(\Phi(x)\)">\(\Phi(x)\)</span> and <span class="math" data-tex="\(\zeta(x)\)">\(\zeta(x)\)</span> are in the same constant orbit. Set
+<span class="math math-display" data-tex="\[
+ b(x)=\Gamma(\zeta(x)^{-1}\Phi(x))
+\]">\[
+ b(x)=\Gamma(\zeta(x)^{-1}\Phi(x))
+\]</span>
+there, and set <span class="math" data-tex="\(b=1\)">\(b=1\)</span> elsewhere. For each fixed <span class="math" data-tex="\(s\)">\(s\)</span>, both <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(F_sx\)">\(F_sx\)</span> lie in this good set almost everywhere by nonsingularity. Comparing (F28) with (F29) gives
+<span class="math math-display" data-tex="\[
+ \sigma(s,x)=b(F_sx)\rho(s,x)b(x)^{-1}
+ \quad\text{almost everywhere for each fixed }s.
+ \tag{F30}
+\]">\[
+ \sigma(s,x)=b(F_sx)\rho(s,x)b(x)^{-1}
+ \quad\text{almost everywhere for each fixed }s.
+ \tag{F30}
+\]</span>
+This proves cohomologous strictification with no Haar measure on the target group.</p>
+<p>Apply this entire construction to the single <span class="math" data-tex="\(L\)">\(L\)</span>-valued pair from (F8). Then <span class="math" data-tex="\(b=(b_1,b_2)\)">\(b=(b_1,b_2)\)</span> also takes values in <span class="math" data-tex="\(L\)">\(L\)</span>, including its default identity values. In particular,
+<span class="math math-display" data-tex="\[
+ b_2(x)b_1(x)^{-1}\in K,\qquad
+ \sigma_2(t,x)\sigma_1(t,x)^{-1}\in K
+ \tag{F31}
+\]">\[
+ b_2(x)b_1(x)^{-1}\in K,\qquad
+ \sigma_2(t,x)\sigma_1(t,x)^{-1}\in K
+ \tag{F31}
+\]</span>
+at every source where the strict pair is used. The pair is strictified together; the closure condition survives the change of coordinates.</p>
+<p><span id="OA-FLOW.FLOWCOCYCLE.GAUGES"></span><a id="oa-flow.flowcocycle.gauges"></a></p>
+<h2 id="return-through-the-two-gauges">Return through the two gauges</h2>
+<p>For this alternative pair, the suspension, marker and return arguments give the same <span class="math" data-tex="\(k,h_\sigma\)">\(k,h_\sigma\)</span> and exact identity (F18). Define
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ f(x)&amp;=b_2(x)^{-1}k(x)b_1(x),\\
+ h(t,x)&amp;=b_2(F_tx)^{-1}h_\sigma(t,x)b_2(F_tx).
+ \end{aligned}
+ \tag{F32}
+\]">\[
+ \begin{aligned}
+ f(x)&amp;=b_2(x)^{-1}k(x)b_1(x),\\
+ h(t,x)&amp;=b_2(F_tx)^{-1}h_\sigma(t,x)b_2(F_tx).
+ \end{aligned}
+ \tag{F32}
+\]</span>
+Normality of <span class="math" data-tex="\(H\)">\(H\)</span> gives <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span>. For the correction,
+<span class="math math-display" data-tex="\[
+ f(x)=
+ \bigl[b_2(x)^{-1}k(x)b_2(x)\bigr]
+ \bigl[b_2(x)^{-1}b_1(x)\bigr]\in K.
+ \tag{F33}
+\]">\[
+ f(x)=
+ \bigl[b_2(x)^{-1}k(x)b_2(x)\bigr]
+ \bigl[b_2(x)^{-1}b_1(x)\bigr]\in K.
+ \tag{F33}
+\]</span>
+The first factor belongs to <span class="math" data-tex="\(K\)">\(K\)</span> by normality. The second is the conjugate by <span class="math" data-tex="\(b_2(x)^{-1}\)">\(b_2(x)^{-1}\)</span> of <span class="math" data-tex="\((b_2(x)b_1(x)^{-1})^{-1}\)">\((b_2(x)b_1(x)^{-1})^{-1}\)</span>, so (F31) and normality put it in <span class="math" data-tex="\(K\)">\(K\)</span> as well.</p>
+<p>Fix <span class="math" data-tex="\(t\)">\(t\)</span>. Substitute both equalities (F30) in (F18), on their common conull set. Multiplying by <span class="math" data-tex="\(b_2(F_tx)^{-1}\)">\(b_2(F_tx)^{-1}\)</span> on the left and <span class="math" data-tex="\(b_2(x)\)">\(b_2(x)\)</span> on the right leaves precisely (F3) with (F32). Extend <span class="math" data-tex="\(f,h\)">\(f,h\)</span> by the identity on the omitted invariant null set and transfer through the suspension isomorphism. This proves the same theorem while retaining the explicit cohomological gauges.</p>
+<p>The exact-representative route uses (F9) directly. The path-selector route uses (F30) and the additional cancellations (F32). Both keep the subgroup-valued discrepancy and the closure-valued correction distinct, and both return the stated fixed-time conclusion for the original cocycles.</p>
+<p><span id="OA-FLOW.FLOWCOCYCLE.EXAMPLES"></span><a id="oa-flow.flowcocycle.examples"></a></p>
+<h2 id="reading-the-transports-in-order">Reading the transports in order</h2>
+<p>In the <a href="OA-FLOW-L37.html#oa-flow.flowcocycle.returns">return reconstruction</a>, write <span class="math" data-tex="\(x=(z,u)\)">\(x=(z,u)\)</span> and <span class="math" data-tex="\(F_tx=(y,v)\)">\(F_tx=(y,v)\)</span>, where <span class="math" data-tex="\(y=S^nz\)">\(y=S^nz\)</span> and <span class="math" data-tex="\(t=R_n(z)+v-u\)">\(t=R_n(z)+v-u\)</span>. For a strict cocycle <span class="math" data-tex="\(\sigma_i\)">\(\sigma_i\)</span>, set
+<span class="math math-display" data-tex="\[
+ a_i(z,u)=\sigma_i(u,(z,0)),\qquad
+ c_i(y,z)=\sigma_i(R_n(z),(z,0)).
+ \tag{E1}
+\]">\[
+ a_i(z,u)=\sigma_i(u,(z,0)),\qquad
+ c_i(y,z)=\sigma_i(R_n(z),(z,0)).
+ \tag{E1}
+\]</span>
+The arrow from <span class="math" data-tex="\((z,u)\)">\((z,u)\)</span> down to <span class="math" data-tex="\((z,0)\)">\((z,0)\)</span> has value <span class="math" data-tex="\(a_i(z,u)^{-1}\)">\(a_i(z,u)^{-1}\)</span>. Indeed, the strict cocycle law at times <span class="math" data-tex="\(u,-u\)">\(u,-u\)</span>, together with its value <span class="math" data-tex="\(1\)">\(1\)</span> at time zero (a group element equal to its own square), makes these two vertical values inverses. Next travel from <span class="math" data-tex="\((z,0)\)">\((z,0)\)</span> to <span class="math" data-tex="\((y,0)\)">\((y,0)\)</span>, with value <span class="math" data-tex="\(c_i(y,z)\)">\(c_i(y,z)\)</span>, and finally up to <span class="math" data-tex="\((y,v)\)">\((y,v)\)</span>, with value <span class="math" data-tex="\(a_i(y,v)\)">\(a_i(y,v)\)</span>. Each new arrow multiplies on the left, so
+<span class="math math-display" data-tex="\[
+ \sigma_i(t,(z,u))
+   =\underbrace{a_i(y,v)}_{\text{up}}
+      \underbrace{c_i(y,z)}_{\text{return}}
+      \underbrace{a_i(z,u)^{-1}}_{\text{down}}.
+ \tag{E2}
+\]">\[
+ \sigma_i(t,(z,u))
+   =\underbrace{a_i(y,v)}_{\text{up}}
+      \underbrace{c_i(y,z)}_{\text{return}}
+      \underbrace{a_i(z,u)^{-1}}_{\text{down}}.
+ \tag{E2}
+\]</span>
+For example, applying the cocycle law first to the times <span class="math" data-tex="\(-u,R_n(z)\)">\(-u,R_n(z)\)</span> and then to <span class="math" data-tex="\(R_n(z)-u,v\)">\(R_n(z)-u,v\)</span> gives exactly (E2). The signed sum <span class="math" data-tex="\(R_n\)">\(R_n\)</span> handles negative returns as well. The path is traversed down, return, up; its group factors are read from right to left. No commutation of factors is involved.</p>
+<h3 id="integer-discrepancy-for-a-unit-roof">Integer discrepancy for a unit roof</h3>
+<p>Take an aperiodic ergodic nonsingular base, roof <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, and the additive target <span class="math" data-tex="\(P=\mathbb R\)">\(P=\mathbb R\)</span> with <span class="math" data-tex="\(H=\mathbb Q\)">\(H=\mathbb Q\)</span> and <span class="math" data-tex="\(K=\overline H=\mathbb R\)">\(K=\overline H=\mathbb R\)</span>. Use the strict cocycles <span class="math" data-tex="\(\rho_1(t,x)=0\)">\(\rho_1(t,x)=0\)</span> and <span class="math" data-tex="\(\rho_2(t,x)=t\)">\(\rho_2(t,x)=t\)</span>. For <span class="math" data-tex="\(0\le u&lt;1\)">\(0\le u&lt;1\)</span>, put
+<span class="math math-display" data-tex="\[
+ n=\lfloor u+t\rfloor,\qquad v=u+t-n,\qquad
+ F_t(z,u)=(S^nz,v),\qquad 0\le v&lt;1.
+ \tag{E3}
+\]">\[
+ n=\lfloor u+t\rfloor,\qquad v=u+t-n,\qquad
+ F_t(z,u)=(S^nz,v),\qquad 0\le v&lt;1.
+ \tag{E3}
+\]</span>
+The floor convention includes an exact roof hit in the next interval. It also works when <span class="math" data-tex="\(u+t&lt;0\)">\(u+t&lt;0\)</span>; replacing the floor by truncation toward zero would give the wrong base point.</p>
+<p>The return cocycles are <span class="math" data-tex="\(c_1(S^nz,z)=0\)">\(c_1(S^nz,z)=0\)</span> and <span class="math" data-tex="\(c_2(S^nz,z)=n\)">\(c_2(S^nz,z)=n\)</span>. Thus the base reduction takes <span class="math" data-tex="\(g=0\)">\(g=0\)</span> and <span class="math" data-tex="\(\ell(S^nz,z)=n\)">\(\ell(S^nz,z)=n\)</span>. The vertical correction and its discrepancy are
+<span class="math math-display" data-tex="\[
+ f(z,u)=u,\qquad h(t,(z,u))=n,\qquad
+ \rho_2(t,(z,u))=n+v-u=t.
+ \tag{E4}
+\]">\[
+ f(z,u)=u,\qquad h(t,(z,u))=n,\qquad
+ \rho_2(t,(z,u))=n+v-u=t.
+ \tag{E4}
+\]</span>
+Here <span class="math" data-tex="\(f\)">\(f\)</span> can be irrational, whereas <span class="math" data-tex="\(h\)">\(h\)</span> is always an integer and therefore lies in <span class="math" data-tex="\(H\)">\(H\)</span>. Its additive cocycle law can also be checked without an appeal to the reduction theorem: if <span class="math" data-tex="\(n_s=\lfloor u+s\rfloor\)">\(n_s=\lfloor u+s\rfloor\)</span> and <span class="math" data-tex="\(u_s=u+s-n_s\)">\(u_s=u+s-n_s\)</span>, then
+<span class="math math-display" data-tex="\[
+ \lfloor u_s+t\rfloor+n_s
+   =\lfloor u+s+t-n_s\rfloor+n_s
+   =\lfloor u+s+t\rfloor.
+ \tag{E5}
+\]">\[
+ \lfloor u_s+t\rfloor+n_s
+   =\lfloor u+s+t-n_s\rfloor+n_s
+   =\lfloor u+s+t\rfloor.
+ \tag{E5}
+\]</span>
+This is a special additive example; a discrepancy in a general noncommutative reduction need not satisfy the ordinary untwisted cocycle law.</p>
+<p>Two exact calculations check both signs:
+<span class="math math-display" data-tex="\[
+ \begin{array}{c|c|c|c|c}
+ u&amp;t&amp;n&amp;v&amp;n+v-u\\\hline
+ \tfrac34&amp;\tfrac74&amp;2&amp;\tfrac12&amp;\tfrac74\\
+ \tfrac14&amp;-\tfrac32&amp;-2&amp;\tfrac34&amp;-\tfrac32
+ \end{array}
+ \tag{E6}
+\]">\[
+ \begin{array}{c|c|c|c|c}
+ u&amp;t&amp;n&amp;v&amp;n+v-u\\\hline
+ \tfrac34&amp;\tfrac74&amp;2&amp;\tfrac12&amp;\tfrac74\\
+ \tfrac14&amp;-\tfrac32&amp;-2&amp;\tfrac34&amp;-\tfrac32
+ \end{array}
+ \tag{E6}
+\]</span>
+In the second row, <span class="math" data-tex="\(u+t=-5/4\)">\(u+t=-5/4\)</span> lies in <span class="math" data-tex="\([-2,-1)\)">\([-2,-1)\)</span>, so the endpoint lies over <span class="math" data-tex="\(S^{-2}z\)">\(S^{-2}z\)</span>, at height <span class="math" data-tex="\(3/4\)">\(3/4\)</span>. These are local orbit calculations within the stated suspension, and do not replace its base by a finite system.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The cocycle travels down to the source section, along the return arrow, then up to the target. Its product is up times return times down. Below, a unit-roof negative crossing starts at u=1/4, moves by -3/2, and ends at height 3/4 over S^-2 z." src="assets/flow-cocycle-reduction/three-transports-crossings.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Travel order and multiplication order.</em> The upper panel shows the three transports in (E1)–(E2): the chronological path is down, return, up, so the cocycle is <span class="math" data-tex="\(a_i(y,v)c_i(y,z)a_i(z,u)^{-1}\)">\(a_i(y,v)c_i(y,z)a_i(z,u)^{-1}\)</span>. The horizontal arrow denotes the signed return transport, and the vertical lengths are schematic. The lower panel is an exact unit-roof calculation: <span class="math" data-tex="\(u=1/4\)">\(u=1/4\)</span>, <span class="math" data-tex="\(t=-3/2\)">\(t=-3/2\)</span>, <span class="math" data-tex="\(u+t=-5/4\in[-2,-1)\)">\(u+t=-5/4\in[-2,-1)\)</span>, <span class="math" data-tex="\(n=-2\)">\(n=-2\)</span>, and <span class="math" data-tex="\(v=3/4\)">\(v=3/4\)</span>. Therefore <span class="math" data-tex="\(h+f(F_tx)-f(x)=-2+3/4-1/4=-3/2\)">\(h+f(F_tx)-f(x)=-2+3/4-1/4=-3/2\)</span>, as proved in (E3)–(E6). The finitely many displayed cells are a local segment of an orbit, not a finite base system. See <a href="OA-FLOW-L37.html#oa-flow.flowcocycle.examples">the transport and unit-roof calculations</a>. <a href="assets/flow-cocycle-reduction/render_transports.py">Reproduction source</a>, <a href="assets/flow-cocycle-reduction/exact_checks.json">exact constants and checks</a>, <a href="assets/flow-cocycle-reduction/three-transports-crossings.svg">SVG</a>, and <a href="assets/flow-cocycle-reduction/ASSET_TERMS.md">figure/font terms</a>.</p>
+<p><span id="OA-FLOW.FLOWCOCYCLE.EXERCISES"></span><a id="oa-flow.flowcocycle.exercises"></a></p>
+<h2 id="three-checks-on-the-gauges-and-the-section">Three checks on the gauges and the section</h2>
+<h3 id="which-gauge-removes-the-vertical-term">Which gauge removes the vertical term?</h3>
+<p><strong>Problem.</strong> For an additive kernel cocycle <span class="math" data-tex="\(\rho(x_1,x_2)=a(x_1)-a(x_2)\)">\(\rho(x_1,x_2)=a(x_1)-a(x_2)\)</span>, compare <span class="math" data-tex="\(a(x_1)+\rho(x_1,x_2)-a(x_2)\)">\(a(x_1)+\rho(x_1,x_2)-a(x_2)\)</span> with <span class="math" data-tex="\(-a(x_1)+\rho(x_1,x_2)+a(x_2)\)">\(-a(x_1)+\rho(x_1,x_2)+a(x_2)\)</span>. Here <span class="math" data-tex="\(x_2\)">\(x_2\)</span> is the source and <span class="math" data-tex="\(x_1\)">\(x_1\)</span> the range.</p>
+<p><strong>Solution.</strong> Substitution gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ a(x_1)+\rho(x_1,x_2)-a(x_2)&amp;=2\bigl(a(x_1)-a(x_2)\bigr),\\
+ -a(x_1)+\rho(x_1,x_2)+a(x_2)&amp;=0.
+ \end{aligned}
+ \tag{X1}
+\]">\[
+ \begin{aligned}
+ a(x_1)+\rho(x_1,x_2)-a(x_2)&amp;=2\bigl(a(x_1)-a(x_2)\bigr),\\
+ -a(x_1)+\rho(x_1,x_2)+a(x_2)&amp;=0.
+ \end{aligned}
+ \tag{X1}
+\]</span>
+In multiplicative notation, if <span class="math" data-tex="\(\rho(x_1,x_2)=a(x_1)a(x_2)^{-1}\)">\(\rho(x_1,x_2)=a(x_1)a(x_2)^{-1}\)</span>, the cancellation is
+<span class="math math-display" data-tex="\[
+ a(x_1)^{-1}\rho(x_1,x_2)a(x_2)=1.
+ \tag{X2}
+\]">\[
+ a(x_1)^{-1}\rho(x_1,x_2)a(x_2)=1.
+ \tag{X2}
+\]</span>
+More generally (E2) gives <span class="math" data-tex="\(a_i(y,v)^{-1}\sigma_i(t,(z,u))a_i(z,u)=c_i(y,z)\)">\(a_i(y,v)^{-1}\sigma_i(t,(z,u))a_i(z,u)=c_i(y,z)\)</span>. The inverse belongs at the range, and the non-inverted factor at the source.</p>
+<h3 id="why-can-an-almost-everywhere-cocycle-fail-on-the-entire-section">Why can an almost-everywhere cocycle fail on the entire section?</h3>
+<p><strong>Problem.</strong> In a unit-roof suspension put <span class="math" data-tex="\(Q=Z\times\{0\}\)">\(Q=Z\times\{0\}\)</span>, and define an additive real-valued map by
+<span class="math math-display" data-tex="\[
+ \rho(t,x)=
+ \begin{cases}1,&amp;x\in Q\text{ and }t\ne0,\\0,&amp;\text{otherwise.}\end{cases}
+ \tag{X3}
+\]">\[
+ \rho(t,x)=
+ \begin{cases}1,&amp;x\in Q\text{ and }t\ne0,\\0,&amp;\text{otherwise.}\end{cases}
+ \tag{X3}
+\]</span>
+Check its fixed-parameter cocycle law almost everywhere, and its failure when restricted to <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p><strong>Solution.</strong> The map is jointly Borel. The product measure class makes <span class="math" data-tex="\(Q\)">\(Q\)</span> null: on each finite-measure member <span class="math" data-tex="\(Z_k\)">\(Z_k\)</span> of a countable base cover, the rectangle <span class="math" data-tex="\(Z_k\times\{0\}\)">\(Z_k\times\{0\}\)</span> has measure <span class="math" data-tex="\(\nu(Z_k)\,du(\{0\})=0\)">\(\nu(Z_k)\,du(\{0\})=0\)</span>; take their union. For fixed <span class="math" data-tex="\(t\)">\(t\)</span>, the function <span class="math" data-tex="\(\rho(t,\cdot)\)">\(\rho(t,\cdot)\)</span> equals the zero cocycle off <span class="math" data-tex="\(Q\)">\(Q\)</span>. For fixed <span class="math" data-tex="\(s,t\)">\(s,t\)</span>, all terms in the cocycle identity vanish off <span class="math" data-tex="\(Q\cup F_{-s}Q\)">\(Q\cup F_{-s}Q\)</span>, a null set by nonsingularity. However, for every <span class="math" data-tex="\(x=(z,0)\)">\(x=(z,0)\)</span>,
+<span class="math math-display" data-tex="\[
+ \rho(2,x)=1,\qquad
+ \rho(1,F_1x)+\rho(1,x)=1+1=2,
+ \qquad F_1(z,0)=(Sz,0).
+ \tag{X4}
+\]">\[
+ \rho(2,x)=1,\qquad
+ \rho(1,F_1x)+\rho(1,x)=1+1=2,
+ \qquad F_1(z,0)=(Sz,0).
+ \tag{X4}
+\]</span>
+A section can consist entirely of exceptional points. One must obtain the strict representative before restricting it to the section; the ambient fixed-parameter almost-everywhere laws alone provide no such restriction.</p>
+<h3 id="why-must-the-two-gauges-satisfy-the-closed-pair-condition">Why must the two gauges satisfy the closed-pair condition?</h3>
+<p><strong>Problem.</strong> Suppose <span class="math" data-tex="\(H\)">\(H\)</span> is normal in <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(K=\overline H\)">\(K=\overline H\)</span>, and <span class="math" data-tex="\(k(x)\in K\)">\(k(x)\in K\)</span>. If strictification uses gauges <span class="math" data-tex="\(b_1,b_2\)">\(b_1,b_2\)</span>, why is the condition <span class="math" data-tex="\(b_2(x)b_1(x)^{-1}\in K\)">\(b_2(x)b_1(x)^{-1}\in K\)</span> needed when recovering <span class="math" data-tex="\(f(x)=b_2(x)^{-1}k(x)b_1(x)\)">\(f(x)=b_2(x)^{-1}k(x)b_1(x)\)</span>?</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(d=b_2b_1^{-1}\)">\(d=b_2b_1^{-1}\)</span>. Normality of <span class="math" data-tex="\(K\)">\(K\)</span> gives
+<span class="math math-display" data-tex="\[
+ f=(b_2^{-1}kb_2)(b_2^{-1}b_1),\qquad
+ b_2^{-1}b_1=b_2^{-1}d^{-1}b_2.
+ \tag{X5}
+\]">\[
+ f=(b_2^{-1}kb_2)(b_2^{-1}b_1),\qquad
+ b_2^{-1}b_1=b_2^{-1}d^{-1}b_2.
+ \tag{X5}
+\]</span>
+Thus <span class="math" data-tex="\(d\in K\)">\(d\in K\)</span> puts both factors in <span class="math" data-tex="\(K\)">\(K\)</span>. In fact, for <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>, this condition is equivalent to <span class="math" data-tex="\(f\in K\)">\(f\in K\)</span>: if <span class="math" data-tex="\(f\in K\)">\(f\in K\)</span>, the first factor in (X5) is already in <span class="math" data-tex="\(K\)">\(K\)</span>, so <span class="math" data-tex="\(b_2^{-1}b_1\in K\)">\(b_2^{-1}b_1\in K\)</span>, and conjugating its inverse puts <span class="math" data-tex="\(d\)">\(d\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Constant independent gauges can violate it. In the additive group <span class="math" data-tex="\(P=\mathbb R\)">\(P=\mathbb R\)</span>, take <span class="math" data-tex="\(H=K=\{0\}\)">\(H=K=\{0\}\)</span>, <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, <span class="math" data-tex="\(b_1=0\)">\(b_1=0\)</span>, <span class="math" data-tex="\(b_2=1\)">\(b_2=1\)</span>, and both original cocycles identically zero. Both transformed cocycles are still zero, but this choice gives <span class="math" data-tex="\(f=-1\notin K\)">\(f=-1\notin K\)</span>. The example shows the defect in the independent choice of gauges; choosing the two gauges together removes it.</p>
+<p>The order also determines how the discrepancy returns to the original representatives in the <a href="OA-FLOW-L37.html#oa-flow.flowcocycle.gauges">paired-gauge argument</a>. If
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \sigma_i(t,x)&amp;=b_i(F_tx)\rho_i(t,x)b_i(x)^{-1},\\
+ \sigma_2(t,x)&amp;=h_\sigma(t,x)k(F_tx)\sigma_1(t,x)k(x)^{-1},
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ \sigma_i(t,x)&amp;=b_i(F_tx)\rho_i(t,x)b_i(x)^{-1},\\
+ \sigma_2(t,x)&amp;=h_\sigma(t,x)k(F_tx)\sigma_1(t,x)k(x)^{-1},
+ \end{aligned}
+\]</span>
+then, writing <span class="math" data-tex="\(x'=F_tx\)">\(x'=F_tx\)</span>, multiplication by <span class="math" data-tex="\(b_2(x')^{-1}\)">\(b_2(x')^{-1}\)</span> on the left and by <span class="math" data-tex="\(b_2(x)\)">\(b_2(x)\)</span> on the right gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \rho_2(t,x)
+ &amp;=\underbrace{b_2(x')^{-1}h_\sigma(t,x)b_2(x')}_{h(t,x)}\\
+ &amp;\quad{}\cdot\underbrace{b_2(x')^{-1}k(x')b_1(x')}_{f(x')}
+   \rho_1(t,x)
+   \underbrace{b_1(x)^{-1}k(x)^{-1}b_2(x)}_{f(x)^{-1}}.
+ \end{aligned}
+ \tag{X6}
+\]">\[
+ \begin{aligned}
+ \rho_2(t,x)
+ &amp;=\underbrace{b_2(x')^{-1}h_\sigma(t,x)b_2(x')}_{h(t,x)}\\
+ &amp;\quad{}\cdot\underbrace{b_2(x')^{-1}k(x')b_1(x')}_{f(x')}
+   \rho_1(t,x)
+   \underbrace{b_1(x)^{-1}k(x)^{-1}b_2(x)}_{f(x)^{-1}}.
+ \end{aligned}
+ \tag{X6}
+\]</span>
+Normality puts <span class="math" data-tex="\(h(t,x)\)">\(h(t,x)\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>, and (X5) puts <span class="math" data-tex="\(f\)">\(f\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>. If the gauge identities hold almost everywhere for each fixed <span class="math" data-tex="\(t\)">\(t\)</span>, (X6) has that same quantifier. The exact factor calculation does not convert it into an identity for all times on one common conull set.</p>
+<h3 id="further-reading">Further reading</h3>
+<p>Masamichi Takesaki, <em>Theory of Operator Algebras III</em>, Corollary XIII.3.29, printed pages 51–52, gives the flow reduction theorem; Theorem XIII.3.26 and Lemmas XIII.3.27–3.28 treat finite-relation reduction. The suspension theorem is in <em>Theory of Operator Algebras II</em>, Theorem XII.3.2, printed pages 385–388. The linked proofs above specify the standard Borel, strictification and finite-relation results used here.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L38.html">Previous lesson</a><a href="OA-FLOW-MX.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L37.md">Lesson source</a></nav></main></body></html>

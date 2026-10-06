@@ -4,7 +4,7 @@
 
 This proof supplies only the analytic comparison needed for operator-valued weight transport. All dual spaces below have a specified predual. A group of isometries means a group of complex-linear surjective isometries whose individual maps are weak-star continuous and whose real orbits are weak-star continuous. No algebra or positivity property of that group is assumed.
 
-The exact earlier written proofs are [SF4 scalar Cauchy, maximum, Morera, identity and zero-edge proofs](OA-FLOW-SF.md#oa-flow.sf.sf4); FF2 scalar Fourier transform and Plancherel; [CP1](OA-FLOW-CP.md#oa-flow.cp.1), [CP2](OA-FLOW-CP.md#oa-flow.cp.2), [CP3](OA-FLOW-CP.md#oa-flow.cp.3), [CP4](OA-FLOW-CP.md#oa-flow.cp.4), [CP5](OA-FLOW-CP.md#oa-flow.cp.5), [CP6](OA-FLOW-CP.md#oa-flow.cp.6) for the concrete predual and its dual; scalar interchange, [SC4 monotone convergence](OA-FLOW-SC.md#sc-04) and [SC5 dominated convergence](OA-FLOW-SC.md#sc-05) for the scalar integrals. The transform convention is \(\widehat p(s)=(2\pi)^{-1/2}\int p(x)e^{-isx}\,dx\), as fixed in FF2. The proofs below do not import three-lines, Carlson, Paley–Wiener, Stone, or a theorem about closed analytic generators.
+The exact earlier written proofs are [SF4 scalar Cauchy, maximum, Morera, identity and zero-edge proofs](OA-FLOW-SF.md#oa-flow.sf.sf4); [FF2 scalar Fourier transform and Plancherel](OA-FLOW-FF.md#oa-flow.ff.3); [CP1](OA-FLOW-CP.md#oa-flow.cp.1), [CP2](OA-FLOW-CP.md#oa-flow.cp.2), [CP3](OA-FLOW-CP.md#oa-flow.cp.3), [CP4](OA-FLOW-CP.md#oa-flow.cp.4), [CP5](OA-FLOW-CP.md#oa-flow.cp.5), [CP6](OA-FLOW-CP.md#oa-flow.cp.6) for the concrete predual and its dual; [scalar interchange](OA-FLOW-FF.md#oa-flow.ff.1), [SC4 monotone convergence](OA-FLOW-SC.md#sc-04) and [SC5 dominated convergence](OA-FLOW-SC.md#sc-05) for the scalar integrals. The transform convention is \(\widehat p(s)=(2\pi)^{-1/2}\int p(x)e^{-isx}\,dx\), as fixed in [FF2](OA-FLOW-FF.md#oa-flow.ff.3). The proofs below do not import three-lines, Carlson, Paley–Wiener, Stone, or a theorem about closed analytic generators.
 
 The development source for the exponential kernel and the comparison question is F. Hiai, [free author manuscript, arXiv:2004.02383v1](https://arxiv.org/pdf/2004.02383v1), printed pp. 75–77. The bounded-half-plane zero argument below replaces its printed Carlson footnote; only the stronger horizontal-band bound proved here is used.
 
@@ -109,7 +109,7 @@ The apparent singularity is removable by the scalar power series. Direct integra
 \[
  \widehat p_R(z)=\sqrt{\frac2{\pi R}}\,\frac{\sin(Rz/2)}z.
 \]
-Since \(p_R\in L^1\cap L^2\), FF2 gives
+Since \(p_R\in L^1\cap L^2\), [FF2](OA-FLOW-FF.md#oa-flow.ff.3) gives
 
 <a id="equation-as6"></a>
 
@@ -118,7 +118,7 @@ Since \(p_R\in L^1\cap L^2\), FF2 gives
  \int_{|s|>\delta}q_R(s)\,ds\leq\frac4{\pi R\delta}\quad(\delta>0).
                                                                     \tag{AS6}
 \]
-The last bound uses \(1-\cos(Rs)\leq2\). For every real \(v\), apply FF2 to the compactly supported function \(p_R(x)e^{vx}\); its Fourier transform is the same directly evaluated integral \(\widehat p_R(s+iv)\). Therefore
+The last bound uses \(1-\cos(Rs)\leq2\). For every real \(v\), apply [FF2](OA-FLOW-FF.md#oa-flow.ff.3) to the compactly supported function \(p_R(x)e^{vx}\); its Fourier transform is the same directly evaluated integral \(\widehat p_R(s+iv)\). Therefore
 
 <a id="equation-as7"></a>
 

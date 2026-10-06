@@ -15,11 +15,11 @@ This is a consequence of the whole dual-action average, the locally proved norma
 
 ## FR1. A faithful normal semifinite reference weight always exists
 
-Let \(M\ne0\) act faithfully and nondegenerately on a Hilbert space \(H\). For each unit vector \(\xi\), let \(p_\xi\) be the orthogonal projection onto \(\overline{M'\xi}\). The Hilbert projection exists by CF8. Its range and orthogonal complement are invariant under every unitary in \(M'\), so the commutant-unitary test in [SF0](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0) gives \(p_\xi\in M\). Also \(p_\xi\xi=\xi\). If \(\xi\in qH\) for a projection \(q\in M\), then \(M'\xi\subset qH\) and \(p_\xi\le q\).
+Let \(M\ne0\) act faithfully and nondegenerately on a Hilbert space \(H\). For each unit vector \(\xi\), let \(p_\xi\) be the orthogonal projection onto \(\overline{M'\xi}\). The Hilbert projection exists by [CF8](OA-FLOW-CF.md#oa-flow.cf.8). Its range and orthogonal complement are invariant under every unitary in \(M'\), so the commutant-unitary test in [SF0](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0) gives \(p_\xi\in M\). Also \(p_\xi\xi=\xi\). If \(\xi\in qH\) for a projection \(q\in M\), then \(M'\xi\subset qH\) and \(p_\xi\le q\).
 
 The normal vector functional \(\omega_\xi(x)=\langle x\xi,\xi\rangle\) is supported on \(p_\xi\) and is faithful on \(p_\xi M p_\xi\). Indeed, for \(a\ge0\) in that corner, \(\omega_\xi(a)=0\) implies \(a^{1/2}\xi=0\). Since \(a^{1/2}\) commutes with \(M'\), it vanishes on the dense set \(M'\xi\) in \(p_\xi H\). It also vanishes on \((1-p_\xi)H\), so \(a=0\). This is the concrete support argument used in [NF2](OA-FLOW-NF.md#oa-flow.nf.2); no countability conclusion from that lemma is needed here.
 
-By CF1's maximal principle, choose a maximal pairwise orthogonal family \((p_i)_{i\in I}\) of projections of this form and corresponding unit vectors \(\xi_i\). Its join is \(1\): otherwise a unit vector in \((1-\bigvee_i p_i)H\) would give another nonzero orthogonal support projection. Projection joins and strong convergence of their finite partial sums were proved in [NF1](OA-FLOW-NF.md#oa-flow.nf.1). The index set need not be countable.
+By [CF1](OA-FLOW-CF.md#oa-flow.cf.1)'s maximal principle, choose a maximal pairwise orthogonal family \((p_i)_{i\in I}\) of projections of this form and corresponding unit vectors \(\xi_i\). Its join is \(1\): otherwise a unit vector in \((1-\bigvee_i p_i)H\) would give another nonzero orthogonal support projection. Projection joins and strong convergence of their finite partial sums were proved in [NF1](OA-FLOW-NF.md#oa-flow.nf.1). The index set need not be countable.
 
 Define, for \(a\in M_+\),
 
@@ -41,7 +41,7 @@ For a finite \(F\subset I\), set \(p_F=\sum_{i\in F}p_i\). Orthogonality and \(\
 \qquad \varphi(p_Fap_F)\le\|a\||F|<\infty.
 \tag{FR2}
 \]
-The net \(p_F\) increases strongly to \(1\), so \(p_Fap_F\to a\) strongly, with a uniform norm bound. The vector-series tail argument in ST2 gives ultraweak convergence. Therefore the finite positive cone has ultraweakly dense linear span, precisely the definition of semifiniteness in the opening conventions of [GW](OA-FLOW-GW.md). This proves that \(\varphi\) is faithful, normal and semifinite. The zero algebra has its unique zero weight.
+The net \(p_F\) increases strongly to \(1\), so \(p_Fap_F\to a\) strongly, with a uniform norm bound. The vector-series tail argument in [ST2](OA-FLOW-ST12.md#oa-flow.st.2) gives ultraweak convergence. Therefore the finite positive cone has ultraweakly dense linear span, precisely the definition of semifiniteness in the opening conventions of [GW](OA-FLOW-GW.md). This proves that \(\varphi\) is faithful, normal and semifinite. The zero algebra has its unique zero weight.
 
 <a id="fr-2"></a>
 

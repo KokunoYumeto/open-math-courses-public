@@ -30,10 +30,10 @@ Use the actual earlier programme proofs:
   construct the relative Maslov line and its geometric evaluation;
 - [PS1–PS6](../../20261004-free-intrinsic-graph/prerequisites/global-principal-symbol.md)
   prove the density law and global principal-symbol exact sequence;
-- T1–T6 prove the full ordinary zoom
+- [T1–T6](../tangent-zoom-and-quadratic-models.md) prove the full ordinary zoom
   estimate, rapid regular zoom, nonlinear half-density transport and the
   singular Gaussian formula;
-- the earlier quadratic component
+- the earlier [quadratic component](../../20261004-free-stationary-phase/quadratic-stationary-phase.md)
   supplies Q1–Q6: limit estimates, Gaussians, Schwartz bounds, inversion
   and symmetric diagonalization.
 
@@ -427,7 +427,7 @@ identity. [Reproducible figure source](../figures/draw_gaussian_covariance.py).*
 ## Free sources and the completed scope
 
 The local rescaling comparison uses the free human sources and exact
-programme proofs listed in the tangent lesson.
+programme proofs listed in the [tangent lesson](../tangent-zoom-and-quadratic-models.md).
 The relative-line and principal-symbol inputs come from the programme
 proofs based on Lars Hörmander's freely readable
 [*Fourier integral operators. I*](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf),

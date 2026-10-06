@@ -48,7 +48,7 @@ Let \(\mathfrak f(\pi)\) be the finite conductor and put \(A(\pi)=|D_F|^nN\mathf
 
 For the entire cases the completion is bounded in each closed vertical strip; in the exceptional case the same assertion holds after multiplication by \((s+it)(s-1+it)\).
 
-The degree-one proof, including the pure-norm exception, is *Hecke L-functions and the Dedekind zeta function*, Theorem 10.1. The earlier \(GL_2/\mathbb Q\) proof is *Global Whittaker functions and the L-function of a cuspidal representation*, Theorems 3.1, 4.2 and 5.1. We now give the matrix-space argument for arbitrary \(n\ge2\) and arbitrary number fields. Its global steps are proved below. Proposition 1.1a proves general adelic reduction; Propositions 1.2–1.3 prove the unramified Fourier theory and the complete finite-place matrix ideal. Theorems 1.11 and 1.13 prove smooth comparison and compatible unitary tensor pairings for actual admissible Hilbert cusp constituents, with reverse comparison in Proposition 1.14 and Lemma 1.15. Theorem 1.17 proves the finite-place scalar Fourier equation in every rank, including ramification. Theorem 1.18 proves the full real/complex determinant-character Schwartz family. Theorem 1.25 proves exact Gaussian ideals, attainment, entire Schwartz division and scalar Fourier equations for all real/complex symmetric powers, their antiholomorphic companions, duals and norm twists. Theorem 1.19 proves realization and admissibility for every abstract cuspidal subquotient, including its unitary norm normalization. Theorems 1.21 and 1.22 prove general archimedean continuation and scalar Fourier identities in the stated smooth dual-pair models. Theorem 1.24 and Corollary 1.24c prove the nonnegative finite-place matrix epsilon exponent, and Corollary 1.24d bounds the reciprocal-factor degree by n. The remaining inputs are standard-factor and standard-conductor identification for general finite-place irreducibles, and the canonical archimedean Gaussian ideal and standard-factor identification in 1.1c; Proposition 1.16 supplies the exact finite-place determinant-character conductor and Tate-product factors. The global proof below is conditional on these precise remaining assertions. The freely accessible treatment being used is [Goldfeld–Jacquet, author notes, §§2–5 and 8–9](https://www.math.columbia.edu/~goldfeld/LanglandsBookChapter.pdf).
+The degree-one proof, including the pure-norm exception, is *Hecke L-functions and the Dedekind zeta function*, Theorem 10.1. The earlier \(GL_2/\mathbb Q\) proof is *Global Whittaker functions and the L-function of a cuspidal representation*, Theorems 3.1, 4.2 and 5.1. We now give the matrix-space argument for arbitrary \(n\ge2\) and arbitrary number fields. Its global steps are proved below. Proposition 1.1a proves general adelic reduction; Propositions 1.2–1.3 prove the unramified Fourier theory and the complete finite-place matrix ideal. Theorems 1.11 and 1.13 prove smooth comparison and compatible unitary tensor pairings for actual admissible Hilbert cusp constituents, with reverse comparison in Proposition 1.14 and Lemma 1.15. Theorem 1.17 proves the finite-place scalar Fourier equation in every rank, including ramification. Theorem 1.18 proves the full real/complex determinant-character Schwartz family. Theorem 1.25 proves exact Gaussian ideals, attainment, entire Schwartz division and scalar Fourier equations for all real/complex symmetric powers, their antiholomorphic companions, duals and norm twists. Theorem 1.19 proves realization and admissibility for every abstract cuspidal subquotient, including its unitary norm normalization. Theorems 1.21 and 1.22 prove general archimedean continuation and scalar Fourier identities in the stated smooth dual-pair models. Theorem 1.24 and Corollary 1.24c prove the nonnegative finite-place matrix epsilon exponent, and Corollary 1.24d bounds the reciprocal-factor degree by n. The remaining inputs are standard-factor and standard-conductor identification for general finite-place irreducibles, and the explicit archimedean standard-factor identification in 1.1c; Theorem 1.31 below proves the genuine Gaussian ideal and conjugation package in every prescribed actual dual-pair model; Proposition 1.16 supplies the exact finite-place determinant-character conductor and Tate-product factors. The global proof below is conditional on these precise remaining assertions. The freely accessible treatment being used is [Goldfeld–Jacquet, author notes, §§2–5 and 8–9](https://www.math.columbia.edu/~goldfeld/LanglandsBookChapter.pdf).
 
 ### The quotient and cusp estimates
 
@@ -319,7 +319,7 @@ For an unramified additive character at a finite place, the epsilon factor is \(
 \tag{1.5l}
 \]
 
-The local normalizations commute with conjugation and duality for unitary representations, and an unramified norm twist shifts \(s\) without changing the finite conductor. Proposition 1.3 proves rational continuation, the principal matrix ideal, entire normalized quotients and generator attainment at every finite place, including ramification. Its generator is denoted \(L_{\mathrm{mat}}\); agreement with the chosen standard parameter or rank-one Rankin–Selberg normalization for general irreducibles remains part of the factor-identification input. Theorem 1.17 proves the scalar Fourier equation for every finite-place smooth admissible irreducible representation. Equations (1.7j)–(1.7m) then give an integral epsilon exponent, character scaling and the compatible-unitary phase. Theorem 1.24 and Corollary 1.24c prove nonnegativity of the matrix epsilon exponent for every finite-place irreducible; Corollary 1.24d proves the degree bound and its exponent-zero consequence. Standard-factor and standard-conductor identification remain unproved. At infinity, Theorems 1.21–1.22 prove full-Schwartz continuation and a scalar Fourier equation in actual smooth dual-pair models; the canonical Gaussian ideal, standard-factor identification and compatible conjugation normalization remain unproved. Proposition 1.21b and Corollary 1.22e supply canonical full-Schwartz division and constant epsilon under the precise Gaussian-ideal premise, while Corollary 1.22f proves the unitary scalar critical-line phase. Proposition 1.16 supplies the full finite-place Fourier equation, exact matrix/Tate-product factor and nonnegative conductor exponent for every determinant character, including ramification. Propositions 1.5–1.7 supply polynomial-module closure and the full Gaussian ideal for determinant characters over both real and complex fields; Theorem 1.18 supplies their full-Schwartz continuation, entire division and Fourier equation with exact phases. Theorem 1.25 supplies this entire canonical package for the explicit all-rank symmetric-power families and their duals, including exact Tate-product comparison and conjugation; the general irreducible canonical-generator input remains open. Proposition 1.2 proves the local functional equation with epsilon factor one at every unramified finite place, in every rank; the Satake inverse/conjugate calculations in Proposition 2.3 give their unramified duality and conjugation normalization. A determinant norm twist shifts the integral variable directly. The exact free source locators for the local integral theory are [Goldfeld–Jacquet, §2, Theorem 2.1 and Lemma 2.2; §3, Theorem 3.5, Lemma 3.6 and the subsequent generator construction](https://www.math.columbia.edu/~goldfeld/LanglandsBookChapter.pdf). The identification of the standard conductor exponent with the epsilon exponent is also part of the required local data; for the rank-one Rankin–Selberg definition of the standard function it is [Getz–Hahn, 22 April 2022 draft, Proposition 11.5.5 and Theorem 11.5.6](https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf). Agreement of the two standard constructions belongs to this identification input. An unspecified local functional equation would not suffice to deduce (1.4).
+The local normalizations commute with conjugation and duality for unitary representations, and an unramified norm twist shifts \(s\) without changing the finite conductor. Proposition 1.3 proves rational continuation, the principal matrix ideal, entire normalized quotients and generator attainment at every finite place, including ramification. Its generator is denoted \(L_{\mathrm{mat}}\); Theorem 2.3l below identifies it with the rank-one Rankin–Selberg factor for every actual generic irreducible; agreement with the chosen standard parameter remains part of the factor-identification input. Theorem 1.17 proves the scalar Fourier equation for every finite-place smooth admissible irreducible representation. Equations (1.7j)–(1.7m) then give an integral epsilon exponent, character scaling and the compatible-unitary phase. Theorem 1.24 and Corollary 1.24c prove nonnegativity of the matrix epsilon exponent for every finite-place irreducible; Corollary 1.24d proves the degree bound and its exponent-zero consequence. Standard-factor and standard-conductor identification remain unproved. At infinity, Theorems 1.21–1.22 prove full-Schwartz continuation and a scalar Fourier equation in actual smooth dual-pair models; Theorem 1.31 proves the canonical Gaussian ideal, finite attainment and compatible conjugation normalization in every prescribed actual dual-pair model; explicit standard-factor identification remains unproved. Proposition 1.21b and Corollary 1.22e supply canonical full-Schwartz division and constant epsilon under the precise Gaussian-ideal premise, while Corollary 1.22f proves the unitary scalar critical-line phase. Proposition 1.16 supplies the full finite-place Fourier equation, exact matrix/Tate-product factor and nonnegative conductor exponent for every determinant character, including ramification. Propositions 1.5–1.7 supply polynomial-module closure and the full Gaussian ideal for determinant characters over both real and complex fields; Theorem 1.18 supplies their full-Schwartz continuation, entire division and Fourier equation with exact phases. Theorem 1.25 supplies this entire canonical package for the explicit all-rank symmetric-power families and their duals, including exact Tate-product comparison and conjugation; Theorem 1.31 below extends Gaussian-ideal existence to every prescribed actual irreducible dual-pair model; its explicit standard-factor labels remain open. Proposition 1.2 proves the local functional equation with epsilon factor one at every unramified finite place, in every rank; the Satake inverse/conjugate calculations in Proposition 2.3 give their unramified duality and conjugation normalization. A determinant norm twist shifts the integral variable directly. The exact free source locators for the local integral theory are [Goldfeld–Jacquet, §2, Theorem 2.1 and Lemma 2.2; §3, Theorem 3.5, Lemma 3.6 and the subsequent generator construction](https://www.math.columbia.edu/~goldfeld/LanglandsBookChapter.pdf). The identification of the standard conductor exponent with the epsilon exponent is also part of the required local data; for the rank-one Rankin–Selberg definition of the standard function it is [Getz–Hahn, 22 April 2022 draft, Proposition 11.5.5 and Theorem 11.5.6](https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf). Agreement of the two standard constructions belongs to this identification input. An unspecified local functional equation would not suffice to deduce (1.4).
 
 The discriminant power in (1.5l) can be verified directly. If \(\psi_{v,a}(x)=\psi_v(ax)\), the self-dual measure on \(M_n(F_v)\) is multiplied by \(|a|_v^{n^2/2}\). Hence
 \(\widehat\Phi^{\,\psi_{v,a}}(X)=|a|_v^{n^2/2}\widehat\Phi^{\,\psi_v}(aX)\).
@@ -5725,8 +5725,9 @@ proving the assertion. General character
 dependence follows from (1.26v).
 \(\square\)
 
-The general Gaussian ideal and its finite
-attaining family remain the missing premise.
+Theorem 1.31 below supplies the general Gaussian ideal and its finite
+attaining family in every prescribed actual complete smooth moderate
+dual-pair model.
 The common gamma majorant, scalar Fourier
 equation and polynomial-module closure do
 not establish it. These arguments do not
@@ -6750,12 +6751,12 @@ polynomial correction** of the explicit inducing gamma product.
 That correction is defined by the integrals, not an imported
 classification statement.
 
-Still required for every arbitrary irreducible is an actual all-rank
-proof of its principal/standard-module realization with the appropriate
-data, comparison with an arbitrary originally supplied complete
-realization when used, and explicit identification of \(P_Q\) and its
-scalar with the intended real character/discrete-series or complex
-angular standard gamma factors. These results are not asserted here.
+Theorems 1.27–1.31 below prove principal-core occurrence and transfer
+the Gaussian package to every prescribed actual complete smooth
+moderate dual-pair realization. Abstract cores with no supplied
+realization still require a globalization. Explicit identification of
+\(P_Q\) and its scalar with the intended real character/discrete-series
+or complex angular standard gamma factors also remains required.
 LG-LLC-01's unproved classification and the rank-two kernel are not
 being used to supply them.
 
@@ -6770,11 +6771,1569 @@ Goldfeld--Jacquet's free author notes §3,
 are a locator for the general target, not a substitute for these
 proofs or for the still-missing classification.
 
+### Finite generation over the minimal nilpotent algebra for real and complex general linear groups
+
+Let \(F=\mathbb R\) or \(\mathbb C\), \(G=GL_n(F)\),
+\(K=O(n)\) or \(U(n)\), and \(N\) the upper unitriangular group.
+All enveloping algebras and Harish-Chandra modules below are over
+\(\mathbb C\). Thus \(\mathfrak g\) denotes the complexification of
+the real Lie algebra, and \(\mathfrak n,\mathfrak k\) denote the
+corresponding complexifications.
+An admissible module means a compatible \((\mathfrak g,K)\)-module
+with finite-dimensional compact isotypic packets. Compact-finite
+vectors have finite-dimensional \(K\)-orbits.
+
+**Theorem 1.27.** Every irreducible admissible
+\((\mathfrak g,K)\)-module \(V_0\) for \(GL_n(\mathbb R)\) or
+\(GL_n(\mathbb C)\) is finitely generated over \(U(\mathfrak n)\).
+Consequently \(V_0/\mathfrak n^qV_0\) is finite-dimensional for
+every positive integer \(q\). The same statements hold for lower
+unitriangular \(\mathfrak n\).
+
+This is an algebraic statement about an arbitrary core. No
+globalization, subrepresentation, Jacquet nonvanishing or
+classification theorem is used.
+
+#### Step 1: Finite core generators and the required central operators
+
+Choose a nonzero compact-finite vector \(v\) and let \(W\) be its
+finite-dimensional \(K\)-orbit span. Then \(U(\mathfrak g)W=V_0\):
+the former is a nonzero Lie- and compact-stable subspace, because
+\(\operatorname{Ad}(K)\) preserves every finite-degree part of the
+enveloping algebra. Irreducibility gives equality.
+
+Use the total-degree filtration on the enveloping algebra.
+Only the following spanning statement is needed. In a word of
+Lie generators, exchanging an out-of-order adjacent pair replaces
+their difference by a single commutator and therefore lowers the
+word length. Induction first on length and then on the number of
+inversions expresses each word in ordered monomials. Commutators
+have smaller length, so the leading symbols commute and there is
+a surjection \(S(\mathfrak g)\twoheadrightarrow
+\operatorname{gr}U(\mathfrak g)\). No linear-independence assertion
+about these ordered monomials is required: this surjection and
+their spanning suffice for every graded quotient used below.
+
+For a matrix algebra, the invariant polynomial
+\(\operatorname{tr}(X^r)\) has an invariant symmetrization \(C_r\)
+in its enveloping algebra. Explicitly, under the trace identification,
+its symbol is
+\[
+ p_r=\sum_{i_1,\ldots,i_r}
+       E_{i_1i_2}E_{i_2i_3}\cdots E_{i_ri_1}.             \tag{1.33a}
+\]
+Symmetrization averages each degree-\(r\) monomial over all orders.
+It commutes with every adjoint derivation, since applying a
+derivation before or after the average gives the same sum.
+The polynomial \(p_r\) is adjoint-invariant, because differentiating
+\(\operatorname{tr}(e^{tY}Xe^{-tY})^r\) gives zero.
+Thus \(C_r\) commutes with every Lie generator and with the full
+compact group.
+
+For the real group use \(r=1,\ldots,n\) in
+\(\mathfrak g=\mathfrak{gl}_n(\mathbb C)\).
+For the complex group
+\[
+ \mathfrak g=\mathfrak{gl}_n(\mathbb C)\oplus
+                         \mathfrak{gl}_n(\mathbb C),\qquad
+ \mathfrak k=\{(X,-X^t):X\in\mathfrak{gl}_n(\mathbb C)\};
+                                                               \tag{1.33b}
+\]
+use these \(n\) central operators from the first summand.
+This description follows by complexifying the real map
+\(Y\mapsto(Y,\bar Y)\); for skew-Hermitian \(Y\),
+\(\bar Y=-Y^t\).
+
+Each \(C_r\) acts by a scalar \(\lambda_r\) on \(V_0\).
+Indeed it preserves every finite compact packet. On any nonzero
+such packet it has an eigenvector over \(\mathbb C\).
+The kernel of \(C_r-\lambda_r\) is a nonzero Lie- and
+compact-stable subspace, so is the whole irreducible module.
+This argument uses neither an infinite-dimensional Schur theorem
+nor the Harish-Chandra isomorphism.
+
+Filter \(V_0\) by \(V_j=U_j(\mathfrak g)W\).
+Its associated graded is a finitely generated symmetric-algebra
+module. The symbols of \(\mathfrak k\) kill its generators:
+\(\mathfrak kW\subset W\), so this action has degree zero.
+The symbols \(p_r\) also kill the entire graded module, because
+\((C_r-\lambda_r)V_0=0\). Commutativity of the symbols now gives
+a surjection
+\[
+ \left(S(\mathfrak g)/
+        (\mathfrak k,p_1,\ldots,p_n)\right)\otimes W
+                      \longrightarrow \operatorname{gr}V_0.
+                                                               \tag{1.33c}
+\]
+We prove directly that the algebra on the left is finite over
+the image of \(S(\mathfrak n)\).
+
+#### Step 2: The finite commutative calculation
+
+Over the real group, quotienting by \(\mathfrak k\) sets
+\(E_{ij}=E_{ji}\). Write \(a_i=E_{ii}\), and
+\(y_{ij}=E_{ij}=E_{ji}\), \(i<j\). The quotient is
+\[
+ \mathbb C[y_{ij}:i<j]\,[a_1,\ldots,a_n],
+                                                               \tag{1.33d}
+\]
+with the off-diagonal polynomial ring precisely the image of
+\(S(\mathfrak n)\). The symbols \(p_r\) are traces of powers
+of the symmetric symbol matrix having diagonal \(a_i\) and
+off-diagonal entries \(y_{ij}\).
+
+For the complex group, the relations in (1.33b) set
+\(E_{ij}^{(1)}=E_{ji}^{(2)}\). The upper entries in the first
+summand and the upper entries in the second supply all off-diagonal
+entries of one unrestricted symbol matrix. Its diagonal entries
+\(a_i=E_{ii}^{(1)}=E_{ii}^{(2)}\) supply the remaining variables.
+Again the quotient has the form (1.33d), now with all ordered
+off-diagonal entries, and their polynomial ring is the image of
+\(S(\mathfrak n)\). The selected first-summand \(p_r\)'s are exactly
+the traces of powers of this unrestricted symbol matrix.
+
+Give diagonal variables degree one and off-diagonal variables
+degree zero. In either case,
+\[
+ p_r=\sum_i a_i^r+\text{terms of diagonal degree less than }r.
+                                                               \tag{1.33e}
+\]
+For a term using an off-diagonal matrix entry, at least one factor
+is off-diagonal, so the asserted strict inequality follows directly
+from (1.33a).
+
+Newton's identities imply that the ideal \((p_1,\ldots,p_n)\)
+also contains characteristic-polynomial coefficients \(Q_r\)
+whose leading diagonal terms are the elementary symmetric
+polynomials \(e_r(a)\), \(r=1,\ldots,n\).
+Here the identities can be obtained without any invariant-theory
+input: for indeterminates \(z_i\),
+differentiate \(\prod_i(1+z_it)\), divide formally by that product,
+and compare coefficients with
+\(\sum_i z_i/(1+z_it)\).
+This gives
+\[
+ r e_r=\sum_{j=1}^r(-1)^{j-1}e_{r-j}\sum_i z_i^j,
+ \quad e_0=1.
+                                                               \tag{1.33f}
+\]
+Applying these polynomial formulas to the \(p_j\)'s gives \(Q_r\),
+and (1.33e) gives \(Q_r=e_r(a)+R_r\) with
+\(\deg_a R_r<r\).
+
+In the quotient by these relations, use the elementary identity
+\[
+ a_i^n=\sum_{r=1}^n(-1)^{r+1}e_r(a)a_i^{n-r}
+       =\sum_{r=1}^n(-1)^rR_r a_i^{n-r}.
+                                                               \tag{1.33g}
+\]
+The first equality evaluates
+\(\prod_j(T-a_j)\) at \(T=a_i\).
+Every term on the final right side has diagonal degree at most
+\(n-1\). Whenever a diagonal monomial has an exponent at least
+\(n\), (1.33g) therefore lowers its total diagonal degree.
+Iteration terminates and leaves a combination, over the
+off-diagonal ring, of the finite list
+\[
+ a_1^{b_1}\cdots a_n^{b_n},\qquad 0\le b_i<n.             \tag{1.33h}
+\]
+Thus (1.33c) is finite over \(S(\mathfrak n)\).
+No assertion about a polynomial gamma majorant or a standard-module
+classification enters this finite calculation.
+
+#### Step 3: Lifting generators and finite Jacquet quotients
+
+Lift the finitely many generators (1.33h) times a basis of \(W\)
+to actual vectors of \(V_0\). They generate \(V_0\) over
+\(U(\mathfrak n)\): for a vector of filtration degree \(j\),
+its leading symbol is a combination of the lifted generators
+with nilpotent-algebra symbols; subtract the corresponding
+enveloping-algebra combination to lower the filtration degree.
+Induction on \(j\) finishes the argument.
+
+Let \(I=\mathfrak nU(\mathfrak n)\) be the augmentation ideal.
+If \(V_0\) has \(r\) nilpotent-algebra generators, there is a
+surjection
+\[
+ (U(\mathfrak n)/I^q)^r\longrightarrow V_0/I^qV_0.
+                                                               \tag{1.33i}
+\]
+Ordered monomials of length at least \(q\) belong to \(I^q\);
+hence the quotient on the left is spanned by the finite list
+of monomials of length less than \(q\).
+This proves finite dimension without identifying \(I^q\)
+with a PBW filtration piece.
+The notation \(\mathfrak n^qV_0\) means exactly \(I^qV_0\).
+The quotient is stable under the diagonal Lie algebra and the
+compact diagonal subgroup, since their adjoint actions preserve
+\(\mathfrak n\) and every power of its augmentation ideal.
+
+The long permutation matrix in \(K\) exchanges upper and lower
+unitriangular groups. Transporting the proof by that matrix gives
+the lower-nilpotent statement and completes Theorem 1.27.
+
+#### Scope
+
+Theorem 1.27 supplies finite minimal Jacquet quotients for every abstract
+irreducible admissible core. It does not assert that the first
+quotient is nonzero: an augmentation ideal is not automatically
+the Jacobson radical of its enveloping algebra, so a bare use of
+Nakayama's lemma here would be invalid.
+The radial argument below proves that nonvanishing for a core
+with an actual complete smooth moderate continuous dual-pair
+realization. Existence of such a realization for every arbitrary
+abstract module is a further assertion if no realization is supplied.
+
+The free primary locator is Casselman's *Canonical extensions of
+Harish-Chandra modules to representations of G*, §5, available as
+the publisher's freely accessible PDF:
+[Casselman, publisher open-access edition](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/90CFF3C365389AA3AEE897611EC8DE2D/S0008414X00000523a.pdf/canonical-extensions-of-harish-chandra-modules-to-representations-of-g.pdf).
+Its cited finite-generation and nonvanishing results are not
+being imported in place of the proofs written here.
+
+### Nonzero minimal Jacquet quotients and actual algebraic Borel occurrence
+
+Let \(G=GL_n(F)\), \(F=\mathbb R\) or \(\mathbb C\), with
+the upper unitriangular group \(N\), upper triangular group \(B\)
+and maximal compact group \(K\). Suppose \(E,\widetilde E\) are
+actual complete Hausdorff locally convex smooth moderate-growth
+representations, with continuous differentiated actions and a jointly
+continuous nondegenerate invariant pairing
+\[
+ B_E:E\times\widetilde E\longrightarrow\mathbb C .
+ \tag{1.34a}
+\]
+Their compact-finite cores are \(V_0,\widetilde V_0\), with
+\(\widetilde V_0\) the admissible contragredient, and \(V_0\) is
+irreducible admissible. Moderate growth means that for each continuous
+seminorm \(p\) there are a continuous seminorm \(q\), \(C\) and \(A\)
+such that
+\[
+ p(\pi(g)v)\le C H(g)^Aq(v),\qquad
+ H(g)=1+\|g\|+\|g^{-1}\| .                               \tag{1.34b}
+\]
+The actions are jointly continuous. No prescribed realization is
+replaced by an unstated canonical completion.
+
+**Theorem 1.28.** Under these hypotheses, \(V_0/\mathfrak nV_0\ne0\).
+It is finite-dimensional by Theorem 1.27. There are smooth diagonal
+characters \(\chi_1,\ldots,\chi_n\) and an explicit injective
+\((\mathfrak g,K)\)-map
+\[
+ T_0:V_0\longrightarrow I_0(\chi_1,\ldots,\chi_n)          \tag{1.34c}
+\]
+into the compact-finite core of the full normalized Borel induction.
+The same assertion holds for \(\widetilde V_0\). Transposing its
+injection on finite compact packets gives a surjective core map
+from a full inverse-character Borel induction onto \(V_0\).
+
+This proves occurrence in every rank and for both fields for every
+core having the stipulated actual realization, including the
+compatible smooth cuspidal realizations supplied by lesson04
+Theorem 1.19. It does not claim existence of those realizations for an
+arbitrary abstract core. It also does not assert continuity of the
+algebraic \(T_0\) on \(E\).
+Removing or restoring a central norm twist does not restrict this
+scope: multiply the paired actions by that character and its
+inverse. Their pairing stays invariant, and the norm character
+and its inverse are bounded by fixed powers of \(H(g)\), so
+smoothness, completeness and moderate growth persist.
+
+#### Step 1: Compact smoothing and fixed finite generators
+
+The compact-finite core is dense in each supplied topology.
+One can check this directly using the polynomial class functions
+\[
+ q_K(k)=\frac{1+\operatorname{Re}\operatorname{tr}(k)/n}{2},
+ \qquad
+ A_m v=\frac{\int_Kq_K(k)^m\pi(k)v\,dk}{\int_Kq_K(k)^m\,dk}.
+ \tag{1.34d}
+\]
+They are positive approximate identities: away from an identity
+neighborhood \(q_K\le c<1\), whereas a smaller neighborhood has
+\(q_K\ge c'>c\) and positive Haar mass. Its relative exterior mass
+is at most \((c/c')^m/\operatorname{mass}(U')\).
+Joint continuity gives \(A_m v\to v\) in every seminorm.
+The integrals exist by compact Riemann sums and completeness.
+Under left or right compact translation the polynomial kernel
+has finite-dimensional orbit, so the output is compact-finite.
+This proves density without a globalization theorem.
+Compact character projectors are continuous by the same integration
+and finite-dimensional Schur orthogonality. Their ranges are exactly
+the finite isotypic packets in the given core.
+
+The contragredient core is irreducible. If a nonzero proper
+submodule \(U\subset\widetilde V_0\) existed, some finite compact
+packet of \(U\) would be proper in the corresponding dual packet.
+Finite-dimensional duality gives a nonzero vector annihilating
+\(U\). The annihilator in \(V_0\) is Lie- and compact-stable, hence
+equals \(V_0\), contradicting \(U\ne0\). Here an entire proper
+submodule cannot fill every packet, since the core is their
+algebraic direct sum. Thus both cores are finitely generated over
+\(U(\mathfrak g)\) by finite compact-stable spaces.
+
+We require the following elementary strengthening in an actual
+realization. Choose a finite set of compact types whose *entire*
+isotypic packets \(W\) contain core generators. Their sum \(W\)
+is finite-dimensional. Let \(P_W\) be their character projector.
+Choose nonnegative smooth approximate identities \(h_\epsilon\)
+on \(G\), supported near the identity, with integral one.
+Then
+\[
+ A=P_W\pi(h_\epsilon)P_W|_W
+ \tag{1.34e}
+\]
+is arbitrarily close to identity on the finite space \(W\), hence
+invertible for small \(\epsilon\). Both compact convolutions convert
+\(h_\epsilon\) into one bi-compact-finite \(h\in C_c^\infty(G)\);
+its support lies in the compact set \(K\operatorname{supp}
+(h_\epsilon)K\).
+For \(w\in W\), \(w=\pi(h)A^{-1}w\).
+
+Every core vector is a finite sum \(D w\), \(D\in U(\mathfrak g)\),
+\(w\in W\). Differentiation under the compactly supported convolution
+and integration by parts express \(D\pi(h)w'\) as \(\pi(h_D)w'\),
+with \(h_D\in C_c^\infty(G)\). The sign and left/right differentiation
+are fixed by the identity
+\(\pi(\exp(tX))\pi(h)=\pi(h(\exp(-tX)\,\cdot))\).
+Consequently every core vector has a representation
+\[
+ \sum_{j=1}^r\pi(f_j)w_j,\qquad f_j\in C_c^\infty(G),     \tag{1.34f}
+\]
+with a *fixed* finite list \(w_1,\ldots,w_r\in W\).
+The functions may depend on the vector. Apply the same construction
+to the contragredient supplied realization.
+
+#### Step 2: One coefficient-growth exponent for every dual core vector
+
+There are a continuous seminorm \(Q\) on \(E\) and one exponent
+\(A\) such that for each \(\widetilde v\in\widetilde V_0\)
+there is a finite constant \(C_{\widetilde v}\) with
+\[
+ |B_E(\pi(g)v,\widetilde v)|
+       \le C_{\widetilde v}H(g)^A Q(v)
+ \quad(v\in E,\ g\in G).                                \tag{1.34g}
+\]
+The exponent and the seminorm do not change when
+\(\widetilde v\) is differentiated any fixed number of times.
+
+Indeed choose the fixed generators \(\widetilde w_j\) in (1.34f).
+Joint continuity bounds all \(B_E(v,\widetilde w_j)\) by one
+continuous seminorm \(p(v)\). Apply (1.34b) to that one \(p\);
+this gives a single \(Q,A\).
+For \(\widetilde v=\sum_j\widetilde\pi(f_j)\widetilde w_j\),
+invariance gives
+\[
+ B_E(\pi(g)v,\widetilde v)
+   =\sum_j\int_G f_j(h)
+           B_E(\pi(h^{-1}g)v,\widetilde w_j)\,dh .
+ \tag{1.34h}
+\]
+The elementary norm satisfies \(H(h^{-1}g)\le C H(h)H(g)\).
+Insert the bound just obtained and integrate
+\(|f_j(h)|H(h)^A\), finite by compact support. This proves (1.34g).
+Every differentiated dual core vector is still in the same core,
+so (1.34f) gives its own finite constant and exactly the same \(Q,A\).
+No unproved uniform asymptotic estimate is being used.
+
+#### Step 3: A bounded radial finite jet system
+
+We prove the precise fact about compact-finite coefficient functions
+that will prevent arbitrary exponential decay.
+Let \(f\) be a smooth function on \(G\), finite under both compact
+translations, and with a scalar action of the selected matrix
+central operators. Its finite compact translation span identifies
+the restriction to
+\[
+ a(x)=\operatorname{diag}(e^{x_1},\ldots,e^{x_n})
+ \tag{1.34i}
+\]
+with a vector \(F(x)\) in a fixed finite-dimensional space.
+Using all finite left/right translates avoids choosing a single
+possibly vanishing radial component.
+
+Fix a chamber with \(|x_i-x_j|\ge\eta>0\), and its part in
+which the signs of those differences do not change.
+Each central trace operator of degree \(r\), normalized as specified
+below, has radial expression
+\[
+ \mathcal C_r F
+     =\sum_i\partial_{x_i}^{\,r}F+L_rF,\qquad
+        \operatorname{ord}_x L_r\le r-1,                 \tag{1.34j}
+\]
+where the coefficients of \(L_r\), and every fixed number of their
+derivatives, are bounded on this chamber portion. They are matrices
+on the finite compact translation space.
+
+Here is the coordinate computation, including the bounds.
+For \(r_i=e^{x_i}\), the right vector field \(E_{ij}\), \(i\ne j\),
+at \(a\) is a combination of compact left and right fields.
+Over \(\mathbb R\), take \(K_{ij}=E_{ij}-E_{ji}\). Solving
+\(aE_{ij}=uK_{ij}a+v aK_{ij}\) gives exactly
+\[
+ u=\frac{r_ir_j}{r_j^2-r_i^2}
+     =\frac1{2\sinh(x_j-x_i)},\qquad
+ v=-\frac{r_i^2}{r_j^2-r_i^2}
+     =-\frac1{e^{2(x_j-x_i)}-1}.                         \tag{1.34k}
+\]
+The analogous expression for \(E_{ji}\) uses
+the same \(u\) and \(v=-r_j^2/(r_j^2-r_i^2)\).
+These formulas follow by comparing the two off-diagonal entries,
+so introduce no integration or asymptotic theorem.
+For \(\mathbb C\), the compact generators
+\(E_{ij}-E_{ji}\) and \(i(E_{ij}+E_{ji})\) solve the two
+real off-diagonal systems; the same denominators and bounded
+ratios occur. Imaginary diagonal generators are compact fields,
+and real diagonal generators are \(\partial_{x_i}\).
+
+All the displayed coefficients and their derivatives are bounded
+when the gap has magnitude at least \(\eta\). Derivatives only
+produce rational expressions in \(e^{x_j-x_i}\) with the same
+excluded zero denominator; at either infinite endpoint they
+have finite limits or tend to zero.
+The local compact-angular coordinate expressions away from identity
+are obtained by conjugating the Lie generators by compact matrices.
+Their fixed derivatives are bounded because compact adjoint
+matrices and their derivatives are bounded. The same two-by-two
+systems then apply. Diagonal compact redundancy in the complex
+case is removed by choosing one compact torus factor rather than
+two; it gives a compact derivative, not a growing radial coefficient.
+
+Applying a product of \(r\) vector fields now gives bounded
+coefficients on a finite sum of compact derivatives and radial
+derivatives. The compact derivatives act by fixed matrices on
+the chosen finite translation space.
+Only products of the diagonal radial components can contribute
+radial derivative order \(r\); differentiating any coefficient
+lowers that order, and an off-diagonal generator has zero radial
+component at \(a\). The invariant trace symbol restricts on the
+diagonal to \(\sum_i\xi_i^r\).
+This proves (1.34j) with every stated bound. Over the complex group
+use \(2^r C_r^{(1)}\): the first-summand generator
+\((E_{ii},0)\) has radial component
+\(\tfrac12\partial_{x_i}\), its other component being compact.
+Over the real group no such factor is present.
+
+Newton's polynomial construction (1.33f) applied to these commuting
+central operators gives degree-\(r\) central operators whose radial
+expressions are
+\[
+ e_r(\partial_x)F+\mathcal L_rF=\mu_rF,\qquad
+       \operatorname{ord}\mathcal L_r\le r-1,
+                    \quad r=1,\ldots,n.                \tag{1.34l}
+\]
+All coefficient derivatives remain bounded, by finite products
+and the product rule.
+No Harish-Chandra isomorphism or radial formula has been assumed.
+
+For each \(i\), the ordinary constant-coefficient identity
+\[
+ \partial_{x_i}^{\,n}
+   =\sum_{r=1}^n(-1)^{r+1}
+          \partial_{x_i}^{\,n-r}e_r(\partial_x)          \tag{1.34m}
+\]
+is the characteristic-polynomial identity used in (1.33g).
+Apply (1.34l) to \(F\) on its right side. Every resulting term has
+total radial order at most \(n-1\); its coefficients and fixed
+derivatives are bounded.
+Differentiate these equations to reduce every derivative whose
+multi-index has some component at least \(n\). Each reduction
+strictly lowers total derivative order, so it terminates.
+Thus the finite jet
+\[
+ J(x)=\big(\partial_x^\alpha F(x)\big)_{0\le\alpha_i<n}
+ \tag{1.34n}
+\]
+satisfies a first-order system
+\[
+ \partial_{x_i}J=A_i(x)J,\qquad \sup_x\|A_i(x)\|<\infty
+ \tag{1.34o}
+\]
+on every such fixed-gap chamber portion. Only finitely many
+derivatives of the bounded coefficients are needed to form
+these matrices.
+
+Along a ray \(x(t)=x^{(0)}-tH\) remaining in that portion,
+\(J'(t)=A(t)J(t)\) with \(\|A(t)\|\le M\).
+For a nonzero initial jet, the elementary integral inequality
+for the backward equation gives
+\[
+ \|J(t)\|\ge e^{-Mt}\|J(0)\|,\qquad t\ge0.               \tag{1.34p}
+\]
+To check this without dividing by a possibly zero norm,
+solve backwards from \(t\) and use the integral inequality
+\(\|J(s)\|\le \|J(t)\|+\int_s^t M\|J(u)\|du\);
+iteration of its integral series gives the factor \(e^{M(t-s)}\).
+If \(J(t)=0\), this argument also forces \(J(0)=0\).
+
+#### Step 4: Nonvanishing of the Jacquet quotient
+
+For \(n=1\), \(\mathfrak n=0\), so there is nothing to prove.
+For \(n\ge2\), suppose instead that \(V_0=\mathfrak nV_0\).
+Then \(V_0=\mathfrak n^qV_0\) for every \(q\).
+Choose a nonzero paired core coefficient
+\[
+ f(g)=B_E(\pi(g)v,\widetilde v);
+ \tag{1.34q}
+\]
+one can choose its value at identity nonzero.
+The function is finite under both compact translations.
+Each chosen central operator acts by a scalar on the irreducible
+core, by the finite-packet argument in Theorem 1.27.
+The radial system in Step 3 of this argument therefore applies.
+
+Choose a regular matrix near the identity where this coefficient
+is nonzero. Such matrices have pairwise distinct singular values:
+the discriminant of the characteristic polynomial of \(g^*g\)
+is a nonzero polynomial in the real entries, so its zero set has
+empty interior. Elementary diagonalization gives
+\(g=k_1a(x^{(0)})k_2\), with \(x_1^{(0)}<\cdots<x_n^{(0)}\),
+after a compact permutation. Including all finite compact translates
+in \(F\) makes \(F(x^{(0)})\ne0\), hence \(J(x^{(0)})\ne0\).
+
+Take real \(H_1>\cdots>H_n\), put
+\(\epsilon=\min_i(H_i-H_{i+1})>0\), and use
+\[
+ a_t=\operatorname{diag}(e^{x_i^{(0)}-tH_i}).
+ \tag{1.34r}
+\]
+The ordered gaps grow and stay bounded away from zero.
+For every upper-root generator \(X_{ij}\), including its imaginary
+companion over \(\mathbb C\),
+\[
+ \operatorname{Ad}(a_t)X_{ij}
+   =e^{x_i^{(0)}-x_j^{(0)}}e^{-t(H_i-H_j)}X_{ij}.
+ \tag{1.34s}
+\]
+Every fixed core vector \(w\), since it belongs to \(\mathfrak n^qV_0\),
+is a finite sum \(X_1\cdots X_qw'\) with upper-root generators.
+Apply (1.34s) to \(\pi(a_t)w\) and transfer those Lie generators
+to the dual vector using invariance of (1.34a).
+The bound (1.34g) uses the same exponent \(A\) for every resulting
+dual core vector. Since \(H(a_t)\le C e^{Lt}\) with a fixed \(L\),
+it gives
+\[
+ |B_E(\pi(a_t)w,\widetilde w)|
+       \le C_{q,w,\widetilde w}
+                   e^{(AL-q\epsilon)t}.                \tag{1.34t}
+\]
+Constants may depend on \(q\), but are finite and do not depend on
+\(t\). This estimate therefore beats every prescribed exponential.
+
+Each component of the finite radial jet (1.34n) is a coefficient
+of fixed core vectors: radial derivatives differentiate the
+commuting diagonal action on the original vector, and compact
+translations remain in the core. Apply (1.34t) to its finitely many
+components. Choosing \(q\epsilon>AL+M+1\) contradicts (1.34p)
+as \(t\to\infty\).
+Thus \(V_0/\mathfrak nV_0\ne0\).
+This is a complete nonvanishing argument in the stated actual
+realization scope; an external asymptotic expansion or a source
+statement is not substituting for it.
+
+#### Step 5: Explicit algebraic Frobenius map into a full Borel induction
+
+By Theorem 1.27 the nonzero quotient \(V_0/\mathfrak nV_0\) is finite-dimensional.
+The diagonal real Lie algebra commutes with \(M=B\cap K\)
+on this quotient, and its operators commute with one another.
+First split the finite compact diagonal action into its one-dimensional
+characters. This follows by averaging a Hermitian form and
+simultaneously diagonalizing the commuting unitary matrices; each
+invariant eigenspace can be treated in turn.
+On one nonzero compact-character subspace, commuting complex matrices
+have a common eigenfunctional: choose an eigenspace for one transpose,
+restrict the others to it and repeat until a common eigenvector
+is obtained. Pulling it back gives a nonzero \(\ell_0:V_0\to\mathbb C\)
+with
+\[
+ \ell_0(\mathfrak nV_0)=0,\qquad
+ \ell_0(H_iv)=\beta_i\ell_0(v),\qquad
+ \ell_0(mv)=\sigma(m)\ell_0(v).                          \tag{1.34u}
+\]
+Here \(H_i\) is the real diagonal \(E_{ii}\).
+The sign weights of \(\sigma\) over \(\mathbb R\) are
+\(e_i\in\{0,1\}\). Its circle weights over \(\mathbb C\)
+are integers \(\ell_i\), since the smooth circle character
+solves a constant differential equation and has period \(2\pi\).
+
+Set \(\rho_i=(n+1)/2-i\) and \(d=[F:\mathbb R]\).
+Choose
+\[
+ t_i=\beta_i/d-\rho_i,\qquad
+ \chi_i(x)=\operatorname{sgn}(x)^{e_i}|x|^{t_i}
+       \quad(\mathbb R),\qquad
+ \chi_i(z)=(z/|z|)^{\ell_i}|z|_{\mathbb C}^{t_i}
+       \quad(\mathbb C).
+ \tag{1.34v}
+\]
+Then the infinitesimal Borel character of \(\ell_0\) is exactly
+\(\delta_B^{1/2}\prod_i\chi_i\), including every factor \(d\).
+The upper nilpotent action is trivial, and the compact diagonal
+character matches the selected signs or angles.
+
+In the actual compact model of full normalized induction define
+\[
+ (T_0v)(k)=\ell_0(kv),\qquad k\in K.                    \tag{1.34w}
+\]
+The finite compact orbit of \(v\) proves this is smooth and
+compact-finite, with left \(M\)-covariance
+\((T_0v)(mk)=\prod_i\chi_i(m_i)(T_0v)(k)\).
+The action and the complete compact model are constructed in the
+previous written Theorem 1.26; equivalently extend (1.34w) from \(K\)
+by the row-QR formula \(g=bk\) and
+\(f(bk)=\delta_B(b)^{1/2}\boldsymbol\chi(b)f(k)\).
+
+It is a Lie intertwiner, as can be checked in compact coordinates.
+For a real Lie generator \(X\), differentiate
+\[
+ k\exp(tX)=b(t,k)k'(t,k).
+\]
+At \(t=0\), its infinitesimal decomposition is
+\(\operatorname{Ad}(k)X=Y_B+Y_K\), with
+\(Y_B\) upper triangular with real diagonal, and \(Y_K\in\mathfrak k\).
+The derivative of the inducing multiplier is its Borel character
+on \(Y_B\), which equals \(\ell_0(Y_Bkv)/\ell_0(kv)\)
+where that denominator is nonzero; without division the same
+linear identity follows from (1.34u).
+The compact derivative contributes \(\ell_0(Y_Kkv)\).
+Their sum is
+\[
+ (dI(X)T_0v)(k)=\ell_0(\operatorname{Ad}(k)X\,kv)
+               =\ell_0(kXv)=(T_0Xv)(k).                \tag{1.34x}
+\]
+Compact equivariance follows immediately by right translation.
+Since \(\ell_0\ne0\), \(T_0\ne0\); its Lie- and compact-stable
+kernel in an irreducible core is zero. This proves (1.34c).
+
+Repeat for the supplied contragredient realization.
+Each compact packet of its injection is an injective map of finite
+spaces. Its transpose is surjective onto the dual packet.
+The invariant compact pairing identifies the dual core of
+\(I_0(\boldsymbol\chi)\) with \(I_0(\boldsymbol\chi^{-1})\);
+the pairing is the explicit compact integral in Theorem 1.26.
+Summing packet transposes therefore gives an actual surjective
+\((\mathfrak g,K)\)-map
+\[
+ I_0(\boldsymbol\chi^{-1})\twoheadrightarrow V_0.
+ \tag{1.34y}
+\]
+This is the dual-core occurrence/quotient interface; no closed-range
+or continuous quotient theorem is concealed in the word “surjective.”
+
+#### Step 6: The exact continuity boundary
+
+If a selected algebraic \(\ell_0\) in (1.34u) extends to a continuous
+functional \(\ell\) on the prescribed \(E\), its covariance integrates
+to the actual Borel group: along each real diagonal one-parameter
+group the functional satisfies the scalar differential equation,
+along each upper unipotent one it is constant, and \(M\)-covariance
+is already prescribed. The diagonal and elementary unipotent
+generators generate \(B\).
+Then
+\[
+ (Tv)(g)=\ell(\pi(g)v)                                  \tag{1.34z}
+\]
+is a continuous \(G\)-map \(E\to I(\boldsymbol\chi)\).
+For each compact derivative, differentiation under this formula
+and compact equicontinuity bound its compact \(C^\infty\) seminorm
+by a continuous seminorm on \(E\). Compact equicontinuity itself
+follows from a finite cover of \(K\) and joint continuity.
+Its kernel is zero: a nonzero closed invariant kernel contains a
+nonzero compact-finite vector by (1.34d), contradicting the injective
+core map.
+
+This last statement is an injection, without an asserted continuous
+inverse or closed image. The proofs in this subsection do not establish that
+every algebraic Borel eigenfunctional extends continuously, nor
+that the image in (1.34z) is closed in the compact-smooth topology.
+Theorem 2.0y below supplies a selected continuous Borel eigenfunctional
+and the actual smooth injection in this complete moderate dual-pair
+class, using exact principal synthesis and the paired distribution
+embedding. The present subsection alone does not give that continuity.
+Existence for unrealized abstract cores and a continuous inverse or
+closed image remain separate globalization comparison obligations.
+
+The free primary comparison locator is Casselman's freely accessible
+publisher paper, §§5,7–8:
+[Casselman, publisher open-access edition](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/90CFF3C365389AA3AEE897611EC8DE2D/S0008414X00000523a.pdf/canonical-extensions-of-harish-chandra-modules-to-representations-of-g.pdf).
+The finite-generation, radial, uniform-growth, nonvanishing and
+core-occurrence proofs actually used above are written here.
+
+### Analytic core coefficients and comparison of actual smooth models
+
+Let \(F=\mathbb R\) or \(\mathbb C\), \(G=GL_n(F)\), and let
+\((E,\widetilde E,B_E)\) be an actual smooth continuous paired
+realization as in Theorem 1.28. Its compact-finite core \(V_0\) is
+irreducible admissible, and the second core is its admissible dual.
+The first assertion below needs smoothness and the core action;
+moderate growth and completeness are needed only in the subsequent
+topological applications, and are not substituted for analyticity.
+
+**Theorem 1.29.** Every paired core coefficient
+\[
+ f_{v,\widetilde v}(g)=B_E(\pi(g)v,\widetilde v),
+       \qquad v\in V_0,\quad \widetilde v\in\widetilde V_0,
+ \tag{1.35a}
+\]
+is real analytic on \(G\).
+If two actual smooth paired realizations have identified
+\((\mathfrak g,K)\)-cores and the same core pairing, then all their
+paired core coefficient functions are identical on \(G\).
+Neither assertion identifies their complete topologies or proves
+automatic continuity of an arbitrary algebraic core map.
+
+#### Step 1: A scalar elliptic equation for a compact packet
+
+On the real Lie algebra use the invariant nondegenerate symmetric
+form
+\[
+ b(X,Y)=\operatorname{tr}(XY)\quad(F=\mathbb R),\qquad
+ b(X,Y)=\operatorname{Re}\operatorname{tr}(XY)
+                                      \quad(F=\mathbb C).
+ \tag{1.35b}
+\]
+The Cartan decomposition is the direct sum of self-adjoint matrices
+\(\mathfrak p\) and skew-adjoint matrices \(\mathfrak k_{\mathbb R}\).
+The form is positive definite on the former and negative definite
+on the latter; the two are orthogonal. Choose bases \(P_i\) and
+\(K_j\) orthonormal for \(b\) and \(-b\), respectively. Put
+\[
+ C_G=\sum_iP_i^2-\sum_jK_j^2,\qquad
+ C_K=-\sum_jK_j^2,\qquad
+ \Delta=\sum_iP_i^2+\sum_jK_j^2=C_G-2C_K .
+ \tag{1.35c}
+\]
+The tensor for \(C_G\) is invariant: in a basis and its \(b\)-dual,
+the two commutator sums cancel by
+\(b([X,Y],Z)=-b(Y,[X,Z])\). Applying multiplication into the
+enveloping algebra gives \([X,C_G]=0\).
+Conjugation by every element of \(K\) also preserves \(b\), so
+\(C_G\) commutes with the full compact action.
+Its scalar action \(\mu\) on \(V_0\) follows from the finite-packet
+eigenvector and irreducibility argument in Theorem 1.27.
+
+On a finite compact orbit, average any positive Hermitian form over
+\(K\). The differentiated \(K_j\)'s are skew-Hermitian, and \(C_K\)
+is Hermitian nonnegative. It is compact-invariant, because the sum
+of squares of an orthonormal basis is invariant under the compact
+adjoint action. Decompose the finite orbit into eigenspaces of
+\(C_K\). A core vector is a finite sum of eigenvectors \(v_\kappa\)
+with eigenvalues \(\kappa\ge0\).
+For the coefficient of each \(v_\kappa\), right differentiation
+\(R_Xf(g)=\frac{d}{dt}f(g\exp(tX))|_{t=0}\) gives
+\[
+ (\Delta-\mu+2\kappa)f_{v_\kappa,\widetilde v}=0.
+ \tag{1.35d}
+\]
+
+In any real matrix-entry chart on \(G\), the vector fields \(R_X\)
+have real analytic coefficients: matrix multiplication is
+polynomial, and inversion on \(GL_n\) is analytic. The principal
+symbol of \(\Delta\) is the sum of the squares of a real tangent
+basis. It is positive definite. Thus (1.35d) is a scalar elliptic
+equation with analytic coefficients. The analytic regularity
+argument needed here is proved next.
+
+#### Step 2: Interior estimates without an analytic-regularity citation
+
+Consider on a real coordinate ball \(B_R\subset\mathbb R^m\) an
+operator
+\[
+ P=\sum_{i,j}a_{ij}(x)\partial_i\partial_j
+              +\sum_i b_i(x)\partial_i+c(x),
+ \tag{1.35e}
+\]
+where \(a\) is real symmetric positive definite, all coefficients
+are analytic, and \(b,c\) may be complex. Shrink \(R\le1\) so that
+the ellipticity constant is uniform and \(a(x)\) differs as little
+as needed from \(a(0)\). All constants in this section are fixed
+by this ball and its coefficients, and do not depend on a
+derivative order.
+
+For \(u\in C_c^\infty(B_R)\), Fourier transformation on
+\(\mathbb R^m\) gives
+\[
+ \|D^2u\|_2\le C\|a(0):D^2u\|_2,\qquad
+ \|Du\|_2\le \varepsilon\|D^2u\|_2+C_\varepsilon\|u\|_2 .
+ \tag{1.35f}
+\]
+For example, the first inequality is the pointwise symbol bound
+\(\sum_{i,j}|\xi_i\xi_j|^2\le C|\xi^ta(0)\xi|^2\);
+the second follows from
+\(|\xi|^2\le \varepsilon^2|\xi|^4+C_\varepsilon^2\).
+The normalization of the Fourier transform cancels on the two
+sides. To justify its \(L^2\) identity directly, insert
+\(e^{-\epsilon|\xi|^2}\) in the inverse-transform double integral.
+The scalar Gaussian integral turns that integral into convolution
+with an approximate identity. Letting \(\epsilon\) tend to zero
+gives the identity first for compact smooth functions, then for
+their differentiated functions. No distributional regularity
+theorem is being used in (1.35f).
+
+Write \(a(0):D^2u=Pu-(a-a(0)):D^2u-b\cdot Du-cu\).
+Smallness of \(a-a(0)\), followed by (1.35f) with a sufficiently
+small \(\varepsilon\), absorbs the second- and first-derivative
+terms. Hence
+\[
+ \|D^2u\|_2\le C\big(\|Pu\|_2+\|u\|_2\big).
+ \tag{1.35g}
+\]
+For a smooth \(v\) and concentric balls \(B_r\subset B_s\subset B_R\),
+put \(\delta=s-r\). Cutoffs with derivative bounds
+\(|D^j\zeta|\le C_j\delta^{-j}\), \(j=1,2\), exist by rescaling one
+fixed smooth radial cutoff. Apply (1.35g) to a cutoff times \(v\)
+which equals \(v\) on \(B_r\) and is supported before the midpoint
+between \(r\) and \(s\). The product rule yields
+\[
+ \|D^2v\|_{2,B_r}
+ \le C\big(\|Pv\|_{2,B_s}
+            +\delta^{-1}\|Dv\|_{2,B_{(r+s)/2}}
+            +\delta^{-2}\|v\|_{2,B_s}\big).
+ \tag{1.35h}
+\]
+
+The gradient term is controlled by a separate cutoff \(\zeta\)
+which is one on \(B_{(r+s)/2}\) and supported in \(B_s\).
+Integrate the real part of \(-Pv\,\zeta^2\bar v\).
+Integration by parts puts the principal term in the form
+\(\int\zeta^2a_{ij}\partial_i v\,\overline{\partial_jv}\).
+Terms differentiating \(a\) or \(\zeta\), and the lower terms,
+are bounded by Cauchy's inequality by half that positive principal
+term plus \(C\delta^{-2}\|v\|_2^2\).
+The remaining undifferentiated expression is bounded by
+\(\|Pv\|_2\|v\|_2\). Thus
+\[
+ \|Dv\|_{2,B_{(r+s)/2}}
+ \le C\big((\|Pv\|_{2,B_s}\|v\|_{2,B_s})^{1/2}
+                                      +\delta^{-1}\|v\|_{2,B_s}\big).
+ \tag{1.35i}
+\]
+Insert this into (1.35h) and use
+\(\delta^{-1}(ab)^{1/2}\le \tfrac12a+\tfrac12\delta^{-2}b\).
+We obtain the fixed-order interior estimate
+\[
+ \boxed{\quad
+ \|D^2v\|_{2,B_r}
+       \le C_0\big(\|Pv\|_{2,B_s}+\delta^{-2}\|v\|_{2,B_s}\big).
+       \quad}
+ \tag{1.35j}
+\]
+It applies to every differentiated smooth \(v\) with the same
+constant \(C_0\).
+
+#### Step 3: Factorial derivative bounds
+
+Analyticity of the coefficients on a slightly larger ball gives
+fixed constants \(A_0,A\) such that
+\[
+ \sup_{B_R}|D^\beta a_{ij}|,\;
+ \sup_{B_R}|D^\beta b_i|,\;
+ \sup_{B_R}|D^\beta c|
+                       \le A_0A^{|\beta|}|\beta|!.
+ \tag{1.35k}
+\]
+Here is a direct power-series check. On a polydisc of radius
+\(r\), write a coefficient as \(\sum_\alpha c_\alpha
+(x-x_0)^\alpha\) with \(\sum_\alpha|c_\alpha|r^{|\alpha|}\le M_0\).
+On the half polydisc its \(\beta\)-th derivative is bounded by
+\[
+ M_0r^{-|\beta|}\beta!\,
+       \sum_{\gamma\ge0}\binom{\gamma+\beta}{\beta}2^{-|\gamma|}
+       =M_0r^{-|\beta|}\beta!\,2^{|\beta|+m}.
+\]
+The identity on the right is the product of the differentiated
+geometric-series identities in each coordinate.
+Termwise differentiation is justified by these absolutely
+convergent majorants. A finite cover of the closed smaller ball
+makes the constants uniform. Since \(\beta!\le|\beta|!\), this
+proves (1.35k) directly from convergent real power series.
+
+Suppose \(Pf=0\) and \(f\) is smooth. Let
+\[
+ M=\max\big(1,\|f\|_{H^1(B_R)}\big).
+ \tag{1.35l}
+\]
+For a fixed integer \(N\ge2\), put
+\[
+ r_j=R-\frac{jR}{2N},\qquad 0\le j\le N .
+ \tag{1.35m}
+\]
+For a derivative order \(j\), use the maximum \(L^2\) norm of its
+ordered coordinate derivatives; including all \(m^j\) ordered
+derivatives separately is unnecessary.
+We show, with a fixed sufficiently large \(B\),
+\[
+ \max_{|\alpha|=j}\|D^\alpha f\|_{2,B_{r_j}}
+                          \le M(BN)^j,\qquad 0\le j\le N.
+ \tag{1.35n}
+\]
+The cases \(j=0,1\) follow from (1.35l), after taking \(B\ge1\).
+For \(j\ge2\), apply (1.35j) to an ordered derivative of length
+\(j-2\), using \(B_{r_j}\subset B_{r_{j-1}}\).
+Commuting that derivative past \(P\), the \(k\) derivatives which
+fall on a coefficient leave a derivative of \(f\) of order at
+most \(j-k\), with \(k\ge1\).
+Their Leibniz coefficients are bounded by
+\(\binom{j-2}{k}k!\le N^k\).
+The fixed sums over \(i,j\) and the choices of differentiated
+coordinates are absorbed by enlarging \(A_0,A\).
+Since \(r_{j-k}\ge r_{j-1}\), the already established bounds
+(1.35n) control all these derivatives on \(B_{r_{j-1}}\).
+Derivatives of \(f\) of smaller order also obey the same upper
+bound, since \(BN\ge1\).
+The resulting induction inequality is
+\[
+ \max_{|\alpha|=j}\|D^\alpha f\|_{2,B_{r_j}}
+ \le C_0A_0M\sum_{k=1}^{j-2}(AN)^k(BN)^{j-k}
+          +\frac{4C_0N^2}{R^2}\,M(BN)^{j-2}.
+ \tag{1.35o}
+\]
+For \(j=2\) the sum is empty, since \(Pf=0\).
+Choose \(B>A\) so large that
+\[
+ C_0A_0\frac{A/B}{1-A/B}+\frac{4C_0}{B^2R^2}\le1.
+ \tag{1.35p}
+\]
+Dividing (1.35o) by \(M(BN)^j\) proves (1.35n).
+This is a direct factorial estimate, rather than a repeated
+second-order estimate with uncontrolled constants.
+
+Set \(j=N\). The elementary integral comparison
+\(\sum_{\ell=1}^N\log\ell\ge\int_1^N\log x\,dx
+                              \ge N\log N-N\)
+implies \(N^N\le e^NN!\). Therefore
+\[
+ \max_{|\alpha|=N}\|D^\alpha f\|_{2,B_{R/2}}
+                            \le M(Be)^N N!.
+ \tag{1.35q}
+\]
+The first two orders are covered by increasing the constant.
+
+To pass to supremum norms, fix an integer \(q>m/2\).
+For a compact smooth function \(u\), Fourier inversion and
+Cauchy--Schwarz give
+\[
+ \|u\|_\infty\le C_q\sum_{|\gamma|\le q}\|D^\gamma u\|_2:
+ \tag{1.35r}
+\]
+the squared weight \((1+|\xi|^2)^{-q}\) is integrable. Gaussian
+regularization justifies inversion as in the proof of (1.35f).
+Apply this to a *fixed* cutoff times \(D^\alpha f\), equal to that
+derivative on \(B_{R/4}\), supported in \(B_{R/2}\).
+Only \(q\) additional derivatives and fixed cutoff constants occur.
+By (1.35q), their factorials are at most
+\((N+q)!\le N!(N+q)^q q!\).
+The fixed-degree polynomial in \(N\) is bounded by a fixed
+constant times \(2^N\). Consequently there is \(C_1\) with
+\[
+ \max_{|\alpha|=N}\sup_{B_{R/4}}|D^\alpha f|
+                                  \le M C_1^{N+1}N!.
+ \tag{1.35s}
+\]
+Taylor's formula on a short coordinate segment now has remainder
+bounded by \(M C_1^{N+2}\|h\|_1^{N+1}\).
+It tends to zero if \(C_1\|h\|_1<1\) and the segment stays in the
+ball. The Taylor series therefore represents \(f\) there.
+This proves real analyticity of every smooth solution of (1.35e)
+with positive principal symbol and analytic coefficients.
+
+Apply this proved result to (1.35d). Each of the finitely many
+compact-Casimir components of a coefficient is analytic.
+Their finite sum is analytic, proving the first assertion of Theorem 1.29
+in both fields and every rank.
+
+#### Step 4: The coefficient comparison
+
+Suppose two actual realizations have identified core actions,
+compact actions and invariant core pairings. Every derivative
+at identity of the difference of corresponding core coefficients
+vanishes:
+\[
+ R_{X_1}\cdots R_{X_r}f(e)
+                 =B_E(X_1\cdots X_rv,\widetilde v).
+ \tag{1.35t}
+\]
+The order convention in the product is fixed by successive right
+differentiation; either convention gives the same matched jets.
+At identity, the \(R_X\)'s form a coordinate tangent basis.
+Induction on derivative order expresses coordinate derivatives
+through these products and lower-order products, so all coordinate
+Taylor coefficients agree.
+Theorem 1.29 gives equality on a neighborhood of identity.
+
+An analytic function vanishing on a neighborhood vanishes on a
+connected component: along any path, finitely many overlapping
+analytic coordinate balls propagate the zero Taylor series.
+The connected component of \(GL_n(\mathbb C)\) is the whole group;
+one can connect a matrix to its positive diagonal singular-value
+part through \(U(n)\), and then deform the positive values to one.
+For \(GL_n(\mathbb R)\) the positive-determinant component is
+connected by the same singular-value argument and connectedness
+of \(SO(n)\). Plane rotations connect \(SO(n)\) to identity, and
+diagonal phases connect \(U(n)\) to identity after unitary
+diagonalization, so these connectivity facts need no classification.
+The other real component is the first multiplied by
+\(\operatorname{diag}(-1,1,\ldots,1)\in K\).
+Applying the matched compact action to a core vector gives the
+coefficient equality there as well. This proves the second assertion.
+
+#### Scope for the principal-series comparison
+
+**Corollary 1.29a (uniform weak analyticity for a core vector).**
+This corollary only needs an actual complete smooth realization
+of an irreducible admissible core; a supplied dual is unnecessary.
+For a fixed core vector \(v\), the conclusion that
+\(g\mapsto\lambda(\pi(g)v)\) is analytic holds for *every*
+continuous linear functional \(\lambda\) on the supplied model,
+not only the paired core functionals. On each fixed coordinate
+ball, its factorial derivative constant is uniform over
+\(\lambda\)'s bounded by a fixed continuous seminorm.
+In particular \(v\) has a convergent vector Taylor expansion on
+a neighborhood whose radius is independent of that seminorm.
+
+Indeed the scalar equation (1.35d) used only the actions of the
+Casimirs on \(v\), so it holds with an arbitrary \(\lambda\).
+For the functionals satisfying \(|\lambda(w)|\le p(w)\), compact
+joint continuity bounds the \(H^1\) quantity in (1.35l) by one
+finite \(M_p\), using finitely many \(p(\pi(g)Dv)\) on the compact
+coordinate ball. All constants in (1.35j)--(1.35s) depend on the
+operator and the coordinate ball, and not on \(\lambda,p\).
+Thus (1.35s) is uniform with \(M=M_p\).
+Continuous functionals bounded by \(p\) recover the quotient
+seminorm \(p\); this follows from the elementary linear-functional
+extension described in the common-refinement proof below.
+The vector Taylor partial sums are therefore Cauchy in every
+seminorm on one fixed smaller ball. Completeness supplies their
+limit in \(E\). Applying every continuous functional, and using
+the scalar Taylor identity, identifies that limit with the actual
+orbit vector. A finite decomposition into compact-Casimir
+eigenvectors gives the assertion for a general fixed core vector.
+
+Theorem 1.29 proves analytic identity of intrinsic core coefficients
+between any two *supplied* actual smooth paired models.
+It applies in particular to the explicit principal-series
+subquotient models constructed in Theorem 1.26a and to a prescribed cusp
+model with the same core. It does not prove that the identity on
+cores extends continuously in either direction, that a selected
+Borel eigenfunctional is continuous, or that a dense principal
+map has closed or surjective range in a prescribed topology.
+Those assertions require an additional estimate or a proved
+universal property. No analytic-elliptic, subrepresentation or
+globalization theorem has been invoked without a written proof.
+
+### A complete common refinement of prescribed smooth realizations
+
+Suppose two actual complete Hausdorff locally convex smooth
+moderate-growth \(G=GL_n(F)\) representations \(E_1,E_2\),
+\(F=\mathbb R\) or \(\mathbb C\), have identified irreducible
+admissible \((\mathfrak g,K)\)-cores \(V_0\). Denote the core
+identification by \(J_0\). No continuity of \(J_0\) is assumed.
+
+**Theorem 1.30.** In \(E_1\times E_2\), the closed graph
+\[
+ R=\overline{\{(v,J_0v):v\in V_0\}}
+ \tag{1.36a}
+\]
+is a complete smooth moderate \(G\)-representation. Its exact
+compact-finite core is the graph of \(J_0\).
+Both projections
+\[
+ p_i:R\longrightarrow E_i
+ \tag{1.36b}
+\]
+are continuous injective \(G\)-maps with dense images containing
+the entire respective core. If matching supplied dual-pair
+realizations are given, the same construction on their dual cores
+gives a complete nondegenerate invariant dual pair for \(R\).
+This theorem does not claim that a projection is onto, has closed
+image, or has a continuous inverse on its image.
+
+#### Step 1: Separation by a continuous functional
+
+We recall the elementary locally convex separation needed below,
+including the extension step. If \(L\) is a closed subspace of a
+Hausdorff locally convex space \(X\) and \(x\notin L\), there is a
+continuous seminorm \(p\) and \(\epsilon>0\) for which
+\(p(x-\ell)\ge\epsilon\) for all \(\ell\in L\):
+choose a convex balanced neighborhood of zero disjoint from
+\(x-L\), and take a smaller finite intersection of seminorm balls.
+The maximum of their normalized seminorms is such a \(p\).
+On \(L+\mathbb Cx\), define
+\(\lambda(\ell+zx)=z\epsilon\). Then
+\(|\lambda(\ell+zx)|\le p(\ell+zx)\), by scaling when \(z\ne0\).
+
+Here is the linear-functional extension principle in this setting.
+For a real linear functional \(a\) with \(a\le p\), extension to
+one additional real direction \(y\) requires choosing \(a(y)\)
+between
+\[
+ \sup_{u\in D}\big(a(u)-p(u-y)\big)
+ \quad\hbox{and}\quad
+ \inf_{w\in D}\big(p(w+y)-a(w)\big).
+ \tag{1.36c}
+\]
+The left endpoint is no greater than the right: by subadditivity,
+\(a(u)+a(w)=a(u+w)\le p(u+w)
+                                    \le p(u-y)+p(w+y)\).
+The formulas obtained by dividing the two possible signs of the
+new real coefficient verify \(a(u+ty)\le p(u+ty)\).
+A maximal compatible extension, obtained from the union on each
+chain of extension domains, therefore has the whole real space
+as domain; otherwise (1.36c) extends it further.
+Since \(p(-z)=p(z)\), it obeys \(|a|\le p\).
+For a complex functional, first extend its real part by this
+argument and define
+\(\Lambda(z)=a(z)-i\,a(iz)\).
+It is complex linear. Rotating \(z\) by a phase which makes
+\(\Lambda(z)\) positive real shows
+\(|\Lambda(z)|\le p(z)\), because \(p\) is balanced.
+This proves the required continuous extension and separation.
+Applied to a single vector modulo the kernel of a seminorm, the
+same argument shows
+\[
+ p(x)=\sup_{\Lambda:\,|\Lambda|\le p}|\Lambda(x)|.
+ \tag{1.36d}
+\]
+The only set-theoretic extension step is the maximal-chain
+principle; no representation-theoretic continuity theorem occurs.
+
+#### Step 2: The graph is group-stable
+
+The core graph is Lie- and compact-stable. Let \(\Lambda\) be a
+continuous functional on \(E_1\times E_2\) which annihilates its
+closure \(R\). For a core graph vector \(w=(v,J_0v)\), the function
+\[
+ g\longmapsto\Lambda((\pi_1(g),\pi_2(g))w)
+ \tag{1.36e}
+\]
+is analytic, by Corollary 1.29a applied in each factor.
+Every derivative at identity vanishes, since the Lie algebra
+preserves the core graph. It is therefore zero on the identity
+component by the proved analytic identity principle in Theorem 1.29.
+The compact action preserves the core graph and meets the other
+real component, so it is zero on all of \(G\).
+The separation in Step 1 of this argument implies
+\((\pi_1(g),\pi_2(g))w\in R\).
+By continuity of the action and density of the core graph in
+its closure, this holds for every \(w\in R\).
+Thus \(R\) is group-stable.
+
+It is complete because it is closed in the complete product.
+Orbit derivatives in the product belong to \(R\), since it is
+closed and invariant; restrictions of the continuous
+differentiated maps give the actual smooth differentiated action
+in the subspace topology. The orbit maps have their full smooth
+derivatives there: a remainder tends to zero in the induced
+seminorms exactly when it does so in the ambient product.
+Joint continuity is inherited.
+Every continuous seminorm on \(R\) is bounded by the restriction
+of a finite sum of continuous seminorms on the two factors,
+by the definition of the subspace topology.
+Apply their moderate inequalities, take the larger exponent and
+sum the controlling seminorms. This proves moderate growth on \(R\)
+without an open-mapping or globalization theorem.
+
+#### Step 3: Exact compact packets and the two projections
+
+For each compact type \(\tau\), its character projector is a
+continuous operator on the product and on \(R\).
+The projection of the core graph is exactly the finite graph
+packet
+\[
+ R_\tau=\{(v,J_0v):v\in(V_0)_\tau\}.
+ \tag{1.36f}
+\]
+A finite-dimensional subspace in a Hausdorff locally convex space
+is closed: select continuous functionals separating a basis,
+use their finite invertible coordinate matrix, and reduce closure
+to closure in a finite Euclidean space.
+Projecting the approximating core graph vectors thus shows that
+the entire \(\tau\)-packet of \(R\) is (1.36f).
+Every compact-finite vector lies in finitely many such packets,
+so the exact core of \(R\) is the core graph.
+
+If the kernel of \(p_i\) were nonzero, it would be a nonzero
+closed compact-stable subspace of \(R\).
+The polynomial compact approximate identities (1.34d) preserve it,
+converge to identity on it, and have compact-finite values.
+Some approximant of a nonzero vector would therefore be a
+nonzero core vector in that kernel. This is impossible on the
+core graph. Both projections are consequently injective.
+They are continuous equivariant maps by construction and
+contain the respective cores in their images.
+Core density (1.34d) makes both images dense.
+
+This identifies an actual complete common refinement of the
+prescribed topologies and constructs both continuous comparison
+maps. It does not promote dense images to onto or closed images.
+A complete space can map continuously and injectively onto a
+proper dense subspace of another complete space; completeness
+alone supplies no missing inverse estimate.
+
+#### Step 4: The paired version
+
+Apply the same construction to the prescribed admissible dual
+cores and actual dual models, obtaining \(\widetilde R\).
+Restrict the first given pairing to
+\[
+ B_R(r,\widetilde r)
+       =B_1(p_1r,\widetilde p_1\widetilde r).
+ \tag{1.36g}
+\]
+It is jointly continuous and invariant.
+It equals the second restricted pairing: both agree on the core
+graphs by the specified core pairing, and each core graph is
+dense in its complete refinement. First fix a dual core vector
+and extend in \(r\); then fix \(r\) and extend in
+\(\widetilde r\). Separate continuity suffices for this equality.
+If \(B_R(r,\widetilde R)=0\), density of
+\(\widetilde p_1(\widetilde R)\) and nondegeneracy of \(B_1\)
+give \(p_1r=0\). Injectivity then gives \(r=0\).
+The other radical is zero in the same way.
+Thus \((R,\widetilde R,B_R)\) is an actual compatible complete
+smooth moderate dual pair with the identified core and dual core.
+
+#### Remaining comparison obligation
+
+Apply Theorem 1.30 to a prescribed cusp model and the explicit complete
+principal-series subquotient model of Theorem 1.26a, once their cores are
+identified using Theorem 1.28. It gives actual injective dense continuous
+maps from their complete common refinement to each model.
+To identify the prescribed model itself with that subquotient,
+one still needs an inverse seminorm estimate or surjectivity of
+these comparison maps. The existence of a full principal-core
+quotient in 1.34y does not establish that estimate.
+Universal occurrence for an abstract core without any supplied
+actual realization also remains distinct. No assertion here
+identifies the residual correction polynomial with the intended
+standard real/complex gamma factors.
+
+### The canonical Gaussian package in every prescribed actual dual-pair model
+
+Use \(F=\mathbb R\) or \(\mathbb C\), the positive trace Fourier
+argument, the basic programme characters
+\(\psi_{\mathbb R}(x)=e^{-2\pi ix}\) and
+\(\psi_{\mathbb C}(z)=e^{-2\pi i(z+\bar z)}\), and their self-dual
+measures. Let \((E,\widetilde E,B_E)\) satisfy the actual complete
+smooth moderate dual-pair hypotheses of Theorem 1.28, with irreducible
+admissible core \(V_0\).
+Let \(\mathcal S_0\) denote the polynomial multiples of
+\(G_{\mathbb R}(X)=e^{-\pi\operatorname{tr}(XX^t)}\), or of
+\(G_{\mathbb C}(X)=e^{-2\pi\operatorname{tr}(XX^*)}\).
+Write \(\nu(g)=|\det g|_F\) and
+\[
+ Z_E(s,\Phi;v,\widetilde v)=
+       \int_G\Phi(g)B_E(\pi(g)v,\widetilde v)
+                       \nu(g)^{s+(n-1)/2}\,dg.
+ \tag{1.37a}
+\]
+Its initial convergence and continuation in the prescribed
+topologies follow from the written continuation proof of Theorem 1.21,
+with the locally convex extension supplied in Step 3 below.
+
+**Theorem 1.31.** In every such prescribed model, in every rank and
+both fields, the Gaussian coefficient span is exactly
+\[
+ \operatorname{span}_{\mathbb C}
+ \{Z_E(s,\Phi;v,\widetilde v):
+      \Phi\in\mathcal S_0,\ v\in V_0,\
+                    \widetilde v\in\widetilde V_0\}
+                    =L_E(s)\mathbb C[s].
+ \tag{1.37b}
+\]
+One can choose full Borel inducing characters by Theorem 1.28 and a
+nonzero monic polynomial \(P\) for which
+\[
+ L_E(s)=P(s)L_{\boldsymbol\chi}(s),\qquad
+ L_{\boldsymbol\chi}(s)=
+ \begin{cases}
+ \prod_i\Gamma_{\mathbb R}(s+t_i+e_i),&F=\mathbb R,\\
+ \prod_i\Gamma_{\mathbb C}(s+t_i+|\ell_i|/2),&F=\mathbb C.
+ \end{cases}
+ \tag{1.37c}
+\]
+There is an actual finite attaining family
+\[
+ \sum_{\alpha=1}^r
+       Z_E(s,\Phi_\alpha;v_\alpha,\widetilde v_\alpha)=L_E(s).
+ \tag{1.37d}
+\]
+For every Schwartz test and every pair of smooth vectors,
+\(Z_E/L_E\) is entire with compact-parameter joint test/vector
+seminorm bounds. The generator has no zeros.
+For its compatible paired dual normalization,
+\[
+ P_{\widetilde E}(1-s)=(-1)^bP(s),\qquad b=\deg P,
+ \quad
+ \epsilon_E=(-1)^b
+ \begin{cases}
+ (-i)^{\sum e_i},&F=\mathbb R,\\
+ (-i)^{\sum|\ell_i|},&F=\mathbb C,
+ \end{cases}
+ \tag{1.37e}
+\]
+and the full scalar Fourier equation is
+\[
+ Z_{\widetilde E}(1-s,\widehat\Phi;\widetilde v,v)
+ =\epsilon_E
+       \frac{L_{\widetilde E}(1-s)}{L_E(s)}
+                          Z_E(s,\Phi;v,\widetilde v).
+ \tag{1.37f}
+\]
+Conjugation, and compatible unitary duality, have the exact
+normalizations proved in Theorem 1.26b. The polynomial in (1.37c) is the
+integral-defined correction. This theorem does not yet compute
+its roots and scalar from every intended real discrete-series,
+parity or complex angular standard-factor label.
+
+#### Step 1: Occurrence is now proved in the required actual scope
+
+Theorem 1.28 constructs an actual algebraic injection
+\(T_0:V_0\hookrightarrow I_0(\boldsymbol\chi)\).
+It does so from finite \(U(\mathfrak n)\)-generation Theorem 1.27, the
+nonzero Jacquet proof in Steps 1–4 of Theorem 1.28 and the explicit compact map 1.34w.
+No source statement supplies an unproved occurrence premise.
+
+Apply the written closure theorem Theorem 1.26a with
+\(W_0=0\) and the submodule \(T_0V_0\) in that principal core.
+It constructs the complete smooth moderate principal submodel
+\(Q=\overline{T_0V_0}\) and its actual paired dual
+\[
+ Q^\vee=I(\boldsymbol\chi^{-1})/
+                             \operatorname{Ann}(Q).
+ \tag{1.37g}
+\]
+Their exact cores and compact pairing identify with
+\(V_0,\widetilde V_0,B_E|_{V_0\times\widetilde V_0}\).
+The finite-packet transpose in 1.34y supplies this dual core
+identification; the smooth paired construction is Theorem 1.26a.
+These are actual constructed models. No continuous map between
+the entire original \(E\) and \(Q\) is being assumed.
+
+#### Step 2: Core coefficients identify the ideals and the attaining family
+
+Theorem 1.29 proves
+\[
+ B_E(\pi(g)v,\widetilde v)
+       =B_Q(\pi_Q(g)T_0v,\widetilde T_0\widetilde v)
+                    \qquad(g\in G)
+ \tag{1.37h}
+\]
+for every pair of core vectors, where \(\widetilde T_0\) denotes
+the exact dual core identification in (1.37g).
+Both actual realizations have the same core Lie/compact actions
+and pairing, so their analytic coefficient jets agree at identity
+and propagate over the whole group. This is the proved Theorem 1.29
+comparison, rather than an asserted uniqueness of globalizations.
+
+Consequently the original integrals for these coefficients are
+identical on an initial convergence half-plane and their
+meromorphic continuations are identical.
+The exact Gaussian ideal theorem Theorem 1.26b for \(Q\) proves (1.37b)--(1.37c)
+for \(E\). Its finite attaining tests and core vectors, pulled
+back through the two algebraic core identifications, prove (1.37d)
+in the original model.
+Every polynomial multiplier used in constructing the attaining
+family has already been absorbed into a polynomial-Gaussian
+test by the Euler operator in Theorem 1.26b. Thus (1.37d) is an actual
+finite family of allowed integrals, not a formal polynomial gcd.
+This proves the genuine Gaussian-ideal premise in the prescribed
+model; a common gamma majorant was not substituted for it.
+
+#### Step 3: Full Schwartz division and its continuity
+
+Theorem 1.21 was stated for complete Fréchet models.
+Here is the precise extension of its argument to the complete
+locally convex models allowed in Theorem 1.28. Its central determinant
+operator proof in the preceding dense-core and central-determinant
+subsections is algebraic after density of the core.
+Replace its countable compact-density argument by (1.34d);
+continuity of differentiation then extends the same scalar
+central identities to the whole supplied model.
+Its far-right integral bound and scalar integration by parts,
+in the preceding bounds and integration-by-parts subsection, use
+joint pairing seminorms, moderate growth and finitely
+many derivative seminorms, and no countable topology assumption.
+Thus the same proved differential recurrence holds:
+\[
+ B_E(s)Z_E(s,\Phi)=Z_E(s+a,\mathscr D\Phi),\qquad
+       \deg B_E=2n,\quad B_E\text{ monic},
+ \tag{1.37ha}
+\]
+where \(a=2,\mathscr D=D^2\) over \(\mathbb R\) and
+\(a=1,\mathscr D=D_+D_-\) over \(\mathbb C\).
+Every coordinate coefficient derivative in its integration-by-parts
+proof is bounded by a finite negative determinant power and a
+finite list of continuous seminorms. Taking the real part of \(s\)
+large makes its extension across the singular set \(C^{2n}\).
+This is exactly the scalar line-by-line extension verified there;
+it uses no vector-valued integration across that set.
+
+If \(B_E(s)=\prod_j(s-\beta_j)\), put
+\(H_E(s)=\prod_j\Gamma((s-\beta_j)/a)\). The proved scalar gamma
+recurrence gives
+\(H_E(s+a)=a^{-2n}B_E(s)H_E(s)\).
+For a compact parameter set choose \(N\) so that its translate
+by \(Na\) lies beyond the integral convergence threshold.
+Define
+\[
+ F_E(s,\Phi;v,\widetilde v)
+       =a^{-2nN}
+          \frac{Z_E(s+Na,\mathscr D^N\Phi;v,\widetilde v)}
+                        {H_E(s+Na)} .
+ \tag{1.37hb}
+\]
+The recurrence shows independence of larger \(N\). These formulas
+patch to an entire family with the far-right joint seminorm
+bounds, since \(\mathscr D^N\) is a continuous Schwartz operator
+and the scalar reciprocal gamma product is entire and bounded
+on the shifted compact set. This writes the extension required
+for the broader topology, rather than silently importing the
+Fréchet theorem with enlarged hypotheses.
+In the Fréchet scope it is Theorem 1.21. In either scope it gives the entire continuous family
+\[
+ F_E(s,\Phi;v,\widetilde v)=Z_E(s,\Phi;v,\widetilde v)/H_E(s),
+ \tag{1.37i}
+\]
+with joint test/vector seminorm bounds on every compact
+parameter set. Its proof uses the written central differential
+identity and a smooth-model coefficient bound. It does not
+require a principal-series topological comparison.
+The finite identity (1.37d) shows that
+\[
+ h_E(s)=L_E(s)/H_E(s)
+ \tag{1.37j}
+\]
+is an entire nonzero function.
+For a polynomial-Gaussian core integral, (1.37b) says
+\(F_E=h_E p\) with \(p\in\mathbb C[s]\).
+
+The core is dense in each prescribed topology by (1.34d).
+Polynomial-Gaussian tests are dense in the full Schwartz space:
+the actual earlier programme proof is
+*Hermite functions, tempered distributions and the Schwartz kernel theorem*, Lemma 3.1 and Theorem 3.2.
+Its Hermite truncations converge in every Schwartz seminorm;
+a scalar dilation changes its fixed Gaussian to \(G_F\).
+Over \(\mathbb C\), polynomials in \(Z,\bar Z\) are the full real
+coordinate polynomial algebra, so no complex-angular tests are
+discarded.
+
+Approximate a given \(\Phi,v,\widetilde v\) in these topologies.
+In a general locally convex topology this may be a net;
+the joint bounds in (1.37i) imply uniform convergence on every
+compact parameter set, regardless. At a zero of \(h_E\) of
+order \(m\), the first \(m\) jets of every approximating function
+vanish. Cauchy's formula on a fixed small circle gives convergence
+of the jets and hence their vanishing in the limit.
+Thus \(F_E/h_E=Z_E/L_E\) is entire.
+
+The same circle proves a joint seminorm bound for the division:
+inside it the quotient is its Cauchy integral, with denominator
+\(h_E\) nonzero on the circle. Bound its numerator by (1.37i).
+Away from these isolated zeros divide directly. Finitely many
+circles and neighborhoods cover a compact parameter set.
+This gives full continuity with the original prescribed vector
+seminorms, rather than seminorms of an unproved equivalent model.
+The absence of zeros of \(L_E\) follows from Theorem 1.26b or independently
+by the compact-support test in the proof of Proposition 1.21b: at a
+prescribed \(s_0\), use a bump times the conjugate of a nonzero
+coefficient and the inverse imaginary norm phase.
+Its integral is strictly positive. An entire division by a
+zero of \(L_E\) would force it to vanish. This proves that no
+correction root can create an excess zero.
+
+#### Step 4: The Fourier equation on every test and smooth coefficient
+
+Theorem 1.26b proves (1.37e)--(1.37f) on \(Q,Q^\vee\). For core coefficients,
+(1.37h) transfers it to \(E,\widetilde E\).
+First take polynomial-Gaussian tests. Their Fourier transforms
+remain polynomial-Gaussian: differentiating the exact scalar
+Gaussian transform gives the transformed polynomial, and the
+Gaussian is self-dual with the specified real/complex measures.
+These facts are proved in *Additive characters, self-dual measures and Poisson summation on the adèles*, Proposition 5.2 and Lemma 5.4A.
+
+Approximate arbitrary Schwartz tests and both smooth vectors
+as in Step 3 of this argument. Fourier transformation is continuous on the
+whole Schwartz space by that same written Lemma5.4A.
+For both the representation and its dual, divide first by the
+entire-continuation majorants in (1.37i). At parameter points
+avoiding the discrete poles of the fixed scalar gamma ratio,
+joint compact convergence passes the Fourier identity to the
+limit. The identity of meromorphic continuations gives it
+everywhere. This proves (1.37f) for all smooth coefficients
+without any continuous lifting of them to the principal model.
+It also identifies the already proved general scalar in
+Theorem B.5 / lesson04 Theorem1.22 with (1.37e)--(1.37f).
+
+#### Step 5: Duality, conjugation and the unitary phase
+
+The paired principal model for \(Q^\vee\) uses the inverse
+inducing characters. Theorem 1.26b proves its exact polynomial reflection
+\(P_{Q^\vee}(1-s)=(-1)^bP_Q(s)\) and the sign
+\(\epsilon_Q=(-1)^b\epsilon_{\boldsymbol\chi}\).
+Equation (1.37h), applied also to the swapped actual dual pair,
+transfers those identities to the prescribed dual normalization.
+Under conjugation, real parity remains \(e_i\), complex angular
+weight becomes \(-\ell_i\), and \(t_i\) becomes \(\bar t_i\).
+Its product gamma factor is the complex conjugate at \(\bar s\).
+The monic-polynomial normalization in Theorem 1.26b then gives exactly
+\[
+ L_{\bar E}(s)=\overline{L_E(\bar s)}.
+ \tag{1.37k}
+\]
+If the supplied core pairing comes from an invariant positive
+Hermitian form, core conjugation identifies its conjugate with
+the admissible dual. The Theorem 1.26b core-unitary argument proves, with
+no unidentified scalar in this paired normalization,
+\[
+ L_{\widetilde E}(s)=\overline{L_E(\bar s)}.
+ \tag{1.37l}
+\]
+In particular the basic scalar in (1.37e) has absolute value one.
+Changing the basic character to \(\psi_a(x)=\psi(ax)\) gives
+the exact factor
+\[
+ \epsilon_E(s,\psi_a)=
+        \omega_E(a)|a|_F^{n(s-1/2)}\epsilon_E(s,\psi).
+ \tag{1.37m}
+\]
+To check it directly, the self-dual additive matrix measure changes
+by \(|a|_F^{n^2/2}\), Fourier substitution is \(Y\mapsto aY\),
+and changing \(g\mapsto a^{-1}g\) in the dual zeta integral
+contributes the determinant power
+\(|a|_F^{-n(1-s+(n-1)/2)}\) and the dual central coefficient
+\(\omega_E(a)\). The net exponent is \(n(s-1/2)\).
+For unitary \(\omega_E\), its modulus is one on the critical line.
+
+#### Exact scope and the remaining target
+
+Theorem 1.31 proves a genuine Gaussian ideal, finite attainment, full
+Schwartz division with continuity, full scalar Fourier equation
+and paired dual/conjugation normalization in **every prescribed
+actual complete smooth moderate dual-pair realization** of an
+irreducible admissible real/complex \(GL_n\) core.
+Theorem 1.19 supplies those models in the full automorphic cusp
+scope, so this removes the abstract occurrence/comparison
+premise from the Gaussian-ideal existence argument in that
+scope. Theorem 1.30 gives further actual continuous dense comparison maps,
+but a topological isomorphism with the original model is not
+needed for the coefficient-and-density proof above.
+
+For an arbitrary abstract core with no supplied realization,
+Theorem 1.27 alone has not yet proved nonzero Jacquet quotient or
+globalization. Full continuous inverse/closed-image comparison
+for arbitrary prescribed topologies also remains unproved.
+Finally, (1.37c) is monic relative to the inducing product chosen
+by Theorem 1.28. Computing \(P\) and the resulting scalar from all
+intended standard-factor labels, including real discrete-series
+blocks and complex angular data, remains a precise mathematical
+obligation. The free classification statements in Goldfeld–Jacquet do not supply that proof.
+
 ### The remaining canonical archimedean input
 
 Theorem 1.21 proves continuation, entire division by a common pole majorant and rapid strip bounds for every smooth coefficient and Schwartz test in the stated actual dual-pair models. Theorem 1.22 proves their scalar Fourier equation, including reflection and character scaling. Proposition 1.21b and Corollary 1.22e prove full-Schwartz canonical division and constant epsilon once the genuine Gaussian ideals have been established; Corollary 1.22f proves the scalar critical-line phase in compatible unitary models. Theorem 1.19 and Theorems 1.11–1.13 furnish the actual smooth pair for cuspidal automorphic constituents.
 
-Theorem 1.26 proves the exact Gaussian product and one-pair attainment for every full real/complex Borel induction in the actual compact model, including reducible inductions. Theorems 1.26a–1.26b construct actual closed subquotient/dual models for every supplied principal-core subquotient and prove its exact monic polynomial correction, finite attaining family, entire Schwartz division and Fourier equation. For arbitrary irreducibles, the remaining assertions are their all-rank principal/standard-module occurrence, comparison with a prescribed smooth realization, and explicit standard-factor identification of the correction polynomial and scalar. The generator normalization in Theorem 1.26b is monic relative to its supplied inducing product. Compatibility of those chosen factors with unitary conjugation also remains to be proved. A supplied abstract module still requires an actual smooth dual-pair realization if it is not already given. Propositions 1.7 and 1.18 supply the complete canonical package for determinant characters over both real and complex fields. The majorant example (1.25t) shows why polynomial-module stability and an entire common-denominator quotient cannot replace the Gaussian-ideal proof.
+Theorem 1.26 proves the exact Gaussian product and one-pair attainment for every full real/complex Borel induction in the actual compact model, including reducible inductions. Theorems 1.26a–1.26b construct actual closed subquotient/dual models for every supplied principal-core subquotient and prove its exact monic polynomial correction, finite attaining family, entire Schwartz division and Fourier equation. Theorem 1.28 proves all-rank principal-core occurrence for every prescribed actual smooth moderate dual pair; Theorems 1.29–1.31 prove coefficient comparison, a complete common refinement, and the full Gaussian package in that original realization. Full onto/closed-image comparison and existence for unrealized abstract cores remain open, together with explicit standard-factor identification of the correction polynomial and scalar. The generator normalization in Theorem 1.26b is monic relative to its supplied inducing product. Theorem 1.31 proves the paired dual and unitary conjugation normalization of these integral-defined factors. A supplied abstract module still requires an actual smooth dual-pair realization if it is not already given. Propositions 1.7 and 1.18 supply the complete canonical package for determinant characters over both real and complex fields. The majorant example (1.25t) shows why polynomial-module stability and an entire common-denominator quotient cannot replace the Gaussian-ideal proof.
 
 The freely accessible [Goldfeld–Jacquet author notes, §3, Theorem 3.5 and Lemma 3.6, PDF pages 14–19](https://www.math.columbia.edu/~goldfeld/LanglandsBookChapter.pdf) describe the canonical archimedean package. Their induced-representation reduction and generator statements do not supply the missing full proof. The continuation, distributional descent and Fourier arguments above are proved here.
 
@@ -7845,7 +9404,7 @@ The proof above does not establish higher-rank uniqueness for arbitrary irreduci
 
 Rank one at infinity is covered directly for an actual irreducible smooth admissible complete Fréchet realization. The maximal compact subgroup is \(\{\pm1\}\) over \(\mathbb R\), and the circle over \(\mathbb C\). Some compact-character projection has nonzero image. For the finite group this follows by adding its two projections. For the circle it follows from the Fejér kernels \(m^{-1}|\sum_{r=0}^{m-1}e^{ir\vartheta}|^2\): these are nonnegative with normalized integral one and tend to zero uniformly off every neighbourhood of zero, so averaging them converges to each vector in every continuous seminorm by compact uniform continuity. If all character projections were zero, these finite Fourier sums would be zero and their limit would be zero.
 
-Admissibility makes the image of such a character projection finite-dimensional. It is invariant under the abelian full group and closed, so topological irreducibility makes it the whole realization. Commuting complex matrices on that finite-dimensional space have a common eigenvector: take an eigenspace of one matrix and continue inside it whenever a remaining matrix is not scalar, strictly decreasing dimension. Its line is invariant under the group; irreducibility forces dimension one. Since \(U=1\), its continuous Hom space has dimension one. No higher-rank assertion for arbitrary archimedean realizations is claimed here.
+Admissibility makes the image of such a character projection finite-dimensional. It is invariant under the abelian full group and closed, so topological irreducibility makes it the whole realization. Commuting complex matrices on that finite-dimensional space have a common eigenvector: take an eigenspace of one matrix and continue inside it whenever a remaining matrix is not scalar, strictly decreasing dimension. Its line is invariant under the group; irreducibility forces dimension one. Since \(U=1\), its continuous Hom space has dimension one. Theorem 2.0z below proves the higher-rank bound for every prescribed actual complete smooth moderate dual-pair model.
 
 
 ### Archimedean uniqueness inside distributional principal series
@@ -7986,13 +9545,13 @@ has been constructed. Then \(\dim\operatorname{Hom}^{\mathrm{cont}}_N(V,\Psi)\le
 
 *Proof.* Such functionals are precisely the vectors \(\ell\in V'\) satisfying \(n\ell=\Psi(n)^{-1}\ell\). Equivariance and injectivity of (2.7m) put their space injectively into (2.7b), whose dimension is at most one by Theorem 2.0n. \(\square\)
 
-For general irreducible admissible smooth realizations, a proof constructing (2.7m) remains necessary. It cannot be replaced by a reference to a statement of Casselman's subrepresentation theorem, by an abstract admissible Harish-Chandra module alone, by a claimed unspecified globalization, or by the local principal-series result just proved. The normal-jet and principal-series distribution arguments apply in every real and complex rank. The general embedding/comparison obligation remains open.
+Theorems 2.0x–2.0y below construct (2.7m) for every prescribed actual complete smooth moderate dual-pair model with irreducible admissible core. Their exact synthesis and full continuous-dual transpose proofs supply the required embedding, and Theorem 2.0z gives the bound in every real and complex rank. Existence for unrealized abstract cores and full onto/closed-image comparison remain separate obligations.
 
 ### Direct archimedean Whittaker uniqueness in compatible unitary realizations
 
 This section proves the continuous Whittaker multiplicity bound for every actual unitary Hilbert representation with irreducible admissible compact-type core of \(GL_n(\mathbb R)\) or \(GL_n(\mathbb C)\), on its full smooth-vector space, and for every determinant-character twist of such a representation. In particular it applies to all archimedean local factors of the cuspidal realizations constructed in Theorems 1.19 and 1.11–1.13. It uses neither a principal-series embedding nor a classification of those local factors.
 
-It also proves the distribution symmetry used in the argument in every real and complex rank. The last paragraph specifies the additional comparison needed to extend this argument to an arbitrary supplied nonunitary smooth moderate-growth dual pair. That additional comparison is not asserted here.
+It also proves the distribution symmetry used in the argument in every real and complex rank. The subsequent principal-synthesis and continuous-dual construction extends the uniqueness bound to every prescribed actual nonunitary smooth moderate dual pair in Theorem 2.0z.
 
 Let \(F=\mathbb R\) or \(\mathbb C\), viewed as a real field, \(G=GL_n(F)\), and \(U\) the upper unitriangular subgroup. Fix
 \[
@@ -8265,11 +9824,861 @@ A determinant character is trivial on \(U\). Multiplying the group action by it 
 
 Theorem 1.19 removes exactly a real determinant norm twist from an abstract cuspidal subquotient and supplies an actual admissible Hilbert constituent. Theorems 1.11–1.13 identify its full smooth local spaces and compatible conjugate duality. Applying the theorem to these local unitary factors and restoring the twists proves the final assertion. The local existence provided by Theorem 1.3 and Corollary 1.4 of *Automorphic representations and automorphic L-functions* then makes each of these cusp-model Hom spaces exactly one-dimensional for a nondegenerate unitary character. For a nonunitary character it is zero, as proved above. \(\square\)
 
-#### Exact remaining scope for general nonunitary dual pairs
+### Continuous principal quotients and the general archimedean Whittaker bound
 
-Theorem 2.0s applies to every generic Casimir eigendistribution over both archimedean fields. Lemma 2.0u also applies to any actual dual pair for which smoothing of its continuous duals into the stated full smooth spaces has been established and a nonzero opposite Whittaker functional is available. The proof on compact-type cores in (2.8u)–(2.8w) requires neither surjectivity of a smooth convolution map onto the full space nor a continuity assertion about the auxiliary map \(A\).
+Throughout, \(k=\mathbb R\) or \(\mathbb C\), \(d=[k:\mathbb R]\),
+\(G=GL_n(k)\), \(K=O(n)\) or \(U(n)\), \(B=MAN\) is the upper
+triangular group, and \(\bar N\) is lower unitriangular. Haar measure
+on \(K\) has mass one. Put
+\[
+ H(g)=\max(1,\|g\|_{\mathrm{op}},\|g^{-1}\|_{\mathrm{op}}),\qquad
+ \rho_i=\frac d2(n+1-2i).
+ \tag{2.10a}
+\]
+This height is submultiplicative, is one on \(K\), and bounds every
+matrix coefficient of \(\operatorname{Ad}(g)\) by \(H(g)^2\).
 
-For an arbitrary actual irreducible admissible smooth moderate-growth Fréchet dual pair \(V,W\), a continuous invariant pairing and algebraic contragredient cores alone do not prove those two additional facts. The extension requires a general continuous-dual embedding or smoothing theorem into the supplied opposite realization, and a proof that nonzero \(\operatorname{Hom}^{\mathrm{cont}}_U(V,\Psi)\) forces nonzero \(\operatorname{Hom}^{\mathrm{cont}}_U(W,\Psi^{-1})\). Hilbert conjugation proves the latter here only for the compatible unitary models and their determinant twists. These general comparison and opposite-functional assertions remain additional mathematical obligations.
+The supplied model \(E\) is complete Hausdorff locally convex, with
+a jointly continuous smooth \(G\)-action and continuous differentiated
+actions. Its topology satisfies moderate growth: for every continuous
+seminorm \(p\) there are a continuous seminorm \(q\), \(C,A\) such that
+\[
+ p(\pi(g)v)\le C H(g)^Aq(v).
+ \tag{2.10b}
+\]
+Its compact-finite core \(E_0\) is admissible. We may assume either
+that this core is irreducible or that \(E\) is topologically
+irreducible; Lemma 2.0w below proves their equivalence here. A supplied
+dual-pair model additionally has a model \(\widetilde E\) with the same
+properties and a jointly continuous nondegenerate invariant bilinear
+pairing; its core is the admissible contragredient of \(E_0\).
+These hypotheses describe the actual spaces and actions. Existence
+of such models for an arbitrary abstract module is not part of this
+statement. The cuspidal models in Theorems 1.19 and 1.11–1.13 of this lesson have
+these properties.
+
+The algebraic input used below is the written Theorem 1.28, equation
+(1.34y), of *Nonzero minimal Jacquet quotients and actual algebraic
+Borel occurrence*: for a supplied dual pair there is a full Borel
+principal core \(P_0\) and a surjective
+\((\mathfrak g,K)\)-map \(A_0:P_0\to E_0\).
+Its finite-generation, bounded radial-system and nonvanishing proofs
+are part of that input, not a citation to an unwritten occurrence
+theorem. The analytic estimate used below is the written §§1–4 of
+*Analytic core coefficients and comparison of actual smooth models*,
+Theorem 1.29. Their full proofs are given in the preceding subsections.
+
+We prove a continuous extension of \(A_0\) in the supplied topology.
+Its image need only be dense: the transpose then embeds the *entire
+continuous dual* into a distributional principal series. That is the
+exact hypothesis of Corollary 2.0o, whose principal-series bound is
+proved in Theorem 2.0n of the same lesson.
+
+#### Irreducibility of the core follows in the actual model
+
+**Lemma 2.0w.** In an actual smooth model as above with admissible
+compact-finite core, topological irreducibility implies core
+irreducibility. Conversely, core irreducibility implies
+topological irreducibility.
+
+The compact polynomial approximate identities (1.34d) prove core
+density, and the compact character projector \(p_\tau\) has range
+the entire finite-dimensional packet \(E_\tau\). Indeed its integral
+has finite compact orbit by the finite matrix-coefficient formula;
+thus every vector in its range belongs to the given admissible
+core. Its range is finite-dimensional by admissibility.
+
+For later use, compact-finite continuous functionals separate
+points modulo any closed \(K\)-stable subspace \(W\).
+If every \(p_\tau v\) belongs to \(W\), each class-polynomial
+approximate identity applied to \(v\) belongs to \(W\): its finite
+compact Fourier expansion is a finite sum of scalar character
+projectors. Their convergence puts \(v\) in \(W\).
+Otherwise, on some finite packet \(p_\tau v\notin W\cap E_\tau\),
+choose a finite-dimensional linear functional zero on that
+subspace and nonzero on \(p_\tau v\). Compose it with \(p_\tau\);
+the result is a compact-finite continuous functional annihilating
+\(W\) and detecting \(v\). No infinite-dimensional dual extension
+theorem is required for this separation.
+
+Suppose \(E\) is topologically irreducible. The quadratic invariant
+Casimir \(C_G\) commutes with the full compact group and preserves
+each finite packet. Choose an eigenvector \(v\ne0\) in one such
+packet, with eigenvalue \(\mu\), and let
+\(V=U(\mathfrak g)\operatorname{span}(Kv)\).
+This is a nonzero \((\mathfrak g,K)\)-submodule of the core and
+\(C_G=\mu\) on it. Let \(W=\overline V\) in the actual topology.
+It is closed and \(K\)-stable.
+
+For any compact-finite continuous \(\eta\) annihilating \(W\),
+and any \(u\in V\), the scalar coefficient
+\(\eta(\pi(g)u)\) is analytic on \(G\). To verify the precise
+input, split \(u\)'s finite compact orbit into compact-Casimir
+eigenvectors \(\kappa\). Each coefficient solves
+\((\Delta-\mu+2\kappa)f=0\) with the analytic elliptic
+operator (2.10ad). The written scalar regularity proof in
+Theorem 1.29 §§1–3 therefore applies. It requires the Casimir
+scalar on \(u\), not irreducibility of the ambient model.
+All Lie jets at identity vanish, since every derivative of
+\(u\) remains in \(V\). Thus the Taylor series is zero near
+identity and analyticity gives zero on the whole identity
+component. The other real component is reached by an element
+of \(K\), which preserves \(V\), so the coefficient is zero
+there too.
+
+The separation argument just proved implies
+\(\pi(g)V\subset W\) for every \(g\). Continuity gives
+\(\pi(g)W\subset W\); applying the inverse gives equality.
+Topological irreducibility now forces \(W=E\).
+For every packet,
+\[
+ p_\tau E=p_\tau\overline V
+       \subset\overline{p_\tau V}=p_\tau V.
+\]
+The final equality holds because \(p_\tau V\) is a subspace
+of a finite-dimensional packet. Hence \(E_0=V\), and
+\(C_G=\mu\) on the entire core.
+
+Given any nonzero core submodule \(U\), repeat the same
+analytic annihilator argument: the Casimir is already scalar
+on \(U\), so \(\overline U\) is group-stable. It equals \(E\);
+finite packet projection then gives \(U=E_0\).
+This proves core irreducibility. Conversely a nonzero closed
+group-stable subspace has a nonzero core vector by compact
+approximation. Its core is Lie- and compact-stable, so core
+irreducibility puts every core vector in it. Density then
+makes that closed subspace all of \(E\). This proves the
+converse and the lemma.
+
+#### Compact estimates with polynomial constants
+
+Let \(\tau\) run through irreducible compact representations,
+\(d_\tau=\dim\tau\), and let \(\kappa_\tau\ge0\) be the scalar of the
+positive compact Casimir
+\(C_K=-\sum X_j^2\), for an invariant orthonormal basis of the compact
+Lie algebra. On \(O(n)\) the same construction is used on each of its
+two components. For \(n=1\), its finite compact group causes no
+spectral issue.
+
+The actual earlier proof of Schur orthogonality and Peter–Weyl is
+*Matrix coefficients and the Peter–Weyl theorem*, Theorem 4.1 and
+its preceding orthogonality proof.
+We supply the additional estimates needed here.
+
+There is an integer \(s\) and a constant \(C_s\) such that
+\[
+ \sum_{\kappa_\tau\le R}d_\tau^2\le C_s(1+R)^s.
+ \tag{2.10c}
+\]
+Indeed a local coordinate cutoff, Fourier inversion and
+Cauchy–Schwarz with the integrable weight
+\((1+|\xi|^2)^{-s}\), \(s>\dim K/2\), give
+\(\|f\|_\infty\le C\sum_{j\le s}\|D^jf\|_2\).
+A finite coordinate cover replaces coordinate derivatives by words
+in the \(X_j\)'s, with bounded coefficients. Fourier inversion here
+can be justified by inserting \(e^{-\epsilon|\xi|^2}\), evaluating
+the Gaussian, and taking the resulting approximate-identity limit.
+For a finite combination of compact coefficients with
+\(\kappa_\tau\le R\),
+\[
+ \sum_j\|X_jf\|_2^2=\langle C_Kf,f\rangle\le R\|f\|_2^2.
+\]
+The Casimir commutes with every \(X_j\), so iteration bounds every
+word of length \(j\) by \(R^{j/2}\|f\|_2\).
+Thus evaluation on this coefficient space has norm at most
+\(C(1+R)^{s/2}\). For any finite orthonormal coefficient list
+\(\phi_1,\ldots,\phi_M\), the square of that evaluation norm is
+\(\sum_\nu|\phi_\nu(x)|^2\). Integrating gives
+\(M\le C^2(1+R)^s\). Apply this to successively larger finite lists
+from the Peter–Weyl basis; the same bound forces the entire list
+below \(R\) to be finite and proves (2.10c).
+
+Write \(P=P_{\lambda,\sigma}\) for the complete compact-smooth
+principal model
+\[
+ P=\{q\in C^\infty(K):q(mk)=\sigma(m)q(k)\},\qquad
+ F(ua mk)=a^{\lambda+\rho}\sigma(m)q(k).
+ \tag{2.10d}
+\]
+Here \(\sigma\) is any smooth character of \(M\), and
+\(\lambda\in\mathbb C^n\); the real positive diagonal powers use
+ordinary real logarithms. The action is right translation of \(F\).
+Row Gram–Schmidt constructs its action and topology explicitly.
+All its compact derivatives satisfy (2.10b): Gram determinants of
+rows of \(kg\), and their inverses, are bounded by fixed powers of
+\(H(g)\); differentiation of the row-QR formulas only introduces
+further such powers. Thus each compact \(C^r\) seminorm is bounded
+by \(C_rH(g)^{A_r}\) times a compact \(C^r\) seminorm of \(q\).
+
+The \(\tau\)-packet \(P_\tau\) is \(U_\tau\otimes\mathbb C^{m_\tau}\),
+where \(m_\tau=\dim\operatorname{Hom}_M(U_\tau,\sigma)\le d_\tau\).
+For completeness, a \(K\)-map \(U_\tau\to P\) is determined by
+evaluation at the identity; that evaluation is an \(M\)-covariant
+functional. Conversely its matrix coefficient defines the map,
+giving this multiplicity identity. Put \(D_\tau=d_\tau m_\tau\).
+Evaluation has norm \(\sqrt{D_\tau}\): its squared norm is constant
+on the transitive compact flag, and the integral of that square,
+computed in an orthonormal basis of \(P_\tau\), is \(D_\tau\).
+Consequently
+\[
+ \|q_\tau\|_{C^r}\le C_r\sqrt{D_\tau}
+                 (1+\kappa_\tau)^{r/2}\|q_\tau\|_2.
+ \tag{2.10e}
+\]
+One may choose a basis of the \(M\)-covariant subspace of \(U_\tau\)
+so that the evaluation Riesz vector, viewed as a
+\(d_\tau\)-by-\(m_\tau\) matrix, is
+\[
+ d_\tau^{\,\mathrm{ev}}
+     =\sqrt{d_\tau}\,[u_1\ \cdots\ u_{m_\tau}],
+ \quad u_i\text{ orthonormal}.
+ \tag{2.10f}
+\]
+This follows directly from the orthogonality norm
+\(\int_K|\langle\tau(k)u,v\rangle|^2dk
+ =\|u\|^2\|v\|^2/d_\tau\), applied to the multiplicity basis.
+We take the \(L^2\) inner product linear in its first argument, so
+\(\langle d_\tau^{\,\mathrm{ev}},q\rangle=\overline{q(1)}\).
+
+Every \(q\in P\) has rapid compact-packet coefficients. Precisely,
+for every \(R\),
+\[
+ \sum_\tau(1+\kappa_\tau)^R\|q_\tau\|_2
+       \le C_R\|(1+C_K)^{b_R}q\|_2
+ \tag{2.10g}
+\]
+for some integer \(b_R\). To prove it, apply Cauchy–Schwarz to
+the sum with a factor \((1+\kappa_\tau)^{-a}\); (2.10c), grouped
+in dyadic intervals, makes its square summable for large \(a\).
+Orthogonality identifies the second square sum with the right
+side for \(b_R\ge R+a\). Equations (2.10e) and (2.10g) also prove
+convergence of the packet expansion in every \(C^\infty\)
+seminorm, with continuous bounds. No compact highest-weight
+classification or Weyl dimension formula is needed.
+
+#### A single compact-finite vector concentrating at a flag
+
+Write \(x_{ij}\), \(i>j\), for the matrix coordinates on \(\bar N\),
+and \(m=d n(n-1)/2\) for its real dimension. Lebesgue measure in
+these coordinates is Haar measure: multiplication is triangular
+with all diagonal Jacobian entries one. For \(1\le r<n\), let
+\[
+ Q_r(x)=\det\operatorname{Gram}(\text{last }r\text{ rows of }x),
+ \quad Q_0=Q_n=1.
+ \tag{2.10h}
+\]
+Cauchy–Binet expresses this as the sum of squared absolute values
+of all last-row minors, so \(Q_r\ge1\).
+In row-QR \(x=u(x)a(x)k(x)\) with upper \(u\), positive diagonal
+\(a\) and \(k\in K\), the last \(r\) rows span exactly the last
+\(r\) orthonormal rows. Hence
+\[
+ Q_r(x)=\prod_{j=n-r+1}^na_j(x)^2.
+ \tag{2.10i}
+\]
+The trailing \(r\)-minor of \(k(x)\) is
+\(\prod_{j=n-r+1}^na_j(x)^{-1}\), a positive real number:
+upper row operations preserve the bottom-row determinant and
+the trailing minor of \(x\) is one.
+
+Set
+\[
+ h(k)=\prod_{r=1}^{n-1}
+       |\det k_{\{n-r+1,\ldots,n\},\{n-r+1,\ldots,n\}}|^2.
+ \tag{2.10j}
+\]
+It is a polynomial in matrix entries and their conjugates,
+is \(M\)-invariant on the left, is compact-finite, and \(h(1)=1\).
+On the \(\bar N\) chart, \(h(k(x))=\prod_rQ_r(x)^{-1}\).
+For \(i=n-r+1\), the minor using columns \(j,i+1,\ldots,n\),
+\(j<i\), is \(x_{ij}\): its first row has zeros in the later
+columns and the remaining triangular block has determinant one.
+Together with the trailing minor, this proves
+\[
+ Q_{n-i+1}(x)\ge1+\sum_{j<i}|x_{ij}|^2,\qquad
+ h(k(x))\le(1+|x|^2)^{-1}.
+ \tag{2.10k}
+\]
+Each \(Q_r\) is polynomial, at least one, and at most a fixed
+power of \(1+|x|\). Formula (2.10i) therefore bounds \(a_j\) and
+\(a_j^{-1}\) by powers of \(1+|x|\).
+
+The character of \(M\) has signs \(\epsilon_i\in\{0,1\}\) over
+\(\mathbb R\), or integer circle weights \(l_i\) over \(\mathbb C\).
+The circle assertion follows by differentiating its scalar
+one-parameter character and imposing period \(2\pi\).
+Choose
+\[
+ f_0(k)=\prod_i k_{ii}^{\epsilon_i}\quad(\mathbb R),\qquad
+ f_0(k)=\prod_i k_{ii}^{\max(l_i,0)}
+                    \overline{k_{ii}}^{\max(-l_i,0)}
+                                             \quad(\mathbb C).
+ \tag{2.10l}
+\]
+Then \(f_0(mk)=\sigma(m)f_0(k)\), \(f_0(1)=1\), and
+\(|f_0|\le1\). Polynomial degree is preserved under compact
+translation, so it is compact-finite. For a large fixed integer
+\(L\), put
+\[
+ \xi(k)=f_0(k)h(k)^L,\qquad
+ \xi_{\bar N}(x)=a(x)^{\lambda+\rho}f_0(k(x))h(k(x))^L.
+ \tag{2.10m}
+\]
+By (2.10k), \(L\) can make the latter decay by any *fixed*
+required power. We choose it below with sufficiently many
+integrable moments. The same fixed \(\xi\) is used for all
+compact packets.
+
+We can also require
+\[
+ I_\xi=\int_{\bar N}\xi_{\bar N}(x)\,dx\ne0.
+ \tag{2.10n}
+\]
+Here is a proof that cancellation does not obstruct this choice.
+Write \(\phi(x)=a(x)^{\lambda+\rho}f_0(k(x))\); it is continuous,
+equals one at zero, and has polynomial growth.
+The positive density \(h(k(x))^L dx\), after normalization,
+concentrates at zero as \(L\to\infty\).
+Outside \(|x|<\epsilon\), (2.10k) bounds \(h\) by
+\(\theta_\epsilon<1\); keep a fixed integrable power \(h^{L_0}\)
+to dominate both \(1\) and \(|\phi|\), and the exterior integral
+is \(O(\theta_\epsilon^{L-L_0})\).
+Near zero the smooth nonnegative \(h\) has maximum one, so
+\(h(k(x))\ge1-C|x|^2\). The integral on
+\(|x|\le L^{-1/2}\) is at least \(cL^{-m/2}\), after reducing
+the ball by a fixed factor. The exterior mass divided by this
+lower bound tends to zero. On the interior \(\phi\) tends
+uniformly to one as \(\epsilon\to0\).
+Thus \(I_\xi/\int h(k(x))^Ldx\to1\), proving (2.10n) for all
+sufficiently large \(L\), together with the desired moments.
+
+We record the measure factor to fix the sign in this construction:
+\[
+ dk=a(x)^{2\rho}\,dx
+ \quad\text{on the open flag chart }M\backslash K.
+ \tag{2.10o}
+\]
+A positive constant is absorbed into \(dx\).
+For an elementary verification, matrix Haar measure is
+\(|\det g|_k^{-n}d_{\mathrm{Leb}}g\); direct multiplication
+shows both left and right invariance. On the Gauss chart
+\(g=u a m x\), elimination starting with the bottom pivot
+gives the Lebesgue Jacobian
+\(\prod_j a_j^{\,2d(j-1)}\) in the diagonal-entry and
+upper/lower-entry coordinates. One obtains this inductively:
+the final column entries above the bottom pivot and final row
+entries to its left contribute \(a_n^{d(n-1)}\) each, and
+their Schur complement leaves the \((n-1)\)-matrix calculation.
+Passing from diagonal Lebesgue measure to \(da_j/a_j\), with
+the polar circle measure when \(d=2\), yields
+\(\prod_j a_j^{d(2j-n-1)}=a^{-2\rho}\).
+Thus \(dg=a^{-2\rho}\,du\,da\,dm\,dx\).
+In Iwasawa coordinates \(g=u'a'k\) the upper
+triangular Jacobian gives \(dg=(a')^{-2\rho}du'\,da'\,dk\).
+At a positive diagonal matrix, each pair of off-diagonal
+positions is parametrized by an upper entry and a
+skew-adjoint compact entry; its real Jacobian is
+\(a_j^{2d}\) for \(i<j\). The diagonal radial and compact
+phase directions supply the usual polar factors.
+Their product is precisely the Gauss Jacobian just computed;
+left upper translation and right compact translation
+propagate it to all Iwasawa charts.
+Substitute \(x=u(x)a(x)k(x)\); the upper translation Jacobian
+is one and \(a'=aa(x)\). Comparing the two formulas gives
+(2.10o). The complements of these charts are zeros of
+nonzero minors and have measure zero. This calculation also
+proves invariance of the compact integral pairing between
+\(P_{\lambda,\sigma}\) and \(P_{-\lambda,\sigma^{-1}}\).
+
+For \(t\ge1\), put
+\[
+ Y_i=(n+1)/2-i,\quad
+ a_t=\operatorname{diag}(t^{Y_i}),\quad
+ C_t(x)=a_t^{-1}xa_t,\quad
+ b_t=a_t^{\lambda-\rho}I_\xi.
+ \tag{2.10p}
+\]
+The coordinate \(x_{ij}\) is multiplied by \(t^{i-j}\).
+Thus \(C_t\) has Jacobian \(a_t^{2\rho}\) and
+\(|C_t^{-1}x|\le t^{-1}|x|\). Right translation in (2.10d)
+and (2.10o) give, for \(q\in P_\tau\),
+\[
+ \frac{\langle P(a_t)\xi,q\rangle}{b_t}
+ = I_\xi^{-1}\int_{\bar N}
+    \xi_{\bar N}(y)\,
+    a(C_t^{-1}y)^{\rho-\lambda}
+    \overline{q(k(C_t^{-1}y))}\,dy.
+ \tag{2.10q}
+\]
+In particular this tends to \(\overline{q(1)}\), with a
+polynomial bound uniform in \(\tau\):
+\[
+ \left\|
+ \frac{P_\tau P(a_t)\xi}{b_t}
+       -d_\tau^{\,\mathrm{ev}}\right\|_2
+ \le C\sqrt{D_\tau}(1+\sqrt{\kappa_\tau})t^{-1/2}.
+ \tag{2.10r}
+\]
+To verify the bound, split the integral at \(|y|=\sqrt t\).
+On the interior, row-QR is smooth at zero, the weight is
+\(1+O(|C_t^{-1}y|)\), and (2.10e) bounds the change of \(q\)
+by \(C\sqrt{D_\tau}(1+\sqrt{\kappa_\tau})t^{-1/2}\|q\|_2\).
+On the exterior, the weight in (2.10q) is bounded by
+\(C(1+|y|)^a\), uniformly for \(t\ge1\), by (2.10i).
+Choose \(L\) in (2.10m) so that
+\(\int|\xi_{\bar N}(y)|(1+|y|)^{a+2}dy<\infty\).
+The exterior integral is then at most
+\(Ct^{-1}\sqrt{D_\tau}\|q\|_2\); the same estimate controls
+the discarded constant \(q(1)\). Taking the supremum over
+unit \(q\in P_\tau\) proves (2.10r).
+
+#### Exact compact-packet synthesis by group tests
+
+Only packets with \(m_\tau>0\) are used; zero packets are omitted.
+Choose once and for all
+\(t_\tau=T(1+\kappa_\tau)^b\), where \(T,b\) are large enough
+that the right side of (2.10r) is at most
+\(\sqrt{d_\tau}/2\). This is possible by (2.10c) and
+\(m_\tau\le d_\tau\). Let
+\[
+ X_\tau=P_\tau P(a_{t_\tau})\xi.
+ \tag{2.10s}
+\]
+View it as a \(d_\tau\)-by-\(m_\tau\) matrix in (2.10f).
+Its smallest column singular value is at least
+\(|b_{t_\tau}|\sqrt{d_\tau}/2\).
+For a target matrix \(Q\in P_\tau\), define
+\[
+ T_{\tau,Q}=Q(X_\tau^*X_\tau)^{-1}X_\tau^*.
+ \tag{2.10t}
+\]
+Then \(T_{\tau,Q}X_\tau=Q\), linearly in \(Q\), and
+\(\|T_{\tau,Q}\|_{\mathrm{HS}}
+ \le2\|Q\|_2/(|b_{t_\tau}|\sqrt{d_\tau})\).
+The compact Fourier kernel
+\[
+ k_{\tau,Q}(k)=d_\tau
+                 \operatorname{tr}(T_{\tau,Q}\tau(k^{-1}))
+ \tag{2.10u}
+\]
+acts as \(T_{\tau,Q}\) on \(U_\tau\), and zero on all other
+compact types, by Schur orthogonality. The same orthogonality
+gives
+\[
+ \|k_{\tau,Q}\|_1\le\|k_{\tau,Q}\|_2
+   =\sqrt{d_\tau}\|T_{\tau,Q}\|_{\mathrm{HS}}
+   \le2|b_{t_\tau}|^{-1}\|Q\|_2.
+ \tag{2.10v}
+\]
+Both \(H(a_{t_\tau})\) and \(|b_{t_\tau}|^{-1}\) are bounded
+by fixed powers of \(1+\kappa_\tau\), because \(t_\tau\) is
+such a power and \(|a_t^{\lambda-\rho}|\) is a fixed real
+power of \(t\).
+
+We need one exact smooth group kernel fixing \(\xi\).
+Let \(W\) be the sum of the *entire* compact isotypic packets
+containing \(\xi\). It is finite-dimensional; using only its
+compact orbit span would not ensure invariance under the kernel.
+Average a compact smooth approximate identity on \(G\) under
+compact conjugation. The resulting \(h_\epsilon\) commutes
+with \(K\), preserves \(W\), and tends to identity on \(W\).
+For small \(\epsilon\), \(P(h_\epsilon)|_W\) is invertible.
+Its characteristic polynomial, with nonzero constant term,
+expresses identity on \(W\) as a polynomial in
+\(P(h_\epsilon)|_W\) with zero constant term.
+The corresponding finite linear combination of positive
+convolution powers is \(h_0\in C_c^\infty(G)\), with
+\(P(h_0)\xi=\xi\).
+
+Define the smooth compactly supported group function
+\[
+ f_{\tau,Q}=k_{\tau,Q}*\delta_{a_{t_\tau}}*h_0,
+ \qquad P(f_{\tau,Q})\xi=Q.
+ \tag{2.10w}
+\]
+The first convolution is integration on \(K\); the point
+mass in the second one is merely left translation of \(h_0\).
+Its support lies in \(K a_{t_\tau}\operatorname{supp}h_0\).
+For every right Lie word \(D\) and integer \(R\ge0\),
+right differentiation transfers to \(h_0\), giving
+\[
+ \int_G H(g)^R|R_Df_{\tau,Q}(g)|\,dg
+       \le C_{R,D}(1+\kappa_\tau)^{a_{R,D}}\|Q\|_2.
+ \tag{2.10x}
+\]
+Here (2.10v), submultiplicativity of \(H\), and the fixed
+weighted derivative integrals of \(h_0\) prove the bound.
+Left derivative words satisfy bounds of the same form:
+express a left vector field through right vector fields
+using \(\operatorname{Ad}(g^{-1})\), whose coefficients are
+bounded by \(H(g)^2\). Differentiating these coefficients
+introduces only further fixed powers of \(H\).
+
+Let \(\mathcal S_H(G)\) have all seminorms
+\(\int H^R|R_Df|\), for all \(R,D\).
+The series
+\[
+ s(q)=\sum_\tau f_{\tau,q_\tau}
+ \tag{2.10y}
+\]
+converges in every such seminorm by (2.10g) and (2.10x);
+the resulting map \(s:P\to\mathcal S_H(G)\) is linear and
+continuous. There is an actual smooth function behind the
+series. On a compact coordinate set, left/right invariant
+derivatives span coordinate derivatives with bounded coefficients.
+The elementary \(L^1\) local estimate obtained by repeated
+one-dimensional fundamental theorem of calculus bounds a
+supremum by the \(L^1\) norms of coordinate derivatives through
+order \(\dim G+1\), after a fixed cutoff. It makes the series
+and each fixed derivative uniformly Cauchy there. Its smooth
+local limits agree, and the weighted \(L^1\) bounds pass to the
+limit by Fatou. This also verifies completeness for the limits
+being used, without an imported Schwartz-space theorem.
+
+For any actual model satisfying (2.10b), the action
+\(\pi(f)v=\int f(g)\pi(g)v\,dg\) exists for
+\(f\in\mathcal S_H(G)\). On compact sets it is the limit of
+Riemann sums in the complete locally convex space; outside
+those sets (2.10b) bounds the tail in each seminorm by
+\(Cq(v)\int H^A|f|\). The resulting net is Cauchy and its
+limit is independent of the cutoffs. Thus
+\[
+ p(\pi(f)v)\le Cq(v)\int H^A|f|.
+ \tag{2.10z}
+\]
+Changing variables under a one-parameter translation transfers
+differentiation to \(f\); (2.10x) and its left-derivative version
+justify the difference-quotient limit in every seminorm.
+This proves all differentiated action formulas and continuity.
+Applying it to \(P\), (2.10w), (2.10y), and smooth packet
+convergence prove the exact identity
+\[
+ P(s(q))\xi=q \qquad(q\in P).
+ \tag{2.10aa}
+\]
+This is an explicitly proved principal-series universal estimate,
+including support, derivative and topology control.
+For \(n=1\), \(M=K\) and \(P\) is one-dimensional; choose
+\(\xi=\sigma\), one compact smooth kernel acting nontrivially
+on its character and rescale it. Equations (2.10y)–(2.10aa)
+then hold with a single packet. This covers that rank directly.
+
+#### Continuous extension of every principal-core map
+
+**Theorem 2.0x.** Let \(A_0:P_0\to E_0\) be a
+\((\mathfrak g,K)\)-map, where \(E\) is a supplied model
+as above. It has a continuous \(G\)-equivariant extension
+\[
+ A:P\longrightarrow E,\qquad
+ A(q)=\pi(s(q))A_0(\xi).
+ \tag{2.10ab}
+\]
+If \(A_0\) is surjective, \(A(P)\) contains \(E_0\) and
+is dense in \(E\).
+
+We first verify the coefficient identity needed to prove that
+(2.10ab) extends the stated map, rather than an unrelated one.
+The quadratic invariant Casimir \(C_G\) of the real trace form
+(real part over \(\mathbb C\)) acts by a scalar on a full
+Borel principal series. Here is the algebraic verification.
+Its complexified expression is a sum of diagonal squares
+and pairs \(E_{ij}E_{ji}+E_{ji}E_{ij}\), with fixed nonzero
+normalizing constants; in the complex case apply this in the
+two matrix summands. Left upper-root derivatives kill an
+inducing function and left diagonal derivatives are its
+fixed inducing scalars. Reorder each root pair to place the
+upper derivative on the right. The other term differs by
+the diagonal commutator \(E_{ii}-E_{jj}\), with the sign
+fixed by the anti-representation convention for left
+derivatives. The remaining diagonal polynomial is a scalar.
+Finally the left and right quadratic operators agree:
+the left field \(L_X\) at \(g\) is the right field
+with parameter \(\operatorname{Ad}(g^{-1})X\). Along its
+own curve \(\exp(tX)g\) that parameter is constant, since
+\(\operatorname{Ad}(\exp(-tX))X=X\).
+Thus its square introduces no coefficient-derivative term.
+Summing those squares with the trace-form signs leaves
+the same quadratic tensor, by its adjoint invariance.
+Thus the right Casimir
+has that same scalar on \(P\).
+If \(A_0\ne0\), it intertwines this scalar with the scalar
+on the irreducible core \(E_0\); the latter follows also by
+the finite-packet eigenvector argument. If \(A_0=0\) the
+assertion is immediate.
+
+Let \(\eta\) be a compact-finite continuous functional on \(E\).
+It is supported on finitely many compact packets. Therefore
+\(\eta A_0\) on \(P_0\) has a continuous extension \(\eta_P\)
+to \(P\): compose the finite sum of packet projectors with
+the appropriate finite-dimensional functional.
+For every core vector \(u\in P_0\), we claim
+\[
+ \eta(\pi(g)A_0u)=\eta_P(P(g)u)\qquad(g\in G).
+ \tag{2.10ac}
+\]
+All Lie derivatives at identity agree because \(A_0\) is
+a core intertwiner. Both scalar functions are analytic.
+In detail, decompose \(u\) into its finitely many compact
+Casimir eigencomponents \(\kappa\). The right coefficient
+of each component solves
+\[
+ (\Delta-\mu+2\kappa)f=0,\qquad
+ \Delta=C_G-2C_K=\sum P_i^2+\sum K_j^2,
+ \tag{2.10ad}
+\]
+an elliptic scalar equation with analytic matrix-coordinate
+coefficients. The interior Fourier estimate, cutoff gradient
+estimate, nested-ball induction and factorial Taylor bound
+in §§1–3 of the written Theorem 1.29 prove analyticity of
+every smooth solution of this equation. That proof uses
+the scalar equation and a fixed compact packet; it does
+*not* require irreducibility of the ambient principal series.
+It therefore applies to both sides here. Matched Taylor
+jets give equality near identity; overlapping analytic
+coordinate balls give it throughout the identity component.
+The second component over \(\mathbb R\) is a compact sign
+matrix times that component, and the matched \(K\)-actions
+give equality there too. This proves (2.10ac) without
+assuming continuity of \(A_0\).
+
+Continuity of (2.10ab) follows directly from (2.10z) and
+continuity of \(s\). Integrating (2.10ac) with \(u=\xi\)
+against \(s(q)\), and using (2.10aa), gives
+\[
+ \eta(Aq)=\eta_P(q).
+ \tag{2.10ae}
+\]
+For a core \(q\), the right side is \(\eta(A_0q)\).
+Compact-finite continuous functionals separate points of
+\(E\): each finite packet has all its linear functionals
+continuous, through its continuous character projector;
+if all packets of a vector vanish, the polynomial compact
+approximate identities in (1.34d) converge to that vector
+and have zero output. Thus (2.10ae) proves \(Aq=A_0q\)
+on the whole core.
+
+For a general \(g\in G\), pair \(\pi(g)Aq\) with the same
+\(\eta\), use (2.10ac) at \(gh\) under the integral defining
+(2.10ab), and obtain \(\eta_P(P(g)q)\). Equation (2.10ae)
+applied to \(P(g)q\) gives that same number for \(A(P(g)q)\).
+Separation proves \(G\)-equivariance. Compact core density
+follows from (1.34d), so a surjective core map has dense
+image, as asserted. Uniqueness of the continuous extension
+also follows from core density.
+
+Neither surjectivity on the full supplied smooth space nor
+closed image is needed or asserted in this theorem.
+
+#### The entire continuous dual embeds
+
+**Theorem 2.0y.** For every supplied irreducible admissible
+moderate smooth dual-pair model \(E\), there is a particular
+injective equivariant map
+\[
+ A':E'\hookrightarrow P',
+ \qquad A'(\ell)(q)=\ell(Aq).
+ \tag{2.10af}
+\]
+Here \(E'\) is its *full continuous dual*, with
+\((g\ell)(v)=\ell(g^{-1}v)\), and \(P'\) is the distributional
+principal series dual to (2.10d), namely
+\(I^{-\infty}_{-\lambda,\sigma^{-1}}\).
+
+Use the surjective principal-core map \(A_0:P_0\to E_0\) already
+constructed in (1.34y), and apply Theorem 2.0x to it. The resulting \(A\) has dense image. Thus a
+continuous \(\ell\) annihilating \(A(P)\) annihilates \(E\),
+which proves injectivity. Equivariance follows by applying
+the equivariance of \(A\) in (2.10ab) to \(g^{-1}q\).
+Every \(\ell A\) is continuous on the compact \(C^\infty\)
+model, hence is an actual distribution on its compact
+flag line bundle; this is the definition of \(P'\).
+The dual parameter and action follow from the invariant
+compact integral pairing verified in (2.10o).
+To identify this with the exact convention in (2.7a),
+first extend a distribution in the compact model to a
+generalized function on \(G\) with the *upper* covariance
+\(F(ua mk)=a^{-\lambda+\rho}\sigma(m)^{-1}F(k)\).
+Locally a flag section and upper coordinates identify
+the relevant bundle with a product: tensor its distribution
+with that smooth upper character. Changes of sections
+give exactly the compact line-bundle transition factors,
+so these products patch to a generalized function.
+Right translation induces the dual compact action.
+This can be checked on smooth sections by (2.10o);
+compact-coordinate smoothing approximates any distribution
+weakly: convolution with a compact integral-one mollifier
+transposes to convolution of a test density, which converges
+with every derivative on a fixed compact neighborhood.
+Distribution continuity gives the limit; a finite coordinate
+partition of unity patches these smooth approximants.
+Continuous pullback on test densities passes
+the identity to their limit. Thus it holds for the full
+distribution space.
+Let \(w_0\) reverse the basis order, and put
+\[
+ (\mathcal JT)(x)=T(w_0x),\qquad
+ \chi_T(b)=a(w_0bw_0^{-1})^{-\lambda+\rho}
+              \sigma(m(w_0bw_0^{-1}))^{-1}
+ \quad(b\in\bar B).
+ \tag{2.10afa}
+\]
+Upper unipotents are ignored in this character.
+Left pullback \(\mathcal J\) is an isomorphism, commutes
+with every right translation, and exchanges the upper
+covariance with this lower covariance. Consequently
+\(\mathcal J A':E'\hookrightarrow I^{-\infty}(\chi_T)\)
+is literally the map required by (2.7m), with the same
+upper group \(N\) and no change to its character.
+No assertion about abstract algebraic duals is substituted
+for this distributional embedding.
+
+The construction even gives continuity for the strong dual
+topologies: continuous linear \(A\) takes bounded sets to
+bounded sets, so each strong-dual seminorm of \(\ell A\)
+is the corresponding bounded-set seminorm of \(\ell\).
+The weaker linear-equivariant conclusion is already enough
+for Corollary 2.0o.
+
+There is a useful additional smooth comparison, with a precise
+limitation. The supplied \(\widetilde E\) embeds continuously
+into the *smooth* dual principal model by
+\[
+ j(w)(q)=B_E(Aq,w).
+ \tag{2.10ag}
+\]
+Joint continuity gives
+\(|j(w)(q)|\le C r(w)\|q\|_{C^a}\) for a fixed integer \(a\)
+and a fixed continuous seminorm \(r\) on \(\widetilde E\).
+This is a fixed distribution-order bound for *every* \(w\).
+Invariance transfers any compact-Casimir power to \(w\)
+while retaining exactly that order. With (2.10e), it gives
+\[
+ (1+\kappa_\tau)^b\|j(w)_\tau\|_2
+ \le C(1+\kappa_\tau)^c
+                      r((1+C_K)^bw).
+ \tag{2.10ah}
+\]
+Given any compact derivative order, choose \(b\) larger
+than \(c\), that order, and the polynomial counting exponent
+in (2.10c). Equations (2.10e) and (2.10ah), summed in dyadic
+intervals, make the compact series and its derivatives
+absolutely uniformly convergent. They bound that smooth
+seminorm by the single continuous seminorm
+\(Cr((1+C_K)^bw)\). Thus (2.10ag) is a continuous map into
+\(P_{-\lambda,\sigma^{-1}}\), not merely into distributions.
+Its injectivity follows from nondegeneracy of \(B_E\) and
+density of \(A(P)\). Its core map is exactly the transpose
+of \(A_0\). Swapping the supplied dual pair gives the
+analogous smooth principal embedding of \(E\), including
+continuity of the selected Borel eigenfunctional obtained
+by evaluation at identity.
+
+This proof uses a fixed-order estimate for every differentiated
+vector. Smooth dependence of an orbit in the strong distribution
+topology alone would not imply smoothness of its distribution:
+point masses already have smooth translated orbits there.
+We have not made that incorrect identification. Closed range,
+a continuous inverse on the image, or smoothing an arbitrary
+functional on \(E\) into the prescribed \(\widetilde E\) do
+not follow just from (2.10ag); none is used in (2.10af).
+
+#### General uniqueness in the supplied topology
+
+**Theorem 2.0z.** Let \(E,\widetilde E\) be any supplied models
+as above. For every nondegenerate continuous unitary character
+\(\Psi:N\to\mathbb C^\times\),
+\[
+ \dim\operatorname{Hom}^{\mathrm{cont}}_N(E,\Psi)\le1.
+ \tag{2.10ai}
+\]
+This includes nongeneric models, whose space may be zero.
+It holds in every rank for both real and complex fields,
+without unitarity of the representation or a determinant
+twist reduction.
+
+A Whittaker functional is precisely \(\ell\in E'\) with
+\(n\ell=\Psi(n)^{-1}\ell\). The actual injective map (2.10af)
+followed by (2.10afa) puts its space into the corresponding eigendistributions
+of one full principal series. Theorem 2.0n proves that
+space has dimension at most one, including all transverse
+boundary jets, and Corollary 2.0o is its stated transport
+argument. Applying it proves (2.10ai).
+The standard-character convention entails no restriction:
+every nondegenerate unitary character has nonzero real
+simple-root coefficients over \(\mathbb R\), or nonzero
+complex coefficients in the real trace pairing over
+\(\mathbb C\). Conjugation by a diagonal matrix makes
+these coefficients the fixed standard ones, solving the
+successive ratios of its diagonal entries. It preserves
+dimension of the Hom space.
+
+For a continuous *nonunitary* character the Hom space is
+zero in the same moderate models. Such a character has
+on some real elementary-root one-parameter subgroup
+\(u(t)\) the value \(e^{ct}\) with \(\Re c\ne0\).
+Indeed choose a continuous logarithm of the character
+near zero. On a smaller interval its additivity defect
+is a continuous \(2\pi i\mathbb Z\)-valued function
+vanishing at zero, hence is zero. Its local additive
+law, first on rationals and then by continuity, gives
+the logarithm \(ct\), and subdividing any interval gives
+the exponential on all of \(\mathbb R\). Its
+real-logarithm homomorphism is nonzero on some generator
+when the character is nonunitary. The elementary-root
+subgroups generate \(N\).
+If \(\ell(v)\ne0\) and \(\ell\) is such an eigenfunctional,
+continuity and (2.10b) bound
+\[
+ |e^{ct}\ell(v)|
+   =|\ell(\pi(u(t))v)|
+   \le C(1+|t|)^Aq(v).
+ \tag{2.10aj}
+\]
+Take \(t\) in the direction with \((\Re c)t\to+\infty\).
+This is impossible, so \(\ell=0\).
+
+For every actual archimedean cuspidal factor, the supplied
+paired models are furnished by Theorems 1.19 and 1.11–1.13.
+The nonzero continuous Whittaker functional is proved
+by Theorem 1.3 and Corollary 1.4 of
+*Automorphic representations and automorphic L-functions*.
+Consequently its space for a nondegenerate unitary
+character has dimension exactly one. This application
+uses the actual model, continuity and global existence;
+the bound (2.10ai) itself does not presume genericity.
+
+#### Proven scope and precise further obligations
+
+Lemma 2.0w derives core irreducibility from topological
+irreducibility and admissibility in the actual smooth model.
+Theorem 2.0y constructs the missing continuous-dual
+distributional embedding for *every supplied* complete
+smooth moderate dual-pair model with irreducible admissible
+core. Theorem 2.0z therefore closes general archimedean
+Whittaker uniqueness in that exact model class, including
+all compatible cuspidal models and nonunitary representations.
+The occurrence and scalar analytic estimates it uses are
+proved in Theorems 1.28 and 1.29 above.
+
+This proof does not manufacture a supplied dual pair for
+an arbitrary abstract Harish-Chandra module. Nor does it
+assert a general onto/closed-image globalization comparison,
+opposite Whittaker existence in nongeneric models, or that
+all continuous-dual convolutions land in a preselected
+smooth contragredient. The general existence and onto comparison assertions remain
+additional obligations; they are unnecessary for (2.10ai).
+
+The free primary comparison source is Bernstein–Krötz,
+*Smooth Fréchet globalizations of Harish-Chandra modules*,
+author-hosted version dated 3 August 2014, §8, Theorem 8.1 (pp.35–36),
+and Appendix A, §§12.1–12.4, especially Theorems 12.2
+and 12.8 (pp.57–64):
+[verified author-hosted PDF](https://www.math.tau.ac.il/~bernstei/Publication_list/publication_texts/Bern-Kroetz-2014.pdf).
+Our explicit row-minor vector (2.10j)–(2.10n), compact
+packet estimate, exact kernel synthesis, coefficient
+transport and dual embedding are proved above.
+The full row-minor, synthesis and transport arguments have been
+given above.
 
 **Theorem 2.1 (Jacquet–Piatetski-Shapiro–Shalika, 1983; local factor identification; general multiplicativity and archimedean construction remain open).** Over a nonarchimedean local field, the Rankin–Selberg integrals for irreducible generic representations are rational functions of \(q^{-s}\). Their span over \(\mathbb C[q^s,q^{-s}]\) is a fractional ideal with a unique generator \(P(q^{-s})^{-1}\), where \(P(0)=1\); this generator defines the local L-factor. The factors are multiplicative in the essentially tempered constituents of the local Langlands data. In particular, when both representations are unramified and have Satake matrices \(t,t'\),
 
@@ -8279,7 +10688,7 @@ L_v(s,\pi_v\times\pi'_v)
 \tag{2.2}
 \]
 
-Proposition 2.3b and Proposition 2.3d below prove convergence, rationality, the whole normalized nonarchimedean ideal and finite test-sum attainment in every pair of ranks and every nonarchimedean field; Corollary 2.3f proves rectangular-index independence. Theorem 2.3h proves the full scalar functional equation, and Proposition 2.3i and Corollary 2.3j prove Laurent epsilon, exact character scaling and norm shifts. General parabolic multiplicativity and ordered-data identification remain additional assertions, located in the freely accessible author version [Jacquet–Piatetski-Shapiro–Shalika, *Rankin–Selberg convolutions*, §9.4]. Propositions 2.1a and 2.1c below prove the spherical Whittaker formula and the good-place integral value in every rank and over every nonarchimedean field. Identification of that value with the full ideal generator remains an additional assertion; the free statement locators are [Getz–Hahn, 22 April 2022 draft, Theorems 11.6.1–11.6.2]. At archimedean places the factors have the form of finite products of shifted \(\Gamma_{\mathbb R}\) and \(\Gamma_{\mathbb C}\) functions, with nonzero exponential normalization factors. This shape belongs to the local factor construction; it does not assert that all the shifts are tempered.
+Proposition 2.3b and Proposition 2.3d below prove convergence, rationality, the whole normalized nonarchimedean ideal and finite test-sum attainment in every pair of ranks and every nonarchimedean field; Corollary 2.3f proves rectangular-index independence. Theorem 2.3h proves the full scalar functional equation, and Proposition 2.3i and Corollary 2.3j prove Laurent epsilon, exact character scaling and norm shifts. Theorems 2.3l–2.3n identify the complete rank-one ideal, gamma and epsilon with the twisted matrix package, including ramified characters and both finite-field characteristics. Their block formula gives rank-one gamma multiplicativity when the inducing blocks are generic. Higher-rank parabolic multiplicativity and ordered-data identification remain additional assertions, located in the freely accessible author version [Jacquet–Piatetski-Shapiro–Shalika, *Rankin–Selberg convolutions*, §9.4]. Propositions 2.1a and 2.1c below prove the spherical Whittaker formula and the good-place integral value in every rank and over every nonarchimedean field. Identification of that value with the full ideal generator remains an additional assertion; the free statement locators are [Getz–Hahn, 22 April 2022 draft, Theorems 11.6.1–11.6.2]. At archimedean places the factors have the form of finite products of shifted \(\Gamma_{\mathbb R}\) and \(\Gamma_{\mathbb C}\) functions, with nonzero exponential normalization factors. This shape belongs to the local factor construction; it does not assert that all the shifts are tempered.
 
 The whole nonarchimedean fractional ideal is now constructed in Propositions 2.3b–2.3d. Evaluating one spherical integral does not by itself prove that it generates that ideal. That identification, and the archimedean factor construction, remain analytic assertions in Theorem 2.1. Once their factor shape is known, the following elementary property needs no boundary estimate.
 
@@ -9690,6 +12099,765 @@ identities then give the other two assertions.
 
 Free comparison: [Jacquet–Piatetski-Shapiro–Shalika, author-hosted Rankin–Selberg convolutions](https://www.math.columbia.edu/~hj/Rankin%20Selberg%20convolutions.pdf), §§2.4–2.12, printed pp. 387–403, PDF pp. 22–38. The common-denominator recurrence and orbit-depth pairing arguments above are fully written; the citation supplies no omitted auxiliary theorem.
 
+### Complete finite rank-one Rankin–Selberg / matrix identification
+
+#### A direct comparison with the matrix ideal in rank \(m=1\)
+
+This comparison is a proved inclusion of complete integral
+families; it is not a claim identifying their gamma factors.
+
+**Proposition 2.3k.** If \(\chi\) is a smooth character of
+\(k^\times\), every integral for \(\pi\times\chi\) belongs
+to the standard matrix ideal for \(\pi\otimes(\chi\circ\det)\).
+In particular the Rankin–Selberg factor divides that matrix
+factor, in the reciprocal-polynomial sense. If \(\pi\) is
+Jacquet-cuspidal of rank \(n>1\), then
+\[
+ L(s,\pi\times\chi)=1.
+ \tag{2.9bl}
+\]
+
+**Proof.** It suffices to realize \(Z_0(s,W,\chi)\)
+as an actual matrix zeta integral. Its torus value
+\(W(\operatorname{diag}(t,I_{n-1}))\) vanishes for
+\(|t|>C\), by (2.9h). Let \(v\) be its vector and
+\(\lambda\) its algebraic Whittaker functional. Choose
+a sufficiently deep principal congruence subgroup \(J\)
+fixing \(v\), with \(\psi\) trivial on its upper entries.
+Put \(\mu=\lambda\circ e_J\). This belongs to the smooth
+dual, because it is \(J\)-fixed.
+
+For \(|t|\le C\), the exact upper–diagonal-block–lower
+probability factorization of \(J\) gives
+\[
+ \mu\bigl(\pi(\operatorname{diag}(t,I))v\bigr)
+       =W(\operatorname{diag}(t,I)).
+ \tag{2.9bm}
+\]
+Indeed the upper average is invisible to \(\lambda\);
+the block-diagonal average fixes \(v\) and commutes with
+the displayed diagonal; and conjugating its lower-block
+average by that diagonal multiplies the entries by \(t\).
+Taking the lower congruence lattice sufficiently small
+makes it fix \(v\) for every \(|t|\le C\). Entries internal
+to the last block already fix \(v\). This proves (2.9bm)
+uniformly as \(t\) tends to zero.
+
+Write a matrix with invertible last block as
+\[
+ g=\begin{pmatrix}a&b\\c&D\end{pmatrix}
+   =\begin{pmatrix}1&bD^{-1}\\0&I\end{pmatrix}
+     \operatorname{diag}(t,D)
+     \begin{pmatrix}1&0\\D^{-1}c&I\end{pmatrix},
+ \quad t=a-bD^{-1}c.
+ \tag{2.9bn}
+\]
+Choose \(D\) in a small compact neighbourhood of
+\(I_{n-1}\), and \(b,c\) in small compact additive
+neighbourhoods of zero, so that the right lower factor
+fixes \(v\), the left upper factor fixes \(\mu\), and
+\(\chi(\det D)=1\). The coefficient
+\[
+ c_\chi(g)=\chi(\det g)\mu(\pi(g)v)
+ \]
+then equals
+\(\chi(t)W(\operatorname{diag}(t,I))\) on this set.
+Choose a scalar Schwartz function in the coordinates
+\((t,b,c,D)\), equal to a function \(\phi(t)\) times
+the indicators of these three small neighbourhoods,
+where \(\phi=1\) on \(|t|\le C\) and has compact
+support there. Extended by zero away from the chosen
+invertible-\(D\) chart, this is an actual Schwartz
+function on \(M_n(k)\), including \(t=0\).
+
+The additive Jacobian of (2.9bn) is one:
+only \(a=t+bD^{-1}c\) is changed. With
+\(\alpha_n=\prod_{i=1}^n(1-q^{-i})\), the matrix Haar
+measure is \(\alpha_n^{-1}|\det g|^{-n}\,dg_{\rm add}\).
+The standard exponent \(s+(n-1)/2\) and
+\(dt=(1-q^{-1})|t|\,d^\times t\) therefore leave
+\[
+ |t|^{s-(n-1)/2}\,d^\times t.
+ \]
+The three transverse integrations are a finite positive
+constant; divide the Schwartz function by it. The resulting
+matrix integral is exactly \(Z_0(s,W,\chi)\), initially
+by absolute convergence and then by rationality.
+Every \(Z_j\) belongs to the same ideal by Corollary 2.3f.
+If \(n=1\), this calculation is simply the scalar Tate
+integral with a cutoff equal to one on the original test
+support.
+
+The standard matrix ideal and its normalized generator
+were proved in Proposition 1.3. Its inclusion now gives
+the stated polynomial divisibility. Twisting a
+Jacquet-cuspidal representation by a determinant
+character preserves every zero Jacquet module.
+Lemma 1.20a and Proposition 1.4 give matrix factor
+one; its ideal is \(R\). The Rankin–Selberg ideal is
+contained in \(R\) and contains one, so is exactly
+\(R\), proving (2.9bl). \(\square\)
+
+As another immediate consequence, the completed spherical
+integral identifies the full generator when one rank is
+one and the pair is unramified: the spherical value equals
+the already proved unramified matrix factor, and the
+inclusion of this proposition gives both ideal inclusions.
+This argument does not extrapolate to a general tensor
+parameter in two higher ranks.
+
+#### The complete rank-one comparison of the two finite ideals
+
+The following is a reverse inclusion to Proposition 2.3k, for every actual
+generic irreducible and every character. It proves standard-factor
+identification between the two integral definitions at a finite
+place; it does not silently identify their Fourier scalars.
+
+**Theorem 2.3l.** For every actual generic irreducible smooth
+admissible \(\pi\) of \(G_n\), and every smooth character
+\(\chi\) of \(k^\times\),
+\[
+ \mathcal I_{\mathrm{RS}}(\pi\times\chi)
+       =\mathcal I_{\mathrm{mat}}
+                   (\pi\otimes(\chi\circ\det)),\qquad
+ L_{\mathrm{RS}}(s,\pi\times\chi)
+       =L_{\mathrm{mat}}
+                   (s,\pi\otimes(\chi\circ\det)).
+ \tag{2.9ck}
+\]
+The measures are those already fixed: matrix additive
+measure is self-dual, \(K_n\) has group volume one,
+and \(\mathcal O^\times\) has multiplicative volume one.
+
+**Step 1: ordinary and generalized matrix coefficients
+have the same ideal.** Write
+\[
+ J_s(\Phi,W)=\int_{G_n}\Phi(g)W(g)
+                |\det g|^{s+(n-1)/2}\,dg.
+ \tag{2.9cl}
+\]
+Given \(\Phi\), choose a compact open \(J\) for
+which \(\Phi(jg)=\Phi(g)\). Such a group exists
+even though \(\Phi\) is a test on the whole
+matrix space: if its support is in
+\(\varpi^{-B}M_n(\mathcal O)\) and its constancy
+lattice is \(\varpi^RM_n(\mathcal O)\), take
+\(J=1+\varpi^cM_n(\mathcal O)\) with \(c-B\ge R\).
+Both \(j\) and \(j^{-1}\) preserve the support
+ball, and change a matrix there by its constancy
+lattice.
+
+For \(W(g)=\lambda(\pi(g)v)\), the functional
+\(\lambda e_J\) is in the smooth dual. Averaging
+the integral on the left over \(J\) gives
+\[
+ J_s(\Phi,W)
+   =Z_{\rm mat}(s,\Phi,(\lambda e_J)(\pi(\,\cdot\,)v)).
+ \tag{2.9cm}
+\]
+Indeed determinants in \(J\) have norm one
+and the test is left invariant. Absolute
+convergence is checked before averaging.
+Iwasawa and the compact support ball of
+the matrix test bound every \(|a_j|\)
+above; its absolute \(N_n\)-integral is
+at most a constant times
+\(\prod_j|a_j|^{-(j-1)}\).
+The bounds (2.9h) put all ratio valuations
+below a fixed lower threshold. On each
+of their tails Lemma 2.3 bounds \(W\)
+by a polynomial times finitely many
+exponentials. Its central character
+is another exponential. Every increasing
+ratio valuation has determinant exponent
+\(i\,\operatorname{Re}s\), and the
+central valuation has exponent
+\(n\,\operatorname{Re}s\). Taking
+\(\operatorname{Re}s\) sufficiently
+large makes each geometric series
+converge, including the fixed Iwasawa
+and upper-entry Jacobian exponents.
+This proves absolute convergence of
+(2.9cl) in a right half-plane. Identity
+(2.9cm) then gives its rational continuation.
+
+Conversely every smooth dual vector is a
+finite sum of averaged translated Whittaker
+functionals. Fix its compact open stabilizer
+\(J\). The functionals
+\[
+ v\longmapsto\lambda(\pi(h)e_Jv),\qquad h\in G_n,
+ \tag{2.9cn}
+\]
+span \((V^J)^*\): otherwise a nonzero vector
+in the finite-dimensional \(V^J\) would be
+annihilated by all of them; all its translates
+would then be annihilated by \(\lambda\),
+contrary to irreducibility and \(\lambda\ne0\).
+Compact averaging extends the finite spanning
+identity to the full module. A coefficient
+therefore is a finite sum of
+\(\int_J W(hjg)\,dj\). In its matrix integral
+put \(g'=hjg\). This leaves a generalized
+integral (2.9cl) with a translated matrix test,
+times
+\(|\det h|^{-s-(n-1)/2}\).
+The latter is a Laurent unit in \(X\), times
+a nonzero complex constant. The generalized
+matrix and ordinary matrix families thus
+have the same \(R\)-span. In particular this
+argument proves equality of the *entire*
+ideals, rather than equality of a selected
+coefficient's denominator.
+
+**Step 2: an explicit compact determinant-one kernel.**
+Assume \(n\ge2\), and let
+\(K_n^1=\mathrm{SL}_n(\mathcal O)\), with
+probability Haar measure. The Iwasawa formula
+can use \(K_n^1\) in place of \(K_n\) while
+retaining all the diagonal coordinates.
+Indeed the determinant map on \(K_n\) splits
+by \(u\mapsto\operatorname{diag}(u,1,\ldots,1)\).
+Its Haar integral is the product of the unit
+Haar integral and the \(K_n^1\) integral.
+Absorb the unit \(u\) in the first diagonal
+coordinate. The other Haar measures and
+the Iwasawa density are unchanged.
+
+For \(k\in K_n^1\), let \(B(a,C)\) be the
+upper triangular matrix with diagonal
+\(a=(a_1,\ldots,a_n)\) and strict upper
+entries \(C=(C_{ij})_{i<j}\). Define the
+actual Schwartz function
+\[
+ \begin{split}
+ \Psi_k(a;\zeta_2,\ldots,\zeta_n)
+    &=\int \Phi(B(a,C)k)
+                  \psi\!\left(\sum_{j=2}^n
+                          \zeta_j C_{j-1,j}\right)dC,\\
+ \mathcal K_k(\xi;a_2,\ldots,a_n;
+                             \zeta_2,\ldots,\zeta_n)
+    &=\int_k\Psi_k(a;\zeta)\psi(-a_1\xi)\,da_1.
+ \end{split}
+ \tag{2.9co}
+\]
+The first integration includes the non-simple
+strict upper entries with trivial character.
+It is an integration and a partial Fourier
+transform of a Schwartz function. Consequently
+both displayed functions are Schwartz in their
+stated coordinates. This can be verified
+without a topological tensor assertion:
+partition the original test into finitely many
+cosets of one additive matrix lattice. Each
+coset integral or Fourier transform is the
+usual lattice-coset integral, a constant
+times a coset indicator and a character.
+Adding gives the assertion. The functions
+have only finitely many possibilities as
+\(k\) varies, by compactness and the matrix
+test's right open stabilizer.
+
+In the \(N_n\)-integration put
+\(C_{ij}=u_{ij}a_j\). Its Jacobian is
+\(\prod_{j=2}^n|a_j|^{j-1}\). Whittaker
+equivariance replaces that integration by
+\[
+ \prod_{j=2}^n|a_j|^{-(j-1)}
+       \Psi_k(a;a_2^{-1},\ldots,a_n^{-1}).
+ \tag{2.9cp}
+\]
+Apply Fourier inversion in \(a_1\) in (2.9co).
+Let \(b=a_2\cdots a_n\), set \(t=a_1b\), and put
+\[
+ h(\xi,a_2,\ldots,a_n,k)
+     =\left(1+\frac{\xi}{b}E_{12}\right)
+            \operatorname{diag}
+                  (b^{-1},a_2,\ldots,a_n)\,k.
+ \tag{2.9cq}
+\]
+This is in \(\mathrm{SL}_n(k)\). The equality
+\[
+ W\bigl(\operatorname{diag}(t,I)h\bigr)
+  =\psi(t\xi/b)\,
+        W\bigl(\operatorname{diag}
+                       (t/b,a_2,\ldots,a_n)k\bigr)
+ \tag{2.9cr}
+\]
+is simply left Whittaker equivariance for
+the first simple root. It absorbs the
+Fourier-inversion multiplier
+\(\psi(a_1\xi)\).
+
+The Iwasawa density and (2.9cp) give the
+diagonal exponents
+\[
+ s+(n-1)/2-(n+1-2j)-(j-1)
+                  =s-(n-1)/2+(j-1).
+ \]
+Replacing \(a_1\) by \(t/b\) therefore leaves
+exactly
+\[
+ |t|^{s-(n-1)/2}
+       \prod_{j=2}^n|a_j|^{j-1}.
+ \tag{2.9cs}
+\]
+Define a complex measure \(\mu_\Phi\) on
+\(\mathrm{SL}_n(k)\) by pushing forward, under
+(2.9cq), the finite measure
+\[
+ \mathcal K_k(\xi;a_2,\ldots,a_n;
+                              a_2^{-1},\ldots,a_n^{-1})
+ \prod_{j=2}^n|a_j|^{j-1}
+                  \,d\xi\prod_{j=2}^nd^\times a_j\,dk .
+ \tag{2.9ct}
+\]
+Its support is compact. In fact the
+Schwartz support in (2.9co) bounds each
+\(|a_j|\) above, and bounds \(|a_j^{-1}|\)
+above after the displayed specialization.
+Thus all \(a_j\), \(j\ge2\), stay in compact
+subsets of \(k^\times\); \(\xi\) is bounded,
+as is \(k\). Formula (2.9cq) then has compact
+image. The total variation of (2.9ct) is
+finite for the same reason. No singular
+coordinate at zero is passed over in this
+compactness argument.
+
+Equations (2.9co)–(2.9cs) prove the exact identity
+\[
+ J_s(\Phi,W)=
+        \int_{\mathrm{SL}_n(k)}
+          Z_0(s,R(h)W,1)\,d\mu_\Phi(h).
+ \tag{2.9cu}
+\]
+All its measures are the fixed normalized
+ones, so there is no suppressed constant.
+Initially the calculation is justified by
+absolute convergence: (2.9ct) has finite
+total variation and compact support,
+and the translates \(R(h)W\) have only
+finitely many values on that support.
+Their \(Z_0\) integrals converge absolutely
+in a common half-plane by Proposition 2.3b. Conversely
+(2.9cm) proves absolute convergence of
+the left side. The Fourier expansion's
+additional variables stay in the compact
+set just identified, which also bounds
+the absolute values of every rearrangement.
+Both sides continue rationally.
+
+Finally the compactly supported measure
+in (2.9cu) integrates only finitely many
+actual Whittaker translates. Thus every
+generalized matrix integral is a finite
+linear combination of actual rank-one
+Rankin–Selberg integrals. Step 1 proves
+\(\mathcal I_{\rm mat}(\pi)
+      \subset\mathcal I_{\rm RS}(\pi\times1)\).
+Proposition 2.3k proves the reverse inclusion.
+Twisting \(\pi\) by \(\chi\circ\det\)
+gives (2.9ck), including every ramified
+character. In rank one both sides are
+exactly the already proved Tate integral
+family, with exponent \(s\), so the
+same equality holds. Normalization at
+\(X=0\) identifies the factors uniquely.
+\(\square\)
+
+Free comparison for this determinant-one kernel:
+Jacquet–Piatetski-Shapiro–Shalika,
+[*Automorphic forms on GL(3), I*, author-hosted
+version](https://www.math.columbia.edu/~hj/Automorphic%20forms%20on%20GL%283%29%20I.pdf),
+§3.1 and §4.3, printed pp. 185–194
+(PDF pp. 18–27). Those sections treat arbitrary
+local rank \(r\). The coordinate formulas
+(2.9co)–(2.9cu) above give the full kernel and
+both ideal inclusions; the source title's
+global rank does not limit this calculation.
+
+#### Exact Fourier comparison with the rank-one family
+
+Keep the positive trace Fourier transform of the matrix
+theory, and the inverse-transpose definition of
+\(\widetilde W\) in Theorem 2.3h. The transpose in the following
+test is essential:
+\[
+ \Phi^*(g)=\widehat\Phi(g^t w_n),\qquad
+ w=\operatorname{diag}(1,w_{n-1}),\qquad
+ T(a,x)=
+ \begin{pmatrix}a&0&0\\x&I_{n-2}&0\\0&0&1\end{pmatrix}.
+ \tag{2.9cv}
+\]
+The middle block is absent when \(n=2\).
+
+**Lemma 2.3m (the same compact kernel on the Fourier
+side).** The actual measure \(\mu_\Phi\) in (2.9ct)
+satisfies
+\[
+ \int_{G_n}\Phi^*(g)H(g)\,dg
+  =\int_{\mathrm{SL}_n(k)}\int_{k^\times}
+       \int_{k^{n-2}}H(T(a,x)w h^{-t})
+             |a|^{-(n-1)}\,dx\,d^\times a\,
+                                      d\mu_\Phi(h)
+ \tag{2.9cw}
+\]
+for every smooth inverse-character Whittaker function
+\(H\) of compact support modulo \(N_n\).
+It also holds by absolute limits whenever both sides
+have the convergence bounds just proved.
+
+**A finite Fourier identity used in the proof.**
+For a matrix Schwartz test \(f\) and \(h\in
+\mathrm{SL}_n(k)\), additive self-dual measures give
+\[
+ \begin{split}
+ &\int_k\int_{N_n}
+   \widehat f\bigl(h^t\operatorname{diag}(a,I)
+                                   w_n u\bigr)
+                          \psi_n(u)^{-1}\,du\,da\\
+ &\hspace{8mm}=
+   \int_k\int_{k^{n-2}}\int_{N_n}
+       f(vT(a,x)w h^{-t})\psi_n(v)\,dv\,dx\,da.
+ \end{split}
+ \tag{2.9cx}
+\]
+Here the scalar integrations include zero. This is
+not a formal delta calculation. Both sides are
+the Fourier orthogonality identity for an affine
+matrix subspace, which can first be checked on
+additive lattice-coset indicators and added.
+Its exact subspace and its Jacobian are as follows.
+
+Put \(M=\operatorname{diag}(a,I)w_nu\).
+Its first row has the sole entry \(M_{1,n}=a\).
+For \(1\le r<n\), its row \(n+1-r\) has
+fixed entry \(M_{n+1-r,r}=1\) and entries
+\(M_{n+1-r,j}=u_{rj}\) for \(j>r\).
+The phase on these free entries is
+\(\psi(-\sum_{r<n}u_{r,r+1})\).
+Expanding the positive trace transform, and
+putting \(Z=Yh^t\), therefore forces
+\[
+ Z_{n,1}=0,\qquad
+ Z_{r+1,n+1-r}=1\ (r<n),\qquad
+ Z_{j,n+1-r}=0\ (j>r+1).
+ \tag{2.9cy}
+\]
+The residual phase is
+\(\psi(\sum_{r<n}Z_{r,n+1-r})\).
+Every matrix satisfying (2.9cy) is uniquely
+\[
+ Z=vT(a,x)w .
+ \tag{2.9cz}
+\]
+Indeed its columns \(c\ge2\) are the
+\((n+2-c)\)-th columns of \(v\): their
+fixed pivot is one, their lower entries
+are zero, and their upper entries supply
+all the independent entries of \(v\).
+Its first column has last entry zero.
+Reading upwards, that column supplies
+the \(n-2\) entries of \(x\), then \(a\),
+by triangular equations with coefficient
+one. This is a polynomial bijection
+with polynomial inverse and additive
+Jacobian one. Moreover
+\[
+ Z_{r,n+1-r}=v_{r,r+1}.
+ \]
+Thus the residual phase is exactly
+\(\psi_n(v)\). Since \(\det h=1\),
+the linear substitution \(Z=Yh^t\)
+also has additive Jacobian one.
+These observations prove (2.9cx),
+including its character, absence of
+a sign unit, and all its measures.
+Lattice orthogonality proves the formula
+even when a chosen lattice is not the
+coordinate-unit lattice: choose dual
+lattices in the free coordinates.
+
+**Proof of (2.9cw) for compact quotient support.**
+Write the inverse-character function as
+\[
+ H(g)=|\det g|^n
+             \int_{N_n}f(ug)\psi_n(u)\,du,
+                 \qquad f\in C_c^\infty(G_n).
+ \tag{2.9da}
+\]
+Such an \(f\) exists. On finitely many
+compact-open quotient charts meeting
+the support of \(|\det|^{-n}H\), choose
+a compact open fibre lattice and a
+locally constant fibre function with
+the prescribed character and integral
+one. Multiply it by the finitely many
+quotient values and add using a
+compact-open partition. The resulting
+function has the required \(N_n\)-average,
+and its support is compact in \(G_n\).
+Extend it by zero to the matrix space;
+its support is away from the singular
+locus, so this extension is Schwartz.
+
+Define
+\[
+ K(X)=|\det X|^n
+          \int_{N_n}\widehat f(X^t w_nu)
+                           \psi_n(u)^{-1}\,du.
+ \tag{2.9db}
+\]
+The function \(K\) is smooth and has the
+positive Whittaker character. For \(v\in N_n\),
+put \(v'=w_nv^tw_n\in N_n\). Its generic
+character equals that of \(v\).
+Replacing \(u\) by \(v'^{-1}u\) proves
+\(K(vX)=\psi_n(v)K(X)\).
+A sufficiently deep left matrix-test
+stabilizer of \(\widehat f\), after transpose,
+gives a right open stabilizer of \(K\).
+
+Matrix Parseval and (2.9da) give
+\[
+ \int_G\Phi^*(g)H(g)\,dg
+                      =\int_G\Phi(X)K(X)\,dX_G.
+ \tag{2.9dc}
+\]
+To verify the indices, change \(g\) to \(u^{-1}Y\)
+in its \(N_n\)-average. The Fourier phase is
+\[
+ \operatorname{tr}
+       \bigl(XY^tu^{-t}w_n\bigr)
+    =\operatorname{tr}
+       \bigl(X^tw_nu^{-1}Y\bigr).
+ \]
+Its \(Y\)-integration is the positive
+transform \(\widehat f(X^tw_nu^{-1})\).
+Replacing \(u\) by \(u^{-1}\) yields
+the inverse character in (2.9db).
+The conversion
+\[
+ dg_G=\alpha_n^{-1}|\det g|^{-n}dg_{\rm add}
+ \]
+on both sides cancels the identical
+\(\alpha_n^{-1}\), while the factor
+\(|\det|^n\) in (2.9da) and (2.9db)
+converts each additive integral back to
+the group integral. Hence (2.9dc)
+has no normalization constant.
+
+Here is a direct absolute bound for the
+double Schwartz integrals in this use
+of Parseval. For any two matrix Schwartz
+tests \(f_1,f_2\), the integral
+\[
+ \int_G|\det g|^n
+      |f_1(g)|\int_N|f_2(gu)|\,du\,dg
+ \tag{2.9dd}
+\]
+is finite. Use the right Iwasawa formula
+\(G=K_n A_n N_n\), whose density is
+\(\delta_{B_n}(a)\), and integrate both
+right \(N_n\)-coordinates. Each upper
+entry is \(a_i u_{ij}\); its Jacobian
+gives the bound
+\(\prod_i|a_i|^{-(n-i)}\) for each of
+the two \(N_n\)-integrals. Each diagonal
+coordinate is bounded above by the
+two support balls. The remaining
+exponent is, for every \(i\),
+\[
+ n+(n+1-2i)-2(n-i)=1.
+ \]
+Thus (2.9dd) is bounded by a constant
+times \(\prod_i\int_{|a_i|\le C}|a_i|\,d^\times a_i\),
+which is finite. Left \(N_n\)-averages
+have the same proof by transposing.
+This bound justifies the Schwartz
+pairings and the limits of compact
+unipotent averages in (2.9dc).
+
+Apply the coordinate kernel construction
+of Theorem 2.3l to the positive-character
+function \(K\). That calculation uses
+only Whittaker equivariance, smoothness
+and absolute integrability; it does
+not require \(K\) to be an irreducible
+model. At matrix exponent zero it gives
+\[
+ \int_G\Phi(X)K(X)\,dX_G
+   =\int\mu_\Phi(h)\int_{k^\times}
+       K(\operatorname{diag}(a,I)h)
+                    |a|^{-(n-1)}\,d^\times a.
+ \tag{2.9de}
+\]
+These row integrals are absolutely
+convergent: in (2.9db) along this row,
+the compact support of \(\widehat f\)
+bounds all the unipotent variables
+uniformly and bounds \(|a|\) above;
+the prefactor is \(|a|^n\).
+Uniformity holds for \(h\) in the
+compact support of \(\mu_\Phi\).
+
+In (2.9de) use (2.9db), and in the
+proposed right side of (2.9cw) use
+(2.9da). Both have the factor
+\(|a|^n|a|^{-(n-1)}d^\times a
+=(1-q^{-1})^{-1}da\).
+The two resulting integrals are exactly
+the two sides of (2.9cx). Their
+identical scalar factor cancels.
+Equations (2.9dc)–(2.9de) now prove
+(2.9cw).
+
+To extend the identity, exhaust \(N_n\backslash G_n\)
+by finite unions of right compact-open orbits,
+at a fixed right stabilizer of \(H\).
+Their characteristic functions give
+Whittaker-character-preserving smooth
+cutoffs with compact quotient support.
+For the functions \(H\) to which we
+apply the lemma, both sides converge
+absolutely in the same left half-plane:
+the left by the absolute generalized
+matrix bound in Theorem 2.3l, and the right
+by Proposition 2.3b, since the compact kernel has
+only finitely many actual translates.
+The cutoffs have absolute value at
+most one. Dominated convergence
+therefore proves the required limit.
+This completes the proof of the lemma.
+\(\square\)
+
+**Theorem 2.3n (both finite Fourier scalars agree).**
+For every actual generic irreducible smooth admissible
+\(\pi\) of \(G_n\), and every character \(\chi\),
+\[
+ \gamma_{\mathrm{RS}}(s,\pi\times\chi,\psi)
+       =\gamma_{\mathrm{mat}}
+                 (s,\pi\otimes(\chi\circ\det),\psi),
+ \qquad
+ \epsilon_{\mathrm{RS}}(s,\pi\times\chi,\psi)
+       =\epsilon_{\mathrm{mat}}
+                 (s,\pi\otimes(\chi\circ\det),\psi).
+ \tag{2.9df}
+\]
+
+**Proof.** First take \(\chi=1\) and \(n\ge2\).
+The actual matrix Fourier equation extends to the
+generalized coefficients (2.9cl) with exactly
+the test (2.9cv):
+\[
+ J_{1-s}(\Phi^*,\widetilde W)
+          =\gamma_{\rm mat}(s,\pi,\psi)J_s(\Phi,W).
+ \tag{2.9dg}
+\]
+Here is the precise extension. Choose a compact
+open left stabilizer \(J\) of \(\Phi\), and
+replace \(\lambda\) by \(\lambda e_J\)
+as in (2.9cm). Its ordinary inverse coefficient
+is the average of \(W(jg^{-1})\). Put
+\(h=w_ng^t\). From the definition of
+\(\widetilde W\),
+\[
+ W(jg^{-1})=
+          \widetilde W(w_nj^{-t}w_nh).
+ \]
+Also \(g=h^tw_n\), so its Fourier test becomes
+\(\widehat\Phi(h^tw_n)=\Phi^*(h)\).
+This test is left invariant under
+\(w_nJ^{-t}w_n\): left invariance of
+\(\Phi\) makes \(\widehat\Phi\) right
+\(J^{-1}\)-invariant under the positive
+trace pairing. The displayed average
+can therefore be removed from its
+integral. Transpose and the permutation
+preserve the group Haar measure and
+determinant norm. Applying the actual
+matrix equation proves (2.9dg), including
+its entire finite family.
+
+Apply Lemma 2.3m to
+\[
+ H(g)=\widetilde W(g)
+           |\det g|^{1-s+(n-1)/2}.
+ \]
+The weight on its row becomes
+\(|a|^{1-s-(n-1)/2}\), exactly the
+dual Rankin–Selberg weight for \(n\times1\).
+Moreover
+\(\widetilde{R(h)W}(g)=\widetilde W(gh^{-t})\).
+Consequently (2.9cw) is
+\[
+ J_{1-s}(\Phi^*,\widetilde W)
+   =\int \mu_\Phi(h)\,
+       Z_{n-2}(1-s,R(w)
+                       \widetilde{R(h)W},1).
+ \tag{2.9dh}
+\]
+The rank-one character's sign is one,
+so the scalar in the functional equation
+of Theorem 2.3h is precisely \(\gamma_{\rm RS}\).
+Apply that proved equation to each of
+the finitely many translates in (2.9dh),
+then use (2.9cu). This gives
+\[
+ J_{1-s}(\Phi^*,\widetilde W)
+          =\gamma_{\rm RS}(s,\pi\times1,\psi)
+                                      J_s(\Phi,W).
+ \]
+Both equations hold rationally, although
+their original half-planes differ.
+There is a nonzero \(J_s\), by the
+entire ideal equality (2.9ck) and the
+integral-one construction. Comparing
+with (2.9dg) proves equality of scalars.
+The factors and their duals agree by
+Theorem 2.3l, so the normalized epsilons agree
+as well. To check every ramified character with the present
+sign convention, set \(W_\chi(g)=\chi(\det g)W(g)\).
+Then
+\[
+ \widetilde W_\chi(g)=\chi(\det w_n)\chi(\det g)^{-1}\widetilde W(g).
+\]
+Write \(w=\operatorname{diag}(1,w_{n-1})\), as in the
+dual Rankin–Selberg test. Since
+\(\det w_n/\det w=(-1)^{n-1}\), that test is multiplied by
+\(\chi(-1)^{n-1}\chi(a)^{-1}\).
+This is precisely the extra factor converting \(\Gamma\) into
+\(\gamma\) in (2.9at), so comparison for \(\pi\otimes\chi\circ\det\)
+proves (2.9df). For \(\psi_b(x)=\psi(bx)\), the two already proved
+character-scaling laws multiply the scalar by the identical quantity
+\(\omega_\pi(b)\chi(b)^n|b|^{n(s-1/2)}\).
+Thus the equality also holds for every nontrivial additive character. For \(n=1\)
+the assertion is exactly the Tate
+Fourier equation already proved.
+\(\square\)
+
+Let \(\sigma\) be an actual generic irreducible constituent of
+\(I_P(\pi_1\otimes\pi_2)\), with actual smooth admissible irreducible
+blocks. Theorem 1.23, Corollary 1.23c and (2.9df) give
+\[
+ \gamma_{\mathrm{RS}}(s,\sigma\times\chi,\psi)
+ =\prod_{i=1}^2\gamma_{\mathrm{mat}}
+       (s,\pi_i\otimes\chi\circ\det,\psi),
+\]
+together with their exact matrix \(L\)-polynomial correction.
+When both blocks \(\pi_i\) are generic, Theorems 2.3l and 2.3n
+identify each factor on the right with its Rankin–Selberg factor.
+For nongeneric blocks this statement retains the proved matrix factors;
+it makes no additional Rankin–Selberg definition or genericity assertion.
+
+Free comparison: the same author-hosted
+[*Automorphic forms on GL(3), I*](https://www.math.columbia.edu/~hj/Automorphic%20forms%20on%20GL%283%29%20I.pdf),
+§4.5, printed pp. 194–198
+(PDF pp. 27–31). Formulas (2.9cx)–(2.9cz)
+give its elementary Fourier step with
+the present positive *trace* convention.
+This is why (2.9cv) has \(g^tw_n\).
+
 ## 3. Global continuation, poles and nonvanishing
 
 **Theorem 3.1 (Jacquet–Piatetski-Shapiro–Shalika, 1979/1983; global Rankin–Selberg analytic theory; proof not yet supplied).** For unitary cuspidal \(\pi\) on \(GL_n(\mathbb A)\) and \(\pi'\) on \(GL_m(\mathbb A)\), the complete product (2.1) has meromorphic continuation and satisfies
@@ -10449,8 +13617,8 @@ The degree-one analytic theory has a preceding complete proof in *Hecke L-functi
 
 The following statements made in this lesson still require the indicated general-rank constructions.
 
-- For Theorem 1.1, the remaining local input 1.1c consists of standard-conductor and standard-factor identification for general finite-place irreducibles, and the general archimedean canonical Gaussian ideal, finite attainment, standard-factor identification and compatible factor conjugation. Theorems 1.21–1.22 prove general archimedean full-Schwartz continuation, a common pole majorant with entire quotients and strip bounds, and the scalar Fourier equation in actual smooth dual-pair models; Proposition 1.21b and Corollary 1.22e prove canonical division and constant epsilon under the genuine Gaussian-ideal premise. Corollary 1.22f proves the unitary scalar critical-line phase. These results do not identify the canonical factor. Proposition 1.3 has proved the entire finite-place matrix ideal and its attaining generator in every rank, including ramification; Theorem 1.17 proves the scalar Fourier equation for every finite-place smooth admissible irreducible representation; the Laurent-unit, reflection-sign, character-scaling and compatible-unitary consequences in (1.7j)–(1.7m) therefore apply. Proposition 1.16 does prove the full finite-place theory and exact nonnegative conductor in the matrix/Tate-product normalization for determinant characters in every rank, including ramification. Lemma 1.20a proves compact-mod-center coefficient support from zero proper Jacquet modules. Theorem 1.20 proves strictly positive exponent for every irreducible admissible compact induction from finite-dimensional data on an open compact-mod-center subgroup, including positive-depth data; Corollary 1.20c constructs the depth-zero family and proves exponent n. Lemma 1.20d proves the polynomial degree correction, whose parabolic identities are now proved by Theorem 1.23 and Corollary 1.23c for the full induced matrix family and every irreducible subquotient. Theorem 1.23e proves general cuspidal-support embedding; Lemmas 1.23f–1.23g prove compact inducing realization from the stated finite-subspace or compact-intertwining criteria. Theorem 1.24 proves strict matrix-exponent positivity for every terminal higher-rank cuspidal block by finite spectral charts, full unipotent-fiber cancellation and the exact Fourier-shell extraction. Corollary 1.24c consequently proves the nonnegative matrix exponent for every irreducible, and Corollary 1.24d gives the factor-degree bound and exponent-zero consequence. Universal compact-induction data are unnecessary for these conclusions; standard-factor/conductor identifications remain open. Propositions 1.5–1.7 prove polynomial-module closure and the full Gaussian ideal for determinant characters over both real and complex fields, and Theorem 1.18 proves their full-Schwartz continuation, normalized division and Fourier equation with exact real/complex phases. Theorem 1.25 proves the full canonical Gaussian ideal, finite attainment, entire Schwartz division, Fourier equation and exact dual/conjugation formulas for every norm-twisted symmetric power in each rank, its complex antiholomorphic companion and their duals. Theorem 1.26 now proves the exact Gaussian product and whole-Schwartz Fourier package for every full Borel induction. Theorems 1.26a–1.26b construct actual closure, quotient and admissible dual models for every supplied principal-core subquotient, with an exact finite monic polynomial correction, finite attainment, entire division, Fourier reflection and unitary conjugation normalization. Arbitrary irreducible occurrence, comparison with a prescribed original realization and explicit standard-factor/scalar identification remain required. Theorems 1.11 and 1.13 prove compatible unitary realization and tensor pairings for an actual admissible Hilbert cusp constituent; Proposition 1.14 and Lemma 1.15 give the stated reverse-comparison routes. Theorem 1.19 proves realization and admissibility for every abstract cuspidal subquotient: local elliptic estimates, rapid decay without a prior realization, bounded covering multiplicity, compact cusp energy embedding, finite-dimensional constrained cusp spaces, compact convolution and discrete Hilbert spectrum, constituent admissibility, and the positive-central Jordan filtration are all supplied. Proposition 1.1a proves general adelic reduction, and Proposition 1.2 proves the whole unramified matrix family and its Fourier equation with epsilon factor one. Lemmas 1.1b and 1.1d supply the cusp and matrix estimates; singular-orbit cancellation, Poisson, Mellin continuation, strip bounds, Euler-product recovery and the global functional-equation deduction are proved in §1 from the remaining precise inputs. The free readings are [Goldfeld–Jacquet, §§2–5 and 8–9] and [Getz–Hahn, 22 April 2022 draft, Theorem 6.5.1].
-- Theorem 2.1: general nonunitary archimedean local Whittaker uniqueness outside the models of Theorem 2.0v, identification of the finite-place Rankin–Selberg generator with the spherical tensor determinant and ordered constituent factors, parabolic multiplicativity, the general archimedean Rankin–Selberg local factors and their equation. Propositions 2.3b–2.3d prove the entire finite-place rational ideal and finite actual test-sum attainment in all ranks and both field characteristics. Corollary 2.3f proves index independence, Proposition 2.3g proves generic pairing uniqueness by orbit depth and global derivative polynomials, Theorem 2.3h proves the scalar functional equation, and Proposition 2.3i and Corollary 2.3j prove Laurent epsilon, reflection and exact character/norm laws. Theorem 2.0 proves finite-place Whittaker uniqueness for every irreducible smooth admissible representation, every nondegenerate character and every rank/field, including the zero Hom case. Its localization, Bruhat symmetry, contragredient identification and convolution-kernel proof are written in full. Theorem 2.0n proves the all-rank real/complex distributional-principal-series bound and kills every transverse boundary jet; Corollary 2.0o transports it through a specified continuous-dual embedding, whose general construction remains open. Lemmas 2.0p–2.0r and Theorem 2.0s prove generic Casimir eigendistribution symmetry in every real and complex rank by finite transverse-order and explicit Bruhat normal-symbol arguments. Lemmas 2.0t–2.0u prove smoothing of Hilbert distribution vectors and the full smooth-space kernel argument. Theorem 2.0v proves uniqueness for every compatible unitary model with irreducible admissible compact-type core and all determinant twists; Theorems 1.19 and 1.11–1.13 supply these hypotheses for every actual archimedean cusp factor. Together with the preceding local existence proof their cusp-model functional spaces are exactly one-dimensional. The general nonunitary opposite-functional and supplied-topology comparison remain separate obligations. Proposition 2.1a proves uniqueness for every unramified irreducible and the normalized spherical formula whenever it is generic. Lemma 2.1b and Proposition 2.1c prove the all-rank spherical integral values, including unequal ranks and repeated parameters; one spherical value is not a proof of full ideal-generator identification. Global cuspidal genericity and local Whittaker existence under the precise smooth-realization hypothesis have preceding proofs in *Automorphic representations and automorphic L-functions*, Theorem 1.3 and Corollary 1.4; Theorem 1.19 supplies that realization and comparison for every abstract cuspidal subquotient. The precise free sources for the remaining local assertions are [Jacquet–Piatetski-Shapiro–Shalika, *Rankin–Selberg convolutions*, §§2.7, 3 and 9.4] and [Getz–Hahn, 22 April 2022 draft, §§11.5–11.6]. Lemma 2.2 proves the entire-reciprocal property once the factor shape is established.
+- For Theorem 1.1, the remaining local input 1.1c consists of standard-conductor and standard-factor identification for general finite-place irreducibles, and explicit archimedean standard-factor identification. Theorem 1.31 proves Gaussian-ideal existence, finite attainment, entire Schwartz division and compatible factor conjugation in every prescribed actual complete smooth moderate dual-pair model. Theorems 1.21–1.22 prove general archimedean full-Schwartz continuation, a common pole majorant with entire quotients and strip bounds, and the scalar Fourier equation in actual smooth dual-pair models; Proposition 1.21b and Corollary 1.22e prove canonical division and constant epsilon under the genuine Gaussian-ideal premise. Corollary 1.22f proves the unitary scalar critical-line phase. These results do not identify the canonical factor. Proposition 1.3 has proved the entire finite-place matrix ideal and its attaining generator in every rank, including ramification; Theorem 1.17 proves the scalar Fourier equation for every finite-place smooth admissible irreducible representation; the Laurent-unit, reflection-sign, character-scaling and compatible-unitary consequences in (1.7j)–(1.7m) therefore apply. Proposition 1.16 does prove the full finite-place theory and exact nonnegative conductor in the matrix/Tate-product normalization for determinant characters in every rank, including ramification. Lemma 1.20a proves compact-mod-center coefficient support from zero proper Jacquet modules. Theorem 1.20 proves strictly positive exponent for every irreducible admissible compact induction from finite-dimensional data on an open compact-mod-center subgroup, including positive-depth data; Corollary 1.20c constructs the depth-zero family and proves exponent n. Lemma 1.20d proves the polynomial degree correction, whose parabolic identities are now proved by Theorem 1.23 and Corollary 1.23c for the full induced matrix family and every irreducible subquotient. Theorem 1.23e proves general cuspidal-support embedding; Lemmas 1.23f–1.23g prove compact inducing realization from the stated finite-subspace or compact-intertwining criteria. Theorem 1.24 proves strict matrix-exponent positivity for every terminal higher-rank cuspidal block by finite spectral charts, full unipotent-fiber cancellation and the exact Fourier-shell extraction. Corollary 1.24c consequently proves the nonnegative matrix exponent for every irreducible, and Corollary 1.24d gives the factor-degree bound and exponent-zero consequence. Universal compact-induction data are unnecessary for these conclusions; standard-factor/conductor identifications remain open. Propositions 1.5–1.7 prove polynomial-module closure and the full Gaussian ideal for determinant characters over both real and complex fields, and Theorem 1.18 proves their full-Schwartz continuation, normalized division and Fourier equation with exact real/complex phases. Theorem 1.25 proves the full canonical Gaussian ideal, finite attainment, entire Schwartz division, Fourier equation and exact dual/conjugation formulas for every norm-twisted symmetric power in each rank, its complex antiholomorphic companion and their duals. Theorem 1.26 now proves the exact Gaussian product and whole-Schwartz Fourier package for every full Borel induction. Theorems 1.26a–1.26b construct actual closure, quotient and admissible dual models for every supplied principal-core subquotient, with an exact finite monic polynomial correction, finite attainment, entire division, Fourier reflection and unitary conjugation normalization. Theorems 1.27–1.31 prove nilpotent finite generation, nonzero Jacquet quotient, principal-core occurrence, analytic coefficient comparison, a complete common refinement and the full Gaussian package in every prescribed actual dual-pair realization. Abstract unrealized-core existence, full onto/closed-image comparison and explicit standard-factor/scalar identification remain required. Theorems 1.11 and 1.13 prove compatible unitary realization and tensor pairings for an actual admissible Hilbert cusp constituent; Proposition 1.14 and Lemma 1.15 give the stated reverse-comparison routes. Theorem 1.19 proves realization and admissibility for every abstract cuspidal subquotient: local elliptic estimates, rapid decay without a prior realization, bounded covering multiplicity, compact cusp energy embedding, finite-dimensional constrained cusp spaces, compact convolution and discrete Hilbert spectrum, constituent admissibility, and the positive-central Jordan filtration are all supplied. Proposition 1.1a proves general adelic reduction, and Proposition 1.2 proves the whole unramified matrix family and its Fourier equation with epsilon factor one. Lemmas 1.1b and 1.1d supply the cusp and matrix estimates; singular-orbit cancellation, Poisson, Mellin continuation, strip bounds, Euler-product recovery and the global functional-equation deduction are proved in §1 from the remaining precise inputs. The free readings are [Goldfeld–Jacquet, §§2–5 and 8–9] and [Getz–Hahn, 22 April 2022 draft, Theorem 6.5.1].
+- Theorem 2.1: identification of the finite-place Rankin–Selberg generator with the spherical tensor determinant and ordered constituent factors, parabolic multiplicativity, the general archimedean Rankin–Selberg local factors and their equation. Propositions 2.3b–2.3d prove the entire finite-place rational ideal and finite actual test-sum attainment in all ranks and both field characteristics. Corollary 2.3f proves index independence, Proposition 2.3g proves generic pairing uniqueness by orbit depth and global derivative polynomials, Theorem 2.3h proves the scalar functional equation, and Proposition 2.3i and Corollary 2.3j prove Laurent epsilon, reflection and exact character/norm laws. Theorems 2.3l–2.3n prove the complete finite-place rank-one ideal, gamma and epsilon identification with the twisted matrix factors and the stated generic-block multiplicativity. Higher-rank multiplicativity and ordered-data identification remain required. Theorem 2.0 proves finite-place Whittaker uniqueness for every irreducible smooth admissible representation, every nondegenerate character and every rank/field, including the zero Hom case. Its localization, Bruhat symmetry, contragredient identification and convolution-kernel proof are written in full. Theorem 2.0n proves the all-rank real/complex distributional-principal-series bound and kills every transverse boundary jet; Corollary 2.0o transports it through a specified continuous-dual embedding. Theorems 2.0x–2.0y now construct it for every prescribed actual complete smooth moderate dual-pair model, and Theorem 2.0z proves the general archimedean bound in that class, including nonunitary and nongeneric representations. Lemmas 2.0p–2.0r and Theorem 2.0s prove generic Casimir eigendistribution symmetry in every real and complex rank by finite transverse-order and explicit Bruhat normal-symbol arguments. Lemmas 2.0t–2.0u prove smoothing of Hilbert distribution vectors and the full smooth-space kernel argument. Theorem 2.0v proves uniqueness for every compatible unitary model with irreducible admissible compact-type core and all determinant twists; Theorems 1.19 and 1.11–1.13 supply these hypotheses for every actual archimedean cusp factor. Together with the preceding local existence proof their cusp-model functional spaces are exactly one-dimensional. No opposite-functional existence or onto model comparison is needed for this general uniqueness proof; unrealized abstract-core existence and full onto comparison remain separate obligations. Proposition 2.1a proves uniqueness for every unramified irreducible and the normalized spherical formula whenever it is generic. Lemma 2.1b and Proposition 2.1c prove the all-rank spherical integral values, including unequal ranks and repeated parameters; one spherical value is not a proof of full ideal-generator identification. Global cuspidal genericity and local Whittaker existence under the precise smooth-realization hypothesis have preceding proofs in *Automorphic representations and automorphic L-functions*, Theorem 1.3 and Corollary 1.4; Theorem 1.19 supplies that realization and comparison for every abstract cuspidal subquotient. The precise free sources for the remaining local assertions are [Jacquet–Piatetski-Shapiro–Shalika, *Rankin–Selberg convolutions*, §§2.7, 3 and 9.4] and [Getz–Hahn, 22 April 2022 draft, §§11.5–11.6]. Lemma 2.2 proves the entire-reciprocal property once the factor shape is established.
 - Theorem 3.1 for arbitrary number fields and arbitrary positive ranks: complete global continuation, the functional equation with conductor and root number, and the exact simple dual-pairing poles after split-central normalization and imaginary twists. The theorem is [Getz–Hahn, 22 April 2022 draft, Theorem 11.7.1]; the local twist identity extends the normalized statement. The unfolding, analytic estimates and pole calculation are not proved here. Boundary nonvanishing is proved in Theorem 4.6, rather than included among these assumptions.
 - Local and global isobaric existence in §6: local classification constructs the order-independent irreducible representation from essentially square-integrable data; the global sum is an automorphic subquotient; the unitary cuspidal norm normalization has now been proved in Theorem 1.19. The exact free statement locators for the remaining classification/existence assertions are [Getz–Hahn, 22 April 2022 draft, Theorem 6.5.1, Theorems 10.5.1–10.5.2, equation (10.21), and Theorem 10.6.5]. The proof of multiset uniqueness does not assume that existence is a consequence of the good-place Euler product.
 - Theorem 7.1: the discrete spectrum consists exactly of the unique Speh pairs, with multiplicity one, and \(m>1\) gives the residual part. [Mœglin–Waldspurger, *Le spectre résiduel de GL(n)*, théorème de l'introduction]; [Getz–Hahn, 22 April 2022 draft, Theorem 10.7.1]. The Eisenstein residues and their exhaustiveness are not constructed here.
@@ -10458,6 +13626,10 @@ The following statements made in this lesson still require the indicated general
 For the modular-form example, the precise earlier \(GL_2/\mathbb Q\) dictionary is *Global Whittaker functions and the L-function of a cuspidal representation*, §6. The good-prime twist factors, recurrence, conductor-normalization constant and shift \(u\mapsto k-u\) are computed in §8.
 
 ## References
+
+- W. Casselman, [*Canonical extensions of Harish-Chandra modules to representations of G*, publisher open-access edition](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/90CFF3C365389AA3AEE897611EC8DE2D/S0008414X00000523a.pdf/canonical-extensions-of-harish-chandra-modules-to-representations-of-g.pdf), 1989, §§5, 7–8, printed pp.407–409 and 414–423.
+- J. Bernstein and B. Krötz, [*Smooth Fréchet globalizations of Harish-Chandra modules*, author version dated 3 August 2014](https://www.math.tau.ac.il/~bernstei/Publication_list/publication_texts/Bern-Kroetz-2014.pdf), §8, Theorem 8.1, and Appendix A, Theorems 12.2 and 12.8.
+- H. Jacquet, I. I. Piatetski-Shapiro and J. A. Shalika, [*Automorphic forms on GL(3), I*, author-hosted edition](https://www.math.columbia.edu/~hj/Automorphic%20forms%20on%20GL%283%29%20I.pdf), 1979, §§3.1 and 4.3–4.5, printed pp.185–198.
 
 - B. Rubin, [*Zeta integrals and integral geometry in the space of rectangular matrices*, arXiv:math/0406289](https://arxiv.org/pdf/math/0406289), Lemmas 2.7 and 4.2 and Theorem 4.3, for the real unsigned QR/Mellin and Fourier comparison.
 

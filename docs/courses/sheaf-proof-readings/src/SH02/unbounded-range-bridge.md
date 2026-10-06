@@ -15,11 +15,11 @@ for every sheaf of **abelian groups** $A$ on $Y$. The bound is integral and unif
 
 ## SH02-UR-IMPORTS — The unbounded classical prerequisites
 
-We use two exact Stacks imports. A Grothendieck abelian category has K-injective replacements with injective terms: [Tag 079P](https://stacks.math.columbia.edu/tag/079P). Here K-injective means that $\operatorname{Hom}^{\bullet}(A,I)$ is acyclic for every acyclic complex $A$. Secondly, if a left exact additive functor has enough acyclic objects and finite cohomological dimension, its right derived functor exists on the entire derived category; **every complex of acyclic objects for that functor computes it**, with no boundedness assumption: [Tag 07K7](https://stacks.math.columbia.edu/tag/07K7). The theorem also supplies the cohomological amplitude bound on arbitrary complexes. The uniform dimension hypothesis is indispensable to this use of acyclic resolutions.
+A Grothendieck abelian category has K-injective replacements with injective terms: [Tag 079P](https://stacks.math.columbia.edu/tag/079P). The complete programme construction is *K-injective resolutions in Grothendieck abelian categories*, Theorem 4.1, with the size and extension arguments in Sections 2–3. Here K-injective means that $\operatorname{Hom}^{\bullet}(A,I)$ is acyclic for every acyclic complex $A$. Secondly, if a left exact additive functor has enough acyclic objects and finite cohomological dimension, its right derived functor exists on the entire derived category; **every complex of acyclic objects for that functor computes it**, with no boundedness assumption: [Tag 07K7](https://stacks.math.columbia.edu/tag/07K7). The programme proof of the acyclic-model assertion for every functor used here is Proposition 5.5 of that same reading. Its source category is Grothendieck and its target is any abelian category, so it covers both module-valued and sheaf-valued operations below. The uniform bound also gives cohomological amplitude on arbitrary complexes; the [argument below](#finite-cohomological-amplitude) proves that deduction explicitly. The uniform dimension hypothesis is indispensable to this use of acyclic resolutions.
 
 Sheaves of $k$-modules form a Grothendieck abelian category: filtered colimits are exact on stalks, and the coproduct of the open generators $k_U$, one for each open subset $U$, is a generator. Indeed a nonzero sheaf morphism is nonzero on some section of some open set, and such a section defines a morphism from $k_U$. This checks the category hypothesis of the first import.
 
-The other unbounded inputs are already exact contracts in [the prerequisite lesson](open-prerequisites.md): `SH02-IMP-KFLAT` and `SH02-IMP-TENSOR` give termwise-flat K-flat replacements and derived tensor; `SH02-IMP-ADJUNCTION` gives $f^{-1}\dashv Rf_*$; `SH02-IMP-RHOM` gives internal derived Hom, tensor–Hom adjunction, and open restriction. For constant coefficients inverse image is exact, so its left derived functor is itself. These are imports about classical module sheaves, not an identification with all sheaves valued in a non-hypercomplete infinity-category.
+The other unbounded inputs are already exact contracts in the prerequisite lesson: `SH02-IMP-KFLAT` and `SH02-IMP-TENSOR` give termwise-flat K-flat replacements and derived tensor; `SH02-IMP-ADJUNCTION` gives $f^{-1}\dashv Rf_*$; `SH02-IMP-RHOM` gives internal derived Hom, tensor–Hom adjunction, and open restriction. For constant coefficients inverse image is exact, so its left derived functor is itself. These are imports about classical module sheaves, not an identification with all sheaves valued in a non-hypercomplete infinity-category. The programme proofs are *Flat modules and K-flat resolutions*, Theorem 3.1, *The derived tensor product and Tor sheaves*, Theorem 2.2, *Derived pullback and pushforward*, Theorem 2.2 and Corollary 2.3, and *Hom complexes, internal derived Hom and Ext sheaves*, Theorems 2.2 and 3.1. These constructions act on the full unbounded categories; their finite-rank or bounded variants are not being substituted.
 
 The topological inputs are exactly those used in [exceptional operations](exceptional-operations.md): `SH02-EX-FLAT-SOFT`, `SH02-EX-FINITE-RESOLUTION`, `SH02-EX-REPRESENTING-SHEAF`, and the underived flat-soft projection calculation in `SH02-EX-PROJECTION`. Their compact-support and fibre prerequisites remain visible there. In particular they provide an augmented complex
 
@@ -36,7 +36,47 @@ T_p(M)=f_!(M\otimes_{\mathbb Z}K^p)
 \tag{UR3}
 \]
 
-is exact and preserves coproducts. The integral bound (UR1) also bounds the $k$-linear derived functor after forgetting scalars. In particular injectives are $f_!$-acyclic, so 07K7 applies to $f_!$.
+is exact and preserves coproducts. The integral bound (UR1) also bounds the $k$-linear derived functor after forgetting scalars. More directly, for every $k_Y$-module $M$, the pure exact augmentation (UR2) makes $M\otimes_{\mathbb Z}K^\bullet$ a resolution in degrees $0,\ldots,r$. Its terms are $f$-soft and hence $f_!$-acyclic by the stated flat-soft input. The bounded-below acyclic-resolution theorem computes $Rf_!M$ from this length-$r$ complex, proving $R^qf_!M=0$ for $q>r$ over $k$. This verifies the uniform dimension hypothesis directly; it requires no preservation of injectives by forgetting scalars. In particular injectives are $f_!$-acyclic, so the finite-dimensional acyclic-model comparison applies to $f_!$.
+
+<a id="finite-cohomological-amplitude"></a>
+
+### The uniform cohomological amplitude bound
+
+Let $T:\mathcal A\to\mathcal B$ be left exact and additive, with $\mathcal A$ Grothendieck and $\mathcal B$ abelian. Assume $R^qT(M)=0$ for every object $M$ and every $q>d$, for one integer $d\geq0$. The right derived functor exists on all complexes by the K-injective construction just linked. We prove
+
+\[
+RT(D^{\geq a})\subset D^{\geq a},
+\qquad RT(D^{\leq b})\subset D^{\leq b+d}.
+\tag{URA1}
+\]
+
+For the lower bound, an object with no cohomology below $a$ has a bounded-below representative starting in degree $a$. The bounded-below injective construction, Theorem 4.1, resolves it by injectives with no terms below $a$. That complex is K-injective, so it also computes the unbounded derived functor. Applying $T$ leaves its terms below $a$ zero.
+
+For the upper bound, let $I$ be a K-injective representative with injective terms and $H^j(I)=0$ for $j>b$. Write $Z^j=\ker(d_I^j)$. For every $j>b$ the cycle sequence
+
+\[
+0\longrightarrow Z^{j-1}\longrightarrow I^{j-1}
+\longrightarrow Z^j\longrightarrow0
+\tag{URA2}
+\]
+
+is exact. Left exactness identifies the degree-$j$ cycles of $T(I)$ with $T(Z^j)$. The long exact sequence of (URA2), and acyclicity of the injective middle term, therefore identify
+
+\[
+H^j(T(I))\simeq R^1T(Z^{j-1}),
+\qquad
+R^qT(Z^j)\simeq R^{q+1}T(Z^{j-1})\quad(q>0).
+\tag{URA3}
+\]
+
+If $j>b+d$, all the cycle sequences with indices $j,j-1,\ldots,j-d$ lie in that exact tail. Applying the second identification $d$ times gives
+
+\[
+H^j(T(I))\simeq R^{d+1}T(Z^{j-d-1})=0.
+\tag{URA4}
+\]
+
+For $d=0$ the first identification in (URA3) already vanishes by the dimension hypothesis. This proves the upper bound without a lower cohomological bound on $I$: only $d$ successive dimension shifts are used for each $j$. All identifications come from kernels and the natural connecting maps of the cycle sequences, so they are compatible with resolution comparisons. Infinite endpoints impose no extra assertion on the corresponding side. Together with Proposition 5.5, this proves the acyclic-complex computation and amplitude used in this reading.
 
 ## SH02-UR-PROPER-IMAGE — A finite model for unbounded proper direct image
 
@@ -52,9 +92,9 @@ This is the right derived functor of the usual proper direct image. It restricts
 
 **Proof.** Put $E(G)=\operatorname{Tot}(G\otimes_{\mathbb Z}K^\bullet)$. The augmentation $G\to E(G)$ is a quasi-isomorphism. To check convergence explicitly, include the augmentation as an extra column. Filter its total complex by horizontal degree; there are at most $r+2$ columns, so this filtration converges with finitely many steps in every total degree. Its first page is vertical cohomology. Flatness of the augmented terms identifies that page with $H^i(G)\otimes_{\mathbb Z}K^p$, including $H^i(G)$ in the augmentation column. The horizontal complexes on this page are exact because (UR2) is pure exact. Thus the second page is zero, and finite convergence makes the augmentation cone acyclic even when the vertical degree ranges over all integers.
 
-Every term of $E(G)$ is a finite sum of sheaves of the form $G^i\otimes_{\mathbb Z}K^p$, hence is $f$-soft and $f_!$-acyclic. By 07K7, applying $f_!$ to this complex computes $Rf_!G$. Since $f_!$ is additive, this is (UR4). The same theorem supplies the stated amplitude. On bounded-below complexes this is the identical augmented resolution used for the earlier construction, so the comparison is the usual derived comparison. $\square$
+Every term of $E(G)$ is a finite sum of sheaves of the form $G^i\otimes_{\mathbb Z}K^p$, hence is $f$-soft and $f_!$-acyclic. By Proposition 5.5, applying $f_!$ to this complex computes $Rf_!G$. Since $f_!$ is additive, this is (UR4). The amplitude is [URA1](#finite-cohomological-amplitude), applied to the uniform bound (UR1). On bounded-below complexes this is the identical augmented resolution used for the earlier construction, so the comparison is the usual derived comparison. $\square$
 
-There is also a useful direct check: the functor on complexes in (UR4) sends acyclic complexes to acyclic complexes. Each $T_p$ is exact, and totalization has only finitely many $p$-columns. Consequently it sends quasi-isomorphisms to quasi-isomorphisms. The comparison with 07K7 identifies this explicit complex functor with the right derived functor, rather than merely producing some functor with similar values.
+There is also a useful direct check: the functor on complexes in (UR4) sends acyclic complexes to acyclic complexes. Each $T_p$ is exact, and totalization has only finitely many $p$-columns. Consequently it sends quasi-isomorphisms to quasi-isomorphisms. The natural comparison in Proposition 5.5 identifies this explicit complex functor with the right derived functor, rather than merely producing some functor with similar values.
 
 ## SH02-UR-EXCEPTIONAL-ADJOINT — A K-injective model for the right adjoint
 
@@ -130,9 +170,9 @@ f_!(E\otimes_k f^{-1}B).
 Here $f_!$ commutes with the coproducts in each tensor degree. Each term on the right is $f$-soft: it is a sum of sheaves
 $(P^i\otimes_k f^{-1}B^j)\otimes_{\mathbb Z}K^p$, to which the same flat-soft lemma applies. The terms of $B$ need not be flat.
 
-We must prove that $f_!E$ is K-flat; termwise flatness alone would not suffice. If $B$ is acyclic, exact inverse image and K-flatness of $E$ make $E\otimes_k f^{-1}B$ acyclic. It is a complex of $f_!$-acyclic terms, so 07K7 makes the right side of (UR11) acyclic. Thus the left side is acyclic for every such $B$, which is exactly K-flatness of $f_!E$.
+We must prove that $f_!E$ is K-flat; termwise flatness alone would not suffice. If $B$ is acyclic, exact inverse image and K-flatness of $E$ make $E\otimes_k f^{-1}B$ acyclic. It is a complex of $f_!$-acyclic terms, so Proposition 5.5 makes the right side of (UR11) acyclic. Thus the left side is acyclic for every such $B$, which is exactly K-flatness of $f_!E$.
 
-Now let $B$ be arbitrary. On the left of (UR11), $f_!E$ represents $Rf_!G$ and is K-flat. On the right, $E$ is K-flat and represents $G$, and 07K7 permits application of $f_!$ to the displayed soft-term complex. Thus both sides compute the derived objects in (UR10). The map is multiplication of supported sections, the same map as in the bounded calculation. Its compatibility with tensor associativity and symmetry follows from those identities on these complexes, with the ordinary cohomological Koszul signs. $\square$
+Now let $B$ be arbitrary. On the left of (UR11), $f_!E$ represents $Rf_!G$ and is K-flat. On the right, $E$ is K-flat and represents $G$, and Proposition 5.5 permits application of $f_!$ to the displayed soft-term complex. Thus both sides compute the derived objects in (UR10). The map is multiplication of supported sections, the same map as in the bounded calculation. Its compatibility with tensor associativity and symmetry follows from those identities on these complexes, with the ordinary cohomological Koszul signs. $\square$
 
 ## SH02-UR-INTERNAL-DUALITY — Evaluation with unbounded inputs
 
@@ -162,7 +202,7 @@ Yoneda gives (UR12). This also fixes its normalization: its transpose is obtaine
 
 ## SH02-UR-SUPPORT-SQUARE — Forgetting either support gives the same map
 
-There is a canonical transformation $\pi_A:Rf_!A\to Rf_*A$ for every unbounded $A$. Choose a K-injective representative $I$ with injective terms. The complex $f_!I$ computes $Rf_!A$ by 07K7, while $f_*I$ computes $Rf_*A$ by K-injectivity. The inclusion $f_!I\to f_*I$ defines $\pi_A$. This construction is independent of the representative by the derived comparison, and agrees with the usual inclusion on bounded-below objects.
+There is a canonical transformation $\pi_A:Rf_!A\to Rf_*A$ for every unbounded $A$. Choose a K-injective representative $I$ with injective terms. The complex $f_!I$ computes $Rf_!A$ by Proposition 5.5, while $f_*I$ computes $Rf_*A$ by K-injectivity. The inclusion $f_!I\to f_*I$ defines $\pi_A$. This construction is independent of the representative by the derived comparison, and agrees with the usual inclusion on bounded-below objects.
 
 For later normalization, write $e_A:f^{-1}Rf_!A\to A$ for $f^{-1}\pi_A$ followed by the ordinary counit. There is a natural pairing
 
@@ -224,7 +264,7 @@ This proves the full bounded-below input case of the support-Hom exercise, even 
 
 ## SH02-UR-LOCAL-WINDOW — Uniform dimension bounds for local tests
 
-Manifolds here have the course convention: Hausdorff, without boundary, and countable at infinity. Now let $X$ be an $n$-dimensional manifold, or a closed subset of one, with $n<\infty$. Use arbitrary unital coefficients. The cohomological dimension theorem `SH02-MD-DIMENSION` in manifold duality gives $H^q(V;M)=0$ for $q>n$, every open subset $V$ of the manifold, and every sheaf $M$. A closed subset inherits the bound on each of its opens: realize that open as a closed subset of an ambient open set and use exact closed direct image, which preserves injectives as a right adjoint to exact inverse image.
+Manifolds here have the course convention: Hausdorff, without boundary, and countable at infinity. Now let $X$ be an $n$-dimensional manifold, or a closed subset of one, with $n<\infty$. Use arbitrary unital coefficients. The cohomological dimension theorem `SH02-MD-DIMENSION` in [manifold duality](manifold-duality.md) gives $H^q(V;M)=0$ for $q>n$, every open subset $V$ of the manifold, and every sheaf $M$. A closed subset inherits the bound on each of its opens: realize that open as a closed subset of an ambient open set and use exact closed direct image, which preserves injectives as a right adjoint to exact inverse image.
 
 For an open embedding $j:U\hookrightarrow X$, $R^qj_*=0$ for $q>n$. Indeed, its stalk is the filtered colimit of $H^q(V\cap U;-)$ over open neighborhoods $V$, as follows by taking stalks of an injective resolution. For a closed subset $Z$, the localization triangle
 
@@ -233,9 +273,9 @@ R\Gamma_Z A\longrightarrow A\longrightarrow Rj_*(A|_{X\setminus Z})\xrightarrow{
 \tag{UR20}
 \]
 
-gives cohomological dimension at most $n+1$ for the sheaf support functor $\Gamma_Z$. The module-valued functor of global sections supported on $Z$ has the same bound, using $R\Gamma(X;A)\to R\Gamma(X\setminus Z;A)$ instead. These functors all have enough acyclics and so admit the unbounded computation of 07K7.
+gives cohomological dimension at most $n+1$ for the sheaf support functor $\Gamma_Z$. The module-valued functor of global sections supported on $Z$ has the same bound, using $R\Gamma(X;A)\to R\Gamma(X\setminus Z;A)$ instead. These functors have the uniform bounds just proved and a Grothendieck source, so they admit the unbounded computation of Proposition 5.5.
 
-For clarity, (UR20) is valid unboundedly. Use a K-injective resolution with injective terms. The termwise localization sequence is exact, since injectives are flabby. Open restriction preserves K-injectives because its left adjoint $j_!$ is exact; direct image preserves them because inverse image is exact. Thus its third term computes $Rj_*$, and the first is computed by 07K7. This proves the triangle. The same argument gives two-open Mayer–Vietoris and successive closed-support identities. Alternatively $\Gamma_Z$ is right adjoint to the exact functor $k_Z\otimes_k(-)$, so it preserves K-injectives; the underived identity $\Gamma_Z\Gamma_W=\Gamma_{Z\cap W}$ then derives with one resolution.
+For clarity, (UR20) is valid unboundedly. Use a K-injective resolution with injective terms. The termwise localization sequence is exact, since injectives are flabby. Open restriction preserves K-injectives because its left adjoint $j_!$ is exact; direct image preserves them because inverse image is exact. Thus its third term computes $Rj_*$, and the first is computed by Proposition 5.5. This proves the triangle. The same argument gives two-open Mayer–Vietoris and successive closed-support identities. Alternatively $\Gamma_Z$ is right adjoint to the exact functor $k_Z\otimes_k(-)$, so it preserves K-injectives; the underived identity $\Gamma_Z\Gamma_W=\Gamma_{Z\cap W}$ then derives with one resolution.
 
 **Finite-window lemma.** Let $T$ be any of these left exact functors with cohomological dimension at most $d$. For every $A\in D(k_X)$ and integer $q$, natural truncation maps give
 
@@ -245,7 +285,7 @@ H^q\!\left(RT\bigl(\tau^{\geq q-d}\tau^{\leq q}A\bigr)\right).
 \tag{UR21}
 \]
 
-**Proof.** The amplitude assertion of 07K7 is
+**Proof.** The amplitude assertion [proved in URA1](#finite-cohomological-amplitude) is
 $RT(D^{\geq a})\subset D^{\geq a}$ and
 $RT(D^{\leq b})\subset D^{\leq b+d}$.
 Apply it first to the triangle cutting off $\tau^{\geq q+1}A$; this tail contributes neither in degree $q-1$ nor in degree $q$, so $\tau^{\leq q}A\to A$ gives the first isomorphism in degree $q$. Next remove the part in degrees at most $q-d-1$. Its image lies in degrees at most $q-1$, so it contributes neither in degree $q$ nor in degree $q+1$. This gives the second isomorphism, now from $\tau^{\leq q}A$ to the displayed finite window. The comparisons are a natural zigzag, not a claim of a canonical map $A$ into that window. $\square$
@@ -262,7 +302,7 @@ The lemma controls one output degree of one operation. It says nothing about the
 \tag{UR22}
 \]
 
-Here $V$ runs through open neighborhoods of $K$. Both $V$ and $K$ have cohomological dimension at most $n$, by the preceding section. Formula (UR21) therefore reduces both sides, for fixed $q$, to the same bounded truncation window. Restriction is exact and commutes with these truncations. The bounded comparison `SH02-NCD-COMPACT-CONTINUITY`, based on [Stacks, Tag 09V3](https://stacks.math.columbia.edu/tag/09V3), applies to that window. Naturality of its comparison and of (UR21) proves (UR22). This explains the uniform dimension hypothesis; separate finite bounds growing with $V$ would not justify a fixed window.
+Here $V$ runs through open neighborhoods of $K$. Both $V$ and $K$ have cohomological dimension at most $n$, by the preceding section. Formula (UR21) therefore reduces both sides, for fixed $q$, to the same bounded truncation window. Restriction is exact and commutes with these truncations. The bounded comparison `SH02-NCD-COMPACT-CONTINUITY`, based on [Stacks, Tag 09V3](https://stacks.math.columbia.edu/tag/09V3), applies to that window. Naturality of its comparison and of (UR21) proves (UR22). The section-germ and dimension-shifting inputs of the bounded comparison are proved in *Supporting verifications for open prerequisites*, E4 and GP2–GP6; its bounded-below hypercohomology construction supplies the finite convergence comparison for bounded complexes. This explains the uniform dimension hypothesis; separate finite bounds growing with $V$ would not justify a fixed window.
 
 **Increasing-open continuity.** On any topological space, if $V=\bigcup_m V_m$ for an increasing sequence of opens and $A\in D(k_X)$, then
 
@@ -391,7 +431,7 @@ Its intersection with the zero section is exactly the closed support $S$ used in
 \tag{UR31}
 \]
 
-The tensor counterpart has $F\otimes^LG$ and omits the antipode. The operation $\widehat+$ is the asymptotic sum defined in characteristic estimates; it includes covectors obtained by cancellation of unbounded covectors at approaching base points.
+The tensor counterpart has $F\otimes^LG$ and omits the antipode. The operation $\widehat+$ is the asymptotic sum defined in [characteristic estimates](characteristic-estimates.md); it includes covectors obtained by cancellation of unbounded covectors at approaching base points.
 
 The constructions above make every object and local test in (UR31) meaningful. The geometric proof is supplied in [the unbounded characteristic supplement](unbounded-characteristic-estimates.md), at the stronger range $F,G\in D(k_X)$. Its three parts are:
 
@@ -399,7 +439,7 @@ The constructions above make every object and local test in (UR31) meaningful. T
 2. [SH02-UCE-RESTRICTION](unbounded-characteristic-estimates.md#SH02-UCE-RESTRICTION) proves the closed-embedding estimate $\operatorname{SS}_{\mathrm{u}}(\delta^!A)\subset\delta^\#\operatorname{SS}_{\mathrm{u}}(A)$ using raw specialization and radial cutoff. The preceding window and test lemmas keep the geometric neighborhoods uniform in all degrees.
 3. [SH02-UCE-DIAGONAL-HOM](unbounded-characteristic-estimates.md#SH02-UCE-DIAGONAL-HOM) identifies $\delta^!R\mathcal Hom(q_2^{-1}G,q_1^!F)\simeq R\mathcal Hom(G,F)$ by its adjunction maps. The external tensor estimate and ordinary restriction give the tensor assertion; both deductions are completed in [SH02-UCE-SUM](unbounded-characteristic-estimates.md#SH02-UCE-SUM).
 
-The unbounded deformation theorem above is one prerequisite of that proof. Formula (UR21) alone would not suffice: its window varies with the output degree, and cohomological truncation need not preserve microsupport. The supplement first proves uniform amplitude bounds for the required families of functors, and then applies the geometric tests directly to the original complex. This supplies the full estimates discussed in `SH02-CHE-RANGE`, relative to the named prerequisites. The bounded classical comparison in the six-operations bridge retains its stated bounded scope. Neither this extension nor the supplement assumes hypercompleteness or settles the independent Fourier normalization.
+The unbounded deformation theorem above is one prerequisite of that proof. Formula (UR21) alone would not suffice: its window varies with the output degree, and cohomological truncation need not preserve microsupport. The supplement first proves uniform amplitude bounds for the required families of functors, and then applies the geometric tests directly to the original complex. This supplies the full estimates discussed in `SH02-CHE-RANGE`, relative to the named prerequisites. The bounded classical comparison in [the six-operations bridge](six-operations-import-bridge.md) retains its stated bounded scope. Neither this extension nor the supplement assumes hypercompleteness or settles the independent Fourier normalization.
 
 ## SH02-UR-PROBLEMS — Three checks that separate the issues
 

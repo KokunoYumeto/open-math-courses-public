@@ -251,4 +251,4 @@ Explain the precise consequence for the open general-core localization argument.
 
 ---
 
-Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition CC0 1.0. Author self-check. The course remains in development.
+Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition CC0 1.0. Self-checked by the writing AI. The course remains in development.

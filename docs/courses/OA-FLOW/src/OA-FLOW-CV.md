@@ -1,10 +1,10 @@
 # Convex separation and the full dual-ball criterion
 
-This provider supplies the convex tools for extended-valued weights on arbitrary von Neumann algebras. Its only programme inputs are CF Section 1, CF Section 4, CF Section 8, for real sublinear Hahn–Banach, norm series, scalar compactness, product compactness and Hilbert Riesz representation. Every additional separation or dual-ball assertion used below is proved here.
+This provider supplies the convex tools for extended-valued weights on arbitrary von Neumann algebras. Its only programme inputs are [CF Section 1](OA-FLOW-CF.md#oa-flow.cf.1), [CF Section 4](OA-FLOW-CF.md#oa-flow.cf.4), [CF Section 8](OA-FLOW-CF.md#oa-flow.cf.8), for real sublinear Hahn–Banach, norm series, scalar compactness, product compactness and Hilbert Riesz representation. Every additional separation or dual-ball assertion used below is proved here.
 
 Sections [CV-1](OA-FLOW-CV.md#cv-1)–3 are fresh local proofs, GPT-6 Astra (OpenAI), Ultra, 2026-10-04, CC0-1.0 to the extent of rights held. [CV-4](OA-FLOW-CV.md#cv-4) adopts the corrected trivial-group specialization developed in the OA-MOD private audit `open-convex-foundations.md`, based on Javier Falcó and Daniel Isert, *G-strong subdifferentiability and applications to norm attaining subspaces*, §3.4, Lemmas 32–33 and Proposition 34/Theorem 35, printed pp.254–258, [version of record](https://link.springer.com/article/10.1007/s13163-025-00536-6), DOI 10.1007/s13163-025-00536-6. That article is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); retain this attribution and license for [CV-4](OA-FLOW-CV.md#cv-4). Changes include the trivial-group specialization, corrected finite-block enumeration, an explicit real/complex coefficient argument in the correct space, the fixed separating vector, checked translated slices, and replacement of all formerly imported separation/compactness premises by [CV-1](OA-FLOW-CV.md#cv-1)–3. No general theorem from a restricted source is used.
 
-Actual earlier proof ranges: OA-FLOW.CF.1, OA-FLOW.CF.4, OA-FLOW.CF.8.
+Actual earlier proof ranges: [OA-FLOW.CF.1](OA-FLOW-CF.md#oa-flow.cf.1), [OA-FLOW.CF.4](OA-FLOW-CF.md#oa-flow.cf.4), [OA-FLOW.CF.8](OA-FLOW-CF.md#oa-flow.cf.8).
 
 <a id="oa-flow.cv.1"></a><a id="cv-1"></a>
 
@@ -16,7 +16,7 @@ p(v)=\inf\{t>0:v\in tW\}
 \]
 is finite and nonnegative. Convexity gives subadditivity and positive homogeneity: if \(v\in sW,w\in tW\), then \(v+w\in(s+t)W\), and then take infima. Also \(W=\{p<1\}\). One inclusion uses convexity and \(0\in W\); for the other, openness permits a small radial enlargement of a point of \(W\). Since \(-u_0\notin W\), \(p(-u_0)\geq1\).
 
-On the real line through \(-u_0\), the functional \(t(-u_0)\mapsto t\) is at most \(p\): for \(t\geq0\) use \(p(-u_0)\geq1\), and for \(t<0\) use \(p\geq0\). CF Section 1 extends it to a real linear \(L\leq p\) on \(V\). The inequalities \(L(v)\leq p(v)\) and \(-L(v)\leq p(-v)\) show continuity: on \(\epsilon(W\cap(-W))\), \(|L|<\epsilon\). For \(u\in U\),
+On the real line through \(-u_0\), the functional \(t(-u_0)\mapsto t\) is at most \(p\): for \(t\geq0\) use \(p(-u_0)\geq1\), and for \(t<0\) use \(p\geq0\). [CF Section 1](OA-FLOW-CF.md#oa-flow.cf.1) extends it to a real linear \(L\leq p\) on \(V\). The inequalities \(L(v)\leq p(v)\) and \(-L(v)\leq p(-v)\) show continuity: on \(\epsilon(W\cap(-W))\), \(|L|<\epsilon\). For \(u\in U\),
 \[
 L(u)-L(u_0)<1=L(-u_0),\qquad L(u)<0.
 \tag{CV1}
@@ -53,7 +53,7 @@ Factor through the real linear map \((x,\xi)\mapsto(x^*v_1,\ldots,x^*v_n,\xi)\).
 =\operatorname{Re}\left(\sum_{j=1}^n\langle xw_j,v_j\rangle+\langle\xi,\eta\rangle\right).
 \tag{CV4}
 \]
-The real Hilbert representation used here follows from CF Section 8 on the ambient complex Hilbert space: for a bounded real functional \(L\), the complex linear functional \(v\mapsto L(v)-iL(iv)\) has a representing vector; taking real parts gives the required real representation. All inner products are linear in the first variable. This functional is continuous for concrete ultraweak topology on \(M\) times weak topology on \(H\). [CV-1](OA-FLOW-CV.md#cv-1) therefore proves: every convex set closed for adjoint-strong times norm is closed for ultraweak times weak. No boundedness or metrizability is part of this topological assertion; boundedness, when needed to prove closedness of a particular set, must be supplied separately.
+The real Hilbert representation used here follows from [CF Section 8](OA-FLOW-CF.md#oa-flow.cf.8) on the ambient complex Hilbert space: for a bounded real functional \(L\), the complex linear functional \(v\mapsto L(v)-iL(iv)\) has a representing vector; taking real parts gives the required real representation. All inner products are linear in the first variable. This functional is continuous for concrete ultraweak topology on \(M\) times weak topology on \(H\). [CV-1](OA-FLOW-CV.md#cv-1) therefore proves: every convex set closed for adjoint-strong times norm is closed for ultraweak times weak. No boundedness or metrizability is part of this topological assertion; boundedness, when needed to prove closedness of a particular set, must be supplied separately.
 
 The same argument with \(xv_j\) proves that a strongly closed convex subset of \(M\) is ultraweakly closed. On the real space \(M_{\rm sa}\) use real restrictions of these functionals. Hilbert norm and weak topology have the same scalar continuous dual, directly by Riesz representation and the definition of weak topology.
 
@@ -65,7 +65,7 @@ For a real or complex normed space \(X\), map the radius-\(r\) closed ball of \(
 \[
 \prod_{x\in X}\{z:|z|\leq r\|x\|\}
 \]
-by evaluation. The product is compact by the actual CF Section 4 proof. Additivity and scalar homogeneity are closed coordinate equations. They cut out exactly the image of the dual ball, since the displayed bounds give a bounded functional of norm at most \(r\). The coordinate topology is exactly weak*. Thus every centered closed dual ball is weak* compact and closed; translating proves the same for all closed balls. No completeness or separability of \(X\) was used. By Riesz representation the analogous assertion holds for weak Hilbert balls, including arbitrary Hilbert dimension; in the complex case the conjugate-linear Riesz isometry and its inverse are still homeomorphisms for these topologies.
+by evaluation. The product is compact by the actual [CF Section 4](OA-FLOW-CF.md#oa-flow.cf.4) proof. Additivity and scalar homogeneity are closed coordinate equations. They cut out exactly the image of the dual ball, since the displayed bounds give a bounded functional of norm at most \(r\). The coordinate topology is exactly weak*. Thus every centered closed dual ball is weak* compact and closed; translating proves the same for all closed balls. No completeness or separability of \(X\) was used. By Riesz representation the analogous assertion holds for weak Hilbert balls, including arbitrary Hilbert dimension; in the complex case the conjugate-linear Riesz isometry and its inverse are still homeomorphisms for these topologies.
 
 <a id="oa-flow.cv.4"></a><a id="cv-4"></a>
 

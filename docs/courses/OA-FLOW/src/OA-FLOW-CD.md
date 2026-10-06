@@ -32,7 +32,7 @@ CC proved the faithful normal semifinite whole-cone counting OVW \(E:B_+\to\wide
 \]
 Here \(\widehat{\varphi_F}\) is the entire extension in [EP5](OA-FLOW-EP.md#oa-flow.ep.5), including infinite values. No finite-state, separability, countable-decomposability, factor or minimal-period hypothesis is added.
 
-The precise earlier proofs are [GW1–5](OA-FLOW-GW.md#oa-flow.gw.1), WR3–5, [CI1–3](OA-FLOW-CI.md#oa-flow.ci.1) and MW4 for full GNS, closed finite-star and modular domains; [EP2–5](OA-FLOW-EP.md#oa-flow.ep.2) for intrinsic extended operations and scalar extension; [OT1–5](OA-FLOW-OT.md#oa-flow.ot.1) for modular restriction of a composed weight; [CZ0](OA-FLOW-CZ.md#oa-flow.cz.0) and [CZ2–7](OA-FLOW-CZ.md#oa-flow.cz.2) for the full finite-domain centralizer test and unbounded perturbation; [SF1](OA-FLOW-SF.md#oa-flow.sf1.full-domains) for exact spectral domains and covariance; and [BD1–5](OA-FLOW-BD.md#oa-flow.bd.1) with [CP](OA-FLOW-CP.md#oa-flow.cp.6) for bounded generator approximation and ultraweak passage. Their source/range bindings are recorded separately. No normal-weight sum theorem or formal Fourier-column model is needed.
+The precise earlier proofs are [GW1–5](OA-FLOW-GW.md#oa-flow.gw.1), [WR3–5](OA-FLOW-WR.md#oa-flow.wr.3), [CI1–3](OA-FLOW-CI.md#oa-flow.ci.1) and [MW4](OA-FLOW-MW.md#oa-flow.mw.4) for full GNS, closed finite-star and modular domains; [EP2–5](OA-FLOW-EP.md#oa-flow.ep.2) for intrinsic extended operations and scalar extension; [OT1–5](OA-FLOW-OT.md#oa-flow.ot.1) for modular restriction of a composed weight; [CZ0](OA-FLOW-CZ.md#oa-flow.cz.0) and [CZ2–7](OA-FLOW-CZ.md#oa-flow.cz.2) for the full finite-domain centralizer test and unbounded perturbation; [SF1](OA-FLOW-SF.md#oa-flow.sf1.full-domains) for exact spectral domains and covariance; and [BD1–5](OA-FLOW-BD.md#oa-flow.bd.1) with [CP](OA-FLOW-CP.md#oa-flow.cp.6) for bounded generator approximation and ultraweak passage. Their source/range bindings are recorded separately. No normal-weight sum theorem or formal Fourier-column model is needed.
 
 The free author passages actually read for comparison are [Hiai, Theorem 8.7, p.71](https://arxiv.org/pdf/2004.02383v1#page=71), [Lemma 9.1, p.81](https://arxiv.org/pdf/2004.02383v1#page=81), and [§10.1, pp.95–98](https://arxiv.org/pdf/2004.02383v1#page=95). This proof uses actual local OT/CZ proofs. It does not assume the external dual-weight modular theorem, its uniqueness assertion, or a standard-form identification of GNS spaces.
 
@@ -62,7 +62,7 @@ These are its whole finite domains, including elements with an unbounded \(E(x^*
 =\omega_0(y^*x)\quad(x,y\in N).
 \tag{CD5}
 \]
-WR3–5 applies to this actual faithful n.s.f. weight. On the **entire** dense finite-star range it makes
+[WR3](OA-FLOW-WR.md#oa-flow.wr.3)–5 applies to this actual faithful n.s.f. weight. On the **entire** dense finite-star range it makes
 
 <a id="equation-cd6"></a>
 
@@ -113,7 +113,7 @@ D(S^*)=D(\Delta_\omega^{-1/2}).
 \end{gathered}
 \tag{CD9}
 \]
-All products have the displayed full domains. The positive operator is nonsingular, and MW4 gives
+All products have the displayed full domains. The positive operator is nonsingular, and [MW4](OA-FLOW-MW.md#oa-flow.mw.4) gives
 
 <a id="equation-cd10"></a>
 
@@ -202,7 +202,7 @@ E(v^*xv)=\widehat\theta_{-s}(E(x))\quad(x\in B_+).
 \]
 Restriction and inclusion have been checked on all normal positive tests, rather than by formally commuting an unbounded operator with \(v\).
 
-MW4's whole-cone invariance of \(\varphi\) and [CD13](OA-FLOW-CD.md#equation-cd13) give \(\varphi_F\circ\theta_s=\varphi_F\). This invariance extends to the entire cone: take [EP2](OA-FLOW-EP.md#oa-flow.ep.2)'s canonical bounded approximants \(a_j\uparrow h\in\widehat F_+\). Then \(\theta_s(a_j)\uparrow\widehat\theta_s(h)\), and [EP5](OA-FLOW-EP.md#oa-flow.ep.5)'s normal extension gives
+[MW4](OA-FLOW-MW.md#oa-flow.mw.4)'s whole-cone invariance of \(\varphi\) and [CD13](OA-FLOW-CD.md#equation-cd13) give \(\varphi_F\circ\theta_s=\varphi_F\). This invariance extends to the entire cone: take [EP2](OA-FLOW-EP.md#oa-flow.ep.2)'s canonical bounded approximants \(a_j\uparrow h\in\widehat F_+\). Then \(\theta_s(a_j)\uparrow\widehat\theta_s(h)\), and [EP5](OA-FLOW-EP.md#oa-flow.ep.5)'s normal extension gives
 
 <a id="equation-cd18"></a>
 

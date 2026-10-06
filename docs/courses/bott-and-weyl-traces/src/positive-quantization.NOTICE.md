@@ -6,4 +6,4 @@ Permission is granted to copy, distribute and modify this document under the GNU
 
 Part of *Bott suspension and Weyl traces*. The [selection title page](../component-notices/SELECTION_TITLE_PAGE.md), [selection history](../component-notices/SELECTION_HISTORY.md), [course title page](../component-notices/TITLE_PAGE.md), [course history](../component-notices/HISTORY.md) and [component rights](../component-notices/RIGHTS.md) accompany this document. Retain the notices and applicable complete license when distributing the document separately.
 
-Current preparation: OpenAI Codex, GPT-6.1 Sol, Ultra effort. Author self-checking is recorded; independent mathematical review is not claimed.
+Current preparation: OpenAI Codex, GPT-6.1 Sol, Ultra effort. Self-checked by the writing AI.

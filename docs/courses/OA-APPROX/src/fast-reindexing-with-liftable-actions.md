@@ -1,6 +1,6 @@
 # Fast reindexing with liftable actions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 Reindexing lets a separable part of an ultraproduct move farther out along its representatives. The finite tests must preserve multiplication, the multiplier condition and the desired action. This lesson proves the fast construction with hypotheses that survive the [semi-lift counterexample](ultraproduct-expectations-and-semilift-ambiguity.md#proposition-5-1).
 

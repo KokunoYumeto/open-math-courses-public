@@ -4,13 +4,13 @@
 
 Let \((M,H,J,P)\) be any standard form: \(JMJ=M'\), \(JzJ=z^*\) on the center, \(J\) fixes the self-dual closed cone \(P\), and \(xJxJ\) preserves \(P\). The preceding [NC-1–5](OA-FLOW-NC.md) constructs it from an arbitrary faithful n.s.f. weight. We use no faithful-state hypothesis on \(M\). Write \(j(x)=JxJ\) and \(\omega_\xi(a)=\langle a\xi,\xi\rangle\), with the linear-first convention.
 
-Additional exact local inputs are PC-1's polar partial isometry, the maximal principle in CF-1, [CP](OA-FLOW-CP.md#oa-flow.cp.1) and ST-1/2 for predual/topology/compactness, [EP-1](OA-FLOW-EP.md#oa-flow.ep.1)'s positive vector series, WR/MW for the full faithful-state graphs, and the exact cosh integral in [MF scalar SB-2](OA-FLOW-MF-SB.md#oa-flow.mf-sb.3). All remaining steps, including the projection commutant and center statements, are proved here.
+Additional exact local inputs are [PC-1](OA-FLOW-PC.md#oa-flow.projection.pc1)'s polar partial isometry, the maximal principle in [CF-1](OA-FLOW-CF.md#oa-flow.cf.1), [CP](OA-FLOW-CP.md#oa-flow.cp.1) and [ST-1/2](OA-FLOW-ST12.md#oa-flow.st.1) for predual/topology/compactness, [EP-1](OA-FLOW-EP.md#oa-flow.ep.1)'s positive vector series, [WR/MW](OA-FLOW-WR.md#oa-flow.wr.4) for the full faithful-state graphs, and the exact cosh integral in [MF scalar SB-2](OA-FLOW-MF-SB.md#oa-flow.mf-sb.3). All remaining steps, including the projection commutant and center statements, are proved here.
 
 The free human route is [Hiai, Propositions 3.7–3.10 and Lemmas 3.14–3.19, printed pp.23–31](https://arxiv.org/pdf/2004.02383v1#page=23). We supply the arbitrary-algebra corner reduction and full form/domain arguments explicitly.
 
 <a id="oa-flow.cr.1"></a><a id="cr-1"></a>
 
-Exact additional locators: ST-2 faithful normal transport, [HA-R7 right graph core](OA-FLOW-HA-R.md#oa-flow.ha-r.7), [EP-2 vector-functional norm bound](OA-FLOW-EP.md#oa-flow.ep.2), [MF scalar SB-2 cosh proof](OA-FLOW-MF-SB.md#oa-flow.mf-sb.3).
+Exact additional locators: [ST-2 faithful normal transport](OA-FLOW-ST12.md#oa-flow.st.2), [HA-R7 right graph core](OA-FLOW-HA-R.md#oa-flow.ha-r.7), [EP-2 vector-functional norm bound](OA-FLOW-EP.md#oa-flow.ep.2), [MF scalar SB-2 cosh proof](OA-FLOW-MF-SB.md#oa-flow.mf-sb.3).
 
 ## CR-1. Cone geometry and vector supports
 

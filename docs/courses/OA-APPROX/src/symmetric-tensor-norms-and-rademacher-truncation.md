@@ -1,6 +1,6 @@
 # Symmetric tensor norms and Rademacher truncation
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).* 
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).* 
 
 A bounded bilinear form initially controls a sum of tensors by a sum of products of norms. For C*-algebras, sums of squares contain more information. Random signs and functional-calculus truncation connect these two controls. The first step gives a surjection between completed tensor products; injectivity, proved in the [next lesson](tensor-completion-injectivity-and-state-domination.md), will turn it into a norm comparison.
 

@@ -1,6 +1,6 @@
 # Projections in the reduced free group algebra
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 The reduced \(C^*\)-algebra \(A=C_r^*(\mathbb F(a,b))\) has only two projections: \(0\) and \(1\). Its von Neumann closure is a factor of type \(\mathrm{II}_1\) with many projections, so the assertion concerns the norm-closed algebra. We prove it by comparing two representations that differ by trace-class operators on a dense algebra.
 

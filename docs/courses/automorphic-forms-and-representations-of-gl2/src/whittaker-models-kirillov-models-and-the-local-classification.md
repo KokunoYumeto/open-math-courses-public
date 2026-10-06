@@ -1,6 +1,6 @@
 # Whittaker models, Kirillov models and the local classification
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A nontrivial additive character turns unipotent translation into scalar multiplication. Restricting the resulting Whittaker functions to a one-dimensional torus gives the Kirillov model. Compact functions form a common part of every infinite-dimensional irreducible model; the remaining germs at zero distinguish supercuspidal, special and principal-series representations. We will prove uniqueness, the compact-function inclusion and the local classification. Section 7 proves the unitary and tempered classifications through explicit invariant forms and coefficient estimates.
 

@@ -1,6 +1,6 @@
 # Small corners and the second injective proof
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 A small corner can carry a good matrix model without occupying most of the algebra. We first choose one such corner which also almost commutes with the prescribed operators. A maximality argument then fills the complement with further good corners. Orthogonality makes the squared errors add, giving approximation on the whole identity.
 
@@ -111,7 +111,7 @@ This is the local finite-dimensional condition used in the references below. It 
 
 Every bounded element is a scalar linear combination of at most four unitaries. For a self-adjoint contraction \(h\), write \(h=(u+u^*)/2\) with \(u=h+i(1-h^2)^{1/2}\); apply this to the real and imaginary parts and rescale. For a finite operator list, take the union of these unitary lists. Divide the unitary tolerance by the largest sum of absolute coefficients, using \(1\) if that sum is zero. Linearity, the triangle inequality and linearity of \(E_A\) give (12) for the operator list.
 
-Finally every nonzero \(eMe\) is an injective \(\mathrm{II}_1\) factor with separable predual, by corner compression of a retraction and finite factor comparison. Repeat the argument with its normalized trace \(\tau_e=\tau/\tau(e)\). Both sides of (12) acquire the same factor \(\sqrt{\tau(e)}\) when converted to the ambient trace. \(\square\)
+Finally every nonzero \(eMe\) is an injective \(\mathrm{II}_1\) factor with separable predual, by [corner compression of a retraction](hypertraces-finite-injectivity.md#lemma-6-1) and finite factor comparison. Repeat the argument with its normalized trace \(\tau_e=\tau/\tau(e)\). Both sides of (12) acquire the same factor \(\sqrt{\tau(e)}\) when converted to the ambient trace. \(\square\)
 
 ## 3. Filling the identity by maximality
 

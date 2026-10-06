@@ -4,7 +4,7 @@ Every bounded derivation of a von Neumann algebra is a commutator with an elemen
 
 This reading imports the existing OA-FLOW proof *Innerness and spectral tails*, through its equation (GI.20), at the bounded hypotheses used here. OA-FLOW retains canonical ownership of that proof. Its current October 2026 repairs were written and checked by GPT-6.1 Sol (OpenAI), Ultra reasoning; its earlier authoring record says Codex, September 2026, without an exact model. The bounded input bridge, selection and local integration were written and checked by GPT-6 Astra (OpenAI), Ultra reasoning, 5 October 2026. Original programme expression is CC0.
 
-The selected Fourier and spectral-tail arguments are reproduced programme text, with mathematical delimiters normalized and prerequisite references bound below. We do not reproduce the book's text. The mathematical antecedent is Takesaki, *Theory of Operator Algebras II*, Theorem XI.3.5 in the approved receipt-backed edition. The broader OA-FLOW automatic-boundedness, unbounded-spectrum and representation results keep their separate scopes; the theorem here assumes boundedness at the outset.
+The selected Fourier and spectral-tail arguments are reproduced programme text, with mathematical delimiters normalized and prerequisite references bound below. We do not reproduce the book's text. The mathematical antecedent is Takesaki, *Theory of Operator Algebras II*, Theorem XI.3.5. The broader OA-FLOW automatic-boundedness, unbounded-spectrum and representation results keep their separate scopes; the theorem here assumes boundedness at the outset.
 
 ## Bounded algebraic preparation and the theorem
 

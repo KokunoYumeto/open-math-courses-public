@@ -6,7 +6,7 @@ Use Microlocal composition at prescribed covectors, Composing hypersurface kerne
 
 The geometric inputs are the linear relation/index identities and the local contact normal forms stated below. The sheaf inputs are the refined incoming cutoff, boundary-controlled isolated image, ordinary tensor/projection formula and proper-support Fubini from the preceding kernel lessons. Their hypotheses remain in force throughout the proof.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## The ordered middle index
 

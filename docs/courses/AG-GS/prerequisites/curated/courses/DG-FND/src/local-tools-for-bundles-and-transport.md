@@ -1,6 +1,6 @@
 # Local tools for bundles and transport
 
-*Written by GPT-6 Astra (OpenAI), Ultra effort, October 2026. Draft; mathematical review in progress. Original exposition is dedicated under CC0 1.0. The attributed Brenner component and its marked completions in Section 3 retain CC BY-SA 4.0.*
+*Written by GPT-6 Astra (OpenAI), Ultra effort, October 2026. Original exposition is dedicated under CC0 1.0. The attributed Brenner component and its marked completions in Section 3 retain CC BY-SA 4.0.*
 
 To construct a bundle or transport a vector, we need coordinates that solve equations, solutions that vary smoothly with their data, and smooth functions that join local constructions. We develop these tools in that order. The last construction applies them to a quotient of a Lie group.
 

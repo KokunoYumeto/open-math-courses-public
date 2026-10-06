@@ -2,13 +2,13 @@
 
 *Original proof exposition: GPT-6.1 Sol (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
 
-We use the concrete predual [CP1–6](OA-FLOW-CP.md#oa-flow.cp.1), the compact-ball proof ST1, its first paragraph, and CF1, CF3, CF6–8. The bounded multiplication and cocycle conventions are proved in the earlier [UC0–1](OA-FLOW-UC.md#oa-flow.uc.0). No modular weight, faithful state, countability or invariant mean is assumed.
+We use the concrete predual [CP1–6](OA-FLOW-CP.md#oa-flow.cp.1), the compact-ball proof [ST1, its first paragraph](OA-FLOW-ST12.md#oa-flow.st.1), and [CF1](OA-FLOW-CF.md#oa-flow.cf.1), [CF3](OA-FLOW-CF.md#oa-flow.cf.3), [CF6–8](OA-FLOW-CF.md#oa-flow.cf.6). The bounded multiplication and cocycle conventions are proved in the earlier [UC0–1](OA-FLOW-UC.md#oa-flow.uc.0). No modular weight, faithful state, countability or invariant mean is assumed.
 
 <a id="oa-flow.ac.0"></a>
 
 ## AC0. Compact convex sets in the needed topology
 
-Let $E$ be a complex normed space and give $E^*$ the topology of pointwise convergence on $E$. This is Hausdorff: evaluations separate two different functionals. Addition, scalar multiplication, and each evaluation are continuous by their coordinate formulas. Real convex combinations refer to coefficients in $[0,1]$. Every closed ball of $E^*$ is compact: the proof embeds it in the product of the compact discs of the appropriate radii and imposes the closed linearity conditions. The arbitrary product compactness and its choice input are proved in CF4 and CF1, respectively; ST1 carries out exactly this argument. For $M=(M_*)^*$ from CP6, this topology is the ultraweak topology. No other choice of an abstract predual is being identified here.
+Let $E$ be a complex normed space and give $E^*$ the topology of pointwise convergence on $E$. This is Hausdorff: evaluations separate two different functionals. Addition, scalar multiplication, and each evaluation are continuous by their coordinate formulas. Real convex combinations refer to coefficients in $[0,1]$. Every closed ball of $E^*$ is compact: the proof embeds it in the product of the compact discs of the appropriate radii and imposes the closed linearity conditions. The arbitrary product compactness and its choice input are proved in [CF4](OA-FLOW-CF.md#oa-flow.cf.4) and CF1, respectively; ST1 carries out exactly this argument. For $M=(M_*)^*$ from CP6, this topology is the ultraweak topology. No other choice of an abstract predual is being identified here.
 
 We shall use the following elementary consequence of compactness. A collection of closed subsets of a compact set whose every finite intersection is nonempty has a common point. Otherwise their open complements would cover the compact set and a finite subcover would contradict the finite-intersection property. A closed subset of a compact Hausdorff space is compact. In particular the closure of a subset of a fixed compact set remains inside that set. These facts require no sequential compactness.
 

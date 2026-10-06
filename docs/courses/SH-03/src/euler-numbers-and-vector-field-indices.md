@@ -2,7 +2,7 @@
 
 The Euler characteristic of a compact manifold can be computed from finite cells, from duality, or from intersections of a section with the zero section. These calculations explain both the vanishing in odd dimension and the Hopf index formula. Orientation lines let the same argument work on nonorientable manifolds.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Learn first Perfect coefficients on compact fibres for finite compact cohomology, and Constructible costalks and Verdier duality for the dualizing orientation complex and actual duality. Continuous sections and supported cycle intersections proves the section class and its complete supported comparison. Differential sections and proper-below Euler indices proves the compact index for every continuous section. Orientations of conormal cycles and transverse intersections fixes the integral normal-first coefficient and ordered transverse sign. These are written programme proofs relative to their stated foundations; compatible triangulation and other lower foundational obligations remain open.
 

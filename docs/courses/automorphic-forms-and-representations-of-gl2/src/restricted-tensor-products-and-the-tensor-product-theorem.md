@@ -1,6 +1,6 @@
 # Restricted tensor products and the tensor product theorem
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 An adelic vector has finite level. Outside finitely many primes it is fixed by the standard maximal compact subgroup. The tensor product theorem says considerably more: in an irreducible admissible representation, every place has its own irreducible representation, and the adelic module is assembled from them. The local representations are determined by the adelic module, although a particular tensor product isomorphism and particular spherical vectors need not be canonical.
 

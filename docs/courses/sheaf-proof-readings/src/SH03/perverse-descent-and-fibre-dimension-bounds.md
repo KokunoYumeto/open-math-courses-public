@@ -107,7 +107,7 @@ Formula (5) and stalkwise detection imply \(H^r(L)=0\) outside the one interval 
 
 For a cover member not in the countable subcover, its prescribed maps to the subcover objects determine isomorphisms on its intersections with all \(U_m\). The cocycle condition makes these agree. Apply the morphism sheaf (2) to glue them on that member. This supplies every original marking and proves effectiveness for the original cover. Uniqueness is already supplied by (2). \(\square\)
 
-The existing programme provider proves the exact open extension, injective restriction and K-injective interfaces in [Sheaves of modules and their derived categories, §5.2, §5.4–5.5 and §6.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/derived-categories-and-sheaf-operations/sheaves-of-modules-and-their-derived-categories.html). Resolution existence in its §6.1 is explicitly source-referred; use the full linked Stacks construction recorded in the preceding t-exact lesson. The ordinary derived foundation lane is reused.
+The proofs of exact open extension, functorial injective embeddings and injective restriction are Lemma 5.2, Theorem 5.4 and Corollary 5.5 of Sheaves of modules and their derived categories. Its Theorem 6.1 and Lemma 6.2 construct bounded-below injective resolutions and prove that they are K-injective. For the unbounded models used here, Theorem 7.2 and Corollary 7.3 give K-injective resolutions with injective terms and prove their compatibility with open restriction. These statements apply to sheaves of modules over any sheaf of rings; the global boundedness of the glued object is proved separately in (5)–(7).
 
 ## Two ambient support operations
 

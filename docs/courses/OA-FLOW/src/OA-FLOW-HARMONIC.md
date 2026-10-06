@@ -2,13 +2,13 @@
 
 Original reviewed H1 proof, now placed after the independently proved topology and Haar/Radon foundations and L24/L25. It identifies the universal Fourier completion and compact-open character topology without a scalar Plancherel or biduality premise. Original CC0 expression retained.
 
-The actual earlier inputs are [H0: compact topology and Hilbert tensor](OA-FLOW-TOPOLOGY.md#l138-h0), [HR-03](OA-FLOW-HR.md#hr-03), [HR-06](OA-FLOW-HR.md#hr-06), [HR-07](OA-FLOW-HR.md#hr-07), [HR-09](OA-FLOW-HR.md#hr-09), CF-6, CF-7, CF-9, and [L24 convolution](OA-FLOW-L24.md#oa-flow.grp.algebra), [L24 recovery](OA-FLOW-L24.md#oa-flow.grp.recovery), [L24 translation continuity](OA-FLOW-L24.md#oa-flow.grp.translations), [L24 universal completion](OA-FLOW-L24.md#oa-flow.grp.completions).
+The actual earlier inputs are [H0: compact topology and Hilbert tensor](OA-FLOW-TOPOLOGY.md#l138-h0), [HR-03](OA-FLOW-HR.md#hr-03), [HR-06](OA-FLOW-HR.md#hr-06), [HR-07](OA-FLOW-HR.md#hr-07), [HR-09](OA-FLOW-HR.md#hr-09), [CF-6](OA-FLOW-CF.md#oa-flow.cf.6), [CF-7](OA-FLOW-CF.md#oa-flow.cf.7), [CF-9](OA-FLOW-CF.md#oa-flow.cf.9), and [L24 convolution](OA-FLOW-L24.md#oa-flow.grp.algebra), [L24 recovery](OA-FLOW-L24.md#oa-flow.grp.recovery), [L24 translation continuity](OA-FLOW-L24.md#oa-flow.grp.translations), [L24 universal completion](OA-FLOW-L24.md#oa-flow.grp.completions).
 
 <a id="l138-h1"></a>
 
 ## H1. The full Fourier completion directly from CF and L24
 
-Let \(D=C^*(G)\), constructed in [L24](OA-FLOW-L24.md#oa-flow.grp.completions). Abelian convolution makes \(D\) commutative. For \(A=\mathbb C\), the left regular representation on the nonzero Haar \(L^2(G)\) space shows that \(D\ne0\). Its forced unitization \(D^+\) has compact character space \(X\), and CF Section 6 identifies it isometrically with \(C(X)\). The scalar quotient \(D^+\to\mathbb C\) is a character \(q\in X\). Its kernel \(D\) corresponds exactly to functions vanishing at \(q\). Restriction gives
+Let \(D=C^*(G)\), constructed in [L24](OA-FLOW-L24.md#oa-flow.grp.completions). Abelian convolution makes \(D\) commutative. For \(A=\mathbb C\), the left regular representation on the nonzero Haar \(L^2(G)\) space shows that \(D\ne0\). Its forced unitization \(D^+\) has compact character space \(X\), and [CF Section 6](OA-FLOW-CF.md#oa-flow.cf.6) identifies it isometrically with \(C(X)\). The scalar quotient \(D^+\to\mathbb C\) is a character \(q\in X\). Its kernel \(D\) corresponds exactly to functions vanishing at \(q\). Restriction gives
 \[
  D\cong C_0(X\setminus\{q\}).
 \tag{H1.1}

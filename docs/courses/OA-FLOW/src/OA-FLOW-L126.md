@@ -8,7 +8,7 @@ A small cyclic spectrum in one fixed corner is enough to recognize a central fix
 
 Let $M\ne0$ be a concrete von Neumann algebra on an arbitrary Hilbert space, let $G$ be a locally compact Hausdorff abelian group, and let $\alpha:G\to\operatorname{Aut}(M)$ be a normal point-ultraweakly continuous action. Suppose $Z(M)^\alpha=\mathbb C1$. Write $H=\widehat G$, $F=M^\alpha$, $D=Z(F)$ and $\Gamma=\Gamma(\alpha)$. Frequencies have the positive L115 convention. For $0<r<\pi$ put $V(r)=\{e^{i\theta}:|\theta|<r\}$. An ordinary operator spectrum on a corner is distinguished throughout from the action spectrum in $H$.
 
-The earlier proofs used below are Projection comparison and the countably decomposable type III case, PC2 and PC4 for central supports and corner centers; [Lifting innerness and cocycles from a full corner](OA-FLOW-L117.md#oa-flow.fullcorner.inner) for the unique prescribed lift; The dual-center kernel through central overlap for absorption and the subgroup property; Connes spectrum through fixed corners for reduced actions and their intersection; and Mutual corner approximation through a family of spectral bridges for closed thickenings and their directedness. The operator-spectrum formula in [The spectrum of one action operator](OA-FLOW-L89.md#oa-flow.opsp.formula) uses the specified-predual hypotheses of [Inputs for action frequencies and norm continuity](OA-FLOW-AF.md#af-0), supplied by [General normal actions: predual continuity and the integrated maps](OA-FLOW-AT.md#oa-flow.at.3) and the reduced-action setting just cited. [Small fixed corners, inner spectra and annihilating times](OA-FLOW-L122.md#oa-flow.l122.directannihilator) supplies the reverse annihilator inclusion. [Compact topology and the Hilbert tensor construction, H0](OA-FLOW-TOPOLOGY.md#l138-h0) supplies compact-neighborhood shrinking, compact images and finite products. The innerness criterion is proved in [Read an inner implementer from a circle eigenunitary, CE0–CE5](OA-FLOW-L124.md#ce0), with its conclusion at [Read an inner implementer from a circle eigenunitary — CE5](OA-FLOW-L124.md#ce5). The fixed small-spectrum theorem is proved in [A central order correction fixes the implementer and retains its bound, CO0–CO4](OA-FLOW-L125.md#co0), with the precise bound at [A central order correction fixes the implementer and retains its bound — CO4](OA-FLOW-L125.md#co4).
+The earlier proofs used below are [Projection comparison and the countably decomposable type III case, PC2 and PC4](OA-FLOW-PC.md#oa-flow.pc.2) for central supports and corner centers; [Lifting innerness and cocycles from a full corner](OA-FLOW-L117.md#oa-flow.fullcorner.inner) for the unique prescribed lift; The dual-center kernel through central overlap for absorption and the subgroup property; Connes spectrum through fixed corners for reduced actions and their intersection; and [Mutual corner approximation through a family of spectral bridges](OA-FLOW-L121.md#oa-flow.l121.sc0) for closed thickenings and their directedness. The operator-spectrum formula in [The spectrum of one action operator](OA-FLOW-L89.md#oa-flow.opsp.formula) uses the specified-predual hypotheses of [Inputs for action frequencies and norm continuity](OA-FLOW-AF.md#af-0), supplied by [General normal actions: predual continuity and the integrated maps](OA-FLOW-AT.md#oa-flow.at.3) and the reduced-action setting just cited. [Small fixed corners, inner spectra and annihilating times](OA-FLOW-L122.md#oa-flow.l122.directannihilator) supplies the reverse annihilator inclusion. [Compact topology and the Hilbert tensor construction, H0](OA-FLOW-TOPOLOGY.md#l138-h0) supplies compact-neighborhood shrinking, compact images and finite products. The innerness criterion is proved in [Read an inner implementer from a circle eigenunitary, CE0–CE5](OA-FLOW-L124.md#ce0), with its conclusion at [Read an inner implementer from a circle eigenunitary — CE5](OA-FLOW-L124.md#ce5). The fixed small-spectrum theorem is proved in [A central order correction fixes the implementer and retains its bound, CO0–CO4](OA-FLOW-L125.md#co0), with the precise bound at [A central order correction fixes the implementer and retains its bound — CO4](OA-FLOW-L125.md#co4).
 
 <a id="lc0"></a>
 <a id="oa-flow.l126.lc0"></a>
@@ -20,7 +20,7 @@ Let $0\ne e\in\operatorname{Proj}(F)$. Its ambient central support is the least 
 \alpha_s(z_M(e))=z_M(\alpha_s(e))=z_M(e).
 \tag{LC1}
 \]
-Central ergodicity makes this nonzero invariant central projection equal to $1$. Projection comparison and the countably decomposable type III case — PC4 now supplies the bijection
+Central ergodicity makes this nonzero invariant central projection equal to $1$. [Projection comparison and the countably decomposable type III case — PC4](OA-FLOW-PC.md#oa-flow.pc.4) now supplies the bijection
 <a id="equation-lc2"></a>
 \[
 Z(M)\longrightarrow Z(eMe),\qquad z\longmapsto ze.
@@ -102,7 +102,7 @@ A_{e,U}=\operatorname{Sp}(\alpha^e)+U,
 \qquad K_{e,U}=\pi(A_{e,U}).
 \tag{LC11}
 \]
-Mutual corner approximation through a family of spectral bridges — L121 SC0 proves $A_{e,U}$ closed. Equation (LC10) makes it saturated, so $\pi^{-1}(K_{e,U})=A_{e,U}$, and the quotient topology makes $K_{e,U}$ closed. Connes spectrum through fixed corners — GCC SETTING's restricted filters show $\operatorname{Sp}(\alpha^e)\subset\operatorname{Sp}(\alpha)$: an annihilator of the whole action also annihilates its restriction, and taking the hull reverses ideal inclusion. Hence
+[Mutual corner approximation through a family of spectral bridges — L121 SC0](OA-FLOW-L121.md#oa-flow.l121.sc0) proves $A_{e,U}$ closed. Equation (LC10) makes it saturated, so $\pi^{-1}(K_{e,U})=A_{e,U}$, and the quotient topology makes $K_{e,U}$ closed. Connes spectrum through fixed corners — GCC SETTING's restricted filters show $\operatorname{Sp}(\alpha^e)\subset\operatorname{Sp}(\alpha)$: an annihilator of the whole action also annihilates its restriction, and taking the hull reverses ideal inclusion. Hence
 <a id="equation-lc12"></a>
 \[
 K_{e,U}\subset S+\pi(U).
@@ -110,7 +110,7 @@ K_{e,U}\subset S+\pi(U).
 \]
 [Compact topology and the Hilbert tensor construction — H0](OA-FLOW-TOPOLOGY.md#l138-h0) gives compactness of the finite product $S\times\pi(U)$ and its continuous sum image. A closed subset of that compact set is compact by the open-cover definition. Thus every $K_{e,U}$ is compact. It is nonempty and contains the zero coset, since the unit of every nonzero corner has zero frequency.
 
-Mutual corner approximation through a family of spectral bridges — L121 DIRECTED.THICKENING proves downward directedness when all identity neighborhoods are allowed. Given two members with compact neighborhoods, apply that theorem to find a refining member $\operatorname{Sp}(\alpha^f)+W$. [Compact topology and the Hilbert tensor construction — H0](OA-FLOW-TOPOLOGY.md#l138-h0) supplies a compact identity neighborhood $U'\subset W$. Then $A_{f,U'}$ still refines both. Thus the compact-neighborhood family, and its image family, are downward directed.
+[Mutual corner approximation through a family of spectral bridges — L121 DIRECTED.THICKENING](OA-FLOW-L121.md#oa-flow.directed.thickening) proves downward directedness when all identity neighborhoods are allowed. Given two members with compact neighborhoods, apply that theorem to find a refining member $\operatorname{Sp}(\alpha^f)+W$. [Compact topology and the Hilbert tensor construction — H0](OA-FLOW-TOPOLOGY.md#l138-h0) supplies a compact identity neighborhood $U'\subset W$. Then $A_{f,U'}$ still refines both. Thus the compact-neighborhood family, and its image family, are downward directed.
 
 Connes spectrum through fixed corners — GCC INTERSECTION states that the intersection of all central fixed-corner spectra is $\Gamma$. If $p\notin\Gamma$, choose such a corner with $p\notin\operatorname{Sp}(\alpha^e)$. Closedness gives an identity neighborhood $W$ with $p-W$ disjoint from that spectrum; shrink to a compact identity neighborhood $U\subset W$. Then $p\notin A_{e,U}$. Conversely (LC10) and zero frequency imply $\Gamma\subset A_{e,U}$ for all pairs. Thus
 <a id="equation-lc13"></a>
@@ -307,7 +307,7 @@ $$
 and the right side is compact by (Q2).  Hence every $K_{e,U}$ is compact.
 
 The directed-thickening theorem in
-Mutual corner approximation through a family of spectral bridges
+[Mutual corner approximation through a family of spectral bridges](OA-FLOW-L121.md#oa-flow.directed.thickening)
 shows that the $A_{e,U}$, and therefore the $K_{e,U}$, are downward directed
 under inclusion.  Restricting to compact neighborhoods loses nothing: inside
 any prescribed neighborhood of zero there is a compact neighborhood small

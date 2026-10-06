@@ -15,7 +15,7 @@ the proof below uses scalar elimination and the programme's inverse theorem.
 It does not import an unproved ODE flow. The supporting completions P2–P5 are
 in [the preceding companion](prerequisite-completions.md); the Gaussian and
 quadratic arguments Q1–Q9 are in
-the analytic module.
+[the analytic module](quadratic-stationary-phase.md).
 
 This exposition is an adaptation and extension of the openly licensed Lebl
 material and is offered under

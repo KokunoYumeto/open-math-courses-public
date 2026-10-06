@@ -1,6 +1,6 @@
 # SH02-EXCEPTIONAL-OPERATIONS — Exceptional inverse image from a finite resolution
 
-This lesson constructs the adjunction and proves its comparisons relative to those precisely stated foundations. The final support-comparison discussion identifies one further extension to unbounded operations which remains unfinished; its bounded case is proved and is not claimed to close the full extension.
+This lesson constructs the adjunction and proves its comparisons relative to those precisely stated foundations. The opposite-bounded-range section proves the full bounded-above first-input internal-Hom comparisons and supplies the finite model for unbounded proper direct image. The unbounded supported-evaluation section proves the projection and support-forgetting comparisons for arbitrary first complexes and bounded-below duality targets, using the existing K-flat and K-injective foundations.
 
 The exceptional inverse image is determined by what can be integrated with proper support. To construct it, we first make proper direct image exact by tensoring with a suitable sheaf. The ordinary right adjoint of this exact functor can then be assembled into a bounded resolution model. This also fixes the trace maps used in subsequent formulas.
 
@@ -12,21 +12,21 @@ The following are exact prerequisite contracts for proper-support sheaf theory. 
 
 ### SH02-EX-IMP-SOFT — The compact-support resolution contract
 
-A sheaf on a locally compact Hausdorff space is c-soft when its sections on every compact subset extend globally. Injective and flabby sheaves are c-soft. Open extension by zero and arbitrary coproducts preserve c-softness. A c-soft sheaf is acyclic for compactly supported sections. Conversely, $H_c^j(V;E|_V)=0$ for all open $V$ and all $j>0$ implies c-softness.
+A sheaf on a locally compact Hausdorff space is c-soft when its sections on every compact subset extend globally. Injective and flabby sheaves are c-soft. Open extension by zero and arbitrary coproducts preserve c-softness. A c-soft sheaf is acyclic for compactly supported sections. Conversely, $H_c^j(V;E|_V)=0$ for all open $V$ and all $j>0$ implies c-softness. These assertions are proved in compact extension, lifting and the acyclicity criterion, (C1)–(C4). In particular, that proof includes arbitrary coproducts and open extensions and does not require a finite dimension bound.
 
 ### SH02-EX-IMP-FIBRES — The proper-support fibre contract
 
-Proper direct image $f_!$ is left exact, commutes with coproducts, and has stalk $(f_!E)_x=\Gamma_c(f^{-1}(x);E|_{f^{-1}(x)})$. Its derived stalks are the corresponding compactly supported cohomology groups. A sheaf whose restrictions to all fibres are c-soft is $f_!$-acyclic; bounded-below complexes of such sheaves compute $Rf_!$. These assertions also hold after restricting the source to an open subset.
+Proper direct image $f_!$ is left exact, commutes with coproducts, and has stalk $(f_!E)_x=\Gamma_c(f^{-1}(x);E|_{f^{-1}(x)})$. Its derived stalks are the corresponding compactly supported cohomology groups. A sheaf whose restrictions to all fibres are c-soft is $f_!$-acyclic; bounded-below complexes of such sheaves compute $Rf_!$. These assertions also hold after restricting the source to an open subset. The exact providers are the proper-support construction and underived fibre formula, (F2)–(F3), coproduct and open-extension comparisons, (F4)–(F5), and the derived fibre and acyclic-complex calculation, (F6). They work for bounded-below complexes on arbitrary locally compact Hausdorff spaces; neither constructibility nor countability is inserted.
 
 ### SH02-EX-IMP-COMPOSE — The proper-support composition contract
 
-For composable maps, the natural proper-support comparison $Rf_!Rg_!\simeq R(fg)_!$ is an isomorphism on $D^+$, compatible with threefold composition and identities.
+For composable maps, the natural proper-support comparison $Rf_!Rg_!\simeq R(fg)_!$ is an isomorphism on $D^+$, compatible with threefold composition and identities. The proof is composition of properly supported sections and their c-soft models, (D2)–(D3). The comparison keeps the underlying section, so it includes these identity and associativity compatibilities, not only an isomorphism of objects.
 
 ### SH02-EX-IMP-BC — The base-change boundary
 
-The full proper-support base-change theorem for arbitrary locally compact Hausdorff maps belongs to the earlier foundations. Under the finite dimension assumption of this lesson, the required case and its pasting compatibility are proved below as `SH02-EX-BASECHANGE-BRIDGE`, using the fibre and soft contracts.
+The full proper-support base-change theorem for arbitrary locally compact Hausdorff maps is proved by pulling back supported sections and deriving that map, (D1) and (D4). Its fibrewise acyclicity argument preserves the bounded-below range without a finite dimension or proper-map hypothesis. Under the finite dimension assumption of this lesson, the required case and its pasting compatibility are proved below as `SH02-EX-BASECHANGE-BRIDGE`, using the fibre and soft contracts.
 
-The soft, fibre, and composition contracts are used as imports, with their receipt still outstanding. The finite-dimensional case of nonproper base change and the projection formula required below are proved from those contracts. A theorem about a proper map or a perfect tensor factor is not used as a substitute for either assertion.
+The soft, fibre, composition and full proper-support base-change contracts are supplied by these exact earlier programme proofs. Their support sections do not use the later exceptional adjoint or constructible-duality applications in that reading, so using them here creates no such dependency cycle. The finite-dimensional case of nonproper base change and the projection formula required below are proved from those contracts. A theorem about a proper map or a perfect tensor factor is not used as a substitute for either assertion.
 
 We will also use two elementary consequences of the stated compact-support contracts. A compact subset meets only finitely many members of a locally finite family of supports, after passage to a finite open cover. This explains why compactly supported sections of a sheaf coproduct are a coproduct, even though unrestricted sections need not commute with coproducts. Restriction to a closed subset preserves c-softness: a compact subset of the closed subset is compact in the ambient space, and restriction to that compact subset has the same sections.
 
@@ -225,7 +225,31 @@ f_!E\otimes_k B\simeq f_!(E\otimes_k f^{-1}B)
 
 for every sheaf $B$. The map is defined on sections by multiplying a properly supported section by a pulled-back local section. Its support remains proper.
 
-For the derived statement, use a bounded-below flat resolution $P$ of $G$, starting at most $d$ degrees earlier, and one for $B$. Here is a precise way to obtain the required lower bound from `SH02-IMP-KFLAT`. Start with its termwise-flat complex $Q$ representing an object in $D^{\geq a}$. Put $C^m=\operatorname{coker}(Q^{m-1}\to Q^m)$. For $m<a$, exactness gives $0\to C^m\to Q^{m+1}\to C^{m+1}\to0$. On each stalk, $d$ successive Tor connecting isomorphisms identify $\operatorname{Tor}_1(C^{a-d},M)$ with $\operatorname{Tor}_{d+1}(C^a,M)=0$. Thus $C^{a-d}$ is flat, and replacing the part of $Q$ below degree $a-d$ by this cokernel gives the bounded-below flat resolution. When $d=0$, every stalk module is already flat and the same truncation works directly.
+For the derived statement, use a bounded-below flat resolution $P$ of $G$, starting at most $d$ degrees earlier, and one for $B$. Here is a precise way to obtain the required lower bound from the flat-resolution contract, proved by local cycle attachment, Theorem 3.1. Start with its termwise-flat complex $Q$ representing an object in $D^{\geq a}$. Put $C^m=\operatorname{coker}(Q^{m-1}\to Q^m)$. For $m<a$, exactness gives $0\to C^m\to Q^{m+1}\to C^{m+1}\to0$. On each stalk, $d$ successive Tor connecting isomorphisms identify $\operatorname{Tor}_1(C^{a-d},M)$ with $\operatorname{Tor}_{d+1}(C^a,M)=0$. Thus $C^{a-d}$ is flat, and replacing the part of $Q$ below degree $a-d$ by this cokernel gives the bounded-below flat resolution. When $d=0$, every stalk module is already flat and the same truncation works directly.
+
+<a id="SH02-EX-BOUNDED-FLAT-MODEL"></a>
+
+**Why this truncation is still a K-flat model.** The dimension-shifting step uses the long exact Tor sequence and the flatness criterion, Proposition 3.2 and Theorem 3.3. Write $c=a-d$, and let $P$ be the complex with $P^n=0$ for $n<c$, $P^c=C^c$, and $P^n=Q^n$ for $n>c$. Its first differential is induced by that of $Q$. The quotient in degree $c$ and the identity in higher degrees define a chain map $q:Q\to P$. It is a quasi-isomorphism: the good truncation preserves cohomology in degrees at least $c$, and the lower cohomology of $Q$ vanishes because $c\leq a$.
+
+The kernel $N=\ker q$ has terms $Q^n$ below $c$, the sheaf $\operatorname{im}(Q^{c-1}\to Q^c)$ in degree $c$, and zero above. Exactness of $Q$ in degree $c-1<a$ identifies that last term with $C^{c-1}$. The same $d$ connecting isomorphisms as above identify first Tor of each stalk of $C^{c-1}$ with $(d+1)$st Tor of the corresponding stalk of $C^{a-1}$, which is zero. Thus that last term is flat; for $d=0$ it is flat directly. The flatness-of-stalks criterion makes every term of $N$ flat. Its cohomology is zero, either from the short exact sequence below or directly from the description of its last differential. It is bounded above, so Lemma 2.3 of the K-flat lesson proves that $N$ is K-flat.
+
+We have an exact sequence of complexes
+
+\[
+0\longrightarrow N\longrightarrow Q\xrightarrow{q}P\longrightarrow0.
+\tag{PF1}
+\]
+
+Every term of its quotient $P$ is flat. Consequently tensoring this sequence with any sheaf remains exact in each degree, by the flat-quotient assertion of Lemma 1.3 in the same lesson. Tensoring with a complex and taking direct-sum totalizations therefore also gives an exact sequence. For an acyclic complex $A$, the tensors with $N$ and $Q$ are acyclic by their K-flatness; the resulting long exact cohomology sequence proves that $A\otimes P$ is acyclic. This proves K-flatness of $P$, rather than inferring it from flatness of its terms.
+
+If $\epsilon:Q\to G$ is the original resolution, the identification of this bounded-below model with $G$ is the explicit quasi-isomorphism zigzag
+
+\[
+P\xleftarrow{q}Q\xrightarrow{\epsilon}G.
+\tag{PF2}
+\]
+
+A chain map $P\to G$ is not being assumed. In the derived category the identification is $\epsilon q^{-1}$. Here $G$ and $P$ are on $Y$, whereas $B$ is on $X$. Applying the construction to $B$ gives a bounded-below K-flat $k_X$-complex $R$ representing it. Since the coefficients are the constant sheaves of the same ring $k$, inverse image is exact and its stalks preserve the coefficient modules. It preserves flatness and K-flatness by Lemma 2.2 of the K-flat lesson. Thus $f^{-1}R$ is a bounded-below K-flat $k_Y$-model for $f^{-1}B$. The tensor-invariance and resolution-comparison proof, Lemma 1.1 and Theorem 1.2, identifies $P\otimes_k f^{-1}R$ with $G\otimes_k^L f^{-1}B$ on $Y$, compatibly with those zigzags and derived morphisms. This supplies the models needed below, including their lower bounds. It does not claim that an arbitrary complex of flat terms is K-flat.
 
 Tensor $P$ over $\mathbb Z$ with (EX.4). Its total complex $E$ is termwise flat over $k$, termwise $f$-soft, and quasi-isomorphic to $G$. All the double complexes used here lie in a translated first quadrant. Thus termwise flat resolutions calculate the derived tensor products of these bounded-below inputs, and termwise $f$-soft resolutions calculate $Rf_!$. Applying (EX.12) to the double complexes gives (EX.11).
 
@@ -469,9 +493,130 @@ Define its map by applying (EX.23) to $R\mathcal Hom(A,B)$ and $A$, then applyin
 \end{aligned}
 \]
 
-Each tensor belongs to $D^+$ because $A$ is bounded and the coefficient ring has finite global dimension. The map represented by this chain is the map just defined: tracing evaluation through the adjunction gives exactly (EX.24). Yoneda therefore proves (EX.26), including naturality. In particular, merely replacing the hypothesis $A\in D^b$ by $A\in D^-$ is not justified by this proof; tensoring such an $A$ with $C\in D^+$ can leave $D^+$.
+Each tensor belongs to $D^+$ because $A$ is bounded and the coefficient ring has finite global dimension. The map represented by this chain is the map just defined: tracing evaluation through the adjunction gives exactly (EX.24). Yoneda therefore proves (EX.26), including naturality. In particular, merely replacing the hypothesis $A\in D^b$ by $A\in D^-$ is not justified by this proof; tensoring such an $A$ with $C\in D^+$ can leave $D^+$. The [opposite-bounded-range proof](#SH02-EX-BOUNDED-ABOVE) supplies that broader first-input range by a finite resolution and coefficient exchange, without that tensor-boundedness assumption.
 
 Composition compatibility of (EX.26) follows by applying its definition to evaluation and using (EX.25). Both composites are the curry of the same evaluated tensor map. Open restriction compatibility follows from (EX.16) and the open restriction of internal Hom. These are the compatibilities needed when using the identity on a diagonal or on a small neighborhood.
+
+## SH02-EX-BOUNDED-ABOVE — Internal Hom with opposite bounded ranges
+
+Retain the uniform integral dimension bound (EX.1). The internal comparisons have the following full bounded-above first-input forms:
+
+\[
+\begin{gathered}
+R\mathcal Hom_X(Rf_!G,F)\\
+\xrightarrow{\sim}Rf_*R\mathcal Hom_Y(G,f^!F),\\
+G\in D^-(k_Y),\quad F\in D^+(k_X).
+\end{gathered}
+\tag{EXA.1}
+\]
+
+\[
+\begin{gathered}
+f^!R\mathcal Hom_X(A,B)\\
+\xrightarrow{\sim}R\mathcal Hom_Y(f^{-1}A,f^!B),\\
+A\in D^-(k_X),\quad B\in D^+(k_X).
+\end{gathered}
+\tag{EXA.2}
+\]
+
+No lower bound on $G$ or $A$ is imposed. These maps extend the bounded-first-input maps (EX.20) and (EX.26), with their normalizations. All the internal Hom objects in these two displays are bounded below. The proper direct image in (EXA.1) uses the unbounded derived functor, with the finite resolution model justified next. The right adjoint $f^!$ is still only being applied to bounded-below objects.
+
+### The existing unbounded acyclic-model theorem applies
+
+The module-sheaf categories are Grothendieck. K-injective resolutions, Theorems 4.1 and 5.1, supply termwise-injective K-injective replacements and the right derived functor of an additive functor on all complexes. Thus $Rf_!$ exists on the unbounded derived category. Proposition 5.5, the finite-dimensional acyclic-model theorem, proves that any complex of $f_!$-acyclic sheaves computes it termwise under a uniform bound. Its hypotheses match here: $f_!$ is left exact, and (EX.1) gives the same uniform bound $r$ for $k$-module sheaves by the coefficient comparison already proved above.
+
+Let $K^\bullet$ be the flat relative-soft resolution (EX.4), in degrees $0,\ldots,r$. For any complex $G$, including an unbounded one, its augmentation
+
+\[
+G\longrightarrow G\otimes_{\mathbb Z}K^\bullet
+\tag{EXA.3}
+\]
+
+is a quasi-isomorphism. Here is the convergence check. Each row obtained by tensoring the augmented resolution with $G^i$ is exact, since (EX.4)'s successive cokernels are flat over $\mathbb Z$. The cone of (EXA.3) is the total complex of these exact rows with the augmentation column included. The number of columns is bounded by $r+2$, independently of $i$. Filtering by the $G$ degree gives a filtration with at most $r+2$ nonzero steps in each total degree; its first cohomology calculation is the exact row. Equivalently, on each stalk a total cocycle can be cancelled successively from the rightmost column to the leftmost using row exactness; subtracting a chosen total boundary moves the remaining component one column to the left and terminates after at most $r+2$ steps. Hence that cone is acyclic. There is no infinite diagonal or limit interchange in this argument.
+
+Every term of $G\otimes K^\bullet$ is a finite sum of $f$-soft sheaves, by the tensor lemma (EX.3), so Proposition 5.5 gives the canonical comparison
+
+\[
+Rf_!G\simeq T_K(G):=f_!(G\otimes_{\mathbb Z}K^\bullet).
+\tag{EXA.4}
+\]
+
+This is an acyclic-model comparison to the existing derived functor, not a new functor defined only by its agreement on bounded objects. It is natural and independent of the choice of $K^\bullet$, by that proposition's K-injective comparison. It agrees with (EX.8) on the bounded-below range. If $G\in D^{\leq b}$, take a representative with terms zero above $b$; then $T_K(G)$ has terms zero above $b+r$. In particular $Rf_!D^{\leq b}\subset D^{\leq b+r}$.
+
+### Direct-image internal adjunction
+
+Represent $G\in D^{\leq b}$ by a complex zero above $b$, and $F\in D^{\geq a}$ by a bounded-below injective complex $I$ starting at $a$. The chain adjunction (EX.8), restricted to every open $V\subset X$, remains an isomorphism for this $G$:
+
+\[
+\mathcal Hom_X^\bullet(T_K(G),I)
+\simeq
+f_*\mathcal Hom_Y^\bullet(G,J_KI).
+\tag{EXA.5}
+\]
+
+In total degree $n$, the left Hom has components only for $a-n\leq i\leq b+r$. On the right, $J_KI$ starts at $a-r$, so only $a-r-n\leq i\leq b$ occur. These are finite index ranges. The $K$ index also lies in $0,\ldots,r$. Thus the same reindexing and Hom differential used in (EX.8) apply, without replacing a direct sum by an infinite product. All maps commute with restriction of $V$.
+
+Each sheaf $\mathcal Hom(E,J)$ with injective target $J$ is flabby, by the open-extension argument preceding (EX.20a). Finite sums of such sheaves are flabby. The two Hom complexes in (EXA.5) are bounded below, with lower bound $a-b-r$. The left computes derived internal Hom because $I$ remains K-injective after open restriction. The inner complex on the right likewise computes derived internal Hom because $J_KI$ is bounded-below injective. Its flabby terms compute the required $Rf_*$. The fact that a bounded-below injective complex computes morphisms from an arbitrary, not necessarily bounded, source is Lemma 3.2 and Theorem 3.3 of Injective modules and bounded-below derived functors. This proves (EXA.1).
+
+The comparison is the sheafwise chain adjunction, so it has the adjunction normalization on every open. For bounded $G$ it is (EX.20a), hence agrees with (EX.22). No projection formula on an unrestricted unbounded tensor product was used to extend that formula outside its proved range.
+
+### Inverse-image internal Hom: the coefficient exchange
+
+For one term $K^p$ of the relative-soft resolution, write $T_p(E)=f_!(E\otimes_{\mathbb Z}K^p)$ and $J_p=J_{K^p}$. The following underived projection isomorphism holds for sheaves $E$ on $Y$ and $P$ on $X$:
+
+\[
+T_p(E)\otimes_k P\xrightarrow{\sim}
+T_p(E\otimes_k f^{-1}P).
+\tag{EXA.6}
+\]
+
+Its map pulls a coefficient section back and multiplies it with a properly supported section. To prove invertibility, first take $P=k_V$ for an open $V\subset X$, extended by zero. Both sides are the restriction of $T_p(E)$ to $V$ extended by zero; the map is the identity under the open-support comparison. Both functors of $P$ preserve coproducts and are right exact: tensor and inverse image have these properties, while $T_p$ is exact and preserves coproducts by (EX.3). Present arbitrary $P$ by two coproducts of such open generators, apply both functors and take cokernels. The isomorphisms on those two sums identify the cokernels and prove (EXA.6). This also proves naturality, compatibility with coefficient maps and the tensor-unit normalization.
+
+For a flat $P$ and injective $I$, internal $\mathcal Hom_X(P,I)$ is injective: tensoring a monomorphism with $P$ stays monic, so the tensor–Hom adjunction converts extension into $I$ into extension into this Hom sheaf. Applying (EXA.6) and (EX.6) on every open subset of $Y$ gives
+
+\[
+J_p\mathcal Hom_X(P,I)
+\simeq\mathcal Hom_Y(f^{-1}P,J_pI).
+\tag{EXA.7}
+\]
+
+Indeed, testing the left side on an open $U\subset Y$ gives $\operatorname{Hom}_X(T_p(k_U),\mathcal Hom_X(P,I))$. Tensor–Hom adjunction makes this $\operatorname{Hom}_X(T_p(k_U)\otimes P,I)$. Formula (EXA.6) replaces its first argument by $T_p(k_U\otimes f^{-1}P)$, and (EX.6) gives the sections on $U$ of the right side. These identifications commute with restriction, proving (EXA.7) as a sheaf isomorphism.
+
+### Resolving a bounded-above first input and checking signs
+
+Take a bounded-above flat resolution $P\to A$, with $P^i=0$ for $i>b$, from Flat modules and K-flat resolutions, Lemma 4.1. Let $B\to I$ be a bounded-below injective resolution with $I^j=0$ for $j<a$. In degree $m$, the Hom complex $\mathcal Hom^\bullet(P,I)$ is a finite sum over $a-m\leq i\leq b$. Its terms are injective by flatness of each $P^i$, and it vanishes below $a-b$. It is therefore a bounded-below injective model of $R\mathcal Hom_X(A,B)$.
+
+Consequently the two sides of (EXA.2) are computed by
+
+\[
+J_K\mathcal Hom^\bullet(P,I),
+\qquad \mathcal Hom^\bullet(f^{-1}P,J_KI).
+\tag{EXA.8}
+\]
+
+The inverse image of a flat sheaf is flat for constant coefficient rings, and $J_KI$ is bounded-below injective. Both complexes in (EXA.8) start at degree $a-b-r$. Formula (EXA.7) identifies their components. In total degree $n$ these components are indexed by $0\leq p\leq r$ and $a-n-p\leq i\leq b$, with target $I^{n+p+i}$, so every rearrangement is finite.
+
+The component exchange multiplies by $(-1)^{pi}$: it moves the $K^p$ position past the $P^i$ position in the evaluated tensor. To check the differential, write a component of total degree $n$ before the exchange as $h_{p,i}$ and after it as $g_{i,p}=(-1)^{pi}h_{p,i}$. Suppressing only the fixed adjunction identifications of (EXA.7), the Hom differentials are
+
+\[
+\begin{aligned}
+(Dh)_{p,i}
+ &=d_Ih_{p,i}-(-1)^{n+p}h_{p,i+1}d_P
+                     -(-1)^n h_{p+1,i}d_K,\\
+(Dg)_{i,p}
+ &=d_Ig_{i,p}-(-1)^{n+i}g_{i,p+1}d_K
+                     -(-1)^n g_{i+1,p}d_P.
+\end{aligned}
+\tag{EXA.9}
+\]
+
+Substituting $g_{i,p}=(-1)^{pi}h_{p,i}$ in the second line gives $(-1)^{pi}$ times the first: the $d_K$ exponent is $n+i+i(p+1)\equiv n+pi$, and the $d_P$ exponent is $n+(i+1)p=n+pi+p$. Thus (EXA.7) with this sign is an isomorphism of complexes, proving (EXA.2).
+
+The construction is natural for chain maps. K-injective comparison and the flat resolutions identify it under quasi-isomorphisms and hence under derived roofs, so it is independent of representatives. When $A$ is bounded, it is the curry of the same projection and trace used to define (EX.26): (EXA.7) was obtained from precisely that ordinary adjunction and coefficient projection. For a merely bounded-above $A$, in any fixed output degree and its two adjacent degrees only finitely many degrees of $P$ and $K$ occur. A sufficiently low brutal truncation of $P$ therefore gives those same components and differentials. This proves that the map and its compatibility equations extend the bounded-input ones degree by degree, rather than choosing an unrelated isomorphism.
+
+In particular open restriction and exceptional composition retain the normalizations already checked for (EX.26). For two maps the finite-resolution widths add; the same finite-index argument applies to their composite. Equivalently, in (EXA.7) the underlying coefficient projection is pullback and multiplication, so its two iterated versions agree by associativity; the displayed graded exchanges supply the Koszul signs. This proves the required compatibilities without applying $f^!$ to an object outside $D^+$.
+
+These results supply the bounded-above first-input contract used for conic internal Hom. The [unbounded supported-evaluation proof](#SH02-EX-UNBOUNDED-SUPPORT) establishes the additional projection and comparison identities needed for (EX.40)–(EX.41) without imposing boundedness on the first complex. The bounded support proof and its counterexample to a boundedness shortcut remain valid.
 
 ## SH02-EX-DIAGONAL — Diagonals and product tests
 
@@ -559,7 +704,7 @@ f^{-1}B\otimes^L\omega_{Y/X}\longrightarrow f^!B.
 \tag{EX.30}
 \]
 
-Its trace is integration against the relative dualizing object, tensored with $B$. Invertibility for topological submersions is a further theorem; it is not part of the definition of $\omega_{Y/X}$.
+Its trace is integration against the relative dualizing object, tensored with $B$. Invertibility for topological submersions is proved, for every bounded-below input, in SH02-MD-SUBMERSION. Its rectangle test identifies this actual tensor comparison. It is not part of the definition of $\omega_{Y/X}$ and does not assert invertibility for an arbitrary map.
 
 For composable maps to a point, (EX.13) gives $f^!\omega_X\simeq\omega_Y$. For $F\in D^b(k_X)$, (EX.26) therefore gives the useful typed identity
 
@@ -708,7 +853,146 @@ R\mathcal Hom(\pi_G,F)\circ u
 
 where $v:Rf_*H\xrightarrow{\sim}R\mathcal Hom_X(Rf_!G,F)$ is (EX.20). To verify the identity, curry both sides back against $Rf_!G$. The first path pairs a properly supported section of $H$ with a properly supported section of $G$, after forgetting support on the second factor. The second path uses the same evaluation but forgets support on the first factor. Both sections together give the same evaluation in $f^!F$, with support contained in the intersection of the two supports, and then the same trace. On soft and flat resolutions the two evaluations are the same chain map, with the tensor symmetry signs already fixed in (EX.22). The support-forgetting and projection compatibilities therefore give (EX.41) in the derived category.
 
-There is a boundedness issue if one attempts to state this entire diagram for unrestricted $G\in D^+$. Its object $H$ can be unbounded below, so $Rf_!H$ is outside the domain of the $D^+$ functor constructed in this lesson. For example, on a point over a field, take $G=\bigoplus_{n\geq0}k[-n]$ and $F=k$. Then $G\in D^+$, whereas $R\operatorname{Hom}(G,k)$ has nonzero cohomology in every degree $-n$. An extension of (EX.40)–(EX.41) to all such inputs requires an unbounded proper-direct-image construction and its comparison proofs. That extension is an explicit outstanding prerequisite; the bounded diagram proved here is not counted as its replacement.
+There is a boundedness issue if one attempts to state this entire diagram for unrestricted $G\in D^+$. Its object $H$ can be unbounded below, so $Rf_!H$ cannot be computed using only the $D^+$ acyclic-model criterion. For example, on a point over a field, take $G=\bigoplus_{n\geq0}k[-n]$ and $F=k$. Then $G\in D^+$, whereas $R\operatorname{Hom}(G,k)$ has nonzero cohomology in every degree $-n$. The unbounded proper-direct-image object is supplied by [the finite acyclic model (EXA.4)](#SH02-EX-BOUNDED-ABOVE). The following unbounded projection and supported-evaluation proof establishes (EX.40)–(EX.41) for these inputs, and for arbitrary unbounded first complexes. It does not infer that their internal Hom is bounded below.
+
+### SH02-EX-UNBOUNDED-SUPPORT — The full supported-evaluation diagram
+
+Retain the locally compact Hausdorff spaces, coefficient convention and uniform integral dimension bound (EX.1). In this section complexes in a tensor product or a first Hom argument may be unbounded in both directions. The duality target $F$ remains in $D^+(k_X)$, so every occurrence of $f^!F$ uses the already constructed functor. We prove (EX.40)–(EX.41) for every $G\in D(k_Y)$, including the full $D^+$ range described above.
+
+The needed unbounded foundations are already available. Flat resolutions, Theorem 3.1, supplies a K-flat resolution with flat terms for every complex. Its Lemmas 2.1–2.4 prove tensor invariance, preservation by inverse image, and the required sum and tensor closure properties. The derived tensor product, Theorems 1.2 and 2.2, fixes their resolution-independent tensor, associativity and graded symmetry. Internal derived Hom, Theorems 2.2 and 3.1, supplies unbounded tensor–Hom adjunction and its actual evaluation. We use those constructions, not a bounded truncation of the inputs.
+
+#### Projection on unbounded complexes
+
+Write $T_K(P)=f_!(P\otimes_{\mathbb Z}K^\bullet)$ for the finite model in (EXA.4). It preserves quasi-isomorphisms: that formula identifies it naturally with the existing derived proper image on every complex. For arbitrary complexes $P$ on $Y$ and $Q$ on $X$, the coefficient exchange (EXA.6) gives a chain isomorphism
+
+\[
+\begin{gathered}
+T_K(P)\otimes_k Q\xrightarrow{\rho_{P,Q}}
+T_K(P\otimes_k f^{-1}Q).
+\end{gathered}
+\tag{EXU.1}
+\]
+
+Here both tensor totalizations use direct sums. The component with degrees $i,p,j$ has $P^i,K^p,Q^j$, with $0\leq p\leq r$. Apply (EXA.6) and move $K^p$ past $Q^j$, multiplying by $(-1)^{pj}$. Both sides have the same direct sum over $i+p+j=n$ in degree $n$: each $f_!(-\otimes K^p)$ commutes with coproducts and the $p$ range is finite. This is a direct-sum reindexing, not an exchange with an infinite product.
+
+The differential check is explicit. Before exchange the three terms $d_P,d_K,d_Q$ have coefficients $1,(-1)^i,(-1)^{i+p}$. After exchange the order is $P,Q,K$, with coefficients $1,(-1)^i,(-1)^{i+j}$. For $d_P$ the two routes have exponent $pj$. For $d_K$ they have $i+(p+1)j$ and $pj+i+j$, which agree. For $d_Q$ they have $i+p+p(j+1)$ and $pj+i$, which differ by $2p$. Thus (EXU.1) is a chain isomorphism. On sheaf sections its unsigned component is exactly pullback and multiplication, so it has the same unit, associativity and restriction normalization as (EX.12).
+
+If $P$ is K-flat, then $T_K(P)$ is K-flat. Indeed, for any acyclic complex $Q$ on $X$, exact inverse image makes $f^{-1}Q$ acyclic; K-flatness makes $P\otimes f^{-1}Q$ acyclic. Applying $T_K$ gives an acyclic complex, and (EXU.1) identifies this with $T_K(P)\otimes Q$. This is the defining K-flatness test, not an inference from flat terms alone.
+
+Choose K-flat representatives of $G\in D(k_Y)$ and $B\in D(k_X)$. By (EXA.4), (EXU.1) and this K-flatness test, its two sides compute the derived objects, giving
+
+\[
+\begin{gathered}
+Rf_!G\otimes_k^L B\xrightarrow{\sim}
+Rf_!(G\otimes_k^L f^{-1}B),\\
+G\in D(k_Y),\qquad B\in D(k_X).
+\end{gathered}
+\tag{EXU.2}
+\]
+
+The quasi-isomorphism invariance and common-refinement comparisons in the cited tensor lesson make this independent of representatives and natural for derived morphisms. Every coefficient map is the section map of (EX.12), with the same graded exchange, so the tensor-unit, association and symmetry identities follow from those chain identities. On bounded-below inputs it is (EX.11). No finite-amplitude assumption on either tensor factor was inserted.
+
+We will also need precise acyclic representatives for support maps. If $P$ is K-flat with flat terms, put $A=P\otimes_{\mathbb Z}K^\bullet$. Then $A$ is K-flat with flat $k$-module terms, its terms are $f$-soft, and $f_!A=T_K(P)$ is K-flat. For K-flatness of $A$, tensor an acyclic $k$-complex with the bounded flat integral complex $K^\bullet$, then with $P$; both operations preserve acyclicity. Flatness of its terms follows since tensoring over $k$ with $P^i$, then over $\mathbb Z$ with $K^p$, is a composite of exact functors, and direct sums of flat sheaves are flat. Relative softness follows from (EX.3) and its coproduct property. In particular, $f_!A$ is an actual model, not a complex on which termwise acyclicity is merely presumed to suffice.
+
+#### Adjunction with an arbitrary first complex
+
+For $F\in D^+$ choose the bounded-below injective model $I$ used in (EX.7). The chain adjunction (EX.8) holds for every complex $G$, without boundedness. To check this point, take Hom products in each total degree, distribute each finite $K$-sum, and reindex the pairs $(i,p)$. Hom out of a direct sum is a product, and a product of finite products is the product over those pairs. Apply (EX.6) to each component. Its differentials are the same tensor–Hom differentials as (EX.8). No exactness of products of sheaves or commutation of stalks with products is used.
+
+Both $I$ and $J_KI$ are bounded-below injective, hence K-injective. Maps into them are computed in the homotopy category even when the source is unbounded. Formula (EXA.4) consequently gives the natural bijection
+
+\[
+\begin{gathered}
+\operatorname{Hom}_{D(k_X)}(Rf_!G,F)
+\simeq\operatorname{Hom}_{D(k_Y)}(G,f^!F),\\
+G\in D(k_Y),\qquad F\in D^+(k_X).
+\end{gathered}
+\tag{EXU.3}
+\]
+
+This extends the first variable of the existing adjunction. It neither defines $f^!$ on arbitrary unbounded targets nor applies it to $Rf_!G$ when that object lies outside $D^+$.
+
+Set $H=R\mathcal Hom_Y(G,f^!F)$. Its ordinary direct image is defined on the unbounded category: the exact left-adjoint criterion, Proposition 5.2 of the K-injective lesson, shows that $f_*$ preserves K-injectives because $f^{-1}$ is exact. Resolving a target by such a complex proves the ordinary adjunction $f^{-1}\dashv Rf_*$ without a boundedness restriction.
+
+For any $C\in D(k_X)$, those ordinary and internal adjunctions, (EXU.3), and (EXU.2) give
+
+\[
+\begin{aligned}
+\operatorname{Hom}(C,Rf_*H)
+&\simeq\operatorname{Hom}(f^{-1}C,H)\\
+&\simeq\operatorname{Hom}(f^{-1}C\otimes^L G,f^!F)\\
+&\simeq\operatorname{Hom}(Rf_!(f^{-1}C\otimes^L G),F)\\
+&\simeq\operatorname{Hom}(C\otimes^L Rf_!G,F)\\
+&\simeq\operatorname{Hom}(C,R\mathcal Hom_X(Rf_!G,F)).
+\end{aligned}
+\tag{EXU.4}
+\]
+
+The two groups with targets $H$ and $f^!F$ are taken in $D(k_Y)$; every other Hom group in (EXU.4) is taken in $D(k_X)$. Every arrow is natural in $C$. The representing-object comparison therefore supplies
+
+\[
+v:Rf_*H\xrightarrow{\sim}R\mathcal Hom_X(Rf_!G,F).
+\tag{EXU.5}
+\]
+
+Uncurrying (EXU.4) describes $v$ exactly: use projection with the properly supported $G$ factor, pull back $Rf_*H$ by the ordinary counit, evaluate $H\otimes^L G\to f^!F$, and apply the same trace $\epsilon_F$. The graded symmetry places $H$ before $G$ in evaluation. Thus (EXU.5) agrees with (EX.20) and (EXA.1) on their respective ranges, including their maps and normalizations, not only their underlying objects.
+
+#### The support-forgetting equality at the chain level
+
+For any complex $E$, the map $\pi_E:Rf_!E\to Rf_*E$ is defined using a K-injective resolution: $f_!I_E\to f_*I_E$ is inclusion of properly supported sections. The uniform finite-dimensional acyclic-model theorem identifies $f_!I_E$ with $Rf_!E$. If $E$ is instead represented by a termwise $f$-soft complex $A$, a K-injective comparison $A\to I_A$ represents the same map by
+
+\[
+f_!A\longrightarrow f_!I_A\longrightarrow f_*I_A.
+\tag{EXU.6}
+\]
+
+These are the actual support inclusions; changing resolutions gives the same derived transformation by naturality of the acyclic-model comparison.
+
+We first prove a pairing identity for arbitrary $H,G\in D(k_Y)$. Resolve each by a K-flat complex with flat terms and tensor each with a finite relative-soft resolution. Write the resulting models as $A$ for $H$ and $B$ for $G$. The preceding model check makes $A,B,f_!A,f_!B$ K-flat, and all terms of $A,B$ are $f$-soft. Moreover $A\otimes_k B$ is termwise $f$-soft: after reindexing, its terms are finite sums of a sheaf tensored with two of the flat relative-soft integral terms, and (EX.3) applies successively. Hence
+
+\[
+f_!(A\otimes_k B)\simeq Rf_!(H\otimes_k^L G)
+\tag{EXU.7}
+\]
+
+by the unbounded acyclic-model theorem.
+
+There is a natural chain pairing
+
+\[
+\mu_{A,B}:f_!A\otimes_k f_!B\longrightarrow f_!(A\otimes_k B).
+\tag{EXU.8}
+\]
+
+On an open $V\subset X$, each homogeneous component sends two sections on $f^{-1}V$ to their tensor product. Its support is contained in the intersection of their supports, a closed subset proper over $V$. This proves that the map really lands in $f_!$. Bilinearity and restriction give the sheaf map. Assemble the components using sheaf direct sums and the coproduct comparison for $f_!$; the tensor differential gives its chain-map identity. This does not identify global sections of a sheaf coproduct with a sum of global sections. Its graded symmetry is precisely the tensor flip, not an unsigned interchange.
+
+The first route from $Rf_!H\otimes^L Rf_!G$ to $Rf_!(H\otimes^LG)$ forgets support on $G$, applies (EXU.2), and uses the ordinary counit for $G$. Choose $B\to I_B$ K-injective. By (EXU.6) that route is represented by
+
+\[
+\begin{gathered}
+f_!A\otimes f_!B\longrightarrow f_!A\otimes f_*I_B\\
+\xrightarrow{\rho}f_!(A\otimes f^{-1}f_*I_B)
+\longrightarrow f_!(A\otimes I_B).
+\end{gathered}
+\tag{EXU.9}
+\]
+
+This is a valid derived model even though $I_B$ need not be K-flat: $A$ and $f_!A$ are K-flat. Every term of $A\otimes I_B$ is $f$-soft by the same finite-resolution tensor argument. The map $A\otimes B\to A\otimes I_B$ is a quasi-isomorphism by K-flatness of $A$, and its proper direct image is a quasi-isomorphism by the acyclic-model theorem. On sections, (EXU.9) takes $a,b$ to $a\otimes\iota_B(b)$, where $\iota_B:B\to I_B$ is the chosen comparison. Thus (EXU.9) equals $f_!(1_A\otimes\iota_B)\circ\mu_{A,B}$ as a chain map. Inverting that particular comparison in (EXU.7) identifies the first route with $\mu_{A,B}$.
+
+For the second route forget support on $H$ instead, using $A\to I_A$, and project with $B$ as the supported factor. It equals $f_!(\iota_A\otimes1_B)\circ\mu_{A,B}$ after placing the factors in the order $H,G$. The verification is the same section calculation: the ordinary counit restricts the image of $a$, and the product is $\iota_A(a)\otimes b$. Explicitly, for total degrees $m,n$ the flip to put $B$ first contributes $(-1)^{mn}$, and the flip back contributes $(-1)^{nm}$, so their product is $1$. The resolution exchanges are already the signed chain isomorphisms (EXU.1). K-flatness of $B$ makes $A\otimes B\to I_A\otimes B$ a quasi-isomorphism, and its terms are again $f$-soft. Therefore this route too is $\mu_{A,B}$ under the canonical acyclic-model comparison. This proves equality of the two derived routes, not merely equality of stalk dimensions or an abstract isomorphism of targets.
+
+Now take $H=R\mathcal Hom_Y(G,f^!F)$. Compose the common pairing with derived evaluation and trace:
+
+\[
+\begin{gathered}
+Rf_!(H\otimes^L G)\longrightarrow Rf_!f^!F
+\xrightarrow{\epsilon_F}F.
+\end{gathered}
+\tag{EXU.10}
+\]
+
+Currying the first route gives exactly $R\mathcal Hom_X(\pi_G,F)\circ u$, with $u$ defined by (EX.40)'s ordinary counit, projection, evaluation and trace. Currying the second gives $v\circ\pi_H$ by the explicit transpose of (EXU.5). The proved equality of their tensor pairings and tensor–Hom adjunction therefore yield (EX.41) for arbitrary $G\in D(k_Y)$ and $F\in D^+(k_X)$. All maps commute with open restriction because their section maps and resolution comparisons do. On bounded inputs the construction is the preceding proof, with the same support inclusion, trace and signs.
+
+The point example above still has internal Hom unbounded below. It shows why the unbounded acyclic and K-flat models were required, not a restriction on the theorem just proved. The argument does not assert biduality or extend the target domain of $f^!$ beyond $D^+$.
 
 ### SH02-EX-COEFFICIENT-ACTION — The coefficient action and the relative dualizing map
 
@@ -745,7 +1029,7 @@ Thus $a^!N=N_S$ and $\omega_S=k_S$, with no shift, for finite or infinite $S$. T
 
 **Exercise.** Let $i:\{0\}\hookrightarrow\mathbb R$ and pull $i$ back along itself. For a nonzero coefficient ring $k$, compute the exceptional inverse-image base-change map (EX.17) on $k_{\mathbb R}$ and decide whether it is invertible.
 
-**Solution.** The cartesian top map and left map are identities of a point. Formula (EX.15) identifies $i^!k_{\mathbb R}$ with the local-cohomology complex at zero. On a small interval $V$ about zero, the localization triangle has middle term $R\Gamma(V;k)=k$ and complementary term $R\Gamma(V\setminus\{0\};k)=k\oplus k$, both in degree zero. These elementary interval computations use the constant-sheaf interval acyclicity prerequisite. The intervening map is the diagonal $k\to k\oplus k$. Its kernel is zero and its cokernel is $k$, so the supported complex is $k[-1]$. The base-change map is consequently a map $k[-1]\to k$. Its degree-one source cohomology is $k$, whereas the target has no degree-one cohomology. It cannot be a quasi-isomorphism. This is the exceptional inverse-image comparison, not a counterexample to the proper-support base-change isomorphism used to define it.
+**Solution.** The cartesian top map and left map are identities of a point. Formula (EX.15) identifies $i^!k_{\mathbb R}$ with the local-cohomology complex at zero. On a small interval $V$ about zero, the localization triangle has middle term $R\Gamma(V;k)=k$ and complementary term $R\Gamma(V\setminus\{0\};k)=k\oplus k$, both in degree zero. These interval computations use SH02-CA-LOCAL-SYSTEM, which proves ordinary acyclicity and identifies the actual section-to-germ map for arbitrary coefficient modules. The intervening map is the diagonal $k\to k\oplus k$. Its kernel is zero and its cokernel is $k$, so the supported complex is $k[-1]$. The base-change map is consequently a map $k[-1]\to k$. Its degree-one source cohomology is $k$, whereas the target has no degree-one cohomology. It cannot be a quasi-isomorphism. This is the exceptional inverse-image comparison, not a counterexample to the proper-support base-change isomorphism used to define it.
 
 ### SH02-EX-EXERCISE-COMPONENTS — Open and closed components
 
@@ -774,8 +1058,8 @@ whose connecting map is zero. This directly reconciles the open and closed descr
 
 ## What this construction supports
 
-The lesson supplies a resolution model for $f^!$, the trace and unit, restriction and composition, the two different base-change comparisons, tensor and internal-Hom identities, and the abstract dualizing objects. The exact topological imports are isolated in `SH02-EX-FOUNDATIONS`; the interval computation in the worked costalk test is a separate elementary acyclicity prerequisite. Identifying $\omega$ with an orientation local system, proving the submersion tensor comparison invertible, and proving a biduality theorem with its full finiteness hypotheses belong to the subsequent manifold and duality lessons.
+The lesson supplies a resolution model for $f^!$, the trace and unit, restriction and composition, the two different base-change comparisons, tensor and internal-Hom identities, and the abstract dualizing objects. The exact topological imports are isolated in `SH02-EX-FOUNDATIONS`; the interval computation in the worked costalk test now uses the exact acyclicity proof linked there. SH02-MD-SUBMERSION identifies $\omega$ with the shifted relative orientation local system and proves the submersion tensor comparison invertible. SH02-MD-TRACE fixes its normalization and base-change compatibility. Biduality with its full finiteness hypotheses remains a separate theorem; it does not follow from the existence of these operations.
 
 The same results are treated in Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf), §§4.3–4.7: soft and compactly soft sheaves, finite cohomological dimension, projection, proper-support base change, exceptional adjunction, internal Hom and dual sections. The projection theorem there has bounded/ bounded-above input conventions, and the existence theorem for the exceptional right adjoint invokes Brown representability from a separate reference. It therefore does not replace the explicit finite soft resolution and representing-sheaf construction given here. Kashiwara and Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), §1.3.5, provides the manifold internal exceptional-Hom formulas with their bounded first input.
 
-The construction above fixes every comparison by its adjoint evaluation or counit, retains finite cohomological dimension for proper-support image, and proves the stated bounded-below functor range with the finite flat/soft model. In particular the closed-embedding exceptional-to-ordinary map need not be invertible. The unbounded internal-Hom extension described earlier remains an open obligation in this lesson: these source passages do not establish an unbounded exceptional-image theory or remove the stated range restriction. Original exposition, examples and reader code are dedicated under CC0 1.0 Universal; human works retain their own rights.
+The construction above fixes every comparison by its adjoint evaluation or counit, retains finite cohomological dimension for proper-support image, and proves the stated bounded-below functor range with the finite flat/soft model. In particular the closed-embedding exceptional-to-ordinary map need not be invertible. The full bounded-above first-input internal-Hom comparisons and the unbounded proper-direct-image model are proved in [SH02-EX-BOUNDED-ABOVE](#SH02-EX-BOUNDED-ABOVE), using exact existing resolution providers. The [unbounded projection and supported-evaluation proof](#SH02-EX-UNBOUNDED-SUPPORT) supplies (EX.40)–(EX.41), with arbitrary first complexes and bounded-below duality targets. No right-adjoint construction on arbitrary unbounded targets is claimed. Original exposition, examples and reader code are dedicated under CC0 1.0 Universal; human works retain their own rights.

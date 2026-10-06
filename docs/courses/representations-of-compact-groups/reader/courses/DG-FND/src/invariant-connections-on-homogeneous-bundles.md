@@ -1,6 +1,6 @@
 # Invariant connections on homogeneous bundles
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Draft; self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Original text dedicated to the public domain under CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Self-checked by the writing AI. Original text dedicated to the public domain under CC0 1.0.*
 
 A symmetry can turn a differential problem into a finite-dimensional one. When a Lie group acts transitively on the base and preserves a principal connection, the connection is determined by one linear map. Its failure to preserve brackets is exactly the curvature. Repeatedly bracketing that curvature with the image of the map gives the holonomy algebra. We prove these statements and apply them to canonical connections and the Hopf bundle.
 

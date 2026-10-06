@@ -1,6 +1,6 @@
 # Semiregular MASAs and scalar pinching
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 A semiregular MASA has enough normalizers to match any two of its projections of equal trace. Compatible matches build finite matrix algebras whose diagonals approximate the entire MASA. Their closure is an irreducible AFD subfactor. A second construction, using decreasing irreducible AFD factors, turns finite pinching into simultaneous approximation by the ambient trace.
 

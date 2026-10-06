@@ -4,7 +4,7 @@
 
 Let \(\varphi_1,\ldots,\varphi_k\), \(1\leq k<\infty\), be faithful normal semifinite weights on the same arbitrary von Neumann algebra \(M\). No countability assumption is made. We construct their balanced weight on \(M_k(M)\), prove the complete finite-ideal and closed-involution domains, and derive its corner modular groups and canonical off-diagonal unitary cocycles. The chain identity uses \(k=3\). This construction does not assert that every abstract cocycle comes from a weight.
 
-Actual earlier written proofs are [OA-FLOW.GW.1](OA-FLOW-GW.md#oa-flow.gw.1), [OA-FLOW.GW.2](OA-FLOW-GW.md#oa-flow.gw.2), [OA-FLOW.GW.3](OA-FLOW-GW.md#oa-flow.gw.3), [OA-FLOW.GW.4](OA-FLOW-GW.md#oa-flow.gw.4), [OA-FLOW.GW.5](OA-FLOW-GW.md#oa-flow.gw.5), [OA-FLOW.NF.5](OA-FLOW-NF.md#oa-flow.nf.5), OA-FLOW.WR.3, OA-FLOW.WR.4, OA-FLOW.WR.5, OA-FLOW.MW.4, [OA-FLOW.KT.1](OA-FLOW-KT.md#oa-flow.kt.1), [OA-FLOW.KT.2](OA-FLOW-KT.md#oa-flow.kt.2), [OA-FLOW.KT.3](OA-FLOW-KT.md#oa-flow.kt.3), [OA-FLOW.KT.4](OA-FLOW-KT.md#oa-flow.kt.4), [OA-FLOW.KU.1](OA-FLOW-KU.md#oa-flow.ku.1), [OA-FLOW.KU.2](OA-FLOW-KU.md#oa-flow.ku.2), [OA-FLOW.KU.3](OA-FLOW-KU.md#oa-flow.ku.3), [OA-FLOW.CI.1](OA-FLOW-CI.md#oa-flow.ci.1), [OA-FLOW.CI.2](OA-FLOW-CI.md#oa-flow.ci.2), [OA-FLOW.CI.3](OA-FLOW-CI.md#oa-flow.ci.3), [OA-FLOW.SF.SF0](OA-FLOW-SF.md#oa-flow.sf.sf0), [OA-FLOW.SF.SB0](OA-FLOW-SF.md#oa-flow.sf.sb0), [OA-FLOW.SF.SB1](OA-FLOW-SF.md#oa-flow.sf.sb1), [OA-FLOW.SF.SB2](OA-FLOW-SF.md#oa-flow.sf.sb2), [OA-FLOW.SF.SB3](OA-FLOW-SF.md#oa-flow.sf.sb3), [OA-FLOW.SF.SB4](OA-FLOW-SF.md#oa-flow.sf.sb4), [OA-FLOW.SF.SB5](OA-FLOW-SF.md#oa-flow.sf.sb5), [OA-FLOW.SF.SB6](OA-FLOW-SF.md#oa-flow.sf.sb6), [OA-FLOW.SF.SF1](OA-FLOW-SF.md#oa-flow.sf.sf1), [OA-FLOW.CP.1](OA-FLOW-CP.md#oa-flow.cp.1), [OA-FLOW.CP.2](OA-FLOW-CP.md#oa-flow.cp.2), [OA-FLOW.CP.3](OA-FLOW-CP.md#oa-flow.cp.3), [OA-FLOW.CP.4](OA-FLOW-CP.md#oa-flow.cp.4), [OA-FLOW.CP.5](OA-FLOW-CP.md#oa-flow.cp.5), [OA-FLOW.CP.6](OA-FLOW-CP.md#oa-flow.cp.6). These bind the finite ideals, GNS normality, full finite-star involution/recovery, arbitrary faithful-weight modular group, finite-star KMS existence and invariant-group uniqueness, closed graph and polar domains, spectral reductions, and concrete vector-series topologies. No normal-weight sum theorem or arbitrary-cocycle realization theorem is an input.
+Actual earlier written proofs are [OA-FLOW.GW.1](OA-FLOW-GW.md#oa-flow.gw.1), [OA-FLOW.GW.2](OA-FLOW-GW.md#oa-flow.gw.2), [OA-FLOW.GW.3](OA-FLOW-GW.md#oa-flow.gw.3), [OA-FLOW.GW.4](OA-FLOW-GW.md#oa-flow.gw.4), [OA-FLOW.GW.5](OA-FLOW-GW.md#oa-flow.gw.5), [OA-FLOW.NF.5](OA-FLOW-NF.md#oa-flow.nf.5), [OA-FLOW.WR.3](OA-FLOW-WR.md#oa-flow.wr.3), [OA-FLOW.WR.4](OA-FLOW-WR.md#oa-flow.wr.4), [OA-FLOW.WR.5](OA-FLOW-WR.md#oa-flow.wr.5), [OA-FLOW.MW.4](OA-FLOW-MW.md#oa-flow.mw.4), [OA-FLOW.KT.1](OA-FLOW-KT.md#oa-flow.kt.1), [OA-FLOW.KT.2](OA-FLOW-KT.md#oa-flow.kt.2), [OA-FLOW.KT.3](OA-FLOW-KT.md#oa-flow.kt.3), [OA-FLOW.KT.4](OA-FLOW-KT.md#oa-flow.kt.4), [OA-FLOW.KU.1](OA-FLOW-KU.md#oa-flow.ku.1), [OA-FLOW.KU.2](OA-FLOW-KU.md#oa-flow.ku.2), [OA-FLOW.KU.3](OA-FLOW-KU.md#oa-flow.ku.3), [OA-FLOW.CI.1](OA-FLOW-CI.md#oa-flow.ci.1), [OA-FLOW.CI.2](OA-FLOW-CI.md#oa-flow.ci.2), [OA-FLOW.CI.3](OA-FLOW-CI.md#oa-flow.ci.3), [OA-FLOW.SF.SF0](OA-FLOW-SF.md#oa-flow.sf.sf0), [OA-FLOW.SF.SB0](OA-FLOW-SF.md#oa-flow.sf.sb0), [OA-FLOW.SF.SB1](OA-FLOW-SF.md#oa-flow.sf.sb1), [OA-FLOW.SF.SB2](OA-FLOW-SF.md#oa-flow.sf.sb2), [OA-FLOW.SF.SB3](OA-FLOW-SF.md#oa-flow.sf.sb3), [OA-FLOW.SF.SB4](OA-FLOW-SF.md#oa-flow.sf.sb4), [OA-FLOW.SF.SB5](OA-FLOW-SF.md#oa-flow.sf.sb5), [OA-FLOW.SF.SB6](OA-FLOW-SF.md#oa-flow.sf.sb6), [OA-FLOW.SF.SF1](OA-FLOW-SF.md#oa-flow.sf.sf1), [OA-FLOW.CP.1](OA-FLOW-CP.md#oa-flow.cp.1), [OA-FLOW.CP.2](OA-FLOW-CP.md#oa-flow.cp.2), [OA-FLOW.CP.3](OA-FLOW-CP.md#oa-flow.cp.3), [OA-FLOW.CP.4](OA-FLOW-CP.md#oa-flow.cp.4), [OA-FLOW.CP.5](OA-FLOW-CP.md#oa-flow.cp.5), [OA-FLOW.CP.6](OA-FLOW-CP.md#oa-flow.cp.6). These bind the finite ideals, GNS normality, full finite-star involution/recovery, arbitrary faithful-weight modular group, finite-star KMS existence and invariant-group uniqueness, closed graph and polar domains, spectral reductions, and concrete vector-series topologies. No normal-weight sum theorem or arbitrary-cocycle realization theorem is an input.
 
 The free primary context for the balanced matrix method is [Hiai's author notes, Lemmas 7.4–7.5 and Theorem 7.6, printed pp.65–67](https://arxiv.org/pdf/2004.02383v1#page=65). Here the corner reduction is proved from graph projections and the locally established KMS uniqueness theorem. Relative-operator domain statements are derived from that full graph, not assumed from a block display.
 
@@ -65,7 +65,7 @@ where the \((i,j)\) component is a copy of \(H_j=H_{\varphi_j}\). Norm equality 
   =\sum_{r=1}^k\pi_j(b_{ir})\xi_{rj}.
 \tag{BC6}
 \]
-This follows first on the dense GNS range from multiplication, then everywhere by boundedness. The representation is faithful and normal by [GW](OA-FLOW-GW.md#oa-flow.gw.1), [NF](OA-FLOW-NF.md#oa-flow.nf.5) and WR, as already incorporated in MW.
+This follows first on the dense GNS range from multiplication, then everywhere by boundedness. The representation is faithful and normal by [GW](OA-FLOW-GW.md#oa-flow.gw.1), [NF](OA-FLOW-NF.md#oa-flow.nf.5) and [WR](OA-FLOW-WR.md#oa-flow.wr.3), as already incorporated in [MW](OA-FLOW-MW.md#oa-flow.mw.4).
 
 <a id="oa-flow.bc.2"></a><a id="bc-2"></a>
 
@@ -78,7 +78,7 @@ On this full initial finite-star domain, the involution \(S_0\) transposes the m
 S_0P_i=R_iS_0,\qquad S_0R_i=P_iS_0.
 \tag{BC7}
 \]
-WR proves that \(S_0\) is closable and its closure \(S\) has this domain as a graph core. Approximating a vector in \(D(S)\) by core vectors in graph norm, boundedness of \(P_i,R_i\) and (BC7) give
+[WR](OA-FLOW-WR.md#oa-flow.wr.3) proves that \(S_0\) is closable and its closure \(S\) has this domain as a graph core. Approximating a vector in \(D(S)\) by core vectors in graph norm, boundedness of \(P_i,R_i\) and (BC7) give
 \[
 P_iD(S),R_iD(S)\subseteq D(S),\qquad
 SP_i=R_iS,\quad SR_i=P_iS
@@ -108,7 +108,7 @@ The same holds for the complementary projections. The resolvent, and hence the a
 \Delta^{it}R_i=R_i\Delta^{it}.
 \tag{BC10}
 \]
-MW's faithful implementation now proves \(\sigma_t^\Theta(p_i)=p_i\).
+[MW](OA-FLOW-MW.md#oa-flow.mw.4)'s faithful implementation now proves \(\sigma_t^\Theta(p_i)=p_i\).
 
 For precision, these projections also establish the exact relative closed operators. The coordinate projection \(C_{ij}=P_iR_j\) satisfies \(SC_{ij}=C_{ji}S\), with domain preservation. Core approximation followed by \(C_{ij}\) shows that the part of \(S\) from coordinate \((i,j)\) to coordinate \((j,i)\) is exactly the closure of
 \[
@@ -148,7 +148,7 @@ For each \(i,j\), fixed support projections give a unique linear map \(\beta_t^{
 \sigma_t^\Theta(xE_{ij})=\beta_t^{i,j}(x)E_{ij}.
 \tag{BC15}
 \]
-It is a surjective isometry, since a single-entry matrix has norm \(\|x\|\) and the inverse map is obtained at \(-t\). It is pointwise strongly* continuous and ultraweakly continuous; matrix entries preserve those topologies, and MW supplies them for the ambient group. The group and adjoint laws are
+It is a surjective isometry, since a single-entry matrix has norm \(\|x\|\) and the inverse map is obtained at \(-t\). It is pointwise strongly* continuous and ultraweakly continuous; matrix entries preserve those topologies, and [MW](OA-FLOW-MW.md#oa-flow.mw.4) supplies them for the ambient group. The group and adjoint laws are
 \[
 \beta_{s+t}^{i,j}=\beta_s^{i,j}\beta_t^{i,j},\qquad
 \beta_t^{j,i}(x^*)=\beta_t^{i,j}(x)^*.

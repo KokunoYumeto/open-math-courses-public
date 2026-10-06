@@ -6,7 +6,7 @@ Let \(k\) be a commutative ring of finite global dimension. All manifolds are Ha
 
 The local statement treated here belongs to the theory of direct images of \(\mathbb C\)-constructible sheaves under non-proper maps; see M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §8.6. We prove the compact-fibre neighbourhood statement and the unbounded-covector lemma in detail. The exhaustion in the bounded neighbourhood is reparameterized to satisfy every closed-level properness hypothesis. A ball intersected with a small inverse-image base neighbourhood has the stated property; the same statement for a whole centred ball fails, as the example below shows.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## The neighborhood theorem and its cotangent bound
 

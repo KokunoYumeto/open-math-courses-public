@@ -1,0 +1,1322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homogeneous operators in the continuous core · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-HL.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 110 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="homogeneous-operators-in-the-continuous-core">Homogeneous operators in the continuous core</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>The continuous core turns a nontracial weight into a homogeneous positive
+operator in a semifinite algebra. The ordinary trace of that operator is usually
+infinite, so the integral cannot be obtained by silently applying the tracial
+<span class="math" data-tex="\(L^p\)">\(L^p\)</span> construction. This lesson builds the graded integral, proves the
+weight--operator dictionary needed by the source exercises, and proves the
+Banach, Hölder, cyclicity and onto duality conclusions in their exact ranges.</p>
+<p>Two exact inputs remain visible. The OA-FLOW core contract supplies the
+functorial continuous core, its dual action, scaling trace, fixed points and
+normalized localizers. The OA-MOD density contract identifies normal semifinite
+weights with positive grade-one affiliated operators and gives the inverse
+localizer pairing. The arguments below prove the analytic, Banach, product and
+duality conclusions from those inputs and the named measurable-operator, trace,
+complex-analysis and Hahn--Banach providers. The state-dependent interpolation
+identification in HL-08 remains a separate supplementary proof target.</p>
+<p>Throughout, <span class="math" data-tex="\(M\)">\(M\)</span> is a factor with separable predual. Write
+<span class="math" data-tex="\((\widetilde M,\theta,\tau)\)">\((\widetilde M,\theta,\tau)\)</span> for its fixed continuous core. Thus</p>
+<span class="math math-display" data-tex="\[
+M=\widetilde M^\theta,
+\qquad
+\tau\mathbin\circ\theta_s=e^{-s}\tau .
+\tag{HL.1}
+\]">\[
+M=\widetilde M^\theta,
+\qquad
+\tau\mathbin\circ\theta_s=e^{-s}\tau .
+\tag{HL.1}
+\]</span>
+<p>The measurable algebra for <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is denoted by
+<span class="math" data-tex="\(\mathscr S_\tau(\widetilde M)\)">\(\mathscr S_\tau(\widetilde M)\)</span>. Products of measurable operators mean the
+closed measurable products constructed in
+<a href="OA-MOD-MT.html#oa-mod-mt-09">Adjoint, addition and multiplication keep the domains</a>.</p>
+<h2 id="equivariant-copies-of-the-translation-algebra-are-weights"><span id="oa-mod-hl-01"></span><span id="OA-MOD-HL-01"></span>Equivariant copies of the translation algebra are weights</h2>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A&amp;=L^\infty(\mathbb R),\\
+(\rho_t f)(r)&amp;=f(r+t),
+\end{aligned}
+\tag{HL.2}
+\]">\[
+\begin{aligned}
+A&amp;=L^\infty(\mathbb R),\\
+(\rho_t f)(r)&amp;=f(r+t),
+\end{aligned}
+\tag{HL.2}
+\]</span>
+<p>and define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+V(t)(r)&amp;=e^{-irt},\\
+H(r)&amp;=e^{-r}.
+\end{aligned}
+\tag{HL.3}
+\]">\[
+\begin{aligned}
+V(t)(r)&amp;=e^{-irt},\\
+H(r)&amp;=e^{-r}.
+\end{aligned}
+\tag{HL.3}
+\]</span>
+<p>The characters <span class="math" data-tex="\(V(t)\)">\(V(t)\)</span> generate <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(V(t)=H^{it}\)">\(V(t)=H^{it}\)</span>, and
+<span class="math" data-tex="\(\rho_s(V(t))=e^{-ist}V(t)\)">\(\rho_s(V(t))=e^{-ist}V(t)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be a nonzero normal semifinite weight on <span class="math" data-tex="\(M\)">\(M\)</span>, with support
+<span class="math" data-tex="\(e=s(\varphi)\)">\(e=s(\varphi)\)</span>. The density contract gives a positive self-adjoint operator
+<span class="math" data-tex="\(h_\varphi\)">\(h_\varphi\)</span>, affiliated with <span class="math" data-tex="\(e\widetilde M e\)">\(e\widetilde M e\)</span>, such that</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\theta_s(h_\varphi)&amp;=e^{-s}h_\varphi,\\
+h_\varphi^{it}&amp;=\varphi^{it},\\
+s(h_\varphi)&amp;=e.
+\end{aligned}
+\tag{HL.4}
+\]">\[
+\begin{aligned}
+\theta_s(h_\varphi)&amp;=e^{-s}h_\varphi,\\
+h_\varphi^{it}&amp;=\varphi^{it},\\
+s(h_\varphi)&amp;=e.
+\end{aligned}
+\tag{HL.4}
+\]</span>
+<p>Here <span class="math" data-tex="\(\varphi^{it}\)">\(\varphi^{it}\)</span> is the canonical core unitary symbol; no bounded density
+inside <span class="math" data-tex="\(M\)">\(M\)</span> is being asserted. Spectral calculus defines</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\pi^\varphi(f)&amp;=f(-\log h_\varphi),\\
+f&amp;\in L^\infty(\mathbb R).
+\end{aligned}
+\tag{HL.5}
+\]">\[
+\begin{aligned}
+\pi^\varphi(f)&amp;=f(-\log h_\varphi),\\
+f&amp;\in L^\infty(\mathbb R).
+\end{aligned}
+\tag{HL.5}
+\]</span>
+<p>The spectral measure class of <span class="math" data-tex="\(-\log h_\varphi\)">\(-\log h_\varphi\)</span> is translation invariant.
+The core contract says it is the Lebesgue class on its support, so (HL.5) is a
+faithful normal star isomorphism onto its range. Equations (HL.3--4) give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\pi^\varphi(V(t))&amp;=h_\varphi^{it}=\varphi^{it},\\
+\theta_s\pi^\varphi(f)&amp;=\pi^\varphi(\rho_s f).
+\end{aligned}
+\tag{HL.6}
+\]">\[
+\begin{aligned}
+\pi^\varphi(V(t))&amp;=h_\varphi^{it}=\varphi^{it},\\
+\theta_s\pi^\varphi(f)&amp;=\pi^\varphi(\rho_s f).
+\end{aligned}
+\tag{HL.6}
+\]</span>
+<p>This proves existence. It also proves uniqueness: an equivariant normal
+homomorphism with the prescribed values on every <span class="math" data-tex="\(V(t)\)">\(V(t)\)</span> agrees with
+<span class="math" data-tex="\(\pi^\varphi\)">\(\pi^\varphi\)</span> on the von Neumann algebra generated by those characters.</p>
+<p>Conversely, let</p>
+<span class="math math-display" data-tex="\[
+\pi:(A,\rho)\longrightarrow(e\widetilde M e,\theta)
+\tag{HL.7}
+\]">\[
+\pi:(A,\rho)\longrightarrow(e\widetilde M e,\theta)
+\tag{HL.7}
+\]</span>
+<p>be an equivariant normal star isomorphism onto its range. Set <span class="math" data-tex="\(h=\pi(H)\)">\(h=\pi(H)\)</span>, using affiliated
+spectral calculus. Then</p>
+<span class="math math-display" data-tex="\[
+\theta_s(h)=e^{-s}h,
+\qquad s(h)=e.
+\tag{HL.8}
+\]">\[
+\theta_s(h)=e^{-s}h,
+\qquad s(h)=e.
+\tag{HL.8}
+\]</span>
+<p>The positive grade-one density theorem supplies a unique normal semifinite
+weight <span class="math" data-tex="\(\varphi_\pi\)">\(\varphi_\pi\)</span> with <span class="math" data-tex="\(h=h_{\varphi_\pi}\)">\(h=h_{\varphi_\pi}\)</span>. Since <span class="math" data-tex="\(V(t)=H^{it}\)">\(V(t)=H^{it}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\pi(V(t))=h^{it}=\varphi_\pi^{it}.
+\tag{HL.9}
+\]">\[
+\pi(V(t))=h^{it}=\varphi_\pi^{it}.
+\tag{HL.9}
+\]</span>
+<p>The first uniqueness argument now gives <span class="math" data-tex="\(\pi=\pi^{\varphi_\pi}\)">\(\pi=\pi^{\varphi_\pi}\)</span>. Hence
+nonzero normal semifinite weights, including their nonzero supports, classify
+precisely the equivariant copies of the translation algebra in core corners.
+The zero weight has zero support and cannot yield a faithful copy of the
+nonzero algebra <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h2 id="localizers-recover-the-weight-and-scaling-measures">Localizers recover the weight and scaling measures</h2>
+<p>For <span class="math" data-tex="\(a\in\widetilde M_+\)">\(a\in\widetilde M_+\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+I_\theta(a)=\int_{\mathbb R}\theta_t(a)\,dt
+\tag{HL.10}
+\]">\[
+I_\theta(a)=\int_{\mathbb R}\theta_t(a)\,dt
+\tag{HL.10}
+\]</span>
+<p>be the positive extended orbit integral. A <strong>normalized localizer</strong> satisfies
+<span class="math" data-tex="\(I_\theta(a)=1\)">\(I_\theta(a)=1\)</span>. Such elements exist by the core contract. If
+<span class="math" data-tex="\(h=h_\varphi\)">\(h=h_\varphi\)</span> and <span class="math" data-tex="\(x\in M_+\)">\(x\in M_+\)</span>, write
+<span class="math" data-tex="\(b_x=x^{1/2}a x^{1/2}\)">\(b_x=x^{1/2}a x^{1/2}\)</span> and <span class="math" data-tex="\(c_x=x^{1/2}h x^{1/2}\)">\(c_x=x^{1/2}h x^{1/2}\)</span>. The inverse density
+pairing is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\varphi(x)
+&amp;=\tau\!\left(
+h^{1/2}b_xh^{1/2}
+\right)\\
+&amp;=\tau\!\left(
+a^{1/2}c_xa^{1/2}
+\right).
+\end{aligned}
+\tag{HL.11}
+\]">\[
+\begin{aligned}
+\varphi(x)
+&amp;=\tau\!\left(
+h^{1/2}b_xh^{1/2}
+\right)\\
+&amp;=\tau\!\left(
+a^{1/2}c_xa^{1/2}
+\right).
+\end{aligned}
+\tag{HL.11}
+\]</span>
+<p>Both lines mean the value of the corresponding closed positive form and may be
+infinite. The second line follows first for bounded spectral truncations by
+tracial cyclicity and then for the full form by the extended-positive
+monotone limit from
+<a href="OA-MOD-PT.html#oa-mod-pt-08">Radon–Nikodym densities relative to a semifinite trace</a>. Since the left side does
+not mention <span class="math" data-tex="\(a\)">\(a\)</span>, (HL.11) also proves independence of the normalized
+localizer.</p>
+<p>The source uses the following affiliated regularizer <span class="math" data-tex="\(r_\varepsilon\)">\(r_\varepsilon\)</span>.
+It is unbounded: its scalar multiplier grows like
+<span class="math" data-tex="\(\varepsilon^{-1/2}\lambda^{1/4}\)">\(\varepsilon^{-1/2}\lambda^{1/4}\)</span> as <span class="math" data-tex="\(\lambda\to\infty\)">\(\lambda\to\infty\)</span>.
+A bounded alternative is <span class="math" data-tex="\(s_\varepsilon\)">\(s_\varepsilon\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r_\varepsilon&amp;=h^{1/2}(1+\varepsilon h^{1/2})^{-1/2},\\
+s_\varepsilon&amp;=h^{1/2}(1+\varepsilon h)^{-1/2},\\
+\|s_\varepsilon\|&amp;\leq\varepsilon^{-1/2}.
+\end{aligned}
+\tag{HL.12}
+\]">\[
+\begin{aligned}
+r_\varepsilon&amp;=h^{1/2}(1+\varepsilon h^{1/2})^{-1/2},\\
+s_\varepsilon&amp;=h^{1/2}(1+\varepsilon h)^{-1/2},\\
+\|s_\varepsilon\|&amp;\leq\varepsilon^{-1/2}.
+\end{aligned}
+\tag{HL.12}
+\]</span>
+<p>For the bounded positive operator <span class="math" data-tex="\(b_x\)">\(b_x\)</span>, the normal weight
+<span class="math" data-tex="\(\Phi_{b_x}(c)=\tau(b_x^{1/2}c b_x^{1/2})\)">\(\Phi_{b_x}(c)=\tau(b_x^{1/2}c b_x^{1/2})\)</span> extends normally to the
+extended positive cone. Spectral calculus gives
+<span class="math" data-tex="\(r_\varepsilon^2=h/(1+\varepsilon h^{1/2})\uparrow h\)">\(r_\varepsilon^2=h/(1+\varepsilon h^{1/2})\uparrow h\)</span> and
+<span class="math" data-tex="\(s_\varepsilon^2=h/(1+\varepsilon h)\uparrow h\)">\(s_\varepsilon^2=h/(1+\varepsilon h)\uparrow h\)</span> as
+<span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. On bounded spectral bands, tracial cyclicity
+identifies <span class="math" data-tex="\(\Phi_{b_x}(r_\varepsilon^2)\)">\(\Phi_{b_x}(r_\varepsilon^2)\)</span> with the closed-form trace
+<span class="math" data-tex="\(\tau(r_\varepsilon b_xr_\varepsilon)\)">\(\tau(r_\varepsilon b_xr_\varepsilon)\)</span>. Normal extension gives the same
+identity for the full affiliated operator, including infinite values.
+Consequently normality and (HL.11) prove</p>
+<span class="math math-display" data-tex="\[
+\varphi(x)
+=\lim_{\varepsilon\downarrow0}
+\tau\!\left(
+r_\varepsilon b_xr_\varepsilon
+\right).
+\tag{HL.13}
+\]">\[
+\varphi(x)
+=\lim_{\varepsilon\downarrow0}
+\tau\!\left(
+r_\varepsilon b_xr_\varepsilon
+\right).
+\tag{HL.13}
+\]</span>
+<p>The same limit holds with <span class="math" data-tex="\(s_\varepsilon\)">\(s_\varepsilon\)</span> in place of
+<span class="math" data-tex="\(r_\varepsilon\)">\(r_\varepsilon\)</span>. The trace values increase because the squared spectral
+multipliers increase; the noncommuting sandwiches themselves are not asserted
+to increase in operator order.</p>
+<p>There is a normalization defect in the printed scaling-measure exercise. Let
+<span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a normal weight on <span class="math" data-tex="\(A=L^\infty(\mathbb R)\)">\(A=L^\infty(\mathbb R)\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\mu\mathbin\circ\rho_t=e^{-t}\mu
+\tag{HL.14}
+\]">\[
+\mu\mathbin\circ\rho_t=e^{-t}\mu
+\tag{HL.14}
+\]</span>
+<p>and suppose <span class="math" data-tex="\(0&lt;\mu(f_0)&lt;\infty\)">\(0&lt;\mu(f_0)&lt;\infty\)</span> for some <span class="math" data-tex="\(f_0\in A_+\)">\(f_0\in A_+\)</span>. Normality represents
+<span class="math" data-tex="\(\mu\)">\(\mu\)</span> by an extended measurable density <span class="math" data-tex="\(g\)">\(g\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\mu(f)=\int_{\mathbb R}g(r)f(r)\,dr.
+\tag{HL.15}
+\]">\[
+\mu(f)=\int_{\mathbb R}g(r)f(r)\,dr.
+\tag{HL.15}
+\]</span>
+<p>Changing variables in (HL.14) yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g(r-t)&amp;=e^{-t}g(r)\\
+&amp;\text{for almost every }r.
+\end{aligned}
+\tag{HL.16}
+\]">\[
+\begin{aligned}
+g(r-t)&amp;=e^{-t}g(r)\\
+&amp;\text{for almost every }r.
+\end{aligned}
+\tag{HL.16}
+\]</span>
+<p>Thus <span class="math" data-tex="\(q(r)=e^{-r}g(r)\)">\(q(r)=e^{-r}g(r)\)</span> is translation invariant modulo null sets. A
+measurable function with this property is almost everywhere constant. One
+direct proof convolves each finite truncation of <span class="math" data-tex="\(q\)">\(q\)</span> with a compactly
+supported approximate identity: every convolution is continuous and invariant
+under the dense subgroup of rational translations, hence constant; monotone
+recovery of the truncations gives the assertion. The finite nonzero value of
+<span class="math" data-tex="\(f_0\)">\(f_0\)</span> rules out both constants zero and infinity. Consequently</p>
+<span class="math math-display" data-tex="\[
+\boxed{
+\begin{aligned}
+\mu(f)&amp;=c\int_{\mathbb R}e^r f(r)\,dr,\\
+c&amp;&gt;0 .
+\end{aligned}}
+\tag{HL.17}
+\]">\[
+\boxed{
+\begin{aligned}
+\mu(f)&amp;=c\int_{\mathbb R}e^r f(r)\,dr,\\
+c&amp;&gt;0 .
+\end{aligned}}
+\tag{HL.17}
+\]</span>
+<p>This weight is faithful and semifinite. The source's coefficient <span class="math" data-tex="\(1\)">\(1\)</span> follows
+only after an additional normalization fixing <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. Every <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> satisfies
+the printed hypotheses, so omitting <span class="math" data-tex="\(c\)">\(c\)</span> changes the statement.</p>
+<p>Without the finite nonzero test, the same invariant-density argument gives
+an extended constant <span class="math" data-tex="\(c\in[0,\infty]\)">\(c\in[0,\infty]\)</span>. A nonzero scaling weight has
+<span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, and <span class="math" data-tex="\(c=\infty\)">\(c=\infty\)</span> means that every nonzero positive function
+has infinite weight. This extended case is needed for infinite weights below.</p>
+<h2 id="finite-weights-are-exactly-measurable-core-densities">Finite weights are exactly measurable core densities</h2>
+<p>Let <span class="math" data-tex="\(h=h_\varphi\)">\(h=h_\varphi\)</span> and
+<span class="math" data-tex="\(\mathcal A^\varphi=\pi^\varphi(A)=W^*(h^{it}:t\in\mathbb R)\)">\(\mathcal A^\varphi=\pi^\varphi(A)=W^*(h^{it}:t\in\mathbb R)\)</span>. For
+<span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+d_h(\lambda)=\tau(1_{(\lambda,\infty)}(h)).
+\tag{HL.18}
+\]">\[
+d_h(\lambda)=\tau(1_{(\lambda,\infty)}(h)).
+\tag{HL.18}
+\]</span>
+<p>Grade one and trace scaling give the exact distribution law</p>
+<span class="math math-display" data-tex="\[
+d_h(e^s\lambda)=e^{-s}d_h(\lambda).
+\tag{HL.19}
+\]">\[
+d_h(e^s\lambda)=e^{-s}d_h(\lambda).
+\tag{HL.19}
+\]</span>
+<p>Indeed
+<span class="math" data-tex="\(\theta_s(1_{(\lambda,\infty)}(h))\)">\(\theta_s(1_{(\lambda,\infty)}(h))\)</span>
+is <span class="math" data-tex="\(1_{(e^s\lambda,\infty)}(h)\)">\(1_{(e^s\lambda,\infty)}(h)\)</span>, and (HL.1) applies. More explicitly, the
+restriction <span class="math" data-tex="\(\mu_\varphi=\tau\mathbin\circ\pi^\varphi\)">\(\mu_\varphi=\tau\mathbin\circ\pi^\varphi\)</span> is a normal scaling
+weight on <span class="math" data-tex="\(A\)">\(A\)</span>, so (HL.17) gives
+<span class="math" data-tex="\(\mu_\varphi(f)=c_\varphi\int e^r f(r)\,dr\)">\(\mu_\varphi(f)=c_\varphi\int e^r f(r)\,dr\)</span>. Choose
+<span class="math" data-tex="\(g\in L^1(\mathbb R)_+\cap L^\infty(\mathbb R)\)">\(g\in L^1(\mathbb R)_+\cap L^\infty(\mathbb R)\)</span> with
+<span class="math" data-tex="\(\int g(r)\,dr=1\)">\(\int g(r)\,dr=1\)</span>. Then <span class="math" data-tex="\(a=\pi^\varphi(g)\)">\(a=\pi^\varphi(g)\)</span> is a normalized localizer on
+the support corner; adjoining a normalized complementary-corner localizer does
+not change the following trace. The inverse-density formula (HL.11), at
+<span class="math" data-tex="\(x=1\)">\(x=1\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+c_\varphi
+=\mu_\varphi(Hg)
+=\tau(a^{1/2}ha^{1/2})
+=\varphi(1).
+\]">\[
+c_\varphi
+=\mu_\varphi(Hg)
+=\tau(a^{1/2}ha^{1/2})
+=\varphi(1).
+\]</span>
+<p>Since <span class="math" data-tex="\(1_{(\lambda,\infty)}(H)=1_{(-\infty,-\log\lambda)}\)">\(1_{(\lambda,\infty)}(H)=1_{(-\infty,-\log\lambda)}\)</span>, the scaling
+law therefore has the exact extended constant</p>
+<span class="math math-display" data-tex="\[
+d_h(\lambda)=\frac{\varphi(1)}{\lambda}
+\tag{HL.20}
+\]">\[
+d_h(\lambda)=\frac{\varphi(1)}{\lambda}
+\tag{HL.20}
+\]</span>
+<p>including infinite values. For <span class="math" data-tex="\(\varphi(1)=\infty\)">\(\varphi(1)=\infty\)</span> the coefficient is
+the extended value just described, rather than a finite instance of (HL.17).</p>
+<p>If <span class="math" data-tex="\(\varphi(1)&lt;\infty\)">\(\varphi(1)&lt;\infty\)</span>, (HL.20) makes every high spectral tail finite and
+tending to zero. The spectral-tail criterion
+<a href="OA-MOD-MT.html#oa-mod-mt-11">Spectral tails characterize the resulting operators</a> shows that <span class="math" data-tex="\(h\)">\(h\)</span> is
+<span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable. Conversely, if <span class="math" data-tex="\(h\)">\(h\)</span> is measurable, some nonzero high
+spectral tail has finite trace unless <span class="math" data-tex="\(h\)">\(h\)</span> is bounded. In the bounded case,
+grade one and preservation of the operator norm already force <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, which
+corresponds to the zero finite weight. In the nonzero case, (HL.19) gives a
+finite constant in (HL.20), so <span class="math" data-tex="\(\varphi(1)&lt;\infty\)">\(\varphi(1)&lt;\infty\)</span>.</p>
+<p>The intersection criterion is now exact. If <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is finite and nonzero,
+then for <span class="math" data-tex="\(0&lt;a&lt;b&lt;\infty\)">\(0&lt;a&lt;b&lt;\infty\)</span>, put <span class="math" data-tex="\(p_{a,b}=1_{[a,b]}(h)\)">\(p_{a,b}=1_{[a,b]}(h)\)</span>. We have</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+p_{a,b}&amp;\in\mathcal A^\varphi\cap\mathfrak m_\tau,\\
+\tau(p_{a,b})&amp;=\varphi(1)(a^{-1}-b^{-1}).
+\end{aligned}
+\tag{HL.21}
+\]">\[
+\begin{aligned}
+p_{a,b}&amp;\in\mathcal A^\varphi\cap\mathfrak m_\tau,\\
+\tau(p_{a,b})&amp;=\varphi(1)(a^{-1}-b^{-1}).
+\end{aligned}
+\tag{HL.21}
+\]</span>
+<p>whenever the band is nonzero. Conversely, suppose
+<span class="math" data-tex="\(0\neq z\in\mathcal A^\varphi\cap\mathfrak m_\tau\)">\(0\neq z\in\mathcal A^\varphi\cap\mathfrak m_\tau\)</span>. A nonzero spectral
+projection of <span class="math" data-tex="\(|z|\)">\(|z|\)</span> has finite trace and still belongs to
+<span class="math" data-tex="\(\mathcal A^\varphi\)">\(\mathcal A^\varphi\)</span>. Thus the restriction of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> to this copy of
+<span class="math" data-tex="\(L^\infty(\mathbb R)\)">\(L^\infty(\mathbb R)\)</span> has a nonzero finite value. The scaling-measure lemma
+(HL.17) applies, so its coefficient is finite; (HL.20) then gives
+<span class="math" data-tex="\(\varphi(1)&lt;\infty\)">\(\varphi(1)&lt;\infty\)</span>. We have proved</p>
+<span class="math math-display" data-tex="\[
+\boxed{
+\begin{gathered}
+\varphi(1)&lt;\infty\\
+\Updownarrow\\
+\mathcal A^\varphi\cap\mathfrak m_\tau\neq\{0\}\\
+\Updownarrow\\
+h_\varphi\in\mathscr S_\tau(\widetilde M).
+\end{gathered}}
+\tag{HL.22}
+\]">\[
+\boxed{
+\begin{gathered}
+\varphi(1)&lt;\infty\\
+\Updownarrow\\
+\mathcal A^\varphi\cap\mathfrak m_\tau\neq\{0\}\\
+\Updownarrow\\
+h_\varphi\in\mathscr S_\tau(\widetilde M).
+\end{gathered}}
+\tag{HL.22}
+\]</span>
+<p>For the zero weight, the first and third conditions hold while the displayed
+nonzero-intersection condition does not. The source works with nonzero weights;
+that hypothesis is necessary for the three-way formulation.</p>
+<h2 id="distribution-scaling-forbids-negative-real-grade">Distribution scaling forbids negative real grade</h2>
+<p>For a closed densely defined operator <span class="math" data-tex="\(T\)">\(T\)</span> affiliated with <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span>,
+say that <span class="math" data-tex="\(T\)">\(T\)</span> has <strong>grade</strong> <span class="math" data-tex="\(\alpha\in\mathbb C\)">\(\alpha\in\mathbb C\)</span> when</p>
+<span class="math math-display" data-tex="\[
+\theta_s(T)=e^{-\alpha s}T
+\qquad(s\in\mathbb R).
+\tag{HL.23}
+\]">\[
+\theta_s(T)=e^{-\alpha s}T
+\qquad(s\in\mathbb R).
+\tag{HL.23}
+\]</span>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathscr H(\alpha)\\
+=\{T:\\
+\operatorname{grad}(T)=\alpha,\\
+T\in\mathscr S_\tau(\widetilde M)\}.
+\end{gathered}
+\tag{HL.24}
+\]">\[
+\begin{gathered}
+\mathscr H(\alpha)\\
+=\{T:\\
+\operatorname{grad}(T)=\alpha,\\
+T\in\mathscr S_\tau(\widetilde M)\}.
+\end{gathered}
+\tag{HL.24}
+\]</span>
+<p>If <span class="math" data-tex="\(T=u|T|\)">\(T=u|T|\)</span> and <span class="math" data-tex="\(\alpha=p+iq\)">\(\alpha=p+iq\)</span>, uniqueness of polar decomposition gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\theta_s(|T|)&amp;=e^{-ps}|T|,\\
+\theta_s(u)&amp;=e^{-iqs}u.
+\end{aligned}
+\tag{HL.25}
+\]">\[
+\begin{aligned}
+\theta_s(|T|)&amp;=e^{-ps}|T|,\\
+\theta_s(u)&amp;=e^{-iqs}u.
+\end{aligned}
+\tag{HL.25}
+\]</span>
+<p>Writing <span class="math" data-tex="\(d_T(\lambda)=\tau(1_{(\lambda,\infty)}(|T|))\)">\(d_T(\lambda)=\tau(1_{(\lambda,\infty)}(|T|))\)</span>, the same calculation
+as in (HL.19) yields</p>
+<span class="math math-display" data-tex="\[
+d_T(e^{ps}\lambda)=e^{-s}d_T(\lambda).
+\tag{HL.26}
+\]">\[
+d_T(e^{ps}\lambda)=e^{-s}d_T(\lambda).
+\tag{HL.26}
+\]</span>
+<p>Suppose <span class="math" data-tex="\(p&lt;0\)">\(p&lt;0\)</span> and <span class="math" data-tex="\(T\neq0\)">\(T\neq0\)</span>. If <span class="math" data-tex="\(T\)">\(T\)</span> is bounded, preservation of operator
+norm under <span class="math" data-tex="\(\theta_s\)">\(\theta_s\)</span> contradicts
+<span class="math" data-tex="\(\|T\|=e^{-ps}\|T\|\)">\(\|T\|=e^{-ps}\|T\|\)</span>. If <span class="math" data-tex="\(T\)">\(T\)</span> is unbounded, measurability supplies a
+<span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> with <span class="math" data-tex="\(0&lt;d_T(\lambda)&lt;\infty\)">\(0&lt;d_T(\lambda)&lt;\infty\)</span>. For <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, the threshold
+<span class="math" data-tex="\(e^{ps}\lambda\)">\(e^{ps}\lambda\)</span> is smaller than <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, so monotonicity gives</p>
+<span class="math math-display" data-tex="\[
+d_T(e^{ps}\lambda)\ge d_T(\lambda),
+\]">\[
+d_T(e^{ps}\lambda)\ge d_T(\lambda),
+\]</span>
+<p>whereas (HL.26) gives the strictly smaller value
+<span class="math" data-tex="\(e^{-s}d_T(\lambda)\)">\(e^{-s}d_T(\lambda)\)</span>. This contradiction proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathscr H(\alpha)&amp;=\{0\}\\
+&amp;\text{when }\Re\alpha&lt;0.
+\end{aligned}
+\tag{HL.27}
+\]">\[
+\begin{aligned}
+\mathscr H(\alpha)&amp;=\{0\}\\
+&amp;\text{when }\Re\alpha&lt;0.
+\end{aligned}
+\tag{HL.27}
+\]</span>
+<p>Now let <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>. Every spectral projection of a grade-zero measurable
+operator is fixed by <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. If such an operator were unbounded,
+measurability would supply a nonzero finite-trace high spectral projection
+<span class="math" data-tex="\(e\)">\(e\)</span>. But</p>
+<span class="math math-display" data-tex="\[
+\tau(e)=\tau(\theta_s(e))=e^{-s}\tau(e)
+\]">\[
+\tau(e)=\tau(\theta_s(e))=e^{-s}\tau(e)
+\]</span>
+<p>is impossible. Hence the operator is bounded, and the fixed-point identity in
+(HL.1) places it in <span class="math" data-tex="\(M\)">\(M\)</span>. Conversely, every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> is bounded,
+<span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable and fixed. Therefore</p>
+<span class="math math-display" data-tex="\[
+\boxed{\mathscr H(0)=M.}
+\tag{HL.28}
+\]">\[
+\boxed{\mathscr H(0)=M.}
+\tag{HL.28}
+\]</span>
+<p>Purely imaginary nonzero grades are different: core unitaries can have such a
+grade. Statement (HL.28) concerns the exact grade zero.</p>
+<h2 id="every-positive-real-grade-has-a-functional-density">Every positive real grade has a functional density</h2>
+<p>Let <span class="math" data-tex="\(T\in\mathscr H(\alpha)\)">\(T\in\mathscr H(\alpha)\)</span>, with <span class="math" data-tex="\(\alpha=p+iq\)">\(\alpha=p+iq\)</span> and <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>. Functional
+calculus, (HL.25), and the measurable-power theorem give</p>
+<span class="math math-display" data-tex="\[
+\theta_s\bigl(|T|^{1/p}\bigr)
+=e^{-s}|T|^{1/p}.
+\tag{HL.29}
+\]">\[
+\theta_s\bigl(|T|^{1/p}\bigr)
+=e^{-s}|T|^{1/p}.
+\tag{HL.29}
+\]</span>
+<p>Thus <span class="math" data-tex="\(|T|^{1/p}\)">\(|T|^{1/p}\)</span> is a positive measurable grade-one operator. The density
+contract and (HL.22) produce a unique normal positive functional
+<span class="math" data-tex="\(\omega_T\in M_*^+\)">\(\omega_T\in M_*^+\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+|T|^{1/p}=h_{\omega_T}.
+\tag{HL.30}
+\]">\[
+|T|^{1/p}=h_{\omega_T}.
+\tag{HL.30}
+\]</span>
+<p>In particular</p>
+<span class="math math-display" data-tex="\[
+|T|=h_{\omega_T}^{\,p}.
+\tag{HL.31}
+\]">\[
+|T|=h_{\omega_T}^{\,p}.
+\tag{HL.31}
+\]</span>
+<p>For a real grade <span class="math" data-tex="\(p\)">\(p\)</span>, (HL.25) puts the polar partial isometry <span class="math" data-tex="\(u\)">\(u\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>,
+so <span class="math" data-tex="\(T=u h_{\omega_T}^{p}\)">\(T=u h_{\omega_T}^{p}\)</span>. For a complex grade, choose once and for all a
+faithful normal state <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and put <span class="math" data-tex="\(d=h_\chi\)">\(d=h_\chi\)</span>. The unitary <span class="math" data-tex="\(d^{iq}\)">\(d^{iq}\)</span> has
+grade <span class="math" data-tex="\(iq\)">\(iq\)</span>. Hence <span class="math" data-tex="\(u d^{-iq}\)">\(u d^{-iq}\)</span> has grade zero and lies in <span class="math" data-tex="\(M\)">\(M\)</span>, giving the
+normal form</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T&amp;=v d^{iq}h_{\omega_T}^{p},\\
+v&amp;=u d^{-iq}\in M.
+\end{aligned}
+\tag{HL.32}
+\]">\[
+\begin{aligned}
+T&amp;=v d^{iq}h_{\omega_T}^{p},\\
+v&amp;=u d^{-iq}\in M.
+\end{aligned}
+\tag{HL.32}
+\]</span>
+<p>The fixed choice of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is only a coordinate for the imaginary grade; the
+operator <span class="math" data-tex="\(T\)">\(T\)</span>, its modulus and the functional <span class="math" data-tex="\(\omega_T\)">\(\omega_T\)</span> do not depend on it.
+Also, if a nonzero operator has two grades, then
+<span class="math" data-tex="\(e^{-\alpha s}T=e^{-\beta s}T\)">\(e^{-\alpha s}T=e^{-\beta s}T\)</span> for every <span class="math" data-tex="\(s\)">\(s\)</span>, forcing
+<span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span>. Distinct homogeneous spaces therefore have zero
+intersection.</p>
+<h2 id="the-canonical-integral-and-the-grade-one-predual">The canonical integral and the grade-one predual</h2>
+<p>Let <span class="math" data-tex="\(T\in\mathscr H(1)\)">\(T\in\mathscr H(1)\)</span>, with polar decomposition</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T&amp;=u h_\omega,\\
+u&amp;\in M,\\
+\omega&amp;\in M_*^+.
+\end{aligned}
+\tag{HL.33}
+\]">\[
+\begin{aligned}
+T&amp;=u h_\omega,\\
+u&amp;\in M,\\
+\omega&amp;\in M_*^+.
+\end{aligned}
+\tag{HL.33}
+\]</span>
+<p>We first establish linearity and the module action of the density map; neither
+follows from polar decomposition alone. For positive normal functionals write
+<span class="math" data-tex="\(D(\omega)=h_\omega\)">\(D(\omega)=h_\omega\)</span>. A sum of positive measurable grade-one operators
+is again positive, measurable and of grade one. Evaluate its inverse density
+by the second line of (HL.11). Linearity of the extended trace on positive
+forms gives
+<span class="math" data-tex="\(D(\omega_1+\omega_2)=h_{\omega_1}+h_{\omega_2}\)">\(D(\omega_1+\omega_2)=h_{\omega_1}+h_{\omega_2}\)</span>, and positive scalar
+multiplication is preserved as well. The Jordan decomposition therefore
+extends <span class="math" data-tex="\(D\)">\(D\)</span> to a well-defined complex linear map on <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. Its
+injectivity follows from injectivity on positive functionals: a self-adjoint
+element of its kernel has equal positive and negative density parts, and the
+real and imaginary parts handle the general kernel.</p>
+<p>For <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, put <span class="math" data-tex="\(\omega_x(y)=\omega(x^*yx)\)">\(\omega_x(y)=\omega(x^*yx)\)</span>. We claim
+<span class="math" data-tex="\(D(\omega_x)=xh_\omega x^*\)">\(D(\omega_x)=xh_\omega x^*\)</span>. To check this using the inverse formula,
+fix <span class="math" data-tex="\(y\in M_+\)">\(y\in M_+\)</span> and write <span class="math" data-tex="\(y^{1/2}x=v|y^{1/2}x|\)">\(y^{1/2}x=v|y^{1/2}x|\)</span>, with
+<span class="math" data-tex="\(p=v^*v\)">\(p=v^*v\)</span>. If <span class="math" data-tex="\(a\)">\(a\)</span> is a normalized localizer, then
+<span class="math" data-tex="\(a&#x27;=v^*av+(1-p)a(1-p)\)">\(a&#x27;=v^*av+(1-p)a(1-p)\)</span> is another: <span class="math" data-tex="\(v,p\in M\)">\(v,p\in M\)</span> are fixed by
+<span class="math" data-tex="\(\theta\)">\(\theta\)</span>, so its orbit integral is <span class="math" data-tex="\(p+(1-p)=1\)">\(p+(1-p)=1\)</span>. The complement term
+vanishes between the two factors <span class="math" data-tex="\(|y^{1/2}x|\)">\(|y^{1/2}x|\)</span>. Tracial closed-form
+pairings thus give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau\bigl(a^{1/2}y^{1/2}xh_\omega x^*y^{1/2}a^{1/2}\bigr)
+&amp;=\tau\bigl(h_\omega^{1/2}|y^{1/2}x|a&#x27;|y^{1/2}x|h_\omega^{1/2}\bigr)\\
+&amp;=\omega(x^*yx).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tau\bigl(a^{1/2}y^{1/2}xh_\omega x^*y^{1/2}a^{1/2}\bigr)
+&amp;=\tau\bigl(h_\omega^{1/2}|y^{1/2}x|a&#x27;|y^{1/2}x|h_\omega^{1/2}\bigr)\\
+&amp;=\omega(x^*yx).
+\end{aligned}
+\]</span>
+<p>The first equality is understood through the normal positive trace pairings
+of HL-02, so it does not assume boundedness of <span class="math" data-tex="\(h_\omega\)">\(h_\omega\)</span>.
+Uniqueness in the density contract proves the claim. Polarizing this
+congruence identity gives
+<span class="math" data-tex="\(D[y\mapsto\omega(b^*yc)]=c h_\omega b^*\)">\(D[y\mapsto\omega(b^*yc)]=c h_\omega b^*\)</span> for <span class="math" data-tex="\(b,c\in M\)">\(b,c\in M\)</span>.
+In particular the normal functional <span class="math" data-tex="\(y\mapsto\omega(yu)\)">\(y\mapsto\omega(yu)\)</span> has density
+<span class="math" data-tex="\(u h_\omega\)">\(u h_\omega\)</span>. Its polar support is <span class="math" data-tex="\(u^*u=s(\omega)\)">\(u^*u=s(\omega)\)</span>, as in (HL.33).
+Conversely HL-05 puts every grade-one operator in this form. Hence <span class="math" data-tex="\(D\)">\(D\)</span>
+is onto <span class="math" data-tex="\(\mathscr H(1)\)">\(\mathscr H(1)\)</span>.</p>
+<p>Define <span class="math" data-tex="\(\int T=D^{-1}(T)(1)\)">\(\int T=D^{-1}(T)(1)\)</span>. This linear functional agrees with the
+following localizer formula:</p>
+<span class="math math-display" data-tex="\[
+\int T
+=\tau(a^{1/2}Ta^{1/2}).
+\tag{HL.34}
+\]">\[
+\int T
+=\tau(a^{1/2}Ta^{1/2}).
+\tag{HL.34}
+\]</span>
+<p>Indeed, decompose <span class="math" data-tex="\(D^{-1}(T)\)">\(D^{-1}(T)\)</span> into a complex linear combination of
+positive functionals. Each localized positive density in (HL.11), at
+<span class="math" data-tex="\(x=1\)">\(x=1\)</span>, has finite trace. Their linear combination is trace integrable,
+and the linearity just proved identifies it with the localized measurable
+product in (HL.34). Thus (HL.34) is finite and independent of <span class="math" data-tex="\(a\)">\(a\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\int u h_\omega=\omega(u).
+\tag{HL.35}
+\]">\[
+\int u h_\omega=\omega(u).
+\tag{HL.35}
+\]</span>
+<p>The polarized congruence identity fixes the orientation: the functional
+associated with <span class="math" data-tex="\(T\)">\(T\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_T(x)&amp;=\int xT,\\
+x&amp;\in M.
+\end{aligned}
+\tag{HL.36}
+\]">\[
+\begin{aligned}
+F_T(x)&amp;=\int xT,\\
+x&amp;\in M.
+\end{aligned}
+\tag{HL.36}
+\]</span>
+<p>Every normal functional has a polar decomposition of the form
+<span class="math" data-tex="\(x\mapsto\omega(xu)\)">\(x\mapsto\omega(xu)\)</span>, and its density is <span class="math" data-tex="\(u h_\omega\)">\(u h_\omega\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+T\longmapsto F_T
+\tag{HL.37}
+\]">\[
+T\longmapsto F_T
+\tag{HL.37}
+\]</span>
+<p>is a linear bijection from <span class="math" data-tex="\(\mathscr H(1)\)">\(\mathscr H(1)\)</span> onto <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. Moreover</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|T\|_1&amp;:=\int|T|\\
+&amp;=\omega(1)=\|F_T\|.
+\end{aligned}
+\tag{HL.38}
+\]">\[
+\begin{aligned}
+\|T\|_1&amp;:=\int|T|\\
+&amp;=\omega(1)=\|F_T\|.
+\end{aligned}
+\tag{HL.38}
+\]</span>
+<p>Since the predual is complete, (HL.37--38) prove that
+<span class="math" data-tex="\(\mathscr H(1)\)">\(\mathscr H(1)\)</span> is a Banach space. They also show why the ordinary core trace
+cannot replace the integral: in the scalar model <span class="math" data-tex="\(M=\mathbb C\)">\(M=\mathbb C\)</span>, the density
+<span class="math" data-tex="\(ce^{-r}\)">\(ce^{-r}\)</span> has infinite ordinary <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-integral, while its canonical
+integral is <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<h3 id="spectral-size-and-an-initial-product-bound">Spectral size and an initial product bound</h3>
+<p>For a measurable operator <span class="math" data-tex="\(T\)">\(T\)</span> of grade <span class="math" data-tex="\(a+ib\)">\(a+ib\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, put
+<span class="math" data-tex="\(g(T)=(\int|T|^{1/a})^a\)">\(g(T)=(\int|T|^{1/a})^a\)</span>. The definition applies even when <span class="math" data-tex="\(a&gt;1\)">\(a&gt;1\)</span>;
+it is not yet asserted to be a norm. The distribution formula in HL-03 gives</p>
+<span class="math math-display" data-tex="\[
+d_T(\lambda)=g(T)^{1/a}\lambda^{-1/a},
+\qquad \mu_t(T)=g(T)t^{-a}.
+\]">\[
+d_T(\lambda)=g(T)^{1/a}\lambda^{-1/a},
+\qquad \mu_t(T)=g(T)t^{-a}.
+\]</span>
+<p>Here <span class="math" data-tex="\(\mu_t(T)\)">\(\mu_t(T)\)</span> is the infimum of <span class="math" data-tex="\(\|Te\|\)">\(\|Te\|\)</span> over projections with
+<span class="math" data-tex="\(\tau(1-e)\leq t\)">\(\tau(1-e)\leq t\)</span>. The spectral-cut characterization follows from the
+projection comparison of MT-02: a cut with norm below <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> must
+discard at least the dimension of <span class="math" data-tex="\(1_{(\lambda,\infty)}(|T|)\)">\(1_{(\lambda,\infty)}(|T|)\)</span>.
+At positive real grade, therefore, convergence in measure within one fixed
+homogeneous space is exactly convergence of the gauge of the difference.
+In particular, on grade one it is predual norm convergence.</p>
+<p>We will use two estimates for arbitrary measurable operators:
+<span class="math" data-tex="\(\mu_{s+t}(A+B)\leq\mu_s(A)+\mu_t(B)\)">\(\mu_{s+t}(A+B)\leq\mu_s(A)+\mu_t(B)\)</span> and
+<span class="math" data-tex="\(\mu_{s+t}(AB)\leq\mu_s(A)\mu_t(B)\)">\(\mu_{s+t}(AB)\leq\mu_s(A)\mu_t(B)\)</span>. For the first, intersect the two
+bounded-domain cuts. For the second, take cuts <span class="math" data-tex="\(e,f\)">\(e,f\)</span> for <span class="math" data-tex="\(A,B\)">\(A,B\)</span>.
+The right support <span class="math" data-tex="\(r\)">\(r\)</span> of <span class="math" data-tex="\((1-e)B\)">\((1-e)B\)</span> has trace at most <span class="math" data-tex="\(\tau(1-e)\)">\(\tau(1-e)\)</span>,
+because its polar range lies in <span class="math" data-tex="\(1-e\)">\(1-e\)</span>. On <span class="math" data-tex="\(q=f\wedge(1-r)\)">\(q=f\wedge(1-r)\)</span>,
+<span class="math" data-tex="\(Bq=eBq\)">\(Bq=eBq\)</span>, and the ordinary product is defined and bounded by
+<span class="math" data-tex="\(\|Ae\|\|Bf\|\)">\(\|Ae\|\|Bf\|\)</span>. Projection subadditivity bounds <span class="math" data-tex="\(\tau(1-q)\)">\(\tau(1-q)\)</span> by
+<span class="math" data-tex="\(s+t\)">\(s+t\)</span>. Infima, with arbitrarily small slack in the norm bounds, prove the
+estimate for the closed measurable product. The same argument gives
+<span class="math" data-tex="\(\mu_t(CAD)\leq\|C\|\mu_t(A)\|D\|\)">\(\mu_t(CAD)\leq\|C\|\mu_t(A)\|D\|\)</span> for bounded core operators <span class="math" data-tex="\(C,D\)">\(C,D\)</span>.</p>
+<p>If <span class="math" data-tex="\(A,B\)">\(A,B\)</span> have grades <span class="math" data-tex="\(a+ib\)">\(a+ib\)</span> and <span class="math" data-tex="\(1-a-ib\)">\(1-a-ib\)</span>, <span class="math" data-tex="\(0&lt;a&lt;1\)">\(0&lt;a&lt;1\)</span>, their product
+has grade one. Set <span class="math" data-tex="\(s=a\)">\(s=a\)</span>, <span class="math" data-tex="\(t=1-a\)">\(t=1-a\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\|AB\|_1
+\leq a^{-a}(1-a)^{-(1-a)}g(A)g(B).
+\]">\[
+\|AB\|_1
+\leq a^{-a}(1-a)^{-(1-a)}g(A)g(B).
+\]</span>
+<p>This rough estimate uses actual bounded-domain projections and makes no
+claim that the cut operators remain homogeneous. Its constant is at most
+two and tends to one at both endpoints. At real grade zero, HL-04's
+spectral-tail argument gives boundedness, and the bounded module estimate
+supplies the corresponding endpoint bound.</p>
+<h2 id="complex-powers-interpolate-positive-densities">Complex powers interpolate positive densities</h2>
+<p>Let <span class="math" data-tex="\(h,k\in\mathscr H(1)_+\)">\(h,k\in\mathscr H(1)_+\)</span> and <span class="math" data-tex="\(0\leq\Re z\leq1\)">\(0\leq\Re z\leq1\)</span>. Positive real
+powers are measurable. At real exponent zero use the supported imaginary
+powers, which are bounded partial unitaries. Closed measurable multiplication
+and grade addition give</p>
+<span class="math math-display" data-tex="\[
+h^z k^{1-z}\in\mathscr H(1).
+\tag{HL.39}
+\]">\[
+h^z k^{1-z}\in\mathscr H(1).
+\tag{HL.39}
+\]</span>
+<p>We establish holomorphy of the actual product</p>
+<span class="math math-display" data-tex="\[
+F(z)=h^z k^{1-z}
+\tag{HL.40}
+\]">\[
+F(z)=h^z k^{1-z}
+\tag{HL.40}
+\]</span>
+<p>in the open strip. For any positive measurable <span class="math" data-tex="\(c\)">\(c\)</span>, <span class="math" data-tex="\(z\mapsto c^z\)">\(z\mapsto c^z\)</span>
+is differentiable in measure on <span class="math" data-tex="\(\Re z&gt;0\)">\(\Re z&gt;0\)</span>, with derivative the spectral
+function <span class="math" data-tex="\(c^z\log c\)">\(c^z\log c\)</span>, defined as zero on the kernel. On <span class="math" data-tex="\(0\leq\lambda\leq R\)">\(0\leq\lambda\leq R\)</span>,
+the difference quotients of <span class="math" data-tex="\(\lambda^z\)">\(\lambda^z\)</span> converge uniformly near each
+<span class="math" data-tex="\(z_0\)">\(z_0\)</span> with positive real part: powers times logarithms tend to zero at
+<span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>, and their second derivatives are uniformly bounded on a small
+closed disk about <span class="math" data-tex="\(z_0\)">\(z_0\)</span>. Functional calculus proves the bounded-cut assertion.
+The omitted high spectral projection has arbitrarily small trace as
+<span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>; this proves differentiability in measure.</p>
+<p>The product rule in MT-09 now gives</p>
+<span class="math math-display" data-tex="\[
+F&#x27;(z)=h^z\log h\,k^{1-z}-h^z k^{1-z}\log k
+\]">\[
+F&#x27;(z)=h^z\log h\,k^{1-z}-h^z k^{1-z}\log k
+\]</span>
+<p>as a limit in measure. This formula denotes the two measurable spectral
+products, not an assertion that <span class="math" data-tex="\(\log h\)">\(\log h\)</span> or <span class="math" data-tex="\(\log k\)">\(\log k\)</span> alone is measurable.
+The difference quotients have grade one, and continuity of the dual action
+in measure keeps their limit in that grade. The last lemma of HL-06 turns
+this convergence into predual norm convergence. Thus <span class="math" data-tex="\(F\)">\(F\)</span> is norm holomorphic.
+The spectral cuts prove differentiability in the measure algebra; they are
+never asserted to approximate <span class="math" data-tex="\(F\)">\(F\)</span> inside a homogeneous analytic space.</p>
+<p>On the two boundary lines the direct module formulas are</p>
+<span class="math math-display" data-tex="\[
+F(it)=(h^{it}k^{-it})k,
+\tag{HL.41}
+\]">\[
+F(it)=(h^{it}k^{-it})k,
+\tag{HL.41}
+\]</span>
+<span class="math math-display" data-tex="\[
+F(1+it)=h(h^{it}k^{-it}).
+\tag{HL.42}
+\]">\[
+F(1+it)=h(h^{it}k^{-it}).
+\tag{HL.42}
+\]</span>
+<p>The parenthesized operator has grade zero and is a contraction in <span class="math" data-tex="\(M\)">\(M\)</span>.
+Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|F(it)\|_1&amp;\leq\|k\|_1,\\
+\|F(1+it)\|_1&amp;\leq\|h\|_1.
+\end{aligned}
+\tag{HL.43}
+\]">\[
+\begin{aligned}
+\|F(it)\|_1&amp;\leq\|k\|_1,\\
+\|F(1+it)\|_1&amp;\leq\|h\|_1.
+\end{aligned}
+\tag{HL.43}
+\]</span>
+<p>For the sharp interior estimate, first take <span class="math" data-tex="\(\|h\|_1=\|k\|_1=1\)">\(\|h\|_1=\|k\|_1=1\)</span>.
+The initial product bound gives
+<span class="math" data-tex="\(\|F(u+it)\|_1\leq B(u)=u^{-u}(1-u)^{-(1-u)}\)">\(\|F(u+it)\|_1\leq B(u)=u^{-u}(1-u)^{-(1-u)}\)</span>.
+Fix <span class="math" data-tex="\(0&lt;\delta&lt;1/2\)">\(0&lt;\delta&lt;1/2\)</span>. The function is norm holomorphic and bounded on the
+closed inner strip <span class="math" data-tex="\(\delta\leq\Re z\leq1-\delta\)">\(\delta\leq\Re z\leq1-\delta\)</span>, and both boundary
+bounds are <span class="math" data-tex="\(B(\delta)\)">\(B(\delta)\)</span>. Apply CI-02 there. For each fixed interior point
+let <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>; since <span class="math" data-tex="\(B(\delta)\to1\)">\(B(\delta)\to1\)</span>, its norm is at most one.
+This use of inner strips requires no unproved norm continuity across an
+outer boundary. Rescaling <span class="math" data-tex="\(h,k\)">\(h,k\)</span> and using (HL.43) proves</p>
+<span class="math math-display" data-tex="\[
+\boxed{\begin{aligned}
+\|h^z k^{1-z}\|_1
+&amp;\leq\|h\|_1^{\Re z}
+\|k\|_1^{1-\Re z}.
+\end{aligned}}
+\tag{HL.44}
+\]">\[
+\boxed{\begin{aligned}
+\|h^z k^{1-z}\|_1
+&amp;\leq\|h\|_1^{\Re z}
+\|k\|_1^{1-\Re z}.
+\end{aligned}}
+\tag{HL.44}
+\]</span>
+<p>Zero inputs give a zero product; endpoint geometric means use <span class="math" data-tex="\(c^0=1\)">\(c^0=1\)</span>.
+All operator powers remain supported. The mathematical source comparison is
+Hiai, section 11, Lemmas 11.14 and 11.17--11.21; the derivative and inner-strip
+arguments above include their actual topology and support conditions.</p>
+<h2 id="the-corrected-banach-range-for-a-fixed-grade">The corrected Banach range for a fixed grade</h2>
+<p>For <span class="math" data-tex="\(\alpha=p+iq\)">\(\alpha=p+iq\)</span>, <span class="math" data-tex="\(0&lt;p\leq1\)">\(0&lt;p\leq1\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\|T\|_\alpha=\left(\int|T|^{1/p}\right)^p.
+\tag{HL.45}
+\]">\[
+\|T\|_\alpha=\left(\int|T|^{1/p}\right)^p.
+\tag{HL.45}
+\]</span>
+<p>HL-05 makes this finite. We first prove the complementary product bound.
+If <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span>, write <span class="math" data-tex="\(S=u h^p\)">\(S=u h^p\)</span> and <span class="math" data-tex="\(T=k^{1-p}v\)">\(T=k^{1-p}v\)</span>, using the left polar
+decomposition for <span class="math" data-tex="\(S\)">\(S\)</span> and right polar decomposition for <span class="math" data-tex="\(T\)">\(T\)</span>.
+Here <span class="math" data-tex="\(h,k\)">\(h,k\)</span> are positive grade-one densities, while <span class="math" data-tex="\(u,v\)">\(u,v\)</span> are bounded
+core partial isometries whose imaginary grades cancel. Their spectral
+supports give <span class="math" data-tex="\(\|S\|_\alpha=(\int h)^p\)">\(\|S\|_\alpha=(\int h)^p\)</span> and
+<span class="math" data-tex="\(\|T\|_{1-\alpha}=(\int k)^{1-p}\)">\(\|T\|_{1-\alpha}=(\int k)^{1-p}\)</span>. The bounded module estimate for <span class="math" data-tex="\(\mu_1\)">\(\mu_1\)</span>
+and (HL.44) prove
+<span class="math" data-tex="\(\|ST\|_1\leq\|S\|_\alpha\|T\|_{1-\alpha}\)">\(\|ST\|_1\leq\|S\|_\alpha\|T\|_{1-\alpha}\)</span>.
+This does not assume <span class="math" data-tex="\(u,v\in M\)">\(u,v\in M\)</span>. At the zero/one real-grade endpoints use
+bounded multiplication and the same <span class="math" data-tex="\(\mu_1\)">\(\mu_1\)</span> estimate.</p>
+<p>The pairing is norming without an onto duality assumption. For nonzero
+<span class="math" data-tex="\(S=u h^p\)">\(S=u h^p\)</span>, set <span class="math" data-tex="\(T_0=h^{1-p}u^*\)">\(T_0=h^{1-p}u^*\)</span>. Then
+<span class="math" data-tex="\(ST_0=u h u^*\)">\(ST_0=u h u^*\)</span>, and its nonzero spectral tails are equivalent to those
+of <span class="math" data-tex="\(h\)">\(h\)</span>. Thus <span class="math" data-tex="\(\int ST_0=\int h\)">\(\int ST_0=\int h\)</span> and
+<span class="math" data-tex="\(\|T_0\|_{1-\alpha}=(\int h)^{1-p}\)">\(\|T_0\|_{1-\alpha}=(\int h)^{1-p}\)</span>.
+Normalize <span class="math" data-tex="\(T_0\)">\(T_0\)</span> to have gauge one. Together with the product bound this gives</p>
+<span class="math math-display" data-tex="\[
+\|S\|_\alpha
+=\sup_{\|T\|_{1-\alpha}\leq1}\left|\int ST\right|.
+\]">\[
+\|S\|_\alpha
+=\sup_{\|T\|_{1-\alpha}\leq1}\left|\int ST\right|.
+\]</span>
+<p>Linearity of the grade-one integral proves the triangle inequality from this
+supremum. Homogeneity and separation follow from the distribution law.
+For <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, the imaginary-grade isometry below reduces to HL-06.</p>
+<p>Completeness retains the actual measurable limit. The exact size formula
+<span class="math" data-tex="\(\mu_t(T)=\|T\|_\alpha t^{-p}\)">\(\mu_t(T)=\|T\|_\alpha t^{-p}\)</span> turns every norm-Cauchy net into a
+measure-Cauchy net. MT-05--09 give a measurable limit, and trace scaling makes
+<span class="math" data-tex="\(\theta_s\)">\(\theta_s\)</span> continuous in measure, preserving the grade. For fixed <span class="math" data-tex="\(n\)">\(n\)</span>
+(or a fixed index in the original directed net), apply
+<span class="math" data-tex="\(\mu_{s+t}(S+T)\leq\mu_s(S)+\mu_t(T)\)">\(\mu_{s+t}(S+T)\leq\mu_s(S)+\mu_t(T)\)</span> to the differences with the limit.
+Let the moving index tend to its measure limit and then let <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>.
+It gives <span class="math" data-tex="\(\|T_n-T\|_\alpha\leq\liminf_m\|T_n-T_m\|_\alpha\)">\(\|T_n-T\|_\alpha\leq\liminf_m\|T_n-T_m\|_\alpha\)</span>.
+The Cauchy condition proves norm convergence. Hence the homogeneous space
+is Banach.</p>
+<p><strong>A separate interpolation target.</strong> To specify a meaningful compatible couple,
+fix a faithful state <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, put <span class="math" data-tex="\(d=h_\chi\)">\(d=h_\chi\)</span>, and embed
+<span class="math" data-tex="\(X_0=J_\chi(M)\)">\(X_0=J_\chi(M)\)</span> in <span class="math" data-tex="\(X_1=M_*\)">\(X_1=M_*\)</span>, where <span class="math" data-tex="\(J_\chi(x)(y)=\chi(yx)\)">\(J_\chi(x)(y)=\chi(yx)\)</span> and
+<span class="math" data-tex="\(X_0\)">\(X_0\)</span> has the transported operator norm. Faithfulness proves injectivity
+by testing at <span class="math" data-tex="\(y=x^*\)">\(y=x^*\)</span>. The supplementary identification target is</p>
+<span class="math math-display" data-tex="\[
+[X_0,X_1]_p.
+\tag{HL.46}
+\]">\[
+[X_0,X_1]_p.
+\tag{HL.46}
+\]</span>
+<p>The proposed map is <span class="math" data-tex="\(T\mapsto F_{T d^{1-p}}\)">\(T\mapsto F_{T d^{1-p}}\)</span>. Its onto isometry and
+grade-preserving strip construction remain an additional open theorem, recorded
+by HL-DEP-GRADED-STRIP. The Banach proof above has its own complete argument.
+The raw inclusions of grades zero and one into the measurable algebra would
+give a zero intermediate space: the bounded endpoint projections induced by
+<span class="math" data-tex="\((e^{-s}\mathrm{Id}-\theta_s)/(e^{-s}-1)\)">\((e^{-s}\mathrm{Id}-\theta_s)/(e^{-s}-1)\)</span>, <span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span>, annihilate every
+interpolation element by CI-05.</p>
+<p>For the imaginary part, the core unitary <span class="math" data-tex="\(d^{-iq}\)">\(d^{-iq}\)</span> gives a linear bijection</p>
+<span class="math math-display" data-tex="\[
+R_{d^{-iq}}:\mathscr H(p+iq)\longrightarrow\mathscr H(p).
+\tag{HL.47}
+\]">\[
+R_{d^{-iq}}:\mathscr H(p+iq)\longrightarrow\mathscr H(p).
+\tag{HL.47}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(|Td^{-iq}|=d^{iq}|T|d^{-iq}\)">\(|Td^{-iq}|=d^{iq}|T|d^{-iq}\)</span>. Traciality preserves every spectral-tail
+trace, so the distribution constant and gauge are unchanged:</p>
+<span class="math math-display" data-tex="\[
+\|Td^{-iq}\|_p=\|T\|_{p+iq}.
+\tag{HL.48}
+\]">\[
+\|Td^{-iq}\|_p=\|T\|_{p+iq}.
+\tag{HL.48}
+\]</span>
+<p>At real grade zero the spectral-tail argument of HL-04 gives boundedness;
+the same unitary coordinate identifies an imaginary grade with <span class="math" data-tex="\(M\)">\(M\)</span>
+isometrically.</p>
+<p>For the counterexample beyond the Banach range, take orthogonal positive
+grade-one densities <span class="math" data-tex="\(h_1,h_2\)">\(h_1,h_2\)</span> of integral one, and let <span class="math" data-tex="\(p&gt;1\)">\(p&gt;1\)</span>.
+Set <span class="math" data-tex="\(T_j=h_j^p\)">\(T_j=h_j^p\)</span>. Spectral calculus on the two supports gives</p>
+<span class="math math-display" data-tex="\[
+(T_1+T_2)^{1/p}=h_1+h_2,
+\tag{HL.49}
+\]">\[
+(T_1+T_2)^{1/p}=h_1+h_2,
+\tag{HL.49}
+\]</span>
+<span class="math math-display" data-tex="\[
+\|T_1\|_p=\|T_2\|_p=1,\qquad
+\|T_1+T_2\|_p=2^p&gt;2.
+\tag{HL.50}
+\]">\[
+\|T_1\|_p=\|T_2\|_p=1,\qquad
+\|T_1+T_2\|_p=2^p&gt;2.
+\tag{HL.50}
+\]</span>
+<p>The displayed gauge is then a quasi-norm. The corrected positive Banach range is</p>
+<span class="math math-display" data-tex="\[
+0&lt;\Re\alpha\leq1.
+\tag{HL.51}
+\]">\[
+0&lt;\Re\alpha\leq1.
+\tag{HL.51}
+\]</span>
+<p>A separable factor other than the scalar factor supplies the two orthogonal
+nonzero supports used in the counterexample; the source's universal assertion
+is refuted already by a matrix factor. In the scalar factor each homogeneous
+space is one-dimensional, so its gauge is a norm even outside this universal
+Banach range.</p>
+<h2 id="products-hölder-bounds-and-the-cyclic-integral">Products, Hölder bounds and the cyclic integral</h2>
+<p>Let <span class="math" data-tex="\(T_j\in\mathscr H(\alpha_j)\)">\(T_j\in\mathscr H(\alpha_j)\)</span>, <span class="math" data-tex="\(1\leq j\leq n\)">\(1\leq j\leq n\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\alpha_1+\cdots+\alpha_n=1.
+\tag{HL.52}
+\]">\[
+\alpha_1+\cdots+\alpha_n=1.
+\tag{HL.52}
+\]</span>
+<p>For a nonzero product every factor is nonzero, so HL-04 forces
+<span class="math" data-tex="\(p_j=\Re\alpha_j\geq0\)">\(p_j=\Re\alpha_j\geq0\)</span>. These real grades sum to one and are at most one.
+Grade-zero real parts give bounded operators. Zero-factor products are
+trivial; on a zero space of negative real grade set the gauge of its sole
+element to zero. The desired estimate is</p>
+<span class="math math-display" data-tex="\[
+\|T_1\cdots T_n\|_1\leq
+\prod_{j=1}^n\|T_j\|_{\alpha_j}.
+\tag{HL.53}
+\]">\[
+\|T_1\cdots T_n\|_1\leq
+\prod_{j=1}^n\|T_j\|_{\alpha_j}.
+\tag{HL.53}
+\]</span>
+<p>The product belongs to the measurable algebra by MT-09, and grade addition
+already proves</p>
+<span class="math math-display" data-tex="\[
+T_1\cdots T_n\in\mathscr H(1).
+\tag{HL.54}
+\]">\[
+T_1\cdots T_n\in\mathscr H(1).
+\tag{HL.54}
+\]</span>
+<p>We prove the full finite-product bound without presuming a multilinear
+homogeneous strip representation. For <span class="math" data-tex="\(p_j&gt;0\)">\(p_j&gt;0\)</span> put
+<span class="math" data-tex="\(r_j=1/p_j\)">\(r_j=1/p_j\)</span>, <span class="math" data-tex="\(C_j=\|T_j\|_{\alpha_j}^{r_j}\)">\(C_j=\|T_j\|_{\alpha_j}^{r_j}\)</span> and
+<span class="math" data-tex="\(A_j=u_j\min(|T_j|,1)\)">\(A_j=u_j\min(|T_j|,1)\)</span>. These bounded caps are auxiliary core operators,
+not homogeneous operators. The exact spectral distribution gives, for
+<span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\tau(|A_j|^{r_j(1+\varepsilon)})
+=C_j(1+\varepsilon^{-1}).
+\]">\[
+\tau(|A_j|^{r_j(1+\varepsilon)})
+=C_j(1+\varepsilon^{-1}).
+\]</span>
+<p>For <span class="math" data-tex="\(p_j=0\)">\(p_j=0\)</span> put <span class="math" data-tex="\(A_j=T_j\)">\(A_j=T_j\)</span>. Apply the tracial product theorem TI-10
+iteratively, with output exponent <span class="math" data-tex="\(1+\varepsilon\)">\(1+\varepsilon\)</span> and input exponents
+<span class="math" data-tex="\(r_j(1+\varepsilon)\)">\(r_j(1+\varepsilon)\)</span>. All intermediate exponents are at least one,
+since the partial reciprocal sums are at most <span class="math" data-tex="\(1/(1+\varepsilon)\)">\(1/(1+\varepsilon)\)</span>.</p>
+<p>Write <span class="math" data-tex="\(X=T_1\cdots T_n\)">\(X=T_1\cdots T_n\)</span>, <span class="math" data-tex="\(A=u_X\min(|X|,1)\)">\(A=u_X\min(|X|,1)\)</span> and
+<span class="math" data-tex="\(Q=A_1\cdots A_n\)">\(Q=A_1\cdots A_n\)</span>. Each difference <span class="math" data-tex="\(T_j-A_j\)">\(T_j-A_j\)</span>, for <span class="math" data-tex="\(p_j&gt;0\)">\(p_j&gt;0\)</span>, has
+finite left and right trace support. Measurable multiplication preserves
+finite trace rank: the right support of <span class="math" data-tex="\(BY\)">\(BY\)</span> lies under that of <span class="math" data-tex="\(Y\)">\(Y\)</span>,
+and polar equivalence bounds its left trace rank by that of <span class="math" data-tex="\(Y\)">\(Y\)</span>;
+the right-multiplication argument is analogous. Projection subadditivity
+handles sums. Expanding <span class="math" data-tex="\(X-Q\)">\(X-Q\)</span> and <span class="math" data-tex="\(X-A\)">\(X-A\)</span> therefore shows that <span class="math" data-tex="\(Q-A\)">\(Q-A\)</span>
+has finite trace rank. It is also bounded, so its tracial
+<span class="math" data-tex="\(L^{1+\varepsilon}\)">\(L^{1+\varepsilon}\)</span> norm is uniformly bounded as <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>.</p>
+<p>The cap <span class="math" data-tex="\(A\)">\(A\)</span> has distribution constant <span class="math" data-tex="\(\|X\|_1\)">\(\|X\|_1\)</span>, hence
+<span class="math" data-tex="\(\varepsilon^{1/(1+\varepsilon)}
+ \|A\|_{L^{1+\varepsilon}(\tau)}\to\|X\|_1\)">\(\varepsilon^{1/(1+\varepsilon)}
+ \|A\|_{L^{1+\varepsilon}(\tau)}\to\|X\|_1\)</span>.
+Tracial Minkowski makes the same limit hold for <span class="math" data-tex="\(Q\)">\(Q\)</span>. After multiplication
+by <span class="math" data-tex="\(\varepsilon^{1/(1+\varepsilon)}\)">\(\varepsilon^{1/(1+\varepsilon)}\)</span>, the tracial Hölder bound tends to
+<span class="math" data-tex="\(\prod_j\|T_j\|_{\alpha_j}\)">\(\prod_j\|T_j\|_{\alpha_j}\)</span>, because <span class="math" data-tex="\(\sum_jp_j=1\)">\(\sum_jp_j=1\)</span>.
+This proves (HL.53), including imaginary grades and bounded endpoints.</p>
+<p>For cyclicity we prove the two-factor identity first. If <span class="math" data-tex="\(S,T\)">\(S,T\)</span> have the
+same grade <span class="math" data-tex="\(1/2+ib\)">\(1/2+ib\)</span>, polar equivalence gives
+<span class="math" data-tex="\(\int S^*S=\int SS^*\)">\(\int S^*S=\int SS^*\)</span>. Polarize this identity using <span class="math" data-tex="\(S+i^kT\)">\(S+i^kT\)</span>,
+<span class="math" data-tex="\(k=0,1,2,3\)">\(k=0,1,2,3\)</span>. It gives <span class="math" data-tex="\(\int ST^*=\int T^*S\)">\(\int ST^*=\int T^*S\)</span>.
+This argument applies to the common complex half grade, not just the real one.</p>
+<p>Next let <span class="math" data-tex="\(A,B\)">\(A,B\)</span> have complementary real grades <span class="math" data-tex="\(p,1-p\)">\(p,1-p\)</span>, <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span>.
+The real and imaginary parts decompose each into a complex linear combination
+of positive elements of its same real grade. For positive elements write
+<span class="math" data-tex="\(A=h^p\)">\(A=h^p\)</span>, <span class="math" data-tex="\(B=k^{1-p}\)">\(B=k^{1-p}\)</span>. By HL-07 the scalar functions
+<span class="math" data-tex="\(\int h^z k^{1-z}\)">\(\int h^z k^{1-z}\)</span> and <span class="math" data-tex="\(\int k^{1-z}h^z\)">\(\int k^{1-z}h^z\)</span> are holomorphic in the
+open strip. On <span class="math" data-tex="\(z=1/2+it\)">\(z=1/2+it\)</span>, the common-half-grade identity applies to
+<span class="math" data-tex="\(S=h^z\)">\(S=h^z\)</span> and <span class="math" data-tex="\(T=k^z\)">\(T=k^z\)</span>: both have grade <span class="math" data-tex="\(1/2+it\)">\(1/2+it\)</span>, and
+<span class="math" data-tex="\(T^*=(k^z)^*=k^{\bar z}=k^{1-z}\)">\(T^*=(k^z)^*=k^{\bar z}=k^{1-z}\)</span> on this line. Thus
+<span class="math" data-tex="\(\int ST^*=\int T^*S\)">\(\int ST^*=\int T^*S\)</span> says precisely that the two functions agree there.
+The identity theorem gives equality throughout the strip, in particular
+at <span class="math" data-tex="\(z=p\)">\(z=p\)</span>. Linearity gives <span class="math" data-tex="\(\int AB=\int BA\)">\(\int AB=\int BA\)</span> for the original elements.
+The real zero/one endpoints are the module identity of HL-06.</p>
+<p>For complementary complex grades <span class="math" data-tex="\(p+ib,1-p-ib\)">\(p+ib,1-p-ib\)</span>, put <span class="math" data-tex="\(w=d^{ib}\)">\(w=d^{ib}\)</span>.
+Then <span class="math" data-tex="\(A=Sw^*\)">\(A=Sw^*\)</span> and <span class="math" data-tex="\(B=wT\)">\(B=wT\)</span> have complementary real grades,
+<span class="math" data-tex="\(ST=AB\)">\(ST=AB\)</span>, and <span class="math" data-tex="\(TS=w^*BAw\)">\(TS=w^*BAw\)</span>. Conjugation by this core unitary preserves
+the integral of a positive grade-one operator by equality of spectral tails;
+linearity extends it to all of <span class="math" data-tex="\(\mathscr H(1)\)">\(\mathscr H(1)\)</span>. Thus
+<span class="math" data-tex="\(\int ST=\int TS\)">\(\int ST=\int TS\)</span>, including the bounded endpoints.
+Group the first <span class="math" data-tex="\(n-1\)">\(n-1\)</span> factors in (HL.52) and apply this two-factor result:</p>
+<span class="math math-display" data-tex="\[
+\int T_1T_2\cdots T_n
+=\int T_nT_1T_2\cdots T_{n-1}.
+\tag{HL.55}
+\]">\[
+\int T_1T_2\cdots T_n
+=\int T_nT_1T_2\cdots T_{n-1}.
+\tag{HL.55}
+\]</span>
+<p>No localizer has been commuted past a homogeneous factor.</p>
+<h2 id="complementary-grades-are-exact-dual-partners">Complementary grades are exact dual partners</h2>
+<p>Let <span class="math" data-tex="\(\alpha=p+iq\)">\(\alpha=p+iq\)</span>, <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span>. The pairing is</p>
+<span class="math math-display" data-tex="\[
+\langle S,T\rangle=\int ST,\qquad
+S\in\mathscr H(\alpha),\ T\in\mathscr H(1-\alpha).
+\tag{HL.56}
+\]">\[
+\langle S,T\rangle=\int ST,\qquad
+S\in\mathscr H(\alpha),\ T\in\mathscr H(1-\alpha).
+\tag{HL.56}
+\]</span>
+<p>HL-08--09 give</p>
+<span class="math math-display" data-tex="\[
+|\langle S,T\rangle|
+\leq\|S\|_\alpha\|T\|_{1-\alpha}.
+\tag{HL.57}
+\]">\[
+|\langle S,T\rangle|
+\leq\|S\|_\alpha\|T\|_{1-\alpha}.
+\tag{HL.57}
+\]</span>
+<p>For <span class="math" data-tex="\(S=u h^p\)">\(S=u h^p\)</span>, the exact polar equality test is</p>
+<span class="math math-display" data-tex="\[
+T_0=h^{1-p}u^*.
+\tag{HL.58}
+\]">\[
+T_0=h^{1-p}u^*.
+\tag{HL.58}
+\]</span>
+<p>Its spectral tails give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int ST_0&amp;=\int h,\\
+\|S\|_\alpha&amp;=(\int h)^p,\\
+\|T_0\|_{1-\alpha}&amp;=(\int h)^{1-p}.
+\end{aligned}
+\tag{HL.59}
+\]">\[
+\begin{aligned}
+\int ST_0&amp;=\int h,\\
+\|S\|_\alpha&amp;=(\int h)^p,\\
+\|T_0\|_{1-\alpha}&amp;=(\int h)^{1-p}.
+\end{aligned}
+\tag{HL.59}
+\]</span>
+<p>It proves norming in each variable, using cyclicity for the reversed orientation.
+We now prove onto representation rather than assume it in a strip contract.</p>
+<p><strong>Uniform convexity for <span class="math" data-tex="\(0&lt;p\leq1/2\)">\(0&lt;p\leq1/2\)</span>.</strong> Put <span class="math" data-tex="\(r=1/p\geq2\)">\(r=1/p\geq2\)</span>.
+For the real-grade space the required Clarkson bound is</p>
+<span class="math math-display" data-tex="\[
+\|A+B\|_p^r+\|A-B\|_p^r
+\leq2^{r-1}(\|A\|_p^r+\|B\|_p^r).
+\]">\[
+\|A+B\|_p^r+\|A-B\|_p^r
+\leq2^{r-1}(\|A\|_p^r+\|B\|_p^r).
+\]</span>
+<p>Here is a direct strip proof. Normalize the right-hand parenthesis to one
+and write <span class="math" data-tex="\(A=uH^p\)">\(A=uH^p\)</span>, <span class="math" data-tex="\(B=vK^p\)">\(B=vK^p\)</span>, with
+<span class="math" data-tex="\(\int H+\int K=1\)">\(\int H+\int K=1\)</span>. To test the norm of the pair <span class="math" data-tex="\((A+B,A-B)\)">\((A+B,A-B)\)</span>,
+take <span class="math" data-tex="\(C=P^{1-p}w\)">\(C=P^{1-p}w\)</span>, <span class="math" data-tex="\(D=Q^{1-p}x\)">\(D=Q^{1-p}x\)</span> with
+<span class="math" data-tex="\(\|C\|_{1-p}^{r&#x27;}+\|D\|_{1-p}^{r&#x27;}=1\)">\(\|C\|_{1-p}^{r&#x27;}+\|D\|_{1-p}^{r&#x27;}=1\)</span>, <span class="math" data-tex="\(r&#x27;=1/(1-p)\)">\(r&#x27;=1/(1-p)\)</span>.
+Then <span class="math" data-tex="\(\int P+\int Q=1\)">\(\int P+\int Q=1\)</span>. The norming supremum for the two-component
+space is its scalar <span class="math" data-tex="\(\ell^r\)">\(\ell^r\)</span> norm: apply (HL.59) to each component and
+choose the scalar conjugate-exponent weights.</p>
+<p>Use the holomorphic scalar function</p>
+<span class="math math-display" data-tex="\[
+G(z)=\int (uH^z+vK^z)P^{1-z}w
++(uH^z-vK^z)Q^{1-z}x.
+\]">\[
+G(z)=\int (uH^z+vK^z)P^{1-z}w
++(uH^z-vK^z)Q^{1-z}x.
+\]</span>
+<p>Holomorphy follows term by term from HL-07 and bounded <span class="math" data-tex="\(M\)">\(M\)</span>-module
+multiplication. On each line <span class="math" data-tex="\(\Re z=\delta&gt;0\)">\(\Re z=\delta&gt;0\)</span>, Hölder bounds its modulus
+by</p>
+<span class="math math-display" data-tex="\[
+((\int H)^\delta+(\int K)^\delta)
+((\int P)^{1-\delta}+(\int Q)^{1-\delta})\leq2.
+\]">\[
+((\int H)^\delta+(\int K)^\delta)
+((\int P)^{1-\delta}+(\int Q)^{1-\delta})\leq2.
+\]</span>
+<p>On <span class="math" data-tex="\(\Re z=1/2\)">\(\Re z=1/2\)</span>, Cauchy--Schwarz in the common-half-grade Hilbert
+space, applied to the two components, gives <span class="math" data-tex="\(|G(z)|\leq\sqrt2\)">\(|G(z)|\leq\sqrt2\)</span>.
+That Hilbert structure is obtained by polarizing
+<span class="math" data-tex="\(\int S^*S\)">\(\int S^*S\)</span>; positivity, (HL.45), and the common-half-grade cyclic
+identity of HL-09 identify its norm, while HL-08 supplies completeness.
+The parallelogram identity makes the squared norm of
+<span class="math" data-tex="\((uH^z+vK^z,uH^z-vK^z)\)">\((uH^z+vK^z,uH^z-vK^z)\)</span> equal to two, and the dual test pair has norm one.
+For <span class="math" data-tex="\(p&lt;1/2\)">\(p&lt;1/2\)</span>, apply CI-02 on <span class="math" data-tex="\(\delta\leq\Re z\leq1/2\)">\(\delta\leq\Re z\leq1/2\)</span> and let
+<span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. It gives <span class="math" data-tex="\(|G(p)|\leq2^{1-p}\)">\(|G(p)|\leq2^{1-p}\)</span>.
+At <span class="math" data-tex="\(p=1/2\)">\(p=1/2\)</span> use the Hilbert estimate itself. Take the two-component
+norming supremum and undo normalization to obtain Clarkson's bound.
+Zero densities remain supported throughout the argument.</p>
+<p>For unit vectors with <span class="math" data-tex="\(\|A-B\|_p\geq\eta\)">\(\|A-B\|_p\geq\eta\)</span>, the bound implies
+<span class="math" data-tex="\(\|(A+B)/2\|_p^r\leq1-(\eta/2)^r\)">\(\|(A+B)/2\|_p^r\leq1-(\eta/2)^r\)</span>. This is uniform convexity.
+The unitary isometry (HL.47--48) gives it for imaginary translates too.</p>
+<p><strong>Why uniform convexity gives reflexivity here.</strong> For any Banach space <span class="math" data-tex="\(E\)">\(E\)</span>,
+the canonical image of its unit ball is weak-star dense in the bidual unit
+ball. Indeed, if its image under finitely many functionals failed to
+approximate the corresponding bidual coordinates, finite-dimensional real
+separation would produce <span class="math" data-tex="\(f\in E^*\)">\(f\in E^*\)</span> and <span class="math" data-tex="\(x^{**}\)">\(x^{**}\)</span> of norm at most one
+with <span class="math" data-tex="\(\Re x^{**}(f)&gt;\sup_{\|x\|\leq1}\Re f(x)=\|f\|\)">\(\Re x^{**}(f)&gt;\sup_{\|x\|\leq1}\Re f(x)=\|f\|\)</span>, a contradiction.
+This is the finite-coordinate Hahn--Banach argument.</p>
+<p>Let now <span class="math" data-tex="\(E\)">\(E\)</span> be uniformly convex and <span class="math" data-tex="\(\|x^{**}\|=1\)">\(\|x^{**}\|=1\)</span>.
+Take a net <span class="math" data-tex="\(x_i\)">\(x_i\)</span> in its unit ball converging weak-star to <span class="math" data-tex="\(x^{**}\)">\(x^{**}\)</span>.
+For any prescribed <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, choose the convexity deficit <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>
+and a unit <span class="math" data-tex="\(f\in E^*\)">\(f\in E^*\)</span> with <span class="math" data-tex="\(\Re x^{**}(f)&gt;1-\delta/2\)">\(\Re x^{**}(f)&gt;1-\delta/2\)</span>.
+Eventually <span class="math" data-tex="\(\Re f(x_i)&gt;1-\delta\)">\(\Re f(x_i)&gt;1-\delta\)</span>. Every midpoint in that tail has norm
+greater than <span class="math" data-tex="\(1-\delta\)">\(1-\delta\)</span>, so uniform convexity gives
+<span class="math" data-tex="\(\|x_i-x_j\|&lt;\eta\)">\(\|x_i-x_j\|&lt;\eta\)</span>. The net is norm Cauchy and has a limit <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>;
+its canonical image is <span class="math" data-tex="\(x^{**}\)">\(x^{**}\)</span>. Scaling handles every bidual element.
+Thus <span class="math" data-tex="\(E\)">\(E\)</span> is reflexive. Its dual is reflexive as well: any element of
+<span class="math" data-tex="\(E^{***}\)">\(E^{***}\)</span> restricts on the surjective canonical copy of <span class="math" data-tex="\(E\)">\(E\)</span> to an
+element of <span class="math" data-tex="\(E^*\)">\(E^*\)</span>, which represents it on all of <span class="math" data-tex="\(E^{**}\)">\(E^{**}\)</span>.</p>
+<p><strong>Onto dual representation.</strong> The map
+<span class="math" data-tex="\(\Phi:T\mapsto[S\mapsto\int ST]\)">\(\Phi:T\mapsto[S\mapsto\int ST]\)</span> is a linear isometry by (HL.59).
+Its range is norm closed because the complementary space is Banach, and a
+closed linear subspace is weakly closed by Hahn--Banach.
+It is weak-star dense: a proper weak-star closure would, by separation on
+finitely many evaluations, give a nonzero <span class="math" data-tex="\(S\)">\(S\)</span> annihilating the range,
+contradicting the polar norming test.</p>
+<p>If <span class="math" data-tex="\(p\leq1/2\)">\(p\leq1/2\)</span>, <span class="math" data-tex="\(\mathscr H(\alpha)\)">\(\mathscr H(\alpha)\)</span> is reflexive by the preceding proof.
+Weak and weak-star topologies on its dual coincide, so the closed and dense
+range is the whole dual. If <span class="math" data-tex="\(p&gt;1/2\)">\(p&gt;1/2\)</span>, apply that case to <span class="math" data-tex="\(1-\alpha\)">\(1-\alpha\)</span>.
+It identifies <span class="math" data-tex="\(\mathscr H(\alpha)\)">\(\mathscr H(\alpha)\)</span> with the dual of its reflexive
+complementary space. Taking the bidual and using cyclicity identifies the
+dual of <span class="math" data-tex="\(\mathscr H(\alpha)\)">\(\mathscr H(\alpha)\)</span> with <span class="math" data-tex="\(\mathscr H(1-\alpha)\)">\(\mathscr H(1-\alpha)\)</span> in the
+orientation (HL.56). Hence</p>
+<span class="math math-display" data-tex="\[
+\boxed{\mathscr H(1-\alpha)\cong\mathscr H(\alpha)^*,\qquad
+T\longmapsto[S\mapsto\int ST]}
+\tag{HL.60}
+\]">\[
+\boxed{\mathscr H(1-\alpha)\cong\mathscr H(\alpha)^*,\qquad
+T\longmapsto[S\mapsto\int ST]}
+\tag{HL.60}
+\]</span>
+<p>is an onto isometry. At the endpoints, <span class="math" data-tex="\(\mathscr H(1)\cong M_*\)">\(\mathscr H(1)\cong M_*\)</span> and
+<span class="math" data-tex="\(M=\mathscr H(0)\cong M_*^*\)">\(M=\mathscr H(0)\cong M_*^*\)</span>. The full dual of <span class="math" data-tex="\(M\)">\(M\)</span> need not consist of
+normal functionals. The convexity/reflexivity source comparison is Hiai,
+section 11, Propositions 11.24--11.26 and Theorem 11.28; the proof here
+supplies the convexity and finite-coordinate reflexivity steps.</p>
+<h2 id="core-commutants-recover-centralizers">Core commutants recover centralizers</h2>
+<p>Fix a faithful normal semifinite weight <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal A^\varphi&amp;=\pi^\varphi(A),\\
+\mathcal D^\varphi&amp;=Z(\widetilde M)\vee\mathcal A^\varphi.
+\end{aligned}
+\tag{HL.61}
+\]">\[
+\begin{aligned}
+\mathcal A^\varphi&amp;=\pi^\varphi(A),\\
+\mathcal D^\varphi&amp;=Z(\widetilde M)\vee\mathcal A^\varphi.
+\end{aligned}
+\tag{HL.61}
+\]</span>
+<p>The algebra <span class="math" data-tex="\(\mathcal A^\varphi\)">\(\mathcal A^\varphi\)</span> is generated by
+<span class="math" data-tex="\(h_\varphi^{it}=\varphi^{it}\)">\(h_\varphi^{it}=\varphi^{it}\)</span>. The modular implementation supplied by the
+core density contract is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sigma_t^\varphi(x)&amp;=h_\varphi^{it}x h_\varphi^{-it},\\
+x&amp;\in M.
+\end{aligned}
+\tag{HL.62}
+\]">\[
+\begin{aligned}
+\sigma_t^\varphi(x)&amp;=h_\varphi^{it}x h_\varphi^{-it},\\
+x&amp;\in M.
+\end{aligned}
+\tag{HL.62}
+\]</span>
+<p>Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x\in(\mathcal A^\varphi)&#x27;\cap M\\
+\Updownarrow\\
+xh_\varphi^{it}=h_\varphi^{it}x\quad(t\in\mathbb R)\\
+\Updownarrow\\
+\sigma_t^\varphi(x)=x\quad(t\in\mathbb R)\\
+\Updownarrow\\
+x\in M_\varphi .
+\end{gathered}
+\tag{HL.63}
+\]">\[
+\begin{gathered}
+x\in(\mathcal A^\varphi)&#x27;\cap M\\
+\Updownarrow\\
+xh_\varphi^{it}=h_\varphi^{it}x\quad(t\in\mathbb R)\\
+\Updownarrow\\
+\sigma_t^\varphi(x)=x\quad(t\in\mathbb R)\\
+\Updownarrow\\
+x\in M_\varphi .
+\end{gathered}
+\tag{HL.63}
+\]</span>
+<p>This proves</p>
+<span class="math math-display" data-tex="\[
+(\mathcal A^\varphi)&#x27;\cap M=M_\varphi.
+\tag{HL.64}
+\]">\[
+(\mathcal A^\varphi)&#x27;\cap M=M_\varphi.
+\tag{HL.64}
+\]</span>
+<p>The two algebras joined in (HL.61) commute, so
+<span class="math" data-tex="\(\mathcal D^\varphi\)">\(\mathcal D^\varphi\)</span> is abelian. If
+<span class="math" data-tex="\(x\in\mathcal D^\varphi\cap M\)">\(x\in\mathcal D^\varphi\cap M\)</span>, then <span class="math" data-tex="\(x\)">\(x\)</span> commutes with
+<span class="math" data-tex="\(\mathcal A^\varphi\)">\(\mathcal A^\varphi\)</span>, and (HL.64) places <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span>. Every
+<span class="math" data-tex="\(y\in M_\varphi\)">\(y\in M_\varphi\)</span> commutes with <span class="math" data-tex="\(\mathcal A^\varphi\)">\(\mathcal A^\varphi\)</span> by (HL.64), and it
+commutes with <span class="math" data-tex="\(Z(\widetilde M)\)">\(Z(\widetilde M)\)</span> by definition. It therefore commutes with all
+of <span class="math" data-tex="\(\mathcal D^\varphi\)">\(\mathcal D^\varphi\)</span>, in particular with <span class="math" data-tex="\(x\)">\(x\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\boxed{
+\mathcal D^\varphi\cap M\subseteq Z(M_\varphi).}
+\tag{HL.65}
+\]">\[
+\boxed{
+\mathcal D^\varphi\cap M\subseteq Z(M_\varphi).}
+\tag{HL.65}
+\]</span>
+<p>The source states an inclusion in (HL.65), and the proof preserves that exact
+strength. Equality needs additional information about the core center and is
+not inferred here.</p>
+<p>HL-01--11 cover the eleven XII.6 callback groups. Equations (HL.17) and
+(HL.51) retain the source corrections. The author arguments include the
+actual measure-to-predual holomorphy bridge, inner-strip bound, norming
+triangle inequality, finite-product trace-cap limit, graded cyclicity,
+Clarkson convexity and onto dual representation. Their core and density
+inputs, the prerequisites behind them and the supplementary state-dependent
+interpolation identification are not proved here.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-UW.html">← Uniform geometry of faithful weights</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-CA.html">When countable sums detect extended positive energy →</a></span></nav>
+<p class="small source-link"><a href="src/homogeneous-core-operators.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

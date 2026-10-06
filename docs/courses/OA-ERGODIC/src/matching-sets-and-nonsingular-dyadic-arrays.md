@@ -1,6 +1,6 @@
 # Matching sets and nonsingular dyadic arrays
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check in progress; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. New original text is public domain (CC0).*
 
 ## Introduction
 

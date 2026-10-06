@@ -304,17 +304,91 @@ F_{\alpha^\vee}(IC_\lambda)=F_0(IC_\lambda)
 \]
 in degrees \(2,0,-2\). All other weights vanish. Total cohomology has dimension three, and its dual-torus weights form the three-term rank-one string. The full-support normalization and the contribution at the vertex are essential to the middle weight.
 
-## 9. The additional finite-type and reductivity input
+## 9. A finite reductive quotient and the remaining kernel
 
-All simples can be generated from finitely many ICs without yet generating every extension. We separate these assertions.
+The simple IC objects determine a connected reductive algebraic quotient even before semisimplicity of the whole perverse heart is known. This also proves semisimplicity of their convolution products. Arbitrary extensions require a further argument.
+
+### 9.1. Finitely many generators carry every simple
 
 The monoid \(L^+\) of dominant coweights is finitely generated. Here is a direct lattice proof. Its lineality lattice \(L_0\), killed by all simple roots, is saturated; choose a basis \(z_j\). Choose dominant integral \(v_i\) whose simple-root pairings are positive on root \(i\) and zero on the others, by clearing denominators of fundamental coweights in \(L_\mathbb Q/L_{0,\mathbb Q}\). The \(v_i,z_j\) form a real basis. A dominant lattice point has nonnegative \(v_i\)-coordinates. Subtract their integer parts and the integer parts of its \(z_j\)-coordinates. Its remainder is a lattice point of a bounded fundamental parallelepiped, hence belongs to a finite set; all such remainders are dominant. The \(v_i\), these remainders, and both signs of the \(z_j\) generate \(L^+\) as a monoid.
 
-Choose these generators \(\lambda_1,\ldots,\lambda_s\), and put \(X=\bigoplus_i IC_{\lambda_i}\). Lesson 7's highest-constituent theorem makes every \(IC_\lambda\) a subquotient of a convolution word in \(X\). If the category is semisimple, every object is a finite sum of these simples, and \(X\) is a tensor generator for the entire category. Lesson 9, Theorem 6.1, then makes \(\widetilde G\) finite type. Theorem 7.1 and Lesson 9, Theorem 10.1, make it a connected reductive algebraic group.
+Choose these generators \(\lambda_1,\ldots,\lambda_s\), and put \(X=\bigoplus_i IC_{\lambda_i}\). Lesson 7's highest-constituent theorem makes every \(IC_\lambda\) a subquotient of a convolution word in \(X\). Explicitly, write \(\lambda=\sum_i n_i\lambda_i\); repeated application of that theorem supplies \(IC_\lambda\) as a constituent of the corresponding word. Exactness of convolution preserves the required subquotients.
 
-In particular the IC parity assertion (P) of Lesson 6, §5 implies all these conclusions, by its proved Proposition 5.2. Under that hypothesis, the torus already proved geometrically maximal here is a maximal torus of a connected reductive algebraic group.
+Put \(A=\mathcal O(\widetilde G)\). The matrix coefficients of \(H(X)\), together with the inverse determinant, generate a finitely generated Hopf subalgebra \(A_R\subset A\). The matrix coproduct, counit and inverse-matrix formulas prove that it is a Hopf subalgebra. Thus
+\[
+q:\widetilde G\longrightarrow R=\operatorname{Spec}A_R,
+\qquad R\hookrightarrow GL(H(X))
+\tag{9.1}
+\]
+are respectively faithfully flat and a closed immersion: these are the Hopf-inclusion and coefficient-generation proofs of Lesson 9, §§6–8. In particular \(H(X)\) is a faithful \(R\)-representation. Geometric connectedness follows from §7.1, since \(R\) is a finite-type quotient. The proved characteristic-zero Cartier theorem, used there, makes it smooth.
 
-The general parity assertion is not proved in this lesson or in Lesson 6, so finite type and reductivity are conditional here. Generating the simple objects alone does not remove this condition: an extension need not belong to their generated tensor subcategory. Reconstruction, geometric connectedness, the closed weight torus and its maximality above were proved without it. The rational-adic extension over other algebraically closed base fields also requires its own proofs of the classical sheaf inputs; it is not supplied by these complex-analytic arguments.
+Each summand \(H(IC_{\lambda_i})\) is absolutely simple as an \(R\)-module. Indeed inflation is fully faithful and its image is closed under subobjects, by Lesson 9, Theorem 8.1; §7.2 proves absolute simplicity for the original \(\widetilde G\)-modules. Work over an algebraic closure and let \(U\) be a smooth connected normal unipotent subgroup of \(R\). Triangularization puts \(U\) in a unitriangular group. The fully proved AG-RG-01, Lemma 2.A then gives a nonzero \(U\)-fixed vector in each simple summand. Normality makes the fixed subspace \(R\)-stable, so it is the whole summand. Faithfulness of \(H(X)\) forces \(U=1\). This is the defining reductivity criterion for a smooth connected affine group. Hence \(R\) is geometrically reductive, and is a connected reductive algebraic group over \(\Lambda\).
+
+Every convolution word in \(X\) is inflated from \(R\). Inflation is closed under subquotients, so every \(IC_\lambda\) is inflated from \(R\), without a semisimplicity assumption. Conversely every simple \(R\)-representation inflates to a simple \(\widetilde G\)-representation, hence to an \(IC_\lambda\). We have proved:
+
+**Theorem 9.1.** There is a faithfully flat finite-type connected reductive quotient \(q:\widetilde G\to R\) through which every simple IC representation factors. Its simple representations are exactly the \(H(IC_\lambda)\).
+
+This quotient is independent of the chosen dominant-monoid generators. Its coordinate algebra is exactly the Hopf subalgebra of \(A\) generated by the coefficients of all simple ICs: all those coefficients lie in \(A_R\), while the chosen generators themselves are among the ICs. This gives both inclusions of Hopf subalgebras.
+
+### 9.2. The maximal torus and semisimple IC products
+
+The composite \(\widehat T\to\widetilde G\to R\) is a closed immersion. To check the coordinate surjection, repeat §6 using the coefficients of simple ICs, which now lie in \(A_R\). Every antidominant \(\eta\) occurs as the one-dimensional weight \(F_\eta(IC_{w_0\eta})\), so its coefficient restricts to \(e^\eta\). Those coweights and their negatives generate \(L\), giving every Laurent monomial in \(\Lambda[L]\).
+
+It is a geometrically maximal torus of \(R\). The proof in §7.3 applies directly to \(R\): all its simples have the one-dimensional largest \(\gamma=-2\rho\) line of (1.3). If a maximal torus containing \(\widehat T\) had a root vanishing on \(\gamma\), a strictly dominant ordinary highest-weight representation would have two distinct vectors of largest \(\gamma\)-weight, as proved there. Thus \(\gamma\) is regular. Restriction of dominant highest weights to \(\widehat T\) is injective because it determines the inflated IC label. Adding a sufficiently large dominant weight then proves injectivity on the full character lattice. The closed subtorus gives surjectivity, so the containing maximal torus equals \(\widehat T\). This proves maximality for the quotient itself; it does not infer it merely from maximality in \(\widetilde G\).
+
+The finite-type direction of Lesson 9, Theorem 10.1 proves complete reducibility of every finite-dimensional \(R\)-representation over the given characteristic-zero field. Its Lie-algebra input is the actual Casimir and invariant-projection proof of AG-RG-S06, Theorem 4.2. To specify the group bridge, over an algebraic closure use the central isogeny from a central torus times the semisimple derived group proved in AG-RG-05, §10. Decompose an inclusion of modules into central-torus weight spaces. Weyl's theorem supplies a Lie-equivariant projection on each space; AG-GS-01, Lemma 5.21 makes its kernel and image stable under the connected derived group. The projections are therefore equivariant for both factors, and faithful flatness of their central isogeny detects \(R\)-equivariance. Finally the equations for an equivariant projection with specified restriction are finitely many linear coaction equations over \(\Lambda\). Consistency after field extension implies consistency over \(\Lambda\), by row reduction. This proves complete reducibility over the original field, independently of Satake semisimplicity.
+
+In particular \(H(IC_\lambda)\otimes H(IC_\mu)\) is a semisimple \(R\)-module. Reconstruction (3.1) and full faithfulness of inflation identify its decomposition with an actual decomposition
+\[
+IC_\lambda*IC_\mu
+ \simeq\bigoplus_\nu IC_\nu^{\oplus m_{\lambda\mu}^{\nu}},
+\qquad m_{\lambda\mu}^{\nu}\in\mathbb Z_{\ge0},
+\tag{9.2}
+\]
+with finite support. Thus the full subcategory \(\mathcal S_G\) consisting of finite direct sums of ICs is closed under convolution, duals, subobjects and quotients, and
+\[
+\mathcal S_G\simeq\operatorname{Rep}^{\mathrm{fd}}_\Lambda(R)
+\tag{9.3}
+\]
+is a symmetric tensor equivalence. This is an unconditional semisimple tensor subcategory. It does not assert that every perverse object is in \(\mathcal S_G\), or that an extension in the larger heart splits.
+
+### 9.3. What the remaining kernel can do
+
+Write \(A=\bigcup_i A_i\) as the filtered union of finitely generated Hopf subalgebras containing \(A_R\), and set \(G_i=\operatorname{Spec}A_i\). Lesson 9 proves all quotient and transition maps faithfully flat. The groups \(G_i\) are smooth and geometrically connected, as in §7.1. Let
+\[
+U_i=\ker(G_i\longrightarrow R).
+\tag{9.4}
+\]
+Choose a faithful finite-dimensional \(G_i\)-module \(V_i\). A composition series has simple factors that inflate to simple \(\widetilde G\)-modules. Every such factor comes from \(R\), by Theorem 9.1. Consequently \(U_i\) acts trivially on each successive quotient of that series. A basis adapted to the series embeds \(U_i\), as a group scheme, in the upper unitriangular group of \(V_i\). This is a statement on every test algebra, since each trivial quotient action is a comodule identity. Cartier's theorem makes this finite-type closed kernel smooth. Thus all finite stages of \(\ker q\) are unipotent.
+
+Faithful flatness gives the torsor identity
+\[
+G_i\times U_i\simeq G_i\times_R G_i,
+\qquad (g,u)\longmapsto(g,gu).
+\tag{9.5}
+\]
+The map \(G_i\to R\) is faithfully flat and finitely presented: both coordinate algebras are finitely generated over a field. Each geometric fibre is nonempty and, after choosing a point, translation identifies it with the smooth group \(U_i\). The actual flat-fibre criterion of Smooth morphisms, Theorem 3.1 therefore makes this map smooth. Its infinitesimal lifting property makes its derivative at the identity surjective; the kernel is \(\operatorname{Lie}U_i\), by the dual-number calculation in AG-GS-02, §1.1. At a rational smooth point the tangent dimension equals the local dimension, by the proved Jacobian criterion and cotangent calculation in AG-CA-18, Theorem 2.1 and §3. Apply this after algebraic closure to the three groups at their identities. Smooth group components all have the identity component's dimension, since translation permutes them. The resulting exact sequence of tangent spaces therefore gives
+\[
+\dim G_i=\dim R+\dim U_i.
+\tag{9.6}
+\]
+This proves the formula without assuming that the kernel vanishes or choosing a Levi section.
+
+It follows that a bound \(\dim G_i\le\dim R\) for every such finite stage would force \(U_i=1\). Here is the last step explicitly. A zero-dimensional smooth finite-type group is finite étale. Over an algebraic closure every element of it has finite order. A unitriangular matrix of finite order in characteristic zero is the identity: on its first nonzero superdiagonal the equation \((1+N)^m=1\) reads \(mN=0\), which is impossible for nonzero \(N\). Thus this reduced finite group has only its identity point, and is the trivial group scheme; faithful field descent gives \(U_i=1\). The torsor identity then makes \(G_i\to R\) an isomorphism. Hence every \(A_i=A_R\), so \(\widetilde G=R\).
+
+No such bound for arbitrary \(G_i\) has been established here. The common torus and the complete list of simple representations do not imply it. For example, let a connected reductive group \(R_0\) act on a nonzero vector space \(V\), and form \(R_0\ltimes V_{\mathrm{add}}\). Every simple representation factors through \(R_0\): the normal additive group fixes a nonzero vector by Lemma 2.A, and normality makes its fixed space the whole simple. Its inflated simple tensor products are semisimple. Nevertheless the representation
+\[
+(r,u)(a,v)=(a,rv+au)
+\quad\text{on }\Lambda\oplus V
+\tag{9.7}
+\]
+has a nonsplit exact sequence \(0\to V\to\Lambda\oplus V\to\Lambda\to0\). An invariant section would send \(1\) to \((1,v_0)\); translation by \((1,u)\) changes it to \((1,v_0+u)\), excluding such a section. The displayed formula respects multiplication \((r,u)(s,w)=(rs,u+rw)\), so this is an actual algebraic representation and an explicit extension obstruction.
+
+### 9.4. When the quotient is the whole group
+
+If the Satake heart is semisimple, every object is a finite sum of ICs. Then (9.3) is the entire equivalence (3.1), so \(A=A_R\), \(q\) is an isomorphism, and \(\widetilde G\) is finite type and reductive. Conversely if \(q\) is an isomorphism, complete reducibility of \(R\) makes the whole heart semisimple. Thus the remaining issue is precisely whether the unipotent kernel acts nontrivially on extensions.
+
+The IC parity assertion (P) of Lesson 6, §5 implies semisimplicity by its proved Proposition 5.2. Its Proposition 5.3 gives another sufficient condition, \(\Delta_\lambda=IC_\lambda\) for all \(\lambda\); the boundary-kernel formula (5.11) there identifies the corresponding extension obstruction. General parity, these standard-object equalities and the finite-stage bound above remain unproved. Theorem 9.1 and (9.2)–(9.3) require none of them. The rational-adic extension over other algebraically closed base fields also requires its own proofs of the classical sheaf inputs; it is not supplied by these complex-analytic arguments.
 
 ## 10. Exercises and complete solutions
 
@@ -342,4 +416,4 @@ Take a maximal torus \(T_R\supset S\). The cocharacter \(\gamma=-2\rho\) has a o
 
 ## Freely accessible reading
 
-I. Mirković and K. Vilonen, [*Geometric Langlands duality and representations of algebraic groups over commutative rings*, free preprint](https://arxiv.org/abs/math/0401222), §6, Proposition 6.4, treats the tensor compatibility of weight functors. The relative cuts, their equal-height separation and their canonical maps are proved in §5 above using the exact earlier classical sheaf operations. X. Zhu, [*An introduction to affine Grassmannians and the geometric Satake equivalence*, free survey](https://arxiv.org/abs/1603.05593v2), is complementary reading for fusion and the dual-group construction. Neither citation supplies an omitted proof of finite type or reductivity.
+I. Mirković and K. Vilonen, [*Geometric Langlands duality and representations of algebraic groups over commutative rings*, free preprint](https://arxiv.org/abs/math/0401222), §6, Proposition 6.4, treats the tensor compatibility of weight functors. The relative cuts, their equal-height separation and their canonical maps are proved in §5 above using the exact earlier classical sheaf operations. X. Zhu, [*An introduction to affine Grassmannians and the geometric Satake equivalence*, free survey](https://arxiv.org/abs/1603.05593v2), is complementary reading for fusion and the dual-group construction. Section 9 proves its finite reductive quotient and its semisimple IC tensor subcategory; neither citation supplies the missing vanishing of the full group's unipotent kernel.

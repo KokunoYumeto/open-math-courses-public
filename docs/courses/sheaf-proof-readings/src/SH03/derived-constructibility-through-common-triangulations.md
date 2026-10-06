@@ -2,7 +2,7 @@
 
 A bounded complex can have constructible cohomology even when the sheaves in a particular resolution are not constructible. We will replace that resolution by a bounded complex of constructible sheaves, and prove that this replacement preserves every derived morphism. A common triangulation supplies the local algebra. A second triangulation, chosen after a morphism has been represented by a roof, checks that no extra morphisms disappear.
 
-Use Constructibility from microsupport and perfect stalks for the definitions and the abelian constructible categories, and Constructible sheaves on a triangulation for its Theorems 5 and 7. The compatible ordinary refinement is proved in Microlocal stratifications by removing bad loci. We import the subanalytic triangulation theorem: a locally finite subanalytic partition of a finite-dimensional real analytic manifold admits a locally finite triangulation whose open simplex images are subanalytic analytic submanifolds, each contained in one partition member. The compatible geometric triangulation is stated in Kashiwara's freely accessible Riemann–Hilbert paper. It is a geometric prerequisite; its proof is separate from the sheaf argument below.
+Use Constructibility from microsupport and perfect stalks for the definitions and the abelian constructible categories, and Constructible sheaves on a triangulation for its Theorems 5 and 7. The compatible ordinary refinement is proved in Microlocal stratifications by removing bad loci. The geometric input is proved in Compatible triangulations on arbitrary analytic manifolds: a locally finite subanalytic partition of a finite-dimensional real analytic manifold admits a locally finite triangulation whose open simplex images are subanalytic analytic submanifolds, each contained in one partition member. The analytic manifolds here have the Hausdorff, second-countable, boundaryless conventions of that proof. Its proper embedding and analytic-coordinate recovery supply the noncompact manifold case, not just a compact polyhedron. Kashiwara's freely accessible Riemann–Hilbert paper is credited for the geometric triangulation used in the sheaf argument; the exact programme proof and its lower prerequisites are distinguished below.
 
 *Original programme exposition by GPT-6.1 Sol (OpenAI), Ultra, September 2026; source comparison and editorial revision by GPT-6 Astra (OpenAI), Ultra, October 2026. Independently expressed programme text is dedicated under CC0. Human sources retain their own terms.*
 
@@ -51,7 +51,7 @@ from a locally finite simplicial complex of dimension at most \(n\), such that e
 
 **Proof.** For each sheaf choose a locally finite subanalytic cover on which its restrictions are locally constant. The finite family of covers is locally finite when their members are taken together. Apply the compatible ordinary refinement to their exact membership cells. It gives a locally finite subanalytic partition into analytic submanifolds, with each partition member lying in a suitable member of every original cover. Restriction of each \(F_a\) to every partition member is therefore locally constant.
 
-Apply the imported triangulation theorem to this partition. Each open simplex image lies in a partition member, so the restriction of \(i^{-1}F_a\) to the open simplex is locally constant. An open simplex is contractible and locally simply connected; constant transport of a local system has no monodromy there. The restriction is thus constant, with no assumption of finite rank. Its stalk at \(s\) is the original stalk at \(i(s)\), which proves the finite assertion. The dimension bound comes from the dimensions of the simplex images as submanifolds of \(X\). \(\square\)
+Apply the manifold triangulation theorem to this locally finite partition. Its compatibility is simultaneous for the whole family; its final rank argument bounds every simplex dimension by the dimension of the manifold. Each open simplex image lies in a partition member, so the restriction of \(i^{-1}F_a\) to the open simplex is locally constant. An open simplex is contractible and locally simply connected; constant transport of a local system has no monodromy there. The restriction is thus constant, with no assumption of finite rank. Its stalk at \(s\) is the original stalk at \(i(s)\), which proves the finite assertion. The dimension bound comes from the dimensions of the simplex images as submanifolds of \(X\). \(\square\)
 
 The homeomorphism \(i\) is not asserted analytic on all of \(|S|\). No differential or cotangent pullback by \(i\) is used. Ordinary sheaf inverse and direct image along a homeomorphism are inverse exact equivalences.
 
@@ -144,7 +144,24 @@ F^\bullet\xleftarrow{\ s\ }Q^\bullet
 \tag{10}
 \]
 
-All its complexes are bounded complexes in \(\mathcal C_X\). We can convert it into a right roof within the same category. Use the cohomological cone convention
+All its complexes are bounded complexes in \(\mathcal C_X\).
+
+The fraction construction is Complexes, cones and localization, Theorem 4.2. It applies to the abelian category \(\mathcal C_X\) without an injective or projective hypothesis. Its fraction squares and cancellation use finite direct sums, shifts and cones, so they also stay inside the bounded homotopy category when their inputs are bounded.
+
+Here is why bounded roofs compute the same morphisms as the full ambient localization. Choose integers \(a\leq b\) containing the term supports of \(F^\bullet,G^\bullet\). For any roof (10), even one initially having unbounded \(Q\), its denominator makes \(H^j(Q)=0\) outside that interval. First take the good truncation \(L=\tau_{\leq b}Q\), with \(\ker d_Q^b\) at its top; its inclusion into \(Q\) is a quasi-isomorphism. Restrict both roof maps to \(L\). Next put \(P=\tau_{\geq a}L\), with \(L^a/\operatorname{im}d_L^{a-1}\) at its bottom. Both maps factor through the quasi-isomorphism \(L\to P\): their degree-\(a\) components kill that image, because the target has zero term in degree \(a-1\). Thus
+
+\[
+F^\bullet\xleftarrow{\ s_P\ }P^\bullet
+\xrightarrow{\ a_P\ }G^\bullet,
+\qquad P^j=0\quad(j<a\text{ or }j>b),
+\tag{10b}
+\]
+
+is the same roof class, using \(L\) as their common refinement. All cycles, images and quotients stay in \(\mathcal C_X\), since it is abelian and its inclusion is exact.
+
+Equality is preserved as well. Take a common refinement between two bounded roofs in the full homotopy localization and choose \([a,b]\) containing the term supports of both middle complexes and both endpoints. Truncate the refining complex in the same order. The comparison chain maps factor as above. Their homotopies also restrict and descend: the degree-\(a\) homotopy component has target degree \(a-1\), hence is zero; at the top, \(d^b\) is zero on the chosen kernel. The remaining components are unchanged, and the homotopy equations consequently survive both truncations. The resulting bounded complex is still a common refinement, with quasi-isomorphic denominator. This proves full faithfulness of the bounded localization, not only existence of bounded representatives. The good-truncation and quasi-isomorphism facts used here are proved in Proposition 5.2 of the same lesson.
+
+We can convert this bounded left roof into a right roof within the same category. Use the cohomological cone convention
 \(\operatorname{Cone}(u)^j=B^j\oplus A^{j+1}\),
 with differential \((b,q)\mapsto(d_Bb+u(q),-d_Aq)\), for \(u:A\to B\). Put
 
@@ -216,7 +233,7 @@ The projective resolutions used to prove (5) need not have globally finitely man
 
 ## What the equivalences preserve
 
-Both equivalences commute with shifts and triangles, and they preserve ordinary cohomology sheaves. They therefore identify the usual bounded truncations. For weakly constructible sheaves \(A,B\) and \(r\geq0\), Theorem 1 gives
+Both equivalences commute with shifts and triangles, and they preserve ordinary cohomology sheaves. They therefore identify the usual bounded truncations, whose exact construction and naturality are proved in Complexes, cones and localization, Lemma 5.3. For weakly constructible sheaves \(A,B\) and \(r\geq0\), Theorem 1 gives
 
 \[
 \operatorname{Ext}^r_{\mathcal C_X}(A,B)
@@ -224,7 +241,7 @@ Both equivalences commute with shifts and triangles, and they preserve ordinary 
 \tag{17}
 \]
 
-Theorem 2 gives the corresponding identity in the finite category when \(A,B\) have finite stalks and the extra ring hypothesis holds. Nontrivial extensions, morphisms represented by roofs and connecting maps in truncation triangles are all preserved.
+For positive degrees, the full extension comparison identifies Yoneda classes in either abelian heart with its derived morphisms. That general proof uses only abelian-category localization and does not use the K3 example or the real-constructible equivalence proved here, so the dependency is not circular. In degree zero the roof calculation factors both maps through the degree-zero cohomology of its middle complex and gives the ordinary Hom group. Theorem 2 gives the corresponding identity in the finite category when \(A,B\) have finite stalks and the extra ring hypothesis holds. Nontrivial extensions, morphisms represented by roofs and connecting maps in truncation triangles are all preserved.
 
 A chosen triangulation is a device in these proofs, not additional structure attached to an object of the final category. One can refine it to accommodate a new complex or a new morphism. The full constructible category allows these refinements, which is essential to the faithfulness argument.
 
@@ -308,16 +325,16 @@ Its summands form a locally finite family. Is every stalk perfect? Is \(F\) an o
 Let \(k\) be a nonzero field and \(X=S^2\). Compare \(\operatorname{Hom}(k_X,k_X[2])\) in the ambient sheaf derived category and in the bounded derived category of local systems. Explain why this does not contradict Theorem 1.
 
 **Solution.** Every local system on the simply connected sphere is constant, so that abelian category is equivalent to \(k\)-vector spaces. Vector spaces have split exact sequences and are projective; the Hom group in its derived category is therefore zero.
-In the ambient category the Hom group is \(H^2(S^2;k)\). Here is its calculation. Cover the sphere by two slightly overlapping open hemispherical disks \(U,V\). Each disk has constant-sheaf cohomology \(k\) in degree zero only. Their intersection is an equatorial band. Cover that band by two angular strips whose intersection has two contractible components. Constant-sheaf acyclicity on these disk or rectangle charts and the Mayer–Vietoris sequence give the band's \(H^1\) as the cokernel of
+In the ambient category the Hom group is \(H^2(S^2;k)\). Here is its calculation. Cover the sphere by two slightly overlapping open hemispherical disks \(U,V\). The manifold sheaf/singular comparison, Theorem 1.3, applies to these disks and the rectangle charts used below, naturally in the coefficient module. Their contractions make positive singular cohomology vanish, so each disk has constant-sheaf cohomology \(k\) in degree zero only. Their intersection is an equatorial band. Cover that band by two angular strips whose intersection has two contractible components. Constant-sheaf acyclicity on these disk or rectangle charts and the Mayer–Vietoris sequence give the band's \(H^1\) as the cokernel of
 \[
 k\oplus k\longrightarrow k\oplus k,
 \qquad(u,v)\longmapsto(v-u,v-u),
 \]
-which is \(k\); its higher cohomology vanishes. The sphere's Mayer–Vietoris sequence now gives \(H^2(S^2;k)\simeq k\). Thus an ambient nonzero degree-two morphism is lost if every term is required to be a local system. Theorem 1 allows constructible terms with finer subanalytic strata. They can represent that morphism; the local-system category alone cannot. The ambient acyclicity used here is the same constant-sheaf topological prerequisite stated in the triangulation lesson.
+which is \(k\); its higher cohomology vanishes. The sphere's Mayer–Vietoris sequence now gives \(H^2(S^2;k)\simeq k\). Thus an ambient nonzero degree-two morphism is lost if every term is required to be a local system. Theorem 1 allows constructible terms with finer subanalytic strata. They can represent that morphism; the local-system category alone cannot. This supplies the constant-sheaf acyclicity used in this sphere calculation from an exact earlier programme comparison, rather than assuming that ordinary sheaf cohomology is homotopy invariant for arbitrary coefficients sheaves.
 
 ## References
 
-The primary sources are Kashiwara's *The Riemann–Hilbert Problem for Holonomic Systems*, Proposition 2.5 and Theorem 2.8 with its added-in-proof correction; Prelli's *Sheaves on Subanalytic Sites*, Lemma 2.1.1 and Theorem 2.1.2; and Lunts–Schnürer's *Categories of constructible sheaves*, Theorems 4.1 and 5.25, §6 and §7. The comparisons below specify their different coefficients, categories and proof mechanisms. Ordinary derived localization remains the categorical prerequisite for the explicit cone conversion (11)–(13).
+The primary sources are Kashiwara's *The Riemann–Hilbert Problem for Holonomic Systems*, Proposition 2.5 and Theorem 2.8 with its added-in-proof correction; Prelli's *Sheaves on Subanalytic Sites*, Lemma 2.1.1 and Theorem 2.1.2; and Lunts–Schnürer's *Categories of constructible sheaves*, Theorems 4.1 and 5.25, §6 and §7. The comparisons below specify their different coefficients, categories and proof mechanisms. Ordinary derived localization for the explicit cone conversion (11)–(13) is supplied by the exact earlier proof linked at (10); the bounded-roof argument there checks the required term bounds. Lower algebraic and geometric prerequisites retain their own proof obligations.
 
 ## The source roles in the common-triangulation argument
 
@@ -367,9 +384,28 @@ D^b_{\mathrm{sa},\mathrm{fin}}(k_{X_{\mathrm{sa}}}).
 \tag{20}
 \]
 
-**Proof.** The first equivalences are Theorems 1 and 2. For the site comparison, derive the adjunction. The exact \(\rho^{-1}\) makes \(\rho_*\) preserve injectives. For an injective resolution \(I^\bullet\) of an ordinary complex, (18) identifies \(\rho^{-1}\rho_*I^\bullet\) with \(I^\bullet\), including its differentials. The derived counit is consequently an isomorphism. Thus \(R\rho_*\) is fully faithful. We may calculate this in bounded-below categories: the finite dimension of \(X\) uniformly bounds section cohomology on every open set, so the derived image of a globally bounded complex is bounded.
+**Proof.** The first equivalences are Theorems 1 and 2. For the site comparison, derive the adjunction. The exact \(\rho^{-1}\) makes \(\rho_*\) preserve injectives. For an injective resolution \(I^\bullet\) of an ordinary complex, (18) identifies \(\rho^{-1}\rho_*I^\bullet\) with \(I^\bullet\), including its differentials. The derived counit is consequently an isomorphism. Thus \(R\rho_*\) is fully faithful. We may calculate this in bounded-below categories. The finite dimension of \(X\) uniformly bounds section cohomology on every open set by Dimension controls resolutions, (M2)–(M4). That proof treats arbitrary sheaves of modules, not just constant or constructible sheaves. Every open subset of our Hausdorff, second-countable manifold is again a countable-at-infinity manifold with the same dimension bound \(n\). Consequently, for every ordinary sheaf \(A\) and every subanalytic open \(U\),
 
-For a bounded ordinary constructible complex, filter by its finitely many cohomology sheaves. The lemma makes every such sheaf \(\rho_*\)-acyclic, so the resulting cohomology sequence gives
+\[
+H^q(U;A|_U)=0\quad(q>n),
+\qquad R^q\rho_*A=0\quad(q>n).
+\tag{20a}
+\]
+
+The second assertion follows by sheafifying the first presheaf of higher section groups, using the same injective-resolution description as in the acyclicity lemma. The proof in the linked dimension theorem begins with the arbitrary-sheaf compact-interval bound, projects one Euclidean coordinate at a time for compact supports, and constructs a finite c-soft resolution by dimension shifting. Its ordinary-section conclusion uses countability at infinity. Its named compact-support and soft-resolution foundations remain the prerequisites of that argument; the constant-sheaf/singular-cohomology comparison alone would not give (20a).
+
+Here is the passage from sheaves to bounded complexes, with the bound explicit. Suppose \(H^j(F)=0\) outside \([a,b]\). For each integer \(m\) the natural good-truncation triangle is
+
+\[
+\tau_{\leq m-1}F\longrightarrow\tau_{\leq m}F
+\longrightarrow H^m(F)[-m]\longrightarrow
+(\tau_{\leq m-1}F)[1].
+\tag{20b}
+\]
+
+The construction and naturality of this triangle were proved in Lemma 5.3. Apply \(R\rho_*\), which is a triangulated functor on the bounded-below categories. The derived image of its third term has cohomology only in degrees \([m,m+n]\), by (20a). Starting with \(\tau_{\leq a-1}F=0\) and using the long exact cohomology sequence for \(m=a,\ldots,b\) proves that \(R\rho_*F\) has cohomology only in \([a,b+n]\). Thus the derived image of every globally bounded ordinary complex is bounded. This argument does not assume constructibility or perfection of its terms.
+
+For a bounded ordinary constructible complex, filter by the same finitely many cohomology sheaves. The acyclicity lemma makes every such sheaf \(\rho_*\)-acyclic. The last sheaf term in (20b) therefore has derived image concentrated in degree \(m\), equal there to \(\rho_*H^m(F)\). Inductively the first term has no cohomology above degree \(m-1\). The long exact sequence identifies the new degree-\(m\) cohomology with \(\rho_*H^m(F)\), and preserves every lower cohomology group. Beginning at \(a\) proves the sharper bound \([a,b]\), including vanishing outside that interval. Naturality of the truncation triangles makes these identifications natural in \(F\); explicitly the identification in degree \(j\) is the map through \(R\rho_*\tau_{\leq j}F\), followed by its projection to \(R\rho_*(H^j(F)[-j])\). Thus
 
 \[
 H^j(R\rho_*F)\simeq\rho_*H^j(F).

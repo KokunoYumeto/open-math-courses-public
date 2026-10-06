@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banach holomorphy, generators, and resolvent limits · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-SG.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 15 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="banach-holomorphy-generators-and-resolvent-limits">Banach holomorphy, generators, and resolvent limits</h1>
+<p><strong>Course draft with exact existing programme theorem imports, local domain and endpoint arguments, and solved exercises.</strong></p>
+<p>Analytic continuation in modular theory moves between Banach-valued functions, unitary groups and unbounded generators. This lesson states the exact domains and convergence hypotheses used by the modular arguments. The existing programme proofs supply norming-dual holomorphy, Stone's theorem, invariant and analytic cores, resolvent convergence and logarithmic transport. Their original proof ownership is retained; the local derivative calculation, closure wrapper, bounded-transform check and solved examples remain.</p>
+<p>The two programme sources are <a href="../analytic-elements-strips-and-kms/analytic-elements-and-strip-arguments.html">Analytic elements and strip arguments</a> and <a href="../analytic-elements-strips-and-kms/holomorphy-in-banach-spaces-stone-s-theorem-and-resolvent-convergence.html">Holomorphy in Banach spaces, Stone's theorem and resolvent convergence</a>, written by Claude Opus 5.5 (Anthropic), September 2026, under CC0. The exact selected clauses are identified below. The proofs in those two lessons rely on complex-analysis, integration, spectral-calculus and analytic-generator results that are not all proved in these courses.</p>
+<p>The human-source antecedent is Takesaki, <em>Theory of Operator Algebras II</em>, Appendix A.1–A.6. Its printed A.6(ii) omits a necessary condition: on a nonzero Hilbert space, <span class="math" data-tex="\(A_n=nI\)">\(A_n=nI\)</span> has both half-plane resolvents tending to zero, while zero is not a self-adjoint resolvent. This correction already has an exact written programme owner, Theorem 8.2(5), with Lemma 8.1 and Example 8.3. SG-08 imports that result and preserves the counterexample. Earlier competing proofs are retained privately, without duplicate theorem ownership.</p>
+<h2 id="conventions-and-inputs"><span id="oa-mod-sg-01"></span><span id="OA-MOD-SG-01"></span>Conventions and inputs</h2>
+<p>Banach spaces and Hilbert spaces are complex. Hilbert inner products are
+linear in the first variable, and Hilbert spaces may have arbitrary dimension.
+For a densely defined operator <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> is its actual domain. A graph
+core is dense in <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> for</p>
+<span class="math math-display" data-tex="\[
+\|x\|_T^2=\|x\|^2+\|Tx\|^2.
+\tag{SG.1}
+\]">\[
+\|x\|_T^2=\|x\|^2+\|Tx\|^2.
+\tag{SG.1}
+\]</span>
+<p>The exact inputs are scalar Cauchy formulas and power series; the
+Banach-valued Riemann and improper integrals constructed
+in MA-02; and the self-adjoint spectral calculus of SK-05–SK-09. In particular,
+SK-09 supplies bounded continuous functional-calculus convergence once both
+nonreal resolvents converge strongly. The written Baire and uniform-boundedness
+argument in <a href="OA-MOD-AB.html#oa-mod-ab-03">Baire category and uniform boundedness</a> supplies the norming-dual
+boundedness input; the exact programme theorem proofs named below retain their
+other analytic-generator and spectral entry contracts.</p>
+<p>For self-adjoint <span class="math" data-tex="\(A_n,A\)">\(A_n,A\)</span>, <strong>strong resolvent convergence</strong> means</p>
+<span class="math math-display" data-tex="\[
+(A_n-z)^{-1}x\longrightarrow(A-z)^{-1}x
+\quad(x\in H, z\in\mathbb C\setminus\mathbb R).
+\tag{SG.2}
+\]">\[
+(A_n-z)^{-1}x\longrightarrow(A-z)^{-1}x
+\quad(x\in H, z\in\mathbb C\setminus\mathbb R).
+\tag{SG.2}
+\]</span>
+<p>No assertion below replaces this vectorwise condition by operator-norm
+convergence.</p>
+<h2 id="norming-scalar-tests-detect-banach-holomorphy">Norming scalar tests detect Banach holomorphy</h2>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> be a Banach space, <span class="math" data-tex="\(\Omega\subseteq\mathbb C\)">\(\Omega\subseteq\mathbb C\)</span> open and <span class="math" data-tex="\(f:\Omega\to E\)">\(f:\Omega\to E\)</span>. A subspace <span class="math" data-tex="\(N\subseteq E^*\)">\(N\subseteq E^*\)</span> is norming when</p>
+<span class="math math-display" data-tex="\[
+\|x\|=\sup\{|x&#x27;(x)|:x&#x27;\in N,\ \|x&#x27;\|\leq1\}\qquad(x\in E).
+\tag{SG.3}
+\]">\[
+\|x\|=\sup\{|x&#x27;(x)|:x&#x27;\in N,\ \|x&#x27;\|\leq1\}\qquad(x\in E).
+\tag{SG.3}
+\]</span>
+<p>Read <strong>Lemma 2.1(1)–(2)</strong> of <a href="../analytic-elements-strips-and-kms/analytic-elements-and-strip-arguments.html">Analytic elements and strip arguments</a>. It gives the following equivalent descriptions:</p>
+<ol>
+<li>Near every point, <span class="math" data-tex="\(f\)">\(f\)</span> has a norm-convergent power series in <span class="math" data-tex="\(E\)">\(E\)</span>.</li>
+<li>Every <span class="math" data-tex="\(x&#x27;\circ f\)">\(x&#x27;\circ f\)</span> is holomorphic for a norm-closed norming subspace <span class="math" data-tex="\(N\subseteq E^*\)">\(N\subseteq E^*\)</span>.</li>
+<li>The function is locally norm bounded and every <span class="math" data-tex="\(x&#x27;\circ f\)">\(x&#x27;\circ f\)</span> is holomorphic for a norming subspace <span class="math" data-tex="\(N\)">\(N\)</span>, which need not be closed.</li>
+</ol>
+<p>The complete proof, including uniform boundedness on the closed norming space, belongs to that programme lemma. It first uses the closed-range isometry</p>
+<span class="math math-display" data-tex="\[
+J:E\longrightarrow N^*,\qquad (Jx)(x&#x27;)=x&#x27;(x),
+\tag{SG.4}
+\]">\[
+J:E\longrightarrow N^*,\qquad (Jx)(x&#x27;)=x&#x27;(x),
+\tag{SG.4}
+\]</span>
+<p>obtains <span class="math" data-tex="\(M=\sup_{|z-z_0|\le R}\|f(z)\|&lt;\infty\)">\(M=\sup_{|z-z_0|\le R}\|f(z)\|&lt;\infty\)</span>, and forms the scalar Cauchy coefficients in <span class="math" data-tex="\(N^*\)">\(N^*\)</span>. Only after proving norm continuity does it recover those coefficients by norm integrals in <span class="math" data-tex="\(E\)">\(E\)</span>. In condition 3, local boundedness first extends the scalar tests to <span class="math" data-tex="\(\overline N\)">\(\overline N\)</span>; it is not silently deduced from an incomplete norming space. SG-03 applies precisely the resulting norm power series.</p>
+<h2 id="norm-derivatives-and-vector-cauchy-coefficients">Norm derivatives and vector Cauchy coefficients</h2>
+<p>Under any condition of SG-02, <span class="math" data-tex="\(f\)">\(f\)</span> is norm holomorphic. If</p>
+<span class="math math-display" data-tex="\[
+f(z)=\sum_{k\geq0}a_k(z-z_0)^k
+\]">\[
+f(z)=\sum_{k\geq0}a_k(z-z_0)^k
+\]</span>
+<p>on a disc, then termwise norm differentiation on every smaller disc gives</p>
+<span class="math math-display" data-tex="\[
+f^{(m)}(z_0)=m!a_m,
+\qquad
+a_m=\frac{1}{2\pi i}
+\int_{|\zeta-z_0|=\rho}
+\frac{f(\zeta)}{(\zeta-z_0)^{m+1}}\,d\zeta
+\tag{SG.7}
+\]">\[
+f^{(m)}(z_0)=m!a_m,
+\qquad
+a_m=\frac{1}{2\pi i}
+\int_{|\zeta-z_0|=\rho}
+\frac{f(\zeta)}{(\zeta-z_0)^{m+1}}\,d\zeta
+\tag{SG.7}
+\]</span>
+<p>for <span class="math" data-tex="\(0&lt;\rho&lt;R\)">\(0&lt;\rho&lt;R\)</span>. The last integral is an <span class="math" data-tex="\(E\)">\(E\)</span>-valued norm integral. Indeed,
+SG-02 has already proved norm continuity on the circle; applying each
+<span class="math" data-tex="\(x&#x27;\in E^*\)">\(x&#x27;\in E^*\)</span> to its Riemann sums recovers the scalar Cauchy coefficient, and
+bounded functionals separate vectors. Thus weak holomorphy has not been used
+to assume the norm continuity that it is meant to prove.</p>
+<h2 id="stone-s-theorem-with-the-derivative-domain">Stone's theorem with the derivative domain</h2>
+<p>Read <strong>Theorem 8.1(3)</strong> of <a href="../analytic-elements-strips-and-kms/analytic-elements-and-strip-arguments.html">Analytic elements and strip arguments</a>. For a strongly continuous unitary group <span class="math" data-tex="\(U\)">\(U\)</span> on an arbitrary Hilbert space, it constructs the unique positive injective self-adjoint operator <span class="math" data-tex="\(B=U_{-i}\)">\(B=U_{-i}\)</span> with <span class="math" data-tex="\(U_t=B^{it}\)">\(U_t=B^{it}\)</span>. Its self-adjoint logarithm <span class="math" data-tex="\(A=\log B\)">\(A=\log B\)</span> therefore satisfies</p>
+<span class="math math-display" data-tex="\[
+U_t=e^{itA}\qquad(t\in\mathbb R),
+\tag{SG.8}
+\]">\[
+U_t=e^{itA}\qquad(t\in\mathbb R),
+\tag{SG.8}
+\]</span>
+<p>with the exact domain and action</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(A)&amp;=\left\{x:\lim_{h\to0}\frac{U_hx-x}{h}\text{ exists in }H\right\},\\
+iAx&amp;=\lim_{h\to0}\frac{U_hx-x}{h}.
+\end{aligned}
+\tag{SG.9}
+\]">\[
+\begin{aligned}
+D(A)&amp;=\left\{x:\lim_{h\to0}\frac{U_hx-x}{h}\text{ exists in }H\right\},\\
+iAx&amp;=\lim_{h\to0}\frac{U_hx-x}{h}.
+\end{aligned}
+\tag{SG.9}
+\]</span>
+<p>Conversely, the spectral group of a self-adjoint <span class="math" data-tex="\(A\)">\(A\)</span> is strongly continuous and has this derivative domain. The derivative determines the operator, including its domain, so the self-adjoint generator is unique. The complete Stone and converse-domain proof remains with the programme theorem; its analytic-generator construction and preceding spectral/strip inputs are retained. Positivity and injectivity of <span class="math" data-tex="\(B\)">\(B\)</span> do not say that <span class="math" data-tex="\(B\)">\(B\)</span> is bounded or bounded below.</p>
+<h2 id="a-dense-invariant-generator-domain-is-a-core">A dense invariant generator domain is a core</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be self-adjoint and <span class="math" data-tex="\(U_t=e^{itA}\)">\(U_t=e^{itA}\)</span>. <strong>Theorem 8.1(4)</strong> of <a href="../analytic-elements-strips-and-kms/analytic-elements-and-strip-arguments.html">Analytic elements and strip arguments</a> states: if a linear subspace <span class="math" data-tex="\(D\subseteq D(A)\)">\(D\subseteq D(A)\)</span> is dense in <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(U_tD\subseteq D\)">\(U_tD\subseteq D\)</span> for every real <span class="math" data-tex="\(t\)">\(t\)</span>, then <span class="math" data-tex="\(D\)">\(D\)</span> is a graph core for <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>The full proof belongs to that theorem. It first closes the restricted graph and uses Gaussian averages inside that closed graph; the proposed core itself need not be complete. Invariance is required on <span class="math" data-tex="\(D\)">\(D\)</span>, and Hilbert-norm density alone does not imply graph density. The core conclusion includes convergence of both <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(Ax\)">\(Ax\)</span> in the norm (SG.1).</p>
+<h2 id="dense-analytic-vectors-force-essential-self-adjointness">Dense analytic vectors force essential self-adjointness</h2>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be a densely defined symmetric operator. A vector <span class="math" data-tex="\(x\)">\(x\)</span> is
+<strong>analytic for <span class="math" data-tex="\(S\)">\(S\)</span></strong> if <span class="math" data-tex="\(x\in\bigcap_{k\geq0}D(S^k)\)">\(x\in\bigcap_{k\geq0}D(S^k)\)</span> and, for some
+<span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^\infty\frac{r^k}{k!}\|S^kx\|&lt;\infty.
+\tag{SG.15}
+\]">\[
+\sum_{k=0}^\infty\frac{r^k}{k!}\|S^kx\|&lt;\infty.
+\tag{SG.15}
+\]</span>
+<p>If the analytic vectors form a dense subspace <span class="math" data-tex="\(D_{\mathrm{an}}\)">\(D_{\mathrm{an}}\)</span>, then
+<span class="math" data-tex="\(S|_{D_{\mathrm{an}}}\)">\(S|_{D_{\mathrm{an}}}\)</span> is essentially self-adjoint.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(D_0=D_{\mathrm{an}}\)">\(D_0=D_{\mathrm{an}}\)</span>, with analyticity still defined for
+the original operator <span class="math" data-tex="\(S\)">\(S\)</span>. This subspace is invariant under <span class="math" data-tex="\(S\)">\(S\)</span>.
+Indeed, if (SG.15) holds at <span class="math" data-tex="\(r\)">\(r\)</span>, then for <span class="math" data-tex="\(0&lt;r&#x27;&lt;r\)">\(0&lt;r&#x27;&lt;r\)</span> the series for
+<span class="math" data-tex="\(Sx\)">\(Sx\)</span> is bounded by the original series times the bounded factors
+<span class="math" data-tex="\((k+1)(r&#x27;/r)^k/r\)">\((k+1)(r&#x27;/r)^k/r\)</span>. Thus <span class="math" data-tex="\(Sx\in D_0\)">\(Sx\in D_0\)</span>.</p>
+<p>The densely defined symmetric restriction <span class="math" data-tex="\(S|_{D_0}\)">\(S|_{D_0}\)</span> is closable. Set</p>
+<span class="math math-display" data-tex="\[
+T=\overline{S|_{D_0}}.
+\]">\[
+T=\overline{S|_{D_0}}.
+\]</span>
+<p>For <span class="math" data-tex="\(x\in D_0\)">\(x\in D_0\)</span>, invariance gives <span class="math" data-tex="\(T^kx=S^kx\)">\(T^kx=S^kx\)</span> for every <span class="math" data-tex="\(k\)">\(k\)</span>.
+Consequently the analytic vectors <span class="math" data-tex="\(E_{\mathrm{an}}\)">\(E_{\mathrm{an}}\)</span> of the closed
+symmetric operator <span class="math" data-tex="\(T\)">\(T\)</span> contain the dense subspace <span class="math" data-tex="\(D_0\)">\(D_0\)</span>.</p>
+<p>Apply <strong>Theorem 8.1(5)</strong> of <a href="../analytic-elements-strips-and-kms/analytic-elements-and-strip-arguments.html">Analytic elements and strip arguments</a> to this closed, densely defined symmetric <span class="math" data-tex="\(T\)">\(T\)</span>. It has a dense space of analytic vectors, so the programme theorem makes <span class="math" data-tex="\(T\)">\(T\)</span> self-adjoint. Its full closed-operator proof belongs to that theorem. By the definition of <span class="math" data-tex="\(T=\overline{S|_{D_0}}\)">\(T=\overline{S|_{D_0}}\)</span>, the original restriction is essentially self-adjoint. Moreover <span class="math" data-tex="\(T\subseteq\overline S\subseteq S^*\subseteq T^*=T\)">\(T\subseteq\overline S\subseteq S^*\subseteq T^*=T\)</span>, so <span class="math" data-tex="\(\overline S=T\)">\(\overline S=T\)</span>. This last closure argument is the local extension from the programme's closed-operator hypothesis; it never applies that theorem directly to a nonclosed <span class="math" data-tex="\(S\)">\(S\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="resolvents-and-unitary-groups-carry-the-same-convergence">Resolvents and unitary groups carry the same convergence</h2>
+<p>Read <strong>Theorem 7.4</strong>, with <strong>Lemma 7.2(4)</strong>, of <a href="../analytic-elements-strips-and-kms/holomorphy-in-banach-spaces-stone-s-theorem-and-resolvent-convergence.html">Holomorphy in Banach spaces, Stone's theorem and resolvent convergence</a>. Let <span class="math" data-tex="\(A_j\)">\(A_j\)</span> and the proposed limit <span class="math" data-tex="\(A\)">\(A\)</span> be self-adjoint, with <span class="math" data-tex="\(j\)">\(j\)</span> in a directed set. The theorem gives the equivalence of:</p>
+<ol>
+<li><span class="math" data-tex="\((A_j-z)^{-1}\to(A-z)^{-1}\)">\((A_j-z)^{-1}\to(A-z)^{-1}\)</span> strongly for every nonreal <span class="math" data-tex="\(z\)">\(z\)</span>.</li>
+<li>These resolvents converge weakly at one nonreal <span class="math" data-tex="\(z_0\)">\(z_0\)</span>, to the resolvent of this given <span class="math" data-tex="\(A\)">\(A\)</span>.</li>
+<li><span class="math" data-tex="\(f(A_j)\to f(A)\)">\(f(A_j)\to f(A)\)</span> strongly for every bounded continuous <span class="math" data-tex="\(f:\mathbb R\to\mathbb C\)">\(f:\mathbb R\to\mathbb C\)</span>.</li>
+<li>The unitary groups converge strongly, locally uniformly in time:</li>
+</ol>
+<span class="math math-display" data-tex="\[
+\sup_{|t|\leq T}\|(e^{itA_j}-e^{itA})x\|\longrightarrow0
+\quad(T&lt;\infty,\ x\in H).
+\tag{SG.19}
+\]">\[
+\sup_{|t|\leq T}\|(e^{itA_j}-e^{itA})x\|\longrightarrow0
+\quad(T&lt;\infty,\ x\in H).
+\tag{SG.19}
+\]</span>
+<p>These conditions imply pointwise weak, and hence pointwise strong, convergence of the unitary groups. <strong>For sequences</strong>, that pointwise condition also implies all four conditions. The reverse implication from pointwise unitary convergence is not asserted for arbitrary nets. The programme's <strong>Exercise 5 and full solution</strong> constructs a real net <span class="math" data-tex="\(h_\alpha\to+\infty\)">\(h_\alpha\to+\infty\)</span> with <span class="math" data-tex="\(e^{ith_\alpha}\to1\)">\(e^{ith_\alpha}\to1\)</span> for each fixed <span class="math" data-tex="\(t\)">\(t\)</span>, while <span class="math" data-tex="\((h_\alpha-i)^{-1}\to0\ne(0-i)^{-1}\)">\((h_\alpha-i)^{-1}\to0\ne(0-i)^{-1}\)</span>. Its finite simultaneous-approximation proof remains with that exercise. This distinction avoids using sequential dominated convergence for nets.</p>
+<p>The full convergence proof belongs to Theorem 7.4. The given self-adjoint limit in condition 2 is essential; merely knowing that one or two resolvents have bounded-operator limits is the different problem in SG-08. Continuity of <span class="math" data-tex="\(f\)">\(f\)</span> in condition 3 is essential.</p>
+<p>For the sign convention used here, <strong>Lemma 7.1(4)</strong> of the same programme lesson gives the exact specializations</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(A_j-i)^{-1}x&amp;=i\int_0^\infty e^{-t}e^{-itA_j}x\,dt,\\
+(A_j+i)^{-1}x&amp;=-i\int_0^\infty e^{-t}e^{itA_j}x\,dt.
+\end{aligned}
+\tag{SG.20}
+\]">\[
+\begin{aligned}
+(A_j-i)^{-1}x&amp;=i\int_0^\infty e^{-t}e^{-itA_j}x\,dt,\\
+(A_j+i)^{-1}x&amp;=-i\int_0^\infty e^{-t}e^{itA_j}x\,dt.
+\end{aligned}
+\tag{SG.20}
+\]</span>
+<p>Their convergence follows from the imported theorem under its indicated sequence or locally uniform hypotheses. Norm integrals and spectral domains keep the named MA/SK entry contracts.</p>
+<h2 id="corrected-limits-of-two-half-plane-resolvents">Corrected limits of two half-plane resolvents</h2>
+<p>Read <strong>Lemma 8.1 and Theorem 8.2(1)–(5)</strong> of <a href="../analytic-elements-strips-and-kms/holomorphy-in-banach-spaces-stone-s-theorem-and-resolvent-convergence.html">Holomorphy in Banach spaces, Stone's theorem and resolvent convergence</a>. For a net of self-adjoint <span class="math" data-tex="\(A_j\)">\(A_j\)</span>, choose <span class="math" data-tex="\(z_+\in\mathbb C_+\)">\(z_+\in\mathbb C_+\)</span> and <span class="math" data-tex="\(z_-\in\mathbb C_-\)">\(z_-\in\mathbb C_-\)</span>, and suppose</p>
+<span class="math math-display" data-tex="\[
+(A_j-z_+)^{-1}\longrightarrow R_+,
+\qquad (A_j-z_-)^{-1}\longrightarrow R_-
+\tag{SG.21}
+\]">\[
+(A_j-z_+)^{-1}\longrightarrow R_+,
+\qquad (A_j-z_-)^{-1}\longrightarrow R_-
+\tag{SG.21}
+\]</span>
+<p>strongly. The programme theorem supplies strong limits <span class="math" data-tex="\(R(z)\)">\(R(z)\)</span> at every nonreal parameter, satisfying</p>
+<span class="math math-display" data-tex="\[
+R(z)-R(w)=(z-w)R(z)R(w),\qquad R(z)^*=R(\bar z).
+\tag{SG.23}
+\]">\[
+R(z)-R(w)=(z-w)R(z)R(w),\qquad R(z)^*=R(\bar z).
+\tag{SG.23}
+\]</span>
+<p>Their common kernel <span class="math" data-tex="\(N\)">\(N\)</span> has orthogonal complement</p>
+<span class="math math-display" data-tex="\[
+N^\perp=\overline{\operatorname{ran}R(z)}.
+\tag{SG.25}
+\]">\[
+N^\perp=\overline{\operatorname{ran}R(z)}.
+\tag{SG.25}
+\]</span>
+<p>Writing <span class="math" data-tex="\(P\)">\(P\)</span> for the projection onto <span class="math" data-tex="\(N^\perp\)">\(N^\perp\)</span>, the theorem constructs a unique self-adjoint <span class="math" data-tex="\(A_0\)">\(A_0\)</span> on the Hilbert space <span class="math" data-tex="\(N^\perp\)">\(N^\perp\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+R(z)=(A_0-z)^{-1}P.
+\]">\[
+R(z)=(A_0-z)^{-1}P.
+\]</span>
+<p>For every <span class="math" data-tex="\(f\in C_0(\mathbb R)\)">\(f\in C_0(\mathbb R)\)</span>, it also gives <span class="math" data-tex="\(f(A_j)\to f(A_0)P\)">\(f(A_j)\to f(A_0)P\)</span> strongly. There is a densely defined self-adjoint strong resolvent limit on the <strong>whole</strong> <span class="math" data-tex="\(H\)">\(H\)</span> exactly when <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, equivalently when <span class="math" data-tex="\(R_+\)">\(R_+\)</span> is injective. In that case the limit is unique, its domain is <span class="math" data-tex="\(\operatorname{ran}R(z_0)\)">\(\operatorname{ran}R(z_0)\)</span>, and Lemma 8.1 identifies its action by</p>
+<span class="math math-display" data-tex="\[
+A(R(z_0)x)=x+z_0R(z_0)x.
+\tag{SG.26}
+\]">\[
+A(R(z_0)x)=x+z_0R(z_0)x.
+\tag{SG.26}
+\]</span>
+<p>The complete propagation, adjoint, domain and necessity proofs belong to the programme lemma and theorem. The construction on <span class="math" data-tex="\(N^\perp\)">\(N^\perp\)</span> includes a zero effective Hilbert space and does not erase the escaped subspace <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><strong>Solved source-error check.</strong> On a nonzero <span class="math" data-tex="\(H\)">\(H\)</span>, take <span class="math" data-tex="\(A_n=nI\)">\(A_n=nI\)</span>. For every nonreal <span class="math" data-tex="\(z\)">\(z\)</span>, <span class="math" data-tex="\((A_n-z)^{-1}=(n-z)^{-1}I\to0\)">\((A_n-z)^{-1}=(n-z)^{-1}I\to0\)</span> in norm. Both hypotheses hold but <span class="math" data-tex="\(N=H\)">\(N=H\)</span>; the zero operator cannot be a resolvent on <span class="math" data-tex="\(H\)">\(H\)</span>, because it is not injective and has no dense range. This is the defective Appendix A.6(ii) clause and the counterexample retained in SG-11. The correction and its complete general proof already have the programme owner Theorem 8.2(5), with Example 8.3; this lesson does not claim a second foundational correction.</p>
+<h2 id="convergence-on-one-common-core">Convergence on one common core</h2>
+<p>Read <strong>Theorem 7.6</strong> of <a href="../analytic-elements-strips-and-kms/holomorphy-in-banach-spaces-stone-s-theorem-and-resolvent-convergence.html">Holomorphy in Banach spaces, Stone's theorem and resolvent convergence</a>. Let <span class="math" data-tex="\(A_j\)">\(A_j\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span> be self-adjoint, and let <span class="math" data-tex="\(D\)">\(D\)</span> be a graph core for <span class="math" data-tex="\(A\)">\(A\)</span>. If each <span class="math" data-tex="\(x\in D\)">\(x\in D\)</span> belongs to <span class="math" data-tex="\(D(A_j)\)">\(D(A_j)\)</span> eventually, with the threshold allowed to depend on <span class="math" data-tex="\(x\)">\(x\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+A_jx\longrightarrow Ax\qquad(x\in D),
+\tag{SG.28}
+\]">\[
+A_jx\longrightarrow Ax\qquad(x\in D),
+\tag{SG.28}
+\]</span>
+<p>then <span class="math" data-tex="\(A_j\to A\)">\(A_j\to A\)</span> in the strong resolvent sense. The original common-core sequence statement is the special case <span class="math" data-tex="\(D\subseteq D(A_n)\)">\(D\subseteq D(A_n)\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>The full proof belongs to that programme theorem. Its bounded-resolvent estimate is applied on the dense subspace <span class="math" data-tex="\((A-i)D\)">\((A-i)D\)</span> and then extends to <span class="math" data-tex="\(H\)">\(H\)</span>. The proposed limit must already be self-adjoint, and <span class="math" data-tex="\(D\)">\(D\)</span> must be its graph core; an arbitrary Hilbert-dense subset is insufficient. No uniform eventual domain threshold over all of <span class="math" data-tex="\(D\)">\(D\)</span> is introduced.</p>
+<h2 id="positive-limits-logarithms-and-imaginary-powers">Positive limits, logarithms, and imaginary powers</h2>
+<p>Let <span class="math" data-tex="\(A_n,A\)">\(A_n,A\)</span> be positive injective self-adjoint operators, and suppose
+<span class="math" data-tex="\(A_n\to A\)">\(A_n\to A\)</span> in the strong resolvent sense. Then</p>
+<span class="math math-display" data-tex="\[
+\log A_n\longrightarrow\log A
+\tag{SG.30}
+\]">\[
+\log A_n\longrightarrow\log A
+\tag{SG.30}
+\]</span>
+<p>in the strong resolvent sense, and for every <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span> and <span class="math" data-tex="\(T&lt;\infty\)">\(T&lt;\infty\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sup_{|t|\leq T}\|A_n^{it}x-A^{it}x\|\longrightarrow0.
+\tag{SG.31}
+\]">\[
+\sup_{|t|\leq T}\|A_n^{it}x-A^{it}x\|\longrightarrow0.
+\tag{SG.31}
+\]</span>
+<p><strong>Exact programme owner.</strong> Read <strong>Theorem 9.1 and Corollary 9.2(1)</strong> of <a href="../analytic-elements-strips-and-kms/holomorphy-in-banach-spaces-stone-s-theorem-and-resolvent-convergence.html">Holomorphy in Banach spaces, Stone's theorem and resolvent convergence</a>. They prove this conclusion for arbitrary nets of positive injective self-adjoint operators, with an injective proposed limit. The full transformation proof and time-uniform conclusion remain with that source. In particular no spectral gap at zero or bounded inverse is assumed.</p>
+<p><strong>Solved bounded-transform check.</strong> Let <span class="math" data-tex="\(K_n=(I+A_n)^{-1}\)">\(K_n=(I+A_n)^{-1}\)</span> and <span class="math" data-tex="\(K=(I+A)^{-1}\)">\(K=(I+A)^{-1}\)</span>. Choose a bounded
+continuous function on the real line which equals <span class="math" data-tex="\(t\mapsto(1+t)^{-1}\)">\(t\mapsto(1+t)^{-1}\)</span>
+for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. Strong resolvent convergence and the bounded continuous
+calculus give <span class="math" data-tex="\(K_n\to K\)">\(K_n\to K\)</span> strongly. For <span class="math" data-tex="\(z\notin\mathbb R\)">\(z\notin\mathbb R\)</span>, define on
+<span class="math" data-tex="\([0,1]\)">\([0,1]\)</span></p>
+<span class="math math-display" data-tex="\[
+h_z(s)=
+\begin{cases}
+\left(\log\dfrac{1-s}{s}-z\right)^{-1},&amp;0&lt;s&lt;1,\\
+0,&amp;s=0,1.
+\end{cases}
+\tag{SG.32}
+\]">\[
+h_z(s)=
+\begin{cases}
+\left(\log\dfrac{1-s}{s}-z\right)^{-1},&amp;0&lt;s&lt;1,\\
+0,&amp;s=0,1.
+\end{cases}
+\tag{SG.32}
+\]</span>
+<p>This function is continuous: the real logarithm tends to opposite infinities
+at the endpoints. Continuous functional calculus for the bounded positive
+contractions gives <span class="math" data-tex="\(h_z(K_n)\to h_z(K)\)">\(h_z(K_n)\to h_z(K)\)</span> strongly. Injectivity of
+<span class="math" data-tex="\(A_n,A\)">\(A_n,A\)</span> removes spectral mass at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, and the bounded injections
+<span class="math" data-tex="\(K_n,K\)">\(K_n,K\)</span> have no spectral mass at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+h_z(K_n)=(\log A_n-z)^{-1},
+\qquad
+h_z(K)=(\log A-z)^{-1}.
+\]">\[
+h_z(K_n)=(\log A_n-z)^{-1},
+\qquad
+h_z(K)=(\log A-z)^{-1}.
+\]</span>
+<p>These identities explain why the endpoint assignments do not require a bounded inverse. The general net convergence result and its locally uniform imaginary-power conclusion are imported from the programme Corollary 9.2(1); this endpoint check is a local application. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Injective does not mean boundedly invertible. Spectra may accumulate at zero;
+the endpoint values in (SG.32) handle precisely that possibility.</p>
+<h2 id="checks-and-solved-exercises">Checks and solved exercises</h2>
+<p><strong>Problem 1: the missing nondegeneracy.</strong> On a nonzero Hilbert space take
+<span class="math" data-tex="\(A_n=nI\)">\(A_n=nI\)</span>. Determine every nonreal resolvent limit and explain why there is
+no self-adjoint strong resolvent limit.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(z\notin\mathbb R\)">\(z\notin\mathbb R\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(A_n-z)^{-1}=(n-z)^{-1}I\longrightarrow0
+\]">\[
+(A_n-z)^{-1}=(n-z)^{-1}I\longrightarrow0
+\]</span>
+<p>in operator norm. The zero limit has full kernel and zero range. A resolvent
+of a densely defined self-adjoint operator is injective with dense range, so
+SG-08's nondegeneracy fails and no such limit operator exists.</p>
+<p><strong>Problem 2: large eigenvalues can escape strongly.</strong> On
+<span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, let <span class="math" data-tex="\(P_n\)">\(P_n\)</span> project onto the <span class="math" data-tex="\(n\)">\(n\)</span>-th basis vector and
+put <span class="math" data-tex="\(A_n=nP_n\)">\(A_n=nP_n\)</span>. Prove <span class="math" data-tex="\(A_n\to0\)">\(A_n\to0\)</span> in the strong resolvent sense and verify
+the locally uniform unitary conclusion directly.</p>
+<p><strong>Solution.</strong> For nonreal <span class="math" data-tex="\(z\)">\(z\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(A_n-z)^{-1}
+=-z^{-1}(I-P_n)+(n-z)^{-1}P_n.
+\]">\[
+(A_n-z)^{-1}
+=-z^{-1}(I-P_n)+(n-z)^{-1}P_n.
+\]</span>
+<p>Since <span class="math" data-tex="\(P_nx\to0\)">\(P_nx\to0\)</span> for each fixed <span class="math" data-tex="\(x\in\ell^2\)">\(x\in\ell^2\)</span>, these resolvents converge
+strongly to <span class="math" data-tex="\(-z^{-1}I=(0-z)^{-1}\)">\(-z^{-1}I=(0-z)^{-1}\)</span>. Also</p>
+<span class="math math-display" data-tex="\[
+e^{itA_n}=I+(e^{int}-1)P_n,
+\qquad
+\sup_{t\in\mathbb R}\|(e^{itA_n}-I)x\|
+\leq2\|P_nx\|\longrightarrow0.
+\]">\[
+e^{itA_n}=I+(e^{int}-1)P_n,
+\qquad
+\sup_{t\in\mathbb R}\|(e^{itA_n}-I)x\|
+\leq2\|P_nx\|\longrightarrow0.
+\]</span>
+<p>The convergence is even uniform on the whole real line for each fixed vector,
+although it is not operator-norm convergence.</p>
+<p><strong>Problem 3: an explicit analytic core.</strong> On <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, define
+<span class="math" data-tex="\(Se_k=k e_k\)">\(Se_k=k e_k\)</span> on the finite-support vectors. Show that every such vector is
+analytic and identify the self-adjoint closure.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(x\)">\(x\)</span> is supported in <span class="math" data-tex="\(\{1,\ldots,m\}\)">\(\{1,\ldots,m\}\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\|S^jx\|\leq m^j\|x\|,
+\qquad
+\sum_{j\geq0}\frac{r^j}{j!}\|S^jx\|
+\leq e^{rm}\|x\|.
+\]">\[
+\|S^jx\|\leq m^j\|x\|,
+\qquad
+\sum_{j\geq0}\frac{r^j}{j!}\|S^jx\|
+\leq e^{rm}\|x\|.
+\]</span>
+<p>Finite-support vectors are dense, so SG-06 gives essential self-adjointness.
+The closure is the diagonal operator</p>
+<span class="math math-display" data-tex="\[
+D(\overline S)=\left\{x:\sum_{k\geq1}k^2|x_k|^2&lt;\infty\right\},
+\qquad
+(\overline Sx)_k=kx_k,
+\]">\[
+D(\overline S)=\left\{x:\sum_{k\geq1}k^2|x_k|^2&lt;\infty\right\},
+\qquad
+(\overline Sx)_k=kx_k,
+\]</span>
+<p>as follows either by graph truncation or by SK-06's spectral domain formula.</p>
+<p>The exact imported programme theorems keep their original owners and CC0 attribution. SG-03, the nonclosed analytic-vector restriction wrapper, the bounded-transform endpoint check and these solved exercises are local applications.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-SK.html">← Spectral calculus with its domains retained</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-QF.html">Recovering operators from energy forms →</a></span></nav>
+<p class="small source-link"><a href="src/banach-holomorphy-generators-resolvents.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

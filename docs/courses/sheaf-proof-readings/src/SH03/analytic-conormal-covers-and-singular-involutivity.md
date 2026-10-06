@@ -15,7 +15,7 @@ We use the real covector identification and analytic-piece convention of Complex
 
 The cover and generic-base statements below explicitly require isotropy. The full cotangent bundle gives a counterexample when that hypothesis is omitted. The source account below identifies the analytic-ideal, specialization and image theorems used in the constructions.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## The exact analytic geometry inputs
 

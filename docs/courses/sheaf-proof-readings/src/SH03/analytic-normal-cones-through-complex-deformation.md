@@ -24,7 +24,7 @@ h_j>0,\ h_j\to0,\ (a_j-b_j)/h_j\to v.
 
 There are no sheaf coefficients, dualizing complexes or derived shifts in this lesson. The argument proves complex analyticity and complex-scalar invariance of the ordered normal cone relative to the explicit local analytic component and real curve-selection prerequisites. The source account below identifies those classical inputs and the deformation construction.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## Removing analytic components rather than adding them at the boundary
 

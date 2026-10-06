@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Separable GNS spaces and disintegration of C*-weights · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-WD.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 95 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="separable-gns-spaces-and-disintegration-of-c--weights">Separable GNS spaces and disintegration of C*-weights</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>A separable C*-algebra can carry an unbounded weight whose finite domain is not norm dense. Its finite-weight GNS space is nevertheless separable when the weight is lower semicontinuous. We first prove this directly from a closed graph. We then prove uniqueness of modular weights from a common invariant finite algebra, and disintegrate a modular weight on the original C*-algebra. The last argument verifies both fibre semifiniteness and the onto property of the fibre GNS map.</p>
+<p>The source antecedents are M. Takesaki, <em>Theory of Operator Algebras II</em>, VIII.4, Lemmas 4.9–4.10, Theorem 4.11 and Lemmas 4.12–4.13, printed 137–140/PDF 157–160. The complete governing page images were inspected. The statements and proofs below are independently written. Inner products are linear in the first variable. C*-semifiniteness means norm density of the finite domain, as in CS-01 and LW-08; it must not be replaced by von Neumann sigma-weak density.</p>
+<p>WD-01–03 use <a href="OA-MOD-CS.html">CS's finite-domain construction</a>, lower semicontinuity, Hahn–Banach separation of closed linear subspaces, and weak compactness of a Hilbert ball. WD-04–05 also use the positive approximate identity <a href="OA-MOD-BG.html">An approximate identity indexed by finite sets</a>, <a href="OA-MOD-LW.html#oa-mod-lw-01">Nondegeneracy on the finite-weight GNS space's nondegeneracy</a>, <a href="OA-MOD-KL.html#oa-mod-kl-07">The modular condition builds continuous GNS unitaries and The normal weight recovered from this algebra/05/07's modular normal extension and GNS identification</a>, and <a href="OA-MOD-CX.html#oa-mod-cx-03">Two identities on the full finite left ideal's full entire right multiplier formula</a>. WD-06–09 use <a href="OA-MOD-MW.html#oa-mod-mw-05">A countable contractive family detects every positive value and Recovering measurable GNS vectors by an injective equation/05/07</a> and the existing <a href="OA-MOD-DI.html">DI FIELD, CENTRAL and SELECTION contracts</a>, including the still-open compatible GNS-field comparison MW-DEP-GNS-FIELD. These are the course's named inputs with their current statuses; no general measurable-field comparison is proved here.</p>
+<h2 id="a-lower-semicontinuous-c--weight-has-a-closed-gns-graph"><span id="oa-mod-wd-01"></span><span id="OA-MOD-WD-01"></span>A lower-semicontinuous C*-weight has a closed GNS graph</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be any complex C*-algebra and <span class="math" data-tex="\(\varphi:A_+\to[0,\infty]\)">\(\varphi:A_+\to[0,\infty]\)</span> an additive, positively homogeneous, norm-lower-semicontinuous weight. No faithfulness, semifiniteness or separability is assumed. CS gives its finite left ideal <span class="math" data-tex="\(\mathfrak n_\varphi\)">\(\mathfrak n_\varphi\)</span>, Hilbert space <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span>, and linear quotient map <span class="math" data-tex="\(\Lambda_\varphi\)">\(\Lambda_\varphi\)</span>. We claim that</p>
+<span class="math math-display" data-tex="\[
+\Gamma_\varphi
+=\{(x,\Lambda_\varphi(x)):x\in\mathfrak n_\varphi\}
+\subseteq A\oplus H_\varphi
+\tag{WD.1}
+\]">\[
+\Gamma_\varphi
+=\{(x,\Lambda_\varphi(x)):x\in\mathfrak n_\varphi\}
+\subseteq A\oplus H_\varphi
+\tag{WD.1}
+\]</span>
+<p>is closed for the product norm.</p>
+<p>Suppose <span class="math" data-tex="\(x_k\to x\)">\(x_k\to x\)</span> in <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(\Lambda_\varphi(x_k)\to\xi\)">\(\Lambda_\varphi(x_k)\to\xi\)</span> in Hilbert norm. Continuity of multiplication and lower semicontinuity give</p>
+<span class="math math-display" data-tex="\[
+\varphi(x^*x)
+\leq\liminf_k\varphi(x_k^*x_k)
+=\|\xi\|^2&lt;\infty.
+\tag{WD.2}
+\]">\[
+\varphi(x^*x)
+\leq\liminf_k\varphi(x_k^*x_k)
+=\|\xi\|^2&lt;\infty.
+\tag{WD.2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>. For fixed <span class="math" data-tex="\(j\)">\(j\)</span>, apply lower semicontinuity to <span class="math" data-tex="\((x_j-x_k)^*(x_j-x_k)\)">\((x_j-x_k)^*(x_j-x_k)\)</span> as <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\|\Lambda_\varphi(x_j)-\Lambda_\varphi(x)\|^2
+\leq\liminf_k
+\|\Lambda_\varphi(x_j)-\Lambda_\varphi(x_k)\|^2
+=\|\Lambda_\varphi(x_j)-\xi\|^2.
+\tag{WD.3}
+\]">\[
+\|\Lambda_\varphi(x_j)-\Lambda_\varphi(x)\|^2
+\leq\liminf_k
+\|\Lambda_\varphi(x_j)-\Lambda_\varphi(x_k)\|^2
+=\|\Lambda_\varphi(x_j)-\xi\|^2.
+\tag{WD.3}
+\]</span>
+<p>Letting <span class="math" data-tex="\(j\to\infty\)">\(j\to\infty\)</span> proves <span class="math" data-tex="\(\xi=\Lambda_\varphi(x)\)">\(\xi=\Lambda_\varphi(x)\)</span>. Metric closedness proves the claim for the whole product space, not only the chosen sequence. The graph is a linear subspace. Hahn–Banach therefore also makes it closed for the product weak topology: a continuous linear functional separating a point from this graph is a sum of a functional on <span class="math" data-tex="\(A\)">\(A\)</span> and one on <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span>.</p>
+<p>An especially useful consequence is the following bounded-energy limit rule. If <span class="math" data-tex="\(x_k\to x\)">\(x_k\to x\)</span> in norm and <span class="math" data-tex="\(\sup_k\|\Lambda_\varphi(x_k)\|&lt;\infty\)">\(\sup_k\|\Lambda_\varphi(x_k)\|&lt;\infty\)</span>, then <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span> by lower semicontinuity, and</p>
+<span class="math math-display" data-tex="\[
+\Lambda_\varphi(x_k)\longrightarrow\Lambda_\varphi(x)
+\quad\text{weakly in }H_\varphi.
+\tag{WD.4}
+\]">\[
+\Lambda_\varphi(x_k)\longrightarrow\Lambda_\varphi(x)
+\quad\text{weakly in }H_\varphi.
+\tag{WD.4}
+\]</span>
+<p>Indeed, a bounded Hilbert ball is weakly compact. Every weakly convergent subnet, paired with the norm limit of its algebra entries, has a limit in the weakly closed graph and hence has the displayed unique limit. If weak convergence failed, a subnet staying outside some weak neighbourhood would have a cluster point in the compact ball, contradicting that uniqueness. This assertion does not give Hilbert-norm convergence.</p>
+<h2 id="separability-without-a-dense-finite-domain">Separability without a dense finite domain</h2>
+<p><strong>Theorem.</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is separable and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is any norm-lower-semicontinuous weight, then <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span> is separable. The weight may be nonfaithful, nondensely defined, or zero; its GNS representation may have a kernel.</p>
+<p>For each positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+F_m=\{x\in A:\varphi(x^*x)\leq m^2\}.
+\tag{WD.5}
+\]">\[
+F_m=\{x\in A:\varphi(x^*x)\leq m^2\}.
+\tag{WD.5}
+\]</span>
+<p>The norm topology of a separable metric space has a countable base; its restriction to any subset still has a countable base. Choosing a point in each nonempty restricted basic open set gives a countable norm-dense subset <span class="math" data-tex="\(D_m\subseteq F_m\)">\(D_m\subseteq F_m\)</span>. This statement is about the inherited algebra norm, rather than the GNS graph norm. Define</p>
+<span class="math math-display" data-tex="\[
+L=\overline{\operatorname{span}_{\mathbb C}
+\{\Lambda_\varphi(d):d\in\bigcup_{m\geq1}D_m\}}
+^{\,H_\varphi}.
+\tag{WD.6}
+\]">\[
+L=\overline{\operatorname{span}_{\mathbb C}
+\{\Lambda_\varphi(d):d\in\bigcup_{m\geq1}D_m\}}
+^{\,H_\varphi}.
+\tag{WD.6}
+\]</span>
+<p>This closed subspace is separable. If <span class="math" data-tex="\(x\in F_m\)">\(x\in F_m\)</span>, choose <span class="math" data-tex="\(d_k\in D_m\)">\(d_k\in D_m\)</span> with <span class="math" data-tex="\(d_k\to x\)">\(d_k\to x\)</span> in norm. Their GNS norms are at most <span class="math" data-tex="\(m\)">\(m\)</span>. By (WD.4), <span class="math" data-tex="\(\Lambda_\varphi(d_k)\to\Lambda_\varphi(x)\)">\(\Lambda_\varphi(d_k)\to\Lambda_\varphi(x)\)</span> weakly. A closed Hilbert subspace is weakly closed: its orthogonal complement tests membership. Consequently <span class="math" data-tex="\(\Lambda_\varphi(x)\in L\)">\(\Lambda_\varphi(x)\in L\)</span>.</p>
+<p>Every finite GNS vector comes from an <span class="math" data-tex="\(x\)">\(x\)</span> in some <span class="math" data-tex="\(F_m\)">\(F_m\)</span>. The defining density of <span class="math" data-tex="\(\Lambda_\varphi(\mathfrak n_\varphi)\)">\(\Lambda_\varphi(\mathfrak n_\varphi)\)</span> now gives <span class="math" data-tex="\(L=H_\varphi\)">\(L=H_\varphi\)</span>. This proves separability of the semicyclic representation in the full generality of source Lemma 4.9, without first assuming a normal faithful extension or a single cyclic vector. The zero Hilbert space is included. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="norm-approximation-with-bounded-energy-need-not-be-strong">Norm approximation with bounded energy need not be strong</h2>
+<p>Let <span class="math" data-tex="\(A=c_0(\mathbb N)\)">\(A=c_0(\mathbb N)\)</span>, and for <span class="math" data-tex="\(a\in A_+\)">\(a\in A_+\)</span> define</p>
+<span class="math math-display" data-tex="\[
+\varphi(a)=\sum_{j\geq1}j^2a_j.
+\tag{WD.7}
+\]">\[
+\varphi(a)=\sum_{j\geq1}j^2a_j.
+\tag{WD.7}
+\]</span>
+<p>The nonnegative series is additive and homogeneous, including infinite values. It is norm lower semicontinuous because it is the supremum of its continuous positive finite partial sums. Its finite domain contains the finitely supported sequences, so this particular weight is densely defined and faithful. Its GNS space is <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\Lambda_\varphi(x)=(j x_j)_{j\geq1},\qquad
+\mathfrak n_\varphi
+=\{x\in c_0:\sum_j j^2|x_j|^2&lt;\infty\}.
+\tag{WD.8}
+\]">\[
+\Lambda_\varphi(x)=(j x_j)_{j\geq1},\qquad
+\mathfrak n_\varphi
+=\{x\in c_0:\sum_j j^2|x_j|^2&lt;\infty\}.
+\tag{WD.8}
+\]</span>
+<p>For <span class="math" data-tex="\(x_n=n^{-1}e_n\)">\(x_n=n^{-1}e_n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|x_n\|_A=n^{-1}\to0,\qquad
+\Lambda_\varphi(x_n)=e_n,\qquad
+\|\Lambda_\varphi(x_n)\|=1.
+\tag{WD.9}
+\]">\[
+\|x_n\|_A=n^{-1}\to0,\qquad
+\Lambda_\varphi(x_n)=e_n,\qquad
+\|\Lambda_\varphi(x_n)\|=1.
+\tag{WD.9}
+\]</span>
+<p>The last vectors converge weakly to zero because every <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> coordinate sequence tends to zero, but they do not converge to zero in norm. This is why WD-02 uses weak compactness and the weakly closed span. A claim that the chosen norm-dense <span class="math" data-tex="\(D_m\)">\(D_m\)</span> is already a graph core would not follow from that proof.</p>
+<h2 id="an-invariant-finite-algebra-is-a-gns-graph-core">An invariant finite algebra is a GNS graph core</h2>
+<p>Now let <span class="math" data-tex="\(A\)">\(A\)</span> be separable, let <span class="math" data-tex="\(\alpha:\mathbb R\to\operatorname{Aut}(A)\)">\(\alpha:\mathbb R\to\operatorname{Aut}(A)\)</span> be pointwise norm continuous, and let <span class="math" data-tex="\(\theta\)">\(\theta\)</span> be faithful, norm-lower-semicontinuous and C*-semifinite, satisfying the modular condition for <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Suppose <span class="math" data-tex="\(B\)">\(B\)</span> is a norm-dense invariant *-subalgebra contained in <span class="math" data-tex="\(\mathfrak n_\theta\cap\mathfrak n_\theta^*\)">\(\mathfrak n_\theta\cap\mathfrak n_\theta^*\)</span>. We prove that the graph of <span class="math" data-tex="\(\Lambda_\theta|_B\)">\(\Lambda_\theta|_B\)</span> is norm dense in <span class="math" data-tex="\(\Gamma_\theta\)">\(\Gamma_\theta\)</span>. The hypothesis <span class="math" data-tex="\(B\subseteq\mathfrak m_\theta\)">\(B\subseteq\mathfrak m_\theta\)</span> used in the source is stronger than this finite-adjoint hypothesis.</p>
+<p>There is a positive contractive sequential approximate identity <span class="math" data-tex="\((u_n)\)">\((u_n)\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>: restrict BG-01's finite-set construction to the first <span class="math" data-tex="\(n\)">\(n\)</span> members of a fixed dense sequence, with its error parameter tending to zero. Choose <span class="math" data-tex="\(b_n\in B\)">\(b_n\in B\)</span> approaching <span class="math" data-tex="\(u_n^{1/2}\)">\(u_n^{1/2}\)</span>, then divide by <span class="math" data-tex="\(\max(1,\|b_n\|)\)">\(\max(1,\|b_n\|)\)</span>. These are contractions in <span class="math" data-tex="\(B\)">\(B\)</span>, and <span class="math" data-tex="\(a_n=b_n^*b_n\)">\(a_n=b_n^*b_n\)</span> are positive contractions in <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(\|a_n-u_n\|\to0\)">\(\|a_n-u_n\|\to0\)</span>. Hence <span class="math" data-tex="\((a_n)\)">\((a_n)\)</span> is another approximate identity, though it need not be increasing. Put</p>
+<span class="math math-display" data-tex="\[
+e_n=\pi^{-1/2}\int_{\mathbb R}e^{-t^2}\alpha_t(a_n)\,dt,
+\qquad
+\alpha_z(e_n)=\pi^{-1/2}\int_{\mathbb R}
+e^{-(t-z)^2}\alpha_t(a_n)\,dt.
+\tag{WD.10}
+\]">\[
+e_n=\pi^{-1/2}\int_{\mathbb R}e^{-t^2}\alpha_t(a_n)\,dt,
+\qquad
+\alpha_z(e_n)=\pi^{-1/2}\int_{\mathbb R}
+e^{-(t-z)^2}\alpha_t(a_n)\,dt.
+\tag{WD.10}
+\]</span>
+<p>These are norm Bochner integrals in <span class="math" data-tex="\(A\)">\(A\)</span>. The second formula is entire in <span class="math" data-tex="\(z\)">\(z\)</span>, agrees with the real orbit, and obeys</p>
+<span class="math math-display" data-tex="\[
+0\leq e_n\leq1,\quad e_n=e_n^*,\qquad
+\|\alpha_z(e_n)\|\leq e^{(\operatorname{Im}z)^2}.
+\tag{WD.11}
+\]">\[
+0\leq e_n\leq1,\quad e_n=e_n^*,\qquad
+\|\alpha_z(e_n)\|\leq e^{(\operatorname{Im}z)^2}.
+\tag{WD.11}
+\]</span>
+<p>For every <span class="math" data-tex="\(c\in A\)">\(c\in A\)</span> and every fixed <span class="math" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\alpha_z(e_n)c\to c,\qquad
+c\alpha_z(e_n)\to c
+\quad\text{in norm}.
+\tag{WD.12}
+\]">\[
+\alpha_z(e_n)c\to c,\qquad
+c\alpha_z(e_n)\to c
+\quad\text{in norm}.
+\tag{WD.12}
+\]</span>
+<p>To prove this, the approximate identity converges uniformly on the compact norm orbit <span class="math" data-tex="\(\{\alpha_{-t}(c):|t|\leq T\}\)">\(\{\alpha_{-t}(c):|t|\leq T\}\)</span>, by a finite-net argument and uniform boundedness. The complex Gaussian tail has an integrable bound independent of <span class="math" data-tex="\(n\)">\(n\)</span>, while its total integral is one. First use the compact interval, then let its tail shrink. This proves both products. Nondegeneracy LW-01 and the uniform bound in (WD.11) imply</p>
+<span class="math math-display" data-tex="\[
+\pi_\theta(\alpha_z(e_n))\to I_{H_\theta}
+\quad\text{strongly}.
+\tag{WD.13}
+\]">\[
+\pi_\theta(\alpha_z(e_n))\to I_{H_\theta}
+\quad\text{strongly}.
+\tag{WD.13}
+\]</span>
+<p>The same integral can be taken in the product Banach space <span class="math" data-tex="\(A\oplus H_\theta\)">\(A\oplus H_\theta\)</span>. Indeed, <span class="math" data-tex="\(t\mapsto\Lambda_\theta(\alpha_t(a_n))\)">\(t\mapsto\Lambda_\theta(\alpha_t(a_n))\)</span> is norm continuous by KL-02's GNS modular unitaries and has constant finite norm. Its finite Gaussian Riemann sums are graph pairs from <span class="math" data-tex="\(B\)">\(B\)</span>, because <span class="math" data-tex="\(\alpha_t(B)=B\)">\(\alpha_t(B)=B\)</span>. The closed graph WD-01 therefore gives</p>
+<span class="math math-display" data-tex="\[
+e_n\in\mathfrak n_\theta,\qquad
+\Lambda_\theta(e_n)
+=\pi^{-1/2}\int_{\mathbb R}e^{-t^2}
+\Lambda_\theta(\alpha_t(a_n))\,dt.
+\tag{WD.14}
+\]">\[
+e_n\in\mathfrak n_\theta,\qquad
+\Lambda_\theta(e_n)
+=\pi^{-1/2}\int_{\mathbb R}e^{-t^2}
+\Lambda_\theta(\alpha_t(a_n))\,dt.
+\tag{WD.14}
+\]</span>
+<p>In fact this pair lies in the norm closure of the graph restricted to <span class="math" data-tex="\(B\)">\(B\)</span>. Since <span class="math" data-tex="\(e_n\)">\(e_n\)</span> is self-adjoint, it is finite-adjoint as well. For <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, multiply each Riemann-sum pair on the left by <span class="math" data-tex="\(b\)">\(b\)</span>. Its algebra entry remains in <span class="math" data-tex="\(B\)">\(B\)</span>; its Hilbert entry is multiplied by <span class="math" data-tex="\(\pi_\theta(b)\)">\(\pi_\theta(b)\)</span>. Thus the graph pair of <span class="math" data-tex="\(b e_n\)">\(b e_n\)</span> lies in that same graph closure.</p>
+<p>For an arbitrary <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>, take <span class="math" data-tex="\(b_k\in B\)">\(b_k\in B\)</span> approaching <span class="math" data-tex="\(x\)">\(x\)</span> in norm. For fixed <span class="math" data-tex="\(n\)">\(n\)</span>, the left-ideal property and the GNS representation give</p>
+<span class="math math-display" data-tex="\[
+\|\Lambda_\theta((b_k-x)e_n)\|
+\leq\|b_k-x\|\,\|\Lambda_\theta(e_n)\|\to0.
+\tag{WD.15}
+\]">\[
+\|\Lambda_\theta((b_k-x)e_n)\|
+\leq\|b_k-x\|\,\|\Lambda_\theta(e_n)\|\to0.
+\tag{WD.15}
+\]</span>
+<p>Also <span class="math" data-tex="\(b_k e_n\to x e_n\)">\(b_k e_n\to x e_n\)</span> in algebra norm. Consequently the graph pair of <span class="math" data-tex="\(x e_n\)">\(x e_n\)</span> belongs to the closure of the graph on <span class="math" data-tex="\(B\)">\(B\)</span>, even when <span class="math" data-tex="\(x\)">\(x\)</span> is not finite for <span class="math" data-tex="\(\theta\)">\(\theta\)</span>.</p>
+<p>Finally take <span class="math" data-tex="\(x\in\mathfrak n_\theta\)">\(x\in\mathfrak n_\theta\)</span>. KL's precise GNS identification transports CX-03's entire right multiplier formula back to this C*-domain:</p>
+<span class="math math-display" data-tex="\[
+\Lambda_\theta(x e_n)=R_n^\theta\Lambda_\theta(x),\qquad
+R_n^\theta=J_\theta\pi_\theta(\alpha_{-i/2}(e_n))J_\theta.
+\tag{WD.16}
+\]">\[
+\Lambda_\theta(x e_n)=R_n^\theta\Lambda_\theta(x),\qquad
+R_n^\theta=J_\theta\pi_\theta(\alpha_{-i/2}(e_n))J_\theta.
+\tag{WD.16}
+\]</span>
+<p>It includes membership <span class="math" data-tex="\(x e_n\in\mathfrak n_\theta\)">\(x e_n\in\mathfrak n_\theta\)</span>. Equation (WD.13) makes <span class="math" data-tex="\(R_n^\theta\to I\)">\(R_n^\theta\to I\)</span> strongly; (WD.12) makes <span class="math" data-tex="\(x e_n\to x\)">\(x e_n\to x\)</span> in algebra norm. Thus these graph pairs tend in both norms to <span class="math" data-tex="\((x,\Lambda_\theta(x))\)">\((x,\Lambda_\theta(x))\)</span>. All lie in the already established graph closure of <span class="math" data-tex="\(B\)">\(B\)</span>, proving the graph-core assertion. The order of approximation is fixed: Gaussian Riemann sums, norm approximation at fixed <span class="math" data-tex="\(n\)">\(n\)</span>, then <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>. No continuity of the unbounded GNS map in the algebra norm is assumed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="equality-of-modular-c--weights-from-common-finite-data">Equality of modular C*-weights from common finite data</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> be faithful, norm-lower-semicontinuous C*-semifinite weights on a separable <span class="math" data-tex="\(A\)">\(A\)</span>, both satisfying the modular condition for the same pointwise norm-continuous <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Let <span class="math" data-tex="\(B\subseteq\mathfrak m_\varphi\)">\(B\subseteq\mathfrak m_\varphi\)</span> be a norm-dense <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-invariant *-subalgebra on which they agree. Then <span class="math" data-tex="\(\varphi=\psi\)">\(\varphi=\psi\)</span> on all <span class="math" data-tex="\(A_+\)">\(A_+\)</span>, including infinite values.</p>
+<p>Only their agreement on the positive squared moduli in <span class="math" data-tex="\(B\)">\(B\)</span> is needed below. For every <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, <span class="math" data-tex="\(b^*b,bb^*\in B\cap A_+\)">\(b^*b,bb^*\in B\cap A_+\)</span>, and their <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-values are finite. Equality gives the same finite <span class="math" data-tex="\(\psi\)">\(\psi\)</span>-values. Hence <span class="math" data-tex="\(B\subseteq\mathfrak n_\psi\cap\mathfrak n_\psi^*\)">\(B\subseteq\mathfrak n_\psi\cap\mathfrak n_\psi^*\)</span>, as well as the corresponding <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-domain. Polarizing the equal squared norms gives an isometric assignment</p>
+<span class="math math-display" data-tex="\[
+U_0\Lambda_\varphi(b)=\Lambda_\psi(b),\qquad b\in B.
+\tag{WD.17}
+\]">\[
+U_0\Lambda_\varphi(b)=\Lambda_\psi(b),\qquad b\in B.
+\tag{WD.17}
+\]</span>
+<p>It is representative independent and linear by the finite-domain GNS construction. WD-04 proves that <span class="math" data-tex="\(B\)">\(B\)</span> is a graph core for each map; in particular both <span class="math" data-tex="\(\Lambda_\varphi(B)\)">\(\Lambda_\varphi(B)\)</span> and <span class="math" data-tex="\(\Lambda_\psi(B)\)">\(\Lambda_\psi(B)\)</span> are Hilbert dense. Therefore <span class="math" data-tex="\(U_0\)">\(U_0\)</span> extends to a unitary <span class="math" data-tex="\(U:H_\varphi\to H_\psi\)">\(U:H_\varphi\to H_\psi\)</span>.</p>
+<p>If <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>, its graph-core approximants satisfy</p>
+<span class="math math-display" data-tex="\[
+b_k\to x\ \text{in }A,\qquad
+\Lambda_\varphi(b_k)\to\Lambda_\varphi(x),\qquad
+\Lambda_\psi(b_k)\to U\Lambda_\varphi(x).
+\tag{WD.18}
+\]">\[
+b_k\to x\ \text{in }A,\qquad
+\Lambda_\varphi(b_k)\to\Lambda_\varphi(x),\qquad
+\Lambda_\psi(b_k)\to U\Lambda_\varphi(x).
+\tag{WD.18}
+\]</span>
+<p>The closed <span class="math" data-tex="\(\psi\)">\(\psi\)</span>-graph now forces <span class="math" data-tex="\(x\in\mathfrak n_\psi\)">\(x\in\mathfrak n_\psi\)</span> and
+<span class="math" data-tex="\(\Lambda_\psi(x)=U\Lambda_\varphi(x)\)">\(\Lambda_\psi(x)=U\Lambda_\varphi(x)\)</span>. Reverse the roles to obtain equality of the entire finite left ideals, and hence equality of their squared GNS norms there. For <span class="math" data-tex="\(a\in A_+\)">\(a\in A_+\)</span>, apply this to <span class="math" data-tex="\(x=a^{1/2}\)">\(x=a^{1/2}\)</span> when either weight of <span class="math" data-tex="\(a\)">\(a\)</span> is finite. The two finite values coincide. If one were infinite and the other finite, the same finite-ideal equality would contradict it. The all-infinite case also agrees. This proves the full source Lemma 4.10, without an interchange of a general unbounded weight and an operator integral. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="restriction-to-the-fibres-recovers-every-positive-value">Restriction to the fibres recovers every positive value</h2>
+<p>Return to a faithful, norm-lower-semicontinuous C*-semifinite <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on separable <span class="math" data-tex="\(A\)">\(A\)</span>, with modular action <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Let <span class="math" data-tex="\((H,\pi,\Lambda)\)">\((H,\pi,\Lambda)\)</span> be its semicyclic representation, <span class="math" data-tex="\(M=\pi(A)&#x27;&#x27;\)">\(M=\pi(A)&#x27;&#x27;\)</span>, and <span class="math" data-tex="\(D\subseteq Z(M)\)">\(D\subseteq Z(M)\)</span> a specified abelian von Neumann subalgebra. WD-02 makes <span class="math" data-tex="\(H\)">\(H\)</span> separable. KL-07 supplies the specific faithful normal semifinite envelope <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\Phi(\pi(a))=\varphi(a)\quad(a\in A_+),\qquad
+\sigma_t^\Phi\circ\pi=\pi\circ\alpha_t.
+\tag{WD.19}
+\]">\[
+\Phi(\pi(a))=\varphi(a)\quad(a\in A_+),\qquad
+\sigma_t^\Phi\circ\pi=\pi\circ\alpha_t.
+\tag{WD.19}
+\]</span>
+<p>Use the existing central decomposition and MW-07 over a standard sigma-finite diagonal base <span class="math" data-tex="\((Y,\mu)\)">\((Y,\mu)\)</span>:</p>
+<span class="math math-display" data-tex="\[
+H=\int_Y^\oplus H_y\,d\mu(y),\quad
+\pi=\int_Y^\oplus\pi_y\,d\mu(y),\quad
+(M,\Phi)=\int_Y^\oplus(M_y,\Phi_y)\,d\mu(y).
+\tag{WD.20}
+\]">\[
+H=\int_Y^\oplus H_y\,d\mu(y),\quad
+\pi=\int_Y^\oplus\pi_y\,d\mu(y),\quad
+(M,\Phi)=\int_Y^\oplus(M_y,\Phi_y)\,d\mu(y).
+\tag{WD.20}
+\]</span>
+<p>Here each <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span> is faithful normal semifinite, <span class="math" data-tex="\(H_y\)">\(H_y\)</span> is identified with its GNS space, and <span class="math" data-tex="\(\pi_y(A)&#x27;&#x27;=M_y\)">\(\pi_y(A)&#x27;&#x27;=M_y\)</span> outside a common null set. The identifications are those supplied by the compatible associated GNS realization and diagonal uniqueness; an arbitrary unrelated abstract realization would not suffice. The named open field and central providers are in force.</p>
+<p>Define on the original C*-algebra</p>
+<span class="math math-display" data-tex="\[
+\psi_y(a)=\Phi_y(\pi_y(a))\quad(a\in A_+).
+\tag{WD.21}
+\]">\[
+\psi_y(a)=\Phi_y(\pi_y(a))\quad(a\in A_+).
+\tag{WD.21}
+\]</span>
+<p>Each is a weight by positivity, additivity and homogeneity of the homomorphism and the normal fibre weight. It is norm lower semicontinuous: norm convergence of positives is carried to norm convergence by the contractive homomorphism, and a normal weight is lower semicontinuous there. MW-02 supplies measurability of <span class="math" data-tex="\(y\mapsto\psi_y(a)\)">\(y\mapsto\psi_y(a)\)</span>. MW-05 and (WD.19) give</p>
+<span class="math math-display" data-tex="\[
+\varphi(a)=\Phi(\pi(a))
+=\int_Y\Phi_y(\pi_y(a))\,d\mu(y)
+=\int_Y\psi_y(a)\,d\mu(y)
+\quad(a\in A_+).
+\tag{WD.22}
+\]">\[
+\varphi(a)=\Phi(\pi(a))
+=\int_Y\Phi_y(\pi_y(a))\,d\mu(y)
+=\int_Y\psi_y(a)\,d\mu(y)
+\quad(a\in A_+).
+\tag{WD.22}
+\]</span>
+<p>This is the whole equality of source Lemma 4.12 and clause (i) of Theorem 4.11. Every positive element is included. A finite-cone equality alone is not being extended without justification: the all-positive identity is precisely MW-05's input. Measurability and equality for a fixed <span class="math" data-tex="\(a\)">\(a\)</span> do not require taking an uncountable union of exceptional sets over all <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<h2 id="one-null-set-for-every-element-and-every-modular-time">One null set for every element and every modular time</h2>
+<p>For a fixed <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> and <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>, the modular decomposition in MW-07 and (WD.19) show that</p>
+<span class="math math-display" data-tex="\[
+\sigma_t^{\Phi_y}(\pi_y(a))=\pi_y(\alpha_t(a))
+\quad\text{for almost every }y.
+\tag{WD.23}
+\]">\[
+\sigma_t^{\Phi_y}(\pi_y(a))=\pi_y(\alpha_t(a))
+\quad\text{for almost every }y.
+\tag{WD.23}
+\]</span>
+<p>The null set at this stage may depend on <span class="math" data-tex="\(a,t\)">\(a,t\)</span>. Choose a countable norm-dense *-algebra <span class="math" data-tex="\(A_0\)">\(A_0\)</span> over <span class="math" data-tex="\(\mathbb Q(i)\)">\(\mathbb Q(i)\)</span> in <span class="math" data-tex="\(A\)">\(A\)</span>, and apply (WD.23) only to <span class="math" data-tex="\(a\in A_0\)">\(a\in A_0\)</span> and <span class="math" data-tex="\(t\in\mathbb Q\)">\(t\in\mathbb Q\)</span>. There are countably many such pairs. Intersect their conull sets with the previously required field conull set. On the resulting single conull set, continuity in <span class="math" data-tex="\(a\)">\(a\)</span> extends (WD.23) to all <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> for rational <span class="math" data-tex="\(t\)">\(t\)</span>: both maps are contractive.</p>
+<p>For any real <span class="math" data-tex="\(t\)">\(t\)</span>, take rationals <span class="math" data-tex="\(t_k\to t\)">\(t_k\to t\)</span>. The left side converges sigma-strongly, by continuity of a fibre modular group. The right side converges in norm because <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is pointwise norm continuous and <span class="math" data-tex="\(\pi_y\)">\(\pi_y\)</span> is contractive. Norm convergence also implies sigma-strong convergence on these bounded orbits. Uniqueness of that limit proves, on this same conull set,</p>
+<span class="math math-display" data-tex="\[
+\sigma_t^{\Phi_y}\circ\pi_y=\pi_y\circ\alpha_t
+\quad\text{for all }t\in\mathbb R.
+\tag{WD.24}
+\]">\[
+\sigma_t^{\Phi_y}\circ\pi_y=\pi_y\circ\alpha_t
+\quad\text{for all }t\in\mathbb R.
+\tag{WD.24}
+\]</span>
+<p>Invariance of <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span> then gives invariance of <span class="math" data-tex="\(\psi_y\)">\(\psi_y\)</span>. If <span class="math" data-tex="\(b,c\in\mathfrak n_{\psi_y}\cap\mathfrak n_{\psi_y}^*\)">\(b,c\in\mathfrak n_{\psi_y}\cap\mathfrak n_{\psi_y}^*\)</span>, their images belong to the finite-adjoint domain of <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span>. The bounded strip function for that image pair has edges</p>
+<span class="math math-display" data-tex="\[
+F_{b,c}(t)=\psi_y(\alpha_t(b)c),\qquad
+F_{b,c}(t+i)=\psi_y(c\alpha_t(b)).
+\tag{WD.25}
+\]">\[
+F_{b,c}(t)=\psi_y(\alpha_t(b)c),\qquad
+F_{b,c}(t+i)=\psi_y(c\alpha_t(b)).
+\tag{WD.25}
+\]</span>
+<p>Both finite products are valid by the finite-ideal rules. Thus <span class="math" data-tex="\(\psi_y\)">\(\psi_y\)</span> satisfies the full modular condition for <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, on one conull set simultaneously for all finite test pairs. This proves source Lemma 4.13. The uncountable collection of strip pairs needs no further union of null sets: once (WD.24) holds for all algebra elements, each pair is supplied inside that fixed fibre by the modular theorem.</p>
+<h2 id="fibre-semifiniteness-and-the-onto-gns-identification">Fibre semifiniteness and the onto GNS identification</h2>
+<p>Two density statements are needed. First choose a countable norm-dense set <span class="math" data-tex="\(\{d_j\}\subseteq\mathfrak m_\varphi\)">\(\{d_j\}\subseteq\mathfrak m_\varphi\)</span>, possible because this finite algebra is norm dense and <span class="math" data-tex="\(A\)">\(A\)</span> is separable. By (WD.22),</p>
+<span class="math math-display" data-tex="\[
+\int_Y\psi_y(d_j^*d_j)\,d\mu(y)
+=\varphi(d_j^*d_j)&lt;\infty.
+\tag{WD.26}
+\]">\[
+\int_Y\psi_y(d_j^*d_j)\,d\mu(y)
+=\varphi(d_j^*d_j)&lt;\infty.
+\tag{WD.26}
+\]</span>
+<p>Each integrand is finite almost everywhere. Remove the union of these countably many null sets. Then every <span class="math" data-tex="\(d_j\)">\(d_j\)</span> is in <span class="math" data-tex="\(\mathfrak n_{\psi_y}\)">\(\mathfrak n_{\psi_y}\)</span> on the remaining fibres. Their algebra-norm density gives norm density of that left ideal. CS-01 then gives norm density of <span class="math" data-tex="\(\mathfrak m_{\psi_y}\)">\(\mathfrak m_{\psi_y}\)</span>: approximate square roots of positive elements by finite-left-ideal elements and take their squared moduli. This proves C*-semifiniteness of <span class="math" data-tex="\(\psi_y\)">\(\psi_y\)</span> on this same common conull set.</p>
+<p>Second, WD-02 and the defining GNS density let us choose <span class="math" data-tex="\(a_j\in\mathfrak n_\varphi\)">\(a_j\in\mathfrak n_\varphi\)</span> with <span class="math" data-tex="\(\{\Lambda(a_j)\}\)">\(\{\Lambda(a_j)\}\)</span> Hilbert total in <span class="math" data-tex="\(H\)">\(H\)</span>. For every <span class="math" data-tex="\(j\)">\(j\)</span>, (WD.22) applied to <span class="math" data-tex="\(a_j^*a_j\)">\(a_j^*a_j\)</span>, and the full finite-left-ideal GNS identity MW-05, give</p>
+<span class="math math-display" data-tex="\[
+\Lambda(a_j)(y)=\Lambda_{\Phi_y}(\pi_y(a_j)),\qquad
+\int_Y\|\Lambda_{\Phi_y}(\pi_y(a_j))\|^2\,d\mu(y)
+=\varphi(a_j^*a_j)&lt;\infty.
+\tag{WD.27}
+\]">\[
+\Lambda(a_j)(y)=\Lambda_{\Phi_y}(\pi_y(a_j)),\qquad
+\int_Y\|\Lambda_{\Phi_y}(\pi_y(a_j))\|^2\,d\mu(y)
+=\varphi(a_j^*a_j)&lt;\infty.
+\tag{WD.27}
+\]</span>
+<p>Here KL's GNS identification identifies <span class="math" data-tex="\(\Lambda(a_j)\)">\(\Lambda(a_j)\)</span> with <span class="math" data-tex="\(\Lambda_\Phi(\pi(a_j))\)">\(\Lambda_\Phi(\pi(a_j))\)</span>. Choose the representatives and remove the union of the countably many null sets for (WD.27).</p>
+<p>The fields in (WD.27) are fibrewise Hilbert total almost everywhere. To justify this, let <span class="math" data-tex="\(P_y\)">\(P_y\)</span> be the orthogonal projection onto the closed span of their values. Countable measurable Gram–Schmidt in DI FIELD makes <span class="math" data-tex="\(P_y\)">\(P_y\)</span> a measurable, norm-at-most-one field. Its integral <span class="math" data-tex="\(P\)">\(P\)</span> fixes every global <span class="math" data-tex="\(\Lambda(a_j)\)">\(\Lambda(a_j)\)</span>; global density gives <span class="math" data-tex="\(P=I_H\)">\(P=I_H\)</span>. Uniqueness of bounded decomposable operator fields gives <span class="math" data-tex="\(P_y=I_{H_y}\)">\(P_y=I_{H_y}\)</span> almost everywhere. This argument proves pointwise totality; it does not infer it merely by selecting representatives of a globally dense sequence.</p>
+<p>Let <span class="math" data-tex="\((K_y,\pi_{\psi_y},\Lambda_{\psi_y})\)">\((K_y,\pi_{\psi_y},\Lambda_{\psi_y})\)</span> be the C*-GNS triple of <span class="math" data-tex="\(\psi_y\)">\(\psi_y\)</span>. On its actual finite domain define</p>
+<span class="math math-display" data-tex="\[
+V_y\Lambda_{\psi_y}(a)
+=\Lambda_{\Phi_y}(\pi_y(a)),\qquad
+a\in\mathfrak n_{\psi_y}.
+\tag{WD.28}
+\]">\[
+V_y\Lambda_{\psi_y}(a)
+=\Lambda_{\Phi_y}(\pi_y(a)),\qquad
+a\in\mathfrak n_{\psi_y}.
+\tag{WD.28}
+\]</span>
+<p>The equality of squared norms is (WD.21) applied to <span class="math" data-tex="\(a^*a\)">\(a^*a\)</span>. It proves representative independence and isometry; polarization proves preservation of all inner products. The extension has closed range because <span class="math" data-tex="\(K_y\)">\(K_y\)</span> is complete. It contains the fibre-total family in (WD.27), so that range is all <span class="math" data-tex="\(H_y\)">\(H_y\)</span>. Hence <span class="math" data-tex="\(V_y\)">\(V_y\)</span> is unitary. For <span class="math" data-tex="\(b\in A\)">\(b\in A\)</span>, the left-ideal rule gives, on the dense GNS core,</p>
+<span class="math math-display" data-tex="\[
+V_y\pi_{\psi_y}(b)\Lambda_{\psi_y}(a)
+=\Lambda_{\Phi_y}(\pi_y(ba))
+=\pi_y(b)V_y\Lambda_{\psi_y}(a).
+\tag{WD.29}
+\]">\[
+V_y\pi_{\psi_y}(b)\Lambda_{\psi_y}(a)
+=\Lambda_{\Phi_y}(\pi_y(ba))
+=\pi_y(b)V_y\Lambda_{\psi_y}(a).
+\tag{WD.29}
+\]</span>
+<p>Boundedness extends this equality to every vector. Thus <span class="math" data-tex="\(\pi_{\psi_y}\)">\(\pi_{\psi_y}\)</span> is unitarily equivalent to <span class="math" data-tex="\(\pi_y\)">\(\pi_y\)</span>, proving clause (iii) of Theorem 4.11. A norm-dense finite ideal and a Hilbert-total GNS range are different requirements; both have now been established.</p>
+<h2 id="the-full-c--disintegration-theorem-and-its-kernels">The full C*-disintegration theorem and its kernels</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be separable, <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> a pointwise norm-continuous one-parameter automorphism group, and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> a faithful, norm-lower-semicontinuous C*-semifinite weight satisfying its modular condition. Let <span class="math" data-tex="\(D\)">\(D\)</span> be any specified von Neumann subalgebra of the center of <span class="math" data-tex="\(\pi_\varphi(A)&#x27;&#x27;\)">\(\pi_\varphi(A)&#x27;&#x27;\)</span>. Relative to the representation's central disintegration over <span class="math" data-tex="\(D\)">\(D\)</span>, there exist weights <span class="math" data-tex="\(\psi_y\)">\(\psi_y\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span> with the following properties:</p>
+<ol>
+<li>For every <span class="math" data-tex="\(a\in A_+\)">\(a\in A_+\)</span>, <span class="math" data-tex="\(y\mapsto\psi_y(a)\)">\(y\mapsto\psi_y(a)\)</span> is measurable and <span class="math" data-tex="\(\varphi(a)=\int_Y\psi_y(a)\,d\mu(y)\)">\(\varphi(a)=\int_Y\psi_y(a)\,d\mu(y)\)</span>, with extended nonnegative values.</li>
+<li>Off one null set, <span class="math" data-tex="\(\psi_y\)">\(\psi_y\)</span> is norm lower semicontinuous, C*-semifinite, and satisfies the modular condition for <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</li>
+<li>Off one null set, its C*-GNS representation is unitarily equivalent to the specified fibre representation <span class="math" data-tex="\(\pi_y\)">\(\pi_y\)</span>.</li>
+</ol>
+<p><strong>Proof at the named field/central inputs.</strong> WD-06 proves clause 1 and lower semicontinuity. WD-07 proves modularity on one common conull set. WD-08 proves norm-semifiniteness and the explicit onto intertwining isometry there. Intersect the finitely many conull sets constructed in these arguments. This is the whole source Theorem 4.11; the countability uses are displayed rather than suppressed. Zero fibres and the zero algebra have their usual zero-space interpretations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Although <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is faithful on <span class="math" data-tex="\(A\)">\(A\)</span>, the fibre <span class="math" data-tex="\(\psi_y\)">\(\psi_y\)</span> need not be. Faithfulness of <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span> gives the precise kernel:</p>
+<span class="math math-display" data-tex="\[
+\mathcal Z_{\psi_y}
+=\{a:\psi_y(a^*a)=0\}
+=\ker\pi_y.
+\tag{WD.30}
+\]">\[
+\mathcal Z_{\psi_y}
+=\{a:\psi_y(a^*a)=0\}
+=\ker\pi_y.
+\tag{WD.30}
+\]</span>
+<p>This is a norm-closed two-sided ideal, invariant under <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by (WD.24). The fibre weight factors through <span class="math" data-tex="\(A/\ker\pi_y\)">\(A/\ker\pi_y\)</span> as a faithful weight. Its descended homomorphism into <span class="math" data-tex="\(M_y\)">\(M_y\)</span> is injective and therefore isometric, so the descended weight is norm lower semicontinuous. Images of the norm-dense finite domain show its semifiniteness, and modular covariance descends as well. These statements clarify the quotient, rather than adding fibre faithfulness on the original algebra to the source theorem.</p>
+<p>The general compatible associated measurable realization and the FIELD, CENTRAL and SELECTION contracts are not proved in this lesson. It supplies all five source-item arguments at those specified inputs.</p>
+<h2 id="a-faithful-global-weight-with-nonfaithful-fibres">A faithful global weight with nonfaithful fibres</h2>
+<p>Take <span class="math" data-tex="\(A=C_0((0,1])\)">\(A=C_0((0,1])\)</span>, Lebesgue measure, the identity action, and</p>
+<span class="math math-display" data-tex="\[
+\varphi(f)=\int_0^1 y^{-2}f(y)\,dy\quad(f\in A_+).
+\tag{WD.31}
+\]">\[
+\varphi(f)=\int_0^1 y^{-2}f(y)\,dy\quad(f\in A_+).
+\tag{WD.31}
+\]</span>
+<p>This weight is faithful because a nonzero continuous positive function is positive on a nonempty interval. It is norm lower semicontinuous by Fatou's lemma for norm-convergent positive sequences. The compactly supported functions away from zero are finite and norm dense, proving C*-semifiniteness. Commutativity and the identity action give the modular condition with constant strip functions.</p>
+<p>Its GNS space is <span class="math" data-tex="\(L^2((0,1],y^{-2}dy)\)">\(L^2((0,1],y^{-2}dy)\)</span>. Multiplication represents <span class="math" data-tex="\(A\)">\(A\)</span>, whose bicommutant is the multiplication algebra <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span>; compactly supported continuous functions are dense in the indicated <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space, and their bounded multiplication approximations generate the measurable multiplication projections. In the Lebesgue-base realization the unitary is</p>
+<span class="math math-display" data-tex="\[
+W:L^2((0,1],y^{-2}dy)\longrightarrow L^2((0,1],dy),
+\qquad (Wg)(y)=g(y)/y.
+\tag{WD.32}
+\]">\[
+W:L^2((0,1],y^{-2}dy)\longrightarrow L^2((0,1],dy),
+\qquad (Wg)(y)=g(y)/y.
+\tag{WD.32}
+\]</span>
+<p>It is onto, with inverse <span class="math" data-tex="\(h\mapsto yh\)">\(h\mapsto yh\)</span>. The fibre algebra and Hilbert space are both <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, while</p>
+<span class="math math-display" data-tex="\[
+\pi_y(f)=f(y),\qquad
+\psi_y(f)=y^{-2}f(y),\qquad
+\Lambda_{\psi_y}(f)=f(y)/y.
+\tag{WD.33}
+\]">\[
+\pi_y(f)=f(y),\qquad
+\psi_y(f)=y^{-2}f(y),\qquad
+\Lambda_{\psi_y}(f)=f(y)/y.
+\tag{WD.33}
+\]</span>
+<p>Each fibre weight is a bounded functional on <span class="math" data-tex="\(A\)">\(A\)</span>, but is not faithful there: any function vanishing at that <span class="math" data-tex="\(y\)">\(y\)</span> is in its GNS kernel. It is faithful on the quotient identified with <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Its GNS map is onto because for any fixed <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span> a compactly supported bump function can take any prescribed value there.</p>
+<p>For <span class="math" data-tex="\(f_\beta(y)=y^\beta\)">\(f_\beta(y)=y^\beta\)</span>, <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span>, the two different finite-domain thresholds are</p>
+<span class="math math-display" data-tex="\[
+\varphi(f_\beta)=
+\begin{cases}
++\infty,&amp;0&lt;\beta\leq1,\\
+(\beta-1)^{-1},&amp;\beta&gt;1,
+\end{cases}
+\qquad
+\|\Lambda_\varphi(f_\beta)\|^2=
+\begin{cases}
++\infty,&amp;0&lt;\beta\leq\tfrac12,\\
+(2\beta-1)^{-1},&amp;\beta&gt;\tfrac12.
+\end{cases}
+\tag{WD.34}
+\]">\[
+\varphi(f_\beta)=
+\begin{cases}
++\infty,&amp;0&lt;\beta\leq1,\\
+(\beta-1)^{-1},&amp;\beta&gt;1,
+\end{cases}
+\qquad
+\|\Lambda_\varphi(f_\beta)\|^2=
+\begin{cases}
++\infty,&amp;0&lt;\beta\leq\tfrac12,\\
+(2\beta-1)^{-1},&amp;\beta&gt;\tfrac12.
+\end{cases}
+\tag{WD.34}
+\]</span>
+<p>The second expression denotes the extended energy; an actual GNS vector exists only in its finite case. Integrating <span class="math" data-tex="\(y^{\gamma-2}\)">\(y^{\gamma-2}\)</span> from <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> to one and taking <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> proves each branch, including logarithmic divergence at its boundary. For example, <span class="math" data-tex="\(f_{3/4}\)">\(f_{3/4}\)</span> has a GNS vector of squared norm two while its positive weight is infinite. All fibre evaluations remain finite. The private reproducible figures distinguish these domains, depict the closed-graph/core argument and the countable fibre-totality mechanism, and identify finite samples separately from the proved limiting statements.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-MC.html">← The realization boundary in measurable weight fields</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-CH.html">Changing the reference of a weight cocycle →</a></span></nav>
+<p class="small source-link"><a href="src/cstar-weight-disintegration.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

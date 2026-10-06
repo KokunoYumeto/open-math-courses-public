@@ -2,7 +2,7 @@
 
 The dimension shift in a microlocal coefficient type turns the local Levi-form estimate into a cohomology theorem. On a Stein manifold, the upper microlocal cut forces ordinary cohomology to vanish in positive degrees. The lower cut forces compactly supported cohomology to vanish in negative degrees. The two proofs use different closed support tests and different limit maps. We prove both, including the degree-one inverse-limit step.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 3 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 3 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Learn first Pure and simple sheaves from directional tests, How simple-sheaf shifts change along a Lagrangian, Constructible gluing on an interval, and Holomorphic Morse exhaustions on Stein manifolds. The exact proper-image microsupport and proper-base-change proofs belong to the preceding Microsupport operations, source edition, in its section on collecting tests along a fibre; the ordinary bounded derived and exceptional-operation foundations retain their existing programme providers.
 

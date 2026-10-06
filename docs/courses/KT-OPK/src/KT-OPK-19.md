@@ -16,7 +16,7 @@ uau^*=\alpha(a),\qquad \iota:A\longrightarrow B.
 \tag{0.1}
 \]
 
-Matrix traces are unnormalized. Write \(H=\tau_*(K_0(A))\subset\mathbb R\); quotients by \(H\) below are quotients of additive groups, without taking a closure. We use [Lesson 14, §§1–2](KT-OPK-14.md#1-the-logarithmic-integral-and-its-periods) for the integral \(\Gamma_\tau\), its period group \(H\), and the unitary determinant \(\Delta_\tau:U_\infty(A)_0\to\mathbb R/H\). The mapping-torus integral is that lesson's Theorem 4.1. Lesson 18 supplies the PV sequence and its actual inclusion arrows.
+Matrix traces are unnormalized. Write \(H=\tau_*(K_0(A))\subset\mathbb R\); quotients by \(H\) below are quotients of additive groups, without taking a closure. We use [Lesson 14, §§1–2](KT-OPK-14.md#1-the-logarithmic-integral-and-its-periods) for the integral \(\Gamma_\tau\), its period group \(H\), and the unitary determinant \(\Delta_\tau:U_\infty(A)_0\to\mathbb R/H\). The mapping-torus integral is that lesson's Theorem 4.1. [Lesson 18](KT-OPK-18.md) supplies the PV sequence and its actual inclusion arrows.
 
 ## 1. The dual trace and agreement of trace extensions
 

@@ -1,6 +1,6 @@
 # Hilbert 90 in Noether's form and Galois descent
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the contributing AIs. Public domain (CC0).*
 
 A cocycle describes how a chosen basis fails to agree with its Galois conjugates. Hilbert 90 says that for vector spaces this discrepancy can always be removed by a change of basis. Noether's proof interprets the scalar discrepancy as an automorphism of a crossed-product algebra and removes it by inner conjugation. We prove both the direct and the algebraic statements, and descend vector spaces without assuming finite dimension.
 
@@ -207,15 +207,79 @@ Its differential is
 
 The hat means omission. Every pair of omitted indices occurs twice with opposite signs in \(d^2\), so \(d^2=0\). The quotient of cocycles by coboundaries in this complex is \(H^q(G,M)\). In degree one it gives the additive cocycle formula above, by setting \(z_g=f(1,g)\).
 
-We state the **normal basis theorem** with its precise input: there is \(\theta\in L\) such that \(\{g(\theta):g\in G\}\) is a \(K\)-basis of \(L\) [Milne, Theorem 5.18]. It identifies the additive \(G\)-module \(L\) with the permutation module \(K^G\), with
+### Normal bases in every characteristic
+
+**Theorem 4.0 (normal basis).** There is \(\theta\in L\) such that \(\{g(\theta):g\in G\}\) is a \(K\)-basis of \(L\) [Milne, Theorem 5.18]. It identifies the additive \(G\)-module \(L\) with the permutation module \(K^G\), with
 
 \[
 (\sigma m)(h)=m(\sigma^{-1}h).
 \]
 
+**Proof of Theorem 4.0.** First suppose that \(K\) is infinite. The determinant argument in [Local reciprocity and norm groups, §2, “A normal basis, with its proof”](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/local-reciprocity-and-norm-groups.html#2-a-normal-basis-with-its-proof) applies to every finite Galois extension of an infinite field. Its field-theoretic part uses independence of the automorphisms, an invertible change of variables in a polynomial ring, and nonvanishing of a nonzero polynomial at some point over the infinite base. Applying all automorphisms to a relation among the chosen conjugates then gives an invertible linear system. These steps precede the integral scaling and use no valuation, completeness or residue-field hypothesis.
+
+For a finite base we prove the required linear-algebra fact first. Let \(V\) be a nonzero finite-dimensional \(K\)-vector space and \(T:V\to V\) a \(K\)-linear endomorphism. Its **minimal polynomial** \(m_T\) is the monic polynomial of least degree annihilating \(T\). If
+\[
+\deg m_T=\dim_K V,
+\]
+then some \(w\in V\) has \(w,Tw,\ldots,T^{\dim_K V-1}w\) as a basis.
+
+Here is a proof that retains repeated irreducible factors. For a vector \(v\), let \(a_v\in K[t]\) be its monic annihilating polynomial of least degree, with \(a_0=1\). Such a polynomial exists because finitely many successive iterates of \(v\) are linearly dependent. Polynomial division shows
+\[
+f(T)v=0\quad\Longleftrightarrow\quad a_v\mid f.
+\]
+For a basis \(v_1,\ldots,v_s\) of \(V\), a polynomial annihilates \(T\) exactly when it annihilates each \(v_j\). Consequently
+\[
+m_T=\operatorname{lcm}(a_{v_1},\ldots,a_{v_s})
+     =\prod_{i=1}^{r}p_i^{e_i},
+\]
+where the \(p_i\) are distinct monic irreducible polynomials. This factorization and the divisibility statements use the polynomial Euclidean algorithm: division lowers degree, Bézout's identity follows by back-substitution, and an irreducible dividing a product divides one of its factors.
+
+For each \(i\), choose a basis vector \(v_{j_i}\) whose annihilator contains \(p_i\) to exponent \(e_i\). Write \(a_{v_{j_i}}=b_i p_i^{e_i}\), and set
+\[
+w_i=b_i(T)v_{j_i},\qquad w=\sum_{i=1}^{r}w_i.
+\]
+For any \(f\in K[t]\), the equality \(f(T)w_i=0\) is equivalent to \(b_i p_i^{e_i}\mid f b_i\), hence to \(p_i^{e_i}\mid f\), by cancellation in \(K[t]\). Thus the annihilator of \(w_i\) is exactly \(p_i^{e_i}\).
+
+If \(f(T)w=0\), apply the endomorphism
+\[
+Q_i(T),\qquad Q_i=\prod_{j\ne i}p_j^{e_j}.
+\]
+All summands except \(w_i\) vanish. Since polynomial expressions in \(T\) commute, \(Q_i(T)f(T)w_i=0\), so \(p_i^{e_i}\mid Q_i f\). Coprimality and Bézout's identity give \(p_i^{e_i}\mid f\). This holds for every \(i\), whence \(m_T\mid f\). Conversely \(m_T(T)w=0\). The annihilator of \(w\) is therefore \(m_T\). No nonzero polynomial of degree less than \(\dim_K V\) kills \(w\), which proves linear independence of its first \(\dim_K V\) iterates; their number makes them a basis.
+
+Now let \(K\) have \(q\) elements. A \(K\)-basis counts \(|L|=q^n\). The map
+\[
+T:L\longrightarrow L,\qquad T(x)=x^q
+\]
+is a \(K\)-linear field automorphism. Indeed \(q\) is a power of the characteristic, so the binomial formula makes it additive; it is multiplicative and injective, hence bijective on the finite set \(L\). It fixes \(K\): in any finite field \(E\), multiplication by \(a\ne0\) permutes \(E^\times\), and cancellation in
+\[
+\prod_{u\in E^\times}u
+ =\prod_{u\in E^\times}(au)
+ =a^{|E|-1}\prod_{u\in E^\times}u
+\]
+gives \(a^{|E|-1}=1\). Applied to \(K\) this gives \(x^q=x\); applied to \(L\) it gives \(T^n=1\). Thus \(m_T\mid t^n-1\).
+
+If a nonzero polynomial \(f(t)=\sum_{i=0}^{d}c_i t^i\) of degree \(d<n\) annihilated \(T\), then
+\[
+\sum_{i=0}^{d}c_i X^{q^i}
+\]
+would vanish at all \(q^n\) elements of \(L\). It is a nonzero polynomial of degree \(q^d<q^n\), which is impossible: successive division by \(X-a\) shows that a degree-\(d'\) polynomial over a field has at most \(d'\) distinct roots. It follows that \(m_T=t^n-1\). The linear-algebra argument supplies an element \(\theta\) with \(\theta,T\theta,\ldots,T^{n-1}\theta\) a \(K\)-basis. Moreover the powers \(1,T,\ldots,T^{n-1}\) are distinct, since an equality between two would give an annihilating polynomial of degree less than \(n\). They are \(n=|G|\) automorphisms fixing \(K\), so they comprise \(G\). These are exactly the required conjugates.
+
+Finally the promised comparison is the \(K\)-linear map
+\[
+\Phi_\theta:K^G\longrightarrow L,\qquad
+\Phi_\theta(m)=\sum_{h\in G}m(h)\,h(\theta).
+\]
+It is bijective because the conjugates are a basis. For the displayed permutation action, substitution \(h=\sigma k\) gives
+\[
+\Phi_\theta(\sigma m)
+ =\sum_{k\in G}m(k)\,(\sigma k)(\theta)
+ =\sigma\bigl(\Phi_\theta(m)\bigr).
+\]
+Thus it is an isomorphism of \(K\)-linear \(G\)-modules. Applying it pointwise to homogeneous cochains commutes with the omission differential, so it also identifies their cohomology. The choice of \(\theta\) need not be canonical; existence of this cochain isomorphism is what the vanishing argument requires. Nothing divides by \(n\), and no step assumes that \(t^n-1\) has distinct roots. In particular, the proof includes \(n=1\) and characteristic dividing \(n\). \(\square\)
+
 **Theorem 4.1 (additive acyclicity).** \(H^q(G,L)=0\) for every \(q\ge1\).
 
-**Proof.** By the stated normal basis theorem, it is enough to use \(M=K^G\). An equivariant cochain with values in \(K^G\) is uniquely determined by the arbitrary scalar-valued function
+**Proof.** By Theorem 4.0, it is enough to use \(M=K^G\). An equivariant cochain with values in \(K^G\) is uniquely determined by the arbitrary scalar-valued function
 
 \[
 \psi(g_0,\ldots,g_q)=f(g_0,\ldots,g_q)(1).
@@ -235,7 +299,9 @@ It is equivariant for the specified permutation action. These bijections commute
 
 Expanding \(ds\psi+sd\psi\), the term omitting the first entry \(1\) in \(sd\psi\) is \(\psi(g_0,\ldots,g_q)\); every other term cancels the matching term in \(ds\psi\). Hence \(ds+sd=1\) in every positive degree. If \(d\psi=0\), then \(\psi=d(s\psi)\), so every positive-degree cocycle is a coboundary. \(\square\)
 
-The normal basis theorem is the only existence theorem imported into this higher-degree proof. The contracting map itself is displayed, so no vanishing result for an induced module is left implicit. In degree zero, the invariants are \(L^G=K\); they do not vanish.
+Theorem 4.0 supplies the normal basis used in this higher-degree proof. The contracting map itself is displayed, so no vanishing result for an induced module is left implicit. In degree zero, the invariants are \(L^G=K\); they do not vanish.
+
+An alternative proof of Theorem 4.1 is given in Constructible complexes on algebraic varieties, Appendix R.3, equation (R.5). It constructs a contracting homotopy directly from an element of trace one, for any finite Galois extension and in every positive degree. That proof includes finite base fields and characteristic dividing the group order; it does not require a normal basis. Theorem 4.0 also supplies the normal basis used by the first proof and Exercise 6.4.
 
 ## 5. Three concrete calculations
 
@@ -331,7 +397,7 @@ Set \(v_h=z_{h^{-1},1}\) and \(v=\sum_h v_h e_h\). Apply this displayed identity
 z_{h^{-1}g,1}=z_{h^{-1},1}+z_{g,h}.
 \]
 
-Since \((g^{-1}h)^{-1}=h^{-1}g\), this says \(v_{g^{-1}h}-v_h=z_{g,h}\). These are exactly the coefficients of \(gv-v\), proving the claim. No coefficient average or division by the group order occurs. The normal basis is the one imported field theorem in this argument.
+Since \((g^{-1}h)^{-1}=h^{-1}g\), this says \(v_{g^{-1}h}-v_h=z_{g,h}\). These are exactly the coefficients of \(gv-v\), proving the claim. No coefficient average or division by the group order occurs. Theorem 4.0 supplies this normal basis over every base field.
 
 **Solution 6.5.** Fix a normalized factor system \(a\), with \(u_\sigma x=\sigma(x)u_\sigma\) and \(u_\sigma u_\tau=a(\sigma,\tau)u_{\sigma\tau}\). Send \(x\in L\) to itself and \(u_\sigma\) to \(b_\sigma u_\sigma\). The commutation relation with \(x\) is preserved. Moreover
 
@@ -355,7 +421,7 @@ which gives the required \(b_\sigma=v/\sigma(v)\). Nothing in the proof requires
 ## Sources and further reading
 
 - **[Noether, work 41]** Emmy Noether, *Der Hauptgeschlechtssatz für relativ-galoissche Zahlkörper*, Mathematische Annalen **108** (1933), 411–419, introduction and §1, “Hauptgeschlechtssatz im Minimalen.” Her introduction credits Speiser's 1919 formulation, and §1 gives the crossed-product argument. The [English collected edition](https://github.com/KokunoYumeto/emmy-noether-en) provides a companion reading text. Section 3 translates the argument into the left-action convention used throughout this course.
-- **[Milne FT]** J. S. Milne, *Fields and Galois Theory*, chapter 5: independence of characters, the normal basis theorem (Theorem 5.18), and Hilbert's Theorem 90. The [author's notes](https://www.jmilne.org/math/CourseNotes/FT.pdf) provide an open source for the imported normal basis theorem.
+- **[Milne FT]** J. S. Milne, *Fields and Galois Theory*, chapter 5: independence of characters, the normal basis theorem (Theorem 5.18), and Hilbert's Theorem 90. The [author's notes](https://www.jmilne.org/math/CourseNotes/FT.pdf), version 5.10 (September 2022), Theorem 5.18, pp. 68–70, discuss the infinite-field and cyclic arguments. Theorem 4.0 supplies the cyclic-vector argument explicitly and uses Frobenius for finite fields.
 - **[Milne CFT]** J. S. Milne, [*Class Field Theory*](https://www.jmilne.org/math/CourseNotes/CFT.pdf), course notes, Chapter II, for Galois descent and Hilbert's Theorem 90, including the profinite form over a separable closure.
 
 For a field \(K\), let \(G_K=\operatorname{Gal}(K^{\mathrm{sep}}/K)\). With continuous cochains and the discrete coefficient module \((K^{\mathrm{sep}})^\times\), the profinite form is
@@ -368,4 +434,4 @@ This statement is imported from [Milne CFT, Chapter II]. The planned lesson AG-E
 
 ## What this lesson does not prove
 
-The normal basis theorem is stated with its precise locator and used to prove the higher additive vanishing; it is not proved here. Finite-field structure and the usual finite Galois theory are prerequisites. The continuous multiplicative statement over a separable closure is stated with its source, without duplicating its profinite proof. All five finite-extension assertions in the programme, descent of subspaces, quotients and algebras, the three examples, and the five exercise solutions are proved above. The number-field principal genus theorem requires the additional arithmetic inputs specified in the next lesson.
+Theorem 4.0 proves the normal basis theorem over both infinite and finite base fields. Finite-field structure and the usual finite Galois theory are prerequisites. The continuous multiplicative statement over a separable closure is stated with its source, without duplicating its profinite proof. All five finite-extension assertions in the programme, descent of subspaces, quotients and algebras, the three examples, and the five exercise solutions are proved above. The number-field principal genus theorem requires the additional arithmetic inputs specified in the next lesson.

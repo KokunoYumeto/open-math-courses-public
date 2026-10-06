@@ -6,7 +6,7 @@ Convergence on vectors, convergence in measure, and uniform convergence after a 
 
 Throughout, \(M\subseteq B(H)\) has a faithful normal semifinite trace \(\tau\), and \(A_n\in S(M,\tau)\). No separability or sigma-finiteness is imposed except in the explicitly commutative sections. The closed measurable algebra and its completed vector module are constructed in MT05–11. A subspace is **trace-dense** in the sense of MM05: it contains the ranges of increasing projections whose complementary traces tend to zero.
 
-The same results are treated in Takesaki, *Theory of Operator Algebras II*, Chapter IX, §2, Exercise 6(a)–(i), pp. 183–184, in the approved receipt-backed edition. All nine clauses are treated below, including the two on the continuation page. Several printed conclusions require correction under the definition of convergence given there. NE09 states the correspondence explicitly; none of those corrections is hidden in an extra standing hypothesis.
+The same results are treated in Takesaki, *Theory of Operator Algebras II*, Chapter IX, §2, Exercise 6(a)–(i), pp. 183–184. All nine clauses are treated below, including the two on the continuation page. Several printed conclusions require correction under the definition of convergence given there. NE09 states the correspondence explicitly; none of those corrections is hidden in an extra standing hypothesis.
 
 ## The maximal limit domain and bounded restrictions
 

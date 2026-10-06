@@ -680,7 +680,7 @@ For type \(C_n\), the simply connected symplectic group has character lattice \(
 
 **Solution.** The Weyl group is \(S_3\), with \(s_1=(12),s_2=(23)\). The product \(s_1s_2\) is a three-cycle and has length two, whereas \(w_0=s_1s_2s_1\) reverses the three positions and has length three. Over a field of characteristic different from two, take \(t=\operatorname{diag}(-1,-1,1)\). It belongs to \(T[2]\). Conjugation by the representative swapping positions two and three sends it to \(\operatorname{diag}(-1,1,-1)\), which is different. The representative does normalize \(T[2]\), since it acts on the torus by the corresponding permutation.
 
-The course prerequisite guide records the exact supporting statements and which lessons are published or still planned.
+The [course prerequisite guide](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-RG/prerequisites.html) records the exact supporting statements and which lessons are published or still planned.
 
 ## References and exact prerequisite proofs
 

@@ -4,7 +4,7 @@ Proper pushforward of a constructible complex preserves its geometric constructi
 
 Use Weak constructibility under sheaf operations for the weak operation theorem and proper support estimates, Constructible gluing on an interval for local support fibres, and Constructible sheaves on a triangulation for star cohomology. We retain proper-support base change, localization and composition from the existing sheaf-operation prerequisites. Compatible subanalytic triangulation is the explicit geometric input stated in Derived constructibility through common triangulations.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## Perfection and ordinary inverse image
 
@@ -250,7 +250,7 @@ It is perfect by finite direct-sum and shift closure. This uses finite-projectiv
 
 ## References
 
-Kashiwara and Schapira, *Microlocal study of sheaves*, Remark 8.2.8 and Proposition 8.3.1, printed 146 and 148–149, treats perfect cohomology on compact subanalytic sets and proper constructible direct image. Ordinary inverse image is covered by Proposition 8.3.3. The compact calculation here is separately proved by localization on a line, coordinate induction and finite star descent; its compatible triangulation and closed analytic embedding inputs remain explicit geometric prerequisites.
+Kashiwara and Schapira, *Microlocal study of sheaves*, Remark 8.2.8 and Proposition 8.3.1, printed 146 and 148–149, treats perfect cohomology on compact subanalytic sets and proper constructible direct image. Ordinary inverse image is covered by Proposition 8.3.3, printed 149. The compact calculation here is separately proved by localization on a line, coordinate induction and finite star descent; its compatible triangulation and closed analytic embedding inputs remain explicit geometric prerequisites.
 
 ## Readable source and dependency account
 

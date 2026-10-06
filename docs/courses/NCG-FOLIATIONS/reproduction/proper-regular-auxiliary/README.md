@@ -1,0 +1,7 @@
+# Proper coefficients and the regular diagonal
+
+Sections 11J–11L of *K-theory of the leaf space* prove the exact full/reduced norm bridge for a proper coefficient, the scalar index-one consequence of a proper factorization, and the regular diagonal replacement preserving the whole ordinary normal class. They also identify the stated operator premises, full inverse phase and grading, and the distinct equivariant identity.
+
+Figure 11J.1 records the normalized cutoff, actual compression isometry, norm equality and four typed KK factors. Figure 11K.1 records absorption, the exact ordinary restriction, the compact invariant metric section and the failure of bare regular scalar compactness. The lesson contains the complete proofs and nine solved exercises. Figure 11L.1 shows the exact doubled operator, removed couplings and essential index-one compression from equations UP.20–UP.21. Section11L proves the general prescribed-family representative with its domain, core and class preservation. No arbitrary auxiliary existence or general holonomy graph construction is inferred from the diagrams.
+
+Install Python and the versions in requirements.txt, then run `python -B draw_proper.py --output-dir OUTPUT` and `python -B draw_auxiliary.py --output-dir OUTPUT`. Both generators use the two included, unmodified DejaVu Sans fonts and create a PNG and editable SVG. No TeX installation is required. Each image retains the complete glyph notice in its metadata. Component terms and complete retained notices accompany the generators.

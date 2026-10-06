@@ -4,7 +4,7 @@ A submanifold transform can turn a hypersurface into a submanifold of higher cod
 
 Use Microlocal composition at prescribed covectors, the isolated-incidence direct-image theorem, compact-support base change, and the closed/open localization triangles. We prove the clean cotangent reduction and bind the exact written programme Morse lemma with parameters before applying them to the hypersurface. The smooth inverse, implicit, submersion and constant-rank theorems, differentiation of smooth parameter integrals, and finite-dimensional symmetric-form diagonalization are calculus prerequisites. We work over a commutative ring \(k\) of finite global dimension, and \(L\in D^b(k)\) may have arbitrary coefficient modules.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## Clean intersection supplies the coordinate model
 

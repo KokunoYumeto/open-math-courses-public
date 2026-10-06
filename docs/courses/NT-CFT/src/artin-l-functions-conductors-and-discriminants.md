@@ -9,7 +9,7 @@ Our representation-theoretic inputs are written in [Characters and the orthogona
 For ramification we use Hilbert's different formula and Herbrand's quotient theorem, with the conventions of [Abelian ramification, conductors and Hasse–Arf](abelian-ramification-conductors-and-hasse-arf.md). [Ray class fields, conductors and ideal reciprocity](ray-class-fields-conductors-and-ideal-reciprocity.md) identifies rank-one Galois and idèle characters. The written number-field analytic input is Theorem 10.1 of [Hecke L-functions and the Dedekind zeta function](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ADL-10). Section 6 also supplies the function-field analytic argument from the adelic duality proved in lessons 15 and 17 and the local Fourier calculations of lesson 12.
 
 
-**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-21) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-21) shows which results are proved in published lessons and which full proofs are still missing. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
 
 ## 1. Euler factors and induction
 
@@ -403,7 +403,7 @@ This verifies (39) with the lower-group weights, independently of the global num
 
 An orthogonal representation here means the complexification of a finite-image real representation with an invariant positive definite inner product. Its global root number is the constant in (25). A local root number is the central epsilon constant for a nontrivial local additive character and self-dual measure. These local constants need not all be 1 even when the global constant is 1.
 
-The exact internal provider for the higher-dimensional local epsilon family is [Local L-factors and epsilon-factors of Weil group representations](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#LG-GAL-06), §3, and for the orthogonal theorem it is §7, equation (24). The present edition of that lesson gives existence and orthogonal statements and proves uniqueness and formal consequences; its general existence and orthogonal proofs are still required there. The analytic proof of Theorem 21.3 above uses the proved rank-one theory and Brauer induction and is independent of these remaining local proofs.
+The higher-dimensional local epsilon family is supplied by [Local L-factors and epsilon-factors of Weil group representations, Theorem 3.0](https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/local-l-factors-and-epsilon-factors.html#3-existence-and-uniqueness-of-local-constants), with its existence argument in sections 3A–3D and uniqueness in Theorem 3.2. The [orthogonal formula, Theorem 7.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/local-l-factors-and-epsilon-factors.html#7-sharp-twisting-and-orthogonal-root-numbers), has its real-induction, Clifford-class and dihedral Fourier arguments in Lemmas 7.5–7.8. The analytic proof of Theorem 21.3 above uses the rank-one theory and Brauer induction and does not depend on these higher-dimensional local arguments.
 
 **Deligne's local orthogonal theorem.** If \(A\) is a virtual finite-image real representation of the absolute Galois group of a local field \(F\), with virtual dimension zero and determinant one, then
 \[
@@ -480,7 +480,7 @@ Globally the regular character is \(\sum_{\rho\in\operatorname{Irr}(G)}(\dim\rho
 
 Finite-group character theory, induction and integer Brauer induction are supplied by the three exact written representation-theory lessons identified at the beginning. The number-field rank-one analytic theorem is supplied by the written Hecke lesson; the function-field argument is proved in section 6. Hilbert's different formula and Herbrand's quotient theorem have the written local-field providers identified in lesson 10. The central Artin conductor integrality and discriminant arguments themselves are proved here.
 
-The general local epsilon existence theorem and Deligne's orthogonal theorem have the exact existing provider *Local L-factors and epsilon-factors of Weil group representations*, §§3 and 7; their proofs are currently incomplete in that edition. The global invariant sum law used in section 8 is proved in this course's lesson 24, Theorem 24.4. Thus (42) has the full deduction above, with the two precisely identified local prerequisites still required in their owning course; the local theorem (41) is not claimed proved here. Artin's number-field conjecture remains a conjecture.
+The general local epsilon existence theorem and Deligne’s orthogonal theorem have the exact programme providers [LG-GAL-06, Theorem 3.0 and sections 3A–3D](https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/local-l-factors-and-epsilon-factors.html#3-existence-and-uniqueness-of-local-constants) and [Theorem 7.4 with Lemmas 7.5–7.8](https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/local-l-factors-and-epsilon-factors.html#7-sharp-twisting-and-orthogonal-root-numbers). The global invariant sum law used in section 8 is proved in this course’s lesson 24, Theorem 24.4. Equation (42) uses those local results and that sum law through the deduction above; the local theorem (41) is proved in its provider rather than repeated here. Artin’s number-field conjecture remains a conjecture.
 
 ## Editable edition
 
@@ -488,7 +488,7 @@ The reading edition provides the complete LaTeX source of this lesson, the cumul
 
 ## References
 
-The ramified induction identities, conductor integrality, conductor–discriminant identity and meromorphic functional equation are proved using the named internal character and Fourier lessons. The function-field analytic argument is written in section 6. The orthogonal deduction retains the missing full local LG-GAL-06 theorem.
+The ramified induction identities, conductor integrality, conductor–discriminant identity and meromorphic functional equation are proved using the named internal character and Fourier lessons. The function-field analytic argument is written in section 6. The orthogonal deduction uses LG-GAL-06, Theorem 7.4, with its real-induction, Clifford-class and dihedral Fourier lemmas 7.5–7.8.
 
 - [Bjorn Poonen, Tate’s Thesis, MIT 18.786 lecture notes (2015)](https://math.mit.edu/~poonen/786/notes.pdf).
 - [Wen-Wei Li, Yanqi Lake Lectures on Algebra: Part 1](https://www.wwli.asia/downloads/YAlg1.pdf).

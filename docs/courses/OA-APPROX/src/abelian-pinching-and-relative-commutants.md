@@ -1,6 +1,6 @@
 # Abelian pinching and relative commutants
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 A finite partition of the identity removes the off-diagonal corners of an operator. If the partition lies in a centralizer, this operation is an orthogonal projection in the state GNS space. Refining the partition can make its surviving diagonal part nearly scalar on each atom. These two projections give a useful test for maximal abelianness and the preparation for constructing MASAs inside expected subfactors.
 

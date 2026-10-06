@@ -4,7 +4,7 @@
 
 A family of vector spaces can look like a product near each point without admitting one choice of coordinates everywhere. The failure to choose global coordinates is what characteristic classes will measure. We first establish the constructions that allow us to compare such families: sections, pullbacks, complements and stabilization.
 
-This lesson assumes finite-dimensional real and complex linear algebra, continuous maps, and the definitions of compactness, Hausdorffness and local finiteness. The topological facts about partitions of unity needed below are proved here. The final geometric examples also use smooth coordinate charts and the chain rule. Basic references are Hatcher's *Vector Bundles and K-Theory* [H] and Milnor and Stasheff's [*Characteristic Classes*](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnstas.pdf) [MS]. The proofs below are given in full.
+This lesson assumes finite-dimensional real and complex linear algebra, continuous maps, and the definitions of compactness, Hausdorffness and local finiteness. The topological facts about partitions of unity needed below are proved here. The final geometric examples also use smooth coordinate charts and the chain rule. Hatcher's *Vector Bundles and K-Theory* [H], Sections 1.1–1.2, treats sections, pullbacks, metrics and complements; Proposition 1.4 proves compact-base stabilization. The proofs below include the locally finite partition construction and the real and complex cases.
 
 ## 1. Local coordinates and global sections
 
@@ -106,6 +106,8 @@ More generally, any construction on finite-dimensional vector spaces whose induc
 
 A metric is a continuous positive-definite symmetric bilinear form on each real fibre, or a Hermitian form on each complex fibre. For complex fibres we take the inner product conjugate-linear in its first variable.
 
+The finite-dimensional preparation is available in the programme's B40 source [B40]: basis uniqueness, Gram–Schmidt with its full induction in the solved exercise, and the real orthogonal-projection formula. Its accompanying lessons [B40-B] and [B40-H] give full proofs of basis extension over any field and orthogonal decomposition over both fields. The latter uses an inner product linear in the first variable; exchanging its two arguments gives our convention. Orthogonality and the projection map are unchanged. The calculation below supplies the positive-Gram argument and the metric-weighted formula over both fields.
+
 **Theorem 4.1.** Every finite-rank vector bundle over a paracompact Hausdorff base has a metric.
 
 **Proof.** Take a partition subordinate to trivializing charts. On each chart let \(h_a\) be the coordinate Euclidean or Hermitian metric and set
@@ -192,4 +194,8 @@ In product coordinates this is precisely the decomposition of velocity coordinat
 
 [H] Allen Hatcher, *Vector Bundles and K-Theory*, version 2.2, 2017, [author's text](https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf). Copyrighted reference; no text or figures reproduced here.
 
-[MS] John Milnor and James Stasheff, [*Characteristic Classes*](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnstas.pdf), Princeton University Press, 1974.
+[B40] Jim Hefferon, *Linear Algebra*, [original English text with solved exercises](https://kokunoyumeto.github.io/program-matematika-indonesia/en/readers/hefferon-linear-algebra/sources/00-linear-algebra-cumulative.tex). The relevant topics are bases and unique representation, Gram–Schmidt, orthogonal projections and the adjugate identity. The source is available under CC BY-SA 2.5, with its notices in the linked source archive.
+
+[B40-B] [*From bases to projections*](https://kokunoyumeto.github.io/program-matematika-indonesia/en/readers/basis-projection-bridge/#extending-a-basis-and-choosing-a-complement), revision 2, especially the basis-extension theorem and projection corollary. Adapted from Hefferon by OpenAI GPT-6 Astra in Codex, at Ultra, October 2026; CC BY-SA 2.5. The finite-dimensional argument applies over every field.
+
+[B40-H] [*Orthonormal bases and orthogonal projections*](https://kokunoyumeto.github.io/program-matematika-indonesia/en/readers/finite-hermitian-spaces/#orthogonal-projection-and-decomposition), Theorems 1–2. Proofs and exposition by OpenAI GPT-6 Astra in Codex, at Ultra, October 2026; CC BY-SA 4.0. The projected subspace is finite-dimensional; the ambient real or complex inner-product space need not be complete.

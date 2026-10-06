@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Closing an involution and recovering its modular data · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-TC.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 19 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="closing-an-involution-and-recovering-its-modular-data">Closing an involution and recovering its modular data</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>An algebraic involution need not be continuous for a Hilbert norm. Its graph is the first object to understand. For a cyclic separating vector, the commutant supplies enough test vectors to close that graph. Once it is closed, a positive form determines the modulus, and the identity that the involution is its own inverse determines the polar symmetry.</p>
+<p>This unit proves those statements without a modular commutant theorem. Its graph and polar results apply to every closed densely defined conjugate-linear involution, so they can also be used later for Hilbert algebras. It does not prove closability for the involution associated with an arbitrary faithful normal semifinite weight.</p>
+<p>Free comparisons for this construction are Fumio Hiai's lecture notes and Brent Nelson's notes on Tomita–Takesaki theory. Their exact passages and the points requiring correction appear at the end. The arguments below prove the adjoint, closed-form and polar steps explicitly, with complete preceding programme proofs for their Hilbert and spectral inputs.</p>
+<h2 id="conventions-and-dependency-contracts"><span id="oa-mod-tc-01"></span><span id="OA-MOD-TC-01"></span>Conventions and dependency contracts</h2>
+<p>Inner products are linear in the first variable. Hilbert spaces need not be separable. A concrete von Neumann algebra <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span> contains <span class="math" data-tex="\(I_H\)">\(I_H\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+M&#x27;=\{b\in B(H):ba=ab\text{ for every }a\in M\}.
+\]">\[
+M&#x27;=\{b\in B(H):ba=ab\text{ for every }a\in M\}.
+\]</span>
+<p>The zero Hilbert space is allowed. No vector is normalized unless stated.</p>
+<p>An operator includes its domain; <span class="math" data-tex="\(\operatorname{ran}A\)">\(\operatorname{ran}A\)</span> means its actual range. The product <span class="math" data-tex="\(BA\)">\(BA\)</span> has domain</p>
+<span class="math math-display" data-tex="\[
+D(BA)=\{x\in D(A):Ax\in D(B)\}.
+\]">\[
+D(BA)=\{x\in D(A):Ax\in D(B)\}.
+\]</span>
+<p>Every unbounded operator identity includes equality of domains. Conjugate-linear adjoints are defined in OA-MOD-TC-03.</p>
+<p>The exact prerequisites have complete preceding programme proofs:</p>
+<ul>
+<li><strong>TC-DEP-HILBERT:</strong> <a href="OA-MOD-BK.html#oa-mod-bk-01">The bounded prerequisite boundary</a> proves inner-product completion, continuous extension from a dense subspace, projection, the complex Riesz theorem, bounded adjoints and the range-kernel identity. Its <a href="notes/real-coercivity/real-coercive-equations.html">real Hilbert foundation</a> proves projection and real Riesz representation before the complex conversion. In TC-03 the scalar pairing is conjugate-linear: conjugate the functional, apply linear Riesz, and conjugate the equality back. Every unbounded adjoint fact needed here is proved in TC-03.</li>
+<li><strong>TC-DEP-VN:</strong> <a href="OA-MOD-BK.html#oa-mod-bk-02">Finite-vector approximation and the bicommutant</a> proves the bicommutant theorem by finite-vector approximation on arbitrary Hilbert spaces, including the zero space.</li>
+<li><strong>TC-DEP-FORMS:</strong> <a href="OA-MOD-QF.html#oa-mod-qf-03">Representation with the exact square-root domain</a> proves representation and uniqueness for a densely defined closed nonnegative form, with its intrinsic operator domain and exact square-root domain. This uses the bounded inclusion of the complete form space and the preceding spectral construction. It assumes neither unbounded polar decomposition nor self-adjointness of a closed-operator adjoint product.</li>
+<li><strong>TC-DEP-SPECTRAL:</strong> <a href="OA-MOD-SK.html#oa-mod-sk-04">Bounded Borel functions and the spectral measure–Recovering a self-adjoint operator from a unitary</a> construct the spectral measure and closed unbounded integrals with their squared-integrability domains, adjoints, kernels and multiplication domains. <a href="OA-MOD-SK.html#oa-mod-sk-07">Changes of variable, powers, and actual ranges</a> proves square-root uniqueness, the inverse of a positive injective self-adjoint operator on its actual range, and powers. <a href="OA-MOD-SK.html#oa-mod-sk-08">Transport, reduction, and membership in an algebra</a> proves unitary and antiunitary transport; <a href="OA-MOD-SK.html#oa-mod-sk-09">Convergence and cutoffs</a> proves convergence for spectral cutoffs. The scalar exponential and logarithm used for powers are constructed in <a href="OA-MOD-QF.html#oa-mod-qf-08">Logarithms and imaginary powers</a>. <a href="notes/analytic-programme/scalar-integration-programme.html#2-integration-and-convergence-without-countability-assumptions">Scalar integration, Section 2</a> proves dominated convergence. TC-10 applies it to sequences against each finite vector measure; no dominated-convergence assertion for unrestricted nets is used.</li>
+</ul>
+<p>The sequence and probability models use <a href="notes/analytic-programme/spectral-scalar-prerequisites.html#ss1-scalar-l2-on-every-measure-space">SS1</a>, which proves <span class="math" data-tex="\(L^2\)">\(L^2\)</span> completeness for every measure space. For a set <span class="math" data-tex="\(I\)">\(I\)</span> with counting measure, write <span class="math" data-tex="\(\sum_{i\in I}|x_i|^2\)">\(\sum_{i\in I}|x_i|^2\)</span> for the supremum of its finite partial sums. If this number is finite, for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> a finite partial sum is within <span class="math" data-tex="\(\varepsilon^2\)">\(\varepsilon^2\)</span> of the supremum. Removing those coordinates leaves square norm at most <span class="math" data-tex="\(\varepsilon^2\)">\(\varepsilon^2\)</span>. This proves finite-support density for arbitrary <span class="math" data-tex="\(I\)">\(I\)</span>; it imposes no separability assumption on <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>For the Hilbert–Schmidt model, a square-summable matrix <span class="math" data-tex="\(X=(X_{ij})\)">\(X=(X_{ij})\)</span> acts on finite-support vectors by <span class="math" data-tex="\((Xv)_i=\sum_jX_{ij}v_j\)">\((Xv)_i=\sum_jX_{ij}v_j\)</span>. Cauchy–Schwarz gives</p>
+<span class="math math-display" data-tex="\[
+\|Xv\|^2\le\left(\sum_{i,j}|X_{ij}|^2\right)\|v\|^2.
+\]">\[
+\|Xv\|^2\le\left(\sum_{i,j}|X_{ij}|^2\right)\|v\|^2.
+\]</span>
+<p>Thus it extends to a bounded operator, with columns <span class="math" data-tex="\(Xe_j\)">\(Xe_j\)</span>, and <span class="math" data-tex="\(\sum_j\|Xe_j\|^2=\sum_{i,j}|X_{ij}|^2\)">\(\sum_j\|Xe_j\|^2=\sum_{i,j}|X_{ij}|^2\)</span>. The complete coordinate Hilbert space is exactly the Hilbert–Schmidt space in this basis. Left multiplication is bounded because</p>
+<span class="math math-display" data-tex="\[
+\sum_j\|aXe_j\|^2\le\|a\|^2\sum_j\|Xe_j\|^2.
+\]">\[
+\sum_j\|aXe_j\|^2\le\|a\|^2\sum_j\|Xe_j\|^2.
+\]</span>
+<p>The matrix-column argument in TC-11 proves the needed commutant assertion directly. Tensor notation there only denotes these square-summable columns; no tensor-product theorem is an input.</p>
+<p>The geometric series in the models can be checked from the finite identity
+<span class="math" data-tex="\(\sum_{n=1}^N r^n=r(1-r^N)/(1-r)\)">\(\sum_{n=1}^N r^n=r(1-r^N)/(1-r)\)</span>, <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>. If <span class="math" data-tex="\(r=(1+\delta)^{-1}\)">\(r=(1+\delta)^{-1}\)</span>, then <span class="math" data-tex="\(r^N\le(1+N\delta)^{-1}\to0\)">\(r^N\le(1+N\delta)^{-1}\to0\)</span>, using the finite binomial inequality. A series whose positive terms fail to tend to zero diverges, because convergence would make each difference of consecutive partial sums tend to zero. These observations cover all the displayed convergence and divergence tests.</p>
+<p>These preceding proofs and the arguments below provide the mathematical inputs. No general-weight closability, modular commutant theorem or weight/Hilbert-algebra correspondence is assumed.</p>
+<h2 id="cyclicity-and-separation-exchange-through-the-commutant">Cyclicity and separation exchange through the commutant</h2>
+<p>A vector <span class="math" data-tex="\(\Omega\in H\)">\(\Omega\in H\)</span> is <strong>cyclic</strong> for <span class="math" data-tex="\(N\subseteq B(H)\)">\(N\subseteq B(H)\)</span> when <span class="math" data-tex="\(\overline{N\Omega}=H\)">\(\overline{N\Omega}=H\)</span>, and <strong>separating</strong> for <span class="math" data-tex="\(N\)">\(N\)</span> when <span class="math" data-tex="\(a\Omega=0\)">\(a\Omega=0\)</span>, <span class="math" data-tex="\(a\in N\)">\(a\in N\)</span>, implies <span class="math" data-tex="\(a=0\)">\(a=0\)</span>.</p>
+<p><strong>Proposition.</strong> For a unital concrete von Neumann algebra,</p>
+<span class="math math-display" data-tex="\[
+\Omega\text{ cyclic for }M
+\quad\Longleftrightarrow\quad
+\Omega\text{ separating for }M&#x27;,
+\tag{TC.1}
+\]">\[
+\Omega\text{ cyclic for }M
+\quad\Longleftrightarrow\quad
+\Omega\text{ separating for }M&#x27;,
+\tag{TC.1}
+\]</span>
+<span class="math math-display" data-tex="\[
+\Omega\text{ separating for }M
+\quad\Longleftrightarrow\quad
+\Omega\text{ cyclic for }M&#x27;.
+\tag{TC.2}
+\]">\[
+\Omega\text{ separating for }M
+\quad\Longleftrightarrow\quad
+\Omega\text{ cyclic for }M&#x27;.
+\tag{TC.2}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(M\Omega\)">\(M\Omega\)</span> is dense and <span class="math" data-tex="\(b\in M&#x27;\)">\(b\in M&#x27;\)</span> satisfies <span class="math" data-tex="\(b\Omega=0\)">\(b\Omega=0\)</span>, then
+<span class="math" data-tex="\(b(a\Omega)=a(b\Omega)=0\)">\(b(a\Omega)=a(b\Omega)=0\)</span> for every <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>. Boundedness and density give <span class="math" data-tex="\(b=0\)">\(b=0\)</span>.</p>
+<p>Conversely, let <span class="math" data-tex="\(p\)">\(p\)</span> project onto <span class="math" data-tex="\(\overline{M\Omega}\)">\(\overline{M\Omega}\)</span>. This subspace is invariant under every <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span> and <span class="math" data-tex="\(a^*\)">\(a^*\)</span>. Its orthogonal complement is invariant too, because
+<span class="math" data-tex="\(\langle a\eta,\xi\rangle=\langle\eta,a^*\xi\rangle=0\)">\(\langle a\eta,\xi\rangle=\langle\eta,a^*\xi\rangle=0\)</span> when <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is in that complement and <span class="math" data-tex="\(\xi\in\overline{M\Omega}\)">\(\xi\in\overline{M\Omega}\)</span>.
+Therefore <span class="math" data-tex="\(p\)">\(p\)</span> commutes with <span class="math" data-tex="\(M\)">\(M\)</span>, so <span class="math" data-tex="\(p\in M&#x27;\)">\(p\in M&#x27;\)</span>. Unitality gives <span class="math" data-tex="\(p\Omega=\Omega\)">\(p\Omega=\Omega\)</span>. If <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> separates <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, then <span class="math" data-tex="\((I-p)\Omega=0\)">\((I-p)\Omega=0\)</span> forces <span class="math" data-tex="\(p=I\)">\(p=I\)</span>. This proves (TC.1). Apply it to <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, using <span class="math" data-tex="\(M&#x27;&#x27;=M\)">\(M&#x27;&#x27;=M\)</span>, to obtain (TC.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only the second equivalence uses the bicommutant identification. No countable dense family was selected. Existence of a cyclic separating vector is a hypothesis of this model, not a claim about every representation or every von Neumann algebra.</p>
+<h2 id="the-adjoint-of-a-conjugate-linear-operator"><span id="oa-mod-tc-03"></span><span id="OA-MOD-TC-03"></span>The adjoint of a conjugate-linear operator</h2>
+<p>Let <span class="math" data-tex="\(A:D(A)\subseteq H\to K\)">\(A:D(A)\subseteq H\to K\)</span> be conjugate-linear with dense complex-linear domain. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(A^*)=\{y\in K:\ &amp;\text{there is }z\in H\text{ such that}\\
+&amp;\langle Ax,y\rangle=\langle z,x\rangle
+\text{ for every }x\in D(A)\}.
+\end{aligned}
+\tag{TC.3}
+\]">\[
+\begin{aligned}
+D(A^*)=\{y\in K:\ &amp;\text{there is }z\in H\text{ such that}\\
+&amp;\langle Ax,y\rangle=\langle z,x\rangle
+\text{ for every }x\in D(A)\}.
+\end{aligned}
+\tag{TC.3}
+\]</span>
+<p>Density makes <span class="math" data-tex="\(z\)">\(z\)</span> unique, and we set <span class="math" data-tex="\(A^*y=z\)">\(A^*y=z\)</span>. Thus the convention is</p>
+<span class="math math-display" data-tex="\[
+\boxed{\ \langle Ax,y\rangle=\langle A^*y,x\rangle\ }.
+\tag{TC.4}
+\]">\[
+\boxed{\ \langle Ax,y\rangle=\langle A^*y,x\rangle\ }.
+\tag{TC.4}
+\]</span>
+<p>The Riesz theorem gives the equivalent test</p>
+<span class="math math-display" data-tex="\[
+y\in D(A^*)\quad\Longleftrightarrow\quad
+\sup_{\substack{x\in D(A)\\\|x\|\leq1}}
+|\langle Ax,y\rangle|&lt;\infty.
+\tag{TC.5}
+\]">\[
+y\in D(A^*)\quad\Longleftrightarrow\quad
+\sup_{\substack{x\in D(A)\\\|x\|\leq1}}
+|\langle Ax,y\rangle|&lt;\infty.
+\tag{TC.5}
+\]</span>
+<p>The domain is a complex vector space and <span class="math" data-tex="\(A^*\)">\(A^*\)</span> is conjugate-linear. Indeed, replacing <span class="math" data-tex="\(y\)">\(y\)</span> by <span class="math" data-tex="\(\lambda y\)">\(\lambda y\)</span> multiplies the left side of (TC.4) by <span class="math" data-tex="\(\overline\lambda\)">\(\overline\lambda\)</span>, so
+<span class="math" data-tex="\(A^*(\lambda y)=\overline\lambda A^*y\)">\(A^*(\lambda y)=\overline\lambda A^*y\)</span>.</p>
+<p>The <strong>conjugate Hilbert space</strong> <span class="math" data-tex="\(\overline K\)">\(\overline K\)</span> consists of symbols <span class="math" data-tex="\(\overline y\)">\(\overline y\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\lambda\overline y=\overline{\overline\lambda y},
+\qquad
+\langle\overline u,\overline v\rangle_{\overline K}
+=\langle v,u\rangle_K.
+\]">\[
+\lambda\overline y=\overline{\overline\lambda y},
+\qquad
+\langle\overline u,\overline v\rangle_{\overline K}
+=\langle v,u\rangle_K.
+\]</span>
+<p>The map <span class="math" data-tex="\(C_K:y\mapsto\overline y\)">\(C_K:y\mapsto\overline y\)</span> is conjugate-linear and isometric. Thus
+<span class="math" data-tex="\(\widehat A=C_KA:D(A)\to\overline K\)">\(\widehat A=C_KA:D(A)\to\overline K\)</span> is complex-linear, and its ordinary linear adjoint satisfies</p>
+<span class="math math-display" data-tex="\[
+\widehat A^*(\overline y)=A^*y.
+\tag{TC.6}
+\]">\[
+\widehat A^*(\overline y)=A^*y.
+\tag{TC.6}
+\]</span>
+<p>Conjugating (TC.4) proves this identity.</p>
+<p><strong>Graph lemma.</strong> A densely defined conjugate-linear <span class="math" data-tex="\(A\)">\(A\)</span> is closable if and only if <span class="math" data-tex="\(D(A^*)\)">\(D(A^*)\)</span> is dense. Its adjoint is always closed. When <span class="math" data-tex="\(A\)">\(A\)</span> is closable,</p>
+<span class="math math-display" data-tex="\[
+(\overline A)^*=A^*,\qquad A^{**}=\overline A.
+\tag{TC.7}
+\]">\[
+(\overline A)^*=A^*,\qquad A^{**}=\overline A.
+\tag{TC.7}
+\]</span>
+<p><strong>Proof.</strong> For a densely defined linear operator <span class="math" data-tex="\(T:D(T)\subseteq H\to L\)">\(T:D(T)\subseteq H\to L\)</span>, direct use of its adjoint definition gives</p>
+<span class="math math-display" data-tex="\[
+G(T)^\perp=\{(-T^*y,y):y\in D(T^*)\}.
+\tag{TC.8}
+\]">\[
+G(T)^\perp=\{(-T^*y,y):y\in D(T^*)\}.
+\tag{TC.8}
+\]</span>
+<p>Indeed, orthogonality of <span class="math" data-tex="\((u,y)\)">\((u,y)\)</span> to every <span class="math" data-tex="\((x,Tx)\)">\((x,Tx)\)</span> says
+<span class="math" data-tex="\(\langle x,u\rangle+\langle Tx,y\rangle=0\)">\(\langle x,u\rangle+\langle Tx,y\rangle=0\)</span>; this is exactly
+<span class="math" data-tex="\(y\in D(T^*)\)">\(y\in D(T^*)\)</span>, <span class="math" data-tex="\(u=-T^*y\)">\(u=-T^*y\)</span>.</p>
+<p>A vector <span class="math" data-tex="\((0,z)\)">\((0,z)\)</span> belongs to <span class="math" data-tex="\(\overline{G(T)}=G(T)^{\perp\perp}\)">\(\overline{G(T)}=G(T)^{\perp\perp}\)</span> precisely when <span class="math" data-tex="\(z\perp D(T^*)\)">\(z\perp D(T^*)\)</span>. The closure of a linear graph is an operator graph precisely when it contains no nonzero vertical vector: two points with the same first coordinate have a vertical difference, and this is the only possible failure of uniqueness. Thus <span class="math" data-tex="\(T\)">\(T\)</span> is closable exactly when <span class="math" data-tex="\(D(T^*)\)">\(D(T^*)\)</span> is dense. Apply this to <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>, using (TC.6).</p>
+<p>If <span class="math" data-tex="\(y_n\to y\)">\(y_n\to y\)</span> and <span class="math" data-tex="\(A^*y_n\to z\)">\(A^*y_n\to z\)</span>, taking limits in (TC.4) for each fixed <span class="math" data-tex="\(x\in D(A)\)">\(x\in D(A)\)</span> gives
+<span class="math" data-tex="\(\langle Ax,y\rangle=\langle z,x\rangle\)">\(\langle Ax,y\rangle=\langle z,x\rangle\)</span>.
+Hence <span class="math" data-tex="\(y\in D(A^*)\)">\(y\in D(A^*)\)</span>, <span class="math" data-tex="\(A^*y=z\)">\(A^*y=z\)</span>; this proves closedness.</p>
+<p>For closable <span class="math" data-tex="\(A\)">\(A\)</span>, the adjoint pairing extends by limits along the graph, so <span class="math" data-tex="\(A^*=(\overline A)^*\)">\(A^*=(\overline A)^*\)</span>. To verify the double-adjoint statement, (TC.8) for <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span> becomes</p>
+<span class="math math-display" data-tex="\[
+G(\widehat A)^\perp
+=\{(-A^*y,\overline y):y\in D(A^*)\}.
+\]">\[
+G(\widehat A)^\perp
+=\{(-A^*y,\overline y):y\in D(A^*)\}.
+\]</span>
+<p>The vector <span class="math" data-tex="\((x,\overline z)\)">\((x,\overline z)\)</span> is orthogonal to this space if and only if</p>
+<span class="math math-display" data-tex="\[
+-\langle x,A^*y\rangle+\langle y,z\rangle=0
+\quad(y\in D(A^*)).
+\]">\[
+-\langle x,A^*y\rangle+\langle y,z\rangle=0
+\quad(y\in D(A^*)).
+\]</span>
+<p>Conjugating says
+<span class="math" data-tex="\(\langle A^*y,x\rangle=\langle z,y\rangle\)">\(\langle A^*y,x\rangle=\langle z,y\rangle\)</span>, precisely
+<span class="math" data-tex="\(x\in D(A^{**})\)">\(x\in D(A^{**})\)</span>, <span class="math" data-tex="\(A^{**}x=z\)">\(A^{**}x=z\)</span>. The orthogonal double complement is the graph closure. Therefore <span class="math" data-tex="\(A^{**}=\overline A\)">\(A^{**}=\overline A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Normed spaces are metrizable, so the use of sequences in graph closedness does not impose separability.</p>
+<h2 id="the-commutant-supplies-a-dense-adjoint-test-domain"><span id="oa-mod-tc-04"></span><span id="OA-MOD-TC-04"></span>The commutant supplies a dense adjoint test domain</h2>
+<p>Suppose <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is cyclic and separating for <span class="math" data-tex="\(M\)">\(M\)</span>, hence also for <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+S_0:M\Omega\to H,\quad S_0(a\Omega)=a^*\Omega,
+\qquad
+F_0:M&#x27;\Omega\to H,\quad F_0(b\Omega)=b^*\Omega.
+\tag{TC.9}
+\]">\[
+S_0:M\Omega\to H,\quad S_0(a\Omega)=a^*\Omega,
+\qquad
+F_0:M&#x27;\Omega\to H,\quad F_0(b\Omega)=b^*\Omega.
+\tag{TC.9}
+\]</span>
+<p>Separation makes the maps well-defined; cyclicity makes their domains dense. They are conjugate-linear, preserve their domains, and square to the identity there.</p>
+<p><strong>Proposition.</strong> Both maps are closable, and</p>
+<span class="math math-display" data-tex="\[
+F_0\subseteq S_0^*,\qquad S_0\subseteq F_0^*.
+\tag{TC.10}
+\]">\[
+F_0\subseteq S_0^*,\qquad S_0\subseteq F_0^*.
+\tag{TC.10}
+\]</span>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, <span class="math" data-tex="\(b\in M&#x27;\)">\(b\in M&#x27;\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle S_0(a\Omega),b\Omega\rangle
+&amp;=\langle a^*\Omega,b\Omega\rangle\\
+&amp;=\langle\Omega,ab\Omega\rangle\\
+&amp;=\langle\Omega,ba\Omega\rangle\\
+&amp;=\langle b^*\Omega,a\Omega\rangle.
+\end{aligned}
+\tag{TC.11}
+\]">\[
+\begin{aligned}
+\langle S_0(a\Omega),b\Omega\rangle
+&amp;=\langle a^*\Omega,b\Omega\rangle\\
+&amp;=\langle\Omega,ab\Omega\rangle\\
+&amp;=\langle\Omega,ba\Omega\rangle\\
+&amp;=\langle b^*\Omega,a\Omega\rangle.
+\end{aligned}
+\tag{TC.11}
+\]</span>
+<p>This places <span class="math" data-tex="\(b\Omega\)">\(b\Omega\)</span> in <span class="math" data-tex="\(D(S_0^*)\)">\(D(S_0^*)\)</span> with image <span class="math" data-tex="\(b^*\Omega\)">\(b^*\Omega\)</span>. Interchanging the two algebras proves the other inclusion. Both adjoints have dense domain, so OA-MOD-TC-03 proves closability.</p>
+<p>Directly, if <span class="math" data-tex="\(a_n\Omega\to0\)">\(a_n\Omega\to0\)</span> and <span class="math" data-tex="\(a_n^*\Omega\to\eta\)">\(a_n^*\Omega\to\eta\)</span>, (TC.11) gives
+<span class="math" data-tex="\(\langle\eta,b\Omega\rangle=\lim_n\langle b^*\Omega,a_n\Omega\rangle=0\)">\(\langle\eta,b\Omega\rangle=\lim_n\langle b^*\Omega,a_n\Omega\rangle=0\)</span>
+for every <span class="math" data-tex="\(b\in M&#x27;\)">\(b\in M&#x27;\)</span>. Density forces <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>, excluding a nonzero vertical limit in the graph. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+S=\overline{S_0},\qquad T=\overline{F_0},\qquad F=S^*.
+\tag{TC.12}
+\]">\[
+S=\overline{S_0},\qquad T=\overline{F_0},\qquad F=S^*.
+\tag{TC.12}
+\]</span>
+<p>The distinct letters <span class="math" data-tex="\(T,F\)">\(T,F\)</span> record a proof boundary. We have proved</p>
+<span class="math math-display" data-tex="\[
+T\subseteq F=S_0^*,\qquad S\subseteq T^*.
+\tag{TC.13}
+\]">\[
+T\subseteq F=S_0^*,\qquad S\subseteq T^*.
+\tag{TC.13}
+\]</span>
+<p>Thus <span class="math" data-tex="\(M&#x27;\Omega\)">\(M&#x27;\Omega\)</span> is Hilbert-norm dense in <span class="math" data-tex="\(H\)">\(H\)</span> and lies in <span class="math" data-tex="\(D(F)\)">\(D(F)\)</span>. We have not proved it is a graph core for <span class="math" data-tex="\(F\)">\(F\)</span>. Equality <span class="math" data-tex="\(T=F\)">\(T=F\)</span> is a further modular-theoretic conclusion and is not used below.</p>
+<h2 id="closing-a-graph-preserves-the-involution"><span id="oa-mod-tc-05"></span><span id="OA-MOD-TC-05"></span>Closing a graph preserves the involution</h2>
+<p>Let <span class="math" data-tex="\(V\subseteq H\)">\(V\subseteq H\)</span> be dense, and let <span class="math" data-tex="\(s:V\to V\)">\(s:V\to V\)</span> be a closable conjugate-linear map with <span class="math" data-tex="\(s^2=I_V\)">\(s^2=I_V\)</span>. Write <span class="math" data-tex="\(S=\overline s\)">\(S=\overline s\)</span>.</p>
+<p><strong>Theorem.</strong> The operator <span class="math" data-tex="\(S\)">\(S\)</span> is a closed densely defined conjugate-linear involution:</p>
+<span class="math math-display" data-tex="\[
+S(D(S))=D(S),\qquad S^2x=x\quad(x\in D(S)).
+\tag{TC.14}
+\]">\[
+S(D(S))=D(S),\qquad S^2x=x\quad(x\in D(S)).
+\tag{TC.14}
+\]</span>
+<p>Equivalently, <span class="math" data-tex="\(S^{-1}=S\)">\(S^{-1}=S\)</span> with the inverse defined on its actual range. In particular <span class="math" data-tex="\(S\)">\(S\)</span> is injective with dense range.</p>
+<p>Its domain is a Hilbert space for</p>
+<span class="math math-display" data-tex="\[
+\langle x,y\rangle_S
+=\langle x,y\rangle+\langle Sy,Sx\rangle,\qquad
+\|x\|_S^2=\|x\|^2+\|Sx\|^2.
+\tag{TC.15}
+\]">\[
+\langle x,y\rangle_S
+=\langle x,y\rangle+\langle Sy,Sx\rangle,\qquad
+\|x\|_S^2=\|x\|^2+\|Sx\|^2.
+\tag{TC.15}
+\]</span>
+<p>The space <span class="math" data-tex="\(V\)">\(V\)</span> is dense in this norm. Moreover,</p>
+<span class="math math-display" data-tex="\[
+x\in D(S)\quad\Longleftrightarrow\quad
+\begin{array}{l}
+\text{some }x_n\in V\text{ satisfies }x_n\to x\\
+\text{and }(s x_n)\text{ is Cauchy in }H.
+\end{array}
+\tag{TC.16}
+\]">\[
+x\in D(S)\quad\Longleftrightarrow\quad
+\begin{array}{l}
+\text{some }x_n\in V\text{ satisfies }x_n\to x\\
+\text{and }(s x_n)\text{ is Cauchy in }H.
+\end{array}
+\tag{TC.16}
+\]</span>
+<p>For every such sequence, <span class="math" data-tex="\(Sx=\lim_n sx_n\)">\(Sx=\lim_n sx_n\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(x\in D(S)\)">\(x\in D(S)\)</span>, graph closure supplies <span class="math" data-tex="\(x_n\in V\)">\(x_n\in V\)</span> with
+<span class="math" data-tex="\(x_n\to x\)">\(x_n\to x\)</span>, <span class="math" data-tex="\(sx_n\to Sx\)">\(sx_n\to Sx\)</span>. The sequence <span class="math" data-tex="\(y_n=sx_n\)">\(y_n=sx_n\)</span> lies in <span class="math" data-tex="\(V\)">\(V\)</span>,
+converges to <span class="math" data-tex="\(Sx\)">\(Sx\)</span>, and satisfies <span class="math" data-tex="\(sy_n=x_n\to x\)">\(sy_n=x_n\to x\)</span>. Closedness gives
+<span class="math" data-tex="\(Sx\in D(S)\)">\(Sx\in D(S)\)</span>, <span class="math" data-tex="\(S(Sx)=x\)">\(S(Sx)=x\)</span>. This proves both the involution and the equality of range and domain.</p>
+<p>The second summand of (TC.15) is linear in <span class="math" data-tex="\(x\)">\(x\)</span>: the entries have been reversed to compensate for conjugate-linearity of <span class="math" data-tex="\(S\)">\(S\)</span>. Positivity and definiteness follow immediately. A graph-norm Cauchy sequence has limits for both <span class="math" data-tex="\(x_n\)">\(x_n\)</span> and <span class="math" data-tex="\(Sx_n\)">\(Sx_n\)</span>; closedness places the limit pair in <span class="math" data-tex="\(G(S)\)">\(G(S)\)</span>. This proves completeness. Graph approximation proves density of <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>If the right side of (TC.16) holds, completeness of <span class="math" data-tex="\(H\)">\(H\)</span> gives
+<span class="math" data-tex="\(y=\lim_n sx_n\)">\(y=\lim_n sx_n\)</span>, and graph closure gives <span class="math" data-tex="\(Sx=y\)">\(Sx=y\)</span>. Conversely, graph approximation supplies such a sequence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>As an operator on the Hilbert space <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span> with this graph inner product, <span class="math" data-tex="\(S\)">\(S\)</span> is antiunitary:</p>
+<span class="math math-display" data-tex="\[
+\langle Sx,Sy\rangle_S
+=\langle Sx,Sy\rangle+\langle y,x\rangle
+=\langle y,x\rangle_S.
+\tag{TC.17}
+\]">\[
+\langle Sx,Sy\rangle_S
+=\langle Sx,Sy\rangle+\langle y,x\rangle
+=\langle y,x\rangle_S.
+\tag{TC.17}
+\]</span>
+<p>This does not claim boundedness for the original norm of <span class="math" data-tex="\(H\)">\(H\)</span>. The theorem applies separately to <span class="math" data-tex="\(S_0\)">\(S_0\)</span> and <span class="math" data-tex="\(F_0\)">\(F_0\)</span>, so both <span class="math" data-tex="\(S,T\)">\(S,T\)</span> in (TC.12) are closed involutions before any identification of <span class="math" data-tex="\(T\)">\(T\)</span> with <span class="math" data-tex="\(S^*\)">\(S^*\)</span>.</p>
+<h2 id="the-vector-algebra-has-the-left-hilbert-algebra-properties">The vector algebra has the left Hilbert algebra properties</h2>
+<p>On <span class="math" data-tex="\(\mathcal A=M\Omega\)">\(\mathcal A=M\Omega\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+(a\Omega)(c\Omega)=(ac)\Omega,\qquad
+(a\Omega)^\sharp=a^*\Omega.
+\tag{TC.18}
+\]">\[
+(a\Omega)(c\Omega)=(ac)\Omega,\qquad
+(a\Omega)^\sharp=a^*\Omega.
+\tag{TC.18}
+\]</span>
+<p>Separation gives unique representatives, so these are well-defined and inherit associativity and the algebraic involution identities. The unit is <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>.</p>
+<p>For <span class="math" data-tex="\(\xi=a\Omega\)">\(\xi=a\Omega\)</span>, left multiplication on <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is the restriction of the bounded operator <span class="math" data-tex="\(a\)">\(a\)</span>. It obeys
+<span class="math" data-tex="\(\|L_\xi\eta\|\leq\|a\|\|\eta\|\)">\(\|L_\xi\eta\|\leq\|a\|\|\eta\|\)</span>.
+For <span class="math" data-tex="\(\eta=c\Omega\)">\(\eta=c\Omega\)</span>, <span class="math" data-tex="\(\zeta=d\Omega\)">\(\zeta=d\Omega\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle\xi\eta,\zeta\rangle
+=\langle ac\Omega,d\Omega\rangle
+=\langle c\Omega,a^*d\Omega\rangle
+=\langle\eta,\xi^\sharp\zeta\rangle.
+\tag{TC.19}
+\]">\[
+\langle\xi\eta,\zeta\rangle
+=\langle ac\Omega,d\Omega\rangle
+=\langle c\Omega,a^*d\Omega\rangle
+=\langle\eta,\xi^\sharp\zeta\rangle.
+\tag{TC.19}
+\]</span>
+<p>The involution is closable by OA-MOD-TC-04. The product span is all of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, since <span class="math" data-tex="\(\eta=\Omega\eta\)">\(\eta=\Omega\eta\)</span>, and is dense by cyclicity.</p>
+<p>These are the four left Hilbert algebra properties: bounded left multiplication, the adjoint compatibility (TC.19), closable involution, and dense products. The bounded left multiplication algebra is exactly the given <span class="math" data-tex="\(M\)">\(M\)</span>, since <span class="math" data-tex="\(L_{a\Omega}=a\)">\(L_{a\Omega}=a\)</span> on a dense subspace. This verifies the vector construction; it makes no assertion about a general weight domain.</p>
+<h2 id="a-closed-involution-determines-a-positive-operator"><span id="oa-mod-tc-07"></span><span id="OA-MOD-TC-07"></span>A closed involution determines a positive operator</h2>
+<p>For OA-MOD-TC-07–10, let <span class="math" data-tex="\(S\)">\(S\)</span> be any closed densely defined conjugate-linear involution on <span class="math" data-tex="\(H\)">\(H\)</span>. There is no algebra or distinguished vector in this hypothesis. Put <span class="math" data-tex="\(F=S^*\)">\(F=S^*\)</span>.</p>
+<p><strong>Proposition.</strong> The operator <span class="math" data-tex="\(F\)">\(F\)</span> is closed and densely defined. The form</p>
+<span class="math math-display" data-tex="\[
+D(q)=D(S),\qquad q(x,y)=\langle Sy,Sx\rangle
+\tag{TC.20}
+\]">\[
+D(q)=D(S),\qquad q(x,y)=\langle Sy,Sx\rangle
+\tag{TC.20}
+\]</span>
+<p>is densely defined, closed, and nonnegative. Its representing operator is</p>
+<span class="math math-display" data-tex="\[
+\Delta=FS=S^*S,\qquad
+D(\Delta)=\{x\in D(S):Sx\in D(F)\}.
+\tag{TC.21}
+\]">\[
+\Delta=FS=S^*S,\qquad
+D(\Delta)=\{x\in D(S):Sx\in D(F)\}.
+\tag{TC.21}
+\]</span>
+<p>It is positive self-adjoint and injective. For <span class="math" data-tex="\(A=\Delta^{1/2}\)">\(A=\Delta^{1/2}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+D(A)=D(S),\qquad
+\langle Ax,Ay\rangle=\langle Sy,Sx\rangle.
+\tag{TC.22}
+\]">\[
+D(A)=D(S),\qquad
+\langle Ax,Ay\rangle=\langle Sy,Sx\rangle.
+\tag{TC.22}
+\]</span>
+<p><strong>Proof.</strong> The graph lemma gives closedness of <span class="math" data-tex="\(F\)">\(F\)</span>; since <span class="math" data-tex="\(S\)">\(S\)</span> is closable, it also gives density of <span class="math" data-tex="\(D(F)\)">\(D(F)\)</span>. The form norm of <span class="math" data-tex="\(q\)">\(q\)</span> is the complete graph norm (TC.15), so <span class="math" data-tex="\(q\)">\(q\)</span> is closed.</p>
+<p>TC-DEP-FORMS gives a positive self-adjoint <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, equation (TC.22), and the intrinsic characterization</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+x\in D(\Delta)\quad\Longleftrightarrow\quad
+&amp;x\in D(S)\text{ and some }z\in H\text{ satisfies}\\
+&amp;\langle Sv,Sx\rangle=\langle z,v\rangle
+\quad(v\in D(S)).
+\end{aligned}
+\]">\[
+\begin{aligned}
+x\in D(\Delta)\quad\Longleftrightarrow\quad
+&amp;x\in D(S)\text{ and some }z\in H\text{ satisfies}\\
+&amp;\langle Sv,Sx\rangle=\langle z,v\rangle
+\quad(v\in D(S)).
+\end{aligned}
+\]</span>
+<p>The last condition says exactly <span class="math" data-tex="\(Sx\in D(F)\)">\(Sx\in D(F)\)</span>, <span class="math" data-tex="\(FSx=z\)">\(FSx=z\)</span>, by the definition of the conjugate-linear adjoint. This proves (TC.21), including the domain.</p>
+<p>If <span class="math" data-tex="\(Ax=0\)">\(Ax=0\)</span>, (TC.22) gives <span class="math" data-tex="\(Sx=0\)">\(Sx=0\)</span>, hence <span class="math" data-tex="\(x=0\)">\(x=0\)</span> because <span class="math" data-tex="\(S\)">\(S\)</span> is an involution. Thus <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(\Delta=A^2\)">\(\Delta=A^2\)</span> are injective. Their ranges are dense by the spectral calculus. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+\|x\|_S^2=\|x\|^2+\|\Delta^{1/2}x\|^2.
+\tag{TC.23}
+\]">\[
+\|x\|_S^2=\|x\|^2+\|\Delta^{1/2}x\|^2.
+\tag{TC.23}
+\]</span>
+<p>A graph core for <span class="math" data-tex="\(S\)">\(S\)</span> is therefore a form core for <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. This does not assert that it lies in <span class="math" data-tex="\(D(\Delta)\)">\(D(\Delta)\)</span>, or is an operator core for <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>.</p>
+<h2 id="polar-decomposition-from-the-form-with-inverse-domains"><span id="OA-MOD-TC-08"></span><span id="oa-mod-tc-08"></span>Polar decomposition from the form, with inverse domains</h2>
+<p>An <strong>antiunitary</strong> <span class="math" data-tex="\(J:H\to H\)">\(J:H\to H\)</span> is a surjective conjugate-linear isometry. Equivalently,
+<span class="math" data-tex="\(J\)">\(J\)</span> is surjective and <span class="math" data-tex="\(\langle Jx,Jy\rangle=\langle y,x\rangle\)">\(\langle Jx,Jy\rangle=\langle y,x\rangle\)</span> for all <span class="math" data-tex="\(x,y\in H\)">\(x,y\in H\)</span>.
+Involution is not part of this definition.</p>
+<p><strong>Theorem.</strong> There is a unique pair consisting of an antiunitary <span class="math" data-tex="\(J\)">\(J\)</span> and a positive self-adjoint <span class="math" data-tex="\(A\)">\(A\)</span> for which</p>
+<span class="math math-display" data-tex="\[
+S=JA,\qquad D(S)=D(A).
+\tag{TC.24}
+\]">\[
+S=JA,\qquad D(S)=D(A).
+\tag{TC.24}
+\]</span>
+<p>Here <span class="math" data-tex="\(A=\Delta^{1/2}\)">\(A=\Delta^{1/2}\)</span> is injective, and</p>
+<span class="math math-display" data-tex="\[
+J^{-1}=J,\qquad JAJ=A^{-1}.
+\tag{TC.25}
+\]">\[
+J^{-1}=J,\qquad JAJ=A^{-1}.
+\tag{TC.25}
+\]</span>
+<p>The latter equality includes</p>
+<span class="math math-display" data-tex="\[
+J D(A)=D(A^{-1}),\qquad
+A^{-1}Jx=JAx\quad(x\in D(A)).
+\tag{TC.26}
+\]">\[
+J D(A)=D(A^{-1}),\qquad
+A^{-1}Jx=JAx\quad(x\in D(A)).
+\tag{TC.26}
+\]</span>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(\operatorname{ran}A\)">\(\operatorname{ran}A\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+J(Ax)=Sx\qquad(x\in D(A)=D(S)).
+\tag{TC.27}
+\]">\[
+J(Ax)=Sx\qquad(x\in D(A)=D(S)).
+\tag{TC.27}
+\]</span>
+<p>Injectivity makes this well-defined, and (TC.22) makes it a conjugate-linear isometry. Its domain is dense. Its range is <span class="math" data-tex="\(S(D(S))=D(S)\)">\(S(D(S))=D(S)\)</span>, also dense. It therefore extends to an isometry on <span class="math" data-tex="\(H\)">\(H\)</span> with dense range. An isometry from a complete space has closed range, so it is surjective. Polarization gives the antiunitary inner-product identity.</p>
+<p>For uniqueness, suppose <span class="math" data-tex="\(S=KB\)">\(S=KB\)</span>, <span class="math" data-tex="\(D(S)=D(B)\)">\(D(S)=D(B)\)</span>, where <span class="math" data-tex="\(K\)">\(K\)</span> is antiunitary and <span class="math" data-tex="\(B\)">\(B\)</span> positive self-adjoint. Then</p>
+<span class="math math-display" data-tex="\[
+q(x,y)=\langle KBy,KBx\rangle=\langle Bx,By\rangle.
+\]">\[
+q(x,y)=\langle KBy,KBx\rangle=\langle Bx,By\rangle.
+\]</span>
+<p>Uniqueness in TC-DEP-FORMS gives <span class="math" data-tex="\(B^2=\Delta\)">\(B^2=\Delta\)</span>; uniqueness of the positive square root gives <span class="math" data-tex="\(B=A\)">\(B=A\)</span>. The maps <span class="math" data-tex="\(K,J\)">\(K,J\)</span> agree on dense <span class="math" data-tex="\(\operatorname{ran}A\)">\(\operatorname{ran}A\)</span>, so they agree on <span class="math" data-tex="\(H\)">\(H\)</span>. Injectivity of <span class="math" data-tex="\(B\)">\(B\)</span> also follows from injectivity of <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>The inverse has the explicit factorization</p>
+<span class="math math-display" data-tex="\[
+S^{-1}=A^{-1}J^{-1}
+\quad\text{on}\quad
+\operatorname{ran}S=J\operatorname{ran}A.
+\tag{TC.28}
+\]">\[
+S^{-1}=A^{-1}J^{-1}
+\quad\text{on}\quad
+\operatorname{ran}S=J\operatorname{ran}A.
+\tag{TC.28}
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(z\)">\(z\)</span> belongs to this domain precisely when
+<span class="math" data-tex="\(J^{-1}z\in\operatorname{ran}A=D(A^{-1})\)">\(J^{-1}z\in\operatorname{ran}A=D(A^{-1})\)</span>, and substitution of <span class="math" data-tex="\(z=JAx\)">\(z=JAx\)</span> returns <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>We need positivity and self-adjointness under antiunitary transport. If <span class="math" data-tex="\(B\)">\(B\)</span> is self-adjoint and <span class="math" data-tex="\(K\)">\(K\)</span> antiunitary, define
+<span class="math" data-tex="\(C=KBK^{-1}\)">\(C=KBK^{-1}\)</span> on <span class="math" data-tex="\(KD(B)\)">\(KD(B)\)</span>. For <span class="math" data-tex="\(x=Ku,y=Kv\)">\(x=Ku,y=Kv\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle Cx,y\rangle=\langle v,Bu\rangle.
+\]">\[
+\langle Cx,y\rangle=\langle v,Bu\rangle.
+\]</span>
+<p>Transporting the ordinary adjoint pairing through <span class="math" data-tex="\(K\)">\(K\)</span> gives
+<span class="math" data-tex="\(C^*=KB^*K^{-1}\)">\(C^*=KB^*K^{-1}\)</span>, with domain <span class="math" data-tex="\(KD(B^*)\)">\(KD(B^*)\)</span>: explicitly, the condition
+<span class="math" data-tex="\(\langle CKu,Kv\rangle=\langle Ku,Kw\rangle\)">\(\langle CKu,Kv\rangle=\langle Ku,Kw\rangle\)</span> for all <span class="math" data-tex="\(u\in D(B)\)">\(u\in D(B)\)</span>
+is <span class="math" data-tex="\(\langle v,Bu\rangle=\langle w,u\rangle\)">\(\langle v,Bu\rangle=\langle w,u\rangle\)</span>, equivalently
+<span class="math" data-tex="\(v\in D(B^*)\)">\(v\in D(B^*)\)</span>, <span class="math" data-tex="\(B^*v=w\)">\(B^*v=w\)</span>.
+Thus <span class="math" data-tex="\(C\)">\(C\)</span> is self-adjoint. If <span class="math" data-tex="\(B\geq0\)">\(B\geq0\)</span>, then
+<span class="math" data-tex="\(\langle CKu,Ku\rangle=\langle u,Bu\rangle\geq0\)">\(\langle CKu,Ku\rangle=\langle u,Bu\rangle\geq0\)</span>, so <span class="math" data-tex="\(C\geq0\)">\(C\geq0\)</span>.</p>
+<p>Apply this to <span class="math" data-tex="\(B_1=JA^{-1}J^{-1}\)">\(B_1=JA^{-1}J^{-1}\)</span>. It is positive self-adjoint, with</p>
+<span class="math math-display" data-tex="\[
+D(B_1)=J D(A^{-1})=J\operatorname{ran}A.
+\]">\[
+D(B_1)=J D(A^{-1})=J\operatorname{ran}A.
+\]</span>
+<p>Equation (TC.28) becomes the polar factorization
+<span class="math" data-tex="\(S^{-1}=J^{-1}B_1\)">\(S^{-1}=J^{-1}B_1\)</span>.
+Since <span class="math" data-tex="\(S^{-1}=S\)">\(S^{-1}=S\)</span>, uniqueness of (TC.24) gives
+<span class="math" data-tex="\(J=J^{-1}\)">\(J=J^{-1}\)</span>, <span class="math" data-tex="\(A=JA^{-1}J^{-1}\)">\(A=JA^{-1}J^{-1}\)</span>.
+Conjugating the latter identity by <span class="math" data-tex="\(J=J^{-1}\)">\(J=J^{-1}\)</span> gives
+<span class="math" data-tex="\(JAJ=A^{-1}\)">\(JAJ=A^{-1}\)</span>, including domains. This is exactly (TC.25–26). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof uses inverse operators on their actual ranges. It does not assume a bounded inverse.</p>
+<p>When <span class="math" data-tex="\(S\)">\(S\)</span> is the closure of a left Hilbert algebra's involution, the conventional names are <strong>modular operator</strong> for <span class="math" data-tex="\(\Delta=A^2\)">\(\Delta=A^2\)</span> and <strong>modular conjugation</strong> for <span class="math" data-tex="\(J\)">\(J\)</span>. These names do not assert the algebra identities left open in OA-MOD-TC-13.</p>
+<h2 id="the-adjoint-involution-and-all-product-domains"><span id="OA-MOD-TC-09"></span><span id="oa-mod-tc-09"></span>The adjoint involution and all product domains</h2>
+<p><strong>Theorem.</strong> The adjoint <span class="math" data-tex="\(F=S^*\)">\(F=S^*\)</span> is a closed densely defined conjugate-linear involution. Its factorizations, and those of <span class="math" data-tex="\(S\)">\(S\)</span>, are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S&amp;=J\Delta^{1/2}=\Delta^{-1/2}J,
+&amp;D(S)&amp;=D(\Delta^{1/2}),\\
+F&amp;=J\Delta^{-1/2}=\Delta^{1/2}J,
+&amp;D(F)&amp;=D(\Delta^{-1/2}).
+\end{aligned}
+\tag{TC.29}
+\]">\[
+\begin{aligned}
+S&amp;=J\Delta^{1/2}=\Delta^{-1/2}J,
+&amp;D(S)&amp;=D(\Delta^{1/2}),\\
+F&amp;=J\Delta^{-1/2}=\Delta^{1/2}J,
+&amp;D(F)&amp;=D(\Delta^{-1/2}).
+\end{aligned}
+\tag{TC.29}
+\]</span>
+<p>Furthermore,</p>
+<span class="math math-display" data-tex="\[
+FS=\Delta,\qquad SF=\Delta^{-1},\qquad
+J\Delta J=\Delta^{-1},
+\tag{TC.30}
+\]">\[
+FS=\Delta,\qquad SF=\Delta^{-1},\qquad
+J\Delta J=\Delta^{-1},
+\tag{TC.30}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+D(\Delta^{-1})
+=\{x\in D(F):Fx\in D(S)\}.
+\tag{TC.31}
+\]">\[
+D(\Delta^{-1})
+=\{x\in D(F):Fx\in D(S)\}.
+\tag{TC.31}
+\]</span>
+<p><strong>Proof.</strong> With <span class="math" data-tex="\(A=\Delta^{1/2}\)">\(A=\Delta^{1/2}\)</span>, antiunitarity and <span class="math" data-tex="\(J^{-1}=J\)">\(J^{-1}=J\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\langle Sx,y\rangle
+=\langle JAx,y\rangle
+=\langle Jy,Ax\rangle\qquad(x\in D(A)).
+\tag{TC.32}
+\]">\[
+\langle Sx,y\rangle
+=\langle JAx,y\rangle
+=\langle Jy,Ax\rangle\qquad(x\in D(A)).
+\tag{TC.32}
+\]</span>
+<p>By self-adjointness of <span class="math" data-tex="\(A\)">\(A\)</span>, this has the form <span class="math" data-tex="\(\langle z,x\rangle\)">\(\langle z,x\rangle\)</span> for all <span class="math" data-tex="\(x\in D(A)\)">\(x\in D(A)\)</span> exactly when <span class="math" data-tex="\(Jy\in D(A)\)">\(Jy\in D(A)\)</span>, in which case <span class="math" data-tex="\(z=AJy\)">\(z=AJy\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+F=AJ,\qquad D(F)=J D(A).
+\tag{TC.33}
+\]">\[
+F=AJ,\qquad D(F)=J D(A).
+\tag{TC.33}
+\]</span>
+<p>By (TC.25–26) these are <span class="math" data-tex="\(F=JA^{-1}\)">\(F=JA^{-1}\)</span>, <span class="math" data-tex="\(D(F)=D(A^{-1})\)">\(D(F)=D(A^{-1})\)</span>. The same conjugation identity gives <span class="math" data-tex="\(S=A^{-1}J\)">\(S=A^{-1}J\)</span> with domain <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>, proving (TC.29).</p>
+<p>Since <span class="math" data-tex="\(\operatorname{ran}A^{-1}=D(A)\)">\(\operatorname{ran}A^{-1}=D(A)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+F(D(F))=J D(A)=D(F).
+\]">\[
+F(D(F))=J D(A)=D(F).
+\]</span>
+<p>On this domain <span class="math" data-tex="\(JA^{-1}J=A\)">\(JA^{-1}J=A\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+F^2x=JA^{-1}JA^{-1}x=AA^{-1}x=x.
+\]">\[
+F^2x=JA^{-1}JA^{-1}x=AA^{-1}x=x.
+\]</span>
+<p>The compositions are defined: <span class="math" data-tex="\(A^{-1}x\in D(A)\)">\(A^{-1}x\in D(A)\)</span>, and <span class="math" data-tex="\(F\)">\(F\)</span> preserves its domain as just proved. Hence <span class="math" data-tex="\(F\)">\(F\)</span> is an involution.</p>
+<p>The identity <span class="math" data-tex="\(FS=\Delta\)">\(FS=\Delta\)</span> was established with its domain in OA-MOD-TC-07. For the other product, use <span class="math" data-tex="\(S=JA,F=AJ\)">\(S=JA,F=AJ\)</span>. Membership in <span class="math" data-tex="\(D(SF)\)">\(D(SF)\)</span> is exactly</p>
+<span class="math math-display" data-tex="\[
+Jx\in D(A),\qquad AJx\in D(A),
+\]">\[
+Jx\in D(A),\qquad AJx\in D(A),
+\]</span>
+<p>or <span class="math" data-tex="\(Jx\in D(A^2)\)">\(Jx\in D(A^2)\)</span>. On this domain <span class="math" data-tex="\(SFx=JA^2Jx\)">\(SFx=JA^2Jx\)</span>. Squaring <span class="math" data-tex="\(JAJ=A^{-1}\)">\(JAJ=A^{-1}\)</span>, retaining the composition domains, gives</p>
+<span class="math math-display" data-tex="\[
+JA^2J=A^{-2}=\Delta^{-1}.
+\]">\[
+JA^2J=A^{-2}=\Delta^{-1}.
+\]</span>
+<p>This proves (TC.30–31). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the cyclic separating vector construction, <span class="math" data-tex="\(S\Omega=\Omega\)">\(S\Omega=\Omega\)</span> by the unit in <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(F\Omega=\Omega\)">\(F\Omega=\Omega\)</span> by <span class="math" data-tex="\(F_0\subseteq F\)">\(F_0\subseteq F\)</span> and the unit in <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\Omega\in D(\Delta),\qquad
+\Delta\Omega=\Omega,\qquad J\Omega=\Omega.
+\tag{TC.34}
+\]">\[
+\Omega\in D(\Delta),\qquad
+\Delta\Omega=\Omega,\qquad J\Omega=\Omega.
+\tag{TC.34}
+\]</span>
+<p>For the last identity use the spectral square root
+<span class="math" data-tex="\(\Delta^{1/2}\Omega=\Omega\)">\(\Delta^{1/2}\Omega=\Omega\)</span> and <span class="math" data-tex="\(S=J\Delta^{1/2}\)">\(S=J\Delta^{1/2}\)</span>.
+Both <span class="math" data-tex="\(S\Omega=\Omega\)">\(S\Omega=\Omega\)</span> and <span class="math" data-tex="\(F\Omega=\Omega\)">\(F\Omega=\Omega\)</span> were needed to reach the operator domain of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>.</p>
+<h2 id="spectral-powers-and-the-conjugation-sign">Spectral powers and the conjugation sign</h2>
+<p>For <span class="math" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span>, define <span class="math" data-tex="\(\Delta^z\)">\(\Delta^z\)</span> using
+<span class="math" data-tex="\(\lambda^z=\exp(z\log\lambda)\)">\(\lambda^z=\exp(z\log\lambda)\)</span> on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. Since <span class="math" data-tex="\(\ker\Delta=0\)">\(\ker\Delta=0\)</span>, the spectral projection at zero is zero. With spectral measure <span class="math" data-tex="\(E\)">\(E\)</span>,</p>
+<span class="math math-display" data-tex="\[
+D(\Delta^z)=
+\left\{x:\int_{(0,\infty)}\lambda^{2\operatorname{Re}z}
+\,d\langle E(\lambda)x,x\rangle&lt;\infty\right\}.
+\tag{TC.35}
+\]">\[
+D(\Delta^z)=
+\left\{x:\int_{(0,\infty)}\lambda^{2\operatorname{Re}z}
+\,d\langle E(\lambda)x,x\rangle&lt;\infty\right\}.
+\tag{TC.35}
+\]</span>
+<p><strong>Proposition.</strong> With equality of domains,</p>
+<span class="math math-display" data-tex="\[
+J\Delta^zJ=\Delta^{-\overline z},\qquad
+J D(\Delta^z)=D(\Delta^{-\overline z}).
+\tag{TC.36}
+\]">\[
+J\Delta^zJ=\Delta^{-\overline z},\qquad
+J D(\Delta^z)=D(\Delta^{-\overline z}).
+\tag{TC.36}
+\]</span>
+<p>In particular, for <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>,</p>
+<span class="math math-display" data-tex="\[
+J\Delta^{it}J=\Delta^{it}.
+\tag{TC.37}
+\]">\[
+J\Delta^{it}J=\Delta^{it}.
+\tag{TC.37}
+\]</span>
+<p>The operators <span class="math" data-tex="\(\Delta^{it}\)">\(\Delta^{it}\)</span> form a strongly continuous unitary group. They preserve <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span>, <span class="math" data-tex="\(D(F)\)">\(D(F)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+S\Delta^{it}x=\Delta^{it}Sx\quad(x\in D(S)),\qquad
+F\Delta^{it}y=\Delta^{it}Fy\quad(y\in D(F)).
+\tag{TC.38}
+\]">\[
+S\Delta^{it}x=\Delta^{it}Sx\quad(x\in D(S)),\qquad
+F\Delta^{it}y=\Delta^{it}Fy\quad(y\in D(F)).
+\tag{TC.38}
+\]</span>
+<p><strong>Proof.</strong> The projections <span class="math" data-tex="\(JE(B)J\)">\(JE(B)J\)</span> form the spectral measure of
+<span class="math" data-tex="\(J\Delta J=\Delta^{-1}\)">\(J\Delta J=\Delta^{-1}\)</span>. For a scalar multiple of a projection,</p>
+<span class="math math-display" data-tex="\[
+J(cE(B))J=\overline c\,JE(B)J.
+\]">\[
+J(cE(B))J=\overline c\,JE(B)J.
+\]</span>
+<p>It follows first for Borel simple functions, and then by spectral approximation with the square-integrability domain retained, that</p>
+<span class="math math-display" data-tex="\[
+Jf(\Delta)J=\overline f(\Delta^{-1}).
+\tag{TC.39}
+\]">\[
+Jf(\Delta)J=\overline f(\Delta^{-1}).
+\tag{TC.39}
+\]</span>
+<p>Indeed, the transported spectral projections give exactly the transported scalar integral for each vector; finiteness of the squared modulus integral is preserved by the antiunitary. Taking <span class="math" data-tex="\(f(\lambda)=\lambda^z\)">\(f(\lambda)=\lambda^z\)</span> gives
+<span class="math" data-tex="\(\overline f(\lambda^{-1})=\lambda^{-\overline z}\)">\(\overline f(\lambda^{-1})=\lambda^{-\overline z}\)</span>, proving (TC.36).
+For <span class="math" data-tex="\(z=it\)">\(z=it\)</span>, this exponent is <span class="math" data-tex="\(it\)">\(it\)</span>, giving (TC.37).</p>
+<p>The functions <span class="math" data-tex="\(\lambda^{it}\)">\(\lambda^{it}\)</span> have modulus one, so their operators are unitary, with the group law and inverse <span class="math" data-tex="\(\Delta^{-it}\)">\(\Delta^{-it}\)</span>. For fixed <span class="math" data-tex="\(x\)">\(x\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|(\Delta^{it}-\Delta^{is})x\|^2
+=\int_{(0,\infty)}|\lambda^{it}-\lambda^{is}|^2
+\,d\langle E(\lambda)x,x\rangle.
+\]">\[
+\|(\Delta^{it}-\Delta^{is})x\|^2
+=\int_{(0,\infty)}|\lambda^{it}-\lambda^{is}|^2
+\,d\langle E(\lambda)x,x\rangle.
+\]</span>
+<p>Dominated convergence applies as <span class="math" data-tex="\(t\to s\)">\(t\to s\)</span>, with bound <span class="math" data-tex="\(4\)">\(4\)</span> against a measure of total mass <span class="math" data-tex="\(\|x\|^2\)">\(\|x\|^2\)</span>, proving strong continuity.</p>
+<p>Multiplication by <span class="math" data-tex="\(\lambda^{it}\)">\(\lambda^{it}\)</span> preserves the integrability tests for <span class="math" data-tex="\(\lambda^{1/2}\)">\(\lambda^{1/2}\)</span> and <span class="math" data-tex="\(\lambda^{-1/2}\)">\(\lambda^{-1/2}\)</span>. It thus preserves the two domains in (TC.29) and commutes there with the real powers. Combining this with (TC.37) proves (TC.38). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Anti-linearity conjugates the exponent as well as inverting the positive operator. Hence <span class="math" data-tex="\(J\Delta J=\Delta^{-1}\)">\(J\Delta J=\Delta^{-1}\)</span> does not give
+<span class="math" data-tex="\(J\Delta^{it}J=\Delta^{-it}\)">\(J\Delta^{it}J=\Delta^{-it}\)</span>.</p>
+<p>For the vector in (TC.34), the spectral measure is supported at <span class="math" data-tex="\(1\)">\(1\)</span>.
+Thus <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> belongs to every domain (TC.35) and
+<span class="math" data-tex="\(\Delta^z\Omega=\Omega\)">\(\Delta^z\Omega=\Omega\)</span> for all <span class="math" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span>.</p>
+<h2 id="matrix-models-that-display-the-domains">Matrix models that display the domains</h2>
+<p><strong>A finite model with a nontrivial modulus.</strong> Let <span class="math" data-tex="\(H=M_2(\mathbb C)\)">\(H=M_2(\mathbb C)\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\langle X,Y\rangle=\operatorname{Tr}(Y^*X),
+\]">\[
+\langle X,Y\rangle=\operatorname{Tr}(Y^*X),
+\]</span>
+<p>let <span class="math" data-tex="\(M\)">\(M\)</span> act by left multiplication, and set
+<span class="math" data-tex="\(\rho=\operatorname{diag}(4,1)\)">\(\rho=\operatorname{diag}(4,1)\)</span>, <span class="math" data-tex="\(\Omega=\rho^{1/2}\)">\(\Omega=\rho^{1/2}\)</span>.
+Invertibility of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> makes <span class="math" data-tex="\(a\mapsto a\Omega\)">\(a\mapsto a\Omega\)</span> a linear bijection. Thus <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is cyclic and separating. Direct calculation gives</p>
+<span class="math math-display" data-tex="\[
+SX=\rho^{-1/2}X^*\rho^{1/2},\qquad
+JX=X^*,\qquad
+\Delta X=\rho X\rho^{-1}.
+\tag{TC.40}
+\]">\[
+SX=\rho^{-1/2}X^*\rho^{1/2},\qquad
+JX=X^*,\qquad
+\Delta X=\rho X\rho^{-1}.
+\tag{TC.40}
+\]</span>
+<p>Indeed, writing <span class="math" data-tex="\(X=a\rho^{1/2}\)">\(X=a\rho^{1/2}\)</span> gives <span class="math" data-tex="\(SX=a^*\rho^{1/2}\)">\(SX=a^*\rho^{1/2}\)</span>.
+The positive factor in the proposed decomposition is
+<span class="math" data-tex="\(AX=\rho^{1/2}X\rho^{-1/2}\)">\(AX=\rho^{1/2}X\rho^{-1/2}\)</span>: the orthonormal matrix units <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span> are its eigenvectors with positive eigenvalues <span class="math" data-tex="\(\sqrt{\rho_i/\rho_j}\)">\(\sqrt{\rho_i/\rho_j}\)</span>. Its composition with <span class="math" data-tex="\(J\)">\(J\)</span> is the displayed <span class="math" data-tex="\(S\)">\(S\)</span>, so polar uniqueness proves (TC.40).</p>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+SE_{12}=2E_{21},\quad SE_{21}=\tfrac12E_{12},\qquad
+\Delta E_{12}=4E_{12},\quad \Delta E_{21}=\tfrac14E_{21}.
+\]">\[
+SE_{12}=2E_{21},\quad SE_{21}=\tfrac12E_{12},\qquad
+\Delta E_{12}=4E_{12},\quad \Delta E_{21}=\tfrac14E_{21}.
+\]</span>
+<p>The involution is not an isometry for the original Hilbert norm. Its square is still the identity because the off-diagonal factors cancel.</p>
+<p><strong>A vector model with unequal adjoint domains.</strong> Let <span class="math" data-tex="\(K=\ell^2(\mathbb N)\)">\(K=\ell^2(\mathbb N)\)</span>,
+<span class="math" data-tex="\(\rho e_n=2^{-n}e_n\)">\(\rho e_n=2^{-n}e_n\)</span>, and let <span class="math" data-tex="\(H\)">\(H\)</span> be the Hilbert space of Hilbert-Schmidt operators on <span class="math" data-tex="\(K\)">\(K\)</span>. Left multiplication by <span class="math" data-tex="\(B(K)\)">\(B(K)\)</span> gives a concrete von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span>. One can verify closedness by identifying matrix columns with <span class="math" data-tex="\(K\otimes\ell^2(\mathbb N)\)">\(K\otimes\ell^2(\mathbb N)\)</span>: the left algebra <span class="math" data-tex="\(B(K)\otimes I\)">\(B(K)\otimes I\)</span> is the commutant of <span class="math" data-tex="\(I\otimes B(\ell^2(\mathbb N))\)">\(I\otimes B(\ell^2(\mathbb N))\)</span>. Commuting with the projections onto individual columns eliminates off-diagonal column blocks, and commuting with the matrix units between columns makes every diagonal block the same bounded operator. This proves the commutant assertion directly.</p>
+<p>The vector <span class="math" data-tex="\(\Omega=\rho^{1/2}\)">\(\Omega=\rho^{1/2}\)</span> is Hilbert-Schmidt. If <span class="math" data-tex="\(a\Omega=0\)">\(a\Omega=0\)</span>, then <span class="math" data-tex="\(ae_n=0\)">\(ae_n=0\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, so <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is separating. It is cyclic because</p>
+<span class="math math-display" data-tex="\[
+E_{ij}=(2^{j/2}E_{ij})\Omega,
+\]">\[
+E_{ij}=(2^{j/2}E_{ij})\Omega,
+\]</span>
+<p>and finite matrices are dense in Hilbert-Schmidt norm.</p>
+<p>The closed Tomita operator is</p>
+<span class="math math-display" data-tex="\[
+(SX)_{ij}=2^{(i-j)/2}\overline{X_{ji}},\qquad
+D(S)=\left\{X\in H:
+\sum_{i,j\geq1}2^{j-i}|X_{ij}|^2&lt;\infty\right\}.
+\tag{TC.41}
+\]">\[
+(SX)_{ij}=2^{(i-j)/2}\overline{X_{ji}},\qquad
+D(S)=\left\{X\in H:
+\sum_{i,j\geq1}2^{j-i}|X_{ij}|^2&lt;\infty\right\}.
+\tag{TC.41}
+\]</span>
+<p>The coordinate formula defines a closed operator: convergence of a matrix and its image in square-sum norm implies coordinate convergence, so the formula holds at the limit. On <span class="math" data-tex="\(X=a\Omega\)">\(X=a\Omega\)</span> its image is <span class="math" data-tex="\(a^*\Omega\)">\(a^*\Omega\)</span>, which is Hilbert-Schmidt since <span class="math" data-tex="\(a^*\)">\(a^*\)</span> is bounded. Thus it extends <span class="math" data-tex="\(S_0\)">\(S_0\)</span>. Conversely, cutting off both matrix indices at <span class="math" data-tex="\(n\)">\(n\)</span> approximates every vector in the displayed domain in both the original norm and the weighted image norm. These finite matrices lie in <span class="math" data-tex="\(M\Omega\)">\(M\Omega\)</span>; hence they are a graph core, proving (TC.41).</p>
+<p>The polar data are</p>
+<span class="math math-display" data-tex="\[
+JX=X^*,\qquad
+(\Delta X)_{ij}=2^{j-i}X_{ij}.
+\tag{TC.42}
+\]">\[
+JX=X^*,\qquad
+(\Delta X)_{ij}=2^{j-i}X_{ij}.
+\tag{TC.42}
+\]</span>
+<p>The domain of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> uses the square of its displayed coefficient. The formulas follow from diagonal spectral calculus and polar uniqueness. Consequently,</p>
+<span class="math math-display" data-tex="\[
+D(F)=\left\{X\in H:
+\sum_{i,j\geq1}2^{i-j}|X_{ij}|^2&lt;\infty\right\}.
+\tag{TC.43}
+\]">\[
+D(F)=\left\{X\in H:
+\sum_{i,j\geq1}2^{i-j}|X_{ij}|^2&lt;\infty\right\}.
+\tag{TC.43}
+\]</span>
+<p>For</p>
+<span class="math math-display" data-tex="\[
+X=\sum_{n\geq1}2^{-n/2}E_{1n},
+\]">\[
+X=\sum_{n\geq1}2^{-n/2}E_{1n},
+\]</span>
+<p>the Hilbert-Schmidt norm is finite. The <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span> test is
+<span class="math" data-tex="\(\sum_n2^{n-1}2^{-n}=\infty\)">\(\sum_n2^{n-1}2^{-n}=\infty\)</span>, whereas the <span class="math" data-tex="\(D(F)\)">\(D(F)\)</span> test is
+<span class="math" data-tex="\(\sum_n2^{1-n}2^{-n}&lt;\infty\)">\(\sum_n2^{1-n}2^{-n}&lt;\infty\)</span>.
+Thus <span class="math" data-tex="\(X\in D(F)\setminus D(S)\)">\(X\in D(F)\setminus D(S)\)</span>; its adjoint belongs to
+<span class="math" data-tex="\(D(S)\setminus D(F)\)">\(D(S)\setminus D(F)\)</span>. Neither domain need contain the other.</p>
+<figure><img src="assets/tomita-domain-weights.png" alt="Matrix weights and exact Tomita domain tests" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p>The left panel shows the exact eigenvalues <span class="math" data-tex="\(2^{j-i}\)">\(2^{j-i}\)</span> of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> on the first eight rows and columns of the infinite model; this finite window is a diagram, not a bounded replacement for that operator. Transposition sends each displayed eigenvalue to its reciprocal. For the vector <span class="math" data-tex="\(X\)">\(X\)</span> in (TC.41–43), the right panel shows the first eight terms of its three squared-norm tests: <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>, <span class="math" data-tex="\(1/2\)">\(1/2\)</span> in <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span>, and <span class="math" data-tex="\(2^{1-2n}\)">\(2^{1-2n}\)</span> in <span class="math" data-tex="\(D(F)\)">\(D(F)\)</span>. The last two sequences explain the unequal domains. Equations (TC.41–43) and the series proof above justify the full infinite statements. Reproduce the figure.</p>
+<h2 id="problems-with-worked-solutions">Problems with worked solutions</h2>
+<p><strong>Problem 1: the two vector hypotheses do different jobs.</strong> Give a cyclic vector for which <span class="math" data-tex="\(a\Omega\mapsto a^*\Omega\)">\(a\Omega\mapsto a^*\Omega\)</span> is not well-defined, and a separating vector whose orbit is not dense.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(M=B(\mathbb C^2)\)">\(M=B(\mathbb C^2)\)</span>, the vector <span class="math" data-tex="\(\Omega=e_1\)">\(\Omega=e_1\)</span> is cyclic, but <span class="math" data-tex="\(E_{12}\Omega=0\)">\(E_{12}\Omega=0\)</span> while <span class="math" data-tex="\(E_{12}^*\Omega=e_2\)">\(E_{12}^*\Omega=e_2\)</span>. The proposed map would give two images for zero. For <span class="math" data-tex="\(M=\mathbb C I\)">\(M=\mathbb C I\)</span> on <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, the same vector is separating, since <span class="math" data-tex="\(\lambda e_1=0\)">\(\lambda e_1=0\)</span> implies <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>. Its orbit is only <span class="math" data-tex="\(\mathbb C e_1\)">\(\mathbb C e_1\)</span>. Thus the algebraic involution has a nondense domain, and an adjoint pairing on that domain would not uniquely determine a representing vector in all of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Problem 2: an involution can close a proper domain.</strong> Let <span class="math" data-tex="\(H=\ell^2(I)\)">\(H=\ell^2(I)\)</span>, where <span class="math" data-tex="\(I\)">\(I\)</span> is any infinite set. Let <span class="math" data-tex="\(V\)">\(V\)</span> be the finite-support vectors, and let <span class="math" data-tex="\(s\)">\(s\)</span> be coordinate conjugation on <span class="math" data-tex="\(V\)">\(V\)</span>. Find <span class="math" data-tex="\(\overline s\)">\(\overline s\)</span> and decide whether <span class="math" data-tex="\(V\)">\(V\)</span> is complete in the graph norm.</p>
+<p><strong>Solution.</strong> Coordinate conjugation <span class="math" data-tex="\(C\)">\(C\)</span> is an antiunitary on all of <span class="math" data-tex="\(H\)">\(H\)</span>, extending <span class="math" data-tex="\(s\)">\(s\)</span>. Thus <span class="math" data-tex="\(s\)">\(s\)</span> is closable. Finite-support approximations to <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span> have conjugates converging to <span class="math" data-tex="\(Cx\)">\(Cx\)</span>, so <span class="math" data-tex="\(\overline s=C\)">\(\overline s=C\)</span>. On <span class="math" data-tex="\(V\)">\(V\)</span> the graph norm is <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> times the original norm. It is incomplete: choose distinct <span class="math" data-tex="\(i_n\in I\)">\(i_n\in I\)</span>; the partial sums of
+<span class="math" data-tex="\(\sum_n2^{-n}e_{i_n}\)">\(\sum_n2^{-n}e_{i_n}\)</span> are Cauchy but have an infinite-support limit. Graph completeness belongs to <span class="math" data-tex="\(D(\overline s)\)">\(D(\overline s)\)</span>, not automatically to the original algebraic domain.</p>
+<p><strong>Problem 3: test the imaginary-power sign in one matrix entry.</strong> In the finite model, compare <span class="math" data-tex="\(J\Delta^{it}J E_{12}\)">\(J\Delta^{it}J E_{12}\)</span> with <span class="math" data-tex="\(\Delta^{-it}E_{12}\)">\(\Delta^{-it}E_{12}\)</span>.</p>
+<p><strong>Solution.</strong> First <span class="math" data-tex="\(JE_{12}=E_{21}\)">\(JE_{12}=E_{21}\)</span>, and
+<span class="math" data-tex="\(\Delta^{it}E_{21}=4^{-it}E_{21}\)">\(\Delta^{it}E_{21}=4^{-it}E_{21}\)</span>. Conjugate-linearity then gives</p>
+<span class="math math-display" data-tex="\[
+J\Delta^{it}JE_{12}
+=\overline{4^{-it}}E_{12}=4^{it}E_{12}
+=\Delta^{it}E_{12}.
+\]">\[
+J\Delta^{it}JE_{12}
+=\overline{4^{-it}}E_{12}=4^{it}E_{12}
+=\Delta^{it}E_{12}.
+\]</span>
+<p>In contrast, <span class="math" data-tex="\(\Delta^{-it}E_{12}=4^{-it}E_{12}\)">\(\Delta^{-it}E_{12}=4^{-it}E_{12}\)</span>.
+For <span class="math" data-tex="\(t=\pi/(2\log4)\)">\(t=\pi/(2\log4)\)</span>, these coefficients are <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(-i\)">\(-i\)</span>.</p>
+<p><strong>Problem 4: a form domain can exceed the operator domain.</strong> Find a vector in <span class="math" data-tex="\(D(S)=D(\Delta^{1/2})\)">\(D(S)=D(\Delta^{1/2})\)</span> but outside <span class="math" data-tex="\(D(\Delta)\)">\(D(\Delta)\)</span> in (TC.41). Explain what graph approximation for <span class="math" data-tex="\(S\)">\(S\)</span> does and does not control.</p>
+<p><strong>Solution.</strong> Take</p>
+<span class="math math-display" data-tex="\[
+Y=\sum_{n\geq1}2^{-3n/4}E_{1n}.
+\]">\[
+Y=\sum_{n\geq1}2^{-3n/4}E_{1n}.
+\]</span>
+<p>Its Hilbert norm is finite. The square norm for <span class="math" data-tex="\(\Delta^{1/2}Y\)">\(\Delta^{1/2}Y\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\sum_n2^{n-1}2^{-3n/2}
+=\tfrac12\sum_n2^{-n/2}&lt;\infty,
+\]">\[
+\sum_n2^{n-1}2^{-3n/2}
+=\tfrac12\sum_n2^{-n/2}&lt;\infty,
+\]</span>
+<p>whereas the square norm required for <span class="math" data-tex="\(\Delta Y\)">\(\Delta Y\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\sum_n2^{2(n-1)}2^{-3n/2}
+=\tfrac14\sum_n2^{n/2}=\infty.
+\]">\[
+\sum_n2^{2(n-1)}2^{-3n/2}
+=\tfrac14\sum_n2^{n/2}=\infty.
+\]</span>
+<p>Thus <span class="math" data-tex="\(Y\in D(S)\setminus D(\Delta)\)">\(Y\in D(S)\setminus D(\Delta)\)</span>. Finite truncations approximate it in the graph norm of <span class="math" data-tex="\(S\)">\(S\)</span>, which controls only the half-power. Form-norm density alone therefore does not imply that every vector in a proposed form core belongs to the full operator domain.</p>
+<p><strong>Problem 5: a commutative model without separability.</strong> Let <span class="math" data-tex="\((X,\mu)\)">\((X,\mu)\)</span> be a probability space, <span class="math" data-tex="\(H=L^2(X,\mu)\)">\(H=L^2(X,\mu)\)</span>, and let <span class="math" data-tex="\(M\)">\(M\)</span> be the multiplication operators from <span class="math" data-tex="\(L^\infty(X,\mu)\)">\(L^\infty(X,\mu)\)</span>. For <span class="math" data-tex="\(\Omega=1\)">\(\Omega=1\)</span>, compute <span class="math" data-tex="\(S,J,\Delta\)">\(S,J,\Delta\)</span>.</p>
+<p><strong>Solution.</strong> First <span class="math" data-tex="\(M\)">\(M\)</span> is a von Neumann algebra. If a bounded <span class="math" data-tex="\(T\)">\(T\)</span> commutes with every multiplication operator, put <span class="math" data-tex="\(f=T1\)">\(f=T1\)</span>. For bounded <span class="math" data-tex="\(g\)">\(g\)</span>, one has <span class="math" data-tex="\(Tg=gf\)">\(Tg=gf\)</span>. In particular</p>
+<span class="math math-display" data-tex="\[
+\|1_Ef\|_2\leq\|T\|\|1_E\|_2
+\]">\[
+\|1_Ef\|_2\leq\|T\|\|1_E\|_2
+\]</span>
+<p>for every measurable set <span class="math" data-tex="\(E\)">\(E\)</span>. Choosing a set where <span class="math" data-tex="\(|f|&gt;\|T\|+\varepsilon\)">\(|f|&gt;\|T\|+\varepsilon\)</span> proves that such a set has measure zero, so <span class="math" data-tex="\(f\in L^\infty\)">\(f\in L^\infty\)</span>. Bounded functions are dense in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by truncation, and thus <span class="math" data-tex="\(T\)">\(T\)</span> is multiplication by <span class="math" data-tex="\(f\)">\(f\)</span>. This shows <span class="math" data-tex="\(M&#x27;=M\)">\(M&#x27;=M\)</span>, hence <span class="math" data-tex="\(M=M&#x27;&#x27;\)">\(M=M&#x27;&#x27;\)</span>.</p>
+<p>The vector <span class="math" data-tex="\(1\)">\(1\)</span> is separating because <span class="math" data-tex="\(f1=0\)">\(f1=0\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> forces <span class="math" data-tex="\(f=0\)">\(f=0\)</span> almost everywhere. For <span class="math" data-tex="\(g\in L^2\)">\(g\in L^2\)</span>, the bounded truncations
+<span class="math" data-tex="\(g_n=g\,1_{\{|g|\leq n\}}\)">\(g_n=g\,1_{\{|g|\leq n\}}\)</span> converge in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>; therefore <span class="math" data-tex="\(1\)">\(1\)</span> is cyclic.
+On bounded functions <span class="math" data-tex="\(S_0f=\overline f\)">\(S_0f=\overline f\)</span>. Complex conjugation is an antiunitary on all of <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and truncation proves that it is the closure of <span class="math" data-tex="\(S_0\)">\(S_0\)</span>. Polar uniqueness gives <span class="math" data-tex="\(S=J\)">\(S=J\)</span> equal to conjugation and <span class="math" data-tex="\(\Delta=I\)">\(\Delta=I\)</span>.
+No countable generating family for the sigma-algebra or separability of <span class="math" data-tex="\(L^2\)">\(L^2\)</span> was used. This example uses the usual scalar <span class="math" data-tex="\(L^p\)">\(L^p\)</span> construction and dominated convergence as an example-specific measure-theory prerequisite.</p>
+<h2 id="exact-exports-and-the-remaining-modular-theorem">Exact exports and the remaining modular theorem</h2>
+<p>For the vector model, this unit proves cyclic/separating duality, the companion adjoint inclusions, closability, the two closed involutions and their graph cores, and the four left Hilbert algebra properties of <span class="math" data-tex="\(M\Omega\)">\(M\Omega\)</span>. For a general closed densely defined conjugate-linear involution, it proves</p>
+<span class="math math-display" data-tex="\[
+\Delta=S^*S,\quad S=J\Delta^{1/2},\quad J^2=I,\quad
+J\Delta J=\Delta^{-1},\quad
+S^*=J\Delta^{-1/2},\quad SS^*=\Delta^{-1},
+\]">\[
+\Delta=S^*S,\quad S=J\Delta^{1/2},\quad J^2=I,\quad
+J\Delta J=\Delta^{-1},\quad
+S^*=J\Delta^{-1/2},\quad SS^*=\Delta^{-1},
+\]</span>
+<p>with all domains, and the spectral-power and continuity statements of OA-MOD-TC-10 relative to the spectral contract.</p>
+<p>In the vector model, <span class="math" data-tex="\(M\Omega\)">\(M\Omega\)</span> is a graph core for <span class="math" data-tex="\(S\)">\(S\)</span>, hence a form core for <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. The commutant orbit <span class="math" data-tex="\(M&#x27;\Omega\)">\(M&#x27;\Omega\)</span> is a graph core for
+<span class="math" data-tex="\(T=\overline{F_0}\)">\(T=\overline{F_0}\)</span>. The additional equality <span class="math" data-tex="\(T=S^*\)">\(T=S^*\)</span> remains outside this proof.</p>
+<p>The following larger results are not proved here:</p>
+<ul>
+<li>the modular commutant identity <span class="math" data-tex="\(JMJ=M&#x27;\)">\(JMJ=M&#x27;\)</span>;</li>
+<li>invariance <span class="math" data-tex="\(\Delta^{it}M\Delta^{-it}=M\)">\(\Delta^{it}M\Delta^{-it}=M\)</span>;</li>
+<li>the general Hilbert algebra constructions that establish those identities;</li>
+<li>closability of the weight involution on
+<span class="math" data-tex="\(\Lambda_\varphi(\mathfrak n_\varphi\cap\mathfrak n_\varphi^*)\)">\(\Lambda_\varphi(\mathfrak n_\varphi\cap\mathfrak n_\varphi^*)\)</span>, and the weight/Hilbert-algebra correspondence;</li>
+<li>the unbounded spectral prerequisite used in TC-10.</li>
+</ul>
+<p>A polar decomposition alone does not prove those algebra identities. The next step must connect multiplication with the closed involution strongly enough to establish them. This unit supplies the domain and adjoint tools for that step at the generality of every closed densely defined conjugate-linear involution.</p>
+<p><strong>Free source comparisons.</strong> Fumio Hiai, <a href="https://arxiv.org/abs/2004.02383v1"><em>Concise lectures on selected topics of von Neumann algebras</em>, arXiv:2004.02383v1</a>, Section 2.1, printed p. 11, gives the commutant pairing and Lemma 2.1 on polar data. The imaginary-power formula in Lemma 2.1(iv) has the wrong sign: anti-linearity conjugates scalar coefficients. TC-10 proves the correct identity, and TC-12, Problem 3, checks it on a single matrix unit. We use neither a quoted polar theorem nor the modular commutant theorem to fill any step.</p>
+<p>Brent Nelson, <a href="https://users.math.msu.edu/users/banelson/files/Tomita-Takesaki%20Theory.pdf"><em>Tomita–Takesaki Theory</em>, author-hosted notes</a>, Definition 1.1 and Lemmas 1.7–1.8, printed pp. 1–3, supplies a free comparison for the Hilbert-algebra axioms, graph completion and closed involution. Two shortcuts in that exposition cannot supply proofs here: density in the original Hilbert norm does not itself imply graph-norm density, and zero kernels for a symmetric operator shifted by <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(-i\)">\(-i\)</span> do not prove self-adjointness. TC-05 proves graph-core density from graph closure, while TC-07 obtains self-adjointness from the fully proved closed-form representation. The unrestricted positive-functional quotient in Example 1.4 also does not always carry the stated involution; TC-12, Problem 1, exhibits the obstruction. Only the cited free notes are compared; all mathematical steps used by this lesson have the explicit proofs described above.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-CI.html">← Compatible pairs and complex interpolation</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-HA.html">Building the two multiplication actions of a Hilbert algebra →</a></span></nav>
+<p class="small source-link"><a href="src/tomita-closability.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

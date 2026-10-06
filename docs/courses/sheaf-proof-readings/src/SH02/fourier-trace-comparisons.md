@@ -1,8 +1,8 @@
 # SH02-FTC. Comparing traces after Fourier transformation
 
-Original English supplement for Course SH-02, dedicated under CC0 1.0 Universal. This unit isolates the maps in the Fourier normalization and microlocalization comparison problems. The base-change results and the categorical normalization construction below are proved relative to their explicit operation imports. The support equation in SH02-FTC-LINEAR is proved in SH02-FGC-SUPPORT, and the trace equation is proved in SH02-FTE-TRACE with its full endpoint comparison.
+Original programme text: CC0 1.0 Universal. This unit isolates the maps in the Fourier normalization and microlocalization comparison problems. The base-change results and the categorical normalization construction below are proved relative to their explicit operation imports. The support equation in SH02-FTC-LINEAR is proved in SH02-FGC-SUPPORT, and the trace equation is proved in SH02-FTE-TRACE with its full endpoint comparison.
 
-The published Fourier antecedent used here is Kashiwara–Schapira, *Microlocal Study of Sheaves*, Astérisque 128 (1985), §2.1, especially the linear and base-map statements in Propositions 2.1.5–2.1.6. The supplement proves compatibility of specified support-forgetting and trace maps, which those functoriality statements alone do not identify. Read it with Fourier kernels, Fourier functoriality, and [the duality supplement](fourier-duality-normalization.md).
+The published Fourier antecedent used here is Kashiwara–Schapira, *Microlocal Study of Sheaves*, Astérisque 128 (1985), §2.1, especially the linear and base-map statements in Propositions 2.1.5–2.1.6. The supplement proves compatibility of specified support-forgetting and trace maps, which those functoriality statements alone do not identify. Read it with [Fourier kernels](fourier-sato.md), [Fourier functoriality](fourier-functoriality.md), and [the duality supplement](fourier-duality-normalization.md).
 
 ## SH02-FTC-DOMAINS. Which maps are fixed
 
@@ -206,13 +206,13 @@ Rr_!T_2H\xrightarrow{\nu_r}Rr_*T_2H.
 \tag{FTC14}
 \]
 
-These are equalities of maps. FGC23 proves the support equation with exactly FTC13a–FTC13b. FTE6 and FTE32–FTE34 in The complete transpose endpoint prove FTC14 with its original R2 and R4 constructions: the coherent endpoint is a relative-rank sign times the right-ordered R3 rewrite, while its separately braided form equals the direct endpoint. The full input-line calculation then gives the trace square. Both proofs include rank-jumping bundle maps and the stated conic bounded-below coefficient range. SH02-MEP-SUPPORT and SH02-MEP-TRACE propagate these exact endpoints to both microlocal squares, and SH02-MEP-MATE-UNTWIST identifies the actual ordinary adjoint mate. The operation imports and fixed orientation-line conventions are retained in each application.
+These are equalities of maps. FGC23 proves the support equation with exactly FTC13a–FTC13b. FTE6 and FTE32–FTE34 in [The complete transpose endpoint](fourier-transpose-endpoint.md) prove FTC14 with its original R2 and R4 constructions: the coherent endpoint is a relative-rank sign times the right-ordered R3 rewrite, while its separately braided form equals the direct endpoint. The full input-line calculation then gives the trace square. Both proofs include rank-jumping bundle maps and the stated conic bounded-below coefficient range. SH02-MEP-SUPPORT and SH02-MEP-TRACE propagate these exact endpoints to both microlocal squares, and SH02-MEP-MATE-UNTWIST identifies the actual ordinary adjoint mate. The operation imports and fixed orientation-line conventions are retained in each application.
 
 ## SH02-FTC-REDUCTION. Pasting the microlocal comparison squares
 
 Consider the normal derivative \(q=bh\) and its covector correspondence
 \(E_Y^*\xleftarrow r C\xrightarrow s E_X^*\)
-from SH02-MIC-CORRESPONDENCE in microlocalization. The map \(s\) is the base lift of \(b\), while \(r={}^th\). Put \(L=\omega_r^{-1}\), with the transitivity identification used there.
+from SH02-MIC-CORRESPONDENCE in [microlocalization](microlocalization.md). The map \(s\) is the base lift of \(b\), while \(r={}^th\). Put \(L=\omega_r^{-1}\), with the transitivity identification used there.
 
 **Reduction theorem.** FTC13 for \(h\), with the same complete orientation endpoint used in the normal-derivative comparison, implies part 1 of SH02-MIC-TRACE-EXCHANGE. FTC14 for \(h\) implies part 2. The additional base-change comparisons required in those implications are FTC6 and SH02-FTC-BASE-TRACE, respectively. SH02-MEP-MATE-UNTWIST proves that the explicit FTC13a endpoint is the actual fourth MIC11 row after the stated tensor–Hom extraction. SH02-MEP-NORMAL-COUNITS and MEP10a–MEP10b fix the normal orientation and both original R2/R4 endpoints. Thus SH02-MEP-SUPPORT and SH02-MEP-TRACE establish both microlocal identities, with the full map prescriptions.
 

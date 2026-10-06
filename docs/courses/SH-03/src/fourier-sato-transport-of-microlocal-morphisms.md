@@ -4,7 +4,7 @@ Fourier-Sato transformation exchanges a vector and a covector. For conic sheaves
 
 Use When a kernel quantizes a contact transformation. The exact foundational inputs are bounded Fourier transformation, radial descent and its orientation trace, the smooth and closed-embedding microlocal Hom comparisons, and the regular open/closed boundary microsupport formulas. We display the particular versions used. Their foundational proofs remain prerequisites.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## A typed Fourier comparison
 

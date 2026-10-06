@@ -1,6 +1,6 @@
 # Tensor completion, injectivity and state domination
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).* 
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).* 
 
 The [symmetric tensor norm](symmetric-tensor-norms-and-rademacher-truncation.md) already gives small projective lifts of self-adjoint tensors. To control every bounded bilinear form, those lifts must be unique. A normalized-functional argument rules out the kernel, and a compact convex separation argument then produces fixed states dominating the form.
 

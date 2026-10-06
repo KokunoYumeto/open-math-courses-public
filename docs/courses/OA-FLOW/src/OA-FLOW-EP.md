@@ -4,7 +4,7 @@
 
 This provider constructs the extended positive cone of an arbitrary concrete von Neumann algebra \(M\subseteq B(K)\), including the projection carrying its infinite values. It then extends every normal scalar weight to that cone and proves the basic composition theorem for normal operator-valued weights. No separability, faithfulness or semifiniteness is assumed for the extended-positive construction or the scalar extension.
 
-Actual earlier written proofs are OA-FLOW.CF.6, OA-FLOW.CF.7, OA-FLOW.CF.8, OA-FLOW.CF.10, [OA-FLOW.GNS.2.1](OA-FLOW-GNS.md#gns-lemma-2-1), [OA-FLOW.GNS.2.2](OA-FLOW-GNS.md#gns-lemma-2-2), [OA-FLOW.GNS.4.1](OA-FLOW-GNS.md#gns-theorem-4-1), [OA-FLOW.GNS.7.1](OA-FLOW-GNS.md#gns-lemma-7-1), [OA-FLOW.CP.1](OA-FLOW-CP.md#oa-flow.cp.1), [OA-FLOW.CP.2](OA-FLOW-CP.md#oa-flow.cp.2), [OA-FLOW.CP.3](OA-FLOW-CP.md#oa-flow.cp.3), [OA-FLOW.CP.4](OA-FLOW-CP.md#oa-flow.cp.4), [OA-FLOW.CP.5](OA-FLOW-CP.md#oa-flow.cp.5), [OA-FLOW.CP.6](OA-FLOW-CP.md#oa-flow.cp.6), [OA-FLOW.SF.SF0](OA-FLOW-SF.md#oa-flow.sf.sf0), [OA-FLOW.SF.SB0](OA-FLOW-SF.md#oa-flow.sf.sb0), [OA-FLOW.SF.SB1](OA-FLOW-SF.md#oa-flow.sf.sb1), [OA-FLOW.SF.SB2](OA-FLOW-SF.md#oa-flow.sf.sb2), [OA-FLOW.SF.SB3](OA-FLOW-SF.md#oa-flow.sf.sb3), [OA-FLOW.SF.SB4](OA-FLOW-SF.md#oa-flow.sf.sb4), [OA-FLOW.SF.SB5](OA-FLOW-SF.md#oa-flow.sf.sb5), [OA-FLOW.SF.SB6](OA-FLOW-SF.md#oa-flow.sf.sb6), OA-FLOW.FF.5, OA-FLOW.FF.6, [OA-FLOW.SC.4](OA-FLOW-SC.md#sc-04), [OA-FLOW.SC.5](OA-FLOW-SC.md#sc-05), [OA-FLOW.GW.1](OA-FLOW-GW.md#oa-flow.gw.1), [OA-FLOW.GW.2](OA-FLOW-GW.md#oa-flow.gw.2), [OA-FLOW.GW.3](OA-FLOW-GW.md#oa-flow.gw.3), [OA-FLOW.GW.4](OA-FLOW-GW.md#oa-flow.gw.4), [OA-FLOW.EW.5](OA-FLOW-EW.md#oa-flow.ew.5). GNS Lemmas 2.1–2.2 give positive-functional Cauchy–Schwarz, GNS 4.1 gives its unital norm identity, and GNS 7.1 constructs the countable Hilbert sum. CF Sections 6–8 and 10 supply bounded calculus, positivity, Hilbert–Riesz and completion. The closed-form input is FF-4 with the opening form-invariance paragraph of FF-5 (current FF lines 169–213); its later paragraphs are unnecessary here. CP01–06 supplies predual completeness/duality; EP-1 itself proves the positive vector-series representation. EW-5 is the current reviewed normal-minorant formula, including every infinite value.
+Actual earlier written proofs are [OA-FLOW.CF.6](OA-FLOW-CF.md#oa-flow.cf.6), [OA-FLOW.CF.7](OA-FLOW-CF.md#oa-flow.cf.7), [OA-FLOW.CF.8](OA-FLOW-CF.md#oa-flow.cf.8), [OA-FLOW.CF.10](OA-FLOW-CF.md#oa-flow.cf.10), [OA-FLOW.GNS.2.1](OA-FLOW-GNS.md#gns-lemma-2-1), [OA-FLOW.GNS.2.2](OA-FLOW-GNS.md#gns-lemma-2-2), [OA-FLOW.GNS.4.1](OA-FLOW-GNS.md#gns-theorem-4-1), [OA-FLOW.GNS.7.1](OA-FLOW-GNS.md#gns-lemma-7-1), [OA-FLOW.CP.1](OA-FLOW-CP.md#oa-flow.cp.1), [OA-FLOW.CP.2](OA-FLOW-CP.md#oa-flow.cp.2), [OA-FLOW.CP.3](OA-FLOW-CP.md#oa-flow.cp.3), [OA-FLOW.CP.4](OA-FLOW-CP.md#oa-flow.cp.4), [OA-FLOW.CP.5](OA-FLOW-CP.md#oa-flow.cp.5), [OA-FLOW.CP.6](OA-FLOW-CP.md#oa-flow.cp.6), [OA-FLOW.SF.SF0](OA-FLOW-SF.md#oa-flow.sf.sf0), [OA-FLOW.SF.SB0](OA-FLOW-SF.md#oa-flow.sf.sb0), [OA-FLOW.SF.SB1](OA-FLOW-SF.md#oa-flow.sf.sb1), [OA-FLOW.SF.SB2](OA-FLOW-SF.md#oa-flow.sf.sb2), [OA-FLOW.SF.SB3](OA-FLOW-SF.md#oa-flow.sf.sb3), [OA-FLOW.SF.SB4](OA-FLOW-SF.md#oa-flow.sf.sb4), [OA-FLOW.SF.SB5](OA-FLOW-SF.md#oa-flow.sf.sb5), [OA-FLOW.SF.SB6](OA-FLOW-SF.md#oa-flow.sf.sb6), [OA-FLOW.FF.5](OA-FLOW-FF.md#oa-flow.ff.5), [OA-FLOW.FF.6](OA-FLOW-FF.md#oa-flow.ff.6), [OA-FLOW.SC.4](OA-FLOW-SC.md#sc-04), [OA-FLOW.SC.5](OA-FLOW-SC.md#sc-05), [OA-FLOW.GW.1](OA-FLOW-GW.md#oa-flow.gw.1), [OA-FLOW.GW.2](OA-FLOW-GW.md#oa-flow.gw.2), [OA-FLOW.GW.3](OA-FLOW-GW.md#oa-flow.gw.3), [OA-FLOW.GW.4](OA-FLOW-GW.md#oa-flow.gw.4), [OA-FLOW.EW.5](OA-FLOW-EW.md#oa-flow.ew.5). GNS Lemmas 2.1–2.2 give positive-functional Cauchy–Schwarz, GNS 4.1 gives its unital norm identity, and GNS 7.1 constructs the countable Hilbert sum. CF Sections 6–8 and 10 supply bounded calculus, positivity, Hilbert–Riesz and completion. The closed-form input is FF-4 with the opening form-invariance paragraph of FF-5 (current [FF](OA-FLOW-FF.md#oa-flow.ff.5) lines 169–213); its later paragraphs are unnecessary here. CP01–06 supplies predual completeness/duality; EP-1 itself proves the positive vector-series representation. EW-5 is the current reviewed normal-minorant formula, including every infinite value.
 
 Free author context is [Hiai, §8.1 and Proposition 8.6, printed pp.68–71](https://arxiv.org/pdf/2004.02383v1#page=68). The scalar-weight extension below uses [EW](OA-FLOW-EW.md#oa-flow.ew.5)'s actual normal-minorant formula and two interchangeable suprema; it does not import the general decomposition of a normal weight as a sum of normal functionals used in that reference. That separate decomposition theorem remains open in the present reconstruction.
 
@@ -36,7 +36,7 @@ is well defined and bounded. Indeed the positive-functional Cauchy–Schwarz ine
 |f(b^*a)|^2\leq f(a^*a)f(b^*b)
 \leq\|a^{(\infty)}v\|^2\|b^{(\infty)}v\|^2.
 \]
-CF8 Hilbert–Riesz theorem supplies a positive contraction \(T\) on \(K_0\) representing this form. For \(c\in M\),
+[CF8 Hilbert–Riesz theorem](OA-FLOW-CF.md#oa-flow.cf.8) supplies a positive contraction \(T\) on \(K_0\) representing this form. For \(c\in M\),
 \[
 \langle T c^{(\infty)}a^{(\infty)}v,b^{(\infty)}v\rangle
 =f(b^*ca)
@@ -93,7 +93,7 @@ q(\xi_n-\xi)\leq\liminf_m q(\xi_n-\xi_m).
 \]
 The right side becomes arbitrarily small for large \(n\); it is finite for such \(n\), so \(\xi\in D\), and the sequence converges in form norm.
 
-FF-4 now supplies a unique orthogonal projection \(e\), with \(eK=\overline D\), and a unique positive self-adjoint operator \(A\) on \(eK\), such that
+[FF-4](OA-FLOW-FF.md#oa-flow.ff.5) now supplies a unique orthogonal projection \(e\), with \(eK=\overline D\), and a unique positive self-adjoint operator \(A\) on \(eK\), such that
 \[
 D=D(A^{1/2}),\qquad
 q(\xi)=\|A^{1/2}\xi\|^2\ \ (\xi\in D),\qquad
@@ -102,7 +102,7 @@ q(\xi)=\infty\ \ (\xi\notin D).
 \]
 Let \(p=1-e\). This is the infinite part, not the zero-eigenspace projection.
 
-For a unitary \(u'\in M'\), \(\omega_{u'\xi}=\omega_\xi\), so \(q(u'\xi)=q(\xi)\). Thus \(D\), its closure \(eK\), and the form are invariant in both directions. The projection \(e\) commutes with \(M'\); the FF resolvent variational argument makes the resolvent and spectral projections of \(A\) commute with its restricted unitaries. The unitary test for commutants and the bicommutant property therefore give
+For a unitary \(u'\in M'\), \(\omega_{u'\xi}=\omega_\xi\), so \(q(u'\xi)=q(\xi)\). Thus \(D\), its closure \(eK\), and the form are invariant in both directions. The projection \(e\) commutes with \(M'\); the [FF](OA-FLOW-FF.md#oa-flow.ff.5) resolvent variational argument makes the resolvent and spectral projections of \(A\) commute with its restricted unitaries. The unitary test for commutants and the bicommutant property therefore give
 \[
 e,p\in M,\qquad 1_B(A)\text{ extended by zero belongs to }M.
 \tag{EP7}
@@ -135,7 +135,7 @@ Conversely, for any projection \(e\in M\) and any positive self-adjoint \(A\) af
 \(\sup_n(f(a_n)+g(a_n))=\sup_n f(a_n)+\sup_n g(a_n)\),
 including infinity; this proves additivity. Homogeneity, including the zero convention, follows directly.
 
-The pair \((e,A)\) is unique: evaluating on all vector functionals recovers \(q\), its complete finite domain, its closure \(eK\), and the unique FF-4 operator. Equivalently, if \(E_\lambda=1_{[0,\lambda]}(A)\) extended by zero, then
+The pair \((e,A)\) is unique: evaluating on all vector functionals recovers \(q\), its complete finite domain, its closure \(eK\), and the unique [FF-4](OA-FLOW-FF.md#oa-flow.ff.5) operator. Equivalently, if \(E_\lambda=1_{[0,\lambda]}(A)\) extended by zero, then
 \[
 m(f)=\int_{[0,\infty)}\lambda\,d f(E_\lambda)+\infty\,f(p).
 \tag{EP10}

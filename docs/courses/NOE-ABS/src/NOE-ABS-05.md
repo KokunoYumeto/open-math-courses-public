@@ -4,7 +4,7 @@
 
 A field can have a basis consisting of the conjugates of one element even when its ring of integers cannot. The obstruction is already visible in the trace. In a tame extension the trace supplies the averaging operation needed for projectivity; an additional argument turns that projectivity into a normal integral basis over a local base.
 
-We assume Three differents, the decomposition of primes in a finite Galois extension, completion of finite modules over a DVR, and elementary group representations. For number fields, the prime-transitivity and inertia results are Hilbert's ramification theory in Galois extensions, Theorems 6.1 and 6.2. Its residue fields are finite; the argument below retains arbitrary residue fields. The arithmetic different is treated in **The different and the discriminant**, and the field-basis background belongs to Hilbert 90 in Noether's form and Galois descent, Section 4. We state the field normal basis theorem and the characteristic-zero projective rigidity theorem with their exact sources. The positive-characteristic step is proved below. Basic references are [Noether], [Milne FT] and [Swan].
+We assume Three differents, the decomposition of primes in a finite Galois extension, completion of finite modules over a DVR, and elementary group representations. For number fields, the prime-transitivity and inertia results are Hilbert's ramification theory in Galois extensions, Theorems 6.1 and 6.2. Its residue fields are finite; the argument below retains arbitrary residue fields. The arithmetic different is treated in **The different and the discriminant**, and the field normal basis theorem, over every base field and in every characteristic, is proved in [Hilbert 90 in Noether's form and Galois descent, Theorem 4.0](https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-HYP/NOE-HYP-06.html#normal-bases-in-every-characteristic). The characteristic-zero projective rigidity theorem is stated below with its exact source. The positive-characteristic step is proved below. Basic references are [Noether], [Milne FT] and [Swan].
 
 ## 1. The integral question and the meaning of local
 
@@ -26,7 +26,7 @@ The group acts on this entire product, permuting its factors. Its fraction algeb
 
 A **normal integral basis generator** is an element \(a\in M\) for which \(\{g(a):g\in G\}\) is an \(R\)-basis. Equivalently, the map \(R[G]\to M\), \(g\mapsto g(a)\), is an isomorphism of left modules. The completed definition is identical. Both underlying modules are free of rank \(|G|\) over their DVR bases.
 
-The field normal basis theorem says \(L\simeq K[G]\) as left \(K[G]\)-modules [Milne FT, Theorem 5.18]. Scalar extension gives the same assertion for the fraction algebra of \(\widehat M\), including when it is a product.
+The [field normal basis theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-HYP/NOE-HYP-06.html#normal-bases-in-every-characteristic) says \(L\simeq K[G]\) as left \(K[G]\)-modules [Milne FT, Theorem 5.18]. Scalar extension gives the same assertion for the fraction algebra of \(\widehat M\), including when it is a product.
 
 We call \(\mathfrak p\) **tame** when every \(e_{\mathfrak P}\) is prime to the residue characteristic and every residue extension is separable. In residue characteristic zero, the first condition is automatic. The ramification and residue conditions are constant on the primes above \(\mathfrak p\), since \(G\) acts transitively on them. This definition allows the residue degree, and even \(|G|\), to be divisible by the residue characteristic.
 
@@ -148,7 +148,7 @@ To descend, choose a completed generator \(\hat a\). Lift its residue modulo \(\
 
 Finally suppose \(M=R[G]a\). The invariants in the regular representation are \(R\sum_g g\), so \(M^G=R\operatorname{Tr}(a)\). But \(M^G=R\): an invariant lies in \(K\) and is integral over the integrally closed ring \(R\). Thus \(\operatorname{Tr}(a)\) is a unit and the trace is onto. Theorem 2.1 proves tameness. \(\square\)
 
-The elementary construction behind this theorem is visible in two simpler cases. In an unramified local extension, lift a normal basis generator of the separable residue extension; Nakayama and a unit determinant give an integral normal basis. For a totally tamely ramified cyclic extension with \(\pi^e=c\pi_R\) and the \(e\)-th roots of unity in the base, take \(a=1+\pi+\cdots+\pi^{e-1}\). Its conjugates have coefficient matrix \((\zeta^{ij})\) in the power basis. Its Vandermonde determinant is a unit, since \(e\) is invertible and these roots remain distinct in the residue field. This explains the explicit sum construction under these additional hypotheses.
+The elementary construction behind this theorem is visible in two simpler cases. In an unramified local Galois extension, the residue extension is Galois, and [Theorem 4.0](https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-HYP/NOE-HYP-06.html#normal-bases-in-every-characteristic) supplies a normal basis over its residue field, whether finite or infinite. Lift a generator of that basis; Nakayama and a unit determinant give an integral normal basis. For a totally tamely ramified cyclic extension with \(\pi^e=c\pi_R\) and the \(e\)-th roots of unity in the base, take \(a=1+\pi+\cdots+\pi^{e-1}\). Its conjugates have coefficient matrix \((\zeta^{ij})\) in the power basis. Its Vandermonde determinant is a unit, since \(e\) is invertible and these roots remain distinct in the residue field. This explains the explicit sum construction under these additional hypotheses.
 
 ## 5. The group determinant and the global obstruction
 
@@ -234,7 +234,7 @@ Now \(\operatorname{Tr}(\eta_i^2)=5\), because \(\eta_i^2=2+\eta_j\), and \(\ope
 
 ## What this lesson does not prove
 
-The stated inputs are the field normal basis theorem [Milne FT, Theorem 5.18], completion and prime decomposition, the Cohen structure theorem [Stacks, Tag 0C0S], Swan's characteristic-zero rigidity [Swan, Section 6, Corollary 6.4], semisimple decomposition of a characteristic-zero splitting representation, the cyclotomic integer theorem, the conductor-discriminant theorem, and the three global outlook results. Trace-tameness, Higman's criterion, tame projectivity, positive-characteristic freeness, descent from completion, necessity and the discriminant square are proved here.
+The field normal basis theorem has the full internal proof in [Hilbert 90 in Noether's form and Galois descent, Theorem 4.0](https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-HYP/NOE-HYP-06.html#normal-bases-in-every-characteristic). The other inputs are completion and prime decomposition, the Cohen structure theorem [Stacks, Tag 0C0S], Swan's characteristic-zero rigidity [Swan, Section 6, Corollary 6.4], semisimple decomposition of a characteristic-zero splitting representation, the cyclotomic integer theorem, the conductor-discriminant theorem, and the three global outlook results. Trace-tameness, Higman's criterion, tame projectivity, positive-characteristic freeness, descent from completion, necessity and the discriminant square are proved here.
 
 ## References
 

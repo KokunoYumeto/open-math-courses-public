@@ -1,6 +1,6 @@
 # SH02-MEP-UNIT. Following the comparison maps into the normal bundle
 
-Original English proof supplement in the private Course SH-02 edition. Independently expressed programme text is dedicated under CC0 1.0 Universal. This lesson follows the Fourier operation comparisons through normal deformation and identifies their support and trace endpoints. The source account compares the classical microlocalization squares with the additional orientation, module and adjunction calculations required for the specified course maps.
+Independently expressed programme text is dedicated under CC0 1.0 Universal. This lesson follows the Fourier operation comparisons through normal deformation and identifies their support and trace endpoints. The source account compares the classical microlocalization squares with the additional orientation, module and adjunction calculations required for the specified course maps.
 
 ## SH02-MEP-SOURCES. Classical squares and their specified endpoints
 

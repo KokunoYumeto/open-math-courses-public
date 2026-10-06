@@ -32,7 +32,7 @@ There is no factor, separability, countable-decomposability, finite-total-weight
 \]
 Conversely every faithful normal semifinite \(\varphi_F\) has such a composition. Thus composition is a bijection for these exact two weight classes. Through the actual normal isomorphism \(\Pi:M\to F\), the descending weight on \(M\) is \(\varphi=\varphi_F\circ\Pi\). The zero algebra has its unique zero weight and the assertion is immediate; below assume \(B\ne0\).
 
-The proof uses the written all-normal tracial density correspondence TD-2, TD-4, TD-5, TD-6, TD-7, the centralizer finite-domain and perturbation arguments [CZ-0](OA-FLOW-CZ.md#oa-flow.cz.0), [CZ-2](OA-FLOW-CZ.md#oa-flow.cz.2), [CZ-5](OA-FLOW-CZ.md#oa-flow.cz.5), [CZ-7](OA-FLOW-CZ.md#oa-flow.cz.7), [GW-1](OA-FLOW-GW.md#oa-flow.gw.1) and [GW-4](OA-FLOW-GW.md#oa-flow.gw.4), and the complete spectral domains and transport [SF-1](OA-FLOW-SF.md#oa-flow.sf.sf1), [SB-4](OA-FLOW-SF.md#oa-flow.sf.sb4) and [SB-6](OA-FLOW-SF.md#oa-flow.sf.sb6). Bounded strong-to-ultraweak convergence is [SF-2](OA-FLOW-SF.md#oa-flow.sf.sf2). Each is an earlier actual programme proof. The freely readable human context for tracial densities is [Hiai, Theorem 5.13, Corollary 5.14 and Remark 5.15, printed pp.49–50](https://arxiv.org/pdf/2004.02383v1#page=49). This citation supplies context; the mathematical inputs are the complete local proofs just linked.
+The proof uses the written all-normal tracial density correspondence [TD-2](OA-FLOW-TD.md#oa-flow.td.2), [TD-4](OA-FLOW-TD.md#oa-flow.td.4), [TD-5](OA-FLOW-TD.md#oa-flow.td.5), [TD-6](OA-FLOW-TD.md#oa-flow.td.6), [TD-7](OA-FLOW-TD.md#oa-flow.td.7), the centralizer finite-domain and perturbation arguments [CZ-0](OA-FLOW-CZ.md#oa-flow.cz.0), [CZ-2](OA-FLOW-CZ.md#oa-flow.cz.2), [CZ-5](OA-FLOW-CZ.md#oa-flow.cz.5), [CZ-7](OA-FLOW-CZ.md#oa-flow.cz.7), [GW-1](OA-FLOW-GW.md#oa-flow.gw.1) and [GW-4](OA-FLOW-GW.md#oa-flow.gw.4), and the complete spectral domains and transport [SF-1](OA-FLOW-SF.md#oa-flow.sf.sf1), [SB-4](OA-FLOW-SF.md#oa-flow.sf.sb4) and [SB-6](OA-FLOW-SF.md#oa-flow.sf.sb6). Bounded strong-to-ultraweak convergence is [SF-2](OA-FLOW-SF.md#oa-flow.sf.sf2). Each is an earlier actual programme proof. The freely readable human context for tracial densities is [Hiai, Theorem 5.13, Corollary 5.14 and Remark 5.15, printed pp.49–50](https://arxiv.org/pdf/2004.02383v1#page=49). This citation supplies context; the mathematical inputs are the complete local proofs just linked.
 
 <a id="fd-0"></a><a id="oa-flow.fd.0"></a>
 
@@ -48,7 +48,7 @@ By TD, \(\Psi=\tau_H\) for a unique positive self-adjoint operator \(H\) affilia
  =\widehat\tau(a^{1/2}Ha^{1/2}).
  \tag{FD4}
 \]
-These are the complete extended-form sandwiches in TD-2/TD-6; there is no unverified product of unbounded operators.
+These are the complete extended-form sandwiches in [TD-2](OA-FLOW-TD.md#oa-flow.td.2)/[TD-6](OA-FLOW-TD.md#oa-flow.td.6); there is no unverified product of unbounded operators.
 
 For any positive affiliated density \(A\), normal spectral transport gives \(\beta^{-1}(A\wedge k)=\beta^{-1}(A)\wedge k\), including its full operator and square-root domains. Applying ([FD2](OA-FLOW-FD.md#equation-fd2)) to every bounded positive cutoff in ([FD4](OA-FLOW-FD.md#equation-fd4)) proves
 
@@ -58,7 +58,7 @@ For any positive affiliated density \(A\), normal spectral transport gives \(\be
  \tau_A\circ\beta=\lambda\tau_{\beta^{-1}(A)}.
  \tag{FD5}
 \]
-TD-2 proves positive scalar homogeneity of the density map. Since \(\Psi\beta=\Psi\), its full uniqueness in TD-5 now gives \(H=\lambda\beta^{-1}(H)\), and hence
+[TD-2](OA-FLOW-TD.md#oa-flow.td.2) proves positive scalar homogeneity of the density map. Since \(\Psi\beta=\Psi\), its full uniqueness in [TD-5](OA-FLOW-TD.md#oa-flow.td.5) now gives \(H=\lambda\beta^{-1}(H)\), and hence
 
 <a id="equation-fd6"></a>
 
@@ -145,7 +145,7 @@ Define the normal weight
  =\tau(d^{1/2}xd^{1/2})\qquad(x\in F_+).
  \tag{FD12}
 \]
-TD-2 proves normality of \(\tau_d\); [FD-1](OA-FLOW-FD.md#oa-flow.fd.1) proves normality of its restriction. Semifiniteness and faithfulness will be established separately below.
+[TD-2](OA-FLOW-TD.md#oa-flow.td.2) proves normality of \(\tau_d\); [FD-1](OA-FLOW-FD.md#oa-flow.fd.1) proves normality of its restriction. Semifiniteness and faithfulness will be established separately below.
 
 For \(y\in B_+\), use ([FD8](OA-FLOW-FD.md#equation-fd8)), the whole counting sum, and [EP-5](OA-FLOW-EP.md#oa-flow.ep.5) normality of the scalar extension:
 
@@ -184,7 +184,7 @@ For finite \(J\), \(K_J=\sum_{n\in J}k_n\) is a bounded spectral function. On th
  D_{\rm finite}=D(H^{1/2}).
  \tag{FD15}
 \]
-This is scalar monotone convergence on the disjoint spectral intervals, proved in SF and SC. Thus \(\sum_n k_n=H\) in the complete extended cone, on every normal positive functional by [EP-3](OA-FLOW-EP.md#oa-flow.ep.3). TD-2/TD-7 gives equality of the corresponding weights on every bounded positive element, rather than just on a dense finite algebra. Equations ([FD13](OA-FLOW-FD.md#equation-fd13))–([FD15](OA-FLOW-FD.md#equation-fd15)) prove
+This is scalar monotone convergence on the disjoint spectral intervals, proved in SF and SC. Thus \(\sum_n k_n=H\) in the complete extended cone, on every normal positive functional by [EP-3](OA-FLOW-EP.md#oa-flow.ep.3). [TD-2](OA-FLOW-TD.md#oa-flow.td.2)/[TD-7](OA-FLOW-TD.md#oa-flow.td.7) gives equality of the corresponding weights on every bounded positive element, rather than just on a dense finite algebra. Equations ([FD13](OA-FLOW-FD.md#equation-fd13))–([FD15](OA-FLOW-FD.md#equation-fd15)) prove
 
 <a id="equation-fd16"></a>
 
@@ -200,7 +200,7 @@ The full operator domain is \(D(H)=\{\xi:\int r^2\,d\mu_\xi^H(r)<\infty\}\); ([F
 
 ## FD-4. The common finite ideal is dense for a proved reason
 
-For the trace \(\tau\), TD-1's full closed involution is the antiunitary \(J\), and its modular operator is \(1\). Thus its centralizer is all of \(B\). The CZ unbounded perturbation weight for \(H\) is exactly \(\tau_H\): its bounded densities \(H(1+\varepsilon H)^{-1}\) increase to \(H\) in the extended cone, and TD-2 normality of the density map identifies their whole positive-cone supremum with ([FD4](OA-FLOW-FD.md#equation-fd4)). [CZ-5](OA-FLOW-CZ.md#oa-flow.cz.5) therefore gives
+For the trace \(\tau\), [TD-1](OA-FLOW-TD.md#oa-flow.td.1)'s full closed involution is the antiunitary \(J\), and its modular operator is \(1\). Thus its centralizer is all of \(B\). The CZ unbounded perturbation weight for \(H\) is exactly \(\tau_H\): its bounded densities \(H(1+\varepsilon H)^{-1}\) increase to \(H\) in the extended cone, and [TD-2](OA-FLOW-TD.md#oa-flow.td.2) normality of the density map identifies their whole positive-cone supremum with ([FD4](OA-FLOW-FD.md#equation-fd4)). [CZ-5](OA-FLOW-CZ.md#oa-flow.cz.5) therefore gives
 
 <a id="equation-fd17"></a>
 

@@ -1,6 +1,6 @@
 # Riemannian connections and convex neighbourhoods
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Draft; self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Original text dedicated to the public domain under CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Self-checked by the writing AI. Original text dedicated to the public domain under CC0 1.0.*
 
 A metric measures the speed of a curve, while a connection differentiates its velocity. Requiring that transport preserve the metric and that torsion vanish links these two operations in a unique way. The resulting geodesics are locally the shortest curves. We prove that assertion against all competing curves, including curves that leave the chosen coordinates, and obtain neighbourhoods in which every pair has a unique shortest geodesic.
 

@@ -2,7 +2,7 @@
 
 To push a chain forward, control its closed support before integrating its oriented pieces. To multiply chains, keep their factor order before taking a boundary. These two rules make the same theory work with singular subanalytic supports, nonproper ambient maps and coefficients that are not fields.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Subanalytic chains and closed cycle supports supplies the sheaves \(\mathcal C_p,\mathcal Z_p\), their support comparisons, boundary and softness. We use the programme's filtered colimits and stalkwise tensor products, and the SH-02 proper-support projection, exceptional trace and orientation lessons. This lesson treats supports, products and proper images of subanalytic chains, after M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §1, together with the chain-stalk flatness argument.
 

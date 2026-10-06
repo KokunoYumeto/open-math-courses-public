@@ -1,6 +1,6 @@
 # Trace-preserving finite models
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 Semidiscreteness supplies finite completely positive models, but their matrix states can have unequal weights. We will change the reconstruction map slightly, replace its state by a matrix trace, and take an ordinary trace adjoint. Both resulting maps preserve the prescribed traces exactly. Matrix contractions can then be replaced by unitaries while controlling their images.
 

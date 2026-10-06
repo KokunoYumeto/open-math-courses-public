@@ -6,7 +6,7 @@ A local system on a curve and a vector space at one point can belong to the same
 
 Our coefficients are a field \(\Lambda\). We retain both the classical complex-algebraic setting and the finite or rational-adic étale settings of Constructible complexes on algebraic varieties. In the étale setting the torsion characteristic is invertible on the varieties. The adic statements require the normalized operations and comparison maps listed in that lesson; their unfinished proof obligations remain obligations here. Dimension means complex dimension classically and algebraic dimension étale-locally. A shift has \(\mathcal H^q(K[m])=\mathcal H^{q+m}K\).
 
-The mathematical source for the dimension conditions is the freely readable author-hosted edition of BBD, especially §§2.1–2.2 and 4.0. We use the reconstructed adjunction, localization and heart arguments of Gluing t-structures. Below, an external reference identifies source material; the written arguments and their explicitly identified programme prerequisites carry the proof obligations.
+The mathematical source for the dimension conditions is the freely readable author-hosted edition of BBD, especially §§2.1–2.2 and 4.0. We use the reconstructed adjunction, localization and heart arguments of [Gluing t-structures](gluing-t-structures.md). Below, an external reference identifies source material; the written arguments and their explicitly identified programme prerequisites carry the proof obligations.
 
 ## 1. Degrees at a puncture
 

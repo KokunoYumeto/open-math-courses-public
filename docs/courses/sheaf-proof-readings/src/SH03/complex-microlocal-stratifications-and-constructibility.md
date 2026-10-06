@@ -6,11 +6,11 @@ Let \(X\) be a complex manifold of complex dimension \(n\), Hausdorff and counta
 
 The geometric prerequisites are Analytic normal cones through complex deformation, Analytic conormal covers and singular involutivity, and the full real limiting-sum and refinement proofs in Limiting cotangent sums and Microlocal stratifications by removing bad loci. We give the additional complex analytic closure arguments here. Their primitive analytic and subanalytic inputs remain explicit open dependencies.
 
-For the sheaf statements, let \(k\) be a commutative ring of finite global dimension and \(F\in D^b(k_X)\). Boundedness means one finite global cohomological interval. The fixed real μ-stratification criterion and the real constructibility equivalences are those proved in Constructibility from microsupport and perfect stalks. Involutivity of the full microsupport is the exact existing microlocal prerequisite; its transitive proof audit remains open. Weak constructibility has no finite-generation requirement. Noetherian or field hypotheses are not added silently.
+For the sheaf statements, let \(k\) be a commutative ring of finite global dimension and \(F\in D^b(k_X)\). Boundedness means one finite global cohomological interval. The fixed real μ-stratification criterion and the real constructibility equivalences are those proved in Constructibility from microsupport and perfect stalks. Involutivity of the full microsupport is the exact existing microlocal prerequisite. Weak constructibility has no finite-generation requirement. Noetherian or field hypotheses are not added silently.
 
 The freely readable comparison is Kashiwara and Schapira, *Microlocal study of sheaves*, Theorem 8.5.2 and Lemma 8.5.3, printed 151–152: weak real constructibility together with complex cotangent conicity characterizes weak complex constructibility. The full microlocal refinement and analytic-closure arguments are supplied below with their stated geometric prerequisites. General derived realization, including any failure of equivalence, remains a separate teaching obligation.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## The ordered complex μ-condition
 

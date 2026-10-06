@@ -4,7 +4,7 @@ A cotangent correspondence can be a graph even when the corresponding sheaf oper
 
 Use Dual kernels and an unchanged parameter and Directional morphisms through a sheaf kernel. Two additional inputs come from Local models and change of ambient manifold and Local morphisms in cotangent directions: the conormal coefficient model, and the microlocal unit, duality and submanifold formulas. We state exactly what is needed. Their foundational proofs remain prerequisites.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## The correspondence and the identity condition
 

@@ -4,7 +4,7 @@ A sheaf kernel describes an operation with an input variable and an output varia
 
 We assume bounded derived sheaf operations and the microsupport estimates taught in Composing sheaf operators through an intermediate space and Transporting directional obstructions. Theorem 1 develops the kernel estimate in Pierre Schapira's *A short review on microlocal sheaf theory*, §2.4, equations (2.11)–(2.13), by tracing each intermediate covector through the three operation estimates in §2.3. The graph calculations, nonlinear example and solved exercises then test the distinction between a possible cotangent direction and nonzero output cohomology. The exact operation hypotheses and coefficient bounds remain explicit below.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## Variables and coefficient bounds
 
@@ -74,7 +74,7 @@ Relation composition records a possible covector. It does not assert that the co
 
 ## A composition estimate with proper supports
 
-The source comparison has three separate steps. Schapira's Theorem 2.11 supplies the submersion equality; Corollary 2.12(i) obtains the tensor estimate by pulling an external product back to the diagonal; Theorem 2.9 proves the proper-image estimate by commuting a local support test with proper direct image and evaluating on the fibre. His §2.4 combines them into the kernel estimate. The proof here expands that combination so that the zero middle covector, the support condition and the antipode can each be checked in coordinates.
+Schapira's Theorem 2.11 supplies the submersion equality; Corollary 2.12(i) obtains the tensor estimate by pulling an external product back to the diagonal; Theorem 2.9 proves the proper-image estimate by commuting a local support test with proper direct image and evaluating on the fibre. His §2.4 combines them into the kernel estimate. The proof here expands that combination so that the zero middle covector, the support condition and the antipode can each be checked in coordinates.
 
 We recall three microsupport facts with their hypotheses. For a submersion \(p\),
 

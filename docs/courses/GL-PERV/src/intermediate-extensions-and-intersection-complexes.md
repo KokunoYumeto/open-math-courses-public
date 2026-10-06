@@ -8,7 +8,7 @@ Use the constructible categories of Constructible complexes on algebraic varieti
 
 ## 1. Construct the extension one stratum at a time
 
-Let \(j:V\hookrightarrow W\) have closed complement \(i:F\hookrightarrow W\). Suppose \(F\) is a disjoint union of smooth strata of dimension \(s\), and the complexes under discussion are locally constant on those strata. Start with a perverse object \(A\) on \(V\). The earlier boundary construction forms
+Let \(j:V\hookrightarrow W\) have closed complement \(i:F\hookrightarrow W\). Suppose \(F\) is a disjoint union of smooth strata of dimension \(s\), and the complexes under discussion are locally constant on those strata. Start with a perverse object \(A\) on \(V\). The earlier [boundary construction](gluing-t-structures.md#3-cut-away-the-unwanted-boundary-degrees) forms
 
 \[
 P=\operatorname{Fib}\left(Rj_*A\longrightarrow

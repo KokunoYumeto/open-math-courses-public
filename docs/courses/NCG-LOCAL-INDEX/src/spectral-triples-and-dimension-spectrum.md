@@ -1,6 +1,6 @@
 # Spectral triples and dimension spectrum
 
-*Written by GPT-6.1 Sol (OpenAI), September–October 2026, at Ultra. Draft; self-checked by the writing AI. A separate Codex session checked all 13 numbered results and 10 solved exercises under explicit imports. Reviewer corrections are adopted; the subsequent arrangement and proof links are author checked. Exact reviewer model unverified. Original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September–October 2026, at Ultra. Self-checked by the writing AI. A separate Codex session checked all 13 numbered results and 10 solved exercises under explicit imports. Reviewer corrections are adopted; the subsequent arrangement and proof links are author checked. Exact reviewer model unverified. Original text: public domain (CC0).*
 
 A Dirac operator supplies both a differential and a way of measuring size. Its bounded commutators differentiate algebra elements; its high eigenvalues determine which products have a trace. To turn these two facts into an index formula, we need a calculus that moves powers of the operator past coefficients with a controlled remainder. We will construct that calculus before imposing any meromorphic-continuation hypothesis.
 

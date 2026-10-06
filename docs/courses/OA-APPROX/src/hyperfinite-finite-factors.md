@@ -1,6 +1,6 @@
 # Local approximation and the hyperfinite finite factor
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 A finite-dimensional algebra that approximates a few operators need not contain a previously chosen algebra. The main construction below repairs that defect. A small change of one projection aligns the first matrix corner, and matrix units then align the whole old algebra exactly. Repeating this construction identifies every separable AFD factor of type \(\mathrm{II}_1\) with the tracial infinite product of \(M_2\).
 

@@ -322,5 +322,5 @@ Here \(1/T\) is the scale of the normal phase coefficient, not a claim about the
 
 ## References
 
-- [Grubb] Gerd Grubb, *Distributions and Operators*, Graduate Texts in Mathematics 252, Springer, 2009. [Author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm).
+- [Grubb] Gerd Grubb, *Distributions and Operators*, lecture notes, University of Copenhagen, 2007–2008. [Author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm).
 - [Hörmander] Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 1983.

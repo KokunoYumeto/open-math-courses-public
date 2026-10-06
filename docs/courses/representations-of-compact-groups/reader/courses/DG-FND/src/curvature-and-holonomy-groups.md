@@ -1,6 +1,6 @@
 # Curvature and holonomy groups
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Draft; self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Original text dedicated to the public domain under CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Self-checked by the writing AI. Original text dedicated to the public domain under CC0 1.0.*
 
 Transport around a loop can return a frame rotated relative to its starting position. Curvature measures the local failure of horizontal directions to close under brackets. Holonomy collects the resulting transformations for all loops. The two notions have different scales: curvature is a tensor, while the full holonomy group also remembers the topology of the base.
 

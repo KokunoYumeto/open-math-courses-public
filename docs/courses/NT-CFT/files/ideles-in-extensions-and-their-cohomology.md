@@ -9,7 +9,7 @@ We use the definitions and restricted product topology in *Idèles and the idèl
 Let \(K\) be a global field and \(L/K\) a finite separable extension. A global field means a number field or a finite extension of a finite-field rational function field. For a place \(v\) of \(K\), write \(w\mid v\) for its extensions to \(L\). The arguments below apply to either kind of global field. There are no archimedean places in the function-field case.
 
 
-**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-13) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-13) shows which results are proved in published lessons and which full proofs are still missing. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
 
 ## 1. Embeddings and norms
 

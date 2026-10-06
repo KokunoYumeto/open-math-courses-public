@@ -1,0 +1,1002 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Recovering a crossed product from its eigenunitaries · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><span class="unlinked">Previous lesson</span><a href="OA-FLOW-L31.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L29.md">Lesson source</a></nav><h1 id="OA-FLOW.L29.SETTING">Recovering a crossed product from its eigenunitaries</h1>
+<p><em>Self-checked by the writing AI. Original exposition and illustration sources: CC0 1.0; font components retain their accompanying terms.</em></p>
+<p>A family of eigenunitaries can determine the entire algebra around it. The fixed elements supply the coefficients, conjugation by the unitaries supplies the action, and Fourier analysis recovers every element of the original algebra. We first prove this generation statement, then identify the resulting crossed product by an explicit unitary between faithful normal models.</p>
+<p><a id="l29-setting"></a></p>
+<h2 id="setting-and-conclusion">Setting and conclusion</h2>
+<p>Let <span class="math" data-tex="$G$">$G$</span> be a locally compact Hausdorff abelian group, written additively, and let <span class="math" data-tex="$H=\widehat G$">$H=\widehat G$</span>, written multiplicatively. Haar measures on <span class="math" data-tex="$G$">$G$</span> and <span class="math" data-tex="$H$">$H$</span> are paired by the <a href="OA-FLOW-PLANCHEREL.html#scalar-plancherel-p3">scalar Plancherel theorem</a>. Integrals use the <a href="OA-FLOW-L24.html#oa-flow.grp.haarconventions">locally determined Haar convention</a>; neither group is assumed sigma compact.</p>
+<p>Let <span class="math" data-tex="$N\ne0$">$N\ne0$</span> be a von Neumann algebra, let <span class="math" data-tex="$\beta:H\to\operatorname{Aut}(N)$">$\beta:H\to\operatorname{Aut}(N)$</span> be a point-ultraweakly continuous action by normal star automorphisms, and let <span class="math" data-tex="$u:G\to\mathcal U(N)$">$u:G\to\mathcal U(N)$</span> be a strongly continuous unitary representation satisfying
+<span class="math math-display" data-tex="\[
+ \beta_\eta(u_s)=\overline{\eta(s)}u_s
+ \qquad(s\in G,\ \eta\in H).
+ \tag{L29.0.a}
+\]">\[
+ \beta_\eta(u_s)=\overline{\eta(s)}u_s
+ \qquad(s\in G,\ \eta\in H).
+ \tag{L29.0.a}
+\]</span>
+Strong continuity is intrinsic on this bounded unitary family by <a href="OA-FLOW-ST12.html#oa-flow.st.2">faithful normal topology</a>. Put
+<span class="math math-display" data-tex="\[
+ M=N^\beta,\qquad \alpha_s=\operatorname{Ad}(u_s)|_M.
+ \tag{L29.0.b}
+\]">\[
+ M=N^\beta,\qquad \alpha_s=\operatorname{Ad}(u_s)|_M.
+ \tag{L29.0.b}
+\]</span>
+We shall prove that <span class="math" data-tex="$\alpha$">$\alpha$</span> is a continuous normal action and that there is a unique normal star isomorphism, with normal inverse,
+<span class="math math-display" data-tex="\[
+ \Phi:M\rtimes_\alpha G\longrightarrow N,
+ \qquad \Phi(\pi_\alpha(a))=a,\qquad
+ \Phi(\lambda_s)=u_s.
+ \tag{L29.0.c}
+\]">\[
+ \Phi:M\rtimes_\alpha G\longrightarrow N,
+ \qquad \Phi(\pi_\alpha(a))=a,\qquad
+ \Phi(\lambda_s)=u_s.
+ \tag{L29.0.c}
+\]</span>
+It intertwines the dual action with <span class="math" data-tex="$\beta$">$\beta$</span>. Generation by <span class="math" data-tex="$M$">$M$</span> and <span class="math" data-tex="$u(G)$">$u(G)$</span> is a conclusion. No faithful state, trace, factor, separable predual, or separable Hilbert space is assumed. The zero algebra is treated separately in Section 5.</p>
+<p>The proof uses the earlier <a href="OA-FLOW-WRC.html#wr-spectral">continuous spectral representation</a>, <a href="OA-FLOW-HARMONIC-LATE.html#l138-h3">Fourier uniqueness</a>, <a href="OA-FLOW-NR.html#oa-flow.nr.3">faithful normal regular construction</a>, and <a href="OA-FLOW-DA.html#da-vector">vector Plancherel theorem</a>. Every additional proof input is linked at its use below.</p>
+<p><span id="OA-FLOW.L29.1"></span><a id="l29-1"></a></p>
+<h2 id="1-the-fixed-algebra-and-a-continuous-spectral-coordinate">1. The fixed algebra and a continuous spectral coordinate</h2>
+<p>Let <span class="math" data-tex="\(M=N^\beta\)">\(M=N^\beta\)</span>. The eigenunitaries determine an action on this fixed algebra:
+<span class="math math-display" data-tex="\[
+ M=\{a\in N:\beta_\eta(a)=a\text{ for every }\eta\in H\},
+ \qquad
+ \alpha_s(a)=u_sau_s^*.
+ \tag{L29.1.a}
+\]">\[
+ M=\{a\in N:\beta_\eta(a)=a\text{ for every }\eta\in H\},
+ \qquad
+ \alpha_s(a)=u_sau_s^*.
+ \tag{L29.1.a}
+\]</span>
+Indeed, <span class="math" data-tex="\(M\)">\(M\)</span> is an ultraweakly closed unital star subalgebra: it is the intersection of the kernels of the normal linear maps <span class="math" data-tex="\(\beta_\eta-\mathrm{id}\)">\(\beta_\eta-\mathrm{id}\)</span>, and the fixedness equations preserve products and adjoints. The eigenrelation gives, for <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>,
+<span class="math math-display" data-tex="\[
+ \beta_\eta(u_sau_s^*)
+ =\overline{\eta(s)}u_sa\,\eta(s)u_s^*
+ =u_sau_s^*.
+ \tag{L29.1.b}
+\]">\[
+ \beta_\eta(u_sau_s^*)
+ =\overline{\eta(s)}u_sa\,\eta(s)u_s^*
+ =u_sau_s^*.
+ \tag{L29.1.b}
+\]</span>
+Thus <span class="math" data-tex="\(\alpha_s(M)\subset M\)">\(\alpha_s(M)\subset M\)</span>, and the inclusion for <span class="math" data-tex="\(-s\)">\(-s\)</span> gives equality. The representation law for <span class="math" data-tex="\(u\)">\(u\)</span> gives <span class="math" data-tex="\(\alpha_{s+t}=\alpha_s\alpha_t\)">\(\alpha_{s+t}=\alpha_s\alpha_t\)</span>, and each <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span> is normal.</p>
+<p>Choose a faithful normal concrete realization <span class="math" data-tex="\(N\subseteq B(K)\)">\(N\subseteq B(K)\)</span>, with <span class="math" data-tex="\(K\ne0\)">\(K\ne0\)</span>. There is no restriction on the dimension of <span class="math" data-tex="\(K\)">\(K\)</span>. Both <span class="math" data-tex="\(s\mapsto u_s\)">\(s\mapsto u_s\)</span> and <span class="math" data-tex="\(s\mapsto u_s^*=u_{-s}\)">\(s\mapsto u_s^*=u_{-s}\)</span> are strongly continuous. The estimates in <a href="OA-FLOW-UC.html#oa-flow.uc.0">Topology checks for unitary cocycles</a> show that the orbit <span class="math" data-tex="\(s\mapsto u_sau_s^*\)">\(s\mapsto u_sau_s^*\)</span> is strongly-star continuous. Its norm is constantly <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span>, so it is also ultraweakly continuous. The bounded intrinsic topology is independent of this realization by <a href="OA-FLOW-ST12.html#oa-flow.st.2">Faithful normal representations and their topologies</a>. Consequently <span class="math" data-tex="\((M,G,\alpha)\)">\((M,G,\alpha)\)</span> has all the continuity required of a normal action.</p>
+<p>We next obtain continuous frequency measurements from <span class="math" data-tex="\(u\)">\(u\)</span>. For <span class="math" data-tex="\(s\in G\)">\(s\in G\)</span>, write
+<span class="math math-display" data-tex="\[
+ e_s(\chi)=\chi(s)\quad(\chi\in H),\qquad
+ (\tau_\eta f)(\chi)=f(\eta^{-1}\chi).
+ \tag{L29.1.c}
+\]">\[
+ e_s(\chi)=\chi(s)\quad(\chi\in H),\qquad
+ (\tau_\eta f)(\chi)=f(\eta^{-1}\chi).
+ \tag{L29.1.c}
+\]</span>
+Topological biduality identifies <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span> with <span class="math" data-tex="\(G\)">\(G\)</span>, as proved in <a href="OA-FLOW-HARMONIC-LATE.html#l138-h3">Biduality from the scalar unitary and compact tests</a>. Apply <a href="OA-FLOW-WRC.html#wr-spectral">The abelian spectral representation lemma</a> on the group <span class="math" data-tex="\(H\)">\(H\)</span> to the representation <span class="math" data-tex="\(V_s=u_{-s}\)">\(V_s=u_{-s}\)</span> of <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span>. That lemma uses conjugate characters, so it first gives <span class="math" data-tex="\(\overline j(\overline{e_s})=u_{-s}\)">\(\overline j(\overline{e_s})=u_{-s}\)</span>. Replacing <span class="math" data-tex="\(s\)">\(s\)</span> by <span class="math" data-tex="\(-s\)">\(-s\)</span> yields a nondegenerate star representation and its multiplier extension:
+<span class="math math-display" data-tex="\[
+ j:C_0(H)\longrightarrow B(K),\qquad
+ \overline j:C_b(H)\longrightarrow B(K),\qquad
+ \overline j(e_s)=u_s.
+ \tag{L29.1.d}
+\]">\[
+ j:C_0(H)\longrightarrow B(K),\qquad
+ \overline j:C_b(H)\longrightarrow B(K),\qquad
+ \overline j(e_s)=u_s.
+ \tag{L29.1.d}
+\]</span>
+Nondegeneracy means that the linear span of <span class="math" data-tex="\(j(C_0(H))K\)">\(j(C_0(H))K\)</span> is dense in <span class="math" data-tex="\(K\)">\(K\)</span>. The same lemma proves the exact generated-algebra identity
+<span class="math math-display" data-tex="\[
+ j(C_0(H))''=u(G)''\subseteq N.
+ \tag{L29.1.e}
+\]">\[
+ j(C_0(H))''=u(G)''\subseteq N.
+ \tag{L29.1.e}
+\]</span>
+In particular <span class="math" data-tex="\(j(f)\in N\)">\(j(f)\in N\)</span>, and the bounded strong limits defining <span class="math" data-tex="\(\overline j\)">\(\overline j\)</span> also belong to <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>For later use, let
+<span class="math math-display" data-tex="\[
+ \mathcal C=\{f\in C_c(H):0\le f\le1\},
+\]">\[
+ \mathcal C=\{f\in C_c(H):0\le f\le1\},
+\]</span>
+directed by pointwise order. It is directed because <span class="math" data-tex="\(\max(f,g)\in\mathcal C\)">\(\max(f,g)\in\mathcal C\)</span>. <a href="OA-FLOW-TOPOLOGY.html#l138-h0">Compact cutoffs on locally compact Hausdorff spaces</a> give a member equal to one on any prescribed compact set. If <span class="math" data-tex="\(h\in C_c(H)\)">\(h\in C_c(H)\)</span>, then
+<span class="math" data-tex="\(j(f)j(h)\xi=j(h)\xi\)">\(j(f)j(h)\xi=j(h)\xi\)</span> as soon as <span class="math" data-tex="\(f=1\)">\(f=1\)</span> on <span class="math" data-tex="\(\operatorname{supp}h\)">\(\operatorname{supp}h\)</span>. The span of these vectors is dense: <span class="math" data-tex="\(C_c(H)\)">\(C_c(H)\)</span> is uniformly dense in <span class="math" data-tex="\(C_0(H)\)">\(C_0(H)\)</span>, by cutting off the compact level sets of a function vanishing at infinity. Since <span class="math" data-tex="\(\|j(f)\|\le1\)">\(\|j(f)\|\le1\)</span>, it follows that
+<span class="math math-display" data-tex="\[
+ j(f)\longrightarrow1\quad\text{strongly-star as }f\in\mathcal C.
+ \tag{L29.1.f}
+\]">\[
+ j(f)\longrightarrow1\quad\text{strongly-star as }f\in\mathcal C.
+ \tag{L29.1.f}
+\]</span>
+The adjoint convergence follows because these operators are selfadjoint.</p>
+<p>The spectral coordinate is covariant:
+<span class="math math-display" data-tex="\[
+ \beta_\eta(j(h))=j(\tau_\eta h)
+ \qquad(\eta\in H,\ h\in C_0(H)).
+ \tag{L29.1.g}
+\]">\[
+ \beta_\eta(j(h))=j(\tau_\eta h)
+ \qquad(\eta\in H,\ h\in C_0(H)).
+ \tag{L29.1.g}
+\]</span>
+To prove this, fix <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. The representations <span class="math" data-tex="\(\beta_\eta\circ j\)">\(\beta_\eta\circ j\)</span> and <span class="math" data-tex="\(j\circ\tau_\eta\)">\(j\circ\tau_\eta\)</span> are nondegenerate. For the first, apply the bounded strong-star continuity of the normal automorphism <span class="math" data-tex="\(\beta_\eta\)">\(\beta_\eta\)</span> to (L29.1.f). For the second, <span class="math" data-tex="\(\tau_\eta\)">\(\tau_\eta\)</span> maps <span class="math" data-tex="\(C_0(H)\)">\(C_0(H)\)</span> onto itself. Their multiplier extensions agree on the characters:
+<span class="math math-display" data-tex="\[
+ \overline{\beta_\eta\circ j}(e_s)
+ =\beta_\eta(u_s)=\overline{\eta(s)}u_s,
+ \qquad
+ \overline{j\circ\tau_\eta}(e_s)
+ =\overline j(\overline{\eta(s)}e_s)
+ =\overline{\eta(s)}u_s.
+ \tag{L29.1.h}
+\]">\[
+ \overline{\beta_\eta\circ j}(e_s)
+ =\beta_\eta(u_s)=\overline{\eta(s)}u_s,
+ \qquad
+ \overline{j\circ\tau_\eta}(e_s)
+ =\overline j(\overline{\eta(s)}e_s)
+ =\overline{\eta(s)}u_s.
+ \tag{L29.1.h}
+\]</span>
+The first multiplier identity follows by applying <span class="math" data-tex="\(\beta_\eta\)">\(\beta_\eta\)</span> to the bounded strong limits <span class="math" data-tex="\(j(e_sf)\)">\(j(e_sf)\)</span>; the second follows directly from the multiplier extension. Uniqueness in the spectral representation lemma gives (L29.1.g).</p>
+<p>The maps constructed here have domains <span class="math" data-tex="\(C_0(H)\)">\(C_0(H)\)</span> and <span class="math" data-tex="\(C_b(H)\)">\(C_b(H)\)</span>. We have not assumed an extension to Haar <span class="math" data-tex="\(L^\infty(H)\)">\(L^\infty(H)\)</span>, nor used any assertion that a Haar-null set has zero spectral image.</p>
+<p><span id="OA-FLOW.L29.2"></span><a id="l29-2"></a></p>
+<h2 id="2-compact-averages-and-a-dense-integrable-positive-cone">2. Compact averages and a dense integrable positive cone</h2>
+<p>Write <span class="math" data-tex="\(\mu\)">\(\mu\)</span> for the fixed Haar measure on <span class="math" data-tex="\(H\)">\(H\)</span>, using the completed locally determined convention of <a href="OA-FLOW-HR.html#hr-09">Haar measure and finite-exponent classes</a>. Every compact restriction is a completed finite Radon measure. All compact sets below are directed by inclusion; their finite unions make this a directed set.</p>
+<p>First construct the compact integrals we need. <a href="OA-FLOW-AT.html#oa-flow.at.3">Predual norm continuity for normal actions</a> says that
+<span class="math" data-tex="\(\eta\mapsto\omega\circ\beta_\eta\)">\(\eta\mapsto\omega\circ\beta_\eta\)</span> is norm continuous in <span class="math" data-tex="\(N_*\)">\(N_*\)</span> for every <span class="math" data-tex="\(\omega\in N_*\)">\(\omega\in N_*\)</span>. If <span class="math" data-tex="\(L\subset H\)">\(L\subset H\)</span> is compact and <span class="math" data-tex="\(q\in C(H)\)">\(q\in C(H)\)</span>, set
+<span class="math math-display" data-tex="\[
+ B_{L,q}\omega=\int_L q(\eta)(\omega\circ\beta_\eta)\,d\eta,
+ \qquad
+ A_{L,q}=B_{L,q}^*:N\longrightarrow N.
+ \tag{L29.2.a}
+\]">\[
+ B_{L,q}\omega=\int_L q(\eta)(\omega\circ\beta_\eta)\,d\eta,
+ \qquad
+ A_{L,q}=B_{L,q}^*:N\longrightarrow N.
+ \tag{L29.2.a}
+\]</span>
+This integral exists in the Banach space <span class="math" data-tex="\(N_*\)">\(N_*\)</span>. Its integrand has compact norm image on <span class="math" data-tex="\(L\)">\(L\)</span>. Finite covers of that image by balls of radius tending to zero, followed by disjoint Borel refinements of their inverse images, give finite-valued simple functions converging uniformly on <span class="math" data-tex="\(L\)">\(L\)</span>. The norms of the differences of their integrals are at most <span class="math" data-tex="\(\mu(L)\)">\(\mu(L)\)</span> times the uniform errors. Completeness gives the integral, independently of the approximants. In particular
+<span class="math math-display" data-tex="\[
+ \|B_{L,q}\|\le\int_L|q(\eta)|\,d\eta,\qquad
+ \omega(A_{L,q}(y))
+   =\int_Lq(\eta)\omega(\beta_\eta(y))\,d\eta.
+ \tag{L29.2.b}
+\]">\[
+ \|B_{L,q}\|\le\int_L|q(\eta)|\,d\eta,\qquad
+ \omega(A_{L,q}(y))
+   =\int_Lq(\eta)\omega(\beta_\eta(y))\,d\eta.
+ \tag{L29.2.b}
+\]</span>
+Thus <span class="math" data-tex="\(A_{L,q}\)">\(A_{L,q}\)</span> is bounded and normal. This is the compact construction proved in <a href="OA-FLOW-DA.html#da-compact">Normal averages over compact sets</a>; the argument just given applies to the present action <span class="math" data-tex="\(\beta\)">\(\beta\)</span> without requiring that it already be a dual action.</p>
+<p>Put <span class="math" data-tex="\(A_L=A_{L,1}\)">\(A_L=A_{L,1}\)</span>. Positive normal tests show that <span class="math" data-tex="\(A_L\)">\(A_L\)</span> is positive and <span class="math" data-tex="\(A_L(1)=\mu(L)1\)">\(A_L(1)=\mu(L)1\)</span>. If <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span> and <span class="math" data-tex="\(L\subset L'\)">\(L\subset L'\)</span>, the same tests on the integral over <span class="math" data-tex="\(L'\setminus L\)">\(L'\setminus L\)</span> give <span class="math" data-tex="\(A_L(x)\le A_{L'}(x)\)">\(A_L(x)\le A_{L'}(x)\)</span>. Define
+<span class="math math-display" data-tex="\[
+ \mathcal I_+
+ =\left\{x\in N_+:\sup_{L\subset H\ {\rm compact}}\|A_L(x)\|&lt;\infty\right\}.
+ \tag{L29.2.c}
+\]">\[
+ \mathcal I_+
+ =\left\{x\in N_+:\sup_{L\subset H\ {\rm compact}}\|A_L(x)\|&lt;\infty\right\}.
+ \tag{L29.2.c}
+\]</span>
+We call these the integrable positive elements. Positivity implies that this condition is equivalent to <span class="math" data-tex="\(A_L(x)\le C1\)">\(A_L(x)\le C1\)</span> for all compact <span class="math" data-tex="\(L\)">\(L\)</span>, with one finite constant <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p><strong>Spectral squares.</strong> Let <span class="math" data-tex="\(f\in\mathcal C\)">\(f\in\mathcal C\)</span>, and put
+<span class="math math-display" data-tex="\[
+ B_f=\int_H f(\eta)^2\,d\eta,\qquad
+ b_L(\chi)=\int_L f(\eta^{-1}\chi)^2\,d\eta.
+ \tag{L29.2.d}
+\]">\[
+ B_f=\int_H f(\eta)^2\,d\eta,\qquad
+ b_L(\chi)=\int_L f(\eta^{-1}\chi)^2\,d\eta.
+ \tag{L29.2.d}
+\]</span>
+The translates of <span class="math" data-tex="\(f^2\)">\(f^2\)</span> vary in the uniform norm, by the finite-cover proof in <a href="OA-FLOW-L24.html#oa-flow.grp.translations">Translations and their norm continuity</a>. Their compact integral therefore exists in <span class="math" data-tex="\(C_0(H)\)">\(C_0(H)\)</span>, using the same simple-approximation argument as above, or <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">Banach-valued integration</a>. Evaluation at <span class="math" data-tex="\(\chi\)">\(\chi\)</span> gives the displayed formula for <span class="math" data-tex="\(b_L\)">\(b_L\)</span>. It vanishes off the compact set <span class="math" data-tex="\(L\operatorname{supp}f\)">\(L\operatorname{supp}f\)</span>, so <span class="math" data-tex="\(b_L\in C_c(H)\)">\(b_L\in C_c(H)\)</span>. Since <span class="math" data-tex="\(H\)">\(H\)</span> is abelian, translation and inversion preserve Haar measure, and hence
+<span class="math math-display" data-tex="\[
+ 0\le b_L(\chi)\le B_f,\qquad
+ A_L(j(f)^2)=j(b_L)\le B_f1.
+ \tag{L29.2.e}
+\]">\[
+ 0\le b_L(\chi)\le B_f,\qquad
+ A_L(j(f)^2)=j(b_L)\le B_f1.
+ \tag{L29.2.e}
+\]</span>
+For the middle identity, use (L29.1.g), <span class="math" data-tex="\(j(f)^2=j(f^2)\)">\(j(f)^2=j(f^2)\)</span>, and passage of a bounded linear map through the compact norm integral. Testing against <span class="math" data-tex="\(N_*\)">\(N_*\)</span> identifies that integral with <span class="math" data-tex="\(A_L(j(f)^2)\)">\(A_L(j(f)^2)\)</span>. Thus <span class="math" data-tex="\(j(f)^2\in\mathcal I_+\)">\(j(f)^2\in\mathcal I_+\)</span>.</p>
+<p>The entire average of this spectral square has a precise strong limit:
+<span class="math math-display" data-tex="\[
+ A_L(j(f)^2)\longrightarrow B_f1
+ \quad\text{strongly as }L\text{ increases}.
+ \tag{L29.2.f}
+\]">\[
+ A_L(j(f)^2)\longrightarrow B_f1
+ \quad\text{strongly as }L\text{ increases}.
+ \tag{L29.2.f}
+\]</span>
+Here is a direct proof valid for the compact-set net. Fix <span class="math" data-tex="\(h\in C_c(H)\)">\(h\in C_c(H)\)</span>. If
+<span class="math" data-tex="\(L\supseteq\operatorname{supp}h\,(\operatorname{supp}f)^{-1}\)">\(L\supseteq\operatorname{supp}h\,(\operatorname{supp}f)^{-1}\)</span>, then for every <span class="math" data-tex="\(\chi\in\operatorname{supp}h\)">\(\chi\in\operatorname{supp}h\)</span> the support of
+<span class="math" data-tex="\(\eta\mapsto f(\eta^{-1}\chi)^2\)">\(\eta\mapsto f(\eta^{-1}\chi)^2\)</span> is contained in <span class="math" data-tex="\(L\)">\(L\)</span>. Thus <span class="math" data-tex="\(b_Lh=B_fh\)">\(b_Lh=B_fh\)</span> exactly, and
+<span class="math math-display" data-tex="\[
+ j(b_L)j(h)\xi=B_fj(h)\xi\qquad(\xi\in K).
+ \tag{L29.2.g}
+\]">\[
+ j(b_L)j(h)\xi=B_fj(h)\xi\qquad(\xi\in K).
+ \tag{L29.2.g}
+\]</span>
+The vectors in the span of <span class="math" data-tex="\(j(C_c(H))K\)">\(j(C_c(H))K\)</span> are dense, and <span class="math" data-tex="\(\|j(b_L)\|\le B_f\)">\(\|j(b_L)\|\le B_f\)</span>. Approximation by those vectors proves (L29.2.f), including <span class="math" data-tex="\(B_f=0\)">\(B_f=0\)</span>. No convergence theorem for an arbitrary net of measurable functions is needed.</p>
+<p><strong>Positive sandwiches.</strong> If <span class="math" data-tex="\(a\in N_+\)">\(a\in N_+\)</span> and <span class="math" data-tex="\(f\in\mathcal C\)">\(f\in\mathcal C\)</span>, then
+<span class="math math-display" data-tex="\[
+ x_f=j(f)a j(f)\ge0,\qquad
+ 0\le x_f\le\|a\|j(f)^2,\qquad
+ A_L(x_f)\le\|a\|B_f1.
+ \tag{L29.2.h}
+\]">\[
+ x_f=j(f)a j(f)\ge0,\qquad
+ 0\le x_f\le\|a\|j(f)^2,\qquad
+ A_L(x_f)\le\|a\|B_f1.
+ \tag{L29.2.h}
+\]</span>
+The first two statements follow from <span class="math" data-tex="\(0\le a\le\|a\|1\)">\(0\le a\le\|a\|1\)</span> by multiplication on both sides by the selfadjoint <span class="math" data-tex="\(j(f)\)">\(j(f)\)</span>; positivity of <span class="math" data-tex="\(A_L\)">\(A_L\)</span> gives the last one. Hence <span class="math" data-tex="\(x_f\in\mathcal I_+\)">\(x_f\in\mathcal I_+\)</span>. By (L29.1.f) and bounded strong-star multiplication,
+<span class="math math-display" data-tex="\[
+ j(f)a j(f)\longrightarrow a
+ \quad\text{strongly-star and ultraweakly}.
+ \tag{L29.2.i}
+\]">\[
+ j(f)a j(f)\longrightarrow a
+ \quad\text{strongly-star and ultraweakly}.
+ \tag{L29.2.i}
+\]</span>
+These sandwiches have the common norm bound <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span>, but need not increase with <span class="math" data-tex="\(f\)">\(f\)</span>. We have proved that every positive element of <span class="math" data-tex="\(N\)">\(N\)</span> is an ultraweak limit of elements of <span class="math" data-tex="\(\mathcal I_+\)">\(\mathcal I_+\)</span>. Approximating each positive <span class="math" data-tex="\(a\)">\(a\)</span>, rather than only the identity, is the density property used below.</p>
+<p><span id="OA-FLOW.L29.3"></span><a id="l29-3"></a></p>
+<h2 id="3-bounded-operator-fourier-coefficients">3. Bounded operator Fourier coefficients</h2>
+<p>Fix <span class="math" data-tex="\(x\in\mathcal I_+\)">\(x\in\mathcal I_+\)</span>, and choose <span class="math" data-tex="\(C&lt;\infty\)">\(C&lt;\infty\)</span> such that <span class="math" data-tex="\(A_L(x)\le C1\)">\(A_L(x)\le C1\)</span> for every compact <span class="math" data-tex="\(L\)">\(L\)</span>. For a positive normal functional <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, the function
+<span class="math" data-tex="\(\chi\mapsto\omega(\beta_\chi(x))\)">\(\chi\mapsto\omega(\beta_\chi(x))\)</span> is continuous and nonnegative. Compact localization of its scalar integral gives
+<span class="math math-display" data-tex="\[
+ \int_H\omega(\beta_\chi(x))\,d\chi
+ =\sup_{L\subset H\ {\rm compact}}\omega(A_L(x))
+ \le C\omega(1).
+ \tag{L29.3.a}
+\]">\[
+ \int_H\omega(\beta_\chi(x))\,d\chi
+ =\sup_{L\subset H\ {\rm compact}}\omega(A_L(x))
+ \le C\omega(1).
+ \tag{L29.3.a}
+\]</span>
+The localization holds for the locally determined Haar convention without a global countable exhaustion. Indeed, <a href="OA-FLOW-HR.html#hr-09">Compact inner regularity for locally determined Haar measure</a> expresses a measurable set's measure as the supremum of its compact restrictions. For a nonnegative simple lower approximant to the integrand, approximate each of its finitely many level sets by compact restrictions and take their finite union. Taking the supremum over these simple lower approximants proves the displayed integral identity. Equivalently, one can first exhaust each open sigma compact coset and then take finite coset subsums. Neither argument invokes monotone convergence for an arbitrary measurable net.</p>
+<p>Every <span class="math" data-tex="\(\omega\in N_*\)">\(\omega\in N_*\)</span> is a complex linear combination of four positive normal functionals, by the vector-series polarization proof in <a href="OA-FLOW-NF.html#oa-flow.nf.6">Positive normal functionals and the predual</a>. Write <span class="math" data-tex="\(\omega=\sum_{k=1}^4 c_k\omega_k\)">\(\omega=\sum_{k=1}^4 c_k\omega_k\)</span> with <span class="math" data-tex="\(\omega_k\ge0\)">\(\omega_k\ge0\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \int_H|\omega(\beta_\chi(x))|\,d\chi
+ \le C\sum_{k=1}^4|c_k|\omega_k(1)&lt;\infty.
+ \tag{L29.3.b}
+\]">\[
+ \int_H|\omega(\beta_\chi(x))|\,d\chi
+ \le C\sum_{k=1}^4|c_k|\omega_k(1)&lt;\infty.
+ \tag{L29.3.b}
+\]</span>
+Thus every scalar normal-functional orbit of this <span class="math" data-tex="\(x\)">\(x\)</span> belongs to <span class="math" data-tex="\(L^1(H)\)">\(L^1(H)\)</span>. The finite-exponent identification in <a href="OA-FLOW-HR.html#hr-09">Haar measure and finite-exponent classes</a> permits the usual <span class="math" data-tex="\(L^1\)">\(L^1\)</span> Fourier uniqueness theorem to be applied to this class. This proves integrability of each scalar orbit; it does not assert norm integrability of the <span class="math" data-tex="\(N\)">\(N\)</span>-valued orbit.</p>
+<p>For <span class="math" data-tex="\(s\in G\)">\(s\in G\)</span> and compact <span class="math" data-tex="\(L\)">\(L\)</span>, define the actual bounded element
+<span class="math math-display" data-tex="\[
+ X_{s,L}=A_{L,e_s}(x)
+        =\int_L\chi(s)\beta_\chi(x)\,d\chi.
+ \tag{L29.3.c}
+\]">\[
+ X_{s,L}=A_{L,e_s}(x)
+        =\int_L\chi(s)\beta_\chi(x)\,d\chi.
+ \tag{L29.3.c}
+\]</span>
+All its scalar evaluations have the meaning fixed in (L29.2.b). There is a norm bound independent of <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span>:
+<span class="math math-display" data-tex="\[
+ \|X_{s,L}\|\le C.
+ \tag{L29.3.d}
+\]">\[
+ \|X_{s,L}\|\le C.
+ \tag{L29.3.d}
+\]</span>
+To check it, the positive sesquilinear form associated with <span class="math" data-tex="\(\beta_\chi(x)\)">\(\beta_\chi(x)\)</span> obeys Cauchy--Schwarz. This follows by expanding its nonnegative value on <span class="math" data-tex="\(\xi+z\zeta\)">\(\xi+z\zeta\)</span> and minimizing over the scalar <span class="math" data-tex="\(z\)">\(z\)</span>, with the zero diagonal case obtained by the same quadratic inequality. Hence
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ |\langle X_{s,L}\xi,\zeta\rangle|
+ &amp;\le\int_L
+  \langle\beta_\chi(x)\xi,\xi\rangle^{1/2}
+  \langle\beta_\chi(x)\zeta,\zeta\rangle^{1/2}\,d\chi\\
+ &amp;\le
+  \langle A_L(x)\xi,\xi\rangle^{1/2}
+  \langle A_L(x)\zeta,\zeta\rangle^{1/2}\\
+ &amp;\le C\|\xi\|\,\|\zeta\|.
+ \end{aligned}
+ \tag{L29.3.e}
+\]">\[
+ \begin{aligned}
+ |\langle X_{s,L}\xi,\zeta\rangle|
+ &amp;\le\int_L
+  \langle\beta_\chi(x)\xi,\xi\rangle^{1/2}
+  \langle\beta_\chi(x)\zeta,\zeta\rangle^{1/2}\,d\chi\\
+ &amp;\le
+  \langle A_L(x)\xi,\xi\rangle^{1/2}
+  \langle A_L(x)\zeta,\zeta\rangle^{1/2}\\
+ &amp;\le C\|\xi\|\,\|\zeta\|.
+ \end{aligned}
+ \tag{L29.3.e}
+\]</span>
+The second line is scalar Cauchy--Schwarz on the compact restriction; the character has modulus one. Taking the supremum over unit vectors proves (L29.3.d).</p>
+<p>For each fixed <span class="math" data-tex="\(\omega\in N_*\)">\(\omega\in N_*\)</span>, absolute integrability from (L29.3.b) implies
+<span class="math math-display" data-tex="\[
+ \omega(X_{s,L})\longrightarrow
+ \int_H\chi(s)\omega(\beta_\chi(x))\,d\chi.
+ \tag{L29.3.f}
+\]">\[
+ \omega(X_{s,L})\longrightarrow
+ \int_H\chi(s)\omega(\beta_\chi(x))\,d\chi.
+ \tag{L29.3.f}
+\]</span>
+In detail, compact localization applied to the integrable absolute value gives, for any <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, a compact <span class="math" data-tex="\(L_0\)">\(L_0\)</span> whose complementary integral is below <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Every <span class="math" data-tex="\(L\supseteq L_0\)">\(L\supseteq L_0\)</span> has at most that error. This proves convergence along the compact-set net by an explicit tail estimate.</p>
+<p>The ball <span class="math" data-tex="\(C\mathbb B_N\)">\(C\mathbb B_N\)</span> is ultraweakly compact, by <a href="OA-FLOW-ST12.html#oa-flow.st.1">Compact predual balls</a> and <a href="OA-FLOW-CP.html#oa-flow.cp.6">The concrete predual</a>. Therefore <span class="math" data-tex="\(X_{s,L}\)">\(X_{s,L}\)</span> has an ultraweak cluster point <span class="math" data-tex="\(x_s\in N\)">\(x_s\in N\)</span>, with <span class="math" data-tex="\(\|x_s\|\le C\)">\(\|x_s\|\le C\)</span>. Every such cluster point has the scalar values in (L29.3.f); they determine it uniquely. The scalar convergence then gives ultraweak convergence of the whole net and the formula
+<span class="math math-display" data-tex="\[
+ x_s=\operatorname*{uw-lim}_{L}X_{s,L},\qquad
+ \omega(x_s)=\int_H\chi(s)\omega(\beta_\chi(x))\,d\chi
+ \quad(\omega\in N_*).
+ \tag{L29.3.g}
+\]">\[
+ x_s=\operatorname*{uw-lim}_{L}X_{s,L},\qquad
+ \omega(x_s)=\int_H\chi(s)\omega(\beta_\chi(x))\,d\chi
+ \quad(\omega\in N_*).
+ \tag{L29.3.g}
+\]</span>
+Thus <span class="math" data-tex="\(x_s\)">\(x_s\)</span> is a bounded element of <span class="math" data-tex="\(N\)">\(N\)</span>, rather than merely a formal integral.</p>
+<p>These coefficients are eigenvectors of the action. Fix <span class="math" data-tex="\(\eta\in H\)">\(\eta\in H\)</span>. Apply (L29.3.g) to <span class="math" data-tex="\(\omega\circ\beta_\eta\)">\(\omega\circ\beta_\eta\)</span>, which is again normal, and make the Haar-preserving substitution <span class="math" data-tex="\(\rho=\eta\chi\)">\(\rho=\eta\chi\)</span>. All scalar integrals are absolutely convergent by (L29.3.b), so this gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \omega(\beta_\eta(x_s))
+ &amp;=\int_H\chi(s)\omega(\beta_{\eta\chi}(x))\,d\chi\\
+ &amp;=\overline{\eta(s)}
+       \int_H\rho(s)\omega(\beta_\rho(x))\,d\rho
+ =\overline{\eta(s)}\omega(x_s).
+ \end{aligned}
+ \tag{L29.3.h}
+\]">\[
+ \begin{aligned}
+ \omega(\beta_\eta(x_s))
+ &amp;=\int_H\chi(s)\omega(\beta_{\eta\chi}(x))\,d\chi\\
+ &amp;=\overline{\eta(s)}
+       \int_H\rho(s)\omega(\beta_\rho(x))\,d\rho
+ =\overline{\eta(s)}\omega(x_s).
+ \end{aligned}
+ \tag{L29.3.h}
+\]</span>
+Since normal functionals separate points,
+<span class="math math-display" data-tex="\[
+ \beta_\eta(x_s)=\overline{\eta(s)}x_s,\qquad
+ x_su_s^*\in M,\qquad
+ x_s=(x_su_s^*)u_s\in M u_s.
+ \tag{L29.3.i}
+\]">\[
+ \beta_\eta(x_s)=\overline{\eta(s)}x_s,\qquad
+ x_su_s^*\in M,\qquad
+ x_s=(x_su_s^*)u_s\in M u_s.
+ \tag{L29.3.i}
+\]</span>
+The fixedness assertion follows by multiplying the first identity by
+<span class="math" data-tex="\(\beta_\eta(u_s^*)=\eta(s)u_s^*\)">\(\beta_\eta(u_s^*)=\eta(s)u_s^*\)</span>. This cancellation fixes both the Fourier sign and the side of the adjoint.</p>
+<p><span id="OA-FLOW.L29.4"></span><a id="l29-4"></a></p>
+<h2 id="4-fourier-uniqueness-proves-generation">4. Fourier uniqueness proves generation</h2>
+<p><strong>Proposition.</strong> The linear span
+<span class="math math-display" data-tex="\[
+ \mathcal S=\operatorname{span}\{a u_s:a\in M,\ s\in G\}
+ \quad\text{is ultraweakly dense in }N.
+ \tag{L29.4.a}
+\]">\[
+ \mathcal S=\operatorname{span}\{a u_s:a\in M,\ s\in G\}
+ \quad\text{is ultraweakly dense in }N.
+ \tag{L29.4.a}
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+ N=(M\cup u(G))''.
+ \tag{L29.4.b}
+\]">\[
+ N=(M\cup u(G))''.
+ \tag{L29.4.b}
+\]</span></p>
+<p><strong>Proof.</strong> Suppose that <span class="math" data-tex="\(\omega\in N_*\)">\(\omega\in N_*\)</span> vanishes on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. For <span class="math" data-tex="\(x\in\mathcal I_+\)">\(x\in\mathcal I_+\)</span>, Section 3 gives <span class="math" data-tex="\(x_s\in M u_s\)">\(x_s\in M u_s\)</span>, so <span class="math" data-tex="\(\omega(x_s)=0\)">\(\omega(x_s)=0\)</span> for every <span class="math" data-tex="\(s\in G\)">\(s\in G\)</span>. The continuous scalar function
+<span class="math math-display" data-tex="\[
+ g_x(\chi)=\omega(\beta_\chi(x))
+\]">\[
+ g_x(\chi)=\omega(\beta_\chi(x))
+\]</span>
+is in <span class="math" data-tex="\(L^1(H)\)">\(L^1(H)\)</span> by (L29.3.b), and (L29.3.g) says
+<span class="math math-display" data-tex="\[
+ \int_H\chi(s)g_x(\chi)\,d\chi=0
+ \qquad(s\in G).
+ \tag{L29.4.c}
+\]">\[
+ \int_H\chi(s)g_x(\chi)\,d\chi=0
+ \qquad(s\in G).
+ \tag{L29.4.c}
+\]</span>
+The finite-density uniqueness proof in <a href="OA-FLOW-HARMONIC-LATE.html#l138-h3">Biduality from the scalar unitary and compact tests</a> uses exactly this positive-character transform on <span class="math" data-tex="\(H=\widehat G\)">\(H=\widehat G\)</span>. It gives <span class="math" data-tex="\(g_x=0\)">\(g_x=0\)</span> almost everywhere. Continuity upgrades this to equality everywhere: a nonzero value would give a nonempty open set on which <span class="math" data-tex="\(|g_x|\)">\(|g_x|\)</span> is bounded below by a positive constant, whereas every nonempty open set has positive Haar measure, as proved in <a href="OA-FLOW-L24.html#oa-flow.grp.translations">Translations and Haar positivity</a>. Evaluation at the identity of <span class="math" data-tex="\(H\)">\(H\)</span> now gives <span class="math" data-tex="\(\omega(x)=0\)">\(\omega(x)=0\)</span>.</p>
+<p>For an arbitrary <span class="math" data-tex="\(a\in N_+\)">\(a\in N_+\)</span>, the positive sandwiches in (L29.2.h)--(L29.2.i) belong to <span class="math" data-tex="\(\mathcal I_+\)">\(\mathcal I_+\)</span> and converge ultraweakly to <span class="math" data-tex="\(a\)">\(a\)</span>. Thus <span class="math" data-tex="\(\omega(a)=0\)">\(\omega(a)=0\)</span>. Every <span class="math" data-tex="\(y\in N\)">\(y\in N\)</span> is a complex linear combination of positive elements: write <span class="math" data-tex="\(y=h+ik\)">\(y=h+ik\)</span> with <span class="math" data-tex="\(h,k\)">\(h,k\)</span> selfadjoint, and use
+<span class="math" data-tex="\(h=(h+\|h\|1)-\|h\|1\)">\(h=(h+\|h\|1)-\|h\|1\)</span>, and the analogous expression for <span class="math" data-tex="\(k\)">\(k\)</span>. Hence <span class="math" data-tex="\(\omega=0\)">\(\omega=0\)</span> on <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>This annihilator conclusion proves the claimed density directly. If <span class="math" data-tex="\(y\)">\(y\)</span> were outside the ultraweak closure of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, there would be finitely many normal functionals <span class="math" data-tex="\(\omega_1,\ldots,\omega_m\)">\(\omega_1,\ldots,\omega_m\)</span> and a basic neighborhood of <span class="math" data-tex="\(y\)">\(y\)</span> tested by them that misses <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. For the linear map
+<span class="math" data-tex="\(T(z)=(\omega_1(z),\ldots,\omega_m(z))\)">\(T(z)=(\omega_1(z),\ldots,\omega_m(z))\)</span>, this implies
+<span class="math" data-tex="\(T(y)\notin T(\mathcal S)\)">\(T(y)\notin T(\mathcal S)\)</span>. Finite-dimensional linear algebra supplies a linear functional on <span class="math" data-tex="\(\mathbb C^m\)">\(\mathbb C^m\)</span> vanishing on <span class="math" data-tex="\(T(\mathcal S)\)">\(T(\mathcal S)\)</span> but not on <span class="math" data-tex="\(T(y)\)">\(T(y)\)</span>. Its composition with <span class="math" data-tex="\(T\)">\(T\)</span> is a nonzero normal functional annihilating <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, a contradiction.</p>
+<p>Finally <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> is the unital star algebra generated by <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(u(G)\)">\(u(G)\)</span>, because
+<span class="math math-display" data-tex="\[
+ (a u_s)(b u_t)=a\alpha_s(b)u_{s+t},\qquad
+ (a u_s)^*=\alpha_{-s}(a^*)u_{-s}.
+ \tag{L29.4.d}
+\]">\[
+ (a u_s)(b u_t)=a\alpha_s(b)u_{s+t},\qquad
+ (a u_s)^*=\alpha_{-s}(a^*)u_{-s}.
+ \tag{L29.4.d}
+\]</span>
+Its ultraweak density proves (L29.4.b). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The Fourier argument fixes one normal functional and one integrable positive element at a time. It requires no common conull set, no countable separating family of functionals, and no separability of <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(G\)">\(G\)</span>, or <span class="math" data-tex="\(K\)">\(K\)</span>. Generation has been derived from the eigenunitary data and is available for the normal-model comparison that follows.</p>
+<p><span id="OA-FLOW.L29.5"></span><a id="l29-5"></a></p>
+<h2 id="5-the-unitary-comparison-gives-the-whole-normal-isomorphism">5. The unitary comparison gives the whole normal isomorphism</h2>
+<p>The <a href="#l29-4">generation theorem</a> identifies the algebra generated by the recovered coefficients and eigenunitaries. We now identify its actual regular representation. Throughout this section, <span class="math" data-tex="\(G\)">\(G\)</span> is the given arbitrary locally compact Hausdorff abelian group, <span class="math" data-tex="\(H=\widehat G\)">\(H=\widehat G\)</span>, <span class="math" data-tex="\(M=N^\beta\)">\(M=N^\beta\)</span>, and <span class="math" data-tex="\(\alpha_s=\operatorname{Ad}(u_s)|_M\)">\(\alpha_s=\operatorname{Ad}(u_s)|_M\)</span>.</p>
+<p><strong>Theorem.</strong> The prescribed generator map extends to a unique normal unital star isomorphism, with normal inverse,
+<span class="math math-display" data-tex="\[
+ \Phi:M\rtimes_\alpha G\longrightarrow N,\qquad
+ \Phi(\pi_\alpha(a))=a,\quad
+ \Phi(\lambda_s)=u_s.
+ \tag{L29.5.a}
+\]">\[
+ \Phi:M\rtimes_\alpha G\longrightarrow N,\qquad
+ \Phi(\pi_\alpha(a))=a,\quad
+ \Phi(\lambda_s)=u_s.
+ \tag{L29.5.a}
+\]</span>
+It intertwines the negative-character dual action <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with <span class="math" data-tex="\(\beta\)">\(\beta\)</span>:
+<span class="math math-display" data-tex="\[
+ \Phi\circ\theta_\eta=\beta_\eta\circ\Phi
+ \qquad(\eta\in H).
+ \tag{L29.5.b}
+\]">\[
+ \Phi\circ\theta_\eta=\beta_\eta\circ\Phi
+ \qquad(\eta\in H).
+ \tag{L29.5.b}
+\]</span>
+Consequently an action of <span class="math" data-tex="\(H\)">\(H\)</span> is conjugate to a dual action precisely when it admits the strongly continuous unitary representation with the stated eigenrelation. No generation, integrability, state, factor, or separability hypothesis is added.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span>. Represent <span class="math" data-tex="\(N\)">\(N\)</span> faithfully and normally on a nonzero Hilbert space <span class="math" data-tex="\(K\)">\(K\)</span>, and identify it with its represented image. The range and inverse are normal by <a href="OA-FLOW-ST12.html#oa-flow.st.2">Concrete predual balls and faithful ultraweak representations, ST2</a>; its bounded topology comparison also preserves the given strong continuity of <span class="math" data-tex="\(u\)">\(u\)</span> in this realization. Restriction to <span class="math" data-tex="\(M\)">\(M\)</span> is a faithful normal unital representation. The <a href="OA-FLOW-NR.html#oa-flow.nr.3">normal regular construction, NR3</a>, applied separately to <span class="math" data-tex="\((M,G,\alpha)\)">\((M,G,\alpha)\)</span> and <span class="math" data-tex="\((N,H,\beta)\)">\((N,H,\beta)\)</span>, therefore gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ [\pi_\alpha(a)\xi](t)&amp;=u_{-t}a u_t\xi(t),
+ &amp;[\lambda_s\xi](t)&amp;=\xi(t-s),\\
+ [\Pi_\beta(b)\zeta](\chi)&amp;=\beta_{\chi^{-1}}(b)\zeta(\chi),
+ \end{aligned}
+ \tag{L29.5.c}
+\]">\[
+ \begin{aligned}
+ [\pi_\alpha(a)\xi](t)&amp;=u_{-t}a u_t\xi(t),
+ &amp;[\lambda_s\xi](t)&amp;=\xi(t-s),\\
+ [\Pi_\beta(b)\zeta](\chi)&amp;=\beta_{\chi^{-1}}(b)\zeta(\chi),
+ \end{aligned}
+ \tag{L29.5.c}
+\]</span>
+on <span class="math" data-tex="\(L^2(G,K)\)">\(L^2(G,K)\)</span> and <span class="math" data-tex="\(L^2(H,K)\)">\(L^2(H,K)\)</span>, respectively. In particular, <span class="math" data-tex="\(\Pi_\beta\)">\(\Pi_\beta\)</span> is faithful and ultraweakly continuous on all of <span class="math" data-tex="\(N\)">\(N\)</span>. Its range is a von Neumann algebra and its inverse on that range is normal, again by ST2.</p>
+<p>The function spaces in this construction use the completed, locally determined Haar convention and the arbitrary-Hilbert tensor identification proved in <a href="OA-FLOW-L24.html#oa-flow.grp.haarconventions">Unitary representations and the two group C* completions, Sections 2–4</a>. They require no sigma compactness of the whole group. Define, initially on <span class="math" data-tex="\(C_c(G,K)\)">\(C_c(G,K)\)</span>,
+<span class="math math-display" data-tex="\[
+ [D_u\xi](t)=u_t\xi(t),\qquad
+ [D_u^{-1}\xi](t)=u_t^*\xi(t).
+ \tag{L29.5.d}
+\]">\[
+ [D_u\xi](t)=u_t\xi(t),\qquad
+ [D_u^{-1}\xi](t)=u_t^*\xi(t).
+ \tag{L29.5.d}
+\]</span>
+Both products are continuous and compactly supported. Indeed, at a fixed <span class="math" data-tex="\(r\)">\(r\)</span>, continuity follows from
+<span class="math math-display" data-tex="\[
+ \|u_t\xi(t)-u_r\xi(r)\|
+ \leq\|\xi(t)-\xi(r)\|+\|(u_t-u_r)\xi(r)\|.
+\]">\[
+ \|u_t\xi(t)-u_r\xi(r)\|
+ \leq\|\xi(t)-\xi(r)\|+\|(u_t-u_r)\xi(r)\|.
+\]</span>
+The adjoints are strongly continuous as well, since
+<span class="math" data-tex="\(\|(u_t^*-u_r^*)v\|=\|(u_r-u_t)u_r^*v\|\)">\(\|(u_t^*-u_r^*)v\|=\|(u_r-u_t)u_r^*v\|\)</span>.
+The compact ranges of these continuous vector functions are separable, so the vector measurability and integration conditions of <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">Section 4's Bochner and tensor proofs</a> apply. Pointwise unitarity preserves the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm. The two displayed maps are inverse isometries on the dense space <span class="math" data-tex="\(C_c(G,K)\)">\(C_c(G,K)\)</span>, hence extend to inverse unitaries on the full <span class="math" data-tex="\(L^2(G,K)\)">\(L^2(G,K)\)</span>. Thus no measurable field of operators, or common exceptional set for every vector of <span class="math" data-tex="\(K\)">\(K\)</span>, is needed to construct <span class="math" data-tex="\(D_u\)">\(D_u\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\mathcal F_+\)">\(\mathcal F_+\)</span> be the positive-character Fourier unitary for the fixed paired Haar measures. Its compact-vector formula and its full arbitrary-Hilbert extension follow from <a href="OA-FLOW-DA.html#da-vector">Plancherel with an arbitrary Hilbert target</a>, by replacing <span class="math" data-tex="\(\chi\)">\(\chi\)</span> with <span class="math" data-tex="\(\chi^{-1}\)">\(\chi^{-1}\)</span>; inversion preserves the abelian dual Haar measure. Put
+<span class="math math-display" data-tex="\[
+ [\mathcal F_+\xi](\chi)=\int_G\chi(t)\xi(t)\,dt
+ \quad(\xi\in C_c(G,K)),\qquad
+ W=\mathcal F_+D_u:L^2(G,K)\longrightarrow L^2(H,K).
+ \tag{L29.5.e}
+\]">\[
+ [\mathcal F_+\xi](\chi)=\int_G\chi(t)\xi(t)\,dt
+ \quad(\xi\in C_c(G,K)),\qquad
+ W=\mathcal F_+D_u:L^2(G,K)\longrightarrow L^2(H,K).
+ \tag{L29.5.e}
+\]</span>
+This is an onto unitary. Only Hilbert-vector integrals on compact supports occur in the following computations.</p>
+<p>For <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span> and <span class="math" data-tex="\(\xi\in C_c(G,K)\)">\(\xi\in C_c(G,K)\)</span>, the representation law and bounded linearity of vector integration give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ [W\pi_\alpha(a)\xi](\chi)
+ &amp;=\int_G\chi(t)\,u_tu_{-t}a u_t\xi(t)\,dt\\
+ &amp;=a\int_G\chi(t)u_t\xi(t)\,dt\\
+ &amp;=[\Pi_\beta(a)W\xi](\chi).
+ \end{aligned}
+ \tag{L29.5.f}
+\]">\[
+ \begin{aligned}
+ [W\pi_\alpha(a)\xi](\chi)
+ &amp;=\int_G\chi(t)\,u_tu_{-t}a u_t\xi(t)\,dt\\
+ &amp;=a\int_G\chi(t)u_t\xi(t)\,dt\\
+ &amp;=[\Pi_\beta(a)W\xi](\chi).
+ \end{aligned}
+ \tag{L29.5.f}
+\]</span>
+Here <span class="math" data-tex="\(\beta_{\chi^{-1}}(a)=a\)">\(\beta_{\chi^{-1}}(a)=a\)</span>. For a fixed <span class="math" data-tex="\(s\in G\)">\(s\in G\)</span>, Haar substitution <span class="math" data-tex="\(t=r+s\)">\(t=r+s\)</span> instead gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ [W\lambda_s\xi](\chi)
+ &amp;=\int_G\chi(t)u_t\xi(t-s)\,dt\\
+ &amp;=\chi(s)u_s\int_G\chi(r)u_r\xi(r)\,dr\\
+ &amp;=[\Pi_\beta(u_s)W\xi](\chi),
+ \end{aligned}
+ \tag{L29.5.g}
+\]">\[
+ \begin{aligned}
+ [W\lambda_s\xi](\chi)
+ &amp;=\int_G\chi(t)u_t\xi(t-s)\,dt\\
+ &amp;=\chi(s)u_s\int_G\chi(r)u_r\xi(r)\,dr\\
+ &amp;=[\Pi_\beta(u_s)W\xi](\chi),
+ \end{aligned}
+ \tag{L29.5.g}
+\]</span>
+because
+<span class="math" data-tex="\(\beta_{\chi^{-1}}(u_s)=\overline{\chi^{-1}(s)}u_s=\chi(s)u_s\)">\(\beta_{\chi^{-1}}(u_s)=\overline{\chi^{-1}(s)}u_s=\chi(s)u_s\)</span>.
+In the second line <span class="math" data-tex="\(u_{r+s}=u_su_r\)">\(u_{r+s}=u_su_r\)</span>, by the representation law and commutativity of <span class="math" data-tex="\(G\)">\(G\)</span>. The vector Fourier theorem makes these pointwise compact-integral calculations equalities of <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vectors. Boundedness then extends them from the dense compact-vector space to every vector:
+<span class="math math-display" data-tex="\[
+ W\pi_\alpha(a)W^*=\Pi_\beta(a),\qquad
+ W\lambda_sW^*=\Pi_\beta(u_s).
+ \tag{L29.5.h}
+\]">\[
+ W\pi_\alpha(a)W^*=\Pi_\beta(a),\qquad
+ W\lambda_sW^*=\Pi_\beta(u_s).
+ \tag{L29.5.h}
+\]</span></p>
+<p>Write <span class="math" data-tex="\(C=\{\pi_\alpha(M),\lambda(G)\}''\)">\(C=\{\pi_\alpha(M),\lambda(G)\}''\)</span>. The <a href="#l29-4">generation theorem</a> says that the linear span of <span class="math" data-tex="\(M u(G)\)">\(M u(G)\)</span> is ultraweakly dense in <span class="math" data-tex="\(N\)">\(N\)</span>. Since <span class="math" data-tex="\(\Pi_\beta\)">\(\Pi_\beta\)</span> and its inverse are normal, its image span is ultraweakly dense in the von Neumann algebra <span class="math" data-tex="\(\Pi_\beta(N)\)">\(\Pi_\beta(N)\)</span>. The two identities just proved therefore imply
+<span class="math math-display" data-tex="\[
+ W C W^*
+ =\{\Pi_\beta(M),\Pi_\beta(u(G))\}''
+ =\Pi_\beta(N).
+ \tag{L29.5.i}
+\]">\[
+ W C W^*
+ =\{\Pi_\beta(M),\Pi_\beta(u(G))\}''
+ =\Pi_\beta(N).
+ \tag{L29.5.i}
+\]</span>
+The first equality is unitary conjugation of the generated von Neumann algebra. The second uses the full generation theorem, not merely algebraic covariance.</p>
+<p>We can consequently define both maps on their entire algebras:
+<span class="math math-display" data-tex="\[
+ \Phi(X)=\Pi_\beta^{-1}(W XW^*)\quad(X\in C),
+ \qquad
+ \Phi^{-1}(b)=W^*\Pi_\beta(b)W\quad(b\in N).
+ \tag{L29.5.j}
+\]">\[
+ \Phi(X)=\Pi_\beta^{-1}(W XW^*)\quad(X\in C),
+ \qquad
+ \Phi^{-1}(b)=W^*\Pi_\beta(b)W\quad(b\in N).
+ \tag{L29.5.j}
+\]</span>
+They are mutual inverse unital star homomorphisms. Conjugation by a fixed unitary is ultraweakly continuous: its pullback sends each summable vector-series functional to the series obtained by applying the inverse unitary to its two vector sequences. The same holds for the inverse conjugation. Together with the already proved normality of <span class="math" data-tex="\(\Pi_\beta\)">\(\Pi_\beta\)</span> and <span class="math" data-tex="\(\Pi_\beta^{-1}\)">\(\Pi_\beta^{-1}\)</span>, this proves normality of both maps on arbitrary nets. In particular <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is faithful and onto, and (L29.5.h) proves its prescribed generator values.</p>
+<p>The <a href="OA-FLOW-NR.html#oa-flow.nr.4">normal representation-independence theorem, NR4</a> identifies <span class="math" data-tex="\(C\)">\(C\)</span> with the crossed product constructed from any other faithful normal coefficient representation. Its comparison maps fix the named coefficient and group generators. Composing such a comparison with (L29.5.j) thus gives the same generator map into <span class="math" data-tex="\(N\)">\(N\)</span>. Two normal maps with these values agree on the unital star algebra generated by the coefficients and group unitaries, and hence on its ultraweak closure. This proves uniqueness, independence of the chosen faithful realization of <span class="math" data-tex="\(N\)">\(N\)</span>, and independence of the regular model. It does not assert that the underlying faithful Hilbert-space representations are unitarily equivalent.</p>
+<p>The <a href="OA-FLOW-DA.html#da-action">continuous spatial dual action</a> fixes <span class="math" data-tex="\(\pi_\alpha(a)\)">\(\pi_\alpha(a)\)</span> and sends <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> to <span class="math" data-tex="\(\overline{\eta(s)}\lambda_s\)">\(\overline{\eta(s)}\lambda_s\)</span>. The action <span class="math" data-tex="\(\beta_\eta\)">\(\beta_\eta\)</span> fixes <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span> and sends <span class="math" data-tex="\(u_s\)">\(u_s\)</span> to <span class="math" data-tex="\(\overline{\eta(s)}u_s\)">\(\overline{\eta(s)}u_s\)</span>. Thus the two normal maps in (L29.5.b) agree on every generator. Their agreement on the ultraweakly dense generated star algebra proves (L29.5.b) on the whole crossing.</p>
+<p>For necessity, start with a normal equivariant isomorphism
+<span class="math" data-tex="\(\Psi:A\rtimes_\delta G\to N\)">\(\Psi:A\rtimes_\delta G\to N\)</span> from an already constructed dual system, and put <span class="math" data-tex="\(u_s=\Psi(\lambda_s)\)">\(u_s=\Psi(\lambda_s)\)</span>. The regular representation law and eigenrelation pass through <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>. Its unitary orbit is strongly continuous: <a href="OA-FLOW-ST12.html#oa-flow.st.2">ST2's bounded topology comparison</a> transports strong-star continuity through the normal isomorphism and its inverse. The <a href="OA-FLOW-DA.html#da-fixed">full dual fixed-algebra theorem</a> gives
+<span class="math math-display" data-tex="\[
+ N^\beta=\Psi(\pi_\delta(A)).
+ \tag{L29.5.k}
+\]">\[
+ N^\beta=\Psi(\pi_\delta(A)).
+ \tag{L29.5.k}
+\]</span>
+Moreover, if <span class="math" data-tex="\(a=\Psi(\pi_\delta(b))\)">\(a=\Psi(\pi_\delta(b))\)</span>, covariance gives
+<span class="math math-display" data-tex="\[
+ \operatorname{Ad}(u_s)(a)
+ =\Psi(\pi_\delta(\delta_s(b))).
+\]">\[
+ \operatorname{Ad}(u_s)(a)
+ =\Psi(\pi_\delta(\delta_s(b))).
+\]</span>
+Hence the recovered coefficient algebra and action are exactly the original ones under this specified coefficient identification. This proves necessity and completes both directions.</p>
+<p>For <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, use <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, the zero regular Hilbert spaces and the zero crossed product. The maps and unitary families are the unique ones under the convention <span class="math" data-tex="\(1_0=0\)">\(1_0=0\)</span>; all displayed identities have their zero-algebra interpretation. This endpoint requires no choice of a nonzero multiplicity space. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="OA-FLOW.L29.6"></span><a id="l29-6"></a></p>
+<h2 id="6-every-other-eigenunitary-choice-is-a-coefficient-cocycle">6. Every other eigenunitary choice is a coefficient cocycle</h2>
+<p>Fix the eigenunitary representation <span class="math" data-tex="\(u\)">\(u\)</span> and its coefficient action <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. A strongly continuous unitary <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-cocycle is a map <span class="math" data-tex="\(w:G\to\mathcal U(M)\)">\(w:G\to\mathcal U(M)\)</span> satisfying
+<span class="math math-display" data-tex="\[
+ w_{s+t}=w_s\alpha_s(w_t)\qquad(s,t\in G).
+ \tag{L29.6.a}
+\]">\[
+ w_{s+t}=w_s\alpha_s(w_t)\qquad(s,t\in G).
+ \tag{L29.6.a}
+\]</span>
+Its identity value is automatically <span class="math" data-tex="\(1\)">\(1\)</span>: setting <span class="math" data-tex="\(s=t=0\)">\(s=t=0\)</span> gives the unitary idempotent <span class="math" data-tex="\(w_0\)">\(w_0\)</span>.</p>
+<p><strong>Proposition.</strong> All strongly continuous unitary representations <span class="math" data-tex="\(u':G\to\mathcal U(N)\)">\(u':G\to\mathcal U(N)\)</span> satisfying the same eigenrelation for <span class="math" data-tex="\(\beta\)">\(\beta\)</span> correspond bijectively to these cocycles, by
+<span class="math math-display" data-tex="\[
+ w_s=u'_s u_s^*,\qquad u'_s=w_su_s.
+ \tag{L29.6.b}
+\]">\[
+ w_s=u'_s u_s^*,\qquad u'_s=w_su_s.
+ \tag{L29.6.b}
+\]</span>
+The corresponding coefficient action is
+<span class="math math-display" data-tex="\[
+ \alpha'_s=\operatorname{Ad}(w_s)\circ\alpha_s.
+ \tag{L29.6.c}
+\]">\[
+ \alpha'_s=\operatorname{Ad}(w_s)\circ\alpha_s.
+ \tag{L29.6.c}
+\]</span></p>
+<p><strong>Proof.</strong> Suppose first that <span class="math" data-tex="\(u'\)">\(u'\)</span> is another such representation. Its character factor cancels that of <span class="math" data-tex="\(u_s^*\)">\(u_s^*\)</span>:
+<span class="math math-display" data-tex="\[
+ \beta_\eta(u'_su_s^*)
+ =\overline{\eta(s)}u'_s\,\eta(s)u_s^*
+ =u'_su_s^*.
+\]">\[
+ \beta_\eta(u'_su_s^*)
+ =\overline{\eta(s)}u'_s\,\eta(s)u_s^*
+ =u'_su_s^*.
+\]</span>
+Thus <span class="math" data-tex="\(w_s\in\mathcal U(M)\)">\(w_s\in\mathcal U(M)\)</span>. Products and adjoints of the bounded strongly continuous unitary families are strongly continuous; ST2's bounded topology comparison also makes this the intrinsic strong-star continuity in <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>For the cocycle equation, retain the order of all factors:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ w_s\alpha_s(w_t)
+ &amp;=(u'_su_s^*)u_s(u'_tu_t^*)u_s^*\\
+ &amp;=u'_su'_t u_t^*u_s^*\\
+ &amp;=u'_{s+t}(u_su_t)^*\\
+ &amp;=u'_{s+t}u_{s+t}^*
+ =w_{s+t}.
+ \end{aligned}
+ \tag{L29.6.d}
+\]">\[
+ \begin{aligned}
+ w_s\alpha_s(w_t)
+ &amp;=(u'_su_s^*)u_s(u'_tu_t^*)u_s^*\\
+ &amp;=u'_su'_t u_t^*u_s^*\\
+ &amp;=u'_{s+t}(u_su_t)^*\\
+ &amp;=u'_{s+t}u_{s+t}^*
+ =w_{s+t}.
+ \end{aligned}
+ \tag{L29.6.d}
+\]</span>
+No element of the family <span class="math" data-tex="\(u'\)">\(u'\)</span> has been commuted past an element of <span class="math" data-tex="\(u\)">\(u\)</span>. Formula (L29.6.c) follows by applying <span class="math" data-tex="\(\operatorname{Ad}(u'_s)=\operatorname{Ad}(w_su_s)\)">\(\operatorname{Ad}(u'_s)=\operatorname{Ad}(w_su_s)\)</span> to <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Conversely, let <span class="math" data-tex="\(w\)">\(w\)</span> satisfy (L29.6.a), and define <span class="math" data-tex="\(u'_s=w_su_s\)">\(u'_s=w_su_s\)</span>. Its values are unitary and the product is strongly continuous. Since <span class="math" data-tex="\(u_sw_tu_s^*=\alpha_s(w_t)\)">\(u_sw_tu_s^*=\alpha_s(w_t)\)</span>,
+<span class="math math-display" data-tex="\[
+ u'_su'_t
+ =w_su_sw_tu_t
+ =w_s\alpha_s(w_t)u_su_t
+ =w_{s+t}u_{s+t}
+ =u'_{s+t}.
+ \tag{L29.6.e}
+\]">\[
+ u'_su'_t
+ =w_su_sw_tu_t
+ =w_s\alpha_s(w_t)u_su_t
+ =w_{s+t}u_{s+t}
+ =u'_{s+t}.
+ \tag{L29.6.e}
+\]</span>
+Also <span class="math" data-tex="\(u'_0=1\)">\(u'_0=1\)</span>, and fixedness of <span class="math" data-tex="\(w_s\)">\(w_s\)</span> gives
+<span class="math" data-tex="\(\beta_\eta(u'_s)=\overline{\eta(s)}u'_s\)">\(\beta_\eta(u'_s)=\overline{\eta(s)}u'_s\)</span>.
+The two rules in (L29.6.b) are inverse, proving the asserted bijection. In particular <span class="math" data-tex="\(\alpha'\)">\(\alpha'\)</span> is a point-ultraweakly continuous action, either by applying the coefficient-action construction to <span class="math" data-tex="\(u'\)">\(u'\)</span>, or by the general continuity proof in <a href="OA-FLOW-NR.html#oa-flow.nr.5">Exact cocycle transport</a>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The two recognition maps also determine the full crossed-product transport. Denote their group generators by <span class="math" data-tex="\(\lambda_s^\alpha\)">\(\lambda_s^\alpha\)</span> and <span class="math" data-tex="\(\lambda_s^{\alpha'}\)">\(\lambda_s^{\alpha'}\)</span>, and write <span class="math" data-tex="\(\Phi_u,\Phi_{u'}\)">\(\Phi_u,\Phi_{u'}\)</span> for the maps of Section 5. Their normal composite has the exact values
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \Xi&amp;=\Phi_{u'}^{-1}\Phi_u:
+       M\rtimes_\alpha G\longrightarrow M\rtimes_{\alpha'}G,\\
+ \Xi(\pi_\alpha(a))&amp;=\pi_{\alpha'}(a),\\
+ \Xi(\lambda_s^\alpha)&amp;=\pi_{\alpha'}(w_s^*)\lambda_s^{\alpha'}.
+ \end{aligned}
+ \tag{L29.6.f}
+\]">\[
+ \begin{aligned}
+ \Xi&amp;=\Phi_{u'}^{-1}\Phi_u:
+       M\rtimes_\alpha G\longrightarrow M\rtimes_{\alpha'}G,\\
+ \Xi(\pi_\alpha(a))&amp;=\pi_{\alpha'}(a),\\
+ \Xi(\lambda_s^\alpha)&amp;=\pi_{\alpha'}(w_s^*)\lambda_s^{\alpha'}.
+ \end{aligned}
+ \tag{L29.6.f}
+\]</span>
+Indeed, applying <span class="math" data-tex="\(\Phi_{u'}\)">\(\Phi_{u'}\)</span> to the last expression gives <span class="math" data-tex="\(w_s^*u'_s=u_s\)">\(w_s^*u'_s=u_s\)</span>. The inverse sends <span class="math" data-tex="\(\lambda_s^{\alpha'}\)">\(\lambda_s^{\alpha'}\)</span> to <span class="math" data-tex="\(\pi_\alpha(w_s)\lambda_s^\alpha\)">\(\pi_\alpha(w_s)\lambda_s^\alpha\)</span>.</p>
+<p>For a direct regular-model verification, use the same faithful coefficient representation on <span class="math" data-tex="\(K\)">\(K\)</span> for both crossings. The construction of <span class="math" data-tex="\(D_u\)">\(D_u\)</span>, now with the continuous unitary field <span class="math" data-tex="\(w_{-t}\)">\(w_{-t}\)</span>, gives an onto unitary
+<span class="math math-display" data-tex="\[
+ [V_w\xi](t)=w_{-t}\xi(t)\qquad(\xi\in L^2(G,K)).
+ \tag{L29.6.g}
+\]">\[
+ [V_w\xi](t)=w_{-t}\xi(t)\qquad(\xi\in L^2(G,K)).
+ \tag{L29.6.g}
+\]</span>
+Its inverse is multiplication by <span class="math" data-tex="\(w_{-t}^*\)">\(w_{-t}^*\)</span>. On compact vectors,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ V_w\pi_\alpha(a)V_w^*&amp;=\pi_{\alpha'}(a),\\
+ [V_w\lambda_s^\alpha V_w^*\xi](t)
+ &amp;=w_{-t}w_{s-t}^*\xi(t-s)\\
+ &amp;=\alpha'_{-t}(w_s^*)\xi(t-s)\\
+ &amp;=[\pi_{\alpha'}(w_s^*)\lambda_s^{\alpha'}\xi](t).
+ \end{aligned}
+ \tag{L29.6.h}
+\]">\[
+ \begin{aligned}
+ V_w\pi_\alpha(a)V_w^*&amp;=\pi_{\alpha'}(a),\\
+ [V_w\lambda_s^\alpha V_w^*\xi](t)
+ &amp;=w_{-t}w_{s-t}^*\xi(t-s)\\
+ &amp;=\alpha'_{-t}(w_s^*)\xi(t-s)\\
+ &amp;=[\pi_{\alpha'}(w_s^*)\lambda_s^{\alpha'}\xi](t).
+ \end{aligned}
+ \tag{L29.6.h}
+\]</span>
+The middle identity follows from
+<span class="math" data-tex="\(w_{s-t}=w_{-t}\alpha_{-t}(w_s)\)">\(w_{s-t}=w_{-t}\alpha_{-t}(w_s)\)</span>;
+the adjoint must remain on <span class="math" data-tex="\(w_s\)">\(w_s\)</span> in this direction of transport. Boundedness extends these identities to the whole Hilbert space. Their images generate the full target crossing, because they contain its coefficients and
+<span class="math" data-tex="\(\lambda_s^{\alpha'}=\pi_{\alpha'}(w_s)V_w\lambda_s^\alpha V_w^*\)">\(\lambda_s^{\alpha'}=\pi_{\alpha'}(w_s)V_w\lambda_s^\alpha V_w^*\)</span>.
+Consequently <span class="math" data-tex="\(\operatorname{Ad}(V_w)\)">\(\operatorname{Ad}(V_w)\)</span> is an onto normal isomorphism and, by the generator uniqueness already proved, equals <span class="math" data-tex="\(\Xi\)">\(\Xi\)</span>. This is the explicit arbitrary-group cocycle transport of <a href="OA-FLOW-NR.html#oa-flow.nr.5">the normal regular construction, NR5</a>, with the present additive signs.</p>
+<p>Both maps in (L29.6.f) intertwine their negative dual actions, either by composing the equivariant recognition maps or by checking the displayed generators and then using normality. The bijection describes the choices relative to the fixed <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>; it does not assert that unitary <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-cocycles form a group under pointwise multiplication.</p>
+<p><span id="OA-FLOW.L29.7"></span><a id="l29-7"></a></p>
+<h2 id="7-three-models-of-the-recovered-coefficient-algebra">7. Three models of the recovered coefficient algebra</h2>
+<p><a id="l29-7-finite"></a>
+<strong>Three matrix blocks with a nontrivial coefficient action.</strong> Let <span class="math" data-tex="\(G=\mathbb Z/3\mathbb Z\)">\(G=\mathbb Z/3\mathbb Z\)</span>, put <span class="math" data-tex="\(\omega=e^{2\pi i/3}\)">\(\omega=e^{2\pi i/3}\)</span>, and let <span class="math" data-tex="\(D=\operatorname{diag}(1,\omega)\)">\(D=\operatorname{diag}(1,\omega)\)</span>. Index both <span class="math" data-tex="\(G\)">\(G\)</span> and its dual by residues modulo three, with <span class="math" data-tex="\(\chi_k(s)=\omega^{ks}\)">\(\chi_k(s)=\omega^{ks}\)</span>. Set
+<span class="math math-display" data-tex="\[
+ N=\bigoplus_{j=0}^2M_2(\mathbb C),\qquad
+ [\beta_k(X)]_j=X_{j-k},\qquad
+ [u_s]_j=\omega^{js}D^s.
+ \tag{L29.7.a}
+\]">\[
+ N=\bigoplus_{j=0}^2M_2(\mathbb C),\qquad
+ [\beta_k(X)]_j=X_{j-k},\qquad
+ [u_s]_j=\omega^{js}D^s.
+ \tag{L29.7.a}
+\]</span>
+The formulas are independent of the integer representatives because <span class="math" data-tex="\(D^3=I\)">\(D^3=I\)</span> and <span class="math" data-tex="\(\omega^3=1\)">\(\omega^3=1\)</span>. They give unitary <span class="math" data-tex="\(u_s\)">\(u_s\)</span> with <span class="math" data-tex="\(u_{s+t}=u_su_t\)">\(u_{s+t}=u_su_t\)</span>. Direct substitution gives
+<span class="math math-display" data-tex="\[
+ [\beta_k(u_s)]_j=\omega^{(j-k)s}D^s
+   =\overline{\chi_k(s)}[u_s]_j.
+\]">\[
+ [\beta_k(u_s)]_j=\omega^{(j-k)s}D^s
+   =\overline{\chi_k(s)}[u_s]_j.
+\]</span>
+Continuity holds because both groups are finite. A triple is fixed by every cyclic shift exactly when it is constant. Thus the coefficient algebra is the noncommutative algebra <span class="math" data-tex="\(M=\{(a,a,a):a\in M_2(\mathbb C)\}\)">\(M=\{(a,a,a):a\in M_2(\mathbb C)\}\)</span>, and
+<span class="math math-display" data-tex="\[
+ \alpha_s(a)=D^saD^{-s},\qquad
+ \alpha_1(e_{12})=\overline\omega e_{12},\qquad
+ \alpha_1(e_{21})=\omega e_{21}.
+ \tag{L29.7.b}
+\]">\[
+ \alpha_s(a)=D^saD^{-s},\qquad
+ \alpha_1(e_{12})=\overline\omega e_{12},\qquad
+ \alpha_1(e_{21})=\omega e_{21}.
+ \tag{L29.7.b}
+\]</span>
+The two diagonal matrix units are fixed. These formulas follow by multiplying the diagonal entries on the corresponding row and column; they show that the recovered action is nontrivial.</p>
+<p>Here generation is visible by a finite computation. The fixed triple <span class="math" data-tex="\(\boldsymbol D=(D,D,D)\)">\(\boldsymbol D=(D,D,D)\)</span> gives the central unitary <span class="math" data-tex="\(z=u_1\boldsymbol D^*\)">\(z=u_1\boldsymbol D^*\)</span>, with <span class="math" data-tex="\(z_j=\omega^j I\)">\(z_j=\omega^j I\)</span>. Define
+<span class="math math-display" data-tex="\[
+ p_j=\frac13\sum_{k=0}^2\omega^{-jk}z^k,
+ \qquad
+ X=\sum_{j=0}^2 p_j\boldsymbol{X_j},
+ \qquad \boldsymbol{X_j}=(X_j,X_j,X_j).
+ \tag{L29.7.c}
+\]">\[
+ p_j=\frac13\sum_{k=0}^2\omega^{-jk}z^k,
+ \qquad
+ X=\sum_{j=0}^2 p_j\boldsymbol{X_j},
+ \qquad \boldsymbol{X_j}=(X_j,X_j,X_j).
+ \tag{L29.7.c}
+\]</span>
+At block <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, the polynomial for <span class="math" data-tex="\(p_j\)">\(p_j\)</span> is <span class="math" data-tex="\(\frac13\sum_{k=0}^2\omega^{(\ell-j)k}I\)">\(\frac13\sum_{k=0}^2\omega^{(\ell-j)k}I\)</span>. It is <span class="math" data-tex="\(I\)">\(I\)</span> if <span class="math" data-tex="\(\ell=j\)">\(\ell=j\)</span>. Otherwise it is zero, since the nontrivial third root <span class="math" data-tex="\(r=\omega^{\ell-j}\)">\(r=\omega^{\ell-j}\)</span> satisfies <span class="math" data-tex="\((1-r)(1+r+r^2)=1-r^3=0\)">\((1-r)(1+r+r^2)=1-r^3=0\)</span>. Consequently <span class="math" data-tex="\(p_0,p_1,p_2\)">\(p_0,p_1,p_2\)</span> are the three orthogonal central block projections, sum to <span class="math" data-tex="\(1\)">\(1\)</span>, and the displayed decomposition holds for every <span class="math" data-tex="\(X\in N\)">\(X\in N\)</span>. This proves generation directly, as well as illustrating the general <a href="OA-FLOW-L29.html#l29-4">generation theorem</a>.</p>
+<p>The <a href="OA-FLOW-L29.html#l29-5">recognition theorem</a> therefore identifies <span class="math" data-tex="\(M_2(\mathbb C)\rtimes_{\operatorname{Ad}D}(\mathbb Z/3)\)">\(M_2(\mathbb C)\rtimes_{\operatorname{Ad}D}(\mathbb Z/3)\)</span> normally with <span class="math" data-tex="\(N\)">\(N\)</span>, carrying the canonical group generator to <span class="math" data-tex="\(u_1\)">\(u_1\)</span>. The central block index belongs to the crossed product; the recovered coefficient is the whole constant matrix triple.</p>
+<p>We can also write the comparison unitary in finite coordinates. Represent <span class="math" data-tex="\(N\)">\(N\)</span> on <span class="math" data-tex="\(K=\bigoplus_{j=0}^2\mathbb C^2\)">\(K=\bigoplus_{j=0}^2\mathbb C^2\)</span>. Give <span class="math" data-tex="\(G\)">\(G\)</span> counting Haar measure and each dual point mass <span class="math" data-tex="\(1/3\)">\(1/3\)</span>. The positive Fourier transform is the sum <span class="math" data-tex="\((\mathcal F_+\zeta)(k)=\sum_t\omega^{kt}\zeta_t\)">\((\mathcal F_+\zeta)(k)=\sum_t\omega^{kt}\zeta_t\)</span>. To use ordinary Euclidean coordinates in its target, set <span class="math" data-tex="\(\widehat\eta_k=\eta(k)/\sqrt3\)">\(\widehat\eta_k=\eta(k)/\sqrt3\)</span>. The unitary <span class="math" data-tex="\(W=\mathcal F_+D_u\)">\(W=\mathcal F_+D_u\)</span> of Section 5 then has the matrix form
+<span class="math math-display" data-tex="\[
+ (\widetilde W\xi)_k
+   =\frac1{\sqrt3}\sum_{t=0}^2\omega^{kt}u_t\xi_t,
+ \qquad \widetilde W:\mathbb C^3\otimes K\longrightarrow\mathbb C^3\otimes K.
+ \tag{L29.7.d}
+\]">\[
+ (\widetilde W\xi)_k
+   =\frac1{\sqrt3}\sum_{t=0}^2\omega^{kt}u_t\xi_t,
+ \qquad \widetilde W:\mathbb C^3\otimes K\longrightarrow\mathbb C^3\otimes K.
+ \tag{L29.7.d}
+\]</span>
+Multiplication by <span class="math" data-tex="\(u_t\)">\(u_t\)</span> is unitary. The normalized Fourier matrix is unitary because <span class="math" data-tex="\(\frac13\sum_k\omega^{k(t-r)}\)">\(\frac13\sum_k\omega^{k(t-r)}\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(t=r\)">\(t=r\)</span> and zero otherwise, by the same root sum. For a constant triple <span class="math" data-tex="\(\boldsymbol a=(a,a,a)\)">\(\boldsymbol a=(a,a,a)\)</span>, the source operators are <span class="math" data-tex="\((\pi_\alpha(a)\xi)_t=u_{-t}\boldsymbol a u_t\xi_t\)">\((\pi_\alpha(a)\xi)_t=u_{-t}\boldsymbol a u_t\xi_t\)</span> and <span class="math" data-tex="\((\lambda(s)\xi)_t=\xi_{t-s}\)">\((\lambda(s)\xi)_t=\xi_{t-s}\)</span>. Hence cancellation in the first case and the substitution <span class="math" data-tex="\(t=r+s\)">\(t=r+s\)</span> in the second give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (\widetilde W\pi_\alpha(a)\xi)_k
+     &amp;=\boldsymbol a(\widetilde W\xi)_k,\\
+ (\widetilde W\lambda(s)\xi)_k
+     &amp;=\omega^{ks}u_s(\widetilde W\xi)_k.
+ \end{aligned}
+ \tag{L29.7.e}
+\]">\[
+ \begin{aligned}
+ (\widetilde W\pi_\alpha(a)\xi)_k
+     &amp;=\boldsymbol a(\widetilde W\xi)_k,\\
+ (\widetilde W\lambda(s)\xi)_k
+     &amp;=\omega^{ks}u_s(\widetilde W\xi)_k.
+ \end{aligned}
+ \tag{L29.7.e}
+\]</span>
+These are precisely the operators <span class="math" data-tex="\(\Pi_\beta(\boldsymbol a)\)">\(\Pi_\beta(\boldsymbol a)\)</span> and <span class="math" data-tex="\(\Pi_\beta(u_s)\)">\(\Pi_\beta(u_s)\)</span>, since <span class="math" data-tex="\(\beta_{-k}(u_s)=\omega^{ks}u_s\)">\(\beta_{-k}(u_s)=\omega^{ks}u_s\)</span>. Both sides act on 18-dimensional Hilbert spaces. The finite computation illustrates the actual unitary used in the arbitrary-group proof.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Three matrix blocks are recovered from one constant matrix algebra and the eigenunitary; the finite Fourier unitary intertwines the regular generators." src="assets/eigenunitary-recognition/recognition.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure 1. In the upper panel, each block is a copy of <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>; the roots of unity label central coordinates. The arrows show <span class="math" data-tex="\(\beta_1(p_j)=p_{j+1}\)">\(\beta_1(p_j)=p_{j+1}\)</span>, while the coefficient action within each matrix is (L29.7.b). The middle panel evaluates the exact projection polynomials (L29.7.c). The lower panel shows the two unitary steps in (L29.7.d) and the generator identities (L29.7.e), using the stated Euclidean target coordinates. The proof is in <a href="OA-FLOW-L29.html#l29-7-finite">this finite model</a>; <a href="OA-FLOW-L29.html#l29-5">Section 5</a> proves recognition for arbitrary groups and Hilbert spaces. Mathematical antecedent: M. Takesaki, Theory of Operator Algebras II, Proposition X.2.6, pp.263–265. This is original course artwork. <a href="assets/eigenunitary-recognition/render_recognition.py">Reproduction source</a>, <a href="assets/eigenunitary-recognition/recognition-data.json">finite diagnostic data</a>, and <a href="assets/eigenunitary-recognition/ASSET_TERMS.md">component terms</a>.</em></p>
+<p><a id="l29-7-real"></a>
+<strong>Translations on all bounded operators.</strong> On <span class="math" data-tex="\(K=L^2(\mathbb R)\)">\(K=L^2(\mathbb R)\)</span>, define
+<span class="math math-display" data-tex="\[
+ [L_q\xi](r)=\xi(r-q),\qquad
+ [Q_s\xi](r)=e^{isr}\xi(r),\qquad
+ N=B(K),\quad\beta_q=\operatorname{Ad}L_q,\quad u_s=Q_s.
+ \tag{L29.7.f}
+\]">\[
+ [L_q\xi](r)=\xi(r-q),\qquad
+ [Q_s\xi](r)=e^{isr}\xi(r),\qquad
+ N=B(K),\quad\beta_q=\operatorname{Ad}L_q,\quad u_s=Q_s.
+ \tag{L29.7.f}
+\]</span>
+Translation is strongly continuous by <a href="OA-FLOW-L24.html#oa-flow.grp.translations">L24, Lemma 3.1</a>. For <span class="math" data-tex="\(Q_s\)">\(Q_s\)</span>, dominated convergence applied to <span class="math" data-tex="\(|e^{isr}-e^{is_0r}|^2|\xi(r)|^2\le4|\xi(r)|^2\)">\(|e^{isr}-e^{is_0r}|^2|\xi(r)|^2\le4|\xi(r)|^2\)</span> proves strong continuity on every vector. These unitary representations obey
+<span class="math math-display" data-tex="\[
+ L_qQ_sL_q^*=e^{-isq}Q_s.
+\]">\[
+ L_qQ_sL_q^*=e^{-isq}Q_s.
+\]</span>
+Their conjugation action is point-ultraweakly continuous by the <a href="OA-FLOW-UC.html#oa-flow.uc.0">bounded product and vector-series argument</a>. Thus the hypotheses of recognition hold, with <span class="math" data-tex="\(\chi_q(s)=e^{isq}\)">\(\chi_q(s)=e^{isq}\)</span>.</p>
+<p>The fixed algebra is <span class="math" data-tex="\(M=\{L_q:q\in\mathbb R\}'\)">\(M=\{L_q:q\in\mathbb R\}'\)</span>. Use the positive Fourier transform <span class="math" data-tex="\(\mathcal F_+\)">\(\mathcal F_+\)</span>, with Plancherel-compatible Haar measures. Its existence and onto property follow from <a href="OA-FLOW-PLANCHEREL.html#scalar-plancherel-p3">scalar Plancherel</a>; dual inversion changes the negative transform there to the positive one. Substitution in the Fourier integral first on compactly supported continuous vectors gives
+<span class="math math-display" data-tex="\[
+ \mathcal F_+L_q\mathcal F_+^*=M_{e^{ipq}},\qquad
+ [\mathcal F_+Q_s\mathcal F_+^*\eta](p)=\eta(p+s).
+ \tag{L29.7.g}
+\]">\[
+ \mathcal F_+L_q\mathcal F_+^*=M_{e^{ipq}},\qquad
+ [\mathcal F_+Q_s\mathcal F_+^*\eta](p)=\eta(p+s).
+ \tag{L29.7.g}
+\]</span>
+Density extends both bounded-operator equalities to all vectors. The characters generate the full multiplication algebra by <a href="OA-FLOW-ND.html#nd-weyl-proof">ND's character-density proof</a>, and that algebra equals its commutant by <a href="OA-FLOW-ND.html#nd-multiplication">ND's multiplication proof</a>. Therefore <span class="math" data-tex="\(\mathcal F_+M\mathcal F_+^*=\{M_f:f\in L^\infty(\mathbb R)\}\)">\(\mathcal F_+M\mathcal F_+^*=\{M_f:f\in L^\infty(\mathbb R)\}\)</span>. Conjugation by the second operator in (L29.7.g) sends <span class="math" data-tex="\(M_f\)">\(M_f\)</span> to <span class="math" data-tex="\(M_{f(\,·+s)}\)">\(M_{f(\,·+s)}\)</span>. We obtain
+<span class="math math-display" data-tex="\[
+ B(L^2(\mathbb R))\cong L^\infty(\mathbb R)\rtimes_\alpha\mathbb R,
+ \qquad [\alpha_s f](p)=f(p+s).
+ \tag{L29.7.h}
+\]">\[
+ B(L^2(\mathbb R))\cong L^\infty(\mathbb R)\rtimes_\alpha\mathbb R,
+ \qquad [\alpha_s f](p)=f(p+s).
+ \tag{L29.7.h}
+\]</span>
+The coordinate <span class="math" data-tex="\(p\)">\(p\)</span> describes the recovered coefficient algebra; <span class="math" data-tex="\(r\)">\(r\)</span> is the original spatial coordinate. Keeping them separate explains both the negative eigencharacter in (L29.7.f) and the positive shift in (L29.7.h). The proof uses no trace or invariant state on <span class="math" data-tex="\(B(K)\)">\(B(K)\)</span>.</p>
+<p><a id="l29-7-uncountable"></a>
+<strong>An uncountable compact dual.</strong> Let <span class="math" data-tex="\(J\)">\(J\)</span> be any uncountable set. Put <span class="math" data-tex="\(G=\bigoplus_{j\in J}\mathbb Z/2\mathbb Z\)">\(G=\bigoplus_{j\in J}\mathbb Z/2\mathbb Z\)</span>, with the discrete topology, and <span class="math" data-tex="\(H=\prod_{j\in J}\{1,-1\}\)">\(H=\prod_{j\in J}\{1,-1\}\)</span>, with the compact product topology and normalized Haar measure. A character on <span class="math" data-tex="\(G\)">\(G\)</span> chooses its sign independently on each summand, so this is its dual. Compact sets in the discrete group are finite; the compact-open topology on its characters therefore agrees with the product topology. Pair the groups by the finite product <span class="math" data-tex="\(\chi(s)=\prod_{j\in\operatorname{supp}s}\chi_j^{s_j}\)">\(\chi(s)=\prod_{j\in\operatorname{supp}s}\chi_j^{s_j}\)</span>. On <span class="math" data-tex="\(N=L^\infty(H)\)">\(N=L^\infty(H)\)</span>, set
+<span class="math math-display" data-tex="\[
+ [\beta_\eta f](\chi)=f(\eta^{-1}\chi),\qquad
+ u_s(\chi)=\chi(s).
+ \tag{L29.7.i}
+\]">\[
+ [\beta_\eta f](\chi)=f(\eta^{-1}\chi),\qquad
+ u_s(\chi)=\chi(s).
+ \tag{L29.7.i}
+\]</span>
+Translations preserve Haar measure, so they induce normal star automorphisms of <span class="math" data-tex="\(L^\infty(H)\)">\(L^\infty(H)\)</span>. The functions <span class="math" data-tex="\(u_s\)">\(u_s\)</span> are unitaries and form a representation; it is strongly continuous because <span class="math" data-tex="\(G\)">\(G\)</span> is discrete. Their covariance is
+<span class="math" data-tex="\(\beta_\eta(u_s)(\chi)=\overline{\eta(s)}\chi(s)\)">\(\beta_\eta(u_s)(\chi)=\overline{\eta(s)}\chi(s)\)</span>.</p>
+<p>The action is point-ultraweakly continuous. On the compact group, translations of a continuous function vary uniformly continuously. The <a href="OA-FLOW-L24.html#oa-flow.grp.translations">density and translation proof in L24</a> gives density of <span class="math" data-tex="\(C(H)=C_c(H)\)">\(C(H)=C_c(H)\)</span> in <span class="math" data-tex="\(L^1(H)\)">\(L^1(H)\)</span>. Approximation and the isometry of translations then give norm-continuous <span class="math" data-tex="\(L^1\)">\(L^1\)</span> orbits. Pairing with each <span class="math" data-tex="\(f\in L^\infty(H)\)">\(f\in L^\infty(H)\)</span> proves continuity in its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> predual, identified explicitly in <a href="OA-FLOW-ND.html#nd-multiplication">ND</a>.</p>
+<p>To identify the fixed algebra, let <span class="math" data-tex="\(f\in N^\beta\)">\(f\in N^\beta\)</span>, and take <span class="math" data-tex="\(h\in C(H)\)">\(h\in C(H)\)</span>. Fixedness and a single Haar change of variables give
+<span class="math" data-tex="\(\int_H f(\chi)h(\eta^{-1}\chi)\,d\chi=\int_H fh\)">\(\int_H f(\chi)h(\eta^{-1}\chi)\,d\chi=\int_H fh\)</span>
+for each fixed <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. The map <span class="math" data-tex="\(\eta\mapsto h(\eta^{-1}\,·)\)">\(\eta\mapsto h(\eta^{-1}\,·)\)</span> is norm continuous in <span class="math" data-tex="\(C(H)\)">\(C(H)\)</span>. Its compact vector integral is the constant function <span class="math" data-tex="\(\int_Hh\)">\(\int_Hh\)</span>, by Haar invariance at each <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. The bounded functional <span class="math" data-tex="\(g\mapsto\int_Hfg\)">\(g\mapsto\int_Hfg\)</span> passes through that integral. Since Haar mass is one, this proves
+<span class="math math-display" data-tex="\[
+ \int_Hfh=\left(\int_H f\right)\left(\int_H h\right).
+ \tag{L29.7.j}
+\]">\[
+ \int_Hfh=\left(\int_H f\right)\left(\int_H h\right).
+ \tag{L29.7.j}
+\]</span>
+Density extends the equality to every <span class="math" data-tex="\(L^1\)">\(L^1\)</span> test. Hence <span class="math" data-tex="\(f\)">\(f\)</span> is the scalar <span class="math" data-tex="\(\int_Hf\)">\(\int_Hf\)</span> as an <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> class. This argument uses no simultaneous pointwise representative for all translation identities. Thus <span class="math" data-tex="\(M=\mathbb C1\)">\(M=\mathbb C1\)</span>, its recovered action is trivial, and recognition gives <span class="math" data-tex="\(L^\infty(H)\cong\operatorname{VN}(G)\)">\(L^\infty(H)\cong\operatorname{VN}(G)\)</span>.</p>
+<p>For every <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span>, the coordinate character <span class="math" data-tex="\(c_j(\chi)=\chi_j\)">\(c_j(\chi)=\chi_j\)</span> has <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm one. If <span class="math" data-tex="\(j\ne k\)">\(j\ne k\)</span>, translate by the element of <span class="math" data-tex="\(H\)">\(H\)</span> that flips coordinate <span class="math" data-tex="\(j\)">\(j\)</span> and fixes the others. Haar invariance negates <span class="math" data-tex="\(\int c_j\overline{c_k}\)">\(\int c_j\overline{c_k}\)</span>, forcing it to be zero. There are therefore uncountably many orthogonal unit vectors. A separable Hilbert space cannot have such a family: disjoint open balls of radius <span class="math" data-tex="\(1/3\)">\(1/3\)</span> around them would each contain a different member of a countable dense set. Consequently <span class="math" data-tex="\(L^2(H)\)">\(L^2(H)\)</span> is nonseparable. Here the <a href="OA-FLOW-L29.html#l29-2">compact-cutoff argument</a> already permits the cutoff <span class="math" data-tex="\(1\)">\(1\)</span>; neither an enumeration of coordinates nor a countable family of spectral probes is needed.</p>
+<p><span id="OA-FLOW.L29.8"></span><a id="l29-8"></a></p>
+<h2 id="8-five-tests-with-complete-solutions">8. Five tests with complete solutions</h2>
+<p><a id="l29-8-signs"></a>
+<strong>1. Test both character conjugates.</strong> Suppose <span class="math" data-tex="\(\beta_\chi(u_s)=\overline{\chi(s)}u_s\)">\(\beta_\chi(u_s)=\overline{\chi(s)}u_s\)</span>. For full bounded ultraweak Fourier integrals as constructed above, determine the covariance of the coefficients with factors <span class="math" data-tex="\(\chi(s)\)">\(\chi(s)\)</span> and <span class="math" data-tex="\(\overline{\chi(s)}\)">\(\overline{\chi(s)}\)</span>. Which product with <span class="math" data-tex="\(u_s\)">\(u_s\)</span> is fixed?</p>
+<p><strong>Solution.</strong> Denote the two coefficients by <span class="math" data-tex="\(x_s^+\)">\(x_s^+\)</span> and <span class="math" data-tex="\(x_s^-\)">\(x_s^-\)</span>, respectively. Apply <span class="math" data-tex="\(\beta_\eta\)">\(\beta_\eta\)</span> and put <span class="math" data-tex="\(\rho=\eta\chi\)">\(\rho=\eta\chi\)</span>. Normal functional pairings justify this substitution in the scalar integrals. Since <span class="math" data-tex="\(\chi(s)=\overline{\eta(s)}\rho(s)\)">\(\chi(s)=\overline{\eta(s)}\rho(s)\)</span>,
+<span class="math math-display" data-tex="\[
+ \beta_\eta(x_s^+)=\overline{\eta(s)}x_s^+,
+ \qquad \beta_\eta(x_s^-)=\eta(s)x_s^-,
+ \qquad x_s^+u_s^*\in M,
+ \qquad x_s^-u_s\in M.
+ \tag{L29.8.a}
+\]">\[
+ \beta_\eta(x_s^+)=\overline{\eta(s)}x_s^+,
+ \qquad \beta_\eta(x_s^-)=\eta(s)x_s^-,
+ \qquad x_s^+u_s^*\in M,
+ \qquad x_s^-u_s\in M.
+ \tag{L29.8.a}
+\]</span>
+The fixedness assertions follow by cancellation with the character of <span class="math" data-tex="\(u_s^*\)">\(u_s^*\)</span> or <span class="math" data-tex="\(u_s\)">\(u_s\)</span>. Pairing either coefficient with the wrong adjoint leaves the corresponding squared character, which is generally nontrivial. For characters of order two that squared factor is one; the formulas still give the correct convention uniformly for arbitrary groups.</p>
+<p><a id="l29-8-average"></a>
+<strong>2. A strong limit without a norm-integrable orbit.</strong> In the multiplication model on <span class="math" data-tex="\(L^2(\mathbb R)\)">\(L^2(\mathbb R)\)</span>, take <span class="math" data-tex="\(0\ne f\in C_c(\mathbb R)\)">\(0\ne f\in C_c(\mathbb R)\)</span>, <span class="math" data-tex="\(0\le f\le1\)">\(0\le f\le1\)</span>. Find the positive average of the translates of <span class="math" data-tex="\(M_{f^2}\)">\(M_{f^2}\)</span>, and determine whether their orbit is Bochner integrable in operator norm over the whole line.</p>
+<p><strong>Solution.</strong> The compact averages are
+<span class="math math-display" data-tex="\[
+ A_L(M_{f^2})=M_{b_L},\qquad
+ b_L(r)=\int_Lf(r-q)^2\,dq,\qquad
+ 0\le b_L\le\|f\|_2^2.
+ \tag{L29.8.b}
+\]">\[
+ A_L(M_{f^2})=M_{b_L},\qquad
+ b_L(r)=\int_Lf(r-q)^2\,dq,\qquad
+ 0\le b_L\le\|f\|_2^2.
+ \tag{L29.8.b}
+\]</span>
+For <span class="math" data-tex="\(h\in C_c(\mathbb R)\)">\(h\in C_c(\mathbb R)\)</span>, whenever <span class="math" data-tex="\(L\supset\operatorname{supp}(h)-\operatorname{supp}(f)\)">\(L\supset\operatorname{supp}(h)-\operatorname{supp}(f)\)</span>, one has <span class="math" data-tex="\(b_Lh=\|f\|_2^2h\)">\(b_Lh=\|f\|_2^2h\)</span> exactly. Such vectors are dense in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and the common operator bound extends convergence to every vector. Thus the compact-average net converges strongly to <span class="math" data-tex="\(\|f\|_2^2I\)">\(\|f\|_2^2I\)</span>, as in <a href="OA-FLOW-L29.html#l29-2">Section 2</a>. On the other hand, every translated multiplier has norm <span class="math" data-tex="\(\|f\|_\infty^2&gt;0\)">\(\|f\|_\infty^2&gt;0\)</span>, so the integral of the orbit's norms is infinite. The norm-continuous orbit is not Bochner integrable over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Its bounded positive ultraweak average nevertheless exists. The strong-limit proof just given uses eventual equality on a dense set, without a measurable convergence theorem for arbitrary nets.</p>
+<p><a id="l29-8-density"></a>
+<strong>3. Approaching the identity does not prove density.</strong> Why does a net of integrable positive elements tending to <span class="math" data-tex="\(1\)">\(1\)</span> fail, by itself, to show that integrable positives span an ultraweakly dense subspace? What additional property does this lesson prove?</p>
+<p><strong>Solution.</strong> The set <span class="math" data-tex="\(\{I\}\subset M_2(\mathbb C)\)">\(\{I\}\subset M_2(\mathbb C)\)</span> contains a constant net tending to <span class="math" data-tex="\(I\)">\(I\)</span>, but its linear span consists only of scalar matrices. Approximating the identity supplies no density implication for an arbitrary subset. Here the <a href="OA-FLOW-L29.html#l29-2">sandwich proof</a> supplies much more: for every <span class="math" data-tex="\(a\in N_+\)">\(a\in N_+\)</span>, every positive compact cutoff satisfies
+<span class="math math-display" data-tex="\[
+ 0\le j(f)a j(f)\le\|a\|j(f)^2,
+ \qquad j(f)a j(f)\longrightarrow a
+ \quad\hbox{strongly and ultraweakly}.
+ \tag{L29.8.c}
+\]">\[
+ 0\le j(f)a j(f)\le\|a\|j(f)^2,
+ \qquad j(f)a j(f)\longrightarrow a
+ \quad\hbox{strongly and ultraweakly}.
+ \tag{L29.8.c}
+\]</span>
+The order bound makes each sandwich integrable. The limit concerns the chosen <span class="math" data-tex="\(a\)">\(a\)</span>, and the sandwiches are not claimed to increase. Every positive element is consequently approximated, and every algebra element is a complex linear combination of four positives. This is the density used when <a href="OA-FLOW-L29.html#l29-4">Fourier uniqueness proves generation</a>.</p>
+<p><a id="l29-8-normality"></a>
+<strong>4. Covariance does not certify a normal extension.</strong> Let <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> act trivially on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and use the scalar representation <span class="math" data-tex="\(n\mapsto1\)">\(n\mapsto1\)</span>. Why can its integrated map not extend to a normal unital star homomorphism from the regular group von Neumann algebra <span class="math" data-tex="\(L^\infty(\mathbb T)\)">\(L^\infty(\mathbb T)\)</span>? What supplies normality in the recognition theorem?</p>
+<p><strong>Solution.</strong> On trigonometric polynomials the integrated map is evaluation at <span class="math" data-tex="\(1\)">\(1\)</span>. The polynomials contain constants, are closed under conjugation and separate points of <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>. The <a href="OA-FLOW-CF.html#oa-flow.cf.5">compact polynomial-density proof</a> makes them uniformly dense in <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>. A unital star homomorphism is contractive, so an extension would send each continuous <span class="math" data-tex="\(h\)">\(h\)</span> to <span class="math" data-tex="\(h(1)\)">\(h(1)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(d(z,1)\)">\(d(z,1)\)</span> be the shorter angular distance on the unit circle, in radians, and set
+<span class="math math-display" data-tex="\[
+ h_n(z)=\max\{1-n\,d(z,1),0\}\quad(n\ge1).
+ \tag{L29.8.d}
+\]">\[
+ h_n(z)=\max\{1-n\,d(z,1),0\}\quad(n\ge1).
+ \tag{L29.8.d}
+\]</span>
+These continuous functions lie in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, equal one at <span class="math" data-tex="\(1\)">\(1\)</span>, vanish outside the closed arc <span class="math" data-tex="\(d(z,1)\le1/n\)">\(d(z,1)\le1/n\)</span>, and decrease pointwise to the singleton indicator <span class="math" data-tex="\(1_{\{1\}}\)">\(1_{\{1\}}\)</span>. Haar measure of a singleton is zero: if its mass were <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, invariance would give mass <span class="math" data-tex="\(mc\)">\(mc\)</span> to any <span class="math" data-tex="\(m\)">\(m\)</span> distinct points, contradicting finite total mass. Therefore <span class="math" data-tex="\(h_n\downarrow0\)">\(h_n\downarrow0\)</span> in the order of <span class="math" data-tex="\(L^\infty(\mathbb T)\)">\(L^\infty(\mathbb T)\)</span>. A normal positive functional must have values decreasing to zero, by <a href="OA-FLOW-NF.html#oa-flow.nf.4">normality and bounded monotone limits</a>, applied to <span class="math" data-tex="\(1-h_n\)">\(1-h_n\)</span>. Evaluation gives value one for every <span class="math" data-tex="\(h_n\)">\(h_n\)</span>, a contradiction.</p>
+<p>In <a href="OA-FLOW-L29.html#l29-5">Section 5</a>, the actual unitary <span class="math" data-tex="\(W=\mathcal F_+D_u\)">\(W=\mathcal F_+D_u\)</span> identifies the entire regular crossed product with the range of a faithful normal coefficient representation. That comparison supplies both normality and faithfulness. The scalar pair here also has no compatible dual action: the unit <span class="math" data-tex="\(1\)">\(1\)</span> cannot be multiplied by every nontrivial character while remaining fixed by all unital automorphisms.</p>
+<p><a id="l29-8-period"></a>
+<strong>5. Periods and changes of eigenunitaries.</strong> Could the eigenunitary condition hold if some nonidentity <span class="math" data-tex="\(\eta\in H\)">\(\eta\in H\)</span> satisfies <span class="math" data-tex="\(\beta_\eta=\mathrm{id}\)">\(\beta_\eta=\mathrm{id}\)</span>? When it does hold, how does replacing <span class="math" data-tex="\(u_s\)">\(u_s\)</span> by <span class="math" data-tex="\(w_su_s\)">\(w_su_s\)</span> change the recovered action and crossed product?</p>
+<p><strong>Solution.</strong> The period assumption would give
+<span class="math math-display" data-tex="\[
+ u_s=\overline{\eta(s)}u_s\quad(s\in G),
+ \qquad\hbox{hence}\qquad \eta(s)=1\quad(s\in G).
+ \tag{L29.8.e}
+\]">\[
+ u_s=\overline{\eta(s)}u_s\quad(s\in G),
+ \qquad\hbox{hence}\qquad \eta(s)=1\quad(s\in G).
+ \tag{L29.8.e}
+\]</span>
+But an element of <span class="math" data-tex="\(H=\widehat G\)">\(H=\widehat G\)</span> is precisely such a character, and the one with all values one is the identity. This contradicts the chosen <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Thus the eigenunitary condition forces the action to be faithful; faithfulness alone is not asserted sufficient.</p>
+<p>For the second question, <a href="OA-FLOW-L29.html#l29-6">Section 6</a> proves that the other eigenunitary representations are exactly
+<span class="math math-display" data-tex="\[
+ u'_s=w_su_s,\qquad
+ w_s\in\mathcal U(M),\qquad
+ w_{s+t}=w_s\alpha_s(w_t),\qquad
+ \alpha'_s=\operatorname{Ad}(w_s)\alpha_s,
+ \tag{L29.8.f}
+\]">\[
+ u'_s=w_su_s,\qquad
+ w_s\in\mathcal U(M),\qquad
+ w_{s+t}=w_s\alpha_s(w_t),\qquad
+ \alpha'_s=\operatorname{Ad}(w_s)\alpha_s,
+ \tag{L29.8.f}
+\]</span>
+with <span class="math" data-tex="\(w\)">\(w\)</span> strongly continuous. Indeed, the representation law for <span class="math" data-tex="\(u'\)">\(u'\)</span> becomes the displayed cocycle law after moving <span class="math" data-tex="\(u_s\)">\(u_s\)</span> past <span class="math" data-tex="\(w_t\)">\(w_t\)</span>; the eigencharacters cancel in <span class="math" data-tex="\(u'_su_s^*\)">\(u'_su_s^*\)</span>, proving fixedness in the reverse direction. Bounded multiplication preserves continuity. There is no centrality requirement on <span class="math" data-tex="\(w_s\)">\(w_s\)</span>, and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> can be nontrivial.</p>
+<p>Let <span class="math" data-tex="\(\Phi_u\)">\(\Phi_u\)</span> and <span class="math" data-tex="\(\Phi_{u'}\)">\(\Phi_{u'}\)</span> be the two normal recognition isomorphisms onto <span class="math" data-tex="\(N\)">\(N\)</span>. Their composite <span class="math" data-tex="\(\Phi_u^{-1}\Phi_{u'}\)">\(\Phi_u^{-1}\Phi_{u'}\)</span> is the normal action-cocycle transport, explicitly
+<span class="math math-display" data-tex="\[
+ \pi_{\alpha'}(a)\longmapsto\pi_\alpha(a),\qquad
+ \lambda_{\alpha'}(s)\longmapsto\pi_\alpha(w_s)\lambda_\alpha(s).
+ \tag{L29.8.g}
+\]">\[
+ \pi_{\alpha'}(a)\longmapsto\pi_\alpha(a),\qquad
+ \lambda_{\alpha'}(s)\longmapsto\pi_\alpha(w_s)\lambda_\alpha(s).
+ \tag{L29.8.g}
+\]</span>
+Both assignments follow by applying the maps to their defining generators. They identify the two crossed products with the same given algebra and action. Products of arbitrary cocycles for one action need not be cocycles; the order and the intermediate action remain essential.</p>
+<p><span id="OA-FLOW.L29.READING"></span><a id="l29-reading"></a></p>
+<h2 id="further-reading">Further reading</h2>
+<p>The dual-system characterization is Proposition X.2.6 in Masamichi Takesaki, <em>Theory of Operator Algebras II</em>, printed pp. 263–265. The companion cocycle-conjugacy statement is Proposition X.2.5, printed p. 263. The proofs above include the generation argument, the normal model comparison and the cocycle formulas.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><span class="unlinked">Previous lesson</span><a href="OA-FLOW-L31.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L29.md">Lesson source</a></nav></main></body></html>

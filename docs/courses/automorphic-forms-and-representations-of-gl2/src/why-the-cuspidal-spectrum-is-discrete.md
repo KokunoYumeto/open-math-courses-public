@@ -1,6 +1,6 @@
 # Why the cuspidal spectrum is discrete
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The modular surface has a cusp of finite area and unbounded height. Finite area alone does not make its convolution operators compact. What supplies compactness on cusp forms is cancellation: the part of the kernel that survives at great height has a constant Fourier term, and a cusp form integrates to zero against that term. We will construct a bounded replacement kernel, prove its quantitative decay, and use positive compact operators to obtain a discrete representation spectrum with finite multiplicities.
 

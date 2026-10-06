@@ -2,7 +2,7 @@
 
 Adding two vectors pushes a function on a product back to the original vector space. When the pushforward counts fibres by Euler characteristic, this gives a convolution algebra of integer-valued constructible functions. A nonempty compact convex set determines a unit in this algebra. Its inverse remembers reflection, relative dimension and open boundary conditions.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Learn first Constructible functions and Euler integration, especially its bounded realizations with prescribed closed support, proper-on-support pushforward, compact Euler integration and duality. Perfect operations and finite microlocal coefficients supplies the finite supported coefficient complexes. We use the ordinary finite tensor Künneth comparison and the point-costalk comparison from those lessons and their stated sheaf-operation prerequisites. Compatible subanalytic triangulation and Boolean/proper-image facts retain their existing owned foundational obligations; their transitive closure remains open.
 

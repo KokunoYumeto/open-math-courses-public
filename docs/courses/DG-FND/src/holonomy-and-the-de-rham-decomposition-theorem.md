@@ -1,6 +1,6 @@
 # Holonomy and the de Rham decomposition theorem
 
-**Draft.** The decomposition results, worked examples, Berger–Simons transitivity theorem and classical and exceptional representation constructions below are proved. The quaternionic-circle and Spin(9) exclusions are also proved. The exhaustive classification of compact connected linear sphere-transitive groups is not yet developed in this chapter.
+**Draft.** The decomposition results, worked examples, Berger–Simons transitivity theorem and classical and exceptional representation constructions below are proved. The quaternionic-circle and Spin(9) exclusions are also proved. The reduction to transitive semisimple representations is proved. Their compact root-space and highest-weight foundations, and the complete finite root-system list, are proved. The exhaustive list of those representations is not yet developed in this chapter.
 
 Parallel transport compares tangent spaces along a path. When a subspace survives transport around every loop, it determines a distribution throughout the manifold. For a Riemannian metric, two orthogonal parallel distributions then give product coordinates in which each block of the metric depends only on its own coordinates. We establish that chain of implications below, including the topology and completeness of the leaves.
 
@@ -4916,6 +4916,1083 @@ This proves all the stated assertions. □
 
 **Proof.** The representation is irreducible by AB.1. Every algebraic curvature tensor valued in its holonomy algebra is invariant under the restricted holonomy group by AB.2. All hypotheses of Theorem U.5 hold, with dimension \(16\ge3\). That theorem, including its contracted-Bianchi argument and transport comparison, gives \(\nabla R=0\). Neither this argument nor U.5 assumes completeness or simple connectivity. □
 
+## AC. Reducing sphere actions to semisimple representations
+
+Let \(V\) be a nonzero finite-dimensional real inner-product space. For a group \(H\subseteq\mathrm O(V)\), write
+\[
+D_H=\{A\in\operatorname{End}_{\mathbb R}(V):Ah=hA\text{ for every }h\in H\}.
+\tag{AC.1}
+\]
+This is an associative real algebra, with multiplication given by composition. The next two lemmas establish the real, complex and quaternionic alternatives used in representation theory. They apply to any irreducible orthogonal action, without a connectedness assumption.
+
+**Lemma AC.1 (the full real commutant).** If \(H\) acts irreducibly on \(V\), then \(D_H\), with its adjoint operation, is isomorphic to precisely one of
+\[
+\begin{gathered}
+(\mathbb R,\text{identity}),\\
+(\mathbb C,\text{complex conjugation}),\\
+(\mathbb H,\text{quaternionic conjugation}).
+\end{gathered}
+\tag{AC.2}
+\]
+More explicitly, its self-adjoint part is \(\mathbb RI\). Its skew-adjoint part has dimension \(0\), \(1\) or \(3\). In the one-dimensional case it is \(\mathbb RJ\), where \(J^2=-I\). In the three-dimensional case it has an orthonormal basis \(J,K,JK\), where
+\[
+J^2=K^2=-I,\qquad JK=-KJ.
+\tag{AC.3}
+\]
+Here the inner product on the skew-adjoint part is
+\(-\operatorname{tr}(AB)/\dim_{\mathbb R}V\). The orthogonal elements of \(D_H\) are respectively the real scalars \(\{\pm I\}\), a unit circle, and the unit quaternions.
+
+**Proof.** If \(A\in D_H\) is nonzero, its kernel and image are \(H\)-invariant. Irreducibility makes its kernel zero and its image all of \(V\), so \(A\) is invertible. Its inverse commutes with \(H\), by multiplying \(Ah=hA\) on both sides. Also \(A^*\in D_H\): take adjoints in the same equation and use \(h^*=h^{-1}\). Thus the symmetric and skew parts of \(A\) both belong to \(D_H\).
+
+The self-adjoint commutant argument proved in F.1 makes the symmetric part scalar. Write
+\[
+D_H=\mathbb RI\oplus E,\qquad E=\{A\in D_H:A^*=-A\}.
+\tag{AC.4}
+\]
+For \(A\in E\), the self-adjoint operator \(A^2\) is scalar. Taking traces and using the component formula in F.1 gives
+\[
+A^2=-\|A\|_E^2I,\qquad
+AB+BA=-2(A,B)_E I\quad(A,B\in E).
+\tag{AC.5}
+\]
+The second identity follows by applying the first to \(A+B\) and subtracting. The trace form is positive definite on \(E\), again by its sum-of-squares formula.
+
+If \(E\ne0\), normalize any nonzero element to obtain \(J^2=-I\). If \(E\ne\mathbb RJ\), choose a unit \(K\in E\) perpendicular to \(J\). Equation (AC.5) gives \(JK=-KJ\). The product \(L=JK\) is skew-adjoint, since \(L^*=KJ=-JK\), and \(L^2=-I\). It anticommutes with each of \(J,K\), so (AC.5) says that it is perpendicular to each. It has norm one.
+
+There cannot be a nonzero \(A\in E\) perpendicular to \(J,K,L\). Such an \(A\) would anticommute with all three by (AC.5), but associativity gives
+\[
+AL=AJK=-JAK=JKA=LA.
+\]
+Consequently \(LA=0\). The invertibility of \(L\) gives \(A=0\), a contradiction. Orthogonal projection now proves that \(E=\operatorname{span}_{\mathbb R}\{J,K,JK\}\) whenever its dimension exceeds one. It follows that the only dimensions are \(0,1,3\).
+
+In the three-dimensional case (AC.3), associativity and \(L=JK\) give
+\(KL=J\), \(LJ=K\), and the negatives in the reversed orders. Together with the three squares \(-I\), these are exactly the quaternion multiplication rules of Y.1. The map taking \(1,i,j,k\) to \(I,J,K,L\) is therefore an algebra isomorphism. The one-dimensional case similarly identifies \(a+bi\) with \(aI+bJ\). The three algebras have distinct real dimensions, so the alternatives are disjoint.
+
+For \(T=aI+A\), \(A\in E\), equations (AC.4)–(AC.5) give
+\[
+T^*=aI-A,\qquad T^*T=(a^2+\|A\|_E^2)I.
+\tag{AC.6}
+\]
+This proves both the stated adjoint and the description of the orthogonal elements.
+
+The quaternionic alternative also forces \(\dim_{\mathbb R}V\) to be divisible by four. For a unit vector \(v\), the four vectors \(v,Jv,Kv,Lv\) are orthonormal: diagonal norms follow from orthogonality, and every mixed inner product reduces to \(\langle v,Av\rangle=0\) for one of the skew operators \(J,K,L\). Their span is stable under these operators by the multiplication rules, and its orthogonal complement is stable because the operators are skew-adjoint. Induction decomposes \(V\) into such four-dimensional subspaces. The analogous two-dimensional argument for \(J\) was proved in F.1. □
+
+**Lemma AC.2 (real, complex and quaternionic representation types).** Let \(H\) act irreducibly and orthogonally on \(V\). Exactly the following three alternatives occur.
+
+1. If \(D_H=\mathbb RI\), then the complexification \(V_{\mathbb C}\) is complex irreducible and has its usual \(H\)-invariant conjugation with square \(I\).
+2. If \(D_H\cong\mathbb C\), choose \(J\) as in AC.1 and let \(W=(V,J)\). Then \(W\) is complex irreducible, its conjugate representation \(\overline W\) is inequivalent to it, and
+\[
+V_{\mathbb C}\cong W\oplus\overline W.
+\tag{AC.7}
+\]
+3. If \(D_H\cong\mathbb H\), choose \(J,K\) as in AC.1 and again put \(W=(V,J)\). Then \(W\) is complex irreducible, \(K\) is an \(H\)-invariant conjugate-linear operator on \(W\) with \(K^2=-I\), and
+\[
+V_{\mathbb C}\cong W\oplus W.
+\tag{AC.8}
+\]
+There is no \(H\)-invariant conjugate-linear involution on this \(W\). In either of the last two alternatives, the complex-linear commutant of \(W\) consists of the complex scalars.
+
+**Proof.** Equip \(V_{\mathbb C}\) with the Hermitian inner product extending a real orthonormal basis of \(V\). The complex orthonormal-basis construction in Y.2 gives orthogonal complements and their projections. Since every \(h\in H\) has a real orthogonal matrix, it is unitary for this product. If \(U\subset V_{\mathbb C}\) is a complex invariant subspace, so is \(U^\perp\): for \(u\in U\) and \(w\perp U\), the identity
+\(\langle hw,u\rangle=\langle w,h^{-1}u\rangle=0\)
+proves this. Thus the Hermitian orthogonal projection \(P\) onto \(U\) commutes with \(H\).
+
+Write its complex matrix in that real basis as \(P=A+iB\), with \(A,B\) real. Commutation with the real matrices of \(H\) gives \(A,B\in D_H\). If \(D_H=\mathbb RI\), write \(A=aI\), \(B=bI\). The equation \(P^*=P\) forces \(b=0\), and \(P^2=P\) forces \(a=0\) or \(a=1\). Hence \(U=0\) or \(V_{\mathbb C}\). This proves complex irreducibility. The ordinary conjugation fixes \(V\), commutes with every real matrix, and squares to \(I\).
+
+In either remaining case, \(J\) commutes with \(H\), so \(W=(V,J)\) is a complex representation. Any nonzero complex invariant subspace would also be a nonzero real invariant subspace of \(V\), hence would be all of \(V\). This proves complex irreducibility without an appeal to a complex Schur lemma.
+
+Extend \(J\) complex-linearly to \(V_{\mathbb C}\). Its two eigenspaces have eigenvalues \(i,-i\), and the projections onto them are
+\(\frac12(I-iJ)\), \(\frac12(I+iJ)\). Their sum is \(I\), their product is zero, and their images exhaust \(V_{\mathbb C}\). The maps
+\[
+v\longmapsto v-iJv,\qquad
+v\longmapsto v+iJv
+\tag{AC.9}
+\]
+identify these two eigenspaces with \(W\) and \(\overline W\), respectively. To verify surjectivity, write an \(i\)-eigenvector as \(a+ib\), with \(a,b\in V\). Comparing real and imaginary parts gives \(b=-Ja\); the other eigenspace has \(b=Ja\). The first map is complex-linear because its value at \(Jv\) is \(i(v-iJv)\); the second has the corresponding property for multiplication by \(i\) equal to \(-J\) on \(\overline W\). Both commute with \(H\). This proves (AC.7) in both cases.
+
+A complex-linear endomorphism of \(W\) commuting with \(H\) is exactly an element \(A\in D_H\) satisfying \(AJ=JA\). In \(\mathbb C\) every element has this property. In \(\mathbb H\), write \(A=aI+bJ+cK+dJK\) and use (AC.3); the equation forces \(c=d=0\). In both cases this commutant is \(\mathbb RI+\mathbb RJ\), the complex scalars.
+
+A complex-linear map \(W\to\overline W\) commuting with \(H\), regarded as a real map on \(V\), instead satisfies \(AJ=-JA\). In the complex alternative, substituting \(A=aI+bJ\) forces \(a=b=0\). Thus no isomorphism \(W\cong\overline W\) exists there. In the quaternionic alternative, every such map is \(cK+dJK\). The particular map \(K\) is invertible, commutes with \(H\), anticommutes with \(J\), and has square \(-I\). It identifies \(\overline W\) with \(W\), converting (AC.7) into (AC.8). Finally
+\[
+(cK+dJK)^2=-(c^2+d^2)I
+\tag{AC.10}
+\]
+by the quaternion rules, so no such map squares to \(I\). This proves all the stated distinctions. □
+
+**Lemma AC.3 (the semisimple subgroup and the central circle).** Suppose now that \(H\subseteq\mathrm O(V)\) is a connected compact Lie subgroup acting irreducibly, with Lie algebra \(\mathfrak h\). Then
+\[
+\mathfrak h=\mathfrak s\oplus\mathfrak z,\qquad
+\mathfrak s=[\mathfrak h,\mathfrak h],\qquad
+\mathfrak z=\{Z\in\mathfrak h:[Z,\mathfrak h]=0\}
+\tag{AC.11}
+\]
+is an orthogonal direct sum for the positive trace form \(-\operatorname{tr}(XY)\). The algebra \(\mathfrak s\) is a direct sum of nonabelian simple ideals. The centre \(\mathfrak z\) has dimension at most one.
+
+There is a connected closed compact subgroup \(S\triangleleft H\) with Lie algebra \(\mathfrak s\). If \(\mathfrak z=0\), then \(H=S\). Otherwise \(\mathfrak z=\mathbb RJ\), where \(J^2=-I\), and
+\[
+Z=\{\cos t\,I+\sin t\,J:t\in\mathbb R\},\qquad
+H=SZ,\qquad SZ=ZS.
+\tag{AC.12}
+\]
+In both cases \(S=[H,H]\), where the right side means the group generated by all commutators, without taking its closure.
+
+**Proof.** In this proof the bracket of two linear subspaces means the linear span of all brackets of their elements. Jacobi shows that \(\mathfrak s=[\mathfrak h,\mathfrak h]\) is an ideal. Trace cyclicity, established in F.1, gives
+\[
+([X,Y],T)_*=(X,[Y,T])_*.
+\tag{AC.13}
+\]
+It follows that \(X\perp\mathfrak s\) exactly when \([X,Y]=0\) for every \(Y\in\mathfrak h\): apply (AC.13) for all \(Y,T\), and use nondegeneracy. Thus \(\mathfrak s^\perp=\mathfrak z\), proving (AC.11).
+
+The centre of \(\mathfrak s\) is zero. Indeed an element commuting with \(\mathfrak s\) and belonging to it also commutes with \(\mathfrak z\), hence lies in \(\mathfrak s\cap\mathfrak z=0\). Every ideal \(\mathfrak a\subseteq\mathfrak s\) has an orthogonal complementary ideal, by (AC.13), and the two ideals commute because their bracket belongs to their intersection. If \(\mathfrak a\) is abelian, then for \(X\in\mathfrak s\) and \(A,B\in\mathfrak a\),
+\[
+([X,A],B)_*=(X,[A,B])_*=0.
+\]
+Since \([X,A]\in\mathfrak a\), it is zero, making \(\mathfrak a\) central in \(\mathfrak s\); therefore \(\mathfrak a=0\).
+
+If \(\mathfrak s\ne0\), choose a nonzero ideal of least positive dimension and split off its orthogonal complement. It is nonabelian by the preceding paragraph. Any ideal inside it is also an ideal of \(\mathfrak s\), since the complementary ideal commutes with it; minimality therefore says that it is simple. Repeat on the orthogonal complement. The dimension strictly decreases, so this gives a finite direct sum of nonabelian simple ideals, including the empty sum when \(\mathfrak s=0\).
+
+An element of \(\mathfrak z\) commutes with the exponentials of \(\mathfrak h\), and hence with \(H\) by F.1. Thus \(\mathfrak z\) is an abelian subspace of the skew-adjoint part of \(D_H\). AC.1 shows that such a subspace has dimension at most one. In the quaternionic case, for example, if two independent imaginary elements commute, subtract a multiple of one from the other to make them nonzero and orthogonal. Equation (AC.5) then makes them anticommute too. Their product would be zero, contrary to invertibility. The other two cases are immediate from their dimensions.
+
+Lemma U.3 integrates the ideal \(\mathfrak s\) to a connected closed compact normal subgroup \(S\) of \(H\). If \(\mathfrak z\ne0\), normalize its generator by AC.5 to get \(J^2=-I\). The matrix exponential series, or the matrix ODE with its initial value, gives
+\(\exp(tJ)=\cos t\,I+\sin t\,J\).
+Its image \(Z\) is a compact connected circle: its coordinates relative to \(I,J\) are exactly the unit circle in \(\mathbb R^2\). It commutes with \(H\). Every \(X\in\mathfrak h\) is \(X_s+tJ\); commutation and uniqueness for the matrix ODE give
+\(\exp X=\exp X_s\,\exp(tJ)\).
+Connected exponential generation therefore gives \(H=SZ\). If \(\mathfrak z=0\), that same generation gives \(H=S\).
+
+It remains to verify the assertion about the group commutator, so that no closedness convention is hidden in it. First \(H=SZ\) with \(Z\) central implies \([H,H]\subseteq S\). For the reverse inclusion consider
+\[
+E=\operatorname{span}_{\mathbb R}\{\operatorname{Ad}(g)X-X:g\in S,\ X\in\mathfrak s\}.
+\]
+An element of \(\mathfrak s\) perpendicular to \(E\) is fixed by every \(\operatorname{Ad}(g)\), by invariance of the trace form. Differentiating at \(\exp(tX)\) makes it central in \(\mathfrak s\), hence zero. Therefore \(E=\mathfrak s\). Choose pairs \(g_j,X_j\) such that \(\operatorname{Ad}(g_j)X_j-X_j\), \(1\le j\le d=\dim\mathfrak s\), are a basis. The smooth map
+\[
+(t_1,\ldots,t_d)\longmapsto
+\prod_{j=1}^d\bigl(g_j\exp(t_jX_j)g_j^{-1}\exp(-t_jX_j)\bigr)
+\tag{AC.14}
+\]
+has invertible differential at zero as a map into \(S\). The inverse-function theorem of Local tools 1.2 puts an open identity neighbourhood of \(S\) in \([S,S]\). A subgroup containing such a neighbourhood is open, and its other cosets are open, so connectedness makes it all of \(S\), as in F.1. Hence \(S=[S,S]\subseteq[H,H]\). If \(d=0\), \(S=\{I\}\) and the conclusion is immediate. □
+
+**Lemma AC.4 (the tangent test for sphere transitivity).** Let \(K\subseteq\mathrm O(V)\) be a compact Lie subgroup, let \(\mathfrak k\) be its Lie algebra, and suppose \(n=\dim_{\mathbb R}V\ge2\). The following are equivalent:
+\[
+\begin{array}{ll}
+\text{(i)}&K\text{ is transitive on }S(V),\\
+\text{(ii)}&\mathfrak k v=v^\perp\text{ for every unit }v,\\
+\text{(iii)}&\mathfrak k v=v^\perp\text{ for some unit }v.
+\end{array}
+\tag{AC.15}
+\]
+Under these conditions the orbit map \(K\to S(V)\), \(k\mapsto kv\), has smooth local sections.
+
+**Proof.** The derivative of the orbit map at the identity sends \(X\) to \(Xv\). Skew-adjointness gives \(Xv\perp v\). Its rank is the same at every point \(k\in K\), since its derivative on the translated tangent vector \(kX\) is \(kXv\). Write this constant rank as \(r\).
+
+Suppose first that the orbit map is onto but \(r<n-1\). The constant-rank theorem, [Local tools, Corollary 1.4](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion), gives source and target charts in which each local image lies in an \(r\)-dimensional coordinate plane. Around every point of the compact manifold \(K\), choose a smaller coordinate ball with compact closure inside such a source chart. A finite number of these smaller balls cover \(K\). The image of each closure is compact, hence closed in the sphere by Local tools 0.1, and lies in a coordinate plane of dimension less than \(n-1\). It has empty interior in the sphere: in the target chart any nonempty open ball has a point with a nonzero coordinate normal to that plane.
+
+A finite union of closed sets with empty interior cannot cover a nonempty manifold. Indeed start with a nonempty open set. Removing the first closed set leaves a nonempty open set, since otherwise the first set had interior. Repeat with each of the finitely many sets. The final nonempty open set misses their union. This contradicts surjectivity. Therefore \(r=n-1\), proving (i) implies (ii). Implication (ii) to (iii) is immediate.
+
+If (iii) holds, choose \(X_1,\ldots,X_{n-1}\in\mathfrak k\) whose values at \(v\) are a basis of \(v^\perp\). The map
+\[
+(t_1,\ldots,t_{n-1})\longmapsto
+\exp(t_1X_1)\cdots\exp(t_{n-1}X_{n-1})v
+\tag{AC.16}
+\]
+has invertible differential at zero in a sphere chart. Local tools 1.2 makes its image contain a neighbourhood of \(v\). Group translation does the same at every point of the orbit. The orbit is closed because \(K\) is compact. The sphere is connected for \(n\ge2\), by the normalized-segment paths of Y.2. This nonempty open and closed orbit is thus the whole sphere, proving (i).
+
+The local inverse of (AC.16), followed by its product of exponentials in \(K\), is a smooth local section of the orbit map near \(v\). Translating this section by any \(k\in K\) gives one near \(kv\). These points exhaust the sphere. □
+
+**Theorem AC.5 (the semisimple subgroup stays transitive).** Let \(H\subseteq\mathrm{SO}(V)\) be connected and compact and transitive on \(S(V)\), with \(n=\dim_{\mathbb R}V\ge3\). Then its connected compact commutator subgroup \(S\) from AC.3 is also transitive on \(S(V)\). In particular the action of \(S\) is real irreducible.
+
+**Proof.** Transitivity makes \(H\) irreducible: any nonzero invariant subspace contains a unit vector, hence its whole orbit, the unit sphere. AC.3 therefore applies. If \(\mathfrak z=0\), then \(H=S\) and there is nothing to prove. Suppose \(\mathfrak z=\mathbb RJ\) and write \(H=SZ\) as in (AC.12).
+
+Assume for contradiction that \(S\) is not transitive. Fix a unit \(v\). By AC.4, \(\mathfrak s v\ne v^\perp\), whereas
+\[
+v^\perp=\mathfrak h v=\mathfrak s v+\mathbb RJv.
+\]
+Thus \(\mathfrak s v\) has codimension one in \(v^\perp\) and \(Jv\notin\mathfrak s v\). If \(X+tJ\in\mathfrak h\) fixes \(v\), with \(X\in\mathfrak s\), then \(Xv+tJv=0\), forcing \(t=0\). Define the linear functional
+\[
+\phi:\mathfrak h\longrightarrow\mathbb R,\qquad \phi(X+tJ)=t.
+\tag{AC.17}
+\]
+It vanishes on the stabilizer algebra at \(v\), and it vanishes on every bracket by (AC.11). It is invariant under \(\operatorname{Ad}(H)\), since \(\mathfrak s\) is invariant and \(J\) is central.
+
+There is consequently a well-defined \(H\)-invariant smooth one-form \(\alpha\) on \(S(V)\), specified at \(v\) by
+\[
+\alpha_v(Av)=\phi(A)\qquad(A\in\mathfrak h).
+\tag{AC.18}
+\]
+Well-definedness follows because the kernel of \(A\mapsto Av\) is annihilated by \(\phi\). To extend to \(kv\), set \(\alpha_{kv}(kw)=\alpha_v(w)\). If \(k\) is changed by a stabilizer element \(a\), then
+\(aAv=(\operatorname{Ad}(a)A)v\); invariance of \(\phi\) proves independence of that choice, even if the stabilizer is disconnected. Smoothness follows from the local sections in AC.4, which make this formula smooth in a neighbourhood of each point.
+
+We check that \(\alpha\) is closed. Pull it back by the orbit map \(f:H\to S(V)\). On a left-translated tangent vector \(kA\),
+\[
+(f^*\alpha)_k(kA)=\alpha_{kv}(kAv)=\phi(A).
+\tag{AC.19}
+\]
+Thus \(f^*\alpha\) is the left-invariant one-form with value \(\phi\) at the identity. For left-invariant vector fields \(A^L,B^L\), the defining formula for exterior differentiation gives
+\[
+d(f^*\alpha)(A^L,B^L)
+=A^L(\phi(B))-B^L(\phi(A))-\phi([A,B])=0.
+\tag{AC.20}
+\]
+Here their bracket is the left-invariant field with value \([A,B]\): the fields have matrix values \(kA,kB\), and their bracket is \(kAB-kBA\) by differentiating these linear functions. The two scalar functions in (AC.20) are constant. These fields span every tangent space, so the pulled-back exterior derivative is zero. Pullback commutes with exterior differentiation directly in coordinates: for a one-form \(\sum_i a_i(y)\,dy_i\) the pullback is \(\sum_i a_i(f(x))\,d f_i\); differentiation gives \(\sum_{i,j}(\partial_j a_i)(f(x))\,d f_j\wedge d f_i\), since the symmetric second derivatives of \(f_i\) cancel in \(d(d f_i)\). This is the pullback of the original exterior derivative. Since \(f\) has local sections, pulling back along a section gives \(d\alpha=0\) on each sphere chart.
+
+For clarity we prove the exactness fact needed on this sphere. Any smooth closed one-form \(\beta=\sum_{j=1}^{d}b_j(x)\,dx_j\) on \(\mathbb R^d\) has potential
+\[
+F(x)=\int_0^1\sum_j b_j(tx)x_j\,dt.
+\tag{AC.21}
+\]
+Closedness is the equation \(\partial_k b_j=\partial_j b_k\). Differentiation under this integral is justified on each compact coordinate neighbourhood by uniform continuity of the derivatives and the difference-quotient estimate of Local tools 0.3. Hence
+\[
+\begin{aligned}
+\partial_k F(x)
+&=\int_0^1\left(b_k(tx)+t\sum_j x_j\partial_k b_j(tx)\right)\,dt\\
+&=\int_0^1\frac d{dt}\bigl(t\,b_k(tx)\bigr)\,dt
+=b_k(x).
+\end{aligned}
+\tag{AC.22}
+\]
+Repeated differentiation also makes \(F\) smooth. This proves \(dF=\beta\).
+
+Put \(d=n-1\ge2\). The two stereographic charts on \(S^d\), obtained by deleting the north or south pole, are each diffeomorphic to \(\mathbb R^d\). Explicitly one inverse chart is
+\[
+x\longmapsto
+\left(\frac{2x}{1+|x|^2},\frac{|x|^2-1}{1+|x|^2}\right);
+\tag{AC.23}
+\]
+its inverse is \(x=y/(1-t)\) for a sphere point \((y,t)\) with \(t\ne1\). The other chart changes the sign of the last coordinate. Their overlap is connected: deleting both poles gives the explicit product coordinates
+\((u,t)\mapsto(\sqrt{1-t^2}\,u,t)\), with \(u\in S^{d-1}\) and \(-1<t<1\). The sphere \(S^{d-1}\) is path connected by Y.2, as \(d-1\ge1\).
+
+Apply (AC.21)–(AC.22) to the pullback of \(\alpha\) in each chart. The two resulting potentials differ by a constant on the overlap, since their difference has zero derivative and integration along piecewise smooth paths makes it constant there. Adjust one by that constant. They then glue to a smooth real function \(F\) on \(S^d\) satisfying \(dF=\alpha\).
+
+The compact sphere has a maximum point of \(F\), by Local tools 0.1. Differentiation along each tangent direction in a local chart gives \(dF=0\) at that point. But (AC.18) gives \(\alpha_v(Jv)=1\), and \(H\)-invariance and transitivity make \(\alpha\) nonzero at every point. This contradiction proves that \(S\) is transitive. Its real irreducibility follows from the same invariant-subspace argument used for \(H\). The restriction \(n\ge3\) is essential: the connected rotation group of a plane has trivial commutator subgroup. □
+
+**Corollary AC.6 (recovering the central extensions).** Let \(n\ge3\). The classification of connected compact subgroups of \(\mathrm{SO}(n)\) transitive on the unit sphere reduces to the classification of their transitive semisimple subgroups \(S=[H,H]\), together with the following alternatives:
+
+- If \(D_S\cong\mathbb R\), then \(H=S\).
+- If \(D_S\cong\mathbb C\), then \(H=S\) or \(H=S\{\cos t\,I+\sin t\,J\}\), where \(J\) spans the imaginary part of \(D_S\).
+- If \(D_S\cong\mathbb H\), then \(H=S\) or \(H=S\{\cos t\,I+\sin t\,J\}\), where \(J\) is any unit imaginary element of \(D_S\). All choices of this circle give orthogonally conjugate groups by conjugations that fix \(S\) elementwise.
+
+Each displayed extension is a compact connected transitive matrix group. In a nontrivial circle extension the multiplication map \(S\times S^1\to H\) has finite central kernel. For \(n=2\) the only connected sphere-transitive subgroup is \(\mathrm{SO}(2)\).
+
+**Proof.** By AC.5, \(S\) is transitive and hence real irreducible, so AC.1 describes \(D_S\). AC.3 writes \(H=SZ\) with \(\dim Z\le1\). If \(Z\ne\{I\}\), its generator is a skew-adjoint element \(J\in D_S\), normalized to square to \(-I\). This is impossible in the real case, unique up to sign in the complex case, and a unit imaginary quaternion in the quaternionic case. This gives every asserted alternative without assuming a classification of the semisimple possibilities.
+
+We verify the conjugacy assertion explicitly. In the quaternion algebra \(D_S\), let \(a,b\) be unit imaginary elements. If \(b\ne-a\), put \(u=1-ba\). Then \(u\ne0\), because \(ba=1\) would imply \(b=a^{-1}=-a\), and
+\[
+ua=a+b=bu.
+\]
+Normalize \(u\) by its positive norm from (AC.6); the resulting orthogonal operator \(q\in D_S\) satisfies \(qaq^{-1}=b\). If \(b=-a\), choose a unit imaginary \(c\perp a\), possible in the three-dimensional space of AC.1. Anticommutation gives \(cac^{-1}=-a=b\), so take \(q=c\). In both cases \(q\) commutes with \(S\), conjugates the first circle onto the second, and thus conjugates the extensions. These are orthogonal conjugacies, which suffice to identify the representations.
+
+Conversely any circle in \(D_S\) commutes with \(S\). Multiplication is a homomorphism from the compact connected product \(S\times S^1\). Its image is compact and connected, hence closed in the matrix group, and contains the transitive subgroup \(S\); it is therefore transitive. Its orthogonal determinant is one by connectedness, as in F.2.
+
+The kernel consists of \((s,z)\) with \(s=z^{-1}\in S\cap S^1\). This intersection is central in \(S\). Its Lie algebra is zero: any element of its Lie algebra belongs to \(\mathfrak s\) and commutes with \(\mathfrak s\), whereas the latter has zero centre by AC.3. The closed-subgroup theorem in Invariant connections A.1 makes the intersection an embedded zero-dimensional Lie group, thus discrete. It is compact as a closed subset of the circle, so its isolating neighbourhoods have a finite subcover and it is finite. The kernel is consequently finite and central.
+
+Finally a matrix in \(\mathrm{SO}(2)\) has, in an oriented orthonormal basis, the form \(\left(\begin{smallmatrix}a&-b\\ b&a\end{smallmatrix}\right)\), with \(a^2+b^2=1\), as follows by choosing its first column and the unique positively oriented perpendicular second column. There is exactly one such matrix taking the first basis vector to each unit vector. Any subgroup transitive on that circle must contain every such matrix, so equals \(\mathrm{SO}(2)\). □
+
+## AD. Compact root spaces and highest weights
+
+The semisimple subgroup in AC.5 acts by orthogonal matrices. Its Lie algebra therefore has a positive invariant inner product. This allows the root and highest-weight arguments needed below to be proved directly with adjoints. The free author notes of Kirillov listed in Further reading supply the rank-one and highest-weight constructions. All proof prerequisites are established below or in the earlier sections cited explicitly.
+
+All complex Hermitian products in this section are linear in the first variable. The adjoint convention is \(\langle Ax,y\rangle=\langle x,A^*y\rangle\). A unitary representation of a real Lie algebra means a finite-dimensional complex representation in which its real elements act by skew-adjoint operators.
+
+**Lemma AD.1 (Hermitian linear algebra and complete reducibility).** A Hermitian operator on a finite-dimensional complex inner-product space has an orthonormal basis of eigenvectors, with real eigenvalues. Any finite family of commuting Hermitian operators has a common such basis. A unitary representation of a real Lie algebra is an orthogonal sum of irreducible complex representations. The complex endomorphisms commuting with an irreducible unitary representation are exactly the complex scalars. Between two irreducible unitary representations, a nonzero intertwiner is an isomorphism; the space of intertwiners is then one-dimensional.
+
+**Proof.** Regard the complex space \(W\) as a real space with product \(\operatorname{Re}\langle\cdot,\cdot\rangle\) and complex structure \(Jx=ix\). A Hermitian operator is real symmetric and commutes with \(J\). The real spectral theorem, proved in H.2 by maximizing the Rayleigh quotient and inducting on the orthogonal complement, decomposes \(W\) into real orthogonal eigenspaces with real eigenvalues. Each eigenspace is \(J\)-invariant. Complex Gram–Schmidt, whose subtraction and normalization are proved in Y.2, gives a complex orthonormal basis in each. Distinct real eigenspaces are also Hermitian orthogonal: real orthogonality to both \(y\) and \(iy\) forces both parts of \(\langle x,y\rangle\) to vanish.
+
+For a commuting family, every operator preserves every eigenspace of the first. Apply the same argument on those spaces for the second operator and continue through the finite family. A commuting vector space of Hermitian operators is covered by choosing a finite basis of that vector space.
+
+If \(U\subset W\) is invariant under skew-adjoint operators, so is \(U^\perp\), since
+\[
+\langle Xv,u\rangle=-\langle v,Xu\rangle=0
+\quad(v\in U^\perp,\ u\in U).
+\tag{AD.1}
+\]
+Choose a nonzero invariant subspace of least positive dimension and repeat on its orthogonal complement. This terminates and proves complete reducibility.
+
+If \(T\) commutes with all the skew-adjoint operators, then \(T^*\) does too. Both
+\[
+A=\frac{T+T^*}{2},
+\qquad B=\frac{T-T^*}{2i}
+\tag{AD.2}
+\]
+are commuting endomorphisms of the representation and are Hermitian. Each eigenspace of either is invariant, so irreducibility makes \(A\) and \(B\) real scalar operators. Hence \(T\) is complex scalar. Finally, the kernel and image of an intertwiner are invariant. A nonzero intertwiner between irreducibles is therefore invertible, and composing any other intertwiner with its inverse proves the last assertion. □
+
+**Lemma AD.2 (the unitary rank-one calculation).** Suppose operators \(E,F,H\) on a finite-dimensional Hermitian space satisfy
+\[
+[H,E]=2E,\qquad [H,F]=-2F,\qquad [E,F]=H,
+\qquad E^*=F,\quad H^*=H.
+\tag{AD.3}
+\]
+The space is an orthogonal sum of invariant strings. A string has, for a unique integer \(m\geq0\), a basis \(v_0,\ldots,v_m\) on which
+\[
+\begin{aligned}
+Hv_j&=(m-2j)v_j,\\
+Fv_j&=v_{j+1}\quad(0\leq j<m),\qquad Fv_m=0,\\
+Ev_0&=0,\qquad Ev_j=j(m-j+1)v_{j-1}\quad(1\leq j\leq m).
+\end{aligned}
+\tag{AD.4}
+\]
+Its weight spaces are one-dimensional and the string is irreducible. In particular all eigenvalues of \(H\) are integers. Up to isomorphism there is exactly one irreducible string for each \(m\).
+
+**Proof.** By AD.1, \(H\) has a largest eigenvalue \(m\) and a nonzero eigenvector \(v_0\). The first relation in (AD.3) makes \(Ev_0\) an eigenvector of eigenvalue \(m+2\), unless it is zero. Maximality therefore gives \(Ev_0=0\). Put \(v_j=F^jv_0\). Induction using the commutators gives
+\[
+Hv_j=(m-2j)v_j,\qquad
+EF^jv_0=j(m-j+1)F^{j-1}v_0.
+\tag{AD.5}
+\]
+For the second formula, commute the leftmost \(E\) past one \(F\), use \(EF=FE+H\), and use the first formula on \(F^{j-1}v_0\). The coefficient changes from \((j-1)(m-j+2)\) to that number plus \(m-2j+2\), which equals \(j(m-j+1)\).
+
+Different nonzero \(v_j\) have distinct real eigenvalues and are independent. Finite dimension gives a largest \(N\) with \(v_N\ne0\), followed by \(v_{N+1}=0\). Substitution into (AD.5) yields
+\[
+0=(N+1)(m-N)v_N,
+\]
+so \(m=N\) is a nonnegative integer. The vectors \(v_0,\ldots,v_m\) are all nonzero: an earlier zero would force all subsequent vectors to be zero. Moreover
+\[
+\|v_j\|^2
+=\langle Fv_{j-1},v_j\rangle
+=j(m-j+1)\|v_{j-1}\|^2.
+\tag{AD.6}
+\]
+Their span is invariant under \(E,F,H\). Any invariant subspace of this span is invariant under polynomials in \(H\). For each of its finitely many distinct eigenvalues, the polynomial that is one there and zero at the others projects onto that weight line. A nonzero invariant subspace consequently contains a \(v_j\); repeated \(E\), with the nonzero coefficients in (AD.4), reaches \(v_0\), and repeated \(F\) reaches every \(v_j\). This proves irreducibility.
+
+The orthogonal complement of the string is invariant, because the adjoints of the three operators belong to their span. Induction on dimension proves the decomposition. The displayed matrices prove uniqueness. Conversely these matrices for any \(m\geq0\), with orthogonal basis and the positive norms prescribed by (AD.6), satisfy (AD.3), so every asserted string exists. □
+
+**Lemma AD.3 (root spaces of a compact centreless algebra).** Let \(\mathfrak k\) be a nonzero real Lie algebra of skew-adjoint endomorphisms with zero centre. Choose a maximal abelian subalgebra \(\mathfrak t\), set
+\[
+\mathfrak g=\mathfrak k\otimes_{\mathbb R}\mathbb C,
+\qquad \mathfrak a=i\mathfrak t,
+\qquad \mathfrak h=\mathfrak t\otimes_{\mathbb R}\mathbb C
+                  =\mathfrak a\otimes_{\mathbb R}\mathbb C,
+\tag{AD.7}
+\]
+and let \(\sigma\) denote conjugation with fixed real space \(\mathfrak k\). There is a finite spanning set \(R\subset\mathfrak a^*\setminus\{0\}\) such that
+\[
+\mathfrak g=\mathfrak h\oplus\bigoplus_{\alpha\in R}\mathfrak g_\alpha,
+\qquad
+\mathfrak g_\alpha=\{X:[H,X]=\alpha(H)X\ \text{for all }H\in\mathfrak a\}.
+\tag{AD.8}
+\]
+Every \(\mathfrak g_\alpha\) is one-dimensional. The form
+\(\kappa(X,Y)=\operatorname{tr}_{\mathfrak g}(\operatorname{ad}X\operatorname{ad}Y)\)
+is positive definite on the real space \(\mathfrak a\); it identifies \(\mathfrak a^*\) with a Euclidean space. Write \((\alpha,\beta)\) for the induced product and \(T_\alpha\in\mathfrak a\) for the vector dual to \(\alpha\). One can choose
+\[
+E_\alpha\in\mathfrak g_\alpha,\qquad
+F_\alpha=-\sigma E_\alpha\in\mathfrak g_{-\alpha},
+\qquad
+H_\alpha=\frac{2T_\alpha}{(\alpha,\alpha)}
+\tag{AD.9}
+\]
+so that they satisfy the three commutators in (AD.3). On every unitary \(\mathfrak k\)-module their operators satisfy the adjoint identities there as well. Finally, if \(c\alpha\in R\) for a real \(c\), then \(c=\pm1\).
+
+**Proof.** The given skew-adjoint realization gives \(\mathfrak k\) the positive product
+\[
+b(X,Y)=-\operatorname{tr}_V(XY).
+\tag{AD.10}
+\]
+It is positive because \(b(X,X)=\operatorname{tr}(X^*X)\), and it is invariant because cyclically moving factors under the trace gives
+\(b([X,Y],Z)=-b(Y,[X,Z])\).
+Thus \(\operatorname{ad}X\) is \(b\)-skew-adjoint. Its squared trace is
+\[
+\kappa(X,X)=-\|\operatorname{ad}X\|_{\mathrm{HS},b}^2.
+\tag{AD.11}
+\]
+Zero centre makes this strictly negative for \(X\ne0\). Polarization and complexification now show that
+\[
+\langle X,Y\rangle_{\mathfrak g}=-\kappa(X,\sigma Y)
+\tag{AD.12}
+\]
+is a positive Hermitian product. For example, in a real \((-\kappa)\)-orthonormal basis it is the usual sum of a coordinate times the conjugate coordinate. The trace definition gives symmetry and the identity
+\[
+\kappa([X,Y],Z)=\kappa(X,[Y,Z])
+\tag{AD.13}
+\]
+by expanding commutators and cycling factors. Consequently
+\((\operatorname{ad}X)^*=-\operatorname{ad}(\sigma X)\).
+For \(H\in\mathfrak a\), \(\sigma H=-H\), so \(\operatorname{ad}H\) is Hermitian. Also \(\kappa(iT,iT)=-\kappa(T,T)>0\) for real nonzero \(T\in\mathfrak t\).
+
+A maximal abelian \(\mathfrak t\) exists by choosing one of maximal dimension. Its centralizer in \(\mathfrak k\) is precisely \(\mathfrak t\): otherwise adjoining an element that centralizes it enlarges the abelian subalgebra. The same assertion after complexification gives centralizer \(\mathfrak h\) in \(\mathfrak g\). Apply simultaneous diagonalization in AD.1 to a real basis of \(\mathfrak a\). The eigenvalues are real linear functionals on \(\mathfrak a\), the common zero space is \(\mathfrak h\), and (AD.8) follows. Conjugating its defining equation gives
+\(\sigma\mathfrak g_\alpha=\mathfrak g_{-\alpha}\). Jacobi gives
+\[
+[\mathfrak g_\alpha,\mathfrak g_\beta]\subseteq
+\mathfrak g_{\alpha+\beta},
+\tag{AD.14}
+\]
+where \(\mathfrak g_0=\mathfrak h\) and a missing nonzero weight denotes zero. Invariance gives
+\((\alpha+\beta)(H)\kappa(X,Y)=0\) for \(X\in\mathfrak g_\alpha\), \(Y\in\mathfrak g_\beta\).
+Thus only opposite spaces pair. Their pairing is nondegenerate by (AD.12). If \(H\in\mathfrak a\) is annihilated by every root, it commutes with all of (AD.8). The complex centre is zero, since its real and imaginary parts would be central in \(\mathfrak k\). Hence \(H=0\), proving that \(R\) spans \(\mathfrak a^*\).
+
+Choose \(E\ne0\) in \(\mathfrak g_\alpha\) and initially put \(F=-\sigma E\). Then \(\kappa(E,F)=\langle E,E\rangle_{\mathfrak g}>0\). For \(H\in\mathfrak h\), (AD.13) gives
+\[
+\kappa([E,F],H)=\kappa(E,[F,H])
+=\alpha(H)\kappa(E,F).
+\tag{AD.15}
+\]
+Here roots and \(\kappa|_{\mathfrak a}\) are extended complex linearly to \(\mathfrak h\). The bracket is in \(\mathfrak h\), where the form is nondegenerate, so
+\([E,F]=\kappa(E,F)T_\alpha\).
+Rescale \(E\) by a positive real number and \(F\) by the same number to make
+\(\kappa(E,F)=2/(\alpha,\alpha)\). This gives (AD.9) and all three commutators. For any unitary representation \(\rho\), complex linear extension of skew-adjointness says
+\[
+\rho(X)^*=-\rho(\sigma X).
+\tag{AD.16}
+\]
+It proves the required adjoint identities, including for the adjoint representation itself.
+
+To prove both dimension and reducedness without assuming either, fix \(\alpha\) and consider the invariant subspace
+\[
+M=\mathfrak h\oplus
+\bigoplus_{\substack{\gamma\in R\\\gamma\in\mathbb R\alpha}}\mathfrak g_\gamma
+\tag{AD.17}
+\]
+for its rank-one triple. The \(H_\alpha\)-zero space is exactly \(\mathfrak h\). The map
+\(\operatorname{ad}E_\alpha:\mathfrak h\to M\)
+has rank one, since it sends \(H\) to \(-\alpha(H)E_\alpha\). By AD.2, each nontrivial even string contributes one to this rank: its zero-weight vector raises nontrivially. Odd strings have no zero weight, and trivial strings contribute zero. The subspace spanned by \(F_\alpha,H_\alpha,E_\alpha\) is already an even string with highest weight two. Hence it is the only nontrivial even string. In particular the weight-two space of \(M\) is precisely \(\mathfrak g_\alpha\) and has dimension one, and its weight-four space is zero. Thus \(2\alpha\notin R\).
+
+If \(c\alpha\in R\), replace it by its negative to assume \(c>0\). Apply the integral-eigenvalue conclusion of AD.2 first to the \(\alpha\) triple and then to the \(c\alpha\) triple, acting on \(\mathfrak g\). It gives
+\[
+2c\in\mathbb Z_{>0},
+\qquad
+2/c\in\mathbb Z_{>0}.
+\tag{AD.18}
+\]
+Their product is four, so \(c\) is \(1/2\), \(1\) or \(2\). The last case has just been excluded. The first would say that \(\alpha\) is twice the root \(\alpha/2\), also excluded by the same argument for that root. This proves reducedness and completes the proof. □
+
+**Lemma AD.4 (root strings and reflection symmetry).** For distinct nonproportional roots \(\alpha,\beta\), the roots on \(\beta+\mathbb Z\alpha\) are exactly
+\[
+\begin{gathered}
+\beta-r\alpha,\ \ldots,\ \beta,\ \ldots,\ \beta+q\alpha,
+\qquad r,q\in\mathbb Z_{\geq0},\\
+r-q=\beta(H_\alpha)=\frac{2(\beta,\alpha)}{(\alpha,\alpha)}.
+\end{gathered}
+\tag{AD.19}
+\]
+Whenever \(\alpha+\beta\) is a root, the bracket
+\([\mathfrak g_\alpha,\mathfrak g_\beta]=\mathfrak g_{\alpha+\beta}\)
+is nonzero. The reflection
+\[
+s_\alpha(\mu)=\mu-\mu(H_\alpha)\alpha
+\tag{AD.20}
+\]
+is an orthogonal reflection of \(\mathfrak a^*\) and permutes \(R\). The group \(W_R\) generated by these reflections is finite.
+
+For any unitary \(\mathfrak k\)-module \(W\), write \(W_\mu\) for the common \(\mathfrak a\)-eigenspace of weight \(\mu\). Its weights are real, satisfy \(\mu(H_\alpha)\in\mathbb Z\), and have reflection-invariant multiplicities:
+\[
+\dim W_\mu=\dim W_{s_\alpha\mu}.
+\tag{AD.21}
+\]
+
+**Proof.** The subspace
+\[
+M_{\alpha,\beta}=\bigoplus_{\beta+j\alpha\in R}
+\mathfrak g_{\beta+j\alpha}
+\tag{AD.22}
+\]
+is invariant under the \(\alpha\) triple. All its \(H_\alpha\)-eigenvalues have the same parity, because they differ by \(2j\) and are integers by AD.2. Each eigenspace has dimension one by AD.3. An even irreducible string contains weight zero, and an odd one contains weight one. Two strings of the same parity would therefore give multiplicity at least two at that weight. AD.2 consequently makes (AD.22) a single string. Its consecutive weights are symmetric about zero, so the end weights
+\(\beta(H_\alpha)-2r\) and \(\beta(H_\alpha)+2q\) sum to zero. This proves (AD.19). Within the string, raising is nonzero except at the upper end; hence the bracket assertion follows whenever \(\alpha+\beta\) exists. The assertion has no omitted proportional case: reducedness excludes a root \(2\alpha\), and \(\alpha+(-\alpha)\) is zero, not a root.
+
+The string symmetry sends \(\beta\) to
+\(\beta-(r-q)\alpha=s_\alpha\beta\).
+For \(\beta=\pm\alpha\), the same formula interchanges \(\alpha\) and \(-\alpha\). Formula (AD.9) makes (AD.20) the usual reflection perpendicular to \(\alpha\); expansion of its inner product verifies that it is orthogonal and has square one. Thus each reflection permutes the finite set \(R\). The resulting permutation action is faithful because \(R\) spans the space: a linear map fixing each root fixes a basis. Hence \(W_R\) is a subgroup of a finite permutation group.
+
+For the module assertion, the operators \(\rho(H)\), \(H\in\mathfrak a\), are commuting Hermitian operators by (AD.16). AD.1 gives the weight decomposition with real weights, and the rank-one restriction gives the integrality assertion. Fix a weight \(\mu\) and take the sum of spaces whose weights belong to \(\mu+\mathbb Z\alpha\). This sum is invariant under the rank-one triple. On this sum, a weight is determined by its \(H_\alpha\)-eigenvalue, since successive candidates have eigenvalues differing by two. Decompose this sum into rank-one strings by AD.2. Each string has symmetric eigenvalue multiplicities. The weight corresponding to the negative of \(\mu(H_\alpha)\) is exactly \(s_\alpha\mu\); its shift is integral. Summing the string multiplicities proves (AD.21). □
+
+**Lemma AD.5 (simple roots and an element reversing positive roots).** Choose \(\xi\in\mathfrak a^*\) such that \((\xi,\alpha)\ne0\) for every root. Define
+\[
+R^+=\{\alpha\in R:(\xi,\alpha)>0\}.
+\tag{AD.23}
+\]
+Let \(\Pi\) be the roots in \(R^+\) which are not sums of two members of \(R^+\). Then \(\Pi\) is a basis of \(\mathfrak a^*\). Every positive root is a sum of members of \(\Pi\) with nonnegative integer coefficients. Distinct members of \(\Pi\) have nonpositive inner product. Reflections in members of \(\Pi\) generate \(W_R\). There exists \(w_-\in W_R\) with
+\[
+w_-(R^+)=R^-=-R^+.
+\tag{AD.24}
+\]
+
+**Proof.** A suitable \(\xi\) exists because finitely many proper linear hyperplanes do not cover a real vector space. Here is an elementary verification of that fact. For the defining nonzero linear functionals \(\ell_1,\ldots,\ell_N\), choose a vector avoiding the first \(N-1\) kernels by induction. If it is in \(\ker\ell_N\), choose \(u\) with \(\ell_N(u)\ne0\) and vary the vector along \(tu\). Each earlier nonzero affine function has at most one forbidden \(t\), and the last excludes \(t=0\). Choose any other real \(t\).
+
+If a positive root is not in \(\Pi\), split it into two positive roots. Each summand has strictly smaller value against \(\xi\). Repeated splitting terminates, because the finite set of positive root values has no infinite strictly decreasing sequence. This proves the asserted nonnegative integral expansion.
+
+If two distinct simple roots \(\alpha,\beta\) had positive inner product, (AD.19) would give \(r-q>0\), so \(\beta-\alpha\) would be a root. It is either positive or negative. In the first case \(\beta=\alpha+(\beta-\alpha)\) contradicts simplicity of \(\beta\); in the second the corresponding decomposition of \(\alpha\) contradicts simplicity of \(\alpha\). Thus \((\alpha,\beta)\leq0\).
+
+To prove independence, suppose a nonzero real relation among simple roots is separated into its positive and negative coefficients:
+\[
+x=\sum_{i\in I}a_i\alpha_i
+ =\sum_{j\in J}b_j\alpha_j,
+\qquad a_i,b_j>0,\quad I\cap J=\varnothing.
+\tag{AD.25}
+\]
+If one side is empty, pairing with \(\xi\) contradicts the positivity on the nonempty side. Otherwise
+\(\|x\|^2=\sum_{i,j}a_ib_j(\alpha_i,\alpha_j)\leq0\).
+It follows that \(x=0\), again contradicting its positive pairing with \(\xi\). Hence there is no relation. The expansions and the spanning assertion in AD.3 prove that \(\Pi\) is a basis.
+
+Fix a simple root \(\alpha_i\). The reflection \(s_i=s_{\alpha_i}\) sends every positive root other than \(\alpha_i\) to a positive root. Indeed, it changes only the coefficient of \(\alpha_i\) in the simple-root expansion. Such a root has at least one positive coefficient at another simple root, since reducedness excludes a different positive multiple of \(\alpha_i\). Its image is a root by AD.4, and cannot be negative: all coefficients of a negative root are nonpositive, by the already proved expansion applied to its negative. Thus \(s_i\) permutes \(R^+\setminus\{\alpha_i\}\) and sends \(\alpha_i\) to \(-\alpha_i\).
+
+For a positive nonsimple root \(\beta=\sum n_i\alpha_i\), the identity
+\(\|\beta\|^2=\sum n_i(\beta,\alpha_i)>0\)
+gives an \(i\) with \((\beta,\alpha_i)>0\). The positive integer
+\(c=\beta(H_{\alpha_i})\)
+makes \(s_i\beta=\beta-c\alpha_i\) a positive root of strictly smaller height \(\sum n_i\). Induction sends every positive root to a simple root by simple reflections. Orthogonal conjugation satisfies
+\(u s_\beta u^{-1}=s_{u\beta}\), as follows directly from (AD.20). The reflection in every root is consequently a product of simple reflections. This proves the generating assertion.
+
+Lastly choose \(w\in W_R\) minimizing \((w\xi,\xi)\), possible by finiteness. If \((w\xi,\alpha_i)>0\), then
+\[
+(s_iw\xi,\xi)
+=(w\xi,\xi)
+-\frac{2(w\xi,\alpha_i)(\xi,\alpha_i)}{(\alpha_i,\alpha_i)}
+<(w\xi,\xi),
+\tag{AD.26}
+\]
+a contradiction. Equality \((w\xi,\alpha_i)=0\) is impossible because \(w^{-1}\alpha_i\) is a root and \(\xi\) is regular. Thus all these pairings are negative. The positive-root expansions imply
+\((w\xi,\beta)<0\) for every \(\beta\in R^+\), which is equivalent to \(w^{-1}\beta\in R^-\). There are equally many positive and negative roots, so \(w^{-1}R^+=R^-\) and \(w^{-1}R^-=R^+\). Taking \(w_-=w^{-1}\) proves (AD.24). No assertion about uniqueness of this element is needed here. □
+
+**Lemma AD.6 (highest weights and uniqueness of the irreducible module).** Use the positive roots of AD.5. Let \(W\ne0\) be an irreducible unitary \(\mathfrak k\)-module, extended complex linearly to \(\mathfrak g\). There is a weight \(\lambda\), with one-dimensional space \(W_\lambda=\mathbb Cv_\lambda\), such that every positive root operator kills \(v_\lambda\). The space \(W\) is spanned by words in negative root operators applied to \(v_\lambda\). Every weight has the form
+\[
+\mu=\lambda-\sum_{\alpha\in R^+}n_\alpha\alpha,
+\qquad n_\alpha\in\mathbb Z_{\geq0}.
+\tag{AD.27}
+\]
+The line \(\mathbb Cv_\lambda\) is the full common kernel of all positive root operators. Moreover
+\[
+\lambda(H_\alpha)\in\mathbb Z_{\geq0}
+\quad(\alpha\in R^+).
+\tag{AD.28}
+\]
+Two irreducible unitary modules with the same \(\lambda\) are isomorphic.
+
+If \(\Pi=\{\alpha_1,\ldots,\alpha_r\}\), define \(\omega_j\) by
+\(\omega_j(H_{\alpha_i})=\delta_{ij}\). Then
+\[
+\lambda=\sum_{j=1}^r m_j\omega_j,
+\qquad m_j\in\mathbb Z_{\geq0}.
+\tag{AD.29}
+\]
+This is a necessary parametrization of the modules that occur, with uniqueness for each parameter; existence for every parameter is not asserted by this lemma. Finally \(w_-\lambda\), for any \(w_-\) in (AD.24), is a weight of multiplicity one and is a lowest weight: every other weight is it plus a nonnegative integral sum of positive roots.
+
+**Proof.** Choose a weight \(\lambda\) maximizing \((\xi,\lambda)\) among the finite set of weights. If \(X\in\mathfrak g_\alpha\), then
+\[
+\rho(H)\rho(X)v
+=\rho(X)\rho(H)v+\alpha(H)\rho(X)v
+\tag{AD.30}
+\]
+makes \(\rho(X)v\) a vector of weight \(\lambda+\alpha\) for \(v\in W_\lambda\). For positive \(\alpha\) this is incompatible with maximality unless the vector is zero. Thus every vector in this top weight space is killed by all positive root operators. Fix \(v_\lambda\ne0\).
+
+We supply the word-reordering argument. Choose a basis of \(\mathfrak g\) consisting, in this order, of negative root vectors, a basis of \(\mathfrak h\), and positive root vectors; fix an order within each part. Every product of basis operators is a linear combination of ordered products. To prove this, induct first on the word length and then on the number of inverted pairs. For an adjacent inverted pair replace \(XY\) by \(YX+[X,Y]\). The swapped word has one fewer inversion. The bracket is a linear combination of basis vectors, so every resulting bracket word has smaller length and is covered by the first induction. This proves the spanning statement; linear independence of ordered words is not required.
+
+The span of all words applied to \(v_\lambda\) is a nonzero invariant subspace, hence all of \(W\). In an ordered word a positive factor on the right kills \(v_\lambda\); if no such factor occurs, every \(\mathfrak h\) factor on the right acts as its scalar \(\lambda(H)\). Only words in negative root vectors remain. Their weights are exactly of the form (AD.27) when the vectors are nonzero. A nonempty such word strictly lowers the pairing with \(\xi\), so the top weight space is precisely \(\mathbb Cv_\lambda\).
+
+More generally the common kernel \(K\) of the positive root operators is \(\mathfrak h\)-invariant by (AD.30), and splits into weight spaces. For clarity, this last assertion needs no general theorem about invariant subspaces: choose \(H\in\mathfrak a\) separating the finitely many distinct weights, by the finite-hyperplane argument in AD.5. Polynomial spectral projections for \(\rho(H)\) preserve \(K\) and isolate each weight component. Any nonzero weight vector \(u\in K\cap W_\nu\) is cyclic by irreducibility. The same ordered-word argument says that all weights are \(\nu\) minus sums of positive roots. Comparing this assertion for \(\lambda\) and for \(\nu\) and pairing with \(\xi\) gives \(\nu=\lambda\): both differences are positive-root sums, and a nonempty such sum has strictly positive pairing. Therefore \(K=\mathbb Cv_\lambda\).
+
+Restrict to the triple for a positive root \(\alpha\). In the orthogonal string decomposition of AD.2, a vector killed by \(E_\alpha\) is a sum of top vectors, whose \(H_\alpha\)-eigenvalues are nonnegative integers. Since \(v_\lambda\) has the single eigenvalue \(\lambda(H_\alpha)\), (AD.28) follows.
+
+Here is a complete uniqueness argument. Form the tensor algebra \(T(\mathfrak g)=\bigoplus_{d\geq0}\mathfrak g^{\otimes d}\), with concatenation and unit, and quotient by the two-sided ideal generated by
+\[
+X\otimes Y-Y\otimes X-[X,Y].
+\tag{AD.31}
+\]
+Denote this associative algebra by \(U\). Every Lie representation extends to \(T(\mathfrak g)\) by composing its operators and factors through \(U\). Conversely left multiplication by \(\mathfrak g\) on a left \(U\)-module satisfies the Lie brackets because of (AD.31). These statements follow directly from the definitions.
+
+Let \(I_\lambda\) be the left ideal of \(U\) generated by all positive root vectors and by all \(H-\lambda(H)1\), \(H\in\mathfrak h\), and put \(M_\lambda=U/I_\lambda\) with distinguished vector \(v=1+I_\lambda\). The module \(W\) gives a surjection \(M_\lambda\to W\), sending \(v\) to \(v_\lambda\), so \(v\ne0\). The same reordering argument in \(U\) shows that \(M_\lambda\) is spanned by ordered negative-root words applied to \(v\). Commuting \(H\) through a word shows that it is an eigenvector of weight (AD.27). Thus \(M_\lambda\) is the algebraic direct sum of its weight spaces: any finite collection of distinct weight components can be separated by an \(H\in\mathfrak a\) and its polynomial projections as above, proving their independence. Its weight-\(\lambda\) space is exactly \(\mathbb Cv\).
+
+Every submodule \(N\subset M_\lambda\) splits into its weight components, because each of its vectors is a finite sum and the same finite polynomial projections preserve \(N\). If \(N\) is proper it cannot contain \(v\), which generates \(M_\lambda\). It therefore has zero weight-\(\lambda\) component. The algebraic sum \(J\) of all proper submodules also has zero weight-\(\lambda\) component and is itself proper. It contains every proper submodule and is consequently the unique maximal proper submodule. The kernel of any surjection from \(M_\lambda\) to an irreducible module is maximal proper: a strictly larger proper submodule would give a nonzero proper submodule in the quotient. Such a kernel must equal \(J\). Hence every irreducible module with this highest weight is \(M_\lambda/J\), proving uniqueness. This argument does not invoke linear independence of ordered words or existence of a module for an arbitrary proposed parameter.
+
+The \(H_{\alpha_i}\) form a basis of \(\mathfrak a\), because the simple roots form a basis of its dual and their positive rescalings under the Euclidean identification preserve independence. The dual basis \(\omega_i\) therefore exists, and (AD.28) gives (AD.29).
+
+By AD.4, the multiset of weights is invariant under \(W_R\); hence \(w_-\lambda\) occurs with multiplicity one. For any weight \(\mu\), apply (AD.27) to the weight \(w_-^{-1}\mu\) and then apply \(w_-\). Equation (AD.24) makes each image of a positive root negative, so \(\mu\) is \(w_-\lambda\) plus a nonnegative integral sum of positive roots. This is the stated lowest-weight property. □
+
+**Lemma AD.7 (the factors of an irreducible semisimple representation).** Suppose
+\(\mathfrak k=\mathfrak k_1\oplus\cdots\oplus\mathfrak k_s\)
+is an orthogonal direct sum of compact centreless ideals, as supplied by AC.3. Every irreducible unitary complex \(\mathfrak k\)-module is a tensor product
+\[
+W\cong W_1\otimes_{\mathbb C}\cdots\otimes_{\mathbb C}W_s
+\tag{AD.32}
+\]
+of irreducible unitary modules, where \(\mathfrak k_i\) acts on its own factor. Conversely every such tensor product is irreducible. The factors are unique up to isomorphism. Maximal abelian subalgebras can be chosen as sums of maximal abelian subalgebras in the factors; their root sets are disjoint unions, and the highest weight of (AD.32) is the sum of the factor highest weights, each extended by zero on the other factors.
+
+**Proof.** Split \(W\) orthogonally into irreducible \(\mathfrak k_1\)-modules by AD.1, and choose one, denoted \(E\). Put
+\[
+M=\operatorname{Hom}_{\mathfrak k_1}(E,W).
+\tag{AD.33}
+\]
+In the chosen orthogonal decomposition, the projection to each summand is an intertwiner. AD.1 says that its composition with an element of \(M\) is zero on a summand inequivalent to \(E\), and is a scalar multiple of a fixed isomorphism on an equivalent summand. Those fixed isomorphisms can be made unitary: for an isomorphism \(T\), the positive operator \(T^*T\) commutes with \(\mathfrak k_1\), hence is a positive scalar by AD.1, and rescaling \(T\) suffices. Thus evaluation identifies
+\[
+E\otimes M\longrightarrow W,\qquad e\otimes T\longmapsto T(e)
+\tag{AD.34}
+\]
+isomorphically with the sum of the summands equivalent to \(E\). Injectivity and surjectivity onto that sum follow explicitly by projecting to each orthogonal summand and comparing its scalar coefficient. Equip \(M\) with the Hermitian product in which these fixed unitary inclusions are an orthonormal basis; evaluation is then unitary for the tensor product inner product.
+
+Every other ideal commutes with \(\mathfrak k_1\) and acts on \(M\) by \(X\cdot T=\rho(X)T\). Consequently the image of (AD.34) is invariant under all of \(\mathfrak k\). Irreducibility makes it all of \(W\). The induced action on \(M\) is unitary, since under the unitary evaluation map the action is \(I_E\otimes\rho_M(X)\) and is skew-adjoint. If \(M\) had a nonzero proper invariant subspace for the remaining ideals, its tensor product with \(E\) would contradict irreducibility of \(W\). Thus \(M\) is irreducible for their sum. Induction proves (AD.32).
+
+For the converse, first consider \(E\otimes F\) with \(E\) irreducible for the first ideal and \(F\) irreducible for the remaining sum. Relative to any orthonormal basis of \(F\), the matrix entries of an operator on \(E\otimes F\) commuting with the first ideal are endomorphisms of \(E\) commuting with it. By AD.1 they are scalars, so the operator is \(I_E\otimes A\). Commuting also with the remaining ideals forces \(A\) scalar. A proper invariant subspace would have an orthogonal projection commuting with all ideals, since its orthogonal complement is invariant; a scalar projection is only zero or the identity. Hence the tensor product is irreducible. Induction proves the general case. The construction also proves uniqueness: restriction to the first ideal recovers its unique irreducible isomorphism type \(E\), and its multiplicity space (AD.33) recovers the remaining representation; continue inductively.
+
+Choose maximal abelian \(\mathfrak t_i\subset\mathfrak k_i\). The centralizer of \(\bigoplus_i\mathfrak t_i\) is the sum of their centralizers, hence exactly that sum by AD.3. Thus it is maximal abelian. The adjoint action on each ideal depends only on its own abelian factor, giving precisely the disjoint union of root sets, each extended by zero elsewhere. Choose positive roots in each factor. Tensoring their highest vectors gives a vector killed by all positive root operators, of weight the sum of the highest weights. Uniqueness of the highest line in AD.6 for the irreducible tensor product proves the last assertion. □
+
+## AE. The finite root-system list
+
+We now determine every root system that can occur in AD.3. Kirillov's free notes, §§7.8 and 7.10, describe the diagram method and its simply laced argument. The coordinate tables in the free Gorodski–Thorbergsson preprint give the exceptional bases used below. We prove the full diagram restriction, including multiple edges, and verify the coordinate models and highest roots.
+
+A **reduced crystallographic root system** in a Euclidean space \(E\) is a finite spanning set \(R\) of nonzero vectors such that each reflection
+\[
+s_\alpha x=x-\frac{2(x,\alpha)}{(\alpha,\alpha)}\alpha
+\tag{AE.1}
+\]
+permutes \(R\), the numbers \(2(\beta,\alpha)/(\alpha,\alpha)\) are integers for all roots, and the only scalar multiples of a root in \(R\) are that root and its negative. AD.3–AD.4 establish these properties for the compact Lie-algebra roots.
+
+**Lemma AE.1 (diagrams determine roots and their components).** Every such root system has a simple basis \(\Pi=\{\alpha_1,\ldots,\alpha_r\}\), and every root is an image of a simple root under the group generated by their reflections. Use the Cartan convention
+\[
+a_{ij}=\frac{2(\alpha_i,\alpha_j)}{(\alpha_j,\alpha_j)},
+\qquad
+k_{ij}=a_{ij}a_{ji}.
+\tag{AE.2}
+\]
+Thus the denominator belongs to the column. For \(i\ne j\), the entries are nonpositive integers and \(k_{ij}\in\{0,1,2,3\}\). Form a graph with one vertex per simple root, an edge of multiplicity \(k_{ij}\) when it is nonzero, and an arrow on a multiple edge toward the shorter root. This graph determines the root system up to an orthogonal similarity on each connected component. Its components give precisely the orthogonal irreducible components of \(R\).
+
+For the roots of AD.3, these components correspond to simple ideals in \(\mathfrak g\), stable under compact conjugation. In particular the root diagram of a compact simple real Lie algebra is connected.
+
+**Proof.** The simple-basis proof in AD.5 applies to these axioms once its root-difference step is justified. If nonproportional roots \(\alpha,\beta\) have positive inner product, the two positive integers
+\[
+p=\frac{2(\alpha,\beta)}{(\alpha,\alpha)},\qquad
+q=\frac{2(\alpha,\beta)}{(\beta,\beta)}
+\]
+have product \(4\cos^2\angle(\alpha,\beta)<4\). One of \(p,q\) is therefore one. Reflecting in the corresponding root makes either \(\beta-\alpha\) or \(\alpha-\beta\) a root; the negative is also a root because \(s_\gamma\gamma=-\gamma\). This is exactly the difference fact used in AD.5. Choose a regular vector by that lemma's finite-hyperplane argument. Splitting decomposable positive roots terminates by decreasing positive values against it. Distinct indecomposable roots have nonpositive inner product by the difference fact. The positive-and-negative separation of a hypothetical linear relation, as in (AD.25), proves independence; the expansions prove spanning. Thus the same proof supplies a simple basis and nonnegative integral expansions.
+
+The remainder of AD.5's descent uses only these expansions, reflection preservation and integrality: reflection in a simple root preserves all positive roots other than itself; a positive nonsimple root \(\beta=\sum n_i\alpha_i\) has \((\beta,\alpha_i)>0\) for some \(i\), and that reflection strictly decreases \(\sum n_i\). Induction reaches a simple root. This proves the orbit assertion for the present abstract axioms as well.
+
+For distinct simple roots, their nonpositive inner product and integrality give \(a_{ij},a_{ji}\leq0\). Independence makes their angle different from zero and \(\pi\), so
+\[
+k_{ij}=4\cos^2\angle(\alpha_i,\alpha_j)<4.
+\tag{AE.3}
+\]
+Zero occurs in both positions together. Otherwise the integer pair, in the order long root then short root, is \((-1,-1)\), \((-2,-1)\) or \((-3,-1)\). The multiplicity and arrow consequently recover every entry in (AE.2).
+
+If two simple bases have equal Cartan matrices, the linear map \(T\) between the bases intertwines their simple reflections, since
+\[
+s_i(\alpha_j)=\alpha_j-a_{ji}\alpha_i.
+\tag{AE.4}
+\]
+The orbit assertion then gives \(T(R)=R'\). Along each edge, the ratio of squared lengths is \(a_{ij}/a_{ji}\); hence the Gram matrices differ by one positive scalar on a connected component. Their zero cross-component entries show that \(T\) is a similarity on each component, as asserted.
+
+Partition the simple roots by graph components. Their spans are orthogonal, and the reflections of one component fix the others. The orbit assertion puts every root in exactly one such span. Each resulting set is a root system and cannot split further: an orthogonal splitting would partition its simple roots with no edges between the parts. This also shows that any orthogonal irreducible decomposition has these same components.
+
+For the compact algebra let \(R_j\) be a component, let \(\mathfrak h_j\) be the complex span of its dual vectors \(T_\alpha\), and set
+\[
+\mathfrak g_j=\mathfrak h_j\oplus
+\bigoplus_{\alpha\in R_j}\mathfrak g_\alpha.
+\tag{AE.5}
+\]
+These subspaces sum directly to \(\mathfrak g\). The bracket rule (AD.14), the opposite-root bracket (AD.15), and the orthogonality of components prove that each is an ideal and that different ones commute. Indeed a sum of roots from different components cannot be a root, because every root lies in a single component span. Conjugation sends each root space to its negative and sends \(\mathfrak h_j\) to itself, so each ideal is \(\sigma\)-stable.
+
+To prove simplicity of \(\mathfrak g_j\), let \(I\ne0\) be a complex ideal in it. Choose \(H\in\mathfrak a\) which separates its finitely many root weights and zero. Polynomial projections in \(\operatorname{ad}H\), as in AD.6, show that \(I\) contains a nonzero root vector or a nonzero vector \(Z\in\mathfrak h_j\). In the latter case some \(\alpha(Z)\ne0\), since the component roots span the dual of \(\mathfrak h_j\); bracketing with \(\mathfrak g_\alpha\) supplies a root vector. One-dimensionality of root spaces then gives \(\mathfrak g_\alpha\subset I\), and bracketing with its opposite gives \(H_\alpha\in I\).
+
+Some simple root \(\beta\) has \((\alpha,\beta)\ne0\), since the simple roots span the component. Bracketing \(H_\alpha\) with both \(\mathfrak g_\beta\) and \(\mathfrak g_{-\beta}\) puts both spaces and then \(H_\beta\) in \(I\). Repeat across every edge of the connected simple graph. All simple coroots enter \(I\), so \(\mathfrak h_j\subset I\). Every root evaluates nontrivially on some element of this Cartan space; another bracket then puts every root space in \(I\). Thus \(I=\mathfrak g_j\).
+
+The fixed real spaces \(\mathfrak k_j=\mathfrak g_j^\sigma\) sum to \(\mathfrak k\). Each has complexification \(\mathfrak g_j\): write \(X=(X+\sigma X)/2+i(X-\sigma X)/(2i)\). A nonzero proper real ideal would complexify to a nonzero proper complex ideal, which has just been excluded. These are the asserted simple ideals, and a simple \(\mathfrak k\) has only one component. □
+
+**Theorem AE.2 (restrictions on connected diagrams).** Every connected root diagram belongs to the following list:
+
+| Type | Underlying graph and edge lengths |
+|---|---|
+| \(A_n,\ n\geq1\) | A chain of \(n\) vertices, all edges single |
+| \(B_n,\ n\geq2\) | A chain with a double edge at one end; the singleton end is short |
+| \(C_n,\ n\geq3\) | A chain with a double edge at one end; the singleton end is long |
+| \(D_n,\ n\geq4\) | One branch with three single-edge arms of lengths \(1,1,n-3\) |
+| \(E_6,E_7,E_8\) | One branch with single-edge arm lengths \(1,2,2\), \(1,2,3\), \(1,2,4\) |
+| \(F_4\) | A four-vertex chain with its middle edge double |
+| \(G_2\) | Two vertices joined by a triple edge |
+
+Arm lengths count edges from the branch. Reversing all labels identifies the two drawings of \(F_4\) and of \(G_2\). At rank two, the \(B_2,C_2\) descriptions are the same diagram after exchanging vertices. The coordinate constructions in AE.3–AE.5 will establish occurrence.
+
+**Proof.** Let \(u_i=\alpha_i/\|\alpha_i\|\). Twice their Gram matrix has entries
+\[
+Q_{ii}=2,\qquad Q_{ij}=-\sqrt{k_{ij}}\quad(i\ne j),
+\tag{AE.6}
+\]
+and is positive definite. The same holds on every subset of its vertices.
+
+There can be no cycle. Put coefficient one at every vertex of a cycle and zero elsewhere. A cycle with \(m\) vertices contributes \(2m\) on the diagonal and at most \(-2m\) from its edges; any additional internal edges only decrease this value. This contradicts positivity. Thus the graph is a tree.
+
+The neighbours of a vertex are now pairwise orthogonal. The orthogonal projection of its unit vector onto their span has squared norm
+\[
+\frac14\sum_{j\sim i}k_{ij}<1.
+\tag{AE.7}
+\]
+The inequality is strict because the simple roots are independent. Since the sum is an integer, it is at most three. A vertex has at most three neighbours; a vertex with three neighbours has only single edges. An endpoint of a triple edge has no other neighbour, so a connected graph containing a triple edge is \(G_2\).
+
+There is at most one branching vertex. Otherwise take a shortest path between two branching vertices, put coefficient two at its \(m\) vertices, and coefficient one at two additional neighbours of each endpoint. The four additional vertices are distinct, by the absence of cycles. The quadratic value on this set is at most
+\[
+(8m+8)-8(m-1)-16=0.
+\tag{AE.8}
+\]
+Here the three terms are the diagonal, the path edges and the four extra edges. This is impossible.
+
+Two double edges are likewise impossible. Choose a path whose first and last edges are double and whose intervening edges are single. Adjacent double edges already contradict (AE.7). Put coefficient one at the two outer endpoints and coefficient \(\sqrt2\) at every interior vertex. For \(m\) path vertices the value is
+\[
+(4m-4)-8-4(m-3)=0.
+\tag{AE.9}
+\]
+A branch and a double edge cannot coexist either. Take the path from the branch through the first double edge to its far endpoint. Put coefficient two at the \(m\) vertices before that endpoint, coefficient \(\sqrt2\) at the far endpoint, and coefficient one at two other neighbours of the branch. The value is
+\[
+(8m+8)-8(m-1)-8-8=0.
+\tag{AE.10}
+\]
+All these are contradictions to positive definiteness.
+
+It remains to bound the three arm lengths of one branch or the position of one double edge. Let \(T_l\) be the \(l\)-vertex chain matrix with diagonal two and adjacent entries \(-1\). Direct expansion gives
+\[
+x^tT_lx=x_1^2+x_l^2+\sum_{i=1}^{l-1}(x_i-x_{i+1})^2>0
+\quad(x\ne0).
+\tag{AE.11}
+\]
+For \(l=1\), the two endpoint terms mean \(2x_1^2\). The solution of \(T_lz=e_1\) is \(z_i=(l+1-i)/(l+1)\), obtained by substituting in its endpoint and interior equations. Therefore
+\[
+(T_l^{-1})_{11}=\frac{l}{l+1}.
+\tag{AE.12}
+\]
+The elimination used here requires only completing the square: for a positive definite \(B\),
+\[
+d t^2+2t b^ty+y^tBy
+=(y+B^{-1}bt)^tB(y+B^{-1}bt)
+ +(d-b^tB^{-1}b)t^2.
+\tag{AE.13}
+\]
+
+For single-edge arms of lengths \(1\leq p\leq q\leq r\), eliminate the three positive chain blocks. Positivity of the remaining central coefficient is exactly
+\[
+\begin{gathered}
+2-\frac{p}{p+1}-\frac{q}{q+1}-\frac{r}{r+1}>0,\\
+\text{equivalently}\qquad
+\frac1{p+1}+\frac1{q+1}+\frac1{r+1}>1.
+\end{gathered}
+\tag{AE.14}
+\]
+If \(p\geq2\), the sum is at most one. Thus \(p=1\). For \(q=1\), every \(r\geq1\) works, giving \(D_{r+3}\). For \(q\geq3\), the sum is at most \(1/2+1/4+1/4=1\). For \(q=2\), the remaining inequality is \(r<5\), giving precisely \(E_6,E_7,E_8\).
+
+A double edge lies in a chain. Removing it leaves chains with \(p,q\geq1\) vertices. Eliminate the first chain. The second quadratic form becomes
+\[
+y^tT_qy-\frac{2p}{p+1}y_1^2.
+\tag{AE.15}
+\]
+Let \(u=T_q^{-1}e_1\) and \(a=u_1=q/(q+1)>0\). Write \(y=t u+z\) with \(z_1=0\), where \(t=y_1/a\). Since \(u^tT_qz=z_1=0\), (AE.15) equals
+\[
+z^tT_qz+t^2a\left(1-\frac{2p}{p+1}a\right).
+\]
+It is positive for all nonzero \(y\) exactly when
+\[
+1-\frac{2pq}{(p+1)(q+1)}>0,
+\quad\text{equivalently}\quad
+(p-1)(q-1)<2.
+\tag{AE.16}
+\]
+The possibilities are \(p=1\), \(q=1\), or \(p=q=2\). They give \(B_n,C_n,F_4\) with the length orientations stated in the table. A tree with neither a branch nor a multiple edge is \(A_n\). This proves necessity, with all equality cases excluded. The coordinate constructions that follow prove occurrence, rather than inferring it from positive definiteness alone. □
+
+**Lemma AE.3 (classical root coordinates and fundamental weights).** Use the rank ranges in AE.2, and let the \(e_i\) be orthonormal. The classical systems and simple bases are as follows:
+\[
+\begin{gathered}
+A_n:\quad R=\{e_i-e_j:i\ne j\},\\
+E=\{x\in\mathbb R^{n+1}:\textstyle\sum x_i=0\},
+\qquad \alpha_i=e_i-e_{i+1}\quad(1\leq i\leq n).
+\end{gathered}
+\tag{AE.17a}
+\]
+\[
+\begin{gathered}
+B_n:\quad R=\{\pm e_i,\ \pm e_i\pm e_j:i<j\}\subset\mathbb R^n,\\
+\alpha_i=e_i-e_{i+1}\quad(i<n),\qquad \alpha_n=e_n.
+\end{gathered}
+\tag{AE.17b}
+\]
+\[
+\begin{gathered}
+C_n:\quad R=\{\pm2e_i,\ \pm e_i\pm e_j:i<j\}\subset\mathbb R^n,\\
+\alpha_i=e_i-e_{i+1}\quad(i<n),\qquad \alpha_n=2e_n.
+\end{gathered}
+\tag{AE.17c}
+\]
+\[
+\begin{gathered}
+D_n:\quad R=\{\pm e_i\pm e_j:i<j\}\subset\mathbb R^n,\\
+\alpha_i=e_i-e_{i+1}\quad(i<n),\qquad \alpha_n=e_{n-1}+e_n.
+\end{gathered}
+\tag{AE.17d}
+\]
+Their root counts are respectively \(n(n+1)\), \(2n^2\), \(2n^2\), and \(2n(n-1)\). Put \(s_i=e_1+\cdots+e_i\). The fundamental weights, dual to the simple coroots as in AD.6, are
+\[
+\begin{aligned}
+A_n:&\quad \omega_i=s_i-\frac{i}{n+1}s_{n+1};\\
+B_n:&\quad \omega_i=s_i\ (i<n),\quad \omega_n=\tfrac12s_n;\\
+C_n:&\quad \omega_i=s_i\ (i\leq n);\\
+D_n:&\quad \omega_i=s_i\ (i\leq n-2),\\
+&\quad \omega_{n-1}=\tfrac12(s_{n-1}-e_n),\quad
+\omega_n=\tfrac12s_n .
+\end{aligned}
+\tag{AE.18}
+\]
+For \(A_n\) the reflection group consists of all coordinate permutations. For \(B_n,C_n\) it consists of all signed permutations; for \(D_n\) it consists of signed permutations with an even number of sign changes. An element reversing all positive roots is, respectively: coordinate reversal for \(A_n\); \(-I\) for \(B_n,C_n\); and for \(D_n\), \(-I\) when \(n\) is even, or negation of the first \(n-1\) coordinates when \(n\) is odd.
+
+**Proof.** Reflection in \(e_i-e_j\) swaps coordinates \(i,j\). Reflection in \(e_i+e_j\) swaps and negates those coordinates; reflection in \(e_i\) or \(2e_i\) changes just that sign. These formulas follow by substituting in (AE.1), and prove reflection preservation of every displayed set. The sets are reduced by their explicit supports and lengths. Cartan integrality follows from the coroots: the coroot of \(e_i\) is \(2e_i\), that of \(2e_i\) is \(e_i\), and that of \(e_i\pm e_j\) is itself. In \(A_n\), all coroots are difference roots. Every pairing with the appropriate displayed roots is an integer.
+
+The first \(n\) difference roots in \(A_n\) are independent and span the coordinate-sum-zero hyperplane, as can be seen by solving their coefficients successively from the first coordinate. For \(B_n,C_n\), the differences span that hyperplane in \(\mathbb R^n\), and the last root has nonzero coordinate sum. For \(D_n\) the same argument uses the last root's coordinate sum two. Thus the displayed vectors are bases of the stated spaces.
+
+For \(A_n\), every positive difference with \(i<j\) is \(\alpha_i+\cdots+\alpha_{j-1}\). For \(B_n\), the identities
+\[
+e_i=\sum_{k=i}^{n}\alpha_k,\qquad
+e_i+e_j=\sum_{k=i}^{j-1}\alpha_k+2\sum_{k=j}^{n}\alpha_k
+\quad(i<j)
+\tag{AE.19}
+\]
+give all positive axial and sum roots. For \(C_n\), use
+\[
+2e_i=2\sum_{k=i}^{n-1}\alpha_k+\alpha_n,\qquad
+e_i+e_j=\sum_{k=i}^{j-1}\alpha_k+
+2\sum_{k=j}^{n-1}\alpha_k+\alpha_n.
+\tag{AE.20}
+\]
+For \(D_n\),
+\[
+e_i+e_j=
+\begin{cases}
+\displaystyle\sum_{k=i}^{j-1}\alpha_k+
+2\sum_{k=j}^{n-2}\alpha_k+\alpha_{n-1}+\alpha_n,&j<n,\\
+\displaystyle\sum_{k=i}^{n-2}\alpha_k+\alpha_n,&j=n.
+\end{cases}
+\tag{AE.21}
+\]
+Difference roots have the consecutive-sum expression in all four cases. Empty sums are zero. These formulas and their negatives express every root with coefficients of one sign. They identify the displayed bases as simple bases: choose a vector pairing positively with each basis vector. All displayed basis roots are positive; a decomposition of one into two positive roots would split its unit coefficient vector into two nonzero nonnegative integral vectors, which is impossible. Any other positive root is not an additional simple root, since AE.1 says the indecomposable positive roots form a basis and already include the displayed basis.
+
+Their inner products give the indicated diagrams: only consecutive roots pair in \(A,B,C\), with the last edge doubled in \(B,C\). In \(D_n\), both roots \(n-1,n\) pair with \(n-2\) and are orthogonal to each other. Counting ordered differences, axes and the four sign choices for each pair gives the stated root counts.
+
+Substitution of each vector in (AE.18) into
+\[
+\frac{2(\omega_i,\alpha_j)}{(\alpha_j,\alpha_j)}=\delta_{ij}
+\tag{AE.22}
+\]
+verifies the fundamental weights. For instance the difference coroots test consecutive-coordinate jumps; the last coroot is \(2e_n\) in \(B_n\), \(e_n\) in \(C_n\), and \(e_{n-1}+e_n\) in \(D_n\). In \(A_n\), subtracting the common coordinate \(i/(n+1)\) both preserves those jumps and imposes coordinate sum zero. This verifies all entries of the formulas.
+
+Consecutive swaps generate any permutation: move its desired first entry into the first position by consecutive swaps and induct on the remaining positions. These swaps are the difference-root reflections. The axial reflections in \(B,C\) give every individual sign change. In \(D\), a sum-root reflection followed by the corresponding difference-root reflection changes exactly two signs; pairing up the negative positions gives every even sign pattern. Every generating reflection in \(D\) has an even number of sign changes, so no other patterns occur. This proves the group descriptions. Lastly substitute the displayed reversing maps into the positive differences, sums and axes described by (AE.19)–(AE.21). Every positive root becomes negative. In the odd \(D_n\) case a root involving \(e_n\) becomes \(-e_i\pm e_n=-(e_i\mp e_n)\); the others have both signs reversed. The proposed map belongs to the group because \(n-1\) is even. □
+
+**Lemma AE.4 (the three exceptional simply laced systems).** In \(\mathbb R^8\), let
+\[
+\begin{gathered}
+L_0=\{d\in\mathbb Z^8:\textstyle\sum d_i\ \text{is even}\},\qquad
+h=\tfrac12(1,\ldots,1),\\
+L=L_0\cup(L_0+h),\qquad R_8=\{x\in L:\|x\|^2=2\}.
+\end{gathered}
+\tag{AE.23}
+\]
+The set \(R_8\) is a root system of type \(E_8\). Explicitly it consists of
+\[
+\{\pm e_i\pm e_j:i<j\}
+\quad\text{and}\quad
+\{\tfrac12(\varepsilon_1,\ldots,\varepsilon_8):
+\varepsilon_i=\pm1,\ \textstyle\prod_i\varepsilon_i=1\}.
+\tag{AE.24}
+\]
+A simple basis is
+\[
+\begin{aligned}
+\alpha_1&=\tfrac12(e_1+e_8-e_2-e_3-e_4-e_5-e_6-e_7),\\
+\alpha_2&=e_1+e_2,\qquad \alpha_3=e_2-e_1,\\
+\alpha_4&=e_3-e_2,\qquad \alpha_5=e_4-e_3,\\
+\alpha_6&=e_5-e_4,\qquad \alpha_7=e_6-e_5,\qquad
+\alpha_8=e_7-e_6.
+\end{aligned}
+\tag{AE.25}
+\]
+The intersections
+\[
+R_7=R_8\cap\{x:x_7=-x_8\},\qquad
+R_6=R_8\cap\{x:x_6=x_7=-x_8\}
+\tag{AE.26}
+\]
+are of types \(E_7,E_6\), with simple bases the first seven or six vectors in (AE.25). Their root counts are
+\[
+|R_6|=72,\qquad |R_7|=126,\qquad |R_8|=240.
+\tag{AE.27}
+\]
+
+**Proof.** The set \(L\) is an additive group: \(L_0\) is one, \(2h\in L_0\), and \(-h=h-2h\). Its dot products are integers, since those on \(L_0\) are integers,
+\((h,d)=\sum d_i/2\in\mathbb Z\), and \((h,h)=2\).
+Every squared norm in \(L\) is even. For \(d\in L_0\) use \(d_i^2\equiv d_i\pmod2\); for \(d+h\) use
+\[
+\|d+h\|^2=\sum_i d_i(d_i+1)+2.
+\tag{AE.28}
+\]
+A norm-two integral vector has two nonzero coordinates, each \(\pm1\), giving \(4\binom82=112\) roots. A half-integral vector has every absolute coordinate at least \(1/2\); norm two forces equality in all eight places. Subtracting \(h\) shows that membership in \(L\) is exactly even minus parity, giving \(2^7=128\) half roots. This proves (AE.24) and the count 240.
+
+For \(\alpha\in R_8\), the reflection is \(x\mapsto x-(x,\alpha)\alpha\). It preserves \(L\), by integral dot products, and preserves the norm; hence it permutes \(R_8\). The same integral products give Cartan integrality. All roots have squared norm two, so the system is reduced. It spans because the difference roots span the coordinate-sum-zero hyperplane and, for example, \(e_1+e_2\) is outside that hyperplane. Thus all axioms are verified.
+
+Every vector in (AE.25) belongs to \(R_8\). The coefficients of \(x=\sum n_i\alpha_i\), solved successively from its coordinates, are
+\[
+\begin{aligned}
+n_1&=2x_8,&n_8&=x_7+x_8,\\
+n_7&=x_6+x_7+2x_8,&
+n_6&=x_5+x_6+x_7+3x_8,\\
+n_5&=x_4+x_5+x_6+x_7+4x_8,&
+n_4&=x_3+x_4+x_5+x_6+x_7+5x_8,\\
+n_2&=(x_1+x_2+n_4)/2,&
+n_3&=(-x_1+x_2+n_4+2x_8)/2.
+\end{aligned}
+\tag{AE.29}
+\]
+Substitution in (AE.25) verifies the solution and proves independence. These coefficients are integers on \(L\). Indeed \(S=\sum x_i\) is an even integer there. The numerators for \(n_2,n_3\) are respectively \(S+4x_8\) and \(S-2x_1+6x_8\), which are even integers whether all coordinates are integral or half integral. The other formulas visibly have an even total number of half-coordinate contributions.
+
+We check signs for every root, not merely for the basis vectors. If \(x_8\ne0\), choose the root's sign so \(x_8>0\). An integral root then has \(x_8=1\) and only one further nonzero coordinate \(\pm1\). Each expression in (AE.29) is nonnegative. A half root has \(x_8=1/2\). All expressions except possibly \(n_2\) have lower bound zero, using \(-1/2\leq x_i\leq1/2\); the lower bound for \(n_2\) is \(-1/2\), and its integrality improves that bound to zero. If \(x_8=0\), the root is integral on the first seven coordinates. Choose its greatest-index nonzero coordinate positive. Every tail sum in \(n_4,\ldots,n_8\) is then nonnegative: the only possible other nonzero coordinate is earlier and has size one. For \(n_2,n_3\), either both supported coordinates are among the first two, giving directly the values zero or one, or their tail contribution gives those same nonnegative values. Thus every root expansion has coefficients of one sign. The indecomposability argument in AE.3 proves that (AE.25) is the simple basis.
+
+All simple roots have squared norm two. Their only nonzero off-diagonal products are \(-1\) along
+\[
+1-3-4-5-6-7-8,\qquad 2-4.
+\tag{AE.30}
+\]
+This follows by taking the coordinate products in (AE.25). The branch is vertex four, with arm lengths \(1,2,4\), so this is \(E_8\).
+
+Equation (AE.29) shows that \(n_8=0\) is the first subspace in (AE.26), and \(n_7=n_8=0\) is the second. Thus they are exactly the spans of the proposed truncated bases. Their intersection root sets inherit reflection preservation, since reflection in a vector of a subspace preserves that subspace. They inherit reducedness and integral Cartan numbers and are spanned by their simple roots. The already established one-sign expansions have their last one or two coefficients zero, so the truncated bases are simple. Their graphs have arm lengths \(1,2,3\) and \(1,2,2\).
+
+For \(R_7\), the integral roots are the 60 two-coordinate roots on the first six coordinates and the two roots \(\pm(e_7-e_8)\). A half root has opposite last signs. For either of these two sign choices, the first six must have odd minus parity, giving \(2^5\) choices. Therefore \(|R_7|=60+2+64=126\).
+For \(R_6\), the integral roots are the 40 two-coordinate roots on the first five coordinates. The last three signs of a half root are \((-,-,+)\) or \((+,+,-)\). In each case exactly half of the \(2^5\) first-five sign choices have the required total parity. Hence \(|R_6|=40+16+16=72\). This proves all assertions. □
+
+**Lemma AE.5 (the remaining exceptional systems).** In \(\mathbb R^4\) put
+\[
+\begin{aligned}
+R(F_4)={}&\{\pm e_i\pm e_j:i<j\}\ \cup\ \{\pm e_i\}\\
+&{}\cup\{\tfrac12(\varepsilon_1,\varepsilon_2,\varepsilon_3,\varepsilon_4):
+\varepsilon_i=\pm1\}.
+\end{aligned}
+\tag{AE.31}
+\]
+It has 48 roots and simple basis
+\[
+\alpha_1=e_2-e_3,\quad \alpha_2=e_3-e_4,\quad
+\alpha_3=e_4,\quad
+\alpha_4=\tfrac12(e_1-e_2-e_3-e_4).
+\tag{AE.32}
+\]
+Its fundamental weights are
+\[
+\begin{aligned}
+\omega_1&=e_1+e_2,&\omega_2&=2e_1+e_2+e_3,\\
+\omega_3&=\tfrac12(3e_1+e_2+e_3+e_4),&
+\omega_4&=e_1 .
+\end{aligned}
+\tag{AE.33}
+\]
+In the coordinate-sum-zero plane of \(\mathbb R^3\), the twelve vectors
+\[
+R(G_2)=\{e_i-e_j:i\ne j\}\ \cup\
+\{\pm(2e_i-e_j-e_k):\{i,j,k\}=\{1,2,3\}\}
+\tag{AE.34}
+\]
+form a root system with simple roots
+\(\alpha_1=e_1-e_2\), \(\alpha_2=-2e_1+e_2+e_3\).
+Its positive roots and fundamental weights are
+\[
+\begin{gathered}
+R^+=\{\alpha_1,\alpha_2,\alpha_1+\alpha_2,
+2\alpha_1+\alpha_2,3\alpha_1+\alpha_2,3\alpha_1+2\alpha_2\},\\
+\omega_1=2\alpha_1+\alpha_2,\qquad
+\omega_2=3\alpha_1+2\alpha_2 .
+\end{gathered}
+\tag{AE.35}
+\]
+Together with AE.3–AE.4, these constructions realize every diagram allowed by AE.2, completing the classification of reduced crystallographic root systems.
+
+**Proof.** For \(F_4\), the three disjoint parts have respectively 24, 8 and 16 elements. Their squared norms are two, one and one, so spanning and reducedness follow from the explicit vectors. Signed coordinate permutations preserve the set and include all reflections in axial and two-coordinate roots. Every half-root reflection is a signed-coordinate conjugate of reflection in \(v=(1,1,1,1)/2\), namely
+\[
+s_vx=x-\tfrac12\left(\sum_i x_i\right)(1,1,1,1).
+\tag{AE.36}
+\]
+This takes an axial root to a half root. It fixes a two-coordinate root with coordinate sum zero; when that sum is \(2\) or \(-2\), the result is a two-coordinate root on the complementary pair of positions. For a half root, count its minus signs. Zero or four minus signs give its negative, one or three give an axial root, and two give a fixed root. Thus all reflections preserve the set.
+
+The coroots of axial roots are \(\pm2e_i\), those of two-coordinate roots are the same vectors, and those of half roots are four-sign vectors \((\varepsilon_i)\). Each pairs integrally with (AE.31): in the only less immediate case, pairing a four-sign vector with a half root is half a sum of four signs, an integer. The axioms follow.
+
+Solving \(x=\sum n_i\alpha_i\) in (AE.32) gives
+\[
+\begin{aligned}
+n_4&=2x_1,&n_1&=x_2+x_1,\\
+n_2&=x_3+x_2+2x_1,&n_3&=x_4+x_3+x_2+3x_1.
+\end{aligned}
+\tag{AE.37}
+\]
+These equations prove independence and integral coefficients for every displayed root. If \(x_1\ne0\), choose \(x_1>0\). For an integral root \(x_1=1\) and at most one further coordinate is nonzero; for a half root \(x_1=1/2\). Both cases give nonnegative coefficients in (AE.37). If \(x_1=0\), choose the first nonzero coordinate among \(x_2,x_3,x_4\) positive. Their successive partial sums are nonnegative, since there are at most two nonzero entries, of absolute value one. Thus all root expansions have one sign, and AE.3's indecomposability argument proves the simple-basis assertion.
+
+The only edges are \(1-2\), \(2-3\), \(3-4\). Their multiplicities are one, two and one; roots 1 and 2 have squared norm two, roots 3 and 4 squared norm one. This is \(F_4\), with arrow toward vertex 3. Pairing (AE.33) with the four simple coroots verifies (AE.22), proving the fundamental-weight formulas.
+
+For \(G_2\), the six difference roots have squared norm two and the six remaining roots squared norm six. They span the plane and are reduced. Difference reflections permute coordinates. Let \(l_i=2e_i-e_j-e_k\). On the sum-zero plane, \((x,l_i)=3x_i\), so reflection in \(l_i\) sends its three coordinates, in the order \(i,j,k\), to
+\[
+(-x_i,-x_k,-x_j).
+\tag{AE.38}
+\]
+This also preserves both displayed sets. The difference coroots are the difference vectors themselves. The long coroot is \(l_i/3\); it pairs with \(e_j-e_k\) as \(\delta_{ij}-\delta_{ik}\), and with \(l_j\) as \(3\delta_{ij}-1\). Thus all Cartan integers are integral.
+
+The two proposed simple roots are independent, with squared norms two and six and inner product \(-3\). Expanding the six roots in (AE.35) in coordinates gives exactly one root from each opposite pair of (AE.34); their negatives give the other six. Their coefficients are nonnegative integers, so they are a simple basis by the same indecomposability argument. The Cartan matrix in convention (AE.2) is
+\[
+\begin{pmatrix}2&-1\\-3&2\end{pmatrix},
+\tag{AE.39}
+\]
+which is \(G_2\) with arrow toward the first root. Multiplying the coefficients of the two proposed weights by the coroot-pairing matrix verifies their fundamental-weight equations.
+
+There are no further identifications among the root systems in the stated rank ranges. Rank, root count and the counts at each length distinguish them. For the simply laced classical families, \(n(n+1)=2n(n-1)\) only at \(n=3\), which is outside the range for \(D_n\). The exceptional simply laced counts in AE.4 differ from the classical simply laced counts at the same ranks. The coincidence of the \(E_6\) count with \(B_6,C_6\) causes no identification because only the latter have two root lengths. Types \(F_4,G_2\) have different counts from all other systems at their ranks. Finally, \(B_n\) has \(2n\) short roots and \(2n(n-1)\) long roots, whereas \(C_n\) has those counts reversed. They differ for \(n\geq3\); their rank-two diagrams were already identified in AE.2. This proves both occurrence and uniqueness of the listed root-system types. □
+
+**Lemma AE.6 (highest roots and adjoint weights).** For the bases above, every irreducible root system has a highest root \(\theta\): a positive root such that \(\theta-\beta\) is a nonnegative integral sum of simple roots for every positive root \(\beta\). It is unique. For the \(E_6\) row, abbreviate
+\[
+v_6=\tfrac12(e_1+e_2+e_3+e_4+e_5-e_6-e_7+e_8).
+\tag{AE.39a}
+\]
+The following are the exact vectors and their simple-root coefficients:
+
+| Type | Highest root \(\theta\) | Coefficient vector |
+|---|---|---|
+| \(A_n\) | \(e_1-e_{n+1}\) | \((1,\ldots,1)\) |
+| \(B_n\) | \(e_1+e_2\) | \((1,2,\ldots,2)\) |
+| \(C_n\) | \(2e_1\) | \((2,\ldots,2,1)\) |
+| \(D_n\) | \(e_1+e_2\) | \((1,2,\ldots,2,1,1)\) |
+| \(E_6\) | \(v_6\) | \((1,2,2,3,2,1)\) |
+| \(E_7\) | \(e_8-e_7\) | \((2,2,3,4,3,2,1)\) |
+| \(E_8\) | \(e_7+e_8\) | \((2,3,4,6,5,4,3,2)\) |
+| \(F_4\) | \(e_1+e_2\) | \((2,3,4,2)\) |
+| \(G_2\) | \(3\alpha_1+2\alpha_2\) | \((3,2)\) |
+
+For a compact simple algebra with this root system, its complex adjoint module is irreducible, has highest weight \(\theta\), has zero-weight multiplicity \(r\), and has multiplicity one at every root. Its complex dimension is \(r+|R|\).
+
+**Proof.** Each proposed vector belongs to its coordinate root set. Substitution in (AE.19)–(AE.21), (AE.29), (AE.37), or (AE.35) gives the displayed coefficients. We verify that those coefficients dominate every positive root.
+
+For \(A_n\), all positive roots are consecutive sums, with coefficients zero or one. In \(B_n\), the axial, difference and sum formulas in AE.3 have first coefficient at most one and all subsequent coefficients at most two. For \(C_n\), those formulas have coefficients at most two except at the last position, where the bound is one. Formula (AE.21) bounds the first and both fork-end coefficients in \(D_n\) by one, and all others by two.
+
+For \(E_8\), a positive integral root with \(x_8=1\) has only one further coordinate \(\pm1\). In (AE.29) this bounds \(n_1,\ldots,n_8\) by
+\[
+(2,3,4,6,5,4,3,2).
+\tag{AE.40}
+\]
+If \(x_8=0\), the tail sums \(n_4,\ldots,n_8\) are at most two, and \(n_2,n_3\leq1\); all are within (AE.40). For a positive half root, substitute \(x_8=1/2\) and \(-1/2\leq x_i\leq1/2\) into (AE.29). In order, the bounds are
+\[
+(1,3,3,5,4,3,2,1).
+\tag{AE.41}
+\]
+For \(n_3\), the direct real upper bound is \(7/2\), improved to three by integrality; the other entries follow directly. These bounds too are within (AE.40).
+
+For \(E_7\), a positive integral root with nonzero \(x_8\) is \(e_8-e_7\) itself. The other integral roots lie on the first six coordinates. In (AE.29) they have \(n_1=0\), \(n_2,n_3\leq1\), the middle tail sums at most two, and \(n_7=x_6\leq1\). A positive half root has \(x_8=1/2\), \(x_7=-1/2\), and
+\[
+\begin{aligned}
+n_7&=x_6+x_8\leq1,&
+n_6&=x_5+x_6+2x_8\leq2,\\
+n_5&=x_4+x_5+x_6+3x_8\leq3,&
+n_4&=x_3+x_4+x_5+x_6+4x_8\leq4.
+\end{aligned}
+\tag{AE.42}
+\]
+Also \(n_1=1\), \(n_2\leq\lfloor(1+4)/2\rfloor=2\), and
+\(n_3\leq(1+4+1)/2=3\). These prove the \(E_7\) row.
+
+For \(E_6\), the integral roots lie on the first five coordinates, giving \(n_1=0\), \(n_2,n_3\leq1\), \(n_4,n_5\leq2\), and \(n_6\leq1\). A positive half root has \(x_6=x_7=-x_8=-1/2\), so
+\[
+\begin{aligned}
+n_6&=x_5+x_8\leq1,\\
+n_5&=x_4+x_5+2x_8\leq2,\\
+n_4&=x_3+x_4+x_5+3x_8\leq3.
+\end{aligned}
+\tag{AE.43}
+\]
+Here \(n_1=1\), \(n_2\leq(1+3)/2=2\), and
+\(n_3\leq\lfloor(1+3+1)/2\rfloor=2\). These are the required bounds.
+
+For \(F_4\), a positive root with \(x_1=1\) has at most one further nonzero coordinate, of size one. Formula (AE.37) then bounds \((n_1,n_2,n_3,n_4)\) by \((2,3,4,2)\). A half root has \(x_1=1/2\) and gives the smaller bounds \((1,2,3,1)\). For \(x_1=0\), the first three partial sums are at most two and \(n_4=0\). Finally, inspection of the six explicitly proved positive roots in (AE.35) gives the \(G_2\) bounds.
+
+Thus each proposed \(\theta\) dominates every positive root. Two highest roots would dominate one another, forcing equality in every coefficient, so the highest root is unique.
+
+For the adjoint assertion, AE.1 proves that the complexification of the compact simple algebra is simple. An invariant subspace of its adjoint module is an ideal, hence that module is irreducible. The root decomposition (AD.8) has zero space \(\mathfrak h\) of dimension \(r\) and one-dimensional nonzero root spaces by AD.3. No \(\theta+\alpha\) with positive \(\alpha\) can be a root: its simple coefficients would exceed those of the dominating \(\theta\). Therefore every positive root operator kills \(\mathfrak g_\theta\), and AD.6 identifies \(\theta\) as the adjoint highest weight. Counting the root spaces and the Cartan space gives \(r+|R|\). □
+
 ## Further reading
 
 - Andrew Clarke and Bianca Santoro, [*Holonomy Groups in Riemannian Geometry*, arXiv:1206.3170v1](https://arxiv.org/abs/1206.3170v1), §4.2, especially Propositions 4.2.1 and 4.2.3, for the relation between invariant subspaces and local metric products; the chapter “Irreducible Riemannian Groups”, sections on Sp(n) and Sp(n)Sp(1), for the quaternionic representations. Section Y gives their scalar arithmetic, matrix models, actions, kernels and identifications.
@@ -4938,3 +6015,9 @@ This proves all the stated assertions. □
 - Lorenz J. Schwachhöfer, [*Connections with Irreducible Holonomy Representations*, author manuscript of 10 June 2003](https://wwwold.mathematik.tu-dortmund.de/~lschwach/papers/Advances/HoloClass.pdf), §3.1, for complex eigenspaces and the Bianchi identity. AA.1–AA.2 supply the full conformally symplectic argument and the quaternionic-circle exclusion.
 
 - Marco Castrillón López, Pedro M. Gadea and Ihor Mykytyuk, [*The canonical 8-form on manifolds with holonomy group Spin(9)*, arXiv:0911.1079v1](https://arxiv.org/abs/0911.1079v1), §§2.1 and 4, for the octonionic Clifford operators and the curvature expression. AB.1–AB.3 prove the group construction, the required curvature-space bound and the parallel-curvature conclusion.
+
+- Claudio Gorodski and Gudlaugur Thorbergsson, [*Representations of compact Lie groups and the osculating spaces of their orbits*, arXiv:math/0203196v1](https://arxiv.org/abs/math/0203196v1), the representation-type discussion at the start of §4 and Appendix A, root coordinates and bases. AC.1–AC.2 give full algebraic proofs of the three representation-type alternatives. AE verifies all the root coordinates used here, their axioms, simple bases and highest-root bounds.
+
+- Linus Kramer, [*Two-transitive Lie groups*, author-hosted article](https://www.uni-muenster.de/AGKramer/linuspub/23.pdf), Corollary 6.2. AC.3–AC.6 prove the semisimple-transitivity reduction and the central-extension alternatives; AC.5 gives the sphere exactness argument in full.
+
+- Alexander Kirillov, Jr., [*Introduction to Lie Groups and Lie Algebras*, author lecture notes](https://www.math.stonybrook.edu/~kirillov/liegroups/liegroups.pdf), §§4.8, 6.5–6.6, 7.8, 7.10 and 8.1–8.3. AD.1–AD.7 give complete compact-algebra, root-string and highest-weight proofs, including the word-reordering and uniqueness arguments. AE proves the full finite root-system classification, including the multiple-edge cases and all exceptional coordinate models.

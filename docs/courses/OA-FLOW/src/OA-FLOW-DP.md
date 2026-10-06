@@ -104,7 +104,7 @@ $$
 
 Products in (C5) mean the positive closed-form sandwich and its normal extension. The scaling follows directly from dual invariance and $\beta^{-1}(H_0^{-1})=\lambda H_0^{-1}$. The full unbounded perturbation and trace conversion are proved in [CZ2–7](OA-FLOW-CZ.md#oa-flow.cz.2), with the normalized cocycle in [CZ6](OA-FLOW-CZ.md#oa-flow.cz.6) and exact automorphism scaling in [CZ7](OA-FLOW-CZ.md#oa-flow.cz.7). The complete given-period application is proved in [CD4](OA-FLOW-CD.md#oa-flow.cd.4), including clock centralizer affiliation, all infinite values, full finite domains and the exact scalar normalization.
 
-For a bounded normal positive functional $\phi$, its dual $\widetilde\phi=\phi\pi^{-1}E$ is normal and semifinite: its finite ideal contains the dense bounded-value ideal of $E$. The complete tracial correspondence proved in TD2–6, including the nonfaithful semifinite case in TD6, gives a unique positive self-adjoint affiliated density $H_\phi$ such that
+For a bounded normal positive functional $\phi$, its dual $\widetilde\phi=\phi\pi^{-1}E$ is normal and semifinite: its finite ideal contains the dense bounded-value ideal of $E$. The complete tracial correspondence proved in [TD2–6](OA-FLOW-TD.md#oa-flow.td.2), including the nonfaithful semifinite case in [TD6](OA-FLOW-TD.md#oa-flow.td.6), gives a unique positive self-adjoint affiliated density $H_\phi$ such that
 
 <a id="equation-c6"></a>
 
@@ -115,7 +115,7 @@ $$
  \tag{C6}
 $$
 
-Density order is proved in TD5; arbitrary sums and bounded sandwiches, with their complete finite and infinite domains, are proved in TD7. The finite cyclic pairings used below are proved by explicit cutoffs in TD8. The support of a normal positive functional, its compression identity and faithful supported restriction are proved in [NF1](OA-FLOW-NF.md#oa-flow.nf.1). The support identity then follows from bimodularity: the dual vanishes on $1-\pi(s\phi)$, while on the supported corner faithfulness of $\phi$ and $E$ makes it faithful. The scaling identity follows from (C5), dual invariance and uniqueness of density.
+Density order is proved in [TD5](OA-FLOW-TD.md#oa-flow.td.5); arbitrary sums and bounded sandwiches, with their complete finite and infinite domains, are proved in [TD7](OA-FLOW-TD.md#oa-flow.td.7). The finite cyclic pairings used below are proved by explicit cutoffs in [TD8](OA-FLOW-TD.md#oa-flow.td.8). The support of a normal positive functional, its compression identity and faithful supported restriction are proved in [NF1](OA-FLOW-NF.md#oa-flow.nf.1). The support identity then follows from bimodularity: the dual vanishes on $1-\pi(s\phi)$, while on the supported corner faithfulness of $\phi$ and $E$ makes it faithful. The scaling identity follows from (C5), dual invariance and uniqueness of density.
 
 The complete **faithful** descent proof [FD0–8](OA-FLOW-FD.md#oa-flow.fd.0) shows that every faithful n.s.f. weight on $B$ invariant under $\beta$ is the dual of a unique faithful n.s.f. weight on $M$. It uses exactly the full counting operator-valued weight (C4) and trace scaling (C5), with all extended-positive, finite-ideal and GNS domains proved. We arrange faithful densities before applying it, so no nonfaithful descent theorem is needed.
 
@@ -123,7 +123,7 @@ The source ancestry for the compact spectral method is Haagerup–Størmer 1990,
 
 The [DD proof](OA-FLOW-DD.md#oa-flow.dd.5) supplies (C1), including the onto regular integer crossed product and full modular domains; [DD8](OA-FLOW-DD.md#oa-flow.dd.8) supplies the compact double dual through VD. CC proves the given-period counting weight and fixed algebra; CD proves its canonical GNS modular formula and exact trace normalization; TD proves the complete tracial correspondence; FD proves faithful invariant-weight descent directly. These use the same reciprocal period and negative dual convention as (C1)–(C5). The compact factor in (C2) is the one used throughout. No continuous-core center formula is needed.
 
-The elementary inputs used in the metric and scalar proofs are CF1 (maximality), CF6–8 (norm series and bounded positive calculus), [SC1–5](OA-FLOW-SC.md#sc-01) (Borel measures and scalar convergence), [GNS2.1–2.2](OA-FLOW-GNS.md#gns-lemma-2-1) and [GNS4.1](OA-FLOW-GNS.md#gns-theorem-4-1) (positive-functional Cauchy–Schwarz and its norm), [CP4/6](OA-FLOW-CP.md#oa-flow.cp.4) (normal vector-series topology and the predual), ST1 (the weak compact interval), [SF SB4/SF1–2](OA-FLOW-SF.md#oa-flow.sf.sb4) (full spectral domains and normal transport), and PC1–3,5,7–8 (polar comparison, countability and type III unitary completion). Finite equal-trace projections are equivalent by [PF6](OA-FLOW-PF.md#oa-flow.pf.6). Each use below has the matching projection, trace, support or normality hypotheses.
+The elementary inputs used in the metric and scalar proofs are [CF1](OA-FLOW-CF.md#oa-flow.cf.1) (maximality), [CF6–8](OA-FLOW-CF.md#oa-flow.cf.6) (norm series and bounded positive calculus), [SC1–5](OA-FLOW-SC.md#sc-01) (Borel measures and scalar convergence), [GNS2.1–2.2](OA-FLOW-GNS.md#gns-lemma-2-1) and [GNS4.1](OA-FLOW-GNS.md#gns-theorem-4-1) (positive-functional Cauchy–Schwarz and its norm), [CP4/6](OA-FLOW-CP.md#oa-flow.cp.4) (normal vector-series topology and the predual), [ST1](OA-FLOW-ST12.md#oa-flow.st.1) (the weak compact interval), [SF SB4/SF1–2](OA-FLOW-SF.md#oa-flow.sf.sb4) (full spectral domains and normal transport), and [PC1–3,5,7–8](OA-FLOW-PC.md#oa-flow.projection.pc1) (polar comparison, countability and type III unitary completion). Finite equal-trace projections are equivalent by [PF6](OA-FLOW-PF.md#oa-flow.pf.6). Each use below has the matching projection, trace, support or normality hypotheses.
 
 <a id="oa-flow.dp.si"></a>
 
@@ -159,7 +159,7 @@ This proves (SC1) for indicators, and finite linear combinations prove it for no
 
 For sigma-finite $m,n$, choose disjoint Borel partitions $X=\bigsqcup_i X_i$, $Y=\bigsqcup_jY_j$ into finite-measure pieces. Apply the finite result on every $X_i\times Y_j$ and sum. Monotone convergence permits the sums through the integrals. The order of two nonnegative countable sums is immaterial, since both equal the supremum of the sums over finite subsets of pairs. This proves the sigma-finite version. For an absolutely integrable complex function, the section integrals of $|h|$ are finite almost everywhere: a nonnegative function with finite integral can be infinite only on a null set, since its integral dominates every positive constant times the measure of that set. Define exceptional section integrals to be zero. Finally apply the nonnegative equality to $|h|$, then to the positive and negative parts of the real and imaginary parts of an absolutely integrable complex $h$, to prove the last assertion. This also justifies the triangle inequality under all iterated scalar integrals below.
 
-The earlier scalar foundations are CF Section 1 and [SC-01–05](OA-FLOW-SC.md#sc-01): construction and normalization of Lebesgue measure, continuity of measures, simple integration and monotone/dominated convergence. These actual earlier proofs supply every scalar input of the additional interchange argument proved above.
+The earlier scalar foundations are [CF Section 1](OA-FLOW-CF.md#oa-flow.cf.1) and [SC-01–05](OA-FLOW-SC.md#sc-01): construction and normalization of Lebesgue measure, continuity of measures, simple integration and monotone/dominated convergence. These actual earlier proofs supply every scalar input of the additional interchange argument proved above.
 
 <a id="oa-flow.dp.3"></a>
 
@@ -236,7 +236,7 @@ $$
  \tag{S7}
 $$
 
-All expressions in (S7) are defined: $g_a(H_\phi)$ is positive with bounded $E$-value and therefore belongs to the finite linear algebra $m_E$ of [CC6](OA-FLOW-CC.md#oa-flow.cc.6). That algebra is a $\pi(M)$-bimodule. Because $\phi$ is bounded, $N_E\subset N_{\widetilde\phi}$ and $m_E\subset m_{\widetilde\phi}$; hence $\pi(x)g_a(H_\phi)$ lies in both finite linear domains before either extension is used. Equation (S6) makes $e_\phi(a)$ trace-integrable, and $G_a(H_\phi)$ is bounded. Polarization of the positive sandwiches and the justified trace cutoffs in TD8 give (S7). No commutation of $x$ with $H_\phi$ is asserted.
+All expressions in (S7) are defined: $g_a(H_\phi)$ is positive with bounded $E$-value and therefore belongs to the finite linear algebra $m_E$ of [CC6](OA-FLOW-CC.md#oa-flow.cc.6). That algebra is a $\pi(M)$-bimodule. Because $\phi$ is bounded, $N_E\subset N_{\widetilde\phi}$ and $m_E\subset m_{\widetilde\phi}$; hence $\pi(x)g_a(H_\phi)$ lies in both finite linear domains before either extension is used. Equation (S6) makes $e_\phi(a)$ trace-integrable, and $G_a(H_\phi)$ is bounded. Polarization of the positive sandwiches and the justified trace cutoffs in [TD8](OA-FLOW-TD.md#oa-flow.td.8) give (S7). No commutation of $x$ with $H_\phi$ is asserted.
 
 Tonelli and the substitutions $b=\lambda^{-n}a$ give, for $t>0$,
 
@@ -290,7 +290,7 @@ Thus $e\wedge(1-q)\ne0$. A nonzero vector in this intersection has finite $H$-en
 
 <a id="normal-functional-jordan"></a>
 
-We next prove the normal-functional decomposition needed for a common majorant. The earlier proofs are [CP-4–6](OA-FLOW-CP.md#oa-flow.cp.4) for predual duality and normal compressed functionals, ST-1 for weak-star compactness, [SB-4–6](OA-FLOW-SF.md#oa-flow.sf.sb4) for bounded spectral calculus, [SF-2](OA-FLOW-SF.md#oa-flow.sf.sf2) for normal continuity on bounded strong limits, CF-3 for differentiating bounded exponential series, and [GNS Lemmas 2.1–2.2 and Theorem 4.1](OA-FLOW-GNS.md#gns-lemma-2-1) for positive-functional Cauchy–Schwarz and its norm.
+We next prove the normal-functional decomposition needed for a common majorant. The earlier proofs are [CP-4–6](OA-FLOW-CP.md#oa-flow.cp.4) for predual duality and normal compressed functionals, [ST-1](OA-FLOW-ST12.md#oa-flow.st.1) for weak-star compactness, [SB-4–6](OA-FLOW-SF.md#oa-flow.sf.sb4) for bounded spectral calculus, [SF-2](OA-FLOW-SF.md#oa-flow.sf.sf2) for normal continuity on bounded strong limits, [CF-3](OA-FLOW-CF.md#oa-flow.cf.3) for differentiating bounded exponential series, and [GNS Lemmas 2.1–2.2 and Theorem 4.1](OA-FLOW-GNS.md#gns-lemma-2-1) for positive-functional Cauchy–Schwarz and its norm.
 
 Let $\delta\in M_*$ be self-adjoint. The order interval $[0,1]$ is weak-star closed, since normal vector functionals define its positivity inequalities. It is therefore compact. Let $a\in[0,1]$ maximize $\delta(a)$, and write this maximum as $\alpha$. Put $p=1_{\{1\}}(a)$.
 
@@ -338,7 +338,7 @@ $$
  \tag{S12}
 $$
 
-This lower bound uses the explicitly proved decomposition above. The compactness and spectral/topological facts have the complete earlier proofs linked before the decomposition; the tracial density-order step has the complete earlier proof TD5, applied to the trace constructed under Section 2's proved compact-core construction.
+This lower bound uses the explicitly proved decomposition above. The compactness and spectral/topological facts have the complete earlier proofs linked before the decomposition; the tracial density-order step has the complete earlier proof [TD5](OA-FLOW-TD.md#oa-flow.td.5), applied to the trace constructed under Section 2's proved compact-core construction.
 
 Bimodularity and trace cyclicity show $H_{\phi^u}=\pi(u)H_\phi\pi(u)^*$, so $f_{\phi^u}=f_\phi$. Applying (S12) to every conjugate proves
 
@@ -476,7 +476,7 @@ The last identity uses nonsingularity, since those thresholds tend to zero in on
 
 In the type II finite corner $fBf$, $f=e-\beta(e)$, construct a continuous nested flag $q(t)$, $0\le t\le1$, with $\tau(q(t))=(1-\lambda)A_0t$, $q(0)=0$, $q(1)=f$. We give the dimension step instead of importing it. Every nonzero finite projection in a type II factor splits into two nonzero projections. Repeatedly choosing the smaller-trace piece gives nonzero projections of arbitrarily small trace. Given $0<c<\tau(g)$, partially order the projections $h\le g$ with $\tau(h)\le c$ by inclusion. Every chain has its projection supremum in that set, by trace normality. A maximal member exists. If its trace were less than $c$, a sufficiently small nonzero piece of $g-h$ could be added, a contradiction. Thus a projection of trace exactly $c$ exists.
 
-Repeatedly split every dyadic interval projection into two equal-trace pieces. At dyadic $t$, sum the pieces preceding $t$. At general $t$, take the strong supremum over dyadic $s<t$. Trace normality gives the asserted trace, nesting and continuity. In particular $\|q(t)-q(s)\|_1=(1-\lambda)A_0|t-s|$. Equal-trace finite projections, used in §5, are equivalent by the polar and central-support bridge proofs PC-1–2: a maximal partial isometry leaves two residual projections; if both were nonzero factoriality supplies another bridge, while equality of their finite traces prevents precisely one residual projection from being nonzero.
+Repeatedly split every dyadic interval projection into two equal-trace pieces. At dyadic $t$, sum the pieces preceding $t$. At general $t$, take the strong supremum over dyadic $s<t$. Trace normality gives the asserted trace, nesting and continuity. In particular $\|q(t)-q(s)\|_1=(1-\lambda)A_0|t-s|$. Equal-trace finite projections, used in §5, are equivalent by the polar and central-support bridge proofs [PC-1–2](OA-FLOW-PC.md#oa-flow.projection.pc1): a maximal partial isometry leaves two residual projections; if both were nonzero factoriality supplies another bridge, while equality of their finite traces prevents precisely one residual projection from being nonzero.
 
 On $[\lambda A_0,A_0]$, put
 
@@ -545,7 +545,7 @@ are orthogonal, have sum \(I\), and give a positive contraction \(A_k\in B\). Ev
  0\le A_k-A\le2^{-k}I.
  \tag{T3}
 \]
-Bounded-operator norm completeness is proved in the corresponding paragraph of CF-8; the commutant characterization shows that its limit still belongs to \(B\).
+Bounded-operator norm completeness is proved in the corresponding paragraph of [CF-8](OA-FLOW-CF.md#oa-flow.cf.8); the commutant characterization shows that its limit still belongs to \(B\).
 
 We identify every spectral threshold of this bounded \(A\). For \(0<s<1\), a band meeting \(F(s)K\) has right endpoint at most \(s+2^{-k}\), so \(A|_{F(s)K}\le sI\) after taking the norm limit. A band meeting \((I-F(s+\epsilon))K\), where \(0<\epsilon<1-s\), has right endpoint greater than \(s+\epsilon\), so \(A\) on that subspace is at least \((s+\epsilon)I\). All these subspaces reduce \(A\). The bounded spectral integral now gives
 

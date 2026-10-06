@@ -4,7 +4,7 @@ A constructible complex has perfect stalks. Its costalks are perfect too, but th
 
 Use Small balls, central fibres and supported cohomology for every local comparison map, Perfect coefficients on compact fibres for perfect compact cohomology, and Weak constructibility under sheaf operations for bounded weak duality. The existing exceptional-operation and cohomological-biduality prerequisites supply trace-normalized dual sections, the definition by formal neighborhood systems, and the compatibility of evaluation with local dual pairings. We apply those contracts to the small-ball systems proved here.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## The two local measurements
 

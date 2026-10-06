@@ -11,7 +11,7 @@ The definitions and fixed-class descent are [Idèles in extensions and their coh
 Throughout, \(L/K\) is cyclic of degree \(n\), \(G=\operatorname{Gal}(L/K)\), and \(n_v=[L_w:K_v]\) for a choice of \(w\mid v\).
 
 
-**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-14) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-14) shows which results are proved in published lessons and which full proofs are still missing. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
 
 ## 1. A calculation with six constant-field automorphisms
 

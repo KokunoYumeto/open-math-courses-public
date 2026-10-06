@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analytic kernels for unbounded modular operators · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-MA.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 27 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="analytic-kernels-for-unbounded-modular-operators">Analytic kernels for unbounded modular operators</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>An unbounded power need not commute with a bounded operator or preserve its range. We formulate the required equation as a pairing on its exact common domain. A strip integral then solves it through bounded operators. The same analytic tools construct entire vectors and identify their actual power domains.</p>
+<p>The free human references are Rieffel and Van Daele, <a href="https://msp.org/pjm/1977/69-1/pjm-v69-n1-p17-s.pdf"><em>A bounded operator approach to Tomita–Takesaki theory</em>, Lemmas 4.6–4.8</a>, and Brent Nelson, <a href="https://users.math.msu.edu/users/banelson/files/Tomita-Takesaki%20Theory.pdf"><em>Tomita–Takesaki Theory</em>, Definition 2.1, Lemmas 2.3–2.4 and the proof of Theorem 2.2</a>. The written strip formula used below is <a href="notes/real-coercivity/bounded-modular-integral.html">IK1</a>. The arguments here include the domain, convergence and completeness steps needed for their stated conclusions; the references do not stand in for those proofs.</p>
+<h2 id="conventions-and-exact-analytic-inputs"><span id="oa-mod-ma-01"></span><span id="OA-MOD-MA-01"></span>Conventions and exact analytic inputs</h2>
+<p>The inner product is linear in its first variable. Hilbert spaces need not be separable. Throughout the spectral statements, <span class="math" data-tex="\(A\)">\(A\)</span> is positive, injective and self-adjoint; its inverse may be unbounded. Powers use the real logarithm of a positive scalar. Write</p>
+<span class="math math-display" data-tex="\[
+P_n=1_{[1/n,n]}(A),\qquad n\geq1.
+\tag{MA.1}
+\]">\[
+P_n=1_{[1/n,n]}(A),\qquad n\geq1.
+\tag{MA.1}
+\]</span>
+<p>The written spectral-domain and multiplication proofs SK-05, SK-07 and SK-09 give <span class="math" data-tex="\(P_n\to I\)">\(P_n\to I\)</span> strongly and, for every <span class="math" data-tex="\(\xi\in D(f(A))\)">\(\xi\in D(f(A))\)</span>,</p>
+<span class="math math-display" data-tex="\[
+P_n\xi\to\xi,\qquad f(A)P_n\xi\to f(A)\xi.
+\tag{MA.2}
+\]">\[
+P_n\xi\to\xi,\qquad f(A)P_n\xi\to f(A)\xi.
+\tag{MA.2}
+\]</span>
+<p>They also construct the strongly continuous unitaries <span class="math" data-tex="\(A^{it}\)">\(A^{it}\)</span>. A spectral band has bounded spectral range; no finite-dimensionality is assumed.</p>
+<p>The scalar prerequisites are written in <a href="notes/analytic-programme/scalar-complex-programme.html">complex analysis</a>, <a href="notes/analytic-programme/scalar-complex-boundaries.html">closed-boundary formulas SC1–SC5</a>, <a href="notes/analytic-programme/scalar-integration-programme.html">scalar integration</a>, and <a href="notes/analytic-programme/scalar-product-integration.html">products and substitutions PI1–PI7</a>. In particular PI6 proves Gaussian normalization, PI3 proves the absolutely integrable Fubini theorem, and PI7 proves the integration-by-parts formula with its endpoint conditions. These supply the interfaces named MA-DEP-SCALAR-COMPLEX and MA-DEP-SCALAR-INTEGRATION. We only use the explicitly proved rectangle, disc and simple-pole forms of complex integration.</p>
+<p>Complete normed spaces, scalar completeness and the usual set-theoretic maximal principle are foundational conventions. MA-02 proves the separation statements needed for general Banach and locally convex spaces. For Hilbert representation in MA-14, the earlier <a href="notes/real-coercivity/real-coercive-equations.html">real projection and Riesz proof</a> supplies the real theorem, and MA-14 gives its complex conversion. The spectral and bounded-operator prerequisites remain separately identified; this chapter does not by itself certify the whole programme's transitive proof closure.</p>
+<h2 id="which-integrals-take-values-in-which-space"><span id="oa-mod-ma-02"></span><span id="OA-MOD-MA-02"></span>Which integrals take values in which space</h2>
+<p><strong>Separation used in this chapter.</strong> Let <span class="math" data-tex="\(p\)">\(p\)</span> be a finite sublinear function on a real vector space, and <span class="math" data-tex="\(f\leq p\)">\(f\leq p\)</span> a linear functional on a subspace <span class="math" data-tex="\(D\)">\(D\)</span>. For <span class="math" data-tex="\(x\notin D\)">\(x\notin D\)</span>, an extension with value <span class="math" data-tex="\(a\)">\(a\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span> is dominated by <span class="math" data-tex="\(p\)">\(p\)</span> exactly when</p>
+<span class="math math-display" data-tex="\[
+\sup_{d\in D}\{f(d)-p(d-x)\}\leq a
+\leq\inf_{e\in D}\{p(e+x)-f(e)\}.
+\]">\[
+\sup_{d\in D}\{f(d)-p(d-x)\}\leq a
+\leq\inf_{e\in D}\{p(e+x)-f(e)\}.
+\]</span>
+<p>Every left expression is at most every right expression: use
+<span class="math" data-tex="\(f(d+e)\leq p(d+e)\leq p(d-x)+p(e+x)\)">\(f(d+e)\leq p(d+e)\leq p(d-x)+p(e+x)\)</span>.
+The bounds are finite on the required side by taking <span class="math" data-tex="\(d=0\)">\(d=0\)</span> or <span class="math" data-tex="\(e=0\)">\(e=0\)</span>. A real <span class="math" data-tex="\(a\)">\(a\)</span> between them therefore exists. Positive and negative scalar multiples of <span class="math" data-tex="\(x\)">\(x\)</span> reduce the domination check to these two inequalities. Order all dominated extensions by inclusion. A chain has its union as a dominated extension, so the maximal principle gives an extension to the whole space; otherwise the one-dimensional construction would enlarge it.</p>
+<p>In particular, for a seminorm <span class="math" data-tex="\(p\)">\(p\)</span> and a vector <span class="math" data-tex="\(v\)">\(v\)</span>, start on <span class="math" data-tex="\(\mathbb Rv\)">\(\mathbb Rv\)</span> with <span class="math" data-tex="\(f(tv)=t p(v)\)">\(f(tv)=t p(v)\)</span>. The extension satisfies <span class="math" data-tex="\(|f|\leq p\)">\(|f|\leq p\)</span> and <span class="math" data-tex="\(f(v)=p(v)\)">\(f(v)=p(v)\)</span>. If <span class="math" data-tex="\(p\)">\(p\)</span> is continuous, this functional is continuous. It follows that continuous real functionals recover every continuous seminorm and separate points in a Hausdorff locally convex space. On a complex normed space, extend a real functional <span class="math" data-tex="\(f\)">\(f\)</span> and set <span class="math" data-tex="\(L(x)=f(x)-if(ix)\)">\(L(x)=f(x)-if(ix)\)</span>. Direct substitution proves complex linearity and <span class="math" data-tex="\(\operatorname{Re}L=f\)">\(\operatorname{Re}L=f\)</span>. If <span class="math" data-tex="\(|f(x)|\leq\|x\|\)">\(|f(x)|\leq\|x\|\)</span>, rotate <span class="math" data-tex="\(x\)">\(x\)</span> by a scalar of modulus one so that <span class="math" data-tex="\(L\)">\(L\)</span> has nonnegative real value; then <span class="math" data-tex="\(|L(x)|\leq\|x\|\)">\(|L(x)|\leq\|x\|\)</span>. Starting with <span class="math" data-tex="\(f(v)=\|v\|\)">\(f(v)=\|v\|\)</span> gives <span class="math" data-tex="\(L(v)=\|v\|\)">\(L(v)=\|v\|\)</span>. Thus complex continuous functionals of norm at most one recover the norm as well. These are the separation and norming statements used below.</p>
+<p>Let <span class="math" data-tex="\(f:[a,b]\to B\)">\(f:[a,b]\to B\)</span> be continuous, with <span class="math" data-tex="\(B\)">\(B\)</span> Banach. For two sufficiently fine tagged partitions, compare their sums on the common refinement. The norm of the difference is at most <span class="math" data-tex="\((b-a)\)">\((b-a)\)</span> times the sum of the two continuity moduli. Uniform continuity and completeness give the Riemann integral. Comparing sums with sums of scalar norms proves</p>
+<span class="math math-display" data-tex="\[
+\left\|\int_a^b f(t)\,dt\right\|\leq\int_a^b\|f(t)\|\,dt.
+\tag{MA.3}
+\]">\[
+\left\|\int_a^b f(t)\,dt\right\|\leq\int_a^b\|f(t)\|\,dt.
+\tag{MA.3}
+\]</span>
+<p>If <span class="math" data-tex="\(f:\mathbb R\to B\)">\(f:\mathbb R\to B\)</span> is norm-continuous and <span class="math" data-tex="\(\|f(t)\|\leq m(t)\)">\(\|f(t)\|\leq m(t)\)</span> for an integrable scalar <span class="math" data-tex="\(m\)">\(m\)</span>, the compact-interval integrals form a Cauchy family: each omitted tail has norm at most its scalar <span class="math" data-tex="\(m\)">\(m\)</span>-integral. Their limit defines the improper norm integral. This is the Bochner integral in the present continuous setting. Bounded linear maps pass through it, first on finite sums and then on limits.</p>
+<p>For a strongly continuous operator family with <span class="math" data-tex="\(\sup_t\|T(t)\|\leq C\)">\(\sup_t\|T(t)\|\leq C\)</span> and continuous <span class="math" data-tex="\(k\in L^1(\mathbb R)\)">\(k\in L^1(\mathbb R)\)</span>, define instead</p>
+<span class="math math-display" data-tex="\[
+T_k\xi=\int_{\mathbb R}k(t)T(t)\xi\,dt.
+\tag{MA.4}
+\]">\[
+T_k\xi=\int_{\mathbb R}k(t)T(t)\xi\,dt.
+\tag{MA.4}
+\]</span>
+<p>Each integral is in <span class="math" data-tex="\(H\)">\(H\)</span>; linearity and (MA.3) give</p>
+<span class="math math-display" data-tex="\[
+\|T_k\|\leq C\|k\|_1.
+\tag{MA.5}
+\]">\[
+\|T_k\|\leq C\|k\|_1.
+\tag{MA.5}
+\]</span>
+<p>This is a vectorwise strong integral, without an operator-norm continuity assumption. If <span class="math" data-tex="\(T_j(t)\to T(t)\)">\(T_j(t)\to T(t)\)</span> strongly pointwise along a sequence, with the same bound <span class="math" data-tex="\(C\)">\(C\)</span>, scalar dominated convergence gives, for every <span class="math" data-tex="\(\xi\)">\(\xi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left\|\int k(t)(T_j(t)-T(t))\xi\,dt\right\|
+\leq\int |k(t)|\,\|(T_j(t)-T(t))\xi\|\,dt\longrightarrow0.
+\tag{MA.6}
+\]">\[
+\left\|\int k(t)(T_j(t)-T(t))\xi\,dt\right\|
+\leq\int |k(t)|\,\|(T_j(t)-T(t))\xi\|\,dt\longrightarrow0.
+\tag{MA.6}
+\]</span>
+<p>All vector functions being integrated here are continuous. This sequential integration statement places no countability restriction on the Hilbert space.</p>
+<p>Parametrizing a finite piecewise smooth path gives its Banach-valued integral and the path-length norm estimate. Scalar Cauchy formulas, SC1's rectangle identity and SC5's one-pole identity pass to Banach-valued holomorphic functions by testing with the separating functionals just proved. A locally uniform limit is holomorphic too: pass its circle Cauchy formula to the limit, expand the Cauchy kernel on a smaller disc, and use its geometric majorant to obtain a norm-convergent power series with termwise derivative. Each passage is controlled by (MA.3).</p>
+<h2 id="gaussian-normalization-and-its-fourier-transform">Gaussian normalization and its Fourier transform</h2>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+g_r(t)=\sqrt{r/\pi}\,e^{-rt^2},\qquad r&gt;0,
+\tag{MA.7}
+\]">\[
+g_r(t)=\sqrt{r/\pi}\,e^{-rt^2},\qquad r&gt;0,
+\tag{MA.7}
+\]</span>
+<p>and use the Fourier convention</p>
+<span class="math math-display" data-tex="\[
+\widehat f(s)=\int_{\mathbb R}e^{-ist}f(t)\,dt.
+\tag{MA.8}
+\]">\[
+\widehat f(s)=\int_{\mathbb R}e^{-ist}f(t)\,dt.
+\tag{MA.8}
+\]</span>
+<p>PI6.6 proves <span class="math" data-tex="\(\int e^{-t^2}dt=\sqrt\pi\)">\(\int e^{-t^2}dt=\sqrt\pi\)</span> by the proved product and polar formulas; the absolute-value dilation formula PI5.1 gives <span class="math" data-tex="\(\int g_r=1\)">\(\int g_r=1\)</span>.</p>
+<p>For <span class="math" data-tex="\(G(s)=\int e^{-t^2}e^{-ist}dt\)">\(G(s)=\int e^{-t^2}e^{-ist}dt\)</span>, difference quotients are dominated near each real <span class="math" data-tex="\(s\)">\(s\)</span> by <span class="math" data-tex="\(|t|e^{-t^2}\)">\(|t|e^{-t^2}\)</span>. Thus <span class="math" data-tex="\(G&#x27;(s)=-i\int t e^{-t^2}e^{-ist}dt\)">\(G&#x27;(s)=-i\int t e^{-t^2}e^{-ist}dt\)</span>. Apply PI7.2 to <span class="math" data-tex="\(e^{-t^2}\)">\(e^{-t^2}\)</span> and <span class="math" data-tex="\(e^{-ist}\)">\(e^{-ist}\)</span>. Both product-derivative terms are integrable and their endpoint product is zero. It yields
+<span class="math" data-tex="\(\int t e^{-t^2}e^{-ist}dt=-isG(s)/2\)">\(\int t e^{-t^2}e^{-ist}dt=-isG(s)/2\)</span>, so <span class="math" data-tex="\(G&#x27;=-sG/2\)">\(G&#x27;=-sG/2\)</span>. The derivative of <span class="math" data-tex="\(e^{s^2/4}G(s)\)">\(e^{s^2/4}G(s)\)</span> vanishes; finite-interval calculus and its value at zero give</p>
+<span class="math math-display" data-tex="\[
+G(s)=\sqrt\pi e^{-s^2/4}.
+\tag{MA.9}
+\]">\[
+G(s)=\sqrt\pi e^{-s^2/4}.
+\tag{MA.9}
+\]</span>
+<p>Changing scale in this identity proves directly</p>
+<span class="math math-display" data-tex="\[
+g_r(v)=\frac1{2\pi}\int_{\mathbb R}e^{-s^2/(4r)}e^{isv}\,ds.
+\tag{MA.10}
+\]">\[
+g_r(v)=\frac1{2\pi}\int_{\mathbb R}e^{-s^2/(4r)}e^{isv}\,ds.
+\tag{MA.10}
+\]</span>
+<p>All these integrals are absolutely convergent. Formula (MA.10) is a calculation for this kernel, not an invocation of general Fourier inversion.</p>
+<h2 id="fourier-uniqueness-from-gaussian-approximation">Fourier uniqueness from Gaussian approximation</h2>
+<p><strong>Theorem.</strong> A continuous integrable scalar function whose Fourier transform vanishes everywhere is zero everywhere.</p>
+<p>Insert (MA.10) into the convolution with <span class="math" data-tex="\(g_r\)">\(g_r\)</span>. The absolute double integral is at most <span class="math" data-tex="\(\|f\|_1\int e^{-s^2/(4r)}ds/(2\pi)\)">\(\|f\|_1\int e^{-s^2/(4r)}ds/(2\pi)\)</span>, so PI3 permits the interchange:</p>
+<span class="math math-display" data-tex="\[
+(f*g_r)(t)=\frac1{2\pi}\int e^{-s^2/(4r)}e^{ist}\widehat f(s)\,ds=0.
+\tag{MA.11}
+\]">\[
+(f*g_r)(t)=\frac1{2\pi}\int e^{-s^2/(4r)}e^{ist}\widehat f(s)\,ds=0.
+\tag{MA.11}
+\]</span>
+<p>To identify its pointwise limit, fix <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. On <span class="math" data-tex="\(|v|&lt;\delta\)">\(|v|&lt;\delta\)</span>, continuity makes <span class="math" data-tex="\(|f(t-v)-f(t)|&lt;\varepsilon\)">\(|f(t-v)-f(t)|&lt;\varepsilon\)</span>, and the contribution is at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The remaining <span class="math" data-tex="\(f(t-v)\)">\(f(t-v)\)</span> contribution is at most <span class="math" data-tex="\(\|f\|_1\sqrt{r/\pi}e^{-r\delta^2}\)">\(\|f\|_1\sqrt{r/\pi}e^{-r\delta^2}\)</span>. The remaining constant contribution is at most <span class="math" data-tex="\(|f(t)|\pi^{-1/2}\int_{|u|\geq\delta\sqrt r}e^{-u^2}du\)">\(|f(t)|\pi^{-1/2}\int_{|u|\geq\delta\sqrt r}e^{-u^2}du\)</span>. Both tend to zero, so <span class="math" data-tex="\(f*g_r(t)\to f(t)\)">\(f*g_r(t)\to f(t)\)</span>. This also proves the theorem for continuous integrable functions that are not globally bounded.</p>
+<p>For a uniformly bounded weak-operator-continuous family <span class="math" data-tex="\(T(t)\)">\(T(t)\)</span>, suppose</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}\frac{e^{-ist}}{2\cosh(\pi t)}
+\langle T(t)\xi,\eta\rangle\,dt=0
+\quad(s\in\mathbb R,\ \xi,\eta\in H).
+\tag{MA.12}
+\]">\[
+\int_{\mathbb R}\frac{e^{-ist}}{2\cosh(\pi t)}
+\langle T(t)\xi,\eta\rangle\,dt=0
+\quad(s\in\mathbb R,\ \xi,\eta\in H).
+\tag{MA.12}
+\]</span>
+<p>Apply the theorem to <span class="math" data-tex="\(\langle T(t)\xi,\eta\rangle/(2\cosh\pi t)\)">\(\langle T(t)\xi,\eta\rangle/(2\cosh\pi t)\)</span>, which is continuous and integrable. Its positive denominator never vanishes, so every coefficient of <span class="math" data-tex="\(T(t)\)">\(T(t)\)</span> is zero for every <span class="math" data-tex="\(t\)">\(t\)</span>. Hence <span class="math" data-tex="\(T(t)=0\)">\(T(t)=0\)</span>. The same proof, with Hilbert pairings, applies to a bounded weakly continuous vector function. A countable separating family is unnecessary.</p>
+<h2 id="an-inverse-in-a-banach-algebra">An inverse in a Banach algebra</h2>
+<p>Let <span class="math" data-tex="\(B\)">\(B\)</span> be a unital complex Banach algebra. Suppose <span class="math" data-tex="\(u:\mathbb C\to\mathrm{GL}(B)\)">\(u:\mathbb C\to\mathrm{GL}(B)\)</span> is norm-entire and</p>
+<span class="math math-display" data-tex="\[
+u(z+w)=u(z)u(w),\qquad M=\sup_{t\in\mathbb R}\|u(t)\|&lt;\infty.
+\tag{MA.13}
+\]">\[
+u(z+w)=u(z)u(w),\qquad M=\sup_{t\in\mathbb R}\|u(t)\|&lt;\infty.
+\tag{MA.13}
+\]</span>
+<p>For real <span class="math" data-tex="\(s\)">\(s\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+k_s(t)=\frac{e^{-ist}}{e^{\pi t}+e^{-\pi t}},\qquad
+D_s=e^{-s/2}u(-i/2)+e^{s/2}u(i/2).
+\tag{MA.14}
+\]">\[
+k_s(t)=\frac{e^{-ist}}{e^{\pi t}+e^{-\pi t}},\qquad
+D_s=e^{-s/2}u(-i/2)+e^{s/2}u(i/2).
+\tag{MA.14}
+\]</span>
+<p><strong>Theorem.</strong> The norm integral</p>
+<span class="math math-display" data-tex="\[
+I_s=\int_{\mathbb R}k_s(t)u(t)\,dt
+\tag{MA.15}
+\]">\[
+I_s=\int_{\mathbb R}k_s(t)u(t)\,dt
+\tag{MA.15}
+\]</span>
+<p>is the two-sided inverse of <span class="math" data-tex="\(D_s\)">\(D_s\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+I_s=e^{s/2}u(-i/2)(u(-i)+e^s1_B)^{-1}.
+\tag{MA.16}
+\]">\[
+I_s=e^{s/2}u(-i/2)(u(-i)+e^s1_B)^{-1}.
+\tag{MA.16}
+\]</span>
+<p>Use the already proved strip formula IK1.3 at <span class="math" data-tex="\(\phi=0\)">\(\phi=0\)</span>. Its Banach-valued version follows by MA-02: boundary integrals converge in norm, scalar testing gives IK1.3, and functionals separate the values. Apply it to</p>
+<span class="math math-display" data-tex="\[
+f(\zeta)=e^{-s\zeta}u(-i\zeta),\qquad |\operatorname{Re}\zeta|\leq\tfrac12.
+\tag{MA.17}
+\]">\[
+f(\zeta)=e^{-s\zeta}u(-i\zeta),\qquad |\operatorname{Re}\zeta|\leq\tfrac12.
+\tag{MA.17}
+\]</span>
+<p>Writing <span class="math" data-tex="\(\zeta=a+it\)">\(\zeta=a+it\)</span>, the group law gives</p>
+<span class="math math-display" data-tex="\[
+\|f(a+it)\|\leq M e^{|s|/2}
+\max_{|b|\leq1/2}\|u(-ib)\|.
+\tag{MA.18}
+\]">\[
+\|f(a+it)\|\leq M e^{|s|/2}
+\max_{|b|\leq1/2}\|u(-ib)\|.
+\tag{MA.18}
+\]</span>
+<p>The maximum is finite by continuity. Also <span class="math" data-tex="\(u(0)=1_B\)">\(u(0)=1_B\)</span>, since it is invertible and idempotent. At the right boundary the strip integrand is <span class="math" data-tex="\(e^{-s/2}k_s(t)u(-i/2)u(t)\)">\(e^{-s/2}k_s(t)u(-i/2)u(t)\)</span>, and at the left it is <span class="math" data-tex="\(e^{s/2}k_s(t)u(i/2)u(t)\)">\(e^{s/2}k_s(t)u(i/2)u(t)\)</span>. Therefore IK1 gives <span class="math" data-tex="\(1_B=D_sI_s\)">\(1_B=D_sI_s\)</span>. The group law makes all values of <span class="math" data-tex="\(u\)">\(u\)</span> commute; passing commutation through the integral gives <span class="math" data-tex="\(I_sD_s=1_B\)">\(I_sD_s=1_B\)</span>. Finally
+<span class="math" data-tex="\(D_s=e^{-s/2}u(i/2)(u(-i)+e^s1_B)\)">\(D_s=e^{-s/2}u(i/2)(u(-i)+e^s1_B)\)</span>; inversion of this product proves (MA.16).</p>
+<p>The scalar specialization <span class="math" data-tex="\(u(z)=e^{i\beta z}\)">\(u(z)=e^{i\beta z}\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+\int k_s(t)e^{i\beta t}dt=\frac1{2\cosh((\beta-s)/2)}.
+\tag{MA.19}
+\]">\[
+\int k_s(t)e^{i\beta t}dt=\frac1{2\cosh((\beta-s)/2)}.
+\tag{MA.19}
+\]</span>
+<p>In particular <span class="math" data-tex="\(\|k_s\|_1=1/2\)">\(\|k_s\|_1=1/2\)</span>, and <span class="math" data-tex="\(\|I_s\|\leq M/2\)">\(\|I_s\|\leq M/2\)</span>. The integral existence used above follows already from <span class="math" data-tex="\(|k_s(t)|\leq e^{-\pi|t|}\)">\(|k_s(t)|\leq e^{-\pi|t|}\)</span> and MA-02.</p>
+<h2 id="a-spectral-resolvent-as-a-strong-integral">A spectral resolvent as a strong integral</h2>
+<p>For every real <span class="math" data-tex="\(s\)">\(s\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}k_s(t)A^{it}dt
+=e^{s/2}A^{1/2}(A+e^sI)^{-1}.
+\tag{MA.20}
+\]">\[
+\int_{\mathbb R}k_s(t)A^{it}dt
+=e^{s/2}A^{1/2}(A+e^sI)^{-1}.
+\tag{MA.20}
+\]</span>
+<p>The integral is vectorwise strong. The scalar function on the right is</p>
+<span class="math math-display" data-tex="\[
+h_s(\lambda)=\frac{e^{s/2}\sqrt\lambda}{\lambda+e^s},\qquad
+0\leq h_s(\lambda)\leq\tfrac12.
+\tag{MA.21}
+\]">\[
+h_s(\lambda)=\frac{e^{s/2}\sqrt\lambda}{\lambda+e^s},\qquad
+0\leq h_s(\lambda)\leq\tfrac12.
+\tag{MA.21}
+\]</span>
+<p>The bound follows from <span class="math" data-tex="\((\sqrt\lambda-e^{s/2})^2\geq0\)">\((\sqrt\lambda-e^{s/2})^2\geq0\)</span>.</p>
+<p>To prove the formula, set <span class="math" data-tex="\(\beta=\log\lambda\)">\(\beta=\log\lambda\)</span> in (MA.19). On each compact interval <span class="math" data-tex="\([1/n,n]\)">\([1/n,n]\)</span>, the functions <span class="math" data-tex="\((t,\lambda)\mapsto k_s(t)\lambda^{it}\)">\((t,\lambda)\mapsto k_s(t)\lambda^{it}\)</span> are jointly continuous for bounded <span class="math" data-tex="\(t\)">\(t\)</span>. Uniform Riemann approximation and the bounded continuous-calculus norm estimate commute each finite integral with the calculus on <span class="math" data-tex="\(P_nH\)">\(P_nH\)</span>. The tail is uniformly at most <span class="math" data-tex="\(\int_{|t|&gt;L}|k_s(t)|dt\)">\(\int_{|t|&gt;L}|k_s(t)|dt\)</span>, so the same equality holds for the whole integral on this band. Now <span class="math" data-tex="\(P_n\to I\)">\(P_n\to I\)</span>, the multipliers (MA.21) are uniformly bounded, and (MA.6) passes the identity to all of <span class="math" data-tex="\(H\)">\(H\)</span>. The actual resolvent has range <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>; spectral multiplication and <span class="math" data-tex="\(D(A)\subset D(A^{1/2})\)">\(D(A)\subset D(A^{1/2})\)</span> identify its displayed composition with <span class="math" data-tex="\(h_s(A)\)">\(h_s(A)\)</span>. Thus no merely formal unbounded product has been used.</p>
+<h2 id="solving-an-equation-expressed-through-unbounded-pairings">Solving an equation expressed through unbounded pairings</h2>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+\mathcal V=D(A^{1/2})\cap D(A^{-1/2}),
+\tag{MA.22}
+\]">\[
+\mathcal V=D(A^{1/2})\cap D(A^{-1/2}),
+\tag{MA.22}
+\]</span>
+<p>and, for <span class="math" data-tex="\(X\in B(H)\)">\(X\in B(H)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\mathcal R_s(X)=\int_{\mathbb R}k_s(t)A^{it}XA^{-it}dt.
+\tag{MA.23}
+\]">\[
+\mathcal R_s(X)=\int_{\mathbb R}k_s(t)A^{it}XA^{-it}dt.
+\tag{MA.23}
+\]</span>
+<p>The orbit is strongly continuous: insert and subtract <span class="math" data-tex="\(A^{it}XA^{-iu}\xi\)">\(A^{it}XA^{-iu}\xi\)</span> to estimate its difference at <span class="math" data-tex="\(t,u\)">\(t,u\)</span>. Each integrand has norm at most <span class="math" data-tex="\(\|X\|\)">\(\|X\|\)</span>, so MA-02 constructs the integral.</p>
+<p><strong>Theorem.</strong> There is exactly one bounded <span class="math" data-tex="\(Y\)">\(Y\)</span> for which</p>
+<span class="math math-display" data-tex="\[
+\langle X\xi,\eta\rangle
+=\langle YA^{-1/2}\xi,A^{1/2}\eta\rangle
++e^s\langle YA^{1/2}\xi,A^{-1/2}\eta\rangle
+\quad(\xi,\eta\in\mathcal V).
+\tag{MA.24}
+\]">\[
+\langle X\xi,\eta\rangle
+=\langle YA^{-1/2}\xi,A^{1/2}\eta\rangle
++e^s\langle YA^{1/2}\xi,A^{-1/2}\eta\rangle
+\quad(\xi,\eta\in\mathcal V).
+\tag{MA.24}
+\]</span>
+<p>It is</p>
+<span class="math math-display" data-tex="\[
+Y=e^{-s/2}\mathcal R_s(X),\qquad
+\|Y\|\leq\tfrac12e^{-s/2}\|X\|.
+\tag{MA.25}
+\]">\[
+Y=e^{-s/2}\mathcal R_s(X),\qquad
+\|Y\|\leq\tfrac12e^{-s/2}\|X\|.
+\tag{MA.25}
+\]</span>
+<p>Here is a bounded proof of both existence and uniqueness. Set
+<span class="math" data-tex="\(R=2(I+A)^{-1}\)">\(R=2(I+A)^{-1}\)</span>, <span class="math" data-tex="\(C=R^{1/2}\)">\(C=R^{1/2}\)</span>, <span class="math" data-tex="\(D=(2I-R)^{1/2}\)">\(D=(2I-R)^{1/2}\)</span>, and <span class="math" data-tex="\(T=CD\)">\(T=CD\)</span>. The spectral domain formulas give</p>
+<span class="math math-display" data-tex="\[
+\mathcal V=\operatorname{ran}T,\qquad
+A^{1/2}T=D^2,\qquad A^{-1/2}T=C^2.
+\tag{MA.26}
+\]">\[
+\mathcal V=\operatorname{ran}T,\qquad
+A^{1/2}T=D^2,\qquad A^{-1/2}T=C^2.
+\tag{MA.26}
+\]</span>
+<p>For the converse inclusion in the range assertion, if <span class="math" data-tex="\(\xi\in\mathcal V\)">\(\xi\in\mathcal V\)</span>, put <span class="math" data-tex="\(u=(A^{1/2}+A^{-1/2})\xi/2\)">\(u=(A^{1/2}+A^{-1/2})\xi/2\)</span>. The bounded scalar multiplier <span class="math" data-tex="\(T(\lambda)=2\sqrt\lambda/(1+\lambda)\)">\(T(\lambda)=2\sqrt\lambda/(1+\lambda)\)</span> gives <span class="math" data-tex="\(Tu=\xi\)">\(Tu=\xi\)</span>. The other inclusion and the two equalities follow from the same scalar products with their actual domains. The operator <span class="math" data-tex="\(T\)">\(T\)</span> is injective with dense range, since its scalar function is strictly positive and <span class="math" data-tex="\(A\)">\(A\)</span> is injective.</p>
+<p>Substitute <span class="math" data-tex="\(\xi=Tu\)">\(\xi=Tu\)</span>, <span class="math" data-tex="\(\eta=Tv\)">\(\eta=Tv\)</span> into the pairings. Equation (MA.24) is exactly</p>
+<span class="math math-display" data-tex="\[
+TXT=D^2YC^2+e^sC^2YD^2.
+\tag{MA.27}
+\]">\[
+TXT=D^2YC^2+e^sC^2YD^2.
+\tag{MA.27}
+\]</span>
+<p>To invert this bounded equation, let
+<span class="math" data-tex="\(B_\zeta=R^{1/2-\zeta}(2I-R)^{1/2+\zeta}\)">\(B_\zeta=R^{1/2-\zeta}(2I-R)^{1/2+\zeta}\)</span>
+on <span class="math" data-tex="\(|\operatorname{Re}\zeta|\leq1/2\)">\(|\operatorname{Re}\zeta|\leq1/2\)</span>. The bounded functions defining these operators have norm at most two. They are strongly continuous up to the boundary and norm-holomorphic inside. The proof is the scalar estimate of IK2: after multiplying by <span class="math" data-tex="\(R(2I-R)\)">\(R(2I-R)\)</span>, endpoint values vanish uniformly on compact parameter sets, and this operator has dense range; inside, the exponential Taylor remainder is bounded by a constant times <span class="math" data-tex="\(|h|^2 r^{\delta/2}(1+|\log r|^2)\)">\(|h|^2 r^{\delta/2}(1+|\log r|^2)\)</span> near an endpoint. The latter is bounded and tends to zero. The bounded calculus passes both estimates to operators. These arguments use only <span class="math" data-tex="\(0\leq R\leq2I\)">\(0\leq R\leq2I\)</span> and injectivity of <span class="math" data-tex="\(R,2I-R\)">\(R,2I-R\)</span>, which hold here.</p>
+<p>One has <span class="math" data-tex="\(B_0=T\)">\(B_0=T\)</span>, <span class="math" data-tex="\(B_{1/2+it}=D^2A^{it}\)">\(B_{1/2+it}=D^2A^{it}\)</span> and <span class="math" data-tex="\(B_{-1/2+it}=C^2A^{it}\)">\(B_{-1/2+it}=C^2A^{it}\)</span>. Apply IK1 to each scalar pairing of <span class="math" data-tex="\(e^{-s\zeta}B_\zeta W B_{-\zeta}\)">\(e^{-s\zeta}B_\zeta W B_{-\zeta}\)</span>, for any bounded <span class="math" data-tex="\(W\)">\(W\)</span>. The family is bounded on the vertical strip and has the continuity just proved. Its boundary terms give</p>
+<span class="math math-display" data-tex="\[
+TWT=e^{-s/2}D^2\mathcal R_s(W)C^2
++e^{s/2}C^2\mathcal R_s(W)D^2.
+\tag{MA.28}
+\]">\[
+TWT=e^{-s/2}D^2\mathcal R_s(W)C^2
++e^{s/2}C^2\mathcal R_s(W)D^2.
+\tag{MA.28}
+\]</span>
+<p>Taking <span class="math" data-tex="\(W=X\)">\(W=X\)</span> proves that (MA.25) satisfies (MA.27), hence (MA.24) on the whole stated domain. Conversely, if <span class="math" data-tex="\(Y\)">\(Y\)</span> satisfies (MA.27), the same strip formula with <span class="math" data-tex="\(W=Y\)">\(W=Y\)</span> has the boundary sum
+<span class="math" data-tex="\(e^{-s/2}k_s(t)A^{it}(TXT)A^{-it}\)">\(e^{-s/2}k_s(t)A^{it}(TXT)A^{-it}\)</span>.
+It follows that <span class="math" data-tex="\(TYT=e^{-s/2}T\mathcal R_s(X)T\)">\(TYT=e^{-s/2}T\mathcal R_s(X)T\)</span>. Density of <span class="math" data-tex="\(\operatorname{ran}T\)">\(\operatorname{ran}T\)</span> identifies the bounded operators, giving (MA.25). Its norm bound is (MA.5). No inverse of <span class="math" data-tex="\(T\)">\(T\)</span> is moved through an operator and no invariance of an unbounded domain under <span class="math" data-tex="\(Y\)">\(Y\)</span> is asserted.</p>
+<p>Taking scalar adjoints of the integral also gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal R_s(X)^*=\mathcal R_{-s}(X^*).
+\tag{MA.29}
+\]">\[
+\mathcal R_s(X)^*=\mathcal R_{-s}(X^*).
+\tag{MA.29}
+\]</span>
+<p>For <span class="math" data-tex="\(s=0\)">\(s=0\)</span> the kernel is positive, so the map preserves positivity. A nonzero phase parameter does not supply that positivity conclusion.</p>
+<figure><img src="../../audit/real-coercivity/figures/analytic-weak-equation.svg" alt="Bounded coordinates for the weak equation and its strip-integral solution." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><strong>Figure.</strong> Every vector in the common domain is represented as <span class="math" data-tex="\(Tu\)">\(Tu\)</span>. Its two half-power images are the bounded coordinates <span class="math" data-tex="\(D^2u\)">\(D^2u\)</span> and <span class="math" data-tex="\(C^2u\)">\(C^2u\)</span>. Substituting both test vectors gives (MA.27); the strip argument (MA.28) supplies both existence and uniqueness, without commuting an unbounded operator through <span class="math" data-tex="\(Y\)">\(Y\)</span>. Reproducible figure source.</p>
+<h2 id="two-facts-about-closed-strips"><span id="oa-mod-ma-08"></span><span id="OA-MOD-MA-08"></span>Two facts about closed strips</h2>
+<p>Let <span class="math" data-tex="\(S_a=\{z:-a\leq\operatorname{Im}z\leq0\}\)">\(S_a=\{z:-a\leq\operatorname{Im}z\leq0\}\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. A Banach-valued function continuous on <span class="math" data-tex="\(S_a\)">\(S_a\)</span>, holomorphic inside and zero on the real boundary is zero everywhere on the strip. To prove this, test with a continuous linear functional and extend the resulting scalar function by zero just above the boundary. Every small rectangle crossing the boundary has zero contour integral: split it there, use the continuous-boundary Cauchy formula SC1 on the lower part, and note that the upper part is zero. The shared edges cancel. Rectangle Morera SC3 makes the extension holomorphic. The identity theorem applies to its open set of zeros above the boundary and then to the connected strip interior. Continuity includes its lower boundary. MA-02's separation gives the vector assertion.</p>
+<p>If a continuous holomorphic <span class="math" data-tex="\(F\)">\(F\)</span> on this closed strip is globally bounded, and <span class="math" data-tex="\(\|F\|\leq M\)">\(\|F\|\leq M\)</span> on both boundary lines, then <span class="math" data-tex="\(\|F\|\leq M\)">\(\|F\|\leq M\)</span> throughout. For a scalar test <span class="math" data-tex="\(f\)">\(f\)</span> of norm at most one, write <span class="math" data-tex="\(|f|\leq C\)">\(|f|\leq C\)</span>. On the rectangle <span class="math" data-tex="\([-L,L]+i[-a,0]\)">\([-L,L]+i[-a,0]\)</span>, apply SC4 to <span class="math" data-tex="\(f(z)e^{-\varepsilon z^2}\)">\(f(z)e^{-\varepsilon z^2}\)</span>. The horizontal bound is <span class="math" data-tex="\(Me^{\varepsilon a^2}\)">\(Me^{\varepsilon a^2}\)</span>; the vertical bound is <span class="math" data-tex="\(Ce^{-\varepsilon L^2+\varepsilon a^2}\)">\(Ce^{-\varepsilon L^2+\varepsilon a^2}\)</span>. First let <span class="math" data-tex="\(L\to\infty\)">\(L\to\infty\)</span> with an interior point fixed, and then let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. The resulting scalar bound is <span class="math" data-tex="\(|f(z)|\leq M\)">\(|f(z)|\leq M\)</span>, also when <span class="math" data-tex="\(M=0\)">\(M=0\)</span>. Norming functionals from MA-02 prove the claimed Banach norm bound. The change of variable <span class="math" data-tex="\(z\mapsto-z\)">\(z\mapsto-z\)</span> gives the corresponding upper-strip results.</p>
+<h2 id="a-spectral-domain-is-a-strip-extension-condition"><span id="oa-mod-ma-09"></span><span id="OA-MOD-MA-09"></span>A spectral domain is a strip-extension condition</h2>
+<p>For real <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+S_\alpha=\{z:\min(0,-\alpha)\leq\operatorname{Im}z\leq\max(0,-\alpha)\}.
+\tag{MA.30}
+\]">\[
+S_\alpha=\{z:\min(0,-\alpha)\leq\operatorname{Im}z\leq\max(0,-\alpha)\}.
+\tag{MA.30}
+\]</span>
+<p><strong>Theorem.</strong> For <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>, a vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span> belongs to <span class="math" data-tex="\(D(A^\alpha)\)">\(D(A^\alpha)\)</span> if and only if its real orbit <span class="math" data-tex="\(A^{it}\xi\)">\(A^{it}\xi\)</span> extends to a bounded norm-continuous function on <span class="math" data-tex="\(S_\alpha\)">\(S_\alpha\)</span>, norm-holomorphic inside. The extension is unique and</p>
+<span class="math math-display" data-tex="\[
+F(z)=A^{iz}\xi,\qquad F(t-i\alpha)=A^{it}A^\alpha\xi.
+\tag{MA.31}
+\]">\[
+F(z)=A^{iz}\xi,\qquad F(t-i\alpha)=A^{it}A^\alpha\xi.
+\tag{MA.31}
+\]</span>
+<p>For <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>, the domain is all of <span class="math" data-tex="\(H\)">\(H\)</span> and the assertion is just the bounded continuous real orbit; there is no strip interior.</p>
+<p>First let <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>. If <span class="math" data-tex="\(\xi\in D(A^\alpha)\)">\(\xi\in D(A^\alpha)\)</span>, its scalar spectral measure satisfies <span class="math" data-tex="\(\int(1+\lambda^{2\alpha})d\mu_\xi&lt;\infty\)">\(\int(1+\lambda^{2\alpha})d\mu_\xi&lt;\infty\)</span>. For <span class="math" data-tex="\(z=t-iu\)">\(z=t-iu\)</span>, <span class="math" data-tex="\(0\leq u\leq\alpha\)">\(0\leq u\leq\alpha\)</span>, one has <span class="math" data-tex="\(\lambda^{2u}\leq1+\lambda^{2\alpha}\)">\(\lambda^{2u}\leq1+\lambda^{2\alpha}\)</span>. Thus the bandwise entire functions <span class="math" data-tex="\(A^{iz}P_n\xi\)">\(A^{iz}P_n\xi\)</span> obey</p>
+<span class="math math-display" data-tex="\[
+\sup_{z\in S_\alpha}\|A^{iz}(I-P_n)\xi\|^2
+\leq\int_{(0,\infty)\setminus[1/n,n]}(1+\lambda^{2\alpha})d\mu_\xi
+\longrightarrow0.
+\tag{MA.32}
+\]">\[
+\sup_{z\in S_\alpha}\|A^{iz}(I-P_n)\xi\|^2
+\leq\int_{(0,\infty)\setminus[1/n,n]}(1+\lambda^{2\alpha})d\mu_\xi
+\longrightarrow0.
+\tag{MA.32}
+\]</span>
+<p>Their uniform limit is bounded and continuous on the entire strip and holomorphic inside by MA-02. Multiplication of the spectral functions gives (MA.31).</p>
+<p>Conversely, for an extension <span class="math" data-tex="\(F\)">\(F\)</span>, the two functions <span class="math" data-tex="\(P_nF(z)\)">\(P_nF(z)\)</span> and <span class="math" data-tex="\(A^{iz}P_n\xi\)">\(A^{iz}P_n\xi\)</span> agree on the real boundary. MA-08's uniqueness gives equality throughout, hence</p>
+<span class="math math-display" data-tex="\[
+P_nF(-i\alpha)=A^\alpha P_n\xi.
+\tag{MA.33}
+\]">\[
+P_nF(-i\alpha)=A^\alpha P_n\xi.
+\tag{MA.33}
+\]</span>
+<p>Now <span class="math" data-tex="\(P_n\xi\to\xi\)">\(P_n\xi\to\xi\)</span> and the right side converges to <span class="math" data-tex="\(F(-i\alpha)\)">\(F(-i\alpha)\)</span>. Closedness of the spectral power, already proved in SK-05, gives <span class="math" data-tex="\(\xi\in D(A^\alpha)\)">\(\xi\in D(A^\alpha)\)</span> and identifies its image. Uniqueness on the rest of the strip is again MA-08. This converse needs no unjustified passage of a power through a boundary limit. For <span class="math" data-tex="\(\alpha&lt;0\)">\(\alpha&lt;0\)</span>, apply the positive case to <span class="math" data-tex="\(A^{-1}\)">\(A^{-1}\)</span>, exponent <span class="math" data-tex="\(-\alpha\)">\(-\alpha\)</span>, and the function <span class="math" data-tex="\(F(-z)\)">\(F(-z)\)</span>; all domains are transported, and no bounded inverse is assumed.</p>
+<h2 id="gaussian-averages-in-compact-convex-sets">Gaussian averages in compact convex sets</h2>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> be a real or complex locally convex space, <span class="math" data-tex="\(K\subset E\)">\(K\subset E\)</span> compact and convex, and <span class="math" data-tex="\(x:\mathbb R\to K\)">\(x:\mathbb R\to K\)</span> continuous. Completeness and Hausdorffness are not required for existence. For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> there is <span class="math" data-tex="\(x_r\in K\)">\(x_r\in K\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\ell(x_r)=\int g_r(t)\ell(x(t))dt
+\quad\text{for every continuous real linear functional }\ell.
+\tag{MA.34}
+\]">\[
+\ell(x_r)=\int g_r(t)\ell(x(t))dt
+\quad\text{for every continuous real linear functional }\ell.
+\tag{MA.34}
+\]</span>
+<p>Every such choice tends to <span class="math" data-tex="\(x(0)\)">\(x(0)\)</span> as <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span>. In a Hausdorff space it is unique, and in a Banach space it equals the norm integral.</p>
+<p>For a direct construction, partition <span class="math" data-tex="\([-n,n)\)">\([-n,n)\)</span> into intervals of length <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. Assign to the left endpoint of each interval its scalar Gaussian mass, and assign the remaining mass to <span class="math" data-tex="\(x(0)\)">\(x(0)\)</span>. The resulting finite convex combination <span class="math" data-tex="\(y_n\)">\(y_n\)</span> belongs to <span class="math" data-tex="\(K\)">\(K\)</span>. For every continuous real <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, its integrand is <span class="math" data-tex="\(\ell(x(\lfloor nt\rfloor/n))\)">\(\ell(x(\lfloor nt\rfloor/n))\)</span> on <span class="math" data-tex="\([-n,n)\)">\([-n,n)\)</span> and <span class="math" data-tex="\(\ell(x(0))\)">\(\ell(x(0))\)</span> outside. It converges pointwise to <span class="math" data-tex="\(\ell(x(t))\)">\(\ell(x(t))\)</span> and is bounded by the maximum of <span class="math" data-tex="\(|\ell|\)">\(|\ell|\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. Scalar dominated convergence proves that <span class="math" data-tex="\(\ell(y_n)\)">\(\ell(y_n)\)</span> tends to the right side of (MA.34). The closed subsets <span class="math" data-tex="\(\overline{\{y_n:n\geq N\}}^{K}\)">\(\overline{\{y_n:n\geq N\}}^{K}\)</span> of the compact space <span class="math" data-tex="\(K\)">\(K\)</span> have the finite intersection property. Any point in their intersection satisfies all these scalar limits: every closed scalar interval about a limit contains a sufficiently late tail and hence its closure. This proves existence even if compactness is not sequential compactness.</p>
+<p>For every continuous seminorm <span class="math" data-tex="\(p\)">\(p\)</span>, the norming real functionals proved in MA-02 give</p>
+<span class="math math-display" data-tex="\[
+p(x_r-x(0))\leq\int g_r(t)p(x(t)-x(0))dt.
+\tag{MA.35}
+\]">\[
+p(x_r-x(0))\leq\int g_r(t)p(x(t)-x(0))dt.
+\tag{MA.35}
+\]</span>
+<p>Indeed (MA.34) bounds each functional dominated by <span class="math" data-tex="\(p\)">\(p\)</span>, and their supremum is the seminorm. The scalar function on the right is bounded because <span class="math" data-tex="\(K\)">\(K\)</span> is compact. It is small near zero by continuity, while the Gaussian mass outside any fixed neighbourhood tends to zero by (MA.7). This proves convergence in every continuous seminorm. Those same functionals show uniqueness in the Hausdorff case and uniqueness in the Hausdorff quotient otherwise. In a Banach space, MA-02's norm integral satisfies (MA.34), so uniqueness identifies it with <span class="math" data-tex="\(x_r\)">\(x_r\)</span>.</p>
+<h2 id="models-that-distinguish-the-domains-and-topologies">Models that distinguish the domains and topologies</h2>
+<p><strong>Sharp constant.</strong> On <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, take <span class="math" data-tex="\(A=\operatorname{diag}(e^s,1)\)">\(A=\operatorname{diag}(e^s,1)\)</span>, <span class="math" data-tex="\(X=E_{12}\)">\(X=E_{12}\)</span>. Multiplication gives <span class="math" data-tex="\(A^{it}XA^{-it}=e^{ist}X\)">\(A^{it}XA^{-it}=e^{ist}X\)</span>. Formula (MA.19) therefore gives <span class="math" data-tex="\(\mathcal R_s(X)=X/2\)">\(\mathcal R_s(X)=X/2\)</span>, and (MA.25) attains <span class="math" data-tex="\(e^{-s/2}/2\)">\(e^{-s/2}/2\)</span>. The norm of <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span> is one: its action preserves the norm on the second coordinate and cannot increase any norm.</p>
+<p><strong>Strong and norm continuity differ.</strong> On <span class="math" data-tex="\(L^2(\mathbb R)\)">\(L^2(\mathbb R)\)</span>, let <span class="math" data-tex="\(A\)">\(A\)</span> be multiplication by <span class="math" data-tex="\(e^q\)">\(e^q\)</span> on its maximal domain. The spectral multiplier construction gives positivity, injectivity and self-adjointness. Its unitary group is multiplication by <span class="math" data-tex="\(e^{itq}\)">\(e^{itq}\)</span>; dominated convergence against <span class="math" data-tex="\(|f(q)|^2dq\)">\(|f(q)|^2dq\)</span> proves strong continuity. If <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>, every neighbourhood of a point with <span class="math" data-tex="\(tq\)">\(tq\)</span> an odd multiple of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> has positive measure. Testing unit vectors supported in such bounded neighbourhoods makes <span class="math" data-tex="\(\|(A^{it}-I)f\|\)">\(\|(A^{it}-I)f\|\)</span> arbitrarily close to two. The reverse inequality is the unitary triangle bound, so <span class="math" data-tex="\(\|A^{it}-I\|=2\)">\(\|A^{it}-I\|=2\)</span>. Reflection <span class="math" data-tex="\(Vf(q)=f(-q)\)">\(Vf(q)=f(-q)\)</span> is unitary by the proved change of variable and satisfies <span class="math" data-tex="\(A^{it}VA^{-it}=M_{e^{2itq}}V\)">\(A^{it}VA^{-it}=M_{e^{2itq}}V\)</span>. This orbit too is norm-discontinuous at zero. The vectorwise integrals in MA-06–07 apply to it.</p>
+<p><strong>An endpoint domain is an additional condition.</strong> In <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, let <span class="math" data-tex="\(Ae_n=ne_n\)">\(Ae_n=ne_n\)</span> and <span class="math" data-tex="\(\xi_n=1/n\)">\(\xi_n=1/n\)</span>. The series of squared coordinates converges, since <span class="math" data-tex="\(n^{-2}\leq1/(n(n-1))\)">\(n^{-2}\leq1/(n(n-1))\)</span> for <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> and the latter telescopes. But <span class="math" data-tex="\(\sum n|\xi_n|^2=\sum1/n\)">\(\sum n|\xi_n|^2=\sum1/n\)</span> diverges: each dyadic block from <span class="math" data-tex="\(2^k\)">\(2^k\)</span> to <span class="math" data-tex="\(2^{k+1}-1\)">\(2^{k+1}-1\)</span> contributes at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Hence <span class="math" data-tex="\(\xi\notin D(A^{1/2})\)">\(\xi\notin D(A^{1/2})\)</span>. Its bounded continuous real orbit cannot have the bounded continuous extension to the closed half-strip of MA-09.</p>
+<h2 id="problems-with-worked-solutions">Problems with worked solutions</h2>
+<p><strong>1. Check all signs in a matrix entry.</strong> Suppose <span class="math" data-tex="\(Ae_j=\lambda_j e_j\)">\(Ae_j=\lambda_j e_j\)</span>, with <span class="math" data-tex="\(\lambda_j&gt;0\)">\(\lambda_j&gt;0\)</span>, in finite dimension. Find the solution of (MA.24) for <span class="math" data-tex="\(X=E_{jk}\)">\(X=E_{jk}\)</span>.</p>
+<p>Conjugation multiplies this matrix entry by <span class="math" data-tex="\(e^{it\log(\lambda_j/\lambda_k)}\)">\(e^{it\log(\lambda_j/\lambda_k)}\)</span>. Thus (MA.19) and (MA.25) give</p>
+<span class="math math-display" data-tex="\[
+\mathcal R_s(E_{jk})=\frac{E_{jk}}{2\cosh((\log(\lambda_j/\lambda_k)-s)/2)},
+\qquad
+Y=\frac{E_{jk}}{\sqrt{\lambda_j/\lambda_k}+e^s\sqrt{\lambda_k/\lambda_j}}.
+\]">\[
+\mathcal R_s(E_{jk})=\frac{E_{jk}}{2\cosh((\log(\lambda_j/\lambda_k)-s)/2)},
+\qquad
+Y=\frac{E_{jk}}{\sqrt{\lambda_j/\lambda_k}+e^s\sqrt{\lambda_k/\lambda_j}}.
+\]</span>
+<p>Direct multiplication in (MA.24) gives precisely the two denominator factors, checking both half-power signs and the Fourier phase.</p>
+<p><strong>2. Is a boundary bound enough?</strong> On <span class="math" data-tex="\(S_a\)">\(S_a\)</span>, the entire function
+<span class="math" data-tex="\(F(z)=\exp(i e^{\pi z/a})\)">\(F(z)=\exp(i e^{\pi z/a})\)</span>
+has modulus one on both boundary lines, because the inner exponential is real there. At <span class="math" data-tex="\(z=t-ia/2\)">\(z=t-ia/2\)</span>, however, its modulus is <span class="math" data-tex="\(\exp(e^{\pi t/a})\)">\(\exp(e^{\pi t/a})\)</span>, which is unbounded. This verifies the need for global boundedness in MA-08's maximum statement.</p>
+<p><strong>3. Does Fourier uniqueness identify every representative?</strong> The indicator of <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> is nonzero at zero and has every Fourier integral zero, since it vanishes almost everywhere. It fails MA-04's continuity hypothesis. The proof there identifies pointwise values only through that hypothesis and Gaussian convergence.</p>
+<p><strong>4. An average inside an incomplete space.</strong> Let <span class="math" data-tex="\(E=c_{00}(\mathbb N)\)">\(E=c_{00}(\mathbb N)\)</span> with its <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> norm, choose <span class="math" data-tex="\(v,w\in E\)">\(v,w\in E\)</span>, and put <span class="math" data-tex="\(x(t)=(1-h(t))v+h(t)w\)">\(x(t)=(1-h(t))v+h(t)w\)</span> for continuous <span class="math" data-tex="\(h:\mathbb R\to[0,1]\)">\(h:\mathbb R\to[0,1]\)</span>. Its range is in the compact segment joining <span class="math" data-tex="\(v,w\)">\(v,w\)</span>. For <span class="math" data-tex="\(c_r=\int g_rh\)">\(c_r=\int g_rh\)</span>, the vector <span class="math" data-tex="\(x_r=(1-c_r)v+c_rw\)">\(x_r=(1-c_r)v+c_rw\)</span> remains in that segment and satisfies (MA.34). The scalar Gaussian estimate gives <span class="math" data-tex="\(c_r\to h(0)\)">\(c_r\to h(0)\)</span>. Thus the integral stays in this incomplete space because its compact convex range supplies existence, as proved in MA-10.</p>
+<h2 id="exported-contracts-and-remaining-analytic-boundaries">Exported contracts and remaining analytic boundaries</h2>
+<p>MA-05 supplies a Banach-algebra inverse. MA-06 gives the actual bounded spectral resolvent, and MA-07 solves the weak equation on the full intersection of the half-power domains, with its sharp norm constant. MA-09 identifies domains with closed-strip extensions for both signs of the exponent, including the zero case separately. MA-10 constructs compact-convex Gaussian averages without a completeness assumption. MA-03–04 prove the Gaussian identity and pointwise Fourier uniqueness. MA-08 distinguishes boundary uniqueness from the bounded-strip maximum principle.</p>
+<p>The scalar programme proofs linked in MA-01 are actual inputs to these arguments. The spectral, Hilbert-space and other course prerequisites are not proved in this chapter. The following three results address a complex group initially given only on a dense algebraic domain. None of the results in this chapter assumes a modular commutant theorem.</p>
+<h2 id="dense-scalar-tests-determine-norm-holomorphy">Dense scalar tests determine norm holomorphy</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\(D\subset H\)">\(D\subset H\)</span> be dense, <span class="math" data-tex="\(\Omega\subset\mathbb C\)">\(\Omega\subset\mathbb C\)</span> open and <span class="math" data-tex="\(F:\Omega\to H\)">\(F:\Omega\to H\)</span> locally bounded. If <span class="math" data-tex="\(\langle F(z),\eta\rangle\)">\(\langle F(z),\eta\rangle\)</span> is holomorphic for every <span class="math" data-tex="\(\eta\in D\)">\(\eta\in D\)</span>, then <span class="math" data-tex="\(F\)">\(F\)</span> is norm-holomorphic.</p>
+<p>Approximate each <span class="math" data-tex="\(\eta\in H\)">\(\eta\in H\)</span> by vectors of <span class="math" data-tex="\(D\)">\(D\)</span>. Local boundedness gives locally uniform convergence of their scalar tests; the scalar Cauchy theorem then proves holomorphy for every test vector. On a closed disc of radius <span class="math" data-tex="\(R\)">\(R\)</span> about <span class="math" data-tex="\(z_0\)">\(z_0\)</span>, let <span class="math" data-tex="\(\|F\|\leq C\)">\(\|F\|\leq C\)</span>. For each <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\langle c_n,\eta\rangle=\frac1{2\pi i}\oint_{|\zeta-z_0|=R}
+\frac{\langle F(\zeta),\eta\rangle}{(\zeta-z_0)^{n+1}}d\zeta.
+\tag{MA.36}
+\]">\[
+\langle c_n,\eta\rangle=\frac1{2\pi i}\oint_{|\zeta-z_0|=R}
+\frac{\langle F(\zeta),\eta\rangle}{(\zeta-z_0)^{n+1}}d\zeta.
+\tag{MA.36}
+\]</span>
+<p>The scalar right side is conjugate-linear in <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and bounded by <span class="math" data-tex="\(CR^{-n}\|\eta\|\)">\(CR^{-n}\|\eta\|\)</span>. For completeness, its representing vector follows from the written real Riesz theorem: represent its real part by <span class="math" data-tex="\(\operatorname{Re}\langle c_n,\eta\rangle\)">\(\operatorname{Re}\langle c_n,\eta\rangle\)</span>; evaluating at <span class="math" data-tex="\(i\eta\)">\(i\eta\)</span> identifies the imaginary part because both functionals are conjugate-linear. Thus <span class="math" data-tex="\(c_n\)">\(c_n\)</span> exists and <span class="math" data-tex="\(\|c_n\|\leq CR^{-n}\)">\(\|c_n\|\leq CR^{-n}\)</span>. The series <span class="math" data-tex="\(\sum c_n(z-z_0)^n\)">\(\sum c_n(z-z_0)^n\)</span> converges in norm for <span class="math" data-tex="\(|z-z_0|&lt;R\)">\(|z-z_0|&lt;R\)</span>; scalar Cauchy expansions identify all its pairings with those of <span class="math" data-tex="\(F\)">\(F\)</span>. Hence it equals <span class="math" data-tex="\(F\)">\(F\)</span>. On each smaller disc, the geometric bounds also give uniform convergence of the derivative series, proving norm holomorphy. No vector contour integral of an as-yet unproved continuous <span class="math" data-tex="\(F\)">\(F\)</span> was assumed.</p>
+<h2 id="a-contour-identity-on-an-invariant-dense-domain">A contour identity on an invariant dense domain</h2>
+<p>Let <span class="math" data-tex="\(D\subset H\)">\(D\subset H\)</span> be dense and complex linear. Suppose <span class="math" data-tex="\(U(z):D\to D\)">\(U(z):D\to D\)</span> is linear, every vector orbit is norm-entire, and</p>
+<span class="math math-display" data-tex="\[
+U(0)=I_D,\qquad U(z+w)=U(z)U(w).
+\tag{MA.37}
+\]">\[
+U(0)=I_D,\qquad U(z+w)=U(z)U(w).
+\tag{MA.37}
+\]</span>
+<p>Suppose the real values extend to bounded operators with</p>
+<span class="math math-display" data-tex="\[
+\sup_{t\in\mathbb R}\|U(t)\|\leq M&lt;\infty.
+\tag{MA.38}
+\]">\[
+\sup_{t\in\mathbb R}\|U(t)\|\leq M&lt;\infty.
+\tag{MA.38}
+\]</span>
+<p>Their real group law holds by density. If <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span> and <span class="math" data-tex="\(\eta\in D\)">\(\eta\in D\)</span>, the inequality
+<span class="math" data-tex="\(\|(U(t)-U(t_0))\xi\|\leq2M\|\xi-\eta\|+\|(U(t)-U(t_0))\eta\|\)">\(\|(U(t)-U(t_0))\xi\|\leq2M\|\xi-\eta\|+\|(U(t)-U(t_0))\eta\|\)</span>
+proves strong continuity. Consequently</p>
+<span class="math math-display" data-tex="\[
+T_s=\int k_s(t)U(t)dt,\qquad
+D_s\xi=e^{-s/2}U(-i/2)\xi+e^{s/2}U(i/2)\xi
+\tag{MA.39}
+\]">\[
+T_s=\int k_s(t)U(t)dt,\qquad
+D_s\xi=e^{-s/2}U(-i/2)\xi+e^{s/2}U(i/2)\xi
+\tag{MA.39}
+\]</span>
+<p>are respectively a bounded vectorwise integral and an operator on <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><strong>Theorem.</strong> One has</p>
+<span class="math math-display" data-tex="\[
+T_sD_s\xi=\xi\quad(\xi\in D),\qquad
+\overline{\operatorname{ran}D_s}=H,
+\tag{MA.40}
+\]">\[
+T_sD_s\xi=\xi\quad(\xi\in D),\qquad
+\overline{\operatorname{ran}D_s}=H,
+\tag{MA.40}
+\]</span>
+<p>and, for every real <span class="math" data-tex="\(a\)">\(a\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\overline{\operatorname{ran}(I_D+U(-ia))}=H.
+\tag{MA.41}
+\]">\[
+\overline{\operatorname{ran}(I_D+U(-ia))}=H.
+\tag{MA.41}
+\]</span>
+<p>Apply the vector strip formula as in MA-05 to <span class="math" data-tex="\(e^{-s\zeta}U(-i\zeta)\xi\)">\(e^{-s\zeta}U(-i\zeta)\xi\)</span>. Its vertical-strip bound is <span class="math" data-tex="\(M e^{|s|/2}\max_{|b|\leq1/2}\|U(-ib)\xi\|\)">\(M e^{|s|/2}\max_{|b|\leq1/2}\|U(-ib)\xi\|\)</span>. Its boundary identity is</p>
+<span class="math math-display" data-tex="\[
+\xi=\int k_s(t)[e^{-s/2}U(t-i/2)\xi+e^{s/2}U(t+i/2)\xi]dt
+=T_sD_s\xi.
+\tag{MA.42}
+\]">\[
+\xi=\int k_s(t)[e^{-s/2}U(t-i/2)\xi+e^{s/2}U(t+i/2)\xi]dt
+=T_sD_s\xi.
+\tag{MA.42}
+\]</span>
+<p>The bracket equals <span class="math" data-tex="\(D_sU(t)\xi\)">\(D_sU(t)\xi\)</span>. Finite Riemann sums therefore belong to <span class="math" data-tex="\(\operatorname{ran}D_s\)">\(\operatorname{ran}D_s\)</span>. Their norm limit is <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, since the two boundary orbits are continuous and bounded and <span class="math" data-tex="\(k_s\)">\(k_s\)</span> is integrable. Hence the range is dense. This conclusion does not move a possibly unclosed <span class="math" data-tex="\(D_s\)">\(D_s\)</span> through an integral.</p>
+<p>Apply the same identity to <span class="math" data-tex="\(z\mapsto U(az)\)">\(z\mapsto U(az)\)</span>, with <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. It becomes</p>
+<span class="math math-display" data-tex="\[
+\xi=\int k_0(t)(I_D+U(-ia))U(at+ia/2)\xi\,dt.
+\tag{MA.43}
+\]">\[
+\xi=\int k_0(t)(I_D+U(-ia))U(at+ia/2)\xi\,dt.
+\tag{MA.43}
+\]</span>
+<p>Its finite sums belong to the stated range and converge in norm by the same two bounded-orbit estimates. This proves (MA.41), including <span class="math" data-tex="\(a=0\)">\(a=0\)</span>.</p>
+<p>If <span class="math" data-tex="\(K=U(-ia)\)">\(K=U(-ia)\)</span> is positive symmetric on <span class="math" data-tex="\(D\)">\(D\)</span>, it is essentially self-adjoint. Indeed, symmetry on a dense domain proves closability: if <span class="math" data-tex="\(\xi_n\to0\)">\(\xi_n\to0\)</span> and <span class="math" data-tex="\(K\xi_n\to y\)">\(K\xi_n\to y\)</span>, then <span class="math" data-tex="\(\langle y,\eta\rangle=\lim\langle\xi_n,K\eta\rangle=0\)">\(\langle y,\eta\rangle=\lim\langle\xi_n,K\eta\rangle=0\)</span> for <span class="math" data-tex="\(\eta\in D\)">\(\eta\in D\)</span>, so <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. Its closure remains positive symmetric and satisfies <span class="math" data-tex="\(\|(I+\overline K)\xi\|\geq\|\xi\|\)">\(\|(I+\overline K)\xi\|\geq\|\xi\|\)</span>. This bound and closedness make its range closed: a convergent image sequence gives convergent first coordinates and then graph convergence. Equation (MA.41) makes the range all of <span class="math" data-tex="\(H\)">\(H\)</span>. For <span class="math" data-tex="\(\eta\in D(K^*)\)">\(\eta\in D(K^*)\)</span>, solve <span class="math" data-tex="\((I+\overline K)\xi=(I+K^*)\eta\)">\((I+\overline K)\xi=(I+K^*)\eta\)</span>. The difference <span class="math" data-tex="\(\eta-\xi\)">\(\eta-\xi\)</span> is in the kernel of <span class="math" data-tex="\(I+K^*\)">\(I+K^*\)</span>, which is the orthogonal complement of the range of <span class="math" data-tex="\(I+\overline K\)">\(I+\overline K\)</span>. It is zero. Thus <span class="math" data-tex="\(D(K^*)\subset D(\overline K)\)">\(D(K^*)\subset D(\overline K)\)</span>, proving self-adjointness of the closure. This argument proves the needed core conclusion directly.</p>
+<h2 id="gaussian-continuation-of-bounded-real-orbits"><span id="oa-mod-ma-16"></span><span id="OA-MOD-MA-16"></span>Gaussian continuation of bounded real orbits</h2>
+<p>Let <span class="math" data-tex="\(U(t)\)">\(U(t)\)</span> be a strongly continuous group on <span class="math" data-tex="\(H\)">\(H\)</span> with <span class="math" data-tex="\(\sup_t\|U(t)\|\leq M\)">\(\sup_t\|U(t)\|\leq M\)</span>. For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+F_r(z)=\int_{\mathbb R}g_r(t-z)U(t)\xi\,dt,\qquad
+g_r(w)=\sqrt{r/\pi}e^{-rw^2}.
+\tag{MA.44}
+\]">\[
+F_r(z)=\int_{\mathbb R}g_r(t-z)U(t)\xi\,dt,\qquad
+g_r(w)=\sqrt{r/\pi}e^{-rw^2}.
+\tag{MA.44}
+\]</span>
+<p>This norm integral is entire and obeys</p>
+<span class="math math-display" data-tex="\[
+\|F_r(z)\|\leq M e^{r(\operatorname{Im}z)^2}\|\xi\|,\qquad
+U(s)F_r(z)=F_r(z+s)\quad(s\in\mathbb R).
+\tag{MA.45}
+\]">\[
+\|F_r(z)\|\leq M e^{r(\operatorname{Im}z)^2}\|\xi\|,\qquad
+U(s)F_r(z)=F_r(z+s)\quad(s\in\mathbb R).
+\tag{MA.45}
+\]</span>
+<p>Moreover <span class="math" data-tex="\(F_r(0)\to\xi\)">\(F_r(0)\to\xi\)</span>. For the spectral group <span class="math" data-tex="\(U(t)=A^{it}\)">\(U(t)=A^{it}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+F_r(0)\in\bigcap_{\alpha\in\mathbb R}D(A^\alpha),\qquad
+A^{iz}F_r(0)=F_r(z)\quad(z\in\mathbb C).
+\tag{MA.46}
+\]">\[
+F_r(0)\in\bigcap_{\alpha\in\mathbb R}D(A^\alpha),\qquad
+A^{iz}F_r(0)=F_r(z)\quad(z\in\mathbb C).
+\tag{MA.46}
+\]</span>
+<p>To verify every passage, write <span class="math" data-tex="\(z=x+iy\)">\(z=x+iy\)</span>. Then <span class="math" data-tex="\(|g_r(t-z)|=e^{ry^2}g_r(t-x)\)">\(|g_r(t-z)|=e^{ry^2}g_r(t-x)\)</span>, which gives existence and the norm bound. On a fixed compact parameter set, the kernel and its complex derivative are bounded by a constant times <span class="math" data-tex="\((1+|t|)e^{-rt^2/2}\)">\((1+|t|)e^{-rt^2/2}\)</span>. This follows from <span class="math" data-tex="\(2|tx|\leq t^2/2+2x^2\)">\(2|tx|\leq t^2/2+2x^2\)</span> and the derivative factor <span class="math" data-tex="\(2r(t-z)\)">\(2r(t-z)\)</span>. Finite-segment calculus expresses a difference quotient as the average of those derivatives along the segment. Dominated convergence and (MA.3) then prove convergence in norm of the difference quotient to the derivative integral. This proves entire dependence. Passing the bounded <span class="math" data-tex="\(U(s)\)">\(U(s)\)</span> through the integral and substituting <span class="math" data-tex="\(v=t+s\)">\(v=t+s\)</span> proves covariance. For convergence at zero, integrate <span class="math" data-tex="\(U(t)\xi-\xi\)">\(U(t)\xi-\xi\)</span>: continuity controls a fixed neighbourhood, and its complement is bounded by <span class="math" data-tex="\((M+1)\|\xi\|\)">\((M+1)\|\xi\|\)</span> times the Gaussian tail. Finally (MA.45) supplies a bounded extension on every closed strip with the correct real orbit, so MA-09 gives every actual domain and identity in (MA.46).</p>
+<p>If <span class="math" data-tex="\(X(t)\)">\(X(t)\)</span> is strongly continuous in a von Neumann algebra <span class="math" data-tex="\(N\subset B(H)\)">\(N\subset B(H)\)</span>, with <span class="math" data-tex="\(\sup_t\|X(t)\|\leq C\)">\(\sup_t\|X(t)\|\leq C\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+X_r(z)=\int g_r(t-z)X(t)dt
+\tag{MA.47}
+\]">\[
+X_r(z)=\int g_r(t-z)X(t)dt
+\tag{MA.47}
+\]</span>
+<p>is a vectorwise strong integral in <span class="math" data-tex="\(N\)">\(N\)</span>, satisfies <span class="math" data-tex="\(\|X_r(z)\|\leq Ce^{r(\operatorname{Im}z)^2}\)">\(\|X_r(z)\|\leq Ce^{r(\operatorname{Im}z)^2}\)</span>, and is operator-norm entire. Finite sums lie in <span class="math" data-tex="\(N\)">\(N\)</span>, and their strong limits commute with every member of <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span>: pass each fixed bounded operator through the vector limits. Since <span class="math" data-tex="\(N=N&#x27;&#x27;\)">\(N=N&#x27;&#x27;\)</span>, those limits stay in <span class="math" data-tex="\(N\)">\(N\)</span>. The uniform tail bound handles the infinite interval. The derivative majorant above also proves convergence of the scalar kernel difference quotients in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>; multiplying that difference by <span class="math" data-tex="\(C\)">\(C\)</span> through (MA.5) proves operator-norm differentiability. For <span class="math" data-tex="\(X(t)=V(t)XV(-t)\)">\(X(t)=V(t)XV(-t)\)</span>, where a unitary group normalizes <span class="math" data-tex="\(N\)">\(N\)</span>, the same substitution proves real covariance. These results do not assign an undefined imaginary conjugation to an unsmoothed operator.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-WT.html">← Changing algebra coordinates and scaling a weight</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-HAP.html">Approximating multiplication without losing its bound →</a></span></nav>
+<p class="small source-link"><a href="src/modular-analytic-kernel.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

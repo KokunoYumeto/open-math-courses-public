@@ -1,6 +1,6 @@
 # Reading a sheaf at the normal scale
 
-Original English teaching draft. The proofs in this unit use the explicit
+The proofs in this unit use the explicit
 prerequisite contracts below; using a contract does not close its proof
 obligation. Kashiwara and Schapira's *Microlocal Study of Sheaves*, §2.2,
 provides the classical specialization construction and its functorial

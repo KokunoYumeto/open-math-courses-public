@@ -4,7 +4,7 @@ The coefficient type of a simple sheaf can stay fixed while its numerical shift 
 
 Use Pure and simple sheaves from directional tests. Manifolds are finite-dimensional smooth real manifolds unless specified otherwise; \(k\) is a commutative ring of finite global dimension and \(F\in D^b(k_X)\). Coefficient complexes may have arbitrary modules. We retain the earlier local conormal object and support-test prerequisites. The ordered inertia index uses \(\omega=d\theta\). Local existence of contact kernel equivalences proves the local hypersurface contact normal form with the required auxiliary-plane condition. Pure and simple sheaves from directional tests proves the zero-covector conormal geometry. The ordered index proof proves continuity at fixed pairwise-intersection dimensions and the four-plane cocycle, including degenerate triples.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## Follow a transverse auxiliary plane
 

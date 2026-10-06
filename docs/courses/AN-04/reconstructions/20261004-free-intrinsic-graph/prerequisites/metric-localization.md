@@ -22,7 +22,7 @@ The [measure companion, M0–M8](measure-and-l2.md) supplies the declared
 choice principle, rational enumeration, completed measure and convergence
 theorems. The [Fourier companion, L0–L3](fourier-l2.md) supplies the
 full \(L^2\) extension and distributional compatibility. The exact
-U001 Schwartz and spectral proofs, Q3–Q5
+[U001 Schwartz and spectral proofs, Q3–Q5](../../20261004-free-stationary-phase/quadratic-stationary-phase.md#q3-schwartz-estimates-and-the-signs-in-the-fourier-rules)
 supply all finite-dimensional Fourier and spectral steps.
 The finite-dimensional compactness, algebra and differential inputs are
 the exact earlier proofs named in that companion's F0 contract.

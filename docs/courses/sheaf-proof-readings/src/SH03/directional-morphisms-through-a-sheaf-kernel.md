@@ -6,7 +6,7 @@ Use Kernels that preserve chosen cotangent directions and Adjoints of localized 
 
 Kashiwara and Schapira's *Microlocal Study of Sheaves*, Theorem 6.3.9 and its proof, pp. 115–117, is the human antecedent for the common diagonal-Hom construction: both sides are obtained from one fourfold kernel using direct and inverse microlocalization comparisons. That theorem is stated for a contact correspondence satisfying the constructibility and microlocal endomorphism assumptions of Theorem 6.3.4. The one-sided admissibility theorem proved here has different scope. Its extra work is the two separate no-escape checks, the orientation calculation for each repeated coordinate, and compact replacement over each output neighborhood. The source theorem alone would not justify discarding its additional assumptions.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## A sheaf of directional morphisms
 

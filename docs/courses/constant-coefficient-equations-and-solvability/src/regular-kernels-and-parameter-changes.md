@@ -12,7 +12,7 @@ S_P(\xi)=\left(\sum_\alpha|\partial^\alpha P(\xi)|^2\right)^{1/2}.
 \]
 All polynomial spaces in this lesson have a fixed maximum degree \(m\). The actual degree may fall when the coefficients vary.
 
-The smooth polynomial averaging statement below is proved in Averaging an entire function while avoiding polynomial zeros, including compact averaging support, scalar homogeneity and the uniform denominator bound. The construction retains its declared scalar Taylor, finite-dimensional compactness, cutoff and Lebesgue/Fubini inputs; the other prerequisites and recursive closure of this lesson remain explicit.
+The smooth polynomial averaging statement below is proved in [Averaging an entire function while avoiding polynomial zeros](averaging-an-entire-function-while-avoiding-polynomial-zeros.md), including compact averaging support, scalar homogeneity and the uniform denominator bound. The construction retains its declared scalar Taylor, finite-dimensional compactness, cutoff and Lebesgue/Fubini inputs; the other prerequisites and recursive closure of this lesson remain explicit.
 
 ## What a regular inverse controls
 
@@ -66,7 +66,7 @@ For every \(\rho>0\), there is a nonnegative smooth function \(\Phi(q,z)\), defi
    \tag{4}
    \]
 
-Here \(\lambda\) is real \(2n\)-dimensional Lebesgue measure. The constants depend on \(m,n,\rho\). The complete polynomial averaging proof supplies this lemma, including its smooth dependence on the real and imaginary coefficient coordinates and the denominator differentials below. The averaging construction is due to Hörmander; a reference for the existence and regularity method is [Hormander 1971]. The existence theorem it supports is the Malgrange–Ehrenpreis theorem. The argument below derives the stronger estimates from the stated averaging properties.
+Here \(\lambda\) is real \(2n\)-dimensional Lebesgue measure. The constants depend on \(m,n,\rho\). The complete [polynomial averaging proof](averaging-an-entire-function-while-avoiding-polynomial-zeros.md) supplies this lemma, including its smooth dependence on the real and imaginary coefficient coordinates and the denominator differentials below. The averaging construction is due to Hörmander; a reference for the existence and regularity method is [Hormander 1971]. The existence theorem it supports is the Malgrange–Ehrenpreis theorem. The argument below derives the stronger estimates from the stated averaging properties.
 
 Define
 \[

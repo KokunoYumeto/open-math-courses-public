@@ -1,6 +1,6 @@
 # Principal groupoids with hidden group factors
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-check in progress; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
 
 A principal groupoid has no nonidentity isotropy arrows. Its measurable structure can nevertheless carry a group coordinate invisible to the unit sigma-field. The preceding binary example gives an abelian random-operator algebra. Here we construct the full countable-group version, classify all its proper transverse functions, and compute a properly infinite factor when the group is the free group on two generators.
 

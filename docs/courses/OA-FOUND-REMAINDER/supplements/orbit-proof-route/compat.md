@@ -1,7 +1,7 @@
 <span id="exact-domain-instantiation-for-the-preserved-commutant-proof"></span>
 # Exact domain instantiation for the preserved commutant proof
 
-The graph, polar and spectral results in Closing an involution and recovering its modular data, [Spectral calculus with its domains retained](../../../OA-MOD/OA-MOD-SK.html) and [Recovering operators from energy forms](../../../OA-MOD/OA-MOD-QF.html) give the domain identities used below.
+The graph, polar and spectral results in [Closing an involution and recovering its modular data](../../../OA-MOD/OA-MOD-TC.html), [Spectral calculus with its domains retained](../../../OA-MOD/OA-MOD-SK.html) and [Recovering operators from energy forms](../../../OA-MOD/OA-MOD-QF.html) give the domain identities used below.
 
 Let \(\mathcal C\subseteq H\) be an arbitrary left Hilbert algebra with the four HA01 axioms. It need not be unital, full or separable. Its algebraic involution \(s\) is closable by its hypothesis. TC03 and TC05 give \(S=\overline s\), \(F=S^*\), closed dense domains, \(S^{-1}=S\) on its actual range, and the graph core \(\mathcal C\). TC07–10 apply to this \(S\) without a vector-model premise. Thus every equality in MF.3–4 is available from these operator results with its exact domain:
 

@@ -2,7 +2,7 @@
 
 A pure sheaf has one local test degree at each regular transverse intersection with a differential graph. The geometric shift alone does not give that degree: the ambient dimension and an ordered inertia index also enter. These local tests determine the global Euler number. The finite Morse filtration gives more information, because its connecting maps record how neighbouring cohomological degrees cancel.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Use Pure and simple sheaves from directional tests for normalized type, its integral shift and the complete transverse-test comparison. Differential sections and proper-below Euler indices proves finiteness and the global ordinary index. Isolated phases and local characteristic-cycle indices proves the local closed-test index.
 

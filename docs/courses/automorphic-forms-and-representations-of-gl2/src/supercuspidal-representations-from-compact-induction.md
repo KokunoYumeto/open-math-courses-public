@@ -1,6 +1,6 @@
 # Supercuspidal representations from compact induction
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A finite-group cuspidal representation becomes a local supercuspidal representation by placing it at one integral lattice and translating that lattice through \(\mathrm{GL}_2(F)\). The central question is whether different lattice positions intertwine the original representation. A unipotent subgroup rules out every nontrivial Cartan position. The same calculation bounds fixed-vector spaces, and a conjugate of \(K_1(2)\) produces the newvector. A second construction uses a quadratic norm and its Gaussian Fourier transform; an explicit scalar model proves its irreducibility and factors. A norm-fibre vector and exact finite type counts then identify every odd-residue supercuspidal with one of these quadratic models. An explicit exceptional representation over Q₂ proves that the odd-residue qualification is necessary. Compact coefficients also control the character distribution: a positive double-coset operator becomes nilpotent, proving its vanishing near every noncompact adjoint element.
 

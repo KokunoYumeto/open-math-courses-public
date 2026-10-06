@@ -6,9 +6,9 @@ Let \(k\) be a commutative ring of finite global dimension \(g\). All complex ma
 
 Use the real covector identification \(\rho(\xi)(v)=\operatorname{Re}\xi(v)\), with \(\alpha=\sum\xi_jdz_j\), \(\Omega=d\alpha\), and real symplectic form \(\operatorname{Re}\Omega\). For a holomorphic differential, real transpose pullback under \(\rho\) agrees with complex-linear transpose pullback. Indeed both real covectors evaluate to \(\operatorname{Re}\xi(df(v))\). We can therefore use the existing real estimates in these complex cotangent coordinates without conjugating the transpose differential.
 
-The readable comparison is Kashiwara and Schapira, *Microlocal study of sheaves*, Theorem 8.5.2 with Propositions 8.3.3–8.3.6. These give complex conicity and the real operation framework. The independent argument below supplies the holomorphic invariance and the uniform boundedness needed for their combination. The exact bounded sheaf estimates, full Fourier microsupport equality, conic Euler criterion and ordered microlocal Hom normal-cone estimate are current prerequisites from the microlocal foundations. Their transitive audits remain open. This lesson proves the complex constructibility applications.
+The readable comparison is Kashiwara and Schapira, *Microlocal study of sheaves*, Theorem 8.5.2 with Propositions 8.3.3–8.3.6, printed 149–152. These give complex conicity and the real operation framework. The independent argument below supplies the holomorphic invariance and the uniform boundedness needed for their combination. The exact bounded sheaf estimates, full Fourier microsupport equality, conic Euler criterion and ordered microlocal Hom normal-cone estimate are current prerequisites from the microlocal foundations. This lesson proves the complex constructibility applications.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## The geometric and boundedness contracts
 

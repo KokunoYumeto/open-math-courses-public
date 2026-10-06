@@ -3818,12 +3818,12 @@ The proofs in this section use C05–C06, D10 and the support-based finite spect
 |\chi F(x)|^2\le \chi(c)\,\chi F(x^*x)
 \le \chi(c)^2\|x\|^2.
 \]
-The inequality \(x^*x\le\|x\|^2 1\) is F08. Characters preserve positivity by CS04 and norm \(Z\) by CS05 of [Regular-group operator foundations](regular-group-operator-foundations.md#t05a). Hence \(\|F(x)\|\le\|c\|\|x\|\); evaluation at the unit proves equality. The positive-form Cauchy–Schwarz argument, including its zero-denominator case, is the quotient argument in GNS. \(\square\)
+The inequality \(x^*x\le\|x\|^2 1\) is F08. Characters preserve positivity by CS04 and norm \(Z\) by CS05 of [Regular-group operator foundations](regular-group-operator-foundations.md#t05a). Hence \(\|F(x)\|\le\|c\|\|x\|\); evaluation at the unit proves equality. The positive-form Cauchy–Schwarz argument, including its zero-denominator case, is the quotient argument in [GNS](hypertraces-finite-injectivity.md#state-quotient). \(\square\)
 
 <a id="central-map-assembly"></a>
 **Assembly on central components (CA).** Suppose \((z_\alpha)\) is an arbitrary orthogonal central partition of the unit, and each \(F_\alpha:Mz_\alpha\to Zz_\alpha\) is normal and has norm at most \(C\). The componentwise map \(F:M\to Z\) is bounded by \(C\) and normal.
 
-**Proof.** The strong orthogonal sum of the output components exists, with norm the supremum of their norms, by H00–H01 and the central product construction SUP in Hypertraces. It is linear and bounded. A series-vector normal test on \(Z\) is
+**Proof.** The strong orthogonal sum of the output components exists, with norm the supremum of their norms, by H00–H01 and the central product construction SUP in [Hypertraces](hypertraces-finite-injectivity.md#normal-central-supports). It is linear and bounded. A series-vector normal test on \(Z\) is
 \(\eta(d)=\sum_j\langle\xi_j,d\eta_j\rangle\), with \(\sum_j\|\xi_j\|\|\eta_j\|<\infty\). Its \(\alpha\)-component has norm at most \(\sum_j\|z_\alpha\xi_j\|\|z_\alpha\eta_j\|\). Thus
 \[
 \sum_\alpha\|\eta|_{Zz_\alpha}\|
@@ -3879,7 +3879,7 @@ The last inequality is Cauchy–Schwarz on the orthogonal coordinate families. T
 <a id="normal-center-state"></a>
 **A normal center-valued state (NC).** Every concrete von Neumann algebra \(M\), with center \(Z\), has a normal positive unital center-linear map \(\Phi:M\to Z\).
 
-**Proof.** SUP constructs an orthogonal central partition \((z_\alpha)\) from the supports of normal vector states of \(Z\). On each \(Zz_\alpha\) the corresponding vector state is faithful. To treat one component, write its unit as \(z\), choose the normalized vector \(\xi=z\xi\), and put \(K=\overline{Zz\xi}\). Its vector state \(\omega(d)=\langle\xi,d\xi\rangle\) on \(Zz\) is faithful, normal and tracial, because this algebra is abelian. The map \(d1\mapsto d\xi\) identifies its trace Hilbert completion with \(K\). The full normal realization proof REP in Hypertraces applies to this faithful normal trace. In an abelian algebra its left and right multiplications coincide, so REP proves
+**Proof.** SUP constructs an orthogonal central partition \((z_\alpha)\) from the supports of normal vector states of \(Z\). On each \(Zz_\alpha\) the corresponding vector state is faithful. To treat one component, write its unit as \(z\), choose the normalized vector \(\xi=z\xi\), and put \(K=\overline{Zz\xi}\). Its vector state \(\omega(d)=\langle\xi,d\xi\rangle\) on \(Zz\) is faithful, normal and tracial, because this algebra is abelian. The map \(d1\mapsto d\xi\) identifies its trace Hilbert completion with \(K\). The full normal realization proof REP in [Hypertraces](hypertraces-finite-injectivity.md#trace-realization) applies to this faithful normal trace. In an abelian algebra its left and right multiplications coincide, so REP proves
 \[
 \theta(Zz)'=\theta(Zz),\qquad \theta(d)=d|_K,
 \]
@@ -4001,4 +4001,4 @@ Traciality gives \(\rho(u_j e u_j^*)=\rho(e)\), so applying the norm-one functio
 
 Jesse Peterson, [*Notes on operator algebras*](https://math.vanderbilt.edu/peters10/teaching/spring2020/OperatorAlgebras.pdf), dated April 27, 2020. Projection comparison and complement methods appear in Lemma 5.1.5, Proposition 5.1.9, Theorem 5.1.10 and Propositions 5.2.7–5.2.8, pp.84–90. The finite homogeneous construction is related to Proposition 5.4.2, p.95; the halving and monic methods are Lemmas 6.4.1–6.4.3 and Proposition 6.4.4, pp.102–103. The approximate center-trace method is Lemmas 6.4.8–6.4.9 and Theorem 6.4.10, pp.104–106. Here LC1 constructs a finite uniform comparison constant before its infimum is taken. CN proves the positive-map norm estimate for arbitrary elements; NA1 gives both different quadratic products explicitly.
 
-The earlier complete proof providers are [Regular-group operator foundations, H00–H03, T04a and CS01–CS06](regular-group-operator-foundations.md#h00), Infinite tensor products, F01–F08, and Hypertraces, GNS, COMPACT, REP and SUP. NC uses only the abelian faithful-trace instance of REP, whose proof precedes every center-valued trace application. The three diagrams are embedded as editable SVG in this lesson source.
+The earlier complete proof providers are [Regular-group operator foundations, H00–H03, T04a and CS01–CS06](regular-group-operator-foundations.md#h00), Infinite tensor products, F01–F08, and [Hypertraces, GNS, COMPACT, REP and SUP](hypertraces-finite-injectivity.md#state-quotient). NC uses only the abelian faithful-trace instance of REP, whose proof precedes every center-valued trace application. The three diagrams are embedded as editable SVG in this lesson source.

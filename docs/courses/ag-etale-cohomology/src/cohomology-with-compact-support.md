@@ -1,6 +1,6 @@
 # Cohomology with compact support
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Links and citations revised by Claude Opus 5.5 (Anthropic), October 2026. Original text released under CC0.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Links and citations revised by Claude Opus 5.5 (Anthropic), October 2026. Original text released under CC0. The constructibility reduction and finiteness proof in Section 12 are by GPT-6 Astra (OpenAI), October 2026.*
 
 A section on an open curve can remain nonzero arbitrarily close to a missing point. Compact support imposes a different condition: its nonzero locus must be proper over the base. To retain that condition in higher cohomology, extend the coefficient complex by zero into a compactification and then use proper direct image. The main work is showing that every compactification produces the same functor and the same comparison maps.
 
@@ -583,11 +583,63 @@ has \(0\leq p\leq2d\), proving (12.2). This spectral sequence can be obtained by
 
 The word “finite” for a module over a general Noetherian ring means finitely generated. It need not mean a finite underlying set, even when the ring has positive characteristic.
 
-Here are two general results that this lesson states without proof; both are proved in the Stacks project. Let \(D_c\) mean that every cohomology sheaf is constructible; it does not impose boundedness. Let \(D^+_{\mathrm{tors},c}\) impose constructibility, torsion and a lower bound.
+The next two results use the affine-line constructibility proof in AI Integrated Stacks, with the reduction to general morphisms and the finiteness deduction written out below. Let \(D_c\) mean that every cohomology sheaf is constructible; it does not impose boundedness. Let \(D^+_{\mathrm{tors},c}\) impose constructibility, torsion and a lower bound.
 
-**General constructibility, stated.** If \(f\) is separated of finite presentation between quasi-compact, quasi-separated schemes and \(\Lambda\) is Noetherian, then \(Rf_!\) takes \(D^+_{\mathrm{tors},c}(X,\Lambda)\) into \(D^+_{\mathrm{tors},c}(Y,\Lambda)\). If \(\Lambda\) is torsion, it also takes \(D_c(X,\Lambda)\) into \(D_c(Y,\Lambda)\). This is [Tag 0GL0](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-theorem-constructible-shriek). Finite presentation, rather than just finite type, is part of this assertion over a non-Noetherian base.
+**Theorem 12.3 (general constructibility).** If \(f\) is separated of finite presentation between quasi-compact, quasi-separated schemes and \(\Lambda\) is Noetherian, then \(Rf_!\) takes \(D^+_{\mathrm{tors},c}(X,\Lambda)\) into \(D^+_{\mathrm{tors},c}(Y,\Lambda)\). If \(\Lambda\) is torsion, it also takes \(D_c(X,\Lambda)\) into \(D_c(Y,\Lambda)\). This is [Tag 0GL0](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-theorem-constructible-shriek). Finite presentation, rather than just finite type, is part of this assertion over a non-Noetherian base.
 
-**General finiteness, stated.** For separated finite-type \(X\) over an algebraically closed field and Noetherian \(\Lambda\), each \(H^i_c(X,E)\) is a finitely generated \(\Lambda\)-module for \(E\in D^+_{\mathrm{tors},c}(X,\Lambda)\), or \(E\in D_c(X,\Lambda)\) when \(\Lambda\) is torsion. This is [Tag 0GLH](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-finiteness-compactly-supported). For finite coefficients it gives finite groups. For a bounded constructible complex, (12.2) additionally bounds the possible degrees; an unbounded complex need not have only finitely many nonzero groups.
+### Proof of general constructibility
+
+**Proof of Theorem 12.3.** We use one geometric input from the [AI Integrated Stacks proof for the affine-line projection](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-constructible-shriek-rel-dim-1): if \(T\) is affine and \(p:\mathbf A^1_T\to T\), then \(R^qp_!\mathcal F\) is constructible for every \(q\) and every constructible torsion sheaf of modules over the Noetherian coefficient ring \(\Lambda\). There is no Noetherian hypothesis on \(T\), and no requirement that the torsion order be invertible on \(T\).
+
+The input's proof descends the finitely presented coefficient data to a finitely generated \(\mathbf Z\)-subalgebra of the base ring and uses compact base change. Its geometric ingredients are the [constant-coefficient curve argument](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-constant-shriek-rel-dim-1) and the [locally constant coefficient argument](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-loc-constant-shriek-rel-dim-1). The former uses [proper smooth curve constructibility](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-proper-smooth-family-curves-modules), whose [prime-coefficient proof](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-proper-smooth-family-curves) treats the residue-characteristic case by Artin–Schreier, not by assuming invertibility. These are specific prerequisite proofs, not consequences of Poincaré duality in the later lesson.
+
+First explain passage from sheaves to complexes. Let \(g:Z\to T\) be one of the separated finite-presentation morphisms under consideration, and suppose \(R^ag_!\mathcal G\) is constructible for every constructible torsion sheaf \(\mathcal G\) and every \(a\). The finite cohomological-amplitude result of this lesson supplies \(N\geq0\) such that \(Rg_!\) sends degrees \([u,v]\) into \([u,v+N]\). For a fixed integer \(n\), put
+
+\[
+B_n=\tau_{\geq n-N}\tau_{\leq n}E.
+\]
+
+The truncation triangles give isomorphisms
+
+\[
+H^n(Rg_!E)\ \xleftarrow{\ \sim\ }
+H^n(Rg_!\tau_{\leq n}E)
+\ \xrightarrow{\ \sim\ }\ H^n(Rg_!B_n).
+\]
+
+Indeed, \(Rg_!\tau_{\geq n+1}E\) has no cohomology below \(n+1\), while \(Rg_!\tau_{\leq n-N-1}E\) has no cohomology above \(n-1\). These two vanishings give the displayed isomorphisms by the long exact sequences. The bounded complex \(B_n\) is built by finitely many truncation triangles from the sheaves \(H^q(E)[-q]\), for \(n-N\leq q\leq n\). The constructible sheaves form a Serre subcategory by Lesson 11, so the long exact sequences show that \(H^n(Rg_!B_n)\) is constructible. This reasoning is degreewise: it does not assume that an object of \(D_c\) is bounded. For a general \(\Lambda\) we use it only in the stated bounded-below torsion category; for a torsion ring the unbounded functor and its amplitude were constructed earlier in this lesson. Bounded-below objects remain bounded below, and the torsion property is preserved by the construction of \(Rg_!\).
+
+Apply this observation first to \(p:\mathbf A^1_T\to T\), using the geometric input. Repeated composition then proves preservation of constructible cohomology for \(\mathbf A^m_T\to T\) for every \(m\geq0\): each projection forgets one coordinate, its base is affine, and composition of the compact-support functors is the canonical composition proved in Section 8. For \(m=0\) the morphism and its functor are identities.
+
+Now suppose \(X\) and \(Y\) are affine. Finite presentation provides a factorization
+
+\[
+X\xrightarrow{i}\mathbf A^m_Y\xrightarrow{p}Y
+\]
+
+in which \(i\) is a closed immersion defined by a finitely generated ideal. Thus \(i\) has finite presentation. Extension by zero along \(i\) is exact and preserves constructible sheaves: this is the finite-presentation closed-immersion case of Lesson 11, also proved in the [locally quasi-finite finite-presentation lemma](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-qf-f-shriek-constructible). Exactness gives \(H^q(i_*E)=i_*H^q(E)\), so it preserves the relevant category of complexes too. Since \(Rf_!\simeq Rp_!i_*\), the affine case follows. This is where finite presentation, rather than finite type alone, matters over a non-Noetherian base.
+
+For general \(X,Y\), first restrict to an affine open of \(Y\), using compact base change. Over this open, \(X\) is quasi-compact and separated, and has a finite affine open cover. Intersections of its affine opens are affine because \(X\) is separated over the affine base. All these restricted morphisms retain finite presentation. Glue the affine cases with the compact-support Mayer–Vietoris triangle. For quasi-compact opens \(U,V\) with \(X=U\cup V\), and restrictions \(a:U\to Y\), \(b:V\to Y\), \(c:U\cap V\to Y\), it is
+
+\[
+Rc_!(E|_{U\cap V})\longrightarrow
+Ra_!(E|_U)\oplus Rb_!(E|_V)\longrightarrow
+Rf_!E\longrightarrow Rc_!(E|_{U\cap V})[1].
+\]
+
+To construct the triangle, use the exact extension-by-zero sequence for the two-open cover; its maps are the two restrictions with opposite signs and then their sum. The sequence is exact on every geometric stalk. Apply the derived functor and the composition identifications. Equivalently this is the [relative Mayer–Vietoris proof](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-relative-mayer-vietoris). Induction on the number of affine opens applies also to the intersections with the last open, which have smaller affine covers. The long exact sequence and the Serre property preserve constructibility at each step. Finally, constructibility is local on the base; its affine-local conclusions combine on a finite affine cover of the quasi-compact scheme \(Y\). This proves both asserted coefficient cases. \(\square\)
+
+### General finiteness over an algebraically closed field
+
+**Corollary 12.4 (general finiteness).** For separated finite-type \(X\) over an algebraically closed field and Noetherian \(\Lambda\), each \(H^i_c(X,E)\) is a finitely generated \(\Lambda\)-module for \(E\in D^+_{\mathrm{tors},c}(X,\Lambda)\), or \(E\in D_c(X,\Lambda)\) when \(\Lambda\) is torsion. This is [Tag 0GLH](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-finiteness-compactly-supported). For finite coefficients it gives finite groups. For a bounded constructible complex, (12.2) additionally bounds the possible degrees; an unbounded complex need not have only finitely many nonzero groups.
+
+**Proof of Corollary 12.4.** Write \(s:X\to\operatorname{Spec}k\) for the structure morphism. Since \(k\) is a field, the finite-type morphism \(s\) has finite presentation. Theorem 12.3 therefore applies to \(Rs_!E\). The étale topos of an algebraically closed field is the topos of sets: its finite-presentation étale objects are finite disjoint unions of that point. Consequently global sections on its module sheaves is exact, and a constructible module sheaf is exactly a finitely generated \(\Lambda\)-module. From the definition
+
+\[
+R\Gamma_c(X,E)=R\Gamma(\operatorname{Spec}k,Rs_!E)
+\]
+
+we obtain \(H^i_c(X,E)=H^i(Rs_!E)\), hence the asserted finite generation. When \(\Lambda\) is finite, a finitely generated module is a quotient of a finite Cartesian power of \(\Lambda\), so its underlying set is finite. Finite generation alone does not assert finite cardinality for a general Noetherian coefficient ring. \(\square\)
 
 The next lesson proves the relevant smooth base change theorem. Its proper smooth consequence concerns locally constant finite coefficients whose orders are invertible on the base: the sheaves \(R^qf_*\mathcal F\) are locally constant. Removing invertibility would incorrectly include characteristic-\(p\) variation of \(p\)-torsion cohomology. The general compact-support constructibility statement above, however, allows torsion of every order.
 
@@ -731,4 +783,4 @@ The historical reference is P. Deligne's [SGA 4](https://www.normalesup.org/~for
 
 For the Nagata historical passage, Deligne, *Le théorème de plongement de Nagata*, Kyoto Journal of Mathematics 50 (2010), 661–670 ([free in the IAS collected works](https://publications.ias.edu/node/2562)), Theorem 1.6 on page 668, states the embedding in a proper scheme under the paper's global Noetherian convention. Taking the closure of the locally closed image makes the embedding open in a proper scheme. The quasi-compact, quasi-separated generality used here is the modern statement 0F41; it is not attributed to the broader scope of that historical paper. The proof used here is the one linked in Section 3.
 
-The general constructibility and finiteness inputs are exactly 0GL0 and 0GLH, with Noetherian coefficients and the finite-presentation condition specified in Section 12. Curve finiteness, the vanishing bounds, compactification independence, coherent composition, arbitrary base change, the projection formula, excision, and every exercise solution have been proved in the lesson using the indicated earlier course results. The examples and smooth-base-change preview retain their invertibility hypotheses; characteristic torsion is included in the general compact-support construction and bounds.
+Theorem 12.3 gives the general-morphism reduction from the exact affine-line constructibility provider; Corollary 12.4 proves finiteness over an algebraically closed field. The corresponding statements are 0GL0 and 0GLH. Their Noetherian-coefficient, finite-presentation and derived-category hypotheses are retained in Section 12; the curve-provider links identify the geometric prerequisites used there. Curve finiteness, the vanishing bounds, compactification independence, coherent composition, arbitrary base change, the projection formula, excision, and every exercise solution have been proved in the lesson using the indicated earlier course results. The examples and smooth-base-change preview retain their invertibility hypotheses; characteristic torsion is included in the general compact-support construction and bounds.

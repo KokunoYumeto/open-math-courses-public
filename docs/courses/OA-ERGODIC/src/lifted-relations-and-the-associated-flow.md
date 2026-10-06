@@ -1,6 +1,6 @@
 # Lifted relations and the associated flow
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-check in progress; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
 
 ## Introduction
 
@@ -26,7 +26,7 @@ The construction starts with distinct points in each orbit. It produces a von Ne
 
 6. **Lift the relation and read its flow.** Return to the present lesson. The reciprocal modulus in the added positive coordinate makes the lifted measure invariant. The trace is the integral of the basepoint matrix coefficient. Summing the full orbit-fibre trace would destroy semifiniteness on an infinite orbit. Sections 3–5 identify fixed points, compare the canonical core at the exact written prerequisite, and prove invariance under a change of base measure. Section 4 separately explains the corrected product construction and its extra multiplicity coordinate. The source's undefined continuous-relation symbol remains a recorded callback. All eight solutions retain the stated Fourier sign and trace normalization.
 
-The source exercises have their own complete route. Polish orbits and their quotient topology proves the four Effros conditions and treats both rational and irrational rotations; an unqualified rotation assertion needs the rational-angle correction. [Locally closed orbits and measurable representatives](locally-closed-orbits-and-measurable-representatives.md) proves the Glimm equivalences, including the ergodic-measure converse and Borel selector. Its six-way conclusion already holds under condition C. These two lessons contain sixteen complete solutions and keep their descriptive-set-theoretic inputs and the delimited alternative proof explicit.
+The source exercises have their own complete route. [Polish orbits and their quotient topology](polish-orbits-and-their-quotient-topology.md) proves the four Effros conditions and treats both rational and irrational rotations; an unqualified rotation assertion needs the rational-angle correction. [Locally closed orbits and measurable representatives](locally-closed-orbits-and-measurable-representatives.md) proves the Glimm equivalences, including the ergodic-measure converse and Borel selector. Its six-way conclusion already holds under condition C. These two lessons contain sixteen complete solutions and keep their descriptive-set-theoretic inputs and the delimited alternative proof explicit.
 
 Author comparison covers all twenty-four numbered source items and both source exercises at the declared prerequisites. Twenty-two numbered conclusions are proved, with required corrections to proof formulas; the printed factor-type criterion and phase-free normalizer assertion have complete corrective dispositions. This completes the owned Krieger unit pass. Supported Connes and broader prerequisite validation continue, and the course's three separately recorded source questions remain open.
 

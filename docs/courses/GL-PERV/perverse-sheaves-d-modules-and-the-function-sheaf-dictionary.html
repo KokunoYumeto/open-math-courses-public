@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perverse sheaves, D-modules and the function-sheaf dictionary · Perverse sheaves and intersection cohomology</title>
+<meta name="description" content="A lesson of the course Perverse sheaves and intersection cohomology. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-PERV/perverse-sheaves-d-modules-and-the-function-sheaf-dictionary.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Perverse sheaves and intersection cohomology</a> <span aria-hidden="true">›</span> <span>Lesson 12 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="perverse-sheaves-d-modules-and-the-function-sheaf-dictionary">Perverse sheaves, D-modules and the function-sheaf dictionary</h1>
+<p><em>Exposition reconstructed by GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>There are several ways to extract numbers from a perverse sheaf. A Frobenius operator gives a trace. A normal slice gives an Euler characteristic. A resolution replaces a singular stalk by the cohomology of a fibre. We will calculate what each procedure preserves, and what it loses, before relating differential equations and Hecke correspondences to the same objects.</p>
+<p>The elementary calculations use <span class="unlinked">constructible complexes</span>, <a href="the-perverse-t-structure.html">the perverse heart</a>, <a href="intermediate-extensions-and-intersection-complexes.html">intermediate extension</a>, the <a href="semismall-maps-and-small-resolutions.html">small-map calculation</a>, and the explicit disc diagrams of <span class="unlinked">nearby and vanishing cycles</span>. Each use retains the exact prerequisite obligations of those lessons. The freely accessible sources at the end supply the mathematical statements and conventions being reconstructed; a reference does not complete an outstanding proof.</p>
+<p>For arithmetic calculations, <span class="math" data-tex="\(X_0\)">\(X_0\)</span> is of finite type over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, coefficients are <span class="math" data-tex="\(\Lambda=\overline{\mathbb Q}_\ell\)">\(\Lambda=\overline{\mathbb Q}_\ell\)</span>, and <span class="math" data-tex="\(\ell\ne\operatorname{char}\mathbb F_q\)">\(\ell\ne\operatorname{char}\mathbb F_q\)</span>. Complexes have arithmetic descent. Write <span class="math" data-tex="\(Q=q^n\)">\(Q=q^n\)</span> and use geometric Frobenius, the inverse of arithmetic Frobenius. For differential equations and normal Morse data we instead use complex varieties and <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>-coefficients. Passing between these settings requires additional structure; their sheaves do not automatically share a Frobenius action.</p>
+<h2 id="1-begin-with-the-information-lost-by-a-trace">1. Begin with the information lost by a trace</h2>
+<p>Let <span class="math" data-tex="\(V^\bullet\)">\(V^\bullet\)</span> be a bounded complex of finite-dimensional vector spaces with a commuting operator <span class="math" data-tex="\(F\)">\(F\)</span>. Its supertrace is
+<span class="math math-display" data-tex="\[
+\operatorname{str}(F;V^\bullet)=
+\sum_i(-1)^i\operatorname{Tr}(F;H^i(V^\bullet)).
+\tag{1.1}
+\]">\[
+\operatorname{str}(F;V^\bullet)=
+\sum_i(-1)^i\operatorname{Tr}(F;H^i(V^\bullet)).
+\tag{1.1}
+\]</span>
+For an <span class="math" data-tex="\(F\)">\(F\)</span>-stable subspace <span class="math" data-tex="\(A\subset B\)">\(A\subset B\)</span>, an adapted basis gives a block upper triangular matrix, so
+<span class="math" data-tex="\(\operatorname{Tr}(F;B)=\operatorname{Tr}(F;A)+\operatorname{Tr}(F;B/A)\)">\(\operatorname{Tr}(F;B)=\operatorname{Tr}(F;A)+\operatorname{Tr}(F;B/A)\)</span>.
+Apply this first to boundaries inside cycles and then to cycles inside each complex term. Boundary contributions in adjacent degrees cancel. Consequently (1.1) can also be computed on the terms of a finite complex.</p>
+<p>The same cancellation in the long exact sequence of a triangle proves supertrace additivity. Over a field, split a complex as its cohomology plus contractible pairs. Tensoring preserves the contractible pairs, and
+<span class="math" data-tex="\(\operatorname{Tr}(A\otimes B)=\operatorname{Tr}(A)\operatorname{Tr}(B)\)">\(\operatorname{Tr}(A\otimes B)=\operatorname{Tr}(A)\operatorname{Tr}(B)\)</span>, as follows by summing diagonal entries in tensor product bases. Therefore supertraces multiply under tensor product and change sign under a shift by one.</p>
+<p>On a point, all powers of <span class="math" data-tex="\(F\)">\(F\)</span> recover its eigenvalues with multiplicities, but not its Jordan blocks. Here is an elementary proof of the recovery statement. Let <span class="math" data-tex="\(\lambda_1,\ldots,\lambda_r\)">\(\lambda_1,\ldots,\lambda_r\)</span> be the distinct nonzero eigenvalues in two invertible operators, and let <span class="math" data-tex="\(a_j\)">\(a_j\)</span> be the difference of their multiplicities. Equality of power traces gives
+<span class="math math-display" data-tex="\[
+\sum_{j=1}^r a_j\lambda_j^n=0\qquad(1\le n\le r).
+\tag{1.2}
+\]">\[
+\sum_{j=1}^r a_j\lambda_j^n=0\qquad(1\le n\le r).
+\tag{1.2}
+\]</span>
+The coefficient matrix is a Vandermonde matrix with its <span class="math" data-tex="\(j\)">\(j\)</span>-th column multiplied by <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span>. Its determinant is, up to sign,
+<span class="math" data-tex="\(\prod_j\lambda_j\prod_{i&lt;j}(\lambda_j-\lambda_i)\ne0\)">\(\prod_j\lambda_j\prod_{i&lt;j}(\lambda_j-\lambda_i)\ne0\)</span>.
+Thus every <span class="math" data-tex="\(a_j=0\)">\(a_j=0\)</span>. A semisimple operator is classified by those eigenspaces, proving recovery of its semisimplification.</p>
+<p>For the loss, take <span class="math" data-tex="\(F=1+N\)">\(F=1+N\)</span> on a two-dimensional space, with <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span>, <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span>. Then <span class="math" data-tex="\(F^n=1+nN\)">\(F^n=1+nN\)</span> has trace <span class="math" data-tex="\(2\)">\(2\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, just as the identity. The two operators are not conjugate. This is also a continuous <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic representation of the arithmetic fundamental group of a point: the map <span class="math" data-tex="\(n\mapsto1+nN\)">\(n\mapsto1+nN\)</span> extends through <span class="math" data-tex="\(\widehat{\mathbb Z}\to\mathbb Z_\ell\)">\(\widehat{\mathbb Z}\to\mathbb Z_\ell\)</span>. Thus geometric semisimplicity of the underlying vector space does not remove the arithmetic extension.</p>
+<p>One power loses even semisimple information. Eigenvalue multisets <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span> and <span class="math" data-tex="\(\{\mathrm i,-\mathrm i\}\)">\(\{\mathrm i,-\mathrm i\}\)</span> have equal first traces and opposite second traces. Roots of unity make both arithmetic representations continuous. Finally, a nonzero complex <span class="math" data-tex="\(P\oplus P[1]\)">\(P\oplus P[1]\)</span> has zero supertrace for every operator preserving the summands. No collection of trace functions can recover an arbitrary derived object.</p>
+<h2 id="2-apply-supertrace-at-every-arithmetic-stalk">2. Apply supertrace at every arithmetic stalk</h2>
+<p>For <span class="math" data-tex="\(x\in X_0(\mathbb F_Q)\)">\(x\in X_0(\mathbb F_Q)\)</span>, let <span class="math" data-tex="\(F_{Q,x}\)">\(F_{Q,x}\)</span> act on its geometric stalk and set
+<span class="math math-display" data-tex="\[
+t_{K,n}(x)=\operatorname{str}(F_{Q,x};K_{\bar x}).
+\tag{2.1}
+\]">\[
+t_{K,n}(x)=\operatorname{str}(F_{Q,x};K_{\bar x}).
+\tag{2.1}
+\]</span>
+The datum is the family over all <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. If the underlying closed point has degree <span class="math" data-tex="\(d\mid n\)">\(d\mid n\)</span>, its operator is the <span class="math" data-tex="\((n/d)\)">\((n/d)\)</span>-th power of degree-<span class="math" data-tex="\(d\)">\(d\)</span> geometric Frobenius. A Tate twist <span class="math" data-tex="\((1)\)">\((1)\)</span> has eigenvalue <span class="math" data-tex="\(Q^{-1}\)">\(Q^{-1}\)</span>. Hence
+<span class="math math-display" data-tex="\[
+t_{K[m](r),n}=(-1)^mQ^{-r}t_{K,n}.
+\tag{2.2}
+\]">\[
+t_{K[m](r),n}=(-1)^mQ^{-r}t_{K,n}.
+\tag{2.2}
+\]</span>
+In particular the constant sheaf has value <span class="math" data-tex="\(1\)">\(1\)</span>, while the perverse constant sheaf on a smooth <span class="math" data-tex="\(d\)">\(d\)</span>-fold has value <span class="math" data-tex="\((-1)^d\)">\((-1)^d\)</span>.</p>
+<p><strong>Proposition 2.1.</strong> Trace functions are additive in triangles. Pullback and tensor product give
+<span class="math math-display" data-tex="\[
+t_{f^*L,n}(x)=t_{L,n}(f(x)),\qquad
+t_{K\otimes^L L,n}(x)=t_{K,n}(x)t_{L,n}(x).
+\tag{2.3}
+\]">\[
+t_{f^*L,n}(x)=t_{L,n}(f(x)),\qquad
+t_{K\otimes^L L,n}(x)=t_{K,n}(x)t_{L,n}(x).
+\tag{2.3}
+\]</span>
+For a separated finite-type map <span class="math" data-tex="\(f:X_0\to Y_0\)">\(f:X_0\to Y_0\)</span>, the compact-support formula is
+<span class="math math-display" data-tex="\[
+t_{Rf_!K,n}(y)=
+\sum_{\substack{x\in X_0(\mathbb F_Q)\\f(x)=y}}t_{K,n}(x).
+\tag{2.4}
+\]">\[
+t_{Rf_!K,n}(y)=
+\sum_{\substack{x\in X_0(\mathbb F_Q)\\f(x)=y}}t_{K,n}(x).
+\tag{2.4}
+\]</span>
+The proof of (2.4) requires the general Grothendieck–Lefschetz trace theorem; that prerequisite is not completed by the following deduction.</p>
+<p><strong>Proof.</strong> The stalk long exact sequence and the equivariant tensor cohomology decomposition reduce additivity and multiplication to Section 1. Pullback identifies geometric stalks and their <span class="math" data-tex="\(\mathbb F_Q\)">\(\mathbb F_Q\)</span>-operators, proving the first formula. For (2.4), compact-support base change identifies the stalk with
+<span class="math" data-tex="\(R\Gamma_c(X_{\bar y},K|_{X_{\bar y}})\)">\(R\Gamma_c(X_{\bar y},K|_{X_{\bar y}})\)</span>.
+The trace theorem equates its supertrace to the displayed sum on the <span class="math" data-tex="\(\mathbb F_Q\)">\(\mathbb F_Q\)</span>-fibre. Its sheaf version extends to bounded complexes by successive truncation triangles. These comparisons give (2.4), conditional on the trace theorem and the exact six-operation foundations. For proper <span class="math" data-tex="\(f\)">\(f\)</span>, one may replace <span class="math" data-tex="\(f_!\)">\(f_!\)</span> by <span class="math" data-tex="\(f_*\)">\(f_*\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>External products similarly multiply functions on the two factors. The map to a point gives a global sum. For example, <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span> has cohomology <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and <span class="math" data-tex="\(\Lambda(-1)\)">\(\Lambda(-1)\)</span> in degrees zero and two, so the sum for its constant sheaf is <span class="math" data-tex="\(1+Q\)">\(1+Q\)</span>; shifting by one gives <span class="math" data-tex="\(-(1+Q)\)">\(-(1+Q)\)</span>. This uses the previously constructed projective-line cohomology and its Frobenius action.</p>
+<p>To recover a local system from traces, we need a statement about all operators coming from its fundamental group. The group can be infinite.</p>
+<p><strong>Lemma 2.2 (character separation).</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> be any group and <span class="math" data-tex="\(k\)">\(k\)</span> an algebraically closed field of characteristic zero. For finite-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-representations <span class="math" data-tex="\(V,W\)">\(V,W\)</span>, suppose
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(g;V)=\operatorname{Tr}(g;W)\qquad(g\in G).
+\tag{2.5}
+\]">\[
+\operatorname{Tr}(g;V)=\operatorname{Tr}(g;W)\qquad(g\in G).
+\tag{2.5}
+\]</span>
+Then their semisimplifications are isomorphic. In particular, two semisimple representations with the same character are isomorphic.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(A=k[G]\)">\(A=k[G]\)</span> for the algebra of finite formal <span class="math" data-tex="\(k\)">\(k\)</span>-linear combinations of group elements, with multiplication extended from <span class="math" data-tex="\(G\)">\(G\)</span>. Group representations and their invariant subspaces are exactly <span class="math" data-tex="\(A\)">\(A\)</span>-modules and <span class="math" data-tex="\(A\)">\(A\)</span>-submodules. We will construct elements of <span class="math" data-tex="\(A\)">\(A\)</span> whose traces read off individual simple multiplicities.</p>
+<p>First, a nonzero homomorphism between simple modules is an isomorphism: its kernel and image are submodules. Thus there are no nonzero maps between nonisomorphic simples. An endomorphism of a finite-dimensional simple module has an eigenvalue <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, because <span class="math" data-tex="\(k\)">\(k\)</span> is algebraically closed. The nonzero kernel of <span class="math" data-tex="\(f-\lambda\)">\(f-\lambda\)</span> is the whole module, so every such endomorphism is scalar. These statements give the precise form of Schur's lemma needed below.</p>
+<p>Next, every submodule <span class="math" data-tex="\(N\)">\(N\)</span> of a finite direct sum <span class="math" data-tex="\(M\)">\(M\)</span> of simple modules has a complement made from some of the coordinate summands. Start with <span class="math" data-tex="\(U=0\)">\(U=0\)</span>. If <span class="math" data-tex="\(N+U\ne M\)">\(N+U\ne M\)</span>, one coordinate simple summand <span class="math" data-tex="\(S\)">\(S\)</span> is not contained in <span class="math" data-tex="\(N+U\)">\(N+U\)</span>. Simplicity gives <span class="math" data-tex="\(S\cap(N+U)=0\)">\(S\cap(N+U)=0\)</span>. Adjoining <span class="math" data-tex="\(S\)">\(S\)</span> to <span class="math" data-tex="\(U\)">\(U\)</span> therefore preserves <span class="math" data-tex="\(N\cap U=0\)">\(N\cap U=0\)</span> and increases its dimension. The finite-dimensional process ends with <span class="math" data-tex="\(M=N\oplus U\)">\(M=N\oplus U\)</span>. If <span class="math" data-tex="\(N\ne M\)">\(N\ne M\)</span>, projection along <span class="math" data-tex="\(N\)">\(N\)</span>, followed by projection onto one simple summand of <span class="math" data-tex="\(U\)">\(U\)</span>, gives a nonzero module map from <span class="math" data-tex="\(M\)">\(M\)</span> to that simple which kills <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(S_1,\ldots,S_r\)">\(S_1,\ldots,S_r\)</span> be pairwise nonisomorphic finite-dimensional simple modules. Choose a basis <span class="math" data-tex="\(v_{i1},\ldots,v_{id_i}\)">\(v_{i1},\ldots,v_{id_i}\)</span> in each <span class="math" data-tex="\(S_i\)">\(S_i\)</span>. Consider the left <span class="math" data-tex="\(A\)">\(A\)</span>-linear map
+<span class="math math-display" data-tex="\[
+E:A\longrightarrow \bigoplus_{i=1}^r S_i^{d_i},
+\qquad a\longmapsto (a v_{ij})_{i,j}.
+\tag{2.6}
+\]">\[
+E:A\longrightarrow \bigoplus_{i=1}^r S_i^{d_i},
+\qquad a\longmapsto (a v_{ij})_{i,j}.
+\tag{2.6}
+\]</span>
+If its image were proper, the complement construction would give a nonzero map from this direct sum to some <span class="math" data-tex="\(S_i\)">\(S_i\)</span>, vanishing on the image. Schur's lemma says that this map is zero on the other types and is <span class="math" data-tex="\((s_{ij})\mapsto\sum_j c_j s_{ij}\)">\((s_{ij})\mapsto\sum_j c_j s_{ij}\)</span> on the copies of <span class="math" data-tex="\(S_i\)">\(S_i\)</span>, for scalars not all zero. Applying it to <span class="math" data-tex="\(E(1)\)">\(E(1)\)</span> would give <span class="math" data-tex="\(\sum_j c_jv_{ij}=0\)">\(\sum_j c_jv_{ij}=0\)</span>, contrary to the chosen basis. Consequently <span class="math" data-tex="\(E\)">\(E\)</span> is onto. Specifying the images of every basis vector specifies an arbitrary endomorphism, so this proves the simultaneous surjectivity
+<span class="math math-display" data-tex="\[
+A\longrightarrow\bigoplus_{i=1}^r\operatorname{End}_k(S_i).
+\tag{2.7}
+\]">\[
+A\longrightarrow\bigoplus_{i=1}^r\operatorname{End}_k(S_i).
+\tag{2.7}
+\]</span></p>
+<p>Every nonzero finite-dimensional module has a simple submodule: choose a nonzero submodule of least dimension. Quotienting by it and repeating gives a finite composition series. Choose such series for <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span>, and let <span class="math" data-tex="\(S_1,\ldots,S_r\)">\(S_1,\ldots,S_r\)</span> list their distinct simple constituents. Block-trace additivity from Section 1 gives
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(a;V)-\operatorname{Tr}(a;W)
+=\sum_i(m_i-n_i)\operatorname{Tr}(a;S_i),
+\tag{2.8}
+\]">\[
+\operatorname{Tr}(a;V)-\operatorname{Tr}(a;W)
+=\sum_i(m_i-n_i)\operatorname{Tr}(a;S_i),
+\tag{2.8}
+\]</span>
+where <span class="math" data-tex="\(m_i,n_i\)">\(m_i,n_i\)</span> are their multiplicities. The left side vanishes for every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, by (2.5) and linearity. For a fixed <span class="math" data-tex="\(i\)">\(i\)</span>, (2.7) supplies <span class="math" data-tex="\(a\)">\(a\)</span> acting as a rank-one coordinate projection on <span class="math" data-tex="\(S_i\)">\(S_i\)</span> and as zero on every other <span class="math" data-tex="\(S_j\)">\(S_j\)</span>. Its traces on these simples are respectively <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span>. Equation (2.8) then gives <span class="math" data-tex="\(m_i-n_i=0\)">\(m_i-n_i=0\)</span> in <span class="math" data-tex="\(k\)">\(k\)</span>, hence equality of the integer multiplicities in characteristic zero.</p>
+<p>Applying the same argument to two composition series of one representation proves that its direct sum of constituents is independent of the series. This justifies the semisimplification used in the statement, as well as its recovery from the character. No finiteness assumption on <span class="math" data-tex="\(G\)">\(G\)</span> has entered the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.3 (continuous characters).</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> be a topological group and let two continuous finite-dimensional <span class="math" data-tex="\(\overline{\mathbb Q}_\ell\)">\(\overline{\mathbb Q}_\ell\)</span>-representations be defined over a common finite extension <span class="math" data-tex="\(E/\mathbb Q_\ell\)">\(E/\mathbb Q_\ell\)</span>. If their traces agree on a dense subset of <span class="math" data-tex="\(G\)">\(G\)</span>, their semisimplifications over <span class="math" data-tex="\(\overline{\mathbb Q}_\ell\)">\(\overline{\mathbb Q}_\ell\)</span> are isomorphic.</p>
+<p><strong>Proof.</strong> Trace is the sum of diagonal matrix entries, so the difference of the two characters is continuous as a function <span class="math" data-tex="\(G\to E\)">\(G\to E\)</span>. The field <span class="math" data-tex="\(E\)">\(E\)</span> is Hausdorff, so the inverse image of <span class="math" data-tex="\(0\)">\(0\)</span> is closed. It contains the dense subset and therefore all of <span class="math" data-tex="\(G\)">\(G\)</span>. Apply Lemma 2.2. If equality is known on conjugacy classes, it is known on their union: <span class="math" data-tex="\(\operatorname{Tr}(B C)=\operatorname{Tr}(C B)\)">\(\operatorname{Tr}(B C)=\operatorname{Tr}(C B)\)</span>, obtained by interchanging the two indices in the sum of matrix entries, implies invariance under conjugation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The characteristic-zero qualification is essential. In characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, the direct sum of <span class="math" data-tex="\(p\)">\(p\)</span> copies of the trivial representation has zero character, just as the zero representation. The topology in Corollary 2.3 is also essential to its density argument; it is not needed for the purely algebraic lemma.</p>
+<p><strong>Theorem 2.4 (assigned recovery statement; Chebotarev proof still required).</strong> The family (2.1) determines the Grothendieck class of an arithmetic constructible perverse sheaf. In particular it determines an arithmetically semisimple perverse sheaf up to isomorphism.</p>
+<p>We first justify the finite-length bookkeeping in this statement. In any finite-length abelian category, composition factors are independent of the composition series. Here is a proof that also applies to the perverse heart. A given composition series of length <span class="math" data-tex="\(n\)">\(n\)</span> bounds the length of every strict subobject chain by <span class="math" data-tex="\(n\)">\(n\)</span>: intersect the chain with its first simple term <span class="math" data-tex="\(S\)">\(S\)</span>, and take its image in the quotient by <span class="math" data-tex="\(S\)">\(S\)</span>. The intersections can change strictly once; by induction, the images can change strictly at most <span class="math" data-tex="\(n-1\)">\(n-1\)</span> times. Each strict inclusion changes at least one of these, since subobjects <span class="math" data-tex="\(B\subset C\)">\(B\subset C\)</span> with the same intersection with <span class="math" data-tex="\(S\)">\(S\)</span> and the same image modulo <span class="math" data-tex="\(S\)">\(S\)</span> satisfy <span class="math" data-tex="\(C=B+(C\cap S)=B\)">\(C=B+(C\cap S)=B\)</span>. This proves the bound.</p>
+<p>Induct on that finite maximum chain length to compare two composition series of an object <span class="math" data-tex="\(P\)">\(P\)</span>. A proper nonzero-kernel quotient has a smaller maximum: lift its chain and prefix the strict inclusion from zero into the kernel. Let the two series' first simple subobjects be <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span>. If they coincide, apply induction to <span class="math" data-tex="\(P/S\)">\(P/S\)</span>. If they differ, their intersection is zero and <span class="math" data-tex="\(S+T=S\oplus T\)">\(S+T=S\oplus T\)</span>. Choose a composition series of <span class="math" data-tex="\(P/(S+T)\)">\(P/(S+T)\)</span>. Its inverse images give a series of <span class="math" data-tex="\(P/S\)">\(P/S\)</span> beginning with <span class="math" data-tex="\(T\)">\(T\)</span>, and a series of <span class="math" data-tex="\(P/T\)">\(P/T\)</span> beginning with <span class="math" data-tex="\(S\)">\(S\)</span>. Induction on these proper quotients shows that both original series have precisely the factors <span class="math" data-tex="\(S,T\)">\(S,T\)</span> and those of <span class="math" data-tex="\(P/(S+T)\)">\(P/(S+T)\)</span>, with the same multiplicities. This proves Jordan–Hölder here. For a short exact sequence, a series of the subobject followed by inverse images of a series of the quotient is a series of the middle object. Thus simple multiplicities are additive, and the Grothendieck group is freely generated by simple classes: the multiplicity maps give the inverse to sending each formal simple generator to its class. Its class therefore determines a semisimple object.</p>
+<p>Here is the remaining geometric reduction. Express the difference of two perverse classes with equal functions as a finite integer combination of simple classes. Choose one maximal irreducible support, remove the other maximal supports, and shrink to a connected smooth dense open <span class="math" data-tex="\(U\)">\(U\)</span> on which all relevant simples are local systems shifted by the same dimension <span class="math" data-tex="\(d\)">\(d\)</span>. The simple-object classification by intermediate extension and the needed finite length are earlier perverse-heart results, with their recursive proof obligations retained. We also retain the étale input that shrinking a connected normal scheme to a dense open induces a surjection of arithmetic fundamental groups: this ensures that irreducible local systems remain irreducible on the chosen common open. On <span class="math" data-tex="\(U\)">\(U\)</span>, move the positive and negative coefficients to opposite sides. The equality of trace functions gives equality of Frobenius characters of the resulting two direct sums of local systems; the common sign <span class="math" data-tex="\((-1)^d\)">\((-1)^d\)</span> cancels. For a closed point of degree <span class="math" data-tex="\(e\)">\(e\)</span>, its geometric Frobenius trace occurs in <span class="math" data-tex="\(t_{K,e}\)">\(t_{K,e}\)</span>, so using every finite extension supplies all closed-point classes.</p>
+<p>The precise remaining density input is this: for a connected smooth finite-type scheme over a finite field, the union of the conjugacy classes of geometric Frobenius elements of closed points is dense in its arithmetic étale fundamental group. This is the required form of Chebotarev, and it is still unproved here. Under that input, the exact lisse-sheaf/fundamental-group correspondence with continuous finite-coefficient-field models allows Corollary 2.3 to recover the semisimple local systems. Their simple multiplicities cancel. Uniqueness of intermediate extension cancels the corresponding perverse simple classes on that support. Repeat for the finitely many maximal supports. All remaining supports are proper closed subsets, so noetherian induction finishes the reduction.</p>
+<p>This supplies the algebraic character-separation, continuity and Jordan–Hölder steps. Completion of Theorem 2.4 still requires Chebotarev and the exact earlier geometric and étale prerequisites just identified. Section 1 also shows why arithmetic semisimplicity and the family over all finite extensions cannot be replaced by geometric semisimplicity or a single trace function.</p>
+<h2 id="3-build-the-character-sheaves-with-their-actual-frobenius-action">3. Build the character sheaves with their actual Frobenius action</h2>
+<p>We specify the one-dimensional fibres as functions on finite torsors; this fixes the inverse convention without guessing a Frobenius sign.</p>
+<p>For an additive character <span class="math" data-tex="\(\psi:\mathbb F_q\to\Lambda^\times\)">\(\psi:\mathbb F_q\to\Lambda^\times\)</span>, consider <span class="math" data-tex="\(y^q-y=x\)">\(y^q-y=x\)</span>. The polynomial is monic with derivative <span class="math" data-tex="\(-1\)">\(-1\)</span>, so it defines a finite étale cover of <span class="math" data-tex="\(\mathbb A^1\)">\(\mathbb A^1\)</span>. Its translations form <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>. On a geometric fibre, take functions <span class="math" data-tex="\(h\)">\(h\)</span> satisfying
+<span class="math math-display" data-tex="\[
+h(y+a)=\psi(a)h(y)\qquad(a\in\mathbb F_q).
+\tag{3.1}
+\]">\[
+h(y+a)=\psi(a)h(y)\qquad(a\in\mathbb F_q).
+\tag{3.1}
+\]</span>
+Evaluation at any one point identifies this space with a line. Étale trivializations of the torsor glue these lines to <span class="math" data-tex="\(\mathcal L_\psi\)">\(\mathcal L_\psi\)</span>. If <span class="math" data-tex="\(g\)">\(g\)</span> acts on the torsor, its action on functions is <span class="math" data-tex="\(h\mapsto h\circ g^{-1}\)">\(h\mapsto h\circ g^{-1}\)</span>; translations commute with arithmetic descent, so the line is preserved.</p>
+<p>For <span class="math" data-tex="\(x\in\mathbb F_Q\)">\(x\in\mathbb F_Q\)</span>, telescoping the equation gives
+<span class="math math-display" data-tex="\[
+y^Q-y=\sum_{j=0}^{n-1}x^{q^j}
+=\operatorname{Tr}_{\mathbb F_Q/\mathbb F_q}(x).
+\tag{3.2}
+\]">\[
+y^Q-y=\sum_{j=0}^{n-1}x^{q^j}
+=\operatorname{Tr}_{\mathbb F_Q/\mathbb F_q}(x).
+\tag{3.2}
+\]</span>
+Arithmetic Frobenius displaces <span class="math" data-tex="\(y\)">\(y\)</span> by this trace. Geometric Frobenius is its inverse, so its pullback action on functions evaluates at <span class="math" data-tex="\(y+\operatorname{Tr}(x)\)">\(y+\operatorname{Tr}(x)\)</span>. By (3.1),
+<span class="math math-display" data-tex="\[
+t_{\mathcal L_\psi,n}(x)=
+\psi\bigl(\operatorname{Tr}_{\mathbb F_Q/\mathbb F_q}x\bigr).
+\tag{3.3}
+\]">\[
+t_{\mathcal L_\psi,n}(x)=
+\psi\bigl(\operatorname{Tr}_{\mathbb F_Q/\mathbb F_q}x\bigr).
+\tag{3.3}
+\]</span>
+This is the inverse associated-character convention in Deligne's free SGA <span class="math" data-tex="\(4\frac12\)">\(4\frac12\)</span> text, expressed directly on fibre functions.</p>
+<p>For <span class="math" data-tex="\(\chi:\mathbb F_q^\times\to\Lambda^\times\)">\(\chi:\mathbb F_q^\times\to\Lambda^\times\)</span>, the finite étale cover <span class="math" data-tex="\(y^{q-1}=x\)">\(y^{q-1}=x\)</span> of <span class="math" data-tex="\(\mathbb G_m\)">\(\mathbb G_m\)</span> has deck group <span class="math" data-tex="\(\mathbb F_q^\times\)">\(\mathbb F_q^\times\)</span>. Use functions with <span class="math" data-tex="\(h(ay)=\chi(a)h(y)\)">\(h(ay)=\chi(a)h(y)\)</span>. Now
+<span class="math math-display" data-tex="\[
+y^Q/y=x^{(Q-1)/(q-1)}
+=\operatorname{Nm}_{\mathbb F_Q/\mathbb F_q}(x),
+\qquad
+t_{\mathcal K_\chi,n}(x)=\chi(\operatorname{Nm}x).
+\tag{3.4}
+\]">\[
+y^Q/y=x^{(Q-1)/(q-1)}
+=\operatorname{Nm}_{\mathbb F_Q/\mathbb F_q}(x),
+\qquad
+t_{\mathcal K_\chi,n}(x)=\chi(\operatorname{Nm}x).
+\tag{3.4}
+\]</span>
+The second equality follows by the same inverse-Frobenius pullback computation. The covers and line descent, rather than a trace formula, prove (3.3)–(3.4).</p>
+<p>Let <span class="math" data-tex="\(j:\mathbb G_m\hookrightarrow\mathbb A^1\)">\(j:\mathbb G_m\hookrightarrow\mathbb A^1\)</span>. The stalk of <span class="math" data-tex="\(j_!\mathcal K_\chi\)">\(j_!\mathcal K_\chi\)</span> at zero vanishes. For nontrivial <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, tame monodromy has scalar <span class="math" data-tex="\(T\ne1\)">\(T\ne1\)</span>; the étale inertia calculation has boundary complex <span class="math" data-tex="\([V\xrightarrow{T-1}V]\)">\([V\xrightarrow{T-1}V]\)</span>, which is acyclic. Thus, subject to that earlier étale boundary comparison,
+<span class="math math-display" data-tex="\[
+j_!\mathcal K_\chi[1]=j_{!*}\mathcal K_\chi[1]
+=Rj_*\mathcal K_\chi[1].
+\tag{3.5}
+\]">\[
+j_!\mathcal K_\chi[1]=j_{!*}\mathcal K_\chi[1]
+=Rj_*\mathcal K_\chi[1].
+\tag{3.5}
+\]</span>
+The wild part acts trivially and has exact invariants; the tame <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-cohomological resolution supplies the displayed boundary calculation. This is the arithmetic comparison, not an identification of an étale puncture with a complex disc. For <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span>, intermediate extension is the constant perverse sheaf, with trace <span class="math" data-tex="\(-1\)">\(-1\)</span> at zero; extension by zero has trace zero there.</p>
+<h2 id="4-compute-singular-values-from-resolution-fibres">4. Compute singular values from resolution fibres</h2>
+<p>Suppose <span class="math" data-tex="\(f:Y\to X\)">\(f:Y\to X\)</span> is a proper small resolution, <span class="math" data-tex="\(Y\)">\(Y\)</span> is smooth of dimension <span class="math" data-tex="\(d\)">\(d\)</span>, and the hypotheses of the earlier small-map theorem hold. Its identification
+<span class="math" data-tex="\(\operatorname{IC}_X=Rf_*\Lambda_Y[d]\)">\(\operatorname{IC}_X=Rf_*\Lambda_Y[d]\)</span>, followed by proper base change, gives the calculation
+<span class="math math-display" data-tex="\[
+t_{\operatorname{IC}_X,n}(x)=
+(-1)^d\sum_i(-1)^i
+\operatorname{Tr}(F_Q;H^i(f^{-1}(\bar x),\Lambda)).
+\tag{4.1}
+\]">\[
+t_{\operatorname{IC}_X,n}(x)=
+(-1)^d\sum_i(-1)^i
+\operatorname{Tr}(F_Q;H^i(f^{-1}(\bar x),\Lambda)).
+\tag{4.1}
+\]</span>
+Smallness and the exact earlier theorem are substantive prerequisites. Once the identification is justified, (4.1) is just a stalk supertrace; it does not need the global trace formula.</p>
+<p>First let the characteristic be odd and take
+<span class="math math-display" data-tex="\[
+C_a:\ y^2z=a x^2(x+z),\qquad a\in\mathbb F_q^\times.
+\]">\[
+C_a:\ y^2z=a x^2(x+z),\qquad a\in\mathbb F_q^\times.
+\]</span>
+The normalization is
+<span class="math math-display" data-tex="\[
+[t:s]\longmapsto
+[s(t^2-as^2):t(t^2-as^2):as^3].
+\tag{4.2}
+\]">\[
+[t:s]\longmapsto
+[s(t^2-as^2):t(t^2-as^2):as^3].
+\tag{4.2}
+\]</span>
+Substitution verifies the equation. The coordinates cannot vanish together: if <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, the middle coordinate is nonzero; if <span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span>, the last is nonzero. On the affine part, the parameter <span class="math" data-tex="\(u=t/s\)">\(u=t/s\)</span> gives <span class="math" data-tex="\(x=u^2/a-1\)">\(x=u^2/a-1\)</span>, <span class="math" data-tex="\(y=ux\)">\(y=ux\)</span>, and <span class="math" data-tex="\(u=y/x\)">\(u=y/x\)</span> away from the node. It satisfies the monic equation <span class="math" data-tex="\(u^2=a(x+1)\)">\(u^2=a(x+1)\)</span>, proving finiteness on that chart. The point at infinity is smooth and the parameter gives an isomorphism there. This proves that the map is finite and birational from the smooth curve <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>, hence is its normalization, with the normality criterion proved in the first lesson's Appendix L.</p>
+<p>The node is <span class="math" data-tex="\(c=[0:0:1]\)">\(c=[0:0:1]\)</span>, with preimages <span class="math" data-tex="\(u=\pm\sqrt a\)">\(u=\pm\sqrt a\)</span>. All other fibres are single points. A finite resolution of this curve is small because the exceptional zero-dimensional fibres lie over a codimension-one stratum. For <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, (4.1) gives <span class="math" data-tex="\(-1\)">\(-1\)</span> off <span class="math" data-tex="\(c\)">\(c\)</span> and <span class="math" data-tex="\(-2\)">\(-2\)</span> at <span class="math" data-tex="\(c\)">\(c\)</span>. Identifying two rational points of <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span> yields <span class="math" data-tex="\(Q\)">\(Q\)</span> rational points on <span class="math" data-tex="\(C_1\)">\(C_1\)</span>, and the IC sum is <span class="math" data-tex="\(-(Q+1)\)">\(-(Q+1)\)</span>.</p>
+<p>If <span class="math" data-tex="\(a\)">\(a\)</span> is nonsquare, the two branches are exchanged by degree-one Frobenius. Thus
+<span class="math math-display" data-tex="\[
+t_{\operatorname{IC}_{C_a},n}(c)=-(1+(-1)^n).
+\tag{4.3}
+\]">\[
+t_{\operatorname{IC}_{C_a},n}(c)=-(1+(-1)^n).
+\tag{4.3}
+\]</span>
+For odd <span class="math" data-tex="\(n\)">\(n\)</span>, neither preimage is rational, but the node is; the point count is <span class="math" data-tex="\(Q+2\)">\(Q+2\)</span>. For even <span class="math" data-tex="\(n\)">\(n\)</span>, both preimages are rational, and the count is <span class="math" data-tex="\(Q\)">\(Q\)</span>. In both cases the smooth points contribute <span class="math" data-tex="\(-1\)">\(-1\)</span> each and the total is <span class="math" data-tex="\(-(Q+1)\)">\(-(Q+1)\)</span>. The degree-minus-one stalk retains the permutation action on the branches. Merely counting geometric branches would miss (4.3).</p>
+<p>Next fix a plane <span class="math" data-tex="\(F_2\subset\mathbb F_q^4\)">\(F_2\subset\mathbb F_q^4\)</span> and set
+<span class="math math-display" data-tex="\[
+X=\{W\in\operatorname{Gr}(2,4):\dim(W\cap F_2)\ge1\}.
+\tag{4.4}
+\]">\[
+X=\{W\in\operatorname{Gr}(2,4):\dim(W\cap F_2)\ge1\}.
+\tag{4.4}
+\]</span>
+Choose coordinates with <span class="math" data-tex="\(F_2=\langle e_1,e_2\rangle\)">\(F_2=\langle e_1,e_2\rangle\)</span>. The Plücker equations reduce to <span class="math" data-tex="\(p_{34}=0\)">\(p_{34}=0\)</span> and
+<span class="math" data-tex="\(p_{13}p_{24}-p_{14}p_{23}=0\)">\(p_{13}p_{24}-p_{14}p_{23}=0\)</span>.
+The partial derivatives show that the only singular point is <span class="math" data-tex="\(v=F_2\)">\(v=F_2\)</span>. Resolve the choice of an intersection line:
+<span class="math math-display" data-tex="\[
+Y=\{(L,W):L\subset F_2,\ \dim L=1,\ L\subset W\},
+\qquad f(L,W)=W.
+\tag{4.5}
+\]">\[
+Y=\{(L,W):L\subset F_2,\ \dim L=1,\ L\subset W\},
+\qquad f(L,W)=W.
+\tag{4.5}
+\]</span>
+Over <span class="math" data-tex="\(L\in\mathbb P(F_2)\)">\(L\in\mathbb P(F_2)\)</span>, the choice of <span class="math" data-tex="\(W/L\)">\(W/L\)</span> is a line in the rank-three quotient <span class="math" data-tex="\(\mathbb F_q^4/L\)">\(\mathbb F_q^4/L\)</span>. Hence <span class="math" data-tex="\(Y\)">\(Y\)</span> is a smooth projective <span class="math" data-tex="\(\mathbb P^2\)">\(\mathbb P^2\)</span>-bundle over <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>, of dimension three. Off <span class="math" data-tex="\(v\)">\(v\)</span>, the inverse is <span class="math" data-tex="\(W\mapsto(W\cap F_2,W)\)">\(W\mapsto(W\cap F_2,W)\)</span>; over <span class="math" data-tex="\(v\)">\(v\)</span>, the fibre is <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>. The sole exceptional stratum satisfies <span class="math" data-tex="\(2\dim f^{-1}(v)=2&lt;3\)">\(2\dim f^{-1}(v)=2&lt;3\)</span>, so the resolution is small.</p>
+<p>The two cohomology groups of this exceptional fibre give
+<span class="math math-display" data-tex="\[
+H^{-3}(\operatorname{IC}_X)_v=\Lambda,\qquad
+H^{-1}(\operatorname{IC}_X)_v=\Lambda(-1),
+\quad
+t_{\operatorname{IC}_X,n}(v)=-(1+Q).
+\tag{4.6}
+\]">\[
+H^{-3}(\operatorname{IC}_X)_v=\Lambda,\qquad
+H^{-1}(\operatorname{IC}_X)_v=\Lambda(-1),
+\quad
+t_{\operatorname{IC}_X,n}(v)=-(1+Q).
+\tag{4.6}
+\]</span>
+Off <span class="math" data-tex="\(v\)">\(v\)</span> the value is <span class="math" data-tex="\(-1\)">\(-1\)</span>. Counting the projective bundles and then replacing the exceptional fibre by its image gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\#Y(\mathbb F_Q)&amp;=(Q+1)(Q^2+Q+1),\\
+\#X(\mathbb F_Q)&amp;=Q^3+2Q^2+Q+1,\\
+\sum_{x\in X(\mathbb F_Q)}t_{\operatorname{IC}_X,n}(x)
+&amp;=-(Q^3+2Q^2+2Q+1).
+\end{aligned}
+\tag{4.7}
+\]">\[
+\begin{aligned}
+\#Y(\mathbb F_Q)&amp;=(Q+1)(Q^2+Q+1),\\
+\#X(\mathbb F_Q)&amp;=Q^3+2Q^2+Q+1,\\
+\sum_{x\in X(\mathbb F_Q)}t_{\operatorname{IC}_X,n}(x)
+&amp;=-(Q^3+2Q^2+2Q+1).
+\end{aligned}
+\tag{4.7}
+\]</span>
+The normalized stalk polynomial is <span class="math" data-tex="\(1+t\)">\(1+t\)</span>, since the two groups occur in degrees <span class="math" data-tex="\(2k-3\)">\(2k-3\)</span>, <span class="math" data-tex="\(k=0,1\)">\(k=0,1\)</span>. Their Tate actions explain why evaluating at <span class="math" data-tex="\(t=Q\)">\(t=Q\)</span> and multiplying by the perverse sign gives (4.6). This is the singular Grassmannian Schubert example of the preceding lesson. The general identification with Kazhdan–Lusztig polynomials is a separate theorem, stated in the freely accessible Kashiwara–Tanisaki paper; this example proves its own finite-field value without importing that general theorem's proof.</p>
+<p>The projective-bundle cohomology formula gives a second check: <span class="math" data-tex="\(Y\)">\(Y\)</span> has even Betti numbers <span class="math" data-tex="\(1,2,2,1\)">\(1,2,2,1\)</span>, with Tate eigenvalues <span class="math" data-tex="\(1,Q,Q^2,Q^3\)">\(1,Q,Q^2,Q^3\)</span>. Its shift by three has supertrace (4.7). The projective-bundle and small-map foundations used here are not proved in these lessons.</p>
+<h2 id="5-turn-kernels-into-operators-then-specialize-to-fourier">5. Turn kernels into operators, then specialize to Fourier</h2>
+<p>Let <span class="math" data-tex="\(X\xleftarrow a Z\xrightarrow bY\)">\(X\xleftarrow a Z\xrightarrow bY\)</span> be a finite-type correspondence with <span class="math" data-tex="\(b\)">\(b\)</span> separated, and let <span class="math" data-tex="\(M\)">\(M\)</span> be a constructible kernel. Define
+<span class="math math-display" data-tex="\[
+\mathcal H_M(A)=Rb_!(a^*A\otimes M)[s](r).
+\]">\[
+\mathcal H_M(A)=Rb_!(a^*A\otimes M)[s](r).
+\]</span>
+Equations (2.2)–(2.4) give
+<span class="math math-display" data-tex="\[
+t_{\mathcal H_M(A),n}(y)=(-1)^sQ^{-r}
+\sum_{\substack{z\in Z(\mathbb F_Q)\\b(z)=y}}
+t_{M,n}(z)t_{A,n}(a(z)).
+\tag{5.1}
+\]">\[
+t_{\mathcal H_M(A),n}(y)=(-1)^sQ^{-r}
+\sum_{\substack{z\in Z(\mathbb F_Q)\\b(z)=y}}
+t_{M,n}(z)t_{A,n}(a(z)).
+\tag{5.1}
+\]</span>
+Each point of the correspondence contributes, including different points with the same endpoints.</p>
+<p>To see composition geometrically, let a second correspondence be
+<span class="math" data-tex="\(Y\xleftarrow cT\xrightarrow dW\)">\(Y\xleftarrow cT\xrightarrow dW\)</span>, with kernel <span class="math" data-tex="\(N\)">\(N\)</span>. Form
+<span class="math" data-tex="\(R=Z\times_YT\)">\(R=Z\times_YT\)</span>, with projections <span class="math" data-tex="\(\pi_Z,\pi_T\)">\(\pi_Z,\pi_T\)</span>.
+Compact-support base change and the projection formula identify the unshifted composite with the correspondence
+<span class="math math-display" data-tex="\[
+X\xleftarrow{a\pi_Z}R\xrightarrow{d\pi_T}W,
+\qquad
+\pi_Z^*M\otimes\pi_T^*N.
+\tag{5.2}
+\]">\[
+X\xleftarrow{a\pi_Z}R\xrightarrow{d\pi_T}W,
+\qquad
+\pi_Z^*M\otimes\pi_T^*N.
+\tag{5.2}
+\]</span>
+The shifts and twists add. On rational points, <span class="math" data-tex="\(R(\mathbb F_Q)\)">\(R(\mathbb F_Q)\)</span> consists of pairs <span class="math" data-tex="\((z,t)\)">\((z,t)\)</span> satisfying <span class="math" data-tex="\(b(z)=c(t)\)">\(b(z)=c(t)\)</span>. Substituting (5.1) twice and grouping by that common value proves matrix multiplication of the resulting function kernels. The categorical identification (5.2) still uses the stated six-operation prerequisites.</p>
+<p>For group multiplication, this becomes
+<span class="math math-display" data-tex="\[
+t_{Rm_!(A\boxtimes B),n}(g)=
+\sum_{h\in G(\mathbb F_Q)}t_{A,n}(h)t_{B,n}(h^{-1}g).
+\tag{5.3}
+\]">\[
+t_{Rm_!(A\boxtimes B),n}(g)=
+\sum_{h\in G(\mathbb F_Q)}t_{A,n}(h)t_{B,n}(h^{-1}g).
+\tag{5.3}
+\]</span>
+Hecke correspondences record bundle modifications, with IC kernels and convolution supplied by geometric Satake. Formula (5.1) explains their operator form on finite-type scheme charts. A stack has automorphisms of its rational objects, so its trace formula needs groupoid weights and the stack formalism; an unweighted sum over isomorphism classes does not follow from (5.1). These are additional prerequisites for the Hecke preview.</p>
+<p>For Fourier, take <span class="math" data-tex="\(E=\mathbb A^d\)">\(E=\mathbb A^d\)</span>, its dual <span class="math" data-tex="\(E^\vee\)">\(E^\vee\)</span>, projections <span class="math" data-tex="\(p_1,p_2\)">\(p_1,p_2\)</span>, and the pairing <span class="math" data-tex="\(b(x,\xi)=\langle x,\xi\rangle\)">\(b(x,\xi)=\langle x,\xi\rangle\)</span>. With <span class="math" data-tex="\(\psi\ne1\)">\(\psi\ne1\)</span>, define the normalization
+<span class="math math-display" data-tex="\[
+\mathsf F_\psi(K)=Rp_{2!}(p_1^*K\otimes b^*\mathcal L_\psi)[d].
+\tag{5.4}
+\]">\[
+\mathsf F_\psi(K)=Rp_{2!}(p_1^*K\otimes b^*\mathcal L_\psi)[d].
+\tag{5.4}
+\]</span>
+It has no Tate twist. Substitution of (3.3) into (5.1) proves
+<span class="math math-display" data-tex="\[
+t_{\mathsf F_\psi(K),n}(\xi)=
+(-1)^d\sum_{x\in\mathbb F_Q^d}
+\psi_n(\langle x,\xi\rangle)t_{K,n}(x),
+\qquad
+\psi_n=\psi\circ\operatorname{Tr}_{\mathbb F_Q/\mathbb F_q}.
+\tag{5.5}
+\]">\[
+t_{\mathsf F_\psi(K),n}(\xi)=
+(-1)^d\sum_{x\in\mathbb F_Q^d}
+\psi_n(\langle x,\xi\rangle)t_{K,n}(x),
+\qquad
+\psi_n=\psi\circ\operatorname{Tr}_{\mathbb F_Q/\mathbb F_q}.
+\tag{5.5}
+\]</span>
+This deduction inherits the proof obligation for (2.4); it does not prove Fourier–Deligne t-exactness.</p>
+<p>The function operator in (5.5) has square <span class="math" data-tex="\(f(z)\mapsto Q^df(-z)\)">\(f(z)\mapsto Q^df(-z)\)</span>. Indeed, its double sum has inner coefficient
+<span class="math" data-tex="\(\sum_\xi\psi_n(\langle x+z,\xi\rangle)\)">\(\sum_\xi\psi_n(\langle x+z,\xi\rangle)\)</span>.
+If <span class="math" data-tex="\(x=-z\)">\(x=-z\)</span>, the coefficient is <span class="math" data-tex="\(Q^d\)">\(Q^d\)</span>. Otherwise the linear functional is onto. The field trace is also onto: its polynomial
+<span class="math" data-tex="\(t+t^q+\cdots+t^{q^{n-1}}\)">\(t+t^q+\cdots+t^{q^{n-1}}\)</span> is a nonzero polynomial of degree less than <span class="math" data-tex="\(Q\)">\(Q\)</span>, so it cannot vanish on the whole field; its nonzero <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>-linear image in <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span> is all of <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>. Therefore <span class="math" data-tex="\(\psi_n\ne1\)">\(\psi_n\ne1\)</span>. Translating the inner sum by a covector on which the character is not one multiplies the sum by that nontrivial scalar, forcing zero.</p>
+<p>The two signs <span class="math" data-tex="\((-1)^d\)">\((-1)^d\)</span> cancel in the square. A point indicator transforms to the constant <span class="math" data-tex="\((-1)^d\)">\((-1)^d\)</span>; the constant <span class="math" data-tex="\((-1)^d\)">\((-1)^d\)</span> transforms to <span class="math" data-tex="\(Q^d\)">\(Q^d\)</span> times the point indicator. Thus the point perverse sheaf and the smooth perverse constant give the expected signs. This is a function identity; the lost-extension examples in Section 1 prevent inferring a derived isomorphism from it.</p>
+<h2 id="6-differential-equations-retain-more-than-numerical-traces">6. Differential equations retain more than numerical traces</h2>
+<p>For a left integrable connection <span class="math" data-tex="\(M\)">\(M\)</span> on a smooth complex <span class="math" data-tex="\(d\)">\(d\)</span>-fold, use the covariant normalization
+<span class="math math-display" data-tex="\[
+\operatorname{DR}(M)=
+[M^{\mathrm{an}}\xrightarrow{\nabla}
+\Omega^1\otimes M^{\mathrm{an}}\longrightarrow\cdots
+\longrightarrow\Omega^d\otimes M^{\mathrm{an}}][d].
+\tag{6.1}
+\]">\[
+\operatorname{DR}(M)=
+[M^{\mathrm{an}}\xrightarrow{\nabla}
+\Omega^1\otimes M^{\mathrm{an}}\longrightarrow\cdots
+\longrightarrow\Omega^d\otimes M^{\mathrm{an}}][d].
+\tag{6.1}
+\]</span>
+The unshifted first term has degree zero. In a horizontal frame it is the holomorphic de Rham complex tensored with the horizontal vector space. For completeness, on a star-shaped coordinate neighbourhood its positive-degree contraction is integration along <span class="math" data-tex="\(z\mapsto tz\)">\(z\mapsto tz\)</span>: on a <span class="math" data-tex="\(k\)">\(k\)</span>-form the operator integrates <span class="math" data-tex="\(t^{k-1}\iota_{\sum z_i\partial_{z_i}}\)">\(t^{k-1}\iota_{\sum z_i\partial_{z_i}}\)</span> applied to its coefficients at <span class="math" data-tex="\(tz\)">\(tz\)</span>. Differentiation and the fundamental theorem of calculus give <span class="math" data-tex="\(dH+Hd=1-\mathrm{ev}_0\)">\(dH+Hd=1-\mathrm{ev}_0\)</span>. Thus the complex in such a frame resolves the horizontal local system, and (6.1) is <span class="math" data-tex="\(L[d]\)">\(L[d]\)</span>. Existence of horizontal frames for a general flat connection is a separate analytic integrability prerequisite.</p>
+<p>The following full theorem remains an assigned proof obligation. On a smooth complex algebraic variety, covariant de Rham identifies bounded regular-holonomic algebraic <span class="math" data-tex="\(D\)">\(D\)</span>-module complexes with bounded algebraically constructible complexes on the analytic variety. It carries the ordinary <span class="math" data-tex="\(D\)">\(D\)</span>-module heart to the perverse heart, commutes with duality and the corresponding operation functors, and sends <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span> to <span class="math" data-tex="\(\mathbb C_X[d]\)">\(\mathbb C_X[d]\)</span>. Algebraic regularity includes behaviour at the boundary of a compactification. The free Bhatt–Blickle–Lyubeznik–Singh–Zhang manuscript states this scope, but its cited proof is not a completed earlier programme proof. Its availability therefore does not discharge this obligation.</p>
+<p>The normalized solution functor instead uses
+<span class="math math-display" data-tex="\[
+\operatorname{Sol}(M)=
+R\mathcal Hom_{D^{\mathrm{an}}}(M^{\mathrm{an}},\mathcal O^{\mathrm{an}})[d]
+\simeq D\operatorname{DR}(M).
+\tag{6.2}
+\]">\[
+\operatorname{Sol}(M)=
+R\mathcal Hom_{D^{\mathrm{an}}}(M^{\mathrm{an}},\mathcal O^{\mathrm{an}})[d]
+\simeq D\operatorname{DR}(M).
+\tag{6.2}
+\]</span>
+It is contravariant and replaces a horizontal local system by its dual. The comparison in (6.2) belongs to the full regular theorem just stated.</p>
+<p>Two direct calculations isolate conventions independently of that theorem. For
+<span class="math" data-tex="\(\nabla=d-A\,dz/z\)">\(\nabla=d-A\,dz/z\)</span>, the convergent matrix exponential gives the fundamental solution <span class="math" data-tex="\(e^{A\log z}\)">\(e^{A\log z}\)</span>; differentiation verifies the equation and the inverse exponential shows that it spans all horizontal solutions. Going once positively around zero yields <span class="math" data-tex="\(T=e^{2\pi\mathrm iA}\)">\(T=e^{2\pi\mathrm iA}\)</span>. The residue of the written connection is <span class="math" data-tex="\(-A\)">\(-A\)</span>. Once the regular correspondence is proved, its minimal extension must map to <span class="math" data-tex="\(j_{!*}L[1]\)">\(j_{!*}L[1]\)</span>: the equivalence preserves subobjects and quotients, and both minimal extensions are characterized by having neither supported at the boundary.</p>
+<p>For the other calculation, <span class="math" data-tex="\(d-a\,dz\)">\(d-a\,dz\)</span> on <span class="math" data-tex="\(\mathbb A^1\)">\(\mathbb A^1\)</span>, <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, has the analytic solution <span class="math" data-tex="\(e^{az}\)">\(e^{az}\)</span>. It consequently has the same analytic local system as the constant connection. At infinity, with <span class="math" data-tex="\(w=1/z\)">\(w=1/z\)</span>, its connection form is <span class="math" data-tex="\(a\,dw/w^2\)">\(a\,dw/w^2\)</span>. If a rational gauge is <span class="math" data-tex="\(w^ku(w)\)">\(w^ku(w)\)</span>, where <span class="math" data-tex="\(u(0)\ne0\)">\(u(0)\ne0\)</span>, its logarithmic derivative is <span class="math" data-tex="\(k\,dw/w+du/u\)">\(k\,dw/w+du/u\)</span>, with at most a simple pole. It cannot cancel the double pole. This connection fails boundary regularity and is excluded from the algebraic regular correspondence.</p>
+<p>The full Riemann–Hilbert theorem promises recovery of regular differential equations with their morphisms and extensions. Trace functions retain only additive arithmetic data. Neither claim should be substituted for the other.</p>
+<h2 id="7-probe-a-singularity-before-taking-its-euler-characteristic">7. Probe a singularity before taking its Euler characteristic</h2>
+<p>Return to complex constructible sheaves on a smooth complex ambient manifold <span class="math" data-tex="\(M\)">\(M\)</span>. A covector tests propagation by the local cohomology on one side of a real differentiable function. More precisely, a covector lies outside <span class="math" data-tex="\(SS(K)\)">\(SS(K)\)</span> if it has a neighbourhood in the cotangent bundle on which all corresponding tests
+<span class="math math-display" data-tex="\[
+\bigl(R\Gamma_{\{f\ge f(x)\}}K\bigr)_x
+\tag{7.1}
+\]">\[
+\bigl(R\Gamma_{\{f\ge f(x)\}}K\bigr)_x
+\tag{7.1}
+\]</span>
+vanish. This describes the closed conic singular support. For a Whitney stratum <span class="math" data-tex="\(S\)">\(S\)</span> of complex dimension <span class="math" data-tex="\(s\)">\(s\)</span>, take a normal slice and a generic conormal test. Let <span class="math" data-tex="\(N_S(K)\)">\(N_S(K)\)</span> be its normal Morse complex, and set
+<span class="math math-display" data-tex="\[
+\mu_S(K)=N_S(K)[-s],\qquad
+m_S(K)=\chi(\mu_S(K)),\qquad
+CC(K)=\sum_Sm_S(K)[\overline{T^*_SM}].
+\tag{7.2}
+\]">\[
+\mu_S(K)=N_S(K)[-s],\qquad
+m_S(K)=\chi(\mu_S(K)),\qquad
+CC(K)=\sum_Sm_S(K)[\overline{T^*_SM}].
+\tag{7.2}
+\]</span>
+Conormals have their complex orientations. The shift gives the normalization <span class="math" data-tex="\(CC(\mathbb C_M[\dim M])=[T_M^*M]\)">\(CC(\mathbb C_M[\dim M])=[T_M^*M]\)</span>. More generally, for a local system of rank <span class="math" data-tex="\(r\)">\(r\)</span> on a smooth closed submanifold <span class="math" data-tex="\(S\)">\(S\)</span>, its extension by zero after shifting by <span class="math" data-tex="\(\dim S\)">\(\dim S\)</span> has cycle <span class="math" data-tex="\(r[T_S^*M]\)">\(r[T_S^*M]\)</span>: the only normal Morse space is that fibre in the normalized degree.</p>
+<p>The general geometric assertions needed to make (7.2) intrinsic are substantial: independence of the normal test, invariance under refinement of stratification, the conormal description of singular support, and the normal-Morse characterization of the perverse cuts. The free Maxim–Schürmann manuscript states the precise forms in Theorem 3.12, Proposition 3.13 and Corollary 3.25; Definition 3.34 uses exactly the sign <span class="math" data-tex="\((-1)^s\chi(N_S(K))=\chi(\mu_S(K))\)">\((-1)^s\chi(N_S(K))=\chi(\mu_S(K))\)</span>. Their full proofs, including the stratified Morse prerequisites, remain a programme obligation here. No assertion of their completion follows from this definition or citation.</p>
+<p><strong>Conditional general consequence.</strong> With those geometric results proved, <span class="math" data-tex="\(\mu_S(P)\)">\(\mu_S(P)\)</span> for a perverse sheaf is a vector space in degree zero. Therefore <span class="math" data-tex="\(m_S(P)=\dim\mu_S(P)\ge0\)">\(m_S(P)=\dim\mu_S(P)\ge0\)</span>, and this multiplicity is nonzero exactly on the conormal components of <span class="math" data-tex="\(SS(P)\)">\(SS(P)\)</span>. Thus <span class="math" data-tex="\(CC(P)\)">\(CC(P)\)</span> is effective and <span class="math" data-tex="\(\operatorname{supp}CC(P)=SS(P)\)">\(\operatorname{supp}CC(P)=SS(P)\)</span>. This implication is immediate from the specified complexes; the theorem that puts them in degree zero is the unfinished step.</p>
+<p>The disc permits a direct verification of the local complexes. Use the already proved diagram
+<span class="math math-display" data-tex="\[
+V\xrightarrow u W\xrightarrow v V,\qquad 1+vu\ \text{invertible}.
+\]">\[
+V\xrightarrow u W\xrightarrow v V,\qquad 1+vu\ \text{invertible}.
+\]</span>
+Its stalk at zero is <span class="math" data-tex="\([V\xrightarrow uW]\)">\([V\xrightarrow uW]\)</span> in degrees minus one and zero. The open negative half-disc is contractible, and the restriction there has cohomology <span class="math" data-tex="\(V[1]\)">\(V[1]\)</span>. The support triangle for the closed positive half-disc identifies (7.1) with the fibre of the map
+<span class="math math-display" data-tex="\[
+[V\xrightarrow uW]\longrightarrow V[1],
+\tag{7.3}
+\]">\[
+[V\xrightarrow uW]\longrightarrow V[1],
+\tag{7.3}
+\]</span>
+whose degree-minus-one component is the identity. Cancelling that identity in the fibre leaves <span class="math" data-tex="\(W\)">\(W\)</span> in degree zero. This is also the normalized vanishing-cycle calculation of Lesson 6. A nonzero complex multiple of the coordinate gives the same calculation after rotating the half-disc. Away from the puncture, a nonzero covector tests a locally constant complex on a ball; restriction to the half-ball is a quasi-isomorphism, so the support test vanishes.</p>
+<p>On the open stratum the normal slice is a point, and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is <span class="math" data-tex="\(V[1][-1]=V\)">\(V[1][-1]=V\)</span>. Consequently the cycle on a disc is
+<span class="math math-display" data-tex="\[
+CC(P)=\dim V\,[T_D^*D]+\dim W\,[T_0^*D].
+\tag{7.4}
+\]">\[
+CC(P)=\dim V\,[T_D^*D]+\dim W\,[T_0^*D].
+\tag{7.4}
+\]</span>
+The same support tests show directly that its two possible components occur precisely when the corresponding spaces are nonzero. This establishes positivity and support equality in this local model without using the general normal-Morse theorem as a substitute proof.</p>
+<p>The result can be computed from the two stalk Euler values. If <span class="math" data-tex="\(\alpha_{\mathrm{open}}=-\dim V\)">\(\alpha_{\mathrm{open}}=-\dim V\)</span> and <span class="math" data-tex="\(\alpha_0=\dim W-\dim V\)">\(\alpha_0=\dim W-\dim V\)</span>, then
+<span class="math math-display" data-tex="\[
+CC(P)=-\alpha_{\mathrm{open}}[T_D^*D]
++(\alpha_0-\alpha_{\mathrm{open}})[T_0^*D].
+\tag{7.5}
+\]">\[
+CC(P)=-\alpha_{\mathrm{open}}[T_D^*D]
++(\alpha_0-\alpha_{\mathrm{open}})[T_0^*D].
+\tag{7.5}
+\]</span>
+For intermediate extension, <span class="math" data-tex="\(\dim W=\operatorname{rank}(T-1)\)">\(\dim W=\operatorname{rank}(T-1)\)</span>. For extension by zero or direct image, <span class="math" data-tex="\(\dim W=\dim V\)">\(\dim W=\dim V\)</span>. A skyscraper has <span class="math" data-tex="\(V=0\)">\(V=0\)</span>, while a smooth constant perverse sheaf has <span class="math" data-tex="\(W=0\)">\(W=0\)</span>. In the rank-two unipotent classification of Lesson 6, the intermediate extension has cycle <span class="math" data-tex="\(2[T_D^*D]+[T_0^*D]\)">\(2[T_D^*D]+[T_0^*D]\)</span>; the additional five-vector indecomposable has cycle <span class="math" data-tex="\(2[T_D^*D]+3[T_0^*D]\)">\(2[T_D^*D]+3[T_0^*D]\)</span>. Thus the second multiplicity measures vanishing data, not just nearby rank.</p>
+<p>Local cohomology and shifts carry triangles to triangles. The finite-dimensional cancellation of Section 1, now with the identity operator, proves additivity of (7.2) and
+<span class="math" data-tex="\(CC(K[1])=-CC(K)\)">\(CC(K[1])=-CC(K)\)</span>.
+For <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span>, the object <span class="math" data-tex="\(P\oplus P[1]\)">\(P\oplus P[1]\)</span> consequently has zero cycle. Its local support tests are the direct sum of a complex and its shift; such a sum vanishes only if the complex vanishes. Hence its singular support is still <span class="math" data-tex="\(SS(P)\)">\(SS(P)\)</span>. The loss of information occurs when taking Euler characteristic.</p>
+<p>In higher dimensions the corresponding Euler-function factorization is obtained from the normal-slice/complex-link triangle. Its Euler characteristic is the stalk value minus the Euler integral over the complex link. With a finite constructible cell decomposition, that integral is the sum of the cell Euler characteristics times their stalk values: filter by cells and apply triangle additivity. The existence and compatibility of these normal-link decompositions are part of the missing stratified Morse foundations. Maxim–Schürmann's formulas (39)–(45) state the resulting general factorization. Equation (7.5) supplies its directly computed curve instance. None of these Euler numbers encodes arithmetic Frobenius eigenvalues.</p>
+<h2 id="8-interpret-a-nilpotent-support-condition-on-bundles">8. Interpret a nilpotent support condition on bundles</h2>
+<p>Let <span class="math" data-tex="\(C\)">\(C\)</span> be a smooth projective complex curve. At a rank-<span class="math" data-tex="\(m\)">\(m\)</span> bundle <span class="math" data-tex="\(E\)">\(E\)</span>, the bundle deformation complex and Serre duality identify classical cotangent vectors with
+<span class="math math-display" data-tex="\[
+\Phi\in H^0(C,\operatorname{End}(E)\otimes\omega_C),
+\quad\text{equivalently}\quad
+\Phi:E\longrightarrow E\otimes\omega_C.
+\tag{8.1}
+\]">\[
+\Phi\in H^0(C,\operatorname{End}(E)\otimes\omega_C),
+\quad\text{equivalently}\quad
+\Phi:E\longrightarrow E\otimes\omega_C.
+\tag{8.1}
+\]</span>
+The deformation and Serre-duality theorems are exact prerequisites for that identification; the free Frenkel lectures describe it in their Hitchin-system discussion.</p>
+<p>Trivialize <span class="math" data-tex="\(\omega_C\)">\(\omega_C\)</span> locally. The coefficient of degree <span class="math" data-tex="\(m-i\)">\(m-i\)</span> in the characteristic polynomial of the resulting matrix is homogeneous of degree <span class="math" data-tex="\(i\)">\(i\)</span>. Changing the trivialization multiplies it by the <span class="math" data-tex="\(i\)">\(i\)</span>-th transition factor. Thus these local coefficients glue to sections of <span class="math" data-tex="\(\omega_C^{\otimes i}\)">\(\omega_C^{\otimes i}\)</span>, and define
+<span class="math math-display" data-tex="\[
+h(E,\Phi)=(c_1(\Phi),\ldots,c_m(\Phi))
+\in\bigoplus_{i=1}^mH^0(C,\omega_C^{\otimes i}).
+\tag{8.2}
+\]">\[
+h(E,\Phi)=(c_1(\Phi),\ldots,c_m(\Phi))
+\in\bigoplus_{i=1}^mH^0(C,\omega_C^{\otimes i}).
+\tag{8.2}
+\]</span>
+The global nilpotent cone is <span class="math" data-tex="\(\mathcal N=h^{-1}(0)\)">\(\mathcal N=h^{-1}(0)\)</span>.</p>
+<p>Here the name has a concrete verification. If the characteristic polynomial is <span class="math" data-tex="\(t^m\)">\(t^m\)</span>, Cayley–Hamilton gives <span class="math" data-tex="\(\Phi^m=0\)">\(\Phi^m=0\)</span>, interpreted as a map to <span class="math" data-tex="\(E\otimes\omega_C^{\otimes m}\)">\(E\otimes\omega_C^{\otimes m}\)</span>. To recall the algebraic step, expand the adjugate identity
+<span class="math" data-tex="\((tI-A)\operatorname{adj}(tI-A)=\det(tI-A)I\)">\((tI-A)\operatorname{adj}(tI-A)=\det(tI-A)I\)</span> in powers of <span class="math" data-tex="\(t\)">\(t\)</span>. Its coefficient recurrences express the adjugate coefficients as polynomials in <span class="math" data-tex="\(A\)">\(A\)</span>; substituting <span class="math" data-tex="\(A\)">\(A\)</span> in the resulting scalar polynomial identity gives the claimed zero. Conversely, a nilpotent matrix at a closed point has all eigenvalues zero and characteristic polynomial <span class="math" data-tex="\(t^m\)">\(t^m\)</span>. If every pointwise Higgs matrix is nilpotent, the coefficient sections vanish at every closed point; the curve is reduced, so the sections vanish. This proves the pointwise description used here, not an identification of nonreduced scheme structures.</p>
+<p>The geometric Langlands condition <span class="math" data-tex="\(SS(K)\subset\mathcal N\)">\(SS(K)\subset\mathcal N\)</span> restricts cotangent directions. The zero section lies in <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> over every bundle, so projecting <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> to the bundle space cannot describe a proper singular locus. Nonzero covectors contain the relevant directional information. For <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, the only characteristic coefficient is <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> itself, so the condition reduces to zero Higgs field.</p>
+<p>The category with nilpotent singular support is formulated in the free Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky manuscript. Applying it on the non-quasi-compact stack requires its chosen sheaf theory and compatible smooth charts. This is the assigned preview, with those foundations still required; it is not a claim that every perverse sheaf satisfies the condition. The complex support tests of Section 7 alone do not supply the algebraic <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic or stack theory, nor a Langlands equivalence.</p>
+<h2 id="9-exercises-and-solutions">9. Exercises and solutions</h2>
+<h3 id="exercise-1-constants-and-a-kummer-boundary">Exercise 1 — constants and a Kummer boundary</h3>
+<p>Compute the function of <span class="math" data-tex="\(\Lambda_{\mathbb A^1}\)">\(\Lambda_{\mathbb A^1}\)</span> and <span class="math" data-tex="\(j_!\mathcal K_\chi\)">\(j_!\mathcal K_\chi\)</span> over every finite extension. Include the perverse shift and compare intermediate extension when <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span>.</p>
+<p><strong>Solution.</strong> The constant stalk has operator one, so its function is one and its shift has function minus one. For <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, use the fibre functions <span class="math" data-tex="\(h(ay)=\chi(a)h(y)\)">\(h(ay)=\chi(a)h(y)\)</span>. Arithmetic Frobenius multiplies <span class="math" data-tex="\(y\)">\(y\)</span> by <span class="math" data-tex="\(\operatorname{Nm}(x)\)">\(\operatorname{Nm}(x)\)</span>; geometric Frobenius on <span class="math" data-tex="\(h\)">\(h\)</span> therefore has eigenvalue <span class="math" data-tex="\(\chi(\operatorname{Nm}(x))\)">\(\chi(\operatorname{Nm}(x))\)</span>. Extension by zero contributes no stalk at zero. Thus the answer is <span class="math" data-tex="\(\chi(\operatorname{Nm}(x))\)">\(\chi(\operatorname{Nm}(x))\)</span> on <span class="math" data-tex="\(\mathbb G_m(\mathbb F_Q)\)">\(\mathbb G_m(\mathbb F_Q)\)</span> and zero at zero, with the whole function negated after shifting by one.</p>
+<p>When <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span>, intermediate extension fills in a one-dimensional degree-minus-one stalk, giving value <span class="math" data-tex="\(-1\)">\(-1\)</span> at zero. For <span class="math" data-tex="\(\chi\ne1\)">\(\chi\ne1\)</span>, the invertible boundary differential in (3.5) leaves no boundary stalk, so intermediate extension agrees with extension by zero. The localization triangle for the trivial unshifted sheaf gives <span class="math" data-tex="\(1_{\mathbb G_m}+1_{\{0\}}=1\)">\(1_{\mathbb G_m}+1_{\{0\}}=1\)</span>, checking the boundary value and its shifted sign.</p>
+<h3 id="exercise-2-additivity-and-arithmetic-extensions">Exercise 2 — additivity and arithmetic extensions</h3>
+<p>Prove triangle additivity of trace functions and exhibit a nonsplit perverse extension indistinguishable from its split sum by every trace function.</p>
+<p><strong>Solution.</strong> At a geometric stalk, let <span class="math" data-tex="\(I_i\)">\(I_i\)</span> be the successive images in the finite long exact sequence. Each term is an extension of two adjacent <span class="math" data-tex="\(I_i\)">\(I_i\)</span>'s, so its trace is the sum of their traces. Alternating the terms cancels every <span class="math" data-tex="\(I_i\)">\(I_i\)</span>. Grouping the result by the three objects proves <span class="math" data-tex="\(t_B=t_A+t_C\)">\(t_B=t_A+t_C\)</span> for <span class="math" data-tex="\(A\to B\to C\to A[1]\)">\(A\to B\to C\to A[1]\)</span>.</p>
+<p>On a point choose <span class="math" data-tex="\(F(e_1)=e_1\)">\(F(e_1)=e_1\)</span>, <span class="math" data-tex="\(F(e_2)=e_2+e_1\)">\(F(e_2)=e_2+e_1\)</span>. The invariant line <span class="math" data-tex="\(\Lambda e_1\)">\(\Lambda e_1\)</span> and quotient are trivial, while <span class="math" data-tex="\(F^n\)">\(F^n\)</span> has trace two for all <span class="math" data-tex="\(n\)">\(n\)</span>. An invariant complementary line would have an eigenvector with nonzero <span class="math" data-tex="\(e_2\)">\(e_2\)</span>-coefficient. All eigenvalues are one, but <span class="math" data-tex="\((F-1)(ae_1+be_2)=be_1\)">\((F-1)(ae_1+be_2)=be_1\)</span>, which vanishes only if <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. Such a complement does not exist. Continuity was checked in Section 1, so this is an actual arithmetic example.</p>
+<h3 id="exercise-3-branch-permutations-of-a-node">Exercise 3 — branch permutations of a node</h3>
+<p>Calculate the IC trace and its global sum on <span class="math" data-tex="\(C_1\)">\(C_1\)</span>, and then on <span class="math" data-tex="\(C_a\)">\(C_a\)</span> with <span class="math" data-tex="\(a\)">\(a\)</span> nonsquare.</p>
+<p><strong>Solution.</strong> The finite normalization (4.2) has one point over each smooth point and two over the node. Smallness identifies IC with its shifted direct image; proper base change gives the permutation representation on each fibre in degree minus one. For <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, the two node points are rational, so the node trace is <span class="math" data-tex="\(-2\)">\(-2\)</span>. There are <span class="math" data-tex="\(Q-1\)">\(Q-1\)</span> smooth rational points, giving total <span class="math" data-tex="\(-(Q-1)-2=-(Q+1)\)">\(-(Q-1)-2=-(Q+1)\)</span>.</p>
+<p>For nonsquare <span class="math" data-tex="\(a\)">\(a\)</span>, the <span class="math" data-tex="\(n\)">\(n\)</span>-th Frobenius fixes no branch when <span class="math" data-tex="\(n\)">\(n\)</span> is odd and both branches when <span class="math" data-tex="\(n\)">\(n\)</span> is even. Hence the node trace is zero or minus two. In the odd case all <span class="math" data-tex="\(Q+1\)">\(Q+1\)</span> normalization points map to smooth points, and the node is one additional rational point. In the even case two normalization points are replaced by one node. These give point counts <span class="math" data-tex="\(Q+2\)">\(Q+2\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span>, and both IC sums equal <span class="math" data-tex="\(-(Q+1)\)">\(-(Q+1)\)</span>. The shifted constant sheaf has node value <span class="math" data-tex="\(-1\)">\(-1\)</span> instead, showing that IC detects the branch descent.</p>
+<h3 id="exercise-4-fourier-kernel-and-square">Exercise 4 — Fourier kernel and square</h3>
+<p>Derive the trace function of (5.4), compute its square on functions, and test the point and perverse constant functions.</p>
+<p><strong>Solution.</strong> At <span class="math" data-tex="\((x,\xi)\)">\((x,\xi)\)</span>, pullback contributes <span class="math" data-tex="\(t_K(x)\)">\(t_K(x)\)</span> and the torsor computation contributes <span class="math" data-tex="\(\psi_n(\langle x,\xi\rangle)\)">\(\psi_n(\langle x,\xi\rangle)\)</span>. Tensor multiplies these values; the compact-support trace formula sums over <span class="math" data-tex="\(x\)">\(x\)</span>; the shift supplies <span class="math" data-tex="\((-1)^d\)">\((-1)^d\)</span>. This yields (5.5), subject to the general trace prerequisite identified in Proposition 2.1.</p>
+<p>In the square, the coefficient of <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> at <span class="math" data-tex="\(z\)">\(z\)</span> is the sum of <span class="math" data-tex="\(\psi_n(\langle x+z,\xi\rangle)\)">\(\psi_n(\langle x+z,\xi\rangle)\)</span> over all <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. The signs multiply to one. If <span class="math" data-tex="\(x+z\ne0\)">\(x+z\ne0\)</span>, surjectivity of the linear functional and field trace supplies a translation with character different from one; invariance of the sum under that translation forces zero. If <span class="math" data-tex="\(x+z=0\)">\(x+z=0\)</span>, every term is one and there are <span class="math" data-tex="\(Q^d\)">\(Q^d\)</span> terms. The square is therefore <span class="math" data-tex="\(Q^df(-z)\)">\(Q^df(-z)\)</span>. A point indicator gives the constant <span class="math" data-tex="\((-1)^d\)">\((-1)^d\)</span>, and that constant gives <span class="math" data-tex="\(Q^d1_{\{0\}}\)">\(Q^d1_{\{0\}}\)</span>. No sheaf-level inversion theorem follows merely from these numerical equalities.</p>
+<h3 id="exercise-5-the-singular-schubert-threefold">Exercise 5 — the singular Schubert threefold</h3>
+<p>For <span class="math" data-tex="\(X\)">\(X\)</span> in (4.4), compute its IC trace, rational point count, global IC sum and normalized exceptional stalk polynomial.</p>
+<p><strong>Solution.</strong> Remembering <span class="math" data-tex="\(L\subset W\cap F_2\)">\(L\subset W\cap F_2\)</span> gives (4.5), a smooth threefold because it is a projective-plane bundle over a projective line. The projection is projective, is an isomorphism off <span class="math" data-tex="\(v=F_2\)">\(v=F_2\)</span>, and has fibre <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span> over <span class="math" data-tex="\(v\)">\(v\)</span>. The inequality <span class="math" data-tex="\(2&lt;3\)">\(2&lt;3\)</span> proves smallness. Hence IC is <span class="math" data-tex="\(Rf_*\Lambda[3]\)">\(Rf_*\Lambda[3]\)</span>, using the earlier small-map theorem with its prerequisites.</p>
+<p>At <span class="math" data-tex="\(v\)">\(v\)</span>, the degree-zero and degree-two cohomology of the fibre become degrees minus three and minus one. Their operators have eigenvalues <span class="math" data-tex="\(1,Q\)">\(1,Q\)</span>, so the value is <span class="math" data-tex="\(-(1+Q)\)">\(-(1+Q)\)</span>. Elsewhere it is <span class="math" data-tex="\(-1\)">\(-1\)</span>. Counting <span class="math" data-tex="\(Y\)">\(Y\)</span> gives <span class="math" data-tex="\((Q+1)(Q^2+Q+1)\)">\((Q+1)(Q^2+Q+1)\)</span>; subtracting <span class="math" data-tex="\(Q\)">\(Q\)</span> replaces its exceptional <span class="math" data-tex="\(Q+1\)">\(Q+1\)</span> points by one and gives <span class="math" data-tex="\(Q^3+2Q^2+Q+1\)">\(Q^3+2Q^2+Q+1\)</span> points of <span class="math" data-tex="\(X\)">\(X\)</span>. The <span class="math" data-tex="\(Q^3+2Q^2+Q\)">\(Q^3+2Q^2+Q\)</span> smooth points and the exceptional value sum to <span class="math" data-tex="\(-(Q^3+2Q^2+2Q+1)\)">\(-(Q^3+2Q^2+2Q+1)\)</span>.</p>
+<p>The stalk dimensions in degrees <span class="math" data-tex="\(2k-3\)">\(2k-3\)</span> give the polynomial <span class="math" data-tex="\(1+t\)">\(1+t\)</span>. Its evaluation at <span class="math" data-tex="\(Q\)">\(Q\)</span> has the required overall minus sign because both cohomological degrees are odd. The projective-bundle formula gives <span class="math" data-tex="\(H^*(Y)=H^*(\mathbb P^1)\langle1,\eta,\eta^2\rangle\)">\(H^*(Y)=H^*(\mathbb P^1)\langle1,\eta,\eta^2\rangle\)</span>, with <span class="math" data-tex="\(\eta\)">\(\eta\)</span> the fibre hyperplane class. Its even dimensions <span class="math" data-tex="\(1,2,2,1\)">\(1,2,2,1\)</span>, Tate powers and shift by three reproduce the global sum. This proves the concrete Schubert value; the full Kazhdan–Lusztig comparison remains a separate proof obligation.</p>
+<h2 id="exact-proof-obligations-and-permitted-references">Exact proof obligations and permitted references</h2>
+<p>All eighteen assigned items and five solutions remain in this draft. The explicit matrix, torsor, fibre, finite-sum and disc calculations above do not by themselves complete the following foundations:</p>
+<ul>
+<li>The general Grothendieck–Lefschetz trace formula for separated finite-type schemes and constructible adic complexes, and the exact compact-support base-change and projection comparisons used in (2.4) and (5.2).</li>
+<li>Chebotarev density in the full lisse arithmetic scope of Theorem 2.4, the exact continuous lisse-sheaf/fundamental-group correspondence and dense-open surjectivity, and the recursive hypotheses of finite length and the simple-object classification. Lemma 2.2 and Corollary 2.3 now prove the character-separation and continuity steps; the finite-length Grothendieck-group argument is also written above.</li>
+<li>The earlier normalization, étale inertia, small-map and projective-bundle results at their exact versions and coefficient scope.</li>
+<li>Full regular algebraic Riemann–Hilbert, horizontal-frame existence, boundary regularity and operation/duality comparisons. The recorded earlier Riemann–Hilbert lesson does not presently provide the whole theorem.</li>
+<li>General stratified Morse theory, the normal-test comparisons, constructible cell/link arguments, intrinsic characteristic cycles and the perverse normal-Morse criterion. The proved disc calculation does not establish their higher-dimensional scope.</li>
+<li>Bundle deformation theory, Serre duality, stack singular support and weighted stack trace formalism for the Langlands/Hecke preview; the general Schubert IC–Kazhdan–Lusztig theorem remains a separate earlier obligation.</li>
+</ul>
+<p>The following free sources identify the statements and conventions. Their external citations do not replace any of these required proofs.</p>
+<ul>
+<li>P. Deligne, <a href="https://publications.ias.edu/node/378">Cohomologie étale, SGA <span class="math" data-tex="\(4\frac12\)">\(4\frac12\)</span></a>, free author-hosted edition: “Rapport sur la formule des traces,” Theorem 3.2, and “Applications aux sommes trigonométriques,” Definition 1.7 and formulas (1.7.6)–(1.7.7).</li>
+<li>E. Frenkel, <a href="https://arxiv.org/abs/hep-th/0512172">Lectures on the Langlands program and conformal field theory</a>, §3.3 for the arithmetic dictionary and §9.5 for the Hitchin map.</li>
+<li>B. Bhatt, M. Blickle, G. Lyubeznik, A. K. Singh, W. Zhang, <a href="https://arxiv.org/abs/2308.03155v3">Applications of perverse sheaves in commutative algebra</a>, §2 for the scope and covariant normalization of regular Riemann–Hilbert.</li>
+<li>L. G. Maxim, J. Schürmann, <a href="https://arxiv.org/abs/2105.13069v2">Constructible sheaf complexes in complex geometry and Applications</a>, <a href="https://people.math.wisc.edu/~lmaxim/handbook.pdf">free author manuscript</a>, Theorem 3.12, Proposition 3.13, Corollary 3.25, Definition 3.34 and Remark 3.36.</li>
+<li>M. Kashiwara, T. Tanisaki, <a href="https://arxiv.org/abs/math/9908153">Parabolic Kazhdan–Lusztig polynomials and Schubert varieties</a>, Theorem 5.4 for the general comparison statement.</li>
+<li>D. Arinkin, D. Gaitsgory, D. Kazhdan, S. Raskin, N. Rozenblyum, Y. Varshavsky, <a href="https://arxiv.org/abs/2010.01906">The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support</a>, the introductory overview of the nilpotent-support category.</li>
+<li>MIT OpenCourseWare, <a href="https://ocw.mit.edu/courses/18-712-introduction-to-representation-theory-fall-2010/0721b66f53c3c196ce86d6d867514442_MIT18_712F10_ch2.pdf">General results of representation theory</a>, free 18.712 lecture notes (Fall 2010, taught by P. Etingof), §§2.1–2.2 and 2.6–2.7: semisimple submodules, simultaneous density, characters and Jordan–Hölder. The complete character argument used here is written in Section 2.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="equivariant-perverse-sheaves-and-perverse-sheaves-on-stacks.html">← Equivariant perverse sheaves and perverse sheaves on stacks</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/perverse-sheaves-d-modules-and-the-function-sheaf-dictionary.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-PERV">Repository</a></nav>
+</footer>
+</body>
+</html>

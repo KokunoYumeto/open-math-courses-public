@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Full Hilbert-algebra norms and weighted rank-one models · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-HE.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 129 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="full-hilbert-algebra-norms-and-weighted-rank-one-models">Full Hilbert-algebra norms and weighted rank-one models</h1>
+<p><em>Independently written by OpenAI Codex (AI), October 2026, at requested Ultra effort. New prose: CC0-1.0.</em></p>
+<p>A full left Hilbert algebra has a natural Banach algebra norm, although its original Hilbert norm need not be complete. Fullness can be tested by closing just the multiplier unit ball in the correct ambient domain. When the original Hilbert norm is already complete, every nonzero projection contains a minimal projection, and the generated von Neumann algebra splits into type I factors. We prove these statements, then construct a weighted rank-one algebra whose entire closed involution and modular domains are explicit.</p>
+<p>The exact inputs are <a href="OA-MOD-HA.html#oa-mod-ha-01">HA01–04</a>, <a href="OA-MOD-FL.html#oa-mod-fl-01">FL01–04</a>, the controlled approximation <a href="OA-MOD-HAP.html#oa-mod-hap-06">HAP06</a>, Baire and uniform boundedness <a href="OA-MOD-AB.html#oa-mod-ab-03">AB03</a>, bounded operators and polar decomposition <a href="OA-MOD-BK.html#oa-mod-bk-01">BK01–07</a>, the polar theorem <a href="OA-MOD-TC.html#oa-mod-tc-07">TC07–08</a>, the spectral calculus <a href="OA-MOD-SK.html#oa-mod-sk-03">SK03–09</a>, and the square-sum and finite-matrix proofs <a href="OA-MOD-OW.html#oa-mod-ow-09">OW09–10</a>. Their proofs are given in the linked lessons, not here. No modular commutant theorem, separability or faithful state is an input.</p>
+<p>Free comparisons are Jesse Peterson, <a href="https://math.vanderbilt.edu/peters10/teaching/spring2013/vonNeumannAlgebras.pdf"><em>Notes on von Neumann algebras</em>, Theorem 3.4.3, page 54</a>, for the matrix-unit representation of a type I factor, and Fumio Hiai, <a href="https://arxiv.org/abs/2004.02383"><em>Concise lectures on selected topics of von Neumann algebras</em>, Example 3.6(2), page 22</a>, for the Hilbert–Schmidt representation. The norm and fullness arguments below are derived from the preceding full-algebra and approximation proofs. The tensor construction, its exact unbounded domains, and the sharp squared projection bound are proved here using the linked bounded and spectral calculus.</p>
+<h2 id="a-complete-involutive-algebra-norm-on-the-full-algebra">A complete involutive algebra norm on the full algebra</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A\subset H\)">\(\mathcal A\subset H\)</span> be an arbitrary left Hilbert algebra, with closed involution <span class="math" data-tex="\(S\)">\(S\)</span>, right algebra <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span>, and generated algebra <span class="math" data-tex="\(M=L(\mathcal A)&#x27;&#x27;\)">\(M=L(\mathcal A)&#x27;&#x27;\)</span>. Put <span class="math" data-tex="\(\mathcal B_l\)">\(\mathcal B_l\)</span> for the left-bounded vectors and <span class="math" data-tex="\(\lambda_\xi\)">\(\lambda_\xi\)</span> for their bounded multipliers. FL01–04 give
+<span class="math" data-tex="\(\mathcal A&#x27;&#x27;=\mathcal B_l\cap D(S)\)">\(\mathcal A&#x27;&#x27;=\mathcal B_l\cap D(S)\)</span>, with multiplier
+<span class="math" data-tex="\(\lambda_\xi\eta=R_\eta\xi\)">\(\lambda_\xi\eta=R_\eta\xi\)</span> on <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span>, and
+<span class="math" data-tex="\(\lambda_{S\xi}=\lambda_\xi^*\)">\(\lambda_{S\xi}=\lambda_\xi^*\)</span> on <span class="math" data-tex="\(\mathcal A&#x27;&#x27;\)">\(\mathcal A&#x27;&#x27;\)</span>.
+Fullness means <span class="math" data-tex="\(\mathcal A=\mathcal A&#x27;&#x27;\)">\(\mathcal A=\mathcal A&#x27;&#x27;\)</span>. No algebra unit is required.</p>
+<p>For a full <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+N(\xi)=\max\\
+\{\|\lambda_\xi\|,\|\xi\|,\|S\xi\|\}.
+\end{gathered}
+\tag{HE.1}
+\]">\[
+\begin{gathered}
+N(\xi)=\max\\
+\{\|\lambda_\xi\|,\|\xi\|,\|S\xi\|\}.
+\end{gathered}
+\tag{HE.1}
+\]</span>
+<p>It is a norm, and <span class="math" data-tex="\(N(S\xi)=N(\xi)\)">\(N(S\xi)=N(\xi)\)</span>. For <span class="math" data-tex="\(\xi,\eta\in\mathcal A\)">\(\xi,\eta\in\mathcal A\)</span>, multiplicativity and the adjoint identity give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\lambda_{\xi\eta}\|&amp;\leq\|\lambda_\xi\|\|\lambda_\eta\|,\\
+\|\xi\eta\|&amp;\leq\|\lambda_\xi\|\|\eta\|,\\
+\|S(\xi\eta)\|&amp;=\|(S\eta)(S\xi)\|\\
+&amp;\leq\|\lambda_\eta\|\|S\xi\|.
+\end{aligned}
+\tag{HE.2}
+\]">\[
+\begin{aligned}
+\|\lambda_{\xi\eta}\|&amp;\leq\|\lambda_\xi\|\|\lambda_\eta\|,\\
+\|\xi\eta\|&amp;\leq\|\lambda_\xi\|\|\eta\|,\\
+\|S(\xi\eta)\|&amp;=\|(S\eta)(S\xi)\|\\
+&amp;\leq\|\lambda_\eta\|\|S\xi\|.
+\end{aligned}
+\tag{HE.2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(N(\xi\eta)\leq N(\xi)N(\eta)\)">\(N(\xi\eta)\leq N(\xi)N(\eta)\)</span>, and the involution is isometric.</p>
+<p>To prove completeness, let <span class="math" data-tex="\((\xi_n)\)">\((\xi_n)\)</span> be <span class="math" data-tex="\(N\)">\(N\)</span>-Cauchy. The three components converge to <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span>, <span class="math" data-tex="\(\zeta\in H\)">\(\zeta\in H\)</span>, and <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, the last in operator norm. The operator-norm limit can be constructed directly: for each <span class="math" data-tex="\(v\in H\)">\(v\in H\)</span>, the vectors <span class="math" data-tex="\(\lambda_{\xi_n}v\)">\(\lambda_{\xi_n}v\)</span> are Cauchy. Define <span class="math" data-tex="\(xv\)">\(xv\)</span> to be their limit. The Cauchy operator family has a common norm bound, so its limit is a bounded linear map. Passing to the pointwise limit in the Cauchy estimate gives <span class="math" data-tex="\(\|\lambda_{\xi_n}-x\|\to0\)">\(\|\lambda_{\xi_n}-x\|\to0\)</span>. Each approximant commutes with <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>; taking this limit gives the same commutation for <span class="math" data-tex="\(x\)">\(x\)</span>, so <span class="math" data-tex="\(x\in M&#x27;&#x27;=M\)">\(x\in M&#x27;&#x27;=M\)</span> by BK02. Closedness of <span class="math" data-tex="\(S\)">\(S\)</span> gives <span class="math" data-tex="\(\xi\in D(S)\)">\(\xi\in D(S)\)</span> and <span class="math" data-tex="\(S\xi=\zeta\)">\(S\xi=\zeta\)</span>. For <span class="math" data-tex="\(\eta\in\mathcal A_r\)">\(\eta\in\mathcal A_r\)</span>, boundedness of <span class="math" data-tex="\(R_\eta\)">\(R_\eta\)</span> gives
+<span class="math" data-tex="\(R_\eta\xi=\lim_nR_\eta\xi_n=\lim_n\lambda_{\xi_n}\eta=x\eta\)">\(R_\eta\xi=\lim_nR_\eta\xi_n=\lim_n\lambda_{\xi_n}\eta=x\eta\)</span>.
+Therefore <span class="math" data-tex="\(\xi\in\mathcal B_l\)">\(\xi\in\mathcal B_l\)</span> and <span class="math" data-tex="\(\lambda_\xi=x\)">\(\lambda_\xi=x\)</span>. Fullness puts <span class="math" data-tex="\(\xi\)">\(\xi\)</span> back in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>; convergence of all three components proves <span class="math" data-tex="\(N(\xi_n-\xi)\to0\)">\(N(\xi_n-\xi)\to0\)</span>. This is a Banach *-algebra norm. It is not asserted to satisfy the C*-identity.</p>
+<h2 id="closing-the-multiplier-ball-characterizes-fullness">Closing the multiplier ball characterizes fullness</h2>
+<p>For an arbitrary left Hilbert algebra define</p>
+<span class="math math-display" data-tex="\[
+U_{\mathcal A}=\{\xi\in\mathcal A:\|L_\xi\|\leq1\}.
+\tag{HE.3}
+\]">\[
+U_{\mathcal A}=\{\xi\in\mathcal A:\|L_\xi\|\leq1\}.
+\tag{HE.3}
+\]</span>
+<p>The topology on <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span> here is the topology induced by the Hilbert norm of <span class="math" data-tex="\(H\)">\(H\)</span>. It is not the graph-norm topology, and the ambient space is not all of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Theorem.</strong> The algebra is full exactly when <span class="math" data-tex="\(U_{\mathcal A}\)">\(U_{\mathcal A}\)</span> is closed in <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span>.</p>
+<p><strong>Proof.</strong> Suppose it is full, and a net <span class="math" data-tex="\(\xi_i\in U_{\mathcal A}\)">\(\xi_i\in U_{\mathcal A}\)</span> converges in Hilbert norm to <span class="math" data-tex="\(\xi\in D(S)\)">\(\xi\in D(S)\)</span>. For each <span class="math" data-tex="\(\eta\in\mathcal A_r\)">\(\eta\in\mathcal A_r\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|R_\eta\xi\|
+=\lim_i\|R_\eta\xi_i\|\leq\|\eta\|.
+\tag{HE.4}
+\]">\[
+\|R_\eta\xi\|
+=\lim_i\|R_\eta\xi_i\|\leq\|\eta\|.
+\tag{HE.4}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\xi\in\mathcal B_l\)">\(\xi\in\mathcal B_l\)</span> with <span class="math" data-tex="\(\|\lambda_\xi\|\leq1\)">\(\|\lambda_\xi\|\leq1\)</span>; fullness gives <span class="math" data-tex="\(\xi\in U_{\mathcal A}\)">\(\xi\in U_{\mathcal A}\)</span>. This proves relative closedness for all convergent nets.</p>
+<p>Conversely take <span class="math" data-tex="\(\xi\in\mathcal A&#x27;&#x27;\)">\(\xi\in\mathcal A&#x27;&#x27;\)</span>. HAP06 gives <span class="math" data-tex="\(a_n\in\mathcal A\)">\(a_n\in\mathcal A\)</span> with <span class="math" data-tex="\(a_n\to\xi\)">\(a_n\to\xi\)</span>, <span class="math" data-tex="\(Sa_n\to S\xi\)">\(Sa_n\to S\xi\)</span>, and <span class="math" data-tex="\(\|L_{a_n}\|\leq\|\lambda_\xi\|\)">\(\|L_{a_n}\|\leq\|\lambda_\xi\|\)</span>. If <span class="math" data-tex="\(\lambda_\xi=0\)">\(\lambda_\xi=0\)</span>, injectivity gives <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>. Otherwise divide the sequence and its limit by <span class="math" data-tex="\(\|\lambda_\xi\|\)">\(\|\lambda_\xi\|\)</span>. They lie in the multiplier ball, and their limit lies in <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span>. Relative closedness puts this limit in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, hence <span class="math" data-tex="\(\xi\in\mathcal A\)">\(\xi\in\mathcal A\)</span>. Since <span class="math" data-tex="\(\mathcal A\subseteq\mathcal A&#x27;&#x27;\)">\(\mathcal A\subseteq\mathcal A&#x27;&#x27;\)</span> always, equality follows. The second graph-coordinate limit supplied by HAP06 is available, but the closedness test needs only the first limit in the stated ambient domain. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="hilbert-completeness-controls-every-product-and-produces-projections">Hilbert completeness controls every product and produces projections</h2>
+<p>Now assume <span class="math" data-tex="\(\mathcal A=H\)">\(\mathcal A=H\)</span> as Hilbert spaces. If <span class="math" data-tex="\(H=0\)">\(H=0\)</span>, its generated algebra is zero; assertions about a nonzero projection are restricted to the nonzero case. The inclusion <span class="math" data-tex="\(\mathcal A\subseteq\mathcal A&#x27;&#x27;\subseteq H\)">\(\mathcal A\subseteq\mathcal A&#x27;&#x27;\subseteq H\)</span> already makes this algebra full.</p>
+<p>Its closed involution <span class="math" data-tex="\(S\)">\(S\)</span> has domain <span class="math" data-tex="\(H\)">\(H\)</span>. <a href="OA-MOD-TC.html#oa-mod-tc-08">TC08</a> gives <span class="math" data-tex="\(S=J|S|\)">\(S=J|S|\)</span> and <span class="math" data-tex="\(D(|S|)=H\)">\(D(|S|)=H\)</span>. The bounded spectral truncations <span class="math" data-tex="\(\min(|S|,n)\)">\(\min(|S|,n)\)</span> are pointwise bounded by <span class="math" data-tex="\(\||S|\xi\|\)">\(\||S|\xi\|\)</span>. Uniform boundedness AB03 makes their norms uniformly bounded; spectral convergence then makes <span class="math" data-tex="\(|S|\)">\(|S|\)</span>, hence <span class="math" data-tex="\(S\)">\(S\)</span>, bounded. This argument proves the needed boundedness rather than hiding a closed-graph assumption.</p>
+<p>For each <span class="math" data-tex="\(\eta\in H\)">\(\eta\in H\)</span>, right multiplication is bounded: the algebraic rule gives <span class="math" data-tex="\(R_\eta=S L_{S\eta} S\)">\(R_\eta=S L_{S\eta} S\)</span> on all of <span class="math" data-tex="\(H\)">\(H\)</span>. For each fixed <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, the family <span class="math" data-tex="\(\{L_\xi:\|\xi\|\leq1\}\)">\(\{L_\xi:\|\xi\|\leq1\}\)</span> is pointwise bounded, since
+<span class="math" data-tex="\(\|L_\xi\eta\|=\|R_\eta\xi\|\leq\|R_\eta\|\)">\(\|L_\xi\eta\|=\|R_\eta\xi\|\leq\|R_\eta\|\)</span>.
+Uniform boundedness, now applied on <span class="math" data-tex="\(H\)">\(H\)</span>, supplies <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\|\xi\eta\|\leq C\|\xi\|\|\eta\|
+\qquad(\xi,\eta\in H).
+\tag{HE.5}
+\]">\[
+\|\xi\eta\|\leq C\|\xi\|\|\eta\|
+\qquad(\xi,\eta\in H).
+\tag{HE.5}
+\]</span>
+<p>No countability of <span class="math" data-tex="\(H\)">\(H\)</span> or of the operator family is required.</p>
+<p>Let <span class="math" data-tex="\(\xi=S\xi\ne0\)">\(\xi=S\xi\ne0\)</span>; such a vector exists by taking a nonzero real or imaginary involution part of any nonzero vector. Its faithful multiplier <span class="math" data-tex="\(x=L_\xi\)">\(x=L_\xi\)</span> is nonzero self-adjoint. Choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> for which</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+q&amp;=1_{\{|t|\geq\delta\}}(x)\ne0,\\
+b&amp;=g(x),&amp;
+g(t)&amp;=t^{-1}1_{\{|t|\geq\delta\}}(t),\\
+L_{b\xi}&amp;=bL_\xi=q.
+\end{aligned}
+\tag{HE.6}
+\]">\[
+\begin{aligned}
+q&amp;=1_{\{|t|\geq\delta\}}(x)\ne0,\\
+b&amp;=g(x),&amp;
+g(t)&amp;=t^{-1}1_{\{|t|\geq\delta\}}(t),\\
+L_{b\xi}&amp;=bL_\xi=q.
+\end{aligned}
+\tag{HE.6}
+\]</span>
+<p>SK04/08 put the bounded <span class="math" data-tex="\(b\)">\(b\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>, and FL01's covariance gives the last identity. Because <span class="math" data-tex="\(b\xi\in H=\mathcal A\)">\(b\xi\in H=\mathcal A\)</span>, injectivity of <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(q^*=q=q^2\)">\(q^*=q=q^2\)</span> show that <span class="math" data-tex="\(e=b\xi\)">\(e=b\xi\)</span> satisfies <span class="math" data-tex="\(Se=e=e^2\)">\(Se=e=e^2\)</span>. Thus the vector algebra contains a nonzero self-adjoint idempotent.</p>
+<p>For every such <span class="math" data-tex="\(e\)">\(e\)</span>, (HE.5) gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|e\|=\|e^2\|\leq C\|e\|^2,\\
+\|e\|\geq C^{-1},\\
+\|e\|^2\geq C^{-2}.
+\end{gathered}
+\tag{HE.7}
+\]">\[
+\begin{gathered}
+\|e\|=\|e^2\|\leq C\|e\|^2,\\
+\|e\|\geq C^{-1},\\
+\|e\|^2\geq C^{-2}.
+\end{gathered}
+\tag{HE.7}
+\]</span>
+<p>The last bound is the squared version of the preceding one. Replacing <span class="math" data-tex="\(C^{-2}\)">\(C^{-2}\)</span> by <span class="math" data-tex="\(C^{-1}\)">\(C^{-1}\)</span> is not valid in general; HE07 gives an exact counterexample.</p>
+<h2 id="every-projection-contains-a-minimal-one-and-the-blocks-are-type-i">Every projection contains a minimal one, and the blocks are type I</h2>
+<p>We first localize the preceding argument to an arbitrary nonzero projection <span class="math" data-tex="\(p\in M\)">\(p\in M\)</span>. Nondegeneracy gives <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span> for which <span class="math" data-tex="\(pL_\xi\ne0\)">\(pL_\xi\ne0\)</span>. The vector <span class="math" data-tex="\(\zeta=p\xi\)">\(\zeta=p\xi\)</span> belongs to <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, and <span class="math" data-tex="\(L_\zeta=pL_\xi\)">\(L_\zeta=pL_\xi\)</span>. Then <span class="math" data-tex="\(L_{\zeta S\zeta}=pL_\xi L_\xi^*p\)">\(L_{\zeta S\zeta}=pL_\xi L_\xi^*p\)</span> is positive nonzero and supported in <span class="math" data-tex="\(p\)">\(p\)</span>. Apply the spectral extraction (HE.6) to this positive vector. We obtain a nonzero vector projection <span class="math" data-tex="\(e\)">\(e\)</span> with <span class="math" data-tex="\(L_e\leq p\)">\(L_e\leq p\)</span>.</p>
+<p>Define the nonempty local infimum</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\lambda_p&amp;=\inf\{\|e\|^2:
+e=Se=e^2\ne0,\ L_e\leq p\},\\
+\lambda_p&amp;\geq C^{-2}&gt;0 .
+\end{aligned}
+\tag{HE.8}
+\]">\[
+\begin{aligned}
+\lambda_p&amp;=\inf\{\|e\|^2:
+e=Se=e^2\ne0,\ L_e\leq p\},\\
+\lambda_p&amp;\geq C^{-2}&gt;0 .
+\end{aligned}
+\tag{HE.8}
+\]</span>
+<p>Choose <span class="math" data-tex="\(e\)">\(e\)</span> in this set with <span class="math" data-tex="\(\|e\|^2&lt;2\lambda_p\)">\(\|e\|^2&lt;2\lambda_p\)</span>. We claim <span class="math" data-tex="\(L_e\)">\(L_e\)</span> is minimal in the whole <span class="math" data-tex="\(M\)">\(M\)</span>. If it had a nontrivial subprojection <span class="math" data-tex="\(q\)">\(q\)</span>, put <span class="math" data-tex="\(q_1=q\)">\(q_1=q\)</span>, <span class="math" data-tex="\(q_2=L_e-q\)">\(q_2=L_e-q\)</span>, and <span class="math" data-tex="\(e_j=q_je\)">\(e_j=q_je\)</span>. Covariance gives <span class="math" data-tex="\(L_{e_j}=q_jL_e=q_j\)">\(L_{e_j}=q_jL_e=q_j\)</span>. Faithfulness of <span class="math" data-tex="\(L\)">\(L\)</span> shows that both <span class="math" data-tex="\(e_j\)">\(e_j\)</span> are nonzero self-adjoint idempotents, <span class="math" data-tex="\(e=e_1+e_2\)">\(e=e_1+e_2\)</span>, and <span class="math" data-tex="\(e_1e_2=0\)">\(e_1e_2=0\)</span>. The Hilbert-algebra adjoint identity gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle e_1,e_2\rangle
+&amp;=\langle e_1^2,e_2\rangle
+=\langle e_1,e_1e_2\rangle=0,\\
+\|e\|^2&amp;=\|e_1\|^2+\|e_2\|^2
+\geq2\lambda_p .
+\end{aligned}
+\tag{HE.9}
+\]">\[
+\begin{aligned}
+\langle e_1,e_2\rangle
+&amp;=\langle e_1^2,e_2\rangle
+=\langle e_1,e_1e_2\rangle=0,\\
+\|e\|^2&amp;=\|e_1\|^2+\|e_2\|^2
+\geq2\lambda_p .
+\end{aligned}
+\tag{HE.9}
+\]</span>
+<p>This contradicts the choice of <span class="math" data-tex="\(e\)">\(e\)</span>. For <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, it proves the global near-infimum minimality assertion as well. Using local infima is what proves the stronger fact needed next: every nonzero projection of <span class="math" data-tex="\(M\)">\(M\)</span> contains a minimal projection.</p>
+<p>Choose a maximal orthogonal family <span class="math" data-tex="\((q_i)_{i\in I}\)">\((q_i)_{i\in I}\)</span> of nonzero minimal projections. Its strong sum is <span class="math" data-tex="\(1\)">\(1\)</span>, since a nonzero complement would contain another minimal projection. For a minimal <span class="math" data-tex="\(q\)">\(q\)</span>, every self-adjoint member of <span class="math" data-tex="\(qMq\)">\(qMq\)</span> is scalar: a nonconstant spectral resolution would give a nontrivial subprojection of <span class="math" data-tex="\(q\)">\(q\)</span>. Hence <span class="math" data-tex="\(qMq=\mathbb C q\)">\(qMq=\mathbb C q\)</span>.</p>
+<p>Declare <span class="math" data-tex="\(i\sim j\)">\(i\sim j\)</span> when <span class="math" data-tex="\(q_i\)">\(q_i\)</span> and <span class="math" data-tex="\(q_j\)">\(q_j\)</span> are Murray–von Neumann equivalent. If <span class="math" data-tex="\(q_iMq_j\ne0\)">\(q_iMq_j\ne0\)</span>, the polar decomposition of a nonzero element of this corner has initial projection <span class="math" data-tex="\(q_j\)">\(q_j\)</span> and final projection <span class="math" data-tex="\(q_i\)">\(q_i\)</span>, by minimality. Thus different equivalence classes have zero cross corners. For each class <span class="math" data-tex="\(F\)">\(F\)</span> put</p>
+<span class="math math-display" data-tex="\[
+z_F=\sum_{i\in F}q_i .
+\tag{HE.10}
+\]">\[
+z_F=\sum_{i\in F}q_i .
+\tag{HE.10}
+\]</span>
+<p>The sums are strong suprema of finite subsums. Compressing each off-diagonal block <span class="math" data-tex="\(z_Fx(1-z_F)\)">\(z_Fx(1-z_F)\)</span> by the complete family <span class="math" data-tex="\((q_i)\)">\((q_i)\)</span> gives zero; finite-subsum limits give that the block itself is zero. The opposite block is zero as well. Therefore <span class="math" data-tex="\(z_F\)">\(z_F\)</span> is central. A central projection below <span class="math" data-tex="\(z_F\)">\(z_F\)</span> selects each <span class="math" data-tex="\(q_i\)">\(q_i\)</span> either wholly or not at all; equivalence forces the same selection for every <span class="math" data-tex="\(i\in F\)">\(i\in F\)</span>. Thus <span class="math" data-tex="\(z_F\)">\(z_F\)</span> is a minimal central projection.</p>
+<p>Fix <span class="math" data-tex="\(i_0\in F\)">\(i_0\in F\)</span> and partial isometries <span class="math" data-tex="\(v_i\)">\(v_i\)</span> with
+<span class="math" data-tex="\(v_i^*v_i=q_{i_0}\)">\(v_i^*v_i=q_{i_0}\)</span>, <span class="math" data-tex="\(v_iv_i^*=q_i\)">\(v_iv_i^*=q_i\)</span>, taking <span class="math" data-tex="\(v_{i_0}=q_{i_0}\)">\(v_{i_0}=q_{i_0}\)</span>. Their ranges are orthogonal, so</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e_{ij}&amp;=v_iv_j^*,&amp;
+e_{ij}e_{k\ell}&amp;=\delta_{jk}e_{i\ell},\\
+U_F(\delta_i\otimes\eta)&amp;=v_i\eta,\qquad
+U_F:\ell^2(F)\otimes q_{i_0}H\longrightarrow z_FH .
+\end{aligned}
+\tag{HE.11}
+\]">\[
+\begin{aligned}
+e_{ij}&amp;=v_iv_j^*,&amp;
+e_{ij}e_{k\ell}&amp;=\delta_{jk}e_{i\ell},\\
+U_F(\delta_i\otimes\eta)&amp;=v_i\eta,\qquad
+U_F:\ell^2(F)\otimes q_{i_0}H\longrightarrow z_FH .
+\end{aligned}
+\tag{HE.11}
+\]</span>
+<p>The isometry <span class="math" data-tex="\(U_F\)">\(U_F\)</span> is onto because <span class="math" data-tex="\(\sum_{i\in F}q_i=z_F\)">\(\sum_{i\in F}q_i=z_F\)</span>. For <span class="math" data-tex="\(x\in z_FM\)">\(x\in z_FM\)</span>, <span class="math" data-tex="\(v_i^*xv_j\)">\(v_i^*xv_j\)</span> is a scalar multiple of <span class="math" data-tex="\(q_{i_0}\)">\(q_{i_0}\)</span>. Consequently <span class="math" data-tex="\(U_F^*xU_F\)">\(U_F^*xU_F\)</span> has a bounded scalar matrix on <span class="math" data-tex="\(\ell^2(F)\)">\(\ell^2(F)\)</span>, tensored with the identity on <span class="math" data-tex="\(q_{i_0}H\)">\(q_{i_0}H\)</span>.</p>
+<p>Here are the boundedness and convergence details. The tensor Hilbert space and bounded tensor norm used in (HE.11) are constructed at the start of HE05. Fix a unit vector <span class="math" data-tex="\(\eta\in q_{i_0}H\)">\(\eta\in q_{i_0}H\)</span>, which exists since this projection is nonzero, and write <span class="math" data-tex="\(v_i^*xv_j=a_{ij}q_{i_0}\)">\(v_i^*xv_j=a_{ij}q_{i_0}\)</span>. For finitely supported scalars <span class="math" data-tex="\(c_j\)">\(c_j\)</span>, orthogonality and (HE.11) give</p>
+<span class="math math-display" data-tex="\[
+\sum_{i\in F}\left|\sum_j a_{ij}c_j\right|^2
+\leq \|x\|^2\sum_j|c_j|^2.
+\]">\[
+\sum_{i\in F}\left|\sum_j a_{ij}c_j\right|^2
+\leq \|x\|^2\sum_j|c_j|^2.
+\]</span>
+<p>Indeed the summands are the squared norms of the coordinates of <span class="math" data-tex="\(U_F^*xU_F(\sum_jc_j\delta_j\otimes\eta)\)">\(U_F^*xU_F(\sum_jc_j\delta_j\otimes\eta)\)</span>. The sum over <span class="math" data-tex="\(i\)">\(i\)</span> is the supremum of finite subsums. Thus this matrix defines a bounded operator <span class="math" data-tex="\(a\)">\(a\)</span> on the dense finite-support subspace and extends to <span class="math" data-tex="\(\ell^2(F)\)">\(\ell^2(F)\)</span> by completeness, with <span class="math" data-tex="\(\|a\|\leq\|x\|\)">\(\|a\|\leq\|x\|\)</span>. Its coordinate formula agrees with <span class="math" data-tex="\(U_F^*xU_F\)">\(U_F^*xU_F\)</span> on every finite tensor sum, so density proves equality with <span class="math" data-tex="\(a\otimes1\)">\(a\otimes1\)</span>. Conversely the finite scalar matrices are represented by the <span class="math" data-tex="\(e_{ij}\)">\(e_{ij}\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>. For a bounded scalar operator <span class="math" data-tex="\(a\)">\(a\)</span>, its finite-coordinate compressions converge strongly to <span class="math" data-tex="\(a\)">\(a\)</span> along finite subsets of <span class="math" data-tex="\(F\)">\(F\)</span>; the represented limit belongs to <span class="math" data-tex="\(M\)">\(M\)</span>. Explicitly, if <span class="math" data-tex="\(P_E\)">\(P_E\)</span> is projection on a finite coordinate set <span class="math" data-tex="\(E\subset F\)">\(E\subset F\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|(P_EaP_E-a)c\|\\
+&amp;\quad\leq\|a\|\|(P_E-I)c\|\\
+&amp;\qquad+\|(P_E-I)ac\|\longrightarrow0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|(P_EaP_E-a)c\|\\
+&amp;\quad\leq\|a\|\|(P_E-I)c\|\\
+&amp;\qquad+\|(P_E-I)ac\|\longrightarrow0.
+\end{aligned}
+\]</span>
+<p>The compression norms are bounded by <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span>. Tensoring with the identity preserves that bound and gives convergence first on finite tensor sums, then on every vector by density. Their conjugates by <span class="math" data-tex="\(U_F\)">\(U_F\)</span> are finite sums of the matrix units, hence belong to <span class="math" data-tex="\(z_FM\)">\(z_FM\)</span>; their strong limit therefore belongs there too. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+z_FM&amp;\cong B(\ell^2(F)),\\
+M&amp;\cong\prod_F B(\ell^2(F)).
+\end{aligned}
+\tag{HE.12}
+\]">\[
+\begin{aligned}
+z_FM&amp;\cong B(\ell^2(F)),\\
+M&amp;\cong\prod_F B(\ell^2(F)).
+\end{aligned}
+\tag{HE.12}
+\]</span>
+<p>The product is the bounded von Neumann direct sum: coordinate families have bounded operator norm. To check that every such family occurs, let <span class="math" data-tex="\(x_F\in z_FM\)">\(x_F\in z_FM\)</span> and <span class="math" data-tex="\(\sup_F\|x_F\|=C&lt;\infty\)">\(\sup_F\|x_F\|=C&lt;\infty\)</span>. For each <span class="math" data-tex="\(v\in H\)">\(v\in H\)</span>, orthogonality gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_F\|x_Fz_Fv\|^2\\
+&amp;\quad\leq C^2\sum_F\|z_Fv\|^2\\
+&amp;\quad=C^2\|v\|^2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_F\|x_Fz_Fv\|^2\\
+&amp;\quad\leq C^2\sum_F\|z_Fv\|^2\\
+&amp;\quad=C^2\|v\|^2.
+\end{aligned}
+\]</span>
+<p>Finite partial sums of the image vectors are therefore Cauchy and define a bounded operator <span class="math" data-tex="\(x\)">\(x\)</span> of norm at most <span class="math" data-tex="\(C\)">\(C\)</span>. The corresponding finite operator sums belong to <span class="math" data-tex="\(M\)">\(M\)</span>, and converge strongly to <span class="math" data-tex="\(x\)">\(x\)</span>, so <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>. Its compression is <span class="math" data-tex="\(z_Fx=x_F\)">\(z_Fx=x_F\)</span> for every <span class="math" data-tex="\(F\)">\(F\)</span>. Conversely central compression preserves products and adjoints, and the same orthogonal decomposition shows <span class="math" data-tex="\(\|x\|=\sup_F\|z_Fx\|\)">\(\|x\|=\sup_F\|z_Fx\|\)</span>. This proves the asserted algebra isomorphism, including surjectivity and its norm. It is not an algebraic direct sum or a countable-sum assertion. This proves the type I factor decomposition at arbitrary cardinality, including its actual representation multiplicities.</p>
+<h2 id="a-weighted-tensor-algebra-with-dense-products"><span id="oa-mod-he-05"></span><span id="OA-MOD-HE-05"></span>A weighted tensor algebra with dense products</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be any complex Hilbert space. Its conjugate space <span class="math" data-tex="\(\overline K\)">\(\overline K\)</span> is identified by Riesz with its continuous complex-linear dual: <span class="math" data-tex="\(\overline\eta\)">\(\overline\eta\)</span> corresponds to <span class="math" data-tex="\(\xi\mapsto\langle\xi,\eta\rangle\)">\(\xi\mapsto\langle\xi,\eta\rangle\)</span>. On simple tensors,</p>
+<span class="math math-display" data-tex="\[
+\langle\xi\otimes\overline\eta,\,
+\zeta\otimes\overline\omega\rangle
+=\langle\xi,\zeta\rangle\langle\omega,\eta\rangle .
+\tag{HE.13}
+\]">\[
+\langle\xi\otimes\overline\eta,\,
+\zeta\otimes\overline\omega\rangle
+=\langle\xi,\zeta\rangle\langle\omega,\eta\rangle .
+\tag{HE.13}
+\]</span>
+<p>Finite-dimensional orthonormal expansion in the span of the finitely many tensor factors proves positivity and nondegeneracy after quotienting by the algebraic tensor relations. Hilbert completion gives <span class="math" data-tex="\(K\otimes\overline K\)">\(K\otimes\overline K\)</span>. For bounded operators, the same finite expansion proves
+<span class="math" data-tex="\(\|a\otimes b\|\leq\|a\|\|b\|\)">\(\|a\otimes b\|\leq\|a\|\|b\|\)</span> and
+<span class="math" data-tex="\((a\otimes b)^*=a^*\otimes b^*\)">\((a\otimes b)^*=a^*\otimes b^*\)</span>; testing simple unit vectors approaching the two norms gives equality of norms.</p>
+<p>For clarity, the finite expansions and the completion can be made explicit. Expand the two finite spans of tensor factors in orthonormal lists, using the projection and Gram–Schmidt argument in BK01. A finite tensor then has a unique coefficient matrix <span class="math" data-tex="\((c_{ij})\)">\((c_{ij})\)</span>, and (HE.13) gives</p>
+<span class="math math-display" data-tex="\[
+\left\|\sum_{i,j}c_{ij}e_i\otimes\overline{f_j}\right\|^2
+=\sum_{i,j}|c_{ij}|^2.
+\]">\[
+\left\|\sum_{i,j}c_{ij}e_i\otimes\overline{f_j}\right\|^2
+=\sum_{i,j}|c_{ij}|^2.
+\]</span>
+<p>Uniqueness follows by applying the coordinate functionals in each factor; it also proves that zero norm means the zero algebraic tensor. Choose maximal orthonormal families in the two Hilbert spaces. Their spans are dense, since a nonzero orthogonal complement would extend the family by a unit vector. Finite projections in either family converge in norm on each vector: approximate that vector by a finite linear combination and use the contraction bound for projection. Applying these projections to each factor identifies every algebraic tensor with its square-summable coefficient array. Conversely every finite array comes from a finite tensor. The complete square-sum space on the product index set, proved in OW09, is therefore the required Hilbert completion; the families may be uncountable.</p>
+<p>For the operator bound, write a finite tensor as <span class="math" data-tex="\(v=\sum_j\xi_j\otimes\overline{f_j}\)">\(v=\sum_j\xi_j\otimes\overline{f_j}\)</span> with orthonormal second factors. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|(a\otimes1)v\|^2
+&amp;=\sum_j\|a\xi_j\|^2\\
+&amp;\leq\|a\|^2\sum_j\|\xi_j\|^2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|(a\otimes1)v\|^2
+&amp;=\sum_j\|a\xi_j\|^2\\
+&amp;\leq\|a\|^2\sum_j\|\xi_j\|^2.
+\end{aligned}
+\]</span>
+<p>Expanding instead in orthonormal first factors proves the bound for <span class="math" data-tex="\(1\otimes b\)">\(1\otimes b\)</span>. Composition gives the bound for <span class="math" data-tex="\(a\otimes b\)">\(a\otimes b\)</span>, and continuity extends it to the completion. Testing the inner product on simple tensors proves the adjoint formula; linearity and density extend it to the whole space. These arguments apply to any two Hilbert spaces, including the tensor in HE04. If either factor is zero, the tensor space and every tensor operator are zero, and the same norm assertions hold.</p>
+<p>Let <span class="math" data-tex="\(h\)">\(h\)</span> be positive, injective and self-adjoint on <span class="math" data-tex="\(K\)">\(K\)</span>, with no boundedness or bounded-inverse assumption. Set
+<span class="math" data-tex="\(\mathcal T=D(h)\odot\overline{D(h^{-1})}\)">\(\mathcal T=D(h)\odot\overline{D(h^{-1})}\)</span>, where <span class="math" data-tex="\(\odot\)">\(\odot\)</span> denotes the algebraic tensor product. For simple tensors define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\xi_1\otimes\overline{\eta_1})
+(\xi_2\otimes\overline{\eta_2})
+&amp;=\langle\xi_2,h^{-1}\eta_1\rangle\,
+\xi_1\otimes\overline{\eta_2},\\
+(\xi\otimes\overline\eta)^\sharp
+&amp;=h^{-1}\eta\otimes\overline{h\xi}.
+\end{aligned}
+\tag{HE.14}
+\]">\[
+\begin{aligned}
+(\xi_1\otimes\overline{\eta_1})
+(\xi_2\otimes\overline{\eta_2})
+&amp;=\langle\xi_2,h^{-1}\eta_1\rangle\,
+\xi_1\otimes\overline{\eta_2},\\
+(\xi\otimes\overline\eta)^\sharp
+&amp;=h^{-1}\eta\otimes\overline{h\xi}.
+\end{aligned}
+\tag{HE.14}
+\]</span>
+<p>The rules are compatible with the conjugate-space scalar relations and extend bilinearly and conjugate linearly. The second expression stays in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>: <span class="math" data-tex="\(h^{-1}\eta\in D(h)\)">\(h^{-1}\eta\in D(h)\)</span> and <span class="math" data-tex="\(h\xi\in D(h^{-1})\)">\(h\xi\in D(h^{-1})\)</span>, by the actual inverse-domain identity SK07. Associativity follows by multiplying the two scalar coefficients of a triple product. Applying the involution twice returns the original tensor. For reversal of a product, the coefficient is conjugated; the identity
+<span class="math" data-tex="\(\langle h^{-1}\eta_1,\xi_2\rangle
+=\overline{\langle\xi_2,h^{-1}\eta_1\rangle}\)">\(\langle h^{-1}\eta_1,\xi_2\rangle
+=\overline{\langle\xi_2,h^{-1}\eta_1\rangle}\)</span>
+gives <span class="math" data-tex="\((ab)^\sharp=b^\sharp a^\sharp\)">\((ab)^\sharp=b^\sharp a^\sharp\)</span>.</p>
+<p>Write <span class="math" data-tex="\(\Theta_{\alpha,\beta}\zeta=\langle\zeta,\beta\rangle\alpha\)">\(\Theta_{\alpha,\beta}\zeta=\langle\zeta,\beta\rangle\alpha\)</span>. Left multiplication on the completed tensor space is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L_{\xi\otimes\overline\eta}\\
+=\Theta_{\xi,h^{-1}\eta}\otimes1,\\
+L_{a^\sharp}=L_a^* .
+\end{gathered}
+\tag{HE.15}
+\]">\[
+\begin{gathered}
+L_{\xi\otimes\overline\eta}\\
+=\Theta_{\xi,h^{-1}\eta}\otimes1,\\
+L_{a^\sharp}=L_a^* .
+\end{gathered}
+\tag{HE.15}
+\]</span>
+<p>The first expression is bounded; the adjoint identity follows because <span class="math" data-tex="\(h^{-1}(h\xi)=\xi\)">\(h^{-1}(h\xi)=\xi\)</span>. It proves the Hilbert-algebra pairing axiom for all finite sums.</p>
+<p>Both factor domains are dense, so <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is Hilbert dense. If <span class="math" data-tex="\(K\ne0\)">\(K\ne0\)</span>, choose <span class="math" data-tex="\(0\ne\alpha\in D(h)\)">\(0\ne\alpha\in D(h)\)</span> and put <span class="math" data-tex="\(\beta=h\alpha\in D(h^{-1})\)">\(\beta=h\alpha\in D(h^{-1})\)</span>. The product
+<span class="math" data-tex="\((\xi\otimes\overline\beta)(\alpha\otimes\overline\eta)\)">\((\xi\otimes\overline\beta)(\alpha\otimes\overline\eta)\)</span>
+is <span class="math" data-tex="\(\|\alpha\|^2\xi\otimes\overline\eta\)">\(\|\alpha\|^2\xi\otimes\overline\eta\)</span>. Therefore the span of products is all of <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, hence dense. If <span class="math" data-tex="\(K=0\)">\(K=0\)</span>, every assertion is the corresponding zero assertion. The remaining Hilbert-algebra axiom, closability of the involution, will follow with its complete domain in HE06.</p>
+<p>Since <span class="math" data-tex="\(h^{-1}D(h^{-1})=D(h)\)">\(h^{-1}D(h^{-1})=D(h)\)</span>, HE15 ranges over all rank-one operators <span class="math" data-tex="\(\Theta_{\xi,\zeta}\)">\(\Theta_{\xi,\zeta}\)</span> with <span class="math" data-tex="\(\xi,\zeta\in D(h)\)">\(\xi,\zeta\in D(h)\)</span>, tensored with the identity. Hilbert-norm approximation of the two vectors approximates every rank-one operator in operator norm. Finite-rank compressions approximate every bounded operator strongly along the finite-dimensional subspaces of <span class="math" data-tex="\(K\)">\(K\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+L(\mathcal T)&#x27;&#x27;=B(K)\,\bar\otimes\,\mathbb C1_{\overline K}.
+\tag{HE.16}
+\]">\[
+L(\mathcal T)&#x27;&#x27;=B(K)\,\bar\otimes\,\mathbb C1_{\overline K}.
+\tag{HE.16}
+\]</span>
+<p>For the reverse inclusion, the algebra of operators <span class="math" data-tex="\(a\otimes1\)">\(a\otimes1\)</span> is strongly closed. To see this directly, assume <span class="math" data-tex="\(a_i\otimes1\to T\)">\(a_i\otimes1\to T\)</span> strongly and choose a unit vector <span class="math" data-tex="\(\eta\)">\(\eta\)</span> in the nonzero second factor. The subspace <span class="math" data-tex="\(K\otimes\mathbb C\overline\eta\)">\(K\otimes\mathbb C\overline\eta\)</span> is closed, and on it the limit defines a bounded map <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(T(\xi\otimes\overline\eta)=a\xi\otimes\overline\eta\)">\(T(\xi\otimes\overline\eta)=a\xi\otimes\overline\eta\)</span>, with <span class="math" data-tex="\(\|a\|\leq\|T\|\)">\(\|a\|\leq\|T\|\)</span>. It follows that <span class="math" data-tex="\(a_i\xi\to a\xi\)">\(a_i\xi\to a\xi\)</span> for each <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Testing any other simple tensor therefore gives <span class="math" data-tex="\(T(\xi\otimes\overline\zeta)=a\xi\otimes\overline\zeta\)">\(T(\xi\otimes\overline\zeta)=a\xi\otimes\overline\zeta\)</span>; density gives <span class="math" data-tex="\(T=a\otimes1\)">\(T=a\otimes1\)</span>. In the zero-space case the claim is immediate. This strongly closed unital star-algebra is its bicommutant by BK02, so it contains the generated algebra. Together with the finite-rank approximation, this proves (HE.16).</p>
+<h2 id="spectral-bands-determine-the-whole-modular-domain">Spectral bands determine the whole modular domain</h2>
+<p>Put <span class="math" data-tex="\(p_n=1_{[1/n,n]}(h)\)">\(p_n=1_{[1/n,n]}(h)\)</span>, <span class="math" data-tex="\(Q_n=p_n\otimes\overline{p_n}\)">\(Q_n=p_n\otimes\overline{p_n}\)</span>, and <span class="math" data-tex="\(Q_0=0\)">\(Q_0=0\)</span>. Injectivity and the spectral calculus give <span class="math" data-tex="\(p_n\uparrow1\)">\(p_n\uparrow1\)</span>, hence <span class="math" data-tex="\(Q_n\uparrow1\)">\(Q_n\uparrow1\)</span> strongly. On <span class="math" data-tex="\(Q_n(K\otimes\overline K)\)">\(Q_n(K\otimes\overline K)\)</span> the formula</p>
+<span class="math math-display" data-tex="\[
+A_n=(h|_{p_nK})\otimes
+\overline{(h^{-1}|_{p_nK})}
+\tag{HE.17}
+\]">\[
+A_n=(h|_{p_nK})\otimes
+\overline{(h^{-1}|_{p_nK})}
+\tag{HE.17}
+\]</span>
+<p>defines a bounded positive invertible operator. Positivity follows by writing it as the square of the corresponding bounded tensor of positive square roots. Its spectrum lies in <span class="math" data-tex="\([n^{-2},n^2]\)">\([n^{-2},n^2]\)</span>. The <span class="math" data-tex="\(A_n\)">\(A_n\)</span> agree on earlier bands and commute with every <span class="math" data-tex="\(Q_m\)">\(Q_m\)</span>.</p>
+<p>Set <span class="math" data-tex="\(V_n=(Q_n-Q_{n-1})(K\otimes\overline K)\)">\(V_n=(Q_n-Q_{n-1})(K\otimes\overline K)\)</span>, and let <span class="math" data-tex="\(B_n=A_n|_{V_n}\)">\(B_n=A_n|_{V_n}\)</span>. This is an orthogonal Hilbert decomposition into reducing subspaces. The direct-sum spectral rule SK08 defines the positive injective self-adjoint operator</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(A)&amp;=\left\{v:\sum_{n\geq1}
+\|B_n(Q_n-Q_{n-1})v\|^2&lt;\infty\right\},\\
+Av&amp;=\sum_{n\geq1}B_n(Q_n-Q_{n-1})v .
+\end{aligned}
+\tag{HE.18}
+\]">\[
+\begin{aligned}
+D(A)&amp;=\left\{v:\sum_{n\geq1}
+\|B_n(Q_n-Q_{n-1})v\|^2&lt;\infty\right\},\\
+Av&amp;=\sum_{n\geq1}B_n(Q_n-Q_{n-1})v .
+\end{aligned}
+\tag{HE.18}
+\]</span>
+<p>Each sum converges in Hilbert norm. Equivalently, <span class="math" data-tex="\(A_nQ_nv\)">\(A_nQ_nv\)</span> has a norm limit. This construction avoids treating a product of unbounded tensor operators as automatically self-adjoint.</p>
+<p>The self-adjointness and exact domain in this step admit a direct check. The finite sums of the spaces <span class="math" data-tex="\(V_n\)">\(V_n\)</span> are dense because <span class="math" data-tex="\(Q_n\to I\)">\(Q_n\to I\)</span>, and are contained in (HE.18). Write <span class="math" data-tex="\(v_n=(Q_n-Q_{n-1})v\)">\(v_n=(Q_n-Q_{n-1})v\)</span>. Testing the adjoint pairing on vectors supported in one <span class="math" data-tex="\(V_n\)">\(V_n\)</span> shows that a vector <span class="math" data-tex="\(w\)">\(w\)</span> can lie in <span class="math" data-tex="\(D(A^*)\)">\(D(A^*)\)</span> only if its adjoint image has coordinates <span class="math" data-tex="\(B_nw_n\)">\(B_nw_n\)</span>. Such a vector exists in the Hilbert space precisely when</p>
+<span class="math math-display" data-tex="\[
+\sum_n\|B_nw_n\|^2&lt;\infty.
+\]">\[
+\sum_n\|B_nw_n\|^2&lt;\infty.
+\]</span>
+<p>Conversely, this condition makes the sum converge; the Cauchy–Schwarz inequality for the two sequences of coordinate norms extends the finite-coordinate pairing to every <span class="math" data-tex="\(v\in D(A)\)">\(v\in D(A)\)</span>. Thus it is sufficient for membership in <span class="math" data-tex="\(D(A^*)\)">\(D(A^*)\)</span>, and <span class="math" data-tex="\(A^*=A\)">\(A^*=A\)</span> with exactly the domain in (HE.18). Positivity follows by summing the nonnegative terms <span class="math" data-tex="\(\langle B_nv_n,v_n\rangle\)">\(\langle B_nv_n,v_n\rangle\)</span>; this sum is absolutely convergent by the same inequality. Each <span class="math" data-tex="\(B_n\)">\(B_n\)</span> is invertible on its band, so the kernel is zero. This also proves closedness by the adjoint graph criterion TC03.</p>
+<p>On a simple tensor in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, spectral graph convergence of both factors gives
+<span class="math" data-tex="\(A_nQ_n(\xi\otimes\overline\eta)\to
+h\xi\otimes\overline{h^{-1}\eta}\)">\(A_nQ_n(\xi\otimes\overline\eta)\to
+h\xi\otimes\overline{h^{-1}\eta}\)</span>.
+Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A(\xi\otimes\overline\eta)\\
+=h\xi\otimes\overline{h^{-1}\eta}.
+\end{gathered}
+\tag{HE.19}
+\]">\[
+\begin{gathered}
+A(\xi\otimes\overline\eta)\\
+=h\xi\otimes\overline{h^{-1}\eta}.
+\end{gathered}
+\tag{HE.19}
+\]</span>
+<p>Conversely <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is a graph core for <span class="math" data-tex="\(A\)">\(A\)</span>. If <span class="math" data-tex="\(v\in D(A)\)">\(v\in D(A)\)</span>, HE18 gives <span class="math" data-tex="\(Q_nv\to v\)">\(Q_nv\to v\)</span> and <span class="math" data-tex="\(AQ_nv\to Av\)">\(AQ_nv\to Av\)</span>. Finite sums of tensors with both vectors in <span class="math" data-tex="\(p_nK\)">\(p_nK\)</span> are dense in <span class="math" data-tex="\(Q_n(K\otimes\overline K)\)">\(Q_n(K\otimes\overline K)\)</span>; they belong to <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. The bound <span class="math" data-tex="\(\|A_n\|\leq n^2\)">\(\|A_n\|\leq n^2\)</span> turns these Hilbert approximations into graph approximations. Choose one sufficiently close finite sum for each <span class="math" data-tex="\(n\)">\(n\)</span>; their vector and image limits are <span class="math" data-tex="\(v,Av\)">\(v,Av\)</span>. This proves equality of the graph closure with the entire operator in HE18.</p>
+<p>Let <span class="math" data-tex="\(J(\xi\otimes\overline\eta)=\eta\otimes\overline\xi\)">\(J(\xi\otimes\overline\eta)=\eta\otimes\overline\xi\)</span>. Formula HE13 makes <span class="math" data-tex="\(J\)">\(J\)</span> an antiunitary involution. It preserves every <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span> and <span class="math" data-tex="\(V_n\)">\(V_n\)</span>. On each band, swapping the factors gives <span class="math" data-tex="\(JA_nJ=A_n^{-1}\)">\(JA_nJ=A_n^{-1}\)</span>. The direct-sum domains therefore give the full identity</p>
+<span class="math math-display" data-tex="\[
+JAJ=A^{-1},\qquad
+D(A^{-1})=J D(A).
+\tag{HE.20}
+\]">\[
+JAJ=A^{-1},\qquad
+D(A^{-1})=J D(A).
+\tag{HE.20}
+\]</span>
+<p>The algebraic involution HE14 is <span class="math" data-tex="\(JA\)">\(JA\)</span> on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Since <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is an <span class="math" data-tex="\(A\)">\(A\)</span>-core and <span class="math" data-tex="\(J\)">\(J\)</span> is bounded antiunitary, its closure is exactly <span class="math" data-tex="\(S=JA\)">\(S=JA\)</span>, with <span class="math" data-tex="\(D(S)=D(A)\)">\(D(S)=D(A)\)</span>. In particular it is closable, completing all four left Hilbert-algebra axioms.</p>
+<p>The anti-linear adjoint is <span class="math" data-tex="\(S^*=AJ\)">\(S^*=AJ\)</span>. To check the domain as well as the formula, for <span class="math" data-tex="\(x\in D(A)\)">\(x\in D(A)\)</span> the antiunitary identity gives</p>
+<span class="math math-display" data-tex="\[
+\langle Sx,y\rangle=\langle Jy,Ax\rangle.
+\]">\[
+\langle Sx,y\rangle=\langle Jy,Ax\rangle.
+\]</span>
+<p>This pairing is bounded in <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span> precisely when <span class="math" data-tex="\(Jy\in D(A^*)=D(A)\)">\(Jy\in D(A^*)=D(A)\)</span>, by the adjoint-domain test TC03. In that case it equals <span class="math" data-tex="\(\langle AJy,x\rangle\)">\(\langle AJy,x\rangle\)</span>. Thus the adjoint has exactly the asserted domain and action. Its product with <span class="math" data-tex="\(S\)">\(S\)</span> has domain <span class="math" data-tex="\(D(A^2)\)">\(D(A^2)\)</span>, since <span class="math" data-tex="\(S v\in D(AJ)\)">\(S v\in D(AJ)\)</span> exactly when <span class="math" data-tex="\(Av\in D(A)\)">\(Av\in D(A)\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta&amp;=S^*S=A^2,&amp;
+\Delta^{1/2}&amp;=A,\\
+J(\xi\otimes\overline\eta)
+&amp;=\eta\otimes\overline\xi .
+\end{aligned}
+\tag{HE.21}
+\]">\[
+\begin{aligned}
+\Delta&amp;=S^*S=A^2,&amp;
+\Delta^{1/2}&amp;=A,\\
+J(\xi\otimes\overline\eta)
+&amp;=\eta\otimes\overline\xi .
+\end{aligned}
+\tag{HE.21}
+\]</span>
+<p>These are the polar modular data, including the full operator domains. The square of the involution and the adjoint product require separate domain calculations. For <span class="math" data-tex="\(v\in D(A)\)">\(v\in D(A)\)</span>, the vector <span class="math" data-tex="\(Av\)">\(Av\)</span> belongs to <span class="math" data-tex="\(D(A^{-1})=JD(A)\)">\(D(A^{-1})=JD(A)\)</span>, so <span class="math" data-tex="\(Sv=JAv\in D(A)\)">\(Sv=JAv\in D(A)\)</span>. Equation (HE.20) then gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(S^2)=D(A),\\
+S^2v=v\quad(v\in D(A)).
+\end{gathered}
+\]">\[
+\begin{gathered}
+D(S^2)=D(A),\\
+S^2v=v\quad(v\in D(A)).
+\end{gathered}
+\]</span>
+<p>The modular operator is the positive adjoint product <span class="math" data-tex="\(S^*S\)">\(S^*S\)</span>, whose domain is <span class="math" data-tex="\(D(A^2)\)">\(D(A^2)\)</span> as proved above. In the usual notation <span class="math" data-tex="\(A=h\otimes\overline{h^{-1}}\)">\(A=h\otimes\overline{h^{-1}}\)</span>, that symbol means the self-adjoint closure HE18–19. Its domain can be larger than the intersection of the individual unbounded tensor-factor domains.</p>
+<h2 id="solved-checks-for-the-constant-norm-and-unbounded-domain">Solved checks for the constant, norm and unbounded domain</h2>
+<p><strong>Finite weighted matrices.</strong> For <span class="math" data-tex="\(K=\mathbb C^m\)">\(K=\mathbb C^m\)</span> with positive integer dimension and <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, identify <span class="math" data-tex="\(\xi\otimes\overline\eta\)">\(\xi\otimes\overline\eta\)</span> with <span class="math" data-tex="\(\xi\eta^*\)">\(\xi\eta^*\)</span>, preserving the Hilbert–Schmidt inner product. Every matrix is in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, and the formulas become</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X\cdot Y&amp;=Xh^{-1}Y,\\
+X^\sharp&amp;=h^{-1}X^*h,\\
+L_X&amp;=L^{\mathrm{matrix}}_{Xh^{-1}},\\
+A(X)&amp;=hXh^{-1},\\
+J(X)&amp;=X^*.
+\end{aligned}
+\tag{HE.22}
+\]">\[
+\begin{aligned}
+X\cdot Y&amp;=Xh^{-1}Y,\\
+X^\sharp&amp;=h^{-1}X^*h,\\
+L_X&amp;=L^{\mathrm{matrix}}_{Xh^{-1}},\\
+A(X)&amp;=hXh^{-1},\\
+J(X)&amp;=X^*.
+\end{aligned}
+\tag{HE.22}
+\]</span>
+<p>Here <span class="math" data-tex="\(L^{\mathrm{matrix}}_B(X)=BX\)">\(L^{\mathrm{matrix}}_B(X)=BX\)</span>.
+They directly verify reversal, the Hilbert adjoint pairing and the operator represented in HE21. The optimal product constant for the Hilbert–Schmidt norm is <span class="math" data-tex="\(C=\|h^{-1}\|\)">\(C=\|h^{-1}\|\)</span>: the upper bound follows from the two matrix norm estimates, and rank-one matrices aligned with a maximal eigenvector of <span class="math" data-tex="\(h^{-1}\)">\(h^{-1}\)</span> attain it. The estimates are proved in OW10. One can also verify optimality without choosing an eigenbasis: take unit vectors <span class="math" data-tex="\(w,u,z\)">\(w,u,z\)</span>, put <span class="math" data-tex="\(v=h^{-1}w/\|h^{-1}w\|\)">\(v=h^{-1}w/\|h^{-1}w\|\)</span>, and use <span class="math" data-tex="\(X=\Theta_{u,v}\)">\(X=\Theta_{u,v}\)</span>, <span class="math" data-tex="\(Y=\Theta_{w,z}\)">\(Y=\Theta_{w,z}\)</span>. Their Hilbert–Schmidt norms are one, while</p>
+<span class="math math-display" data-tex="\[
+Xh^{-1}Y=\|h^{-1}w\|\Theta_{u,z}.
+\]">\[
+Xh^{-1}Y=\|h^{-1}w\|\Theta_{u,z}.
+\]</span>
+<p>Taking the supremum over unit <span class="math" data-tex="\(w\)">\(w\)</span> proves the lower bound for the optimal constant.</p>
+<p><strong>The squared constant and the C*-identity.</strong> Take <span class="math" data-tex="\(m=1\)">\(m=1\)</span> and <span class="math" data-tex="\(h=t&gt;0\)">\(h=t&gt;0\)</span>. The vector projection is <span class="math" data-tex="\(e=t\)">\(e=t\)</span>, because the product is <span class="math" data-tex="\(xy/t\)">\(xy/t\)</span>, and the optimal product constant is <span class="math" data-tex="\(C=1/t\)">\(C=1/t\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda=\inf_{e\ne0,\ e=e^\sharp=e^2}\|e\|^2\\
+=t^2=C^{-2}.
+\end{gathered}
+\tag{HE.23}
+\]">\[
+\begin{gathered}
+\lambda=\inf_{e\ne0,\ e=e^\sharp=e^2}\|e\|^2\\
+=t^2=C^{-2}.
+\end{gathered}
+\tag{HE.23}
+\]</span>
+<p>At <span class="math" data-tex="\(t=1/2\)">\(t=1/2\)</span>, <span class="math" data-tex="\(\lambda=1/4&lt;1/C=1/2\)">\(\lambda=1/4&lt;1/C=1/2\)</span>. This disproves the unsquared denominator while exactly attaining HE07. For a different test take <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, <span class="math" data-tex="\(h=1\)">\(h=1\)</span>. The Banach norm HE01 is the Hilbert–Schmidt norm, since it dominates the operator norm and is adjoint invariant. At <span class="math" data-tex="\(X=1_2\)">\(X=1_2\)</span>, <span class="math" data-tex="\(N(X^\sharp X)=\sqrt2\)">\(N(X^\sharp X)=\sqrt2\)</span>, whereas <span class="math" data-tex="\(N(X)^2=2\)">\(N(X)^2=2\)</span>. The norm is an involutive Banach algebra norm with no C*-claim.</p>
+<p><strong>A domain larger than the separate factor domains.</strong> Take <span class="math" data-tex="\(K=\ell^2(\mathbb Z)\)">\(K=\ell^2(\mathbb Z)\)</span> and <span class="math" data-tex="\(h e_j=2^j e_j\)">\(h e_j=2^j e_j\)</span>. Specify the self-adjoint operator, rather than only its values on basis vectors, by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(h)&amp;=\bigl\{c\in\ell^2(\mathbb Z):\\
+&amp;\qquad\sum_j2^{2j}|c_j|^2&lt;\infty\bigr\},\\
+(hc)_j&amp;=2^jc_j.
+\end{aligned}
+\]">\[
+\begin{aligned}
+D(h)&amp;=\bigl\{c\in\ell^2(\mathbb Z):\\
+&amp;\qquad\sum_j2^{2j}|c_j|^2&lt;\infty\bigr\},\\
+(hc)_j&amp;=2^jc_j.
+\end{aligned}
+\]</span>
+<p>The coordinate adjoint test used in HE06 proves self-adjointness, positivity and injectivity. Replacing <span class="math" data-tex="\(2^j\)">\(2^j\)</span> by <span class="math" data-tex="\(2^{-j}\)">\(2^{-j}\)</span> gives its inverse with the corresponding square-sum domain. Under the matrix-unit Hilbert basis of <span class="math" data-tex="\(K\otimes\overline K\)">\(K\otimes\overline K\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(A)&amp;=\left\{(a_{ij}):\sum_{i,j}
+2^{2(i-j)}|a_{ij}|^2&lt;\infty\right\},\\
+(Aa)_{ij}&amp;=2^{i-j}a_{ij},&amp;
+(Ja)_{ij}&amp;=\overline{a_{ji}} .
+\end{aligned}
+\tag{HE.24}
+\]">\[
+\begin{aligned}
+D(A)&amp;=\left\{(a_{ij}):\sum_{i,j}
+2^{2(i-j)}|a_{ij}|^2&lt;\infty\right\},\\
+(Aa)_{ij}&amp;=2^{i-j}a_{ij},&amp;
+(Ja)_{ij}&amp;=\overline{a_{ji}} .
+\end{aligned}
+\tag{HE.24}
+\]</span>
+<p>Membership in the tensor Hilbert space, namely <span class="math" data-tex="\(\sum_{i,j}|a_{ij}|^2&lt;\infty\)">\(\sum_{i,j}|a_{ij}|^2&lt;\infty\)</span>, is understood as well. Finite matrix truncations prove both necessity and sufficiency in HE18, since the band projections select finitely many integer coordinates.</p>
+<p>Let <span class="math" data-tex="\(v=\sum_{j\geq1}2^{-j}e_j\otimes\overline{e_j}\)">\(v=\sum_{j\geq1}2^{-j}e_j\otimes\overline{e_j}\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v&amp;\in D(A),\\
+Av&amp;=v,\\
+v&amp;\notin D(h\otimes1),\\
+\sum_{j\geq1}2^{2j}2^{-2j}&amp;=\infty .
+\end{aligned}
+\tag{HE.25}
+\]">\[
+\begin{aligned}
+v&amp;\in D(A),\\
+Av&amp;=v,\\
+v&amp;\notin D(h\otimes1),\\
+\sum_{j\geq1}2^{2j}2^{-2j}&amp;=\infty .
+\end{aligned}
+\tag{HE.25}
+\]</span>
+<p>The finite diagonal sums nevertheless lie in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> and converge to <span class="math" data-tex="\(v\)">\(v\)</span> in the <span class="math" data-tex="\(A\)">\(A\)</span>-graph norm. Explicitly, with <span class="math" data-tex="\(v_N=\sum_{j=1}^N2^{-j}e_j\otimes\overline{e_j}\)">\(v_N=\sum_{j=1}^N2^{-j}e_j\otimes\overline{e_j}\)</span>, the geometric-sum identity gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|v-v_N\|^2&amp;=\frac{4^{-N}}3,\\
+\|A(v-v_N)\|^2&amp;=\frac{4^{-N}}3.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|v-v_N\|^2&amp;=\frac{4^{-N}}3,\\
+\|A(v-v_N)\|^2&amp;=\frac{4^{-N}}3.
+\end{aligned}
+\]</span>
+<p>This proves both convergence claims and <span class="math" data-tex="\(\|v\|^2=1/3\)">\(\|v\|^2=1/3\)</span>. The full modular operator in this model is diagonal with multiplier <span class="math" data-tex="\(2^{2(i-j)}\)">\(2^{2(i-j)}\)</span>, and its domain is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(\Delta)&amp;=\bigl\{a\in\ell^2(\mathbb Z^2):\\
+&amp;\quad\sum_{i,j}2^{4(i-j)}|a_{ij}|^2&lt;\infty\bigr\}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+D(\Delta)&amp;=\bigl\{a\in\ell^2(\mathbb Z^2):\\
+&amp;\quad\sum_{i,j}2^{4(i-j)}|a_{ij}|^2&lt;\infty\bigr\}.
+\end{aligned}
+\]</span>
+<p>It is obtained by the same coordinate test, or by the exact square-domain rule for <span class="math" data-tex="\(A^2\)">\(A^2\)</span>. This exhibits why the algebraic construction must be closed in its actual graph, rather than assigned the smaller separate-factor domain. The weighted transpose <span class="math" data-tex="\(S=JA\)">\(S=JA\)</span> and its adjoint product have the exact domains proved in HE06.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Jesse Peterson, <a href="https://math.vanderbilt.edu/peters10/teaching/spring2013/vonNeumannAlgebras.pdf"><em>Notes on von Neumann algebras</em>, Theorem 3.4.3, page 54</a>. The matrix-unit comparison is used with explicit finite-subset convergence and representation multiplicities.</li>
+<li>Fumio Hiai, <em>Concise lectures on selected topics of von Neumann algebras</em>, Example 3.6(2), complete PDF page 22 actually inspected for the Hilbert–Schmidt type I model. <a href="https://arxiv.org/abs/2004.02383">Freely available author's text</a>. No entire-source or weighted-model proof reading claim.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-LP.html">← Nontracial Lp spaces for arbitrary von Neumann algebras</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-VT.html">Closed GNS graphs, cyclic vectors and bounded modular time →</a></span></nav>
+<p class="small source-link"><a href="src/full-hilbert-algebra-norms-and-rank-one-models.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -3,7 +3,7 @@
 *Public domain (CC0).*
 A finite transition matrix can encode the K-theory of a C*-algebra. A minimal homeomorphism can instead produce an algebra whose only projections are zero and one, even though its K-groups remain large. We finish the course by computing both kinds of examples and comparing them with free-group algebras.
 
-We reuse the PV sequence, [AF continuity](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/inductive-limits-and-the-k-theory-of-af-and-at-algebras.html), the [connected-space trace theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/traces-on-integer-crossed-products-and-their-k-theory-ranges.html#6-minimal-systems-and-the-absence-of-nontrivial-projections), and the gauge-corner argument of [Cuntz algebras](KT-OPK-22.md). All tensor products below are spatial. Write \(\mathcal K\) for the compact operators and normalize circle Haar measure to have mass one.
+We reuse the [PV sequence](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/the-pimsner-voiculescu-exact-sequence.html#1-the-sequence-and-the-proof-inputs), [AF continuity](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/inductive-limits-and-the-k-theory-of-af-and-at-algebras.html), the [connected-space trace theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/traces-on-integer-crossed-products-and-their-k-theory-ranges.html#6-minimal-systems-and-the-absence-of-nontrivial-projections), and the gauge-corner argument of [Cuntz algebras](KT-OPK-22.md). All tensor products below are spatial. Write \(\mathcal K\) for the compact operators and normalize circle Haar measure to have mass one.
 
 ## 1. Relations and the stationary core
 

@@ -392,7 +392,7 @@ where \(\mu(k)\) is the Möbius function. Thus the invariant cylinder functions 
 
 Averaging (6.1) over \(W\) sends \(t_{n,m,r}\) to \(\mu_n E_W(e(r))\mu_m^*\), which belongs to \(C^*(\mu_n)\). The averaging is contractive, and polynomials are dense, so its range is contained in this algebra. Every invariant element equals its average. The reverse inclusion follows because every \(\mu_n\) is fixed. This proves (6.2). \(\square\)
 
-The symmetry group is compact, but it acts nontrivially on the equilibrium states at low temperature. The distinction between fixing the time evolution and fixing each individual equilibrium state will matter in Phase transition in the Bost–Connes system.
+The symmetry group is compact, but it acts nontrivially on the equilibrium states at low temperature. The distinction between fixing the time evolution and fixing each individual equilibrium state will matter in [Phase transition in the Bost–Connes system](phase-transition-in-the-bost-connes-system.md).
 
 ## 7. The adelic realization of the symmetry
 
@@ -678,7 +678,7 @@ This geometry explains why the arithmetic dilation of a prime is independent of 
 
 The full affine group averages both integral translations and local units. Its compact-subgroup corner consequently retains the prime shifts, with no independent cyclotomic observables. We prove this for the full group C*-algebra, and also prove faithfulness of its regular corner. This avoids needing a general amenability theorem for this particular identification.
 
-First record the precise universal property of the shift algebra \(\mathcal T=C^*(\mu_n:n\ge1)\), whose faithful integer representation was proved in Phase transition in the Bost–Connes system, Proposition 11.2.
+First record the precise universal property of the shift algebra \(\mathcal T=C^*(\mu_n:n\ge1)\), whose faithful integer representation was proved in [Phase transition in the Bost–Connes system](phase-transition-in-the-bost-connes-system.md), Proposition 11.2.
 
 **Lemma 9.1 (The prime-shift universal property).** A family of isometries \(s_p\), one for each prime, satisfying
 

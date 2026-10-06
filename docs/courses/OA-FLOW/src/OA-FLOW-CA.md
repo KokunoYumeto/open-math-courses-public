@@ -6,7 +6,7 @@ Let \(M\subseteq B(K)\) be a nonzero von Neumann algebra acting with identity \(
 
 If the unit of \(M\) is properly infinite, the proved filling-projection construction gives a normal isomorphism of this amplification back onto \(M\). The transported weight has infinite total mass. Every actual given modular period of \(\psi\) is retained. In particular this supplies the finite-to-infinite weight step needed before the conditional generalized-trace construction, without supplying an inner period or a period from a type invariant.
 
-The exact earlier local inputs are [VD2](OA-FLOW-VD.md#vd-full-tensor) for the complete bounded-array algebra, finite-corner norms and positivity; [GW1–4](OA-FLOW-GW.md#oa-flow.gw.1) for finite ideals, GNS and the actual semifiniteness criterion; [NF5](OA-FLOW-NF.md#oa-flow.nf.5) and ST2 for faithful normal GNS and its inverse; WR3, [CI1 and CI3](OA-FLOW-CI.md#oa-flow.ci.1), and MW4 for the full finite-star involution, its antilinear adjoint/polar data and arbitrary-weight modular implementation; [SF, SB4–6](OA-FLOW-SF.md#oa-flow.sf.sb4) for full spectral domains, direct sums and spectral transport; [CP1–6](OA-FLOW-CP.md#oa-flow.cp.1) for the norm-closed concrete predual and vector-series tests; CF6–8 and [GNS3](OA-FLOW-GNS.md#gns-local-units) for bounded operator and representation norm facts; [GNS7.1](OA-FLOW-GNS.md#gns-lemma-7-1) for complete Hilbert sums; PC5, equation PC6 for a countable filling family on a properly infinite unit, and PC8 for the type III case; [CT1](OA-FLOW-CT.md#oa-flow.ct.1) for all-weight full-graph transport. All these are written proofs. In particular equation PC6 belongs to section PC5; section PC6 on finite joins is not the filling theorem.
+The exact earlier local inputs are [VD2](OA-FLOW-VD.md#vd-full-tensor) for the complete bounded-array algebra, finite-corner norms and positivity; [GW1–4](OA-FLOW-GW.md#oa-flow.gw.1) for finite ideals, GNS and the actual semifiniteness criterion; [NF5](OA-FLOW-NF.md#oa-flow.nf.5) and [ST2](OA-FLOW-ST12.md#oa-flow.st.2) for faithful normal GNS and its inverse; [WR3](OA-FLOW-WR.md#oa-flow.wr.3), [CI1 and CI3](OA-FLOW-CI.md#oa-flow.ci.1), and [MW4](OA-FLOW-MW.md#oa-flow.mw.4) for the full finite-star involution, its antilinear adjoint/polar data and arbitrary-weight modular implementation; [SF, SB4–6](OA-FLOW-SF.md#oa-flow.sf.sb4) for full spectral domains, direct sums and spectral transport; [CP1–6](OA-FLOW-CP.md#oa-flow.cp.1) for the norm-closed concrete predual and vector-series tests; [CF6–8](OA-FLOW-CF.md#oa-flow.cf.6) and [GNS3](OA-FLOW-GNS.md#gns-local-units) for bounded operator and representation norm facts; [GNS7.1](OA-FLOW-GNS.md#gns-lemma-7-1) for complete Hilbert sums; [PC5, equation PC6](OA-FLOW-PC.md#oa-flow.projection.pc5) for a countable filling family on a properly infinite unit, and [PC8](OA-FLOW-PC.md#oa-flow.projection.pc8) for the type III case; [CT1](OA-FLOW-CT.md#oa-flow.ct.1) for all-weight full-graph transport. All these are written proofs. In particular equation [PC6](OA-FLOW-PC.md#oa-flow.projection.pc5) belongs to section [PC5](OA-FLOW-PC.md#oa-flow.projection.pc5); section [PC6](OA-FLOW-PC.md#oa-flow.projection.pc6) on finite joins is not the filling theorem.
 
 The free human context actually read is [Connes, Theorem 4.3.2(a), printed pp.220–221](https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=89), where amplification by a countable type I factor is used in constructing an infinite weight. No tensor-weight theorem, abstract stability theorem or source's period-existence assertion is used below. The required amplification, graphs and normal representation transport are reconstructed explicitly.
 
@@ -162,7 +162,7 @@ Use the Hilbert direct sum \(\mathcal H=\bigoplus_{(i,j)\in I^2}H_\psi\), and de
 \]
 Equation ([CA8](OA-FLOW-CA.md#equation-ca8)) proves equality of squared norms. Polarization with first-variable-linear inner products gives equality of every inner product; the map is linear, well defined, and extends isometrically to \(H_\rho\). Its range contains every finite-coordinate vector whose entries lie in \(\Lambda_\psi(N_\psi)\), by using the corresponding finite matrix. Such vectors are dense in \(\mathcal H\), by Hilbert direct-sum completion and density of the original GNS range. The extended isometric range is closed, so \(V\) is onto.
 
-[GW4](OA-FLOW-GW.md#oa-flow.gw.4) and [NF5](OA-FLOW-NF.md#oa-flow.nf.5) give the faithful normal \(\pi_\psi\); ST2 gives its normal inverse onto its von Neumann image. Apply ([CA3](OA-FLOW-CA.md#equation-ca3)) to \(q=\pi_\psi\). For \(Y\in B\), its entrywise image is a bounded operator of norm \(\|Y\|\) on \(\ell^2(I,H_\psi)\). Repeating this operator on each column \(j\) defines a bounded operator \(L_Y\) on \(\mathcal H\), of the same norm, with
+[GW4](OA-FLOW-GW.md#oa-flow.gw.4) and [NF5](OA-FLOW-NF.md#oa-flow.nf.5) give the faithful normal \(\pi_\psi\); [ST2](OA-FLOW-ST12.md#oa-flow.st.2) gives its normal inverse onto its von Neumann image. Apply ([CA3](OA-FLOW-CA.md#equation-ca3)) to \(q=\pi_\psi\). For \(Y\in B\), its entrywise image is a bounded operator of norm \(\|Y\|\) on \(\ell^2(I,H_\psi)\). Repeating this operator on each column \(j\) defines a bounded operator \(L_Y\) on \(\mathcal H\), of the same norm, with
 
 <a id="equation-ca13"></a>
 
@@ -186,14 +186,14 @@ For such an \(X\), each entry of \(YX\) is a finite sum, so linearity of \(\Lamb
  V\pi_\rho(Y)V^*=L_Y
  \tag{CA15}
 \]
-on the full space. The representation is faithful normal by [GW4](OA-FLOW-GW.md#oa-flow.gw.4)/[NF5](OA-FLOW-NF.md#oa-flow.nf.5), with normal inverse by ST2. The full entrywise normality used in ([CA13](OA-FLOW-CA.md#equation-ca13)) was proved in CA0, rather than being inferred from a formal matrix display.
+on the full space. The representation is faithful normal by [GW4](OA-FLOW-GW.md#oa-flow.gw.4)/[NF5](OA-FLOW-NF.md#oa-flow.nf.5), with normal inverse by [ST2](OA-FLOW-ST12.md#oa-flow.st.2). The full entrywise normality used in ([CA13](OA-FLOW-CA.md#equation-ca13)) was proved in CA0, rather than being inferred from a formal matrix display.
 
 <a id="ca-3"></a>
 
 <a id="oa-flow.ca.3"></a>
 ## CA-3. Both inclusions of the full closed involution graph
 
-Let \(S=S_\psi\) be the closed finite-star involution, whose initial domain \(\Lambda_\psi(A_\psi)\) is a graph core by WR3. On \(\mathcal H\), define the antilinear operator
+Let \(S=S_\psi\) be the closed finite-star involution, whose initial domain \(\Lambda_\psi(A_\psi)\) is a graph core by [WR3](OA-FLOW-WR.md#oa-flow.wr.3). On \(\mathcal H\), define the antilinear operator
 
 <a id="equation-ca16"></a>
 
@@ -354,7 +354,7 @@ For each real \(t\), CA0 applied to the normal automorphism \(\sigma_t^\psi\) de
 In the GNS model, use ([CA13](OA-FLOW-CA.md#equation-ca13)) and ([CA27](OA-FLOW-CA.md#equation-ca27)). On vectors with finite coordinate support, conjugation of \(L_Y\) by the coordinate unitary \(\Delta_\psi^{it}\) gives entries
 \(\Delta_\psi^{it}\pi_\psi(Y_{ik})\Delta_\psi^{-it}
 =\pi_\psi(\sigma_t^\psi(Y_{ik}))\),
-by MW4. The column sums then give \(L_{\beta_t(Y)}\). Both sides are bounded, so density proves equality on the whole Hilbert space. Faithful modular implementation for \(\rho\) now yields
+by [MW4](OA-FLOW-MW.md#oa-flow.mw.4). The column sums then give \(L_{\beta_t(Y)}\). Both sides are bounded, so density proves equality on the whole Hilbert space. Faithful modular implementation for \(\rho\) now yields
 
 <a id="equation-ca29"></a>
 
@@ -366,7 +366,7 @@ by MW4. The column sums then give \(L_{\beta_t(Y)}\). Both sides are bounded, so
 \]
 In particular the entrywise action is the actual modular action of the diagonal-sum weight.
 
-The coordinate unitary group in ([CA27](OA-FLOW-CA.md#equation-ca27)) is strongly continuous: on each finite coordinate vector this is the base strong continuity; arbitrary vectors follow from the common norm-one bound and a square-summable tail. Its implemented action is pointwise strongly-* continuous in the faithful GNS representation, and ST2 transports the intrinsic bounded topology to the original concrete algebra. Thus the formula includes the required continuity, rather than only an algebraic automorphism identity.
+The coordinate unitary group in ([CA27](OA-FLOW-CA.md#equation-ca27)) is strongly continuous: on each finite coordinate vector this is the base strong continuity; arbitrary vectors follow from the common norm-one bound and a square-summable tail. Its implemented action is pointwise strongly-* continuous in the faithful GNS representation, and [ST2](OA-FLOW-ST12.md#oa-flow.st.2) transports the intrinsic bounded topology to the original concrete algebra. Thus the formula includes the required continuity, rather than only an algebraic automorphism identity.
 
 Whole-cone invariance also follows directly from the diagonal sums:
 
@@ -377,7 +377,7 @@ Whole-cone invariance also follows directly from the diagonal sums:
  =\sum_j\psi(\sigma_t^\psi(X_{jj}))=\rho(X)\qquad(X\in B_+),
  \tag{CA30}
 \]
-using MW4's full base-weight invariance even at infinity. Equations ([CA9](OA-FLOW-CA.md#equation-ca9)) and the base finite-domain invariance show that \(N_\rho,A_\rho,\mathfrak m_\rho\) are preserved in both directions. Formula ([CA10](OA-FLOW-CA.md#equation-ca10)) gives \(\rho_0\beta_t=\rho_0\) on the exact finite linear domain, and ([CA12](OA-FLOW-CA.md#equation-ca12)), ([CA27](OA-FLOW-CA.md#equation-ca27)), and the base GNS identity give
+using [MW4](OA-FLOW-MW.md#oa-flow.mw.4)'s full base-weight invariance even at infinity. Equations ([CA9](OA-FLOW-CA.md#equation-ca9)) and the base finite-domain invariance show that \(N_\rho,A_\rho,\mathfrak m_\rho\) are preserved in both directions. Formula ([CA10](OA-FLOW-CA.md#equation-ca10)) gives \(\rho_0\beta_t=\rho_0\) on the exact finite linear domain, and ([CA12](OA-FLOW-CA.md#equation-ca12)), ([CA27](OA-FLOW-CA.md#equation-ca27)), and the base GNS identity give
 
 <a id="equation-ca31"></a>
 
@@ -404,7 +404,7 @@ This is a comparison of given actions. It does not assert that either group cont
 <a id="oa-flow.ca.6"></a>
 ## CA-6. A countable normal matrix isomorphism on a properly infinite algebra
 
-Assume now that the unit of \(M\) is properly infinite. PC5, specifically its filling formula (PC6), constructs orthogonal projections \(q_j\sim1\), \(j\in I\), with \(\sum_jq_j=1\) strongly. This proof works without countability assumptions on \(M\) or on \(K\). Choose their actual partial isometries
+Assume now that the unit of \(M\) is properly infinite. [PC5](OA-FLOW-PC.md#oa-flow.projection.pc5), specifically its filling formula ([PC6](OA-FLOW-PC.md#oa-flow.projection.pc5)), constructs orthogonal projections \(q_j\sim1\), \(j\in I\), with \(\sum_jq_j=1\) strongly. This proof works without countability assumptions on \(M\) or on \(K\). Choose their actual partial isometries
 
 <a id="equation-ca33"></a>
 
@@ -478,7 +478,7 @@ For semifiniteness, \(F\) transports the ultraweakly dense finite left ideal; [G
  \quad(x\in N_\phi)
  \tag{CA39}
 \]
-preserves all inner products and has dense range, hence extends to an onto unitary. It maps the complete initial finite-star graphs onto one another by ([CA38](OA-FLOW-CA.md#equation-ca38)), and so \(RS_\phi R^*=S_\rho\) including their closed domains. The defining antilinear adjoints and their products give \(R\Delta_\phi R^*=\Delta_\rho\) with full domains. The Hilbert left representations are intertwined as well. Functional calculus and MW4 therefore prove
+preserves all inner products and has dense range, hence extends to an onto unitary. It maps the complete initial finite-star graphs onto one another by ([CA38](OA-FLOW-CA.md#equation-ca38)), and so \(RS_\phi R^*=S_\rho\) including their closed domains. The defining antilinear adjoints and their products give \(R\Delta_\phi R^*=\Delta_\rho\) with full domains. The Hilbert left representations are intertwined as well. Functional calculus and [MW4](OA-FLOW-MW.md#oa-flow.mw.4) therefore prove
 
 <a id="equation-ca40"></a>
 
@@ -490,7 +490,7 @@ preserves all inner products and has dense range, hence extends to an onto unita
 \]
 Thus every given periodic faithful normal semifinite weight on a nonzero properly infinite algebra yields an infinite faithful normal semifinite weight with precisely the same modular period group, on the same algebra. The initial weight may be finite or infinite.
 
-In a type III algebra the unit is properly infinite by PC8's actual projection argument. Hence, once an actual periodic weight with the specified \(2\pi/(-\log\lambda)\) period is supplied on a separable-predual type III\(_\lambda\) factor, this construction supplies the infinite periodic weight required by PF/GT. It does not prove that the type invariant supplies an inner period, that an arbitrary given weight has a nonzero period, or any general \(S/\Gamma\) or classification theorem.
+In a type III algebra the unit is properly infinite by [PC8](OA-FLOW-PC.md#oa-flow.projection.pc8)'s actual projection argument. Hence, once an actual periodic weight with the specified \(2\pi/(-\log\lambda)\) period is supplied on a separable-predual type III\(_\lambda\) factor, this construction supplies the infinite periodic weight required by PF/GT. It does not prove that the type invariant supplies an inner period, that an arbitrary given weight has a nonzero period, or any general \(S/\Gamma\) or classification theorem.
 
 ### Transposed graph coordinates and a genuinely filling countable family
 
@@ -553,7 +553,7 @@ Consequently the concrete map
  L:\ell^2(\mathbb N_0,K)\longrightarrow K,\qquad
  L(\delta_j\otimes e_m)=e_{b(j,m)}
 \]
-is onto unitary. It gives precisely \(F(X)=LXL^*\) and \((F^{-1}x)_{ij}=v_i^*xv_j\), as in [CA6](OA-FLOW-CA.md#oa-flow.ca.6). This example is a properly infinite type I algebra. The general [CA6](OA-FLOW-CA.md#oa-flow.ca.6) result uses PC5's proved filling family in an arbitrary properly infinite algebra, and does not identify the example with a type III factor.
+is onto unitary. It gives precisely \(F(X)=LXL^*\) and \((F^{-1}x)_{ij}=v_i^*xv_j\), as in [CA6](OA-FLOW-CA.md#oa-flow.ca.6). This example is a properly infinite type I algebra. The general [CA6](OA-FLOW-CA.md#oa-flow.ca.6) result uses [PC5](OA-FLOW-PC.md#oa-flow.projection.pc5)'s proved filling family in an arbitrary properly infinite algebra, and does not identify the example with a type III factor.
 
 [CA1](OA-FLOW-CA.md#oa-flow.ca.1)–5 retain the complete weight and modular content alongside the picture: \(\rho(X)=\sum_j\psi(X_{jj})\) on every bounded positive array, \(\rho(1)=\infty\), exact finite domains, an onto GNS unitary, and \((\sigma_t^\rho X)_{ij}=\sigma_t^\psi(X_{ij})\). [CA7](OA-FLOW-CA.md#oa-flow.ca.7) transports these complete objects through \(F\). All actual periods are preserved, while no period-existence theorem is asserted.
 

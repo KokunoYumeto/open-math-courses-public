@@ -1,6 +1,6 @@
 # Automorphic forms, modules and Hilbert constituents
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A classical eigenform supplies a function and a system of Hecke eigenvalues. To make it a representation, we must specify which translations are allowed, which vectors we retain, and which topology we use. Real compact finiteness is an algebraic condition; square integrability supplies a Hilbert completion. They give compatible descriptions of the cuspidal spectrum after we fix a unitary central character.
 

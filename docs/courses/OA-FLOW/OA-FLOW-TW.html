@@ -1,0 +1,1464 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tensoring a weight with the usual trace · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L31.html">Previous lesson</a><a href="OA-FLOW-ET.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-TW.md">Lesson source</a></nav><h1 id="OA-FLOW.TW.SETTING">Tensoring a weight with the usual trace</h1>
+<p><em>Self-checked by the writing AI. Original exposition and illustration sources: CC0 1.0; font components retain their accompanying terms.</em></p>
+<p>The usual trace assigns value one to a rank-one projection. We retain this normalization when adjoining a Hilbert-space factor to a von Neumann algebra with a weight. Finite matrix corners construct the weight on every positive operator, and its GNS coordinates determine the complete modular and relative domains. The Hilbert-space factor may have an uncountable orthonormal basis.</p>
+<p><a id="tw-setting"></a></p>
+<h2 id="setting-and-conventions">Setting and conventions</h2>
+<p>Let <span class="math" data-tex="$M\ne0$">$M\ne0$</span> be a von Neumann algebra, let <span class="math" data-tex="$\varphi$">$\varphi$</span> be a faithful normal semifinite weight on <span class="math" data-tex="$M$">$M$</span>, and let <span class="math" data-tex="$E\ne0$">$E\ne0$</span> be any complex Hilbert space. Fix an arbitrary orthonormal basis <span class="math" data-tex="$(e_i)_{i\in I}$">$(e_i)_{i\in I}$</span> of <span class="math" data-tex="$E$">$E$</span>. No countability assumption is made on <span class="math" data-tex="$I$">$I$</span>, on a faithful representation of <span class="math" data-tex="$M$">$M$</span>, or on its predual. Set
+<span class="math math-display" data-tex="\[
+ B=M\,\overline\otimes\,B(E).
+ \tag{TW.0.a}
+\]">\[
+ B=M\,\overline\otimes\,B(E).
+ \tag{TW.0.a}
+\]</span>
+In a faithful normal representation of <span class="math" data-tex="$M$">$M$</span> on <span class="math" data-tex="$K$">$K$</span>, the entry <span class="math" data-tex="$X_{ij}\in M$">$X_{ij}\in M$</span> of <span class="math" data-tex="$X\in B$">$X\in B$</span> is specified by
+<span class="math math-display" data-tex="\[
+ \langle X(\xi\otimes e_j),\eta\otimes e_i\rangle
+       =\langle X_{ij}\xi,\eta\rangle
+ \qquad(\xi,\eta\in K).
+ \tag{TW.0.b}
+\]">\[
+ \langle X(\xi\otimes e_j),\eta\otimes e_i\rangle
+       =\langle X_{ij}\xi,\eta\rangle
+ \qquad(\xi,\eta\in K).
+ \tag{TW.0.b}
+\]</span>
+Inner products are linear in their first variable. In particular, the rank-one operator <span class="math" data-tex="$|u\rangle\langle v|$">$|u\rangle\langle v|$</span> sends <span class="math" data-tex="$w$">$w$</span> to <span class="math" data-tex="$\langle w,v\rangle u$">$\langle w,v\rangle u$</span>.</p>
+<p>The finite ideal <span class="math" data-tex="$\mathfrak n_\varphi$">$\mathfrak n_\varphi$</span>, finite linear domain <span class="math" data-tex="$\mathfrak m_\varphi$">$\mathfrak m_\varphi$</span>, and full GNS map <span class="math" data-tex="$\Lambda_\varphi$">$\Lambda_\varphi$</span> are those proved in <a href="OA-FLOW-GW.html#oa-flow.gw.1">Finite ideals and GNS spaces for arbitrary weights</a>. Its representation is <a href="OA-FLOW-NF.html#oa-flow.nf.5">faithful and normal</a>. We use the actual closed finite-star operator <span class="math" data-tex="$S_\varphi$">$S_\varphi$</span>, modular operator <span class="math" data-tex="$\Delta_\varphi$">$\Delta_\varphi$</span>, and modular conjugation <span class="math" data-tex="$J_\varphi$">$J_\varphi$</span> of <a href="OA-FLOW-WR.html#wr-3">The full finite-star algebra</a> and <a href="OA-FLOW-MW.html#oa-flow.mw.4">Modular covariance and its implementation</a>. All domain equalities below concern these complete operators.</p>
+<p>Every sum of nonnegative scalars indexed by an arbitrary set means the supremum of its finite subsums. The same convention applies to sums of nonnegative squared Hilbert norms. Finite subsets and finite rectangles are directed by inclusion. We will construct, rather than assume, the weight
+<span class="math math-display" data-tex="\[
+ \Omega(X)=\sum_{i\in I}\varphi(X_{ii})
+       \qquad(X\in B_+),
+ \tag{TW.0.c}
+\]">\[
+ \Omega(X)=\sum_{i\in I}\varphi(X_{ii})
+       \qquad(X\in B_+),
+ \tag{TW.0.c}
+\]</span>
+show that it is independent of the chosen basis, and denote it by <span class="math" data-tex="$\varphi\otimes\operatorname{Tr}_E$">$\varphi\otimes\operatorname{Tr}_E$</span>.</p>
+<p>If <span class="math" data-tex="$M=0$">$M=0$</span> or <span class="math" data-tex="$E=0$">$E=0$</span>, the tensor algebra and its GNS Hilbert space are zero and the weight is zero. The corresponding formulas have their vacuous zero-space interpretation. Rank-one normalization and the nonzero faithful models below concern the stated nonzero case.</p>
+<p><span id="OA-FLOW.TW.1"></span><a id="tw-1"></a></p>
+<h2 id="1-arbitrary-matrix-coordinates-and-the-usual-trace">1. Arbitrary matrix coordinates and the usual trace</h2>
+<p>Let <span class="math" data-tex="\(M\subseteq B(H_0)\)">\(M\subseteq B(H_0)\)</span> be a von Neumann algebra and let <span class="math" data-tex="\(E\)">\(E\)</span> be a Hilbert space. No countability assumption is imposed on either space or on <span class="math" data-tex="\(M\)">\(M\)</span>. Inner products are linear in the first variable. We treat nonzero spaces below; if <span class="math" data-tex="\(M=\{0\}\)">\(M=\{0\}\)</span> or <span class="math" data-tex="\(E=\{0\}\)">\(E=\{0\}\)</span>, the corresponding tensor algebra and weight are zero, with the evident zero Hilbert-space models.</p>
+<p>Choose an orthonormal basis <span class="math" data-tex="\((e_i)_{i\in I}\)">\((e_i)_{i\in I}\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span>. Sums of nonnegative numbers indexed by an arbitrary set mean suprema of finite subsums. The <a href="OA-FLOW-GNS.html#gns-lemma-7-1">arbitrary Hilbert-sum construction</a> identifies <span class="math" data-tex="\(H_0\otimes E\)">\(H_0\otimes E\)</span> with <span class="math" data-tex="\(\bigoplus_{i\in I}H_0\)">\(\bigoplus_{i\in I}H_0\)</span>; its finite-coordinate vectors are dense. Write
+<span class="math math-display" data-tex="\[
+E_{ij}\xi=\langle\xi,e_j\rangle e_i,\qquad
+p_F=1\otimes\sum_{i\in F}E_{ii}\quad(F\subset I\text{ finite}).
+\tag{TW.1.a}
+\]">\[
+E_{ij}\xi=\langle\xi,e_j\rangle e_i,\qquad
+p_F=1\otimes\sum_{i\in F}E_{ii}\quad(F\subset I\text{ finite}).
+\tag{TW.1.a}
+\]</span>
+The finite sets are directed by inclusion, and <span class="math" data-tex="\(p_F\to1\)">\(p_F\to1\)</span> strongly.</p>
+<p>For <span class="math" data-tex="\(X\in B(H_0\otimes E)\)">\(X\in B(H_0\otimes E)\)</span>, its matrix entry <span class="math" data-tex="\(X_{ij}\in B(H_0)\)">\(X_{ij}\in B(H_0)\)</span> is the operator determined by
+<span class="math" data-tex="\(\langle X_{ij}\xi,\eta\rangle=\langle X(\xi\otimes e_j),\eta\otimes e_i\rangle\)">\(\langle X_{ij}\xi,\eta\rangle=\langle X(\xi\otimes e_j),\eta\otimes e_i\rangle\)</span>.
+The spatial tensor algebra has the complete bounded-array description
+<span class="math math-display" data-tex="\[
+\begin{split}
+B:=M\bar\otimes B(E)
+&amp;=(M\otimes1\ \cup\ 1\otimes B(E))''\\
+&amp;=\{X\in B(H_0\otimes E):X_{ij}\in M\text{ for all }i,j\}.
+\end{split}
+\tag{TW.1.b}
+\]">\[
+\begin{split}
+B:=M\bar\otimes B(E)
+&amp;=(M\otimes1\ \cup\ 1\otimes B(E))''\\
+&amp;=\{X\in B(H_0\otimes E):X_{ij}\in M\text{ for all }i,j\}.
+\end{split}
+\tag{TW.1.b}
+\]</span>
+Here is a proof for this arbitrary index set. An operator commuting with every <span class="math" data-tex="\(1\otimes E_{ii}\)">\(1\otimes E_{ii}\)</span> is diagonal; commuting also with every <span class="math" data-tex="\(1\otimes E_{ij}\)">\(1\otimes E_{ij}\)</span> makes all its diagonal entries equal to one operator <span class="math" data-tex="\(a\in B(H_0)\)">\(a\in B(H_0)\)</span>. Equality with <span class="math" data-tex="\(a\otimes1\)">\(a\otimes1\)</span> follows first on finite-coordinate vectors and then everywhere. Such an operator also commutes with <span class="math" data-tex="\(M\otimes1\)">\(M\otimes1\)</span> precisely when <span class="math" data-tex="\(a\in M'\)">\(a\in M'\)</span>. Thus the commutant of the generators is <span class="math" data-tex="\(M'\otimes1\)">\(M'\otimes1\)</span>. An operator commutes with this last algebra precisely when every entry belongs to <span class="math" data-tex="\(M''=M\)">\(M''=M\)</span>, proving (TW.1.b).</p>
+<p>The following statements include all bounded arrays:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p_FXp_F\longrightarrow X\quad\text{strongly-*},\qquad
+\|X\|=\sup_{F\text{ finite}}\|p_FXp_F\|,\\
+X\ge0\quad\Longleftrightarrow\quad
+p_FXp_F\ge0\text{ for every finite }F.
+\end{gathered}
+\tag{TW.1.c}
+\]">\[
+\begin{gathered}
+p_FXp_F\longrightarrow X\quad\text{strongly-*},\qquad
+\|X\|=\sup_{F\text{ finite}}\|p_FXp_F\|,\\
+X\ge0\quad\Longleftrightarrow\quad
+p_FXp_F\ge0\text{ for every finite }F.
+\end{gathered}
+\tag{TW.1.c}
+\]</span>
+For convergence, write
+<span class="math" data-tex="\(p_FXp_F-X=p_FX(p_F-1)+(p_F-1)X\)">\(p_FXp_F-X=p_FX(p_F-1)+(p_F-1)X\)</span>, and apply the same argument to <span class="math" data-tex="\(X^*\)">\(X^*\)</span>. The norm and positivity assertions follow by testing finite-coordinate vector pairs and quadratic forms, then using density. Conversely, a prescribed array with uniformly bounded finite-corner norms defines a bounded sesquilinear form on finite-coordinate vectors. The <a href="OA-FLOW-CF.html#oa-flow.cf.8">Hilbert representation theorem</a> extends it uniquely to a bounded operator. If its entries belong to <span class="math" data-tex="\(M\)">\(M\)</span>, (TW.1.b) puts that operator in <span class="math" data-tex="\(B\)">\(B\)</span>. This proves that the criterion concerns actual bounded operators, rather than formal matrices. Moreover
+<span class="math" data-tex="\(p_FXp_F=\sum_{i,j\in F}X_{ij}\otimes E_{ij}\)">\(p_FXp_F=\sum_{i,j\in F}X_{ij}\otimes E_{ij}\)</span>, so finite matrix tensors are strongly-* dense. These arguments extend the concrete countable proof in <a href="OA-FLOW-VD.html#vd-full-tensor">VD-2</a>, with all finite subsets of <span class="math" data-tex="\(I\)">\(I\)</span> retained.</p>
+<p>We will also need full normal amplification. Suppose <span class="math" data-tex="\(q:M\to A\subseteq B(H_1)\)">\(q:M\to A\subseteq B(H_1)\)</span> is a normal unital star isomorphism with normal inverse. Then
+<span class="math math-display" data-tex="\[
+q_E:B\longrightarrow A\bar\otimes B(E),\qquad
+(q_E(X))_{ij}=q(X_{ij})
+\tag{TW.1.d}
+\]">\[
+q_E:B\longrightarrow A\bar\otimes B(E),\qquad
+(q_E(X))_{ij}=q(X_{ij})
+\tag{TW.1.d}
+\]</span>
+is a normal star isomorphism with normal inverse. To prove this, apply <span class="math" data-tex="\(q\)">\(q\)</span> entrywise in each finite corner. The resulting finite matrix map and its inverse are unital star homomorphisms, hence contractive by the <a href="OA-FLOW-GNS.html#gns-lemma-3-2">C*-representation norm argument</a>; applying both inequalities makes them isometric. They preserve positivity, by applying them to positive square roots. The finite-corner criterion therefore constructs (TW.1.d) on every bounded array, isometrically and onto, preserving adjoints and positivity.</p>
+<p>For multiplication, the <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> entry of <span class="math" data-tex="\(XY\)">\(XY\)</span> is the strong limit of
+<span class="math" data-tex="\(\sum_{k\in F}X_{ik}Y_{kj}\)">\(\sum_{k\in F}X_{ik}Y_{kj}\)</span>, obtained by inserting <span class="math" data-tex="\(p_F\)">\(p_F\)</span> between <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>. These sums have norm at most <span class="math" data-tex="\(\|X\|\|Y\|\)">\(\|X\|\|Y\|\)</span>. A bounded strongly convergent net converges ultraweakly: in each vector-series test, its finite head converges and Cauchy–Schwarz bounds the tail uniformly. Normality of <span class="math" data-tex="\(q\)">\(q\)</span> therefore transports this entry limit to the corresponding entry of <span class="math" data-tex="\(q_E(X)q_E(Y)\)">\(q_E(X)q_E(Y)\)</span>, proving multiplicativity.</p>
+<p>For normality on the entire algebra, truncate a pair <span class="math" data-tex="\(\xi,\eta\in H_1\otimes E\)">\(\xi,\eta\in H_1\otimes E\)</span>. On the target unit ball the error in its vector functional is at most
+<span class="math math-display" data-tex="\[
+\|\xi-p_F\xi\|\,\|\eta\|
++\|\xi\|\,\|\eta-p_F\eta\|.
+\tag{TW.1.e}
+\]">\[
+\|\xi-p_F\xi\|\,\|\eta\|
++\|\xi\|\,\|\eta-p_F\eta\|.
+\tag{TW.1.e}
+\]</span>
+The finite-coordinate pullback is a finite sum of normal functionals of <span class="math" data-tex="\(q(X_{ij})\)">\(q(X_{ij})\)</span>; coordinate compression is normal by the same vector-series test. Isometry of <span class="math" data-tex="\(q_E\)">\(q_E\)</span> leaves (TW.1.e) valid after pullback. The <a href="OA-FLOW-CP.html#oa-flow.cp.6">norm-closed concrete predual</a> makes the limiting pullback normal. Finally any target normal functional is a square-summable vector series. Its pullbacks converge in functional norm, because the sum of the products of the two vector norms is finite. This proves normality of <span class="math" data-tex="\(q_E\)">\(q_E\)</span>; the identical argument for <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span> proves normality of its inverse. The proof does not assume that an arbitrary ultraweakly convergent net is norm bounded.</p>
+<p>We next fix the scalar normalization. For every <span class="math" data-tex="\(T\in B(E)_+\)">\(T\in B(E)_+\)</span>, define
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_E(T)
+=\sum_{i\in I}\langle Te_i,e_i\rangle
+=\sum_{i\in I}\|T^{1/2}e_i\|^2.
+\tag{TW.1.f}
+\]">\[
+\operatorname{Tr}_E(T)
+=\sum_{i\in I}\langle Te_i,e_i\rangle
+=\sum_{i\in I}\|T^{1/2}e_i\|^2.
+\tag{TW.1.f}
+\]</span>
+This definition is independent of the orthonormal basis, including when its value is infinite. Indeed, for another basis <span class="math" data-tex="\((f_j)_{j\in J}\)">\((f_j)_{j\in J}\)</span>, Parseval and self-adjointness of <span class="math" data-tex="\(T^{1/2}\)">\(T^{1/2}\)</span> give
+<span class="math math-display" data-tex="\[
+\sum_i\|T^{1/2}e_i\|^2
+=\sum_{i,j}|\langle T^{1/2}e_i,f_j\rangle|^2
+=\sum_j\|T^{1/2}f_j\|^2.
+\tag{TW.1.g}
+\]">\[
+\sum_i\|T^{1/2}e_i\|^2
+=\sum_{i,j}|\langle T^{1/2}e_i,f_j\rangle|^2
+=\sum_j\|T^{1/2}f_j\|^2.
+\tag{TW.1.g}
+\]</span>
+Every interchange is valid because both sides of a nonnegative double sum are the supremum of all finite subsums. Parseval itself here follows by orthogonal finite-coordinate approximation in the arbitrary Hilbert sum.</p>
+<p>The functional (TW.1.f) is additive and positively homogeneous, with <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>. If <span class="math" data-tex="\(T_\alpha\uparrow T\)">\(T_\alpha\uparrow T\)</span>, each diagonal increases to its limit. Normality follows by taking first the supremum over <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and then over finite subsets, using a common upper index for finitely many scalar approximations. If its value on <span class="math" data-tex="\(T\)">\(T\)</span> is zero, <span class="math" data-tex="\(T^{1/2}e_i=0\)">\(T^{1/2}e_i=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, so <span class="math" data-tex="\(T=0\)">\(T=0\)</span>. Finally, for every bounded <span class="math" data-tex="\(A\)">\(A\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_E(A^*A)
+=\sum_{i,j}|A_{ij}|^2
+=\operatorname{Tr}_E(AA^*).
+\tag{TW.1.h}
+\]">\[
+\operatorname{Tr}_E(A^*A)
+=\sum_{i,j}|A_{ij}|^2
+=\operatorname{Tr}_E(AA^*).
+\tag{TW.1.h}
+\]</span>
+The first equality is Parseval on each column; the second uses rows and transposes the nonnegative sum. In particular the weight is tracial. The finite-rank projections <span class="math" data-tex="\(\sum_{i\in F}E_{ii}\)">\(\sum_{i\in F}E_{ii}\)</span> increase strongly to one and have finite trace <span class="math" data-tex="\(|F|\)">\(|F|\)</span>, so the <a href="OA-FLOW-GW.html#oa-flow.gw.4">finite-contraction criterion for semifiniteness</a> applies. Thus <span class="math" data-tex="\(\operatorname{Tr}_E\)">\(\operatorname{Tr}_E\)</span> is the faithful normal semifinite usual trace, with
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_E(\theta_{\xi,\xi})=\|\xi\|^2,\qquad
+\theta_{\xi,\eta}v=\langle v,\eta\rangle\xi.
+\tag{TW.1.i}
+\]">\[
+\operatorname{Tr}_E(\theta_{\xi,\xi})=\|\xi\|^2,\qquad
+\theta_{\xi,\eta}v=\langle v,\eta\rangle\xi.
+\tag{TW.1.i}
+\]</span>
+The first formula follows by summing <span class="math" data-tex="\(|\langle e_i,\xi\rangle|^2\)">\(|\langle e_i,\xi\rangle|^2\)</span>. Every rank-one projection consequently has trace one, and a rank-<span class="math" data-tex="\(r\)">\(r\)</span> projection has trace <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p>We record the Hilbert-space normalization used later. Put
+<span class="math math-display" data-tex="\[
+HS(E)=\{A\in B(E):\operatorname{Tr}_E(A^*A)&lt;\infty\},\qquad
+\|A\|_{HS}^2=\sum_{i,j}|A_{ij}|^2.
+\tag{TW.1.j}
+\]">\[
+HS(E)=\{A\in B(E):\operatorname{Tr}_E(A^*A)&lt;\infty\},\qquad
+\|A\|_{HS}^2=\sum_{i,j}|A_{ij}|^2.
+\tag{TW.1.j}
+\]</span>
+Every square-summable scalar array defines a bounded operator: for finite-coordinate vectors, Cauchy–Schwarz bounds its sesquilinear form by the array norm times the two vector norms. Its finite corners therefore yield the required operator, with <span class="math" data-tex="\(\|A\|\le\|A\|_{HS}\)">\(\|A\|\le\|A\|_{HS}\)</span>. Conversely (TW.1.h) gives its Hilbert–Schmidt norm. Thus the coefficient map is an onto isometry <span class="math" data-tex="\(HS(E)\to\ell^2(I^2)\)">\(HS(E)\to\ell^2(I^2)\)</span>; the <a href="OA-FLOW-GNS.html#gns-lemma-7-1">arbitrary Hilbert-sum theorem</a> proves completeness and density of finite matrix sums. Polarization gives the basis-independent inner product
+<span class="math" data-tex="\(\langle A,B\rangle_{HS}=\sum_{i,j}A_{ij}\overline{B_{ij}}\)">\(\langle A,B\rangle_{HS}=\sum_{i,j}A_{ij}\overline{B_{ij}}\)</span>. The <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span> are an orthonormal basis, and <span class="math" data-tex="\(A\mapsto A^*\)">\(A\mapsto A^*\)</span> is an antiunitary involution by (TW.1.h). In particular
+<span class="math math-display" data-tex="\[
+\|\theta_{\xi,\eta}\|_{HS}^2=\|\xi\|^2\|\eta\|^2.
+\tag{TW.1.k}
+\]">\[
+\|\theta_{\xi,\eta}\|_{HS}^2=\|\xi\|^2\|\eta\|^2.
+\tag{TW.1.k}
+\]</span>
+No countability of <span class="math" data-tex="\(I\)">\(I\)</span> is needed: a particular square-summable array has at most countably many nonzero entries.</p>
+<p><span id="OA-FLOW.TW.2"></span><a id="tw-2"></a></p>
+<h2 id="2-the-weight-on-every-positive-operator-and-its-complete-finite-domains">2. The weight on every positive operator and its complete finite domains</h2>
+<p>Let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be a faithful normal semifinite weight on <span class="math" data-tex="\(M\)">\(M\)</span>, with GNS map <span class="math" data-tex="\(\Lambda_\varphi:\mathfrak n_\varphi\to H_\varphi\)">\(\Lambda_\varphi:\mathfrak n_\varphi\to H_\varphi\)</span>. Define, for every bounded positive <span class="math" data-tex="\(X\in B\)">\(X\in B\)</span>,
+<span class="math math-display" data-tex="\[
+\Omega(X)=\sum_{i\in I}\varphi(X_{ii})
+:=\sup_{F\subset I\text{ finite}}\sum_{i\in F}\varphi(X_{ii}).
+\tag{TW.2.a}
+\]">\[
+\Omega(X)=\sum_{i\in I}\varphi(X_{ii})
+:=\sup_{F\subset I\text{ finite}}\sum_{i\in F}\varphi(X_{ii}).
+\tag{TW.2.a}
+\]</span>
+Each diagonal entry is positive. This formula gives an extended nonnegative value on the whole positive cone, and not only on finite matrices or finite-weight elements.</p>
+<p>To prove additivity, the sum of the two suprema is the supremum over two finite subsets. Their union is a common finite subset, so
+<span class="math" data-tex="\(\sum_i(\varphi(X_{ii})+\varphi(Y_{ii}))=\sum_i\varphi(X_{ii})+\sum_i\varphi(Y_{ii})\)">\(\sum_i(\varphi(X_{ii})+\varphi(Y_{ii}))=\sum_i\varphi(X_{ii})+\sum_i\varphi(Y_{ii})\)</span>.
+The same argument covers infinity; homogeneity follows with <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>. Thus <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is a weight.</p>
+<p>If <span class="math" data-tex="\(0\le X_\alpha\uparrow X\)">\(0\le X_\alpha\uparrow X\)</span>, diagonal compression preserves the increasing strong supremum, hence
+<span class="math math-display" data-tex="\[
+\Omega(X)
+=\sup_{F\text{ finite}}\sup_\alpha
+       \sum_{i\in F}\varphi((X_\alpha)_{ii})
+=\sup_\alpha\Omega(X_\alpha).
+\tag{TW.2.b}
+\]">\[
+\Omega(X)
+=\sup_{F\text{ finite}}\sup_\alpha
+       \sum_{i\in F}\varphi((X_\alpha)_{ii})
+=\sup_\alpha\Omega(X_\alpha).
+\tag{TW.2.b}
+\]</span>
+For a fixed finite <span class="math" data-tex="\(F\)">\(F\)</span>, normality of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and a common upper index establish the middle equality, including infinite values by arbitrary finite lower bounds. Interchange of the two suprema proves normality for arbitrary increasing nets.</p>
+<p>If <span class="math" data-tex="\(\Omega(X)=0\)">\(\Omega(X)=0\)</span>, faithfulness of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> forces <span class="math" data-tex="\(X_{ii}=0\)">\(X_{ii}=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. Therefore
+<span class="math" data-tex="\(\|X^{1/2}(\xi\otimes e_i)\|^2=\langle X_{ii}\xi,\xi\rangle=0\)">\(\|X^{1/2}(\xi\otimes e_i)\|^2=\langle X_{ii}\xi,\xi\rangle=0\)</span>.
+Finite-coordinate vectors are dense, so <span class="math" data-tex="\(X=0\)">\(X=0\)</span>; the weight is faithful.</p>
+<p>For semifiniteness, <a href="OA-FLOW-GW.html#oa-flow.gw.4">GW-4</a> supplies increasing positive contractions <span class="math" data-tex="\(u_\alpha\in M\)">\(u_\alpha\in M\)</span> with <span class="math" data-tex="\(\varphi(u_\alpha)&lt;\infty\)">\(\varphi(u_\alpha)&lt;\infty\)</span> and <span class="math" data-tex="\(u_\alpha\uparrow1\)">\(u_\alpha\uparrow1\)</span>. Write <span class="math" data-tex="\(q_F=\sum_{i\in F}E_{ii}\)">\(q_F=\sum_{i\in F}E_{ii}\)</span>. The contractions
+<span class="math math-display" data-tex="\[
+r_{\alpha,F}=u_\alpha\otimes q_F,\qquad
+\Omega(r_{\alpha,F})=|F|\varphi(u_\alpha)&lt;\infty
+\tag{TW.2.c}
+\]">\[
+r_{\alpha,F}=u_\alpha\otimes q_F,\qquad
+\Omega(r_{\alpha,F})=|F|\varphi(u_\alpha)&lt;\infty
+\tag{TW.2.c}
+\]</span>
+increase to one on the product directed set. Monotonicity follows from positivity of elementary positive tensors and
+<span class="math math-display" data-tex="\[
+u_{\alpha'}\otimes q_{F'}-u_\alpha\otimes q_F
+=(u_{\alpha'}-u_\alpha)\otimes q_{F'}
+ +u_\alpha\otimes(q_{F'}-q_F)\ge0
+\]">\[
+u_{\alpha'}\otimes q_{F'}-u_\alpha\otimes q_F
+=(u_{\alpha'}-u_\alpha)\otimes q_{F'}
+ +u_\alpha\otimes(q_{F'}-q_F)\ge0
+\]</span>
+when <span class="math" data-tex="\(\alpha'\ge\alpha\)">\(\alpha'\ge\alpha\)</span> and <span class="math" data-tex="\(F'\supseteq F\)">\(F'\supseteq F\)</span>. Convergence follows first on elementary vectors and then by the uniform contraction bound. The same GW-4 criterion proves semifiniteness of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. This argument uses finite positive contractions and does not require <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> to be a trace.</p>
+<p>All its finite domains can now be determined. For <span class="math" data-tex="\(X\in B\)">\(X\in B\)</span>, insertion of <span class="math" data-tex="\(p_F\)">\(p_F\)</span> between <span class="math" data-tex="\(X^*\)">\(X^*\)</span> and <span class="math" data-tex="\(X\)">\(X\)</span> gives the increasing strong column sum
+<span class="math math-display" data-tex="\[
+(X^*X)_{jj}=\sum_{i\in I}X_{ij}^*X_{ij}.
+\]">\[
+(X^*X)_{jj}=\sum_{i\in I}X_{ij}^*X_{ij}.
+\]</span>
+Normality of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, followed by nonnegative summation, yields
+<span class="math math-display" data-tex="\[
+\Omega(X^*X)
+=\sum_{i,j\in I}\varphi(X_{ij}^*X_{ij}).
+\tag{TW.2.d}
+\]">\[
+\Omega(X^*X)
+=\sum_{i,j\in I}\varphi(X_{ij}^*X_{ij}).
+\tag{TW.2.d}
+\]</span>
+There is no ambiguity in this double sum: every finite set of pairs is contained in a finite rectangle, and every such rectangle is a finite set of pairs.</p>
+<p>Put <span class="math" data-tex="\(\mathfrak a_\varphi=\mathfrak n_\varphi\cap\mathfrak n_\varphi^*\)">\(\mathfrak a_\varphi=\mathfrak n_\varphi\cap\mathfrak n_\varphi^*\)</span>, and use analogous notation for <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. Equation (TW.2.d) gives the exact domains
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathfrak n_\Omega
+&amp;=\left\{X\in B:
+ X_{ij}\in\mathfrak n_\varphi\ \forall i,j,\quad
+ \sum_{i,j}\|\Lambda_\varphi(X_{ij})\|^2&lt;\infty\right\},\\
+\mathfrak a_\Omega
+&amp;=\left\{X\in B:
+ X_{ij}\in\mathfrak a_\varphi\ \forall i,j,\quad
+ \sum_{i,j}\left(\|\Lambda_\varphi(X_{ij})\|^2+
+                 \|\Lambda_\varphi(X_{ij}^*)\|^2\right)&lt;\infty\right\},\\
+\mathfrak m_\Omega
+&amp;=\operatorname{span}_{\mathbb C}(\mathfrak n_\Omega^*\mathfrak n_\Omega)
+ =\operatorname{span}_{\mathbb C}
+     \{Z\in B_+:\sum_i\varphi(Z_{ii})&lt;\infty\}.
+\end{aligned}
+\tag{TW.2.e}
+\]">\[
+\begin{aligned}
+\mathfrak n_\Omega
+&amp;=\left\{X\in B:
+ X_{ij}\in\mathfrak n_\varphi\ \forall i,j,\quad
+ \sum_{i,j}\|\Lambda_\varphi(X_{ij})\|^2&lt;\infty\right\},\\
+\mathfrak a_\Omega
+&amp;=\left\{X\in B:
+ X_{ij}\in\mathfrak a_\varphi\ \forall i,j,\quad
+ \sum_{i,j}\left(\|\Lambda_\varphi(X_{ij})\|^2+
+                 \|\Lambda_\varphi(X_{ij}^*)\|^2\right)&lt;\infty\right\},\\
+\mathfrak m_\Omega
+&amp;=\operatorname{span}_{\mathbb C}(\mathfrak n_\Omega^*\mathfrak n_\Omega)
+ =\operatorname{span}_{\mathbb C}
+     \{Z\in B_+:\sum_i\varphi(Z_{ii})&lt;\infty\}.
+\end{aligned}
+\tag{TW.2.e}
+\]</span>
+The second line applies the first to <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(X^*\)">\(X^*\)</span>, whose entries are <span class="math" data-tex="\(X_{ji}^*\)">\(X_{ji}^*\)</span>, and reindexes the adjoint sum. The third line is the <a href="OA-FLOW-GW.html#oa-flow.gw.1">finite-cone and polarization theorem</a>, which also gives
+<span class="math" data-tex="\((\mathfrak m_\Omega)_+=\{Z\in B_+:\Omega(Z)&lt;\infty\}\)">\((\mathfrak m_\Omega)_+=\{Z\in B_+:\Omega(Z)&lt;\infty\}\)</span>.
+The bounded-array requirement <span class="math" data-tex="\(X\in B\)">\(X\in B\)</span> is essential in both of the first two lines.</p>
+<p>The unique linear extension from <a href="OA-FLOW-GW.html#oa-flow.gw.2">GW-2</a> has an absolutely convergent diagonal formula:
+<span class="math math-display" data-tex="\[
+\Omega_0(Z)=\sum_i\varphi_0(Z_{ii}),
+\qquad Z\in\mathfrak m_\Omega.
+\tag{TW.2.f}
+\]">\[
+\Omega_0(Z)=\sum_i\varphi_0(Z_{ii}),
+\qquad Z\in\mathfrak m_\Omega.
+\tag{TW.2.f}
+\]</span>
+Indeed, express <span class="math" data-tex="\(Z=\sum_{\ell=1}^m c_\ell Z_\ell\)">\(Z=\sum_{\ell=1}^m c_\ell Z_\ell\)</span> with <span class="math" data-tex="\(Z_\ell\ge0\)">\(Z_\ell\ge0\)</span> and <span class="math" data-tex="\(\Omega(Z_\ell)&lt;\infty\)">\(\Omega(Z_\ell)&lt;\infty\)</span>, using (TW.2.e). Each <span class="math" data-tex="\((Z_\ell)_{ii}\)">\((Z_\ell)_{ii}\)</span> is positive with finite <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-value. Thus <span class="math" data-tex="\(Z_{ii}\in\mathfrak m_\varphi\)">\(Z_{ii}\in\mathfrak m_\varphi\)</span> and
+<span class="math math-display" data-tex="\[
+\sum_i|\varphi_0(Z_{ii})|
+\le\sum_{\ell=1}^m|c_\ell|
+             \sum_i\varphi((Z_\ell)_{ii})
+=\sum_{\ell=1}^m|c_\ell|\Omega(Z_\ell)&lt;\infty.
+\]">\[
+\sum_i|\varphi_0(Z_{ii})|
+\le\sum_{\ell=1}^m|c_\ell|
+             \sum_i\varphi((Z_\ell)_{ii})
+=\sum_{\ell=1}^m|c_\ell|\Omega(Z_\ell)&lt;\infty.
+\]</span>
+Finite linearity and the positive formula prove (TW.2.f). The characterization of <span class="math" data-tex="\(\mathfrak m_\Omega\)">\(\mathfrak m_\Omega\)</span> is (TW.2.e); absolute convergence of evaluated diagonals by itself is not asserted to characterize that domain. These arguments establish all of the countable construction's conclusions <a href="OA-FLOW-CA.html#oa-flow.ca.1">CA5–CA10</a> for the arbitrary index set used here.</p>
+<p><span id="OA-FLOW.TW.3"></span><a id="tw-3"></a></p>
+<h2 id="3-independence-of-coordinates-and-tensor-normalization">3. Independence of coordinates and tensor normalization</h2>
+<p>We prove that (TW.2.a) gives the same weight for every orthonormal basis of <span class="math" data-tex="\(E\)">\(E\)</span>, on every positive operator and at every infinite value. Finite-rank agreement alone would not establish this conclusion.</p>
+<p>For <span class="math" data-tex="\(X\in B_+\)">\(X\in B_+\)</span>, form the extended-positive element
+<span class="math math-display" data-tex="\[
+T_E(X)=\sum_{i\in I}X_{ii}\in\widehat M_+,\qquad
+T_E(X)(f)=\sum_i f(X_{ii})\quad(f\in M_*^+).
+\tag{TW.3.a}
+\]">\[
+T_E(X)=\sum_{i\in I}X_{ii}\in\widehat M_+,\qquad
+T_E(X)(f)=\sum_i f(X_{ii})\quad(f\in M_*^+).
+\tag{TW.3.a}
+\]</span>
+The <a href="OA-FLOW-EP.html#ep-4">extended-positive sum construction</a> gives this element as the increasing supremum of all finite sums of the bounded positive <span class="math" data-tex="\(X_{ii}\)">\(X_{ii}\)</span>. Equivalently, the displayed function of <span class="math" data-tex="\(f\)">\(f\)</span> is additive, homogeneous and norm lower semicontinuous: it is the supremum of the continuous finite positive sums, and directedness proves additivity. Thus it belongs to the full extended cone even when it has an infinite-value part.</p>
+<p>Fix <span class="math" data-tex="\(f\in M_*^+\)">\(f\in M_*^+\)</span>. The complete <a href="OA-FLOW-EP.html#ep-1">positive vector-series representation</a> gives vectors <span class="math" data-tex="\(\zeta_n\in H_0\)">\(\zeta_n\in H_0\)</span> such that
+<span class="math math-display" data-tex="\[
+f(a)=\sum_{n=1}^{\infty}\langle a\zeta_n,\zeta_n\rangle,
+\qquad \sum_n\|\zeta_n\|^2=f(1).
+\]">\[
+f(a)=\sum_{n=1}^{\infty}\langle a\zeta_n,\zeta_n\rangle,
+\qquad \sum_n\|\zeta_n\|^2=f(1).
+\]</span>
+Define <span class="math" data-tex="\(V_n:E\to H_0\otimes E\)">\(V_n:E\to H_0\otimes E\)</span> by <span class="math" data-tex="\(V_n\xi=\zeta_n\otimes\xi\)">\(V_n\xi=\zeta_n\otimes\xi\)</span>. Each <span class="math" data-tex="\(V_n^*XV_n\)">\(V_n^*XV_n\)</span> is a bounded positive operator on <span class="math" data-tex="\(E\)">\(E\)</span>. Summing nonnegative terms and using (TW.1.f), we obtain
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_E(X)(f)
+ &amp;=\sum_{i,n}\langle X(\zeta_n\otimes e_i),\zeta_n\otimes e_i\rangle\\
+ &amp;=\sum_n\operatorname{Tr}_E(V_n^*XV_n).
+\end{aligned}
+\tag{TW.3.b}
+\]">\[
+\begin{aligned}
+T_E(X)(f)
+ &amp;=\sum_{i,n}\langle X(\zeta_n\otimes e_i),\zeta_n\otimes e_i\rangle\\
+ &amp;=\sum_n\operatorname{Tr}_E(V_n^*XV_n).
+\end{aligned}
+\tag{TW.3.b}
+\]</span>
+The last expression is independent of the basis by (TW.1.g). Equality holds at infinity as well, since both iterated sums are the supremum of finite nonnegative subsums. It holds for every positive normal test <span class="math" data-tex="\(f\)">\(f\)</span>, so the extended-positive element <span class="math" data-tex="\(T_E(X)\)">\(T_E(X)\)</span> itself is basis independent.</p>
+<p>The <a href="OA-FLOW-EP.html#ep-5">whole-cone scalar extension theorem</a> associates to <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> an additive, homogeneous, order-normal extension <span class="math" data-tex="\(\widehat\varphi:\widehat M_+\to[0,\infty]\)">\(\widehat\varphi:\widehat M_+\to[0,\infty]\)</span>. Applying its increasing-supremum identity EP17 to the finite sums in (TW.3.a) proves
+<span class="math math-display" data-tex="\[
+\widehat\varphi(T_E(X))
+=\sup_{F\text{ finite}}\varphi\!\left(\sum_{i\in F}X_{ii}\right)
+=\sum_i\varphi(X_{ii})=\Omega(X).
+\tag{TW.3.c}
+\]">\[
+\widehat\varphi(T_E(X))
+=\sup_{F\text{ finite}}\varphi\!\left(\sum_{i\in F}X_{ii}\right)
+=\sum_i\varphi(X_{ii})=\Omega(X).
+\tag{TW.3.c}
+\]</span>
+This proves full basis independence. It uses the extension theorem, not a decomposition of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> into a sum of bounded functionals and not a tensor-weight existence theorem. The finite diagonal sums increase in <span class="math" data-tex="\(\widehat M_+\)">\(\widehat M_+\)</span>; no assertion that <span class="math" data-tex="\(p_FXp_F\)">\(p_FXp_F\)</span> increases has been used.</p>
+<p>Consequently we write
+<span class="math" data-tex="\(\Omega=\varphi\otimes\operatorname{Tr}_E\)">\(\Omega=\varphi\otimes\operatorname{Tr}_E\)</span>.
+Its elementary positive values are exactly
+<span class="math math-display" data-tex="\[
+(\varphi\otimes\operatorname{Tr}_E)(a\otimes b)
+=\varphi(a)\operatorname{Tr}_E(b)
+\quad(a\in M_+,\ b\in B(E)_+).
+\tag{TW.3.d}
+\]">\[
+(\varphi\otimes\operatorname{Tr}_E)(a\otimes b)
+=\varphi(a)\operatorname{Tr}_E(b)
+\quad(a\in M_+,\ b\in B(E)_+).
+\tag{TW.3.d}
+\]</span>
+Indeed the diagonal entries are <span class="math" data-tex="\(\langle be_i,e_i\rangle a\)">\(\langle be_i,e_i\rangle a\)</span>, so this is a scalar nonnegative sum. If either factor vanishes, the tensor value is zero with the convention <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>. Otherwise positive finite factors pull out of the sum; if a factor is infinite, a positive finite subsum of the other factor, or arbitrarily large such subsums, proves the corresponding infinite value. Thus the formula covers arbitrary positive <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, without an integrability restriction.</p>
+<p>In particular, for any unit vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and its rank-one projection <span class="math" data-tex="\(e=\theta_{\xi,\xi}\)">\(e=\theta_{\xi,\xi}\)</span>,
+<span class="math math-display" data-tex="\[
+\Omega(a\otimes e)=\varphi(a),\qquad
+\Omega(a\otimes\theta_{\xi,\xi})=\|\xi\|^2\varphi(a)
+\quad(\xi\in E,\ a\in M_+).
+\tag{TW.3.e}
+\]">\[
+\Omega(a\otimes e)=\varphi(a),\qquad
+\Omega(a\otimes\theta_{\xi,\xi})=\|\xi\|^2\varphi(a)
+\quad(\xi\in E,\ a\in M_+).
+\tag{TW.3.e}
+\]</span>
+The second formula allows an arbitrary vector, including zero. The restriction of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> to the corner
+<span class="math" data-tex="\((1\otimes e)B(1\otimes e)=M\otimes\mathbb Ce\)">\((1\otimes e)B(1\otimes e)=M\otimes\mathbb Ce\)</span>
+therefore recovers the original weight with no scalar factor.</p>
+<p>There are corresponding identities on the entire finite linear domain whenever an elementary tensor belongs to it. If <span class="math" data-tex="\(a\in\mathfrak m_\varphi\)">\(a\in\mathfrak m_\varphi\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span> is finite rank, then
+<span class="math math-display" data-tex="\[
+a\otimes k\in\mathfrak m_\Omega,\qquad
+\Omega_0(a\otimes k)=\varphi_0(a)\operatorname{Tr}_E(k).
+\tag{TW.3.f}
+\]">\[
+a\otimes k\in\mathfrak m_\Omega,\qquad
+\Omega_0(a\otimes k)=\varphi_0(a)\operatorname{Tr}_E(k).
+\tag{TW.3.f}
+\]</span>
+Here <span class="math" data-tex="\(\operatorname{Tr}_E(k)\)">\(\operatorname{Tr}_E(k)\)</span> is the usual finite-rank linear trace. To verify the domain assertion, let <span class="math" data-tex="\(F_0\subset E\)">\(F_0\subset E\)</span> be the finite-dimensional span of the ranges of <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(k^*\)">\(k^*\)</span>. Then <span class="math" data-tex="\(k=qkq\)">\(k=qkq\)</span> for its orthogonal projection <span class="math" data-tex="\(q\)">\(q\)</span>, so in a basis beginning with one of <span class="math" data-tex="\(F_0\)">\(F_0\)</span> it is a finite matrix. Write <span class="math" data-tex="\(a\)">\(a\)</span> as a finite sum of products <span class="math" data-tex="\(y^*x\)">\(y^*x\)</span>, <span class="math" data-tex="\(x,y\in\mathfrak n_\varphi\)">\(x,y\in\mathfrak n_\varphi\)</span>, using <a href="OA-FLOW-GW.html#oa-flow.gw.1">GW-1</a>. Each elementary matrix entry <span class="math" data-tex="\(y^*x\otimes E_{ij}\)">\(y^*x\otimes E_{ij}\)</span> equals
+<span class="math" data-tex="\((y\otimes E_{ri})^*(x\otimes E_{rj})\)">\((y\otimes E_{ri})^*(x\otimes E_{rj})\)</span> for a fixed basis index <span class="math" data-tex="\(r\)">\(r\)</span>; both factors belong to <span class="math" data-tex="\(\mathfrak n_\Omega\)">\(\mathfrak n_\Omega\)</span> by (TW.2.e). Finite sums prove membership in <span class="math" data-tex="\(\mathfrak m_\Omega\)">\(\mathfrak m_\Omega\)</span>. Its value is (TW.2.f). Basis independence of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> and uniqueness of its finite extension make this independent of the chosen finite-dimensional basis.</p>
+<p>Finally, for <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span> and every <span class="math" data-tex="\(k\in HS(E)\)">\(k\in HS(E)\)</span>, (TW.3.d) gives
+<span class="math math-display" data-tex="\[
+x\otimes k\in\mathfrak n_\Omega,\qquad
+\|\Lambda_\Omega(x\otimes k)\|^2
+=\|\Lambda_\varphi(x)\|^2\,\|k\|_{HS}^2.
+\tag{TW.3.g}
+\]">\[
+x\otimes k\in\mathfrak n_\Omega,\qquad
+\|\Lambda_\Omega(x\otimes k)\|^2
+=\|\Lambda_\varphi(x)\|^2\,\|k\|_{HS}^2.
+\tag{TW.3.g}
+\]</span>
+Polarization in the two factors, or (TW.2.d) and scalar Cauchy–Schwarz on their entries, also gives
+<span class="math math-display" data-tex="\[
+\left\langle\Lambda_\Omega(x\otimes k),
+                   \Lambda_\Omega(y\otimes l)\right\rangle
+=\langle\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+                    \langle k,l\rangle_{HS}
+\quad(x,y\in\mathfrak n_\varphi,\ k,l\in HS(E)).
+\tag{TW.3.h}
+\]">\[
+\left\langle\Lambda_\Omega(x\otimes k),
+                   \Lambda_\Omega(y\otimes l)\right\rangle
+=\langle\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+                    \langle k,l\rangle_{HS}
+\quad(x,y\in\mathfrak n_\varphi,\ k,l\in HS(E)).
+\tag{TW.3.h}
+\]</span>
+For the entry calculation, (TW.2.d) and GNS polarization identify the left side with
+<span class="math" data-tex="\(\sum_{i,j}\langle\Lambda_\varphi(k_{ij}x),\Lambda_\varphi(l_{ij}y)\rangle\)">\(\sum_{i,j}\langle\Lambda_\varphi(k_{ij}x),\Lambda_\varphi(l_{ij}y)\rangle\)</span>.
+This sum is absolutely convergent, bounded by the product of the two square-sum norms. Linearity of <span class="math" data-tex="\(\Lambda_\varphi\)">\(\Lambda_\varphi\)</span> reduces it to the right side. Equations (TW.1.i), (TW.1.k) and (TW.3.g) fix the finite-rank and Hilbert–Schmidt normalization that will identify the full GNS space in <a href="OA-FLOW-TW.html#tw-4">Section 4</a>.</p>
+<p><span id="OA-FLOW.TW.4"></span><a id="tw-4"></a></p>
+<h2 id="4-the-onto-tensor-gns-model">4. The onto tensor GNS model</h2>
+<p>Fix an orthonormal basis <span class="math" data-tex="$(e_i)_{i\in I}$">$(e_i)_{i\in I}$</span> of <span class="math" data-tex="$E$">$E$</span>, with matrix units <span class="math" data-tex="$e_{ij}=|e_i\rangle\langle e_j|$">$e_{ij}=|e_i\rangle\langle e_j|$</span>. The set <span class="math" data-tex="$I$">$I$</span> may have any cardinality. Every sum of nonnegative terms below is the supremum of its finite subsums. Write
+<span class="math math-display" data-tex="\[
+ \mathcal H_\varphi=\bigoplus_{(i,j)\in I^2}H_\varphi,
+ \qquad
+ \Omega=\varphi\otimes\operatorname{Tr}_E.
+ \tag{TW.4.a}
+\]">\[
+ \mathcal H_\varphi=\bigoplus_{(i,j)\in I^2}H_\varphi,
+ \qquad
+ \Omega=\varphi\otimes\operatorname{Tr}_E.
+ \tag{TW.4.a}
+\]</span>
+The finite-domain calculation of the preceding sections gives, for every bounded array <span class="math" data-tex="$X\in B$">$X\in B$</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ X\in\mathfrak n_\Omega
+ &amp;\Longleftrightarrow
+ X_{ij}\in\mathfrak n_\varphi\text{ for all }i,j,
+ \quad\sum_{i,j}\|\Lambda_\varphi(X_{ij})\|^2&lt;\infty,\\
+ \Omega(X^*X)&amp;=\sum_{i,j}\|\Lambda_\varphi(X_{ij})\|^2
+       \quad(X\in\mathfrak n_\Omega).
+ \end{aligned}
+ \tag{TW.4.b}
+\]">\[
+ \begin{aligned}
+ X\in\mathfrak n_\Omega
+ &amp;\Longleftrightarrow
+ X_{ij}\in\mathfrak n_\varphi\text{ for all }i,j,
+ \quad\sum_{i,j}\|\Lambda_\varphi(X_{ij})\|^2&lt;\infty,\\
+ \Omega(X^*X)&amp;=\sum_{i,j}\|\Lambda_\varphi(X_{ij})\|^2
+       \quad(X\in\mathfrak n_\Omega).
+ \end{aligned}
+ \tag{TW.4.b}
+\]</span></p>
+<p><strong>Theorem.</strong> There is an onto unitary
+<span class="math math-display" data-tex="\[
+ V_\varphi:H_\Omega\longrightarrow\mathcal H_\varphi,
+ \qquad
+ V_\varphi\Lambda_\Omega(X)
+      =(\Lambda_\varphi(X_{ij}))_{i,j}
+      \quad(X\in\mathfrak n_\Omega).
+ \tag{TW.4.c}
+\]">\[
+ V_\varphi:H_\Omega\longrightarrow\mathcal H_\varphi,
+ \qquad
+ V_\varphi\Lambda_\Omega(X)
+      =(\Lambda_\varphi(X_{ij}))_{i,j}
+      \quad(X\in\mathfrak n_\Omega).
+ \tag{TW.4.c}
+\]</span>
+Under the canonical identification
+<span class="math math-display" data-tex="\[
+ \mathcal H_\varphi\cong H_\varphi\otimes\operatorname{HS}(E),
+ \qquad (\xi_{ij})\longleftrightarrow\sum_{i,j}\xi_{ij}\otimes e_{ij},
+ \tag{TW.4.d}
+\]">\[
+ \mathcal H_\varphi\cong H_\varphi\otimes\operatorname{HS}(E),
+ \qquad (\xi_{ij})\longleftrightarrow\sum_{i,j}\xi_{ij}\otimes e_{ij},
+ \tag{TW.4.d}
+\]</span>
+this is the full tensor GNS space, with the usual Hilbert–Schmidt norm on the second factor.</p>
+<p><strong>Proof.</strong> Equation (TW.4.b) proves that the formula on the GNS range preserves norms. It is linear, and polarization gives preservation of all inner products. Thus it extends to an isometry. For a finite set of pairs, choose entries <span class="math" data-tex="$x_{ij}\in\mathfrak n_\varphi$">$x_{ij}\in\mathfrak n_\varphi$</span> and put them into a finite matrix, with all other entries zero. This bounded matrix belongs to <span class="math" data-tex="$\mathfrak n_\Omega$">$\mathfrak n_\Omega$</span>, and its image is exactly the corresponding finite-coordinate vector <span class="math" data-tex="$(\Lambda_\varphi(x_{ij}))$">$(\Lambda_\varphi(x_{ij}))$</span>. Such vectors are dense in <span class="math" data-tex="$\mathcal H_\varphi$">$\mathcal H_\varphi$</span>: finite subsums approximate a vector in a Hilbert direct sum, and the original GNS range is dense in each of the finitely many remaining coordinates. The extended isometry has closed range, so it is onto.</p>
+<p>For the second identification, finite-rank operators carry the inner product <span class="math" data-tex="$\langle k,l\rangle=\operatorname{Tr}(l^*k)$">$\langle k,l\rangle=\operatorname{Tr}(l^*k)$</span>, linear in the first variable. Their completion is <span class="math" data-tex="$\operatorname{HS}(E)$">$\operatorname{HS}(E)$</span>. The matrix units form an orthonormal family. Their span is dense: if <span class="math" data-tex="$p_F$">$p_F$</span> projects onto a finite set <span class="math" data-tex="$F\subset I$">$F\subset I$</span>, then <span class="math" data-tex="$p_Fu\to u$">$p_Fu\to u$</span> and <span class="math" data-tex="$p_Fv\to v$">$p_Fv\to v$</span>, and
+<span class="math math-display" data-tex="\[
+ \big\||u\rangle\langle v|-|p_Fu\rangle\langle p_Fv|\big\|_{\rm HS}
+ \le\|u-p_Fu\|\,\|v\|+
+             \|p_Fu\|\,\|v-p_Fv\|\longrightarrow0.
+ \tag{TW.4.e}
+\]">\[
+ \big\||u\rangle\langle v|-|p_Fu\rangle\langle p_Fv|\big\|_{\rm HS}
+ \le\|u-p_Fu\|\,\|v\|+
+             \|p_Fu\|\,\|v-p_Fv\|\longrightarrow0.
+ \tag{TW.4.e}
+\]</span>
+Every finite-rank operator is a finite sum of rank-one operators. Consequently <span class="math" data-tex="$(e_{ij})_{i,j\in I}$">$(e_{ij})_{i,j\in I}$</span> is an orthonormal basis of this completion, which proves (TW.4.d). The inequality <span class="math" data-tex="$\|k\|\le\|k\|_{\rm HS}$">$\|k\|\le\|k\|_{\rm HS}$</span> on finite matrices identifies the completion with bounded Hilbert–Schmidt operators on <span class="math" data-tex="$E$">$E$</span>: operator-norm limits give the same matrix entries, and zero entries force zero Hilbert–Schmidt norm. In particular, for <span class="math" data-tex="$b\in\mathfrak n_\varphi$">$b\in\mathfrak n_\varphi$</span> and <span class="math" data-tex="$k\in\operatorname{HS}(E)$">$k\in\operatorname{HS}(E)$</span>, (TW.4.b) gives
+<span class="math math-display" data-tex="\[
+ b\otimes k\in\mathfrak n_\Omega,\qquad
+ V_\varphi\Lambda_\Omega(b\otimes k)
+    =\Lambda_\varphi(b)\otimes k,
+ \qquad
+ \|\Lambda_\Omega(b\otimes k)\|^2
+    =\varphi(b^*b)\operatorname{Tr}(k^*k).
+ \tag{TW.4.f}
+\]">\[
+ b\otimes k\in\mathfrak n_\Omega,\qquad
+ V_\varphi\Lambda_\Omega(b\otimes k)
+    =\Lambda_\varphi(b)\otimes k,
+ \qquad
+ \|\Lambda_\Omega(b\otimes k)\|^2
+    =\varphi(b^*b)\operatorname{Tr}(k^*k).
+ \tag{TW.4.f}
+\]</span>
+This fixes the rank-one normalization of the tensor GNS map. It also proves that the identification <span class="math" data-tex="$H_\Omega\to H_\varphi\otimes\operatorname{HS}(E)$">$H_\Omega\to H_\varphi\otimes\operatorname{HS}(E)$</span> is independent of the chosen orthonormal basis. Every such identification sends <span class="math" data-tex="$\Lambda_\Omega(b\otimes k)$">$\Lambda_\Omega(b\otimes k)$</span> to <span class="math" data-tex="$\Lambda_\varphi(b)\otimes k$">$\Lambda_\varphi(b)\otimes k$</span> for every <span class="math" data-tex="$b\in\mathfrak n_\varphi$">$b\in\mathfrak n_\varphi$</span> and finite-rank <span class="math" data-tex="$k$">$k$</span>. The span of these GNS vectors is dense by the onto proof, so two resulting unitaries agree on a dense subspace and hence everywhere. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>We next identify its left representation on the entire algebra. The faithful normal GNS map <span class="math" data-tex="$\pi_\varphi:M\to\pi_\varphi(M)$">$\pi_\varphi:M\to\pi_\varphi(M)$</span> has a normal inverse, by <a href="OA-FLOW-NF.html#oa-flow.nf.5">Order-normal positive functionals and ultraweak continuity</a> and <a href="OA-FLOW-ST12.html#oa-flow.st.2">Concrete predual balls and faithful ultraweak representations</a>. Its arbitrary-dimensional normal tensor extension is the one proved in <a href="OA-FLOW-ND.html#nd-tensor">Two crossed products and the surviving action</a>. Thus the array <span class="math" data-tex="$(\pi_\varphi(Y_{ik}))$">$(\pi_\varphi(Y_{ik}))$</span> is a bounded operator of norm <span class="math" data-tex="$\|Y\|$">$\|Y\|$</span> on <span class="math" data-tex="$\bigoplus_iH_\varphi$">$\bigoplus_iH_\varphi$</span>, for every <span class="math" data-tex="$Y\in B$">$Y\in B$</span>. Apply it separately to each column:
+<span class="math math-display" data-tex="\[
+ (L_Y\xi)_{ij}
+      =\sum_{k\in I}\pi_\varphi(Y_{ik})\xi_{kj},
+ \qquad \|L_Y\|=\|Y\|.
+ \tag{TW.4.g}
+\]">\[
+ (L_Y\xi)_{ij}
+      =\sum_{k\in I}\pi_\varphi(Y_{ik})\xi_{kj},
+ \qquad \|L_Y\|=\|Y\|.
+ \tag{TW.4.g}
+\]</span>
+Each sum is the norm limit of the finite column truncations under this bounded operator. The columnwise action gives a bounded operator on <span class="math" data-tex="$\mathcal H_\varphi$">$\mathcal H_\varphi$</span>; its upper norm bound follows by summing the squared column norms. Conversely, placing any vector in one column gives the lower bound and hence equality of norms.</p>
+<p>If <span class="math" data-tex="$X$">$X$</span> is a finite matrix over <span class="math" data-tex="$\mathfrak n_\varphi$">$\mathfrak n_\varphi$</span>, the left-ideal property gives <span class="math" data-tex="$YX\in\mathfrak n_\Omega$">$YX\in\mathfrak n_\Omega$</span>. Each entry of <span class="math" data-tex="$YX$">$YX$</span> is a finite sum, so the original GNS module identity gives
+<span class="math math-display" data-tex="\[
+ L_YV_\varphi\Lambda_\Omega(X)
+       =V_\varphi\Lambda_\Omega(YX).
+ \tag{TW.4.h}
+\]">\[
+ L_YV_\varphi\Lambda_\Omega(X)
+       =V_\varphi\Lambda_\Omega(YX).
+ \tag{TW.4.h}
+\]</span>
+The finite matrices used in the onto proof have dense GNS vectors. Both represented operators are bounded, so
+<span class="math math-display" data-tex="\[
+ V_\varphi\pi_\Omega(Y)V_\varphi^*=L_Y\qquad(Y\in B)
+ \tag{TW.4.i}
+\]">\[
+ V_\varphi\pi_\Omega(Y)V_\varphi^*=L_Y\qquad(Y\in B)
+ \tag{TW.4.i}
+\]</span>
+holds on the whole space. In particular, (TW.4.h) also holds for every <span class="math" data-tex="$X\in\mathfrak n_\Omega$">$X\in\mathfrak n_\Omega$</span>. In tensor notation the elementary action is <span class="math" data-tex="$L_{a\otimes b}(\xi\otimes k)=\pi_\varphi(a)\xi\otimes bk$">$L_{a\otimes b}(\xi\otimes k)=\pi_\varphi(a)\xi\otimes bk$</span>. Matrix multiplication proves it first on finite-coordinate vectors and finite matrices <span class="math" data-tex="$k$">$k$</span>; the bound <span class="math" data-tex="$\|bk\|_{\rm HS}\le\|b\|\|k\|_{\rm HS}$">$\|bk\|_{\rm HS}\le\|b\|\|k\|_{\rm HS}$</span>, obtained by summing squared column norms, and density extend it to every Hilbert–Schmidt <span class="math" data-tex="$k$">$k$</span>.</p>
+<p>Here normality is a statement about the complete representation. One can check it directly. If <span class="math" data-tex="$0\le Y_\lambda\uparrow Y$">$0\le Y_\lambda\uparrow Y$</span>, then <span class="math" data-tex="$L_{Y_\lambda}$">$L_{Y_\lambda}$</span> is positive, increasing and bounded by <span class="math" data-tex="$\|Y\|$">$\|Y\|$</span>. Its supremum has, between row-column coordinates <span class="math" data-tex="$(i,j)$">$(i,j)$</span> and <span class="math" data-tex="$(k,l)$">$(k,l)$</span>, the entry
+<span class="math math-display" data-tex="\[
+ \delta_{jl}\lim_\lambda\pi_\varphi((Y_\lambda)_{ik})
+          =\delta_{jl}\pi_\varphi(Y_{ik}),
+ \tag{TW.4.j}
+\]">\[
+ \delta_{jl}\lim_\lambda\pi_\varphi((Y_\lambda)_{ik})
+          =\delta_{jl}\pi_\varphi(Y_{ik}),
+ \tag{TW.4.j}
+\]</span>
+where the limits are ultraweak and use normality of <span class="math" data-tex="$\pi_\varphi$">$\pi_\varphi$</span>. Finite-coordinate vectors determine the supremum, so it is <span class="math" data-tex="$L_Y$">$L_Y$</span>. The full positive-map criterion in <a href="OA-FLOW-NF.html#oa-flow.nf.6">Order-normal positive functionals and ultraweak continuity</a> makes <span class="math" data-tex="$Y\mapsto L_Y$">$Y\mapsto L_Y$</span> ultraweakly continuous. It is faithful by the norm identity. <a href="OA-FLOW-ST12.html#oa-flow.st.2">Concrete predual balls and faithful ultraweak representations</a> therefore makes its range a von Neumann algebra and its inverse normal on that range. There is no restriction here to finite corners or uniformly bounded ultraweak nets.</p>
+<p><strong>Haar kernel coordinates.</strong> Suppose <span class="math" data-tex="$E=L^2(G,ds)$">$E=L^2(G,ds)$</span> for an arbitrary locally compact Hausdorff abelian group <span class="math" data-tex="$G$">$G$</span>. There is an onto unitary
+<span class="math math-display" data-tex="\[
+ \mathcal K:\operatorname{HS}(L^2(G))
+      \longrightarrow L^2(G_r)\otimes L^2(G_s)
+      \cong L^2(G_r;L^2(G_s))
+\]">\[
+ \mathcal K:\operatorname{HS}(L^2(G))
+      \longrightarrow L^2(G_r)\otimes L^2(G_s)
+      \cong L^2(G_r;L^2(G_s))
+\]</span>
+<span class="math math-display" data-tex="\[
+ \mathcal K(|u\rangle\langle v|)(r,s)
+       =u(r)\overline{v(s)}.
+ \tag{TW.4.k}
+\]">\[
+ \mathcal K(|u\rangle\langle v|)(r,s)
+       =u(r)\overline{v(s)}.
+ \tag{TW.4.k}
+\]</span>
+The last function means its <span class="math" data-tex="$L^2$">$L^2$</span> class. To prove the assertion, first take compact continuous <span class="math" data-tex="$u,v,u',v'$">$u,v,u',v'$</span>. Compact scalar integration factors the inner product of the proposed kernels:
+<span class="math math-display" data-tex="\[
+ \langle u(r)\overline{v(s)},u'(r)\overline{v'(s)}\rangle
+       =\langle u,u'\rangle\,\langle v',v\rangle
+       =\langle |u\rangle\langle v|,\,
+                       |u'\rangle\langle v'|\rangle_{\rm HS}.
+ \tag{TW.4.l}
+\]">\[
+ \langle u(r)\overline{v(s)},u'(r)\overline{v'(s)}\rangle
+       =\langle u,u'\rangle\,\langle v',v\rangle
+       =\langle |u\rangle\langle v|,\,
+                       |u'\rangle\langle v'|\rangle_{\rm HS}.
+ \tag{TW.4.l}
+\]</span>
+Thus the linear rule is an isometry on their finite spans. Compact continuous functions are dense in each scalar <span class="math" data-tex="$L^2$">$L^2$</span> space, and rank-one approximation as in (TW.4.e) makes this rank-one span dense in the Hilbert–Schmidt space. The products on the right span a dense subspace of the Hilbert tensor product. Consequently the isometry extends to a unitary onto that product. Norm approximation of arbitrary <span class="math" data-tex="$u,v\in L^2(G)$">$u,v\in L^2(G)$</span> gives the rank-one formula and
+<span class="math math-display" data-tex="\[
+ \|\mathcal K(|u\rangle\langle v|)\|_2^2
+       =\|u\|_2^2\|v\|_2^2.
+ \tag{TW.4.m}
+\]">\[
+ \|\mathcal K(|u\rangle\langle v|)\|_2^2
+       =\|u\|_2^2\|v\|_2^2.
+ \tag{TW.4.m}
+\]</span></p>
+<p>The scalar product identification, including arbitrary <span class="math" data-tex="$L^2$">$L^2$</span> representatives, is exactly HR-05.1 in <a href="OA-FLOW-HR.html#hr-05">Radon representation, qualified products and Haar measure</a>. Its proof constructs the Radon product and proves the tensor isometry on compact functions before completing; its qualified carrier and null-slice statements justify the representative formula. The finite-exponent isometry in <a href="OA-FLOW-HR.html#hr-09">Radon representation, qualified products and Haar measure</a> passes it to the locally determined Haar convention. The onto iterated vector-space identification is Proposition 4.2 in <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">Unitary representations and the two group C* completions</a>, valid for every Hilbert target. Applying it twice, and reordering Hilbert tensor factors, therefore identifies the full tensor GNS space with <span class="math" data-tex="$L^2(G_r;L^2(G_s,H_\varphi))$">$L^2(G_r;L^2(G_s,H_\varphi))$</span>. In this identification, (TW.4.f) reads
+<span class="math math-display" data-tex="\[
+ \Lambda_\Omega(b\otimes k)(r,s)
+       =\Lambda_\varphi(b)\,\mathcal K(k)(r,s)
+       \quad(b\in\mathfrak n_\varphi,\ k\in\operatorname{HS}(L^2(G))).
+ \tag{TW.4.n}
+\]">\[
+ \Lambda_\Omega(b\otimes k)(r,s)
+       =\Lambda_\varphi(b)\,\mathcal K(k)(r,s)
+       \quad(b\in\mathfrak n_\varphi,\ k\in\operatorname{HS}(L^2(G))).
+ \tag{TW.4.n}
+\]</span>
+This is equality of Hilbert-space vectors. Their finite tensor spans are dense by the onto maps just proved. Fourier transformation on either scalar factor also tensors with the identity on the other Hilbert factors: the compact-vector proof and completion in <a href="OA-FLOW-DA.html#da-vector">The whole dual-action average and its finite domains</a> prove its full arbitrary-target norm identity. All these kernel statements concern Hilbert–Schmidt operators and <span class="math" data-tex="$L^2$">$L^2$</span> GNS vectors. They neither assign a pointwise operator-valued kernel to every bounded operator nor require an unrestricted product-Borel or non-sigma-finite Fubini theorem.</p>
+<p><span id="OA-FLOW.TW.5"></span><a id="tw-5"></a></p>
+<h2 id="5-the-full-tomita-graph-and-every-spectral-domain">5. The full Tomita graph and every spectral domain</h2>
+<p>Let <span class="math" data-tex="$S=S_\varphi$">$S=S_\varphi$</span> be the closed antilinear operator obtained from
+<span class="math math-display" data-tex="\[
+ \Lambda_\varphi(x)\longmapsto\Lambda_\varphi(x^*),
+ \qquad x\in\mathfrak n_\varphi\cap\mathfrak n_\varphi^*.
+ \tag{TW.5.a}
+\]">\[
+ \Lambda_\varphi(x)\longmapsto\Lambda_\varphi(x^*),
+ \qquad x\in\mathfrak n_\varphi\cap\mathfrak n_\varphi^*.
+ \tag{TW.5.a}
+\]</span>
+Its entire initial finite-star domain is a graph core by <a href="OA-FLOW-WR.html#wr-3">The finite-star involution, full algebra and reverse weight correspondence</a>. The antilinear adjoint and polar data from <a href="OA-FLOW-CI.html#oa-flow.ci.3">Closed conjugate-linear involutions from their graph Hilbert space</a> give
+<span class="math math-display" data-tex="\[
+ S=J_\varphi\Delta_\varphi^{1/2},\quad
+ D(S)=D(\Delta_\varphi^{1/2}),\quad
+ S^*S=\Delta_\varphi,
+ \tag{TW.5.b}
+\]">\[
+ S=J_\varphi\Delta_\varphi^{1/2},\quad
+ D(S)=D(\Delta_\varphi^{1/2}),\quad
+ S^*S=\Delta_\varphi,
+ \tag{TW.5.b}
+\]</span>
+with equality of all displayed operator domains. Define on <span class="math" data-tex="$\mathcal H_\varphi$">$\mathcal H_\varphi$</span>
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (T\xi)_{ij}&amp;=S\xi_{ji},\\
+ D(T)&amp;=\left\{\xi:\xi_{ij}\in D(S)\text{ for all }i,j,
+                   \ \sum_{i,j}\|S\xi_{ij}\|^2&lt;\infty\right\}.
+ \end{aligned}
+ \tag{TW.5.c}
+\]">\[
+ \begin{aligned}
+ (T\xi)_{ij}&amp;=S\xi_{ji},\\
+ D(T)&amp;=\left\{\xi:\xi_{ij}\in D(S)\text{ for all }i,j,
+                   \ \sum_{i,j}\|S\xi_{ij}\|^2&lt;\infty\right\}.
+ \end{aligned}
+ \tag{TW.5.c}
+\]</span></p>
+<p><strong>Theorem.</strong> The whole closed tensor involution is
+<span class="math math-display" data-tex="\[
+ V_\varphi S_\Omega V_\varphi^*=T.
+ \tag{TW.5.d}
+\]">\[
+ V_\varphi S_\Omega V_\varphi^*=T.
+ \tag{TW.5.d}
+\]</span>
+Its antilinear adjoint has the exact domain and action
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (T^*\eta)_{ij}&amp;=S^*\eta_{ji},\\
+ D(T^*)&amp;=\left\{\eta:\eta_{ij}\in D(S^*)\text{ for all }i,j,
+                    \ \sum_{i,j}\|S^*\eta_{ij}\|^2&lt;\infty\right\}.
+ \end{aligned}
+ \tag{TW.5.e}
+\]">\[
+ \begin{aligned}
+ (T^*\eta)_{ij}&amp;=S^*\eta_{ji},\\
+ D(T^*)&amp;=\left\{\eta:\eta_{ij}\in D(S^*)\text{ for all }i,j,
+                    \ \sum_{i,j}\|S^*\eta_{ij}\|^2&lt;\infty\right\}.
+ \end{aligned}
+ \tag{TW.5.e}
+\]</span></p>
+<p><strong>Proof of the two graph inclusions.</strong> Finite-coordinate vectors in <span class="math" data-tex="$D(S)$">$D(S)$</span> make <span class="math" data-tex="$T$">$T$</span> densely defined. It is closed: if <span class="math" data-tex="$\xi^{(n)}\to\xi$">$\xi^{(n)}\to\xi$</span> and <span class="math" data-tex="$T\xi^{(n)}\to\eta$">$T\xi^{(n)}\to\eta$</span>, every coordinate pair converges; closedness of <span class="math" data-tex="$S$">$S$</span> yields <span class="math" data-tex="$S\xi_{ji}=\eta_{ij}$">$S\xi_{ji}=\eta_{ij}$</span>. The squared norms of these images sum to <span class="math" data-tex="$\|\eta\|^2$">$\|\eta\|^2$</span>, so <span class="math" data-tex="$\xi\in D(T)$">$\xi\in D(T)$</span> and <span class="math" data-tex="$T\xi=\eta$">$T\xi=\eta$</span>.</p>
+<p>If <span class="math" data-tex="$X\in\mathfrak n_\Omega\cap\mathfrak n_\Omega^*$">$X\in\mathfrak n_\Omega\cap\mathfrak n_\Omega^*$</span>, the exact finite-domain formulas put every <span class="math" data-tex="$X_{ij}$">$X_{ij}$</span> in <span class="math" data-tex="$\mathfrak n_\varphi\cap\mathfrak n_\varphi^*$">$\mathfrak n_\varphi\cap\mathfrak n_\varphi^*$</span> and make both coordinate GNS sums finite. Therefore
+<span class="math math-display" data-tex="\[
+ TV_\varphi\Lambda_\Omega(X)
+      =(\Lambda_\varphi(X_{ji}^*))_{i,j}
+      =V_\varphi\Lambda_\Omega(X^*).
+ \tag{TW.5.f}
+\]">\[
+ TV_\varphi\Lambda_\Omega(X)
+      =(\Lambda_\varphi(X_{ji}^*))_{i,j}
+      =V_\varphi\Lambda_\Omega(X^*).
+ \tag{TW.5.f}
+\]</span>
+The transported initial involution is contained in the closed operator <span class="math" data-tex="$T$">$T$</span>, giving one inclusion of closed graphs.</p>
+<p>Conversely, for <span class="math" data-tex="$\xi\in D(T)$">$\xi\in D(T)$</span> its graph norm is
+<span class="math math-display" data-tex="\[
+ \|\xi\|_T^2
+       =\sum_{i,j}\bigl(\|\xi_{ij}\|^2+\|S\xi_{ij}\|^2\bigr).
+ \tag{TW.5.g}
+\]">\[
+ \|\xi\|_T^2
+       =\sum_{i,j}\bigl(\|\xi_{ij}\|^2+\|S\xi_{ij}\|^2\bigr).
+ \tag{TW.5.g}
+\]</span>
+Truncation to <span class="math" data-tex="$F\times F$">$F\times F$</span>, for finite <span class="math" data-tex="$F\subset I$">$F\subset I$</span>, converges in this norm. Indeed every finite set of pairs is contained in such a square, and finite subsums approximate the displayed finite nonnegative sum. For fixed <span class="math" data-tex="$F$">$F$</span>, approximate each of its finitely many entries in the <span class="math" data-tex="$S$">$S$</span> graph norm by <span class="math" data-tex="$\Lambda_\varphi(x_{ij})$">$\Lambda_\varphi(x_{ij})$</span>, with <span class="math" data-tex="$x_{ij}\in\mathfrak n_\varphi\cap\mathfrak n_\varphi^*$">$x_{ij}\in\mathfrak n_\varphi\cap\mathfrak n_\varphi^*$</span>. Given <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>, take each coordinate graph error smaller than <span class="math" data-tex="$\varepsilon/(1+|F|)$">$\varepsilon/(1+|F|)$</span>. The sum of its squared errors is then at most <span class="math" data-tex="$\varepsilon^2$">$\varepsilon^2$</span>. The finite matrix with these entries lies in <span class="math" data-tex="$\mathfrak n_\Omega\cap\mathfrak n_\Omega^*$">$\mathfrak n_\Omega\cap\mathfrak n_\Omega^*$</span> and has precisely this approximating graph pair by (TW.5.f). Arbitrarily small tail and finite-coordinate errors prove the reverse graph inclusion, hence (TW.5.d). This argument uses finite subsets of <span class="math" data-tex="$I$">$I$</span>, with no choice of a countable basis. It also shows directly that <span class="math" data-tex="$T(D(T))=D(T)$">$T(D(T))=D(T)$</span> and <span class="math" data-tex="$T^2=1$">$T^2=1$</span> there: apply <span class="math" data-tex="$S^2=1$">$S^2=1$</span> in each coordinate and use the two sums in (TW.5.g).</p>
+<p><strong>Proof of the adjoint formula.</strong> For first-variable-linear inner products, the antilinear adjoint is characterized by
+<span class="math math-display" data-tex="\[
+ \langle T\xi,\eta\rangle=\langle T^*\eta,\xi\rangle.
+ \tag{TW.5.h}
+\]">\[
+ \langle T\xi,\eta\rangle=\langle T^*\eta,\xi\rangle.
+ \tag{TW.5.h}
+\]</span>
+If <span class="math" data-tex="$\eta\in D(T^*)$">$\eta\in D(T^*)$</span>, test on a vector supported at a single pair <span class="math" data-tex="$(j,i)$">$(j,i)$</span>, with arbitrary coordinate in <span class="math" data-tex="$D(S)$">$D(S)$</span>. The defining pairing says exactly that <span class="math" data-tex="$\eta_{ij}\in D(S^*)$">$\eta_{ij}\in D(S^*)$</span> and <span class="math" data-tex="$(T^*\eta)_{ji}=S^*\eta_{ij}$">$(T^*\eta)_{ji}=S^*\eta_{ij}$</span>. The images are square summable because <span class="math" data-tex="$T^*\eta\in\mathcal H_\varphi$">$T^*\eta\in\mathcal H_\varphi$</span>.</p>
+<p>For the reverse inclusion, suppose the right side of (TW.5.e) holds. For <span class="math" data-tex="$\xi\in D(T)$">$\xi\in D(T)$</span> both relevant pairing sums are absolutely convergent: Cauchy–Schwarz bounds the first by <span class="math" data-tex="$\|T\xi\|\,\|\eta\|$">$\|T\xi\|\,\|\eta\|$</span> and the second by <span class="math" data-tex="$(\sum_{i,j}\|S^*\eta_{ij}\|^2)^{1/2}\|\xi\|$">$(\sum_{i,j}\|S^*\eta_{ij}\|^2)^{1/2}\|\xi\|$</span>. The individual adjoint identities, summed and reindexed, prove (TW.5.h) with the proposed image. This proves membership in <span class="math" data-tex="$D(T^*)$">$D(T^*)$</span> and its value, completing both directions. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Put <span class="math" data-tex="$\mathscr D=T^*T$">$\mathscr D=T^*T$</span>. Its full product domain is
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ D(\mathscr D)&amp;=
+   \left\{\xi:\xi_{ij}\in D(\Delta_\varphi)\text{ for all }i,j,
+                 \ \sum_{i,j}\|\Delta_\varphi\xi_{ij}\|^2&lt;\infty\right\},\\
+ (\mathscr D\xi)_{ij}&amp;=\Delta_\varphi\xi_{ij}.
+ \end{aligned}
+ \tag{TW.5.i}
+\]">\[
+ \begin{aligned}
+ D(\mathscr D)&amp;=
+   \left\{\xi:\xi_{ij}\in D(\Delta_\varphi)\text{ for all }i,j,
+                 \ \sum_{i,j}\|\Delta_\varphi\xi_{ij}\|^2&lt;\infty\right\},\\
+ (\mathscr D\xi)_{ij}&amp;=\Delta_\varphi\xi_{ij}.
+ \end{aligned}
+ \tag{TW.5.i}
+\]</span>
+One inclusion follows by applying the two domains (TW.5.c) and (TW.5.e) to the product. Conversely, the conditions displayed in (TW.5.i) imply
+<span class="math math-display" data-tex="\[
+ \sum_{i,j}\|S\xi_{ij}\|^2
+ =\sum_{i,j}\langle\Delta_\varphi\xi_{ij},\xi_{ij}\rangle
+ \le\left(\sum_{i,j}\|\Delta_\varphi\xi_{ij}\|^2\right)^{1/2}\|\xi\|.
+ \tag{TW.5.j}
+\]">\[
+ \sum_{i,j}\|S\xi_{ij}\|^2
+ =\sum_{i,j}\langle\Delta_\varphi\xi_{ij},\xi_{ij}\rangle
+ \le\left(\sum_{i,j}\|\Delta_\varphi\xi_{ij}\|^2\right)^{1/2}\|\xi\|.
+ \tag{TW.5.j}
+\]</span>
+This is first the finite-sum Cauchy–Schwarz inequality, then the supremum over finite sets. Hence <span class="math" data-tex="$\xi\in D(T)$">$\xi\in D(T)$</span>. Each <span class="math" data-tex="$S\xi_{ji}$">$S\xi_{ji}$</span> lies in <span class="math" data-tex="$D(S^*)$">$D(S^*)$</span>, and the square sum of its adjoint images is exactly the sum in (TW.5.i). Thus <span class="math" data-tex="$T\xi\in D(T^*)$">$T\xi\in D(T^*)$</span>, proving the reverse inclusion.</p>
+<p>The spectral measure of this positive operator is explicit. For a Borel set <span class="math" data-tex="$A\subset[0,\infty)$">$A\subset[0,\infty)$</span>, put
+<span class="math math-display" data-tex="\[
+ (Q(A)\xi)_{ij}=1_A(\Delta_\varphi)\xi_{ij}.
+ \tag{TW.5.k}
+\]">\[
+ (Q(A)\xi)_{ij}=1_A(\Delta_\varphi)\xi_{ij}.
+ \tag{TW.5.k}
+\]</span>
+These are projections with the spectral multiplication laws. Strong countable additivity follows first on vectors of finite coordinate support from the original spectral measure; approximating a general vector by such vectors, with the common projection bound, proves it on all of <span class="math" data-tex="$\mathcal H_\varphi$">$\mathcal H_\varphi$</span>. The total projection is one. Its scalar measure at <span class="math" data-tex="$\xi$">$\xi$</span> is the sum of the coordinate scalar measures. For a nonnegative Borel function, integrals against that sum equal the sums of its coordinate integrals: this holds for positive simple functions by finite nonnegative subsums, and increasing simple approximation preserves the identity. The spectral operator for the function <span class="math" data-tex="$r\mapsto r$">$r\mapsto r$</span> therefore has exactly (TW.5.i), so it is <span class="math" data-tex="$\mathscr D$">$\mathscr D$</span>.</p>
+<p>The complete squared-integral criterion in <a href="OA-FLOW-SF.html#oa-flow.sf1.spectral-calculus">Operator foundations: spectral domains, normal topology and scalar analysis</a> now gives, for every Borel <span class="math" data-tex="$f$">$f$</span> finite outside a set of spectral projection zero,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ D(f(\mathscr D))&amp;=
+  \left\{\xi:\xi_{ij}\in D(f(\Delta_\varphi))\text{ for all }i,j,
+              \ \sum_{i,j}\|f(\Delta_\varphi)\xi_{ij}\|^2&lt;\infty\right\},\\
+ (f(\mathscr D)\xi)_{ij}&amp;=f(\Delta_\varphi)\xi_{ij}.
+ \end{aligned}
+ \tag{TW.5.l}
+\]">\[
+ \begin{aligned}
+ D(f(\mathscr D))&amp;=
+  \left\{\xi:\xi_{ij}\in D(f(\Delta_\varphi))\text{ for all }i,j,
+              \ \sum_{i,j}\|f(\Delta_\varphi)\xi_{ij}\|^2&lt;\infty\right\},\\
+ (f(\mathscr D)\xi)_{ij}&amp;=f(\Delta_\varphi)\xi_{ij}.
+ \end{aligned}
+ \tag{TW.5.l}
+\]</span>
+In particular, writing <span class="math" data-tex="$\mu_{ij}(A)=\langle1_A(\Delta_\varphi)\xi_{ij},\xi_{ij}\rangle$">$\mu_{ij}(A)=\langle1_A(\Delta_\varphi)\xi_{ij},\xi_{ij}\rangle$</span>, the exact domains for <span class="math" data-tex="$z\in\mathbb C$">$z\in\mathbb C$</span> are
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ D(\mathscr D^z)
+   &amp;=\left\{\xi:\sum_{i,j}\int_{(0,\infty)}r^{2\operatorname{Re}z}
+                                    \,d\mu_{ij}(r)&lt;\infty\right\},\\
+ D(\log\mathscr D)
+   &amp;=\left\{\xi:\sum_{i,j}\int_{(0,\infty)}|\log r|^2
+                                    \,d\mu_{ij}(r)&lt;\infty\right\}.
+ \end{aligned}
+ \tag{TW.5.m}
+\]">\[
+ \begin{aligned}
+ D(\mathscr D^z)
+   &amp;=\left\{\xi:\sum_{i,j}\int_{(0,\infty)}r^{2\operatorname{Re}z}
+                                    \,d\mu_{ij}(r)&lt;\infty\right\},\\
+ D(\log\mathscr D)
+   &amp;=\left\{\xi:\sum_{i,j}\int_{(0,\infty)}|\log r|^2
+                                    \,d\mu_{ij}(r)&lt;\infty\right\}.
+ \end{aligned}
+ \tag{TW.5.m}
+\]</span>
+This includes all positive and negative real powers. Faithfulness makes <span class="math" data-tex="$\Delta_\varphi$">$\Delta_\varphi$</span> injective, so zero has spectral projection zero both before and after taking this sum. Values assigned to logarithms or negative powers at zero have no effect; no lower spectral bound is assumed.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+ (\mathcal J\xi)_{ij}=J_\varphi\xi_{ji}.
+ \tag{TW.5.n}
+\]">\[
+ (\mathcal J\xi)_{ij}=J_\varphi\xi_{ji}.
+ \tag{TW.5.n}
+\]</span>
+Transpose preserves the finite-sum norm, and <span class="math" data-tex="$J_\varphi$">$J_\varphi$</span> is an antiunitary involution; hence so is <span class="math" data-tex="$\mathcal J$">$\mathcal J$</span>. Equations (TW.5.b), (TW.5.c), and (TW.5.l) show, with equality of domains, that <span class="math" data-tex="$T=\mathcal J\mathscr D^{1/2}$">$T=\mathcal J\mathscr D^{1/2}$</span>. The square root is injective and has dense range. Uniqueness of polar decomposition, as proved in <a href="OA-FLOW-CI.html#oa-flow.ci.3">Closed conjugate-linear involutions from their graph Hilbert space</a>, identifies the actual tensor polar data:
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ V_\varphi J_\Omega V_\varphi^*=\mathcal J,\qquad
+ V_\varphi\Delta_\Omega V_\varphi^*=\mathscr D
+                 =\bigoplus_{i,j}\Delta_\varphi,\\
+ T^*=\mathcal J\mathscr D^{-1/2},\qquad
+ D(T^*)=D(\mathscr D^{-1/2}).
+ \end{gathered}
+ \tag{TW.5.o}
+\]">\[
+ \begin{gathered}
+ V_\varphi J_\Omega V_\varphi^*=\mathcal J,\qquad
+ V_\varphi\Delta_\Omega V_\varphi^*=\mathscr D
+                 =\bigoplus_{i,j}\Delta_\varphi,\\
+ T^*=\mathcal J\mathscr D^{-1/2},\qquad
+ D(T^*)=D(\mathscr D^{-1/2}).
+ \end{gathered}
+ \tag{TW.5.o}
+\]</span>
+The last equality also follows directly from (TW.5.e) and the full scalar adjoint domain. The same spectral identities give <span class="math" data-tex="$\mathcal J\mathscr D^z\mathcal J=\mathscr D^{-\overline z}$">$\mathcal J\mathscr D^z\mathcal J=\mathscr D^{-\overline z}$</span> with transported domains. Under (TW.4.d), <span class="math" data-tex="$\mathscr D$">$\mathscr D$</span> is <span class="math" data-tex="$\Delta_\varphi\otimes1_{\operatorname{HS}(E)}$">$\Delta_\varphi\otimes1_{\operatorname{HS}(E)}$</span> with the domains just established, and <span class="math" data-tex="$\mathcal J$">$\mathcal J$</span> sends <span class="math" data-tex="$\xi\otimes k$">$\xi\otimes k$</span> to <span class="math" data-tex="$J_\varphi\xi\otimes k^*$">$J_\varphi\xi\otimes k^*$</span>, extended antilinearly.</p>
+<p><strong>Corollary.</strong> The modular automorphism group on all of <span class="math" data-tex="$B$">$B$</span> is
+<span class="math math-display" data-tex="\[
+ \sigma_t^\Omega=\sigma_t^\varphi\otimes\operatorname{id}_{B(E)},
+ \qquad (\sigma_t^\Omega(Y))_{ij}=\sigma_t^\varphi(Y_{ij}).
+ \tag{TW.5.p}
+\]">\[
+ \sigma_t^\Omega=\sigma_t^\varphi\otimes\operatorname{id}_{B(E)},
+ \qquad (\sigma_t^\Omega(Y))_{ij}=\sigma_t^\varphi(Y_{ij}).
+ \tag{TW.5.p}
+\]</span></p>
+<p><strong>Proof.</strong> At fixed <span class="math" data-tex="$t$">$t$</span>, the entrywise map on the right is the normal tensor extension proved in <a href="OA-FLOW-ND.html#nd-tensor">Two crossed products and the surviving action</a>. On finite-coordinate vectors, the formulas for <span class="math" data-tex="$L_Y$">$L_Y$</span> and <span class="math" data-tex="$\mathscr D^{it}$">$\mathscr D^{it}$</span> give entries
+<span class="math math-display" data-tex="\[
+ \Delta_\varphi^{it}\pi_\varphi(Y_{ik})\Delta_\varphi^{-it}
+       =\pi_\varphi(\sigma_t^\varphi(Y_{ik})),
+ \tag{TW.5.q}
+\]">\[
+ \Delta_\varphi^{it}\pi_\varphi(Y_{ik})\Delta_\varphi^{-it}
+       =\pi_\varphi(\sigma_t^\varphi(Y_{ik})),
+ \tag{TW.5.q}
+\]</span>
+by <a href="OA-FLOW-MW.html#mw-4">Modular covariance and the canonical opposite weight</a>. The defining column sums in (TW.4.g) converge in norm. Both conjugated operators are bounded, so the identity extends to every vector. Faithful modular implementation of <span class="math" data-tex="$\Omega$">$\Omega$</span> then proves (TW.5.p) on every <span class="math" data-tex="$Y\in B$">$Y\in B$</span>.</p>
+<p>The unitary group <span class="math" data-tex="$\mathscr D^{it}$">$\mathscr D^{it}$</span> is strongly continuous: continuity holds in each of finitely many coordinates, and the common unitary norm controls the remaining square-summable tail. Its conjugation action is pointwise strongly-star continuous. The normal representation and its normal inverse from Section 4 transport this bounded continuity to the intrinsic topology of <span class="math" data-tex="$B$">$B$</span>. The diagonal definition also gives <span class="math" data-tex="$\Omega\circ\sigma_t^\Omega=\Omega$">$\Omega\circ\sigma_t^\Omega=\Omega$</span> on the entire positive cone, including infinite values. Both finite ideals and their finite linear extension are preserved; in particular
+<span class="math math-display" data-tex="\[
+ V_\varphi\Lambda_\Omega(\sigma_t^\Omega(X))
+       =\mathscr D^{it}V_\varphi\Lambda_\Omega(X)
+       \qquad(X\in\mathfrak n_\Omega).
+ \tag{TW.5.r}
+\]">\[
+ V_\varphi\Lambda_\Omega(\sigma_t^\Omega(X))
+       =\mathscr D^{it}V_\varphi\Lambda_\Omega(X)
+       \qquad(X\in\mathfrak n_\Omega).
+ \tag{TW.5.r}
+\]</span>
+This last identity follows coordinatewise from the full scalar GNS implementation and the finite-domain sum. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><span id="OA-FLOW.TW.6"></span><a id="tw-6"></a></p>
+<h2 id="6-the-normalized-tensor-derivative-and-its-relative-graph">6. The normalized tensor derivative and its relative graph</h2>
+<p>Let <span class="math" data-tex="$\psi$">$\psi$</span> be any other faithful normal semifinite weight on <span class="math" data-tex="$M$">$M$</span>, and put
+<span class="math math-display" data-tex="\[
+ \Omega_\varphi=\varphi\otimes\operatorname{Tr}_E,
+ \qquad \Omega_\psi=\psi\otimes\operatorname{Tr}_E,
+ \qquad u_t=[D\psi:D\varphi]_t.
+ \tag{TW.6.a}
+\]">\[
+ \Omega_\varphi=\varphi\otimes\operatorname{Tr}_E,
+ \qquad \Omega_\psi=\psi\otimes\operatorname{Tr}_E,
+ \qquad u_t=[D\psi:D\varphi]_t.
+ \tag{TW.6.a}
+\]</span>
+The derivative is normalized by the balanced matrix construction in <a href="OA-FLOW-BC.html#bc-4">Balanced matrix weights, exact corner domains and cocycle identities</a>.</p>
+<p><strong>Theorem.</strong> With the usual operator trace fixed in both tensor weights,
+<span class="math math-display" data-tex="\[
+ [D\Omega_\psi:D\Omega_\varphi]_t=u_t\otimes1_E
+       \qquad(t\in\mathbb R).
+ \tag{TW.6.b}
+\]">\[
+ [D\Omega_\psi:D\Omega_\varphi]_t=u_t\otimes1_E
+       \qquad(t\in\mathbb R).
+ \tag{TW.6.b}
+\]</span></p>
+<p><strong>Proof from the actual balanced weight.</strong> Form the faithful normal semifinite weight on <span class="math" data-tex="$M_2(M)$">$M_2(M)$</span>
+<span class="math math-display" data-tex="\[
+ \Theta\!\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}
+       =\varphi(a)+\psi(d)
+       \quad\text{for positive matrices},
+ \tag{TW.6.c}
+\]">\[
+ \Theta\!\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}
+       =\varphi(a)+\psi(d)
+       \quad\text{for positive matrices},
+ \tag{TW.6.c}
+\]</span>
+using <a href="OA-FLOW-BC.html#bc-1">Balanced matrix weights, exact corner domains and cocycle identities</a>. On <span class="math" data-tex="$M_2(B)$">$M_2(B)$</span> the balanced weight of <span class="math" data-tex="$\Omega_\varphi,\Omega_\psi$">$\Omega_\varphi,\Omega_\psi$</span> is
+<span class="math math-display" data-tex="\[
+ \mathcal B([X_{ab}])=\Omega_\varphi(X_{11})+\Omega_\psi(X_{22}).
+ \tag{TW.6.d}
+\]">\[
+ \mathcal B([X_{ab}])=\Omega_\varphi(X_{11})+\Omega_\psi(X_{22}).
+ \tag{TW.6.d}
+\]</span>
+Reorder the Hilbert factors by the unitary sending <span class="math" data-tex="$(\zeta\otimes e_i)\otimes\delta_a$">$(\zeta\otimes e_i)\otimes\delta_a$</span> to <span class="math" data-tex="$(\zeta\otimes\delta_a)\otimes e_i$">$(\zeta\otimes\delta_a)\otimes e_i$</span>. Conjugation gives a normal isomorphism, with normal inverse,
+<span class="math math-display" data-tex="\[
+ \mathcal R:M_2(B)\longrightarrow M_2(M)\overline\otimes B(E),
+ \qquad (\mathcal R X)_{ij}=[(X_{ab})_{ij}]_{a,b=1}^2.
+ \tag{TW.6.e}
+\]">\[
+ \mathcal R:M_2(B)\longrightarrow M_2(M)\overline\otimes B(E),
+ \qquad (\mathcal R X)_{ij}=[(X_{ab})_{ij}]_{a,b=1}^2.
+ \tag{TW.6.e}
+\]</span>
+The formula follows on finite matrix coefficients; the fixed unitary and its inverse define it on the full tensor algebras.</p>
+<p>For every positive <span class="math" data-tex="$X\in M_2(B)$">$X\in M_2(B)$</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (\Theta\otimes\operatorname{Tr}_E)(\mathcal R X)
+  &amp;=\sum_{i\in I}\bigl(\varphi((X_{11})_{ii})
+                         +\psi((X_{22})_{ii})\bigr)\\
+  &amp;=\Omega_\varphi(X_{11})+\Omega_\psi(X_{22})
+   =\mathcal B(X).
+ \end{aligned}
+ \tag{TW.6.f}
+\]">\[
+ \begin{aligned}
+ (\Theta\otimes\operatorname{Tr}_E)(\mathcal R X)
+  &amp;=\sum_{i\in I}\bigl(\varphi((X_{11})_{ii})
+                         +\psi((X_{22})_{ii})\bigr)\\
+  &amp;=\Omega_\varphi(X_{11})+\Omega_\psi(X_{22})
+   =\mathcal B(X).
+ \end{aligned}
+ \tag{TW.6.f}
+\]</span>
+The rearrangement is an equality of nonnegative extended sums. For the nontrivial direction, two finite index sets approximating the two sums are contained in their finite union; if either sum is infinite, this also gives arbitrarily large finite lower bounds. Thus (TW.6.f) identifies the weights on their whole positive cones, with every infinite value retained.</p>
+<p>Their complete GNS maps are consequently intertwined by the onto unitary defined on the entire finite ideal by
+<span class="math math-display" data-tex="\[
+ \Lambda_{\mathcal B}(X)\longmapsto
+        \Lambda_{\Theta\otimes\operatorname{Tr}_E}(\mathcal R X).
+ \tag{TW.6.g}
+\]">\[
+ \Lambda_{\mathcal B}(X)\longmapsto
+        \Lambda_{\Theta\otimes\operatorname{Tr}_E}(\mathcal R X).
+ \tag{TW.6.g}
+\]</span>
+Equality of weights on <span class="math" data-tex="$X^*X$">$X^*X$</span> gives the norm identity and both directions of ideal membership; the inverse is supplied by <span class="math" data-tex="$\mathcal R^{-1}$">$\mathcal R^{-1}$</span>. The unitary intertwines the full initial finite-star graphs and hence their closures, adjoints and polar data. It therefore transports the actual modular groups. Applying Section 5 to the base algebra <span class="math" data-tex="$M_2(M)$">$M_2(M)$</span> and its weight <span class="math" data-tex="$\Theta$">$\Theta$</span> gives
+<span class="math math-display" data-tex="\[
+ \mathcal R\,\sigma_t^{\mathcal B}\,\mathcal R^{-1}
+        =\sigma_t^\Theta\otimes\operatorname{id}_{B(E)}.
+ \tag{TW.6.h}
+\]">\[
+ \mathcal R\,\sigma_t^{\mathcal B}\,\mathcal R^{-1}
+        =\sigma_t^\Theta\otimes\operatorname{id}_{B(E)}.
+ \tag{TW.6.h}
+\]</span>
+Let <span class="math" data-tex="$E_{21}$">$E_{21}$</span> denote the scalar lower-left matrix unit in the balanced two-by-two algebra. The defining corner identity for <span class="math" data-tex="$u_t$">$u_t$</span> is <span class="math" data-tex="$\sigma_t^\Theta(E_{21})=u_tE_{21}$">$\sigma_t^\Theta(E_{21})=u_tE_{21}$</span>. Under <span class="math" data-tex="$\mathcal R$">$\mathcal R$</span>, the scalar lower-left matrix unit of <span class="math" data-tex="$M_2(B)$">$M_2(B)$</span> becomes <span class="math" data-tex="$E_{21}\otimes1_E$">$E_{21}\otimes1_E$</span>. Equation (TW.6.h) thus gives
+<span class="math math-display" data-tex="\[
+ \sigma_t^{\mathcal B}(E_{21})=(u_t\otimes1_E)E_{21}.
+ \tag{TW.6.i}
+\]">\[
+ \sigma_t^{\mathcal B}(E_{21})=(u_t\otimes1_E)E_{21}.
+ \tag{TW.6.i}
+\]</span>
+The balanced corner definition on <span class="math" data-tex="$B$">$B$</span> identifies its coefficient as <span class="math" data-tex="$[D\Omega_\psi:D\Omega_\varphi]_t$">$[D\Omega_\psi:D\Omega_\varphi]_t$</span>, proving (TW.6.b). Neither the unit nor this matrix unit is assumed to have finite weight: the modular automorphism and its defining corner identity act on the whole bounded algebra. The equality of full balanced weights in (TW.6.f), rather than equality of modular automorphisms alone, fixes the normalization. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>We also retain the entire relative operator, which is useful when the tensor weights have different finite domains. In the scalar GNS spaces define
+<span class="math math-display" data-tex="\[
+ S_{\psi,\varphi}:H_\varphi\supset D(S_{\psi,\varphi})\longrightarrow H_\psi
+ \tag{TW.6.j}
+\]">\[
+ S_{\psi,\varphi}:H_\varphi\supset D(S_{\psi,\varphi})\longrightarrow H_\psi
+ \tag{TW.6.j}
+\]</span>
+as the closure of <span class="math" data-tex="$\Lambda_\varphi(x)\mapsto\Lambda_\psi(x^*)$">$\Lambda_\varphi(x)\mapsto\Lambda_\psi(x^*)$</span> on <span class="math" data-tex="$x\in\mathfrak n_\varphi\cap\mathfrak n_\psi^*$">$x\in\mathfrak n_\varphi\cap\mathfrak n_\psi^*$</span>. Its domain is dense, this entire initial domain is a graph core, and its polar part is an antiunitary onto <span class="math" data-tex="$H_\psi$">$H_\psi$</span>, by the relative corner proof in <a href="OA-FLOW-BC.html#bc-2">Balanced matrix weights, exact corner domains and cocycle identities</a>. Write
+<span class="math math-display" data-tex="\[
+ S_{\psi,\varphi}=J_{\psi,\varphi}\Delta_{\psi,\varphi}^{1/2},
+ \qquad\Delta_{\psi,\varphi}=S_{\psi,\varphi}^*S_{\psi,\varphi}.
+ \tag{TW.6.k}
+\]">\[
+ S_{\psi,\varphi}=J_{\psi,\varphi}\Delta_{\psi,\varphi}^{1/2},
+ \qquad\Delta_{\psi,\varphi}=S_{\psi,\varphi}^*S_{\psi,\varphi}.
+ \tag{TW.6.k}
+\]</span>
+These operators are between the indicated GNS spaces; a common standard-form identification is not being silently assumed.</p>
+<p><strong>Relative-domain theorem.</strong> Under the two onto maps of Section 4, the full relative tensor graph is the antilinear operator
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (\mathcal S_{\psi,\varphi}\xi)_{ij}
+       &amp;=S_{\psi,\varphi}\xi_{ji},\\
+ D(\mathcal S_{\psi,\varphi})
+       &amp;=\left\{\xi\in\mathcal H_\varphi:
+          \xi_{ij}\in D(S_{\psi,\varphi})\text{ for all }i,j,
+          \ \sum_{i,j}\|S_{\psi,\varphi}\xi_{ij}\|^2&lt;\infty\right\},\\
+ V_\psi S_{\Omega_\psi,\Omega_\varphi}V_\varphi^*
+       &amp;=\mathcal S_{\psi,\varphi}.
+ \end{aligned}
+ \tag{TW.6.l}
+\]">\[
+ \begin{aligned}
+ (\mathcal S_{\psi,\varphi}\xi)_{ij}
+       &amp;=S_{\psi,\varphi}\xi_{ji},\\
+ D(\mathcal S_{\psi,\varphi})
+       &amp;=\left\{\xi\in\mathcal H_\varphi:
+          \xi_{ij}\in D(S_{\psi,\varphi})\text{ for all }i,j,
+          \ \sum_{i,j}\|S_{\psi,\varphi}\xi_{ij}\|^2&lt;\infty\right\},\\
+ V_\psi S_{\Omega_\psi,\Omega_\varphi}V_\varphi^*
+       &amp;=\mathcal S_{\psi,\varphi}.
+ \end{aligned}
+ \tag{TW.6.l}
+\]</span></p>
+<p><strong>Proof.</strong> The initial tensor relative domain is exactly the set of bounded matrices <span class="math" data-tex="$X$">$X$</span> with
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ X_{ij}\in\mathfrak n_\varphi\cap\mathfrak n_\psi^*
+                  \quad\text{for all }i,j,\\
+ \sum_{i,j}\bigl(\|\Lambda_\varphi(X_{ij})\|^2
+                 +\|\Lambda_\psi(X_{ij}^*)\|^2\bigr)&lt;\infty.
+ \end{gathered}
+ \tag{TW.6.m}
+\]">\[
+ \begin{gathered}
+ X_{ij}\in\mathfrak n_\varphi\cap\mathfrak n_\psi^*
+                  \quad\text{for all }i,j,\\
+ \sum_{i,j}\bigl(\|\Lambda_\varphi(X_{ij})\|^2
+                 +\|\Lambda_\psi(X_{ij}^*)\|^2\bigr)&lt;\infty.
+ \end{gathered}
+ \tag{TW.6.m}
+\]</span>
+Indeed the first sum is the exact condition <span class="math" data-tex="$X\in\mathfrak n_{\Omega_\varphi}$">$X\in\mathfrak n_{\Omega_\varphi}$</span>; applying the second weight's condition to <span class="math" data-tex="$X^*$">$X^*$</span> gives the other sum, after transposing indices. Thus both finite ideals are required separately. The coordinate formula in (TW.6.l) agrees on this entire initial domain with <span class="math" data-tex="$\Lambda_{\Omega_\varphi}(X)\mapsto\Lambda_{\Omega_\psi}(X^*)$">$\Lambda_{\Omega_\varphi}(X)\mapsto\Lambda_{\Omega_\psi}(X^*)$</span>.</p>
+<p>The proposed operator is densely defined, since finite-coordinate vectors from the dense scalar relative domain lie in it. It is closed: convergence of a graph pair in the two Hilbert sums gives convergence in each coordinate; closedness of <span class="math" data-tex="$S_{\psi,\varphi}$">$S_{\psi,\varphi}$</span> identifies each limit image, and the target vector supplies its square sum. Hence it contains the closure of the initial tensor graph.</p>
+<p>For the converse, truncate a vector in the proposed domain to <span class="math" data-tex="$F\times F$">$F\times F$</span>. Its graph error tends to zero because the sum of its coordinate source and image norms squared is finite. For this finite square, approximate each coordinate in the full <span class="math" data-tex="$S_{\psi,\varphi}$">$S_{\psi,\varphi}$</span> graph norm by <span class="math" data-tex="$\Lambda_\varphi(x_{ij})$">$\Lambda_\varphi(x_{ij})$</span>, with <span class="math" data-tex="$x_{ij}\in\mathfrak n_\varphi\cap\mathfrak n_\psi^*$">$x_{ij}\in\mathfrak n_\varphi\cap\mathfrak n_\psi^*$</span>. Choosing errors below <span class="math" data-tex="$\varepsilon/(1+|F|)$">$\varepsilon/(1+|F|)$</span> controls the total graph error by <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span>. The finite matrix of these entries satisfies (TW.6.m), and its tensor graph pair is exactly the approximating pair. This proves the reverse graph inclusion and the full equality (TW.6.l). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The adjoint and positive relative domains can now be stated without a core qualification:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (\mathcal S_{\psi,\varphi}^*\eta)_{ij}
+       &amp;=S_{\psi,\varphi}^*\eta_{ji},\\
+ D(\mathcal S_{\psi,\varphi}^*)
+       &amp;=\left\{\eta\in\mathcal H_\psi:
+          \eta_{ij}\in D(S_{\psi,\varphi}^*)\text{ for all }i,j,
+          \ \sum_{i,j}\|S_{\psi,\varphi}^*\eta_{ij}\|^2&lt;\infty\right\},\\
+ D(\mathcal S_{\psi,\varphi}^*\mathcal S_{\psi,\varphi})
+       &amp;=\left\{\xi\in\mathcal H_\varphi:
+          \xi_{ij}\in D(\Delta_{\psi,\varphi})\text{ for all }i,j,
+          \ \sum_{i,j}\|\Delta_{\psi,\varphi}\xi_{ij}\|^2&lt;\infty\right\}.
+ \end{aligned}
+ \tag{TW.6.n}
+\]">\[
+ \begin{aligned}
+ (\mathcal S_{\psi,\varphi}^*\eta)_{ij}
+       &amp;=S_{\psi,\varphi}^*\eta_{ji},\\
+ D(\mathcal S_{\psi,\varphi}^*)
+       &amp;=\left\{\eta\in\mathcal H_\psi:
+          \eta_{ij}\in D(S_{\psi,\varphi}^*)\text{ for all }i,j,
+          \ \sum_{i,j}\|S_{\psi,\varphi}^*\eta_{ij}\|^2&lt;\infty\right\},\\
+ D(\mathcal S_{\psi,\varphi}^*\mathcal S_{\psi,\varphi})
+       &amp;=\left\{\xi\in\mathcal H_\varphi:
+          \xi_{ij}\in D(\Delta_{\psi,\varphi})\text{ for all }i,j,
+          \ \sum_{i,j}\|\Delta_{\psi,\varphi}\xi_{ij}\|^2&lt;\infty\right\}.
+ \end{aligned}
+ \tag{TW.6.n}
+\]</span>
+For the adjoint's necessary conditions, the defining antilinear pairing tested at a single coordinate gives the scalar adjoint membership and image; the target vector makes these images square summable. Conversely those conditions make both pairing sums absolutely convergent by Cauchy–Schwarz, so summing the scalar adjoint identities gives the full adjoint equation. For the product, membership implies the coordinate scalar product conditions. Conversely the displayed <span class="math" data-tex="$\Delta_{\psi,\varphi}$">$\Delta_{\psi,\varphi}$</span> domain gives
+<span class="math math-display" data-tex="\[
+ \sum_{i,j}\|S_{\psi,\varphi}\xi_{ij}\|^2
+ \le\left(\sum_{i,j}\|\Delta_{\psi,\varphi}\xi_{ij}\|^2\right)^{1/2}
+       \|\xi\|&lt;\infty.
+ \tag{TW.6.o}
+\]">\[
+ \sum_{i,j}\|S_{\psi,\varphi}\xi_{ij}\|^2
+ \le\left(\sum_{i,j}\|\Delta_{\psi,\varphi}\xi_{ij}\|^2\right)^{1/2}
+       \|\xi\|&lt;\infty.
+ \tag{TW.6.o}
+\]</span>
+The image then belongs to the adjoint domain, because its adjoint images are precisely <span class="math" data-tex="$\Delta_{\psi,\varphi}\xi_{ij}$">$\Delta_{\psi,\varphi}\xi_{ij}$</span>. This proves both product-domain inclusions and gives
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ V_\varphi\Delta_{\Omega_\psi,\Omega_\varphi}V_\varphi^*
+        =\bigoplus_{i,j}\Delta_{\psi,\varphi},\\
+ (\mathcal J_{\psi,\varphi}\xi)_{ij}
+        =J_{\psi,\varphi}\xi_{ji},\qquad
+ \mathcal S_{\psi,\varphi}
+        =\mathcal J_{\psi,\varphi}
+          \left(\bigoplus_{i,j}\Delta_{\psi,\varphi}\right)^{1/2}.
+ \end{gathered}
+ \tag{TW.6.p}
+\]">\[
+ \begin{gathered}
+ V_\varphi\Delta_{\Omega_\psi,\Omega_\varphi}V_\varphi^*
+        =\bigoplus_{i,j}\Delta_{\psi,\varphi},\\
+ (\mathcal J_{\psi,\varphi}\xi)_{ij}
+        =J_{\psi,\varphi}\xi_{ji},\qquad
+ \mathcal S_{\psi,\varphi}
+        =\mathcal J_{\psi,\varphi}
+          \left(\bigoplus_{i,j}\Delta_{\psi,\varphi}\right)^{1/2}.
+ \end{gathered}
+ \tag{TW.6.p}
+\]</span>
+Transpose and the scalar antiunitary make <span class="math" data-tex="$\mathcal J_{\psi,\varphi}$">$\mathcal J_{\psi,\varphi}$</span> antiunitary onto <span class="math" data-tex="$\mathcal H_\psi$">$\mathcal H_\psi$</span>. The square-root domain is exactly (TW.6.l), so this is the full polar decomposition.</p>
+<p>For completeness, every Borel function <span class="math" data-tex="$f$">$f$</span> finite off a spectral-null set has the exact relative domain
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ D\!\left(f\!\left(\bigoplus_{i,j}\Delta_{\psi,\varphi}\right)\right)
+   &amp;=\left\{\xi:\xi_{ij}\in D(f(\Delta_{\psi,\varphi}))\text{ for all }i,j,
+              \ \sum_{i,j}\|f(\Delta_{\psi,\varphi})\xi_{ij}\|^2&lt;\infty\right\},\\
+ \left[f\!\left(\bigoplus_{i,j}\Delta_{\psi,\varphi}\right)\xi\right]_{ij}
+   &amp;=f(\Delta_{\psi,\varphi})\xi_{ij}.
+ \end{aligned}
+ \tag{TW.6.q}
+\]">\[
+ \begin{aligned}
+ D\!\left(f\!\left(\bigoplus_{i,j}\Delta_{\psi,\varphi}\right)\right)
+   &amp;=\left\{\xi:\xi_{ij}\in D(f(\Delta_{\psi,\varphi}))\text{ for all }i,j,
+              \ \sum_{i,j}\|f(\Delta_{\psi,\varphi})\xi_{ij}\|^2&lt;\infty\right\},\\
+ \left[f\!\left(\bigoplus_{i,j}\Delta_{\psi,\varphi}\right)\xi\right]_{ij}
+   &amp;=f(\Delta_{\psi,\varphi})\xi_{ij}.
+ \end{aligned}
+ \tag{TW.6.q}
+\]</span>
+To verify it, form the coordinate spectral projections <span class="math" data-tex="$\eta_{ij}\mapsto1_A(\Delta_{\psi,\varphi})\eta_{ij}$">$\eta_{ij}\mapsto1_A(\Delta_{\psi,\varphi})\eta_{ij}$</span>. They are strongly countably additive by finite-coordinate approximation and the uniform projection bound. Their scalar measure at a vector is the sum of its coordinate measures; integrating <span class="math" data-tex="$|f|^2$">$|f|^2$</span> against it gives the sum in (TW.6.q). The spectral domain criterion then proves both membership directions and the action. In particular all real or complex powers and logarithms have their maximal domains, with zero irrelevant because the relative operator is injective.</p>
+<p>Finally the balanced corner implementation in <a href="OA-FLOW-BC.html#bc-3">Balanced matrix weights, exact corner domains and cocycle identities</a> gives
+<span class="math math-display" data-tex="\[
+ \Delta_{\psi,\varphi}^{it}
+       =\pi_\varphi(u_t)\Delta_\varphi^{it}.
+ \tag{TW.6.r}
+\]">\[
+ \Delta_{\psi,\varphi}^{it}
+       =\pi_\varphi(u_t)\Delta_\varphi^{it}.
+ \tag{TW.6.r}
+\]</span>
+Its tensor version follows on every coordinate from (TW.6.p), and agrees with the normalized derivative (TW.6.b). All imaginary powers here are bounded operators on their whole Hilbert spaces. The positive powers, adjoints and relative involutions have the full domains stated above.</p>
+<p><span id="OA-FLOW.TW.7"></span><a id="tw-7"></a></p>
+<h2 id="7-weighted-blocks-and-arbitrary-multiplicity">7. Weighted blocks and arbitrary multiplicity</h2>
+<p><a id="tw-matrix-model"></a>
+Let <span class="math" data-tex="\(M=M_2(\mathbb C)\)">\(M=M_2(\mathbb C)\)</span>, with matrix units <span class="math" data-tex="\(e_{ab}\)">\(e_{ab}\)</span>, and put
+<span class="math math-display" data-tex="\[
+D=\begin{pmatrix}2&amp;0\\0&amp;5\end{pmatrix},
+\qquad \varphi(a)=\operatorname{Tr}_2(Da).
+\tag{TW.7.a}
+\]">\[
+D=\begin{pmatrix}2&amp;0\\0&amp;5\end{pmatrix},
+\qquad \varphi(a)=\operatorname{Tr}_2(Da).
+\tag{TW.7.a}
+\]</span>
+The trace here is the ordinary, unnormalized matrix trace. Positivity of <span class="math" data-tex="\(D\)">\(D\)</span>, together with its invertibility, makes <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> a faithful positive functional; finite dimension makes it normal and semifinite. Its GNS space is the Hilbert–Schmidt matrix space, with
+<span class="math math-display" data-tex="\[
+\Lambda_\varphi(a)=aD^{1/2},\qquad
+J_\varphi z=z^*,\qquad
+\Delta_\varphi z=DzD^{-1}.
+\tag{TW.7.b}
+\]">\[
+\Lambda_\varphi(a)=aD^{1/2},\qquad
+J_\varphi z=z^*,\qquad
+\Delta_\varphi z=DzD^{-1}.
+\tag{TW.7.b}
+\]</span>
+Indeed the squared GNS norm is <span class="math" data-tex="\(\operatorname{Tr}_2(Da^*a)\)">\(\operatorname{Tr}_2(Da^*a)\)</span>. The map is onto because <span class="math" data-tex="\(D^{1/2}\)">\(D^{1/2}\)</span> is invertible. On this whole space the finite-star involution is <span class="math" data-tex="\(Sz=D^{-1/2}z^*D^{1/2}\)">\(Sz=D^{-1/2}z^*D^{1/2}\)</span>, and <span class="math" data-tex="\(J_\varphi\Delta_\varphi^{1/2}=S\)">\(J_\varphi\Delta_\varphi^{1/2}=S\)</span>. The operator <span class="math" data-tex="\(\Delta_\varphi\)">\(\Delta_\varphi\)</span> is positive: on the orthonormal Hilbert–Schmidt basis <span class="math" data-tex="\(e_{ab}\)">\(e_{ab}\)</span> it has positive eigenvalue <span class="math" data-tex="\(d_a/d_b\)">\(d_a/d_b\)</span>, where <span class="math" data-tex="\(d_1=2,d_2=5\)">\(d_1=2,d_2=5\)</span>. These observations verify the entire polar decomposition, not merely its action on selected vectors.</p>
+<p>Take <span class="math" data-tex="\(E=\mathbb C^3\)">\(E=\mathbb C^3\)</span>. Display an element of <span class="math" data-tex="\(B=M\bar\otimes B(E)\)">\(B=M\bar\otimes B(E)\)</span> as a three-by-three matrix of two-by-two blocks. The outer indices refer to <span class="math" data-tex="\(E\)">\(E\)</span>. Define
+<span class="math math-display" data-tex="\[
+X=
+\begin{pmatrix}
+e_{11}&amp;e_{12}&amp;0\\
+2e_{21}&amp;0&amp;0\\
+0&amp;0&amp;1_M
+\end{pmatrix}.
+\tag{TW.7.c}
+\]">\[
+X=
+\begin{pmatrix}
+e_{11}&amp;e_{12}&amp;0\\
+2e_{21}&amp;0&amp;0\\
+0&amp;0&amp;1_M
+\end{pmatrix}.
+\tag{TW.7.c}
+\]</span>
+The <a href="OA-FLOW-TW.html#tw-2">finite-ideal formula</a> and the <a href="OA-FLOW-TW.html#tw-4">GNS identification</a> give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Omega(X^*X)
+ &amp;=\varphi(e_{11})+\varphi(4e_{11})
+       +\varphi(e_{22})+\varphi(1_M)\\
+ &amp;=2+8+5+7=22,\\
+\Omega(XX^*)
+ &amp;=\varphi(e_{11})+\varphi(4e_{22})
+       +\varphi(e_{11})+\varphi(1_M)\\
+ &amp;=2+20+2+7=31.
+\end{aligned}
+\tag{TW.7.d}
+\]">\[
+\begin{aligned}
+\Omega(X^*X)
+ &amp;=\varphi(e_{11})+\varphi(4e_{11})
+       +\varphi(e_{22})+\varphi(1_M)\\
+ &amp;=2+8+5+7=22,\\
+\Omega(XX^*)
+ &amp;=\varphi(e_{11})+\varphi(4e_{22})
+       +\varphi(e_{11})+\varphi(1_M)\\
+ &amp;=2+20+2+7=31.
+\end{aligned}
+\tag{TW.7.d}
+\]</span>
+Thus the usual trace on the second factor does not make <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> tracial when <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is not tracial. In the six-dimensional matrix ordering
+<span class="math math-display" data-tex="\[
+(1,1),(1,2),(2,1),(2,2),(3,1),(3,2),
+\]">\[
+(1,1),(1,2),(2,1),(2,2),(3,1),(3,2),
+\]</span>
+where the first entry is the outer index, the GNS vector has blocks <span class="math" data-tex="\(X_{ij}D^{1/2}\)">\(X_{ij}D^{1/2}\)</span>. Its five nonzero scalar entries are <span class="math" data-tex="\(\sqrt2,\sqrt5,2\sqrt2,\sqrt2,\sqrt5\)">\(\sqrt2,\sqrt5,2\sqrt2,\sqrt2,\sqrt5\)</span>; their squared absolute values sum to <span class="math" data-tex="\(22\)">\(22\)</span>. Equivalently the density in this ordering is <span class="math" data-tex="\(\operatorname{diag}(2,5,2,5,2,5)\)">\(\operatorname{diag}(2,5,2,5,2,5)\)</span>, and <span class="math" data-tex="\(\Omega(X^*X)\)">\(\Omega(X^*X)\)</span> weights the columns of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><a id="tw-nonseparable-model"></a>
+For a second model, retain <span class="math" data-tex="\(M,\varphi\)">\(M,\varphi\)</span> and let <span class="math" data-tex="\(E=\ell^2(I)\)">\(E=\ell^2(I)\)</span>, where <span class="math" data-tex="\(I\)">\(I\)</span> is any uncountable set. For every finite <span class="math" data-tex="\(F\subset I\)">\(F\subset I\)</span>, let <span class="math" data-tex="\(p_F\)">\(p_F\)</span> project onto the span of its coordinate vectors. The <a href="OA-FLOW-TW.html#tw-2">whole weight construction</a> gives
+<span class="math math-display" data-tex="\[
+\Omega(1_M\otimes p_F)=7|F|,
+\qquad
+\Omega(1_B)=\infty,
+\qquad
+1_M\otimes p_F\uparrow1_B.
+\tag{TW.7.e}
+\]">\[
+\Omega(1_M\otimes p_F)=7|F|,
+\qquad
+\Omega(1_B)=\infty,
+\qquad
+1_M\otimes p_F\uparrow1_B.
+\tag{TW.7.e}
+\]</span>
+The last convergence is strong and is indexed by all finite subsets ordered by inclusion. To check it, first approximate a vector of <span class="math" data-tex="\(\mathbb C^2\otimes\ell^2(I)\)">\(\mathbb C^2\otimes\ell^2(I)\)</span> by a finite-coordinate vector; every larger <span class="math" data-tex="\(F\)">\(F\)</span> fixes that approximant. The projections are uniformly bounded, so the approximation proves strong convergence.</p>
+<p>No sequence of these finite projections converges strongly to the identity: the union of its finite index sets is countable, and a coordinate vector outside that union is annihilated by every term. This does not prevent finite-corner approximation in the <a href="OA-FLOW-TW.html#tw-4">complete GNS space</a>. A square-summable family indexed by <span class="math" data-tex="\(I\times I\)">\(I\times I\)</span> has countably many nonzero terms, since for each positive integer <span class="math" data-tex="\(n\)">\(n\)</span> only finitely many terms have squared norm at least <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. Each individual GNS vector therefore has its own countable coordinate support, while the same directed family of finite corners approximates every vector.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><a id="tw-figure"></a>
+<img alt="The weighted block operator, its exact GNS norm, finite-Haar kernel normalization, and a vector outside the half-power domain" src="assets/tensor-trace/tensor-trace.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><strong>Figure 1.</strong> The upper panels show the exact operator <span class="math" data-tex="\(X\)">\(X\)</span> in (TW.7.c) and the column weighting that gives <span class="math" data-tex="\(\Omega(X^*X)=22\)">\(\Omega(X^*X)=22\)</span>, while <span class="math" data-tex="\(\Omega(XX^*)=31\)">\(\Omega(XX^*)=31\)</span>. Both matrix grids use the outer-then-inner ordering specified above. The lower left panel uses singleton Haar mass <span class="math" data-tex="\(c=2\)">\(c=2\)</span>: normalized operator entries are <span class="math" data-tex="\(cK_{ij}\)">\(cK_{ij}\)</span>, so the kernel <span class="math" data-tex="\(K=X/2\)">\(K=X/2\)</span> has the same weighted squared norm <span class="math" data-tex="\(22\)">\(22\)</span>. Its rank-one scalar projection has usual trace one, as <a href="OA-FLOW-TW.html#tw-haar-diagnostic">Diagnostic 4</a> verifies. The lower right panel displays the exact finite partial sums from <a href="OA-FLOW-TW.html#tw-domain-diagnostic">Diagnostic 5</a>: vector norms converge to <span class="math" data-tex="\(1/3\)">\(1/3\)</span> in square, while the squared half-power norms equal <span class="math" data-tex="\(N\)">\(N\)</span>. The limit is outside the half-power domain. These are exact formulas and finite entries, not an approximation of the arbitrary-multiplicity theorem.</p>
+<p>The tensor-weight construction has its human antecedent in Takesaki, <a href="https://doi.org/10.1007/978-3-662-10451-4"><em>Theory of Operator Algebras II</em>, VIII.4, Lemma 4.1, Definition 4.2 and Proposition 4.3, printed pp.133–134</a>. The finite models, calculations, diagram, caption, <a href="assets/tensor-trace/tensor-trace-data.json">exact data</a>, <a href="assets/tensor-trace/tensor-trace.svg">editable SVG</a> and <a href="assets/tensor-trace/render_tensor_trace.py">reproduction source</a> are original and dedicated under CC0-1.0 to the extent of rights held. The rendered glyphs use DejaVu Sans; its complete <a href="assets/tensor-trace/FONT-LICENSE.txt">font terms</a> are retained.</p>
+<p><span id="OA-FLOW.TW.8"></span><a id="tw-8"></a></p>
+<h2 id="8-solved-diagnostics">8. Solved diagnostics</h2>
+<p><a id="tw-basis-diagnostic"></a>
+<strong>1. A basis change can move all the diagonal contributions.</strong> In the finite model, let <span class="math" data-tex="\(Y=X^*X\)">\(Y=X^*X\)</span>. Replace the outer basis vectors <span class="math" data-tex="\(f_1,f_2\)">\(f_1,f_2\)</span> by
+<span class="math math-display" data-tex="\[
+g_1=\frac{f_1+f_2}{\sqrt2},\qquad
+g_2=\frac{-f_1+f_2}{\sqrt2},
+\qquad g_3=f_3.
+\tag{TW.8.a}
+\]">\[
+g_1=\frac{f_1+f_2}{\sqrt2},\qquad
+g_2=\frac{-f_1+f_2}{\sqrt2},
+\qquad g_3=f_3.
+\tag{TW.8.a}
+\]</span>
+Compute the three new diagonal contributions and their sum.</p>
+<p><strong>Solution.</strong> In the original basis,
+<span class="math math-display" data-tex="\[
+Y_{11}=5e_{11},\quad Y_{22}=e_{22},\quad
+Y_{12}=e_{12},\quad Y_{21}=e_{21},\quad Y_{33}=1_M.
+\]">\[
+Y_{11}=5e_{11},\quad Y_{22}=e_{22},\quad
+Y_{12}=e_{12},\quad Y_{21}=e_{21},\quad Y_{33}=1_M.
+\]</span>
+The new diagonal blocks are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Y'_{11}&amp;=\tfrac12(5e_{11}+e_{22}+e_{12}+e_{21}),\\
+Y'_{22}&amp;=\tfrac12(5e_{11}+e_{22}-e_{12}-e_{21}),\\
+Y'_{33}&amp;=1_M.
+\end{aligned}
+\tag{TW.8.b}
+\]">\[
+\begin{aligned}
+Y'_{11}&amp;=\tfrac12(5e_{11}+e_{22}+e_{12}+e_{21}),\\
+Y'_{22}&amp;=\tfrac12(5e_{11}+e_{22}-e_{12}-e_{21}),\\
+Y'_{33}&amp;=1_M.
+\end{aligned}
+\tag{TW.8.b}
+\]</span>
+The off-diagonal coefficient matrix units have zero <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-value. Hence the old contributions <span class="math" data-tex="\(10,5,7\)">\(10,5,7\)</span> become <span class="math" data-tex="\(15/2,15/2,7\)">\(15/2,15/2,7\)</span>, whose sum is still <span class="math" data-tex="\(22\)">\(22\)</span>. Individual diagonal values depend on the basis; the full positive weight does not. In arbitrary dimension the <a href="OA-FLOW-TW.html#tw-3">basis-independence proof</a> establishes the same conclusion with finite-subset sums, including infinite values.</p>
+<p><a id="tw-diagonal-diagnostic"></a>
+<strong>2. Zero diagonal entries do not characterize the finite linear domain.</strong> Can an operator have all diagonal entries zero, and therefore an absolutely summable diagonal of total zero, while failing to belong to <span class="math" data-tex="\(\mathfrak m_\Omega\)">\(\mathfrak m_\Omega\)</span>?</p>
+<p><strong>Solution.</strong> Yes. Take <span class="math" data-tex="\(M=\mathbb C\)">\(M=\mathbb C\)</span>, <span class="math" data-tex="\(\varphi(1)=1\)">\(\varphi(1)=1\)</span>, <span class="math" data-tex="\(E=\ell^2(\mathbb Z)\)">\(E=\ell^2(\mathbb Z)\)</span>, and the bilateral shift <span class="math" data-tex="\(Vf_j=f_{j+1}\)">\(Vf_j=f_{j+1}\)</span>. Every diagonal entry of <span class="math" data-tex="\(V\)">\(V\)</span> is zero, but
+<span class="math math-display" data-tex="\[
+V^*V=1,\qquad \Omega(V^*V)=\operatorname{Tr}(1)=\infty.
+\tag{TW.8.c}
+\]">\[
+V^*V=1,\qquad \Omega(V^*V)=\operatorname{Tr}(1)=\infty.
+\tag{TW.8.c}
+\]</span>
+Thus <span class="math" data-tex="\(V\notin\mathfrak n_\Omega\)">\(V\notin\mathfrak n_\Omega\)</span>. The general finite-ideal theorem gives <span class="math" data-tex="\(\mathfrak m_\Omega\subseteq\mathfrak n_\Omega\)">\(\mathfrak m_\Omega\subseteq\mathfrak n_\Omega\)</span>, so <span class="math" data-tex="\(V\notin\mathfrak m_\Omega\)">\(V\notin\mathfrak m_\Omega\)</span>. The inclusion follows directly as well: for <span class="math" data-tex="\(a,b\in\mathfrak n_\Omega\)">\(a,b\in\mathfrak n_\Omega\)</span>, the element <span class="math" data-tex="\(a^*b\)">\(a^*b\)</span> belongs to the left ideal <span class="math" data-tex="\(\mathfrak n_\Omega\)">\(\mathfrak n_\Omega\)</span>, and the ideal is linear. See <a href="OA-FLOW-GW.html#oa-flow.gw.1">Finite cones, ideals and algebras</a>. In contrast, a <strong>positive</strong> bounded operator with every diagonal zero is zero, since each coordinate vector has zero norm after applying its positive square root. The counterexample is a nonpositive operator.</p>
+<p><a id="tw-scaling-diagnostic"></a>
+<strong>3. A rescaled reference trace changes the derivative.</strong> Let <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, put <span class="math" data-tex="\(\Omega_a=\varphi\otimes(a\operatorname{Tr})\)">\(\Omega_a=\varphi\otimes(a\operatorname{Tr})\)</span>, and let <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> be any faithful n.s.f. weight on the same tensor algebra. Find both <span class="math" data-tex="\([D\Omega_a:D\Omega]_t\)">\([D\Omega_a:D\Omega]_t\)</span> and <span class="math" data-tex="\([D\Psi:D\Omega_a]_t\)">\([D\Psi:D\Omega_a]_t\)</span>.</p>
+<p><strong>Solution.</strong> The whole positive weight is <span class="math" data-tex="\(\Omega_a=a\Omega\)">\(\Omega_a=a\Omega\)</span>. The <a href="OA-FLOW-BC.html#oa-flow.bc.5">scalar normalization law</a> and <a href="OA-FLOW-BC.html#oa-flow.bc.4">ordered chain rule</a> give
+<span class="math math-display" data-tex="\[
+[D\Omega_a:D\Omega]_t=a^{it}1,
+\qquad
+[D\Psi:D\Omega_a]_t
+ =[D\Psi:D\Omega]_t\,a^{-it}1.
+\tag{TW.8.d}
+\]">\[
+[D\Omega_a:D\Omega]_t=a^{it}1,
+\qquad
+[D\Psi:D\Omega_a]_t
+ =[D\Psi:D\Omega]_t\,a^{-it}1.
+\tag{TW.8.d}
+\]</span>
+The second identity follows by factoring <span class="math" data-tex="\([D\Psi:D\Omega]_t\)">\([D\Psi:D\Omega]_t\)</span> through <span class="math" data-tex="\(\Omega_a\)">\(\Omega_a\)</span> and multiplying on the right by <span class="math" data-tex="\(a^{-it}1\)">\(a^{-it}1\)</span>. The scalar happens to be central, but the chain rule itself is ordered. Thus the <a href="OA-FLOW-TW.html#tw-6">exact tensor cocycle</a> fixes a normalization that the modular automorphism group alone would not detect.</p>
+<p><a id="tw-haar-diagnostic"></a>
+<strong>4. Kernel entries are not normalized matrix entries.</strong> Let <span class="math" data-tex="\(G=\mathbb Z/3\mathbb Z\)">\(G=\mathbb Z/3\mathbb Z\)</span> have singleton Haar mass <span class="math" data-tex="\(c=2\)">\(c=2\)</span>. Identify <span class="math" data-tex="\(E=L^2(G)\)">\(E=L^2(G)\)</span> with <span class="math" data-tex="\(\mathbb C^3\)">\(\mathbb C^3\)</span> by its orthonormal basis <span class="math" data-tex="\(\epsilon_j=c^{-1/2}1_{\{j\}}\)">\(\epsilon_j=c^{-1/2}1_{\{j\}}\)</span>. An <span class="math" data-tex="\(M\)">\(M\)</span>-valued kernel acts by
+<span class="math math-display" data-tex="\[
+[T_K\xi](r)=c\sum_{s\in G}K(r,s)\xi(s).
+\tag{TW.8.e}
+\]">\[
+[T_K\xi](r)=c\sum_{s\in G}K(r,s)\xi(s).
+\tag{TW.8.e}
+\]</span>
+Find its normalized block matrix, its weighted GNS norm, and the kernel of the projection onto <span class="math" data-tex="\(\mathbb C\epsilon_j\)">\(\mathbb C\epsilon_j\)</span>.</p>
+<p><strong>Solution.</strong> Apply <span class="math" data-tex="\(T_K\)">\(T_K\)</span> to <span class="math" data-tex="\(v\epsilon_s\)">\(v\epsilon_s\)</span>, with <span class="math" data-tex="\(v\in\mathbb C^2\)">\(v\in\mathbb C^2\)</span>. The result at <span class="math" data-tex="\(r\)">\(r\)</span> is <span class="math" data-tex="\(\sqrt c\,K(r,s)v\)">\(\sqrt c\,K(r,s)v\)</span>, so its coefficient at <span class="math" data-tex="\(\epsilon_r\)">\(\epsilon_r\)</span> is <span class="math" data-tex="\(cK(r,s)v\)">\(cK(r,s)v\)</span>. The normalized block matrix is therefore <span class="math" data-tex="\(X_{rs}=cK(r,s)\)">\(X_{rs}=cK(r,s)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Omega(T_K^*T_K)
+ &amp;=c^2\sum_{r,s\in G}\varphi(K(r,s)^*K(r,s)),\\
+\Omega(T_KT_K^*)
+ &amp;=c^2\sum_{r,s\in G}\varphi(K(r,s)K(r,s)^*).
+\end{aligned}
+\tag{TW.8.f}
+\]">\[
+\begin{aligned}
+\Omega(T_K^*T_K)
+ &amp;=c^2\sum_{r,s\in G}\varphi(K(r,s)^*K(r,s)),\\
+\Omega(T_KT_K^*)
+ &amp;=c^2\sum_{r,s\in G}\varphi(K(r,s)K(r,s)^*).
+\end{aligned}
+\tag{TW.8.f}
+\]</span>
+The first expression is the squared norm of the kernel field <span class="math" data-tex="\((r,s)\mapsto\Lambda_\varphi(K(r,s))\)">\((r,s)\mapsto\Lambda_\varphi(K(r,s))\)</span> with Haar measure in <strong>both</strong> variables. The adjoint kernel is <span class="math" data-tex="\(K^*(r,s)=K(s,r)^*\)">\(K^*(r,s)=K(s,r)^*\)</span>. Transposing its two indices gives the second expression; no trace identity for <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> permits exchanging <span class="math" data-tex="\(K^*K\)">\(K^*K\)</span> and <span class="math" data-tex="\(KK^*\)">\(KK^*\)</span>.</p>
+<p>For <span class="math" data-tex="\(K(r,s)=X_{rs}/2\)">\(K(r,s)=X_{rs}/2\)</span>, with <span class="math" data-tex="\(X\)">\(X\)</span> from (TW.7.c), the two values are <span class="math" data-tex="\(22\)">\(22\)</span> and <span class="math" data-tex="\(31\)">\(31\)</span>. The factor <span class="math" data-tex="\(c^2=4\)">\(c^2=4\)</span> is canceled by the squared factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> in the kernel, not by replacing the usual trace with a Haar-scaled trace.</p>
+<p>The scalar projection <span class="math" data-tex="\(p_j=|\epsilon_j\rangle\langle\epsilon_j|\)">\(p_j=|\epsilon_j\rangle\langle\epsilon_j|\)</span> has kernel
+<span class="math math-display" data-tex="\[
+k_j(r,s)=c^{-1}1_{\{j\}}(r)1_{\{j\}}(s).
+\tag{TW.8.g}
+\]">\[
+k_j(r,s)=c^{-1}1_{\{j\}}(r)1_{\{j\}}(s).
+\tag{TW.8.g}
+\]</span>
+Its normalized matrix has a single diagonal entry one. Consequently <span class="math" data-tex="\(\operatorname{Tr}(p_j)=1\)">\(\operatorname{Tr}(p_j)=1\)</span>, and its Hilbert–Schmidt norm squared computed from the kernel is <span class="math" data-tex="\(c^2(c^{-1})^2=1\)">\(c^2(c^{-1})^2=1\)</span>. For <span class="math" data-tex="\(b\in\mathfrak n_\varphi\)">\(b\in\mathfrak n_\varphi\)</span>,
+<span class="math" data-tex="\(\Omega((b\otimes p_j)^*(b\otimes p_j))=\varphi(b^*b)\)">\(\Omega((b\otimes p_j)^*(b\otimes p_j))=\varphi(b^*b)\)</span>, with no additional Haar factor. The arbitrary-group kernel identification is the Hilbert tensor completion proved in <a href="OA-FLOW-HR.html#hr-05">Radon products and scalar Hilbert tensors</a> and <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">Vector integrals and Hilbert tensors</a>.</p>
+<p><a id="tw-domain-diagnostic"></a>
+<strong>5. A finite GNS vector can lie outside the half-power domain.</strong> Construct a bounded <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span> whose GNS vector is not in <span class="math" data-tex="\(D(\Delta_\varphi^{1/2})\)">\(D(\Delta_\varphi^{1/2})\)</span>, and retain the obstruction after amplification.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(H_0=\ell^2(\mathbb N_0)\)">\(H_0=\ell^2(\mathbb N_0)\)</span>, <span class="math" data-tex="\(M=B(H_0)\)">\(M=B(H_0)\)</span>, and define, on the whole positive cone,
+<span class="math math-display" data-tex="\[
+\varphi(a)=\sum_{n=0}^{\infty}4^n\langle ae_n,e_n\rangle.
+\tag{TW.8.h}
+\]">\[
+\varphi(a)=\sum_{n=0}^{\infty}4^n\langle ae_n,e_n\rangle.
+\tag{TW.8.h}
+\]</span>
+This is a faithful normal weight: its summands are positive normal functionals, and increasing positive suprema commute with the supremum of finite nonnegative subsums. Faithfulness follows because a positive square root vanishes on every <span class="math" data-tex="\(e_n\)">\(e_n\)</span> when the weight is zero. The finite-coordinate projections have finite weight and increase strongly to one, so the <a href="OA-FLOW-GW.html#oa-flow.gw.4">semifiniteness criterion</a> proves semifiniteness.</p>
+<p>The GNS norm of a bounded matrix <span class="math" data-tex="\(a=(a_{mn})\)">\(a=(a_{mn})\)</span> is
+<span class="math math-display" data-tex="\[
+\|\Lambda_\varphi(a)\|^2
+ =\sum_{m,n\geq0}4^n|a_{mn}|^2,
+\qquad
+f_{mn}=2^{-n}\Lambda_\varphi(e_{mn}).
+\tag{TW.8.i}
+\]">\[
+\|\Lambda_\varphi(a)\|^2
+ =\sum_{m,n\geq0}4^n|a_{mn}|^2,
+\qquad
+f_{mn}=2^{-n}\Lambda_\varphi(e_{mn}).
+\tag{TW.8.i}
+\]</span>
+The <span class="math" data-tex="\(f_{mn}\)">\(f_{mn}\)</span> form an orthonormal basis: the norm formula gives orthonormality, and truncating the square-summable matrix coordinates gives density. On finite-coordinate vectors the involution, its positive operator and its half power are
+<span class="math math-display" data-tex="\[
+Sf_{mn}=2^{m-n}f_{nm},\qquad
+\Delta_\varphi f_{mn}=4^{m-n}f_{mn},\qquad
+\Delta_\varphi^{1/2}f_{mn}=2^{m-n}f_{mn}.
+\tag{TW.8.j}
+\]">\[
+Sf_{mn}=2^{m-n}f_{nm},\qquad
+\Delta_\varphi f_{mn}=4^{m-n}f_{mn},\qquad
+\Delta_\varphi^{1/2}f_{mn}=2^{m-n}f_{mn}.
+\tag{TW.8.j}
+\]</span>
+These formulas have their full closed domains. Indeed the transpose with multiplier <span class="math" data-tex="\(2^{m-n}\)">\(2^{m-n}\)</span> is closed by coordinatewise convergence, and its domain is exactly
+<span class="math math-display" data-tex="\[
+\left\{\sum_{m,n}z_{mn}f_{mn}:
+       \sum_{m,n}4^{m-n}|z_{mn}|^2&lt;\infty\right\}.
+\tag{TW.8.k}
+\]">\[
+\left\{\sum_{m,n}z_{mn}f_{mn}:
+       \sum_{m,n}4^{m-n}|z_{mn}|^2&lt;\infty\right\}.
+\tag{TW.8.k}
+\]</span>
+For <span class="math" data-tex="\(a\)">\(a\)</span> in the finite-star ideal, the two GNS norm formulas put <span class="math" data-tex="\(\Lambda_\varphi(a)\)">\(\Lambda_\varphi(a)\)</span> in this domain and give its image <span class="math" data-tex="\(\Lambda_\varphi(a^*)\)">\(\Lambda_\varphi(a^*)\)</span>. Conversely finite-coordinate truncations approximate every vector in (TW.8.k) in both graph coordinates. They come from finite matrices in that finite-star ideal. This proves equality with the closed Tomita operator. Its adjoint product is the positive diagonal operator in (TW.8.j), whose half-power domain is exactly (TW.8.k), by the full spectral domain criterion.</p>
+<p>Put
+<span class="math math-display" data-tex="\[
+v=\sum_{n=1}^{\infty}2^{-n}e_n,\qquad
+x=|v\rangle\langle e_0|,\qquad
+\xi=\Lambda_\varphi(x)=\sum_{n=1}^{\infty}2^{-n}f_{n0}.
+\tag{TW.8.l}
+\]">\[
+v=\sum_{n=1}^{\infty}2^{-n}e_n,\qquad
+x=|v\rangle\langle e_0|,\qquad
+\xi=\Lambda_\varphi(x)=\sum_{n=1}^{\infty}2^{-n}f_{n0}.
+\tag{TW.8.l}
+\]</span>
+The vector <span class="math" data-tex="\(v\)">\(v\)</span> has squared norm <span class="math" data-tex="\(1/3\)">\(1/3\)</span>, so <span class="math" data-tex="\(x\)">\(x\)</span> is bounded and <span class="math" data-tex="\(\varphi(x^*x)=1/3\)">\(\varphi(x^*x)=1/3\)</span>. However
+<span class="math math-display" data-tex="\[
+\sum_{n=1}^{\infty}4^n|2^{-n}|^2=\infty.
+\]">\[
+\sum_{n=1}^{\infty}4^n|2^{-n}|^2=\infty.
+\]</span>
+Thus <span class="math" data-tex="\(\xi\notin D(\Delta_\varphi^{1/2})\)">\(\xi\notin D(\Delta_\varphi^{1/2})\)</span>; equivalently <span class="math" data-tex="\(\varphi(xx^*)=\infty\)">\(\varphi(xx^*)=\infty\)</span> and <span class="math" data-tex="\(x^*\notin\mathfrak n_\varphi\)">\(x^*\notin\mathfrak n_\varphi\)</span>. For
+<span class="math" data-tex="\(\xi_N=\sum_{n=1}^N2^{-n}f_{n0}\)">\(\xi_N=\sum_{n=1}^N2^{-n}f_{n0}\)</span>, the exact values are
+<span class="math math-display" data-tex="\[
+\|\xi_N\|^2=\frac{1-4^{-N}}3,\qquad
+\|\Delta_\varphi^{1/2}\xi_N\|^2=N.
+\tag{TW.8.m}
+\]">\[
+\|\xi_N\|^2=\frac{1-4^{-N}}3,\qquad
+\|\Delta_\varphi^{1/2}\xi_N\|^2=N.
+\tag{TW.8.m}
+\]</span>
+Hilbert-norm convergence of the first coordinates therefore does not supply graph convergence.</p>
+<p>Finally let <span class="math" data-tex="\(E\ne0\)">\(E\ne0\)</span> be arbitrary, choose a unit vector <span class="math" data-tex="\(u\in E\)">\(u\in E\)</span>, and put <span class="math" data-tex="\(p=|u\rangle\langle u|\)">\(p=|u\rangle\langle u|\)</span>. The <a href="OA-FLOW-TW.html#tw-5">tensor GNS and full-domain formulas</a> give
+<span class="math math-display" data-tex="\[
+\Lambda_\Omega(x\otimes p)=\xi\otimes p,\qquad
+\|\xi\otimes p\|^2=\tfrac13,\qquad
+\xi\otimes p\notin D(\Delta_\Omega^{1/2}).
+\tag{TW.8.n}
+\]">\[
+\Lambda_\Omega(x\otimes p)=\xi\otimes p,\qquad
+\|\xi\otimes p\|^2=\tfrac13,\qquad
+\xi\otimes p\notin D(\Delta_\Omega^{1/2}).
+\tag{TW.8.n}
+\]</span>
+The last assertion follows because <span class="math" data-tex="\(\|p\|_{\mathrm{HS}}=1\)">\(\|p\|_{\mathrm{HS}}=1\)</span> and the squared half-power norm is the same divergent scalar series. It applies equally when <span class="math" data-tex="\(E\)">\(E\)</span> is nonseparable.</p>
+<p><span id="OA-FLOW.TW.READING"></span><a id="tw-reading"></a></p>
+<h2 id="further-reading">Further reading</h2>
+<p>Masamichi Takesaki, <em>Theory of Operator Algebras II</em>, VIII.4, Lemma 4.1, Definition 4.2 and Proposition 4.3, printed pp.133–134, treats tensor products of weights through tensor products of left Hilbert algebras and closed operators. The construction here specializes one factor to the usual trace and supplies its matrix domains, arbitrary Hilbert multiplicity and exact cocycle normalization directly. Tensor products of two arbitrary weights require the corresponding broader construction.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L31.html">Previous lesson</a><a href="OA-FLOW-ET.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-TW.md">Lesson source</a></nav></main></body></html>

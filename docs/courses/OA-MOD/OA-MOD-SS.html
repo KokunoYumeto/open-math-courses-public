@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adding spatial energies and changing the reference weight · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-SS.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 52 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="adding-spatial-energies-and-changing-the-reference-weight">Adding spatial energies and changing the reference weight</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>Adding the coefficient energies of two weights is immediate on bounded vectors. Identifying the resulting closed form requires more: those vectors must approximate the joint energy domain. This unit proves a simultaneous approximation theorem and uses it to obtain arbitrary sums, increasing limits and bounded changes of weights, with every finite-energy domain specified.</p>
+<p>The source addition assertion is Takesaki, <em>Theory of Operator Algebras II</em>, IX.3, Proposition 3.10(ii), for bounded normal positive functionals. The spectral-cutoff method has a further mathematical antecedent in <a href="https://arxiv.org/abs/2004.02383v1">Hiai, <em>Concise lectures on selected topics of von Neumann algebras</em>, arXiv:2004.02383v1, Section 13</a>, especially items 13.7–13.14. Here the argument is developed from the existing SC closed forms, scalar normal observations and an explicit form-Cauchy calculation. No source prose or proof text is imported.</p>
+<h2 id="which-objects-are-being-added"><span id="oa-mod-ss-01"></span><span id="OA-MOD-SS-01"></span>Which objects are being added?</h2>
+<p>Fix <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span>, put <span class="math" data-tex="\(N=M&#x27;\)">\(N=M&#x27;\)</span>, and let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be a normal semifinite faithful weight on <span class="math" data-tex="\(N\)">\(N\)</span>. The Hilbert space is arbitrary. Inner products are linear in the first variable. Use the GNS notation <span class="math" data-tex="\((H_\psi,\pi_\psi,\Lambda_\psi)\)">\((H_\psi,\pi_\psi,\Lambda_\psi)\)</span> and the bounded-vector space <span class="math" data-tex="\(D_\psi\)">\(D_\psi\)</span> of <a href="OA-MOD-SC.html#oa-mod-sc-01">Conventions and the actual prerequisites</a>. For <span class="math" data-tex="\(\xi\in D_\psi\)">\(\xi\in D_\psi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+R_\psi(\xi)\Lambda_\psi(x)=x\xi,
+\qquad
+\theta_\psi(\xi,\eta)=R_\psi(\xi)R_\psi(\eta)^*,
+\quad x\in\mathfrak n_\psi.
+\]">\[
+R_\psi(\xi)\Lambda_\psi(x)=x\xi,
+\qquad
+\theta_\psi(\xi,\eta)=R_\psi(\xi)R_\psi(\eta)^*,
+\quad x\in\mathfrak n_\psi.
+\]</span>
+<p>For any normal numerator <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>, SC constructs a closed form <span class="math" data-tex="\(q_\varphi^\psi\)">\(q_\varphi^\psi\)</span> with domain <span class="math" data-tex="\(V_\varphi^\psi\)">\(V_\varphi^\psi\)</span>. Its Hilbert-space domain closure is <span class="math" data-tex="\(e_\varphi H\)">\(e_\varphi H\)</span>, its null space is <span class="math" data-tex="\(f_\varphi H\)">\(f_\varphi H\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+E_\varphi^\psi=D_\psi\cap V_\varphi^\psi
+\]">\[
+E_\varphi^\psi=D_\psi\cap V_\varphi^\psi
+\]</span>
+<p>is the exact finite coefficient domain and a form core. Write</p>
+<span class="math math-display" data-tex="\[
+Q_\varphi^\psi(\xi)=
+\begin{cases}
+q_\varphi^\psi[\xi],&amp;\xi\in V_\varphi^\psi,\\
++\infty,&amp;\xi\notin V_\varphi^\psi.
+\end{cases}
+\tag{SS.1}
+\]">\[
+Q_\varphi^\psi(\xi)=
+\begin{cases}
+q_\varphi^\psi[\xi],&amp;\xi\in V_\varphi^\psi,\\
++\infty,&amp;\xi\notin V_\varphi^\psi.
+\end{cases}
+\tag{SS.1}
+\]</span>
+<p>Thus <span class="math" data-tex="\(Q\)">\(Q\)</span> is an extended diagonal defined on all of <span class="math" data-tex="\(H\)">\(H\)</span>, whereas <span class="math" data-tex="\(q\)">\(q\)</span> is a sesquilinear form on its stated linear domain. When the denominator is fixed, suppress its superscript.</p>
+<p>The exact inputs are the completed arguments of <strong>SC-02–10</strong>, including positive normal vector-series implementation, bounded-vector density and the initial form's canonical closure; <strong>NW-11</strong>, recovery of a normal weight from dominated normal positive functionals; <strong>WS-02–06</strong>, finite-domain and null projections; and the GNS and bounded-intertwiner facts in WG and SD. <a href="OA-MOD-FC.html#oa-mod-fc-02">The completion test and canonical closure through Cores determine the domain, not just a dense set of vectors</a> supply closure, lower semicontinuity and core criteria. <a href="OA-MOD-QF.html#oa-mod-qf-03">Representation with the exact square-root domain through Nondense forms, lower semicontinuity, and symmetry</a> supply closed-form representation and unitary symmetry. The arbitrary-dimensional spectral calculus used by QF is supplied by <strong>SK-04–09</strong>; bounded polar decomposition is supplied by <strong>BK-07</strong>. These providers retain their explicitly recorded scalar and Hilbert-space inputs. QF-06–08 are used only for the later convergence corollaries. The denominator order comparison uses <a href="OA-MOD-DW.html#oa-mod-dw-04">Comparing two weights and the precise target space</a>.</p>
+<p>All these inputs depend on their own foundational prerequisites, which are not proved here. We do not assume a decomposition of an arbitrary normal weight as a sum of vector functionals, a general extended-positive-cone calculus, standard forms, or modular covariance. Only individual bounded normal functionals are decomposed into vector sums, by SC-02.</p>
+<h2 id="testing-an-arbitrary-vector-by-an-adjoint">Testing an arbitrary vector by an adjoint</h2>
+<p>For an arbitrary <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span>, define a linear operator</p>
+<span class="math math-display" data-tex="\[
+T_\xi:\Lambda_\psi(\mathfrak n_\psi)\subseteq H_\psi\longrightarrow H,
+\qquad T_\xi\Lambda_\psi(x)=x\xi.
+\tag{SS.2}
+\]">\[
+T_\xi:\Lambda_\psi(\mathfrak n_\psi)\subseteq H_\psi\longrightarrow H,
+\qquad T_\xi\Lambda_\psi(x)=x\xi.
+\tag{SS.2}
+\]</span>
+<p>This domain is dense. Faithfulness of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> makes the rule well-defined: if <span class="math" data-tex="\(\Lambda_\psi(x)=\Lambda_\psi(y)\)">\(\Lambda_\psi(x)=\Lambda_\psi(y)\)</span>, then <span class="math" data-tex="\(\psi((x-y)^*(x-y))=0\)">\(\psi((x-y)^*(x-y))=0\)</span>, hence <span class="math" data-tex="\(x=y\)">\(x=y\)</span>. We do not assume that <span class="math" data-tex="\(T_\xi\)">\(T_\xi\)</span> is bounded or closable.</p>
+<p>Its adjoint has the precise domain</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+D(T_\xi^*)=\{v\in H:\ &amp;\text{there exists }w\in H_\psi\text{ such that}\\
+&amp;\langle x\xi,v\rangle=\langle\Lambda_\psi(x),w\rangle
+\quad(x\in\mathfrak n_\psi)\},
+\end{split}
+\tag{SS.3}
+\]">\[
+\begin{split}
+D(T_\xi^*)=\{v\in H:\ &amp;\text{there exists }w\in H_\psi\text{ such that}\\
+&amp;\langle x\xi,v\rangle=\langle\Lambda_\psi(x),w\rangle
+\quad(x\in\mathfrak n_\psi)\},
+\end{split}
+\tag{SS.3}
+\]</span>
+<p>and <span class="math" data-tex="\(T_\xi^*v=w\)">\(T_\xi^*v=w\)</span>. Density of the GNS domain makes <span class="math" data-tex="\(w\)">\(w\)</span> unique. The adjoint is closed: if <span class="math" data-tex="\(v_n\to v\)">\(v_n\to v\)</span> and <span class="math" data-tex="\(T_\xi^*v_n\to w\)">\(T_\xi^*v_n\to w\)</span>, passage to the limit in (SS.3) verifies membership and value for <span class="math" data-tex="\(v\)">\(v\)</span>. Its domain can have a proper Hilbert closure. Put</p>
+<span class="math math-display" data-tex="\[
+p_\xi=P_{\overline{D(T_\xi^*)}}.
+\tag{SS.4}
+\]">\[
+p_\xi=P_{\overline{D(T_\xi^*)}}.
+\tag{SS.4}
+\]</span>
+<p><strong>Lemma.</strong> The projection <span class="math" data-tex="\(p_\xi\)">\(p_\xi\)</span> belongs to <span class="math" data-tex="\(M\)">\(M\)</span>. On its domain,</p>
+<span class="math math-display" data-tex="\[
+T_\xi^*u=\pi_\psi(u)T_\xi^*
+\qquad(u\text{ unitary in }N),
+\tag{SS.5}
+\]">\[
+T_\xi^*u=\pi_\psi(u)T_\xi^*
+\qquad(u\text{ unitary in }N),
+\tag{SS.5}
+\]</span>
+<p>with <span class="math" data-tex="\(uD(T_\xi^*)=D(T_\xi^*)\)">\(uD(T_\xi^*)=D(T_\xi^*)\)</span>. For every <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, there is also the exact domain identity</p>
+<span class="math math-display" data-tex="\[
+T_{a\xi}^*=T_\xi^*a^*,
+\qquad
+D(T_{a\xi}^*)=\{v:a^*v\in D(T_\xi^*)\}.
+\tag{SS.6}
+\]">\[
+T_{a\xi}^*=T_\xi^*a^*,
+\qquad
+D(T_{a\xi}^*)=\{v:a^*v\in D(T_\xi^*)\}.
+\tag{SS.6}
+\]</span>
+<p><strong>Proof.</strong> The finite left ideal is invariant under multiplication by <span class="math" data-tex="\(N\)">\(N\)</span>, so
+<span class="math" data-tex="\(T_\xi\pi_\psi(y)=yT_\xi\)">\(T_\xi\pi_\psi(y)=yT_\xi\)</span> on its initial domain. If <span class="math" data-tex="\(v\in D(T_\xi^*)\)">\(v\in D(T_\xi^*)\)</span> and <span class="math" data-tex="\(u\in N\)">\(u\in N\)</span> is unitary, then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle x\xi,uv\rangle
+&amp;=\langle u^*x\xi,v\rangle\\
+&amp;=\langle\pi_\psi(u^*)\Lambda_\psi(x),T_\xi^*v\rangle
+=\langle\Lambda_\psi(x),\pi_\psi(u)T_\xi^*v\rangle.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle x\xi,uv\rangle
+&amp;=\langle u^*x\xi,v\rangle\\
+&amp;=\langle\pi_\psi(u^*)\Lambda_\psi(x),T_\xi^*v\rangle
+=\langle\Lambda_\psi(x),\pi_\psi(u)T_\xi^*v\rangle.
+\end{aligned}
+\]</span>
+<p>This proves (SS.5) and invariance under <span class="math" data-tex="\(u\)">\(u\)</span>; applying it to <span class="math" data-tex="\(u^*\)">\(u^*\)</span> gives equality of the domains. Their closure therefore reduces every unitary in <span class="math" data-tex="\(N\)">\(N\)</span>, and hence all of <span class="math" data-tex="\(N\)">\(N\)</span>, since its elements are linear combinations of unitaries. Thus <span class="math" data-tex="\(p_\xi\in N&#x27;=M\)">\(p_\xi\in N&#x27;=M\)</span>.</p>
+<p>For <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, commutation with <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span> gives <span class="math" data-tex="\(T_{a\xi}=aT_\xi\)">\(T_{a\xi}=aT_\xi\)</span> on exactly the same initial domain. The adjoint test for <span class="math" data-tex="\(v\)">\(v\)</span> then reads <span class="math" data-tex="\(\langle T_\xi z,a^*v\rangle=\langle z,w\rangle\)">\(\langle T_\xi z,a^*v\rangle=\langle z,w\rangle\)</span>. This is precisely the test for <span class="math" data-tex="\(a^*v\in D(T_\xi^*)\)">\(a^*v\in D(T_\xi^*)\)</span>, with the same representing vector. It proves (SS.6), including its domain. ∎</p>
+<p>The adjoint is always closed, even though its initial operator need not be closable. Replacing its possibly nondense domain by all of <span class="math" data-tex="\(H\)">\(H\)</span> would discard the infinite-energy term needed below.</p>
+<h2 id="bounded-coefficients-obtained-by-spectral-truncation">Bounded coefficients obtained by spectral truncation</h2>
+<p>Fix <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, and abbreviate <span class="math" data-tex="\(p=p_\xi\)">\(p=p_\xi\)</span>. On <span class="math" data-tex="\(pH\)">\(pH\)</span>, the form</p>
+<span class="math math-display" data-tex="\[
+t_\xi(v,w)=\langle T_\xi^*v,T_\xi^*w\rangle,
+\qquad v,w\in D(T_\xi^*)
+\]">\[
+t_\xi(v,w)=\langle T_\xi^*v,T_\xi^*w\rangle,
+\qquad v,w\in D(T_\xi^*)
+\]</span>
+<p>is densely defined and closed: its form norm is the graph norm of the closed adjoint. QF-03 gives a nonnegative self-adjoint operator <span class="math" data-tex="\(B_\xi\)">\(B_\xi\)</span> on <span class="math" data-tex="\(pH\)">\(pH\)</span> with</p>
+<span class="math math-display" data-tex="\[
+D(B_\xi^{1/2})=D(T_\xi^*),
+\qquad \|B_\xi^{1/2}v\|=\|T_\xi^*v\|.
+\tag{SS.7}
+\]">\[
+D(B_\xi^{1/2})=D(T_\xi^*),
+\qquad \|B_\xi^{1/2}v\|=\|T_\xi^*v\|.
+\tag{SS.7}
+\]</span>
+<p>This definition does not form an untyped product of operators with nondense domains.</p>
+<p>Equation (SS.5) makes the form invariant under every restricted unitary of <span class="math" data-tex="\(N\)">\(N\)</span>. Uniqueness in closed-form representation gives the same invariance of <span class="math" data-tex="\(B_\xi\)">\(B_\xi\)</span> and its spectral projections. Extended by zero on <span class="math" data-tex="\((1-p)H\)">\((1-p)H\)</span>, those projections commute with <span class="math" data-tex="\(N\)">\(N\)</span> and belong to <span class="math" data-tex="\(M\)">\(M\)</span>. Define, for positive integers <span class="math" data-tex="\(n\)">\(n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+P_n=1_{[0,n]}(B_\xi),\qquad B_n=B_\xi P_n,
+\tag{SS.8}
+\]">\[
+P_n=1_{[0,n]}(B_\xi),\qquad B_n=B_\xi P_n,
+\tag{SS.8}
+\]</span>
+<p>both extended by zero outside <span class="math" data-tex="\(pH\)">\(pH\)</span>. Then <span class="math" data-tex="\(P_n\in M\)">\(P_n\in M\)</span>, <span class="math" data-tex="\(P_n\uparrow p\)">\(P_n\uparrow p\)</span> strongly, <span class="math" data-tex="\(B_n\in M_+\)">\(B_n\in M_+\)</span>, and <span class="math" data-tex="\(0\le B_n\le n1\)">\(0\le B_n\le n1\)</span>. The sequence <span class="math" data-tex="\(B_n\)">\(B_n\)</span> is increasing but need not be norm bounded.</p>
+<p><strong>Lemma.</strong> For each <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(P_n\xi\in D_\psi\)">\(P_n\xi\in D_\psi\)</span> and</p>
+<span class="math math-display" data-tex="\[
+R_\psi(P_n\xi)=(T_\xi^*P_n)^*,
+\qquad \theta_\psi(P_n\xi,P_n\xi)=B_n.
+\tag{SS.9}
+\]">\[
+R_\psi(P_n\xi)=(T_\xi^*P_n)^*,
+\qquad \theta_\psi(P_n\xi,P_n\xi)=B_n.
+\tag{SS.9}
+\]</span>
+<p>If <span class="math" data-tex="\(n\ge m\)">\(n\ge m\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\theta_\psi((P_n-P_m)\xi,(P_n-P_m)\xi)=B_n-B_m.
+\tag{SS.10}
+\]">\[
+\theta_\psi((P_n-P_m)\xi,(P_n-P_m)\xi)=B_n-B_m.
+\tag{SS.10}
+\]</span>
+<p><strong>Proof.</strong> The spectral domain theorem gives <span class="math" data-tex="\(P_nH\subseteq D(T_\xi^*)\)">\(P_nH\subseteq D(T_\xi^*)\)</span> and
+<span class="math" data-tex="\(\|T_\xi^*P_nv\|^2=\langle B_nv,v\rangle\le n\|v\|^2\)">\(\|T_\xi^*P_nv\|^2=\langle B_nv,v\rangle\le n\|v\|^2\)</span>.
+Thus <span class="math" data-tex="\(T_\xi^*P_n:H\to H_\psi\)">\(T_\xi^*P_n:H\to H_\psi\)</span> is bounded. For <span class="math" data-tex="\(x\in\mathfrak n_\psi\)">\(x\in\mathfrak n_\psi\)</span> and <span class="math" data-tex="\(v\in H\)">\(v\in H\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle xP_n\xi,v\rangle
+=\langle x\xi,P_nv\rangle
+=\langle\Lambda_\psi(x),T_\xi^*P_nv\rangle.
+\]">\[
+\langle xP_n\xi,v\rangle
+=\langle x\xi,P_nv\rangle
+=\langle\Lambda_\psi(x),T_\xi^*P_nv\rangle.
+\]</span>
+<p>Its bounded adjoint therefore extends the initial map for <span class="math" data-tex="\(P_n\xi\)">\(P_n\xi\)</span>; this proves boundedness of that vector and the first identity in (SS.9). The squared norm identity for <span class="math" data-tex="\(T_\xi^*P_n\)">\(T_\xi^*P_n\)</span>, applied to every <span class="math" data-tex="\(v\)">\(v\)</span>, identifies its bounded adjoint-product with <span class="math" data-tex="\(B_n\)">\(B_n\)</span>, proving the second identity.</p>
+<p>The same argument applies to <span class="math" data-tex="\(P_n-P_m\)">\(P_n-P_m\)</span>. These are commuting spectral projections, and</p>
+<span class="math math-display" data-tex="\[
+(P_n-P_m)B_\xi(P_n-P_m)=B_\xi(P_n-P_m)=B_n-B_m.
+\]">\[
+(P_n-P_m)B_\xi(P_n-P_m)=B_\xi(P_n-P_m)=B_n-B_m.
+\]</span>
+<p>This proves (SS.10). ∎</p>
+<p>If <span class="math" data-tex="\(\xi\in D_\psi\)">\(\xi\in D_\psi\)</span> already, then <span class="math" data-tex="\(T_\xi\)">\(T_\xi\)</span> extends to <span class="math" data-tex="\(R_\psi(\xi)\)">\(R_\psi(\xi)\)</span>. Its adjoint is defined on all of <span class="math" data-tex="\(H\)">\(H\)</span>, so <span class="math" data-tex="\(p=1\)">\(p=1\)</span> and <span class="math" data-tex="\(B_\xi=\theta_\psi(\xi,\xi)\)">\(B_\xi=\theta_\psi(\xi,\xi)\)</span> is bounded. The new coefficients then stabilize at that bounded coefficient once <span class="math" data-tex="\(n\ge\|B_\xi\|\)">\(n\ge\|B_\xi\|\)</span>.</p>
+<h2 id="energy-tests-on-every-hilbert-space-vector">Energy tests on every Hilbert-space vector</h2>
+<p>Define the zero-or-infinity function</p>
+<span class="math math-display" data-tex="\[
+\delta(t)=\begin{cases}0,&amp;t=0,\\+\infty,&amp;t&gt;0,
+\end{cases}
+\qquad t\in[0,\infty].
+\]">\[
+\delta(t)=\begin{cases}0,&amp;t=0,\\+\infty,&amp;t&gt;0,
+\end{cases}
+\qquad t\in[0,\infty].
+\]</span>
+<p>For a normal numerator <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, use the projection and coefficients associated with <span class="math" data-tex="\(\xi\)">\(\xi\)</span> to set</p>
+<span class="math math-display" data-tex="\[
+G_\varphi(\xi)=\sup_n\varphi(B_n)+\delta(\varphi(1-p_\xi)).
+\tag{SS.11}
+\]">\[
+G_\varphi(\xi)=\sup_n\varphi(B_n)+\delta(\varphi(1-p_\xi)).
+\tag{SS.11}
+\]</span>
+<p>The definition uses only bounded positive elements of <span class="math" data-tex="\(M\)">\(M\)</span> and ordinary weight values. In particular, no prior extension of a weight to a generalized positive cone is required.</p>
+<p><strong>Proposition.</strong> The function <span class="math" data-tex="\(G_\varphi\)">\(G_\varphi\)</span> is lower semicontinuous on all of <span class="math" data-tex="\(H\)">\(H\)</span>, and it agrees with <span class="math" data-tex="\(\varphi(\theta_\psi(\xi,\xi))\)">\(\varphi(\theta_\psi(\xi,\xi))\)</span> on <span class="math" data-tex="\(D_\psi\)">\(D_\psi\)</span>.</p>
+<p><strong>Proof for a bounded normal functional.</strong> Write <span class="math" data-tex="\(\omega=\sum_j\omega_{v_j}\)">\(\omega=\sum_j\omega_{v_j}\)</span> as in SC-02. For fixed <span class="math" data-tex="\(v\in H\)">\(v\in H\)</span>, the adjoint test and the Hilbert variational formula give</p>
+<span class="math math-display" data-tex="\[
+g_v(\xi):=
+\sup_{x\in\mathfrak n_\psi}
+\left(2\operatorname{Re}\langle v,x\xi\rangle
+-\|\Lambda_\psi(x)\|^2\right)
+=
+\begin{cases}
+\|T_\xi^*v\|^2,&amp;v\in D(T_\xi^*),\\
++\infty,&amp;v\notin D(T_\xi^*).
+\end{cases}
+\tag{SS.12}
+\]">\[
+g_v(\xi):=
+\sup_{x\in\mathfrak n_\psi}
+\left(2\operatorname{Re}\langle v,x\xi\rangle
+-\|\Lambda_\psi(x)\|^2\right)
+=
+\begin{cases}
+\|T_\xi^*v\|^2,&amp;v\in D(T_\xi^*),\\
++\infty,&amp;v\notin D(T_\xi^*).
+\end{cases}
+\tag{SS.12}
+\]</span>
+<p>For completeness, finiteness of the supremum bounds the functional <span class="math" data-tex="\(\Lambda_\psi(x)\mapsto\langle x\xi,v\rangle\)">\(\Lambda_\psi(x)\mapsto\langle x\xi,v\rangle\)</span>: optimize after multiplying <span class="math" data-tex="\(x\)">\(x\)</span> by a complex scalar to obtain its squared modulus bounded by the supremum times <span class="math" data-tex="\(\|\Lambda_\psi(x)\|^2\)">\(\|\Lambda_\psi(x)\|^2\)</span>. Extension and Riesz representation give exactly (SS.3). If the adjoint value exists, completing the square and using density of GNS vectors gives the displayed squared norm. Each test in the supremum is norm continuous in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, so <span class="math" data-tex="\(g_v\)">\(g_v\)</span> is lower semicontinuous.</p>
+<p>We claim</p>
+<span class="math math-display" data-tex="\[
+G_\omega(\xi)=\sum_j g_{v_j}(\xi).
+\tag{SS.13}
+\]">\[
+G_\omega(\xi)=\sum_j g_{v_j}(\xi).
+\tag{SS.13}
+\]</span>
+<p>If <span class="math" data-tex="\(\omega(1-p)&gt;0\)">\(\omega(1-p)&gt;0\)</span>, some <span class="math" data-tex="\(v_j\)">\(v_j\)</span> has a nonzero component outside <span class="math" data-tex="\(pH\)">\(pH\)</span>. That vector cannot belong to <span class="math" data-tex="\(D(T_\xi^*)\)">\(D(T_\xi^*)\)</span>, so both sides are infinite. Otherwise all <span class="math" data-tex="\(v_j\in pH\)">\(v_j\in pH\)</span>. Spectral monotone convergence and (SS.7) give</p>
+<span class="math math-display" data-tex="\[
+\sup_n\omega(B_n)
+=\sup_n\sum_j\|T_\xi^*P_nv_j\|^2
+=\sum_j\sup_n\|T_\xi^*P_nv_j\|^2
+=\sum_j g_{v_j}(\xi).
+\]">\[
+\sup_n\omega(B_n)
+=\sup_n\sum_j\|T_\xi^*P_nv_j\|^2
+=\sum_j\sup_n\|T_\xi^*P_nv_j\|^2
+=\sum_j g_{v_j}(\xi).
+\]</span>
+<p>The last equality includes vectors outside the square-root domain by the exact spectral integrability criterion. The interchange uses nonnegative increasing scalar quantities. This proves (SS.13), including representation independence, since its left side uses only <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. A sum of nonnegative lower semicontinuous functions is the supremum of its finite partial sums, hence is lower semicontinuous.</p>
+<p><strong>Passage to a normal weight.</strong> NW-11 implies</p>
+<span class="math math-display" data-tex="\[
+G_\varphi(\xi)=
+\sup_{\substack{\omega\in M_*^+\\\omega\le\varphi}}G_\omega(\xi).
+\tag{SS.14}
+\]">\[
+G_\varphi(\xi)=
+\sup_{\substack{\omega\in M_*^+\\\omega\le\varphi}}G_\omega(\xi).
+\tag{SS.14}
+\]</span>
+<p>If <span class="math" data-tex="\(\varphi(1-p)&gt;0\)">\(\varphi(1-p)&gt;0\)</span>, some dominated normal functional is positive there, making the right side infinite. If <span class="math" data-tex="\(\varphi(1-p)=0\)">\(\varphi(1-p)=0\)</span>, all those functionals vanish there, and (SS.14) follows by interchanging <span class="math" data-tex="\(\sup_n\)">\(\sup_n\)</span> with the dominated-functionals supremum at <span class="math" data-tex="\(B_n\)">\(B_n\)</span>. No directedness of that family is needed. Thus <span class="math" data-tex="\(G_\varphi\)">\(G_\varphi\)</span> is lower semicontinuous.</p>
+<p>Finally, on <span class="math" data-tex="\(D_\psi\)">\(D_\psi\)</span> we have <span class="math" data-tex="\(p=1\)">\(p=1\)</span> and eventual equality <span class="math" data-tex="\(B_n=\theta_\psi(\xi,\xi)\)">\(B_n=\theta_\psi(\xi,\xi)\)</span>, by SS-03. This proves agreement with the original energy. ∎</p>
+<h2 id="one-approximation-works-for-every-normal-weight"><span id="oa-mod-ss-05"></span><span id="OA-MOD-SS-05"></span>One approximation works for every normal weight</h2>
+<p><strong>Theorem.</strong> For every normal numerator <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and every <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span>,</p>
+<span class="math math-display" data-tex="\[
+Q_\varphi(\xi)=G_\varphi(\xi).
+\tag{SS.15}
+\]">\[
+Q_\varphi(\xi)=G_\varphi(\xi).
+\tag{SS.15}
+\]</span>
+<p>For a fixed <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, choose any sequence <span class="math" data-tex="\(\zeta_n\in D_\psi\)">\(\zeta_n\in D_\psi\)</span> with <span class="math" data-tex="\(\zeta_n\to\xi\)">\(\zeta_n\to\xi\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+\xi_n=P_n\xi+(1-p_\xi)\zeta_n.
+\tag{SS.16}
+\]">\[
+\xi_n=P_n\xi+(1-p_\xi)\zeta_n.
+\tag{SS.16}
+\]</span>
+<p>Then <span class="math" data-tex="\(\xi_n\in D_\psi\)">\(\xi_n\in D_\psi\)</span>, <span class="math" data-tex="\(\xi_n\to\xi\)">\(\xi_n\to\xi\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+Q_\varphi(\xi_n)\longrightarrow Q_\varphi(\xi)
+\tag{SS.17}
+\]">\[
+Q_\varphi(\xi_n)\longrightarrow Q_\varphi(\xi)
+\tag{SS.17}
+\]</span>
+<p>for every normal <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. Whenever <span class="math" data-tex="\(Q_\varphi(\xi)&lt;\infty\)">\(Q_\varphi(\xi)&lt;\infty\)</span>, every <span class="math" data-tex="\(\xi_n\in E_\varphi\)">\(\xi_n\in E_\varphi\)</span> and the convergence is in the <span class="math" data-tex="\(q_\varphi\)">\(q_\varphi\)</span>-form norm. The sequence depends only on <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the denominator and the chosen Hilbert approximation, not on the numerator.</p>
+<p><strong>Proof.</strong> First take <span class="math" data-tex="\(\xi\in V_\varphi\)">\(\xi\in V_\varphi\)</span>. Its SC core supplies <span class="math" data-tex="\(\eta_k\in E_\varphi\)">\(\eta_k\in E_\varphi\)</span> converging to it in form norm. SS-04 and agreement on bounded vectors give</p>
+<span class="math math-display" data-tex="\[
+G_\varphi(\xi)
+\le\liminf_k G_\varphi(\eta_k)
+=\lim_k q_\varphi[\eta_k]=q_\varphi[\xi].
+\tag{SS.18}
+\]">\[
+G_\varphi(\xi)
+\le\liminf_k G_\varphi(\eta_k)
+=\lim_k q_\varphi[\eta_k]=q_\varphi[\xi].
+\tag{SS.18}
+\]</span>
+<p>Thus the inequality <span class="math" data-tex="\(G_\varphi\le Q_\varphi\)">\(G_\varphi\le Q_\varphi\)</span> holds everywhere, with the assertion outside <span class="math" data-tex="\(V_\varphi\)">\(V_\varphi\)</span> automatic.</p>
+<p>Now assume <span class="math" data-tex="\(G_\varphi(\xi)=L&lt;\infty\)">\(G_\varphi(\xi)=L&lt;\infty\)</span>, and abbreviate <span class="math" data-tex="\(p=p_\xi\)">\(p=p_\xi\)</span>. Then <span class="math" data-tex="\(\varphi(1-p)=0\)">\(\varphi(1-p)=0\)</span>. Null compression gives</p>
+<span class="math math-display" data-tex="\[
+\varphi(a)=\varphi(pap)\qquad(a\in M_+).
+\tag{SS.19}
+\]">\[
+\varphi(a)=\varphi(pap)\qquad(a\in M_+).
+\tag{SS.19}
+\]</span>
+<p>Indeed, the largest null projection <span class="math" data-tex="\(f_\varphi\)">\(f_\varphi\)</span> dominates <span class="math" data-tex="\(1-p\)">\(1-p\)</span>, so <span class="math" data-tex="\(r=1-f_\varphi\le p\)">\(r=1-f_\varphi\le p\)</span>. WS-05 applied to <span class="math" data-tex="\(a\)">\(a\)</span> and to <span class="math" data-tex="\(pap\)">\(pap\)</span> gives the same value <span class="math" data-tex="\(\varphi(rar)\)">\(\varphi(rar)\)</span>, proving (SS.19) even when that value is infinite.</p>
+<p>Density of <span class="math" data-tex="\(D_\psi\)">\(D_\psi\)</span> supplies <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span>. SS-03 makes <span class="math" data-tex="\(P_n\xi\)">\(P_n\xi\)</span> bounded, and invariance under <span class="math" data-tex="\(M\)">\(M\)</span> makes <span class="math" data-tex="\((1-p)\zeta_n\)">\((1-p)\zeta_n\)</span> bounded. The sequence in (SS.16) is therefore bounded-vector valued and tends in <span class="math" data-tex="\(H\)">\(H\)</span> to <span class="math" data-tex="\(p\xi+(1-p)\xi=\xi\)">\(p\xi+(1-p)\xi=\xi\)</span>.</p>
+<p>Compressing its coefficient by <span class="math" data-tex="\(p\)">\(p\)</span> removes the complement term. Equations (SS.9)–(SS.10), together with (SS.19), yield</p>
+<span class="math math-display" data-tex="\[
+q_\varphi^0[\xi_n]=\varphi(B_n)&lt;\infty,
+\tag{SS.20}
+\]">\[
+q_\varphi^0[\xi_n]=\varphi(B_n)&lt;\infty,
+\tag{SS.20}
+\]</span>
+<p>and, when <span class="math" data-tex="\(n\ge m\)">\(n\ge m\)</span>,</p>
+<span class="math math-display" data-tex="\[
+q_\varphi^0[\xi_n-\xi_m]
+=\varphi(B_n-B_m)
+=\varphi(B_n)-\varphi(B_m).
+\tag{SS.21}
+\]">\[
+q_\varphi^0[\xi_n-\xi_m]
+=\varphi(B_n-B_m)
+=\varphi(B_n)-\varphi(B_m).
+\tag{SS.21}
+\]</span>
+<p>The last subtraction is between finite numbers; it follows from weight additivity on <span class="math" data-tex="\(B_n=B_m+(B_n-B_m)\)">\(B_n=B_m+(B_n-B_m)\)</span>. The increasing numbers <span class="math" data-tex="\(\varphi(B_n)\)">\(\varphi(B_n)\)</span> have finite limit <span class="math" data-tex="\(L\)">\(L\)</span>. Consequently (SS.21) tends to zero as <span class="math" data-tex="\(n,m\to\infty\)">\(n,m\to\infty\)</span>. The sequence is Cauchy in the initial form norm. SC's canonical completion puts its Hilbert limit <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in <span class="math" data-tex="\(V_\varphi\)">\(V_\varphi\)</span>, with form-norm convergence and
+<span class="math" data-tex="\(q_\varphi[\xi]=\lim_n\varphi(B_n)=G_\varphi(\xi)\)">\(q_\varphi[\xi]=\lim_n\varphi(B_n)=G_\varphi(\xi)\)</span>.
+Together with (SS.18), this proves (SS.15).</p>
+<p>The same construction was independent of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, so it gives the finite-energy claim simultaneously for every normal numerator. If instead <span class="math" data-tex="\(Q_\varphi(\xi)=\infty\)">\(Q_\varphi(\xi)=\infty\)</span>, lower semicontinuity of the SC extended form gives <span class="math" data-tex="\(\liminf_n Q_\varphi(\xi_n)=\infty\)">\(\liminf_n Q_\varphi(\xi_n)=\infty\)</span>; this is exactly convergence to infinity in (SS.17). ∎</p>
+<p>For finite energy, the scalar energies of this particular approximation increase to the limit by (SS.20). We do not assert an order on the vectors <span class="math" data-tex="\(\xi_n\)">\(\xi_n\)</span>, or monotonicity of every energy sequence when the limiting energy is infinite.</p>
+<h2 id="sums-of-normal-weights-with-arbitrary-index-sets">Sums of normal weights with arbitrary index sets</h2>
+<p>Let <span class="math" data-tex="\((\varphi_i)_{i\in I}\)">\((\varphi_i)_{i\in I}\)</span> be any family of normal weights on <span class="math" data-tex="\(M\)">\(M\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\varphi(a)=\sum_{i\in I}\varphi_i(a)
+:=\sup_{F\subseteq I,\ F\text{ finite}}
+\sum_{i\in F}\varphi_i(a),\qquad a\in M_+.
+\tag{SS.22}
+\]">\[
+\varphi(a)=\sum_{i\in I}\varphi_i(a)
+:=\sup_{F\subseteq I,\ F\text{ finite}}
+\sum_{i\in F}\varphi_i(a),\qquad a\in M_+.
+\tag{SS.22}
+\]</span>
+<p>The empty sum is zero, and all scalar sums have nonnegative extended values.</p>
+<p><strong>Proposition.</strong> The function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is a normal weight. No boundedness or summability hypothesis on the family is required. Its largest null projection is</p>
+<span class="math math-display" data-tex="\[
+f_\varphi=\bigwedge_{i\in I}f_{\varphi_i}.
+\tag{SS.23}
+\]">\[
+f_\varphi=\bigwedge_{i\in I}f_{\varphi_i}.
+\tag{SS.23}
+\]</span>
+<p>For an empty family this meet is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Proof.</strong> For two nonnegative scalar families <span class="math" data-tex="\((a_i),(b_i)\)">\((a_i),(b_i)\)</span>, finite subsums show
+<span class="math" data-tex="\(\sum_i(a_i+b_i)=\sum_i a_i+\sum_i b_i\)">\(\sum_i(a_i+b_i)=\sum_i a_i+\sum_i b_i\)</span>.
+For the nontrivial lower inequality, choose any two finite subsets for the separate sums and pass to their union. Suprema over those subsets give the result, including infinity. Applying this to <span class="math" data-tex="\(a_i=\varphi_i(a)\)">\(a_i=\varphi_i(a)\)</span>, <span class="math" data-tex="\(b_i=\varphi_i(b)\)">\(b_i=\varphi_i(b)\)</span> proves additivity. Positive homogeneity for positive scalars follows by rescaling each finite subsum; the zero scalar is handled by the weight convention <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>.</p>
+<p>If <span class="math" data-tex="\(a_\alpha\uparrow a\)">\(a_\alpha\uparrow a\)</span> is bounded in <span class="math" data-tex="\(M_+\)">\(M_+\)</span>, then for each finite <span class="math" data-tex="\(F\)">\(F\)</span>, directedness of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{i\in F}\varphi_i(a)
+=\sum_{i\in F}\sup_\alpha\varphi_i(a_\alpha)
+=\sup_\alpha\sum_{i\in F}\varphi_i(a_\alpha).
+\]">\[
+\sum_{i\in F}\varphi_i(a)
+=\sum_{i\in F}\sup_\alpha\varphi_i(a_\alpha)
+=\sup_\alpha\sum_{i\in F}\varphi_i(a_\alpha).
+\]</span>
+<p>To verify the last equality when some limit is infinite, require that term to exceed any prescribed finite bound; when all are finite, approximate each within a chosen positive tolerance and use one common upper index. Interchanging <span class="math" data-tex="\(\sup_F\)">\(\sup_F\)</span> and <span class="math" data-tex="\(\sup_\alpha\)">\(\sup_\alpha\)</span> proves normality of (SS.22).</p>
+<p>A projection has zero <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-weight exactly when every <span class="math" data-tex="\(\varphi_i\)">\(\varphi_i\)</span> vanishes on it, equivalently when it lies below every <span class="math" data-tex="\(f_{\varphi_i}\)">\(f_{\varphi_i}\)</span>. The projection onto the intersection of these ranges belongs to <span class="math" data-tex="\(M\)">\(M\)</span>, since that intersection reduces <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, and is their meet. This proves (SS.23). ∎</p>
+<p>Semifiniteness does not follow merely because all the summands are semifinite. The finite-total-energy condition in the next theorem is necessary.</p>
+<h2 id="the-full-spatial-sum-theorem-and-its-joint-core"><span id="oa-mod-ss-07"></span><span id="OA-MOD-SS-07"></span>The full spatial sum theorem and its joint core</h2>
+<p><strong>Theorem.</strong> With the common denominator <span class="math" data-tex="\(\psi\)">\(\psi\)</span> and the sum weight (SS.22),</p>
+<span class="math math-display" data-tex="\[
+Q_\varphi(\xi)=\sum_{i\in I}Q_{\varphi_i}(\xi)
+\qquad(\xi\in H).
+\tag{SS.24}
+\]">\[
+Q_\varphi(\xi)=\sum_{i\in I}Q_{\varphi_i}(\xi)
+\qquad(\xi\in H).
+\tag{SS.24}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+V_\varphi=
+\left\{\xi\in\bigcap_{i\in I}V_{\varphi_i}:
+\sum_{i\in I}q_{\varphi_i}[\xi]&lt;\infty\right\},
+\tag{SS.25}
+\]">\[
+V_\varphi=
+\left\{\xi\in\bigcap_{i\in I}V_{\varphi_i}:
+\sum_{i\in I}q_{\varphi_i}[\xi]&lt;\infty\right\},
+\tag{SS.25}
+\]</span>
+<p>and on that domain</p>
+<span class="math math-display" data-tex="\[
+q_\varphi(\xi,\eta)=\sum_{i\in I}q_{\varphi_i}(\xi,\eta).
+\tag{SS.26}
+\]">\[
+q_\varphi(\xi,\eta)=\sum_{i\in I}q_{\varphi_i}(\xi,\eta).
+\tag{SS.26}
+\]</span>
+<p>The series in (SS.26) is absolutely summable. Its domain with this form is closed, even if its Hilbert closure is proper. The bounded-vector intersection <span class="math" data-tex="\(D_\psi\cap V_\varphi\)">\(D_\psi\cap V_\varphi\)</span> is a form core for this complete sum. For finite families the domain is simply the intersection of the individual form domains.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, and use its common <span class="math" data-tex="\(p_\xi,B_n\)">\(p_\xi,B_n\)</span>. If some <span class="math" data-tex="\(\varphi_i(1-p_\xi)&gt;0\)">\(\varphi_i(1-p_\xi)&gt;0\)</span>, both sides of (SS.24) are infinite by SS-05. Otherwise all these values vanish, and so does their sum. In this case</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q_\varphi(\xi)
+&amp;=\sup_n\sum_{i\in I}\varphi_i(B_n)\\
+&amp;=\sum_{i\in I}\sup_n\varphi_i(B_n)
+=\sum_{i\in I}Q_{\varphi_i}(\xi).
+\end{aligned}
+\]">\[
+\begin{aligned}
+Q_\varphi(\xi)
+&amp;=\sup_n\sum_{i\in I}\varphi_i(B_n)\\
+&amp;=\sum_{i\in I}\sup_n\varphi_i(B_n)
+=\sum_{i\in I}Q_{\varphi_i}(\xi).
+\end{aligned}
+\]</span>
+<p>The middle interchange follows by first taking finite subsets of <span class="math" data-tex="\(I\)">\(I\)</span>, then using the increasing scalar sequence in <span class="math" data-tex="\(n\)">\(n\)</span> for each finite subset, and finally interchanging suprema. This proves (SS.24) in every extended-value case, including an empty family.</p>
+<p>Finiteness of the two sides gives (SS.25). For <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span> in that domain, form Cauchy–Schwarz and scalar Cauchy–Schwarz for finite subsums give</p>
+<span class="math math-display" data-tex="\[
+\sum_i|q_{\varphi_i}(\xi,\eta)|
+\le\left(\sum_i q_{\varphi_i}[\xi]\right)^{1/2}
+\left(\sum_i q_{\varphi_i}[\eta]\right)^{1/2}&lt;\infty.
+\]">\[
+\sum_i|q_{\varphi_i}(\xi,\eta)|
+\le\left(\sum_i q_{\varphi_i}[\xi]\right)^{1/2}
+\left(\sum_i q_{\varphi_i}[\eta]\right)^{1/2}&lt;\infty.
+\]</span>
+<p>Thus their sum is a sesquilinear form with the diagonal in (SS.24); polarization identifies it with <span class="math" data-tex="\(q_\varphi\)">\(q_\varphi\)</span>. It is closed because the identified SC form is closed. SC-07 already makes its bounded-vector intersection a core. More concretely, SS-05 applied to the single normal weight <span class="math" data-tex="\(\varphi=\sum_i\varphi_i\)">\(\varphi=\sum_i\varphi_i\)</span> makes (SS.16) converge in the total form norm for every vector in (SS.25). This is the required joint approximation. ∎</p>
+<p>When the sum weight is semifinite, the theorem identifies its spatial derivative with the self-adjoint operator representing the sum form. The notation</p>
+<span class="math math-display" data-tex="\[
+\frac{d(\varphi_1+\varphi_2)}{d\psi}
+=\frac{d\varphi_1}{d\psi}
+\mathbin{\dot+}\frac{d\varphi_2}{d\psi}
+\]">\[
+\frac{d(\varphi_1+\varphi_2)}{d\psi}
+=\frac{d\varphi_1}{d\psi}
+\mathbin{\dot+}\frac{d\varphi_2}{d\psi}
+\]</span>
+<p>means that form sum, with form domain <span class="math" data-tex="\(V_{\varphi_1}\cap V_{\varphi_2}\)">\(V_{\varphi_1}\cap V_{\varphi_2}\)</span>. It does not assert equality with an algebraic operator sum on <span class="math" data-tex="\(D(A_1)\cap D(A_2)\)">\(D(A_1)\cap D(A_2)\)</span>. For a nonsemifinite sum, the represented operator lives on <span class="math" data-tex="\(e_\varphi H\)">\(e_\varphi H\)</span> as in SC-09. Formula (SS.24), rather than an untyped operator sum on all of <span class="math" data-tex="\(H\)">\(H\)</span>, remains valid without a density assumption.</p>
+<h2 id="scalar-multiples-and-pointwise-suprema"><span id="oa-mod-ss-08"></span><span id="OA-MOD-SS-08"></span>Scalar multiples and pointwise suprema</h2>
+<p>For <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, the spectral formula immediately gives</p>
+<span class="math math-display" data-tex="\[
+Q_{c\varphi}=cQ_\varphi,
+\qquad V_{c\varphi}=V_\varphi,
+\qquad A_{c\varphi}=cA_\varphi
+\text{ on }e_\varphi H.
+\tag{SS.27}
+\]">\[
+Q_{c\varphi}=cQ_\varphi,
+\qquad V_{c\varphi}=V_\varphi,
+\qquad A_{c\varphi}=cA_\varphi
+\text{ on }e_\varphi H.
+\tag{SS.27}
+\]</span>
+<p>The zero scalar is different at the domain level: <span class="math" data-tex="\(0\varphi\)">\(0\varphi\)</span> is the zero weight, its form is zero on all of <span class="math" data-tex="\(H\)">\(H\)</span>, and its representing operator is the everywhere-defined zero operator. Multiplying the values of a form by zero while retaining a proper old domain would not give this result.</p>
+<p><strong>Supremum principle.</strong> Suppose a family of normal weights <span class="math" data-tex="\((\chi_j)\)">\((\chi_j)\)</span> has a pointwise supremum on <span class="math" data-tex="\(M_+\)">\(M_+\)</span> which is itself a normal weight <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Then, without requiring the family to be directed,</p>
+<span class="math math-display" data-tex="\[
+Q_\chi(\xi)=\sup_j Q_{\chi_j}(\xi)
+\qquad(\xi\in H).
+\tag{SS.28}
+\]">\[
+Q_\chi(\xi)=\sup_j Q_{\chi_j}(\xi)
+\qquad(\xi\in H).
+\tag{SS.28}
+\]</span>
+<p>For an empty family interpret both suprema as zero.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. If <span class="math" data-tex="\(\chi(1-p_\xi)&gt;0\)">\(\chi(1-p_\xi)&gt;0\)</span>, some family member has positive value there; both sides of (SS.28) are infinite. Otherwise they all vanish there. The assertion then follows from</p>
+<span class="math math-display" data-tex="\[
+\sup_n\chi(B_n)=\sup_n\sup_j\chi_j(B_n)
+=\sup_j\sup_n\chi_j(B_n)
+\]">\[
+\sup_n\chi(B_n)=\sup_n\sup_j\chi_j(B_n)
+=\sup_j\sup_n\chi_j(B_n)
+\]</span>
+<p>and SS-05. ∎</p>
+<p>The premise that the pointwise supremum is a weight matters. An arbitrary supremum of additive positive functions need not be additive. The next case verifies that premise, rather than assuming it.</p>
+<h2 id="increasing-weights-finite-energy-and-resolvents"><span id="oa-mod-ss-09"></span><span id="OA-MOD-SS-09"></span>Increasing weights, finite energy and resolvents</h2>
+<p>Let <span class="math" data-tex="\((\varphi_i)_{i\in I}\)">\((\varphi_i)_{i\in I}\)</span> be an increasing net of normal weights, where <span class="math" data-tex="\(I\)">\(I\)</span> is an arbitrary nonempty directed set. Define <span class="math" data-tex="\(\varphi(a)=\sup_i\varphi_i(a)\)">\(\varphi(a)=\sup_i\varphi_i(a)\)</span> for <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>.</p>
+<p><strong>Theorem.</strong> The function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is a normal weight and</p>
+<span class="math math-display" data-tex="\[
+Q_\varphi=\sup_i Q_{\varphi_i},\qquad
+V_\varphi=
+\left\{\xi\in\bigcap_iV_{\varphi_i}:
+\sup_i q_{\varphi_i}[\xi]&lt;\infty\right\}.
+\tag{SS.29}
+\]">\[
+Q_\varphi=\sup_i Q_{\varphi_i},\qquad
+V_\varphi=
+\left\{\xi\in\bigcap_iV_{\varphi_i}:
+\sup_i q_{\varphi_i}[\xi]&lt;\infty\right\}.
+\tag{SS.29}
+\]</span>
+<p><strong>Proof.</strong> Directedness gives
+<span class="math" data-tex="\(\sup_i(\varphi_i(a)+\varphi_i(b))=\sup_i\varphi_i(a)+\sup_i\varphi_i(b)\)">\(\sup_i(\varphi_i(a)+\varphi_i(b))=\sup_i\varphi_i(a)+\sup_i\varphi_i(b)\)</span>: approximate the two separate suprema and choose a common upper index, including the cases with infinity. This proves additivity; homogeneity is immediate with the zero-scalar convention. For a bounded increasing positive net <span class="math" data-tex="\(a_\alpha\uparrow a\)">\(a_\alpha\uparrow a\)</span>, normality follows by commuting the two suprema <span class="math" data-tex="\(\sup_i\sup_\alpha\varphi_i(a_\alpha)\)">\(\sup_i\sup_\alpha\varphi_i(a_\alpha)\)</span>. The supremum principle proves the first identity in (SS.29), and its finite values give the second. ∎</p>
+<p><strong>Resolvent consequence.</strong> Suppose each <span class="math" data-tex="\(\varphi_i\)">\(\varphi_i\)</span> is semifinite, so its derivative <span class="math" data-tex="\(A_i\)">\(A_i\)</span> is self-adjoint on <span class="math" data-tex="\(H\)">\(H\)</span>. Let <span class="math" data-tex="\(K=e_\varphi H\)">\(K=e_\varphi H\)</span>, and let <span class="math" data-tex="\(A_K\)">\(A_K\)</span> represent the limit form there. For every <span class="math" data-tex="\(z\in\mathbb C\setminus[0,\infty)\)">\(z\in\mathbb C\setminus[0,\infty)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(A_i-zI)^{-1}\longrightarrow(A_K-zI_K)^{-1}P_K
+\quad\text{strongly on }H.
+\tag{SS.30}
+\]">\[
+(A_i-zI)^{-1}\longrightarrow(A_K-zI_K)^{-1}P_K
+\quad\text{strongly on }H.
+\tag{SS.30}
+\]</span>
+<p>Indeed SC-10 orders the forms, (SS.29) identifies their exact finite-energy supremum, and QF-07 applies to precisely that domain. If <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is semifinite, then <span class="math" data-tex="\(K=H\)">\(K=H\)</span> and this is strong resolvent convergence to its spatial derivative. If <span class="math" data-tex="\(K\ne H\)">\(K\ne H\)</span>, the right side is a generalized resolvent, not a resolvent of a densely defined operator on all of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>If <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is semifinite and one <span class="math" data-tex="\(\varphi_{i_0}\)">\(\varphi_{i_0}\)</span> is faithful, then SC-09 makes <span class="math" data-tex="\(A_{i_0}\)">\(A_{i_0}\)</span> injective, and QF-08 gives, on the tail <span class="math" data-tex="\(i\ge i_0\)">\(i\ge i_0\)</span>, strong resolvent convergence of <span class="math" data-tex="\(\log A_i\)">\(\log A_i\)</span> to <span class="math" data-tex="\(\log A\)">\(\log A\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\sup_{|t|\le T}\|A_i^{it}\xi-A^{it}\xi\|\longrightarrow0
+\qquad(\xi\in H,\ 0\le T&lt;\infty).
+\tag{SS.31}
+\]">\[
+\sup_{|t|\le T}\|A_i^{it}\xi-A^{it}\xi\|\longrightarrow0
+\qquad(\xi\in H,\ 0\le T&lt;\infty).
+\tag{SS.31}
+\]</span>
+<p>These are statements about the spatial operators and their spectral powers. Identifying their conjugations with modular automorphisms remains a separate theorem; (SS.31) does not by itself claim convergence in an automorphism-group topology.</p>
+<h2 id="any-bounded-change-of-the-numerator"><span id="oa-mod-ss-10"></span><span id="OA-MOD-SS-10"></span>Any bounded change of the numerator</h2>
+<p>Let <span class="math" data-tex="\(b\in M\)">\(b\in M\)</span>, without assuming invertibility, and set</p>
+<span class="math math-display" data-tex="\[
+\varphi_b(a)=\varphi(b^*ab),\qquad a\in M_+.
+\tag{SS.32}
+\]">\[
+\varphi_b(a)=\varphi(b^*ab),\qquad a\in M_+.
+\tag{SS.32}
+\]</span>
+<p>Conjugation preserves positive addition and bounded increasing positive suprema, so this is a normal weight.</p>
+<p><strong>Theorem.</strong> On all of <span class="math" data-tex="\(H\)">\(H\)</span>,</p>
+<span class="math math-display" data-tex="\[
+Q_{\varphi_b}(\xi)=Q_\varphi(b^*\xi),
+\qquad
+V_{\varphi_b}=\{\xi:b^*\xi\in V_\varphi\}.
+\tag{SS.33}
+\]">\[
+Q_{\varphi_b}(\xi)=Q_\varphi(b^*\xi),
+\qquad
+V_{\varphi_b}=\{\xi:b^*\xi\in V_\varphi\}.
+\tag{SS.33}
+\]</span>
+<p>On its finite domain the sesquilinear form is
+<span class="math" data-tex="\(q_{\varphi_b}(\xi,\eta)=q_\varphi(b^*\xi,b^*\eta)\)">\(q_{\varphi_b}(\xi,\eta)=q_\varphi(b^*\xi,b^*\eta)\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\omega=\sum_j\omega_{v_j}\)">\(\omega=\sum_j\omega_{v_j}\)</span> is bounded and normal, then <span class="math" data-tex="\(\omega_b=\sum_j\omega_{bv_j}\)">\(\omega_b=\sum_j\omega_{bv_j}\)</span>. The variational tests satisfy</p>
+<span class="math math-display" data-tex="\[
+g_{bv}(\xi)=g_v(b^*\xi),
+\]">\[
+g_{bv}(\xi)=g_v(b^*\xi),
+\]</span>
+<p>because <span class="math" data-tex="\(\langle bv,x\xi\rangle=\langle v,b^*x\xi\rangle=\langle v,xb^*\xi\rangle\)">\(\langle bv,x\xi\rangle=\langle v,b^*x\xi\rangle=\langle v,xb^*\xi\rangle\)</span> for every <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>. Equations (SS.13) and (SS.15) therefore give <span class="math" data-tex="\(Q_{\omega_b}(\xi)=Q_\omega(b^*\xi)\)">\(Q_{\omega_b}(\xi)=Q_\omega(b^*\xi)\)</span>.</p>
+<p>For a general normal weight, NW-11 gives the pointwise identity</p>
+<span class="math math-display" data-tex="\[
+\varphi_b=\sup_{\substack{\omega\in M_*^+\\\omega\le\varphi}}\omega_b
+\quad\text{on }M_+.
+\]">\[
+\varphi_b=\sup_{\substack{\omega\in M_*^+\\\omega\le\varphi}}\omega_b
+\quad\text{on }M_+.
+\]</span>
+<p>Its supremum is the already verified normal weight <span class="math" data-tex="\(\varphi_b\)">\(\varphi_b\)</span>, so (SS.28) applies even though the family need not be directed. Together with (SS.14)–(SS.15), it gives</p>
+<span class="math math-display" data-tex="\[
+Q_{\varphi_b}(\xi)
+=\sup_{\omega\le\varphi}Q_{\omega_b}(\xi)
+=\sup_{\omega\le\varphi}Q_\omega(b^*\xi)
+=Q_\varphi(b^*\xi).
+\]">\[
+Q_{\varphi_b}(\xi)
+=\sup_{\omega\le\varphi}Q_{\omega_b}(\xi)
+=\sup_{\omega\le\varphi}Q_\omega(b^*\xi)
+=Q_\varphi(b^*\xi).
+\]</span>
+<p>The finite domain follows; polarization gives the sesquilinear identity. ∎</p>
+<p>For a singular <span class="math" data-tex="\(b\)">\(b\)</span>, neither semifiniteness of <span class="math" data-tex="\(\varphi_b\)">\(\varphi_b\)</span> nor a literal operator-product formula follows. Its Hilbert space is the closure of <span class="math" data-tex="\(\{\xi:b^*\xi\in V_\varphi\}\)">\(\{\xi:b^*\xi\in V_\varphi\}\)</span>, which need not equal the preimage of <span class="math" data-tex="\(\overline{V_\varphi}\)">\(\overline{V_\varphi}\)</span>. The examples below exhibit both failures. When <span class="math" data-tex="\(b\)">\(b\)</span> is invertible and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is semifinite, SC-11 gives the stronger operator statement <span class="math" data-tex="\(A_{\varphi_b}=bA_\varphi b^*\)">\(A_{\varphi_b}=bA_\varphi b^*\)</span> on the exact domain <span class="math" data-tex="\((b^*)^{-1}D(A_\varphi)\)">\((b^*)^{-1}D(A_\varphi)\)</span>.</p>
+<h2 id="bounded-invertible-change-of-the-denominator">Bounded invertible change of the denominator</h2>
+<p>Now let <span class="math" data-tex="\(b\in N=M&#x27;\)">\(b\in N=M&#x27;\)</span> be bounded and invertible, and define</p>
+<span class="math math-display" data-tex="\[
+\psi_b(x)=\psi(b^*xb),\qquad x\in N_+.
+\tag{SS.34}
+\]">\[
+\psi_b(x)=\psi(b^*xb),\qquad x\in N_+.
+\tag{SS.34}
+\]</span>
+<p><strong>Theorem.</strong> The weight <span class="math" data-tex="\(\psi_b\)">\(\psi_b\)</span> is normal, semifinite and faithful. There is a unitary</p>
+<span class="math math-display" data-tex="\[
+U_b:H_{\psi_b}\to H_\psi,
+\qquad U_b\Lambda_{\psi_b}(x)=\Lambda_\psi(xb),
+\tag{SS.35}
+\]">\[
+U_b:H_{\psi_b}\to H_\psi,
+\qquad U_b\Lambda_{\psi_b}(x)=\Lambda_\psi(xb),
+\tag{SS.35}
+\]</span>
+<p>and the following are exact identities:</p>
+<span class="math math-display" data-tex="\[
+D_{\psi_b}=bD_\psi,
+\qquad R_{\psi_b}(\xi)=R_\psi(b^{-1}\xi)U_b,
+\tag{SS.36}
+\]">\[
+D_{\psi_b}=bD_\psi,
+\qquad R_{\psi_b}(\xi)=R_\psi(b^{-1}\xi)U_b,
+\tag{SS.36}
+\]</span>
+<span class="math math-display" data-tex="\[
+Q_\varphi^{\psi_b}(\xi)=Q_\varphi^\psi(b^{-1}\xi),
+\qquad V_\varphi^{\psi_b}=bV_\varphi^\psi.
+\tag{SS.37}
+\]">\[
+Q_\varphi^{\psi_b}(\xi)=Q_\varphi^\psi(b^{-1}\xi),
+\qquad V_\varphi^{\psi_b}=bV_\varphi^\psi.
+\tag{SS.37}
+\]</span>
+<p>For any normal numerator, both represented operators act on <span class="math" data-tex="\(K=e_\varphi H\)">\(K=e_\varphi H\)</span>, and on that Hilbert space</p>
+<span class="math math-display" data-tex="\[
+A_\varphi^{\psi_b}=b^{-*}A_\varphi^\psi b^{-1},
+\qquad D(A_\varphi^{\psi_b})=bD(A_\varphi^\psi),
+\tag{SS.38}
+\]">\[
+A_\varphi^{\psi_b}=b^{-*}A_\varphi^\psi b^{-1},
+\qquad D(A_\varphi^{\psi_b})=bD(A_\varphi^\psi),
+\tag{SS.38}
+\]</span>
+<p>where <span class="math" data-tex="\(b^{-*}=(b^{-1})^*\)">\(b^{-*}=(b^{-1})^*\)</span>, and all bounded maps are restricted to <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Proof.</strong> Normality follows from the same positive-supremum argument as for (SS.32). If <span class="math" data-tex="\(\psi_b(x)=0\)">\(\psi_b(x)=0\)</span>, faithfulness of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> gives <span class="math" data-tex="\(b^*xb=0\)">\(b^*xb=0\)</span>, hence <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. To check semifiniteness directly, for every finite positive <span class="math" data-tex="\(a\)">\(a\)</span> of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, the positive element <span class="math" data-tex="\(b^{-*}ab^{-1}\)">\(b^{-*}ab^{-1}\)</span> is finite for <span class="math" data-tex="\(\psi_b\)">\(\psi_b\)</span>. Its support range is the closure of <span class="math" data-tex="\(b^{-*}\operatorname{ran}a^{1/2}\)">\(b^{-*}\operatorname{ran}a^{1/2}\)</span>. Since these original ranges span the representation Hilbert space by semifiniteness and <span class="math" data-tex="\(b^{-*}\)">\(b^{-*}\)</span> is invertible, the transformed ranges also span it. WS-02 applied on <span class="math" data-tex="\(N\)">\(N\)</span> gives finite-domain projection one, proving semifiniteness.</p>
+<p>The finite left ideals satisfy <span class="math" data-tex="\(\mathfrak n_{\psi_b}=\mathfrak n_\psi b^{-1}\)">\(\mathfrak n_{\psi_b}=\mathfrak n_\psi b^{-1}\)</span>. Their GNS norms obey <span class="math" data-tex="\(\|\Lambda_{\psi_b}(x)\|^2=\psi((xb)^*(xb))\)">\(\|\Lambda_{\psi_b}(x)\|^2=\psi((xb)^*(xb))\)</span>. Right multiplication by <span class="math" data-tex="\(b\)">\(b\)</span> bijects these domains, so (SS.35) extends to an onto isometry. In the bounded-vector estimate, substitute <span class="math" data-tex="\(y=xb\)">\(y=xb\)</span>. Then <span class="math" data-tex="\(x\xi=y b^{-1}\xi\)">\(x\xi=y b^{-1}\xi\)</span>, proving the equality of bounded-vector sets. Evaluation on the dense GNS domain gives the operator formula in (SS.36), and unitarity of <span class="math" data-tex="\(U_b\)">\(U_b\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\theta_{\psi_b}(\xi,\xi)
+=\theta_\psi(b^{-1}\xi,b^{-1}\xi).
+\]">\[
+\theta_{\psi_b}(\xi,\xi)
+=\theta_\psi(b^{-1}\xi,b^{-1}\xi).
+\]</span>
+<p>The corresponding initial finite domains and energies thus transform by <span class="math" data-tex="\(b^{-1}\)">\(b^{-1}\)</span>. Bounded invertibility makes the original and transformed graph norms equivalent. Their canonical closures therefore satisfy (SS.37), exactly as in the completion proof of SC-11.</p>
+<p>Because <span class="math" data-tex="\(b\in M&#x27;\)">\(b\in M&#x27;\)</span>, it commutes with <span class="math" data-tex="\(e_\varphi\)">\(e_\varphi\)</span> and preserves <span class="math" data-tex="\(K\)">\(K\)</span>, as do its adjoint and inverse. Put <span class="math" data-tex="\(C=b^{-1}|_K\)">\(C=b^{-1}|_K\)</span>. This is an invertible bounded map of <span class="math" data-tex="\(K\)">\(K\)</span>. The transformed form is <span class="math" data-tex="\(q_\varphi^\psi(C\xi,C\eta)\)">\(q_\varphi^\psi(C\xi,C\eta)\)</span>. By the graph characterization of a represented form, its operator is <span class="math" data-tex="\(C^*A_\varphi^\psi C\)">\(C^*A_\varphi^\psi C\)</span> on <span class="math" data-tex="\(C^{-1}D(A_\varphi^\psi)\)">\(C^{-1}D(A_\varphi^\psi)\)</span>: substitution <span class="math" data-tex="\(\zeta=C\eta\)">\(\zeta=C\eta\)</span> in the representing-vector identity proves both the domain and the value. This is precisely (SS.38). ∎</p>
+<p>For <span class="math" data-tex="\(b=\sqrt c\,1\)">\(b=\sqrt c\,1\)</span>, <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, these formulas give</p>
+<span class="math math-display" data-tex="\[
+Q_\varphi^{c\psi}=c^{-1}Q_\varphi^\psi,
+\qquad A_\varphi^{c\psi}=c^{-1}A_\varphi^\psi
+\tag{SS.39}
+\]">\[
+Q_\varphi^{c\psi}=c^{-1}Q_\varphi^\psi,
+\qquad A_\varphi^{c\psi}=c^{-1}A_\varphi^\psi
+\tag{SS.39}
+\]</span>
+<p>with unchanged domains. If <span class="math" data-tex="\(b=u\)">\(b=u\)</span> is unitary in <span class="math" data-tex="\(N\)">\(N\)</span>, the operator formula becomes <span class="math" data-tex="\(A_\varphi^{\psi_u}=uA_\varphi^\psi u^*\)">\(A_\varphi^{\psi_u}=uA_\varphi^\psi u^*\)</span>. These are fixed bounded changes of the denominator; no time-dependent cocycle is being constructed.</p>
+<h2 id="ordering-the-denominator-reverses-energy-order">Ordering the denominator reverses energy order</h2>
+<p>Let <span class="math" data-tex="\(\psi_1,\psi_2\)">\(\psi_1,\psi_2\)</span> be normal semifinite faithful weights on <span class="math" data-tex="\(N\)">\(N\)</span>, with <span class="math" data-tex="\(\psi_1\le\psi_2\)">\(\psi_1\le\psi_2\)</span>.</p>
+<p><strong>Proposition.</strong> For any normal numerator <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+q_\varphi^{\psi_2}\le q_\varphi^{\psi_1}
+\quad\text{as closed forms},
+\tag{SS.40}
+\]">\[
+q_\varphi^{\psi_2}\le q_\varphi^{\psi_1}
+\quad\text{as closed forms},
+\tag{SS.40}
+\]</span>
+<p>so <span class="math" data-tex="\(V_\varphi^{\psi_1}\subseteq V_\varphi^{\psi_2}\)">\(V_\varphi^{\psi_1}\subseteq V_\varphi^{\psi_2}\)</span> and the energy for <span class="math" data-tex="\(\psi_2\)">\(\psi_2\)</span> is no larger on that domain.</p>
+<p><strong>Proof.</strong> The estimate defining a <span class="math" data-tex="\(\psi_1\)">\(\psi_1\)</span>-bounded vector also proves it <span class="math" data-tex="\(\psi_2\)">\(\psi_2\)</span>-bounded, since <span class="math" data-tex="\(\mathfrak n_{\psi_2}\subseteq\mathfrak n_{\psi_1}\)">\(\mathfrak n_{\psi_2}\subseteq\mathfrak n_{\psi_1}\)</span> and <span class="math" data-tex="\(\psi_1(x^*x)\le\psi_2(x^*x)\)">\(\psi_1(x^*x)\le\psi_2(x^*x)\)</span>. DW-04 supplies a contraction</p>
+<span class="math math-display" data-tex="\[
+C:H_{\psi_2}\to H_{\psi_1},
+\qquad C\Lambda_{\psi_2}(x)=\Lambda_{\psi_1}(x)
+\quad(x\in\mathfrak n_{\psi_2}).
+\]">\[
+C:H_{\psi_2}\to H_{\psi_1},
+\qquad C\Lambda_{\psi_2}(x)=\Lambda_{\psi_1}(x)
+\quad(x\in\mathfrak n_{\psi_2}).
+\]</span>
+<p>On <span class="math" data-tex="\(D_{\psi_1}\)">\(D_{\psi_1}\)</span>, the dense-domain identities give <span class="math" data-tex="\(R_{\psi_2}(\xi)=R_{\psi_1}(\xi)C\)">\(R_{\psi_2}(\xi)=R_{\psi_1}(\xi)C\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\theta_{\psi_2}(\xi,\xi)
+=R_{\psi_1}(\xi)CC^*R_{\psi_1}(\xi)^*
+\le\theta_{\psi_1}(\xi,\xi).
+\]">\[
+\theta_{\psi_2}(\xi,\xi)
+=R_{\psi_1}(\xi)CC^*R_{\psi_1}(\xi)^*
+\le\theta_{\psi_1}(\xi,\xi).
+\]</span>
+<p>Applying the weight gives inclusion of the initial finite domains and the same energy inequality there. Approximate a vector in <span class="math" data-tex="\(V_\varphi^{\psi_1}\)">\(V_\varphi^{\psi_1}\)</span> in its initial form core. The inequality on differences makes the sequence Cauchy for the closed <span class="math" data-tex="\(\psi_2\)">\(\psi_2\)</span>-form norm. Completeness and agreement of Hilbert limits give domain inclusion and the energy inequality after taking limits, proving (SS.40). ∎</p>
+<p>If <span class="math" data-tex="\(0&lt;c\le C&lt;\infty\)">\(0&lt;c\le C&lt;\infty\)</span> and
+<span class="math" data-tex="\(c\psi_1\le\psi_2\le C\psi_1\)">\(c\psi_1\le\psi_2\le C\psi_1\)</span>, then the bounded-vector sets are equal, the finite form domains are equal, and</p>
+<span class="math math-display" data-tex="\[
+C^{-1}q_\varphi^{\psi_1}
+\le q_\varphi^{\psi_2}
+\le c^{-1}q_\varphi^{\psi_1}.
+\tag{SS.41}
+\]">\[
+C^{-1}q_\varphi^{\psi_1}
+\le q_\varphi^{\psi_2}
+\le c^{-1}q_\varphi^{\psi_1}.
+\tag{SS.41}
+\]</span>
+<p>The vector-set equality follows directly by comparing their defining estimates; the form assertions follow from (SS.39)–(SS.40) in both directions. These are scalar comparison assumptions on whole weights, not an assumption that unbounded spatial derivatives commute.</p>
+<h2 id="why-separate-core-assertions-would-not-have-sufficed">Why separate core assertions would not have sufficed</h2>
+<p>Consider <span class="math" data-tex="\(H=\ell^2(\mathbb N)\)">\(H=\ell^2(\mathbb N)\)</span> and the closed diagonal forms</p>
+<span class="math math-display" data-tex="\[
+q_1[x]=\sum_n a_n|x_n|^2,\qquad
+q_2[x]=\sum_n b_n|x_n|^2,
+\]">\[
+q_1[x]=\sum_n a_n|x_n|^2,\qquad
+q_2[x]=\sum_n b_n|x_n|^2,
+\]</span>
+<p>on their maximal finite-energy domains, where</p>
+<span class="math math-display" data-tex="\[
+a_n=\begin{cases}n^2,&amp;n\text{ odd},\\1,&amp;n\text{ even},\end{cases}
+\qquad
+b_n=\begin{cases}1,&amp;n\text{ odd},\\n^2,&amp;n\text{ even}.\end{cases}
+\]">\[
+a_n=\begin{cases}n^2,&amp;n\text{ odd},\\1,&amp;n\text{ even},\end{cases}
+\qquad
+b_n=\begin{cases}1,&amp;n\text{ odd},\\n^2,&amp;n\text{ even}.\end{cases}
+\]</span>
+<p>Put <span class="math" data-tex="\(D=\{x\in c_{00}:\sum_n x_n=0\}\)">\(D=\{x\in c_{00}:\sum_n x_n=0\}\)</span>.</p>
+<p><strong>Claim.</strong> The subspace <span class="math" data-tex="\(D\)">\(D\)</span> is a form core for each <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, but not for their closed sum.</p>
+<p><strong>Proof.</strong> Finite-coordinate truncations are a core for either weighted diagonal form. Given a finite-support vector <span class="math" data-tex="\(x\)">\(x\)</span>, let <span class="math" data-tex="\(s=\sum_nx_n\)">\(s=\sum_nx_n\)</span>. Choose <span class="math" data-tex="\(m\)">\(m\)</span> new even coordinates and let <span class="math" data-tex="\(h_m\)">\(h_m\)</span> equal <span class="math" data-tex="\(s/m\)">\(s/m\)</span> on those coordinates and zero elsewhere. Then <span class="math" data-tex="\(x-h_m\in D\)">\(x-h_m\in D\)</span>, while its squared <span class="math" data-tex="\(q_1\)">\(q_1\)</span>-form-norm error is <span class="math" data-tex="\(2|s|^2/m\)">\(2|s|^2/m\)</span>. This tends to zero, proving that <span class="math" data-tex="\(D\)">\(D\)</span> is a <span class="math" data-tex="\(q_1\)">\(q_1\)</span>-core. Using new odd coordinates proves the <span class="math" data-tex="\(q_2\)">\(q_2\)</span>-core assertion.</p>
+<p>The sum form has squared graph norm</p>
+<span class="math math-display" data-tex="\[
+\|x\|^2+q_1[x]+q_2[x]=\sum_n(n^2+2)|x_n|^2.
+\]">\[
+\|x\|^2+q_1[x]+q_2[x]=\sum_n(n^2+2)|x_n|^2.
+\]</span>
+<p>The functional <span class="math" data-tex="\(\ell(x)=\sum_nx_n\)">\(\ell(x)=\sum_nx_n\)</span> is continuous for this norm, since weighted Cauchy–Schwarz bounds its absolute value by that norm times <span class="math" data-tex="\((\sum_n(n^2+2)^{-1})^{1/2}\)">\((\sum_n(n^2+2)^{-1})^{1/2}\)</span>. Thus <span class="math" data-tex="\(D\)">\(D\)</span> lies in the proper closed kernel of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and cannot be a core for the sum. In fact its sum-form closure is that kernel: truncate a vector in the kernel and subtract its residual coordinate sum times the first basis vector. The truncations converge in sum-form norm, and continuity of <span class="math" data-tex="\(\ell\)">\(\ell\)</span> makes the correction tend to zero. ∎</p>
+<p>This example does not contradict the spatial sum theorem. It shows the missing implication that SS-02–05 had to replace with a specific simultaneous approximation. An individual core statement for each spatial derivative would not, by itself, prove (SS.24).</p>
+<h2 id="problems-with-complete-solutions">Problems with complete solutions</h2>
+<p><strong>1. An uncountable sum with finite energy.</strong> On <span class="math" data-tex="\(H=\ell^2(I)\)">\(H=\ell^2(I)\)</span>, with arbitrary <span class="math" data-tex="\(I\)">\(I\)</span>, let <span class="math" data-tex="\(M=N=\ell^\infty(I)\)">\(M=N=\ell^\infty(I)\)</span>, let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be counting weight, and let <span class="math" data-tex="\(\varphi_i(a)=a_i\)">\(\varphi_i(a)=a_i\)</span>. Determine all the spatial derivatives and their sum.</p>
+<p><strong>Solution.</strong> SC-12 gives <span class="math" data-tex="\(D_\psi=H\)">\(D_\psi=H\)</span>, since square-summable vectors are bounded. The derivative of <span class="math" data-tex="\(\varphi_i\)">\(\varphi_i\)</span> is the coordinate projection <span class="math" data-tex="\(P_i\)">\(P_i\)</span>, with form <span class="math" data-tex="\(|\xi_i|^2\)">\(|\xi_i|^2\)</span>. Their normal-weight sum is <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, and the sum energy is <span class="math" data-tex="\(\sum_i|\xi_i|^2=\|\xi\|^2\)">\(\sum_i|\xi_i|^2=\|\xi\|^2\)</span> on all <span class="math" data-tex="\(H\)">\(H\)</span>. The resulting derivative is the identity. Finite partial sums of the projections converge strongly along the directed set of finite subsets of <span class="math" data-tex="\(I\)">\(I\)</span>. No countable cofinal subset is needed.</p>
+<p><strong>2. Finite summands with no nonzero finite-energy vector in the infinite sum.</strong> Let <span class="math" data-tex="\(M=N=\mathbb C\)">\(M=N=\mathbb C\)</span> act on <span class="math" data-tex="\(H=\mathbb C\)">\(H=\mathbb C\)</span>, let <span class="math" data-tex="\(\psi(t)=t\)">\(\psi(t)=t\)</span>, and take <span class="math" data-tex="\(\varphi_n(t)=t\)">\(\varphi_n(t)=t\)</span> for every positive integer <span class="math" data-tex="\(n\)">\(n\)</span>. Describe the sum and the increasing partial-sum limit.</p>
+<p><strong>Solution.</strong> Every summand is a bounded normal faithful weight and has derivative <span class="math" data-tex="\(I\)">\(I\)</span>. The total weight is zero at zero and infinity at every positive nonzero scalar. Its finite-energy domain is <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, although every individual domain is <span class="math" data-tex="\(H\)">\(H\)</span>. Each partial-sum derivative is <span class="math" data-tex="\(mI\)">\(mI\)</span>, and <span class="math" data-tex="\((mI+\lambda I)^{-1}\to0\)">\((mI+\lambda I)^{-1}\to0\)</span> for <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>. The limit is the generalized resolvent on the zero Hilbert subspace. It is not the resolvent of the zero operator on <span class="math" data-tex="\(H\)">\(H\)</span>, whose resolvent would be <span class="math" data-tex="\(\lambda^{-1}I\)">\(\lambda^{-1}I\)</span>.</p>
+<p><strong>3. A bounded numerator change can destroy semifiniteness.</strong> On <span class="math" data-tex="\(H=\ell^2(\mathbb N)\)">\(H=\ell^2(\mathbb N)\)</span>, set <span class="math" data-tex="\(M=B(H)\)">\(M=B(H)\)</span>, <span class="math" data-tex="\(N=\mathbb C1\)">\(N=\mathbb C1\)</span>, and <span class="math" data-tex="\(\psi(\lambda1)=\lambda\)">\(\psi(\lambda1)=\lambda\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\varphi(a)=\sum_{n\ge1}n^2\langle ae_n,e_n\rangle,
+\qquad a\in M_+.
+\]">\[
+\varphi(a)=\sum_{n\ge1}n^2\langle ae_n,e_n\rangle,
+\qquad a\in M_+.
+\]</span>
+<p>Let <span class="math" data-tex="\(v_n=1/n\)">\(v_n=1/n\)</span>, and choose the bounded rank-one map <span class="math" data-tex="\(b^*\xi=\langle\xi,e_1\rangle v\)">\(b^*\xi=\langle\xi,e_1\rangle v\)</span>. Determine <span class="math" data-tex="\(\varphi_b\)">\(\varphi_b\)</span> and its finite-energy domain.</p>
+<p><strong>Solution.</strong> The sum theorem for weights makes <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> normal. It is faithful because zero diagonal values for a positive operator force <span class="math" data-tex="\(a^{1/2}e_n=0\)">\(a^{1/2}e_n=0\)</span> for all <span class="math" data-tex="\(n\)">\(n\)</span>, and hence <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Finite-coordinate projections have finite weight and increase strongly to one, so WG-008 gives semifiniteness. With the scalar denominator, every vector is bounded and its coefficient is its rank-one positive operator. Therefore</p>
+<span class="math math-display" data-tex="\[
+Q_\varphi(\xi)=\sum_n n^2|\xi_n|^2,
+\qquad A_\varphi=\operatorname{diag}(n^2).
+\]">\[
+Q_\varphi(\xi)=\sum_n n^2|\xi_n|^2,
+\qquad A_\varphi=\operatorname{diag}(n^2).
+\]</span>
+<p>The chosen <span class="math" data-tex="\(v\)">\(v\)</span> is in <span class="math" data-tex="\(H\)">\(H\)</span> but has infinite form energy. Since <span class="math" data-tex="\(b\eta=\langle\eta,v\rangle e_1\)">\(b\eta=\langle\eta,v\rangle e_1\)</span>, one has <span class="math" data-tex="\(b^*ab=\langle ae_1,e_1\rangle\,\theta_v\)">\(b^*ab=\langle ae_1,e_1\rangle\,\theta_v\)</span>, where <span class="math" data-tex="\(\theta_v\eta=\langle\eta,v\rangle v\)">\(\theta_v\eta=\langle\eta,v\rangle v\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\varphi_b(a)=\begin{cases}0,&amp;\langle ae_1,e_1\rangle=0,\\
++\infty,&amp;\langle ae_1,e_1\rangle&gt;0.
+\end{cases}
+\]">\[
+\varphi_b(a)=\begin{cases}0,&amp;\langle ae_1,e_1\rangle=0,\\
++\infty,&amp;\langle ae_1,e_1\rangle&gt;0.
+\end{cases}
+\]</span>
+<p>Its closed form is zero on <span class="math" data-tex="\(e_1^\perp\)">\(e_1^\perp\)</span> and infinite outside. Thus <span class="math" data-tex="\(e_{\varphi_b}=f_{\varphi_b}=1-P_1\)">\(e_{\varphi_b}=f_{\varphi_b}=1-P_1\)</span>, and the changed numerator is not semifinite. Taking a preimage of the closure <span class="math" data-tex="\(\overline{V_\varphi}=H\)">\(\overline{V_\varphi}=H\)</span> would incorrectly predict the whole space as its finite-domain closure.</p>
+<p><strong>4. A form identity need not be a literal operator-product identity.</strong> Keep the preceding model, but take <span class="math" data-tex="\(v_n=1/n^2\)">\(v_n=1/n^2\)</span> in the definition of <span class="math" data-tex="\(b^*\)">\(b^*\)</span>. Compare the new spatial operator with the algebraic product <span class="math" data-tex="\(bA_\varphi b^*\)">\(bA_\varphi b^*\)</span>.</p>
+<p><strong>Solution.</strong> Now <span class="math" data-tex="\(v\in D(A_\varphi^{1/2})\)">\(v\in D(A_\varphi^{1/2})\)</span> because <span class="math" data-tex="\(c:=\sum_n n^2|v_n|^2=\sum_n n^{-2}&lt;\infty\)">\(c:=\sum_n n^2|v_n|^2=\sum_n n^{-2}&lt;\infty\)</span>, but <span class="math" data-tex="\(v\notin D(A_\varphi)\)">\(v\notin D(A_\varphi)\)</span> because <span class="math" data-tex="\(\sum_n n^4|v_n|^2=\infty\)">\(\sum_n n^4|v_n|^2=\infty\)</span>. Equation (SS.33) gives <span class="math" data-tex="\(Q_{\varphi_b}(\xi)=c|\langle\xi,e_1\rangle|^2\)">\(Q_{\varphi_b}(\xi)=c|\langle\xi,e_1\rangle|^2\)</span> on all <span class="math" data-tex="\(H\)">\(H\)</span>. Its represented operator is the bounded operator <span class="math" data-tex="\(cP_1\)">\(cP_1\)</span> with domain <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>The literal product requires <span class="math" data-tex="\(b^*\xi\in D(A_\varphi)\)">\(b^*\xi\in D(A_\varphi)\)</span>. Since no nonzero multiple of <span class="math" data-tex="\(v\)">\(v\)</span> belongs to that domain, its domain is only <span class="math" data-tex="\(e_1^\perp\)">\(e_1^\perp\)</span>, and its value there is zero. It is therefore different from the represented operator. Bounded invertibility in the stronger SC-11 operator formula cannot be dropped by retaining the same algebraic product interpretation.</p>
+<p><strong>5. Comparing equivalent denominators.</strong> In the arbitrary-coordinate model of SC-12, let denominator coefficients <span class="math" data-tex="\(v_i,w_i\)">\(v_i,w_i\)</span> satisfy <span class="math" data-tex="\(0&lt;cv_i\le w_i\le Cv_i&lt;\infty\)">\(0&lt;cv_i\le w_i\le Cv_i&lt;\infty\)</span>. Verify (SS.41), including zero and infinite numerator coordinates.</p>
+<p><strong>Solution.</strong> The energies have coefficients <span class="math" data-tex="\(r_i/v_i\)">\(r_i/v_i\)</span> and <span class="math" data-tex="\(r_i/w_i\)">\(r_i/w_i\)</span>, where <span class="math" data-tex="\(r_i\in[0,\infty]\)">\(r_i\in[0,\infty]\)</span> are the numerator coefficients. For finite <span class="math" data-tex="\(r_i\)">\(r_i\)</span>,
+<span class="math" data-tex="\(C^{-1}r_i/v_i\le r_i/w_i\le c^{-1}r_i/v_i\)">\(C^{-1}r_i/v_i\le r_i/w_i\le c^{-1}r_i/v_i\)</span>.
+Zero coefficients give zero in both forms. Infinite coefficients require the same coordinate to vanish in both domains. Summing the finite-coordinate inequalities proves identical finite-energy domains and (SS.41). This is a direct check of domain equivalence, not just an inequality on finitely supported vectors.</p>
+<h2 id="source-correspondence-and-remaining-dynamic-assertions">Source correspondence and remaining dynamic assertions</h2>
+<p>SS-05 supplies a full simultaneous bounded-vector approximation, including the graph-norm statement for every finite normal-weight energy. SS-07 proves the finite-functional addition asserted in Takesaki IX.3, Proposition 3.10(ii), and strengthens it to arbitrary normal sums with the exact finite-total-energy domain. SS-09 proves the form and resolvent part of the increasing-weight passage relevant to Corollary 3.13, with a directed-net version and an explicit nonsemifinite limit. Its spectral-power consequence retains QF-08's hypotheses. The source's modular-automorphism convergence still needs the modular identification and its stated automorphism topology.</p>
+<p>SS-10 extends bounded invertible numerator covariance to all bounded multipliers as a closed-form identity. SS-11–12 prove the indicated algebraic denominator transports and order comparisons. These do not establish the weight cocycle, inverse-cocycle or centralizer-affiliation assertions of Chapter VIII, Section 3. Those source statements concern faithful normal semifinite weights, strongly continuous unitary cocycles, mixed analytic domains and modular groups; they remain independently assigned results.</p>
+<p>The direct spatial construction's identification with the source relative-modular operator and the direct/opposite convention dictionary retain their recorded boundaries. This unit does not construct the whole generalized positive cone, claim a new license for an antecedent text, or close those source correspondences through notation. It proves the stated analytic identities from the already constructed forms and their exact prerequisites.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-SC.html">← Constructing spatial energy from finite observations</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-SI.html">Spatial energy and modular time →</a></span></nav>
+<p class="small source-link"><a href="src/spatial-form-sums.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

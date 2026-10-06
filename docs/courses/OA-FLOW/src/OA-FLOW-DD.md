@@ -14,7 +14,7 @@ The starting data are a nonzero von Neumann factor \(M\) with separable predual,
 \]
 Thus “type \(\mathrm{III}_\lambda\)” has the explicit meaning in [DD1](OA-FLOW-DD.md#oa-flow.dd.1). Put \(a=-\log\lambda>0\) and \(P=2\pi/a\). No weight, period or implementing unitary is additional starting data.
 
-The earlier complete proofs are [CP4 and CP6](OA-FLOW-CP.md#oa-flow.cp.4) for the concrete norm-closed predual; CF1 for choice, convergent Banach series and elementary limits; [the inner-period construction, IP0–6](OA-FLOW-IP.md#oa-flow.ip.0); [PW1–6](OA-FLOW-PW.md#oa-flow.pw.1) for phase cancellation and full-cone compact averaging; [CA0–7](OA-FLOW-CA.md#oa-flow.ca.0) for the full amplified weight and graph transport; [PF1–7](OA-FLOW-PF.md#oa-flow.pf.1) for the centralizer, infinite-trace comparison and least period; and [GT1–6](OA-FLOW-GT.md#oa-flow.gt.1) for the actual regular decomposition and compact double dual. The spectral identification below uses MW4, [RF5](OA-FLOW-RF.md#oa-flow.rf.5) and [SF's full Borel domains](OA-FLOW-SF.md#oa-flow.sf.sb4). [GW1–4](OA-FLOW-GW.md#oa-flow.gw.1) supply the finite ideals, and PC5's filling family applies to the type III unit. These inputs have written proofs; their precise source ranges and order are recorded in the accompanying ledger.
+The earlier complete proofs are [CP4 and CP6](OA-FLOW-CP.md#oa-flow.cp.4) for the concrete norm-closed predual; [CF1](OA-FLOW-CF.md#oa-flow.cf.1) for choice, convergent Banach series and elementary limits; [the inner-period construction, IP0–6](OA-FLOW-IP.md#oa-flow.ip.0); [PW1–6](OA-FLOW-PW.md#oa-flow.pw.1) for phase cancellation and full-cone compact averaging; [CA0–7](OA-FLOW-CA.md#oa-flow.ca.0) for the full amplified weight and graph transport; [PF1–7](OA-FLOW-PF.md#oa-flow.pf.1) for the centralizer, infinite-trace comparison and least period; and [GT1–6](OA-FLOW-GT.md#oa-flow.gt.1) for the actual regular decomposition and compact double dual. The spectral identification below uses [MW4](OA-FLOW-MW.md#oa-flow.mw.4), [RF5](OA-FLOW-RF.md#oa-flow.rf.5) and [SF's full Borel domains](OA-FLOW-SF.md#oa-flow.sf.sb4). [GW1–4](OA-FLOW-GW.md#oa-flow.gw.1) supply the finite ideals, and [PC5's filling family](OA-FLOW-PC.md#oa-flow.projection.pc5) applies to the type III unit. These inputs have written proofs; their precise source ranges and order are recorded in the accompanying ledger.
 
 The free human source actually read is [Connes (1973), Theorem4.3.2(a) and Corollary4.3.3, printed220–222](https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=89). Its existence mechanism motivates the state, period and amplification chain. Every step here is proved in the earlier programme or below. The comparison assertions in Theorem4.3.2(b,c), and the converse at the beginning of4.4, are not conclusions of this chapter.
 
@@ -163,7 +163,7 @@ The order is order of weights, proved in PW/CZ; it does not compare \(k^{1/2}xk^
 <a id="oa-flow.dd.3"></a>
 ## DD-3. An infinite periodic weight on the original factor
 
-The type III unit is properly infinite. PC5 constructs orthogonal projections \(q_j\sim1\), \(j\in\mathbb N_0\), whose strong sum is \(1\), and actual isometries \(v_j\) with
+The type III unit is properly infinite. [PC5](OA-FLOW-PC.md#oa-flow.projection.pc5) constructs orthogonal projections \(q_j\sim1\), \(j\in\mathbb N_0\), whose strong sum is \(1\), and actual isometries \(v_j\) with
 
 <a id="equation-dd12"></a>
 
@@ -319,7 +319,7 @@ The conjugate in the second formula fixes the sign: \(\overline{e^{iat}}=\lambda
 <a id="oa-flow.dd.6"></a>
 ## DD-6. The entire modular operator and every Borel domain
 
-We give the operator-domain argument directly, using the complete \(W\) just proved. For \(x\in\mathfrak n_\tau\), MW4's full finite-ideal identity gives
+We give the operator-domain argument directly, using the complete \(W\) just proved. For \(x\in\mathfrak n_\tau\), [MW4](OA-FLOW-MW.md#oa-flow.mw.4)'s full finite-ideal identity gives
 
 <a id="equation-dd23"></a>
 

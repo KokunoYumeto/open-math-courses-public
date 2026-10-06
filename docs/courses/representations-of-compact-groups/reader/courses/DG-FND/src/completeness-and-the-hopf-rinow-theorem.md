@@ -1,6 +1,6 @@
 # Completeness and the Hopf–Rinow theorem
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Draft; self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Original text is CC0 1.0; the attributed Clifton half-cylinder subsection retains CC BY 4.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Self-checked by the writing AI. Original text is CC0 1.0; the attributed Clifton half-cylinder subsection retains CC BY 4.0.*
 
 A geodesic is specified by a position and a velocity. A Cauchy sequence concerns only positions. On a Riemannian manifold these two kinds of completeness nevertheless agree. The link is positivity of the metric: constant geodesic speed controls the velocity whenever the position stays in a compact region. A second link is more surprising. Extending every geodesic from one point produces shortest geodesics and compact distance balls throughout the manifold.
 

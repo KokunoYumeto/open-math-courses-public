@@ -6,7 +6,7 @@ A family of vectors can describe a representation in two different ways: its alg
 
 Let \(M\subseteq B(H)\) be a unital concrete von Neumann algebra; allow \(H=0\). For \(K\subseteq H\), write \([MK]\) for the closed linear span of the vectors \(x\xi\), with \(x\in M\) and \(\xi\in K\). The span of the empty set is zero. A family \(K\) is **cyclic** for \(M\) if \([MK]=H\), and **separating** for \(M\) if the only \(x\in M\) annihilating every vector in \(K\) is zero. No countability is part of either definition.
 
-The exact earlier inputs are BK01–04, orthogonal projections, bicommutants and increasing strong limits, CP06–07, the concrete predual and positive normal functionals, and WG006–007/010, GNS construction, normality and the finite faithful case. Normal means ultraweakly continuous. The same results are treated in Takesaki, *Theory of Operator Algebras I*, Chapter II, §3, Definitions 3.16 and 3.18 and Propositions 3.17 and 3.19, printed pp. 77–78, in the approved receipt-backed edition. We keep the arbitrary-subset and arbitrary-representation scope.
+The exact earlier inputs are BK01–04, orthogonal projections, bicommutants and increasing strong limits, CP06–07, the concrete predual and positive normal functionals, and WG006–007/010, GNS construction, normality and the finite faithful case. Normal means ultraweakly continuous. The same results are treated in Takesaki, *Theory of Operator Algebras I*, Chapter II, §3, Definitions 3.16 and 3.18 and Propositions 3.17 and 3.19, printed pp. 77–78. We keep the arbitrary-subset and arbitrary-representation scope.
 
 ## The projection determined by a family
 

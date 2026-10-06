@@ -24,7 +24,7 @@ For bounded representation transport and the faithful-state results in Sections 
 
 These inputs establish the predual, Hilbert, compactness and density branch used by Theorem 3.1 and Section 3A. In particular, Lemma 3A.1 provides a summable-vector proof of bounded WOT-to-ultraweak convergence and fixed-multiplication continuity. The normal GNS argument in Lemma 3A.3 proves ultraweak continuity directly, without converting an order-normal extended-valued weight into a normal functional.
 
-The semifinite tracial construction in Sections 4–7 also uses BK04's bounded increasing positive nets. The tracial-normality companion supplies the complete additional proof chain: CP08–CP11, BK05–BK07, NP3, WG002–WG006, CV1–CV4 and NW01–NW11 lead to the full positive-functional normality criterion in NP02 and TP1. TP2 proves arbitrary projection joins; TP3 constructs the exact half-closed spectral cuts used in Section 5; TP4 checks the complete application in Section 6. These results retain arbitrary Hilbert dimensions and increasing nets. The broader Borel and unbounded spectral theorems are separate; their full statements are not claimed proved by the threshold-cut lemma.
+The semifinite tracial construction in Sections 4–7 also uses BK04's bounded increasing positive nets. The [tracial-normality companion](../foundations/tracial-normality-foundations.md) supplies the complete additional proof chain: CP08–CP11, BK05–BK07, NP3, WG002–WG006, CV1–CV4 and NW01–NW11 lead to the full positive-functional normality criterion in NP02 and TP1. TP2 proves arbitrary projection joins; TP3 constructs the exact half-closed spectral cuts used in Section 5; TP4 checks the complete application in Section 6. These results retain arbitrary Hilbert dimensions and increasing nets. The broader Borel and unbounded spectral theorems are separate; their full statements are not claimed proved by the threshold-cut lemma.
 
 The original reconstruction consulted [Peterson, Sections 2.4 and 2.6.1, Lemma 2.4.3 and Proposition 2.6.7, printed pages 26–27 and 31; Section 4.2, Lemma 4.2.1 and Proposition 4.2.2, printed pages 59–60](https://math.vanderbilt.edu/peters10/teaching/spring2013/vonNeumannAlgebras.pdf), including the proofs. Section 2 retains its trace-class presentation: restriction of trace-class functionals gives the concrete predual, and finite-rank density with \(\lvert\operatorname{Tr}(TS)\rvert\le\|T\|\|S\|_1\) gives (2.3). Peterson's Section 2.1, especially Lemma 2.1.4 and the finite-rank-density paragraph was the source for that presentation. For the bounded topology and state branch, the accompanying CP/BK proofs and Lemma 3A.1 supply the same needed conclusions by summable vector coefficients.
 
@@ -457,7 +457,7 @@ Thus \(\lambda_\tau\) is a unital *-representation. No vector \(\Lambda_\tau(1)\
 
 ## 5. Finite-trace cuts and faithfulness
 
-Every nonzero projection \(h\in R\) contains a nonzero projection \(q\) with finite trace. Indeed, faithfulness and (4.1) give a nonzero \(b\) with \(0\leq b\leq h\) and \(\tau(b)<\infty\). By TP3, for a suitable \(\varepsilon>0\), the spectral projection
+Every nonzero projection \(h\in R\) contains a nonzero projection \(q\) with finite trace. Indeed, faithfulness and (4.1) give a nonzero \(b\) with \(0\leq b\leq h\) and \(\tau(b)<\infty\). By [TP3](../foundations/tracial-normality-foundations.md#tp3-the-exact-half-closed-spectral-cuts-used-by-finite-traces), for a suitable \(\varepsilon>0\), the spectral projection
 \(q=1_{[\varepsilon,\infty)}(b)\)
 is nonzero and satisfies
 
@@ -470,7 +470,7 @@ q\leq h,\qquad \varepsilon q\leq b,
 \tag{5.1}
 \]
 
-TP2 supplies arbitrary projection joins and the orthogonal finite-sum net. Choose by Zorn's lemma a maximal family \((q_j)_{j\in J}\) of nonzero pairwise orthogonal finite-trace projections. If \(1-\sum_jq_j\ne0\), (5.1) adds another member, contradicting maximality. Therefore, with finite subsets \(F\subseteq J\) directed by inclusion,
+[TP2](../foundations/tracial-normality-foundations.md#tp2-arbitrary-joins-and-orthogonal-sums-of-projections) supplies arbitrary projection joins and the orthogonal finite-sum net. Choose by Zorn's lemma a maximal family \((q_j)_{j\in J}\) of nonzero pairwise orthogonal finite-trace projections. If \(1-\sum_jq_j\ne0\), (5.1) adds another member, contradicting maximality. Therefore, with finite subsets \(F\subseteq J\) directed by inclusion,
 
 \[
 e_F=\sum_{j\in F}q_j,\qquad
@@ -518,7 +518,7 @@ For \(a\in\mathfrak n_\tau\), the bounded positive functional
 extends linearly to \(R\) because its value on positive \(t\) is at most
 \(\|t\|\tau(a^*a)\). It is normal: if \(0\leq t_i\uparrow t\), then \(a^*t_i a\uparrow a^*ta\), and normality of \(\tau\) gives
 \(\varphi_a(t_i)\uparrow\varphi_a(t)\).
-TP1 therefore puts \(\varphi_a\) in \(R_*^+\).
+[TP1](../foundations/tracial-normality-foundations.md#tp1-positive-functional-order-normality-and-ultraweak-continuity) therefore puts \(\varphi_a\) in \(R_*^+\).
 
 Now let \(0\leq x_i\uparrow x\) in \(R\), and put \(d_i=x-x_i\). Then \(0\leq d_i\leq\|x\|1\), so
 
@@ -539,9 +539,9 @@ The operators \(\lambda_\tau(d_i)\) are uniformly bounded. Their convergence on 
 \tag{6.3}
 \]
 
-This also proves ultraweak normality explicitly. For a normal positive functional \(\omega\) on \(B(H_\tau)\), the functional \(\omega\circ\lambda_\tau\) preserves increasing suprema by (6.3), so belongs to \(R_*^+\) by the same TP1 criterion. Trace-class functionals on \(B(H_\tau)\) are linear combinations of positive ones. Thus every ultraweak functional pulls back to \(R_*\), precisely the assertion that \(\lambda_\tau\) is ultraweakly continuous.
+This also proves ultraweak normality explicitly. For a normal positive functional \(\omega\) on \(B(H_\tau)\), the functional \(\omega\circ\lambda_\tau\) preserves increasing suprema by (6.3), so belongs to \(R_*^+\) by the same [TP1 criterion](../foundations/tracial-normality-foundations.md#tp1-positive-functional-order-normality-and-ultraweak-continuity). Trace-class functionals on \(B(H_\tau)\) are linear combinations of positive ones. Thus every ultraweak functional pulls back to \(R_*\), precisely the assertion that \(\lambda_\tau\) is ultraweakly continuous.
 
-TP4 supplies the finite positive-functional extension and the full predual argument at these exact hypotheses. We have proved the full required statement.
+[TP4](../foundations/tracial-normality-foundations.md#tp4-exact-application-to-the-tracial-representation) supplies the finite positive-functional extension and the full predual argument at these exact hypotheses. We have proved the full required statement.
 
 **Theorem 6.1.** For every von Neumann algebra \(R\) with a faithful normal semifinite trace \(\tau\), the construction (4.2)–(4.8) gives a faithful normal unital left representation on \(H_\tau\). Its bounded finite-square-norm vectors \(\Lambda_\tau(\mathfrak n_\tau)\) are dense; finite-trace-corner vectors are already dense. The represented algebra is a von Neumann algebra, and Theorem 3.1 applies to it. All assertions use the actual indexing nets, with arbitrary cardinality.
 
@@ -659,5 +659,5 @@ Fumio Hiai's [*Concise lectures on selected topics of von Neumann algebras*, arX
 
 The accompanying programme proofs named in Section 1 now supply the exact predual, bounded-calculus, Hilbert, compactness and nondegenerate density inputs for Theorem 3.1 and Section 3A. Their complete statements and proofs retain arbitrary Hilbert spaces and nets. The faithful-state subsection develops the brief commutant-orbit argument in *Central sequences, fullness and free group factors*, Section 2 before Lemma 2.2, and the norm density of \(M\varphi\) from its Lemma 1.1. Lemmas 3A.1–3A.3 provide the normality and topology foundations explicitly; Theorem 3A.4 and Lemma 3A.5 give the state and moving-test criteria; Corollary 3A.6 gives the jointly indexed extraction.
 
-The additional order-normality and projection inputs for the semifinite construction are now supplied in the tracial-normality companion, with their full preceding proofs and source/change notices. TP1 proves the bounded positive-functional equivalence using the full arbitrary-weight theorem; TP2–TP3 give the exact joins and half-closed threshold cuts used in Section 5; TP4 verifies their application to the tracial representation. A faithful state is used only inside supported corners in the normal-weight proof, whose return to arbitrary algebras is explicit. The free-action bridge's standard-form existence/canonical implementation, finite center-valued trace existence and its other construction inputs remain separate prerequisites. These supplied arguments do not certify the entire lesson, the full P514 dependency graph or every general trace/weight or spectral theorem.
+The additional order-normality and projection inputs for the semifinite construction are now supplied in the [tracial-normality companion](../foundations/tracial-normality-foundations.md), with their full preceding proofs and source/change notices. TP1 proves the bounded positive-functional equivalence using the full arbitrary-weight theorem; TP2–TP3 give the exact joins and half-closed threshold cuts used in Section 5; TP4 verifies their application to the tracial representation. A faithful state is used only inside supported corners in the normal-weight proof, whose return to arbitrary algebras is explicit. The free-action bridge's standard-form existence/canonical implementation, finite center-valued trace existence and its other construction inputs remain separate prerequisites. These supplied arguments do not certify the entire lesson, the full P514 dependency graph or every general trace/weight or spectral theorem.
 

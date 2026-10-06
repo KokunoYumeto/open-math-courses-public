@@ -1,0 +1,278 @@
+# Bogoliubov automorphisms and the Hilbert–Schmidt criterion
+
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
+
+A unitary change of one-particle coordinates acts on the CAR algebra. In its tracial representation this action extends normally to the hyperfinite factor. We prove that the resulting automorphism is inner exactly when the one-particle unitary differs from the identity by a Hilbert–Schmidt operator. The diagonal case is an infinite tensor product calculation. A controlled diagonal perturbation supplies the general case.
+
+We use Fermions, Fock space and quasi-free factors, the product-innerness theorem in Infinite tensor products, and the finite AFD [uniqueness theorem](hyperfinite-finite-factors.md#theorem-5-1). The Hilbert–Schmidt ideal facts and Weyl–von Neumann diagonal perturbation theorem are selected full proofs from *Banach spaces of operators: trace class and preduals*, Lemma 3.1, Theorem 3.3, Lemma 11.1 and Theorem 11.2 of the foundations course. Their bounded spectral theorem and Hilbert-space prerequisites remain explicit. The unbounded perturbation statement below additionally uses the self-adjoint spectral theorem and its unitary groups. Normal trace densities are the TI-06 prerequisite from *Trace densities and noncommutative integration*. No general implementation or classification theorem is substituted for the innerness proof.
+
+Throughout, \(K\) is a separable infinite-dimensional complex Hilbert space, \(A=\operatorname{CAR}(K)\), and
+\[
+\tau=\omega_{1/2},\qquad
+R=\pi_\tau(A)'',\qquad H_\tau=L^2(R,\tau).
+\]
+The preceding CAR lesson proves that \(R\) is an AFD factor of type \(\mathrm{II}_1\). We identify \(A\) with its faithful represented image. Write \(\|x\|_{2,\tau}=\tau(x^*x)^{1/2}\); the one-particle Hilbert–Schmidt norm is written \(\|\cdot\|_{\mathrm{HS}}\).
+
+Our annihilator \(a(f)\) is conjugate-linear in \(f\). Thus
+\[
+\alpha_u(a(f))=a(uf),\qquad
+\alpha_u\alpha_v=\alpha_{uv}. \tag{1}
+\]
+In particular an eigenvalue \(e^{is}\) multiplies the annihilator by \(e^{-is}\). The one-mode implementers below reflect this convention. Changing to a linear creation generator changes that sign and the placement of the occupation projections together; the trace criterion is unchanged.
+
+## 1. Normal extension and continuity
+
+Every tracial state on \(A\) restricts to the normalized trace on each finite-mode full matrix algebra. Their union is norm dense, so \(\tau\) is the unique tracial state. Hence \(\tau\alpha_u=\tau\).
+
+**Theorem 1.1.** Each \(\alpha_u\) has a canonical normal extension to \(R\), still denoted by \(\alpha_u\). The map
+\[
+\mathcal U(K)\longrightarrow\operatorname{Aut}(R),\qquad u\longmapsto\alpha_u
+\tag{2}
+\]
+is an injective continuous homomorphism, for the strong operator topology on \(\mathcal U(K)\) and the point-predual norm topology on \(\operatorname{Aut}(R)\).
+
+**Proof.** On the dense tracial GNS subspace put
+\[
+W_u(x\Omega)=\alpha_u(x)\Omega,\qquad x\in A.
+\tag{3}
+\]
+Trace preservation gives \(\|W_u(x\Omega)\|=\|x\Omega\|\), and \(W_{u^{-1}}\) gives its inverse. Thus \(W_u\) is unitary. On \(A\), \(W_u xW_u^*=\alpha_u(x)\), so conjugation maps \(R=A''\) onto itself and gives a normal extension. Two normal extensions agreeing on an ultraweakly dense algebra agree everywhere. Formula (3) also gives the homomorphism law.
+
+If \(u_j\to u\) strongly, the CAR norm identity gives
+\[
+\|\alpha_{u_j}(a(f))-\alpha_u(a(f))\|=\|(u_j-u)f\|\longrightarrow0.
+\]
+Finite product telescoping and norm density give convergence on every \(x\in A\). Consequently \(W_{u_j}\to W_u\) strongly. Also \(u_j^*\to u^*\) strongly, since
+\(\|(u_j^*-u^*)f\|=\|f-u_j u^*f\|\).
+
+For \(y\in A\), let \(\rho_y(x)=\tau(yx)\), \(x\in R\). Trace preservation gives
+\[
+\rho_y\circ\alpha_{u_j}
+=\rho_{\alpha_{u_j^{-1}}(y)},\qquad
+\|\rho_z\|\le\|z\|_{1,\tau}\le\|z\|_{2,\tau}.
+\tag{4}
+\]
+These functionals are norm dense in \(R_*\). Indeed the trace-density prerequisite identifies \(R_*\) with \(L^1(R,\tau)\); bounded spectral truncations are dense there, and the \(L^2\)-density of \(A\Omega\), together with \(\|\cdot\|_1\le\|\cdot\|_2\), approximates every bounded density by elements of \(A\). Formula (4) and point-norm convergence on \(A\) prove predual convergence for the dense family. The isometric preadjoints extend it to every normal functional.
+
+Finally, if \(\alpha_u=\operatorname{id}\), then \(a(uf-f)=0\). The identity \(\|a(g)\|=\|g\|\) makes \(uf=f\) for every \(f\), so \(u=1\). \(\square\)
+
+Spatial implementation by \(W_u\) is always available. Innerness asks the stronger question whether an implementer belongs to \(R\).
+
+## 2. Eigenvectors and tensor coordinates
+
+Suppose \(uf_j=e^{is_j}f_j\) for an orthonormal basis \((f_j)\). Put
+\[
+a_j=a(f_j),\qquad n_j=a_j^*a_j,\qquad Z_j=1-2n_j,\qquad
+b_j=Z_1\cdots Z_{j-1}a_j.
+\tag{5}
+\]
+The CAR lesson proves that the matrix algebras \(N_j\) generated by \(b_j\) commute, generate \(R\), and identify it with the tracial product \(\bar\bigotimes_j(M_2,\operatorname{tr}_2)\). Their matrix units have
+\(e_{11}^{(j)}=1-n_j\), \(e_{22}^{(j)}=n_j\), and \(e_{12}^{(j)}=b_j\).
+
+Since \(\alpha_u(n_j)=n_j\), every parity factor in (5) is fixed. Hence
+\[
+\alpha_u(b_j)=e^{-is_j}b_j.
+\]
+Define the even one-mode unitary
+\[
+w_j=e^{-is_j/2}(1-n_j)+e^{is_j/2}n_j.
+\tag{6}
+\]
+Matrix-unit multiplication gives
+\[
+w_jb_jw_j^*=e^{-is_j}b_j,\qquad
+\tau(w_j)=\cos(s_j/2).
+\tag{7}
+\]
+The diagonal projections and the adjoint generator transform as required. Thus \(N_j\) is invariant, its restriction is \(\operatorname{Ad}w_j\), and
+\[
+\alpha_u=\bigotimes_{j=1}^\infty\operatorname{Ad}w_j.
+\tag{8}
+\]
+The identity first holds on every finite tensor prefix and then holds normally on \(R\).
+
+**Theorem 2.1.** Under the eigenbasis assumption,
+\[
+\alpha_u\text{ is inner}
+\quad\Longleftrightarrow\quad
+\sum_j\bigl(1-|\cos(s_j/2)|\bigr)<\infty
+\quad\Longleftrightarrow\quad
+u-1\in\mathcal L^2(K).
+\tag{9}
+\]
+
+**Proof.** Equations (7)–(8) and the already proved product-innerness theorem give the first equivalence, including finitely many zero overlaps. Put \(t_j=|\cos(s_j/2)|\). Then
+\[
+|e^{is_j}-1|^2
+=4\sin^2(s_j/2)=4(1-t_j)(1+t_j),
+\]
+so
+\[
+4(1-t_j)\le |e^{is_j}-1|^2\le8(1-t_j).
+\tag{10}
+\]
+Summing and using the basis definition of Hilbert–Schmidt class proves the second equivalence. \(\square\)
+
+For sufficiency one can also see the implementer: adjust the scalar phase of each \(w_j\) so that its trace is nonnegative. The partial products converge strongly, together with their adjoints, by the product theorem's tail estimate. Their limit is a unitary in \(R\). Finitely many vanishing traces affect a finite prefix only.
+
+## 3. Perturbing self-adjoint generators
+
+We first justify the analytic estimate used to pass from an arbitrary unitary to a diagonal one.
+
+**Lemma 3.1.** Let \(h\) be any self-adjoint operator on \(K\), possibly unbounded, and let \(k=k^*\in\mathcal L^2(K)\). On \(\operatorname{Dom}h\), \(h+k\) is self-adjoint. For every real \(t\),
+\[
+e^{-ith}e^{it(h+k)}-1
+=i\int_0^t e^{-ish}k e^{is(h+k)}\,ds
+\in\mathcal L^2(K),
+\tag{11}
+\]
+where the integral converges in Hilbert–Schmidt norm. Moreover
+\[
+\|e^{-ith}e^{it(h+k)}-1\|_{\mathrm{HS}}
+\le |t|\,\|k\|_{\mathrm{HS}}.
+\tag{12}
+\]
+
+**Proof.** Hilbert–Schmidt operators are bounded. For sufficiently large \(r>0\),
+\[
+h+k\mp ir
+=\bigl(1+k(h\mp ir)^{-1}\bigr)(h\mp ir)
+\]
+has a bounded inverse, since \(\|k(h\mp ir)^{-1}\|\le\|k\|/r<1\). Bounded addition preserves closedness on \(\operatorname{Dom}h\), and the sum is symmetric. Surjectivity at both imaginary points is the self-adjoint resolvent criterion, so \(h+k\) is self-adjoint on that domain.
+
+Its unitary group preserves \(\operatorname{Dom}(h+k)=\operatorname{Dom}h\). For \(\xi\) in this common domain the strong product derivative is legitimate and equals
+\[
+\frac{d}{ds}\bigl(e^{-ish}e^{is(h+k)}\xi\bigr)
+=i e^{-ish}k e^{is(h+k)}\xi.
+\tag{13}
+\]
+Indeed the two terms containing \(h\), evaluated on \(e^{is(h+k)}\xi\), cancel. Integrating gives (11) on the dense common domain.
+
+The needed graph continuity is explicit:
+\(h e^{is(h+k)}\xi=e^{is(h+k)}(h+k)\xi-k e^{is(h+k)}\xi\)
+is continuous in \(s\). Thus the domain differentiation uses a graph-continuous vector path, not an operator-norm derivative of the unbounded generator's group.
+
+For a finite-rank middle operator, the integrand in (11) is Hilbert–Schmidt norm continuous: write it as a finite sum of rank-one operators and use strong continuity of both unitary groups and their adjoints. Approximate a general \(k\) in Hilbert–Schmidt norm by finite-rank operators, keeping both unitary groups fixed and replacing only their middle factor. The ideal bound and unitarity make that approximation uniform in \(s\). The integrand is therefore Hilbert–Schmidt norm continuous, with norm \(\|k\|_{\mathrm{HS}}\). Its Banach-space integral has norm at most \(|t|\|k\|_{\mathrm{HS}}\), and is a bounded operator. Density extends the integrated domain identity to all of \(K\). This proves (11)–(12), with the usual reversed orientation for \(t<0\). \(\square\)
+
+**Lemma 3.2.** If \(v\) is unitary and \(v-1\) is compact, then \(v\) has an orthonormal basis of eigenvectors.
+
+**Proof.** The compact operator \(T=v-1\) is normal, because both \(T^*T\) and \(TT^*\) equal \(2-v-v^*\). Its real and imaginary parts are commuting compact self-adjoint operators. Decompose by the compact self-adjoint spectral theorem for \(\operatorname{Re}T\). Every nonzero eigenspace is finite dimensional and is preserved by \(\operatorname{Im}T\), so diagonalize the latter on each. On \(\ker\operatorname{Re}T\), diagonalize its compact self-adjoint restriction \(\operatorname{Im}T\), including a basis of the joint kernel. The resulting orthonormal basis diagonalizes both parts, hence \(T\) and \(v\). \(\square\)
+
+**Lemma 3.3.** For every unitary \(u\) on \(K\) and every \(\varepsilon>0\), there is a unitary \(v\) with
+\[
+v-1\in\mathcal L^2(K),\qquad
+\|v-1\|_{\mathrm{HS}}<\varepsilon,
+\]
+such that \(w=uv\) has an orthonormal basis of eigenvectors.
+
+**Proof.** The bounded Borel functional calculus gives a self-adjoint logarithm \(h\), with \(\|h\|\le\pi\), such that \(u=e^{ih}\). The branch of the argument is Borel; a continuous logarithm on the whole circle is unnecessary. The full Weyl–von Neumann theorem, at separable Hilbert-space generality, supplies a self-adjoint \(k\in\mathcal L^2(K)\), with \(\|k\|_{\mathrm{HS}}<\varepsilon\), for which \(h+k\) has an orthonormal eigenbasis. Set
+\[
+v=e^{-ih}e^{i(h+k)},\qquad w=uv=e^{i(h+k)}.
+\tag{14}
+\]
+These operators are unitary. Lemma 3.1 at \(t=1\) gives the required Hilbert–Schmidt estimate, and \(w\) is diagonal on the eigenbasis of \(h+k\). \(\square\)
+
+Separability enters through this diagonal perturbation input. The argument does not assert the same diagonal perturbation theorem on an arbitrary nonseparable space.
+
+## 4. The general innerness theorem
+
+**Theorem 4.1.** For every unitary \(u\) on the separable infinite-dimensional space \(K\),
+\[
+\boxed{\ \alpha_u\text{ is inner on }R
+\quad\Longleftrightarrow\quad u-1\in\mathcal L^2(K).\ }
+\tag{15}
+\]
+
+**Proof.** Choose \(v,w\) as in Lemma 3.3. Since \(v-1\) is Hilbert–Schmidt, it is compact. Lemma 3.2 makes \(v\) diagonalizable, so Theorem 2.1 proves that \(\alpha_v\) is inner. As \(\alpha_w=\alpha_u\alpha_v\), membership in the subgroup of inner automorphisms gives
+\[
+\alpha_u\text{ inner}\quad\Longleftrightarrow\quad
+\alpha_w\text{ inner}.
+\tag{16}
+\]
+The eigenbasis of \(w\) and Theorem 2.1 identify the right side with \(w-1\in\mathcal L^2(K)\). Finally
+\[
+w-1=(u-1)+u(v-1),\qquad
+u-1=(w-1)-u(v-1).
+\tag{17}
+\]
+The Hilbert–Schmidt class is a linear two-sided ideal, so these identities make \(w-1\) Hilbert–Schmidt exactly when \(u-1\) is. This proves both implications without assuming the desired result for the original arbitrary \(u\). \(\square\)
+
+**Example 4.2.** A nontrivial scalar gauge \(u=e^{is}1\), \(s\notin2\pi\mathbb Z\), produces an outer automorphism of \(R\): \(u-1\) has the same nonzero norm on infinitely many orthonormal vectors and is not Hilbert–Schmidt. Every finite-mode restriction is nevertheless inner by (6). Conversely every unitary equal to the identity off a finite-dimensional subspace gives an inner automorphism.
+
+## 5. Exercises with complete solutions
+
+**Exercise 1.** Show directly that trace preservation in Section 1 follows from finite-mode matrix traces even if \(u\) does not preserve a chosen increasing sequence of finite-mode algebras.
+
+*Solution.* For each finite-dimensional \(E\subset K\), \(\alpha_u\) maps \(\operatorname{CAR}(E)\) isomorphically onto \(\operatorname{CAR}(uE)\). Both are \(M_{2^{\dim E}}\), and an isomorphism preserves the unique normalized matrix trace. Thus \(\tau\alpha_u=\tau\) on every finite-mode algebra and, by their norm-dense directed union, on \(A\). Invariance of one predetermined sequence is unnecessary.
+
+**Exercise 2.** Verify the one-mode phase in (7), including its action on the occupation projection.
+
+*Solution.* In matrix coordinates \(b=e_{12}\), \(n=e_{22}\), and \(w=\operatorname{diag}(e^{-is/2},e^{is/2})\). Hence
+\(w e_{12}w^*=e^{-is}e_{12}\), \(w e_{21}w^*=e^{is}e_{21}\), and both diagonal matrix units are fixed. The normalized trace is \((e^{-is/2}+e^{is/2})/2=\cos(s/2)\). Since the annihilator is conjugate-linear, these are exactly the effects of \(f\mapsto e^{is}f\).
+
+**Exercise 3.** Explain why diagonalizing a one-particle unitary does not make the raw one-mode CAR algebras commute, and why the tensor calculation still works.
+
+*Solution.* For distinct modes \(a_i a_j=-a_j a_i\), regardless of the eigenbasis. The commuting tensor generators are \(b_j=Z_1\cdots Z_{j-1}a_j\), not the raw \(a_j\). A diagonal Bogoliubov automorphism fixes each \(n_i\) and \(Z_i\), so it multiplies \(b_j\) by the same phase as \(a_j\). Its restriction to the commuting \(N_j\) is therefore implemented by (6), making the product-innerness theorem applicable.
+
+**Exercise 4.** Let \(u f_j=e^{i/j}f_j\). Is \(\alpha_u\) inner? Is \(u-1\) trace class?
+
+*Solution.* Since \(|e^{ix}-1|\le|x|\), the squared eigenvalue differences sum to at most \(\sum_j j^{-2}<\infty\). Thus \(u-1\) is Hilbert–Schmidt and \(\alpha_u\) is inner. Its singular values are \(|e^{i/j}-1|=2\sin(1/(2j))\). On \([0,\pi/2]\), concavity gives \(\sin t\ge2t/\pi\), so these values are at least \(2/(\pi j)\). Their sum diverges. The perturbation is not trace class.
+
+**Exercise 5.** Repeat Exercise 4 with \(u f_j=e^{i/\sqrt j}f_j\). Show that compactness alone cannot replace Hilbert–Schmidt class.
+
+*Solution.* The eigenvalue differences tend to zero, so the diagonal operator \(u-1\) is compact. The same sine lower bound gives
+\(|e^{i/\sqrt j}-1|^2\ge4/(\pi^2j)\).
+Their sum diverges. Theorem 4.1 therefore makes \(\alpha_u\) outer, despite compactness of \(u-1\).
+
+**Exercise 6.** Can an inner diagonal Bogoliubov automorphism have a one-mode implementer of trace zero? Can it have infinitely many such modes?
+
+*Solution.* Trace zero means \(\cos(s_j/2)=0\), equivalently the one-particle eigenvalue is \(-1\). One such mode and identity on all remaining modes gives a rank-one difference \(u-1\), hence an inner automorphism. Any finite number works. Infinitely many give infinitely many terms equal to \(1\) in (9), or squared eigenvalue differences equal to \(4\), and force outerness. A zero trace in a finite prefix does not obstruct convergence of the later tail products.
+
+**Exercise 7.** Prove the continuity of the Hilbert–Schmidt integrand in (11) for a rank-one operator, without operator-norm continuity of an unbounded generator's unitary group.
+
+*Solution.* With the linear-second inner-product convention, write \(\theta_{\xi,\eta}z=\xi\langle\eta,z\rangle\). Then
+\[
+U(s)\theta_{\xi,\eta}V(s)
+=\theta_{U(s)\xi,V(s)^*\eta}.
+\]
+Strong continuity of \(U(s)\) and \(V(s)^*\), and
+\(\|\theta_{\xi,\eta}\|_{\mathrm{HS}}=\|\xi\|\|\eta\|\), make this expression Hilbert–Schmidt norm continuous by adding and subtracting one rank-one term. Finite sums and Hilbert–Schmidt approximation prove the general continuity used in the lemma.
+
+**Exercise 8.** For commuting bounded self-adjoint \(h,k\), simplify (11) and check its sign.
+
+*Solution.* The left side is \(e^{itk}-1\). The integrand is \(k e^{isk}\), so
+\[
+i\int_0^t k e^{isk}\,ds=e^{itk}-1
+\]
+by differentiating the bounded exponential series. The positive \(i\) sign agrees with (13). The general estimate (12) becomes \(\|e^{itk}-1\|_{\mathrm{HS}}\le |t|\|k\|_{\mathrm{HS}}\); diagonalization of compact self-adjoint \(k\) also proves it term by term from \(|e^{ix}-1|\le|x|\).
+
+**Exercise 9.** In the proof of Theorem 4.1, explain why the fact that \(v-1\) is Hilbert–Schmidt proves innerness of \(\alpha_v\) without circular reasoning.
+
+*Solution.* Hilbert–Schmidt implies compact. Since \(v\) is unitary, \(v-1\) is compact normal; Lemma 3.2 supplies its eigenbasis. The already proved diagonal theorem, obtained solely from tensor overlaps, then applies to \(v\). It does not use the general theorem being proved. Only after this step does the subgroup identity (16) transfer the question from \(u\) to the diagonal \(w\).
+
+**Exercise 10.** Show that \(\mathcal U_2(K)=\{u\in\mathcal U(K):u-1\in\mathcal L^2(K)\}\) is a subgroup. Show that it is normal in \(\mathcal U(K)\).
+
+*Solution.* If \(u,v\in\mathcal U_2(K)\), then \(uv-1=(u-1)+u(v-1)\) is Hilbert–Schmidt. Also \(u^{-1}-1=-u^{-1}(u-1)\) is Hilbert–Schmidt. For arbitrary unitary \(w\),
+\(wuw^{-1}-1=w(u-1)w^{-1}\) is Hilbert–Schmidt. These statements use the linear ideal property. Formula (15) identifies this normal subgroup with the preimage of \(\operatorname{Int}(R)\) under (2).
+
+**Exercise 11.** Let \(u f_j=e^{is_j}f_j\), and let \(u_m\) agree with \(u\) on \(f_1,\ldots,f_m\) and with the identity on the remaining basis vectors. Prove that inner automorphisms \(\alpha_{u_m}\) can converge to an outer \(\alpha_u\).
+
+*Solution.* Each \(u_m-1\) has finite rank, so \(\alpha_{u_m}\) is inner. For every \(f=\sum_j c_jf_j\),
+\[
+\|(u_m-u)f\|^2
+=\sum_{j>m}|1-e^{is_j}|^2|c_j|^2
+\le4\sum_{j>m}|c_j|^2\longrightarrow0.
+\]
+Thus \(u_m\to u\) strongly, and Theorem 1.1 gives point-predual convergence. Choose, for example, all \(s_j=\pi\); then \(u-1=-2\,1\) is not Hilbert–Schmidt and \(\alpha_u\) is outer. This agrees with the previously proved density and properness of \(\operatorname{Int}(R)\).
+
+**Exercise 12.** A unitary \(u\) is the identity off a \(d\)-dimensional reducing subspace \(E\). Locate an implementer of \(\alpha_u\) inside the finite CAR algebra and verify that it commutes with all tail annihilators.
+
+*Solution.* Diagonalize \(u|_E\) in a basis \(f_1,\ldots,f_d\) and let \(w=\prod_{j=1}^d w_j\), with \(w_j\) from (6). It lies in \(\operatorname{CAR}(E)\), and implements the required phases there. Each \(w_j\) is an even polynomial in the \(j\)-th mode; two CAR anticommutations show that \(n_j\), and hence \(w_j\), commutes with \(a(g)\) for \(g\perp E\). Their product fixes every such tail generator. Matching all generators proves \(\alpha_u=\operatorname{Ad}w\) on \(A\), then on \(R\) by normality.
+
+## References
+
+A. L. Carey, [*Inner automorphisms of hyperfinite factors and Bogoliubov transformations*](https://numdam.org/item/AIHPA_1984__40_2_141_0.pdf), *Ann. I. H. P., Physique théorique* 40(2) (1984), 141–149, the \(G_2\) definition on p.142, Theorem 1.1 and Corollary 1.2 on p.143, and Lemmas 2.6–2.9 and Section 3, pp.145–148, supplies the actually read factor-innerness comparison. In the tracial case and for complex-linear unitaries, realification makes finite eigenspace dimensions even, so the odd negative branch is excluded and the criterion reduces exactly to \(u-1\) Hilbert–Schmidt. The real norm squared is twice the complex Hilbert–Schmidt norm squared. Both printed abstracts misstate signs or parity eigenspaces; the body theorem and proof are used. Its Fock, phase and trace-class inputs remain source dependencies by reference.
+
+Huzihiro Araki, [*On Quasifree States of CAR and Bogoliubov Automorphisms*](https://ems.press/content/serial-article-files/41673?nt=1), Lemma 4.2 and Corollary 6.2, printed pp.389–390 and 401, supplies the state-preserving GNS extension method. Theorem 7 on p.432 concerns Fock implementation, a different algebra and criterion; it is not substituted for innerness in \(R\). The CAR-algebra criterion uses trace class. The source's short Theorem 7 converse contains an HS/trace-class slip and invokes an earlier theorem whose full proof has not been read.
+
+The local argument above proves the diagonal trace criterion and the noncircular passage to general unitaries. Complete proofs of its Weyl–von Neumann, compact spectral, Hilbert–Schmidt ideal and normal trace-density prerequisites, including the results they rely on, are not established in these lessons. The selected ownership scopes remain foundations Lemma 3.1, Theorem 3.3, Lemma 11.1 and Theorem 11.2, and TI-06. No source expression was imported.

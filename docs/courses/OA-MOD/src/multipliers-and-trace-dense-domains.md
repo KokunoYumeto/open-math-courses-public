@@ -6,7 +6,7 @@ An unbounded multiplier is determined by both a function and the set of square-i
 
 For MM01–04 let \((X,\Sigma,\mu)\) be a sigma-finite measure space. It need not be standard, countably generated or complete, and \(L^2(\mu)\) need not be separable. Functions mean \(\Sigma\)-measurable representatives modulo equality outside a measurable null set. A function finite almost everywhere is assigned the value zero on its measurable exceptional set. The scalar integration programme, Sections 0–2, supplies measure and convergence facts; SS1 supplies the complete scalar Hilbert space and finite-support simple approximation. Inner products are linear in the first entry.
 
-The same results are treated in with Masamichi Takesaki, *Theory of Operator Algebras II*, Chapter IX, §2, Exercises 4 and 5, pp. 182–183, in the approved receipt-backed edition. Our construction starts with the concrete representation and closed graph, so the multiplication formula does not conceal a domain assertion. MM05 applies to arbitrary traced von Neumann algebras, without a sigma-finiteness assumption.
+The same results are treated in with Masamichi Takesaki, *Theory of Operator Algebras II*, Chapter IX, §2, Exercises 4 and 5, pp. 182–183. Our construction starts with the concrete representation and closed graph, so the multiplication formula does not conceal a domain assertion. MM05 applies to arbitrary traced von Neumann algebras, without a sigma-finiteness assumption.
 
 ## The multiplication algebra and its trace
 

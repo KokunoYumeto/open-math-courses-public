@@ -1,6 +1,6 @@
 # Borel carriers and uniform wandering neighborhoods
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-check in progress; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
 
 ## Introduction
 

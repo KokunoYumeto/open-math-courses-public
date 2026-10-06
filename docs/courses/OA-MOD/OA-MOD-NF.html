@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Normal-functional polar decomposition and invariant pairs · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-NF.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 86 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="normal-functional-polar-decomposition-and-invariant-pairs">Normal-functional polar decomposition and invariant pairs</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>A normal complex functional has a positive absolute value and a partial isometry in the algebra. For a functional with faithful positive real part, that partial isometry is unitary. Equality of the absolute values of the functional and its adjoint then says that this unitary commutes with the positive functional. This turns a polar-decomposition test into a modular-invariance test.</p>
+<p>The owning source target is Takesaki, <em>Theory of Operator Algebras II</em>, Exercise VIII.3(3). For the exact prerequisite in Takesaki I, Theorem III.4.2(i) and the terminology of Definition 4.3 we use the existing programme polar-decomposition proof identified below. The Jordan-decomposition part III.4.2(ii) has a separate scope and receives no proof credit here.</p>
+<p>Inputs are CP-01/06's norming-functional Hahn–Banach contract and isometric predual duality, CP-07's positive-functional Cauchy–Schwarz and normality, CP-12/WS's support and faithful corner, BK-07's bounded-operator polar decomposition, NW-11/CP-12's bounded normal-weight-to-predual identification, CZ-05/07/08/09/11's centralizers and density rules, PT-06's supported invariant-weight density theorem, and SK's spectral calculus. The Hahn–Banach input retains its own transitive provider status. Neither a trace on the algebra nor boundedness of the relative density is assumed.</p>
+<p>Our convention is</p>
+<span class="math math-display" data-tex="\[
+(v\omega)(x)=\omega(xv),\qquad
+\eta^*(x)=\overline{\eta(x^*)}.
+\tag{NF.1}
+\]">\[
+(v\omega)(x)=\omega(xv),\qquad
+\eta^*(x)=\overline{\eta(x^*)}.
+\tag{NF.1}
+\]</span>
+<p>All functionals in this lesson are complex-linear. Positive functionals are evaluated on all of <span class="math" data-tex="\(M\)">\(M\)</span>, unlike an unbounded weight's finite linear extension.</p>
+<h2 id="two-solved-norm-attainment-checks-with-support-control"><span id="oa-mod-nf-01"></span><span id="OA-MOD-NF-01"></span>Two solved norm-attainment checks with support control</h2>
+<p><strong>Positivity lemma.</strong> If a bounded complex-linear <span class="math" data-tex="\(f\)">\(f\)</span> on a unital C*-algebra satisfies <span class="math" data-tex="\(f(h)=\|f\|\)">\(f(h)=\|f\|\)</span> for a positive contraction <span class="math" data-tex="\(h\)">\(h\)</span>, then <span class="math" data-tex="\(f\)">\(f\)</span> is positive.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(c=\|f\|\)">\(c=\|f\|\)</span>. Functional calculus gives <span class="math" data-tex="\(\|h+z(1-h)\|\leq1\)">\(\|h+z(1-h)\|\leq1\)</span> for <span class="math" data-tex="\(|z|\leq1\)">\(|z|\leq1\)</span>: every scalar spectral value is a convex combination of 1 and <span class="math" data-tex="\(z\)">\(z\)</span>. Consequently
+<span class="math" data-tex="\(|c+zf(1-h)|\leq c\)">\(|c+zf(1-h)|\leq c\)</span>. Choosing the phase of <span class="math" data-tex="\(z\)">\(z\)</span> shows <span class="math" data-tex="\(f(1-h)=0\)">\(f(1-h)=0\)</span>, so <span class="math" data-tex="\(f(1)=c\)">\(f(1)=c\)</span>. If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, the claim is immediate. For self-adjoint <span class="math" data-tex="\(x\)">\(x\)</span>, the unitary <span class="math" data-tex="\(e^{itx}\)">\(e^{itx}\)</span> satisfies
+<span class="math" data-tex="\(f(e^{itx})=c+itf(x)+O(t^2)\)">\(f(e^{itx})=c+itf(x)+O(t^2)\)</span>. The inequality
+<span class="math" data-tex="\(\operatorname{Re}f(e^{itx})\leq c\)">\(\operatorname{Re}f(e^{itx})\leq c\)</span>, for both signs of <span class="math" data-tex="\(t\)">\(t\)</span>, forces <span class="math" data-tex="\(\operatorname{Im}f(x)=0\)">\(\operatorname{Im}f(x)=0\)</span>. If <span class="math" data-tex="\(0\leq x\leq1\)">\(0\leq x\leq1\)</span>, then <span class="math" data-tex="\(f(1-x)\leq c\)">\(f(1-x)\leq c\)</span>, so <span class="math" data-tex="\(f(x)\geq0\)">\(f(x)\geq0\)</span>. Scaling proves positivity on every positive element. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Projection lemma.</strong> Let <span class="math" data-tex="\(\eta\)">\(\eta\)</span> attain its norm at a contraction <span class="math" data-tex="\(a\)">\(a\)</span>, with <span class="math" data-tex="\(\eta(a)=\|\eta\|\)">\(\eta(a)=\|\eta\|\)</span>. If <span class="math" data-tex="\(a=ae\)">\(a=ae\)</span> for a projection <span class="math" data-tex="\(e\)">\(e\)</span>, then <span class="math" data-tex="\(\eta(x(1-e))=0\)">\(\eta(x(1-e))=0\)</span> for every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>.</p>
+<p><strong>Proof.</strong> The cross terms vanish in the product with its adjoint, giving</p>
+<span class="math math-display" data-tex="\[
+\|a+zx(1-e)\|^2
+=\|aa^*+|z|^2x(1-e)x^*\|
+\leq1+|z|^2\|x\|^2.
+\tag{NF.2}
+\]">\[
+\|a+zx(1-e)\|^2
+=\|aa^*+|z|^2x(1-e)x^*\|
+\leq1+|z|^2\|x\|^2.
+\tag{NF.2}
+\]</span>
+<p>Let <span class="math" data-tex="\(z\)">\(z\)</span> have a phase making <span class="math" data-tex="\(z\eta(x(1-e))\)">\(z\eta(x(1-e))\)</span> nonnegative real. With <span class="math" data-tex="\(r=|z|&gt;0\)">\(r=|z|&gt;0\)</span>,
+<span class="math" data-tex="\(\|\eta\|+r|\eta(x(1-e))|\leq\|\eta\|\sqrt{1+r^2\|x\|^2}\)">\(\|\eta\|+r|\eta(x(1-e))|\leq\|\eta\|\sqrt{1+r^2\|x\|^2}\)</span>.
+Divide the increment by <span class="math" data-tex="\(r\)">\(r\)</span> and let <span class="math" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span>. The right increment tends to zero, proving the claim. The zero functional also satisfies it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These solved checks explain positivity and support at a norm-attaining contraction. They are learner exercises; they do not replace or create another owner of the programme polar theorem used next.</p>
+<h2 id="the-programme-polar-decomposition-and-its-support-convention"><span id="oa-mod-nf-02"></span><span id="OA-MOD-NF-02"></span>The programme polar decomposition and its support convention</h2>
+<p>Read <a href="../foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#oa-fnd-pd-03">The polar decomposition of a normal functional</a>,
+<strong>Theorem 2.2, parts (1), (3) and (4), and Definition 2.3</strong>, in
+<em>Foundations of von Neumann algebras</em>. That existing programme lesson contains
+the full proof for arbitrary complex normal functionals on any von Neumann
+algebra. It was written by Claude Opus 5.5 (Anthropic), September 2026, and
+released under CC0. We use its exact theorem here rather than claim a second owner of its proof.</p>
+<p>With <span class="math" data-tex="\(\eta\)">\(\eta\)</span> in place of the provider's <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and the same module
+convention (NF.1), it gives the unique pair <span class="math" data-tex="\((v,\omega)\)">\((v,\omega)\)</span> with
+<span class="math" data-tex="\(\omega\in M_*^+\)">\(\omega\in M_*^+\)</span> and <span class="math" data-tex="\(v\in M\)">\(v\in M\)</span> a partial isometry satisfying</p>
+<span class="math math-display" data-tex="\[
+\eta(x)=\omega(xv),\qquad v^*v=s(\omega),
+\qquad\|\eta\|=\omega(1)=\|\omega\|.
+\tag{NF.3}
+\]">\[
+\eta(x)=\omega(xv),\qquad v^*v=s(\omega),
+\qquad\|\eta\|=\omega(1)=\|\omega\|.
+\tag{NF.3}
+\]</span>
+<p>Definition 2.3 names <span class="math" data-tex="\(\omega=|\eta|\)">\(\omega=|\eta|\)</span>. If <span class="math" data-tex="\(p=v^*v\)">\(p=v^*v\)</span> and <span class="math" data-tex="\(q=vv^*\)">\(q=vv^*\)</span>,
+part (3) and the provider's Lemma 1.4 say that <span class="math" data-tex="\(p\)">\(p\)</span> is the least projection
+with <span class="math" data-tex="\(\eta(px)=\eta(x)\)">\(\eta(px)=\eta(x)\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-tex="\(q\)">\(q\)</span> is the least with
+<span class="math" data-tex="\(\eta(xq)=\eta(x)\)">\(\eta(xq)=\eta(x)\)</span>. They are respectively the right and left supports
+in this module convention; the side in the evaluation formula must not be
+used to reverse their names.</p>
+<p>The normalization matters even for a nonfaithful functional. For the zero
+functional, the norm clause forces <span class="math" data-tex="\(\omega=0\)">\(\omega=0\)</span>, and
+<span class="math" data-tex="\(v^*v=s(\omega)=0\)">\(v^*v=s(\omega)=0\)</span> forces <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. No faithful state, trace,
+separability or bounded density is part of the imported theorem.</p>
+<h2 id="the-adjoint-modulus-and-its-centralizer-test">The adjoint modulus and its centralizer test</h2>
+<p>Part (4) of the same programme theorem supplies the adjoint pair.
+With <span class="math" data-tex="\(\omega_v(x)=\omega(v^*xv)\)">\(\omega_v(x)=\omega(v^*xv)\)</span>, it is <span class="math" data-tex="\((v^*,\omega_v)\)">\((v^*,\omega_v)\)</span>, and its
+positive functional has support <span class="math" data-tex="\(q=vv^*\)">\(q=vv^*\)</span>. Thus the imported identity is</p>
+<span class="math math-display" data-tex="\[
+\eta^*(x)=\omega(v^*x)=\omega_v(xv^*),
+\qquad |\eta^*|(x)=\omega(v^*xv).
+\tag{NF.7}
+\]">\[
+\eta^*(x)=\omega(v^*x)=\omega_v(xv^*),
+\qquad |\eta^*|(x)=\omega(v^*xv).
+\tag{NF.7}
+\]</span>
+<p>The initial projection for <span class="math" data-tex="\(v^*\)">\(v^*\)</span> is <span class="math" data-tex="\(q\)">\(q\)</span>, exactly as required by the
+provider's normalization. We now apply this formula to the centralizer.</p>
+<p>If both support projections of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> are 1, write <span class="math" data-tex="\(v=u\)">\(v=u\)</span>, a unitary, and <span class="math" data-tex="\(\omega=|\eta|\)">\(\omega=|\eta|\)</span>, faithful. Then</p>
+<span class="math math-display" data-tex="\[
+|\eta|=|\eta^*|
+\quad\Longleftrightarrow\quad
+\omega\circ\operatorname{Ad}(u^*)=\omega
+\quad\Longleftrightarrow\quad u\in M_\omega.
+\tag{NF.8}
+\]">\[
+|\eta|=|\eta^*|
+\quad\Longleftrightarrow\quad
+\omega\circ\operatorname{Ad}(u^*)=\omega
+\quad\Longleftrightarrow\quad u\in M_\omega.
+\tag{NF.8}
+\]</span>
+<p>For the second equivalence, replace <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(xu^*\)">\(xu^*\)</span> in the conjugation identity to get <span class="math" data-tex="\(\omega(u^*x)=\omega(xu^*)\)">\(\omega(u^*x)=\omega(xu^*)\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span>. CZ-05's cyclicity criterion puts <span class="math" data-tex="\(u^*\)">\(u^*\)</span>, and hence <span class="math" data-tex="\(u\)">\(u\)</span>, in the centralizer. Conversely, cyclicity gives invariance under conjugation by the unitary. Every finite ideal here is all of <span class="math" data-tex="\(M\)">\(M\)</span>, because <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is a bounded positive functional. This is an exact centralizer test, rather than a conclusion about two automorphism groups having equal formulas.</p>
+<h2 id="invariant-positive-pairs-have-equal-conjugate-moduli">Invariant positive pairs have equal conjugate moduli</h2>
+<p><strong>Theorem, Exercise VIII.3(3).</strong> Let <span class="math" data-tex="\(\varphi,\psi\in M_*^+\)">\(\varphi,\psi\in M_*^+\)</span>, with <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> faithful. Then</p>
+<span class="math math-display" data-tex="\[
+\psi\circ\sigma_t^\varphi=\psi\quad(t\in\mathbb R)
+\quad\Longleftrightarrow\quad
+|\varphi+i\psi|=|\varphi-i\psi|.
+\tag{NF.9}
+\]">\[
+\psi\circ\sigma_t^\varphi=\psi\quad(t\in\mathbb R)
+\quad\Longleftrightarrow\quad
+|\varphi+i\psi|=|\varphi-i\psi|.
+\tag{NF.9}
+\]</span>
+<p>No faithfulness of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> or boundedness of its relative affiliated density is required.</p>
+<p><strong>From equal moduli to invariance.</strong> Put <span class="math" data-tex="\(\eta=\varphi+i\psi\)">\(\eta=\varphi+i\psi\)</span>, so <span class="math" data-tex="\(\eta^*=\varphi-i\psi\)">\(\eta^*=\varphi-i\psi\)</span>. If <span class="math" data-tex="\(p,q\)">\(p,q\)</span> are the supports from NF-02, then
+<span class="math" data-tex="\(\eta(1-p)=\eta(1-q)=0\)">\(\eta(1-p)=\eta(1-q)=0\)</span>. Taking real parts gives
+<span class="math" data-tex="\(\varphi(1-p)=\varphi(1-q)=0\)">\(\varphi(1-p)=\varphi(1-q)=0\)</span>. Faithfulness forces <span class="math" data-tex="\(p=q=1\)">\(p=q=1\)</span>. Thus <span class="math" data-tex="\(\eta(x)=\omega(xu)\)">\(\eta(x)=\omega(xu)\)</span>, with <span class="math" data-tex="\(\omega\)">\(\omega\)</span> faithful and <span class="math" data-tex="\(u\)">\(u\)</span> unitary. NF-03 puts <span class="math" data-tex="\(u\)">\(u\)</span> in <span class="math" data-tex="\(M_\omega\)">\(M_\omega\)</span>. Define the commuting self-adjoint centralizer elements</p>
+<span class="math math-display" data-tex="\[
+h=\tfrac12(u+u^*),\qquad k=\tfrac1{2i}(u-u^*).
+\tag{NF.10}
+\]">\[
+h=\tfrac12(u+u^*),\qquad k=\tfrac1{2i}(u-u^*).
+\tag{NF.10}
+\]</span>
+<p>The functional identities are <span class="math" data-tex="\(\varphi(x)=\omega(xh)\)">\(\varphi(x)=\omega(xh)\)</span>, <span class="math" data-tex="\(\psi(x)=\omega(xk)\)">\(\psi(x)=\omega(xk)\)</span>. Positivity of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> forces <span class="math" data-tex="\(h\geq0\)">\(h\geq0\)</span>: a nonzero spectral projection <span class="math" data-tex="\(e=1_{(-\infty,-\delta]}(h)\)">\(e=1_{(-\infty,-\delta]}(h)\)</span>, <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, would give
+<span class="math" data-tex="\(\varphi(e)=\omega(eh)\leq-\delta\omega(e)&lt;0\)">\(\varphi(e)=\omega(eh)\leq-\delta\omega(e)&lt;0\)</span>. The same argument gives <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>. Bounded centralizer cyclicity now identifies</p>
+<span class="math math-display" data-tex="\[
+\varphi=\omega_h,\qquad\psi=\omega_k.
+\tag{NF.11}
+\]">\[
+\varphi=\omega_h,\qquad\psi=\omega_k.
+\tag{NF.11}
+\]</span>
+<p>These are identities on all of <span class="math" data-tex="\(M\)">\(M\)</span>. Faithfulness of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> makes <span class="math" data-tex="\(h\)">\(h\)</span> injective by CZ-08's exact support rule; its inverse need not be bounded. CZ-11 gives
+<span class="math" data-tex="\(\sigma_t^\varphi=\operatorname{Ad}(h^{it})\sigma_t^\omega\)">\(\sigma_t^\varphi=\operatorname{Ad}(h^{it})\sigma_t^\omega\)</span>.
+Both factors preserve <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, and <span class="math" data-tex="\(k\)">\(k\)</span> is fixed by the first because it commutes with <span class="math" data-tex="\(h\)">\(h\)</span>, and by the second because it is in <span class="math" data-tex="\(M_\omega\)">\(M_\omega\)</span>. Therefore, for every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>,
+<span class="math" data-tex="\(\psi(\sigma_t^\varphi(x))=\omega(k\sigma_t^\varphi(x))=\omega(\sigma_t^\varphi(kx))=\psi(x)\)">\(\psi(\sigma_t^\varphi(x))=\omega(k\sigma_t^\varphi(x))=\omega(\sigma_t^\varphi(kx))=\psi(x)\)</span>.</p>
+<p><strong>From invariance to equal moduli.</strong> PT-06 gives <span class="math" data-tex="\(\psi=\varphi_\ell\)">\(\psi=\varphi_\ell\)</span> with <span class="math" data-tex="\(\ell\geq0\)">\(\ell\geq0\)</span> affiliated with <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span>, possibly singular and unbounded. Use spectral calculus to set</p>
+<span class="math math-display" data-tex="\[
+g=(1+\ell^2)^{1/2},\qquad
+u=(1+i\ell)g^{-1},\qquad \omega=\varphi_g.
+\tag{NF.12}
+\]">\[
+g=(1+\ell^2)^{1/2},\qquad
+u=(1+i\ell)g^{-1},\qquad \omega=\varphi_g.
+\tag{NF.12}
+\]</span>
+<p>The product defining <span class="math" data-tex="\(u\)">\(u\)</span> denotes the bounded spectral function
+<span class="math" data-tex="\((1+i\lambda)/\sqrt{1+\lambda^2}\)">\((1+i\lambda)/\sqrt{1+\lambda^2}\)</span>. Its modulus is 1 for every finite <span class="math" data-tex="\(\lambda\geq0\)">\(\lambda\geq0\)</span>, so <span class="math" data-tex="\(u\)">\(u\)</span> is unitary in <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span>. The operator <span class="math" data-tex="\(g\geq1\)">\(g\geq1\)</span> is injective with its full spectral domain, and CZ-08 constructs faithful normal semifinite <span class="math" data-tex="\(\omega\)">\(\omega\)</span>.</p>
+<p>We must show that <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is a bounded functional and identify the complex products. Put <span class="math" data-tex="\(p_n=1_{[0,n]}(\ell)\)">\(p_n=1_{[0,n]}(\ell)\)</span>. These projections increase strongly to 1 and are fixed by <span class="math" data-tex="\(\sigma^\varphi\)">\(\sigma^\varphi\)</span>. They are also in <span class="math" data-tex="\(M_\omega\)">\(M_\omega\)</span>: <span class="math" data-tex="\(g\)">\(g\)</span> is a strictly increasing spectral function of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, so they are its spectral projections, and CZ-09 applies. On their corners the density operators are bounded, and scalar spectral order <span class="math" data-tex="\(g\leq1+\ell\)">\(g\leq1+\ell\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\omega(p_n)\leq\varphi(p_n)+\psi(p_n)
+\leq\varphi(1)+\psi(1).
+\tag{NF.13}
+\]">\[
+\omega(p_n)\leq\varphi(p_n)+\psi(p_n)
+\leq\varphi(1)+\psi(1).
+\tag{NF.13}
+\]</span>
+<p>CZ-07/08 identify each restriction with its bounded density. Normality and <span class="math" data-tex="\(p_n\uparrow1\)">\(p_n\uparrow1\)</span> give <span class="math" data-tex="\(\omega(1)&lt;\infty\)">\(\omega(1)&lt;\infty\)</span>. WG's finite-weight extension gives a bounded positive functional; NW-11 and CP-12 identify it as ultraweakly continuous. Thus <span class="math" data-tex="\(\omega\in M_*^+\)">\(\omega\in M_*^+\)</span>, with <span class="math" data-tex="\(\|\omega\|\leq\varphi(1)+\psi(1)\)">\(\|\omega\|\leq\varphi(1)+\psi(1)\)</span>.</p>
+<p>For <span class="math" data-tex="\(y=p_nxp_n\)">\(y=p_nxp_n\)</span>, bounded centralizer cyclicity in this corner gives</p>
+<span class="math math-display" data-tex="\[
+\omega(yu)=\varphi(y(1+i\ell))
+=\varphi(y)+i\psi(y).
+\tag{NF.14}
+\]">\[
+\omega(yu)=\varphi(y(1+i\ell))
+=\varphi(y)+i\psi(y).
+\tag{NF.14}
+\]</span>
+<p>Here <span class="math" data-tex="\(\ell p_n\)">\(\ell p_n\)</span> and <span class="math" data-tex="\(gp_n\)">\(gp_n\)</span> are bounded elements; <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on the corner is a bounded functional. Thus every expression is a defined finite linear value. The uniformly bounded net <span class="math" data-tex="\(p_nxp_n\)">\(p_nxp_n\)</span> tends sigma-strongly* to <span class="math" data-tex="\(x\)">\(x\)</span>. Normality of the three bounded functionals and fixed multiplication by <span class="math" data-tex="\(u\)">\(u\)</span> pass (NF.14) to all <span class="math" data-tex="\(x\)">\(x\)</span>:
+<span class="math" data-tex="\(\eta(x)=\omega(xu)\)">\(\eta(x)=\omega(xu)\)</span>.
+The unitary <span class="math" data-tex="\(u\)">\(u\)</span> also lies in <span class="math" data-tex="\(M_\omega\)">\(M_\omega\)</span>: it commutes with <span class="math" data-tex="\(g\)">\(g\)</span>, and CZ-11 gives <span class="math" data-tex="\(\sigma_t^\omega(u)=u\)">\(\sigma_t^\omega(u)=u\)</span>. Hence
+<span class="math" data-tex="\(\eta^*(x)=\omega(u^*x)=\omega(xu^*)\)">\(\eta^*(x)=\omega(u^*x)=\omega(xu^*)\)</span>.
+Both <span class="math" data-tex="\((u,\omega)\)">\((u,\omega)\)</span> and <span class="math" data-tex="\((u^*,\omega)\)">\((u^*,\omega)\)</span> are normalized polar pairs with support 1. NF-02 proves <span class="math" data-tex="\(|\eta|=\omega=|\eta^*|\)">\(|\eta|=\omega=|\eta^*|\)</span>, as required. On the zero algebra all the assertions are trivial. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="three-examples-and-solved-checks">Three examples and solved checks</h2>
+<p><strong>An unbounded relative density between bounded functionals.</strong> On <span class="math" data-tex="\(\ell^\infty(\mathbb N)\)">\(\ell^\infty(\mathbb N)\)</span>, with indices beginning at 1, let
+<span class="math" data-tex="\(\varphi(x)=\sum_{n\geq1}2^{-n}x_n\)">\(\varphi(x)=\sum_{n\geq1}2^{-n}x_n\)</span> and
+<span class="math" data-tex="\(\psi(x)=\sum_{n\geq1}n2^{-n}x_n\)">\(\psi(x)=\sum_{n\geq1}n2^{-n}x_n\)</span>.
+These are bounded normal positive functionals, with masses 1 and 2; <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is faithful. The elementary geometric series and its derivative give the masses. Their modular groups are trivial, and <span class="math" data-tex="\(\ell_n=n\)">\(\ell_n=n\)</span> is the unbounded affiliated relative density. The exact modulus is</p>
+<span class="math math-display" data-tex="\[
+|\varphi+i\psi|(x)=|\varphi-i\psi|(x)
+=\sum_{n\geq1}2^{-n}\sqrt{1+n^2}\,x_n,
+\qquad u_n=\frac{1+in}{\sqrt{1+n^2}}.
+\tag{NF.15}
+\]">\[
+|\varphi+i\psi|(x)=|\varphi-i\psi|(x)
+=\sum_{n\geq1}2^{-n}\sqrt{1+n^2}\,x_n,
+\qquad u_n=\frac{1+in}{\sqrt{1+n^2}}.
+\tag{NF.15}
+\]</span>
+<p>Its mass is at most 3, since <span class="math" data-tex="\(\sqrt{1+n^2}\leq1+n\)">\(\sqrt{1+n^2}\leq1+n\)</span>. The real part of <span class="math" data-tex="\(u\)">\(u\)</span> is positive and injective, yet has no uniform positive lower bound. Thus imposing bounded <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, or bounded inverse of that real part, would exclude an actual case of the source theorem.</p>
+<p><strong>A noncommuting matrix test.</strong> On <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, use
+<span class="math" data-tex="\(\varphi(x)=\operatorname{Tr}(dx)\)">\(\varphi(x)=\operatorname{Tr}(dx)\)</span>, <span class="math" data-tex="\(\psi(x)=\operatorname{Tr}(ex)\)">\(\psi(x)=\operatorname{Tr}(ex)\)</span>, where
+<span class="math" data-tex="\(d=\operatorname{diag}(1,4)\)">\(d=\operatorname{diag}(1,4)\)</span> and <span class="math" data-tex="\(e=\left[\begin{smallmatrix}1&amp;1\\1&amp;2\end{smallmatrix}\right]\)">\(e=\left[\begin{smallmatrix}1&amp;1\\1&amp;2\end{smallmatrix}\right]\)</span>.
+Both are faithful positive functionals. For <span class="math" data-tex="\(A=d+ie\)">\(A=d+ie\)</span>, the two modulus densities are <span class="math" data-tex="\((A^*A)^{1/2}\)">\((A^*A)^{1/2}\)</span> and <span class="math" data-tex="\((AA^*)^{1/2}\)">\((AA^*)^{1/2}\)</span>, by operator polar decomposition and finite trace cyclicity. Their squares are</p>
+<span class="math math-display" data-tex="\[
+A^*A=\begin{bmatrix}3&amp;3-3i\\3+3i&amp;21\end{bmatrix},\qquad
+AA^*=\begin{bmatrix}3&amp;3+3i\\3-3i&amp;21\end{bmatrix}.
+\tag{NF.16}
+\]">\[
+A^*A=\begin{bmatrix}3&amp;3-3i\\3+3i&amp;21\end{bmatrix},\qquad
+AA^*=\begin{bmatrix}3&amp;3+3i\\3-3i&amp;21\end{bmatrix}.
+\tag{NF.16}
+\]</span>
+<p>They differ, so uniqueness of positive square roots implies unequal modulus functionals. Independently, <span class="math" data-tex="\(\sigma_t^\varphi(e)=d^{it}ed^{-it}\)">\(\sigma_t^\varphi(e)=d^{it}ed^{-it}\)</span> has 12-entry <span class="math" data-tex="\(4^{-it}\)">\(4^{-it}\)</span>. At <span class="math" data-tex="\(t=\pi/\log4\)">\(t=\pi/\log4\)</span> it is <span class="math" data-tex="\(-1\)">\(-1\)</span>, rather than 1. Thus <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is not invariant, exactly as (NF.9) predicts. The conjugate signs and the order of the two operator products both matter.</p>
+<p><strong>Problem: the zero numerator and the missing support.</strong> What happens for <span class="math" data-tex="\(\psi=0\)">\(\psi=0\)</span>? Why cannot one omit the initial support requirement in (NF.3)?</p>
+<p><strong>Solution.</strong> In NF-04, <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>, <span class="math" data-tex="\(g=1\)">\(g=1\)</span>, <span class="math" data-tex="\(u=1\)">\(u=1\)</span>, <span class="math" data-tex="\(\omega=\varphi\)">\(\omega=\varphi\)</span>, so both moduli are <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. For a nonfaithful <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, the identity <span class="math" data-tex="\(\eta(x)=\omega(xv)\)">\(\eta(x)=\omega(xv)\)</span> cannot detect an arbitrary extra partial isometry on the complementary support. On <span class="math" data-tex="\(M_2\)">\(M_2\)</span>, take <span class="math" data-tex="\(\omega(x)=x_{11}\)">\(\omega(x)=x_{11}\)</span>. Both <span class="math" data-tex="\(v=E_{11}\)">\(v=E_{11}\)</span> and <span class="math" data-tex="\(v=1\)">\(v=1\)</span> give <span class="math" data-tex="\(\eta=\omega\)">\(\eta=\omega\)</span>, but only <span class="math" data-tex="\(E_{11}\)">\(E_{11}\)</span> has initial projection <span class="math" data-tex="\(s(\omega)=E_{11}\)">\(s(\omega)=E_{11}\)</span>. The normalization therefore makes the polar factor unique; NF-04's faithful real part removes that complementary support entirely.</p>
+<h2 id="source-prerequisite-and-illustration-scope">Source, prerequisite and illustration scope</h2>
+<p>NF-02 imports the exact existing complex normal-functional polar theorem, with both minimal supports, uniqueness and norm normalization, from the programme's Theorem 2.2 and Definition 2.3. NF-01 contains solved norm-attainment checks. NF-03 applies the same provider's transported adjoint modulus to the centralizer; NF-04 supplies both directions of the full arbitrary-algebra source exercise. Its possibly zero numerator and unbounded relative density remain visible.</p>
+<p>The original reproducible figure retained with this tranche shows the unitary spectral phase in (NF.12), the discrete integrable modulus in (NF.15), and the conjugate off-diagonal signs in (NF.16). Finite samples and limiting endpoints are identified; captions carry exact proof locators and human-source citations. It has author mathematical and visual review.</p>
+<p>Exercises VIII.3(4)–(5) and (9) are not solved in this lesson. The original arguments here rely on their named prerequisites, which are not proved in this lesson.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-CM.html">← Central cocycles and common finite domains</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-TE.html">Finite corners, faithful traces, and affine group fixed points →</a></span></nav>
+<p class="small source-link"><a href="src/normal-functional-polar-decomposition-and-invariant-pairs.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

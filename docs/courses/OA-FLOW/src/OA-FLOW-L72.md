@@ -13,7 +13,7 @@ A group action on an abelian von Neumann algebra can be realized by homeomorphis
 \]
 The isomorphism \(\Theta\) and its inverse are normal, and its restriction to \(A\) is the Gelfand transform. The algebra \(A\) is ultraweakly dense in \(M\), its action is point-norm continuous, and its bounded averaging domain is norm dense. In fact every \(f\in C_c(X)\) belongs to that domain. For every positive \(a\in M\), the abstract bounded-average condition is exactly essential boundedness of the measurable orbit integral of \(\Theta(a)\).
 
-We use the earlier [concrete predual](OA-FLOW-CP.md#oa-flow.cp.6), [bounded density theorem](OA-FLOW-BD.md#oa-flow.bd.4), compact predual balls, [normal GNS representation](OA-FLOW-STC.md#oa-flow.st.coefficient), Gelfand calculus, [Radon representation](OA-FLOW-HR.md#hr-02), and [scalar multiplication algebra](OA-FLOW-IW.md#iw-1). The particular uses are identified in the proof.
+We use the earlier [concrete predual](OA-FLOW-CP.md#oa-flow.cp.6), [bounded density theorem](OA-FLOW-BD.md#oa-flow.bd.4), [compact predual balls](OA-FLOW-ST12.md#oa-flow.st.1), [normal GNS representation](OA-FLOW-STC.md#oa-flow.st.coefficient), [Gelfand calculus](OA-FLOW-CF.md#oa-flow.cf.6), [Radon representation](OA-FLOW-HR.md#hr-02), and [scalar multiplication algebra](OA-FLOW-IW.md#iw-1). The particular uses are identified in the proof.
 
 <a id="oa-flow.model.domain"></a>
 
@@ -28,7 +28,7 @@ This section allows an arbitrary von Neumann algebra \(M\), an arbitrary locally
 \]
 The integral is ultraweak: on \(\omega\in M_*\) it has value \(\int_K\omega(\alpha_g(a))\,dg\). This defines an element of \(M=(M_*)^*\), with norm at most \(m(K)\|a\|\), by [CP6](OA-FLOW-CP.md#oa-flow.cp.6). Positive vector tests make it positive. The compact sets are directed by inclusion, since a finite union of compact sets is compact.
 
-For \(a\in P_b\) the increasing net \(E_K(a)\) has a bounded supremum, denoted \(E(a)\), and converges strongly and ultraweakly to it. Here is the operator argument for the monotone completeness used throughout this lesson. If \(0\le x_i\uparrow\) and \(\|x_i\|\le C\), the limits of \(\langle x_i\xi,\xi\rangle\), polarized, define a bounded positive operator \(x\) by the Hilbert representation theorem. It lies in \(M=M''\), since the limiting form commutes with every operator in \(M'\). It is the least upper bound, and
+For \(a\in P_b\) the increasing net \(E_K(a)\) has a bounded supremum, denoted \(E(a)\), and converges strongly and ultraweakly to it. Here is the operator argument for the monotone completeness used throughout this lesson. If \(0\le x_i\uparrow\) and \(\|x_i\|\le C\), the limits of \(\langle x_i\xi,\xi\rangle\), polarized, define a bounded positive operator \(x\) by the [Hilbert representation theorem](OA-FLOW-CF.md#oa-flow.cf.8). It lies in \(M=M''\), since the limiting form commutes with every operator in \(M'\). It is the least upper bound, and
 \[
  \|(x-x_i)\xi\|^2\le C\langle(x-x_i)\xi,\xi\rangle\longrightarrow0.
  \tag{D1}
@@ -65,7 +65,7 @@ Finally assume (3). Calculus gives \((1-e_i^{1/2})^2\le1-e_i\), so \(e_i^{1/2}\t
  \tag{D3}
 \]
 The convergence is bounded strong convergence: expand the difference as
-\(e_i^{1/2}x(e_i^{1/2}-1)+(e_i^{1/2}-1)x\) on each vector. Heredity puts all these positive compressions in \(P_b\). Positive and negative parts of the real and imaginary parts of an arbitrary element, supplied by CF7, prove (1). This completes all four implications. \(\square\)
+\(e_i^{1/2}x(e_i^{1/2}-1)+(e_i^{1/2}-1)x\) on each vector. Heredity puts all these positive compressions in \(P_b\). Positive and negative parts of the real and imaginary parts of an arbitrary element, supplied by [CF7](OA-FLOW-CF.md#oa-flow.cf.7), prove (1). This completes all four implications. \(\square\)
 
 In particular the bounded-cone density hypothesis can be expressed by an increasing integrable contraction net. This assertion concerns bounded orbit averages and needs no theorem about arbitrary unbounded operator-valued weights.
 
@@ -88,7 +88,7 @@ Here \(W^*\) denotes unital von Neumann generation. To justify countability, tak
        \frac{|\rho_n(x-y)|}{1+|\rho_n(x-y)|}
  \tag{D4}
 \]
-induces exactly the ultraweak topology. Coordinate convergence implies convergence on every predual functional by norm approximation and the uniform operator bound; convergence of the series follows from its uniform tail bound. The converse is immediate from the same tail bound. The ball is compact by ST1. Finite covers by radius-\(1/n\) balls produce a countable dense set.
+induces exactly the ultraweak topology. Coordinate convergence implies convergence on every predual functional by norm approximation and the uniform operator bound; convergence of the series follows from its uniform tail bound. The converse is immediate from the same tail bound. The ball is compact by [ST1](OA-FLOW-ST12.md#oa-flow.st.1). Finite covers by radius-\(1/n\) balls produce a countable dense set.
 
 The unital algebra \(C^*(1,P_b)\) generates \(M\). [BD4–5](OA-FLOW-BD.md#oa-flow.bd.4) therefore gives bounded ultraweak approximants from it to every point of that countable dense ball. Metrizability permits a sequence of approximants for each point. Approximate every selected element in norm by finite *-polynomials in \(P_b\), with a constant term allowed at this stage. The countably many actual elements of \(P_b\) appearing in these polynomials generate all of \(M\).
 
@@ -153,7 +153,7 @@ This norm-convergent positive sum has support one: \(h\xi=0\) implies \(\langle 
  0\le e_n\le1,\qquad e_n\uparrow1\text{ strongly}.
  \tag{C10}
 \]
-Membership in \(A\) follows from CF9's calculus vanishing at zero; the inverse is computed in \(M\). The strong limit follows by the same range-density argument used after (D2). Thus \(A\) acts nondegenerately. Its bicommutant contains all \(d_\ell\), hence all \(p_j\), and equals \(M\). [BD1 and BD4–5](OA-FLOW-BD.md#oa-flow.bd.1) now prove ultraweak density of \(A\), including bounded strong-star approximation.
+Membership in \(A\) follows from [CF9's calculus vanishing at zero](OA-FLOW-CF.md#gns-residual-calculus-restriction); the inverse is computed in \(M\). The strong limit follows by the same range-density argument used after (D2). Thus \(A\) acts nondegenerately. Its bicommutant contains all \(d_\ell\), hence all \(p_j\), and equals \(M\). [BD1 and BD4–5](OA-FLOW-BD.md#oa-flow.bd.1) now prove ultraweak density of \(A\), including bounded strong-star approximation.
 
 In the abelian algebra put
 \[
@@ -172,7 +172,7 @@ Finite linear combinations are dominated in absolute value by the sum of their p
 
 ## The spectrum, its action, and a full-support probability
 
-Here is the nonunital form of the Gelfand construction, with its countability and topology explicit. Form the forced unitization \(A^\dagger\) of CF9. Its character space \(K\) is compact Hausdorff, and CF6 identifies \(A^\dagger\) with \(C(K)\). The scalar quotient is a distinguished character \(\infty\in K\). Its kernel is \(A\), so, on setting \(X=K\setminus\{\infty\}\),
+Here is the nonunital form of the Gelfand construction, with its countability and topology explicit. Form the forced unitization \(A^\dagger\) of [CF9](OA-FLOW-CF.md#oa-flow.cf.9). Its character space \(K\) is compact Hausdorff, and [CF6](OA-FLOW-CF.md#oa-flow.cf.6) identifies \(A^\dagger\) with \(C(K)\). The scalar quotient is a distinguished character \(\infty\in K\). Its kernel is \(A\), so, on setting \(X=K\setminus\{\infty\}\),
 \[
  A\xrightarrow{\ a\mapsto\widehat a\ }C_0(X)
  \quad\text{is an isometric onto *-isomorphism}.
@@ -217,7 +217,7 @@ The inverse Gelfand transform and heredity give (C12a). The empty support case i
 
 ## The complete normal identification with measurable functions
 
-Let \((H_\varphi,\pi_\varphi,\xi_\varphi)\) be the GNS representation of \(\varphi\). [ST-C](OA-FLOW-STC.md#oa-flow.st.coefficient) proves that \(\pi_\varphi\) is faithful and normal, and ST2 proves that its image is a von Neumann algebra with normal inverse. On the dense subspace generated by \(A\), prescribe
+Let \((H_\varphi,\pi_\varphi,\xi_\varphi)\) be the GNS representation of \(\varphi\). [ST-C](OA-FLOW-STC.md#oa-flow.st.coefficient) proves that \(\pi_\varphi\) is faithful and normal, and [ST2](OA-FLOW-ST12.md#oa-flow.st.2) proves that its image is a von Neumann algebra with normal inverse. On the dense subspace generated by \(A\), prescribe
 \[
  U(\pi_\varphi(a)\xi_\varphi)=\widehat a,\qquad a\in A.
  \tag{C15}

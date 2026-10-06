@@ -29,7 +29,7 @@ I_EH&=Rq_*R\Gamma_N(p^!H), &&H\in D^+_{\mathbb R_{>0}}(E;k).
 \end{aligned} \tag{FDN1}
 \]
 
-The first two are the transform and its inverse from the Fourier kernel unit. The third is the inverse transform with the roles of \(E\) and \(E^*\) exchanged; thus \(I_E=S_{E^*}\) after permuting the coordinates of the product. Both \(T_E\) and \(I_E\) go from \(E\) to \(E^*\). In particular, \(I_E\) in the duality theorem below is not \(S_E\), whose domain is different.
+The first two are the transform and its inverse from [the Fourier kernel unit](fourier-sato.md). The third is the inverse transform with the roles of \(E\) and \(E^*\) exchanged; thus \(I_E=S_{E^*}\) after permuting the coordinates of the product. Both \(T_E\) and \(I_E\) go from \(E\) to \(E^*\). In particular, \(I_E\) in the duality theorem below is not \(S_E\), whose domain is different.
 
 The boundedness symbols are global. We take \(F\in D^b_{\mathbb R_{>0}}(E;k)\) in every duality assertion. Its cohomology may have arbitrary stalk modules, angular variation, and base variation. There is no field, Noetherian, constructibility, finite-generation, or compactness assumption. A dual of such an \(F\) is asserted to belong to \(D^+\), not automatically to \(D^b\).
 
@@ -41,7 +41,7 @@ The sheaf-operation imports used here are the proper-support projection formula,
 \pi^!H\simeq \pi^{-1}H\otimes_k\pi^{-1}O[n]. \tag{FDN2}
 \]
 
-Finite cohomological dimension of the proper direct images of these finite-rank bundle projections supplies their extraordinary inverse images. This is a condition on abelian sheaves in the underlying foundation, not a replacement by a bound for one chosen coefficient object. The projection formula is the one for proper support and has no perfectness requirement on a bounded tensor factor. The [kernel unit](kernel-calculus.md) states these imports and their adjunction maps. Conicity of internal Hom with bounded first input and bounded-below second input is provided by conic descent.
+Finite cohomological dimension of the proper direct images of these finite-rank bundle projections supplies their extraordinary inverse images. This is a condition on abelian sheaves in the underlying foundation, not a replacement by a bound for one chosen coefficient object. The projection formula is the one for proper support and has no perfectness requirement on a bounded tensor factor. The [kernel unit](kernel-calculus.md) states these imports and their adjunction maps. Conicity of internal Hom with bounded first input and bounded-below second input is provided by [conic descent](conic-descent.md).
 
 ### SH02-FDN-PROJECTION-RANGE — Why bounded-below tests are allowed
 

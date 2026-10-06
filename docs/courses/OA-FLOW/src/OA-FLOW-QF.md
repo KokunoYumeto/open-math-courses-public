@@ -4,7 +4,7 @@
 
 The following elementary proofs supply the precise inputs of the four induction chapters. Groups and Hilbert spaces are arbitrary. A Radon measure initially uses the outer regular convention of [HR2–3](OA-FLOW-HR.md#hr-02); whenever the induction chapters use the inner regular representative, their explicit conversion applies. No countable base, disintegration theorem or measurable choice of a coset representative is assumed.
 
-The earlier inputs are [H0](OA-FLOW-TOPOLOGY.md#l138-h0) for compact cutoffs and finite partitions, CF1 for norm separation and norm series, [HR2–3](OA-FLOW-HR.md#hr-02) for positive Riesz representation and finite regularity, [HR5](OA-FLOW-HR.md#hr-05) for finite Radon products, [HR8](OA-FLOW-HR.md#hr-08) for open sigma compact subgroups, [SC4–7](OA-FLOW-SC.md#sc-04) for sequential scalar integration, and the simple-function construction of [L24 Proposition4.1](OA-FLOW-L24.md#oa-flow.grp.vectorintegration). Hilbert completions and orthogonal projections are proved in CF8 and CF10.
+The earlier inputs are [H0](OA-FLOW-TOPOLOGY.md#l138-h0) for compact cutoffs and finite partitions, [CF1](OA-FLOW-CF.md#oa-flow.cf.1) for norm separation and norm series, [HR2–3](OA-FLOW-HR.md#hr-02) for positive Riesz representation and finite regularity, [HR5](OA-FLOW-HR.md#hr-05) for finite Radon products, [HR8](OA-FLOW-HR.md#hr-08) for open sigma compact subgroups, [SC4–7](OA-FLOW-SC.md#sc-04) for sequential scalar integration, and the simple-function construction of [L24 Proposition4.1](OA-FLOW-L24.md#oa-flow.grp.vectorintegration). Hilbert completions and orthogonal projections are proved in [CF8](OA-FLOW-CF.md#oa-flow.cf.8) and [CF10](OA-FLOW-CF.md#oa-flow.cf.10).
 
 <a id="qf-1"></a>
 ## QF1. Closed-subspace extension and quotient topology

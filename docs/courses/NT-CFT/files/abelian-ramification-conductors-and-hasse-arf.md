@@ -9,7 +9,7 @@ Fix a nonarchimedean local field \(K\), valuation ring \(\mathcal O\), uniformiz
 We use the actual written ramification prerequisites in [Ramification groups and the different of a local extension](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-09), Proposition 1.1, equation (2.2) and Theorem 3.1, and [Herbrand's function and the upper numbering](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-10), Proposition 1.1 and Theorem 3.1. In particular, the latter's quotient theorem was proved without Hasse–Arf; its reference to a planned proof of Hasse–Arf is fulfilled here and is not a hypothesis of our argument.
 
 
-**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-10) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-10) shows which results are proved in published lessons and which full proofs are still missing. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
 
 ## 1. Conventions at a jump
 

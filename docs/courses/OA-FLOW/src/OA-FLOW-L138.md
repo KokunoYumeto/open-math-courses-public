@@ -4,7 +4,7 @@
 
 Let \(A\) be an arbitrary C\* algebra, \(G\) an arbitrary locally compact Hausdorff group, and \(\alpha:G\to\operatorname{Aut}(A)\) a point-norm continuous action. The duality statements below assume that \(G\) is abelian. They require no unit in \(A\), separability of \(A\) or a Hilbert space, second countability, or sigma compactness. Inner products are linear in the first variable. Full crossed products and their nondegenerate covariant representations use L25's convention \(\pi(F(s))U_s\) in the integrated form.
 
-The earlier operator inputs are the complete CF, [SC](OA-FLOW-SC.md#sc-00), [GNS](OA-FLOW-GNS.md#gns-theorem-7-3), [L24](OA-FLOW-L24.md#oa-flow.grp.completions), [L25](OA-FLOW-L25.md#oa-flow.ccov.completions) proofs. The companion [Fourier completions, compact tests and the returned measure](OA-FLOW-TOPOLOGY.md#l138-h0) supplies [H0](OA-FLOW-TOPOLOGY.md#l138-h0)–[H4](OA-FLOW-HARMONIC-LATE.md#l138-h4): compact cutoffs and finite partitions, \(C^*(G)=C_0(\widehat G)\), equality with the reduced group norm, topological biduality, and exact Haar return. Its Haar/Radon inputs now use the complete earlier HR proof cone. The scalar Plancherel premise is now the complete earlier [onto Fourier unitary proof](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p3), with [its dual Haar normalization](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p2) and [its exact inverse-integral domain](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p4). The proof below is complete at those specified inputs and does not treat an external source citation as their proof.
+The earlier operator inputs are the complete [CF](OA-FLOW-CF.md#oa-flow.cf.1), [SC](OA-FLOW-SC.md#sc-00), [GNS](OA-FLOW-GNS.md#gns-theorem-7-3), [L24](OA-FLOW-L24.md#oa-flow.grp.completions), [L25](OA-FLOW-L25.md#oa-flow.ccov.completions) proofs. The companion [Fourier completions, compact tests and the returned measure](OA-FLOW-TOPOLOGY.md#l138-h0) supplies [H0](OA-FLOW-TOPOLOGY.md#l138-h0)–[H4](OA-FLOW-HARMONIC-LATE.md#l138-h4): compact cutoffs and finite partitions, \(C^*(G)=C_0(\widehat G)\), equality with the reduced group norm, topological biduality, and exact Haar return. Its Haar/Radon inputs now use the complete earlier HR proof cone. The scalar Plancherel premise is now the complete earlier [onto Fourier unitary proof](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p3), with [its dual Haar normalization](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p2) and [its exact inverse-integral domain](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p4). The proof below is complete at those specified inputs and does not treat an external source citation as their proof.
 
 <a id="oa-flow.xgaps.cstar.harmonic"></a><a id="OA-FLOW.XGAPS.CSTAR.HARMONIC"></a>
 
@@ -43,7 +43,7 @@ It produces compact-uniform almost invariant regular vectors from the factored t
 
 <a id="oa-flow.xgaps.amenability.abelian"></a>
 
-Now assume \(G\) abelian and write additively. Its modular function is one: right and left translations coincide, so their Haar Jacobians coincide. Companion [H1](OA-FLOW-HARMONIC.md#l138-h1) proves, from the commutative CF theorem and L24's integration/recovery on a one-dimensional essential space,
+Now assume \(G\) abelian and write additively. Its modular function is one: right and left translations coincide, so their Haar Jacobians coincide. Companion [H1](OA-FLOW-HARMONIC.md#l138-h1) proves, from the [commutative CF theorem](OA-FLOW-CF.md#oa-flow.cf.6) and L24's integration/recovery on a one-dimensional essential space,
 \[
  C^*(G)\cong C_0(\widehat G),\qquad
  f\longmapsto\widehat f,\qquad
@@ -130,7 +130,7 @@ On compact continuous scalar tensors with fixed vectors its recovered generators
 \]
 The positive character in the second line comes from evaluating \(\widehat\alpha\) at the inverse regular coordinate \(\chi^{-1}\), as prescribed in [L25 Section 4](OA-FLOW-L25.md#oa-flow.ccov.regular). The first regular representation is faithful on the **full** \(B\), by (49) and (51) for \(G\). Its coefficient representation for the second crossing is faithful and nondegenerate by [L25 Proposition 4.1](OA-FLOW-L25.md#oa-flow.ccov.regular). Applying (49) and (51) separately to the LCA group \(\Gamma\) makes the second regular representation faithful on the full double crossing. These are two distinct norm comparisons.
 
-Tensoring \(\mathcal F_\Gamma\) with identities is unitary: its rule on finite tensor sums preserves their inner products and has an inverse rule; CF's Hilbert completion extends both. Applying (TC1) to (TC2) gives, first on these compact tensors,
+Tensoring \(\mathcal F_\Gamma\) with identities is unitary: its rule on finite tensor sums preserves their inner products and has an inverse rule; [CF's Hilbert completion](OA-FLOW-CF.md#oa-flow.cf.10) extends both. Applying (TC1) to (TC2) gives, first on these compact tensors,
 \[
  \begin{aligned}
  J_A(a)\zeta(x,t)&=\pi(\alpha_{-x}(a))\zeta(x,t),\\

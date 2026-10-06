@@ -1,6 +1,6 @@
 # Fullness, hypercentrality and ultrafilter corners
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 The central sequence algebra is finite, but need not be a factor. We now relate its size and commutativity to ordinary sequences. The crucial result is stronger than a single nonzero commutator: if this algebra is noncommutative, every nonzero corner is noncommutative. This gives type \(\mathrm{II}_1\), with its center retained. For the hyperfinite factor we can go further and prove that the central sequence algebra is itself a factor.
 

@@ -7,7 +7,7 @@ Local reciprocity embeds \(K^\times\) densely in the abelianized absolute Galois
 We use [Explicit local reciprocity and the existence theorem](explicit-local-reciprocity-and-existence.md), especially Theorem 9.4, and the unit-filtration theorem in [Abelian ramification, conductors and Hasse–Arf](abelian-ramification-conductors-and-hasse-arf.md). The analytic character factors come from *Tate's local theory at the finite places* and *Tate's local theory at the infinite places* in the course *Adèles and L-functions*, lessons 7 and 8. We supply the additional Fourier argument needed in positive characteristic. Sections 1–4 concern a nonarchimedean local field of either characteristic. Section 5 treats the real and complex fields; section 6 translates Frobenius conventions, and section 7 connects the local construction to global reciprocity.
 
 
-**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-12) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-12) shows which results are proved in published lessons and which full proofs are still missing. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
 
 ## 1. Inertia open, Frobenius discrete
 
@@ -222,7 +222,7 @@ These follow by scaling the Fourier transform and by substituting \(y\mapsto ry\
 \]
 Thus duality involves an inverse character **and** a norm twist; it is not a rule that simply inverts epsilon.
 
-The higher-dimensional extension is Deligne's Theorem 4.1: there is a unique family of nonzero constants for finite-dimensional smooth complex Weil representations, multiplicative in exact sequences, scaled by \(t^{\dim V}\) under \(dx\mapsto t\,dx\), compatible with induction of virtual representations of dimension zero through finite separable extensions using \(\psi\circ\operatorname{Tr}\), and equal to Tate's constants in dimension one under geometric reciprocity. Its representation-theoretic proof belongs to [Local L-factors and epsilon-factors of Weil group representations](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#LG-GAL-06), section 3. That edition supplies the statement and uniqueness proof; the general existence proof remains required there. Our proofs of (3), (6)–(8) and (13)–(17) do not use that higher-dimensional existence assertion.
+The higher-dimensional extension is Deligne's Theorem 4.1: there is a unique family of nonzero constants for finite-dimensional smooth complex Weil representations, multiplicative in exact sequences, scaled by \(t^{\dim V}\) under \(dx\mapsto t\,dx\), compatible with induction of virtual representations of dimension zero through finite separable extensions using \(\psi\circ\operatorname{Tr}\), and equal to Tate's constants in dimension one under geometric reciprocity. Its representation-theoretic proof belongs to [Local L-factors and epsilon-factors of Weil group representations](https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/local-l-factors-and-epsilon-factors.html#3-existence-and-uniqueness-of-local-constants), section 3. Theorem 3.0 and sections 3A–3D supply the existence argument, including the Brauer-relation check and arbitrary smooth representations; Theorem 3.2 supplies uniqueness. Our proofs of (3), (6)–(8) and (13)–(17) do not use that higher-dimensional existence assertion.
 
 ## 5. The real and complex Weil groups
 
@@ -340,7 +340,7 @@ The reading edition provides the complete LaTeX source of this lesson, the cumul
 
 ## References
 
-The local Weil construction and one-dimensional formulas use the written rank-one Fourier prerequisites. Global Weil constructions are supplied in lessons 17 and 24. General higher-dimensional epsilon existence remains an explicit, incomplete LG-GAL-06 prerequisite; the free research paper is not its programme proof.
+The local Weil construction and one-dimensional formulas use the written rank-one Fourier prerequisites. Global Weil constructions are supplied in lessons 17 and 24. General higher-dimensional epsilon existence is supplied by LG-GAL-06, Theorem 3.0 and sections 3A–3D; its uniqueness theorem is Theorem 3.2. These are programme proofs, distinct from the external reading sources.
 
 - [Bjorn Poonen, Tate’s Thesis, MIT 18.786 lecture notes (2015)](https://math.mit.edu/~poonen/786/notes.pdf).
 - [John Tate, Number theoretic background (1979), freely available paper](https://ncatlab.org/nlab/files/TateNumberTheory.pdf).

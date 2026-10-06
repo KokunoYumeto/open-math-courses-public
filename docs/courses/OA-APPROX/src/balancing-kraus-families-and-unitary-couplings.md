@@ -1,10 +1,10 @@
 # Balancing Kraus families and unitary couplings
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 A unital Kraus family has \(\sum b_i^*b_i=1\). To turn its reconstruction map into an approximate unitary intertwiner, we also need \(\sum b_i b_i^*=1\). We will average the second sum, scale down slightly, and fill both remaining defects exactly. The repaired map changes arbitrarily little on the matrix algebra being modeled.
 
-The inputs are the [trace-preserving finite models](trace-preserving-finite-models.md), the [internal matrix Kraus formula](properly-infinite-injective-algebras-and-dyadic-approximation.md#lemma-4-1), and canonical center-valued trace and projection comparison. The central trace cuts provide projections of arbitrary prescribed scalar trace in a \(\mathrm{II}_1\) factor. General tracial expectations retain the exact OA-MOD prerequisite used earlier. We prove the norm-averaging step here.
+The inputs are the [trace-preserving finite models](trace-preserving-finite-models.md), the [internal matrix Kraus formula](properly-infinite-injective-algebras-and-dyadic-approximation.md#lemma-4-1), and canonical center-valued trace and projection comparison. The [central trace cuts](central-traces-and-afd-finite-algebras.md#lemma-1-1) provide projections of arbitrary prescribed scalar trace in a \(\mathrm{II}_1\) factor. General tracial expectations retain the exact OA-MOD prerequisite used earlier. We prove the norm-averaging step here.
 
 ## 1. Filling two positive defects
 

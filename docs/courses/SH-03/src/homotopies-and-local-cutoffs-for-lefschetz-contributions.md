@@ -2,7 +2,7 @@
 
 A local contribution can be computed on a smaller coefficient complex. The cutoff must also carry a map: restriction and extension have different directions at its boundary. We prove the two resulting trace formulas, then use them to distinguish an attracting interval endpoint from a repelling one.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Learn first Lefschetz traces of constructible correspondences, Closed supports and evaluated proper transport, and Perfect operations and finite microlocal coefficients. We use their actual diagonal identity, supported pullback, evaluated exceptional counit, constructible duality and finite cohomology. Ordinary interval descent, locally closed extension adjunctions and their projection/base-change maps are the exact earlier sheaf-operation prerequisites. Their transitive foundations and independent review remain open.
 

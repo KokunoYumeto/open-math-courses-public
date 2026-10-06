@@ -1,0 +1,1040 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Inner derivations in an arbitrary von Neumann algebra · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L34.html">Previous lesson</a><a href="OA-FLOW-IP.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L35.md">Lesson source</a></nav><h1 id="inner-derivations-in-an-arbitrary-von-neumann-algebra">Inner derivations in an arbitrary von Neumann algebra</h1>
+<p><em>Self-checked by the writing AI. Original exposition and illustration sources: CC0 1.0.</em></p>
+<p>Spectral subspaces of the derivation determine projection tails, and those tails reconstruct an implementer inside the von Neumann algebra. After the construction and its norm estimates, we extend derivations to represented algebras, prove invariance of closed dual bimodules, and give a separate normality proof through automorphisms.</p>
+<p>The implementer will be constructed inside the algebra. No factor decomposition, separability, faithful state, countable central partition, or standard representation is assumed.</p>
+<h2 id="OA-FLOW.GI.SETTING"><span id="oa-flow.gi.setting"></span>1. Statement and the earlier boundedness proof</h2>
+<p>Let <span class="math" data-tex="$M\subseteq B(H)$">$M\subseteq B(H)$</span> be a unital von Neumann algebra on an arbitrary complex Hilbert space. A derivation means an everywhere-defined complex-linear map <span class="math" data-tex="$d:M\to M$">$d:M\to M$</span> satisfying</p>
+<p><span class="math math-display" data-tex="$$d(xy)=d(x)y+xd(y).$$">$$d(xy)=d(x)y+xd(y).$$</span></p>
+<p>A star derivation also satisfies <span class="math" data-tex="$d(x^*)=d(x)^*$">$d(x^*)=d(x)^*$</span>. The conclusion is:</p>
+<p><strong>Theorem 1.</strong> Every derivation of <span class="math" data-tex="$M$">$M$</span> is bounded and inner. For a star derivation there is a positive <span class="math" data-tex="$b\in M$">$b\in M$</span> such that</p>
+<p><span class="math math-display" data-tex="$$d(x)=i[b,x],\qquad \|b\|=\|d\|,\qquad
+\left\|b-\frac{\|d\|}{2}1\right\|=\frac{\|d\|}{2}. \tag{1}$$">$$d(x)=i[b,x],\qquad \|b\|=\|d\|,\qquad
+\left\|b-\frac{\|d\|}{2}1\right\|=\frac{\|d\|}{2}. \tag{1}$$</span></p>
+<p>For every central projection <span class="math" data-tex="$z$">$z$</span>,</p>
+<p><span class="math math-display" data-tex="$$\|bz\|=\|d|_{Mz}\|. \tag{2}$$">$$\|bz\|=\|d|_{Mz}\|. \tag{2}$$</span></p>
+<p>This <span class="math" data-tex="$b$">$b$</span> is the least positive implementer and is the unique positive implementer satisfying (2). A general complex derivation has an implementer <span class="math" data-tex="$k\in M$">$k\in M$</span> with</p>
+<p><span class="math math-display" data-tex="$$d(x)=[k,x],\qquad \|k\|\leq\|d\|. \tag{3}$$">$$d(x)=[k,x],\qquad \|k\|\leq\|d\|. \tag{3}$$</span></p>
+<p>The zero algebra and zero derivation have the stated conclusions with zero implementer. Below we may therefore assume <span class="math" data-tex="$M\ne0$">$M\ne0$</span>; in constructions divided by a generator norm we separately handle norm zero.</p>
+<p><strong>Earlier programme proof.</strong> Automatic boundedness is proved in <a href="OA-FLOW-L34.html#oa-flow.dfd.algebra">L34, Section 4, Norming states and the compression proof</a>, Lemmas 4.1–4.2 and Theorem 4.3. It covers every everywhere-defined complex derivation on an arbitrary, possibly nonunital C*-algebra. The nonunital extension and decomposition are proved in Section 2; norm-preserving complex extension and the real closed-graph theorem are proved in Section 3. The compression argument requires no compactness of the state space and uses neither innerness nor any result of this lesson. L34 precedes L35 in the reader.</p>
+<p>For clarity, the algebraic decomposition used again here is</p>
+<p><span class="math math-display" data-tex="$$d^\dagger(x)=d(x^*)^*,\qquad
+d_1=(d+d^\dagger)/2,\qquad d_2=(d-d^\dagger)/(2i). \tag{4}$$">$$d^\dagger(x)=d(x^*)^*,\qquad
+d_1=(d+d^\dagger)/2,\qquad d_2=(d-d^\dagger)/(2i). \tag{4}$$</span></p>
+<p>Reversing a product twice proves <span class="math" data-tex="$d^\dagger(xy)=xd^\dagger(y)+d^\dagger(x)y$">$d^\dagger(xy)=xd^\dagger(y)+d^\dagger(x)y$</span>, and the two conjugations make it complex linear. The identity <span class="math" data-tex="$(d^\dagger)^\dagger=d$">$(d^\dagger)^\dagger=d$</span> proves that <span class="math" data-tex="$d_1,d_2$">$d_1,d_2$</span> are star derivations and <span class="math" data-tex="$d=d_1+id_2$">$d=d_1+id_2$</span>. Once boundedness has been supplied by L34, the isometry of star gives</p>
+<p><span class="math math-display" data-tex="$$\|d_j\|\leq\|d\|\quad(j=1,2). \tag{5}$$">$$\|d_j\|\leq\|d\|\quad(j=1,2). \tag{5}$$</span></p>
+<p>The only C*- and Hilbert-space foundations used without reproving them here are the earlier programme proofs of continuous functional calculus for a bounded selfadjoint element, the C*-identity, completeness of a C*-algebra and of its bounded-operator space, and orthogonal projection onto a closed Hilbert subspace. We prove the arbitrary projection joins needed below directly from these foundations and strong closedness of <span class="math" data-tex="$M$">$M$</span>.</p>
+<h2 id="OA-FLOW.GI.FOURIER"><span id="oa-flow.gi.fourier"></span>2. The elementary integration and Fourier tools</h2>
+<p>All integrals in the spectral argument are absolutely convergent improper integrals of continuous functions. A Banach-valued integral on a compact interval is the limit of Riemann sums: uniform continuity makes sums Cauchy under refinement, completeness supplies the limit, and the triangle inequality gives</p>
+<p><span class="math math-display" data-tex="$$\left\|\int_a^b v(t)\,dt\right\|\leq\int_a^b\|v(t)\|\,dt. \tag{6}$$">$$\left\|\int_a^b v(t)\,dt\right\|\leq\int_a^b\|v(t)\|\,dt. \tag{6}$$</span></p>
+<p>If the scalar integral of <span class="math" data-tex="$\|v\|$">$\|v\|$</span> on the line is finite, compact integrals form a Cauchy net, so (6) extends to the line. To interchange the integrals used below, first work on finite rectangles, where uniform Riemann sums agree in either order. Then bound the omitted tails by the integral of the absolute value. Our tails are bounded by products of integrable scalar functions, or become such products after the explicitly stated linear changes of variables. This proves the required Fubini formulas for these continuous integrands. Similarly, uniform convergence on each compact interval together with a common integrable tail bound implies convergence of the integrals. These arguments suffice here; no general measurable-vector integration or unproved measure theorem is imported.</p>
+<p>The elementary compact-interval substitution, integration by parts and fundamental theorem follow from Riemann sums and difference quotients: uniform continuity bounds the difference between each sum and the corresponding integral, and integrating a uniformly continuous derivative gives the increments of its primitive. They extend to the improper integrals when the boundary terms and tails have the bounds given below.</p>
+<p>We use the positive Fourier sign</p>
+<p><span class="math math-display" data-tex="$$\widehat f(\lambda)=\int_{\mathbb R}f(t)e^{it\lambda}\,dt,\qquad
+\check F(t)=\frac1{2\pi}\int_{\mathbb R}F(\lambda)e^{-it\lambda}\,d\lambda. \tag{7}$$">$$\widehat f(\lambda)=\int_{\mathbb R}f(t)e^{it\lambda}\,dt,\qquad
+\check F(t)=\frac1{2\pi}\int_{\mathbb R}F(\lambda)e^{-it\lambda}\,d\lambda. \tag{7}$$</span></p>
+<p><strong>Lemma 2 (smooth filters and the precise Plancherel estimate).</strong> If <span class="math" data-tex="$F\in C_c^\infty(\mathbb R)$">$F\in C_c^\infty(\mathbb R)$</span>, then <span class="math" data-tex="$f=\check F$">$f=\check F$</span> is rapidly decreasing together with all derivatives, <span class="math" data-tex="$\widehat f=F$">$\widehat f=F$</span>, and</p>
+<p><span class="math math-display" data-tex="$$\|f\|_2^2=\frac1{2\pi}\|F\|_2^2,\qquad
+\|tf\|_2^2=\frac1{2\pi}\|F'\|_2^2,\qquad
+\|f\|_1\leq\frac1{\sqrt2}
+\big(\|F\|_2^2+\|F'\|_2^2\big)^{1/2}. \tag{8}$$">$$\|f\|_2^2=\frac1{2\pi}\|F\|_2^2,\qquad
+\|tf\|_2^2=\frac1{2\pi}\|F'\|_2^2,\qquad
+\|f\|_1\leq\frac1{\sqrt2}
+\big(\|F\|_2^2+\|F'\|_2^2\big)^{1/2}. \tag{8}$$</span></p>
+<p>Here the <span class="math" data-tex="$L^p$">$L^p$</span> notation only denotes the displayed scalar improper integrals; no completion theorem for an <span class="math" data-tex="$L^p$">$L^p$</span> space is needed.</p>
+<p><strong>Proof.</strong> Repeated integration by parts in (7), with zero boundary terms because <span class="math" data-tex="$F$">$F$</span> is smooth with compact support, proves rapid decrease. Differentiation falls on powers of <span class="math" data-tex="$\lambda$">$\lambda$</span> and gives the same conclusion for all time derivatives.</p>
+<p>We spell out the Gaussian fact used for inversion. The integral <span class="math" data-tex="$J=\int e^{-u^2}\,du$">$J=\int e^{-u^2}\,du$</span> is finite. Its square is the plane integral of <span class="math" data-tex="$e^{-u^2-v^2}$">$e^{-u^2-v^2}$</span>. A circle is a Riemann-null boundary: its Lipschitz parametrization, divided into intervals of mesh <span class="math" data-tex="$\delta$">$\delta$</span>, covers it by rectangles of area at most a constant times <span class="math" data-tex="$\delta^2$">$\delta^2$</span> each, with at most a constant times <span class="math" data-tex="$1/\delta$">$1/\delta$</span> rectangles. Their total area tends to zero. Thus discs and the finitely many annular step functions below are Riemann integrable, and the finite rectangle sums justify their section integrals as well. The area of the disc of radius <span class="math" data-tex="$r$">$r$</span> is <span class="math" data-tex="$\pi r^2$">$\pi r^2$</span> (integrate the vertical sections <span class="math" data-tex="$2\sqrt{r^2-u^2}$">$2\sqrt{r^2-u^2}$</span> and substitute <span class="math" data-tex="$u=r\sin\theta$">$u=r\sin\theta$</span>). Approximate the radial function on each disc uniformly by constant functions on finitely many annuli. Their integrals are the annular areas times those constants. Refining the annuli therefore gives <span class="math" data-tex="$2\pi\int_0^R r e^{-r^2}\,dr$">$2\pi\int_0^R r e^{-r^2}\,dr$</span>; the omitted square or disc tails are bounded by the integrable Gaussian tails. Letting <span class="math" data-tex="$R$">$R$</span> increase gives <span class="math" data-tex="$J^2=\pi$">$J^2=\pi$</span>, hence <span class="math" data-tex="$J=\sqrt\pi$">$J=\sqrt\pi$</span>.</p>
+<p>For <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span>, differentiate <span class="math" data-tex="$\int e^{-at^2}e^{itu}\,dt$">$\int e^{-at^2}e^{itu}\,dt$</span> with respect to <span class="math" data-tex="$u$">$u$</span>. Compact differentiation is valid directly and tails are controlled by <span class="math" data-tex="$|t|e^{-at^2}$">$|t|e^{-at^2}$</span>. Integration by parts shows that the derivative equals <span class="math" data-tex="$-u/(2a)$">$-u/(2a)$</span> times the original integral. Its value at zero is <span class="math" data-tex="$\sqrt{\pi/a}$">$\sqrt{\pi/a}$</span>, so</p>
+<p><span class="math math-display" data-tex="$$\int e^{-at^2}e^{itu}\,dt
+=\sqrt{\pi/a}\,e^{-u^2/(4a)}. \tag{9}$$">$$\int e^{-at^2}e^{itu}\,dt
+=\sqrt{\pi/a}\,e^{-u^2/(4a)}. \tag{9}$$</span></p>
+<p>Put <span class="math" data-tex="$q_a(u)=(4\pi a)^{-1/2}e^{-u^2/(4a)}$">$q_a(u)=(4\pi a)^{-1/2}e^{-u^2/(4a)}$</span>. It has integral one, and its integral outside <span class="math" data-tex="$|u|&lt;\varepsilon$">$|u|&lt;\varepsilon$</span> tends to zero as <span class="math" data-tex="$a\downarrow0$">$a\downarrow0$</span>, by scaling and the Gaussian tail. Uniform continuity of a bounded uniformly continuous <span class="math" data-tex="$F$">$F$</span> now gives <span class="math" data-tex="$F*q_a\to F$">$F*q_a\to F$</span> uniformly: split the convolution into <span class="math" data-tex="$|u|&lt;\varepsilon$">$|u|&lt;\varepsilon$</span> and its complement. Fubini and (9) give</p>
+<p><span class="math math-display" data-tex="$$\int e^{it\lambda}e^{-at^2}\check F(t)\,dt=(F*q_a)(\lambda).$$">$$\int e^{it\lambda}e^{-at^2}\check F(t)\,dt=(F*q_a)(\lambda).$$</span></p>
+<p>Since <span class="math" data-tex="$\check F$">$\check F$</span> is integrable, removing the factor <span class="math" data-tex="$e^{-at^2}$">$e^{-at^2}$</span> by compact convergence and small tails proves <span class="math" data-tex="$\widehat{\check F}=F$">$\widehat{\check F}=F$</span>.</p>
+<p>Expanding <span class="math" data-tex="$|\check F|^2$">$|\check F|^2$</span>, inserting the same Gaussian and using (9) gives</p>
+<p><span class="math math-display" data-tex="$$\int e^{-at^2}|\check F(t)|^2\,dt
+=\frac1{2\pi}\int F(\lambda)\overline{(F*q_a)(\lambda)}\,d\lambda.$$">$$\int e^{-at^2}|\check F(t)|^2\,dt
+=\frac1{2\pi}\int F(\lambda)\overline{(F*q_a)(\lambda)}\,d\lambda.$$</span></p>
+<p>The triple integral is absolutely integrable before the interchange: the frequency variables range over compact supports and <span class="math" data-tex="$e^{-at^2}$">$e^{-at^2}$</span> is integrable. Uniform convergence of the convolution and the compact support of <span class="math" data-tex="$F$">$F$</span> give the right-hand limit. Rapid decrease gives the left-hand limit by compact convergence and an integrable <span class="math" data-tex="$|\check F|^2$">$|\check F|^2$</span> tail. This proves the first identity in (8). Integration by parts gives <span class="math" data-tex="$\check {F'}=it\check F$">$\check {F'}=it\check F$</span>, and proves the second one. Finally, integral Cauchy–Schwarz follows by expanding the integral of <span class="math" data-tex="$|u-cv|^2\geq0$">$|u-cv|^2\geq0$</span> and minimizing over <span class="math" data-tex="$c$">$c$</span> (with the zero-norm case separate). Apply it to <span class="math" data-tex="$(1+t^2)^{1/2}|f(t)|$">$(1+t^2)^{1/2}|f(t)|$</span> and <span class="math" data-tex="$(1+t^2)^{-1/2}$">$(1+t^2)^{-1/2}$</span>. The latter has squared integral <span class="math" data-tex="$\pi$">$\pi$</span>, as the primitive is <span class="math" data-tex="$\arctan t$">$\arctan t$</span>. The two identities just proved give the last estimate. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Smooth cutoffs used below also have an elementary construction. The function <span class="math" data-tex="$\beta(t)=e^{-1/(1-t^2)}$">$\beta(t)=e^{-1/(1-t^2)}$</span> for <span class="math" data-tex="$|t|&lt;1$">$|t|&lt;1$</span>, extended by zero, is smooth: each derivative inside is the exponential times a rational function, and all limits at the endpoints vanish because <span class="math" data-tex="$u^Ne^{-u}\to0$">$u^Ne^{-u}\to0$</span>. Translate and scale its integral to make smooth functions equal to one on a prescribed compact interval and supported in a slightly larger interval. A finite cover of a compact set by open intervals has a smooth partition of unity near that set: choose finitely many such bumps whose positive sets cover it and divide by their positive sum, with one additional cutoff supported in that neighborhood. The same construction with products of bumps works in the plane.</p>
+<p><strong>Lemma 3 (dyadic reconstruction at an endpoint).</strong> Suppose <span class="math" data-tex="$F\in C_c^\infty(\mathbb R)$">$F\in C_c^\infty(\mathbb R)$</span> vanishes on <span class="math" data-tex="$(-\infty,a]$">$(-\infty,a]$</span>. It is a sum of filters supported strictly inside <span class="math" data-tex="$(a,\infty)$">$(a,\infty)$</span> whose inverse transforms converge absolutely in <span class="math" data-tex="$L^1$">$L^1$</span>. In particular a test filter flat at a closed endpoint is recovered from strictly separated filters, without a spectral-synthesis theorem.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="$u=\lambda-a$">$u=\lambda-a$</span>. Choose a smooth <span class="math" data-tex="$\chi$">$\chi$</span> on the line equal to one for <span class="math" data-tex="$|u|\leq1$">$|u|\leq1$</span> and zero for <span class="math" data-tex="$|u|\geq2$">$|u|\geq2$</span>. For <span class="math" data-tex="$u&gt;0$">$u&gt;0$</span> set</p>
+<p><span class="math math-display" data-tex="$$\theta_n(u)=\chi(2^nu)-\chi(2^{n+1}u),\qquad n\geq0.$$">$$\theta_n(u)=\chi(2^nu)-\chi(2^{n+1}u),\qquad n\geq0.$$</span></p>
+<p>Its support is contained in <span class="math" data-tex="$[2^{-n-1},2^{1-n}]$">$[2^{-n-1},2^{1-n}]$</span>, and telescoping gives <span class="math" data-tex="$\sum_{n\geq0}\theta_n(u)=\chi(u)$">$\sum_{n\geq0}\theta_n(u)=\chi(u)$</span>. Thus</p>
+<p><span class="math math-display" data-tex="$$F=F(1-\chi(u))+\sum_{n\geq0}F\theta_n(u). \tag{10}$$">$$F=F(1-\chi(u))+\sum_{n\geq0}F\theta_n(u). \tag{10}$$</span></p>
+<p>The first term has compact support away from <span class="math" data-tex="$a$">$a$</span>. Since all derivatives of <span class="math" data-tex="$F$">$F$</span> vanish at <span class="math" data-tex="$a$">$a$</span>, repeated fundamental theorems of calculus give, on <span class="math" data-tex="$0\leq u\leq2$">$0\leq u\leq2$</span>,</p>
+<p><span class="math math-display" data-tex="$$|F(a+u)|\leq C_Nu^N,\qquad |F'(a+u)|\leq C_Nu^N$$">$$|F(a+u)|\leq C_Nu^N,\qquad |F'(a+u)|\leq C_Nu^N$$</span></p>
+<p>for every integer <span class="math" data-tex="$N$">$N$</span> (apply the repeated integral formula to <span class="math" data-tex="$F$">$F$</span> and <span class="math" data-tex="$F'$">$F'$</span> separately). For <span class="math" data-tex="$F_n=F\theta_n$">$F_n=F\theta_n$</span>, the support length is at most <span class="math" data-tex="$2^{1-n}$">$2^{1-n}$</span>, the cutoff derivative is at most a fixed constant times <span class="math" data-tex="$2^n$">$2^n$</span>, and (8) consequently gives</p>
+<p><span class="math math-display" data-tex="$$\|\check F_n\|_1\leq C_N'2^{-n(N-1/2)}. \tag{11}$$">$$\|\check F_n\|_1\leq C_N'2^{-n(N-1/2)}. \tag{11}$$</span></p>
+<p>Take <span class="math" data-tex="$N=2$">$N=2$</span>. The series of these norms converges. Its pointwise frequency sum is (10), and it converges uniformly, so frequency integration on the common compact support identifies the pointwise inverse transform of the sum with <span class="math" data-tex="$\check F$">$\check F$</span>. The absolutely convergent <span class="math" data-tex="$L^1$">$L^1$</span> series has that same sum. Reflection proves the left-end version. For a finite closed interval use cutoffs near its two endpoints and an interior cutoff; the two endpoint arguments apply separately. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="OA-FLOW.GI.FILTERS"><span id="oa-flow.gi.filters"></span>3. Smooth spectral subspaces, proved locally</h2>
+<p>Let <span class="math" data-tex="$X$">$X$</span> be a nonzero Banach space and let <span class="math" data-tex="$\alpha_t$">$\alpha_t$</span> be an operator-norm-continuous group of isometries. We first supply its bounded generator, so no differentiability assumption is hidden in that description.</p>
+<p><strong>Bounded-generator lemma.</strong> There is a unique <span class="math" data-tex="$D\in B(X)$">$D\in B(X)$</span> with <span class="math" data-tex="$\alpha_t=e^{itD}$">$\alpha_t=e^{itD}$</span>.</p>
+<p><strong>Proof.</strong> For a sufficiently small <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span> let <span class="math" data-tex="$S_\varepsilon=\varepsilon^{-1}\int_0^\varepsilon\alpha_s\,ds$">$S_\varepsilon=\varepsilon^{-1}\int_0^\varepsilon\alpha_s\,ds$</span>. Norm continuity gives <span class="math" data-tex="$\|S_\varepsilon-I\|&lt;1$">$\|S_\varepsilon-I\|&lt;1$</span>. The geometric series <span class="math" data-tex="$\sum_{n\geq0}(I-S_\varepsilon)^n$">$\sum_{n\geq0}(I-S_\varepsilon)^n$</span> converges in <span class="math" data-tex="$B(X)$">$B(X)$</span> and, multiplying its partial sums and passing to the limit, gives the inverse of <span class="math" data-tex="$S_\varepsilon$">$S_\varepsilon$</span>. The group law and the oriented norm integral give</p>
+<p><span class="math math-display" data-tex="$$\frac{(\alpha_h-I)S_\varepsilon}{h}
+=\frac1\varepsilon\left(
+\frac1h\int_\varepsilon^{\varepsilon+h}\alpha_r\,dr
+-\frac1h\int_0^h\alpha_r\,dr\right)
+\longrightarrow\frac{\alpha_\varepsilon-I}{\varepsilon}$$">$$\frac{(\alpha_h-I)S_\varepsilon}{h}
+=\frac1\varepsilon\left(
+\frac1h\int_\varepsilon^{\varepsilon+h}\alpha_r\,dr
+-\frac1h\int_0^h\alpha_r\,dr\right)
+\longrightarrow\frac{\alpha_\varepsilon-I}{\varepsilon}$$</span></p>
+<p>in operator norm, for either sign of <span class="math" data-tex="$h$">$h$</span>. Right multiplication by <span class="math" data-tex="$S_\varepsilon^{-1}$">$S_\varepsilon^{-1}$</span> therefore proves differentiability at zero with bounded derivative <span class="math" data-tex="$B=(\alpha_\varepsilon-I)S_\varepsilon^{-1}/\varepsilon$">$B=(\alpha_\varepsilon-I)S_\varepsilon^{-1}/\varepsilon$</span>. Differentiating the group law gives <span class="math" data-tex="$\alpha'_t=\alpha_tB$">$\alpha'_t=\alpha_tB$</span> and <span class="math" data-tex="$\alpha_tB=B\alpha_t$">$\alpha_tB=B\alpha_t$</span>. Termwise differentiation of the norm-convergent exponential series shows that <span class="math" data-tex="$e^{-tB}\alpha_t$">$e^{-tB}\alpha_t$</span> has derivative zero. The compact-interval fundamental theorem from Section 2 makes it constant, with value <span class="math" data-tex="$I$">$I$</span> at zero. Thus <span class="math" data-tex="$\alpha_t=e^{tB}=e^{itD}$">$\alpha_t=e^{tB}=e^{itD}$</span> for <span class="math" data-tex="$D=-iB$">$D=-iB$</span>. Its uniqueness follows by differentiation at zero. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Define</p>
+<p><span class="math math-display" data-tex="$$T_F^\alpha x=\int\check F(t)\alpha_t x\,dt,
+\qquad F\in C_c^\infty(\mathbb R). \tag{12}$$">$$T_F^\alpha x=\int\check F(t)\alpha_t x\,dt,
+\qquad F\in C_c^\infty(\mathbb R). \tag{12}$$</span></p>
+<p>For a closed set <span class="math" data-tex="$K$">$K$</span>, define</p>
+<p><span class="math math-display" data-tex="$$X_\alpha(K)=\{x:T_F^\alpha x=0\text{ whenever }\operatorname{supp}F\cap K=\varnothing\}. \tag{13}$$">$$X_\alpha(K)=\{x:T_F^\alpha x=0\text{ whenever }\operatorname{supp}F\cap K=\varnothing\}. \tag{13}$$</span></p>
+<p>These spaces are norm closed and invariant under <span class="math" data-tex="$\alpha$">$\alpha$</span>, since filters are bounded and commute with the group. This definition fixes all endpoint conventions.</p>
+<p><strong>Lemma 4 (filter identities and compact frequency).</strong></p>
+<p><span class="math math-display" data-tex="$$T_F^\alpha T_G^\alpha=T_{FG}^\alpha,
+\qquad DT_F^\alpha=T_{\lambda F}^\alpha,
+\qquad X=X_\alpha([-\|D\|,\|D\|]). \tag{14}$$">$$T_F^\alpha T_G^\alpha=T_{FG}^\alpha,
+\qquad DT_F^\alpha=T_{\lambda F}^\alpha,
+\qquad X=X_\alpha([-\|D\|,\|D\|]). \tag{14}$$</span></p>
+<p>If <span class="math" data-tex="$F=1$">$F=1$</span> on a neighborhood of the compact frequency set of a vector <span class="math" data-tex="$x$">$x$</span>, then <span class="math" data-tex="$T_F^\alpha x=x$">$T_F^\alpha x=x$</span>.</p>
+<p><strong>Proof.</strong> The double time integral in the first identity is absolutely bounded by <span class="math" data-tex="$\|\check F\|_1\|\check G\|_1\|x\|$">$\|\check F\|_1\|\check G\|_1\|x\|$</span>. Change variable from <span class="math" data-tex="$(t,s)$">$(t,s)$</span> to <span class="math" data-tex="$(t,t+s)$">$(t,t+s)$</span>; convolution of the inverse transforms is the inverse of <span class="math" data-tex="$FG$">$FG$</span>, as follows by (7), Fubini and Fourier inversion. The derivative identity follows by integration by parts: <span class="math" data-tex="$\alpha_t'=iD\alpha_t$">$\alpha_t'=iD\alpha_t$</span>, <span class="math" data-tex="$\check F'=\check {(-i\lambda F)}$">$\check F'=\check {(-i\lambda F)}$</span>, and the rapidly decreasing boundary term vanishes.</p>
+<p>For the frequency bound put <span class="math" data-tex="$C=\|D\|$">$C=\|D\|$</span>. If <span class="math" data-tex="$F$">$F$</span> has support where <span class="math" data-tex="$|\lambda|\geq a&gt;C$">$|\lambda|\geq a&gt;C$</span>, let <span class="math" data-tex="$G_n(\lambda)=F(\lambda)/\lambda^n$">$G_n(\lambda)=F(\lambda)/\lambda^n$</span> on that support, zero near zero. The derivative identity gives <span class="math" data-tex="$T_F=D^nT_{G_n}$">$T_F=D^nT_{G_n}$</span>. Moreover</p>
+<p><span class="math math-display" data-tex="$$\|G_n\|_2\leq a^{-n}\|F\|_2,\qquad
+\|G_n'\|_2\leq a^{-n}(\|F'\|_2+n\|F\|_2/a).$$">$$\|G_n\|_2\leq a^{-n}\|F\|_2,\qquad
+\|G_n'\|_2\leq a^{-n}(\|F'\|_2+n\|F\|_2/a).$$</span></p>
+<p>By (8), <span class="math" data-tex="$\|T_F\|\leq C_F(1+n)(C/a)^n$">$\|T_F\|\leq C_F(1+n)(C/a)^n$</span>, which tends to zero. Every compact support disjoint from <span class="math" data-tex="$[-C,C]$">$[-C,C]$</span> has such an <span class="math" data-tex="$a$">$a$</span>, so the last identity in (14) follows. This is the compact-frequency bound; it uses no analytic half-plane estimate.</p>
+<p>For a smooth <span class="math" data-tex="$\chi$">$\chi$</span> with <span class="math" data-tex="$\chi=1$">$\chi=1$</span> near zero set <span class="math" data-tex="$F_R(\lambda)=\chi(\lambda/R)$">$F_R(\lambda)=\chi(\lambda/R)$</span>. Its inverse is <span class="math" data-tex="$R\check\chi(Rt)$">$R\check\chi(Rt)$</span>, has integral <span class="math" data-tex="$\chi(0)=1$">$\chi(0)=1$</span> and constant <span class="math" data-tex="$L^1$">$L^1$</span> norm. The substitution <span class="math" data-tex="$u=Rt$">$u=Rt$</span> and norm continuity of <span class="math" data-tex="$\alpha$">$\alpha$</span> show <span class="math" data-tex="$T_{F_R}x\to x$">$T_{F_R}x\to x$</span>: the integral of <span class="math" data-tex="$\check\chi(u)(\alpha_{u/R}x-x)$">$\check\chi(u)(\alpha_{u/R}x-x)$</span> is small on a fixed compact interval and bounded by <span class="math" data-tex="$2\|x\|$">$2\|x\|$</span> times the small tail elsewhere. If <span class="math" data-tex="$F=1$">$F=1$</span> near a compact <span class="math" data-tex="$K$">$K$</span> and <span class="math" data-tex="$x\in X_\alpha(K)$">$x\in X_\alpha(K)$</span>, then for large <span class="math" data-tex="$R$">$R$</span>, <span class="math" data-tex="$F_R-F$">$F_R-F$</span> vanishes near <span class="math" data-tex="$K$">$K$</span> and has compact support disjoint from it. Therefore <span class="math" data-tex="$T_Fx=T_{F_R}x\to x$">$T_Fx=T_{F_R}x\to x$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>A filter range has the stated band:</p>
+<p><span class="math math-display" data-tex="$$T_FX\subseteq X_\alpha(\operatorname{supp}F). \tag{15}$$">$$T_FX\subseteq X_\alpha(\operatorname{supp}F). \tag{15}$$</span></p>
+<p>Indeed a disjoint test <span class="math" data-tex="$G$">$G$</span> has <span class="math" data-tex="$GF=0$">$GF=0$</span>. Also</p>
+<p><span class="math math-display" data-tex="$$X_\alpha(K)\cap X_\alpha(L)=X_\alpha(K\cap L) \tag{16}$$">$$X_\alpha(K)\cap X_\alpha(L)=X_\alpha(K\cap L) \tag{16}$$</span></p>
+<p>for closed <span class="math" data-tex="$K,L$">$K,L$</span>: cover the compact support of a test disjoint from <span class="math" data-tex="$K\cap L$">$K\cap L$</span> by neighborhoods disjoint from one of <span class="math" data-tex="$K,L$">$K,L$</span>, and use the finite smooth partition just constructed. The reverse inclusion follows directly from the definition. The same argument proves the finite-cover versions used below. Thus every vector in a half-line band also belongs to its intersection with <span class="math" data-tex="$[-C,C]$">$[-C,C]$</span>.</p>
+<p>For comparison with spectral spaces defined by closure of filtered vectors, let <span class="math" data-tex="$R_\alpha(I)$">$R_\alpha(I)$</span> be the norm closure of the linear span of <span class="math" data-tex="$T_FX$">$T_FX$</span> for <span class="math" data-tex="$\operatorname{supp}F\subset I$">$\operatorname{supp}F\subset I$</span> compact and <span class="math" data-tex="$I$">$I$</span> open. For a bounded closed interval <span class="math" data-tex="$[a,b]$">$[a,b]$</span>,</p>
+<p><span class="math math-display" data-tex="$$X_\alpha([a,b])=\bigcap_{\varepsilon&gt;0}R_\alpha((a-\varepsilon,b+\varepsilon)). \tag{17}$$">$$X_\alpha([a,b])=\bigcap_{\varepsilon&gt;0}R_\alpha((a-\varepsilon,b+\varepsilon)). \tag{17}$$</span></p>
+<p>In one direction choose a filter equal to one near <span class="math" data-tex="$[a,b]$">$[a,b]$</span> and supported in the enlarged interval, and apply Lemma 4. In the other direction a test support disjoint from <span class="math" data-tex="$[a,b]$">$[a,b]$</span> is disjoint from a sufficiently small enlargement; its filter kills all the corresponding filter ranges by multiplication, and then their closures. The same proof, after intersection with the common compact frequency band, handles half-lines. Lemma 3 also proves that a smooth filter supported in a closed interval is a norm limit of sums of filters supported in its interior, when its endpoint values are zero as smoothness requires. There is no unstated endpoint synthesis in (17).</p>
+<p><strong>Lemma 5 (products and adjoints).</strong> Suppose <span class="math" data-tex="$X$">$X$</span> is a C*-algebra and <span class="math" data-tex="$\alpha$">$\alpha$</span> consists of star automorphisms. For compact <span class="math" data-tex="$K,L$">$K,L$</span>,</p>
+<p><span class="math math-display" data-tex="$$X_\alpha(K)X_\alpha(L)\subseteq X_\alpha(K+L),\qquad
+X_\alpha(K)^*=X_\alpha(-K). \tag{18}$$">$$X_\alpha(K)X_\alpha(L)\subseteq X_\alpha(K+L),\qquad
+X_\alpha(K)^*=X_\alpha(-K). \tag{18}$$</span></p>
+<p>In particular <span class="math" data-tex="$S_r=X_\alpha([r,\infty))$">$S_r=X_\alpha([r,\infty))$</span> satisfies <span class="math" data-tex="$S_rS_s\subseteq S_{r+s}$">$S_rS_s\subseteq S_{r+s}$</span>.</p>
+<p><strong>Proof.</strong> The adjoint assertion follows from</p>
+<p><span class="math math-display" data-tex="$$\big(T_Fx\big)^*=T_{F^\#}(x^*),\qquad F^\#(\lambda)=\overline{F(-\lambda)}.$$">$$\big(T_Fx\big)^*=T_{F^\#}(x^*),\qquad F^\#(\lambda)=\overline{F(-\lambda)}.$$</span></p>
+<p>For the product, let <span class="math" data-tex="$x\in X_\alpha(K)$">$x\in X_\alpha(K)$</span>, <span class="math" data-tex="$y\in X_\alpha(L)$">$y\in X_\alpha(L)$</span>, and let <span class="math" data-tex="$H$">$H$</span> have support disjoint from <span class="math" data-tex="$K+L$">$K+L$</span>. Compactness gives positive distance. Choose <span class="math" data-tex="$F,G$">$F,G$</span> equal to one near <span class="math" data-tex="$K,L$">$K,L$</span>, with supports so close to those sets that <span class="math" data-tex="$H(\lambda+\mu)F(\lambda)G(\mu)=0$">$H(\lambda+\mu)F(\lambda)G(\mu)=0$</span>. Then <span class="math" data-tex="$x=T_Fx$">$x=T_Fx$</span>, <span class="math" data-tex="$y=T_Gy$">$y=T_Gy$</span>. Expanding the product and its <span class="math" data-tex="$H$">$H$</span> filter gives</p>
+<p><span class="math math-display" data-tex="$$T_H(xy)=\int\!\int\!\int h(t)f(s)g(u)
+\alpha_{t+s}(x)\alpha_{t+u}(y)\,dt\,ds\,du,$$">$$T_H(xy)=\int\!\int\!\int h(t)f(s)g(u)
+\alpha_{t+s}(x)\alpha_{t+u}(y)\,dt\,ds\,du,$$</span></p>
+<p>where <span class="math" data-tex="$f=\check F,g=\check G,h=\check H$">$f=\check F,g=\check G,h=\check H$</span>. The absolute norm bound is <span class="math" data-tex="$\|h\|_1\|f\|_1\|g\|_1\|x\|\|y\|$">$\|h\|_1\|f\|_1\|g\|_1\|x\|\|y\|$</span>. Set <span class="math" data-tex="$v=t+s,w=t+u$">$v=t+s,w=t+u$</span>. The scalar kernel of <span class="math" data-tex="$\alpha_v(x)\alpha_w(y)$">$\alpha_v(x)\alpha_w(y)$</span> is</p>
+<p><span class="math math-display" data-tex="$$\int h(t)f(v-t)g(w-t)\,dt
+=\frac1{(2\pi)^2}\int\!\int
+F(\lambda)G(\mu)H(\lambda+\mu)e^{-iv\lambda-iw\mu}\,d\lambda\,d\mu=0.$$">$$\int h(t)f(v-t)g(w-t)\,dt
+=\frac1{(2\pi)^2}\int\!\int
+F(\lambda)G(\mu)H(\lambda+\mu)e^{-iv\lambda-iw\mu}\,d\lambda\,d\mu=0.$$</span></p>
+<p>The inner interchange is justified by the compact frequency supports and <span class="math" data-tex="$h\in L^1$">$h\in L^1$</span>. This proves (18). For half-lines intersect each vector's band with <span class="math" data-tex="$[-C,C]$">$[-C,C]$</span> and apply (18). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Lemma 6 (a point band is fixed).</strong> <span class="math" data-tex="$X_\alpha(\{0\})=\ker D$">$X_\alpha(\{0\})=\ker D$</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="$x$">$x$</span> has band <span class="math" data-tex="$\{0\}$">$\{0\}$</span>, take <span class="math" data-tex="$\chi_\varepsilon(\lambda)=\chi(\lambda/\varepsilon)$">$\chi_\varepsilon(\lambda)=\chi(\lambda/\varepsilon)$</span>, with <span class="math" data-tex="$\chi=1$">$\chi=1$</span> near zero. Lemma 4 gives <span class="math" data-tex="$x=T_{\chi_\varepsilon}x$">$x=T_{\chi_\varepsilon}x$</span> and <span class="math" data-tex="$Dx=T_{\lambda\chi_\varepsilon}x$">$Dx=T_{\lambda\chi_\varepsilon}x$</span>. The inverse of <span class="math" data-tex="$\lambda\chi_\varepsilon$">$\lambda\chi_\varepsilon$</span> is <span class="math" data-tex="$\varepsilon^2\check {u\chi(u)}(\varepsilon t)$">$\varepsilon^2\check {u\chi(u)}(\varepsilon t)$</span>, whose <span class="math" data-tex="$L^1$">$L^1$</span> norm is <span class="math" data-tex="$\varepsilon\|\check {u\chi(u)}\|_1$">$\varepsilon\|\check {u\chi(u)}\|_1$</span>. Therefore <span class="math" data-tex="$Dx=0$">$Dx=0$</span>. Conversely <span class="math" data-tex="$Dx=0$">$Dx=0$</span> implies <span class="math" data-tex="$\alpha_t x=x$">$\alpha_t x=x$</span> by the exponential series, so <span class="math" data-tex="$T_Fx=F(0)x$">$T_Fx=F(0)x$</span>; all disjoint tests vanish. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="OA-FLOW.GI.DIAGONAL"><span id="oa-flow.gi.diagonal"></span>4. Commuting diagonal localization</h2>
+<p>This supplies the comparison of two actions that would otherwise be an imported spectral-subspace theorem.</p>
+<p><strong>Lemma 7.</strong> Let <span class="math" data-tex="$\alpha_t=e^{itD}$">$\alpha_t=e^{itD}$</span> and <span class="math" data-tex="$\Phi_t=e^{itE}$">$\Phi_t=e^{itE}$</span> be commuting norm-continuous groups of isometric star automorphisms of a C*-algebra. Suppose</p>
+<p><span class="math math-display" data-tex="$$X_\alpha([r,\infty))\subseteq X_\Phi([r,\infty))
+\quad\text{for every real }r. \tag{19}$$">$$X_\alpha([r,\infty))\subseteq X_\Phi([r,\infty))
+\quad\text{for every real }r. \tag{19}$$</span></p>
+<p>Then <span class="math" data-tex="$D=E$">$D=E$</span> and <span class="math" data-tex="$\alpha=\Phi$">$\alpha=\Phi$</span>.</p>
+<p><strong>Proof.</strong> Adjoints turn (19) into the analogous inclusions for lower half-lines. By (16), every vector with <span class="math" data-tex="$\alpha$">$\alpha$</span> band <span class="math" data-tex="$[a,b]$">$[a,b]$</span> has <span class="math" data-tex="$\Phi$">$\Phi$</span> band <span class="math" data-tex="$[a,b]$">$[a,b]$</span>. Consequently</p>
+<p><span class="math math-display" data-tex="$$T_A^\alpha T_B^\Phi=0
+\quad\text{if the compact supports of }A,B
+\text{ lie in disjoint closed intervals}. \tag{20}$$">$$T_A^\alpha T_B^\Phi=0
+\quad\text{if the compact supports of }A,B
+\text{ lie in disjoint closed intervals}. \tag{20}$$</span></p>
+<p>To see this, <span class="math" data-tex="$T_A^\alpha x$">$T_A^\alpha x$</span> has <span class="math" data-tex="$\alpha$">$\alpha$</span> band <span class="math" data-tex="$\operatorname{supp}A$">$\operatorname{supp}A$</span>, hence the same containing interval as a <span class="math" data-tex="$\Phi$">$\Phi$</span> band; apply its disjoint <span class="math" data-tex="$B$">$B$</span> test. Filters of the commuting actions commute, by their double norm integral.</p>
+<p>We give the small two-variable localization detail. For <span class="math" data-tex="$K\in C_c^\infty(\mathbb R^2)$">$K\in C_c^\infty(\mathbb R^2)$</span> define</p>
+<p><span class="math math-display" data-tex="$$T_K^{\alpha,\Phi}x=\int\!\int\check K(t,s)\alpha_t\Phi_sx\,dt\,ds,$$">$$T_K^{\alpha,\Phi}x=\int\!\int\check K(t,s)\alpha_t\Phi_sx\,dt\,ds,$$</span></p>
+<p>using inverse Fourier factor <span class="math" data-tex="$(2\pi)^{-2}$">$(2\pi)^{-2}$</span>. Twice integrating by parts in each variable makes <span class="math" data-tex="$\check K$">$\check K$</span> integrable. If <span class="math" data-tex="$K$">$K$</span> is supported in a rectangle <span class="math" data-tex="$I\times J$">$I\times J$</span> with disjoint closures, choose slightly larger still disjoint intervals and regard <span class="math" data-tex="$K$">$K$</span> as a smooth periodic function on their rectangle, zero near its edges. Its Fourier coefficients <span class="math" data-tex="$c_{mn}$">$c_{mn}$</span> obey</p>
+<p><span class="math math-display" data-tex="$$|c_{mn}|\leq C(1+m^2)^{-1}(1+n^2)^{-1}$$">$$|c_{mn}|\leq C(1+m^2)^{-1}(1+n^2)^{-1}$$</span></p>
+<p>by applying integration by parts with <span class="math" data-tex="$(1-\partial_\theta^2)(1-\partial_\psi^2)$">$(1-\partial_\theta^2)(1-\partial_\psi^2)$</span> in the rescaled periodic coordinates. Thus its Fourier series converges absolutely and uniformly. Here is the elementary uniqueness check: the nonnegative kernel</p>
+<p><span class="math math-display" data-tex="$$P_N(\theta)=\frac1N\left|\sum_{j=0}^{N-1}e^{ij\theta}\right|^2$$">$$P_N(\theta)=\frac1N\left|\sum_{j=0}^{N-1}e^{ij\theta}\right|^2$$</span></p>
+<p>has integral <span class="math" data-tex="$2\pi$">$2\pi$</span> and, outside a neighborhood of zero modulo <span class="math" data-tex="$2\pi$">$2\pi$</span>, is bounded by <span class="math" data-tex="$1/(N\sin^2(\theta/2))$">$1/(N\sin^2(\theta/2))$</span>. Its normalized convolution therefore converges uniformly to every continuous periodic function, by uniform continuity and this tail estimate. The two-variable product kernels do the same. A continuous function with all Fourier coefficients zero must consequently be zero. This identifies the uniformly convergent coefficient series with <span class="math" data-tex="$K$">$K$</span>.</p>
+<p>Multiply that series by smooth cutoffs <span class="math" data-tex="$A(\lambda),B(\mu)$">$A(\lambda),B(\mu)$</span> supported in the larger intervals and equal to one near the support of <span class="math" data-tex="$K$">$K$</span>. We obtain</p>
+<p><span class="math math-display" data-tex="$$K(\lambda,\mu)=\sum_{m,n}c_{mn}A_m(\lambda)B_n(\mu),$$">$$K(\lambda,\mu)=\sum_{m,n}c_{mn}A_m(\lambda)B_n(\mu),$$</span></p>
+<p>where <span class="math" data-tex="$A_m=Ae^{im\omega\lambda}$">$A_m=Ae^{im\omega\lambda}$</span> and <span class="math" data-tex="$B_n=Be^{in\nu\mu}$">$B_n=Be^{in\nu\mu}$</span>, with harmless constant phases if the coordinates were translated. Frequency modulation translates the inverse transform, so its <span class="math" data-tex="$L^1$">$L^1$</span> norm is unchanged. Hence the inverses of this series converge absolutely in <span class="math" data-tex="$L^1(\mathbb R^2)$">$L^1(\mathbb R^2)$</span>, bounded by <span class="math" data-tex="$\sum|c_{mn}|\|\check A\|_1\|\check B\|_1$">$\sum|c_{mn}|\|\check A\|_1\|\check B\|_1$</span>. Compact frequency integration also identifies its pointwise inverse with <span class="math" data-tex="$\check K$">$\check K$</span>. Each term's operator is zero by (20), so <span class="math" data-tex="$T_K^{\alpha,\Phi}=0$">$T_K^{\alpha,\Phi}=0$</span>.</p>
+<p>Any compact support disjoint from the diagonal <span class="math" data-tex="$\lambda=\mu$">$\lambda=\mu$</span> has a finite cover by such disjoint-interval rectangles. The smooth plane partition of unity from Section 2 reduces it to the preceding case. Thus</p>
+<p><span class="math math-display" data-tex="$$\operatorname{supp}K\cap\{\lambda=\mu\}=\varnothing
+\quad\Longrightarrow\quad T_K^{\alpha,\Phi}=0. \tag{21}$$">$$\operatorname{supp}K\cap\{\lambda=\mu\}=\varnothing
+\quad\Longrightarrow\quad T_K^{\alpha,\Phi}=0. \tag{21}$$</span></p>
+<p>Choose <span class="math" data-tex="$F,G$">$F,G$</span> equal to one near the full compact frequency bands of <span class="math" data-tex="$\alpha,\Phi$">$\alpha,\Phi$</span>, so their filters are identity operators by Lemma 4. The commuting group <span class="math" data-tex="$\Gamma_t=\alpha_t\Phi_{-t}=e^{it(D-E)}$">$\Gamma_t=\alpha_t\Phi_{-t}=e^{it(D-E)}$</span> is again norm continuous and isometric. For a smooth <span class="math" data-tex="$H$">$H$</span> supported away from zero, expand its <span class="math" data-tex="$\Gamma$">$\Gamma$</span> filter and insert these two identity filters. The change of variables <span class="math" data-tex="$(v,w)=(s+t,u-t)$">$(v,w)=(s+t,u-t)$</span> gives precisely</p>
+<p><span class="math math-display" data-tex="$$T_H^\Gamma=T_K^{\alpha,\Phi},\qquad
+K(\lambda,\mu)=F(\lambda)G(\mu)H(\lambda-\mu).$$">$$T_H^\Gamma=T_K^{\alpha,\Phi},\qquad
+K(\lambda,\mu)=F(\lambda)G(\mu)H(\lambda-\mu).$$</span></p>
+<p>The same absolute triple-integral bound as in Lemma 5 justifies the change and Fourier computation. This <span class="math" data-tex="$K$">$K$</span> is supported off the diagonal, so (21) makes the filter zero. Every vector therefore has <span class="math" data-tex="$\Gamma$">$\Gamma$</span> band <span class="math" data-tex="$\{0\}$">$\{0\}$</span>. Lemma 6 gives <span class="math" data-tex="$(D-E)x=0$">$(D-E)x=0$</span> for every <span class="math" data-tex="$x$">$x$</span>. Exponentiating proves the claim. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="OA-FLOW.GI.TAILS"><span id="oa-flow.gi.tails"></span>5. The annihilator projections</h2>
+<p>Return to a bounded star derivation <span class="math" data-tex="$d$">$d$</span> of <span class="math" data-tex="$M$">$M$</span>. Put <span class="math" data-tex="$D=-id$">$D=-id$</span>, <span class="math" data-tex="$C=\|d\|=\|D\|$">$C=\|d\|=\|D\|$</span>, and</p>
+<p><span class="math math-display" data-tex="$$\alpha_t=e^{td}=e^{itD}. \tag{22}$$">$$\alpha_t=e^{td}=e^{itD}. \tag{22}$$</span></p>
+<p>Repeated use of the product rule gives</p>
+<p><span class="math math-display" data-tex="$$d^n(xy)=\sum_{j=0}^n\binom njd^j(x)d^{n-j}(y).$$">$$d^n(xy)=\sum_{j=0}^n\binom njd^j(x)d^{n-j}(y).$$</span></p>
+<p>The exponential series and its product series converge absolutely in operator norm; grouping by total degree proves multiplicativity of <span class="math" data-tex="$\alpha_t$">$\alpha_t$</span>. Real coefficients prove preservation of star. The group law gives inverse <span class="math" data-tex="$\alpha_{-t}$">$\alpha_{-t}$</span>. A star automorphism is isometric: it preserves invertibility and hence spectra, and the C*-identity and the positive-element spectral norm give</p>
+<p><span class="math math-display" data-tex="$$\|\alpha_t(x)\|^2=\|\alpha_t(x^*x)\|
+=\max\operatorname{Sp}(x^*x)=\|x\|^2.$$">$$\|\alpha_t(x)\|^2=\|\alpha_t(x^*x)\|
+=\max\operatorname{Sp}(x^*x)=\|x\|^2.$$</span></p>
+<p>The bound <span class="math" data-tex="$\|\alpha_t-I\|\leq e^{|t|\|d\|}-1$">$\|\alpha_t-I\|\leq e^{|t|\|d\|}-1$</span> supplies norm continuity. All preceding filter lemmas apply.</p>
+<p>We first verify the arbitrary annihilator property in this concrete von Neumann algebra. For <span class="math" data-tex="$x\in M$">$x\in M$</span>, the elements</p>
+<p><span class="math math-display" data-tex="$$r_n=xx^*(xx^*+1/n)^{-1}$$">$$r_n=xx^*(xx^*+1/n)^{-1}$$</span></p>
+<p>belong to <span class="math" data-tex="$M$">$M$</span>, are positive contractions and converge strongly to the projection <span class="math" data-tex="$\ell(x)$">$\ell(x)$</span> onto <span class="math" data-tex="$\overline{\operatorname{Ran}x}$">$\overline{\operatorname{Ran}x}$</span>. Indeed they vanish on <span class="math" data-tex="$\ker x^*$">$\ker x^*$</span>; on the range of <span class="math" data-tex="$xx^*$">$xx^*$</span> the estimate <span class="math" data-tex="$\|(1-r_n)xx^*\|\leq1/n$">$\|(1-r_n)xx^*\|\leq1/n$</span> gives convergence, and this range is dense in <span class="math" data-tex="$(\ker x^*)^\perp=\overline{\operatorname{Ran}x}$">$(\ker x^*)^\perp=\overline{\operatorname{Ran}x}$</span>. The equality of these orthogonal complements follows from <span class="math" data-tex="$\langle xx^*v,v\rangle=\|x^*v\|^2$">$\langle xx^*v,v\rangle=\|x^*v\|^2$</span>. Uniform boundedness extends convergence from that dense range. Strong closedness gives <span class="math" data-tex="$\ell(x)\in M$">$\ell(x)\in M$</span>. Thus</p>
+<p><span class="math math-display" data-tex="$$ax=0\quad\Longleftrightarrow\quad a\ell(x)=0. \tag{23}$$">$$ax=0\quad\Longleftrightarrow\quad a\ell(x)=0. \tag{23}$$</span></p>
+<p>For an arbitrary family of projections in <span class="math" data-tex="$M$">$M$</span>, a finite join is the support projection of their sum, by the same argument: the kernel of that positive sum is the intersection of their kernels. The finite joins increase strongly to projection onto the closed span of all their ranges. To check strong convergence, approximate a vector in that span by a vector in a finite sum of ranges; on its orthogonal complement every join is zero. Strong closedness puts the arbitrary join in <span class="math" data-tex="$M$">$M$</span>. This proof uses finite-subset nets, not countable enumeration.</p>
+<p>For <span class="math" data-tex="$S_r=M_\alpha([r,\infty))$">$S_r=M_\alpha([r,\infty))$</span>, set</p>
+<p><span class="math math-display" data-tex="$$p(r)=1-\bigvee_{x\in S_r}\ell(x). \tag{24}$$">$$p(r)=1-\bigvee_{x\in S_r}\ell(x). \tag{24}$$</span></p>
+<p>By (23), <span class="math" data-tex="$ap(r)=a$">$ap(r)=a$</span> is exactly the condition <span class="math" data-tex="$ax=0$">$ax=0$</span> for all <span class="math" data-tex="$x\in S_r$">$x\in S_r$</span>. Thus the left annihilator is <span class="math" data-tex="$Mp(r)$">$Mp(r)$</span>. Uniqueness follows since the projection is the orthogonal complement of the indicated closed span.</p>
+<p>The projections <span class="math" data-tex="$p(r)$">$p(r)$</span> increase with <span class="math" data-tex="$r$">$r$</span>. Since <span class="math" data-tex="$1\in S_0$">$1\in S_0$</span>, <span class="math" data-tex="$p(r)=0$">$p(r)=0$</span> for <span class="math" data-tex="$r\leq0$">$r\leq0$</span>. Lemma 4 gives <span class="math" data-tex="$S_r=0$">$S_r=0$</span> and <span class="math" data-tex="$p(r)=1$">$p(r)=1$</span> when <span class="math" data-tex="$r&gt;C$">$r&gt;C$</span>. The spaces <span class="math" data-tex="$S_r$">$S_r$</span> are invariant under <span class="math" data-tex="$\alpha$">$\alpha$</span>; the automorphism maps their left annihilator onto itself. Uniqueness of its projection gives</p>
+<p><span class="math math-display" data-tex="$$\alpha_t(p(r))=p(r). \tag{25}$$">$$\alpha_t(p(r))=p(r). \tag{25}$$</span></p>
+<h2 id="OA-FLOW.GI.TRANSFER"><span id="oa-flow.gi.transfer"></span>6. Norm Stieltjes construction and finite-block transfer</h2>
+<p>If <span class="math" data-tex="$C=0$">$C=0$</span>, <span class="math" data-tex="$d=0$">$d=0$</span> and take <span class="math" data-tex="$b=0$">$b=0$</span>. Otherwise choose <span class="math" data-tex="$L&gt;C$">$L&gt;C$</span> and a partition <span class="math" data-tex="$0=\lambda_0&lt;\cdots&lt;\lambda_n=L$">$0=\lambda_0&lt;\cdots&lt;\lambda_n=L$</span>. Its commuting orthogonal increments</p>
+<p><span class="math math-display" data-tex="$$q_j=p(\lambda_j)-p(\lambda_{j-1})$$">$$q_j=p(\lambda_j)-p(\lambda_{j-1})$$</span></p>
+<p>sum to one. For tags <span class="math" data-tex="$\tau_j\in[\lambda_{j-1},\lambda_j]$">$\tau_j\in[\lambda_{j-1},\lambda_j]$</span> form</p>
+<p><span class="math math-display" data-tex="$$b_\pi=\sum_j\tau_jq_j.$$">$$b_\pi=\sum_j\tau_jq_j.$$</span></p>
+<p>Two tagged sums, compared on a common refinement, differ by norm at most the sum of their meshes: on each orthogonal refined increment their scalar tags differ by at most that sum. The norm of a sum of scalar multiples of mutually orthogonal projections is at most the largest scalar modulus, by applying the squared norm to each vector. Hence the sums are norm Cauchy and define</p>
+<p><span class="math math-display" data-tex="$$b=\int_0^L\lambda\,dp(\lambda)\in M. \tag{26}$$">$$b=\int_0^L\lambda\,dp(\lambda)\in M. \tag{26}$$</span></p>
+<p>This integral needs neither countable additivity nor one-sided continuity of <span class="math" data-tex="$p$">$p$</span>. Tags in intervals beginning above <span class="math" data-tex="$C$">$C$</span> multiply zero increments. In the sole interval crossing <span class="math" data-tex="$C$">$C$</span>, a tag is at most <span class="math" data-tex="$C$">$C$</span> plus the mesh. It follows that</p>
+<p><span class="math math-display" data-tex="$$0\leq b\leq C1. \tag{27}$$">$$0\leq b\leq C1. \tag{27}$$</span></p>
+<p>Changing <span class="math" data-tex="$L&gt;C$">$L&gt;C$</span> does not change the limit because <span class="math" data-tex="$p$">$p$</span> is already constant there. By (25), <span class="math" data-tex="$b$">$b$</span> is fixed by <span class="math" data-tex="$\alpha$">$\alpha$</span>. Therefore the inner group</p>
+<p><span class="math math-display" data-tex="$$\Phi_t(x)=e^{itb}xe^{-itb}$$">$$\Phi_t(x)=e^{itb}xe^{-itb}$$</span></p>
+<p>commutes with <span class="math" data-tex="$\alpha$">$\alpha$</span>. Its unitaries are supplied by the exponential series and selfadjointness, and <span class="math" data-tex="$\Phi$">$\Phi$</span> is a norm-continuous isometric star-automorphism group.</p>
+<p>For <span class="math" data-tex="$x\in S_r$">$x\in S_r$</span> and <span class="math" data-tex="$y\in S_s$">$y\in S_s$</span>, Lemma 5 gives <span class="math" data-tex="$xy\in S_{r+s}$">$xy\in S_{r+s}$</span>. Thus <span class="math" data-tex="$p(r+s)xy=0$">$p(r+s)xy=0$</span> for every such <span class="math" data-tex="$y$">$y$</span>, and the annihilator identity gives</p>
+<p><span class="math math-display" data-tex="$$p(r+s)x(1-p(s))=0\qquad(s\in\mathbb R). \tag{28}$$">$$p(r+s)x(1-p(s))=0\qquad(s\in\mathbb R). \tag{28}$$</span></p>
+<p>Here is the complete transfer from this projection inequality to an inner-action spectral band. Use a partition of mesh <span class="math" data-tex="$\eta$">$\eta$</span> and its sum <span class="math" data-tex="$b_\pi$">$b_\pi$</span>. If <span class="math" data-tex="$q_jxq_k\ne0$">$q_jxq_k\ne0$</span>, put <span class="math" data-tex="$s=\lambda_{k-1}$">$s=\lambda_{k-1}$</span>. Since <span class="math" data-tex="$q_k\leq1-p(s)$">$q_k\leq1-p(s)$</span>, (28) shows that <span class="math" data-tex="$\lambda_j\leq r+s$">$\lambda_j\leq r+s$</span> would force this block to vanish. A surviving block therefore has</p>
+<p><span class="math math-display" data-tex="$$\tau_j-\tau_k&gt;r-2\eta. \tag{29}$$">$$\tau_j-\tau_k&gt;r-2\eta. \tag{29}$$</span></p>
+<p>The action implemented by <span class="math" data-tex="$b_\pi$">$b_\pi$</span> has the finite expansion</p>
+<p><span class="math math-display" data-tex="$$e^{itb_\pi}xe^{-itb_\pi}
+=\sum_{j,k}e^{it(\tau_j-\tau_k)}q_jxq_k.$$">$$e^{itb_\pi}xe^{-itb_\pi}
+=\sum_{j,k}e^{it(\tau_j-\tau_k)}q_jxq_k.$$</span></p>
+<p>Consequently its <span class="math" data-tex="$H$">$H$</span> filter is <span class="math" data-tex="$\sum_{j,k}H(\tau_j-\tau_k)q_jxq_k$">$\sum_{j,k}H(\tau_j-\tau_k)q_jxq_k$</span>. If <span class="math" data-tex="$\operatorname{supp}H$">$\operatorname{supp}H$</span> is disjoint from <span class="math" data-tex="$[r,\infty)$">$[r,\infty)$</span>, its compact support has positive distance below <span class="math" data-tex="$r$">$r$</span>. For sufficiently small <span class="math" data-tex="$\eta$">$\eta$</span>, (29) makes this filter zero. Norm convergence <span class="math" data-tex="$b_\pi\to b$">$b_\pi\to b$</span> gives norm convergence of the exponentials uniformly for <span class="math" data-tex="$t$">$t$</span> in every compact interval (use the power series, or telescope each power). All these actions are isometries; the remaining filter tails are bounded by <span class="math" data-tex="$\|H^\vee\|_1\|x\|$">$\|H^\vee\|_1\|x\|$</span>. Passing to the norm integral gives <span class="math" data-tex="$T_H^\Phi x=0$">$T_H^\Phi x=0$</span>. Therefore</p>
+<p><span class="math math-display" data-tex="$$M_\alpha([r,\infty))\subseteq M_\Phi([r,\infty))\qquad(r\in\mathbb R). \tag{30}$$">$$M_\alpha([r,\infty))\subseteq M_\Phi([r,\infty))\qquad(r\in\mathbb R). \tag{30}$$</span></p>
+<p>Lemma 7 proves <span class="math" data-tex="$\alpha=\Phi$">$\alpha=\Phi$</span>. Differentiating their norm-convergent series at zero gives</p>
+<p><span class="math math-display" data-tex="$$d(x)=i[b,x]. \tag{31}$$">$$d(x)=i[b,x]. \tag{31}$$</span></p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Commuting actions and difference-frequency localization" src="assets/l35-reconstruction/figures/commuting-localization.png" style="display:block;width:1100px;max-width:none"/></p>
+<p><em>Band comparison places the possible joint frequencies on <span class="math" data-tex="$\lambda=\mu$">$\lambda=\mu$</span>. A test of the difference action has symbol <span class="math" data-tex="$H(\lambda-\mu)$">$H(\lambda-\mu)$</span>; when <span class="math" data-tex="$H$">$H$</span> is supported away from zero, the joint filter misses that diagonal and vanishes by rectangle localization. The illustrated strip is the specific filter condition <span class="math" data-tex="$\operatorname{supp}H\subseteq[1,2]$">$\operatorname{supp}H\subseteq[1,2]$</span>, and the drawn boxes illustrate pieces of a finite cover rather than its entirety. Proof: Lemma 7, (20)–(21). Free mathematical ancestry: Olesen.</em></p>
+<p>By (27), <span class="math" data-tex="$h=b-(C/2)1$">$h=b-(C/2)1$</span> has norm at most <span class="math" data-tex="$C/2$">$C/2$</span>, and</p>
+<p><span class="math math-display" data-tex="$$C=\|d\|\leq2\|h\|\leq C.$$">$$C=\|d\|\leq2\|h\|\leq C.$$</span></p>
+<p>Thus the centered bound in (1) is sharp. Also any positive implementer <span class="math" data-tex="$c$">$c$</span> satisfies <span class="math" data-tex="$\|i[c,\cdot]\|\leq\|c\|$">$\|i[c,\cdot]\|\leq\|c\|$</span>: subtract <span class="math" data-tex="$(\|c\|/2)1$">$(\|c\|/2)1$</span> and use <span class="math" data-tex="$0\leq c\leq\|c\|1$">$0\leq c\leq\|c\|1$</span>. Apply this to <span class="math" data-tex="$b$">$b$</span> and combine with (27) to get <span class="math" data-tex="$\|b\|=C$">$\|b\|=C$</span>. This finishes the star-derivation existence and norm claims.</p>
+<h2 id="OA-FLOW.GI.INNERNESS"><span id="oa-flow.gi.innerness"></span>7. Center, arbitrary assembly and complex derivations</h2>
+<p><strong>Center claim.</strong> A bounded derivation vanishes on the center. For a central projection <span class="math" data-tex="$z$">$z$</span>, the product rule gives <span class="math" data-tex="$d(z)=2zd(z)$">$d(z)=2zd(z)$</span>; multiplication by <span class="math" data-tex="$z$">$z$</span> gives <span class="math" data-tex="$zd(z)=0$">$zd(z)=0$</span>, and hence <span class="math" data-tex="$d(z)=0$">$d(z)=0$</span>. To pass to all selfadjoint central elements, approximate them in norm by finite linear combinations of central projections. Here is the required approximation from continuous calculus and the support construction above. For central selfadjoint <span class="math" data-tex="$a$">$a$</span> and a real threshold <span class="math" data-tex="$t$">$t$</span>, the support <span class="math" data-tex="$e_t$">$e_t$</span> of <span class="math" data-tex="$(a-t)_+$">$(a-t)_+$</span> is central: its approximating contractions commute with all of <span class="math" data-tex="$M$">$M$</span>, hence so does the strong limit. It is decreasing in <span class="math" data-tex="$t$">$t$</span>. On <span class="math" data-tex="$e_t$">$e_t$</span>, <span class="math" data-tex="$a\geq t$">$a\geq t$</span>, while on <span class="math" data-tex="$1-e_t$">$1-e_t$</span>, <span class="math" data-tex="$a\leq t$">$a\leq t$</span>; these assertions follow because the positive and negative parts of <span class="math" data-tex="$a-t$">$a-t$</span> have product zero, so the negative part vanishes on the support of the positive part and the positive part vanishes on its complement. Finite successive differences of such projections on a partition of <span class="math" data-tex="$[-\|a\|-1,\|a\|+1]$">$[-\|a\|-1,\|a\|+1]$</span> put <span class="math" data-tex="$a$">$a$</span> between the two endpoint scalars on each block. The tagged step sum consequently differs from <span class="math" data-tex="$a$">$a$</span> by at most the mesh. Boundedness of <span class="math" data-tex="$d$">$d$</span> passes its zero values on the step sums to <span class="math" data-tex="$a$">$a$</span>. Real and imaginary parts give the whole center.</p>
+<p>In particular every central corner <span class="math" data-tex="$Mz$">$Mz$</span> is invariant under <span class="math" data-tex="$d$">$d$</span> and <span class="math" data-tex="$\alpha$">$\alpha$</span>. Filters commute with multiplication by <span class="math" data-tex="$z$">$z$</span>, and a vector in <span class="math" data-tex="$Mz$">$Mz$</span> has the same filter equations there as in <span class="math" data-tex="$M$">$M$</span>. Thus</p>
+<p><span class="math math-display" data-tex="$$S_r\cap Mz=S_rz=S_r^{\,Mz}.$$">$$S_r\cap Mz=S_rz=S_r^{\,Mz}.$$</span></p>
+<p>The left-annihilator projection in the corner is <span class="math" data-tex="$zp(r)$">$zp(r)$</span>: apply the annihilator identity to vectors supported in <span class="math" data-tex="$z$">$z$</span>, or restrict the closed range-span construction (24). Every Stieltjes increment and tag therefore restricts to the corner, and its constructed positive implementer is <span class="math" data-tex="$bz$">$bz$</span>. Repeating the already proved norm statement in <span class="math" data-tex="$Mz$">$Mz$</span> gives exactly (2). There is no restriction on the central projection.</p>
+<p>If another positive <span class="math" data-tex="$c$">$c$</span> implements the same star derivation, <span class="math" data-tex="$b-c$">$b-c$</span> is central and selfadjoint, because <span class="math" data-tex="$[b-c,x]=0$">$[b-c,x]=0$</span> for every <span class="math" data-tex="$x$">$x$</span>. Suppose <span class="math" data-tex="$b-c$">$b-c$</span> had a nonzero positive part. For some <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>, its central projection <span class="math" data-tex="$z=\operatorname{supp}(b-c-\varepsilon)_+$">$z=\operatorname{supp}(b-c-\varepsilon)_+$</span> would be nonzero. As in the center claim, <span class="math" data-tex="$(b-c)z\geq\varepsilon z$">$(b-c)z\geq\varepsilon z$</span>. Positivity gives</p>
+<p><span class="math math-display" data-tex="$$0\leq cz\leq bz-\varepsilon z,
+\qquad
+\|cz\|\leq\|bz\|-\varepsilon.$$">$$0\leq cz\leq bz-\varepsilon z,
+\qquad
+\|cz\|\leq\|bz\|-\varepsilon.$$</span></p>
+<p>But the preceding positive-implementer estimate in that corner gives</p>
+<p><span class="math math-display" data-tex="$$\|bz\|=\|d|_{Mz}\|\leq\|cz\|,$$">$$\|bz\|=\|d|_{Mz}\|\leq\|cz\|,$$</span></p>
+<p>a contradiction. Hence <span class="math" data-tex="$b\leq c$">$b\leq c$</span>: it is the least positive implementer. This argument used only positivity, implementation and the corner calibration (2), so it applies to any positive calibrated implementer as well. Applying it in both directions proves uniqueness in (2).</p>
+<p><strong>Arbitrary central assembly, explicitly.</strong> Let <span class="math" data-tex="$(z_i)_{i\in I}$">$(z_i)_{i\in I}$</span> be any orthogonal family of central projections with join one. Let <span class="math" data-tex="$b_i\in Mz_i$">$b_i\in Mz_i$</span> be the canonical positive implementers of the corner derivations. They satisfy <span class="math" data-tex="$\|b_i\|=\|d|_{Mz_i}\|\leq C$">$\|b_i\|=\|d|_{Mz_i}\|\leq C$</span>. The finite sums <span class="math" data-tex="$\sum_{i\in F}b_i$">$\sum_{i\in F}b_i$</span> converge strongly: for each <span class="math" data-tex="$\xi$">$\xi$</span> their squared disjoint-tail norm is bounded by <span class="math" data-tex="$C^2\sum_{i\in F\triangle G}\|z_i\xi\|^2$">$C^2\sum_{i\in F\triangle G}\|z_i\xi\|^2$</span>, and the finite-subset sums of these nonnegative numbers converge to <span class="math" data-tex="$\|\xi\|^2$">$\|\xi\|^2$</span>. Strong closedness gives <span class="math" data-tex="$b\in M$">$b\in M$</span>, positive, with norm <span class="math" data-tex="$\sup_i\|b_i\|$">$\sup_i\|b_i\|$</span>. It implements <span class="math" data-tex="$d$">$d$</span> because its commutator has the required value in every central corner, and a vector annihilated by every <span class="math" data-tex="$z_i$">$z_i$</span> is zero. Its construction agrees with (26) by the corner identities and uniqueness just proved.</p>
+<p>The same orthogonal calculation gives <span class="math" data-tex="$\|d\|=\sup_i\|d|_{Mz_i}\|$">$\|d\|=\sup_i\|d|_{Mz_i}\|$</span>: the lower bound is restriction; for the upper bound, each <span class="math" data-tex="$d(x)z_i$">$d(x)z_i$</span> has norm at most this supremum times <span class="math" data-tex="$\|x\|$">$\|x\|$</span>, and orthogonal squared vector norms give the global operator bound. Local centered implementers <span class="math" data-tex="$b_i-(\|d|_{Mz_i}\|/2)z_i$">$b_i-(\|d|_{Mz_i}\|/2)z_i$</span> therefore assemble strongly to an implementer of norm <span class="math" data-tex="$\|d\|/2$">$\|d\|/2$</span>. This is an optional central centering; the uniform centering in (1) already achieves the same norm. The family and the Hilbert space may be uncountable.</p>
+<p>For an arbitrary complex derivation, use (4), (5). Let <span class="math" data-tex="$h_j$">$h_j$</span> be the centered selfadjoint implementer for <span class="math" data-tex="$d_j$">$d_j$</span>, of norm <span class="math" data-tex="$\|d_j\|/2$">$\|d_j\|/2$</span>. Then</p>
+<p><span class="math math-display" data-tex="$$d=i[h_1,\cdot]+i\,i[h_2,\cdot]
+=[ih_1-h_2,\cdot].$$">$$d=i[h_1,\cdot]+i\,i[h_2,\cdot]
+=[ih_1-h_2,\cdot].$$</span></p>
+<p>Set <span class="math" data-tex="$k=ih_1-h_2$">$k=ih_1-h_2$</span>. Its norm is at most <span class="math" data-tex="$(\|d_1\|+\|d_2\|)/2\leq\|d\|$">$(\|d_1\|+\|d_2\|)/2\leq\|d\|$</span>. This proves (3) and Theorem 1. Two complex implementers differ by a central element, by the definition of the center; the positive normalization is asserted only in the star case.</p>
+<h3 id="OA-FLOW.GI.NORMALITY"><span id="oa-flow.gi.normality"></span>Ultraweak continuity as a consequence of the constructed implementer</h3>
+<p>Every derivation in Theorem 1 is ultraweakly continuous. We give a direct proof after constructing its implementer, so no normal-map criterion is needed in the innerness argument.</p>
+<p>Recall the concrete ultraweak topology on a von Neumann algebra in <span class="math" data-tex="$B(H)$">$B(H)$</span>: it is the topology induced by the functionals</p>
+<p><span class="math math-display" data-tex="$$x\longmapsto\sum_{n=1}^{\infty}\langle x\xi_n,\eta_n\rangle,
+\qquad \sum_n\|\xi_n\|^2&lt;\infty,\quad
+\sum_n\|\eta_n\|^2&lt;\infty.$$">$$x\longmapsto\sum_{n=1}^{\infty}\langle x\xi_n,\eta_n\rangle,
+\qquad \sum_n\|\xi_n\|^2&lt;\infty,\quad
+\sum_n\|\eta_n\|^2&lt;\infty.$$</span></p>
+<p>The series is absolutely convergent, since its absolute sum is at most <span class="math" data-tex="$\|x\|(\sum_n\|\xi_n\|^2)^{1/2}(\sum_n\|\eta_n\|^2)^{1/2}$">$\|x\|(\sum_n\|\xi_n\|^2)^{1/2}(\sum_n\|\eta_n\|^2)^{1/2}$</span> by Cauchy–Schwarz for finite sums and passage to the limit. Fix <span class="math" data-tex="$a,b\in M$">$a,b\in M$</span>. Composing one such functional with <span class="math" data-tex="$x\mapsto axb$">$x\mapsto axb$</span> gives</p>
+<p><span class="math math-display" data-tex="$$\sum_n\langle axb\xi_n,\eta_n\rangle
+=\sum_n\langle x(b\xi_n),a^*\eta_n\rangle.$$">$$\sum_n\langle axb\xi_n,\eta_n\rangle
+=\sum_n\langle x(b\xi_n),a^*\eta_n\rangle.$$</span></p>
+<p>The two new vector families remain square summable, bounded by <span class="math" data-tex="$\|b\|^2\sum_n\|\xi_n\|^2$">$\|b\|^2\sum_n\|\xi_n\|^2$</span> and <span class="math" data-tex="$\|a\|^2\sum_n\|\eta_n\|^2$">$\|a\|^2\sum_n\|\eta_n\|^2$</span>. Thus each defining functional pulls back to another defining functional. This proves ultraweak continuity of <span class="math" data-tex="$x\mapsto axb$">$x\mapsto axb$</span> directly from the topology's definition, on arbitrary Hilbert spaces and for nets as well as sequences.</p>
+<p>Theorem 1 supplies <span class="math" data-tex="$d(x)=kx-xk$">$d(x)=kx-xk$</span> with <span class="math" data-tex="$k\in M$">$k\in M$</span>. The difference of the two continuous multiplication maps is ultraweakly continuous. In the star case, <span class="math" data-tex="$\alpha_t(x)=e^{itb}xe^{-itb}$">$\alpha_t(x)=e^{itb}xe^{-itb}$</span> and its inverse are also such multiplication maps, so each is an ultraweak homeomorphism. The spectral construction above did not use this conclusion as an input.</p>
+<h2 id="OA-FLOW.GI.GENERATORSPECTRUM"><span id="oa-flow.gi.generatorspectrum"></span>8. Action spectrum equals bounded-generator spectrum</h2>
+<p>The filters above also prove the complete spectrum assertion, rather than just the bounded frequency containment used in the construction.</p>
+<p>For an isometric group <span class="math" data-tex="$\alpha_t=e^{itD}$">$\alpha_t=e^{itD}$</span> on a nonzero Banach space, define its action spectrum <span class="math" data-tex="$\Sigma_\alpha$">$\Sigma_\alpha$</span> by declaring <span class="math" data-tex="$\lambda\notin\Sigma_\alpha$">$\lambda\notin\Sigma_\alpha$</span> when there is an open interval <span class="math" data-tex="$U$">$U$</span> containing <span class="math" data-tex="$\lambda$">$\lambda$</span> such that <span class="math" data-tex="$T_F^\alpha=0$">$T_F^\alpha=0$</span> for every smooth compact filter supported in <span class="math" data-tex="$U$">$U$</span>. This is a closed subset of <span class="math" data-tex="$[-\|D\|,\|D\|]$">$[-\|D\|,\|D\|]$</span> by Lemma 4. If a filter has compact support disjoint from <span class="math" data-tex="$\Sigma_\alpha$">$\Sigma_\alpha$</span>, a finite smooth partition subordinate to the defining annihilating intervals shows that its operator is zero. A cutoff equal to one near <span class="math" data-tex="$\Sigma_\alpha$">$\Sigma_\alpha$</span> is therefore identity: compare it with the approximate-identity filters <span class="math" data-tex="$F_R$">$F_R$</span> from Lemma 4. In particular <span class="math" data-tex="$\Sigma_\alpha$">$\Sigma_\alpha$</span> is nonempty, since otherwise every filter would vanish and their approximate identity would be zero on <span class="math" data-tex="$X$">$X$</span>.</p>
+<p><strong>Theorem 8.</strong></p>
+<p><span class="math math-display" data-tex="$$\Sigma_\alpha=\operatorname{Sp}_{B(X)}(D). \tag{32}$$">$$\Sigma_\alpha=\operatorname{Sp}_{B(X)}(D). \tag{32}$$</span></p>
+<p><strong>Proof.</strong> First the spectrum of <span class="math" data-tex="$D$">$D$</span> is real. If <span class="math" data-tex="$\operatorname{Im}z&gt;0$">$\operatorname{Im}z&gt;0$</span>, the norm-convergent improper integral</p>
+<p><span class="math math-display" data-tex="$$R_z=-i\int_0^\infty e^{itz}\alpha_{-t}\,dt$$">$$R_z=-i\int_0^\infty e^{itz}\alpha_{-t}\,dt$$</span></p>
+<p>is a two-sided inverse to <span class="math" data-tex="$z-D$">$z-D$</span>. Its integrand has derivative <span class="math" data-tex="$i(z-D)e^{itz}\alpha_{-t}$">$i(z-D)e^{itz}\alpha_{-t}$</span>; integration of the derivative gives the identity, since the endpoint at infinity is zero and the one at zero is identity. The integrand commutes with <span class="math" data-tex="$D$">$D$</span>, giving the other inverse as well. If <span class="math" data-tex="$\operatorname{Im}z&lt;0$">$\operatorname{Im}z&lt;0$</span>, the same verification uses <span class="math" data-tex="$R_z=i\int_0^\infty e^{-itz}\alpha_t\,dt$">$R_z=i\int_0^\infty e^{-itz}\alpha_t\,dt$</span>. The exponential scalar decay bounds all tails and differentiated tails.</p>
+<p>If a real <span class="math" data-tex="$\lambda$">$\lambda$</span> is outside <span class="math" data-tex="$\Sigma_\alpha$">$\Sigma_\alpha$</span>, choose a smooth compact cutoff <span class="math" data-tex="$\chi=1$">$\chi=1$</span> near <span class="math" data-tex="$\Sigma_\alpha$">$\Sigma_\alpha$</span> with <span class="math" data-tex="$\chi=0$">$\chi=0$</span> near <span class="math" data-tex="$\lambda$">$\lambda$</span>. Then <span class="math" data-tex="$G(\mu)=\chi(\mu)/(\lambda-\mu)$">$G(\mu)=\chi(\mu)/(\lambda-\mu)$</span> is smooth with compact support. By (14),</p>
+<p><span class="math math-display" data-tex="$$(\lambda-D)T_G=T_{(\lambda-\mu)G}=T_\chi=I.$$">$$(\lambda-D)T_G=T_{(\lambda-\mu)G}=T_\chi=I.$$</span></p>
+<p>The same calculation on the right gives a two-sided inverse. Thus <span class="math" data-tex="$\operatorname{Sp}(D)\subseteq\Sigma_\alpha$">$\operatorname{Sp}(D)\subseteq\Sigma_\alpha$</span>.</p>
+<p>Conversely let <span class="math" data-tex="$\lambda\in\Sigma_\alpha$">$\lambda\in\Sigma_\alpha$</span>. For every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span> there is an <span class="math" data-tex="$F$">$F$</span> supported in <span class="math" data-tex="$(\lambda-\varepsilon,\lambda+\varepsilon)$">$(\lambda-\varepsilon,\lambda+\varepsilon)$</span> with <span class="math" data-tex="$T_F\ne0$">$T_F\ne0$</span>. Choose a norm-one nonzero vector <span class="math" data-tex="$y$">$y$</span> in its range. By (15), <span class="math" data-tex="$y$">$y$</span> has that closed compact band. Choose once for all a smooth <span class="math" data-tex="$\chi$">$\chi$</span> equal to one on <span class="math" data-tex="$[-1,1]$">$[-1,1]$</span> and supported in <span class="math" data-tex="$(-2,2)$">$(-2,2)$</span> and use <span class="math" data-tex="$\chi_\varepsilon(\mu)=\chi((\mu-\lambda)/\varepsilon)$">$\chi_\varepsilon(\mu)=\chi((\mu-\lambda)/\varepsilon)$</span>. Lemma 4 gives</p>
+<p><span class="math math-display" data-tex="$$(D-\lambda)y=T_{(\mu-\lambda)\chi_\varepsilon(\mu)}y.$$">$$(D-\lambda)y=T_{(\mu-\lambda)\chi_\varepsilon(\mu)}y.$$</span></p>
+<p>The inverse transform of this filter is an irrelevant unit-modulus modulation of <span class="math" data-tex="$\varepsilon^2\check {u\chi(u)}(\varepsilon t)$">$\varepsilon^2\check {u\chi(u)}(\varepsilon t)$</span>, so</p>
+<p><span class="math math-display" data-tex="$$\|(D-\lambda)y\|\leq
+\varepsilon\|\check {u\chi(u)}\|_1. \tag{33}$$">$$\|(D-\lambda)y\|\leq
+\varepsilon\|\check {u\chi(u)}\|_1. \tag{33}$$</span></p>
+<p>If <span class="math" data-tex="$D-\lambda$">$D-\lambda$</span> were invertible, its inverse would give a positive lower bound <span class="math" data-tex="$1/\|(D-\lambda)^{-1}\|$">$1/\|(D-\lambda)^{-1}\|$</span> on the left for every norm-one <span class="math" data-tex="$y$">$y$</span>. This contradicts (33) as <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span> tends to zero. The reverse inclusion follows. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For our star derivation, <span class="math" data-tex="$D=-id$">$D=-id$</span> and <span class="math" data-tex="$\alpha_t=e^{td}$">$\alpha_t=e^{td}$</span>. Hence</p>
+<p><span class="math math-display" data-tex="$$\operatorname{Sp}_{B(M)}(d)=i\Sigma_\alpha,$$">$$\operatorname{Sp}_{B(M)}(d)=i\Sigma_\alpha,$$</span></p>
+<p>since <span class="math" data-tex="$w-d=i(w/i-D)$">$w-d=i(w/i-D)$</span> gives the elementary scalar-scaling identity for invertibility when <span class="math" data-tex="$d=iD$">$d=iD$</span>. Equation (32) concerns the complete bounded operator generator on all of <span class="math" data-tex="$X$">$X$</span>; it makes no assertion about an unbounded generator defined only on a proper smooth domain.</p>
+<h2 id="OA-FLOW.GI.MATRIX"><span id="oa-flow.gi.matrix"></span>9. A matrix calculation with every sign visible</h2>
+<p>Take <span class="math" data-tex="$M=M_3(\mathbb C)$">$M=M_3(\mathbb C)$</span> and <span class="math" data-tex="$h=\operatorname{diag}(0,2,5)$">$h=\operatorname{diag}(0,2,5)$</span>. Let <span class="math" data-tex="$d=i[h,\cdot]$">$d=i[h,\cdot]$</span>. For the matrix unit <span class="math" data-tex="$E_{jk}$">$E_{jk}$</span>,</p>
+<p><span class="math math-display" data-tex="$$D(E_{jk})=(h_j-h_k)E_{jk},\qquad
+\alpha_t(E_{jk})=e^{it(h_j-h_k)}E_{jk}.$$">$$D(E_{jk})=(h_j-h_k)E_{jk},\qquad
+\alpha_t(E_{jk})=e^{it(h_j-h_k)}E_{jk}.$$</span></p>
+<p>The frequency array, with rows <span class="math" data-tex="$j$">$j$</span> and columns <span class="math" data-tex="$k$">$k$</span>, is</p>
+<p><span class="math math-display" data-tex="$$\begin{pmatrix}0&amp;-2&amp;-5\\2&amp;0&amp;-3\\5&amp;3&amp;0\end{pmatrix}. \tag{34}$$">$$\begin{pmatrix}0&amp;-2&amp;-5\\2&amp;0&amp;-3\\5&amp;3&amp;0\end{pmatrix}. \tag{34}$$</span></p>
+<p>Thus <span class="math" data-tex="$\Sigma_\alpha=\{0,\pm2,\pm3,\pm5\}$">$\Sigma_\alpha=\{0,\pm2,\pm3,\pm5\}$</span>: a filter evaluates at the indicated frequency on each matrix unit, so every listed frequency is detected by a sufficiently small smooth filter and all others are annihilated. The ordinary matrix-unit basis gives the same spectrum for <span class="math" data-tex="$D$">$D$</span>; <span class="math" data-tex="$\operatorname{Sp}(d)=i\Sigma_\alpha$">$\operatorname{Sp}(d)=i\Sigma_\alpha$</span>.</p>
+<p>The high-frequency subspace <span class="math" data-tex="$S_r$">$S_r$</span> consists of matrix units with <span class="math" data-tex="$h_j-h_k\geq r$">$h_j-h_k\geq r$</span>. Its left range span contains precisely the row vectors for which <span class="math" data-tex="$h_j\geq r$">$h_j\geq r$</span>, when <span class="math" data-tex="$r&gt;0$">$r&gt;0$</span>. The annihilator staircase is therefore</p>
+<p><span class="math math-display" data-tex="$$p(r)=\begin{cases}
+0,&amp;r\leq0,\\
+E_{11},&amp;0&lt;r\leq2,\\
+E_{11}+E_{22},&amp;2&lt;r\leq5,\\
+1,&amp;r&gt;5.
+\end{cases} \tag{35}$$">$$p(r)=\begin{cases}
+0,&amp;r\leq0,\\
+E_{11},&amp;0&lt;r\leq2,\\
+E_{11}+E_{22},&amp;2&lt;r\leq5,\\
+1,&amp;r&gt;5.
+\end{cases} \tag{35}$$</span></p>
+<p>The jump at frequency zero belongs to the limit immediately to its right; the value at zero remains zero. The Stieltjes increments reconstruct <span class="math" data-tex="$b=h$">$b=h$</span>. The centered implementer is</p>
+<p><span class="math math-display" data-tex="$$h-\tfrac52 1=\operatorname{diag}(-\tfrac52,-\tfrac12,\tfrac52),$$">$$h-\tfrac52 1=\operatorname{diag}(-\tfrac52,-\tfrac12,\tfrac52),$$</span></p>
+<p>of norm <span class="math" data-tex="$5/2$">$5/2$</span>. The commutator upper bound gives <span class="math" data-tex="$\|d\|\leq5$">$\|d\|\leq5$</span>, while <span class="math" data-tex="$\|d(E_{31})\|=5$">$\|d(E_{31})\|=5$</span> and <span class="math" data-tex="$\|E_{31}\|=1$">$\|E_{31}\|=1$</span> give equality. Since the center is scalar, every selfadjoint implementer is <span class="math" data-tex="$h+c1$">$h+c1$</span>; the positive ones have <span class="math" data-tex="$c\geq0$">$c\geq0$</span>, making <span class="math" data-tex="$h$">$h$</span> the least positive one.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Frequency differences and the annihilator staircase" src="assets/l35-reconstruction/figures/matrix-frequencies.png" style="display:block;width:1100px;max-width:none"/></p>
+<p><em>The frequency of <span class="math" data-tex="$E_{jk}$">$E_{jk}$</span> is row energy minus column energy, exactly as in (34). A row survives in <span class="math" data-tex="$S_r$">$S_r$</span> when it contains a frequency at least <span class="math" data-tex="$r$">$r$</span>; <span class="math" data-tex="$p(r)$">$p(r)$</span> projects onto the remaining rows. The closed dots in the staircase show the values at <span class="math" data-tex="$0,2,5$">$0,2,5$</span>, with the next value beginning immediately to their right. Proofs: (24), (26), (34)–(35). Mathematical ancestry: Olesen, freely readable paper above, Theorem 2. Reproducible figure data and source accompany this lesson.</em></p>
+<h2 id="OA-FLOW.GI.PROBLEMS"><span id="oa-flow.gi.problems"></span>10. Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> Explain why changing an implementer by a central element preserves the derivation. For a star derivation prove that any selfadjoint implementer can be shifted to a positive one. Explain which normalization selects the implementer in Theorem 1.</p>
+<p><strong>Solution.</strong> <span class="math" data-tex="$[k+z,x]=[k,x]$">$[k+z,x]=[k,x]$</span> when <span class="math" data-tex="$z$">$z$</span> is central. Conversely equality of the two commutators for every <span class="math" data-tex="$x$">$x$</span> means their difference is central. If <span class="math" data-tex="$a=a^*$">$a=a^*$</span> implements <span class="math" data-tex="$d=i[a,\cdot]$">$d=i[a,\cdot]$</span>, continuous functional calculus gives <span class="math" data-tex="$a+\|a\|1\geq0$">$a+\|a\|1\geq0$</span>, with the same commutator. Positivity alone permits further positive central shifts. The corner conditions <span class="math" data-tex="$\|bz\|=\|d|_{Mz}\|$">$\|bz\|=\|d|_{Mz}\|$</span> for every central projection, together with positivity, give uniqueness by Section 7. The simpler global condition alone need not calibrate every central corner.</p>
+<p><strong>Exercise 2.</strong> In the matrix example calculate <span class="math" data-tex="$S_3$">$S_3$</span>, <span class="math" data-tex="$S_5$">$S_5$</span> and <span class="math" data-tex="$p(3)$">$p(3)$</span>. Check the transfer inequality (28) for <span class="math" data-tex="$x=E_{32}$">$x=E_{32}$</span>, <span class="math" data-tex="$r=3$">$r=3$</span>, <span class="math" data-tex="$s=2$">$s=2$</span>.</p>
+<p><strong>Solution.</strong> Equation (34) gives <span class="math" data-tex="$S_3=\operatorname{span}\{E_{31},E_{32}\}$">$S_3=\operatorname{span}\{E_{31},E_{32}\}$</span> and <span class="math" data-tex="$S_5=\operatorname{span}\{E_{31}\}$">$S_5=\operatorname{span}\{E_{31}\}$</span>. Their range is the third coordinate, so <span class="math" data-tex="$p(3)=E_{11}+E_{22}$">$p(3)=E_{11}+E_{22}$</span>. At the exact threshold <span class="math" data-tex="$5$">$5$</span>, <span class="math" data-tex="$p(5)=E_{11}+E_{22}$">$p(5)=E_{11}+E_{22}$</span>; at <span class="math" data-tex="$2$">$2$</span>, <span class="math" data-tex="$p(2)=E_{11}$">$p(2)=E_{11}$</span>. Thus <span class="math" data-tex="$p(5)E_{32}(1-p(2))=0$">$p(5)E_{32}(1-p(2))=0$</span>, since the left projection kills the third row. Replacing the frequency <span class="math" data-tex="$3$">$3$</span> of <span class="math" data-tex="$E_{32}$">$E_{32}$</span> by <span class="math" data-tex="$-3$">$-3$</span> would give the wrong row and violate the sign convention.</p>
+<p><strong>Exercise 3.</strong> Let <span class="math" data-tex="$M=\prod_{i\in I}M_3(\mathbb C)$">$M=\prod_{i\in I}M_3(\mathbb C)$</span> for an arbitrary index set and choose numbers <span class="math" data-tex="$a_i\geq0$">$a_i\geq0$</span>. On each factor use <span class="math" data-tex="$h_i=\operatorname{diag}(0,2a_i,5a_i)$">$h_i=\operatorname{diag}(0,2a_i,5a_i)$</span>. When does the coordinate commutator define a bounded derivation of the whole product? What are its norm and a centered implementer?</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="$A=\sup_i a_i&lt;\infty$">$A=\sup_i a_i&lt;\infty$</span>, the family <span class="math" data-tex="$h=(h_i)$">$h=(h_i)$</span> belongs to <span class="math" data-tex="$M$">$M$</span> and gives the derivation. The matrix calculation in each corner and the product norm give <span class="math" data-tex="$\|d\|=5A$">$\|d\|=5A$</span>. The centered family <span class="math" data-tex="$\operatorname{diag}(-5a_i/2,-a_i/2,5a_i/2)$">$\operatorname{diag}(-5a_i/2,-a_i/2,5a_i/2)$</span> has norm <span class="math" data-tex="$5A/2$">$5A/2$</span>. If the <span class="math" data-tex="$a_i$">$a_i$</span> are unbounded, the family with coordinate <span class="math" data-tex="$E_{31}$">$E_{31}$</span> in every factor has norm one but its purported derivative has coordinate norm <span class="math" data-tex="$5a_i$">$5a_i$</span>, and is not an element of <span class="math" data-tex="$M$">$M$</span>. Thus this coordinate prescription is not an everywhere-defined derivation <span class="math" data-tex="$M\to M$">$M\to M$</span>. No countability is used in either argument.</p>
+<p><strong>Exercise 4.</strong> On <span class="math" data-tex="$\ell^2(\mathbb N)$">$\ell^2(\mathbb N)$</span> let the diagonal unbounded operator have entries <span class="math" data-tex="$n$">$n$</span>. What goes wrong with applying automatic boundedness to its commutator on the finite matrix span?</p>
+<p><strong>Solution.</strong> On that span the commutator is well defined and sends <span class="math" data-tex="$E_{jk}$">$E_{jk}$</span> to <span class="math" data-tex="$(j-k)E_{jk}$">$(j-k)E_{jk}$</span>, so its norm on norm-one matrix units is unbounded. The span is not complete in the C*-norm and is a proper subalgebra of <span class="math" data-tex="$B(\ell^2)$">$B(\ell^2)$</span>, whereas L34 assumes an everywhere-defined derivation of a complete C*-algebra. The diagonal unitaries <span class="math" data-tex="$e^{itn}$">$e^{itn}$</span> do act on the whole Hilbert space, but their adjoint action is not operator-norm continuous at zero: at <span class="math" data-tex="$t_m=\pi/m$">$t_m=\pi/m$</span>, its value on <span class="math" data-tex="$E_{m+1,1}$">$E_{m+1,1}$</span> is the negative of that matrix unit, so the action's distance from identity is at least <span class="math" data-tex="$2$">$2$</span> although <span class="math" data-tex="$t_m\to0$">$t_m\to0$</span>. There is consequently no bounded generator on all of <span class="math" data-tex="$B(\ell^2)$">$B(\ell^2)$</span> to which Theorem 8 could apply.</p>
+<p><strong>Exercise 5.</strong> Show that the dyadic reconstruction in Lemma 3 can be passed through any isometric action filter, and explain why mere pointwise frequency convergence would not suffice.</p>
+<p><strong>Solution.</strong> For the decomposition (10), the operator norm of each filter is at most the <span class="math" data-tex="$L^1$">$L^1$</span> norm of its inverse transform, by (6) and isometry. Estimate (11) makes their operator series absolutely convergent. The <span class="math" data-tex="$L^1$">$L^1$</span> equality of the inverse transforms identifies its sum with <span class="math" data-tex="$T_F$">$T_F$</span>, again by (6). Pointwise convergence of the frequency symbols by itself gives no bound on these time-domain <span class="math" data-tex="$L^1$">$L^1$</span> norms and therefore no justified convergence of the operator filters. Flatness at the endpoint is precisely what supplied the summable derivative/Plancherel estimate.</p>
+<p><span id="OA-FLOW.GI.BIDUAL"></span><a id="oa-flow.gi.bidual"></a></p>
+<h2 id="11-extend-a-derivation-to-the-entire-bidual">11. Extend a derivation to the entire bidual</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be an arbitrary complex C*-algebra, possibly nonunital or zero, and let <span class="math" data-tex="\(d:A\to A\)">\(d:A\to A\)</span> be an everywhere-defined complex-linear derivation. It is bounded by <a href="OA-FLOW-L34.html#oa-flow.dfd.algebra">L34's automatic-boundedness theorem</a>. Neither the algebra nor any Hilbert space in this section is assumed separable.</p>
+<p>We use the complete <a href="../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#constructing-the-bidual-before-using-it">construction of the universal bidual</a>. It identifies the Banach bidual <span class="math" data-tex="\(A^{**}\)">\(A^{**}\)</span> with a von Neumann algebra, with predual <span class="math" data-tex="\(A^*\)">\(A^*\)</span> and its original evaluation pairing. The canonical map <span class="math" data-tex="\(j:A\to A^{**}\)">\(j:A\to A^{**}\)</span> is an isometric star homomorphism; its image is ultraweakly dense, and its unit ball is ultraweakly dense in the bidual unit ball. Multiplication is separately ultraweakly continuous, and the involution is ultraweakly continuous. These assertions hold for nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, and give the zero algebra when <span class="math" data-tex="\(A=0\)">\(A=0\)</span>.</p>
+<p>For clarity, <span class="math" data-tex="\(d^*\)">\(d^*\)</span> below denotes the Banach adjoint, not the involution of an operator. Define
+<span class="math math-display" data-tex="\[
+ d^*\varphi=\varphi\circ d\quad(\varphi\in A^*),\qquad
+ \langle d^{**}X,\varphi\rangle
+       =\langle X,d^*\varphi\rangle
+ \quad(X\in A^{**}).
+ \tag{R1}
+\]">\[
+ d^*\varphi=\varphi\circ d\quad(\varphi\in A^*),\qquad
+ \langle d^{**}X,\varphi\rangle
+       =\langle X,d^*\varphi\rangle
+ \quad(X\in A^{**}).
+ \tag{R1}
+\]</span>
+The bound <span class="math" data-tex="\(\|d^*\varphi\|\le\|d\|\|\varphi\|\)">\(\|d^*\varphi\|\le\|d\|\|\varphi\|\)</span> proves that this defines a bounded <span class="math" data-tex="\(d^{**}\)">\(d^{**}\)</span>, of norm at most <span class="math" data-tex="\(\|d\|\)">\(\|d\|\)</span>. For each fixed <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, its evaluation on <span class="math" data-tex="\(d^{**}X\)">\(d^{**}X\)</span> is evaluation on <span class="math" data-tex="\(X\)">\(X\)</span> at <span class="math" data-tex="\(d^*\varphi\)">\(d^*\varphi\)</span>; hence <span class="math" data-tex="\(d^{**}\)">\(d^{**}\)</span> is ultraweakly continuous. Moreover,
+<span class="math math-display" data-tex="\[
+ d^{**}j(a)=j(d(a)),\qquad \|d^{**}\|=\|d\|.
+ \tag{R2}
+\]">\[
+ d^{**}j(a)=j(d(a)),\qquad \|d^{**}\|=\|d\|.
+ \tag{R2}
+\]</span>
+The first equality follows by testing against every <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and isometry of <span class="math" data-tex="\(j\)">\(j\)</span> then gives the reverse norm inequality. Ultraweak density shows that <span class="math" data-tex="\(d^{**}\)">\(d^{**}\)</span> is the unique ultraweakly continuous linear extension of <span class="math" data-tex="\(d\)">\(d\)</span> to the bidual.</p>
+<p><strong>Proposition 11.1.</strong> The map <span class="math" data-tex="\(d^{**}\)">\(d^{**}\)</span> is a normal derivation on all of <span class="math" data-tex="\(A^{**}\)">\(A^{**}\)</span>. If <span class="math" data-tex="\(d\)">\(d\)</span> is a star derivation, so is <span class="math" data-tex="\(d^{**}\)">\(d^{**}\)</span>.</p>
+<p><strong>Proof.</strong> Identify <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(j(A)\)">\(j(A)\)</span>. Fix <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> and <span class="math" data-tex="\(Y\in A^{**}\)">\(Y\in A^{**}\)</span>, and choose a net <span class="math" data-tex="\(b_i\in A\)">\(b_i\in A\)</span> converging ultraweakly to <span class="math" data-tex="\(Y\)">\(Y\)</span>. The product rule on <span class="math" data-tex="\(A\)">\(A\)</span>, normality of <span class="math" data-tex="\(d^{**}\)">\(d^{**}\)</span>, and separate continuity of multiplication give
+<span class="math math-display" data-tex="\[
+ d^{**}(aY)=d(a)Y+a\,d^{**}(Y).
+ \tag{R3}
+\]">\[
+ d^{**}(aY)=d(a)Y+a\,d^{**}(Y).
+ \tag{R3}
+\]</span>
+Now keep <span class="math" data-tex="\(Y\)">\(Y\)</span> fixed and let <span class="math" data-tex="\(a_i\in A\)">\(a_i\in A\)</span> converge ultraweakly to <span class="math" data-tex="\(X\in A^{**}\)">\(X\in A^{**}\)</span>. Applying the same continuity properties to (R3) yields
+<span class="math math-display" data-tex="\[
+ d^{**}(XY)=d^{**}(X)Y+X\,d^{**}(Y).
+ \tag{R4}
+\]">\[
+ d^{**}(XY)=d^{**}(X)Y+X\,d^{**}(Y).
+ \tag{R4}
+\]</span>
+Only one variable was varied at each step. No assertion of joint ultraweak continuity of multiplication is needed.</p>
+<p>If <span class="math" data-tex="\(d(a^*)=d(a)^*\)">\(d(a^*)=d(a)^*\)</span>, approximate <span class="math" data-tex="\(X\)">\(X\)</span> ultraweakly by a net from <span class="math" data-tex="\(A\)">\(A\)</span> and use continuity of the two involutions and of <span class="math" data-tex="\(d^{**}\)">\(d^{**}\)</span>. It follows that <span class="math" data-tex="\(d^{**}(X^*)=d^{**}(X)^*\)">\(d^{**}(X^*)=d^{**}(X)^*\)</span>. The zero algebra has these identities with every map zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A central projection is fixed infinitesimally by every derivation. Indeed, if <span class="math" data-tex="\(z\in Z(A^{**})\)">\(z\in Z(A^{**})\)</span> is a projection, (R4) gives
+<span class="math math-display" data-tex="\[
+ d^{**}(z)=d^{**}(z)z+z\,d^{**}(z)=2z\,d^{**}(z).
+ \tag{R5}
+\]">\[
+ d^{**}(z)=d^{**}(z)z+z\,d^{**}(z)=2z\,d^{**}(z).
+ \tag{R5}
+\]</span>
+Since <span class="math" data-tex="\((1-2z)^2=1\)">\((1-2z)^2=1\)</span>, this forces <span class="math" data-tex="\(d^{**}(z)=0\)">\(d^{**}(z)=0\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ d^{**}(Xz)=d^{**}(X)z
+ \quad\text{and}\quad
+ d^{**}(A^{**}z)\subseteq A^{**}z.
+ \tag{R6}
+\]">\[
+ d^{**}(Xz)=d^{**}(X)z
+ \quad\text{and}\quad
+ d^{**}(A^{**}z)\subseteq A^{**}z.
+ \tag{R6}
+\]</span>
+This argument uses complex linearity and the product rule, not star preservation.</p>
+<p><span id="OA-FLOW.GI.REPRESENTATIONS"></span><a id="oa-flow.gi.representations"></a></p>
+<h2 id="12-descend-through-any-representation">12. Descend through any representation</h2>
+<p>Let <span class="math" data-tex="\(\pi:A\to B(\mathcal H)\)">\(\pi:A\to B(\mathcal H)\)</span> be a representation, with no assumption of faithfulness or nondegeneracy. The representation and <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> may be zero. Set
+<span class="math math-display" data-tex="\[
+ \mathcal H_0=\overline{\pi(A)\mathcal H},\qquad
+ p=P_{\mathcal H_0},\qquad
+ \pi_0(a)=\pi(a)|_{\mathcal H_0},\qquad N=\pi_0(A)''.
+ \tag{R7}
+\]">\[
+ \mathcal H_0=\overline{\pi(A)\mathcal H},\qquad
+ p=P_{\mathcal H_0},\qquad
+ \pi_0(a)=\pi(a)|_{\mathcal H_0},\qquad N=\pi_0(A)''.
+ \tag{R7}
+\]</span>
+When <span class="math" data-tex="\(\mathcal H_0=0\)">\(\mathcal H_0=0\)</span>, interpret <span class="math" data-tex="\(N\)">\(N\)</span> as the zero algebra. Operators of <span class="math" data-tex="\(N\)">\(N\)</span> will also be regarded as zero on <span class="math" data-tex="\(\mathcal H_0^\perp\)">\(\mathcal H_0^\perp\)</span>.</p>
+<p>The proved <a href="../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#oa-fnd-wa-02">representation-extension theorem, Lemma 2.1</a>, supplies a normal surjective star homomorphism
+<span class="math math-display" data-tex="\[
+ q:A^{**}\longrightarrow N,\qquad q(j(a))=\pi_0(a),
+ \tag{R8}
+\]">\[
+ q:A^{**}\longrightarrow N,\qquad q(j(a))=\pi_0(a),
+ \tag{R8}
+\]</span>
+and a central projection <span class="math" data-tex="\(z\in A^{**}\)">\(z\in A^{**}\)</span> such that
+<span class="math math-display" data-tex="\[
+ \ker q=A^{**}(1-z),\qquad
+ q_z=q|_{A^{**}z}:A^{**}z\longrightarrow N
+ \quad\text{is a normal star isomorphism with normal inverse}.
+ \tag{R9}
+\]">\[
+ \ker q=A^{**}(1-z),\qquad
+ q_z=q|_{A^{**}z}:A^{**}z\longrightarrow N
+ \quad\text{is a normal star isomorphism with normal inverse}.
+ \tag{R9}
+\]</span>
+The theorem includes surjectivity on unit balls and proves inverse normality through the preadjoint. In particular, no continuity of the inverse is being inferred merely from algebraic bijectivity.</p>
+<p><strong>Theorem 12.1.</strong> There is a unique normal derivation <span class="math" data-tex="\(d_N:N\to N\)">\(d_N:N\to N\)</span> with
+<span class="math math-display" data-tex="\[
+ d_N(\pi_0(a))=\pi_0(d(a))\quad(a\in A).
+ \tag{R10}
+\]">\[
+ d_N(\pi_0(a))=\pi_0(d(a))\quad(a\in A).
+ \tag{R10}
+\]</span>
+It is a star derivation when <span class="math" data-tex="\(d\)">\(d\)</span> is, and
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \|d_N\|
+ &amp;=\|d^{**}|_{A^{**}z}\|\\
+ &amp;=\sup\{\|\pi_0(d(a))\|:a\in A,\ \|\pi_0(a)\|\le1\}
+ \le\|d\|.
+ \end{aligned}
+ \tag{R11}
+\]">\[
+ \begin{aligned}
+ \|d_N\|
+ &amp;=\|d^{**}|_{A^{**}z}\|\\
+ &amp;=\sup\{\|\pi_0(d(a))\|:a\in A,\ \|\pi_0(a)\|\le1\}
+ \le\|d\|.
+ \end{aligned}
+ \tag{R11}
+\]</span>
+On the full-Hilbert-space bicommutant there is likewise a unique normal derivation extending the represented values. It is
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ \pi(A)''=N\oplus\mathbb C1_{\mathcal H_0^\perp},\\
+ \widehat d_\pi(x\oplus\lambda1_{\mathcal H_0^\perp})
+      =d_N(x)\oplus0,\qquad
+ \|\widehat d_\pi\|=\|d_N\|\le\|d\|.
+ \end{gathered}
+ \tag{R12}
+\]">\[
+ \begin{gathered}
+ \pi(A)''=N\oplus\mathbb C1_{\mathcal H_0^\perp},\\
+ \widehat d_\pi(x\oplus\lambda1_{\mathcal H_0^\perp})
+      =d_N(x)\oplus0,\qquad
+ \|\widehat d_\pi\|=\|d_N\|\le\|d\|.
+ \end{gathered}
+ \tag{R12}
+\]</span>
+The complementary scalar summand is absent when <span class="math" data-tex="\(\mathcal H_0^\perp=0\)">\(\mathcal H_0^\perp=0\)</span>.</p>
+<p><strong>Proof.</strong> By (R6), <span class="math" data-tex="\(d^{**}\)">\(d^{**}\)</span> preserves the surviving central corner. Define
+<span class="math math-display" data-tex="\[
+ d_N=q_z\bigl(d^{**}|_{A^{**}z}\bigr)q_z^{-1}.
+ \tag{R13}
+\]">\[
+ d_N=q_z\bigl(d^{**}|_{A^{**}z}\bigr)q_z^{-1}.
+ \tag{R13}
+\]</span>
+The three maps are normal. The product rule and, when applicable, the star rule pass through the star isomorphism. Since <span class="math" data-tex="\(q_z\)">\(q_z\)</span> and its inverse are isometric, the first equality and the inequality in (R11) follow. Also <span class="math" data-tex="\(q(j(a))=q(j(a)z)\)">\(q(j(a))=q(j(a)z)\)</span>, and (R6) gives
+<span class="math math-display" data-tex="\[
+ d^{**}(j(a)z)=j(d(a))z.
+ \tag{R14}
+\]">\[
+ d^{**}(j(a)z)=j(d(a))z.
+ \tag{R14}
+\]</span>
+Equations (R8), (R13) and (R14) prove (R10). This in particular proves that <span class="math" data-tex="\(\pi_0(a)=0\)">\(\pi_0(a)=0\)</span> implies <span class="math" data-tex="\(\pi_0(d(a))=0\)">\(\pi_0(d(a))=0\)</span>, so the represented formula is well defined. Normality and ultraweak density of <span class="math" data-tex="\(\pi_0(A)\)">\(\pi_0(A)\)</span> give uniqueness on <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>For the supremum equality in (R11), let its displayed supremum be <span class="math" data-tex="\(C\)">\(C\)</span>. Formula (R10) gives <span class="math" data-tex="\(C\le\|d_N\|\)">\(C\le\|d_N\|\)</span>. Given a contraction <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>, its inverse image <span class="math" data-tex="\(q_z^{-1}(x)\)">\(q_z^{-1}(x)\)</span> is a contraction of <span class="math" data-tex="\(A^{**}\)">\(A^{**}\)</span>. Unit-ball density gives a net <span class="math" data-tex="\(a_i\in A\)">\(a_i\in A\)</span>, <span class="math" data-tex="\(\|a_i\|\le1\)">\(\|a_i\|\le1\)</span>, with <span class="math" data-tex="\(j(a_i)\)">\(j(a_i)\)</span> converging ultraweakly to that inverse image. Consequently <span class="math" data-tex="\(\pi_0(a_i)\to x\)">\(\pi_0(a_i)\to x\)</span> and <span class="math" data-tex="\(d_N(\pi_0(a_i))\to d_N(x)\)">\(d_N(\pi_0(a_i))\to d_N(x)\)</span> ultraweakly. The former are contractions, and the latter have norm at most <span class="math" data-tex="\(C\)">\(C\)</span>. The norm ball of a von Neumann algebra is ultraweakly closed, so <span class="math" data-tex="\(\|d_N(x)\|\le C\)">\(\|d_N(x)\|\le C\)</span>. Taking the supremum over <span class="math" data-tex="\(x\)">\(x\)</span> proves equality. No bound on the norm of an arbitrary preimage <span class="math" data-tex="\(a\)">\(a\)</span> of a represented contraction was assumed.</p>
+<p>We verify the full-Hilbert-space formula as well. Every <span class="math" data-tex="\(\pi(a)\)">\(\pi(a)\)</span> vanishes on <span class="math" data-tex="\(\mathcal H_0^\perp\)">\(\mathcal H_0^\perp\)</span>: if <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is perpendicular to <span class="math" data-tex="\(\pi(A)\mathcal H\)">\(\pi(A)\mathcal H\)</span>, then
+<span class="math" data-tex="\(\langle\pi(a)\eta,\xi\rangle=\langle\eta,\pi(a^*)\xi\rangle=0\)">\(\langle\pi(a)\eta,\xi\rangle=\langle\eta,\pi(a^*)\xi\rangle=0\)</span>.
+An approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span> converges under <span class="math" data-tex="\(\pi\)">\(\pi\)</span> strongly to <span class="math" data-tex="\(p\)">\(p\)</span>, by its convergence on the dense vectors <span class="math" data-tex="\(\pi(a)\xi\)">\(\pi(a)\xi\)</span> in the essential space and its uniform contraction bound. Thus every operator commuting with <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> commutes with <span class="math" data-tex="\(p\)">\(p\)</span>. Its essential block belongs to <span class="math" data-tex="\(\pi_0(A)'\)">\(\pi_0(A)'\)</span>, and its complementary block is arbitrary. Hence
+<span class="math math-display" data-tex="\[
+ \pi(A)'=\pi_0(A)'\oplus B(\mathcal H_0^\perp),
+ \qquad
+ \pi(A)''=N\oplus\mathbb C1_{\mathcal H_0^\perp}.
+ \tag{R15}
+\]">\[
+ \pi(A)'=\pi_0(A)'\oplus B(\mathcal H_0^\perp),
+ \qquad
+ \pi(A)''=N\oplus\mathbb C1_{\mathcal H_0^\perp}.
+ \tag{R15}
+\]</span>
+This also covers a zero essential space and a zero complementary space.</p>
+<p>Define <span class="math" data-tex="\(\widehat d_\pi\)">\(\widehat d_\pi\)</span> by (R12). Compression and inclusion of the two blocks are normal, so the map is normal; its product and star rules are immediate from those of <span class="math" data-tex="\(d_N\)">\(d_N\)</span>. The norm on a direct sum is the maximum of the block norms, giving the norm equality in (R12). Any derivation on this bicommutant kills its central projection <span class="math" data-tex="\(p\)">\(p\)</span>, by the calculation (R5), and therefore preserves each summand. It is zero on the complementary scalar algebra by complex linearity and its value zero at that summand's unit. On <span class="math" data-tex="\(N\)">\(N\)</span>, a normal extension is already uniquely determined by (R10). This proves full uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The normal extension of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> itself has range <span class="math" data-tex="\(N\oplus0\)">\(N\oplus0\)</span> on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>; when the complement is nonzero it does not map onto the additional scalar summand of <span class="math" data-tex="\(\pi(A)''\)">\(\pi(A)''\)</span>. Extending the derivation by zero on that summand is the separate step in (R12).</p>
+<p><strong>Internal implementers and their bounds.</strong> Apply the <a href="#oa-flow.gi.innerness">innerness theorem and central normalization already proved above</a> to <span class="math" data-tex="\(N\)">\(N\)</span>. With <span class="math" data-tex="\(c=\|d_N\|\)">\(c=\|d_N\|\)</span>, an arbitrary complex derivation has an implementer <span class="math" data-tex="\(k\in N\)">\(k\in N\)</span> such that
+<span class="math math-display" data-tex="\[
+ d_N(x)=[k,x],\qquad \|k\|\le c\le\|d\|.
+ \tag{R16}
+\]">\[
+ d_N(x)=[k,x],\qquad \|k\|\le c\le\|d\|.
+ \tag{R16}
+\]</span>
+If <span class="math" data-tex="\(d\)">\(d\)</span> is a star derivation, it has a positive implementer <span class="math" data-tex="\(b\in N\)">\(b\in N\)</span> and a centered selfadjoint implementer <span class="math" data-tex="\(h\in N\)">\(h\in N\)</span> with
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ d_N(x)=i[b,x]=i[h,x],\qquad
+ \|b\|=c,\qquad
+ h=b-\tfrac c2\,1_N,\qquad \|h\|=\tfrac c2.
+ \end{gathered}
+ \tag{R17}
+\]">\[
+ \begin{gathered}
+ d_N(x)=i[b,x]=i[h,x],\qquad
+ \|b\|=c,\qquad
+ h=b-\tfrac c2\,1_N,\qquad \|h\|=\tfrac c2.
+ \end{gathered}
+ \tag{R17}
+\]</span>
+For <span class="math" data-tex="\(N=0\)">\(N=0\)</span> take <span class="math" data-tex="\(b=h=k=0\)">\(b=h=k=0\)</span>. On the whole <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, the implementers <span class="math" data-tex="\(k\oplus0\)">\(k\oplus0\)</span>, <span class="math" data-tex="\(b\oplus0\)">\(b\oplus0\)</span> and <span class="math" data-tex="\(h\oplus0\)">\(h\oplus0\)</span> implement <span class="math" data-tex="\(\widehat d_\pi\)">\(\widehat d_\pi\)</span> with the same norms. In particular,
+<span class="math math-display" data-tex="\[
+ \pi(d(a))=[k\oplus0,\pi(a)]
+ \quad\text{or, in the star case,}\quad
+ \pi(d(a))=i[h\oplus0,\pi(a)].
+ \tag{R18}
+\]">\[
+ \pi(d(a))=[k\oplus0,\pi(a)]
+ \quad\text{or, in the star case,}\quad
+ \pi(d(a))=i[h\oplus0,\pi(a)].
+ \tag{R18}
+\]</span>
+These implementers lie in the represented von Neumann algebra <span class="math" data-tex="\(\pi(A)''\)">\(\pi(A)''\)</span>; no membership in <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> is asserted. Two implementers of the same complex commutator differ by an element of the center. The canonical least-positive normalization of Section 7 supplies its stated uniqueness in the star case; an arbitrary implementer is not unique.</p>
+<p><span id="OA-FLOW.GI.DUALBIMODULES"></span><a id="oa-flow.gi.dualbimodules"></a></p>
+<h2 id="13-preserve-every-closed-invariant-dual-bimodule">13. Preserve every closed invariant dual bimodule</h2>
+<p>Let <span class="math" data-tex="\(V\subseteq A^*\)">\(V\subseteq A^*\)</span> be a norm-closed complex-linear subspace invariant under both module actions
+<span class="math math-display" data-tex="\[
+ (a\varphi)(b)=\varphi(ba),\qquad
+ (\varphi a)(b)=\varphi(ab)
+ \quad(a,b\in A,\ \varphi\in V).
+ \tag{R19}
+\]">\[
+ (a\varphi)(b)=\varphi(ba),\qquad
+ (\varphi a)(b)=\varphi(ab)
+ \quad(a,b\in A,\ \varphi\in V).
+ \tag{R19}
+\]</span>
+Both sides of invariance are hypotheses. Define its annihilator in the bidual by
+<span class="math math-display" data-tex="\[
+ I=V^\perp
+   =\{X\in A^{**}:\langle X,\varphi\rangle=0
+                       \text{ for every }\varphi\in V\}.
+ \tag{R20}
+\]">\[
+ I=V^\perp
+   =\{X\in A^{**}:\langle X,\varphi\rangle=0
+                       \text{ for every }\varphi\in V\}.
+ \tag{R20}
+\]</span>
+It is an ultraweakly closed linear subspace.</p>
+<p>We record explicitly why it is a two-sided ideal. Regard <span class="math" data-tex="\(\varphi\in A^*\)">\(\varphi\in A^*\)</span> as its canonical normal extension to <span class="math" data-tex="\(A^{**}\)">\(A^{**}\)</span>. For fixed <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, the normal extensions of the two functionals in (R19) are <span class="math" data-tex="\(X\mapsto\varphi(Xj(a))\)">\(X\mapsto\varphi(Xj(a))\)</span> and <span class="math" data-tex="\(X\mapsto\varphi(j(a)X)\)">\(X\mapsto\varphi(j(a)X)\)</span>: they are normal by separate continuity, and they agree with (R19) on the ultraweakly dense copy of <span class="math" data-tex="\(A\)">\(A\)</span>. Thus, for <span class="math" data-tex="\(X\in I\)">\(X\in I\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \langle Xj(a),\varphi\rangle&amp;=\langle X,a\varphi\rangle=0,\\
+ \langle j(a)X,\varphi\rangle&amp;=\langle X,\varphi a\rangle=0
+ \qquad(\varphi\in V).
+ \end{aligned}
+ \tag{R21}
+\]">\[
+ \begin{aligned}
+ \langle Xj(a),\varphi\rangle&amp;=\langle X,a\varphi\rangle=0,\\
+ \langle j(a)X,\varphi\rangle&amp;=\langle X,\varphi a\rangle=0
+ \qquad(\varphi\in V).
+ \end{aligned}
+ \tag{R21}
+\]</span>
+So <span class="math" data-tex="\(I\)">\(I\)</span> is stable under multiplication on both sides by <span class="math" data-tex="\(A\)">\(A\)</span>. Fixing <span class="math" data-tex="\(X\in I\)">\(X\in I\)</span>, approximate any <span class="math" data-tex="\(Y\in A^{**}\)">\(Y\in A^{**}\)</span> ultraweakly by a net in <span class="math" data-tex="\(j(A)\)">\(j(A)\)</span>. Separate continuity and ultraweak closedness of <span class="math" data-tex="\(I\)">\(I\)</span> give <span class="math" data-tex="\(XY,YX\in I\)">\(XY,YX\in I\)</span>. This proves the ideal assertion without requiring norm continuity of the module action in an ultraweakly varying multiplier.</p>
+<p>The proved <a href="../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#oa-fnd-wa-06">closed-ideal classification, Lemma 4.2</a>, gives <span class="math" data-tex="\(I=A^{**}e\)">\(I=A^{**}e\)</span> for a central projection <span class="math" data-tex="\(e\)">\(e\)</span>. By (R5)–(R6),
+<span class="math math-display" data-tex="\[
+ d^{**}(I)\subseteq I.
+ \tag{R22}
+\]">\[
+ d^{**}(I)\subseteq I.
+ \tag{R22}
+\]</span>
+There is also a direct earlier route to (R22): an ultraweakly closed subspace is norm closed, and <a href="OA-FLOW-L34.html#oa-flow.l34.6">L34's ideal-invariance proof</a>, Proposition 6.2, applies to the C*-algebra <span class="math" data-tex="\(A^{**}\)">\(A^{**}\)</span> and its bounded derivation <span class="math" data-tex="\(d^{**}\)">\(d^{**}\)</span>.</p>
+<p><strong>Theorem 13.1.</strong> Every such <span class="math" data-tex="\(V\)">\(V\)</span> is invariant under the transpose derivation:
+<span class="math math-display" data-tex="\[
+ d^*(V)\subseteq V,\qquad
+ \|d^*|_V\|\le\|d\|.
+ \tag{R23}
+\]">\[
+ d^*(V)\subseteq V,\qquad
+ \|d^*|_V\|\le\|d\|.
+ \tag{R23}
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(X\in I\)">\(X\in I\)</span> and <span class="math" data-tex="\(\varphi\in V\)">\(\varphi\in V\)</span>, (R1) and (R22) give
+<span class="math math-display" data-tex="\[
+ \langle X,d^*\varphi\rangle
+   =\langle d^{**}X,\varphi\rangle=0.
+ \tag{R24}
+\]">\[
+ \langle X,d^*\varphi\rangle
+   =\langle d^{**}X,\varphi\rangle=0.
+ \tag{R24}
+\]</span>
+It remains to identify the annihilator of <span class="math" data-tex="\(I\)">\(I\)</span> inside <span class="math" data-tex="\(A^*\)">\(A^*\)</span>. We give the required norm-closed annihilator argument, also proved in the <a href="../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#oa-fnd-wa-07">dual-subspace theorem, Theorem 4.3</a>. Certainly <span class="math" data-tex="\(V\subseteq I_\perp\)">\(V\subseteq I_\perp\)</span>. If <span class="math" data-tex="\(\psi\notin V\)">\(\psi\notin V\)</span>, Hahn–Banach on the normed space <span class="math" data-tex="\(A^*\)">\(A^*\)</span> supplies a bounded complex-linear functional <span class="math" data-tex="\(X\in(A^*)^*=A^{**}\)">\(X\in(A^*)^*=A^{**}\)</span> vanishing on <span class="math" data-tex="\(V\)">\(V\)</span> and nonzero at <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Thus <span class="math" data-tex="\(X\in I\)">\(X\in I\)</span> and <span class="math" data-tex="\(\psi\notin I_\perp\)">\(\psi\notin I_\perp\)</span>. Hence
+<span class="math math-display" data-tex="\[
+ I_\perp=V.
+ \tag{R25}
+\]">\[
+ I_\perp=V.
+ \tag{R25}
+\]</span>
+Equations (R24)–(R25) prove the inclusion. The norm bound is the elementary adjoint bound in (R1), restricted to <span class="math" data-tex="\(V\)">\(V\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>As an application, regard a von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span> as a C*-algebra and take <span class="math" data-tex="\(V=M_*\subseteq M^*\)">\(V=M_*\subseteq M^*\)</span>. The <a href="OA-FLOW-CP.html#oa-flow.cp.6">concrete-predual theorem, CP-06</a>, proves that <span class="math" data-tex="\(M_*\)">\(M_*\)</span> is a norm-closed subspace of <span class="math" data-tex="\(M^*\)">\(M^*\)</span>, consisting exactly of restricted vector-series functionals <span class="math" data-tex="\(\varphi(x)=\sum_j\langle x\xi_j,\eta_j\rangle\)">\(\varphi(x)=\sum_j\langle x\xi_j,\eta_j\rangle\)</span> with <span class="math" data-tex="\(\xi,\eta\in\ell^2(\mathcal H)\)">\(\xi,\eta\in\ell^2(\mathcal H)\)</span>. For <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, the functional <span class="math" data-tex="\(x\mapsto\varphi(ax)\)">\(x\mapsto\varphi(ax)\)</span> replaces <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span> by <span class="math" data-tex="\(a^*\eta_j\)">\(a^*\eta_j\)</span>, while <span class="math" data-tex="\(x\mapsto\varphi(xa)\)">\(x\mapsto\varphi(xa)\)</span> replaces <span class="math" data-tex="\(\xi_j\)">\(\xi_j\)</span> by <span class="math" data-tex="\(a\xi_j\)">\(a\xi_j\)</span>. The resulting sequences remain square summable, since their squared norms sum to at most <span class="math" data-tex="\(\|a\|^2\)">\(\|a\|^2\)</span> times the original sum. Thus both module actions preserve <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, without using innerness or the normality of <span class="math" data-tex="\(d\)">\(d\)</span>. Theorem 13.1 gives <span class="math" data-tex="\(d^*(M_*)\subseteq M_*\)">\(d^*(M_*)\subseteq M_*\)</span>. For an ultraweakly convergent net <span class="math" data-tex="\(x_i\to x\)">\(x_i\to x\)</span> and every <span class="math" data-tex="\(\varphi\in M_*\)">\(\varphi\in M_*\)</span>,
+<span class="math math-display" data-tex="\[
+ \varphi(d(x_i))=(d^*\varphi)(x_i)
+     \longrightarrow(d^*\varphi)(x)=\varphi(d(x)).
+ \tag{R26}
+\]">\[
+ \varphi(d(x_i))=(d^*\varphi)(x_i)
+     \longrightarrow(d^*\varphi)(x)=\varphi(d(x)).
+ \tag{R26}
+\]</span>
+Thus <span class="math" data-tex="\(d\)">\(d\)</span> is normal. This supplies a dual-module proof of the normality already obtained from the internal implementer in Section 7; this route uses automatic boundedness and the bidual, but does not use innerness.</p>
+<p>The annihilator in this argument is taken in <span class="math" data-tex="\(A^{**}\)">\(A^{**}\)</span>. For <span class="math" data-tex="\(A=M\)">\(A=M\)</span>, replacing it by the preannihilator of <span class="math" data-tex="\(M_*\)">\(M_*\)</span> inside <span class="math" data-tex="\(M\)">\(M\)</span> would give only zero, because normal functionals separate <span class="math" data-tex="\(M\)">\(M\)</span>, and would lose the information needed for (R25).</p>
+<p><span id="OA-FLOW.GI.NORMALITY-BEFORE-INNERNESS"></span><a id="oa-flow.gi.normality-before-innerness"></a></p>
+<h2 id="14-normality-before-choosing-an-implementer">14. Normality before choosing an implementer</h2>
+<p>The ultraweak continuity of a derivation can be proved directly from boundedness. The argument first exponentiates a star derivation, uses the positive-map normality theorem for the resulting automorphisms, and then takes a limit inside the predual.</p>
+<p><strong>Theorem.</strong> Every everywhere-defined complex-linear derivation <span class="math" data-tex="\(d:M\to M\)">\(d:M\to M\)</span> of an arbitrary von Neumann algebra is ultraweakly continuous. This conclusion does not require an implementer, a faithful state, or a separability hypothesis.</p>
+<p>We use three precise earlier facts. <a href="OA-FLOW-L34.html#oa-flow.dfd.algebra">L34, Theorem 4.3</a> proves automatic boundedness for an everywhere-defined derivation on any C*-algebra, including a nonunital one. <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP-6</a> identifies <span class="math" data-tex="\(M_*\)">\(M_*\)</span> isometrically with a Banach subspace of <span class="math" data-tex="\(M^*\)">\(M^*\)</span>, proves that this subspace is norm closed, and identifies its elements exactly with the ultraweakly continuous linear functionals. The ultraweak topology is <span class="math" data-tex="\(\sigma(M,M_*)\)">\(\sigma(M,M_*)\)</span>. Finally, <a href="OA-FLOW-NF.html#oa-flow.nf.6">NF-6</a> proves that a positive linear map between arbitrary von Neumann algebras is ultraweakly continuous if and only if it preserves bounded increasing positive suprema. Its scalar input is the complete <a href="OA-FLOW-NF.html#oa-flow.nf.1">NF-1–4 proof for bounded positive functionals</a>, not an assumption about derivations.</p>
+<p><strong>Exponentiating a bounded star derivation.</strong> First suppose
+<span class="math math-display" data-tex="\[
+ d(x^*)=d(x)^*.
+ \tag{N1}
+\]">\[
+ d(x^*)=d(x)^*.
+ \tag{N1}
+\]</span>
+By L34 the operator <span class="math" data-tex="\(d\)">\(d\)</span> is bounded. The zero algebra has only the zero map, which is ultraweakly continuous; suppose henceforth that <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span>. Its identity satisfies <span class="math" data-tex="\(d(1)=2d(1)\)">\(d(1)=2d(1)\)</span>, so <span class="math" data-tex="\(d(1)=0\)">\(d(1)=0\)</span>. For real <span class="math" data-tex="\(t\)">\(t\)</span>, define in the Banach algebra of bounded linear maps on <span class="math" data-tex="\(M\)">\(M\)</span>
+<span class="math math-display" data-tex="\[
+ \alpha_t=\exp(td)=\sum_{n=0}^{\infty}\frac{t^n}{n!}d^n,
+ \qquad
+ \|\alpha_t-I\|\leq e^{|t|\|d\|}-1.
+ \tag{N2}
+\]">\[
+ \alpha_t=\exp(td)=\sum_{n=0}^{\infty}\frac{t^n}{n!}d^n,
+ \qquad
+ \|\alpha_t-I\|\leq e^{|t|\|d\|}-1.
+ \tag{N2}
+\]</span>
+The series converges absolutely in operator norm. Here <span class="math" data-tex="\(I\)">\(I\)</span> is the identity map and <span class="math" data-tex="\(d^0=I\)">\(d^0=I\)</span>.</p>
+<p>Repeated use of the derivation rule gives
+<span class="math math-display" data-tex="\[
+ d^n(xy)=\sum_{j=0}^{n}\binom nj d^j(x)d^{n-j}(y).
+ \tag{N3}
+\]">\[
+ d^n(xy)=\sum_{j=0}^{n}\binom nj d^j(x)d^{n-j}(y).
+ \tag{N3}
+\]</span>
+For completeness, applying <span class="math" data-tex="\(d\)">\(d\)</span> to each product in the formula for <span class="math" data-tex="\(n\)">\(n\)</span> gives two sums; terms of a fixed new index combine by
+<span class="math" data-tex="\(\binom nj+\binom n{j-1}=\binom{n+1}j\)">\(\binom nj+\binom n{j-1}=\binom{n+1}j\)</span>. This proves (N3) by induction, starting with <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. The double series
+<span class="math math-display" data-tex="\[
+ \sum_{j,k\geq0}\frac{t^{j+k}}{j!\,k!}d^j(x)d^k(y)
+ \tag{N4}
+\]">\[
+ \sum_{j,k\geq0}\frac{t^{j+k}}{j!\,k!}d^j(x)d^k(y)
+ \tag{N4}
+\]</span>
+is absolutely convergent, since the sum of the norms is at most
+<span class="math" data-tex="\(e^{2|t|\|d\|}\|x\|\|y\|\)">\(e^{2|t|\|d\|}\|x\|\|y\|\)</span>.
+Regrouping by <span class="math" data-tex="\(j+k\)">\(j+k\)</span>, and using (N3), proves
+<span class="math" data-tex="\(\alpha_t(xy)=\alpha_t(x)\alpha_t(y)\)">\(\alpha_t(xy)=\alpha_t(x)\alpha_t(y)\)</span>.
+Real coefficients and (N1) give
+<span class="math" data-tex="\(\alpha_t(x^*)=\alpha_t(x)^*\)">\(\alpha_t(x^*)=\alpha_t(x)^*\)</span>, and <span class="math" data-tex="\(d(1)=0\)">\(d(1)=0\)</span> gives <span class="math" data-tex="\(\alpha_t(1)=1\)">\(\alpha_t(1)=1\)</span>.
+The same absolutely convergent product calculation in the algebra of bounded maps gives
+<span class="math math-display" data-tex="\[
+ \alpha_s\alpha_t=\alpha_{s+t},
+ \qquad \alpha_0=I,\qquad
+ \alpha_t^{-1}=\alpha_{-t}.
+ \tag{N5}
+\]">\[
+ \alpha_s\alpha_t=\alpha_{s+t},
+ \qquad \alpha_0=I,\qquad
+ \alpha_t^{-1}=\alpha_{-t}.
+ \tag{N5}
+\]</span>
+Thus every <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> is a unital star automorphism.</p>
+<p>Both <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> and its inverse are positive: a positive element is a square <span class="math" data-tex="\(x^*x\)">\(x^*x\)</span>, and multiplicativity preserves that expression. In particular,
+<span class="math math-display" data-tex="\[
+ 0\leq \alpha_t(x)^*\alpha_t(x)
+       =\alpha_t(x^*x)\leq\|x\|^2 1
+\]">\[
+ 0\leq \alpha_t(x)^*\alpha_t(x)
+       =\alpha_t(x^*x)\leq\|x\|^2 1
+\]</span>
+gives <span class="math" data-tex="\(\|\alpha_t(x)\|\leq\|x\|\)">\(\|\alpha_t(x)\|\leq\|x\|\)</span>. Applying the same inequality to the inverse gives equality. Hence <span class="math" data-tex="\(\|\alpha_t\|=1\)">\(\|\alpha_t\|=1\)</span>, and (N2) together with (N5) gives operator-norm continuity at every time.</p>
+<p><strong>From order preservation to the predual.</strong> Fix a real <span class="math" data-tex="\(t\)">\(t\)</span>, and let <span class="math" data-tex="\(a_\lambda\uparrow a\)">\(a_\lambda\uparrow a\)</span> be a bounded increasing positive net in <span class="math" data-tex="\(M\)">\(M\)</span>, with <span class="math" data-tex="\(a\)">\(a\)</span> its supremum. Positivity makes <span class="math" data-tex="\(\alpha_t(a)\)">\(\alpha_t(a)\)</span> an upper bound of all <span class="math" data-tex="\(\alpha_t(a_\lambda)\)">\(\alpha_t(a_\lambda)\)</span>. If <span class="math" data-tex="\(b\)">\(b\)</span> is another self-adjoint upper bound, the order-preserving inverse gives
+<span class="math" data-tex="\(\alpha_{-t}(b)\geq a_\lambda\)">\(\alpha_{-t}(b)\geq a_\lambda\)</span> for every <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.
+The least-upper-bound property implies <span class="math" data-tex="\(\alpha_{-t}(b)\geq a\)">\(\alpha_{-t}(b)\geq a\)</span>, hence <span class="math" data-tex="\(b\geq\alpha_t(a)\)">\(b\geq\alpha_t(a)\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ \sup_\lambda \alpha_t(a_\lambda)
+       =\alpha_t\!\left(\sup_\lambda a_\lambda\right).
+ \tag{N6}
+\]">\[
+ \sup_\lambda \alpha_t(a_\lambda)
+       =\alpha_t\!\left(\sup_\lambda a_\lambda\right).
+ \tag{N6}
+\]</span>
+This is an order argument for arbitrary nets.</p>
+<p>The passage from (N6) to ultraweak continuity is precisely the proved NF-6 criterion. To see the role of its functional input, take <span class="math" data-tex="\(\omega\in M_*^+\)">\(\omega\in M_*^+\)</span>. The functional <span class="math" data-tex="\(\omega\circ\alpha_t\)">\(\omega\circ\alpha_t\)</span> is bounded and positive. By (N6) and the order-normality of positive predual functionals, it preserves bounded increasing positive suprema. NF-1–4 therefore put it in <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. NF-6 also proves explicitly, by polarization of the CP vector series, that every member of <span class="math" data-tex="\(M_*\)">\(M_*\)</span> is a complex linear combination of four positive members. Consequently
+<span class="math math-display" data-tex="\[
+ \omega\circ\alpha_t\in M_*
+       \qquad(\omega\in M_*,\ t\in\mathbb R).
+ \tag{N7}
+\]">\[
+ \omega\circ\alpha_t\in M_*
+       \qquad(\omega\in M_*,\ t\in\mathbb R).
+ \tag{N7}
+\]</span>
+Since the functionals in <span class="math" data-tex="\(M_*\)">\(M_*\)</span> define the ultraweak topology, (N7) proves that <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> is ultraweakly continuous on all of <span class="math" data-tex="\(M\)">\(M\)</span>. Applying this to <span class="math" data-tex="\(-t\)">\(-t\)</span> proves that it is an ultraweak homeomorphism. No identification of order continuity with ultraweak continuity has been left unproved.</p>
+<p><strong>Differentiating inside the closed predual.</strong> For <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>, put
+<span class="math math-display" data-tex="\[
+ T_t=\frac{\alpha_t-I}{t}.
+ \tag{N8}
+\]">\[
+ T_t=\frac{\alpha_t-I}{t}.
+ \tag{N8}
+\]</span>
+Equation (N7) and linearity of <span class="math" data-tex="\(M_*\)">\(M_*\)</span> imply
+<span class="math" data-tex="\(\omega\circ T_t\in M_*\)">\(\omega\circ T_t\in M_*\)</span> for every <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>.
+The exponential remainder gives the quantitative operator-norm estimate
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \|T_t-d\|
+ &amp;\leq \sum_{n=2}^{\infty}
+              \frac{|t|^{n-1}\|d\|^n}{n!}\\
+ &amp;\leq \frac{|t|\|d\|^2}{2}e^{|t|\|d\|}
+       \longrightarrow0\qquad(t\longrightarrow0).
+ \end{aligned}
+ \tag{N9}
+\]">\[
+ \begin{aligned}
+ \|T_t-d\|
+ &amp;\leq \sum_{n=2}^{\infty}
+              \frac{|t|^{n-1}\|d\|^n}{n!}\\
+ &amp;\leq \frac{|t|\|d\|^2}{2}e^{|t|\|d\|}
+       \longrightarrow0\qquad(t\longrightarrow0).
+ \end{aligned}
+ \tag{N9}
+\]</span>
+The second inequality follows by writing <span class="math" data-tex="\(n=k+2\)">\(n=k+2\)</span> and using
+<span class="math" data-tex="\((k+2)!\geq2k!\)">\((k+2)!\geq2k!\)</span>; it also covers <span class="math" data-tex="\(d=0\)">\(d=0\)</span>.
+For each fixed <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>,
+<span class="math math-display" data-tex="\[
+ \|\omega\circ T_t-\omega\circ d\|_{M^*}
+       \leq\|\omega\|\|T_t-d\|\longrightarrow0.
+ \tag{N10}
+\]">\[
+ \|\omega\circ T_t-\omega\circ d\|_{M^*}
+       \leq\|\omega\|\|T_t-d\|\longrightarrow0.
+ \tag{N10}
+\]</span>
+The norm-closedness proved in CP-6 now gives
+<span class="math" data-tex="\(\omega\circ d\in M_*\)">\(\omega\circ d\in M_*\)</span>.
+For an arbitrary ultraweakly convergent net <span class="math" data-tex="\(x_\lambda\to x\)">\(x_\lambda\to x\)</span>, it follows that
+<span class="math math-display" data-tex="\[
+ \omega(d(x_\lambda))
+       =(\omega\circ d)(x_\lambda)
+       \longrightarrow(\omega\circ d)(x)
+       =\omega(d(x))
+       \qquad(\omega\in M_*).
+ \tag{N11}
+\]">\[
+ \omega(d(x_\lambda))
+       =(\omega\circ d)(x_\lambda)
+       \longrightarrow(\omega\circ d)(x)
+       =\omega(d(x))
+       \qquad(\omega\in M_*).
+ \tag{N11}
+\]</span>
+Thus <span class="math" data-tex="\(d(x_\lambda)\to d(x)\)">\(d(x_\lambda)\to d(x)\)</span> ultraweakly. There is no interchange of the <span class="math" data-tex="\(t\)">\(t\)</span>-limit with the <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-net: (N10) first places each fixed pulled-back functional in the predual, and (N11) then uses that functional.</p>
+<p><strong>The general complex derivation.</strong> For an arbitrary <span class="math" data-tex="\(d\)">\(d\)</span>, L34 again gives boundedness. Set
+<span class="math math-display" data-tex="\[
+ d^\dagger(x)=d(x^*)^*,\qquad
+ d_1=\frac{d+d^\dagger}{2},\qquad
+ d_2=\frac{d-d^\dagger}{2i}.
+ \tag{N12}
+\]">\[
+ d^\dagger(x)=d(x^*)^*,\qquad
+ d_1=\frac{d+d^\dagger}{2},\qquad
+ d_2=\frac{d-d^\dagger}{2i}.
+ \tag{N12}
+\]</span>
+The two conjugations make <span class="math" data-tex="\(d^\dagger\)">\(d^\dagger\)</span> complex linear, and reversing the product twice gives
+<span class="math math-display" data-tex="\[
+ d^\dagger(xy)
+       =x\,d^\dagger(y)+d^\dagger(x)y.
+ \tag{N13}
+\]">\[
+ d^\dagger(xy)
+       =x\,d^\dagger(y)+d^\dagger(x)y.
+ \tag{N13}
+\]</span>
+Thus it is a derivation. Moreover
+<span class="math" data-tex="\((d^\dagger)^\dagger=d\)">\((d^\dagger)^\dagger=d\)</span>, and the dagger operation conjugates scalar coefficients. These identities give
+<span class="math" data-tex="\(d_j^\dagger=d_j\)">\(d_j^\dagger=d_j\)</span> for <span class="math" data-tex="\(j=1,2\)">\(j=1,2\)</span>; both <span class="math" data-tex="\(d_j\)">\(d_j\)</span> are star derivations. The isometry of star also gives
+<span class="math" data-tex="\(\|d^\dagger\|=\|d\|\)">\(\|d^\dagger\|=\|d\|\)</span>, hence <span class="math" data-tex="\(\|d_j\|\leq\|d\|\)">\(\|d_j\|\leq\|d\|\)</span>.
+The star case makes both <span class="math" data-tex="\(d_1\)">\(d_1\)</span> and <span class="math" data-tex="\(d_2\)">\(d_2\)</span> ultraweakly continuous. Their sum
+<span class="math math-display" data-tex="\[
+ d=d_1+i d_2
+ \tag{N14}
+\]">\[
+ d=d_1+i d_2
+ \tag{N14}
+\]</span>
+is therefore ultraweakly continuous, proving the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The exponential product argument (N2)–(N5) also works in a possibly nonunital C*-algebra: <span class="math" data-tex="\(I\)">\(I\)</span> denotes its identity linear map, and the statements involving an algebra identity are simply omitted. L34's boundedness theorem already covers that convention. The order and predual part above concerns the von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span>, with its own identity and its specified predual; the zero algebra was handled separately.</p>
+<p>This proof establishes normality before any inner implementer is chosen. The direct vector-series proof after the innerness theorem remains useful: once <span class="math" data-tex="\(d(x)=kx-xk\)">\(d(x)=kx-xk\)</span> is known, it proves the same continuity by substituting vectors in the two multiplication maps. The present argument gives an independent order-and-predual route to that conclusion.</p>
+<p><span id="OA-FLOW.GI.REPRESENTATION-EXAMPLE"></span><a id="oa-flow.gi.representation-example"></a></p>
+<h2 id="15-a-represented-derivation-with-a-silent-summand">15. A represented derivation with a silent summand</h2>
+<p>Take
+<span class="math math-display" data-tex="\[
+ A=M_2(\mathbb C)\oplus M_2(\mathbb C),\qquad
+ \|(a,b)\|=\max\{\|a\|,\|b\|\},\qquad
+ \mathcal H=(\mathbb C^2\otimes\mathbb C^2)\oplus\mathbb C^3,
+ \qquad
+ \pi(a,b)=(a\otimes I_2)\oplus0_3.
+ \tag{E1}
+\]">\[
+ A=M_2(\mathbb C)\oplus M_2(\mathbb C),\qquad
+ \|(a,b)\|=\max\{\|a\|,\|b\|\},\qquad
+ \mathcal H=(\mathbb C^2\otimes\mathbb C^2)\oplus\mathbb C^3,
+ \qquad
+ \pi(a,b)=(a\otimes I_2)\oplus0_3.
+ \tag{E1}
+\]</span>
+The second algebra summand is in the kernel, and the representation vanishes on the final three Hilbert-space coordinates. These are distinct features: the first is nonfaithfulness, the second degeneracy. Put
+<span class="math math-display" data-tex="\[
+ z=(I_2,0),\qquad p=I_4\oplus0_3=\pi(1_A),\qquad
+ q=1_{\mathcal H}-p=0_4\oplus I_3.
+ \tag{E2}
+\]">\[
+ z=(I_2,0),\qquad p=I_4\oplus0_3=\pi(1_A),\qquad
+ q=1_{\mathcal H}-p=0_4\oplus I_3.
+ \tag{E2}
+\]</span>
+The essential space is <span class="math" data-tex="\(p\mathcal H=\mathbb C^2\otimes\mathbb C^2\)">\(p\mathcal H=\mathbb C^2\otimes\mathbb C^2\)</span>. Since <span class="math" data-tex="\(A\)">\(A\)</span> is finite dimensional, its canonical bidual is <span class="math" data-tex="\(A\)">\(A\)</span> itself. Its surviving central corner <span class="math" data-tex="\(Az=M_2\oplus0\)">\(Az=M_2\oplus0\)</span> maps isomorphically onto <span class="math" data-tex="\(N=M_2\otimes I_2\)">\(N=M_2\otimes I_2\)</span> on the essential space. The kernel is <span class="math" data-tex="\(A(1-z)=0\oplus M_2\)">\(A(1-z)=0\oplus M_2\)</span>. The extension <span class="math" data-tex="\(\overline\pi\)">\(\overline\pi\)</span> has exactly the same range as <span class="math" data-tex="\(\pi\)">\(\pi\)</span>; its unit is sent to <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<h3 id="compute-both-commutants">Compute both commutants</h3>
+<p>Every operator commuting with <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> commutes with <span class="math" data-tex="\(p=\pi(1_A)\)">\(p=\pi(1_A)\)</span>, so its two off-diagonal blocks between <span class="math" data-tex="\(p\mathcal H\)">\(p\mathcal H\)</span> and <span class="math" data-tex="\(q\mathcal H\)">\(q\mathcal H\)</span> vanish. On the essential space, write an operator as a two-by-two matrix of operators on the second <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>. Commutation with <span class="math" data-tex="\(e_{11}\otimes I_2\)">\(e_{11}\otimes I_2\)</span> and <span class="math" data-tex="\(e_{22}\otimes I_2\)">\(e_{22}\otimes I_2\)</span> makes its off-diagonal blocks zero. Commutation with <span class="math" data-tex="\(e_{12}\otimes I_2\)">\(e_{12}\otimes I_2\)</span> makes the two diagonal blocks equal. The complementary block is arbitrary, because <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> is zero there. Thus
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \pi(A)'&amp;=(I_2\otimes M_2)\oplus M_3,\\
+ M:=\pi(A)''&amp;=(M_2\otimes I_2)\oplus\mathbb C I_3.
+ \end{aligned}
+ \tag{E3}
+\]">\[
+ \begin{aligned}
+ \pi(A)'&amp;=(I_2\otimes M_2)\oplus M_3,\\
+ M:=\pi(A)''&amp;=(M_2\otimes I_2)\oplus\mathbb C I_3.
+ \end{aligned}
+ \tag{E3}
+\]</span>
+For the second equality, <span class="math" data-tex="\(p\)">\(p\)</span> also lies in <span class="math" data-tex="\(\pi(A)'\)">\(\pi(A)'\)</span>, so another commutant again has no off-diagonal blocks. The same matrix-unit calculation, with the tensor factors exchanged, gives <span class="math" data-tex="\((I_2\otimes M_2)'=M_2\otimes I_2\)">\((I_2\otimes M_2)'=M_2\otimes I_2\)</span>. An operator on <span class="math" data-tex="\(\mathbb C^3\)">\(\mathbb C^3\)</span> commuting with every matrix unit is diagonal by the diagonal units and has all diagonal entries equal by the off-diagonal units. Hence its commutant is <span class="math" data-tex="\(\mathbb C I_3\)">\(\mathbb C I_3\)</span>.</p>
+<p>In particular <span class="math" data-tex="\(q\in M\)">\(q\in M\)</span>, while <span class="math" data-tex="\(q\notin\overline\pi(A^{**})\)">\(q\notin\overline\pi(A^{**})\)</span>. The extra scalar summand in the bicommutant comes from taking the commutant of all operators on the silent space. It is not the image of the discarded second summand of <span class="math" data-tex="\(A\)">\(A\)</span>. This agrees with the <a href="../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#oa-fnd-wa-02">normal representation-extension theorem</a>.</p>
+<h3 id="a-derivation-whose-norm-decreases-under-the-representation">A derivation whose norm decreases under the representation</h3>
+<p>Let <span class="math" data-tex="\(h_1=\operatorname{diag}(0,2)\)">\(h_1=\operatorname{diag}(0,2)\)</span>, <span class="math" data-tex="\(h_2=\operatorname{diag}(0,5)\)">\(h_2=\operatorname{diag}(0,5)\)</span>, and set
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ d(a,b)&amp;=\bigl(i[h_1,a],\ i[h_2,b]\bigr),\\
+ i[h_1,a]&amp;=i\begin{pmatrix}0&amp;-2a_{12}\\2a_{21}&amp;0\end{pmatrix},\qquad
+ i[h_2,b]=i\begin{pmatrix}0&amp;-5b_{12}\\5b_{21}&amp;0\end{pmatrix}.
+ \end{aligned}
+ \tag{E4}
+\]">\[
+ \begin{aligned}
+ d(a,b)&amp;=\bigl(i[h_1,a],\ i[h_2,b]\bigr),\\
+ i[h_1,a]&amp;=i\begin{pmatrix}0&amp;-2a_{12}\\2a_{21}&amp;0\end{pmatrix},\qquad
+ i[h_2,b]=i\begin{pmatrix}0&amp;-5b_{12}\\5b_{21}&amp;0\end{pmatrix}.
+ \end{aligned}
+ \tag{E4}
+\]</span>
+Expanding <span class="math" data-tex="\([h,ac]=[h,a]c+a[h,c]\)">\([h,ac]=[h,a]c+a[h,c]\)</span> verifies the product rule, and taking adjoints verifies the star rule. Centering the two diagonal matrices gives
+<span class="math" data-tex="\(\|h_1-I_2\|=1\)">\(\|h_1-I_2\|=1\)</span> and <span class="math" data-tex="\(\|h_2-(5/2)I_2\|=5/2\)">\(\|h_2-(5/2)I_2\|=5/2\)</span>. Therefore the two commutator maps have norms at most <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(5\)">\(5\)</span>, respectively. Both bounds are attained:
+<span class="math math-display" data-tex="\[
+ h_1e_{21}=2e_{21},\quad e_{21}h_1=0,\qquad
+ h_2e_{21}=5e_{21},\quad e_{21}h_2=0,\qquad
+ \|d\|=5.
+ \tag{E5}
+\]">\[
+ h_1e_{21}=2e_{21},\quad e_{21}h_1=0,\qquad
+ h_2e_{21}=5e_{21},\quad e_{21}h_2=0,\qquad
+ \|d\|=5.
+ \tag{E5}
+\]</span>
+Here <span class="math" data-tex="\(\|e_{21}\|=1\)">\(\|e_{21}\|=1\)</span>, since it sends the first unit vector to the second and kills its orthogonal complement. For the last equality, the upper bound follows from the maximum norm in (E1), and the input <span class="math" data-tex="\((0,e_{21})\)">\((0,e_{21})\)</span> attains the value <span class="math" data-tex="\(5\)">\(5\)</span>.</p>
+<p>On the whole represented algebra (E3), the induced derivation is
+<span class="math math-display" data-tex="\[
+ D\bigl((a\otimes I_2)\oplus\lambda I_3\bigr)
+       =(i[h_1,a]\otimes I_2)\oplus0_3,
+ \qquad D\pi(a,b)=\pi d(a,b),\qquad
+ \|D\|=2&lt;5=\|d\|.
+ \tag{E6}
+\]">\[
+ D\bigl((a\otimes I_2)\oplus\lambda I_3\bigr)
+       =(i[h_1,a]\otimes I_2)\oplus0_3,
+ \qquad D\pi(a,b)=\pi d(a,b),\qquad
+ \|D\|=2&lt;5=\|d\|.
+ \tag{E6}
+\]</span>
+The formula is well defined by its unique pair of coordinates <span class="math" data-tex="\((a,\lambda)\)">\((a,\lambda)\)</span>, and the product rule follows componentwise from (E4). Its norm is at most <span class="math" data-tex="\(2\)">\(2\)</span>, because the norm in <span class="math" data-tex="\(M\)">\(M\)</span> is <span class="math" data-tex="\(\max\{\|a\|,|\lambda|\}\)">\(\max\{\|a\|,|\lambda|\}\)</span>. The norm-one input <span class="math" data-tex="\((e_{21}\otimes I_2)\oplus0_3\)">\((e_{21}\otimes I_2)\oplus0_3\)</span> has derivative <span class="math" data-tex="\(2i(e_{21}\otimes I_2)\oplus0_3\)">\(2i(e_{21}\otimes I_2)\oplus0_3\)</span>, proving equality. All these maps are normal: the finite matrix coordinates determine both the weak-star topology and every linear functional.</p>
+<p>Two useful selfadjoint implementers are
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ S&amp;=((h_1-I_2)\otimes I_2)\oplus0_3
+       =\operatorname{diag}(-1,-1,1,1,0,0,0),\\
+ B&amp;=(h_1\otimes I_2)\oplus0_3
+       =\operatorname{diag}(0,0,2,2,0,0,0),\\
+ D(x)&amp;=i[S,x]=i[B,x],\qquad
+ \|S\|=1=\tfrac12\|D\|,\qquad B\ge0,\quad\|B\|=2=\|D\|.
+ \end{aligned}
+ \tag{E7}
+\]">\[
+ \begin{aligned}
+ S&amp;=((h_1-I_2)\otimes I_2)\oplus0_3
+       =\operatorname{diag}(-1,-1,1,1,0,0,0),\\
+ B&amp;=(h_1\otimes I_2)\oplus0_3
+       =\operatorname{diag}(0,0,2,2,0,0,0),\\
+ D(x)&amp;=i[S,x]=i[B,x],\qquad
+ \|S\|=1=\tfrac12\|D\|,\qquad B\ge0,\quad\|B\|=2=\|D\|.
+ \end{aligned}
+ \tag{E7}
+\]</span>
+The first norm is optimal among selfadjoint implementers: <span class="math" data-tex="\(D=i[T,\cdot]\)">\(D=i[T,\cdot]\)</span> always implies <span class="math" data-tex="\(\|D\|\le2\|T\|\)">\(\|D\|\le2\|T\|\)</span>. The positive implementer <span class="math" data-tex="\(B\)">\(B\)</span> is the least positive one. Indeed, if <span class="math" data-tex="\(C=C^*\in M\)">\(C=C^*\in M\)</span> also implements <span class="math" data-tex="\(D\)">\(D\)</span>, the difference <span class="math" data-tex="\(C-B\)">\(C-B\)</span> commutes with all of <span class="math" data-tex="\(M\)">\(M\)</span>; (E3) shows it has the form <span class="math" data-tex="\(c p+\lambda q\)">\(c p+\lambda q\)</span>, with real <span class="math" data-tex="\(c,\lambda\)">\(c,\lambda\)</span>. Positivity forces <span class="math" data-tex="\(c\ge0\)">\(c\ge0\)</span> from the zero eigenvalue of <span class="math" data-tex="\(h_1\)">\(h_1\)</span>, and <span class="math" data-tex="\(\lambda\ge0\)">\(\lambda\ge0\)</span> on the complement. Thus <span class="math" data-tex="\(C\ge B\)">\(C\ge B\)</span>.</p>
+<p>This example also distinguishes global norm normalization from central-corner calibration:
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ D=i[B+q,\cdot],\qquad B+q\ge0,\qquad\|B+q\|=2,\\
+ \|(B+q)q\|=1\quad\text{whereas}\quad\|D|_{Mq}\|=0.
+ \end{gathered}
+ \tag{E8}
+\]">\[
+ \begin{gathered}
+ D=i[B+q,\cdot],\qquad B+q\ge0,\qquad\|B+q\|=2,\\
+ \|(B+q)q\|=1\quad\text{whereas}\quad\|D|_{Mq}\|=0.
+ \end{gathered}
+ \tag{E8}
+\]</span>
+The least positive implementer is zero on the central summand on which the derivation is zero. Adding <span class="math" data-tex="\(q\)">\(q\)</span> retains the global norm but loses that corner normalization. Also <span class="math" data-tex="\(S+q\in M\setminus\pi(A)\)">\(S+q\in M\setminus\pi(A)\)</span> still implements <span class="math" data-tex="\(D\)">\(D\)</span> and has norm <span class="math" data-tex="\(1\)">\(1\)</span>. The choices <span class="math" data-tex="\(S,B\)">\(S,B\)</span> happen to belong to <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> here, because its essential part is already a finite-dimensional von Neumann algebra. The general representation theorem guarantees an implementer in <span class="math" data-tex="\(\pi(A)''\)">\(\pi(A)''\)</span>; it makes no assertion that one belongs to <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span>.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The first M2 corner survives as a tensor-multiplicity block, the second M2 corner is killed, and the silent three-dimensional Hilbert summand acquires only scalars in the full bicommutant. The derivation norm drops from 5 to 2, with centered implementer norm 1." src="assets/derivation-representations/surviving-corner-silent-summand.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>The lost algebra summand and the silent Hilbert summand play different roles.</em> The ordered tensor basis gives the displayed <span class="math" data-tex="\(a\otimes I_2\)">\(a\otimes I_2\)</span> entries. Every off-diagonal block between the four-dimensional essential space and its three-dimensional complement is zero. The bidual image has a zero complementary block, while the full bicommutant permits <span class="math" data-tex="\(\lambda I_3\)">\(\lambda I_3\)</span>. <a href="OA-FLOW-L35.html#oa-flow.gi.representation-example">Equations (E1)–(E8)</a> prove the algebra identities and all displayed norms. <a href="assets/derivation-representations/render_representation.py">Reproduction source</a>, <a href="assets/derivation-representations/exact_checks.json">exact matrix checks</a>, <a href="assets/derivation-representations/surviving-corner-silent-summand.svg">SVG</a>, and <a href="assets/derivation-representations/ASSET_TERMS.md">figure/font terms</a> accompany the original illustration.</p>
+<h3 id="the-dual-bimodule-can-be-checked-by-multiplication">The dual bimodule can be checked by multiplication</h3>
+<p>For <span class="math" data-tex="\(T\in M_2\)">\(T\in M_2\)</span>, define <span class="math" data-tex="\(\varphi_T(a,b)=\operatorname{Tr}(Ta)\)">\(\varphi_T(a,b)=\operatorname{Tr}(Ta)\)</span>, and let <span class="math" data-tex="\(V=\{\varphi_T:T\in M_2\}\subseteq A^*\)">\(V=\{\varphi_T:T\in M_2\}\subseteq A^*\)</span>. It is a finite-dimensional, hence norm-closed, linear subspace. With the conventions
+<span class="math" data-tex="\((c\cdot\varphi\cdot e)(x)=\varphi(exc)\)">\((c\cdot\varphi\cdot e)(x)=\varphi(exc)\)</span>, where <span class="math" data-tex="\(c=(c_1,c_2)\)">\(c=(c_1,c_2)\)</span> and <span class="math" data-tex="\(e=(e_1,e_2)\)">\(e=(e_1,e_2)\)</span>, direct multiplication gives
+<span class="math math-display" data-tex="\[
+ (c\cdot\varphi_T\cdot e)(a,b)
+   =\operatorname{Tr}(Te_1ac_1)
+   =\operatorname{Tr}(c_1Te_1a),\qquad
+ c\cdot\varphi_T\cdot e=\varphi_{c_1Te_1}.
+ \tag{E9}
+\]">\[
+ (c\cdot\varphi_T\cdot e)(a,b)
+   =\operatorname{Tr}(Te_1ac_1)
+   =\operatorname{Tr}(c_1Te_1a),\qquad
+ c\cdot\varphi_T\cdot e=\varphi_{c_1Te_1}.
+ \tag{E9}
+\]</span>
+Thus <span class="math" data-tex="\(V\)">\(V\)</span> is invariant on both sides. The cyclic trace identity here is elementary: <span class="math" data-tex="\(\operatorname{Tr}(XY)=\sum_{j,k}X_{jk}Y_{kj}=\operatorname{Tr}(YX)\)">\(\operatorname{Tr}(XY)=\sum_{j,k}X_{jk}Y_{kj}=\operatorname{Tr}(YX)\)</span>; apply it after grouping the finite products.</p>
+<p>The dual derivation has the exact sign
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (d^*\varphi_T)(a,b)
+ &amp;=\operatorname{Tr}\bigl(Ti(h_1a-ah_1)\bigr)
+   =\operatorname{Tr}\bigl(i(Th_1-h_1T)a\bigr),\\
+ d^*\varphi_T&amp;=\varphi_{i[T,h_1]},\qquad
+ i[T,h_1]=i\begin{pmatrix}0&amp;2T_{12}\\-2T_{21}&amp;0\end{pmatrix}.
+ \end{aligned}
+ \tag{E10}
+\]">\[
+ \begin{aligned}
+ (d^*\varphi_T)(a,b)
+ &amp;=\operatorname{Tr}\bigl(Ti(h_1a-ah_1)\bigr)
+   =\operatorname{Tr}\bigl(i(Th_1-h_1T)a\bigr),\\
+ d^*\varphi_T&amp;=\varphi_{i[T,h_1]},\qquad
+ i[T,h_1]=i\begin{pmatrix}0&amp;2T_{12}\\-2T_{21}&amp;0\end{pmatrix}.
+ \end{aligned}
+ \tag{E10}
+\]</span>
+For instance <span class="math" data-tex="\(\varphi_{e_{12}}(a,b)=a_{21}\)">\(\varphi_{e_{12}}(a,b)=a_{21}\)</span>, and (E4) gives <span class="math" data-tex="\(d^*\varphi_{e_{12}}=2i\varphi_{e_{12}}\)">\(d^*\varphi_{e_{12}}=2i\varphi_{e_{12}}\)</span>. In particular <span class="math" data-tex="\(d^*(V)\subseteq V\)">\(d^*(V)\subseteq V\)</span>.</p>
+<p>The annihilator mechanism is equally explicit. In this finite-dimensional example <span class="math" data-tex="\(A^{**}=A\)">\(A^{**}=A\)</span>, and
+<span class="math math-display" data-tex="\[
+ I=V^\perp=0\oplus M_2,\qquad d^{**}(I)=d(I)\subseteq I,
+ \qquad I_\perp=V.
+ \tag{E11}
+\]">\[
+ I=V^\perp=0\oplus M_2,\qquad d^{**}(I)=d(I)\subseteq I,
+ \qquad I_\perp=V.
+ \tag{E11}
+\]</span>
+To verify the first identity, the values <span class="math" data-tex="\(\operatorname{Tr}(Ta)\)">\(\operatorname{Tr}(Ta)\)</span> for all matrix units <span class="math" data-tex="\(T\)">\(T\)</span> recover every entry of <span class="math" data-tex="\(a\)">\(a\)</span>; they all vanish exactly when <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Every linear functional on <span class="math" data-tex="\(A\)">\(A\)</span> has the form <span class="math" data-tex="\(\operatorname{Tr}(Ta)+\operatorname{Tr}(Ub)\)">\(\operatorname{Tr}(Ta)+\operatorname{Tr}(Ub)\)</span>. It vanishes on <span class="math" data-tex="\(I\)">\(I\)</span> exactly when <span class="math" data-tex="\(U=0\)">\(U=0\)</span>, proving the last identity. For <span class="math" data-tex="\(x\in I\)">\(x\in I\)</span>, the equality <span class="math" data-tex="\((d^*\varphi_T)(x)=\varphi_T(d(x))=0\)">\((d^*\varphi_T)(x)=\varphi_T(d(x))=0\)</span> is therefore the annihilator proof written in coordinates.</p>
+<h3 id="two-solved-checks">Two solved checks</h3>
+<p><strong>1. Replace the representation by zero.</strong> On the same nonzero <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, take <span class="math" data-tex="\(\pi_0(a,b)=0\)">\(\pi_0(a,b)=0\)</span>. Find its essential algebra, commutant, full bicommutant and represented derivation.</p>
+<p><strong>Solution.</strong> Now <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, the essential Hilbert space is zero, and its algebra <span class="math" data-tex="\(N\)">\(N\)</span> is zero. Every operator commutes with <span class="math" data-tex="\(\pi_0(A)\)">\(\pi_0(A)\)</span>. The matrix-unit argument used for (E3), now in dimension seven, gives
+<span class="math math-display" data-tex="\[
+ \pi_0(A)'=M_7,\qquad \pi_0(A)''=\mathbb C I_7,
+ \qquad \overline\pi_0(A^{**})=0,\qquad D_0=0.
+ \tag{E12}
+\]">\[
+ \pi_0(A)'=M_7,\qquad \pi_0(A)''=\mathbb C I_7,
+ \qquad \overline\pi_0(A^{**})=0,\qquad D_0=0.
+ \tag{E12}
+\]</span>
+A complex-linear derivation of the scalars is zero, since its value on the unit equals twice that value by the product rule. This proves uniqueness as well as existence of <span class="math" data-tex="\(D_0\)">\(D_0\)</span>; the implementer is zero. If the Hilbert space itself is zero, <span class="math" data-tex="\(B(\{0\})=\{0\}\)">\(B(\{0\})=\{0\}\)</span>, the identity operator is zero, and the displayed scalar summand is also zero. The same block statement covers that edge case.</p>
+<p><strong>2. Why must the annihilator be taken in <span class="math" data-tex="\(A^{**}\)">\(A^{**}\)</span>?</strong> The equality <span class="math" data-tex="\(A^{**}=A\)">\(A^{**}=A\)</span> in (E11) is special to finite dimensions. For this check take <span class="math" data-tex="\(A=\ell^\infty(\mathbb N)\)">\(A=\ell^\infty(\mathbb N)\)</span> and
+<span class="math math-display" data-tex="\[
+ V_0=\left\{\varphi_a:x\longmapsto\sum_{n\ge1}a_nx_n:
+                         a\in\ell^1(\mathbb N)\right\}\subset A^*.
+ \tag{E13}
+\]">\[
+ V_0=\left\{\varphi_a:x\longmapsto\sum_{n\ge1}a_nx_n:
+                         a\in\ell^1(\mathbb N)\right\}\subset A^*.
+ \tag{E13}
+\]</span>
+Show that <span class="math" data-tex="\(V_0\)">\(V_0\)</span> is a proper norm-closed dual bimodule, but its annihilator inside <span class="math" data-tex="\(A\)">\(A\)</span> is zero.</p>
+<p><strong>Solution.</strong> The estimate <span class="math" data-tex="\(|\varphi_a(x)|\le\|a\|_1\|x\|_\infty\)">\(|\varphi_a(x)|\le\|a\|_1\|x\|_\infty\)</span> is sharp: choose <span class="math" data-tex="\(x_n=\overline{a_n}/|a_n|\)">\(x_n=\overline{a_n}/|a_n|\)</span> when <span class="math" data-tex="\(a_n\ne0\)">\(a_n\ne0\)</span>, and zero otherwise. Thus <span class="math" data-tex="\(\|\varphi_a\|=\|a\|_1\)">\(\|\varphi_a\|=\|a\|_1\)</span>. To see closedness directly, a norm-Cauchy sequence of these functionals gives a Cauchy sequence of coefficient vectors. Their coordinate limits <span class="math" data-tex="\(a_n\)">\(a_n\)</span> satisfy each finite partial-sum bound obtained by taking the limit in <span class="math" data-tex="\(\sum_{n\le N}|a_n^{(j)}-a_n^{(k)}|\le\|a^{(j)}-a^{(k)}\|_1\)">\(\sum_{n\le N}|a_n^{(j)}-a_n^{(k)}|\le\|a^{(j)}-a^{(k)}\|_1\)</span>. Taking the supremum over <span class="math" data-tex="\(N\)">\(N\)</span> proves both <span class="math" data-tex="\(a\in\ell^1\)">\(a\in\ell^1\)</span> and convergence in <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span>. The corresponding functionals therefore converge to <span class="math" data-tex="\(\varphi_a\)">\(\varphi_a\)</span>. Left and right multiplication by a bounded sequence multiply the coefficients by that sequence and preserve <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span>, proving both module invariances.</p>
+<p>The coordinate functionals <span class="math" data-tex="\(x\mapsto x_n\)">\(x\mapsto x_n\)</span> belong to <span class="math" data-tex="\(V_0\)">\(V_0\)</span>, so a sequence annihilated by all of <span class="math" data-tex="\(V_0\)">\(V_0\)</span> is zero. Nevertheless <span class="math" data-tex="\(V_0\ne A^*\)">\(V_0\ne A^*\)</span>. On the subspace of convergent sequences, the limit functional has norm one. The Hahn–Banach theorem extends it to a bounded functional <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> on <span class="math" data-tex="\(\ell^\infty\)">\(\ell^\infty\)</span>, with <span class="math" data-tex="\(\Lambda(1)=1\)">\(\Lambda(1)=1\)</span> and <span class="math" data-tex="\(\Lambda(e_n)=0\)">\(\Lambda(e_n)=0\)</span> for every coordinate vector. No <span class="math" data-tex="\(\varphi_a\)">\(\varphi_a\)</span> can have these properties: the second property forces every <span class="math" data-tex="\(a_n=0\)">\(a_n=0\)</span>, contradicting the first. Hence <span class="math" data-tex="\(\Lambda\notin V_0\)">\(\Lambda\notin V_0\)</span>.</p>
+<p>Finally, the <a href="../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#oa-fnd-wa-07">norm-closed-subspace annihilator proof</a> applies Hahn–Banach in the dual pair <span class="math" data-tex="\((A^*,A^{**})\)">\((A^*,A^{**})\)</span>. Since <span class="math" data-tex="\(V_0\)">\(V_0\)</span> is norm closed and <span class="math" data-tex="\(\Lambda\notin V_0\)">\(\Lambda\notin V_0\)</span>, it gives <span class="math" data-tex="\(X\in A^{**}\)">\(X\in A^{**}\)</span> with
+<span class="math math-display" data-tex="\[
+ X|_{V_0}=0,\qquad X(\Lambda)=1.
+ \tag{E14}
+\]">\[
+ X|_{V_0}=0,\qquad X(\Lambda)=1.
+ \tag{E14}
+\]</span>
+Thus <span class="math" data-tex="\(V_0^\perp\)">\(V_0^\perp\)</span> inside <span class="math" data-tex="\(A^{**}\)">\(A^{**}\)</span> is nonzero, while the annihilator inside <span class="math" data-tex="\(A\)">\(A\)</span> was zero. The latter has lost exactly the information that distinguishes this proper norm-closed subspace from the whole dual.</p>
+<h2 id="OA-FLOW.GI.ANTECEDENTS"><span id="oa-flow.gi.antecedents"></span>16. Further reading</h2>
+<p>Dorte Olesen, <a href="https://msp.org/pjm/1974/53-2/pjm-v53-n2-p23-s.pdf"><em>Derivations of AW*-algebras are inner</em></a>, Theorem 2 and Proposition 3, printed pages 560–561, gives the spectral innerness argument and the positive normalization. The present von Neumann algebra proof develops the smooth-filter localization and comparison in Sections 3–4, the derivative/Plancherel estimate for the frequency bound in Sections 2–3, and the finite projection-block transfer in Section 6. Section 7 proves the calibration on every central corner and the least-positive property.</p>
+<p>Masamichi Takesaki, <em>Theory of Operator Algebras II</em>, Lemma XI.3.4, printed page 354, gives the represented-derivation and invariant-dual-subspace conclusions developed in Sections 11–13. Propositions XI.3.2–3.3, printed pages 352–353, concern automatic boundedness and exponentiation; Theorem XI.3.5, printed page 354, states innerness. The representation argument here includes the essential space, the complementary scalar summand, uniqueness and norm estimates, with the bidual and annihilator proofs linked at their points of use. Section 14 gives the separate normality argument through automorphisms and their difference quotients.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L34.html">Previous lesson</a><a href="OA-FLOW-IP.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L35.md">Lesson source</a></nav></main></body></html>

@@ -279,4 +279,4 @@ The blue set is the upper bound \(C+S\) in(SC19), in the normalized coordinates 
 ## References
 
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, sections 13.3–13.5.
-- Gerd Grubb, *Distributions and Operators*, Springer, 2009; [author's lecture-note index](https://web.math.ku.dk/~grubb/distribution.htm).
+- Gerd Grubb, *Distributions and Operators*, lecture notes, University of Copenhagen, 2007–2008, [author's lecture-note index](https://web.math.ku.dk/~grubb/distribution.htm).

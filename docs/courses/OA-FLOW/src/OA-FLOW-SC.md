@@ -2,7 +2,7 @@
 
 The scalar convergence theorems below hold on every measure space \((X,\Sigma,\mu)\). Neither completeness of the measure nor \(\sigma\)-finiteness, local finiteness, separability or a topology on \(X\) is assumed. A null exception means a subset of a **measurable** set of measure zero. Representatives are always measurable functions; altering a function arbitrarily on an unmeasurable subset of a null set is not part of our convention.
 
-The earlier common foundation, CF Section 1, supplies choice, compactness of closed bounded real intervals, boundedness and uniform continuity of continuous functions on such intervals, the real mean value theorem, and norm Riemann integrals of continuous functions with their fundamental theorem. Its elementary real and complex number conventions include order completeness of \(\mathbb R\), limits and the definition of derivative. All measure and \(L^p\) results used here are proved below. Inner products are linear in their first variable.
+The earlier common foundation, [CF Section 1](OA-FLOW-CF.md#oa-flow.cf.1), supplies choice, compactness of closed bounded real intervals, boundedness and uniform continuity of continuous functions on such intervals, the real mean value theorem, and norm Riemann integrals of continuous functions with their fundamental theorem. Its elementary real and complex number conventions include order completeness of \(\mathbb R\), limits and the definition of derivative. All measure and \(L^p\) results used here are proved below. Inner products are linear in their first variable.
 
 <a id="sc-00"></a>
 ## SC-00. The elementary scalar operations

@@ -8,7 +8,7 @@ Young's inequality, weak derivatives and the rest of AN-03 are not required
 by this selection. The full original AN-03 scope remains unchanged.
 
 The scalar and compact-calculus proofs are the earlier
-AN04-U001 prerequisite chain,
+[AN04-U001 prerequisite chain](../../20261004-free-stationary-phase/quadratic-stationary-phase.md#f0-the-exact-earlier-programme-proofs),
 with its [explicit real-field axioms and notation](../../20261004-free-stationary-phase/provider-context.md).
 In particular, real completeness, the Archimedean property,
 finite-dimensional continuity, complex arithmetic and absolute

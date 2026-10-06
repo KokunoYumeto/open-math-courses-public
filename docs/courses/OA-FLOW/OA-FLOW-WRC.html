@@ -1,0 +1,389 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Recovering multiplicity from a Weyl system · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-ND.html">Previous lesson</a><a href="OA-FLOW-AM.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-WRC.md">Lesson source</a></nav><p class="notice">Programme restoration and original illustration by GPT-6.1 Sol (OpenAI), Ultra; separate independent mathematical review by GPT-6.1 Sol (OpenAI), Ultra, and owner mathematical/source/expression review by GPT-6 Astra (OpenAI), Ultra. Human review and formal verification are not asserted.</p><h1 id="recovering-multiplicity-from-a-weyl-system">Recovering multiplicity from a Weyl system</h1>
+<p>A Weyl relation controls how translations move frequency measurements. We first turn those measurements into a representation of continuous functions on the group. Compactly supported kernels then produce matrix units directly inside the given representation. The image of a rank-one compact projection is a minimal projection in the generated algebra. Its range recovers the multiplicity space, and the matrix units construct the required unitary.</p>
+<p>The result applies to strongly continuous Weyl pairs over arbitrary locally compact abelian groups, under the explicit Fourier, C* algebra and Hilbert-space prerequisites stated below. It does not by itself provide equivariant disintegration, induction from a closed subgroup, or crossed-product fixed-point recognition.</p>
+<p><em>Restored in Codex (OpenAI), 5 October 2026. Newly written original expression is dedicated under CC0 to the extent of rights held; earlier components retain their recorded terms. Human review is not asserted.</em></p>
+<p><span id="OA-FLOW.WRC.STATEMENT"></span><a id="wr-statement"></a></p>
+<h2 id="the-weyl-pair-and-recognition-statement">The Weyl pair and recognition statement</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a locally compact Hausdorff abelian group, written additively, with a fixed nonzero left Haar measure <span class="math" data-tex="\(dr\)">\(dr\)</span>. Let <span class="math" data-tex="\(H\ne0\)">\(H\ne0\)</span> be a Hilbert space. Assume</p>
+<p><span class="math math-display" data-tex="$$U:G\longrightarrow\mathcal U(H),\qquad
+V:\widehat G\longrightarrow\mathcal U(H)$$">$$U:G\longrightarrow\mathcal U(H),\qquad
+V:\widehat G\longrightarrow\mathcal U(H)$$</span></p>
+<p>are strongly continuous unitary representations and satisfy</p>
+<p><a id="equation-r1"></a></p>
+<p><span class="math math-display" data-tex="$$U_sV_\chi U_s^*=\chi(s)V_\chi
+\qquad(s\in G,\ \chi\in\widehat G). \tag{R1}$$">$$U_sV_\chi U_s^*=\chi(s)V_\chi
+\qquad(s\in G,\ \chi\in\widehat G). \tag{R1}$$</span></p>
+<p>On <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>, put</p>
+<p><a id="equation-r2"></a></p>
+<p><span class="math math-display" data-tex="$$[L_s\xi](r)=\xi(r-s),\qquad
+[Q_\chi\xi](r)=\overline{\chi(r)}\xi(r). \tag{R2}$$">$$[L_s\xi](r)=\xi(r-s),\qquad
+[Q_\chi\xi](r)=\overline{\chi(r)}\xi(r). \tag{R2}$$</span></p>
+<p>These conventions agree with the duality lesson. There is no second-countability, metrizability, sigma-compactness or separability assumption on either the group or the Hilbert space.</p>
+<p><strong>Theorem.</strong> There is a nonzero Hilbert space <span class="math" data-tex="\(E\)">\(E\)</span> and a unitary</p>
+<p><span class="math math-display" data-tex="$$W:L^2(G)\otimes E\longrightarrow H$$">$$W:L^2(G)\otimes E\longrightarrow H$$</span></p>
+<p>such that</p>
+<p><a id="equation-r3"></a></p>
+<p><span class="math math-display" data-tex="$$W(L_s\otimes1)W^*=U_s,\qquad
+W(Q_\chi\otimes1)W^*=V_\chi. \tag{R3}$$">$$W(L_s\otimes1)W^*=U_s,\qquad
+W(Q_\chi\otimes1)W^*=V_\chi. \tag{R3}$$</span></p>
+<p>Moreover,</p>
+<p><a id="equation-r4"></a></p>
+<p><span class="math math-display" data-tex="$$\{U_s,V_\chi:s\in G,\chi\in\widehat G\}''
+=W\bigl(B(L^2(G))\otimes1_E\bigr)W^*, \tag{R4}$$">$$\{U_s,V_\chi:s\in G,\chi\in\widehat G\}''
+=W\bigl(B(L^2(G))\otimes1_E\bigr)W^*, \tag{R4}$$</span></p>
+<p>and the commutant is <span class="math" data-tex="\(W(1\otimes B(E))W^*\)">\(W(1\otimes B(E))W^*\)</span>. The Hilbert-space dimension of <span class="math" data-tex="\(E\)">\(E\)</span> is determined by the pair. In particular the pair is irreducible exactly when <span class="math" data-tex="\(\dim E=1\)">\(\dim E=1\)</span>.</p>
+<p>If <span class="math" data-tex="\(H=0\)">\(H=0\)</span>, take <span class="math" data-tex="\(E=0\)">\(E=0\)</span>; the zero-space unitary gives the same recognition formulas. The nonzero hypothesis above is used only to choose a nonzero multiplicity projection and to discuss irreducibility. We prove the theorem through a slightly more general intermediate object: a nondegenerate covariant representation of <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span> and translation.</p>
+<p><span id="OA-FLOW.WRC.SPECTRAL"></span><a id="wr-spectral"></a></p>
+<h2 id="the-abelian-spectral-prerequisite">The abelian spectral prerequisite</h2>
+<p>The earlier programme proves the needed foundations: <a href="OA-FLOW-HARMONIC.html#l138-h1">H1</a> identifies the full group C* algebra with continuous functions on the dual, <a href="OA-FLOW-HARMONIC-LATE.html#l138-h3">H3</a> proves topological Pontryagin biduality, <a href="OA-FLOW-CF.html#oa-flow.cf.6">CF6</a> proves the isometric commutative Gelfand theorem, <a href="OA-FLOW-CF.html#oa-flow.cf.9">CF9</a> handles forced unitization, and <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a> proves the locally compact Stone–Weierstrass and Hilbert tensor steps. <a href="OA-FLOW-WY.html#wy-1">WY1</a> gives a full-group spectral construction from these same proofs. We retain the direct character argument below, followed later by a sign-explicit alternative through WY. Neither route uses a system-of-imprimitivity theorem.</p>
+<p><strong>Lemma.</strong> For every strongly continuous unitary representation <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> on an arbitrary Hilbert space, there is a unique nondegenerate star representation</p>
+<p><span class="math math-display" data-tex="$$\pi:C_0(G)\longrightarrow B(H)$$">$$\pi:C_0(G)\longrightarrow B(H)$$</span></p>
+<p>whose extension to the multiplier algebra <span class="math" data-tex="\(C_b(G)\)">\(C_b(G)\)</span> satisfies</p>
+<p><a id="equation-r5"></a></p>
+<p><span class="math math-display" data-tex="$$\overline\pi(\overline\chi)=V_\chi
+\qquad(\chi\in\widehat G). \tag{R5}$$">$$\overline\pi(\overline\chi)=V_\chi
+\qquad(\chi\in\widehat G). \tag{R5}$$</span></p>
+<p>Here <span class="math" data-tex="\(\overline\chi(r)=\overline{\chi(r)}\)">\(\overline\chi(r)=\overline{\chi(r)}\)</span>. Nondegeneracy means that the linear span of <span class="math" data-tex="\(\pi(C_0(G))H\)">\(\pi(C_0(G))H\)</span> is dense. For a net <span class="math" data-tex="\(h_i\in C_c(G)\)">\(h_i\in C_c(G)\)</span> with <span class="math" data-tex="\(0\le h_i\le1\)">\(0\le h_i\le1\)</span> and <span class="math" data-tex="\(h_i=1\)">\(h_i=1\)</span> eventually on each compact set,</p>
+<p><a id="equation-r6"></a></p>
+<p><span class="math math-display" data-tex="$$\pi(h_i)\longrightarrow1\text{ strongly},\qquad
+\overline\pi(b)=\operatorname*{s-lim}_i\pi(bh_i)
+\quad(b\in C_b(G)). \tag{R6}$$">$$\pi(h_i)\longrightarrow1\text{ strongly},\qquad
+\overline\pi(b)=\operatorname*{s-lim}_i\pi(bh_i)
+\quad(b\in C_b(G)). \tag{R6}$$</span></p>
+<p>The commutants of <span class="math" data-tex="\(\pi(C_0(G))\)">\(\pi(C_0(G))\)</span> and <span class="math" data-tex="\(\{V_\chi:\chi\in\widehat G\}\)">\(\{V_\chi:\chi\in\widehat G\}\)</span> agree, and hence so do the von Neumann algebras they generate.</p>
+<p><strong>Proof: integration and the uniform-norm bound.</strong> Put <span class="math" data-tex="\(\Gamma=\widehat G\)">\(\Gamma=\widehat G\)</span>, with Haar measure <span class="math" data-tex="\(d\chi\)">\(d\chi\)</span>. For <span class="math" data-tex="\(a\in C_c(\Gamma)\)">\(a\in C_c(\Gamma)\)</span>, define on each <span class="math" data-tex="\(v\in H\)">\(v\in H\)</span></p>
+<p><a id="equation-r5a"></a></p>
+<p><span class="math math-display" data-tex="$$A_V(a)v=\int_\Gamma a(\chi)V_\chi v\,d\chi,\qquad
+\mathcal F_-a(r)=\int_\Gamma a(\chi)\overline{\chi(r)}\,d\chi.
+\tag{R5a}$$">$$A_V(a)v=\int_\Gamma a(\chi)V_\chi v\,d\chi,\qquad
+\mathcal F_-a(r)=\int_\Gamma a(\chi)\overline{\chi(r)}\,d\chi.
+\tag{R5a}$$</span></p>
+<p>The compact Hilbert-vector integral has norm at most <span class="math" data-tex="\(\|a\|_1\|v\|\)">\(\|a\|_1\|v\|\)</span>, so <span class="math" data-tex="\(A_V\)">\(A_V\)</span> extends by <span class="math" data-tex="\(L^1\)">\(L^1\)</span> approximation to a contraction <span class="math" data-tex="\(L^1(\Gamma)\to B(H)\)">\(L^1(\Gamma)\to B(H)\)</span>. Compact-support Fubini and Haar invariance prove</p>
+<p><a id="equation-r5b"></a></p>
+<p><span class="math math-display" data-tex="$$A_V(a*b)=A_V(a)A_V(b),\qquad
+A_V(a^*)=A_V(a)^*,\qquad
+a^*(\chi)=\overline{a(-\chi)}. \tag{R5b}$$">$$A_V(a*b)=A_V(a)A_V(b),\qquad
+A_V(a^*)=A_V(a)^*,\qquad
+a^*(\chi)=\overline{a(-\chi)}. \tag{R5b}$$</span></p>
+<p>The convolution and operator bounds extend these identities from <span class="math" data-tex="\(C_c\)">\(C_c\)</span> to all <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. For nonnegative unit-mass <span class="math" data-tex="\(a_j\in C_c(\Gamma)\)">\(a_j\in C_c(\Gamma)\)</span> supported in shrinking identity neighborhoods, strong continuity gives</p>
+<p><a id="equation-r5c"></a></p>
+<p><span class="math math-display" data-tex="$$\|A_V(a_j)v-v\|
+\le\sup_{\chi\in\operatorname{supp}a_j}\|V_\chi v-v\|
+\longrightarrow0. \tag{R5c}$$">$$\|A_V(a_j)v-v\|
+\le\sup_{\chi\in\operatorname{supp}a_j}\|V_\chi v-v\|
+\longrightarrow0. \tag{R5c}$$</span></p>
+<p>Thus the commutative C* algebra <span class="math" data-tex="\(B=\overline{A_V(L^1(\Gamma))}^{\,\|\cdot\|}\)">\(B=\overline{A_V(L^1(\Gamma))}^{\,\|\cdot\|}\)</span> acts nondegenerately on <span class="math" data-tex="\(H\)">\(H\)</span>. If <span class="math" data-tex="\(H=0\)">\(H=0\)</span>, the conclusions are immediate, so assume <span class="math" data-tex="\(H\ne0\)">\(H\ne0\)</span>.</p>
+<p>Every character <span class="math" data-tex="\(\omega\)">\(\omega\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span> has a nonzero bounded star-multiplicative pullback <span class="math" data-tex="\(\omega\circ A_V\)">\(\omega\circ A_V\)</span> on <span class="math" data-tex="\(L^1(\Gamma)\)">\(L^1(\Gamma)\)</span>; a zero pullback would vanish on the dense image and hence on <span class="math" data-tex="\(B\)">\(B\)</span>. Apply <a href="OA-FLOW-L24.html#oa-flow.grp.recovery">L24's recovery theorem</a> to this one-dimensional nondegenerate star representation. Its recovered group operators are scalar unitaries, continuous in the scalar norm; its integrated value is therefore integration against a continuous unitary character of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. <a href="OA-FLOW-HARMONIC-LATE.html#l138-h3">H3</a> writes that character uniquely as <span class="math" data-tex="\(\chi\mapsto\overline{\chi(r)}\)">\(\chi\mapsto\overline{\chi(r)}\)</span> for some <span class="math" data-tex="\(r\in G\)">\(r\in G\)</span>; conjugation only changes <span class="math" data-tex="\(r\)">\(r\)</span> to <span class="math" data-tex="\(-r\)">\(-r\)</span>. For the possibly nonunital <span class="math" data-tex="\(B\)">\(B\)</span>, use CF9's forced unitization <span class="math" data-tex="\(B^+\)">\(B^+\)</span>: the scalar-quotient character vanishes on <span class="math" data-tex="\(B\)">\(B\)</span>, while every other character restricts to a nonzero character of <span class="math" data-tex="\(B\)">\(B\)</span>, and every such character extends by <span class="math" data-tex="\(\omega(b+\lambda1)=\omega(b)+\lambda\)">\(\omega(b+\lambda1)=\omega(b)+\lambda\)</span>. The CF6 norm formula on <span class="math" data-tex="\(B^+\)">\(B^+\)</span> thus gives precisely the supremum over the nonzero characters of <span class="math" data-tex="\(B\)">\(B\)</span>. Consequently</p>
+<p><a id="equation-r5d"></a></p>
+<p><span class="math math-display" data-tex="$$\|A_V(a)\|
+=\sup_{\omega\in\operatorname{Spec}B}|\omega(A_V(a))|
+\le\|\mathcal F_-a\|_\infty. \tag{R5d}$$">$$\|A_V(a)\|
+=\sup_{\omega\in\operatorname{Spec}B}|\omega(A_V(a))|
+\le\|\mathcal F_-a\|_\infty. \tag{R5d}$$</span></p>
+<p>This uses the commutative C* theorem, including its nonunital form. It does not assert that every <span class="math" data-tex="\(r\)">\(r\)</span> occurs in the spectrum of this particular representation.</p>
+<p><strong>Proof: dense Fourier functions and the extension.</strong> Apply <a href="OA-FLOW-HARMONIC.html#l138-h1">H1</a> to <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Its negative transform on <span class="math" data-tex="\(\widehat\Gamma\)">\(\widehat\Gamma\)</span>, evaluated at the bidual point <span class="math" data-tex="\(j(r)(\chi)=\chi(r)\)">\(j(r)(\chi)=\chi(r)\)</span>, is exactly <span class="math" data-tex="\(\mathcal F_-a(r)\)">\(\mathcal F_-a(r)\)</span>. The <a href="OA-FLOW-HARMONIC-LATE.html#l138-h3">H3</a> homeomorphism therefore gives <span class="math" data-tex="\(\mathcal F_-a\in C_0(G)\)">\(\mathcal F_-a\in C_0(G)\)</span> at the full arbitrary-LCA scope. Convolution and the involution in (R5b) show that
+<span class="math" data-tex="\(\mathcal A=\mathcal F_-(L^1(\Gamma))\)">\(\mathcal A=\mathcal F_-(L^1(\Gamma))\)</span> is a self-adjoint subalgebra of <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>.</p>
+<p>This algebra vanishes nowhere and separates points. For a fixed <span class="math" data-tex="\(r\)">\(r\)</span>, choose nonnegative <span class="math" data-tex="\(g\in C_c(\Gamma)\)">\(g\in C_c(\Gamma)\)</span> with positive integral and put <span class="math" data-tex="\(a(\chi)=\chi(r)g(\chi)\)">\(a(\chi)=\chi(r)g(\chi)\)</span>. Then <span class="math" data-tex="\(\mathcal F_-a(r)=\int g&gt;0\)">\(\mathcal F_-a(r)=\int g&gt;0\)</span>. For distinct <span class="math" data-tex="\(r,t\)">\(r,t\)</span>, biduality gives a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> with <span class="math" data-tex="\(\overline{\chi(r)}\ne\overline{\chi(t)}\)">\(\overline{\chi(r)}\ne\overline{\chi(t)}\)</span>. Write <span class="math" data-tex="\(d(\chi)=\overline{\chi(r)}-\overline{\chi(t)}\)">\(d(\chi)=\overline{\chi(r)}-\overline{\chi(t)}\)</span>. Choose such a nonnegative <span class="math" data-tex="\(g\)">\(g\)</span> supported in an open set on which <span class="math" data-tex="\(d\ne0\)">\(d\ne0\)</span>, and put <span class="math" data-tex="\(a=\overline d\,g\)">\(a=\overline d\,g\)</span>. Then</p>
+<p><a id="equation-r5e"></a></p>
+<p><span class="math math-display" data-tex="$$\mathcal F_-a(r)-\mathcal F_-a(t)
+=\int_\Gamma g(\chi)|d(\chi)|^2\,d\chi&gt;0.
+\tag{R5e}$$">$$\mathcal F_-a(r)-\mathcal F_-a(t)
+=\int_\Gamma g(\chi)|d(\chi)|^2\,d\chi&gt;0.
+\tag{R5e}$$</span></p>
+<p>The existence and positivity of these compact tests are the stated Radon/Haar cutoff facts. Stone–Weierstrass now makes <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> uniformly dense in <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>.</p>
+<p>The bound (R5d) makes <span class="math" data-tex="\(\pi(\mathcal F_-a)=A_V(a)\)">\(\pi(\mathcal F_-a)=A_V(a)\)</span> well defined: equal Fourier functions have equal images by applying the bound to their difference. It extends uniquely to a contractive star representation of <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>. Equation (R5c) proves nondegeneracy, since the range span of <span class="math" data-tex="\(\pi(C_0(G))\)">\(\pi(C_0(G))\)</span> contains <span class="math" data-tex="\(A_V(a_j)H\)">\(A_V(a_j)H\)</span>.</p>
+<p>To obtain its multiplier extension, first note that <span class="math" data-tex="\(h_i f\to f\)">\(h_i f\to f\)</span> uniformly for <span class="math" data-tex="\(f\in C_0(G)\)">\(f\in C_0(G)\)</span>: control <span class="math" data-tex="\(f\)">\(f\)</span>'s tail outside a compact set and use the eventual equality on that set. Consequently <span class="math" data-tex="\(\pi(h_i)\to1\)">\(\pi(h_i)\to1\)</span> strongly on the dense span of <span class="math" data-tex="\(\pi(f)H\)">\(\pi(f)H\)</span>, and then on <span class="math" data-tex="\(H\)">\(H\)</span> by the uniform contraction bound. For <span class="math" data-tex="\(b\in C_b(G)\)">\(b\in C_b(G)\)</span>, the uniformly bounded <span class="math" data-tex="\(\pi(bh_i)\)">\(\pi(bh_i)\)</span> converge on every vector <span class="math" data-tex="\(\pi(f)v\)">\(\pi(f)v\)</span> to <span class="math" data-tex="\(\pi(bf)v\)">\(\pi(bf)v\)</span>. They therefore converge strongly on all <span class="math" data-tex="\(H\)">\(H\)</span>, defining <span class="math" data-tex="\(\overline\pi(b)\)">\(\overline\pi(b)\)</span> in (R6). On those dense vectors the identities for multiplication and adjoints follow from those for <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, or, for adjoints, by pairing two such vectors. Thus this is the unique unital star extension with
+<span class="math" data-tex="\(\overline\pi(b)\pi(f)=\pi(bf)\)">\(\overline\pi(b)\pi(f)=\pi(bf)\)</span>.</p>
+<p>For <span class="math" data-tex="\(\chi_0\in\Gamma\)">\(\chi_0\in\Gamma\)</span>, let <span class="math" data-tex="\((\tau_{\chi_0}a)(\chi)=a(\chi-\chi_0)\)">\((\tau_{\chi_0}a)(\chi)=a(\chi-\chi_0)\)</span>. The two integrals in (R5a) give</p>
+<p><a id="equation-r5f"></a></p>
+<p><span class="math math-display" data-tex="$$V_{\chi_0}A_V(a)=A_V(\tau_{\chi_0}a),\qquad
+\mathcal F_-(\tau_{\chi_0}a)
+=\overline{\chi_0}\,\mathcal F_-a. \tag{R5f}$$">$$V_{\chi_0}A_V(a)=A_V(\tau_{\chi_0}a),\qquad
+\mathcal F_-(\tau_{\chi_0}a)
+=\overline{\chi_0}\,\mathcal F_-a. \tag{R5f}$$</span></p>
+<p>Uniform density therefore gives
+<span class="math" data-tex="\(V_{\chi_0}\pi(f)=\pi(\overline{\chi_0}f)\)">\(V_{\chi_0}\pi(f)=\pi(\overline{\chi_0}f)\)</span> for every <span class="math" data-tex="\(f\in C_0(G)\)">\(f\in C_0(G)\)</span>. Nondegeneracy identifies <span class="math" data-tex="\(V_{\chi_0}\)">\(V_{\chi_0}\)</span> with <span class="math" data-tex="\(\overline\pi(\overline{\chi_0})\)">\(\overline\pi(\overline{\chi_0})\)</span>, proving (R5).</p>
+<p><strong>Proof: uniqueness and the commutant.</strong> Suppose <span class="math" data-tex="\(\pi'\)">\(\pi'\)</span> is another nondegenerate star representation satisfying (R5). For fixed <span class="math" data-tex="\(f\in C_0(G)\)">\(f\in C_0(G)\)</span>, the map
+<span class="math" data-tex="\(\chi\mapsto\overline\chi f\)">\(\chi\mapsto\overline\chi f\)</span> is norm continuous into <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>: the compact-open topology gives uniform character convergence on a compact set, while the <span class="math" data-tex="\(C_0\)">\(C_0\)</span> tail of <span class="math" data-tex="\(f\)">\(f\)</span> bounds the difference by <span class="math" data-tex="\(2|f|\)">\(2|f|\)</span> off that set. Thus, for <span class="math" data-tex="\(a\in C_c(\Gamma)\)">\(a\in C_c(\Gamma)\)</span>, there is a norm integral in <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span> and</p>
+<p><a id="equation-r5g"></a></p>
+<p><span class="math math-display" data-tex="$$\begin{aligned}
+\pi'(\mathcal F_-a)\pi'(f)
+&amp;=\pi'\!\left(\int_\Gamma a(\chi)\overline\chi f\,d\chi\right)\\
+&amp;=\int_\Gamma a(\chi)V_\chi\pi'(f)\,d\chi
+=A_V(a)\pi'(f).
+\end{aligned}\tag{R5g}$$">$$\begin{aligned}
+\pi'(\mathcal F_-a)\pi'(f)
+&amp;=\pi'\!\left(\int_\Gamma a(\chi)\overline\chi f\,d\chi\right)\\
+&amp;=\int_\Gamma a(\chi)V_\chi\pi'(f)\,d\chi
+=A_V(a)\pi'(f).
+\end{aligned}\tag{R5g}$$</span></p>
+<p>In the second line, passage through the bounded linear map <span class="math" data-tex="\(\pi'\)">\(\pi'\)</span> is justified by the <span class="math" data-tex="\(C_0\)">\(C_0\)</span> norm integral; its operator value agrees with the integral on each fixed Hilbert vector. No norm integral of the bare characters in <span class="math" data-tex="\(C_b(G)\)">\(C_b(G)\)</span> is used. Density of <span class="math" data-tex="\(\pi'(C_0(G))H\)">\(\pi'(C_0(G))H\)</span> gives <span class="math" data-tex="\(\pi'(\mathcal F_-a)=A_V(a)\)">\(\pi'(\mathcal F_-a)=A_V(a)\)</span>. Extend first by the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> bounds, then by the uniform density of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, to conclude <span class="math" data-tex="\(\pi'=\pi\)">\(\pi'=\pi\)</span>.</p>
+<p>An operator commuting with every <span class="math" data-tex="\(V_\chi\)">\(V_\chi\)</span> commutes with all the fixed-vector integrals <span class="math" data-tex="\(A_V(a)\)">\(A_V(a)\)</span>, hence with <span class="math" data-tex="\(\pi(C_0(G))\)">\(\pi(C_0(G))\)</span> by norm density. Conversely, an operator commuting with <span class="math" data-tex="\(\pi(C_0(G))\)">\(\pi(C_0(G))\)</span> commutes with the bounded strong limits in (R6), in particular all <span class="math" data-tex="\(V_\chi\)">\(V_\chi\)</span>. The commutants agree, and the bicommutant theorem gives the generated-algebra assertion. This completes the spectral representation proof at arbitrary LCA and Hilbert-space scope. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The rest of the recognition proof begins with this <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Its Fourier prerequisites are independent of the recognition theorem, so this step does not use the result it is about to prove.</p>
+<p><span id="OA-FLOW.WRC.INTEGRATION"></span><a id="wr-integration"></a></p>
+<h2 id="integration-and-finite-matrix-prerequisites">Integration and finite-matrix prerequisites</h2>
+<p>We use Radon Haar integration on compact sets, positivity on nonempty open sets, continuous cutoffs on a locally compact Hausdorff space, and the density of <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> in <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>. Compact-support approximate identities <span class="math" data-tex="\(\varphi_j\ge0\)">\(\varphi_j\ge0\)</span>, <span class="math" data-tex="\(\int\varphi_j=1\)">\(\int\varphi_j=1\)</span>, can have supports tending to zero through neighborhoods. Left translation is strongly continuous on <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>. Since <span class="math" data-tex="\(G\)">\(G\)</span> is abelian, inversion and translation preserve Haar measure. These facts are proved in <a href="OA-FLOW-HR.html#hr-03">HR3–9</a>, <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a>, and <a href="OA-FLOW-L24.html#oa-flow.grp.haarconventions">L24's Haar convention and translations</a>. For finite exponents, the locally determined and Radon conventions have the same sigma compact carriers and null classes; L24 proves this without assuming the whole group sigma compact.</p>
+<p>The compact-support continuous scalar and Hilbert-vector integrals below use <a href="OA-FLOW-HR.html#hr-05">HR5's qualified Radon product theorem</a> and <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">L24's complete vector-integration construction</a>. Finite-dimensional uniform approximation of compact vector ranges justifies the vector integral identities under these proved prerequisites. No equality of an uncompleted product Borel sigma-algebra with the topological product Borel sigma-algebra is presumed.</p>
+<p>The scalar approximation input is the complex Stone–Weierstrass theorem on compact Hausdorff spaces. We also use elementary Hilbert tensor products, completion of an isometry defined on a dense subspace, the bicommutant theorem, and finite matrix positivity. A nondegenerate star representation of <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span> is contractive. The existence of a positive square root for a positive finite scalar matrix will provide the operator-norm estimate needed later; no universal crossed-product norm is assumed. The actual proofs are <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a>, <a href="OA-FLOW-CF.html#oa-flow.cf.5">CF5–8</a>, <a href="OA-FLOW-CF.html#oa-flow.cf.10">CF10</a>, and <a href="OA-FLOW-BD.html#oa-flow.bd.1">BD1</a>.</p>
+<p>For a compactly supported, norm-continuous map <span class="math" data-tex="\(t\mapsto k_t\in C_0(G)\)">\(t\mapsto k_t\in C_0(G)\)</span>, define</p>
+<p><a id="equation-r7"></a></p>
+<p><span class="math math-display" data-tex="$$I(k)v=\int_G\pi(k_t)U_t v\,dt,\qquad
+\|I(k)\|\le\int_G\|k_t\|_\infty\,dt. \tag{R7}$$">$$I(k)v=\int_G\pi(k_t)U_t v\,dt,\qquad
+\|I(k)\|\le\int_G\|k_t\|_\infty\,dt. \tag{R7}$$</span></p>
+<p>For each fixed vector the integrand is continuous with compact support, so (R7) is a Hilbert-vector integral. Uniform boundedness of the displayed estimate defines the operator on all <span class="math" data-tex="\(H\)">\(H\)</span>. It does not require norm continuity of <span class="math" data-tex="\(t\mapsto U_t\)">\(t\mapsto U_t\)</span>.</p>
+<p><span id="OA-FLOW.WRC.COVARIANCE"></span><a id="wr-covariance"></a></p>
+<h2 id="from-characters-to-continuous-functions">From characters to continuous functions</h2>
+<p>Write <span class="math" data-tex="\((\tau_s h)(r)=h(r-s)\)">\((\tau_s h)(r)=h(r-s)\)</span>.</p>
+<p><strong>Lemma.</strong> The spectral representation from (R5) satisfies</p>
+<p><a id="equation-r8"></a></p>
+<p><span class="math math-display" data-tex="$$U_s\pi(h)U_s^*=\pi(\tau_s h)
+\qquad(s\in G,\ h\in C_0(G)). \tag{R8}$$">$$U_s\pi(h)U_s^*=\pi(\tau_s h)
+\qquad(s\in G,\ h\in C_0(G)). \tag{R8}$$</span></p>
+<p><strong>Proof.</strong> For fixed <span class="math" data-tex="\(s\)">\(s\)</span>, both sides of (R8), viewed as functions of <span class="math" data-tex="\(h\)">\(h\)</span>, are nondegenerate star representations of <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>. Their multiplier values at <span class="math" data-tex="\(\overline\chi\)">\(\overline\chi\)</span> agree, because</p>
+<p><span class="math math-display" data-tex="$$U_sV_\chi U_s^*=\chi(s)V_\chi,\qquad
+\tau_s(\overline\chi)=\chi(s)\overline\chi.$$">$$U_sV_\chi U_s^*=\chi(s)V_\chi,\qquad
+\tau_s(\overline\chi)=\chi(s)\overline\chi.$$</span></p>
+<p>The uniqueness clause just proved gives (R8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>From this point until the final return to <span class="math" data-tex="\(V\)">\(V\)</span>, only nondegeneracy, (R8), and strong continuity of <span class="math" data-tex="\(U\)">\(U\)</span> are used. Thus those hypotheses alone imply the corresponding multiplicity statement for <span class="math" data-tex="\((\pi,U)\)">\((\pi,U)\)</span>.</p>
+<p><span id="OA-FLOW.WRC.KERNELS"></span><a id="wr-kernels"></a></p>
+<h2 id="rank-one-operators-from-compact-kernels">Rank-one operators from compact kernels</h2>
+<p>For <span class="math" data-tex="\(\xi,\eta\in C_c(G)\)">\(\xi,\eta\in C_c(G)\)</span>, set</p>
+<p><a id="equation-r9"></a></p>
+<p><span class="math math-display" data-tex="$$k^{\xi,\eta}_t(r)=\xi(r)\overline{\eta(r-t)},\qquad
+T_{\xi,\eta}=I(k^{\xi,\eta}). \tag{R9}$$">$$k^{\xi,\eta}_t(r)=\xi(r)\overline{\eta(r-t)},\qquad
+T_{\xi,\eta}=I(k^{\xi,\eta}). \tag{R9}$$</span></p>
+<p>The function <span class="math" data-tex="\((r,t)\mapsto k^{\xi,\eta}_t(r)\)">\((r,t)\mapsto k^{\xi,\eta}_t(r)\)</span> is continuous and has compact support, since its support is contained in the image of
+<span class="math" data-tex="\(\operatorname{supp}\xi\times\operatorname{supp}\eta\)">\(\operatorname{supp}\xi\times\operatorname{supp}\eta\)</span> under <span class="math" data-tex="\((r,v)\mapsto(r,r-v)\)">\((r,v)\mapsto(r,r-v)\)</span>.
+It follows that <span class="math" data-tex="\(t\mapsto k^{\xi,\eta}_t\)">\(t\mapsto k^{\xi,\eta}_t\)</span> is norm continuous into <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>: on a fixed compact set of possible <span class="math" data-tex="\(r\)">\(r\)</span>'s, continuity and a finite-subcover argument give uniform continuity with respect to a moving <span class="math" data-tex="\(t\)">\(t\)</span> at each fixed <span class="math" data-tex="\(t_0\)">\(t_0\)</span>; outside that compact set the functions vanish. Its <span class="math" data-tex="\(t\)">\(t\)</span>-support is compact. Thus (R7) applies.</p>
+<p>Our inner products are linear in the first variable. For the canonical pair <span class="math" data-tex="\((M_h,L_t)\)">\((M_h,L_t)\)</span>, a change of variable <span class="math" data-tex="\(v=r-t\)">\(v=r-t\)</span> gives</p>
+<p><a id="equation-r10"></a></p>
+<p><span class="math math-display" data-tex="$$[T_{\xi,\eta}f](r)
+=\int_G\xi(r)\overline{\eta(r-t)}f(r-t)\,dt
+=\langle f,\eta\rangle\xi(r). \tag{R10}$$">$$[T_{\xi,\eta}f](r)
+=\int_G\xi(r)\overline{\eta(r-t)}f(r-t)\,dt
+=\langle f,\eta\rangle\xi(r). \tag{R10}$$</span></p>
+<p>The following identities hold in every covariant pair:</p>
+<p><a id="equation-r11"></a></p>
+<p><span class="math math-display" data-tex="$$T_{\xi,\eta}^*=T_{\eta,\xi},\qquad
+T_{\xi,\eta}T_{\zeta,\omega}
+=\langle\zeta,\eta\rangle T_{\xi,\omega}. \tag{R11}$$">$$T_{\xi,\eta}^*=T_{\eta,\xi},\qquad
+T_{\xi,\eta}T_{\zeta,\omega}
+=\langle\zeta,\eta\rangle T_{\xi,\omega}. \tag{R11}$$</span></p>
+<p><strong>Proof.</strong> Covariance and compact-support Fubini give the product rule</p>
+<p><a id="equation-r12"></a></p>
+<p><span class="math math-display" data-tex="$$I(k)I(l)=I(k*l),\qquad
+(k*l)_q(r)=\int_G k_t(r)l_{q-t}(r-t)\,dt. \tag{R12}$$">$$I(k)I(l)=I(k*l),\qquad
+(k*l)_q(r)=\int_G k_t(r)l_{q-t}(r-t)\,dt. \tag{R12}$$</span></p>
+<p>Indeed <span class="math" data-tex="\(\pi(k_t)U_t\pi(l_v)U_v
+=\pi(k_t\tau_t(l_v))U_{t+v}\)">\(\pi(k_t)U_t\pi(l_v)U_v
+=\pi(k_t\tau_t(l_v))U_{t+v}\)</span>; set <span class="math" data-tex="\(q=t+v\)">\(q=t+v\)</span> in the double integral. These operations can first be checked between two vectors, with the scalar integrand bounded and supported on a compact set, and then identified as bounded operators by (R7).</p>
+<p>For the kernels in (R9), the integral in (R12) is</p>
+<p><span class="math math-display" data-tex="$$\xi(r)\overline{\omega(r-q)}
+\int_G\overline{\eta(r-t)}\zeta(r-t)\,dt
+=\langle\zeta,\eta\rangle k^{\xi,\omega}_q(r).$$">$$\xi(r)\overline{\omega(r-q)}
+\int_G\overline{\eta(r-t)}\zeta(r-t)\,dt
+=\langle\zeta,\eta\rangle k^{\xi,\omega}_q(r).$$</span></p>
+<p>The adjoint rule is <span class="math" data-tex="\(I(k)^*=I(k^\star)\)">\(I(k)^*=I(k^\star)\)</span>, where</p>
+<p><span class="math math-display" data-tex="$$k^\star_t(r)=\overline{k_{-t}(r-t)}.$$">$$k^\star_t(r)=\overline{k_{-t}(r-t)}.$$</span></p>
+<p>It follows by writing <span class="math" data-tex="\(U_{-t}\pi(\overline{k_t})\)">\(U_{-t}\pi(\overline{k_t})\)</span>, moving the coefficient to the left with (R8), and changing <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(-t\)">\(-t\)</span>. For (R9), this is <span class="math" data-tex="\(k^{\eta,\xi}\)">\(k^{\eta,\xi}\)</span>. The identities (R11) follow. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Two more identities will identify the generators:</p>
+<p><a id="equation-r13"></a></p>
+<p><span class="math math-display" data-tex="$$\pi(h)T_{\xi,\eta}=T_{h\xi,\eta},\qquad
+U_sT_{\xi,\eta}=T_{L_s\xi,\eta}. \tag{R13}$$">$$\pi(h)T_{\xi,\eta}=T_{h\xi,\eta},\qquad
+U_sT_{\xi,\eta}=T_{L_s\xi,\eta}. \tag{R13}$$</span></p>
+<p>The first follows by multiplication of <span class="math" data-tex="\(k_t(r)\)">\(k_t(r)\)</span> by <span class="math" data-tex="\(h(r)\)">\(h(r)\)</span>. For the second, put <span class="math" data-tex="\(q=s+t\)">\(q=s+t\)</span>; the translated kernel becomes</p>
+<p><span class="math math-display" data-tex="$$\tau_s(k^{\xi,\eta}_{q-s})(r)
+=\xi(r-s)\overline{\eta(r-q)},$$">$$\tau_s(k^{\xi,\eta}_{q-s})(r)
+=\xi(r-s)\overline{\eta(r-q)},$$</span></p>
+<p>which is <span class="math" data-tex="\(k^{L_s\xi,\eta}_q(r)\)">\(k^{L_s\xi,\eta}_q(r)\)</span>. This proves both formulas, including their factor order.</p>
+<p><span id="OA-FLOW.WRC.NORM"></span><a id="wr-norm"></a></p>
+<h2 id="the-compact-operator-norm-estimate">The compact-operator norm estimate</h2>
+<p>Write <span class="math" data-tex="\(\theta_{\xi,\eta}f=\langle f,\eta\rangle\xi\)">\(\theta_{\xi,\eta}f=\langle f,\eta\rangle\xi\)</span> on <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>. The finite linear span</p>
+<p><span class="math math-display" data-tex="$$\mathcal F_c=\operatorname{span}\{\theta_{\xi,\eta}:\xi,\eta\in C_c(G)\}$$">$$\mathcal F_c=\operatorname{span}\{\theta_{\xi,\eta}:\xi,\eta\in C_c(G)\}$$</span></p>
+<p>is a star algebra of finite-rank operators. Define on these generators</p>
+<p><a id="equation-r14"></a></p>
+<p><span class="math math-display" data-tex="$$\rho(\theta_{\xi,\eta})=T_{\xi,\eta}. \tag{R14}$$">$$\rho(\theta_{\xi,\eta})=T_{\xi,\eta}. \tag{R14}$$</span></p>
+<p><strong>Lemma.</strong> This defines a contractive star homomorphism <span class="math" data-tex="\(\mathcal F_c\to B(H)\)">\(\mathcal F_c\to B(H)\)</span>, which extends uniquely to a star homomorphism</p>
+<p><a id="equation-r15"></a></p>
+<p><span class="math math-display" data-tex="$$\rho:\mathcal K(L^2(G))\longrightarrow B(H). \tag{R15}$$">$$\rho:\mathcal K(L^2(G))\longrightarrow B(H). \tag{R15}$$</span></p>
+<p><strong>Proof.</strong> For a finite collection of <span class="math" data-tex="\(\xi\)">\(\xi\)</span>'s and <span class="math" data-tex="\(\eta\)">\(\eta\)</span>'s, take an orthonormal basis <span class="math" data-tex="\(e_1,\ldots,e_n\)">\(e_1,\ldots,e_n\)</span> of their finite-dimensional span. Gram–Schmidt uses finite linear combinations, so every <span class="math" data-tex="\(e_i\)">\(e_i\)</span> is still in <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>. Expressing both <span class="math" data-tex="\(\theta_{\xi,\eta}\)">\(\theta_{\xi,\eta}\)</span> and <span class="math" data-tex="\(T_{\xi,\eta}\)">\(T_{\xi,\eta}\)</span> in that basis is sesquilinear in the same variables. A linear relation between the finite-rank operators has zero scalar matrix in this basis and hence gives a zero relation between the <span class="math" data-tex="\(T\)">\(T\)</span>'s. Thus (R14) is well defined. Equations (R11) prove the star and multiplication laws.</p>
+<p>Put <span class="math" data-tex="\(E_{ij}=T_{e_i,e_j}\)">\(E_{ij}=T_{e_i,e_j}\)</span> and <span class="math" data-tex="\(P=\sum_iE_{ii}\)">\(P=\sum_iE_{ii}\)</span>. The matrix-unit relations give <span class="math" data-tex="\(P=P^*=P^2\)">\(P=P^*=P^2\)</span>. For a scalar matrix <span class="math" data-tex="\(a=(a_{ij})\)">\(a=(a_{ij})\)</span>, put <span class="math" data-tex="\(\rho_n(a)=\sum a_{ij}E_{ij}\)">\(\rho_n(a)=\sum a_{ij}E_{ij}\)</span>. If <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>, write <span class="math" data-tex="\(a=b^*b\)">\(a=b^*b\)</span>; then <span class="math" data-tex="\(\rho_n(a)=\rho_n(b)^*\rho_n(b)\ge0\)">\(\rho_n(a)=\rho_n(b)^*\rho_n(b)\ge0\)</span>. Apply this to <span class="math" data-tex="\(\|a\|^2 1-a^*a\)">\(\|a\|^2 1-a^*a\)</span> to obtain</p>
+<p><span class="math math-display" data-tex="$$\rho_n(a)^*\rho_n(a)\le\|a\|^2P\le\|a\|^2 1.$$">$$\rho_n(a)^*\rho_n(a)\le\|a\|^2P\le\|a\|^2 1.$$</span></p>
+<p>Consequently <span class="math" data-tex="\(\|\rho_n(a)\|\le\|a\|\)">\(\|\rho_n(a)\|\le\|a\|\)</span>, which is the desired bound for every element of <span class="math" data-tex="\(\mathcal F_c\)">\(\mathcal F_c\)</span>.</p>
+<p>The density of <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> in <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>, together with
+<span class="math" data-tex="\(\|\theta_{\xi,\eta}\|\le\|\xi\|\,\|\eta\|\)">\(\|\theta_{\xi,\eta}\|\le\|\xi\|\,\|\eta\|\)</span>, shows that <span class="math" data-tex="\(\mathcal F_c\)">\(\mathcal F_c\)</span> is norm dense in the compact operators. Extend by the proved contraction estimate; continuity of multiplication and adjoints preserves the star homomorphism laws. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof allows arbitrary Hilbert dimension. Every norm estimate took place in a finite scalar matrix algebra before completion.</p>
+<p><span id="OA-FLOW.WRC.NONDEGENERATE"></span><a id="wr-nondegenerate"></a></p>
+<h2 id="compact-kernels-reach-the-whole-representation">Compact kernels reach the whole representation</h2>
+<p><strong>Lemma.</strong> The closed span of <span class="math" data-tex="\(\rho(\mathcal K(L^2(G)))H\)">\(\rho(\mathcal K(L^2(G)))H\)</span> is <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(L\)">\(L\)</span> denote that closed span. Fix <span class="math" data-tex="\(h,\varphi\in C_c(G)\)">\(h,\varphi\in C_c(G)\)</span>. The operator <span class="math" data-tex="\(\pi(h)U(\varphi)\)">\(\pi(h)U(\varphi)\)</span>, where <span class="math" data-tex="\(U(\varphi)=\int\varphi(t)U_t\,dt\)">\(U(\varphi)=\int\varphi(t)U_t\,dt\)</span>, is <span class="math" data-tex="\(I(k)\)">\(I(k)\)</span> for <span class="math" data-tex="\(k_t(r)=h(r)\varphi(t)\)">\(k_t(r)=h(r)\varphi(t)\)</span>. In coordinates <span class="math" data-tex="\(v=r-t\)">\(v=r-t\)</span>, its scalar kernel is</p>
+<p><a id="equation-r16"></a></p>
+<p><span class="math math-display" data-tex="$$F(r,v)=h(r)\varphi(r-v), \tag{R16}$$">$$F(r,v)=h(r)\varphi(r-v), \tag{R16}$$</span></p>
+<p>a compactly supported continuous function on <span class="math" data-tex="\(G\times G\)">\(G\times G\)</span>.</p>
+<p>We spell out the approximation needed here. Choose <span class="math" data-tex="\(a,b\in C_c(G)\)">\(a,b\in C_c(G)\)</span>, valued in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, equal to one on the two coordinate projections of <span class="math" data-tex="\(\operatorname{supp}F\)">\(\operatorname{supp}F\)</span>. Put <span class="math" data-tex="\(A=\operatorname{supp}a\)">\(A=\operatorname{supp}a\)</span> and <span class="math" data-tex="\(B=\operatorname{supp}b\)">\(B=\operatorname{supp}b\)</span>. By Stone–Weierstrass on <span class="math" data-tex="\(A\times B\)">\(A\times B\)</span>, finite sums of products of restrictions of compactly supported continuous functions approximate <span class="math" data-tex="\(F\)">\(F\)</span> uniformly there. These products separate points and contain the constant function on this compact set, because a compact set has a compactly supported cutoff equal to one on it. Multiply the approximating sums by <span class="math" data-tex="\(a(r)b(v)\)">\(a(r)b(v)\)</span>. Since <span class="math" data-tex="\(abF=F\)">\(abF=F\)</span>, the resulting functions have the form</p>
+<p><span class="math math-display" data-tex="$$F_n(r,v)=\sum_j\xi_{nj}(r)\overline{\eta_{nj}(v)},$$">$$F_n(r,v)=\sum_j\xi_{nj}(r)\overline{\eta_{nj}(v)},$$</span></p>
+<p>are supported in the fixed compact set <span class="math" data-tex="\(A\times B\)">\(A\times B\)</span>, and converge uniformly to <span class="math" data-tex="\(F\)">\(F\)</span> on all <span class="math" data-tex="\(G\times G\)">\(G\times G\)</span>.</p>
+<p>Return to <span class="math" data-tex="\(k_t(r)=F(r,r-t)\)">\(k_t(r)=F(r,r-t)\)</span>. The approximating coefficient functions
+<span class="math" data-tex="\(k_{n,t}(r)=F_n(r,r-t)\)">\(k_{n,t}(r)=F_n(r,r-t)\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span> vanish for <span class="math" data-tex="\(t\notin A-B\)">\(t\notin A-B\)</span>. Hence</p>
+<p><a id="equation-r17"></a></p>
+<p><span class="math math-display" data-tex="$$\int_G\|k_{n,t}-k_t\|_\infty\,dt
+\le \mu(A-B)\,\|F_n-F\|_\infty\longrightarrow0. \tag{R17}$$">$$\int_G\|k_{n,t}-k_t\|_\infty\,dt
+\le \mu(A-B)\,\|F_n-F\|_\infty\longrightarrow0. \tag{R17}$$</span></p>
+<p>The compact set <span class="math" data-tex="\(A-B\)">\(A-B\)</span> has finite Haar measure. Formula (R7) now gives</p>
+<p><span class="math math-display" data-tex="$$\pi(h)U(\varphi)
+=\lim_n\sum_jT_{\xi_{nj},\eta_{nj}}$$">$$\pi(h)U(\varphi)
+=\lim_n\sum_jT_{\xi_{nj},\eta_{nj}}$$</span></p>
+<p>in operator norm. Its range is contained in <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>For an approximate identity <span class="math" data-tex="\(\varphi_j\)">\(\varphi_j\)</span> supported near zero, strong continuity of <span class="math" data-tex="\(U\)">\(U\)</span> gives <span class="math" data-tex="\(U(\varphi_j)\to1\)">\(U(\varphi_j)\to1\)</span> strongly: for each <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math" data-tex="\(\|U(\varphi_j)v-v\|\le\sup_{t\in\operatorname{supp}\varphi_j}\|U_tv-v\|\)">\(\|U(\varphi_j)v-v\|\le\sup_{t\in\operatorname{supp}\varphi_j}\|U_tv-v\|\)</span>.
+Thus <span class="math" data-tex="\(\pi(h)H\subset L\)">\(\pi(h)H\subset L\)</span>. Nondegeneracy of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and the norm density of <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> in <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>, imply <span class="math" data-tex="\(L=H\)">\(L=H\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same proof shows that the von Neumann algebra generated by <span class="math" data-tex="\(\rho(\mathcal K)\)">\(\rho(\mathcal K)\)</span> is the one generated by <span class="math" data-tex="\(\pi(C_0(G))\)">\(\pi(C_0(G))\)</span> and <span class="math" data-tex="\(U(G)\)">\(U(G)\)</span>. One containment follows from (R7). For the other, the norm limit above and then the strong limit in <span class="math" data-tex="\(\varphi_j\)">\(\varphi_j\)</span> place every <span class="math" data-tex="\(\pi(h)\)">\(\pi(h)\)</span> in <span class="math" data-tex="\(\rho(\mathcal K)''\)">\(\rho(\mathcal K)''\)</span>. A cutoff net <span class="math" data-tex="\(h_i\)">\(h_i\)</span> with <span class="math" data-tex="\(\pi(h_i)\to1\)">\(\pi(h_i)\to1\)</span> puts every <span class="math" data-tex="\(U(\varphi)\)">\(U(\varphi)\)</span> there as well. Approximate identities translated to <span class="math" data-tex="\(s\)">\(s\)</span> give <span class="math" data-tex="\(U_s\)">\(U_s\)</span> as strong limits of such operators.</p>
+<p><span id="OA-FLOW.WRC.UNITARY"></span><a id="wr-unitary"></a></p>
+<h2 id="building-the-multiplicity-unitary">Building the multiplicity unitary</h2>
+<p>Choose <span class="math" data-tex="\(e_0\in C_c(G)\)">\(e_0\in C_c(G)\)</span> with <span class="math" data-tex="\(\|e_0\|_2=1\)">\(\|e_0\|_2=1\)</span>, and put</p>
+<p><a id="equation-r18"></a></p>
+<p><span class="math math-display" data-tex="$$P_0=T_{e_0,e_0},\qquad E=P_0H. \tag{R18}$$">$$P_0=T_{e_0,e_0},\qquad E=P_0H. \tag{R18}$$</span></p>
+<p>The identities (R11) make <span class="math" data-tex="\(P_0\)">\(P_0\)</span> an orthogonal projection. It is nonzero. Indeed, if <span class="math" data-tex="\(P_0=0\)">\(P_0=0\)</span>, then
+<span class="math" data-tex="\(T_{\xi,e_0}^*T_{\xi,e_0}=\|\xi\|_2^2P_0=0\)">\(T_{\xi,e_0}^*T_{\xi,e_0}=\|\xi\|_2^2P_0=0\)</span>, so <span class="math" data-tex="\(T_{\xi,e_0}=0\)">\(T_{\xi,e_0}=0\)</span>. Factoring
+<span class="math" data-tex="\(T_{\xi,\eta}=T_{\xi,e_0}T_{e_0,\eta}\)">\(T_{\xi,\eta}=T_{\xi,e_0}T_{e_0,\eta}\)</span> would then make every <span class="math" data-tex="\(T\)">\(T\)</span> zero, contradicting the preceding nondegeneracy lemma and <span class="math" data-tex="\(H\ne0\)">\(H\ne0\)</span>.</p>
+<p>For <span class="math" data-tex="\(\xi\in C_c(G)\)">\(\xi\in C_c(G)\)</span> and <span class="math" data-tex="\(e\in E\)">\(e\in E\)</span>, define</p>
+<p><a id="equation-r19"></a></p>
+<p><span class="math math-display" data-tex="$$W(\xi\otimes e)=T_{\xi,e_0}e. \tag{R19}$$">$$W(\xi\otimes e)=T_{\xi,e_0}e. \tag{R19}$$</span></p>
+<p>For <span class="math" data-tex="\(\xi,\zeta\in C_c(G)\)">\(\xi,\zeta\in C_c(G)\)</span> and <span class="math" data-tex="\(e,f\in E\)">\(e,f\in E\)</span>, the matrix-unit relations give</p>
+<p><a id="equation-r20"></a></p>
+<p><span class="math math-display" data-tex="$$\langle T_{\xi,e_0}e,T_{\zeta,e_0}f\rangle
+=\langle\xi,\zeta\rangle\langle e,f\rangle. \tag{R20}$$">$$\langle T_{\xi,e_0}e,T_{\zeta,e_0}f\rangle
+=\langle\xi,\zeta\rangle\langle e,f\rangle. \tag{R20}$$</span></p>
+<p>Therefore (R19), extended linearly to finite sums, is an isometry on the algebraic tensor product and extends to <span class="math" data-tex="\(L^2(G)\otimes E\)">\(L^2(G)\otimes E\)</span>.</p>
+<p>Its range is all <span class="math" data-tex="\(H\)">\(H\)</span>. Every vector <span class="math" data-tex="\(T_{\xi,\eta}v\)">\(T_{\xi,\eta}v\)</span> can be written</p>
+<p><span class="math math-display" data-tex="$$T_{\xi,\eta}v=T_{\xi,e_0}(T_{e_0,\eta}v),$$">$$T_{\xi,\eta}v=T_{\xi,e_0}(T_{e_0,\eta}v),$$</span></p>
+<p>and <span class="math" data-tex="\(T_{e_0,\eta}v\in E\)">\(T_{e_0,\eta}v\in E\)</span>, because <span class="math" data-tex="\(P_0T_{e_0,\eta}=T_{e_0,\eta}\)">\(P_0T_{e_0,\eta}=T_{e_0,\eta}\)</span>. The range of the extended isometry is closed and contains a dense set by nondegeneracy, proving surjectivity.</p>
+<p>Equations (R13) imply</p>
+<p><a id="equation-r21"></a></p>
+<p><span class="math math-display" data-tex="$$\pi(h)W=W(M_h\otimes1),\qquad
+U_sW=W(L_s\otimes1). \tag{R21}$$">$$\pi(h)W=W(M_h\otimes1),\qquad
+U_sW=W(L_s\otimes1). \tag{R21}$$</span></p>
+<p>Using (R6) with <span class="math" data-tex="\(b=\overline\chi\)">\(b=\overline\chi\)</span> gives the second family <span class="math" data-tex="\(V_\chi W=W(Q_\chi\otimes1)\)">\(V_\chi W=W(Q_\chi\otimes1)\)</span>. This proves (R3).</p>
+<p>Under <span class="math" data-tex="\(W\)">\(W\)</span>, every <span class="math" data-tex="\(T_{\xi,\eta}\)">\(T_{\xi,\eta}\)</span> becomes <span class="math" data-tex="\(\theta_{\xi,\eta}\otimes1\)">\(\theta_{\xi,\eta}\otimes1\)</span>. The compact operators generate <span class="math" data-tex="\(B(L^2(G))\)">\(B(L^2(G))\)</span>: an operator commuting with all rank-one operators is scalar, and <a href="OA-FLOW-BD.html#oa-flow.bd.1">BD1</a>'s bicommutant theorem gives the assertion. Combining the preceding generated-algebra identity with the spectral lemma's proved commutant identity proves (R4). For the tensor commutant, <a href="OA-FLOW-NCF.html#ncf-1">NCF1</a> applied to the scalar algebra on <span class="math" data-tex="\(E\)">\(E\)</span> gives <span class="math" data-tex="\((B(E)\otimes1_L)'=1_E\otimes B(L)\)">\((B(E)\otimes1_L)'=1_E\otimes B(L)\)</span>, where <span class="math" data-tex="\(L=L^2(G)\)">\(L=L^2(G)\)</span>. The flip unitary is isometric on elementary tensors by their inner products and onto by density. Flipping and taking commutants therefore yields <span class="math" data-tex="\((B(L)\otimes1_E)'=1_L\otimes B(E)\)">\((B(L)\otimes1_E)'=1_L\otimes B(E)\)</span>. This proves the tensor assertion for arbitrary <span class="math" data-tex="\(L,E\)">\(L,E\)</span>.</p>
+<p>Finally, <span class="math" data-tex="\(P_0\)">\(P_0\)</span> becomes <span class="math" data-tex="\(\theta_{e_0,e_0}\otimes1_E\)">\(\theta_{e_0,e_0}\otimes1_E\)</span>, so its range has dimension <span class="math" data-tex="\(\dim E\)">\(\dim E\)</span>. Every unitary equivalence of Weyl pairs intertwines their spectral representations by uniqueness, hence their <span class="math" data-tex="\(T\)">\(T\)</span>'s and <span class="math" data-tex="\(P_0\)">\(P_0\)</span>'s. This proves uniqueness of the multiplicity dimension. All arguments use arbitrary Hilbert spaces and nets where needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="OA-FLOW.WRC.MODELS"></span><a id="wr-models"></a></p>
+<h2 id="finite-clocks-and-infinite-translations">Finite clocks and infinite translations</h2>
+<p>For <span class="math" data-tex="\(G=\mathbb Z/5\mathbb Z\)">\(G=\mathbb Z/5\mathbb Z\)</span> with counting measure, let <span class="math" data-tex="\(H=\mathbb C^5\otimes\mathbb C^2\)">\(H=\mathbb C^5\otimes\mathbb C^2\)</span>, with basis vectors <span class="math" data-tex="\(\delta_r\)">\(\delta_r\)</span> in the first factor. Put</p>
+<p><span class="math math-display" data-tex="$$U_s(\delta_r\otimes e)=\delta_{r+s}\otimes e,\qquad
+V_k(\delta_r\otimes e)=e^{-2\pi i kr/5}\delta_r\otimes e.$$">$$U_s(\delta_r\otimes e)=\delta_{r+s}\otimes e,\qquad
+V_k(\delta_r\otimes e)=e^{-2\pi i kr/5}\delta_r\otimes e.$$</span></p>
+<p>The character is <span class="math" data-tex="\(\chi_k(s)=e^{2\pi i ks/5}\)">\(\chi_k(s)=e^{2\pi i ks/5}\)</span>, and the pair obeys (R1). Its compact-kernel operator is</p>
+<p><a id="equation-r22"></a></p>
+<p><span class="math math-display" data-tex="$$T_{\delta_r,\delta_v}=\pi(1_{\{r\}})U_{r-v}
+=\theta_{\delta_r,\delta_v}\otimes1_{\mathbb C^2}. \tag{R22}$$">$$T_{\delta_r,\delta_v}=\pi(1_{\{r\}})U_{r-v}
+=\theta_{\delta_r,\delta_v}\otimes1_{\mathbb C^2}. \tag{R22}$$</span></p>
+<p>Thus <span class="math" data-tex="\(P_0\)">\(P_0\)</span> for <span class="math" data-tex="\(e_0=\delta_0\)">\(e_0=\delta_0\)</span> has a two-dimensional range. The joint generated algebra is <span class="math" data-tex="\(M_5(\mathbb C)\otimes1\)">\(M_5(\mathbb C)\otimes1\)</span>, with commutant <span class="math" data-tex="\(1\otimes M_2(\mathbb C)\)">\(1\otimes M_2(\mathbb C)\)</span>.</p>
+<p>For <span class="math" data-tex="\(G=\mathbb Z\)">\(G=\mathbb Z\)</span>, the dual group is the circle. On <span class="math" data-tex="\(\ell^2(\mathbb Z)\)">\(\ell^2(\mathbb Z)\)</span>,</p>
+<p><span class="math math-display" data-tex="$$U_s\delta_n=\delta_{n+s},\qquad V_z\delta_n=z^{-n}\delta_n.$$">$$U_s\delta_n=\delta_{n+s},\qquad V_z\delta_n=z^{-n}\delta_n.$$</span></p>
+<p>This pair is irreducible by the theorem. There is no nonzero finite-dimensional Weyl pair for these full groups: on a <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional space the relation for <span class="math" data-tex="\(s=1\)">\(s=1\)</span> would give
+<span class="math" data-tex="\(\det(U_1V_zU_1^*)=\det(zV_z)=z^d\det(V_z)\)">\(\det(U_1V_zU_1^*)=\det(zV_z)=z^d\det(V_z)\)</span>, so <span class="math" data-tex="\(z^d=1\)">\(z^d=1\)</span> for every <span class="math" data-tex="\(z\in\mathbb T\)">\(z\in\mathbb T\)</span>, impossible when <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>.</p>
+<p>For <span class="math" data-tex="\(G=\mathbb R\)">\(G=\mathbb R\)</span>, the normalized tent</p>
+<p><span class="math math-display" data-tex="$$e_a(r)=\sqrt{\frac{3}{2a}}\left(1-\frac{|r|}{a}\right)_+
+\qquad(a&gt;0)$$">$$e_a(r)=\sqrt{\frac{3}{2a}}\left(1-\frac{|r|}{a}\right)_+
+\qquad(a&gt;0)$$</span></p>
+<p>has <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm one. In a canonical pair with multiplicity <span class="math" data-tex="\(E\)">\(E\)</span>, the operator <span class="math" data-tex="\(T_{e_a,e_a}\)">\(T_{e_a,e_a}\)</span> projects onto <span class="math" data-tex="\(e_a\otimes E\)">\(e_a\otimes E\)</span>. Changing <span class="math" data-tex="\(a\)">\(a\)</span> changes the particular range subspace while preserving its Hilbert dimension.</p>
+<p><span id="OA-FLOW.WRC.EXERCISES"></span><a id="wr-exercises"></a></p>
+<h2 id="problems-with-complete-solutions">Problems with complete solutions</h2>
+<h3 id="a-determine-the-correct-projection-for-multiplicity">A. Determine the correct projection for multiplicity</h3>
+<p>In the finite model (R22), compare a minimal projection in the generated algebra with a minimal projection in its commutant.</p>
+<p><strong>Solution.</strong> A minimal projection of <span class="math" data-tex="\(M_5(\mathbb C)\otimes1_{\mathbb C^2}\)">\(M_5(\mathbb C)\otimes1_{\mathbb C^2}\)</span> is <span class="math" data-tex="\(p\otimes1\)">\(p\otimes1\)</span>, with <span class="math" data-tex="\(p\)">\(p\)</span> rank one on <span class="math" data-tex="\(\mathbb C^5\)">\(\mathbb C^5\)</span>. Its range has dimension two, the multiplicity. A minimal projection of <span class="math" data-tex="\(1\otimes M_2(\mathbb C)\)">\(1\otimes M_2(\mathbb C)\)</span> is <span class="math" data-tex="\(1\otimes q\)">\(1\otimes q\)</span>, with <span class="math" data-tex="\(q\)">\(q\)</span> rank one. Its range has dimension five. The projection in (R18) belongs to the generated algebra and recovers the correct factor.</p>
+<h3 id="b-track-haar-rescaling">B. Track Haar rescaling</h3>
+<p>Replace Haar measure <span class="math" data-tex="\(dr\)">\(dr\)</span> by <span class="math" data-tex="\(c\,dr\)">\(c\,dr\)</span>, where <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, without changing <span class="math" data-tex="\((\pi,U)\)">\((\pi,U)\)</span>. Relate the projection used to construct <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Solution.</strong> The unit vector becomes <span class="math" data-tex="\(e_0^{(c)}=c^{-1/2}e_0\)">\(e_0^{(c)}=c^{-1/2}e_0\)</span>. Its kernel in (R9) is multiplied by <span class="math" data-tex="\(c^{-1}\)">\(c^{-1}\)</span>, while the integral defining <span class="math" data-tex="\(T\)">\(T\)</span> is multiplied by <span class="math" data-tex="\(c\)">\(c\)</span>. Thus <span class="math" data-tex="\(P_0^{(c)}=P_0\)">\(P_0^{(c)}=P_0\)</span>, so the recovered <span class="math" data-tex="\(E\)">\(E\)</span> is unchanged. The unitary <span class="math" data-tex="\(L^2(G,c\,dr)\to L^2(G,dr)\)">\(L^2(G,c\,dr)\to L^2(G,dr)\)</span> is <span class="math" data-tex="\(\xi\mapsto c^{1/2}\xi\)">\(\xi\mapsto c^{1/2}\xi\)</span>. This accounts for the change of normalization without choosing a Haar measure on the dual group.</p>
+<h3 id="c-why-finite-rank-relations-are-enough">C. Why finite-rank relations are enough</h3>
+<p>Suppose two finite sums of rank-one operators with vectors in <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> define the same operator on <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>. Explain why they define the same operator under (R14), even before its norm bound is proved.</p>
+<p><strong>Solution.</strong> Take the finite-dimensional span of every vector appearing in both sums. Gram–Schmidt provides an orthonormal basis inside <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>. Rewrite both sums as matrices in that basis. Their difference acts as zero on each basis vector, so every scalar matrix entry vanishes. Sesquilinearity rewrites the corresponding difference of the <span class="math" data-tex="\(T\)">\(T\)</span>'s using those same zero coefficients. The conclusion is algebraic; the later contraction estimate is used only for completion.</p>
+<h3 id="d-remove-nondegeneracy-from-the-intermediate-covariant-pair">D. Remove nondegeneracy from the intermediate covariant pair</h3>
+<p>For a possibly degenerate representation <span class="math" data-tex="\(\pi:C_0(G)\to B(H)\)">\(\pi:C_0(G)\to B(H)\)</span> satisfying (R8), identify the portion where the proof applies.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(H_{\rm ess}=\overline{\pi(C_0(G))H}\)">\(H_{\rm ess}=\overline{\pi(C_0(G))H}\)</span>. It reduces <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> vanishes on its orthogonal complement. Covariance implies that <span class="math" data-tex="\(U_sH_{\rm ess}=H_{\rm ess}\)">\(U_sH_{\rm ess}=H_{\rm ess}\)</span>, so this subspace also reduces <span class="math" data-tex="\(U\)">\(U\)</span>. The restricted pair is nondegenerate and has the multiplicity form proved above. On <span class="math" data-tex="\(H_{\rm ess}^\perp\)">\(H_{\rm ess}^\perp\)</span>, <span class="math" data-tex="\(U\)">\(U\)</span> can be any strongly continuous representation while all <span class="math" data-tex="\(T_{\xi,\eta}\)">\(T_{\xi,\eta}\)</span> vanish. This explains the exact role of nondegeneracy in (R17). A Weyl pair obtained from the abelian spectral theorem has <span class="math" data-tex="\(H_{\rm ess}=H\)">\(H_{\rm ess}=H\)</span>.</p>
+<h3 id="e-recover-a-finite-dimensional-divisibility-condition">E. Recover a finite-dimensional divisibility condition</h3>
+<p>For <span class="math" data-tex="\(G=\mathbb Z/5\mathbb Z\)">\(G=\mathbb Z/5\mathbb Z\)</span>, determine the possible positive finite dimensions of a Weyl pair and verify necessity directly.</p>
+<p><strong>Solution.</strong> The theorem gives <span class="math" data-tex="\(\dim H=5\dim E\)">\(\dim H=5\dim E\)</span>, and each positive multiple of five occurs by tensoring the canonical pair with a finite-dimensional multiplicity space. Directly, apply determinants to <span class="math" data-tex="\(U_1V_1U_1^*=\omega V_1\)">\(U_1V_1U_1^*=\omega V_1\)</span>, where <span class="math" data-tex="\(\omega=e^{2\pi i/5}\)">\(\omega=e^{2\pi i/5}\)</span>. Since <span class="math" data-tex="\(V_1\)">\(V_1\)</span> is invertible, the determinant identity gives <span class="math" data-tex="\(\omega^{\dim H}=1\)">\(\omega^{\dim H}=1\)</span>, so five divides <span class="math" data-tex="\(\dim H\)">\(\dim H\)</span>.</p>
+<p><a id="wr-sources"></a></p>
+<h2 id="reference-and-scope-of-recognition">Reference and scope of recognition</h2>
+<p>The same results are treated in Takesaki, <a href="https://doi.org/10.1007/978-3-662-10451-4"><em>Theory of Operator Algebras II</em></a>, X.2, Definition 2.1 and Proposition 2.2, printed pp257–259. Its conjugated character convention agrees with (R1)–(R2). The proof above retains the explicit spectral construction, compact-kernel algebra, finite-matrix norm bound, nondegeneracy argument and onto tensor map. A complementary rank-one/module perspective is Rieffel's freely available <a href="https://math.berkeley.edu/~rieffel/papers/rieffel-C-induced.pdf"><em>Induced representations of C*-algebras</em></a>, printed pp231–232 and239–240. The earlier <a href="OA-FLOW-WY.html#wy-2">WY2–5</a> develops that perspective with complete local proofs; its alternative is retained below. No external equivalence theorem supplies a missing local argument.</p>
+<p>The end of the native proof on p259 takes the range of a minimal projection in the commutant as the multiplicity factor. That factor is incorrect in general. In (R22), a minimal commutant projection has range dimension five; tensoring that range with <span class="math" data-tex="\(\mathbb C^5\)">\(\mathbb C^5\)</span> would give dimension twenty-five instead of the actual ten. A minimal projection in the generated algebra has the required two-dimensional range. The projection (R18) uses this corrected algebra, and Problem A checks both choices explicitly.</p>
+<p>This Hilbert-space recognition theorem complements normal double-duality constructions. The <a href="OA-FLOW-NR.html#oa-flow.nr.3">NR3–4</a> proofs concern faithful normal maps between concrete regular von Neumann crossed products and their full normal inverses. Here the original data are two strongly continuous unitary representations, and the recovered <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span> representation is a C* representation; no normal representation of a specified <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> algebra has been postulated. This theorem does not recognize a general dual system as a crossed product, prove integrability or dual-weight characterizations, or supply induced-system and equivariant-disintegration theorems. Those are separate obligations. Every foundational assertion used above has the stated earlier proof.</p>
+<p><span id="OA-FLOW.WRC.ALTERNATIVES"></span><a id="wr-alternatives"></a></p>
+<h2 id="reading-the-projection-and-retaining-the-second-route">Reading the projection and retaining the second route</h2>
+<p>The range of <span class="math" data-tex="\(P_0\)">\(P_0\)</span> measures multiplicity because it is minimal in the generated algebra, not because it is rank one on <span class="math" data-tex="\(H\)">\(H\)</span>. Indeed <span class="math" data-tex="\(W^*P_0W=\theta_{e_0,e_0}\otimes1_E\)">\(W^*P_0W=\theta_{e_0,e_0}\otimes1_E\)</span>, and compression of <span class="math" data-tex="\(B(L)\otimes1_E\)">\(B(L)\otimes1_E\)</span> by this projection is <span class="math" data-tex="\(\mathbb C(\theta_{e_0,e_0}\otimes1_E)\)">\(\mathbb C(\theta_{e_0,e_0}\otimes1_E)\)</span>: every compression of <span class="math" data-tex="\(b\in B(L)\)">\(b\in B(L)\)</span> is <span class="math" data-tex="\(\langle be_0,e_0\rangle\theta_{e_0,e_0}\)">\(\langle be_0,e_0\rangle\theta_{e_0,e_0}\)</span>. Thus <span class="math" data-tex="\(P_0\mathcal A P_0=\mathbb CP_0\)">\(P_0\mathcal A P_0=\mathbb CP_0\)</span>. A nonzero subprojection <span class="math" data-tex="\(q\leq P_0\)">\(q\leq P_0\)</span> in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> equals its compression, hence is a scalar multiple of <span class="math" data-tex="\(P_0\)">\(P_0\)</span>; the projection equation forces that scalar to be one. This proves minimality. In the commutant, the projection <span class="math" data-tex="\(1_L\otimes q\)">\(1_L\otimes q\)</span> onto any proper nonzero closed subspace of <span class="math" data-tex="\(E\)">\(E\)</span> reduces both unitary groups. If <span class="math" data-tex="\(\dim E=1\)">\(\dim E=1\)</span>, (R4) gives only scalar reducing projections. A closed invariant subspace for both groups reduces them because all inverses are in the groups, so irreducibility is exactly <span class="math" data-tex="\(\dim E=1\)">\(\dim E=1\)</span>.</p>
+<p>There is an independent existing programme route to the same recognition. <a href="OA-FLOW-WY.html#wy-1">WY1–4</a> constructs an onto unitary <span class="math" data-tex="\(W_+:L^2(G)\otimes E_+\to H\)">\(W_+:L^2(G)\otimes E_+\to H\)</span> with model operators
+<a id="equation-r23"></a></p>
+<p><span class="math math-display" data-tex="\[
+ (\rho_s\xi)(r)=\xi(r+s),\qquad (M_\chi\xi)(r)=\chi(r)\xi(r).
+ \tag{R23}
+\]">\[
+ (\rho_s\xi)(r)=\xi(r+s),\qquad (M_\chi\xi)(r)=\chi(r)\xi(r).
+ \tag{R23}
+\]</span>
+These are positive-character coordinates. Haar inversion preserves measure for abelian <span class="math" data-tex="\(G\)">\(G\)</span>, so <span class="math" data-tex="\(J\xi(r)=\xi(-r)\)">\(J\xi(r)=\xi(-r)\)</span> is an onto selfadjoint unitary on the complete Haar <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span> space. Direct evaluation gives
+<a id="equation-r24"></a></p>
+<p><span class="math math-display" data-tex="\[
+ J\rho_sJ=L_s,\qquad JM_\chi J=Q_\chi.
+ \tag{R24}
+\]">\[
+ J\rho_sJ=L_s,\qquad JM_\chi J=Q_\chi.
+ \tag{R24}
+\]</span>
+Consequently <span class="math" data-tex="\(W_+(J\otimes1)\)">\(W_+(J\otimes1)\)</span> gives exactly (R3), with the original <span class="math" data-tex="\(s,\chi\)">\(s,\chi\)</span> unchanged. The <a href="OA-FLOW-WY.html#wy-2">WY2</a> proof uses the full integrated coefficient algebra and its partition-independent finite-corner estimate; the proof in this chapter instead retains the direct <span class="math" data-tex="\(C_c\)">\(C_c\)</span> kernel algebra, its scalar finite-matrix norm proof and fixed-compact uniform approximation. Neither argument is discarded or silently identified with the other.</p>
+<p><a href="OA-FLOW-WY.html#wy-5">WY5</a> also gives all bounded simultaneous intertwiners. For completeness its short matrix-unit argument works directly in this chapter's signs. Between models <span class="math" data-tex="\(L\otimes E\)">\(L\otimes E\)</span> and <span class="math" data-tex="\(L\otimes F\)">\(L\otimes F\)</span>, integration and the spectral uniqueness lemma make a simultaneous intertwiner <span class="math" data-tex="\(C\)">\(C\)</span> intertwine all <span class="math" data-tex="\(\theta_{\xi,\eta}\otimes1\)">\(\theta_{\xi,\eta}\otimes1\)</span>. The projection <span class="math" data-tex="\(\theta_{e_0,e_0}\)">\(\theta_{e_0,e_0}\)</span> therefore gives
+<a id="equation-r25"></a></p>
+<p><span class="math math-display" data-tex="\[
+ C(e_0\otimes e)=e_0\otimes ce,\qquad c\in B(E,F),\quad
+ \|c\|\leq\|C\|.
+ \tag{R25}
+\]">\[
+ C(e_0\otimes e)=e_0\otimes ce,\qquad c\in B(E,F),\quad
+ \|c\|\leq\|C\|.
+ \tag{R25}
+\]</span>
+Commuting <span class="math" data-tex="\(\theta_{\xi,e_0}\)">\(\theta_{\xi,e_0}\)</span> across <span class="math" data-tex="\(C\)">\(C\)</span> gives <span class="math" data-tex="\(C(\xi\otimes e)=\xi\otimes ce\)">\(C(\xi\otimes e)=\xi\otimes ce\)</span>. Density gives <span class="math" data-tex="\(C=1_L\otimes c\)">\(C=1_L\otimes c\)</span> on the full tensor product. Conversely every such tensor operator is bounded by the Hilbert tensor estimate and intertwines both groups by their formulas. Thus simultaneous unitary equivalence is precisely unitary equivalence of multiplicity spaces, including <span class="math" data-tex="\(E=0\)">\(E=0\)</span> or <span class="math" data-tex="\(F=0\)">\(F=0\)</span>. This strengthens the dimension check without adding any normal crossed-product recognition assumption.</p>
+<p><a id="wr-figure"></a></p>
+<h2 id="OA-FLOW.WRC.FIGURE">Multiplicity is the range of a minimal generated-algebra projection</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Exact two-copy Weyl model and the two minimal projections" src="assets/weyl-recognition/assets/weyl-recognition.png" style="display:block;width:1280px;max-width:none"/></p>
+<p>This is the exact finite model in <a href="OA-FLOW-WRC.html#equation-r22">R22</a> and <a href="OA-FLOW-WRC.html#wr-exercises">Problem A</a>: <span class="math" data-tex="\(G=\mathbb Z/5\mathbb Z\)">\(G=\mathbb Z/5\mathbb Z\)</span>, counting Haar measure, <span class="math" data-tex="\(L=\mathbb C^5\)">\(L=\mathbb C^5\)</span>, <span class="math" data-tex="\(E=\mathbb C^2\)">\(E=\mathbb C^2\)</span>, <span class="math" data-tex="\(H=L\otimes E\)">\(H=L\otimes E\)</span>. The five characters are <span class="math" data-tex="\(\chi_k(r)=\omega^{kr}\)">\(\chi_k(r)=\omega^{kr}\)</span>, <span class="math" data-tex="\(\omega=e^{2\pi i/5}\)">\(\omega=e^{2\pi i/5}\)</span>. Paired dual Haar measure assigns mass <span class="math" data-tex="\(1/5\)">\(1/5\)</span> to each character. The displayed coordinates are <span class="math" data-tex="\(\delta_r\otimes f_a\)">\(\delta_r\otimes f_a\)</span>, <span class="math" data-tex="\(r\in\{0,\ldots,4\}\)">\(r\in\{0,\ldots,4\}\)</span>, <span class="math" data-tex="\(a\in\{0,1\}\)">\(a\in\{0,1\}\)</span>. The labels refer to vectors, not points of a ten-element group.</p>
+<p>The unitary actions have the chapter's original signs:
+<span class="math math-display" data-tex="\[
+ U_s(\delta_r\otimes f_a)=\delta_{r+s}\otimes f_a,\qquad
+ V_k(\delta_r\otimes f_a)=\omega^{-kr}\delta_r\otimes f_a.
+\]">\[
+ U_s(\delta_r\otimes f_a)=\delta_{r+s}\otimes f_a,\qquad
+ V_k(\delta_r\otimes f_a)=\omega^{-kr}\delta_r\otimes f_a.
+\]</span>
+All group indices are modulo five. Applying <span class="math" data-tex="\(U_sV_kU_s^*\)">\(U_sV_kU_s^*\)</span> to the basis vector gives <span class="math" data-tex="\(\omega^{-k(r-s)}=\omega^{ks}\omega^{-kr}\)">\(\omega^{-k(r-s)}=\omega^{ks}\omega^{-kr}\)</span>, so the Weyl scalar is exactly <span class="math" data-tex="\(\chi_k(s)=\omega^{ks}\)">\(\chi_k(s)=\omega^{ks}\)</span>.</p>
+<p>The spectral selectors and matrix units are
+<span class="math math-display" data-tex="\[
+ P_r=\frac15\sum_{k=0}^4\omega^{kr}V_k=E_{rr}\otimes I_2,\qquad
+ T_{rv}=P_rU_{r-v}=E_{rv}\otimes I_2.
+\]">\[
+ P_r=\frac15\sum_{k=0}^4\omega^{kr}V_k=E_{rr}\otimes I_2,\qquad
+ T_{rv}=P_rU_{r-v}=E_{rv}\otimes I_2.
+\]</span>
+The selector identity follows from the finite geometric sum: <span class="math" data-tex="\(\sum_{k=0}^4z^k=5\)">\(\sum_{k=0}^4z^k=5\)</span> for <span class="math" data-tex="\(z=1\)">\(z=1\)</span>, and is zero for any other fifth root because multiplication by <span class="math" data-tex="\(1-z\)">\(1-z\)</span> gives <span class="math" data-tex="\(1-z^5=0\)">\(1-z^5=0\)</span>. For the second identity, <span class="math" data-tex="\(U_{r-v}\)">\(U_{r-v}\)</span> moves row <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(r\)">\(r\)</span>, while <span class="math" data-tex="\(P_r\)">\(P_r\)</span> kills every other input row. Thus <span class="math" data-tex="\(T_{rv}T_{zw}=\delta_{vz}T_{rw}\)">\(T_{rv}T_{zw}=\delta_{vz}T_{rw}\)</span> and <span class="math" data-tex="\(T_{rv}^*=T_{vr}\)">\(T_{rv}^*=T_{vr}\)</span>.</p>
+<p>These matrix units generate <span class="math" data-tex="\(\mathcal A=M_5(\mathbb C)\otimes I_2\)">\(\mathcal A=M_5(\mathbb C)\otimes I_2\)</span>. Its commutant is <span class="math" data-tex="\(I_5\otimes M_2(\mathbb C)\)">\(I_5\otimes M_2(\mathbb C)\)</span>, by the actual full tensor proof used in <a href="OA-FLOW-WRC.html#equation-r4">R4</a>. Panel A shades <span class="math" data-tex="\(P_0H=\operatorname{span}\{\delta_0\otimes f_0,\delta_0\otimes f_1\}\)">\(P_0H=\operatorname{span}\{\delta_0\otimes f_0,\delta_0\otimes f_1\}\)</span>, whose dimension is two. Compression of every <span class="math" data-tex="\(b\otimes I_2\)">\(b\otimes I_2\)</span> by <span class="math" data-tex="\(P_0\)">\(P_0\)</span> is <span class="math" data-tex="\(\langle b\delta_0,\delta_0\rangle P_0\)">\(\langle b\delta_0,\delta_0\rangle P_0\)</span>. This proves <span class="math" data-tex="\(P_0\mathcal A P_0=\mathbb CP_0\)">\(P_0\mathcal A P_0=\mathbb CP_0\)</span> and minimality in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, while its rank on <span class="math" data-tex="\(H\)">\(H\)</span> is two.</p>
+<p>Panel B instead shades <span class="math" data-tex="\(QH=L\otimes\mathbb Cf_0\)">\(QH=L\otimes\mathbb Cf_0\)</span>, where <span class="math" data-tex="\(Q=I_5\otimes q\)">\(Q=I_5\otimes q\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> projects onto <span class="math" data-tex="\(\mathbb Cf_0\)">\(\mathbb Cf_0\)</span>. Its dimension is five. Compression of <span class="math" data-tex="\(I_5\otimes c\)">\(I_5\otimes c\)</span> gives <span class="math" data-tex="\(\langle cf_0,f_0\rangle Q\)">\(\langle cf_0,f_0\rangle Q\)</span>, so <span class="math" data-tex="\(Q\)">\(Q\)</span> is minimal in <span class="math" data-tex="\(\mathcal A'\)">\(\mathcal A'\)</span>. The two panels shade projections in different algebras; neither projection is rank one on <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Panel C is the exact onto map
+<span class="math math-display" data-tex="\[
+ W\bigl(\delta_r\otimes(\delta_0\otimes f_a)\bigr)
+       =T_{r0}(\delta_0\otimes f_a)=\delta_r\otimes f_a.
+\]">\[
+ W\bigl(\delta_r\otimes(\delta_0\otimes f_a)\bigr)
+       =T_{r0}(\delta_0\otimes f_a)=\delta_r\otimes f_a.
+\]</span>
+It sends an orthonormal basis to an orthonormal basis. Hence it is isometric and onto. <a href="OA-FLOW-WRC.html#equation-r19">R19–R21</a> prove the corresponding map on arbitrary Hilbert spaces by inner products, finite-rank density and closed range; the finite figure does not replace that proof.</p>
+<p>The <a href="assets/weyl-recognition/figure_recognition.py">original renderer</a> checks all 625 matrix-unit products, all 25 kernel identities and all five <span class="math" data-tex="\(U_1,V_k\)">\(U_1,V_k\)</span> Weyl identities. The <a href="assets/weyl-recognition/assets/weyl-recognition-data.json">stored data</a> contains the exact dimensions and supplementary floating-point residuals. The finite geometric-sum argument above is exact. PNG, SVG and data reproduce byte for byte. Diagram, caption and code are original CC0 expression.</p>
+<p>Human-source comparisons are Takesaki, <a href="https://doi.org/10.1007/978-3-662-10451-4"><em>Theory of Operator Algebras II</em></a>, X.2, Proposition 2.2, printed257–259, and Rieffel, <a href="https://math.berkeley.edu/~rieffel/papers/rieffel-C-induced.pdf"><em>Induced representations of C*-algebras</em></a>, printed231–232 and239–240. The two different projection ranges and all coordinate formulas are proved locally above.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-ND.html">Previous lesson</a><a href="OA-FLOW-AM.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-WRC.md">Lesson source</a></nav></main></body></html>

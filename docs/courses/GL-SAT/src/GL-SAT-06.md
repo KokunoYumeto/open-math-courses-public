@@ -333,6 +333,78 @@ i_*i^!K_\lambda\longrightarrow K_\lambda
 \]
 vanishes. Thus the remaining assertion is \(\partial\eta=0\). If it is proved, a lift \(u\) restricts to the identity on that dense open. Proper smooth-source duality makes \(K_\lambda\) self-dual; dualizing \(u\) gives \(v\) with identity open restriction. Equation (3.2) then forces \(vu=1\). Proper base change and (5.8) make the stalks of IC a direct summand in the correct parity, establishing (P). The vanishing of \(\partial\eta\) is unfinished here. The conditional deductions above do not assume it.
 
+### 5.4. A criterion using standard objects
+
+There is a second sufficient condition for semisimplicity, weaker than proving every stalk parity first. The weight functors are exact by Semi-infinite orbits and weight functors, §17; their faithful sum is proved independently in §6 below.
+
+**Proposition 5.3.** Suppose that the canonical map \(\Delta_\lambda\to IC_\lambda\) is an isomorphism for every label. Then the Satake heart is semisimple. It suffices to prove, for every \(\lambda,\nu\), equality of the finite dimensions
+
+\[
+\dim F_\nu(\Delta_\lambda)=\dim F_\nu(IC_\lambda).
+\tag{5.10}
+\]
+
+**Proof.** The defining map \(\Delta_\lambda\to IC_\lambda\) is surjective. Every exact weight functor sends it to a surjection. Under (5.10) these are isomorphisms; their faithful sum annihilates its kernel, proving the first hypothesis.
+
+We prove that hypothesis implies splitting of extensions without assuming (P). Take two distinct labels \(\lambda,\mu\). After interchanging them if necessary, choose \(\lambda\) so that its orbit is not contained in \(Z_\mu\); distinct closure labels cannot both be contained in one another. On \(Y=Z_\lambda\cup Z_\mu\), the orbit \(O_\lambda\) is open: its complement is the closed union \((Z_\lambda\setminus O_\lambda)\cup Z_\mu\). Put \(j:O_\lambda\hookrightarrow Y\), \(A=j_!\Lambda[d_\lambda]\), and \(C={}^p\tau_{\le-1}A\). The right t-exactness of \(j_!\) and truncation give
+
+\[
+C\longrightarrow A\longrightarrow\Delta_\lambda
+ \longrightarrow C[1].
+\]
+
+For perverse \(Q\), the Hom exact sequence injects \(\operatorname{Hom}(\Delta_\lambda,Q[1])\) into \(\operatorname{Hom}(A,Q[1])\): the preceding group is \(\operatorname{Hom}(C[1],Q[1])=\operatorname{Hom}(C,Q)=0\) by perverse orthogonality. For \(Q=IC_\mu\), open adjunction makes the latter Hom zero because \(j^*Q=0\). Verdier self-duality reverses the two arguments, so the degree-one group in the other direction is also zero. This covers incomparable closures as well as strict containment.
+
+For equal labels, take \(Y=Z_\lambda\). The same injection and adjunction bound its self-Hom group in degree one by \(H^1(O_\lambda,\Lambda)=0\), as proved in §4. Different components are already separated by disjoint supports. Thus every extension between simples splits. As in Proposition 5.2, the zero connecting map lifts the identity of the quotient to a heart section, full faithfulness makes the section equivariant, and finite-length induction splits every object. \(\square\)
+
+The numerical equality (5.10) is a sufficient premise, not an assertion supplied by exactness alone. In general the map of weight spaces is known to be surjective; the missing part would be injectivity. The criterion does not assume a reductive reconstructed group or identify simple characters before those results are proved.
+
+The obstruction has an exact description. Put \(B_\lambda=\ker(\Delta_\lambda\twoheadrightarrow IC_\lambda)\), supported on the boundary \(i:\partial Z_\lambda\hookrightarrow Z_\lambda\). For every strict boundary label \(\mu<\lambda\),
+
+\[
+\operatorname{Ext}^1_{\mathrm{Sat}}(IC_\lambda,IC_\mu)
+ \simeq\operatorname{Hom}(B_\lambda,IC_\mu),
+\qquad
+B_\lambda\simeq{}^pH^{-1}(i^*IC_\lambda),
+\tag{5.11}
+\]
+
+where the second equality identifies the boundary object with its closed extension. To prove the first, open adjunction gives \(\operatorname{Hom}(\Delta_\lambda,IC_\mu)=0\), and the preceding truncation injection gives \(\operatorname{Ext}^1(\Delta_\lambda,IC_\mu)=0\). Pushout of \(0\to B_\lambda\to\Delta_\lambda\to IC_\lambda\to0\) along a map \(B_\lambda\to IC_\mu\) defines the asserted extension. Conversely pull any such extension back to \(\Delta_\lambda\). The pullback splits by that Ext vanishing; its section restricted to \(B_\lambda\) lands in \(IC_\mu\), providing the inverse map. Sections differ by \(\operatorname{Hom}(\Delta_\lambda,IC_\mu)=0\), so the inverse is unique. A split pushout makes its boundary map extend to \(\Delta_\lambda\), hence makes it zero. Pushout along sums agrees with the diagonal-and-addition definition of the Baer sum, proving the vector-space identification.
+
+The Ext vanishing just used follows from derived Hom vanishing as follows. Gluing t-structures, Appendix A.3 proves that heart exact sequences are precisely triangles with three heart terms. Their connecting map is in degree-one derived Hom. If it is zero, the triangle's Hom exact sequence lifts the identity of its quotient to a section. Conversely, for any degree-one map \(A\to B[1]\), its rotated cone \(B\to E\to A\) has \(E\) in the heart by its degree bounds and cohomology sequence, hence is an extension. This constructs the two directions needed here; full faithfulness of §2 preserves their equivariance.
+
+For the second, the standard-object truncation gives \(i^*\Delta_\lambda\in{}^pD^{\le-2}\), as proved in Semi-infinite orbits and weight functors, equation (20.2). Apply \(i^*\) to the kernel triangle. Since \(i^*B_\lambda\) is the same perverse boundary object, the degree-\(-1,0\) sequence identifies \({}^pH^{-1}i^*IC_\lambda\) with \(B_\lambda\). If that kernel is nonzero, finite length supplies a simple boundary quotient; the first identification then supplies a nonzero extension. Thus vanishing of all \(B_\lambda\) is also necessary for semisimplicity. This proves an equivalent criterion, and locates its obstruction in one boundary perverse degree. It does not assert vanishing of that degree in general.
+
+### 5.5. What the resolution's intersection map must prove
+
+We can also separate the two geometric requirements for obtaining the IC summand from a projective resolution.
+
+**Lemma 5.4.** Let \(P\) be a perverse sheaf on a finite stratified support \(Y\), and let \(i:S\hookrightarrow Y\) be a closed stratum, with open complement \(j\). Put
+
+\[
+A={}^pH^0(i^!P),\qquad B={}^pH^0(i^*P).
+\]
+
+The adjunction maps \(i_*A\to P\to i_*B\) induce a map \(h:A\to B\). If \(h\) is an isomorphism, then
+
+\[
+P\simeq i_*A\oplus j_{!*}(j^*P).
+\tag{5.12}
+\]
+
+**Proof.** The first adjunction uses \(i^!P\in{}^pD^{\ge0}\), and the second uses \(i^*P\in{}^pD^{\le0}\), so both degree-zero maps exist with the displayed direction. Write them as \(u,v\). Since \(vu=i_*h\), the map \(r=(i_*h)^{-1}v\) satisfies \(ru=1\). In the abelian heart this gives \(P=i_*A\oplus P'\), with \(P'=\ker r\). Taking degree-zero perverse cohomology after \(i^!\), the map induced by \(u\) is the identity of \(A\), by its defining truncation and adjunction. Thus \({}^pH^0(i^!P')=0\). After \(i^*\), the map induced by \(v\) is the identity of \(B\); the first summand maps isomorphically onto \(B\) through \(h\), so \({}^pH^0(i^*P')=0\) as well. These are exactly the absence of a subobject or quotient supported on \(S\). The checked intermediate-extension characterization therefore gives \(P'=j_{!*}j^*P\), proving (5.12). \(\square\)
+
+Apply this lemma successively to closed strata in the remaining open support. If the corresponding maps \(h\) are all isomorphisms, iteration decomposes \(P\) into ICs of its stratum local systems. Intermediate extension preserves finite direct sums, by its image definition, so each step carries the previously obtained terms to their closures. In the spherical heart the local systems are constant by §3, and finite-dimensional vector spaces split into rank-one lines.
+
+Now let \(K_\lambda\) be the resolution complex of §5.3. A relative ample class satisfying the actual perverse Lefschetz isomorphisms would give
+
+\[
+K_\lambda\simeq\bigoplus_a{}^pH^a(K_\lambda)[-a].
+\tag{5.13}
+\]
+
+The implication from those isomorphisms to (5.13) is proved in The decomposition theorem, §2. It does not itself establish the geometric Lefschetz hypothesis or semisimplicity of the terms. If, in addition, the maps in Lemma 5.4 are invertible at the successive strata for \(P={}^pH^0(K_\lambda)\), the lemma decomposes that term into ICs. On the dense cell the resolution is an isomorphism and \(K_\lambda\) restricts to a single \(\Lambda[d_\lambda]\). Hence the full-support IC occurs once in \(P\). Its inclusion and projection, composed with the degree-zero inclusion and projection in (5.13), give exactly the two maps in (5.9). This is a proved conditional reduction. Actual relative Lefschetz and the invertibility of those geometric intersection maps remain necessary premises; neither is inferred from the even fibre groups in (5.8).
+
 ## 6. Exact and faithful total cohomology
 
 In this section \(\Lambda\) has characteristic zero, as in the classical weight-functor theorem of the preceding lesson.
@@ -483,7 +555,7 @@ For \(n=3\), the only boundary orbit has type one. Its chart is \(\mathbb A^1\ti
  IC(X_3,\Lambda)=\Lambda_{X_3}[3].
  \tag{7.8}
 \]
-This proves type-three parity without a decomposition theorem. For \(n\ge4\), (7.3) treats the immediate boundary but does not treat the deeper orbits.
+This proves type-three parity without a decomposition theorem. For \(n\ge4\), (7.3) treats the immediate boundary but does not treat the deeper ordinary IC stalks. Full characteristic-zero rank-one semisimplicity and \(\Delta_\lambda=IC_\lambda\) are proved subsequently in Identifying the dual group, §3.3, using the convolution and reconstruction developed after this lesson. That later result is not an input to the constructions here, and it does not by itself establish every ordinary stalk parity.
 
 ### 7.5. Semisimplicity on the two smallest nontrivial closures
 
@@ -701,7 +773,7 @@ The other two slices lie in the smooth orbit: \(\mathbb A^2\) has shifted compac
 
 ## 10. Remaining general assertions
 
-The category, jet-level independence, characteristic-zero constructible-equivariant equivalence, simple classification, duality, orbit even cohomology, affine pavings of resolution fibres, exact faithful total cohomology, torus case, minuscule case, cyclic immediate-boundary charts, characteristic-zero type-three IC and bounded semisimplicity, quasi-minuscule surface calculation, and characteristic-two nonsplit extensions and slice connecting maps are proved above. The remaining general geometric assertion is the IC lift obstruction \(\partial\eta=0\), which would give characteristic-zero IC parity (P) and unconditional semisimplicity. Convolution, tensor duals and the commutativity constraint require their separate constructions.
+The category, jet-level independence, characteristic-zero constructible-equivariant equivalence, simple classification, duality, orbit even cohomology, affine pavings of resolution fibres, exact faithful total cohomology, torus case, minuscule case, cyclic immediate-boundary charts, characteristic-zero type-three IC and bounded semisimplicity, quasi-minuscule surface calculation, and characteristic-two nonsplit extensions and slice connecting maps are proved above. Proposition 5.3 gives the additional standard-object criterion; Lemma 5.4 proves the precise intersection-map splitting step. The remaining general geometric assertion is the IC lift obstruction \(\partial\eta=0\), which would give characteristic-zero IC parity (P) and unconditional semisimplicity. The Lefschetz and nondegeneracy premises in §5.5 and the alternative dimension equalities in §5.4 are not established in general here. Convolution, tensor duals and the commutativity constraint require their separate constructions.
 
 ## References
 

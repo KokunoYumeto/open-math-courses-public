@@ -1,6 +1,6 @@
 # Strong stability and tensor absorption
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 An approximately central matrix algebra is a small piece of the hyperfinite factor. Repeatedly placing such pieces in exact relative commutants creates mutually commuting matrix algebras. A summable commutator estimate then forces their infinite product to split off as a spatial tensor factor. This is the mechanism behind strong stability.
 

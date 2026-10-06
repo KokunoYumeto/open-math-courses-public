@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The predual-valued map of a normal weight · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-PV.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 9 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-predual-valued-map-of-a-normal-weight">The predual-valued map of a normal weight</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>Fixing a normal weight produces more than its GNS representation. Every finite-domain element determines a normal functional on the GNS commutant, and these functionals assemble into a completely positive map. This unit constructs that map, computes its exact norm on self-adjoint elements, and proves the two bounded sequential graph statements needed in the normal-weight argument. The algebra and Hilbert space may be nonseparable; the weight need not be faithful, semifinite, or finite.</p>
+<p>The freely accessible comparison for the construction, norm and sequential arguments is Brent Nelson, <a href="https://users.math.msu.edu/users/banelson/files/Tomita-Takesaki%20Theory.pdf"><em>Tomita–Takesaki Theory</em>, Lemmas 3.8–3.10, pages 22–24</a>. The trace example is reconstructed below from bounded operators and square-summable coordinates, with Jesse Peterson, <a href="https://math.vanderbilt.edu/peters10/teaching/spring2013/vonNeumannAlgebras.pdf"><em>Notes on von Neumann algebras</em>, §§2.1–2.2, pages 19–23</a>, as a free comparison. The norm proof below repairs the finite-domain problem recorded in <a href="OA-MOD-NW.html#oa-mod-nw-14">Problems with complete solutions</a>: it never infers that <span class="math" data-tex="\(|h|^{1/2}\)">\(|h|^{1/2}\)</span> is a finite-energy vector from <span class="math" data-tex="\(h=h^*\in\mathfrak m_\varphi\)">\(h=h^*\in\mathfrak m_\varphi\)</span>. The current reconstruction and added proofs are by GPT-6 Astra (OpenAI), Ultra, October 2026, CC0; earlier exposition and provider licences are retained. References supply comparison material, not substitutes for proofs.</p>
+<p>Exact inputs are <a href="OA-MOD-WG.html#oa-mod-wg-003">WG003–006</a> for the finite domain and GNS construction, <a href="OA-MOD-WF.html#oa-mod-wf-06">WF06</a> for the full support-factorization lemma, <a href="OA-MOD-BK.html#oa-mod-bk-01">BK01–08</a> for bounded calculus, adjoints, monotone limits and polar decomposition, and <a href="OA-MOD-CP.html#oa-mod-cp-06">CP06–08</a> for concrete preduals and the sigma-strong topology. The real sublinear Hahn–Banach proof is <a href="notes/real-coercivity/predual-prerequisites.html#np1-norm-preserving-extension-and-the-norming-identity">NP1</a>. The trace model also uses <a href="OA-MOD-OW.html#oa-mod-ow-09">OW09</a> for arbitrary-coordinate square-sum completeness and <a href="OA-MOD-HE.html#oa-mod-he-05">HE05</a> for the tensor and orthonormal-coordinate construction.</p>
+<h2 id="domains-predual-and-target-formula"><span id="oa-mod-pv-01"></span><span id="OA-MOD-PV-01"></span>Domains, predual, and target formula</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a von Neumann algebra and let <span class="math" data-tex="\(\varphi:M_+\to[0,\infty]\)">\(\varphi:M_+\to[0,\infty]\)</span> be a normal weight. Use the finite domains and GNS construction of OA-MOD-WG:</p>
+<span class="math math-display" data-tex="\[
+\mathfrak n_\varphi
+=\{x\in M:\varphi(x^*x)&lt;\infty\},
+\]">\[
+\mathfrak n_\varphi
+=\{x\in M:\varphi(x^*x)&lt;\infty\},
+\]</span>
+<span class="math math-display" data-tex="\[
+\mathfrak m_\varphi
+=\operatorname{span}\{y^*x:x,y\in\mathfrak n_\varphi\}.
+\]">\[
+\mathfrak m_\varphi
+=\operatorname{span}\{y^*x:x,y\in\mathfrak n_\varphi\}.
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+&amp;=\varphi(y^*x),\\
+\pi_\varphi(a)\Lambda_\varphi(x)
+&amp;=\Lambda_\varphi(ax).
+\end{aligned}
+\tag{PV.1}
+\]">\[
+\begin{aligned}
+\langle\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+&amp;=\varphi(y^*x),\\
+\pi_\varphi(a)\Lambda_\varphi(x)
+&amp;=\Lambda_\varphi(ax).
+\end{aligned}
+\tag{PV.1}
+\]</span>
+<p>Inner products are linear in the first variable. On complex elements of the finite algebra, the weight notation means its finite linear extension from WG004; no extended-real subtraction is involved. Put</p>
+<span class="math math-display" data-tex="\[
+N=\pi_\varphi(M)&#x27;.
+\]">\[
+N=\pi_\varphi(M)&#x27;.
+\]</span>
+<p>Its concrete predual <span class="math" data-tex="\(N_*\)">\(N_*\)</span> contains every vector functional, defined for <span class="math" data-tex="\(T\in N\)">\(T\in N\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\omega_{\xi,\eta}(T)
+=\langle T\xi,\eta\rangle,
+\tag{PV.2}
+\]">\[
+\omega_{\xi,\eta}(T)
+=\langle T\xi,\eta\rangle,
+\tag{PV.2}
+\]</span>
+<p>and <span class="math" data-tex="\(\|\omega_{\xi,\eta}\|\leq\|\xi\|\,\|\eta\|\)">\(\|\omega_{\xi,\eta}\|\leq\|\xi\|\,\|\eta\|\)</span>. We will construct one linear map</p>
+<span class="math math-display" data-tex="\[
+\Theta_\varphi:\mathfrak m_\varphi\longrightarrow N_*
+\tag{PV.3}
+\]">\[
+\Theta_\varphi:\mathfrak m_\varphi\longrightarrow N_*
+\tag{PV.3}
+\]</span>
+<p>characterized, for <span class="math" data-tex="\(x,y\in\mathfrak n_\varphi\)">\(x,y\in\mathfrak n_\varphi\)</span> and <span class="math" data-tex="\(T\in N\)">\(T\in N\)</span>, by the following formula. Write <span class="math" data-tex="\(\xi_x=\Lambda_\varphi(x)\)">\(\xi_x=\Lambda_\varphi(x)\)</span> and <span class="math" data-tex="\(\xi_y=\Lambda_\varphi(y)\)">\(\xi_y=\Lambda_\varphi(y)\)</span>.</p>
+<span class="math math-display" data-tex="\[
+\Theta_\varphi(y^*x)(T)
+=\langle T\xi_x,\xi_y\rangle.
+\tag{PV.4}
+\]">\[
+\Theta_\varphi(y^*x)(T)
+=\langle T\xi_x,\xi_y\rangle.
+\tag{PV.4}
+\]</span>
+<p>The issue is not the right side for one chosen factorization. An element of <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span> has many product decompositions, so well-definedness and linearity have to be proved before (PV.4) can be used as a definition.</p>
+<h2 id="construction-on-the-positive-cone">Construction on the positive cone</h2>
+<p>For <span class="math" data-tex="\(c\in\mathfrak m_\varphi^+\)">\(c\in\mathfrak m_\varphi^+\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\Theta_\varphi(c)
+=\omega_{\Lambda_\varphi(c^{1/2}),\Lambda_\varphi(c^{1/2})}|_N.
+\tag{PV.5}
+\]">\[
+\Theta_\varphi(c)
+=\omega_{\Lambda_\varphi(c^{1/2}),\Lambda_\varphi(c^{1/2})}|_N.
+\tag{PV.5}
+\]</span>
+<p>This is a positive member of <span class="math" data-tex="\(N_*\)">\(N_*\)</span>. We prove that the prescription is additive. Given <span class="math" data-tex="\(c,e\in\mathfrak m_\varphi^+\)">\(c,e\in\mathfrak m_\varphi^+\)</span>, set <span class="math" data-tex="\(d=c+e\)">\(d=c+e\)</span> and <span class="math" data-tex="\(p=s(d)\)">\(p=s(d)\)</span>. The two-term case of <a href="OA-MOD-WF.html#oa-mod-wf-06">WF06(ii)</a>, consistent with the factorization in OA-MOD-DW-02, supplies contractions <span class="math" data-tex="\(v,w\in M\)">\(v,w\in M\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+c^{1/2}&amp;=vd^{1/2},\\
+e^{1/2}&amp;=wd^{1/2},\\
+v^*v+w^*w&amp;=p.
+\end{aligned}
+\tag{PV.6}
+\]">\[
+\begin{aligned}
+c^{1/2}&amp;=vd^{1/2},\\
+e^{1/2}&amp;=wd^{1/2},\\
+v^*v+w^*w&amp;=p.
+\end{aligned}
+\tag{PV.6}
+\]</span>
+<p>Let <span class="math" data-tex="\(\zeta=\Lambda_\varphi(d^{1/2})\)">\(\zeta=\Lambda_\varphi(d^{1/2})\)</span>, <span class="math" data-tex="\(V=\pi_\varphi(v)\)">\(V=\pi_\varphi(v)\)</span>, and <span class="math" data-tex="\(W=\pi_\varphi(w)\)">\(W=\pi_\varphi(w)\)</span>. Then <span class="math" data-tex="\(\pi_\varphi(p)\zeta=\zeta\)">\(\pi_\varphi(p)\zeta=\zeta\)</span> and <span class="math" data-tex="\(Q=V^*V+W^*W=\pi_\varphi(p)\)">\(Q=V^*V+W^*W=\pi_\varphi(p)\)</span>. In the next calculation abbreviate <span class="math" data-tex="\(\Theta_\varphi\)">\(\Theta_\varphi\)</span> to <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span>, and denote <span class="math" data-tex="\(\Theta(c)(T)+\Theta(e)(T)\)">\(\Theta(c)(T)+\Theta(e)(T)\)</span> by <span class="math" data-tex="\(S_T\)">\(S_T\)</span>. If <span class="math" data-tex="\(T\in N\)">\(T\in N\)</span>, commutation with <span class="math" data-tex="\(\pi_\varphi(M)\)">\(\pi_\varphi(M)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S_T
+&amp;=\langle TV\zeta,V\zeta\rangle\\
+&amp;\quad+\langle TW\zeta,W\zeta\rangle\\
+&amp;=\langle TQ\zeta,\zeta\rangle\\
+&amp;=\langle T\zeta,\zeta\rangle\\
+&amp;=\Theta(d)(T).
+\end{aligned}
+\tag{PV.7}
+\]">\[
+\begin{aligned}
+S_T
+&amp;=\langle TV\zeta,V\zeta\rangle\\
+&amp;\quad+\langle TW\zeta,W\zeta\rangle\\
+&amp;=\langle TQ\zeta,\zeta\rangle\\
+&amp;=\langle T\zeta,\zeta\rangle\\
+&amp;=\Theta(d)(T).
+\end{aligned}
+\tag{PV.7}
+\]</span>
+<p>Positive homogeneity follows directly from square roots, including the zero scalar. Each square root lies in the GNS domain because the original positive element has finite weight. Since <span class="math" data-tex="\(\mathfrak m_\varphi^+\)">\(\mathfrak m_\varphi^+\)</span> generates the self-adjoint part of <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span>, the additive homogeneous map has a unique real-linear extension there and then a unique complex-linear extension to <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span>. For the extension step, if <span class="math" data-tex="\(a-b=c-d\)">\(a-b=c-d\)</span> with all four elements finite and positive, then <span class="math" data-tex="\(a+d=c+b\)">\(a+d=c+b\)</span>. The established additivity gives equality of the two differences of their predual functionals. Addition and real scaling of decompositions prove real linearity; the unique real and imaginary self-adjoint parts then give complex linearity, as in WF03. All operations stay in the vector space <span class="math" data-tex="\(N_*\)">\(N_*\)</span>. Positivity and the proved norm formula for positive functionals in CP07 give the useful identity</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\Theta_\varphi(c)\|
+&amp;=\Theta_\varphi(c)(1)\\
+&amp;=\|\Lambda_\varphi(c^{1/2})\|^2\\
+&amp;=\varphi(c).
+\end{aligned}
+\tag{PV.8}
+\]">\[
+\begin{aligned}
+\|\Theta_\varphi(c)\|
+&amp;=\Theta_\varphi(c)(1)\\
+&amp;=\|\Lambda_\varphi(c^{1/2})\|^2\\
+&amp;=\varphi(c).
+\end{aligned}
+\tag{PV.8}
+\]</span>
+<p>It remains to identify the extension. If <span class="math" data-tex="\(x=u|x|\)">\(x=u|x|\)</span> is the polar decomposition of <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>, then <span class="math" data-tex="\(u^*u\)">\(u^*u\)</span> fixes <span class="math" data-tex="\(|x|\)">\(|x|\)</span>, and every <span class="math" data-tex="\(T\in N_+\)">\(T\in N_+\)</span> commutes with <span class="math" data-tex="\(\pi_\varphi(u)\)">\(\pi_\varphi(u)\)</span>. Put <span class="math" data-tex="\(\xi=\Lambda_\varphi(x)\)">\(\xi=\Lambda_\varphi(x)\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\Theta_\varphi(x^*x)(T)
+=\langle T\xi,\xi\rangle.
+\tag{PV.9}
+\]">\[
+\Theta_\varphi(x^*x)(T)
+=\langle T\xi,\xi\rangle.
+\tag{PV.9}
+\]</span>
+<p>To spell out (PV.9), put <span class="math" data-tex="\(q=u^*u\)">\(q=u^*u\)</span> and <span class="math" data-tex="\(\eta=\Lambda_\varphi(|x|)\)">\(\eta=\Lambda_\varphi(|x|)\)</span>. Then <span class="math" data-tex="\(\pi_\varphi(q)\eta=\eta\)">\(\pi_\varphi(q)\eta=\eta\)</span> and <span class="math" data-tex="\(\xi=\pi_\varphi(u)\eta\)">\(\xi=\pi_\varphi(u)\eta\)</span>. Moving the adjoint across the pairing and commuting <span class="math" data-tex="\(T\)">\(T\)</span> with the representation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle T\xi,\xi\rangle
+&amp;=\langle\pi_\varphi(u)^*T\pi_\varphi(u)\eta,\eta\rangle\\
+&amp;=\langle T\eta,\eta\rangle.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle T\xi,\xi\rangle
+&amp;=\langle\pi_\varphi(u)^*T\pi_\varphi(u)\eta,\eta\rangle\\
+&amp;=\langle T\eta,\eta\rangle.
+\end{aligned}
+\]</span>
+<p>The equality uses only <span class="math" data-tex="\(|x|^2=x^*x\)">\(|x|^2=x^*x\)</span>, whose weight is finite. Polarization gives (PV.4) first for <span class="math" data-tex="\(T\geq0\)">\(T\geq0\)</span>. Every element of <span class="math" data-tex="\(N\)">\(N\)</span> is a linear combination of positive elements, by taking real and imaginary self-adjoint parts and their positive and negative parts with BK01, so (PV.4) holds for arbitrary <span class="math" data-tex="\(T\)">\(T\)</span>. Products <span class="math" data-tex="\(y^*x\)">\(y^*x\)</span> span the domain, proving uniqueness.</p>
+<h2 id="complete-positivity">Complete positivity</h2>
+<p>We use the inherited matrix-positive cones on <span class="math" data-tex="\(M_n(\mathfrak m_\varphi)\)">\(M_n(\mathfrak m_\varphi)\)</span>. The target convention and its test can be proved explicitly. For <span class="math" data-tex="\(F=[f_{ij}]\)">\(F=[f_{ij}]\)</span>, <span class="math" data-tex="\(f_{ij}\in N_*\)">\(f_{ij}\in N_*\)</span>, associate the functional</p>
+<span class="math math-display" data-tex="\[
+\widehat F([T_{ij}])=\sum_{i,j}f_{ij}(T_{ij})
+\quad\text{on }M_n(N).
+\]">\[
+\widehat F([T_{ij}])=\sum_{i,j}f_{ij}(T_{ij})
+\quad\text{on }M_n(N).
+\]</span>
+<p>Entry extraction is ultraweakly continuous: a vector-series test of one entry is the same test on the direct sum Hilbert space with the two vectors in the chosen coordinate positions. The finite sum above is therefore normal. We say <span class="math" data-tex="\(F\)">\(F\)</span> is positive when this functional is positive; this specifies the matrix-predual convention used here. Positivity is equivalent to</p>
+<span class="math math-display" data-tex="\[
+\sum_{i,j}f_{ij}(a_i^*a_j)\geq0
+\quad(a_1,\ldots,a_n\in N).
+\]">\[
+\sum_{i,j}f_{ij}(a_i^*a_j)\geq0
+\quad(a_1,\ldots,a_n\in N).
+\]</span>
+<p>Necessity tests a positive Gram matrix. For sufficiency, take the positive square root <span class="math" data-tex="\(C\)">\(C\)</span> of any positive matrix <span class="math" data-tex="\(T\in M_n(N)\)">\(T\in M_n(N)\)</span>. It exists by BK01 on the finite direct sum Hilbert space, and its entries belong to <span class="math" data-tex="\(N\)">\(N\)</span> by polynomial approximation. Since <span class="math" data-tex="\(T_{ij}=\sum_k C_{ki}^*C_{kj}\)">\(T_{ij}=\sum_k C_{ki}^*C_{kj}\)</span>, sum the assumed inequalities over the finitely many rows. The finite operator matrix algebra is norm closed: norm convergence gives convergence of each entry, and conversely the sum of entry norms bounds the matrix operator norm. Thus the required calculus applies without a separate matrix-algebra existence theorem. For <span class="math" data-tex="\(x_1,\ldots,x_n\in\mathfrak n_\varphi\)">\(x_1,\ldots,x_n\in\mathfrak n_\varphi\)</span>, the matrix</p>
+<span class="math math-display" data-tex="\[
+\big[\Theta_\varphi(x_i^*x_j)\big]_{i,j}
+\tag{PV.10}
+\]">\[
+\big[\Theta_\varphi(x_i^*x_j)\big]_{i,j}
+\tag{PV.10}
+\]</span>
+<p>is positive in <span class="math" data-tex="\(M_n(N_*)\)">\(M_n(N_*)\)</span>. Indeed, the matrix-predual positivity test reduces to arbitrary <span class="math" data-tex="\(a_1,\ldots,a_n\in N\)">\(a_1,\ldots,a_n\in N\)</span>. Put <span class="math" data-tex="\(\xi_j=\Lambda_\varphi(x_j)\)">\(\xi_j=\Lambda_\varphi(x_j)\)</span>, and let <span class="math" data-tex="\(S\)">\(S\)</span> denote the scalar obtained by testing (PV.10) against the Gram matrix <span class="math" data-tex="\([a_i^*a_j]\)">\([a_i^*a_j]\)</span>. Formula (PV.4) gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S
+&amp;=\sum_{i,j=1}^n
+\langle a_j\xi_j,a_i\xi_i\rangle\\
+&amp;=\left\|\sum_{j=1}^n a_j\xi_j\right\|^2\\
+&amp;\geq0.
+\end{aligned}
+\tag{PV.11}
+\]">\[
+\begin{aligned}
+S
+&amp;=\sum_{i,j=1}^n
+\langle a_j\xi_j,a_i\xi_i\rangle\\
+&amp;=\left\|\sum_{j=1}^n a_j\xi_j\right\|^2\\
+&amp;\geq0.
+\end{aligned}
+\tag{PV.11}
+\]</span>
+<p>Now let <span class="math" data-tex="\(H=[h_{ij}]\in M_n(\mathfrak m_\varphi)\)">\(H=[h_{ij}]\in M_n(\mathfrak m_\varphi)\)</span> be positive in <span class="math" data-tex="\(M_n(M)\)">\(M_n(M)\)</span>, and write its positive square root as <span class="math" data-tex="\(X=[x_{ki}]\)">\(X=[x_{ki}]\)</span>. For every <span class="math" data-tex="\(i\)">\(i\)</span>,</p>
+<span class="math math-display" data-tex="\[
+h_{ii}=\sum_k x_{ki}^*x_{ki}\in\mathfrak m_\varphi^+.
+\]">\[
+h_{ii}=\sum_k x_{ki}^*x_{ki}\in\mathfrak m_\varphi^+.
+\]</span>
+<p>Hence each <span class="math" data-tex="\(x_{ki}\)">\(x_{ki}\)</span> belongs to <span class="math" data-tex="\(\mathfrak n_\varphi\)">\(\mathfrak n_\varphi\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+h_{ij}=\sum_k x_{ki}^*x_{kj}.
+\tag{PV.12}
+\]">\[
+h_{ij}=\sum_k x_{ki}^*x_{kj}.
+\tag{PV.12}
+\]</span>
+<p>The amplified image <span class="math" data-tex="\([\Theta_\varphi(h_{ij})]\)">\([\Theta_\varphi(h_{ij})]\)</span> is therefore a finite sum of the positive matrices in (PV.10). Thus every amplification of <span class="math" data-tex="\(\Theta_\varphi\)">\(\Theta_\varphi\)</span> is positive: <span class="math" data-tex="\(\Theta_\varphi\)">\(\Theta_\varphi\)</span> is completely positive. This proves the full predual-valued assertion, rather than only the scalar correspondence of OA-MOD-DW-03.</p>
+<h2 id="the-repaired-self-adjoint-norm-formula">The repaired self-adjoint norm formula</h2>
+<p>For <span class="math" data-tex="\(h=h^*\in\mathfrak m_\varphi\)">\(h=h^*\in\mathfrak m_\varphi\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+p_\varphi(h)=\inf\{&amp;\varphi(a)+\varphi(b):\\
+&amp;h=a-b,\\
+&amp;a,b\in\mathfrak m_\varphi^+\}.
+\end{aligned}
+\tag{PV.13}
+\]">\[
+\begin{aligned}
+p_\varphi(h)=\inf\{&amp;\varphi(a)+\varphi(b):\\
+&amp;h=a-b,\\
+&amp;a,b\in\mathfrak m_\varphi^+\}.
+\end{aligned}
+\tag{PV.13}
+\]</span>
+<p><strong>Theorem.</strong> For every such <span class="math" data-tex="\(h\)">\(h\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\Theta_\varphi(h)\|=p_\varphi(h).
+\tag{PV.14}
+\]">\[
+\|\Theta_\varphi(h)\|=p_\varphi(h).
+\tag{PV.14}
+\]</span>
+<p><strong>Proof.</strong> The finite positive cone generates <span class="math" data-tex="\(\mathfrak m_{\varphi,\mathrm{sa}}\)">\(\mathfrak m_{\varphi,\mathrm{sa}}\)</span>, so the infimum is over a nonempty set. Addition of decompositions and interchange of their two terms show that <span class="math" data-tex="\(p_\varphi\)">\(p_\varphi\)</span> is a seminorm. For <span class="math" data-tex="\(a\in\mathfrak m_\varphi^+\)">\(a\in\mathfrak m_\varphi^+\)</span>, linearity of the finite extension of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+p_\varphi(a)=\varphi(a).
+\tag{PV.15}
+\]">\[
+p_\varphi(a)=\varphi(a).
+\tag{PV.15}
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(a=a-0\)">\(a=a-0\)</span> gives one inequality, while <span class="math" data-tex="\(a=c-d\)">\(a=c-d\)</span> with <span class="math" data-tex="\(c,d\geq0\)">\(c,d\geq0\)</span> gives <span class="math" data-tex="\(\varphi(a)=\varphi(c)-\varphi(d)\leq\varphi(c)+\varphi(d)\)">\(\varphi(a)=\varphi(c)-\varphi(d)\leq\varphi(c)+\varphi(d)\)</span>. Therefore (PV.8) and the triangle inequality imply</p>
+<span class="math math-display" data-tex="\[
+\|\Theta_\varphi(h)\|\leq p_\varphi(h).
+\tag{PV.16}
+\]">\[
+\|\Theta_\varphi(h)\|\leq p_\varphi(h).
+\tag{PV.16}
+\]</span>
+<p>Fix <span class="math" data-tex="\(h_0=h_0^*\)">\(h_0=h_0^*\)</span>. The full real sublinear Hahn–Banach proof in <a href="notes/real-coercivity/predual-prerequisites.html#np1-norm-preserving-extension-and-the-norming-identity">NP1</a>, applied to the seminorm <span class="math" data-tex="\(p_\varphi\)">\(p_\varphi\)</span>, gives a real-linear <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathfrak m_{\varphi,\mathrm{sa}}\)">\(\mathfrak m_{\varphi,\mathrm{sa}}\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(h_0)&amp;=p_\varphi(h_0),\\
+|f(h)|&amp;\leq p_\varphi(h).
+\end{aligned}
+\tag{PV.17}
+\]">\[
+\begin{aligned}
+f(h_0)&amp;=p_\varphi(h_0),\\
+|f(h)|&amp;\leq p_\varphi(h).
+\end{aligned}
+\tag{PV.17}
+\]</span>
+<p>When <span class="math" data-tex="\(p_\varphi(h_0)=0\)">\(p_\varphi(h_0)=0\)</span>, the required reverse inequality is immediate; otherwise the functional starts on <span class="math" data-tex="\(\mathbb Rh_0\)">\(\mathbb Rh_0\)</span> and is extended. Complexify it to a self-adjoint linear functional, still denoted <span class="math" data-tex="\(f\)">\(f\)</span>, on <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span>. For <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|f(x^*x)|
+&amp;\leq p_\varphi(x^*x)\\
+&amp;=\varphi(x^*x)\\
+&amp;=\|\Lambda_\varphi(x)\|^2.
+\end{aligned}
+\tag{PV.18}
+\]">\[
+\begin{aligned}
+|f(x^*x)|
+&amp;\leq p_\varphi(x^*x)\\
+&amp;=\varphi(x^*x)\\
+&amp;=\|\Lambda_\varphi(x)\|^2.
+\end{aligned}
+\tag{PV.18}
+\]</span>
+<p>Thus</p>
+<span class="math math-display" data-tex="\[
+B(\Lambda_\varphi(x),\Lambda_\varphi(y))=f(y^*x)
+\tag{PV.19}
+\]">\[
+B(\Lambda_\varphi(x),\Lambda_\varphi(y))=f(y^*x)
+\tag{PV.19}
+\]</span>
+<p>is well defined and extends to a bounded Hermitian form on <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span>. Here are the quotient and norm details. Before taking the quotient, let <span class="math" data-tex="\(G(x,y)=\varphi(y^*x)\)">\(G(x,y)=\varphi(y^*x)\)</span> and <span class="math" data-tex="\(F(x,y)=f(y^*x)\)">\(F(x,y)=f(y^*x)\)</span>. The forms <span class="math" data-tex="\(G+F\)">\(G+F\)</span> and <span class="math" data-tex="\(G-F\)">\(G-F\)</span> are positive by (PV.18). The scalar Cauchy–Schwarz proof in WG005 applies to any positive semidefinite form. If <span class="math" data-tex="\(G(x,x)=0\)">\(G(x,x)=0\)</span>, then both of these forms have zero diagonal at <span class="math" data-tex="\(x\)">\(x\)</span>, hence vanish when paired with any <span class="math" data-tex="\(y\)">\(y\)</span>. Thus <span class="math" data-tex="\(F(x,y)=F(y,x)=0\)">\(F(x,y)=F(y,x)=0\)</span>, proving independence of the representatives. Their diagonal bounds by <span class="math" data-tex="\(2G\)">\(2G\)</span> give</p>
+<span class="math math-display" data-tex="\[
+|F(x,y)|\leq2\|\Lambda_\varphi(x)\|\,
+\|\Lambda_\varphi(y)\|.
+\]">\[
+|F(x,y)|\leq2\|\Lambda_\varphi(x)\|\,
+\|\Lambda_\varphi(y)\|.
+\]</span>
+<p>So the quotient form is bounded and extends by density. BK01 represents it by a bounded self-adjoint operator; the diagonal bound (PV.18) extends to all vectors and says that both the identity plus this operator and the identity minus this operator are positive. The self-adjoint calculus in BK01 then places its spectrum in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, giving norm at most one. We have therefore obtained a self-adjoint contraction <span class="math" data-tex="\(A\)">\(A\)</span> with</p>
+<span class="math math-display" data-tex="\[
+B(\xi,\eta)=\langle A\xi,\eta\rangle.
+\tag{PV.20}
+\]">\[
+B(\xi,\eta)=\langle A\xi,\eta\rangle.
+\tag{PV.20}
+\]</span>
+<p>For <span class="math" data-tex="\(z\in M\)">\(z\in M\)</span> and <span class="math" data-tex="\(x,y\in\mathfrak n_\varphi\)">\(x,y\in\mathfrak n_\varphi\)</span>, put <span class="math" data-tex="\(Z=\pi_\varphi(z)\)">\(Z=\pi_\varphi(z)\)</span>, <span class="math" data-tex="\(\xi=\Lambda_\varphi(x)\)">\(\xi=\Lambda_\varphi(x)\)</span>, and <span class="math" data-tex="\(\eta=\Lambda_\varphi(y)\)">\(\eta=\Lambda_\varphi(y)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle AZ\xi,\eta\rangle
+&amp;=f(y^*zx)\\
+&amp;=\langle ZA\xi,\eta\rangle.
+\end{aligned}
+\tag{PV.21}
+\]">\[
+\begin{aligned}
+\langle AZ\xi,\eta\rangle
+&amp;=f(y^*zx)\\
+&amp;=\langle ZA\xi,\eta\rangle.
+\end{aligned}
+\tag{PV.21}
+\]</span>
+<p>Density gives <span class="math" data-tex="\(A\in N\)">\(A\in N\)</span>. Formula (PV.4) now says, for every <span class="math" data-tex="\(h\in\mathfrak m_\varphi\)">\(h\in\mathfrak m_\varphi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+f(h)=\Theta_\varphi(h)(A).
+\tag{PV.22}
+\]">\[
+f(h)=\Theta_\varphi(h)(A).
+\tag{PV.22}
+\]</span>
+<p>Since <span class="math" data-tex="\(\|A\|\leq1\)">\(\|A\|\leq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+p_\varphi(h_0)
+&amp;=f(h_0)\\
+&amp;\leq\|\Theta_\varphi(h_0)\|.
+\end{aligned}
+\tag{PV.23}
+\]">\[
+\begin{aligned}
+p_\varphi(h_0)
+&amp;=f(h_0)\\
+&amp;\leq\|\Theta_\varphi(h_0)\|.
+\end{aligned}
+\tag{PV.23}
+\]</span>
+<p>Together with (PV.16), this proves (PV.14). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument pairs the Hahn–Banach functional directly with <span class="math" data-tex="\(\Theta_\varphi(h_0)\)">\(\Theta_\varphi(h_0)\)</span>. It never takes the square root of <span class="math" data-tex="\(|h_0|\)">\(|h_0|\)</span>, which need not have finite weight.</p>
+<h2 id="a-bounded-positive-limit-stays-in-the-finite-cone">A bounded positive limit stays in the finite cone</h2>
+<p>We first record the regulator used in both graph arguments. For <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span> and <span class="math" data-tex="\(t&gt;-\alpha^{-1}\)">\(t&gt;-\alpha^{-1}\)</span>, put <span class="math" data-tex="\(s_\alpha(t)=(1+\alpha t)^{-1}\)">\(s_\alpha(t)=(1+\alpha t)^{-1}\)</span> and set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r_\alpha(t)
+&amp;=\frac{t}{1+\alpha t}\\
+&amp;=\alpha^{-1}(1-s_\alpha(t)).
+\end{aligned}
+\tag{PV.24}
+\]">\[
+\begin{aligned}
+r_\alpha(t)
+&amp;=\frac{t}{1+\alpha t}\\
+&amp;=\alpha^{-1}(1-s_\alpha(t)).
+\end{aligned}
+\tag{PV.24}
+\]</span>
+<p>Inverse order makes <span class="math" data-tex="\(s_\alpha\)">\(s_\alpha\)</span> operator antitone, so <span class="math" data-tex="\(r_\alpha\)">\(r_\alpha\)</span> is operator monotone on this interval. On <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;\leq r_\alpha(t)\leq t,\\
+r_\alpha(t)&amp;\leq\alpha^{-1},\\
+r_\alpha(t)&amp;\uparrow t\quad(\alpha\downarrow0).
+\end{aligned}
+\tag{PV.25}
+\]">\[
+\begin{aligned}
+0&amp;\leq r_\alpha(t)\leq t,\\
+r_\alpha(t)&amp;\leq\alpha^{-1},\\
+r_\alpha(t)&amp;\uparrow t\quad(\alpha\downarrow0).
+\end{aligned}
+\tag{PV.25}
+\]</span>
+<p>On a common bounded spectral interval, bounded sigma-strong convergence passes through <span class="math" data-tex="\(r_\alpha\)">\(r_\alpha\)</span>. To verify the precise instance needed here, suppose the self-adjoint operators <span class="math" data-tex="\(z_i,z\)">\(z_i,z\)</span> lie in a common interval on which <span class="math" data-tex="\(1+\alpha t\geq\delta&gt;0\)">\(1+\alpha t\geq\delta&gt;0\)</span>, and <span class="math" data-tex="\(z_i\to z\)">\(z_i\to z\)</span> sigma-strongly. Their inverse norms are at most <span class="math" data-tex="\(\delta^{-1}\)">\(\delta^{-1}\)</span> by BK01. The inverse identity gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r_\alpha(z_i)-r_\alpha(z)
+&amp;=s_\alpha(z_i)(z_i-z)s_\alpha(z).
+\end{aligned}
+\]">\[
+\begin{aligned}
+r_\alpha(z_i)-r_\alpha(z)
+&amp;=s_\alpha(z_i)(z_i-z)s_\alpha(z).
+\end{aligned}
+\]</span>
+<p>Its rightmost factor is fixed, and its leftmost factors are uniformly bounded, so the right side tends strongly to zero on each vector. The common spectral interval gives a common bound on the regulators themselves. CP08 upgrades this bounded strong convergence to sigma-strong convergence. For a fixed positive <span class="math" data-tex="\(z\)">\(z\)</span>, scalar calculus also gives <span class="math" data-tex="\(\|z-r_\alpha(z)\|\leq\alpha\|z\|^2\)">\(\|z-r_\alpha(z)\|\leq\alpha\|z\|^2\)</span>, proving the stated increasing convergence to <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\((x_n)\subseteq\mathfrak m_\varphi^+\)">\((x_n)\subseteq\mathfrak m_\varphi^+\)</span> be bounded in operator norm. If <span class="math" data-tex="\(x_n\to x\)">\(x_n\to x\)</span> sigma-strongly and <span class="math" data-tex="\(\Theta_\varphi(x_n)\)">\(\Theta_\varphi(x_n)\)</span> converges in <span class="math" data-tex="\(N_*\)">\(N_*\)</span>-norm, then <span class="math" data-tex="\(x\in\mathfrak m_\varphi^+\)">\(x\in\mathfrak m_\varphi^+\)</span>.</p>
+<p><strong>Proof.</strong> The sigma-strong limit is positive. Fix <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, and pass to a subsequence <span class="math" data-tex="\((y_n)\)">\((y_n)\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\|\Theta_\varphi(y_{n+1}-y_n)\|&lt;\varepsilon 2^{-n}.
+\tag{PV.26}
+\]">\[
+\|\Theta_\varphi(y_{n+1}-y_n)\|&lt;\varepsilon 2^{-n}.
+\tag{PV.26}
+\]</span>
+<p>The strict gap in (PV.26) and the definition of the infimum in the norm formula give <span class="math" data-tex="\(a_n,b_n\in\mathfrak m_\varphi^+\)">\(a_n,b_n\in\mathfrak m_\varphi^+\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+y_{n+1}-y_n&amp;=a_n-b_n,\\
+\varphi(a_n)+\varphi(b_n)&amp;&lt;\varepsilon 2^{-n}.
+\end{aligned}
+\tag{PV.27}
+\]">\[
+\begin{aligned}
+y_{n+1}-y_n&amp;=a_n-b_n,\\
+\varphi(a_n)+\varphi(b_n)&amp;&lt;\varepsilon 2^{-n}.
+\end{aligned}
+\tag{PV.27}
+\]</span>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+y_{n+1}\leq y_1+\sum_{k=1}^n a_k=:A_n.
+\tag{PV.28}
+\]">\[
+y_{n+1}\leq y_1+\sum_{k=1}^n a_k=:A_n.
+\tag{PV.28}
+\]</span>
+<p>For fixed <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, the sequence <span class="math" data-tex="\(r_\alpha(A_n)\)">\(r_\alpha(A_n)\)</span> is increasing and bounded above by <span class="math" data-tex="\(\alpha^{-1}1\)">\(\alpha^{-1}1\)</span>. Let its sigma-strong supremum be <span class="math" data-tex="\(c_\alpha\)">\(c_\alpha\)</span>. Functional-calculus continuity in (PV.28) and <span class="math" data-tex="\(y_n\to x\)">\(y_n\to x\)</span> give</p>
+<span class="math math-display" data-tex="\[
+r_\alpha(x)\leq c_\alpha.
+\tag{PV.29}
+\]">\[
+r_\alpha(x)\leq c_\alpha.
+\tag{PV.29}
+\]</span>
+<p>Normality of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, followed by (PV.25), yields the next estimate. Here
+<span class="math" data-tex="\(s_a=\sum_{k\geq1}\varphi(a_k)&lt;\varepsilon\)">\(s_a=\sum_{k\geq1}\varphi(a_k)&lt;\varepsilon\)</span>.</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\varphi(r_\alpha(x))
+&amp;\leq\varphi(c_\alpha)\\
+&amp;=\sup_n\varphi(r_\alpha(A_n))\\
+&amp;\leq\sup_n\varphi(A_n)\\
+&amp;=\varphi(y_1)+s_a\\
+&amp;&lt;\varphi(y_1)+\varepsilon.
+\end{aligned}
+\tag{PV.30}
+\]">\[
+\begin{aligned}
+\varphi(r_\alpha(x))
+&amp;\leq\varphi(c_\alpha)\\
+&amp;=\sup_n\varphi(r_\alpha(A_n))\\
+&amp;\leq\sup_n\varphi(A_n)\\
+&amp;=\varphi(y_1)+s_a\\
+&amp;&lt;\varphi(y_1)+\varepsilon.
+\end{aligned}
+\tag{PV.30}
+\]</span>
+<p>Finally <span class="math" data-tex="\(r_\alpha(x)\uparrow x\)">\(r_\alpha(x)\uparrow x\)</span> as <span class="math" data-tex="\(\alpha\downarrow0\)">\(\alpha\downarrow0\)</span>. A second use of normality proves</p>
+<span class="math math-display" data-tex="\[
+\varphi(x)\leq\varphi(y_1)+\varepsilon&lt;\infty.
+\]">\[
+\varphi(x)\leq\varphi(y_1)+\varepsilon&lt;\infty.
+\]</span>
+<p>Thus <span class="math" data-tex="\(x\in\mathfrak m_\varphi^+\)">\(x\in\mathfrak m_\varphi^+\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="a-norm-convergent-image-of-a-strong-null-sequence-is-zero">A norm-convergent image of a strong-null sequence is zero</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\((x_n)\subseteq\mathfrak m_\varphi^+\)">\((x_n)\subseteq\mathfrak m_\varphi^+\)</span> be bounded in operator norm. If <span class="math" data-tex="\(x_n\to0\)">\(x_n\to0\)</span> sigma-strongly and <span class="math" data-tex="\(\Theta_\varphi(x_n)\)">\(\Theta_\varphi(x_n)\)</span> converges in <span class="math" data-tex="\(N_*\)">\(N_*\)</span>-norm, write</p>
+<span class="math math-display" data-tex="\[
+\Theta_\varphi(x_n)\longrightarrow\Psi,
+\tag{PV.31}
+\]">\[
+\Theta_\varphi(x_n)\longrightarrow\Psi,
+\tag{PV.31}
+\]</span>
+<p>then <span class="math" data-tex="\(\Psi=0\)">\(\Psi=0\)</span>.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Choose a subsequence <span class="math" data-tex="\((y_n)\)">\((y_n)\)</span> satisfying both</p>
+<span class="math math-display" data-tex="\[
+\|\Psi-\Theta_\varphi(y_n)\|&lt;\varepsilon 2^{-n-1}
+\tag{PV.32}
+\]">\[
+\|\Psi-\Theta_\varphi(y_n)\|&lt;\varepsilon 2^{-n-1}
+\tag{PV.32}
+\]</span>
+<p>and decompositions as in (PV.27). Indeed choose increasing subsequence indices satisfying (PV.32); norm convergence permits this recursively. The triangle inequality makes the norm of each successive image difference less than <span class="math" data-tex="\(3\varepsilon2^{-n-2}&lt;\varepsilon2^{-n}\)">\(3\varepsilon2^{-n-2}&lt;\varepsilon2^{-n}\)</span>, leaving the strict room required to choose (PV.27). Then</p>
+<span class="math math-display" data-tex="\[
+y_1-y_{n+1}\leq\sum_{k=1}^n b_k=:B_n.
+\tag{PV.33}
+\]">\[
+y_1-y_{n+1}\leq\sum_{k=1}^n b_k=:B_n.
+\tag{PV.33}
+\]</span>
+<p>Put <span class="math" data-tex="\(K=\sup_n\|y_n\|\)">\(K=\sup_n\|y_n\|\)</span>. The case <span class="math" data-tex="\(K=0\)">\(K=0\)</span> is immediate. Otherwise choose <span class="math" data-tex="\(0&lt;\alpha&lt;K^{-1}\)">\(0&lt;\alpha&lt;K^{-1}\)</span>. Since</p>
+<span class="math math-display" data-tex="\[
+-K1\leq y_1-y_{n+1}\leq K1,
+\]">\[
+-K1\leq y_1-y_{n+1}\leq K1,
+\]</span>
+<p>both sides of the next comparison lie in the domain of the operator-monotone regulator:</p>
+<span class="math math-display" data-tex="\[
+r_\alpha(y_1-y_{n+1})\leq r_\alpha(B_n).
+\tag{PV.34}
+\]">\[
+r_\alpha(y_1-y_{n+1})\leq r_\alpha(B_n).
+\tag{PV.34}
+\]</span>
+<p>The right side increases to a bounded positive operator <span class="math" data-tex="\(d_\alpha\)">\(d_\alpha\)</span>. The left side converges sigma-strongly to <span class="math" data-tex="\(r_\alpha(y_1)\)">\(r_\alpha(y_1)\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+r_\alpha(y_1)\leq d_\alpha.
+\tag{PV.35}
+\]">\[
+r_\alpha(y_1)\leq d_\alpha.
+\tag{PV.35}
+\]</span>
+<p>Normality and (PV.25) give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\varphi(r_\alpha(y_1))
+&amp;\leq\varphi(d_\alpha)\\
+&amp;=\sup_n\varphi(r_\alpha(B_n))\\
+&amp;\leq\sup_n\varphi(B_n)\\
+&amp;=\sum_{k\geq1}\varphi(b_k)\\
+&amp;&lt;\varepsilon.
+\end{aligned}
+\tag{PV.36}
+\]">\[
+\begin{aligned}
+\varphi(r_\alpha(y_1))
+&amp;\leq\varphi(d_\alpha)\\
+&amp;=\sup_n\varphi(r_\alpha(B_n))\\
+&amp;\leq\sup_n\varphi(B_n)\\
+&amp;=\sum_{k\geq1}\varphi(b_k)\\
+&amp;&lt;\varepsilon.
+\end{aligned}
+\tag{PV.36}
+\]</span>
+<p>Letting <span class="math" data-tex="\(\alpha\downarrow0\)">\(\alpha\downarrow0\)</span> shows <span class="math" data-tex="\(\varphi(y_1)\leq\varepsilon\)">\(\varphi(y_1)\leq\varepsilon\)</span>. By (PV.8) and (PV.32),</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\Psi\|
+&amp;\leq\|\Psi-\Theta_\varphi(y_1)\|\\
+&amp;\quad+\|\Theta_\varphi(y_1)\|\\
+&amp;&lt;\frac{\varepsilon}{4}+\varepsilon.
+\end{aligned}
+\tag{PV.37}
+\]">\[
+\begin{aligned}
+\|\Psi\|
+&amp;\leq\|\Psi-\Theta_\varphi(y_1)\|\\
+&amp;\quad+\|\Theta_\varphi(y_1)\|\\
+&amp;&lt;\frac{\varepsilon}{4}+\varepsilon.
+\end{aligned}
+\tag{PV.37}
+\]</span>
+<p>The choice of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> was arbitrary, hence <span class="math" data-tex="\(\Psi=0\)">\(\Psi=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The operator-norm boundedness in PV-05–06 fixes a common spectral interval for the sigma-strong functional-calculus limits. No sequence is substituted for an arbitrary net in the definition of a normal weight.</p>
+<h2 id="trace-model-necessity-of-norm-convergence-and-scope">Trace model, necessity of norm convergence, and scope</h2>
+<p>Let <span class="math" data-tex="\(M=B(K)\)">\(M=B(K)\)</span> for an arbitrary Hilbert space and let <span class="math" data-tex="\(\varphi=\operatorname{Tr}\)">\(\varphi=\operatorname{Tr}\)</span> be the usual faithful normal semifinite trace. The GNS space is the Hilbert–Schmidt class <span class="math" data-tex="\(S_2(K)\)">\(S_2(K)\)</span>, <span class="math" data-tex="\(\pi_\varphi\)">\(\pi_\varphi\)</span> acts by left multiplication, and its commutant acts by right multiplication <span class="math" data-tex="\(R_b(X)=Xb\)">\(R_b(X)=Xb\)</span>. The finite algebra is <span class="math" data-tex="\(S_1(K)\)">\(S_1(K)\)</span>. For <span class="math" data-tex="\(h\in S_1(K)\)">\(h\in S_1(K)\)</span> and <span class="math" data-tex="\(b\in B(K)\)">\(b\in B(K)\)</span>, (PV.4) gives</p>
+<span class="math math-display" data-tex="\[
+\Theta_\varphi(h)(R_b)
+=\operatorname{Tr}(hb).
+\tag{PV.38}
+\]">\[
+\Theta_\varphi(h)(R_b)
+=\operatorname{Tr}(hb).
+\tag{PV.38}
+\]</span>
+<p>Thus PV-04 becomes the familiar self-adjoint trace-norm formula. If</p>
+<span class="math math-display" data-tex="\[
+\mathcal D_h
+=\{(a,b)\in S_1(K)_+^2:h=a-b\},
+\]">\[
+\mathcal D_h
+=\{(a,b)\in S_1(K)_+^2:h=a-b\},
+\]</span>
+<p>then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|h\|_1
+&amp;=\inf_{(a,b)\in\mathcal D_h}\\
+&amp;\qquad\bigl(\operatorname{Tr}(a)+\operatorname{Tr}(b)\bigr).
+\end{aligned}
+\tag{PV.39}
+\]">\[
+\begin{aligned}
+\|h\|_1
+&amp;=\inf_{(a,b)\in\mathcal D_h}\\
+&amp;\qquad\bigl(\operatorname{Tr}(a)+\operatorname{Tr}(b)\bigr).
+\end{aligned}
+\tag{PV.39}
+\]</span>
+<p>If <span class="math" data-tex="\((e_n)\)">\((e_n)\)</span> is an orthonormal sequence and <span class="math" data-tex="\(p_n\)">\(p_n\)</span> is the projection onto <span class="math" data-tex="\(\mathbb Ce_n\)">\(\mathbb Ce_n\)</span>, then <span class="math" data-tex="\(p_n\to0\)">\(p_n\to0\)</span> strongly while <span class="math" data-tex="\(\varphi(p_n)=1\)">\(\varphi(p_n)=1\)</span>. Put <span class="math" data-tex="\(F_n=\Theta_\varphi(p_n)\)">\(F_n=\Theta_\varphi(p_n)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|F_n-F_m\|
+&amp;=\|p_n-p_m\|_1\\
+&amp;=2\quad(n\ne m).
+\end{aligned}
+\tag{PV.40}
+\]">\[
+\begin{aligned}
+\|F_n-F_m\|
+&amp;=\|p_n-p_m\|_1\\
+&amp;=2\quad(n\ne m).
+\end{aligned}
+\tag{PV.40}
+\]</span>
+<p>This example shows why strong convergence alone cannot replace the predual-norm convergence in PV-06.</p>
+<p><strong>Proof of the arbitrary-Hilbert-space trace model.</strong> Fix an orthonormal basis <span class="math" data-tex="\((e_j)_{j\in J}\)">\((e_j)_{j\in J}\)</span>. All nonnegative sums below mean suprema over finite subsets; exchanging two such sums is valid because both iterated suprema equal the supremum over finite subsets of the product index set. The coordinate and completeness proofs in HE05 and OW09 apply without countability of <span class="math" data-tex="\(J\)">\(J\)</span>. The zero Hilbert space has only zero operators and satisfies every assertion directly.</p>
+<p>For <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>, define its trace by <span class="math" data-tex="\(\sum_j\langle ae_j,e_j\rangle\)">\(\sum_j\langle ae_j,e_j\rangle\)</span>. If <span class="math" data-tex="\((f_k)\)">\((f_k)\)</span> is another orthonormal basis, Parseval for <span class="math" data-tex="\(a^{1/2}\)">\(a^{1/2}\)</span> in the two bases gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_j\|a^{1/2}e_j\|^2
+&amp;=\sum_{j,k}|\langle a^{1/2}e_j,f_k\rangle|^2\\
+&amp;=\sum_k\|a^{1/2}f_k\|^2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_j\|a^{1/2}e_j\|^2
+&amp;=\sum_{j,k}|\langle a^{1/2}e_j,f_k\rangle|^2\\
+&amp;=\sum_k\|a^{1/2}f_k\|^2.
+\end{aligned}
+\]</span>
+<p>Here the second equality uses self-adjointness of the square root. This proves basis independence. The same coefficient calculation for any bounded <span class="math" data-tex="\(X\)">\(X\)</span> proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Tr}(X^*X)
+&amp;=\sum_{i,j}|\langle Xe_j,e_i\rangle|^2\\
+&amp;=\operatorname{Tr}(XX^*).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Tr}(X^*X)
+&amp;=\sum_{i,j}|\langle Xe_j,e_i\rangle|^2\\
+&amp;=\operatorname{Tr}(XX^*).
+\end{aligned}
+\]</span>
+<p>Finite sums and homogeneity prove the weight axioms. For an increasing bounded positive net, interchange its supremum with the finite-coordinate supremum; BK04 identifies each diagonal limit. Thus this weight is normal. A zero trace forces every <span class="math" data-tex="\(a^{1/2}e_j=0\)">\(a^{1/2}e_j=0\)</span>, hence <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, proving faithfulness. Finite-coordinate projections have finite trace and increase strongly to the identity, so WG008 proves semifiniteness.</p>
+<p>Let <span class="math" data-tex="\(S_2(K)\)">\(S_2(K)\)</span> consist of bounded <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(\|X\|_2^2=\operatorname{Tr}(X^*X)&lt;\infty\)">\(\|X\|_2^2=\operatorname{Tr}(X^*X)&lt;\infty\)</span>. The coefficient map identifies this space with the full square-sum space on <span class="math" data-tex="\(J\times J\)">\(J\times J\)</span>. For completeness of this claim, a square-summable array <span class="math" data-tex="\((c_{ij})\)">\((c_{ij})\)</span> defines a bounded operator on finite-support vectors: Cauchy–Schwarz gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_i\left|\sum_jc_{ij}v_j\right|^2\\
+&amp;\quad\leq\left(\sum_{i,j}|c_{ij}|^2\right)
+\sum_j|v_j|^2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_i\left|\sum_jc_{ij}v_j\right|^2\\
+&amp;\quad\leq\left(\sum_{i,j}|c_{ij}|^2\right)
+\sum_j|v_j|^2.
+\end{aligned}
+\]</span>
+<p>Extend it by density using BK01. Its matrix coefficients are exactly the prescribed array, giving surjectivity. OW09 supplies completeness and density of finite arrays. Consequently the matrix units form an orthonormal basis for <span class="math" data-tex="\(S_2(K)\)">\(S_2(K)\)</span>, finite-rank operators are dense, and <span class="math" data-tex="\(\|X\|\leq\|X\|_2\)">\(\|X\|\leq\|X\|_2\)</span>. The coefficient formulas also show that adjoint is an isometry of this space. The order inequality <span class="math" data-tex="\((aX)^*(aX)\leq\|a\|^2X^*X\)">\((aX)^*(aX)\leq\|a\|^2X^*X\)</span> gives the left multiplication bound; applying it to adjoints gives the right multiplication bound</p>
+<span class="math math-display" data-tex="\[
+\|aXb\|_2\leq\|a\|\,\|X\|_2\,\|b\|.
+\]">\[
+\|aXb\|_2\leq\|a\|\,\|X\|_2\,\|b\|.
+\]</span>
+<p>The GNS domain is exactly <span class="math" data-tex="\(S_2(K)\)">\(S_2(K)\)</span>, its null ideal is zero, and the inner product is the coefficient inner product by polarization. Thus its completion is this same Hilbert space and its representation is left multiplication.</p>
+<p>Right multiplication has adjoint <span class="math" data-tex="\(R_b^*=R_{b^*}\)">\(R_b^*=R_{b^*}\)</span>. Check the pairing on two rank-one operators by their matrix coefficients, where it is a finite-rank computation, then extend by the preceding bounds and density. The bound <span class="math" data-tex="\(\|R_b\|\leq\|b\|\)">\(\|R_b\|\leq\|b\|\)</span> is sharp: for a unit vector <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(X(\zeta)=\langle\zeta,v\rangle u\)">\(X(\zeta)=\langle\zeta,v\rangle u\)</span>, one has <span class="math" data-tex="\(\|X\|_2=\|v\|\)">\(\|X\|_2=\|v\|\)</span> and <span class="math" data-tex="\(\|Xb\|_2=\|b^*v\|\)">\(\|Xb\|_2=\|b^*v\|\)</span>. Taking the supremum over unit <span class="math" data-tex="\(v\)">\(v\)</span> gives equality.</p>
+<p>To identify the entire commutant, let <span class="math" data-tex="\(T\)">\(T\)</span> commute with all left multiplications and choose one basis vector <span class="math" data-tex="\(e_{i_0}\)">\(e_{i_0}\)</span>. The projection of left multiplication by its rank-one projection picks out the closed space of operators with range in <span class="math" data-tex="\(\mathbb C e_{i_0}\)">\(\mathbb C e_{i_0}\)</span>. Identifying that space with <span class="math" data-tex="\(\overline K\)">\(\overline K\)</span> by <span class="math" data-tex="\(v\mapsto(\zeta\mapsto\langle\zeta,v\rangle e_{i_0})\)">\(v\mapsto(\zeta\mapsto\langle\zeta,v\rangle e_{i_0})\)</span>, the restriction of <span class="math" data-tex="\(T\)">\(T\)</span> is an arbitrary bounded operator on <span class="math" data-tex="\(\overline K\)">\(\overline K\)</span>. It has the form <span class="math" data-tex="\(\overline v\mapsto\overline{b^*v}\)">\(\overline v\mapsto\overline{b^*v}\)</span> for a unique bounded <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, by conjugating to <span class="math" data-tex="\(K\)">\(K\)</span> and taking the bounded adjoint. Commutation with the left matrix unit carrying <span class="math" data-tex="\(e_{i_0}\)">\(e_{i_0}\)</span> to <span class="math" data-tex="\(e_i\)">\(e_i\)</span> gives the same right action on every row. Finite arrays are dense, so <span class="math" data-tex="\(T=R_b\)">\(T=R_b\)</span> everywhere. Conversely each right multiplication commutes with every left multiplication. This proves the asserted commutant description for arbitrary dimension.</p>
+<p>Define <span class="math" data-tex="\(S_1(K)=\{h:\operatorname{Tr}|h|&lt;\infty\}\)">\(S_1(K)=\{h:\operatorname{Tr}|h|&lt;\infty\}\)</span>, with <span class="math" data-tex="\(|h|=(h^*h)^{1/2}\)">\(|h|=(h^*h)^{1/2}\)</span> and <span class="math" data-tex="\(\|h\|_1=\operatorname{Tr}|h|\)">\(\|h\|_1=\operatorname{Tr}|h|\)</span>. We next prove that it is exactly the finite algebra, without assuming it is already a linear space. Let <span class="math" data-tex="\(h=\sum_{k=1}^mY_k^*X_k\)">\(h=\sum_{k=1}^mY_k^*X_k\)</span> with <span class="math" data-tex="\(X_k,Y_k\in S_2(K)\)">\(X_k,Y_k\in S_2(K)\)</span>, and take its bounded polar decomposition <span class="math" data-tex="\(h=u|h|\)">\(h=u|h|\)</span>. For each basis vector, <span class="math" data-tex="\(\langle|h|e_j,e_j\rangle=\langle he_j,ue_j\rangle\)">\(\langle|h|e_j,e_j\rangle=\langle he_j,ue_j\rangle\)</span>. Summing absolute values of the expanded right side and applying Cauchy–Schwarz to the coordinate families yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Tr}|h|
+&amp;\leq\sum_{k=1}^m\|X_k\|_2\|Y_ku\|_2\\
+&amp;\leq\sum_{k=1}^m\|X_k\|_2\|Y_k\|_2&lt;\infty.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Tr}|h|
+&amp;\leq\sum_{k=1}^m\|X_k\|_2\|Y_ku\|_2\\
+&amp;\leq\sum_{k=1}^m\|X_k\|_2\|Y_k\|_2&lt;\infty.
+\end{aligned}
+\]</span>
+<p>Conversely, if <span class="math" data-tex="\(h\in S_1(K)\)">\(h\in S_1(K)\)</span>, set <span class="math" data-tex="\(t=|h|^{1/2}\)">\(t=|h|^{1/2}\)</span>. Then <span class="math" data-tex="\(t\in S_2(K)\)">\(t\in S_2(K)\)</span> and <span class="math" data-tex="\(t u^*\in S_2(K)\)">\(t u^*\in S_2(K)\)</span>, while <span class="math" data-tex="\(h=(t u^*)^*t\)">\(h=(t u^*)^*t\)</span>. Thus <span class="math" data-tex="\(S_1(K)=\mathfrak m_{\operatorname{Tr}}\)">\(S_1(K)=\mathfrak m_{\operatorname{Tr}}\)</span>, so its linear and star-algebra properties follow from WG003.</p>
+<p>For a product <span class="math" data-tex="\(h=Y^*X\)">\(h=Y^*X\)</span>, the diagonal series <span class="math" data-tex="\(\sum_j\langle he_j,e_j\rangle\)">\(\sum_j\langle he_j,e_j\rangle\)</span> is absolutely convergent, bounded in absolute value by <span class="math" data-tex="\(\|X\|_2\|Y\|_2\)">\(\|X\|_2\|Y\|_2\)</span>. The same holds for finite sums of products. It defines a linear functional on <span class="math" data-tex="\(S_1(K)\)">\(S_1(K)\)</span> agreeing with the original trace on positive elements. The uniqueness of the finite extension in WG004 proves that it is basis independent. In particular its value at <span class="math" data-tex="\(Y^*X\)">\(Y^*X\)</span> is the Hilbert–Schmidt pairing <span class="math" data-tex="\(\langle X,Y\rangle_2\)">\(\langle X,Y\rangle_2\)</span>.</p>
+<p>Now <span class="math" data-tex="\(h b=Y^*(Xb)\)">\(h b=Y^*(Xb)\)</span> is again in <span class="math" data-tex="\(S_1(K)\)">\(S_1(K)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Theta_{\operatorname{Tr}}(h)(R_b)
+&amp;=\langle Xb,Y\rangle_2\\
+&amp;=\operatorname{Tr}(h b).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Theta_{\operatorname{Tr}}(h)(R_b)
+&amp;=\langle Xb,Y\rangle_2\\
+&amp;=\operatorname{Tr}(h b).
+\end{aligned}
+\]</span>
+<p>Linear combinations give (PV.38) on the whole domain. To compute its norm, take the balanced factorization <span class="math" data-tex="\(h=(t u^*)^*t\)">\(h=(t u^*)^*t\)</span> above. The identity for the traces of <span class="math" data-tex="\(X^*X\)">\(X^*X\)</span> and <span class="math" data-tex="\(XX^*\)">\(XX^*\)</span>, applied to <span class="math" data-tex="\(u t\)">\(u t\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\|t u^*\|_2^2=\|t\|_2^2=\operatorname{Tr}|h|.
+\]">\[
+\|t u^*\|_2^2=\|t\|_2^2=\operatorname{Tr}|h|.
+\]</span>
+<p>It follows that <span class="math" data-tex="\(|\operatorname{Tr}(hb)|\leq\|b\|\operatorname{Tr}|h|\)">\(|\operatorname{Tr}(hb)|\leq\|b\|\operatorname{Tr}|h|\)</span>. For the reverse bound, choose <span class="math" data-tex="\(b=u^*\)">\(b=u^*\)</span>, a contraction. Then <span class="math" data-tex="\(hu^*=u|h|u^*\)">\(hu^*=u|h|u^*\)</span> is positive and the same trace identity gives <span class="math" data-tex="\(\operatorname{Tr}(hu^*)=\operatorname{Tr}|h|\)">\(\operatorname{Tr}(hu^*)=\operatorname{Tr}|h|\)</span>. Since every commutant operator is one of the <span class="math" data-tex="\(R_b\)">\(R_b\)</span> and has norm <span class="math" data-tex="\(\|b\|\)">\(\|b\|\)</span>, we have proved <span class="math" data-tex="\(\|\Theta_{\operatorname{Tr}}(h)\|=\|h\|_1\)">\(\|\Theta_{\operatorname{Tr}}(h)\|=\|h\|_1\)</span>. This is a norm: definiteness follows from faithfulness and <span class="math" data-tex="\(|h|=0\Rightarrow h=0\)">\(|h|=0\Rightarrow h=0\)</span>, and the other norm axioms follow from the functional norm. Applying PV04 proves (PV.39).</p>
+<p>Finally, for any orthonormal sequence, <span class="math" data-tex="\(\|p_n\xi\|^2=|\langle\xi,e_n\rangle|^2\to0\)">\(\|p_n\xi\|^2=|\langle\xi,e_n\rangle|^2\to0\)</span>, since these nonnegative coefficients have bounded finite sums. Hence the projections are strongly null and, by CP08 and their norm bound, sigma-strongly null. For distinct indices, <span class="math" data-tex="\((p_n-p_m)^2=p_n+p_m\)">\((p_n-p_m)^2=p_n+p_m\)</span>, so uniqueness of positive square roots gives <span class="math" data-tex="\(|p_n-p_m|=p_n+p_m\)">\(|p_n-p_m|=p_n+p_m\)</span>. Its trace is two. The proved norm identification now gives (PV.40), including the failure of image-norm convergence.</p>
+<p>The trace model, including its full commutant and norm, is proved above. The unit proves exactly the predual-valued map, its complete positivity, the repaired self-adjoint norm formula, and the two bounded sequential conclusions. It does not assert that <span class="math" data-tex="\(\Theta_\varphi\)">\(\Theta_\varphi\)</span> is operator-norm bounded on <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span>, that the finite algebra is closed under absolute values, or that these sequential statements replace the arbitrary-net definition of normality.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-NW.html">← Detecting normal weights by finite observations</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-BA.html">Countable amplification and ultraweak bicommutant closure →</a></span></nav>
+<p class="small source-link"><a href="src/predual-valued-weight-map.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

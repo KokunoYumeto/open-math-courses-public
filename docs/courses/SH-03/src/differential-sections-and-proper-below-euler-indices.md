@@ -2,7 +2,7 @@
 
 A characteristic cycle gives a global Euler number when a differential section meets the microsupport in a compact set. On a noncompact manifold, the sublevels must also control escape of the support. Ordinary cohomology uses an ordinary direct image from an open sublevel. Compactly supported cohomology follows by duality and uses the opposite differential section. A strict local minimum then reads a stalk or a costalk.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 This lesson treats index formulas for differential sections and proper-below Euler indices, the local form of the index theorem of M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §4. Use Continuous sections and supported cycle intersections for the supported section class, proper trace and full section-intersection diagram; Characteristic cycles from supported microlocal identities for the actual kernel unit and evaluated trace; Proper characteristic classes and the compact index for compact finiteness and the characteristic-class integral; and Antipodal duality and half-line characteristic cycles for the normalized antipodal map and Verdier cycle duality.
 

@@ -4,7 +4,7 @@ The partial Legendre transformation exchanges some position coordinates with rat
 
 Use When a kernel quantizes a contact transformation and Dual kernels and an unchanged parameter. Their closed-submanifold, constructible-duality and localized adjunction prerequisites remain the inputs to the sheaf argument. The geometry and fibre calculation below are explicit.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## The coordinate transformation and its inverse
 

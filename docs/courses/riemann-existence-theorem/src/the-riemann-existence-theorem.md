@@ -1,6 +1,6 @@
 # The Riemann existence theorem
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic), with Proposition 3.3 by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 This lesson proves that for every scheme \(X\) locally of finite type over \(\mathbf C\), the functor \(Y\mapsto Y(\mathbf C)\) from finite étale covers of \(X\) to finite coverings of \(X(\mathbf C)\) is an equivalence of categories. Two steps are proved in earlier lessons of the course: the functor is fully faithful for every \(X\) ([Connectedness and full faithfulness](connectedness-and-full-faithfulness.md)), and essentially surjective for smooth \(X\) ([Covers of smooth varieties](covers-of-smooth-varieties.md)). For a singular \(X\) we pull a covering back to the resolution \(R(X)\), which is smooth, find a finite étale cover there, and bring it down to \(X\) by descent along the proper surjective morphism \(R(X)\to X\). The last sections translate the theorem into a statement about fundamental groups and work out examples.
 
@@ -112,7 +112,65 @@ from the profinite completion of the topological fundamental group.
 
 If \(X\) is smooth, then by [Connectedness and full faithfulness, Lemma 1.1](connectedness-and-full-faithfulness.md#1-smooth-points-and-divisors-with-normal-crossings) every point of \(X(\mathbf C)\) has an open neighbourhood homeomorphic to an open subset of \(\mathbf C^n\). Small balls in these charts are convex, so straight-line homotopies show that \(X(\mathbf C)\) is semilocally simply connected, as in Example 6.2 of the core course. \(\square\)
 
-**Remark 3.3.** For a singular \(X\) the space \(X(\mathbf C)\) is also semilocally simply connected: it is locally contractible, because the set of complex points of an affine scheme of finite type is a real semi-algebraic subset of some \(\mathbf R^{2n}\), and such sets can be triangulated (Łojasiewicz). Hence Theorem 3.2 holds for every connected \(X\) locally of finite type over \(\mathbf C\). The triangulation theorem is not proved in this collection, and nothing else in the course depends on this remark. Theorem 3.1 holds without any hypothesis on \(X(\mathbf C)\).
+### Contractible neighbourhoods at singular points
+
+**Proposition 3.3 (contractible neighbourhoods, including singular points).** Let \(X\) be any scheme locally of finite type over \(\mathbf C\). Every point of \(X(\mathbf C)\) has a basis of open neighbourhoods that strongly deformation retract onto that point. In particular, \(X(\mathbf C)\) is locally path-connected and semilocally simply connected. Thus the comparison in Theorem 3.2 holds for every connected \(X\) locally of finite type over \(\mathbf C\), without smoothness, reducedness or separatedness assumptions.
+
+**Proof.** *A triangulated affine neighbourhood.* Choose an affine open neighbourhood \(V=\operatorname{Spec}(\mathbf C[z_1,\ldots,z_n]/I)\) of the given complex point. The ideal \(I\) has finitely many generators. Their real and imaginary parts identify \(V(\mathbf C)\) with a closed real algebraic subset \(Z\subset\mathbf R^{2n}\), with its subspace topology. Moreover, \(V(\mathbf C)\) is open in \(X(\mathbf C)\); these assertions are [Definition 1.1 and Lemma 1.2 of the first lesson](finite-etale-covers-and-their-analytification.md#1-the-space-of-complex-points). Nilpotents do not change the common zero set or this topology. It is therefore enough to construct the asserted neighbourhoods in \(Z\).
+
+A real algebraic set is semianalytic, hence subanalytic: locally its finitely many polynomial equations are analytic equations, and the identity projection gives the subanalytic description. Apply the relative polyhedron theorem to the locally finite unit-grid triangulation of \(\mathbf R^{2n}\) and the one-member family \(\{Z\}\). The grid triangulation and the closed-subcomplex restriction are constructed in A closed ambient polyhedron and the subcomplex it induces. In detail, the theorem supplies a locally finite linear simplicial complex \(K'\) with support \(\mathbf R^{2n}\), and a homeomorphism \(T:\mathbf R^{2n}\to\mathbf R^{2n}\) such that the image of each open simplex is either contained in \(Z\) or disjoint from it. Let \(L\) consist of those simplices whose open interiors map into \(Z\). If \(\sigma\in L\), continuity and the closedness of \(Z\) give \(T(\sigma)\subset Z\), so every face of \(\sigma\) also belongs to \(L\). Thus \(L\) is a locally finite subcomplex, and
+
+\[
+t=T|_{|L|}:|L|\longrightarrow Z
+\]
+
+is a homeomorphism. Indeed, compatibility shows that \(T^{-1}(Z)=|L|\), and restriction of a homeomorphism to a subset is a homeomorphism onto its image. The case \(n=0\) is the same construction with a single vertex (or an empty zero set). This use of triangulation has exactly the subanalytic prerequisites stated in the linked relative theorem; no smoothness of \(Z\) is needed.
+
+*Small contractible open sets in a locally finite polyhedron.* Fix \(p\in|L|\). For each vertex \(v\) of \(L\), let \(\lambda_v:|L|\to[0,1]\) be its barycentric-coordinate function, equal to zero on simplices not containing \(v\). These functions agree on common faces and are continuous: locally only finitely many closed simplices occur, so the finite closed-set pasting lemma applies. At each point their sum is one. Let \(I_p\) be the vertex set of the unique open simplex containing \(p\), and write \(a_v=\lambda_v(p)>0\) for \(v\in I_p\); then \(\sum_{v\in I_p}a_v=1\).
+
+For \(0<\varepsilon<1\), define
+
+\[
+U_\varepsilon=\{q\in|L|:\lambda_v(q)>(1-\varepsilon)a_v
+\text{ for every }v\in I_p\}.
+\]
+
+This is an open neighbourhood of \(p\). Every \(q\in U_\varepsilon\) has a carrier simplex containing all the vertices in \(I_p\), so that closed simplex contains both \(q\) and \(p\). Consequently the affine map
+
+\[
+H_\varepsilon:U_\varepsilon\times[0,1]\longrightarrow U_\varepsilon,
+\qquad H_\varepsilon(q,s)=(1-s)q+sp
+\]
+
+is well-defined. On that simplex its barycentric coordinates satisfy
+
+\[
+\lambda_v(H_\varepsilon(q,s))
+=(1-s)\lambda_v(q)+s a_v>(1-\varepsilon)a_v
+\quad(v\in I_p).
+\]
+
+The affine formula is continuous in the ambient Euclidean space, hence in the subspace topology. It satisfies \(H_\varepsilon(q,0)=q\), \(H_\varepsilon(q,1)=p\), and \(H_\varepsilon(p,s)=p\). It is therefore a strong deformation retraction onto \(p\).
+
+These sets form a neighbourhood basis, not just a collection of large contractible sets. To verify this, fix one vertex \(v_0\in I_p\). Every \(U_\varepsilon\) lies in the union of simplices containing \(v_0\), which is a finite union by local finiteness at \(v_0\). Let \(W\) be the finite set of their vertices, and put \(M=\max(1,\max_{v\in W}\|v-p\|)\). For \(q\in U_\varepsilon\), extend both barycentric coordinate lists to \(W\) by zeros. Negative differences can occur only at vertices of \(I_p\), and their total absolute value is less than \(\varepsilon\sum_{v\in I_p}a_v=\varepsilon\). The differences sum to zero, so
+
+\[
+\sum_{v\in W}|\lambda_v(q)-\lambda_v(p)|<2\varepsilon,
+\qquad
+\|q-p\|\le M\sum_{v\in W}|\lambda_v(q)-\lambda_v(p)|<2M\varepsilon.
+\]
+
+Every open neighbourhood of \(p\) in \(|L|\) contains its intersection with a sufficiently small Euclidean ball. The displayed estimate puts \(U_\varepsilon\) inside that neighbourhood for sufficiently small \(\varepsilon\).
+
+*Return to the complex points.* The images \(t(U_\varepsilon)\) are open in \(Z\), form a basis at \(t(p)\), and contract through the continuous maps
+
+\[
+(z,s)\longmapsto t\bigl(H_\varepsilon(t^{-1}(z),s)\bigr).
+\]
+
+They are also open in \(X(\mathbf C)\), since \(Z\) represents the open set \(V(\mathbf C)\). Each is path-connected, and the contraction fixes its centre, so it contracts every loop based there while fixing the base point. More generally, any path between two points is homotopic relative to its endpoints to the path that goes from the first endpoint to the centre along the contraction and then backwards along the contraction to the second endpoint: contract the original path while adjoining the two endpoint tracks. Thus any two paths with the same endpoints are homotopic relative to those endpoints. This gives precisely the neighbourhood condition used in Theorem 3.2. Nothing in the construction requires \(X\) to be reduced or separated, because it takes place in an affine open neighbourhood. Theorem 3.2 now applies whenever \(X\) is connected. \(\square\)
+
+The fibre-functor statement of Theorem 3.1 does not need the triangulation argument.
 
 ## 4. Examples
 

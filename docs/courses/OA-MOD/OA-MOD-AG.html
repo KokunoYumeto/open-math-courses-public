@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analytic generators and exact finite weight domains · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-AG.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 82 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="analytic-generators-and-exact-finite-weight-domains">Analytic generators and exact finite weight domains</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>An imaginary-time generator is a closed-strip endpoint with a specified domain. Its graph can determine an entire real group, and its relative modular graph can be tested by finite weight pairings. Neither assertion permits replacing a domain by a convenient dense subset.</p>
+<p>The source targets are Takesaki, <em>Theory of Operator Algebras II</em>, VIII.3.22–26. The proofs below use CP's predual duality, NP's normality criterion, MA-08's scalar strip principle, WH's full weight Hilbert algebra, MF-07–09's Tomita algebra and power cores, HS-01/03's full-domain strip criterion and right multiplication, and GC's balanced weight and normalized faithful cocycle. Scalar integration and complex analysis retain their explicit provider contracts.</p>
+<p>One additional structural input is declared as <strong>AG-DEP-KADISON-ISOMETRY</strong>: a surjective complex-linear isometry of a unital C*-algebra has the form <span class="math" data-tex="\(T(x)=uJ_0(x)\)">\(T(x)=uJ_0(x)\)</span>, where <span class="math" data-tex="\(u\)">\(u\)</span> is unitary and <span class="math" data-tex="\(J_0\)">\(J_0\)</span> is a unital Jordan *-isomorphism. This theorem was proved by R. V. Kadison in 1951; a proof is given in D. Sherman, <a href="https://arxiv.org/abs/math/0409488v1"><em>A new proof of the noncommutative Banach–Stone theorem</em></a>, Theorem 1.3, whose unital case is stated there as Theorem 1.2. This classification is an explicit imported prerequisite, whose proof closure is pending. The normality consequence needed here is proved below. No multiplicativity assumption is added to the groups in VIII.3.22 or VIII.3.24.</p>
+<p>All inner products are linear in their first slot. Products of finite ideals below mean their <strong>linear product span</strong>.</p>
+<h2 id="strip-domains-normality-and-integer-powers"><span id="oa-mod-ag-01"></span><span id="OA-MOD-AG-01"></span>Strip domains, normality and integer powers</h2>
+<p>Let <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span>, <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>, be a one-parameter group of complex-linear isometries of a von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span>, with every real orbit pointwise sigma-weakly continuous. Each map is onto, since its inverse is <span class="math" data-tex="\(\alpha_{-t}\)">\(\alpha_{-t}\)</span>.</p>
+<p><strong>Normality from the stated structural input.</strong> For an individual map write <span class="math" data-tex="\(T=uJ_0\)">\(T=uJ_0\)</span>. Both <span class="math" data-tex="\(J_0\)">\(J_0\)</span> and its inverse are positive: every positive element is a square of a self-adjoint element, and Jordan *-maps preserve such squares. They are inverse order isomorphisms. If <span class="math" data-tex="\(x_j\uparrow x\)">\(x_j\uparrow x\)</span> is bounded and positive, its least-upper-bound characterization gives <span class="math" data-tex="\(J_0(x_j)\uparrow J_0(x)\)">\(J_0(x_j)\uparrow J_0(x)\)</span>. NP-04 therefore makes <span class="math" data-tex="\(J_0\)">\(J_0\)</span> normal. Bounded left multiplication by <span class="math" data-tex="\(u\)">\(u\)</span> is sigma-weakly continuous by CP-06. Thus <span class="math" data-tex="\(T\)">\(T\)</span> is sigma-weakly continuous, as is its inverse. This deduction, including the arbitrary-net order step, does not require that <span class="math" data-tex="\(T\)">\(T\)</span> preserve products.</p>
+<p>For a real height <span class="math" data-tex="\(h\ne0\)">\(h\ne0\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+S_h=\{z:\min(0,h)\leq\operatorname{Im}z\leq\max(0,h)\}.
+\tag{AG.1}
+\]">\[
+S_h=\{z:\min(0,h)\leq\operatorname{Im}z\leq\max(0,h)\}.
+\tag{AG.1}
+\]</span>
+<p>An element <span class="math" data-tex="\(a\)">\(a\)</span> belongs to <span class="math" data-tex="\(D(\alpha_{ih})\)">\(D(\alpha_{ih})\)</span> when there is a bounded <span class="math" data-tex="\(M\)">\(M\)</span>-valued function <span class="math" data-tex="\(F_a\)">\(F_a\)</span> on this <strong>whole closed strip</strong>, sigma-weakly continuous there, holomorphic in the interior, and satisfying <span class="math" data-tex="\(F_a(t)=\alpha_t(a)\)">\(F_a(t)=\alpha_t(a)\)</span>. Put <span class="math" data-tex="\(\alpha_{t+ih}(a)=F_a(t+ih)\)">\(\alpha_{t+ih}(a)=F_a(t+ih)\)</span>. Real-time maps retain their usual domain <span class="math" data-tex="\(M\)">\(M\)</span>. Boundary uniqueness in MA-08, tested against <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, makes the extension unique. Interior holomorphy can equivalently be tested weak-star: scalar Cauchy coefficients define elements <span class="math" data-tex="\(C_j\in M=(M_*)^*\)">\(C_j\in M=(M_*)^*\)</span> with <span class="math" data-tex="\(\|C_j\|\leq CR^{-j}\)">\(\|C_j\|\leq CR^{-j}\)</span> on an interior circle. Their norm-convergent Taylor series has every scalar test of <span class="math" data-tex="\(F_a\)">\(F_a\)</span>, so equals <span class="math" data-tex="\(F_a\)">\(F_a\)</span>.</p>
+<p>Normality permits applying <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span> to the strip, and uniqueness gives</p>
+<span class="math math-display" data-tex="\[
+\alpha_s(F_a(z))=F_a(z+s),\qquad
+F_a(t+ih)=\alpha_t(\alpha_{ih}(a)).
+\tag{AG.2}
+\]">\[
+\alpha_s(F_a(z))=F_a(z+s),\qquad
+F_a(t+ih)=\alpha_t(\alpha_{ih}(a)).
+\tag{AG.2}
+\]</span>
+<p>If <span class="math" data-tex="\(b=\alpha_z(a)\)">\(b=\alpha_z(a)\)</span>, translation of this strip by <span class="math" data-tex="\(z\)">\(z\)</span> supplies a strip for <span class="math" data-tex="\(b\)">\(b\)</span> in the opposite direction. Indeed <span class="math" data-tex="\(w\mapsto F_a(z+w)\)">\(w\mapsto F_a(z+w)\)</span> has real edge <span class="math" data-tex="\(\alpha_t(b)\)">\(\alpha_t(b)\)</span> and takes the value <span class="math" data-tex="\(a\)">\(a\)</span> at <span class="math" data-tex="\(-z\)">\(-z\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\alpha_{-z}(\alpha_z(a))=a,
+\qquad \mathcal G(\alpha_{-z})=\mathcal G(\alpha_z)^{-1}.
+\tag{AG.3}
+\]">\[
+\alpha_{-z}(\alpha_z(a))=a,
+\qquad \mathcal G(\alpha_{-z})=\mathcal G(\alpha_z)^{-1}.
+\tag{AG.3}
+\]</span>
+<p>Here inverse means reversal of ordered pairs in the graph; it is not an assertion that either domain is all of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Restriction of a strip of height <span class="math" data-tex="\(n\)">\(n\)</span> to successive unit strips proves one inclusion in</p>
+<span class="math math-display" data-tex="\[
+D((\alpha_i)^n)=D(\alpha_{in}),\qquad
+(\alpha_i)^n a=\alpha_{in}a\quad(n\geq1).
+\tag{AG.4}
+\]">\[
+D((\alpha_i)^n)=D(\alpha_{in}),\qquad
+(\alpha_i)^n a=\alpha_{in}a\quad(n\geq1).
+\tag{AG.4}
+\]</span>
+<p>Conversely, a defined sequence of <span class="math" data-tex="\(n\)">\(n\)</span> iterates supplies <span class="math" data-tex="\(n\)">\(n\)</span> bounded strips. Their common edges coincide by (AG.2). Gluing them gives a bounded sigma-weakly continuous function on the larger closed strip. Scalar Morera, subdividing a triangle along the finitely many common edges, proves interior holomorphy; the predual Cauchy argument above proves norm holomorphy. This gives the other inclusion. Opposite heights follow from (AG.3).</p>
+<p>Each graph is closed in the norm product topology. If <span class="math" data-tex="\(a_j\to a\)">\(a_j\to a\)</span> and <span class="math" data-tex="\(\alpha_{ih}a_j\to b\)">\(\alpha_{ih}a_j\to b\)</span> in norm, the scalar strip maximum principle bounds the norm of a difference of their extensions by the larger edge difference. The strips therefore converge uniformly in norm to the required strip for <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>. This argument asserts norm closedness and does not substitute norm continuity for the given real boundary topology.</p>
+<h2 id="a-bounded-exponential-type-core-without-a-fourier-import">A bounded exponential-type core without a Fourier import</h2>
+<p>Define the entire function <span class="math" data-tex="\(q(z)=(\sin z/z)^2\)">\(q(z)=(\sin z/z)^2\)</span>, with its removable value <span class="math" data-tex="\(q(0)=1\)">\(q(0)=1\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+Z=\int_{\mathbb R}q(t)\,dt\in(0,\infty),\qquad
+k_r(z)=\frac rZ q(rz),\quad r&gt;0.
+\tag{AG.5}
+\]">\[
+Z=\int_{\mathbb R}q(t)\,dt\in(0,\infty),\qquad
+k_r(z)=\frac rZ q(rz),\quad r&gt;0.
+\tag{AG.5}
+\]</span>
+<p>On the real line these are nonnegative integrable probability kernels. No value for <span class="math" data-tex="\(Z\)">\(Z\)</span> is needed. For <span class="math" data-tex="\(|y|\geq1\)">\(|y|\geq1\)</span>, <span class="math" data-tex="\(|\sin(t+iy)|\leq e^{|y|}\)">\(|\sin(t+iy)|\leq e^{|y|}\)</span> gives
+<span class="math" data-tex="\(\int |q(t+iy)|dt\leq\pi e^{2|y|}/|y|\)">\(\int |q(t+iy)|dt\leq\pi e^{2|y|}/|y|\)</span>.
+For <span class="math" data-tex="\(|y|\leq1\)">\(|y|\leq1\)</span>, use <span class="math" data-tex="\(\sin w/w=\int_0^1\cos(sw)ds\)">\(\sin w/w=\int_0^1\cos(sw)ds\)</span> on <span class="math" data-tex="\(|t|\leq2\)">\(|t|\leq2\)</span>, and the denominator bound <span class="math" data-tex="\(|w|^2\geq t^2\)">\(|w|^2\geq t^2\)</span> outside. These two integrals are bounded by <span class="math" data-tex="\(4e^{2|y|}\)">\(4e^{2|y|}\)</span> and <span class="math" data-tex="\(e^{2|y|}\)">\(e^{2|y|}\)</span>, respectively. Thus, for every complex <span class="math" data-tex="\(z\)">\(z\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}|k_r(t-z)|dt
+\leq\frac5Z e^{2r|\operatorname{Im}z|}.
+\tag{AG.6}
+\]">\[
+\int_{\mathbb R}|k_r(t-z)|dt
+\leq\frac5Z e^{2r|\operatorname{Im}z|}.
+\tag{AG.6}
+\]</span>
+<p>For <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> define weak-star integrals by their predual pairings:</p>
+<span class="math math-display" data-tex="\[
+x_r=\int_{\mathbb R}k_r(t)\alpha_t(x)dt,\qquad
+F_r(z)=\int_{\mathbb R}k_r(t-z)\alpha_t(x)dt.
+\tag{AG.7}
+\]">\[
+x_r=\int_{\mathbb R}k_r(t)\alpha_t(x)dt,\qquad
+F_r(z)=\int_{\mathbb R}k_r(t-z)\alpha_t(x)dt.
+\tag{AG.7}
+\]</span>
+<p>CP-06 represents these bounded functionals on <span class="math" data-tex="\(M_*\)">\(M_*\)</span> as elements of <span class="math" data-tex="\(M\)">\(M\)</span>. One has <span class="math" data-tex="\(\|x_r\|\leq\|x\|\)">\(\|x_r\|\leq\|x\|\)</span>. On compact parameter sets the kernels have a common integrable majorant: on a bounded interval use removability and compactness; outside it use the squared denominator and the bounded imaginary height. Scalar Morera and dominated integration make each test of <span class="math" data-tex="\(F_r\)">\(F_r\)</span> entire. Local boundedness from (AG.6) and the Cauchy argument in AG-01 make <span class="math" data-tex="\(F_r\)">\(F_r\)</span> norm-entire.</p>
+<p>Normality of <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span>, followed by a real change of variables, gives <span class="math" data-tex="\(F_r(s)=\alpha_s(x_r)\)">\(F_r(s)=\alpha_s(x_r)\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\|F_r(t+iy)\|\leq \frac5Z\|x\|e^{2r|y|}
+\quad(t,y\in\mathbb R).
+\tag{AG.8}
+\]">\[
+\|F_r(t+iy)\|\leq \frac5Z\|x\|e^{2r|y|}
+\quad(t,y\in\mathbb R).
+\tag{AG.8}
+\]</span>
+<p>In particular every restriction is a bounded closed strip. Its real orbit is entire of exponential type with a bound <strong>uniform in the real coordinate</strong>.</p>
+<p>The kernels form an approximate identity as <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span>: for every <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, their mass outside <span class="math" data-tex="\((-\delta,\delta)\)">\((-\delta,\delta)\)</span> tends to zero by the change of variables <span class="math" data-tex="\(s=rt\)">\(s=rt\)</span>. Continuity of <span class="math" data-tex="\(t\mapsto\omega(\alpha_t(x))\)">\(t\mapsto\omega(\alpha_t(x))\)</span> at zero, its bound <span class="math" data-tex="\(\|\omega\|\|x\|\)">\(\|\omega\|\|x\|\)</span>, and this tail estimate prove <span class="math" data-tex="\(\omega(x_r)\to\omega(x)\)">\(\omega(x_r)\to\omega(x)\)</span> for every <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+M_{\exp}^{\alpha}=\{a: \alpha_z(a)\text{ is entire and }
+\|\alpha_{t+iy}(a)\|\leq C e^{r|y|}
+\text{ for some }C&gt;0,r\geq0\}
+\tag{AG.9}
+\]">\[
+M_{\exp}^{\alpha}=\{a: \alpha_z(a)\text{ is entire and }
+\|\alpha_{t+iy}(a)\|\leq C e^{r|y|}
+\text{ for some }C&gt;0,r\geq0\}
+\tag{AG.9}
+\]</span>
+<p>is a linear, sigma-weakly dense subspace of <span class="math" data-tex="\(M\)">\(M\)</span>. It has bounded approximants <span class="math" data-tex="\(x_r\)">\(x_r\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>. Translation of an entire orbit proves invariance under every <span class="math" data-tex="\(\alpha_z\)">\(\alpha_z\)</span>, using (AG.2), with the constant enlarged by <span class="math" data-tex="\(e^{r|\operatorname{Im}z|}\)">\(e^{r|\operatorname{Im}z|}\)</span>. This proves the full density assertion of VIII.3.22 for the stated isometry groups.</p>
+<h2 id="imaginary-integers-determine-a-horizontally-bounded-entire-function">Imaginary integers determine a horizontally bounded entire function</h2>
+<p><strong>Lemma.</strong> If an entire scalar function satisfies</p>
+<span class="math math-display" data-tex="\[
+|f(t+iy)|\leq C e^{r|y|},\qquad f(in)=0\quad(n=1,2,\ldots),
+\tag{AG.10}
+\]">\[
+|f(t+iy)|\leq C e^{r|y|},\qquad f(in)=0\quad(n=1,2,\ldots),
+\tag{AG.10}
+\]</span>
+<p>then <span class="math" data-tex="\(f=0\)">\(f=0\)</span>.</p>
+<p><strong>Proof.</strong> Map the disc to the upper half-plane by <span class="math" data-tex="\(z(w)=i(1+w)/(1-w)\)">\(z(w)=i(1+w)/(1-w)\)</span>. The function <span class="math" data-tex="\(g(w)=e^{irz(w)}f(z(w))\)">\(g(w)=e^{irz(w)}f(z(w))\)</span> is analytic and bounded by <span class="math" data-tex="\(C\)">\(C\)</span>, and has zeros</p>
+<span class="math math-display" data-tex="\[
+w_n=\frac{n-1}{n+1},\quad n\geq1.
+\tag{AG.11}
+\]">\[
+w_n=\frac{n-1}{n+1},\quad n\geq1.
+\tag{AG.11}
+\]</span>
+<p>Suppose it is nonzero. Its zero at zero has a finite order <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>. Then <span class="math" data-tex="\(h(w)=g(w)/w^m\)">\(h(w)=g(w)/w^m\)</span> has <span class="math" data-tex="\(h(0)\ne0\)">\(h(0)\ne0\)</span> and <span class="math" data-tex="\(|h|\leq C\)">\(|h|\leq C\)</span>: apply the maximum principle on circles of radius <span class="math" data-tex="\(\rho\)">\(\rho\)</span> to obtain <span class="math" data-tex="\(|h|\leq C\rho^{-m}\)">\(|h|\leq C\rho^{-m}\)</span>, and let <span class="math" data-tex="\(\rho\uparrow1\)">\(\rho\uparrow1\)</span>.</p>
+<p>For <span class="math" data-tex="\(N\geq2\)">\(N\geq2\)</span> put</p>
+<span class="math math-display" data-tex="\[
+B_N(w)=\prod_{n=2}^N\frac{w_n-w}{1-w_n w},\qquad
+B_N(0)=\prod_{n=2}^N\frac{n-1}{n+1}
+=\frac{2}{N(N+1)}.
+\tag{AG.12}
+\]">\[
+B_N(w)=\prod_{n=2}^N\frac{w_n-w}{1-w_n w},\qquad
+B_N(0)=\prod_{n=2}^N\frac{n-1}{n+1}
+=\frac{2}{N(N+1)}.
+\tag{AG.12}
+\]</span>
+<p>Each factor has modulus one on the unit circle; its denominator has no zero in the closed disc. The zeros of <span class="math" data-tex="\(h\)">\(h\)</span> cancel all numerator zeros, so <span class="math" data-tex="\(h/B_N\)">\(h/B_N\)</span> is analytic in the disc. On circles <span class="math" data-tex="\(|w|=\rho\)">\(|w|=\rho\)</span> tending to one, the minimum of <span class="math" data-tex="\(|B_N|\)">\(|B_N|\)</span> tends to one, uniformly, for this fixed finite product. The maximum principle and the bound for <span class="math" data-tex="\(h\)">\(h\)</span> therefore give <span class="math" data-tex="\(|h/B_N|\leq C\)">\(|h/B_N|\leq C\)</span>. At zero this implies</p>
+<span class="math math-display" data-tex="\[
+0&lt;|h(0)|\leq \frac{2C}{N(N+1)}\longrightarrow0,
+\tag{AG.13}
+\]">\[
+0&lt;|h(0)|\leq \frac{2C}{N(N+1)}\longrightarrow0,
+\tag{AG.13}
+\]</span>
+<p>a contradiction. Hence <span class="math" data-tex="\(g=0\)">\(g=0\)</span>, so <span class="math" data-tex="\(f\)">\(f\)</span> vanishes on the upper half-plane and therefore everywhere. This argument proves VIII.3.23 without requiring a distributional Paley–Wiener theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The weaker inequality <span class="math" data-tex="\(|f(z)|\leq C e^{r|z|}\)">\(|f(z)|\leq C e^{r|z|}\)</span> would give a false lemma: <span class="math" data-tex="\(\sinh(\pi z)\)">\(\sinh(\pi z)\)</span> has all the indicated zeros and is not zero. The source's horizontal growth convention is essential.</p>
+<h2 id="inclusion-of-imaginary-generator-graphs-fixes-the-real-group">Inclusion of imaginary generator graphs fixes the real group</h2>
+<p><strong>Proposition.</strong> For two groups as in AG-01, if</p>
+<span class="math math-display" data-tex="\[
+\mathcal G(\alpha_i^1)\subseteq\mathcal G(\alpha_i^2),
+\tag{AG.14}
+\]">\[
+\mathcal G(\alpha_i^1)\subseteq\mathcal G(\alpha_i^2),
+\tag{AG.14}
+\]</span>
+<p>then <span class="math" data-tex="\(\alpha_t^1=\alpha_t^2\)">\(\alpha_t^1=\alpha_t^2\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span> for every real <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(x\in M_{\exp}^{\alpha^1}\)">\(x\in M_{\exp}^{\alpha^1}\)</span> with bound <span class="math" data-tex="\(C e^{r|y|}\)">\(C e^{r|y|}\)</span>, and write <span class="math" data-tex="\(y_k=\alpha_{ik}^1(x)\)">\(y_k=\alpha_{ik}^1(x)\)</span> for every integer <span class="math" data-tex="\(k\)">\(k\)</span>. All these elements remain in that entire core. Graph inclusion gives <span class="math" data-tex="\(\alpha_i^2(y_k)=y_{k+1}\)">\(\alpha_i^2(y_k)=y_{k+1}\)</span> for every <span class="math" data-tex="\(k\)">\(k\)</span>. Inverse graphs from (AG.3) give <span class="math" data-tex="\(\alpha_{-i}^2(y_{k+1})=y_k\)">\(\alpha_{-i}^2(y_{k+1})=y_k\)</span>. Integer gluing from (AG.4) now supplies the entire orbit of <span class="math" data-tex="\(x\)">\(x\)</span> for group 2, with the same values <span class="math" data-tex="\(y_k\)">\(y_k\)</span> at every imaginary integer, positive and negative.</p>
+<p>On the strip between heights <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(k+1\)">\(k+1\)</span>, the edge norms for group 2 are <span class="math" data-tex="\(\|y_k\|\)">\(\|y_k\|\)</span> and <span class="math" data-tex="\(\|y_{k+1}\|\)">\(\|y_{k+1}\|\)</span>, since its real maps are isometries. The weighted scalar three-lines estimate (proved by the exponential multiplier in HS-01) gives, for <span class="math" data-tex="\(0\leq u\leq1\)">\(0\leq u\leq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\alpha_{t+i(k+u)}^2(x)\|
+\leq (Ce^{r|k|})^{1-u}(Ce^{r|k+1|})^u
+=Ce^{r|k+u|}.
+\tag{AG.15}
+\]">\[
+\|\alpha_{t+i(k+u)}^2(x)\|
+\leq (Ce^{r|k|})^{1-u}(Ce^{r|k+1|})^u
+=Ce^{r|k+u|}.
+\tag{AG.15}
+\]</span>
+<p>The last equality holds because adjacent integer intervals do not cross zero in their interior. Thus group 2 has the same horizontal growth bound.</p>
+<p>For each normal functional, <span class="math" data-tex="\(f(z)=\omega(\alpha_z^1(x)-\alpha_z^2(x))\)">\(f(z)=\omega(\alpha_z^1(x)-\alpha_z^2(x))\)</span> satisfies AG-03 and vanishes at all positive imaginary integers. It is zero. Predual separation gives equality of the real orbits of <span class="math" data-tex="\(x\)">\(x\)</span>. Finally AG-02 supplies bounded sigma-weak approximants of every element by this core, and AG-01 makes both fixed real maps normal. Passing to these approximants proves the proposition on all of <span class="math" data-tex="\(M\)">\(M\)</span>. This retains the full scope and the positive-imaginary sign of VIII.3.24. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-tomita-test-algebra-is-a-power-core">The Tomita test algebra is a power core</h2>
+<p>For a faithful normal semifinite weight <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, work on its faithful normal GNS space, suppress the representation, and put</p>
+<span class="math math-display" data-tex="\[
+S=J\Delta^{1/2},\quad F=S^*=J\Delta^{-1/2},\quad
+\mathcal A=\Lambda_\varphi(\mathfrak n_\varphi\cap\mathfrak n_\varphi^*).
+\tag{AG.16}
+\]">\[
+S=J\Delta^{1/2},\quad F=S^*=J\Delta^{-1/2},\quad
+\mathcal A=\Lambda_\varphi(\mathfrak n_\varphi\cap\mathfrak n_\varphi^*).
+\tag{AG.16}
+\]</span>
+<p>WH-09–11 identify this with the <strong>full</strong> weight Hilbert algebra. Let <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span> be MF-07's maximal Tomita algebra. Those results give</p>
+<span class="math math-display" data-tex="\[
+S\mathcal A_0=F\mathcal A_0=\Delta^s\mathcal A_0=\mathcal A_0
+\quad(s\in\mathbb R),\qquad
+S^2=F^2=I,\quad SF=\Delta^{-1},\quad FS=\Delta
+\text{ on }\mathcal A_0.
+\tag{AG.17}
+\]">\[
+S\mathcal A_0=F\mathcal A_0=\Delta^s\mathcal A_0=\mathcal A_0
+\quad(s\in\mathbb R),\qquad
+S^2=F^2=I,\quad SF=\Delta^{-1},\quad FS=\Delta
+\text{ on }\mathcal A_0.
+\tag{AG.17}
+\]</span>
+<p>For example <span class="math" data-tex="\(F=S\Delta^{-1}\)">\(F=S\Delta^{-1}\)</span> on this common power domain, so its invariance follows from MF-07. The products and signs follow directly from <span class="math" data-tex="\(J\Delta^sJ=\Delta^{-s}\)">\(J\Delta^sJ=\Delta^{-s}\)</span>.</p>
+<p>We recall the precise graph-core fact needed below. For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> set <span class="math" data-tex="\(G_r=\exp[-(\log\Delta)^2/(4r)]\)">\(G_r=\exp[-(\log\Delta)^2/(4r)]\)</span>. For every real <span class="math" data-tex="\(s\)">\(s\)</span>, both <span class="math" data-tex="\(G_r\)">\(G_r\)</span> and <span class="math" data-tex="\(\Delta^sG_r\)">\(\Delta^sG_r\)</span> are bounded; scalar spectral dominated convergence gives</p>
+<span class="math math-display" data-tex="\[
+G_r\xi\to\xi,\qquad \Delta^sG_r\xi\to\Delta^s\xi
+\quad(\xi\in D(\Delta^s)).
+\tag{AG.18}
+\]">\[
+G_r\xi\to\xi,\qquad \Delta^sG_r\xi\to\Delta^s\xi
+\quad(\xi\in D(\Delta^s)).
+\tag{AG.18}
+\]</span>
+<p>MF-08 places <span class="math" data-tex="\(G_r\eta\)">\(G_r\eta\)</span> in <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span> for <span class="math" data-tex="\(\eta\in\mathcal A\)">\(\eta\in\mathcal A\)</span>. For fixed <span class="math" data-tex="\(r\)">\(r\)</span>, approximate <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in Hilbert norm by such <span class="math" data-tex="\(\eta\)">\(\eta\)</span>'s. The two bounded operators then approximate <span class="math" data-tex="\(G_r\xi\)">\(G_r\xi\)</span> and <span class="math" data-tex="\(\Delta^sG_r\xi\)">\(\Delta^sG_r\xi\)</span> simultaneously. Choosing these approximations after (AG.18) proves that <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span> is a graph core for <span class="math" data-tex="\(\Delta^s\)">\(\Delta^s\)</span>, in particular for <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. This is MF-09's actual power-core statement; ordinary Hilbert-space density would not suffice.</p>
+<h2 id="the-single-weight-generator-has-an-exact-finite-pair-test"><span id="oa-mod-ag-06"></span><span id="OA-MOD-AG-06"></span>The single-weight generator has an exact finite-pair test</h2>
+<p><strong>Theorem.</strong> For <span class="math" data-tex="\(a,b\in M\)">\(a,b\in M\)</span>, the pair <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> belongs to <span class="math" data-tex="\(\mathcal G(\sigma_{-i}^\varphi)\)">\(\mathcal G(\sigma_{-i}^\varphi)\)</span> if and only if</p>
+<span class="math math-display" data-tex="\[
+a\mathfrak n_\varphi^*\subseteq\mathfrak n_\varphi^*,\qquad
+\mathfrak n_\varphi b\subseteq\mathfrak n_\varphi,\qquad
+\varphi(ax)=\varphi(xb)\quad(x\in\mathfrak m_\varphi).
+\tag{AG.19}
+\]">\[
+a\mathfrak n_\varphi^*\subseteq\mathfrak n_\varphi^*,\qquad
+\mathfrak n_\varphi b\subseteq\mathfrak n_\varphi,\qquad
+\varphi(ax)=\varphi(xb)\quad(x\in\mathfrak m_\varphi).
+\tag{AG.19}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathfrak m_\varphi=\operatorname{span}\mathfrak n_\varphi^*\mathfrak n_\varphi\)">\(\mathfrak m_\varphi=\operatorname{span}\mathfrak n_\varphi^*\mathfrak n_\varphi\)</span>, and the last assertion uses its finite complex-linear extension, not extended positive values on arbitrary elements.</p>
+<p><strong>From the strip to the pairings.</strong> Let <span class="math" data-tex="\(F_a\)">\(F_a\)</span> be the lower strip of height one, with endpoint <span class="math" data-tex="\(b\)">\(b\)</span>, and let <span class="math" data-tex="\(c=F_a(-i/2)\)">\(c=F_a(-i/2)\)</span>. HS-03 applied to its first half gives</p>
+<span class="math math-display" data-tex="\[
+ya^*\in\mathfrak n_\varphi,\qquad
+\Lambda(ya^*)=JcJ\Lambda(y)\quad(y\in\mathfrak n_\varphi).
+\tag{AG.20}
+\]">\[
+ya^*\in\mathfrak n_\varphi,\qquad
+\Lambda(ya^*)=JcJ\Lambda(y)\quad(y\in\mathfrak n_\varphi).
+\tag{AG.20}
+\]</span>
+<p>The reflected strip <span class="math" data-tex="\(z\mapsto F_a(\bar z-i)^*\)">\(z\mapsto F_a(\bar z-i)^*\)</span> has real edge <span class="math" data-tex="\(\sigma_t(b^*)\)">\(\sigma_t(b^*)\)</span> and midpoint <span class="math" data-tex="\(c^*\)">\(c^*\)</span>. HS-03 applied to its first half gives</p>
+<span class="math math-display" data-tex="\[
+xb\in\mathfrak n_\varphi,\qquad
+\Lambda(xb)=Jc^*J\Lambda(x)=(JcJ)^*\Lambda(x).
+\tag{AG.21}
+\]">\[
+xb\in\mathfrak n_\varphi,\qquad
+\Lambda(xb)=Jc^*J\Lambda(x)=(JcJ)^*\Lambda(x).
+\tag{AG.21}
+\]</span>
+<p>These prove both domain inclusions in (AG.19). For <span class="math" data-tex="\(x,y\in\mathfrak n_\varphi\)">\(x,y\in\mathfrak n_\varphi\)</span>, both products in the following expression belong to <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\varphi(ay^*x)
+=\langle\Lambda(x),\Lambda(ya^*)\rangle
+=\langle\Lambda(xb),\Lambda(y)\rangle
+=\varphi(y^*xb).
+\tag{AG.22}
+\]">\[
+\varphi(ay^*x)
+=\langle\Lambda(x),\Lambda(ya^*)\rangle
+=\langle\Lambda(xb),\Lambda(y)\rangle
+=\varphi(y^*xb).
+\tag{AG.22}
+\]</span>
+<p>Linearity gives the asserted equality on all of <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span>.</p>
+<p><strong>From the pairings to the full closed domain.</strong> Assume (AG.19). For <span class="math" data-tex="\(\xi=\Lambda(x)\)">\(\xi=\Lambda(x)\)</span>, <span class="math" data-tex="\(\eta=\Lambda(y)\)">\(\eta=\Lambda(y)\)</span> in <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span>, one has
+<span class="math" data-tex="\(\Lambda(ya^*)=SaS\eta\)">\(\Lambda(ya^*)=SaS\eta\)</span> and <span class="math" data-tex="\(\Lambda(xb)=Sb^*S\xi\)">\(\Lambda(xb)=Sb^*S\xi\)</span>.
+Every occurrence of <span class="math" data-tex="\(S\)">\(S\)</span> has its domain: <span class="math" data-tex="\(ay^*\)">\(ay^*\)</span> lies in <span class="math" data-tex="\(\mathfrak n_\varphi\)">\(\mathfrak n_\varphi\)</span> by the left ideal property, and its adjoint <span class="math" data-tex="\(ya^*\)">\(ya^*\)</span> is there by the assumed first inclusion; the same argument applies to <span class="math" data-tex="\(b^*x^*\)">\(b^*x^*\)</span> using the second inclusion. Thus the finite-pair equality reads</p>
+<span class="math math-display" data-tex="\[
+\langle\xi,SaS\eta\rangle
+=\langle Sb^*S\xi,\eta\rangle,
+\quad\text{equivalently}\quad
+\langle aS\eta,F\xi\rangle=\langle bF\eta,S\xi\rangle.
+\tag{AG.23}
+\]">\[
+\langle\xi,SaS\eta\rangle
+=\langle Sb^*S\xi,\eta\rangle,
+\quad\text{equivalently}\quad
+\langle aS\eta,F\xi\rangle=\langle bF\eta,S\xi\rangle.
+\tag{AG.23}
+\]</span>
+<p>The equivalence uses the adjoint identity for the conjugate-linear operator <span class="math" data-tex="\(S\)">\(S\)</span>. Set <span class="math" data-tex="\(\zeta_1=F\eta\)">\(\zeta_1=F\eta\)</span>, <span class="math" data-tex="\(\zeta_2=S\xi\)">\(\zeta_2=S\xi\)</span>. By (AG.17) these range independently over <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span>, and (AG.23) becomes</p>
+<span class="math math-display" data-tex="\[
+\langle a\Delta^{-1}\zeta_1,\Delta\zeta_2\rangle
+=\langle b\zeta_1,\zeta_2\rangle
+\quad(\zeta_1,\zeta_2\in\mathcal A_0).
+\tag{AG.24}
+\]">\[
+\langle a\Delta^{-1}\zeta_1,\Delta\zeta_2\rangle
+=\langle b\zeta_1,\zeta_2\rangle
+\quad(\zeta_1,\zeta_2\in\mathcal A_0).
+\tag{AG.24}
+\]</span>
+<p>Since <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span> is a core for the self-adjoint <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, the adjoint-domain criterion proves
+<span class="math" data-tex="\(a\Delta^{-1}\zeta_1\in D(\Delta)\)">\(a\Delta^{-1}\zeta_1\in D(\Delta)\)</span> and <span class="math" data-tex="\(\Delta a\Delta^{-1}\zeta_1=b\zeta_1\)">\(\Delta a\Delta^{-1}\zeta_1=b\zeta_1\)</span>.
+Invariance under <span class="math" data-tex="\(\Delta^{-1}\)">\(\Delta^{-1}\)</span> gives <span class="math" data-tex="\(\Delta a\zeta=b\Delta\zeta\)">\(\Delta a\zeta=b\Delta\zeta\)</span> on <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span>. Graph-core approximation and closedness of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> extend this to</p>
+<span class="math math-display" data-tex="\[
+aD(\Delta)\subseteq D(\Delta),\qquad
+\Delta a\xi=b\Delta\xi\quad(\xi\in D(\Delta)).
+\tag{AG.25}
+\]">\[
+aD(\Delta)\subseteq D(\Delta),\qquad
+\Delta a\xi=b\Delta\xi\quad(\xi\in D(\Delta)).
+\tag{AG.25}
+\]</span>
+<p>HS-01 with <span class="math" data-tex="\(D=\Delta\)">\(D=\Delta\)</span>, <span class="math" data-tex="\(s=1\)">\(s=1\)</span> now supplies the unique bounded <span class="math" data-tex="\(M\)">\(M\)</span>-valued lower strip with endpoint <span class="math" data-tex="\(b\)">\(b\)</span>. MF-06 identifies its real edge with <span class="math" data-tex="\(\sigma_t^\varphi(a)\)">\(\sigma_t^\varphi(a)\)</span>. This proves the converse. We have not assumed that right multiplication is initially a bounded GNS operator, that <span class="math" data-tex="\(a\)">\(a\)</span> is entire, or that tests on a merely dense vector space establish (AG.25). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The source's printed page 131 repeats its second test vector in the subsequent operator-coefficient display. Formula (AG.24) retains the independent first and second vectors, and (AG.25) states the full domain that the display must establish.</p>
+<h2 id="the-relative-generator-and-its-two-mixed-ideals">The relative generator and its two mixed ideals</h2>
+<p>Let <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> be faithful normal semifinite weights and let <span class="math" data-tex="\(u_t=[D\psi:D\varphi]_t\)">\(u_t=[D\psi:D\varphi]_t\)</span>, with numerator <span class="math" data-tex="\(\psi\)">\(\psi\)</span> and reference <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+\tau_t(a)=u_t\sigma_t^\varphi(a).
+\tag{AG.26}
+\]">\[
+\tau_t(a)=u_t\sigma_t^\varphi(a).
+\tag{AG.26}
+\]</span>
+<p>The cocycle law gives a one-parameter group of complex-linear isometries; its inverse is <span class="math" data-tex="\(\tau_{-t}\)">\(\tau_{-t}\)</span>. Normality and pointwise sigma-weak continuity follow from GC's unitary cocycle and the modular automorphisms.</p>
+<p><strong>Relative finite-domain theorem.</strong> For <span class="math" data-tex="\(a,b\in M\)">\(a,b\in M\)</span>, one has <span class="math" data-tex="\((a,b)\in\mathcal G(\tau_{-i})\)">\((a,b)\in\mathcal G(\tau_{-i})\)</span> if and only if</p>
+<span class="math math-display" data-tex="\[
+a\mathfrak n_\varphi^*\subseteq\mathfrak n_\psi^*,\qquad
+\mathfrak n_\psi b\subseteq\mathfrak n_\varphi,\qquad
+\psi(ax)=\varphi(xb)
+\quad(x\in\operatorname{span}\mathfrak n_\varphi^*\mathfrak n_\psi).
+\tag{AG.27}
+\]">\[
+a\mathfrak n_\varphi^*\subseteq\mathfrak n_\psi^*,\qquad
+\mathfrak n_\psi b\subseteq\mathfrak n_\varphi,\qquad
+\psi(ax)=\varphi(xb)
+\quad(x\in\operatorname{span}\mathfrak n_\varphi^*\mathfrak n_\psi).
+\tag{AG.27}
+\]</span>
+<p><strong>Proof with the mixed domains retained.</strong> On <span class="math" data-tex="\(M_2(M)\)">\(M_2(M)\)</span> use the balanced weight</p>
+<span class="math math-display" data-tex="\[
+\Omega(X)=\psi(X_{11})+\varphi(X_{22})\quad(X\geq0),
+\qquad A=aE_{12},\quad B=bE_{12}.
+\tag{AG.28}
+\]">\[
+\Omega(X)=\psi(X_{11})+\varphi(X_{22})\quad(X\geq0),
+\qquad A=aE_{12},\quad B=bE_{12}.
+\tag{AG.28}
+\]</span>
+<p>GC-03/04/08 give <span class="math" data-tex="\(\sigma_t^\Omega(aE_{12})=\tau_t(a)E_{12}\)">\(\sigma_t^\Omega(aE_{12})=\tau_t(a)E_{12}\)</span>. The finite left ideal of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> consists of matrices whose first column is in <span class="math" data-tex="\(\mathfrak n_\psi\)">\(\mathfrak n_\psi\)</span> and whose second column is in <span class="math" data-tex="\(\mathfrak n_\varphi\)">\(\mathfrak n_\varphi\)</span>. Its adjoint ideal has the corresponding first and second <strong>rows</strong> in <span class="math" data-tex="\(\mathfrak n_\psi^*\)">\(\mathfrak n_\psi^*\)</span> and <span class="math" data-tex="\(\mathfrak n_\varphi^*\)">\(\mathfrak n_\varphi^*\)</span>. Matrix multiplication therefore gives exactly</p>
+<span class="math math-display" data-tex="\[
+A\mathfrak n_\Omega^*\subseteq\mathfrak n_\Omega^*
+\iff a\mathfrak n_\varphi^*\subseteq\mathfrak n_\psi^*,
+\qquad
+\mathfrak n_\Omega B\subseteq\mathfrak n_\Omega
+\iff\mathfrak n_\psi b\subseteq\mathfrak n_\varphi.
+\tag{AG.29}
+\]">\[
+A\mathfrak n_\Omega^*\subseteq\mathfrak n_\Omega^*
+\iff a\mathfrak n_\varphi^*\subseteq\mathfrak n_\psi^*,
+\qquad
+\mathfrak n_\Omega B\subseteq\mathfrak n_\Omega
+\iff\mathfrak n_\psi b\subseteq\mathfrak n_\varphi.
+\tag{AG.29}
+\]</span>
+<p>For <span class="math" data-tex="\(Z\in\mathfrak m_\Omega\)">\(Z\in\mathfrak m_\Omega\)</span>, write <span class="math" data-tex="\(Z\)">\(Z\)</span> as a finite sum of products <span class="math" data-tex="\(Y^*X\)">\(Y^*X\)</span> of elements of <span class="math" data-tex="\(\mathfrak n_\Omega\)">\(\mathfrak n_\Omega\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+Z_{21}=\sum_{X,Y}\sum_{j=1}^2Y_{j2}^*X_{j1}
+\in\operatorname{span}\mathfrak n_\varphi^*\mathfrak n_\psi.
+\tag{AG.30}
+\]">\[
+Z_{21}=\sum_{X,Y}\sum_{j=1}^2Y_{j2}^*X_{j1}
+\in\operatorname{span}\mathfrak n_\varphi^*\mathfrak n_\psi.
+\tag{AG.30}
+\]</span>
+<p>Conversely every elementary product in this span is realized by such a matrix, using one nonzero entry of <span class="math" data-tex="\(Y\)">\(Y\)</span> and one of <span class="math" data-tex="\(X\)">\(X\)</span> in the same row. Under the inclusions (AG.29), <span class="math" data-tex="\(AZ,ZB\)">\(AZ,ZB\)</span> are in <span class="math" data-tex="\(\mathfrak m_\Omega\)">\(\mathfrak m_\Omega\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\Omega(AZ)=\psi(aZ_{21}),\qquad
+\Omega(ZB)=\varphi(Z_{21}b).
+\tag{AG.31}
+\]">\[
+\Omega(AZ)=\psi(aZ_{21}),\qquad
+\Omega(ZB)=\varphi(Z_{21}b).
+\tag{AG.31}
+\]</span>
+<p>Both values are finite complex-linear weight values: for an elementary product <span class="math" data-tex="\(y^*x\)">\(y^*x\)</span>, the left one is <span class="math" data-tex="\(\psi((ya^*)^*x)\)">\(\psi((ya^*)^*x)\)</span> with both factors in <span class="math" data-tex="\(\mathfrak n_\psi\)">\(\mathfrak n_\psi\)</span>, and the right one is <span class="math" data-tex="\(\varphi(y^*(xb))\)">\(\varphi(y^*(xb))\)</span> with both factors in <span class="math" data-tex="\(\mathfrak n_\varphi\)">\(\mathfrak n_\varphi\)</span>.</p>
+<p>AG-06 for <span class="math" data-tex="\(\Omega,A,B\)">\(\Omega,A,B\)</span> is thus exactly (AG.27). Finally the matrix strip stays in its 12 corner: all other entries vanish on its real edge, so scalar boundary uniqueness makes them vanish throughout. The 12 entry supplies the relative strip; conversely a relative strip supplies the matrix strip. Their norms agree. This proves VIII.3.25 for arbitrary faithful normal semifinite weights, including all three finite-domain assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="finite-functionals-and-a-noncommuting-endpoint">Finite functionals and a noncommuting endpoint</h2>
+<p>For a bounded positive normal functional <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, <span class="math" data-tex="\(\varphi(x^*x)\leq\|x\|^2\varphi(1)\)">\(\varphi(x^*x)\leq\|x\|^2\varphi(1)\)</span>, so <span class="math" data-tex="\(\mathfrak n_\varphi=M\)">\(\mathfrak n_\varphi=M\)</span>. If both <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> are faithful such functionals, AG-07 becomes</p>
+<span class="math math-display" data-tex="\[
+(a,b)\in\mathcal G(\tau_{-i})
+\iff\psi(ax)=\varphi(xb)\quad(x\in M).
+\tag{AG.32}
+\]">\[
+(a,b)\in\mathcal G(\tau_{-i})
+\iff\psi(ax)=\varphi(xb)\quad(x\in M).
+\tag{AG.32}
+\]</span>
+<p>This proves precisely VIII.3.26. Finiteness of the two functionals is what removes the ideal hypotheses.</p>
+<p>For an exact noncommuting example take <span class="math" data-tex="\(M=M_2(\mathbb C)\)">\(M=M_2(\mathbb C)\)</span>, <span class="math" data-tex="\(\varphi(x)=\operatorname{Tr}(hx)\)">\(\varphi(x)=\operatorname{Tr}(hx)\)</span>, <span class="math" data-tex="\(\psi(x)=\operatorname{Tr}(kx)\)">\(\psi(x)=\operatorname{Tr}(kx)\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+h=\begin{pmatrix}1&amp;0\\0&amp;4\end{pmatrix},\qquad
+k=\begin{pmatrix}5&amp;-3\\-3&amp;5\end{pmatrix},\qquad
+\tau_t(a)=k^{it}ah^{-it},\qquad\tau_{-i}(a)=kah^{-1}.
+\tag{AG.33}
+\]">\[
+h=\begin{pmatrix}1&amp;0\\0&amp;4\end{pmatrix},\qquad
+k=\begin{pmatrix}5&amp;-3\\-3&amp;5\end{pmatrix},\qquad
+\tau_t(a)=k^{it}ah^{-it},\qquad\tau_{-i}(a)=kah^{-1}.
+\tag{AG.33}
+\]</span>
+<p>The eigenvalues of <span class="math" data-tex="\(k\)">\(k\)</span> are <span class="math" data-tex="\(2,8\)">\(2,8\)</span>, so both functionals are faithful. Cyclicity of the finite trace transforms (AG.32) into <span class="math" data-tex="\(ka=bh\)">\(ka=bh\)</span>, because the trace pairing on all matrices is nondegenerate.</p>
+<p>For <span class="math" data-tex="\(a=E_{12}\)">\(a=E_{12}\)</span> the correct endpoint and a reversed-order candidate are</p>
+<span class="math math-display" data-tex="\[
+b=\begin{pmatrix}0&amp;5/4\\0&amp;-3/4\end{pmatrix},\qquad
+b&#x27;=h^{-1}ka=\begin{pmatrix}0&amp;5\\0&amp;-3/4\end{pmatrix}.
+\tag{AG.34}
+\]">\[
+b=\begin{pmatrix}0&amp;5/4\\0&amp;-3/4\end{pmatrix},\qquad
+b&#x27;=h^{-1}ka=\begin{pmatrix}0&amp;5\\0&amp;-3/4\end{pmatrix}.
+\tag{AG.34}
+\]</span>
+<p>With <span class="math" data-tex="\(x=E_{21}\)">\(x=E_{21}\)</span> one computes <span class="math" data-tex="\(\psi(ax)=5\)">\(\psi(ax)=5\)</span>, <span class="math" data-tex="\(\varphi(xb)=5\)">\(\varphi(xb)=5\)</span>, whereas <span class="math" data-tex="\(\varphi(xb&#x27;)=20\)">\(\varphi(xb&#x27;)=20\)</span>. This detects the factor order by one finite pairing. The model illustrates the theorem; it does not replace its arbitrary semifinite scope.</p>
+<h2 id="four-solved-domain-and-growth-problems">Four solved domain and growth problems</h2>
+<p><strong>Problem 1: distinguish two growth conventions.</strong> Show why zeros at all positive imaginary integers cannot determine an arbitrary entire function of usual exponential type. <strong>Solution.</strong> For <span class="math" data-tex="\(f(z)=\sinh(\pi z)\)">\(f(z)=\sinh(\pi z)\)</span>, <span class="math" data-tex="\(f(in)=i\sin(\pi n)=0\)">\(f(in)=i\sin(\pi n)=0\)</span>, while <span class="math" data-tex="\(|f(z)|\leq e^{\pi|z|}\)">\(|f(z)|\leq e^{\pi|z|}\)</span>. Its real-axis values are unbounded, so it fails (AG.10) already at height zero. The disc proof uses that missing horizontal bound to make <span class="math" data-tex="\(g\)">\(g\)</span> bounded.</p>
+<p><strong>Problem 2: use a graph inclusion in both directions of imaginary time.</strong> Under (AG.14), verify all negative as well as positive imaginary integer values for an element of the first exponential core. <strong>Solution.</strong> For every integer <span class="math" data-tex="\(k\)">\(k\)</span>, the pair <span class="math" data-tex="\((y_k,y_{k+1})\)">\((y_k,y_{k+1})\)</span> belongs to both positive-imaginary graphs. Reverse that pair using (AG.3), giving <span class="math" data-tex="\(\alpha_{-i}^2(y_{k+1})=y_k\)">\(\alpha_{-i}^2(y_{k+1})=y_k\)</span>. Repeatedly glue from zero upward and downward. This gives all <span class="math" data-tex="\(\alpha_{ik}^2(x)=y_k\)">\(\alpha_{ik}^2(x)=y_k\)</span> and the growth bounds on both half-planes. Equality on an unspecified common dense domain would supply neither the individual iterates nor their strip domains.</p>
+<p><strong>Problem 3: sigma-weak density need not be norm density.</strong> On <span class="math" data-tex="\(L^\infty(\mathbb R/\mathbb Z)\)">\(L^\infty(\mathbb R/\mathbb Z)\)</span>, let <span class="math" data-tex="\(\alpha_t f(s)=f(s+t)\)">\(\alpha_t f(s)=f(s+t)\)</span>. Show that the exponential core is not norm dense. <strong>Solution.</strong> The maps are isometric normal automorphisms; the real orbit is weak-star continuous by translation continuity in the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> predual. For <span class="math" data-tex="\(x=1_{[0,1/2)}\)">\(x=1_{[0,1/2)}\)</span>, any sufficiently small nonzero translation changes the indicator on a positive-measure interval, so <span class="math" data-tex="\(\|\alpha_t x-x\|_\infty=1\)">\(\|\alpha_t x-x\|_\infty=1\)</span>. Every element of the entire core has a norm-continuous real orbit. The space of elements with such an orbit is norm closed, since
+<span class="math" data-tex="\(\|\alpha_t x-x\|\leq2\|x-x_j\|+\|\alpha_t x_j-x_j\|\)">\(\|\alpha_t x-x\|\leq2\|x-x_j\|+\|\alpha_t x_j-x_j\|\)</span>.
+Thus this <span class="math" data-tex="\(x\)">\(x\)</span> cannot be a norm limit of the core, although AG-02 supplies bounded weak-star approximants.</p>
+<p><strong>Problem 4: retain infinite weight masses.</strong> Take an arbitrary nonempty set <span class="math" data-tex="\(I\)">\(I\)</span>, positive numbers <span class="math" data-tex="\(r_j\)">\(r_j\)</span>, and <span class="math" data-tex="\(M=\prod_{j\in I}M_2(\mathbb C)\)">\(M=\prod_{j\in I}M_2(\mathbb C)\)</span>. Define <span class="math" data-tex="\(\varphi(x)=\sum_j r_j\operatorname{Tr}(hx_j)\)">\(\varphi(x)=\sum_j r_j\operatorname{Tr}(hx_j)\)</span> and <span class="math" data-tex="\(\psi(x)=\sum_j r_j\operatorname{Tr}(kx_j)\)">\(\psi(x)=\sum_j r_j\operatorname{Tr}(kx_j)\)</span> on positive elements, with the matrices of (AG.33). Find the relative generator. <strong>Solution.</strong> Interpret each sum as the supremum of finite subsums. Finite-coordinate truncations prove normality and semifiniteness; strict positivity of the densities proves faithfulness. Blockwise modular calculus gives <span class="math" data-tex="\(u_t(j)=(r_jk)^{it}(r_jh)^{-it}=k^{it}h^{-it}\)">\(u_t(j)=(r_jk)^{it}(r_jh)^{-it}=k^{it}h^{-it}\)</span>, so the masses cancel. The two spectra of <span class="math" data-tex="\(h,k\)">\(h,k\)</span> lie in fixed positive compact intervals, and their logarithms are bounded independently of <span class="math" data-tex="\(j\)">\(j\)</span>. Hence <span class="math" data-tex="\(\tau_z(a)_j=k^{iz}a_jh^{-iz}\)">\(\tau_z(a)_j=k^{iz}a_jh^{-iz}\)</span> is a norm-entire map on the product, bounded on each horizontal strip. Its generator has domain all of <span class="math" data-tex="\(M\)">\(M\)</span>, with endpoint <span class="math" data-tex="\(b_j=ka_jh^{-1}\)">\(b_j=ka_jh^{-1}\)</span>. AG-07 nevertheless uses the actual weighted finite ideals in its pairings. Uniform matrix bounds imply these ideals coincide as sets, are invariant under the indicated bounded block multipliers, and each elementary mixed product has finite absolute weight pairing by weighted Cauchy–Schwarz. The finite-pair equality follows blockwise and summing those absolutely convergent pairings. If <span class="math" data-tex="\(\sum_jr_j=\infty\)">\(\sum_jr_j=\infty\)</span>, the weights are not finite functionals, so the all-<span class="math" data-tex="\(M\)">\(M\)</span> complex weight test in (AG.32) is unavailable even though this particular generator has full domain. No countability or boundedness of the masses is assumed.</p>
+<p>The reproducible private illustration for this lesson records the finite Blaschke product in AG-03, the full-domain square in AG-06 and the exact factor-order test in AG-08.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-PC.html">← Partial cocycles and their exact mixed KMS domains</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-SM.html">Upper imaginary time and finite weight multipliers →</a></span></nav>
+<p class="small source-link"><a href="src/analytic-generators-and-finite-domains.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

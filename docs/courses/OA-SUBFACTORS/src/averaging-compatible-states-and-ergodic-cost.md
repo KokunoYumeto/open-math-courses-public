@@ -15,10 +15,10 @@ The expectation is normal and canonical-trace-preserving, and \(E|_M=E_N\). Put 
 
 We use these precise earlier proof scopes:
 
-- 52.1–52.2: the common basis, actual expected pair, full corners and center lifts.
+- [52.1–52.2](canonical-core-traces-and-integer-rounding.md): the common basis, actual expected pair, full corners and center lifts.
 - [68.1–68.2](core-central-transition-bounds.md): a common basis \((a_i)_{i=1}^{t_0}\), \(a_1=1\), \(t_0=\lceil d\rceil\), \(\|a_i\|\leq\sqrt d\), \(\sum_i a_i a_i^*=d1\), and the central transfer \(\mathcal I(x)=\sum_i a_i x a_i^*\).
 - [T.1–T.10](cup-tail-commutants-and-central-comparison.md): the actual cup density, its two marginals and the ambient commutant comparison.
-- AS.1–AS.16, especially Theorems AS.3–AS.4: whole-joint-center centralizer membership, bounded reweighting, exact compatibility, the finite-basis centrality bound and physical trace preservation. These proofs are reused, not reproved.
+- [AS.1–AS.16](selecting-a-compatible-hypertrace.md), especially Theorems AS.3–AS.4: whole-joint-center centralizer membership, bounded reweighting, exact compatibility, the finite-basis centrality bound and physical trace preservation. These proofs are reused, not reproved.
 - [SC.1–SC.15](singular-hypertraces-jones-ideals-and-entropy.md) and [JC.3–JC.14](hypertraces-and-normal-central-components.md): the Jones-ideal branch and the already settled nonzero normal-component alternative.
 - [M1–M10](finite-traces-and-jones-projections.md): finite tracial Hilbert-space actions, their commutants and bounded-vector identification.
 

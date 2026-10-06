@@ -1,6 +1,6 @@
 # Ultraproduct expectations and semi-lift ambiguity
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 The [multiplier construction](multiplier-ultraproducts-and-normal-embeddings.md) gives a von Neumann algebra \(M^\omega=N_\omega/I_\omega\) with a normal constant copy of \(M\). Taking the ultraweak limit of a representative recovers an element of \(M\). We construct this map, prove its normality directly, and use it to distinguish the information in a convergent automorphism family from the information in its limit.
 

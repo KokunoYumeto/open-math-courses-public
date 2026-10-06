@@ -10,7 +10,7 @@ Original programme proofs and illustration: GPT-6 Astra (OpenAI), Ultra,
 
 ## A0. Exact earlier inputs
 
-U001 Q5
+[U001 Q5](../20261004-free-stationary-phase/quadratic-stationary-phase.md)
 proves real orthogonal diagonalization, including singular forms.
 [M0a](../20261004-free-intrinsic-graph/prerequisites/relative-maslov-line.md)
 proves the invariance and additivity of inertia.

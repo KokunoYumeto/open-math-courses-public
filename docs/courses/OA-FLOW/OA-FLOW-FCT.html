@@ -1,0 +1,553 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The normalized trace with its full center retained · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L116.html">Previous lesson</a><a href="OA-FLOW-L119.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-FCT.md">Lesson source</a></nav><p class="notice">Original finite center-valued trace proof and exact figures by GPT-6.1 Sol (OpenAI), Ultra; owner and independent review and guarded integration preparation by GPT-6 Astra (OpenAI), Ultra. Earlier component and font terms retained. Human review and formal verification are not asserted.</p><p><a id="oa-flow.fct.setting"></a></p>
+<h1 id="OA-FLOW.FCT.SETTING">The normalized trace with its full center retained</h1>
+<p>Let <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span> be a finite von Neumann algebra on an arbitrary complex Hilbert space, and put <span class="math" data-tex="\(Z=Z(M)\)">\(Z=Z(M)\)</span>. Finiteness means that an isometry in every projection corner has full final projection. Equivalently, the identity is a finite projection, since finiteness passes to subprojections by PC5. No countability, factor, separability or scalar-trace assumption is made.</p>
+<p>We construct a unique normal positive linear map <span class="math" data-tex="\(T:M\to Z\)">\(T:M\to Z\)</span> such that</p>
+<p><a id="equation-fct1"></a></p>
+<p><span class="math math-display" data-tex="\[
+ T(1)=1,\qquad T(zx)=zT(x),\qquad T(xy)=T(yx)
+ \quad(z\in Z,\ x,y\in M).
+ \tag{FCT1}
+\]">\[
+ T(1)=1,\qquad T(zx)=zT(x),\qquad T(xy)=T(yx)
+ \quad(z\in Z,\ x,y\in M).
+ \tag{FCT1}
+\]</span>
+It is faithful, has norm one when <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span>, and preserves all bounded increasing positive suprema. Normal here means continuous on the entire concrete ultraweak space, not just on bounded sets. For the zero algebra the map is zero; its norm is zero and its normalization is <span class="math" data-tex="\(T(0)=0\)">\(T(0)=0\)</span>.</p>
+<p>The construction is quantitative: maps with trace distortion tending to one converge in operator norm. We prove that stability first, under an explicit tiling condition. We then supply the tilings, normal center-valued states and two local balancing arguments needed to produce those maps.</p>
+<p>The earlier complete proofs used are <a href="OA-FLOW-CF.html#oa-flow.cf.1">CF1/3–8</a>, <a href="OA-FLOW-SF.html#oa-flow.shared-foundations.sf-0">SF0 and SB1–6</a>, <a href="OA-FLOW-CP.html#oa-flow.cp.1">CP1–6</a>, <a href="OA-FLOW-ST12.html#oa-flow.st.1">ST1–2</a>, and <a href="OA-FLOW-PC.html#oa-flow.projection.pc1">PC1–7</a>. Only the last automorphism corollary additionally uses the order-normal positive-map criterion <a href="OA-FLOW-NF.html#oa-flow.nf.6">NF6</a>. Each use is located below. Scalar trace existence, type-I classification, direct integrals and a fixed-point theorem are not premises.</p>
+<p><em>Original exposition and illustration: CC0-1.0 to the extent of rights held. Spot-checked in a separate AI session.</em></p>
+<p><a id="fct-0"></a></p>
+<p><a id="oa-flow.fct.0"></a></p>
+<h2 id="OA-FLOW.FCT.0">FCT0. Three analytic operations</h2>
+<p>For a positive functional <span class="math" data-tex="\(f\)">\(f\)</span> on a unital C-star algebra, the positive/negative decomposition of a self-adjoint element shows that <span class="math" data-tex="\(f\)">\(f\)</span> is real on self-adjoint elements, hence <span class="math" data-tex="\(f(x^*)=\overline{f(x)}\)">\(f(x^*)=\overline{f(x)}\)</span>. Positivity of <span class="math" data-tex="\(f((x+ty)^*(x+ty))\)">\(f((x+ty)^*(x+ty))\)</span> for all complex <span class="math" data-tex="\(t\)">\(t\)</span> proves</p>
+<p><a id="equation-fct2"></a></p>
+<p><span class="math math-display" data-tex="\[
+ |f(y^*x)|^2\le f(x^*x)f(y^*y).
+ \tag{FCT2}
+\]">\[
+ |f(y^*x)|^2\le f(x^*x)f(y^*y).
+ \tag{FCT2}
+\]</span>
+Indeed the diagonal values are nonnegative and the mixed terms are conjugates. If <span class="math" data-tex="\(f(y^*y)&gt;0\)">\(f(y^*y)&gt;0\)</span>, minimize the scalar quadratic. If that diagonal is zero, a nonzero mixed term would make the quadratic negative by a sufficiently large scalar of the opposite phase. This also proves the zero-diagonal case. Setting <span class="math" data-tex="\(y=1\)">\(y=1\)</span> and using <span class="math" data-tex="\(x^*x\le\|x\|^2 1\)">\(x^*x\le\|x\|^2 1\)</span>, from CF7, gives <span class="math" data-tex="\(\|f\|=f(1)\)">\(\|f\|=f(1)\)</span>, including <span class="math" data-tex="\(f=0\)">\(f=0\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(F:M\to Z\)">\(F:M\to Z\)</span> is positive and linear. Every character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of the commutative unital C-star algebra <span class="math" data-tex="\(Z\)">\(Z\)</span> is positive, by CF6 and positive square roots. Thus <span class="math" data-tex="\(\chi\circ F\)">\(\chi\circ F\)</span> is positive and
+<span class="math math-display" data-tex="\[
+ |\chi(F(x))|\le \chi(F(1))\|x\|\le\|F(1)\|\|x\|.
+\]">\[
+ |\chi(F(x))|\le \chi(F(1))\|x\|\le\|F(1)\|\|x\|.
+\]</span>
+CF6 proves <span class="math" data-tex="\(\|z\|=\sup_\chi|\chi(z)|\)">\(\|z\|=\sup_\chi|\chi(z)|\)</span> for every complex <span class="math" data-tex="\(z\in Z\)">\(z\in Z\)</span>. Consequently</p>
+<p><a id="equation-fct3"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|F\|=\|F(1)\|.
+ \tag{FCT3}
+\]">\[
+ \|F\|=\|F(1)\|.
+ \tag{FCT3}
+\]</span>
+This proves boundedness as well as the exact norm. It does not identify a complex image with its real part. The same argument works in a nonzero central corner, using its identity.</p>
+<p>For completeness, a bounded increasing net <span class="math" data-tex="\(a_j\ge0\)">\(a_j\ge0\)</span> has its supremum as a strong limit in <span class="math" data-tex="\(M\)">\(M\)</span>. Its limiting quadratic values define a bounded positive form: homogeneity and the parallelogram identity pass to the scalar limits along the directed net. Polarization and CF8's Hilbert representation theorem give a positive operator <span class="math" data-tex="\(a\)">\(a\)</span>. We have <span class="math" data-tex="\(0\le a-a_j\le C1\)">\(0\le a-a_j\le C1\)</span> for a common bound <span class="math" data-tex="\(C\)">\(C\)</span>, so CF6–7 give</p>
+<p><a id="equation-fct4"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|(a-a_j)\xi\|^2\le C\langle(a-a_j)\xi,\xi\rangle\longrightarrow0.
+ \tag{FCT4}
+\]">\[
+ \|(a-a_j)\xi\|^2\le C\langle(a-a_j)\xi,\xi\rangle\longrightarrow0.
+ \tag{FCT4}
+\]</span>
+Strong closedness puts <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>, and its quadratic values show that it is the least upper bound. CP4–6's vector-series tail estimate makes every bounded strong limit an ultraweak limit. In particular an ultraweakly continuous positive map <span class="math" data-tex="\(F\)">\(F\)</span> preserves these suprema: the bounded increasing <span class="math" data-tex="\(F(a_j)\)">\(F(a_j)\)</span> have a strong supremum <span class="math" data-tex="\(b\)">\(b\)</span> by this same argument, hence an ultraweak limit <span class="math" data-tex="\(b\)">\(b\)</span>, while continuity gives the ultraweak limit <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span>. Uniqueness of the limit gives <span class="math" data-tex="\(b=F(a)\)">\(b=F(a)\)</span>.</p>
+<p>We will also use the following complete decomposition of normal functionals. By CP4–6 every <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span> is <span class="math" data-tex="\(\sum_j\omega_{u_j,v_j}\)">\(\sum_j\omega_{u_j,v_j}\)</span>, with both vector sequences square summable and inner products linear in the first variable. Polarization gives</p>
+<p><a id="equation-fct5"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \omega_{u,v}=\frac14\sum_{k=0}^3 i^k\omega_{u+i^kv,u+i^kv}.
+ \tag{FCT5}
+\]">\[
+ \omega_{u,v}=\frac14\sum_{k=0}^3 i^k\omega_{u+i^kv,u+i^kv}.
+ \tag{FCT5}
+\]</span>
+For each <span class="math" data-tex="\(k\)">\(k\)</span>, the sum of these positive vector functionals is normal: <span class="math" data-tex="\(\sum_j\|u_j+i^kv_j\|^2&lt;\infty\)">\(\sum_j\|u_j+i^kv_j\|^2&lt;\infty\)</span>. Thus every normal functional is a linear combination of four positive normal functionals. CP6 also proves that <span class="math" data-tex="\(M_*\)">\(M_*\)</span> is norm closed in <span class="math" data-tex="\(M^*\)">\(M^*\)</span>. Finally <span class="math" data-tex="\(x\mapsto axb\)">\(x\mapsto axb\)</span> is normal for bounded <span class="math" data-tex="\(a,b\)">\(a,b\)</span>: substituting in its vector series replaces <span class="math" data-tex="\((u_j,v_j)\)">\((u_j,v_j)\)</span> by <span class="math" data-tex="\((bu_j,a^*v_j)\)">\((bu_j,a^*v_j)\)</span>, which are still square summable. These assertions apply equally to <span class="math" data-tex="\(Z\)">\(Z\)</span> and all concrete corners.</p>
+<p><a id="fct-1"></a></p>
+<p><a id="oa-flow.fct.1"></a></p>
+<h2 id="OA-FLOW.FCT.1">FCT1. Quantitative stability, with the tiling premise explicit</h2>
+<p>Call a nonzero projection <span class="math" data-tex="\(p\)">\(p\)</span> a <strong>central tile</strong> if there are finitely many orthogonal projections</p>
+<p><a id="equation-fct6"></a></p>
+<p><span class="math math-display" data-tex="\[
+ p=p_1\sim p_2\sim\cdots\sim p_k,\qquad
+ p_1+\cdots+p_k=z\in Z,
+ \tag{FCT6}
+\]">\[
+ p=p_1\sim p_2\sim\cdots\sim p_k,\qquad
+ p_1+\cdots+p_k=z\in Z,
+ \tag{FCT6}
+\]</span>
+where <span class="math" data-tex="\(z\)">\(z\)</span> is a nonzero central projection. Necessarily <span class="math" data-tex="\(c(p)=z\)">\(c(p)=z\)</span>, by PC2's preservation of central support under equivalence. This definition includes <span class="math" data-tex="\(k=1\)">\(k=1\)</span>.</p>
+<p>For this section alone assume that every projection is an arbitrary orthogonal sum of central tiles. A <strong>normal center-valued state</strong> is a normal positive linear <span class="math" data-tex="\(\phi:M\to Z\)">\(\phi:M\to Z\)</span> satisfying <span class="math" data-tex="\(\phi(1)=1\)">\(\phi(1)=1\)</span> and <span class="math" data-tex="\(\phi(zx)=z\phi(x)\)">\(\phi(zx)=z\phi(x)\)</span>. Suppose <span class="math" data-tex="\(a_n&gt;1\)">\(a_n&gt;1\)</span> decreases to one and such states satisfy, on all of <span class="math" data-tex="\(M\)">\(M\)</span>,</p>
+<p><a id="equation-fct7"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \phi_n(xx^*)\le a_n\phi_n(x^*x).
+ \tag{FCT7}
+\]">\[
+ \phi_n(xx^*)\le a_n\phi_n(x^*x).
+ \tag{FCT7}
+\]</span>
+For <span class="math" data-tex="\(m&lt;n\)">\(m&lt;n\)</span> and a central tile as in (FCT6), a partial isometry between <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(p_i\)">\(p_i\)</span>, used in both directions in (FCT7), gives</p>
+<p><a id="equation-fct8"></a></p>
+<p><span class="math math-display" data-tex="\[
+\begin{aligned}
+ k\phi_n(p)&amp;\le a_n\sum_i\phi_n(p_i)=a_nz
+ =a_n\sum_i\phi_m(p_i)\\
+ &amp;\le ka_na_m\phi_m(p)\le ka_m^2\phi_m(p).
+\end{aligned}
+ \tag{FCT8}
+\]">\[
+\begin{aligned}
+ k\phi_n(p)&amp;\le a_n\sum_i\phi_n(p_i)=a_nz
+ =a_n\sum_i\phi_m(p_i)\\
+ &amp;\le ka_na_m\phi_m(p)\le ka_m^2\phi_m(p).
+\end{aligned}
+ \tag{FCT8}
+\]</span>
+The last comparison uses <span class="math" data-tex="\(\phi_m(p_i)\le a_m\phi_m(p)\)">\(\phi_m(p_i)\le a_m\phi_m(p)\)</span>. Thus <span class="math" data-tex="\(D_{mn}=a_m^2\phi_m-\phi_n\)">\(D_{mn}=a_m^2\phi_m-\phi_n\)</span> is nonnegative on tiles. Normality and finite partial sums extend the inequality to every projection. Bounded Borel spectral step approximation, supplied by SF's SB4–6, extends it to every positive element; boundedness permits the norm limit. Hence <span class="math" data-tex="\(D_{mn}\)">\(D_{mn}\)</span> is a positive map, with <span class="math" data-tex="\(D_{mn}(1)=(a_m^2-1)1\)">\(D_{mn}(1)=(a_m^2-1)1\)</span>. By (FCT3),</p>
+<p><a id="equation-fct9"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|D_{mn}\|=a_m^2-1,\qquad
+ \|\phi_m-\phi_n\|\le2(a_m^2-1).
+ \tag{FCT9}
+\]">\[
+ \|D_{mn}\|=a_m^2-1,\qquad
+ \|\phi_m-\phi_n\|\le2(a_m^2-1).
+ \tag{FCT9}
+\]</span>
+The maps are norm Cauchy. Completeness of <span class="math" data-tex="\(Z\)">\(Z\)</span>, applied at each <span class="math" data-tex="\(x\)">\(x\)</span> and then to the uniform operator bound, gives a norm limit <span class="math" data-tex="\(T:M\to Z\)">\(T:M\to Z\)</span>. Positivity, normalization and the center-module identities pass to it. For <span class="math" data-tex="\(\omega\in Z_*\)">\(\omega\in Z_*\)</span>,</p>
+<p><a id="equation-fct10"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|\omega\circ T-\omega\circ\phi_n\|
+ \le\|\omega\|\|T-\phi_n\|\longrightarrow0.
+ \tag{FCT10}
+\]">\[
+ \|\omega\circ T-\omega\circ\phi_n\|
+ \le\|\omega\|\|T-\phi_n\|\longrightarrow0.
+ \tag{FCT10}
+\]</span>
+The terms belong to <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, whose norm closedness was proved in CP6. Thus <span class="math" data-tex="\(T\)">\(T\)</span> is ultraweakly continuous on its entire domain.</p>
+<p>Taking limits in (FCT7) and interchanging <span class="math" data-tex="\(x,x^*\)">\(x,x^*\)</span> gives <span class="math" data-tex="\(T(xx^*)=T(x^*x)\)">\(T(xx^*)=T(x^*x)\)</span>. For positive <span class="math" data-tex="\(b\)">\(b\)</span> and a unitary <span class="math" data-tex="\(u\)">\(u\)</span>, apply this to <span class="math" data-tex="\(ub^{1/2}\)">\(ub^{1/2}\)</span>; it gives <span class="math" data-tex="\(T(ubu^*)=T(b)\)">\(T(ubu^*)=T(b)\)</span>. Linearity gives that identity for every <span class="math" data-tex="\(b\in M\)">\(b\in M\)</span>, and replacing <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(xu\)">\(xu\)</span> gives <span class="math" data-tex="\(T(ux)=T(xu)\)">\(T(ux)=T(xu)\)</span>. Every element is a linear combination of four unitaries: split it into real and imaginary self-adjoint parts, scale each nonzero part to a contraction <span class="math" data-tex="\(h\)">\(h\)</span>, and write</p>
+<p><a id="equation-fct11"></a></p>
+<p><span class="math math-display" data-tex="\[
+ h=\tfrac12(u+u^*),\qquad
+ u=h+i(1-h^2)^{1/2}.
+ \tag{FCT11}
+\]">\[
+ h=\tfrac12(u+u^*),\qquad
+ u=h+i(1-h^2)^{1/2}.
+ \tag{FCT11}
+\]</span>
+CF6–7 verify that <span class="math" data-tex="\(u\)">\(u\)</span> is unitary. Consequently <span class="math" data-tex="\(T(xy)=T(yx)\)">\(T(xy)=T(yx)\)</span> for all <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. The tiling premise and the approximate states used in this conditional stability lemma are proved next, before it is applied to establish existence.</p>
+<p><a id="fct-2"></a></p>
+<p><a id="oa-flow.fct.2"></a></p>
+<h2 id="OA-FLOW.FCT.2">FCT2. Finite cancellation and unitary completion</h2>
+<p>Suppose <span class="math" data-tex="\(p\sim q\)">\(p\sim q\)</span> in the finite algebra, with prescribed partial isometry <span class="math" data-tex="\(v\)">\(v\)</span> from <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(q\)">\(q\)</span>. PC2 compares their complements centrally: on a central piece <span class="math" data-tex="\(z\)">\(z\)</span>, there is a partial isometry from <span class="math" data-tex="\(z(1-p)\)">\(z(1-p)\)</span> to a subprojection of <span class="math" data-tex="\(z(1-q)\)">\(z(1-q)\)</span>. Add it to <span class="math" data-tex="\(zv\)">\(zv\)</span>. Orthogonality of the initial and final projections makes the sum an isometry in <span class="math" data-tex="\(zM\)">\(zM\)</span>. Since <span class="math" data-tex="\(z\)">\(z\)</span> is finite, its final projection is all of <span class="math" data-tex="\(z\)">\(z\)</span>. Therefore that complement subequivalence is an equivalence. On <span class="math" data-tex="\(1-z\)">\(1-z\)</span> reverse the roles and repeat. PC1 adds the two complement equivalences, proving</p>
+<p><a id="equation-fct12"></a></p>
+<p><span class="math math-display" data-tex="\[
+ p\sim q\quad\Longrightarrow\quad1-p\sim1-q.
+ \tag{FCT12}
+\]">\[
+ p\sim q\quad\Longrightarrow\quad1-p\sim1-q.
+ \tag{FCT12}
+\]</span>
+Adding the complementary partial isometry to the originally prescribed <span class="math" data-tex="\(v\)">\(v\)</span> extends <span class="math" data-tex="\(v\)">\(v\)</span> to a unitary. This works in every finite corner.</p>
+<p>We need the version for different equivalent finite units. If <span class="math" data-tex="\(e\sim f\)">\(e\sim f\)</span>, <span class="math" data-tex="\(a\le e\)">\(a\le e\)</span>, <span class="math" data-tex="\(b\le f\)">\(b\le f\)</span>, and <span class="math" data-tex="\(a\sim b\)">\(a\sim b\)</span>, first transport <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(eMe\)">\(eMe\)</span> through an implementing equivalence between <span class="math" data-tex="\(e,f\)">\(e,f\)</span>. Apply (FCT12) to the resulting two projections in that corner, then transport back. It gives <span class="math" data-tex="\(e-a\sim f-b\)">\(e-a\sim f-b\)</span>. No trace is used.</p>
+<p>A finite algebra contains no infinite orthogonal family of copies of one nonzero projection. Otherwise choose distinct copies <span class="math" data-tex="\(p_0,p_1,\ldots\)">\(p_0,p_1,\ldots\)</span>, and partial isometries from <span class="math" data-tex="\(p_n\)">\(p_n\)</span> onto <span class="math" data-tex="\(p_{n+1}\)">\(p_{n+1}\)</span>. Their PC1 strong-star sum has initial projection <span class="math" data-tex="\(P=\sum_{n\ge0}p_n\)">\(P=\sum_{n\ge0}p_n\)</span> and final projection <span class="math" data-tex="\(P-p_0&lt;P\)">\(P-p_0&lt;P\)</span>. This contradicts finiteness of the subprojection <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><a id="fct-3"></a></p>
+<p><a id="oa-flow.fct.3"></a></p>
+<h2 id="OA-FLOW.FCT.3">FCT3. Central tiles without a type-I classification</h2>
+<p>First split off the part generated by abelian projections. A projection <span class="math" data-tex="\(e\)">\(e\)</span> is abelian if <span class="math" data-tex="\(eMe\)">\(eMe\)</span> is commutative. Let <span class="math" data-tex="\(z_a\)">\(z_a\)</span> be the join in <span class="math" data-tex="\(Z\)">\(Z\)</span> of the central supports of all such projections. If a nonzero projection <span class="math" data-tex="\(p\le z_a\)">\(p\le z_a\)</span> had no nonzero abelian subprojection, it would have no polar bridge to any abelian projection: a nonzero bridge gives a subprojection of <span class="math" data-tex="\(p\)">\(p\)</span> equivalent to a subprojection of an abelian corner. Equivalence identifies those smaller corners, so the former is abelian. PC2 would then make <span class="math" data-tex="\(c(p)\)">\(c(p)\)</span> orthogonal to every central support in that join, a contradiction. Thus every nonzero <span class="math" data-tex="\(p\le z_a\)">\(p\le z_a\)</span> contains a nonzero abelian <span class="math" data-tex="\(e\)">\(e\)</span>.</p>
+<p>Fix such <span class="math" data-tex="\(e\)">\(e\)</span>, and work on <span class="math" data-tex="\(z=c(e)\)">\(z=c(e)\)</span>. By PC4, every subprojection of <span class="math" data-tex="\(e\)">\(e\)</span> is <span class="math" data-tex="\(ew\)">\(ew\)</span> for a central projection <span class="math" data-tex="\(w\le z\)">\(w\le z\)</span>, since <span class="math" data-tex="\(eMe=Z(eMe)=Ze\)">\(eMe=Z(eMe)=Ze\)</span>. Construct orthogonal projections <span class="math" data-tex="\(e_1,e_2,\ldots\)">\(e_1,e_2,\ldots\)</span> with <span class="math" data-tex="\(e_1=e\)">\(e_1=e\)</span>. Set <span class="math" data-tex="\(z_1=z\)">\(z_1=z\)</span> and, after choosing <span class="math" data-tex="\(e_1,\ldots,e_n\)">\(e_1,\ldots,e_n\)</span>, put</p>
+<p><a id="equation-fct13"></a></p>
+<p><span class="math math-display" data-tex="\[
+ r_n=z-\sum_{j\le n}e_j,\qquad z_{n+1}=c(r_n).
+ \tag{FCT13}
+\]">\[
+ r_n=z-\sum_{j\le n}e_j,\qquad z_{n+1}=c(r_n).
+ \tag{FCT13}
+\]</span>
+We can choose <span class="math" data-tex="\(e_{n+1}\le r_n\)">\(e_{n+1}\le r_n\)</span> equivalent to <span class="math" data-tex="\(ez_{n+1}\)">\(ez_{n+1}\)</span>; if the residual is zero all later terms are zero. To see this, compare <span class="math" data-tex="\(ez_{n+1}\)">\(ez_{n+1}\)</span> and <span class="math" data-tex="\(r_n\)">\(r_n\)</span>. On a central piece where <span class="math" data-tex="\(r_n\precsim ez_{n+1}\)">\(r_n\precsim ez_{n+1}\)</span>, its final subprojection of that abelian projection is <span class="math" data-tex="\(ew\)">\(ew\)</span>. Its central support is the full comparison piece, because <span class="math" data-tex="\(c(r_n)=z_{n+1}\)">\(c(r_n)=z_{n+1}\)</span>. Thus <span class="math" data-tex="\(w\)">\(w\)</span> is that piece and the subequivalence is an equivalence. On the other comparison piece <span class="math" data-tex="\(ez_{n+1}\precsim r_n\)">\(ez_{n+1}\precsim r_n\)</span> directly. Add the two implementations. This proves the asserted choice.</p>
+<p>The <span class="math" data-tex="\(z_n\)">\(z_n\)</span> decrease. If <span class="math" data-tex="\(z_\infty=\bigwedge_nz_n\ne0\)">\(z_\infty=\bigwedge_nz_n\ne0\)</span>, the orthogonal <span class="math" data-tex="\(e_nz_\infty\)">\(e_nz_\infty\)</span> would all be equivalent to the nonzero <span class="math" data-tex="\(ez_\infty\)">\(ez_\infty\)</span>, contradicting FCT2. Thus <span class="math" data-tex="\(z_\infty=0\)">\(z_\infty=0\)</span>. The central projections <span class="math" data-tex="\(w_n=z_n-z_{n+1}\)">\(w_n=z_n-z_{n+1}\)</span> sum to <span class="math" data-tex="\(z\)">\(z\)</span>. On <span class="math" data-tex="\(w_n\)">\(w_n\)</span>, exactly the first <span class="math" data-tex="\(n\)">\(n\)</span> constructed projections fill the unit:</p>
+<p><a id="equation-fct14"></a></p>
+<p><span class="math math-display" data-tex="\[
+ w_n=\sum_{j=1}^n e_jw_n,\qquad e_jw_n\sim ew_n.
+ \tag{FCT14}
+\]">\[
+ w_n=\sum_{j=1}^n e_jw_n,\qquad e_jw_n\sim ew_n.
+ \tag{FCT14}
+\]</span>
+The equality follows because <span class="math" data-tex="\(r_nw_n=0\)">\(r_nw_n=0\)</span>, and the equivalences because <span class="math" data-tex="\(w_n\le z_j\)">\(w_n\le z_j\)</span> for <span class="math" data-tex="\(j\le n\)">\(j\le n\)</span>. Every nonzero <span class="math" data-tex="\(ew_n\)">\(ew_n\)</span> is therefore a central tile, and at least one is nonzero. This is an explicit finite homogeneous matrix-family construction; no classification theorem is hidden in it.</p>
+<p>On <span class="math" data-tex="\(M(1-z_a)\)">\(M(1-z_a)\)</span> there is no nonzero abelian projection. Every nonzero corner there contains two nonzero orthogonal equivalent projections. Indeed its algebra is not commutative. If all its projections were central, bounded spectral step approximation would make every self-adjoint element central and hence the algebra commutative. Take a noncentral projection <span class="math" data-tex="\(r\)">\(r\)</span>; some off-diagonal corner <span class="math" data-tex="\(rx(1-r)\)">\(rx(1-r)\)</span>, or its adjoint, is nonzero. PC1 polar decomposition gives the required orthogonal equivalent subprojections.</p>
+<p>Choose a maximal family of such pairs in any nonzero central unit <span class="math" data-tex="\(z\le1-z_a\)">\(z\le1-z_a\)</span>, with all projections mutually orthogonal. A nonzero residual corner would contain another pair. Hence their sums are equivalent complementary halves of <span class="math" data-tex="\(z\)">\(z\)</span>. Repeat in one half and transport its division to the other half. Induction gives, for every <span class="math" data-tex="\(n\)">\(n\)</span>, a division of <span class="math" data-tex="\(z\)">\(z\)</span> into <span class="math" data-tex="\(2^n\)">\(2^n\)</span> orthogonal equivalent projections <span class="math" data-tex="\(d_{n,j}\)">\(d_{n,j}\)</span>, with <span class="math" data-tex="\(d_{n,0}\)">\(d_{n,0}\)</span> decreasing and</p>
+<p><a id="equation-fct15"></a></p>
+<p><span class="math math-display" data-tex="\[
+ d_{n,0}=d_{n+1,0}+d_{n+1,1}.
+ \tag{FCT15}
+\]">\[
+ d_{n,0}=d_{n+1,0}+d_{n+1,1}.
+ \tag{FCT15}
+\]</span>
+All their central supports are <span class="math" data-tex="\(z\)">\(z\)</span>, since equivalent projections whose sum is central have that common support.</p>
+<p>For a nonzero <span class="math" data-tex="\(p\)">\(p\)</span> in this part, work on <span class="math" data-tex="\(z=c(p)\)">\(z=c(p)\)</span> and make these dyadic divisions there. Compare <span class="math" data-tex="\(d_{n,0}\)">\(d_{n,0}\)</span> with <span class="math" data-tex="\(p\)">\(p\)</span>. If on some nonzero central piece <span class="math" data-tex="\(w\)">\(w\)</span> one has <span class="math" data-tex="\(wd_{n,0}\precsim wp\)">\(wd_{n,0}\precsim wp\)</span>, transport that tile to a subprojection of <span class="math" data-tex="\(p\)">\(p\)</span>. FCT2 extends the transport to a unitary in <span class="math" data-tex="\(Mw\)">\(Mw\)</span>, so conjugating the whole finite division exhibits the transported projection as a central tile. If this never occurs, central comparison gives <span class="math" data-tex="\(p\precsim d_{n,0}\)">\(p\precsim d_{n,0}\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. The projections <span class="math" data-tex="\(d_{n+1,1}=d_{n,0}-d_{n+1,0}\)">\(d_{n+1,1}=d_{n,0}-d_{n+1,0}\)</span> are mutually orthogonal and equivalent to <span class="math" data-tex="\(d_{n+1,0}\)">\(d_{n+1,0}\)</span>. Thus each contains a copy of the same <span class="math" data-tex="\(p\)">\(p\)</span>, contradicting FCT2.</p>
+<p>Every nonzero projection in <span class="math" data-tex="\(M\)">\(M\)</span> now has a nonzero central-tile subprojection: cut it first by <span class="math" data-tex="\(z_a\)">\(z_a\)</span> or <span class="math" data-tex="\(1-z_a\)">\(1-z_a\)</span>, and use the appropriate construction. A maximal orthogonal family of such tiles below any <span class="math" data-tex="\(p\)">\(p\)</span> must fill <span class="math" data-tex="\(p\)">\(p\)</span>, because otherwise the residual supplies another tile. This proves exactly the tiling premise of FCT1, with arbitrary orthogonal index sets.</p>
+<p><a id="fct-4"></a></p>
+<p><a id="oa-flow.fct.4"></a></p>
+<h2 id="OA-FLOW.FCT.4">FCT4. Normal center-valued states from cyclic central compressions</h2>
+<p>We first prove a cyclic abelian fact. If an abelian von Neumann algebra <span class="math" data-tex="\(A\subseteq B(K)\)">\(A\subseteq B(K)\)</span> has cyclic vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, then <span class="math" data-tex="\(A'=A\)">\(A'=A\)</span>. Let <span class="math" data-tex="\(R\in A'\)">\(R\in A'\)</span> and <span class="math" data-tex="\(C=\|R\|&gt;0\)">\(C=\|R\|&gt;0\)</span>. Choose <span class="math" data-tex="\(a_n\in A\)">\(a_n\in A\)</span> with <span class="math" data-tex="\(a_n\xi\to R\xi\)">\(a_n\xi\to R\xi\)</span>. Put</p>
+<p><a id="equation-fct16"></a></p>
+<p><span class="math math-display" data-tex="\[
+ r_n=1_{(2C,\infty)}(|a_n|),\qquad b_n=a_n(1-r_n).
+ \tag{FCT16}
+\]">\[
+ r_n=1_{(2C,\infty)}(|a_n|),\qquad b_n=a_n(1-r_n).
+ \tag{FCT16}
+\]</span>
+CF6 constructs <span class="math" data-tex="\(|a_n|\)">\(|a_n|\)</span>; SB4–6 puts its bounded Borel projections in <span class="math" data-tex="\(A\)">\(A\)</span>. Since <span class="math" data-tex="\(R\)">\(R\)</span> commutes with <span class="math" data-tex="\(r_n\)">\(r_n\)</span>,</p>
+<p><a id="equation-fct17"></a></p>
+<p><span class="math math-display" data-tex="\[
+\begin{aligned}
+ \tfrac12\|a_nr_n\xi\|
+ &amp;\le\|a_nr_n\xi\|-C\|r_n\xi\|\\
+ &amp;\le\|r_n(a_n-R)\xi\|
+ \le\|(a_n-R)\xi\|.
+\end{aligned}
+ \tag{FCT17}
+\]">\[
+\begin{aligned}
+ \tfrac12\|a_nr_n\xi\|
+ &amp;\le\|a_nr_n\xi\|-C\|r_n\xi\|\\
+ &amp;\le\|r_n(a_n-R)\xi\|
+ \le\|(a_n-R)\xi\|.
+\end{aligned}
+ \tag{FCT17}
+\]</span>
+The first inequality uses the spectral bound <span class="math" data-tex="\(|a_n|\ge2C\)">\(|a_n|\ge2C\)</span> on <span class="math" data-tex="\(r_n\)">\(r_n\)</span>. We have <span class="math" data-tex="\(\|b_n\|\le2C\)">\(\|b_n\|\le2C\)</span> and <span class="math" data-tex="\(b_n\xi\to R\xi\)">\(b_n\xi\to R\xi\)</span>. For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, commutation gives <span class="math" data-tex="\(b_na\xi\to Ra\xi\)">\(b_na\xi\to Ra\xi\)</span>. The common norm bound extends strong convergence from the dense set <span class="math" data-tex="\(A\xi\)">\(A\xi\)</span> to every vector in <span class="math" data-tex="\(K\)">\(K\)</span>. Strong closedness yields <span class="math" data-tex="\(R\in A\)">\(R\in A\)</span>. The zero operator needs no truncation. The approximation sequence concerns one vector; it does not assume that <span class="math" data-tex="\(K\)">\(K\)</span> is separable.</p>
+<p>Apply PC7's vector-support construction to the concrete algebra <span class="math" data-tex="\(Z\)">\(Z\)</span>. The support of <span class="math" data-tex="\(\omega_\xi|_Z\)">\(\omega_\xi|_Z\)</span> is the projection onto <span class="math" data-tex="\(\overline{Z'\xi}\)">\(\overline{Z'\xi}\)</span>, belongs to <span class="math" data-tex="\(Z\)">\(Z\)</span>, fixes <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, and makes the restricted vector functional faithful on that central corner. Choose a maximal orthogonal family of nonzero such central supports <span class="math" data-tex="\(z_i\)">\(z_i\)</span>, with vectors <span class="math" data-tex="\(\xi_i\in z_iH\)">\(\xi_i\in z_iH\)</span>. Their join is one: a nonzero remaining central corner contains a vector with a nonzero support below it.</p>
+<p>Let <span class="math" data-tex="\(K_i=\overline{Z\xi_i}\)">\(K_i=\overline{Z\xi_i}\)</span>, and let <span class="math" data-tex="\(q_i\)">\(q_i\)</span> project onto <span class="math" data-tex="\(K_i\)">\(K_i\)</span>. This subspace reduces <span class="math" data-tex="\(Z\)">\(Z\)</span>, so <span class="math" data-tex="\(q_i\in Z'\)">\(q_i\in Z'\)</span> and <span class="math" data-tex="\(q_i\le z_i\)">\(q_i\le z_i\)</span>. The compression</p>
+<p><a id="equation-fct18"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \theta_i:Zz_i\longrightarrow B(K_i),\qquad \theta_i(z)=z|_{K_i}
+ \tag{FCT18}
+\]">\[
+ \theta_i:Zz_i\longrightarrow B(K_i),\qquad \theta_i(z)=z|_{K_i}
+ \tag{FCT18}
+\]</span>
+is a unital normal representation: its vector-series tests are restrictions of the ambient tests. It is faithful because <span class="math" data-tex="\(\theta_i(z)=0\)">\(\theta_i(z)=0\)</span> gives <span class="math" data-tex="\(\|z\xi_i\|^2=0\)">\(\|z\xi_i\|^2=0\)</span>, and the support construction makes the functional faithful on <span class="math" data-tex="\(Zz_i\)">\(Zz_i\)</span>. ST2 therefore proves that its image is a von Neumann algebra and its inverse on that image is normal on the entire domain.</p>
+<p>For <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, the compressed operator <span class="math" data-tex="\((q_ixq_i)|_{K_i}\)">\((q_ixq_i)|_{K_i}\)</span> commutes with <span class="math" data-tex="\(\theta_i(Zz_i)\)">\(\theta_i(Zz_i)\)</span>, since both <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(q_i\)">\(q_i\)</span> commute with <span class="math" data-tex="\(Z\)">\(Z\)</span>. Its commutant equals that cyclic abelian algebra by the proof above. Consequently</p>
+<p><a id="equation-fct19"></a></p>
+<p><span class="math math-display" data-tex="\[
+ E_i(x)=\theta_i^{-1}((q_ixq_i)|_{K_i})\in Zz_i
+ \tag{FCT19}
+\]">\[
+ E_i(x)=\theta_i^{-1}((q_ixq_i)|_{K_i})\in Zz_i
+ \tag{FCT19}
+\]</span>
+is well defined, positive and normal; <span class="math" data-tex="\(E_i(1)=z_i\)">\(E_i(1)=z_i\)</span> and <span class="math" data-tex="\(E_i(zx)=zE_i(x)\)">\(E_i(zx)=zE_i(x)\)</span>. FCT0 gives <span class="math" data-tex="\(\|E_i\|=1\)">\(\|E_i\|=1\)</span>. The bounded central diagonal sum</p>
+<p><a id="equation-fct20"></a></p>
+<p><span class="math math-display" data-tex="\[
+ E(x)=\sum_i E_i(x)
+ \tag{FCT20}
+\]">\[
+ E(x)=\sum_i E_i(x)
+ \tag{FCT20}
+\]</span>
+exists strongly by PC1, since the summands have orthogonal central supports and norm at most <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span>. It is a unital positive linear center-module map.</p>
+<p>Its full normality needs an arbitrary-index check. If <span class="math" data-tex="\(\omega\in Z_*^+\)">\(\omega\in Z_*^+\)</span>, then <span class="math" data-tex="\(\sum_i\omega(z_i)=\omega(1)\)">\(\sum_i\omega(z_i)=\omega(1)\)</span>: finite sums of the projections increase strongly to one and CP's tail estimate applies. Only countably many of these values are nonzero, since at most finitely many exceed <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. Each positive normal <span class="math" data-tex="\(\omega\circ E_i\)">\(\omega\circ E_i\)</span> has norm <span class="math" data-tex="\(\omega(z_i)\)">\(\omega(z_i)\)</span>, by FCT0. Their sum therefore converges in norm in <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, and evaluation of the bounded central sum shows that it is <span class="math" data-tex="\(\omega\circ E\)">\(\omega\circ E\)</span>. Formula (FCT5) proves the same assertion for all <span class="math" data-tex="\(\omega\in Z_*\)">\(\omega\in Z_*\)</span>. Hence <span class="math" data-tex="\(E\)">\(E\)</span> is normal, without sigma-finiteness or a direct integral of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><a id="fct-5"></a></p>
+<p><a id="oa-flow.fct.5"></a></p>
+<h2 id="OA-FLOW.FCT.5">FCT5. A corner with arbitrarily small trace distortion</h2>
+<p>Fix the normal center-valued state <span class="math" data-tex="\(E\)">\(E\)</span> and a number <span class="math" data-tex="\(a&gt;1\)">\(a&gt;1\)</span>. We construct a nonzero projection <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(E(p)\ne0\)">\(E(p)\ne0\)</span> such that</p>
+<p><a id="equation-fct21"></a></p>
+<p><span class="math math-display" data-tex="\[
+ E(xx^*)\le aE(x^*x)\quad(x\in pMp).
+ \tag{FCT21}
+\]">\[
+ E(xx^*)\le aE(x^*x)\quad(x\in pMp).
+ \tag{FCT21}
+\]</span>
+In central inequalities, a positive element with support <span class="math" data-tex="\(z\)">\(z\)</span> is positive on its whole central support; this does not assert a uniform positive lower bound.</p>
+<p>First choose a maximal orthogonal family of nonzero projections with zero <span class="math" data-tex="\(E\)">\(E\)</span>-value. Its sum <span class="math" data-tex="\(q\)">\(q\)</span> has <span class="math" data-tex="\(E(q)=0\)">\(E(q)=0\)</span> by normality. Set <span class="math" data-tex="\(r=1-q\)">\(r=1-q\)</span>; then <span class="math" data-tex="\(E(r)=1\)">\(E(r)=1\)</span>, and <span class="math" data-tex="\(E\)">\(E\)</span> is faithful on <span class="math" data-tex="\(rMr\)">\(rMr\)</span>. Indeed a nonzero positive <span class="math" data-tex="\(b\in rMr\)">\(b\in rMr\)</span> with zero value has a nonzero spectral projection <span class="math" data-tex="\(e=1_{[\delta,\infty)}(b)\)">\(e=1_{[\delta,\infty)}(b)\)</span>, and <span class="math" data-tex="\(0\le\delta E(e)\le E(b)=0\)">\(0\le\delta E(e)\le E(b)=0\)</span>, contradicting maximality. For <span class="math" data-tex="\(e\le r\)">\(e\le r\)</span>,</p>
+<p><a id="equation-fct22"></a></p>
+<p><span class="math math-display" data-tex="\[
+ s_Z(E(e))=c_M(e).
+ \tag{FCT22}
+\]">\[
+ s_Z(E(e))=c_M(e).
+ \tag{FCT22}
+\]</span>
+One inclusion follows from the center-module identity. Conversely <span class="math" data-tex="\(zE(e)=0\)">\(zE(e)=0\)</span> implies <span class="math" data-tex="\(E(ze)=0\)">\(E(ze)=0\)</span>, hence <span class="math" data-tex="\(ze=0\)">\(ze=0\)</span> by faithfulness. This proves the reverse inclusion.</p>
+<p>Inside <span class="math" data-tex="\(r\)">\(r\)</span>, choose a maximal family of pairs <span class="math" data-tex="\((e_i,f_i)\)">\((e_i,f_i)\)</span> with separately orthogonal initial and final families, <span class="math" data-tex="\(e_i\sim f_i\ne0\)">\(e_i\sim f_i\ne0\)</span>, and</p>
+<p><a id="equation-fct23"></a></p>
+<p><span class="math math-display" data-tex="\[
+ E(e_i)-E(f_i)\ge0,\qquad
+ s_Z(E(e_i)-E(f_i))=c(e_i)=c(f_i).
+ \tag{FCT23}
+\]">\[
+ E(e_i)-E(f_i)\ge0,\qquad
+ s_Z(E(e_i)-E(f_i))=c(e_i)=c(f_i).
+ \tag{FCT23}
+\]</span>
+Chain unions supply the maximal family. Its partial-isometry sum gives <span class="math" data-tex="\(\sum_i e_i\sim\sum_i f_i\)">\(\sum_i e_i\sim\sum_i f_i\)</span>. Put <span class="math" data-tex="\(e=r-\sum_i e_i\)">\(e=r-\sum_i e_i\)</span> and <span class="math" data-tex="\(f=r-\sum_i f_i\)">\(f=r-\sum_i f_i\)</span>. FCT2 gives <span class="math" data-tex="\(e\sim f\)">\(e\sim f\)</span>. They are nonzero: for an empty family both equal <span class="math" data-tex="\(r\)">\(r\)</span>; otherwise normality gives <span class="math" data-tex="\(E(f)-E(e)=\sum_i(E(e_i)-E(f_i))\ge0\)">\(E(f)-E(e)=\sum_i(E(e_i)-E(f_i))\ge0\)</span>, with at least one nonzero positive summand. Thus <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>, and equivalence gives <span class="math" data-tex="\(e\ne0\)">\(e\ne0\)</span>.</p>
+<p>For equivalent <span class="math" data-tex="\(e'\le e\)">\(e'\le e\)</span>, <span class="math" data-tex="\(f'\le f\)">\(f'\le f\)</span>, maximality forces <span class="math" data-tex="\(E(e')\le E(f')\)">\(E(e')\le E(f')\)</span>. If not, cut both projections by the nonzero central positive spectral support of <span class="math" data-tex="\(E(e')-E(f')\)">\(E(e')-E(f')\)</span>. On this cut the difference is positive with full central support; (FCT22) and equivalence ensure nonzero matching projections. That pair would extend the family, a contradiction.</p>
+<p>Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be the infimum of the scalars <span class="math" data-tex="\(c\in[0,1]\)">\(c\in[0,1]\)</span> such that <span class="math" data-tex="\(E(e')\le cE(f')\)">\(E(e')\le cE(f')\)</span> for all these equivalent pairs. The set contains one and is closed, because the positive cone is norm closed. A decreasing sequence of admissible scalars tending to its infimum proves that <span class="math" data-tex="\(\mu\)">\(\mu\)</span> itself is admissible. It is positive: the pair <span class="math" data-tex="\(e,f\)">\(e,f\)</span> and <span class="math" data-tex="\(E(e)\ne0\)">\(E(e)\ne0\)</span> exclude zero.</p>
+<p>Since <span class="math" data-tex="\(\mu/a&lt;\mu\)">\(\mu/a&lt;\mu\)</span> is not admissible, there is a matching pair <span class="math" data-tex="\(\widetilde e\le e,\ \widetilde f\le f\)">\(\widetilde e\le e,\ \widetilde f\le f\)</span> for which <span class="math" data-tex="\(aE(\widetilde e)\not\le\mu E(\widetilde f)\)">\(aE(\widetilde e)\not\le\mu E(\widetilde f)\)</span>. Cut by the nonzero positive central spectral support of that difference. Relabel the cuts; then they are still equivalent and</p>
+<p><a id="equation-fct24"></a></p>
+<p><span class="math math-display" data-tex="\[
+ D=aE(\widetilde e)-\mu E(\widetilde f)\ge0,
+ \qquad D\ne0.
+ \tag{FCT24}
+\]">\[
+ D=aE(\widetilde e)-\mu E(\widetilde f)\ge0,
+ \qquad D\ne0.
+ \tag{FCT24}
+\]</span>
+The first matching-family bound also holds on these central cuts, since it holds for every pair below <span class="math" data-tex="\(e,f\)">\(e,f\)</span>.</p>
+<p>Choose a second maximal separately orthogonal matching family <span class="math" data-tex="\((\widehat e_j,\widehat f_j)\)">\((\widehat e_j,\widehat f_j)\)</span> below <span class="math" data-tex="\(\widetilde e,\widetilde f\)">\(\widetilde e,\widetilde f\)</span> satisfying</p>
+<p><a id="equation-fct25"></a></p>
+<p><span class="math math-display" data-tex="\[
+ aE(\widehat e_j)\le\mu E(\widehat f_j).
+ \tag{FCT25}
+\]">\[
+ aE(\widehat e_j)\le\mu E(\widehat f_j).
+ \tag{FCT25}
+\]</span>
+Let <span class="math" data-tex="\(p=\widetilde e-\sum_j\widehat e_j\)">\(p=\widetilde e-\sum_j\widehat e_j\)</span> and <span class="math" data-tex="\(q=\widetilde f-\sum_j\widehat f_j\)">\(q=\widetilde f-\sum_j\widehat f_j\)</span>. FCT2 gives <span class="math" data-tex="\(p\sim q\)">\(p\sim q\)</span>. They are nonzero: if <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, equivalence gives <span class="math" data-tex="\(q=0\)">\(q=0\)</span>; normal summation of (FCT25) would contradict (FCT24). Also <span class="math" data-tex="\(E(p)\ne0\)">\(E(p)\ne0\)</span>, since <span class="math" data-tex="\(p\le r\)">\(p\le r\)</span>.</p>
+<p>For every matching pair <span class="math" data-tex="\(p'\le p,q'\le q\)">\(p'\le p,q'\le q\)</span>, we have <span class="math" data-tex="\(aE(p')\ge\mu E(q')\)">\(aE(p')\ge\mu E(q')\)</span>. A nonzero negative central spectral part of their difference would cut out a new pair satisfying (FCT25). The cut is nonzero by (FCT22) and preservation of central support, so maximality rules it out. For equivalent <span class="math" data-tex="\(p_1,p_2\le p\)">\(p_1,p_2\le p\)</span>, transport <span class="math" data-tex="\(p_1\)">\(p_1\)</span> through a fixed equivalence <span class="math" data-tex="\(p\sim q\)">\(p\sim q\)</span>, obtaining <span class="math" data-tex="\(q'\le q\)">\(q'\le q\)</span> equivalent to both. Therefore</p>
+<p><a id="equation-fct26"></a></p>
+<p><span class="math math-display" data-tex="\[
+ E(p_1)\le\mu E(q')\le aE(p_2).
+ \tag{FCT26}
+\]">\[
+ E(p_1)\le\mu E(q')\le aE(p_2).
+ \tag{FCT26}
+\]</span>
+The factor <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is present in both comparisons.</p>
+<p>If <span class="math" data-tex="\(b\in(pMp)_+\)">\(b\in(pMp)_+\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> is a unitary of that corner, approximate <span class="math" data-tex="\(b\)">\(b\)</span> in norm by finite nonnegative combinations of its spectral projections. Each projection and its <span class="math" data-tex="\(u\)">\(u\)</span>-conjugate are equivalent below <span class="math" data-tex="\(p\)">\(p\)</span>. Applying (FCT26) term by term and taking the norm limit gives <span class="math" data-tex="\(E(ubu^*)\le aE(b)\)">\(E(ubu^*)\le aE(b)\)</span>. For <span class="math" data-tex="\(x\in pMp\)">\(x\in pMp\)</span>, PC1 polar decomposition and FCT2 extend its partial isometry to a corner unitary <span class="math" data-tex="\(u\)">\(u\)</span>, with <span class="math" data-tex="\(xx^*=u(x^*x)u^*\)">\(xx^*=u(x^*x)u^*\)</span>. This proves (FCT21) on the full corner, including noninvertible <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p><a id="fct-6"></a></p>
+<p><a id="oa-flow.fct.6"></a></p>
+<h2 id="OA-FLOW.FCT.6">FCT6. Moving the corner estimate to the whole algebra</h2>
+<p>Use FCT3 to choose a nonzero central tile <span class="math" data-tex="\(p_1\le p\)">\(p_1\le p\)</span>, with equivalent orthogonal <span class="math" data-tex="\(p_1,\ldots,p_k\)">\(p_1,\ldots,p_k\)</span> filling a central unit <span class="math" data-tex="\(z_0\)">\(z_0\)</span>. It still satisfies (FCT21) on its corner, and <span class="math" data-tex="\(E(p_1)\ne0\)">\(E(p_1)\ne0\)</span> by faithfulness on <span class="math" data-tex="\(r\)">\(r\)</span>. Choose partial isometries</p>
+<p><a id="equation-fct27"></a></p>
+<p><span class="math math-display" data-tex="\[
+ v_i^*v_i=p_i,\qquad v_iv_i^*=p_1,
+ \qquad F(x)=\sum_{i=1}^kE(v_ixv_i^*)\quad(x\in Mz_0).
+ \tag{FCT27}
+\]">\[
+ v_i^*v_i=p_i,\qquad v_iv_i^*=p_1,
+ \qquad F(x)=\sum_{i=1}^kE(v_ixv_i^*)\quad(x\in Mz_0).
+ \tag{FCT27}
+\]</span>
+This finite sum is a normal positive center-module map. For <span class="math" data-tex="\(x\in Mz_0\)">\(x\in Mz_0\)</span>, all <span class="math" data-tex="\(v_ixv_j^*\)">\(v_ixv_j^*\)</span> belong to <span class="math" data-tex="\(p_1Mp_1\)">\(p_1Mp_1\)</span>. Thus the entire matrix calculation is</p>
+<p><a id="equation-fct28"></a></p>
+<p><span class="math math-display" data-tex="\[
+\begin{aligned}
+ F(xx^*)&amp;=\sum_{i,j}E((v_ixv_j^*)(v_ixv_j^*)^*)\\
+ &amp;\le a\sum_{i,j}E((v_ixv_j^*)^*(v_ixv_j^*))\\
+ &amp;=a\sum_{i,j}E(v_jx^*p_ixv_j^*)
+ =aF(x^*x).
+\end{aligned}
+ \tag{FCT28}
+\]">\[
+\begin{aligned}
+ F(xx^*)&amp;=\sum_{i,j}E((v_ixv_j^*)(v_ixv_j^*)^*)\\
+ &amp;\le a\sum_{i,j}E((v_ixv_j^*)^*(v_ixv_j^*))\\
+ &amp;=a\sum_{i,j}E(v_jx^*p_ixv_j^*)
+ =aF(x^*x).
+\end{aligned}
+ \tag{FCT28}
+\]</span>
+Both resolutions of the identity are the actual finite sums <span class="math" data-tex="\(\sum_i p_i=z_0\)">\(\sum_i p_i=z_0\)</span>. Also <span class="math" data-tex="\(F(z_0)=kE(p_1)\)">\(F(z_0)=kE(p_1)\)</span>, a nonzero central positive element supported on <span class="math" data-tex="\(z_0\)">\(z_0\)</span>, by (FCT22).</p>
+<p>Choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> with <span class="math" data-tex="\(w=1_{[\delta,\infty)}(F(z_0))\ne0\)">\(w=1_{[\delta,\infty)}(F(z_0))\ne0\)</span>. On <span class="math" data-tex="\(w\)">\(w\)</span>, the central inverse <span class="math" data-tex="\(h=(F(z_0)|_w)^{-1}\)">\(h=(F(z_0)|_w)^{-1}\)</span> is bounded and positive by SB4–6; it is extended by zero outside <span class="math" data-tex="\(w\)">\(w\)</span>. Define</p>
+<p><a id="equation-fct29"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \phi_w(x)=hF(x),\qquad x\in Mw.
+ \tag{FCT29}
+\]">\[
+ \phi_w(x)=hF(x),\qquad x\in Mw.
+ \tag{FCT29}
+\]</span>
+It is normal and positive, is a <span class="math" data-tex="\(Zw\)">\(Zw\)</span>-module map, has <span class="math" data-tex="\(\phi_w(w)=w\)">\(\phi_w(w)=w\)</span>, and satisfies <span class="math" data-tex="\(\phi_w(xx^*)\le a\phi_w(x^*x)\)">\(\phi_w(xx^*)\le a\phi_w(x^*x)\)</span>. Normality of multiplication by <span class="math" data-tex="\(h\)">\(h\)</span> follows from the vector-series substitution in FCT0. Its norm is one by (FCT3). No unbounded inverse is multiplied into a normal map.</p>
+<p>This construction works inside every nonzero central corner of <span class="math" data-tex="\(M\)">\(M\)</span>, with the same prescribed <span class="math" data-tex="\(a&gt;1\)">\(a&gt;1\)</span>. Choose a maximal orthogonal family of central projections <span class="math" data-tex="\(w_j\)">\(w_j\)</span> carrying these maps. A nonzero remaining central corner would supply another, so <span class="math" data-tex="\(\sum_jw_j=1\)">\(\sum_jw_j=1\)</span>. Define</p>
+<p><a id="equation-fct30"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \phi_a(x)=\sum_j\phi_{w_j}(w_jx).
+ \tag{FCT30}
+\]">\[
+ \phi_a(x)=\sum_j\phi_{w_j}(w_jx).
+ \tag{FCT30}
+\]</span>
+The diagonal sum exists with norm bound <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span>, by PC1. It is unital, positive and a center-module map; the distortion estimate holds on each orthogonal central component and hence globally. Its full ultraweak normality follows by the FCT4 summable-predual argument: for <span class="math" data-tex="\(\omega\in Z_*^+\)">\(\omega\in Z_*^+\)</span> each summand has functional norm <span class="math" data-tex="\(\omega(w_j)\)">\(\omega(w_j)\)</span>, whose total is <span class="math" data-tex="\(\omega(1)\)">\(\omega(1)\)</span>; use (FCT5) for general <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. This proves the normality of the whole assembly, for arbitrary index sets.</p>
+<p>Choose, for example, <span class="math" data-tex="\(a_n=1+2^{-n}\)">\(a_n=1+2^{-n}\)</span>. FCT3 and FCT6 now verify both premises of the conditional stability lemma FCT1. It gives the normalized normal center-valued trace <span class="math" data-tex="\(T\)">\(T\)</span> in (FCT1).</p>
+<p><a id="fct-7"></a></p>
+<p><a id="oa-flow.fct.7"></a></p>
+<h2 id="OA-FLOW.FCT.7">FCT7. Faithfulness, uniqueness and projection comparison</h2>
+<p>For every central tile in (FCT6), traciality and normalization give</p>
+<p><a id="equation-fct31"></a></p>
+<p><span class="math math-display" data-tex="\[
+ T(p)=z/k.
+ \tag{FCT31}
+\]">\[
+ T(p)=z/k.
+ \tag{FCT31}
+\]</span>
+A nonzero projection <span class="math" data-tex="\(q\)">\(q\)</span> contains a nonzero tile <span class="math" data-tex="\(p\)">\(p\)</span>, so <span class="math" data-tex="\(T(q)\ge T(p)&gt;0\)">\(T(q)\ge T(p)&gt;0\)</span>. If <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span> is nonzero, some positive spectral cutoff <span class="math" data-tex="\(q=1_{[\delta,\infty)}(x)\)">\(q=1_{[\delta,\infty)}(x)\)</span> is nonzero; the squared-integral spectral identity would otherwise make <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Then <span class="math" data-tex="\(T(x)\ge\delta T(q)&gt;0\)">\(T(x)\ge\delta T(q)&gt;0\)</span>. Thus <span class="math" data-tex="\(T\)">\(T\)</span> is faithful on the entire positive cone, and <span class="math" data-tex="\(T(x^*x)=0\)">\(T(x^*x)=0\)</span> implies <span class="math" data-tex="\(x=0\)">\(x=0\)</span>.</p>
+<p>Any other <strong>normal</strong> normalized center-valued trace has the same value (FCT31) on every central tile. FCT3 decomposes each projection into tiles, and normality identifies its value with their arbitrary positive sum. Therefore the two traces agree on all projections. Uniform spectral step approximation and boundedness then give equality on all self-adjoint elements and hence all of <span class="math" data-tex="\(M\)">\(M\)</span>. This is uniqueness among normal traces; it does not assume or assert normality of an arbitrary algebraic trace.</p>
+<p>For projections, the full order criterion is</p>
+<p><a id="equation-fct32"></a></p>
+<p><span class="math math-display" data-tex="\[
+ p\precsim q\ \Longleftrightarrow\ T(p)\le T(q),
+ \qquad p\sim q\ \Longleftrightarrow\ T(p)=T(q).
+ \tag{FCT32}
+\]">\[
+ p\precsim q\ \Longleftrightarrow\ T(p)\le T(q),
+ \qquad p\sim q\ \Longleftrightarrow\ T(p)=T(q).
+ \tag{FCT32}
+\]</span>
+The forward implication uses the implementing partial isometry and positivity. Conversely PC2 splits centrally into <span class="math" data-tex="\(zp\precsim zq\)">\(zp\precsim zq\)</span> and <span class="math" data-tex="\((1-z)q\precsim(1-z)p\)">\((1-z)q\precsim(1-z)p\)</span>. On the second piece, place a copy of <span class="math" data-tex="\((1-z)q\)">\((1-z)q\)</span> under <span class="math" data-tex="\((1-z)p\)">\((1-z)p\)</span>. The positive residual has nonnegative trace, whereas <span class="math" data-tex="\(T(p)\le T(q)\)">\(T(p)\le T(q)\)</span> makes its trace nonpositive. Faithfulness makes that residual zero, so the reverse subequivalence there is an equivalence. Add the two central implementations to get <span class="math" data-tex="\(p\precsim q\)">\(p\precsim q\)</span>. Equality of traces gives both subequivalences; PC3 gives equivalence. This proof includes zero projections.</p>
+<p>The support identity is <span class="math" data-tex="\(s_Z(T(p))=c(p)\)">\(s_Z(T(p))=c(p)\)</span>: <span class="math" data-tex="\(T(p)\)">\(T(p)\)</span> is supported on <span class="math" data-tex="\(c(p)\)">\(c(p)\)</span>; a central <span class="math" data-tex="\(z\)">\(z\)</span> annihilating <span class="math" data-tex="\(T(p)\)">\(T(p)\)</span> gives <span class="math" data-tex="\(T(zp)=0\)">\(T(zp)=0\)</span>, hence <span class="math" data-tex="\(zp=0\)">\(zp=0\)</span> by faithfulness.</p>
+<p>The converse existence assertion is also precise. If an arbitrary von Neumann algebra has a normal normalized center-valued trace, it is finite. Otherwise PC5 supplies a nonzero properly infinite central unit <span class="math" data-tex="\(z\)">\(z\)</span>, split as <span class="math" data-tex="\(z=r+s\)">\(z=r+s\)</span> with <span class="math" data-tex="\(r\sim s\sim z\)">\(r\sim s\sim z\)</span>. The trace law gives <span class="math" data-tex="\(T(r)=T(s)=T(z)=z\)">\(T(r)=T(s)=T(z)=z\)</span>, while additivity gives <span class="math" data-tex="\(T(z)=2z\)">\(T(z)=2z\)</span>, a contradiction. After finiteness is established, the preceding construction and normal uniqueness prove that any such trace is faithful. No scalar-trace existence theorem was used to prove this implication.</p>
+<p><a id="fct-8"></a></p>
+<p><a id="oa-flow.fct.8"></a></p>
+<h2 id="OA-FLOW.FCT.8">FCT8. Naturality and sigma-finiteness of the center</h2>
+<p>A unital star automorphism <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of a von Neumann algebra preserves positive order and its bounded increasing suprema: transport any upper bound through its inverse. It and its inverse are bounded by CF6 contractivity. The complete positive-map criterion NF6 then proves ultraweak continuity on the entire domain. The restriction preserves the center, since commutators transport through <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p>For finite <span class="math" data-tex="\(M\)">\(M\)</span>, the map <span class="math" data-tex="\(S=\alpha^{-1}\circ T\circ\alpha\)">\(S=\alpha^{-1}\circ T\circ\alpha\)</span> is a normal normalized positive center-module trace. Uniqueness from FCT7 implies</p>
+<p><a id="equation-fct33"></a></p>
+<p><span class="math math-display" data-tex="\[
+ T(\alpha(x))=\alpha(T(x)).
+ \tag{FCT33}
+\]">\[
+ T(\alpha(x))=\alpha(T(x)).
+ \tag{FCT33}
+\]</span>
+Thus naturality includes every unital star automorphism; the only added normality premise is the earlier proved NF6 criterion, not an assumed continuity of an algebraic map.</p>
+<p>Use the sigma-finite convention that an algebra admits a faithful normal state; its equivalence to countable decomposability is proved in PC7. Restriction of such a state from <span class="math" data-tex="\(M\)">\(M\)</span> to <span class="math" data-tex="\(Z\)">\(Z\)</span> is faithful and normal. Conversely a faithful normal state <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(Z\)">\(Z\)</span> gives a faithful normal state <span class="math" data-tex="\(\omega\circ T\)">\(\omega\circ T\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>: for nonzero <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>, faithfulness of <span class="math" data-tex="\(T\)">\(T\)</span> and then of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> give a strictly positive value. Hence</p>
+<p><a id="equation-fct34"></a></p>
+<p><span class="math math-display" data-tex="\[
+ M\text{ finite}:
+ \quad M\text{ sigma-finite}\ \Longleftrightarrow\ Z(M)\text{ sigma-finite}.
+ \tag{FCT34}
+\]">\[
+ M\text{ finite}:
+ \quad M\text{ sigma-finite}\ \Longleftrightarrow\ Z(M)\text{ sigma-finite}.
+ \tag{FCT34}
+\]</span>
+In particular every nonzero finite factor admits a faithful normal tracial state, by taking the scalar state of its center. More generally FCT4's maximal central supports <span class="math" data-tex="\(z_i\)">\(z_i\)</span> admit faithful normal central vector states; composition with <span class="math" data-tex="\(T|_{Mz_i}\)">\(T|_{Mz_i}\)</span> makes each <span class="math" data-tex="\(Mz_i\)">\(Mz_i\)</span> sigma-finite. Their arbitrary central sum is all of <span class="math" data-tex="\(M\)">\(M\)</span>. This decomposition is obtained after the trace construction, and was not a countability reduction in its proof.</p>
+<p>Every positive normal functional <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(Z\)">\(Z\)</span> produces a finite normal scalar trace <span class="math" data-tex="\(\omega\circ T\)">\(\omega\circ T\)</span>. These traces separate <span class="math" data-tex="\(M_+\)">\(M_+\)</span>: if <span class="math" data-tex="\(T(x)&gt;0\)">\(T(x)&gt;0\)</span>, some central vector functional is strictly positive on it. This states precisely the scalar consequence without presuming a faithful scalar state on an arbitrary center.</p>
+<p><a id="fct-9"></a></p>
+<p><a id="oa-flow.fct.9"></a></p>
+<h2 id="OA-FLOW.FCT.9">FCT9. Exact finite models</h2>
+<p>On <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, for <span class="math" data-tex="\(0\le b&lt;1\)">\(0\le b&lt;1\)</span>, set</p>
+<p><a id="equation-fct35"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \phi_b(x)=\frac{1+b}{2}x_{11}+\frac{1-b}{2}x_{22},\qquad
+ a_b=\frac{1+b}{1-b}.
+ \tag{FCT35}
+\]">\[
+ \phi_b(x)=\frac{1+b}{2}x_{11}+\frac{1-b}{2}x_{22},\qquad
+ a_b=\frac{1+b}{1-b}.
+ \tag{FCT35}
+\]</span>
+Writing <span class="math" data-tex="\(w_1=(1+b)/2\)">\(w_1=(1+b)/2\)</span>, <span class="math" data-tex="\(w_2=(1-b)/2\)">\(w_2=(1-b)/2\)</span>, for every matrix <span class="math" data-tex="\(x=(x_{ij})\)">\(x=(x_{ij})\)</span> one has</p>
+<p><a id="equation-fct36"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \phi_b(xx^*)=\sum_{i,j}w_i|x_{ij}|^2
+ \le a_b\sum_{i,j}w_j|x_{ij}|^2
+ =a_b\phi_b(x^*x).
+ \tag{FCT36}
+\]">\[
+ \phi_b(xx^*)=\sum_{i,j}w_i|x_{ij}|^2
+ \le a_b\sum_{i,j}w_j|x_{ij}|^2
+ =a_b\phi_b(x^*x).
+ \tag{FCT36}
+\]</span>
+The inequality is just <span class="math" data-tex="\(w_i\le a_bw_j\)">\(w_i\le a_bw_j\)</span> for all four index pairs; equality is attained by <span class="math" data-tex="\(x=e_{12}\)">\(x=e_{12}\)</span>. With <span class="math" data-tex="\(\operatorname{tr}_2(x)=(x_{11}+x_{22})/2\)">\(\operatorname{tr}_2(x)=(x_{11}+x_{22})/2\)</span>,</p>
+<p><a id="equation-fct37"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|\phi_b-\operatorname{tr}_2\|=b.
+ \tag{FCT37}
+\]">\[
+ \|\phi_b-\operatorname{tr}_2\|=b.
+ \tag{FCT37}
+\]</span>
+Indeed <span class="math" data-tex="\(|b(x_{11}-x_{22})/2|\le b\|x\|\)">\(|b(x_{11}-x_{22})/2|\le b\|x\|\)</span>, and the contraction <span class="math" data-tex="\(\operatorname{diag}(1,-1)\)">\(\operatorname{diag}(1,-1)\)</span> attains the bound. The illustrated sequence <span class="math" data-tex="\(b=1/2,1/4,1/8,0\)">\(b=1/2,1/4,1/8,0\)</span> has exact weights <span class="math" data-tex="\((3/4,1/4),(5/8,3/8),(9/16,7/16),(1/2,1/2)\)">\((3/4,1/4),(5/8,3/8),(9/16,7/16),(1/2,1/2)\)</span>, distortions <span class="math" data-tex="\(3,5/3,9/7,1\)">\(3,5/3,9/7,1\)</span>, and errors <span class="math" data-tex="\(1/2,1/4,1/8,0\)">\(1/2,1/4,1/8,0\)</span>. These exact errors are distinguished from the general stability bound (FCT9).</p>
+<p>On <span class="math" data-tex="\(M_2\oplus M_3\)">\(M_2\oplus M_3\)</span>, the trace retains both center coordinates:</p>
+<p><a id="equation-fct38"></a></p>
+<p><span class="math math-display" data-tex="\[
+ T(A\oplus B)=
+ \left(\frac{\operatorname{Tr}A}{2},\frac{\operatorname{Tr}B}{3}\right)
+ \in\mathbb C\oplus\mathbb C.
+ \tag{FCT38}
+\]">\[
+ T(A\oplus B)=
+ \left(\frac{\operatorname{Tr}A}{2},\frac{\operatorname{Tr}B}{3}\right)
+ \in\mathbb C\oplus\mathbb C.
+ \tag{FCT38}
+\]</span>
+The normalized matrix traces are positive and normal (finite dimension), and <span class="math" data-tex="\(\operatorname{Tr}(XY)=\operatorname{Tr}(YX)\)">\(\operatorname{Tr}(XY)=\operatorname{Tr}(YX)\)</span> follows by interchanging the two finite indices. The displayed map is a normalized center-module trace, so FCT7 identifies it with the constructed <span class="math" data-tex="\(T\)">\(T\)</span>. A rank-one projection in the first summand has value <span class="math" data-tex="\((1/2,0)\)">\((1/2,0)\)</span>; one in the second has value <span class="math" data-tex="\((0,1/3)\)">\((0,1/3)\)</span>. Two and three respective equivalent rank-one tiles fill <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> and <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. Collapsing these coordinates by a scalar state is a further choice, not the center-valued trace itself.</p>
+<p><a id="fct-sources"></a></p>
+<p><a id="oa-flow.fct.sources"></a></p>
+<h2 id="OA-FLOW.FCT.SOURCES">Sources and exact conclusion</h2>
+<p>The quantitative approximate-trace mechanism is developed from Jesse Peterson, <a href="https://math.vanderbilt.edu/peters10/teaching/spring2020/OperatorAlgebras.pdf#page=102"><em>Notes on operator algebras</em>, Section 6.4, printed 102–106</a>. The local two-family balancing and norm-limit arguments retain that mathematical route; the full central supports, finite cancellation, matrix-family/dyadic tilings, center-state normality and arbitrary assemblies are proved here. The exposition starts with stability, then establishes its construction premises.</p>
+<p>For a complementary standard account, Masamichi Takesaki, <a href="https://doi.org/10.1007/978-1-4612-6188-9"><em>Theory of Operator Algebras I</em>, V.2 Theorems 2.4/2.6 and Corollaries 2.8–2.9, printed 310–314</a>, proceeds through scalar traces and a fixed-point argument. That route is not a premise of this construction. The current programme's freely accessible comparison, spectral, predual and normal-representation proofs remain the actual earlier inputs.</p>
+<p>The conclusion is the normalized normal faithful center-valued trace on every finite von Neumann algebra, its normal uniqueness, projection order/equivalence, automorphism naturality and the exact center sigma-finiteness criterion. No trace on a nonfinite algebra, uniqueness of nonnormal center-valued traces, type classification or modular subgroup theorem is asserted.</p>
+<p><a id="oa-flow.fct.figure"></a></p>
+<h2 id="OA-FLOW.FCT.FIGURE">Exact weights, separate center coordinates and the construction</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Finite matrix trace models and arbitrary-center proof mechanism" src="assets/finite-center-trace/assets/finite-center-trace.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p>Panel A shows the states of <a href="OA-FLOW-FCT.html#fct-9">FCT9</a>
+on <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>:
+<span class="math" data-tex="\(\phi_b(x)=((1+b)x_{11}+(1-b)x_{22})/2\)">\(\phi_b(x)=((1+b)x_{11}+(1-b)x_{22})/2\)</span>.
+The four values <span class="math" data-tex="\(b=1/2,1/4,1/8,0\)">\(b=1/2,1/4,1/8,0\)</span> give the exact diagonal weights
+<span class="math" data-tex="\((3/4,1/4),(5/8,3/8),(9/16,7/16),(1/2,1/2)\)">\((3/4,1/4),(5/8,3/8),(9/16,7/16),(1/2,1/2)\)</span>.
+The bars have total length one and their labeled segments are exact rational
+weights; they are not samples from the unrestricted algebra.</p>
+<p>For every matrix <span class="math" data-tex="\(x\)">\(x\)</span>, (FCT36) proves
+<span class="math" data-tex="\(\phi_b(xx^*)\le a_b\phi_b(x^*x)\)">\(\phi_b(xx^*)\le a_b\phi_b(x^*x)\)</span>, where
+<span class="math" data-tex="\(a_b=(1+b)/(1-b)\)">\(a_b=(1+b)/(1-b)\)</span>.
+The values in the figure are <span class="math" data-tex="\(3,5/3,9/7,1\)">\(3,5/3,9/7,1\)</span>, respectively.
+The matrix unit <span class="math" data-tex="\(e_{12}\)">\(e_{12}\)</span> attains that ratio when <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>.
+The exact functional-norm errors from (FCT37) are
+<span class="math" data-tex="\(\|\phi_b-\operatorname{tr}_2\|=b\)">\(\|\phi_b-\operatorname{tr}_2\|=b\)</span>, attained at
+<span class="math" data-tex="\(\operatorname{diag}(1,-1)\)">\(\operatorname{diag}(1,-1)\)</span>.
+These errors are distinct from the general estimate
+<span class="math" data-tex="\(\|\phi_m-\phi_n\|\le2(a_m^2-1)\)">\(\|\phi_m-\phi_n\|\le2(a_m^2-1)\)</span> in <a href="OA-FLOW-FCT.html#fct-1">FCT1</a>.
+That estimate compares two approximate maps; the displayed error compares one
+specific state with its exact trace. The diagram does not identify the bounds.</p>
+<p>Panel B retains the full center <span class="math" data-tex="\(\mathbb C\oplus\mathbb C\)">\(\mathbb C\oplus\mathbb C\)</span> of
+<span class="math" data-tex="\(M_2\oplus M_3\)">\(M_2\oplus M_3\)</span>.
+For the exact matrices <span class="math" data-tex="\(A=\operatorname{diag}(3,1)\)">\(A=\operatorname{diag}(3,1)\)</span> and
+<span class="math" data-tex="\(B=\operatorname{diag}(6,3,0)\)">\(B=\operatorname{diag}(6,3,0)\)</span>, formula (FCT38) gives
+<span class="math" data-tex="\(T(A\oplus B)=(2,3)\)">\(T(A\oplus B)=(2,3)\)</span>.
+The two center units are <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> and <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, and
+<span class="math" data-tex="\(T(1_2\oplus1_3)=(1,1)\)">\(T(1_2\oplus1_3)=(1,1)\)</span>.
+A rank-one tile in the first summand has value <span class="math" data-tex="\((1/2,0)\)">\((1/2,0)\)</span>;
+one in the second has value <span class="math" data-tex="\((0,1/3)\)">\((0,1/3)\)</span>.
+The two and three equivalent rank-one families fill their respective center
+units, illustrating the exact rule <span class="math" data-tex="\(T(p)=z/k\)">\(T(p)=z/k\)</span> from (FCT31).
+Choosing a scalar state of the center would be a further operation.</p>
+<p>The bottom row is a proof diagram, not a classification or a reduction to
+matrices. <a href="OA-FLOW-FCT.html#fct-2">FCT2–3</a> supplies cancellation
+and finite matrix-family/dyadic central tilings. The two balancing families in
+<a href="OA-FLOW-FCT.html#fct-5">FCT5</a> retain both occurrences of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.
+<a href="OA-FLOW-FCT.html#fct-4">FCT4/6</a> proves full normality of every
+arbitrary central assembly by summable predual functionals.
+<a href="OA-FLOW-FCT.html#fct-1">FCT1</a> gives the operator-norm limit;
+<a href="OA-FLOW-FCT.html#fct-7">FCT7–8</a> gives faithfulness, normal
+uniqueness, projection comparison and automorphism/center consequences.</p>
+<p>The quantitative mechanism develops Peterson's
+<a href="https://math.vanderbilt.edu/peters10/teaching/spring2020/OperatorAlgebras.pdf#page=102"><em>Notes on operator algebras</em>, Section 6.4, printed 102–106</a>.
+All construction steps and the two exact models are proved locally.
+<a href="assets/finite-center-trace/render_finite_trace.py">Renderer</a>, <a href="assets/finite-center-trace/assets/finite-center-trace.svg">editable SVG</a>
+and <a href="assets/finite-center-trace/assets/finite-center-trace-data.json">exact semantic data</a> retain the
+coordinates, rational constants, proof labels and scope distinction.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L116.html">Previous lesson</a><a href="OA-FLOW-L119.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-FCT.md">Lesson source</a></nav></main></body></html>

@@ -9,7 +9,7 @@ Fix a nonarchimedean local field \(K\), its valuation ring \(\mathcal O\), a uni
 We also use [Unramified and totally ramified extensions](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-07), Theorem 5.1: a root of a monic Eisenstein polynomial of degree \(d\) over a complete discretely valued field generates a totally ramified extension of degree \(d\), and that root is a uniformizer. Finite extensions are complete with the uniquely extended valuation, by [Extensions of complete valued fields](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-04), Theorem 1.2.
 
 
-**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-8) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-8) shows which results are proved in published lessons and which full proofs are still missing. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
 
 ## 1. Evaluating the formal module
 

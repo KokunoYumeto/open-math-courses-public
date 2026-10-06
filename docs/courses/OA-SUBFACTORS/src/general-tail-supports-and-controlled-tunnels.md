@@ -35,7 +35,7 @@ Popa's §1.3.2 states the skipped basic construction; the complete finite repres
 | 2.1, 2.4 and 2.9, module restriction, two local traces and common compression | [Module dimension and local index](module-dimension-and-local-index.md) |
 | 4.4–4.5, actual downward construction and finite marked uniqueness | [Towers and tunnels](towers-and-tunnels.md) |
 | 14.1–14.2 and 14.8, finite reflected representations and skipped triples | [Reflected traces and uniform bounds](reflected-traces-and-uniform-bounds.md) |
-| 53.1, both expectation orders | Bounded frames with central support |
+| 53.1, both expectation orders | [Bounded frames with central support](bounded-frames-with-central-support.md) |
 | 57.3, finite marked tunnel alignment | [Actual supported local approximation](actual-supported-local-approximation.md) |
 | 61.1–61.2, complete nondegenerate expected and smooth representation definitions | [Smooth representations and tower compression](smooth-representations-and-tower-compression.md) |
 | 76.2–76.4, whole-stage near-covers and exact residual scope | [Whole relative-commutant blocks](whole-relative-commutant-blocks.md) |

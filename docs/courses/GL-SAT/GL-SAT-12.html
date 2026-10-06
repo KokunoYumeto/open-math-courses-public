@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consequences and examples · The affine Grassmannian and geometric Satake</title>
+<meta name="description" content="A lesson of the course The affine Grassmannian and geometric Satake. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-SAT/GL-SAT-12.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The affine Grassmannian and geometric Satake</a> <span aria-hidden="true">›</span> <span>Lesson 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written by AI.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="consequences-and-examples">Consequences and examples</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The coefficient <span class="math">\(q+1\)</span> in the simplest spherical Hecke product counts intermediate lattices. In the sheaf calculation it comes from the two cohomology groups of a projective line. Passing between these descriptions requires retaining both the perverse shift and the Frobenius action on the top cohomology group. This lesson calculates that passage explicitly, then explains the precise statements of the weight-polynomial and Whittaker variants.</p>
+<h2 id="1-frobenius-shifts-and-half-twists">1. Frobenius, shifts and half twists</h2>
+<p>Let <span class="math">\(G\)</span> be split and connected reductive over <span class="math">\(\mathbf F_q\)</span>, with a split maximal torus <span class="math">\(T\subset B\)</span>. Write <span class="math">\(N\)</span> for the unipotent radical of <span class="math">\(B\)</span>, <span class="math">\(L=X_*(T)\)</span>, and</p>
+<p><span class="math math-display">\[
+d_\lambda=\langle2\rho,\lambda\rangle,
+\qquad h_\nu=\langle2\rho,\nu\rangle.
+\]</span></p>
+<p>Here <span class="math">\(\lambda\)</span> is dominant, whereas <span class="math">\(\nu\)</span> can be any coweight. Fix <span class="math">\(\ell\ne\operatorname{char}\mathbf F_q\)</span> and a finite extension <span class="math">\(E/\mathbf Q_\ell\)</span> containing a square root <span class="math">\(a\)</span> of <span class="math">\(q\)</span>. Choose an embedding of the algebraic numbers involved into <span class="math">\(\mathbf C\)</span> for which <span class="math">\(a=\sqrt q&gt;0\)</span>. All Frobenius operators below are <strong>geometric</strong> Frobenius. Thus <span class="math">\(E(1)\)</span> has eigenvalue <span class="math">\(q^{-1}\)</span>.</p>
+<p>Use the rank-one Weil object with eigenvalue <span class="math">\(a^{-1}\)</span> to define <span class="math">\(E(1/2)\)</span>. The notation <span class="math">\((d/2)\)</span> means its <span class="math">\(d\)</span>-th tensor power, including negative powers. This choice concerns the Weil structure; it does not change the underlying geometric sheaf. Define</p>
+<p><span class="math math-display">\[
+\mathrm{IC}^{\mathrm{raw}}_\lambda
+ =j_{\lambda!*}E[d_\lambda],
+\qquad
+\mathcal I_\lambda
+ =\mathrm{IC}^{\mathrm{raw}}_\lambda(d_\lambda/2).
+\tag{1.1}
+\]</span></p>
+<p>The first object has the constant Weil structure on its open orbit. The second is the usual weight-zero normalization when the IC purity theorem applies. The phrase “weight zero” means that its degree-<span class="math">\(i\)</span> stalk cohomology has weights at most <span class="math">\(i\)</span>, and the corresponding dual inequalities hold; it does not mean that Frobenius is the identity in every degree.</p>
+<p>For a Weil complex <span class="math">\(K\)</span> and <span class="math">\(x\in Y(\mathbf F_q)\)</span>, put</p>
+<p><span class="math math-display">\[
+t_K(x)=\sum_i(-1)^i
+ \operatorname{Tr}(F_x;H^i(K_{\bar x})).
+\tag{1.2}
+\]</span></p>
+<p>We use bounded complexes with finite-dimensional stalks. The shift convention is <span class="math">\(H^i(K[r])=H^{i+r}(K)\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Trace functions are additive on distinguished triangles and multiply on tensor products. Moreover</p>
+<p><span class="math math-display">\[
+t_{K[r](s/2)}=(-1)^r a^{-s}t_K.
+\tag{1.3}
+\]</span></p>
+<p><strong>Proof.</strong> For an invariant subspace <span class="math">\(U\subset V\)</span>, choose a basis of <span class="math">\(U\)</span> and extend it to one of <span class="math">\(V\)</span>. The Frobenius matrix is block triangular, so its trace is the sum of the traces on <span class="math">\(U\)</span> and <span class="math">\(V/U\)</span>. Apply this to kernels and images in the finite long exact cohomology sequence of a triangle. Adjacent image terms have opposite signs and cancel. This proves additivity. Over a field, the cohomology of the tensor product of two bounded complexes is the direct sum of their cohomology tensor products: split each complex into its cohomology and two-term contractible summands. The trace on <span class="math">\(V\otimes W\)</span> is <span class="math">\(\operatorname{Tr}(F_V)\operatorname{Tr}(F_W)\)</span>, as a product basis shows. Multiplying the alternating sums proves the tensor assertion. A shift changes the sign by <span class="math">\((-1)^r\)</span>, and the Weil twist multiplies every eigenvalue by <span class="math">\(a^{-s}\)</span>. <span class="math">\(\square\)</span></p>
+<p>These calculations agree with <a href="../GL-PERV/perverse-sheaves-d-modules-and-the-function-sheaf-dictionary.html">Perverse sheaves, D-modules and the function-sheaf dictionary, §§1–2</a>. Its general pushforward formula has an additional trace-theorem premise. In the explicit convolution below we compute every fibre's cohomology, so no all-dimensional trace formula is needed for that product.</p>
+<p>On <span class="math">\(\mathrm{Gr}^{\lambda}(\mathbf F_q)\)</span>, formula (1.1) gives</p>
+<p><span class="math math-display">\[
+t_{\mathcal I_\lambda}=(-1)^{d_\lambda}a^{-d_\lambda}.
+\tag{1.4}
+\]</span></p>
+<p>It vanishes outside <span class="math">\(\mathrm{Gr}^{\leq\lambda}\)</span>. Consequently, whenever these IC objects are defined with finite-dimensional stalks, their trace functions are a basis of the finitely supported spherical functions. Indeed their expansion in orbit indicators is triangular, with nonzero diagonal entries (1.4). Every interval below a dominant coweight is finite, by <a href="GL-SAT-04.html">Orbits and Schubert varieties, §3</a>; inversion of a finite triangular matrix on each such interval proves both spanning and independence.</p>
+<h2 id="2-the-quadratic-cone-in-étale-coefficients">2. The quadratic cone in étale coefficients</h2>
+<p>The small Schubert surfaces for <span class="math">\(SL_2\)</span> and <span class="math">\(GL_2\)</span> have the same singularity. Their two-stratum geometry, coordinates and resolution are proved in <a href="GL-SAT-04.html">Orbits and Schubert varieties, §§4–5</a>. We now check the IC calculation in étale coefficients, including characteristic two.</p>
+<p>The elementary étale inputs are exact finite pushforward and its geometric stalk formula, proved in <a href="../ag-etale-cohomology/pushforward-pullback-and-finite-morphisms.html#4-finite-pushforward-is-a-finite-product-on-stalks">Pushforward, pullback and finite morphisms, Theorem 4.1</a>, and topological invariance, proved in its Theorem 6.2. The needed purity calculation can be made in two coordinates. <a href="../ag-etale-cohomology/poincare-duality-for-curves.html#4-inertia-and-the-valuation-calculation">Poincaré duality for curves, Lemma 4.2</a> computes</p>
+<p><span class="math math-display">\[
+i_0^!E_{\mathbf A^1}=E(-1)[-2]
+\tag{2.0}
+\]</span></p>
+<p>from the punctured strict trait and the Kummer localization boundary. Pull that localization triangle back along <span class="math">\(\mathbf A^2\to\mathbf A^1\)</span>. <a href="../ag-etale-cohomology/smooth-base-change-and-local-acyclicity.html#1-which-morphism-is-smooth">Smooth base change and local acyclicity, Theorem 1.1</a> identifies the complementary open direct image, so the pulled-back triangle gives the same purity formula for a coordinate line in the plane. Compose exceptional restriction to that line with (2.0) on the line. Closed exceptional restrictions compose because sections supported on the point are sections supported on the line and then on the point; equivalently their adjunctions compose. This gives</p>
+<p><span class="math math-display">\[
+i_{(0,0)}^!E_{\mathbf A^2}=E(-2)[-4].
+\]</span></p>
+<p>The orientations come from compatible <span class="math">\(\mathbf Z/\ell^n\)</span>-Kummer classes. In these calculations their cohomology groups are free of rank one with surjective transition maps. The inverse limits are therefore exact: compatible lifts can be chosen successively through those surjections, which kills the derived inverse-limit obstruction. Tensoring the resulting <span class="math">\(\mathbf Z_\ell\)</span>-lines with <span class="math">\(E\)</span> gives the displayed rational formulas. This bounded passage needs no general constructibility theorem or higher-dimensional duality theorem.</p>
+<p>Let</p>
+<p><span class="math math-display">\[
+C=\operatorname{Spec}k[x,y,z]/(xy-z^2),
+\qquad
+\pi:\mathbf A^2\longrightarrow C,
+\quad (u,v)\longmapsto(u^2,v^2,uv),
+\tag{2.1}
+\]</span></p>
+<p>where <span class="math">\(k\)</span> is algebraically closed of any characteristic different from <span class="math">\(\ell\)</span>. The map is finite: its source algebra is generated by the integral elements <span class="math">\(u,v\)</span>, satisfying the displayed square equations. The complement of the vertex in <span class="math">\(C\)</span> is smooth. If <span class="math">\(\operatorname{char}k\ne2\)</span>, this follows from the derivatives <span class="math">\(y,x,-2z\)</span>. If <span class="math">\(\operatorname{char}k=2\)</span>, the only point with <span class="math">\(x=y=0\)</span> is the vertex, because <span class="math">\(z^2=xy\)</span>.</p>
+<p><strong>Proposition 2.1.</strong> For rational étale coefficients,</p>
+<p><span class="math math-display">\[
+\mathrm{IC}_C=E_C[2].
+\tag{2.2}
+\]</span></p>
+<p>With the constant Weil structure, this equality holds over <span class="math">\(\mathbf F_q\)</span> for every <span class="math">\(q\)</span>.</p>
+<p><strong>Proof.</strong> First suppose the characteristic is odd. The involution <span class="math">\(\sigma(u,v)=(-u,-v)\)</span> has quotient (2.1). To see the invariant algebra directly, a monomial <span class="math">\(u^iv^j\)</span> is invariant exactly when <span class="math">\(i+j\)</span> is even. If both exponents are even it is a monomial in <span class="math">\(x,y\)</span>; if both are odd, factor out <span class="math">\(z\)</span>. The sole relation is <span class="math">\(z^2=xy\)</span>, as the resulting even and odd monomial lists are linearly independent in <span class="math">\(k[u,v]\)</span>.</p>
+<p>The natural map</p>
+<p><span class="math math-display">\[
+E_C\longrightarrow(\pi_*E_{\mathbf A^2})^{\sigma}
+\tag{2.3}
+\]</span></p>
+<p>is an isomorphism on geometric stalks. Off the vertex, the two points of a fibre are exchanged; at the vertex, its reduced fibre is a single point. In both cases the invariant locally constant functions are one copy of <span class="math">\(E\)</span>, and (2.3) sends a scalar to that constant function. Since <span class="math">\(2\)</span> is invertible in <span class="math">\(E\)</span>, taking invariants is the direct summand given by <span class="math">\((1+\sigma)/2\)</span>.</p>
+<p>Let <span class="math">\(i\)</span> be the vertex and <span class="math">\(i'\)</span> its closed inverse image. The latter is the thickened origin <span class="math">\(\operatorname{Spec}k[u,v]/(u^2,v^2,uv)\)</span>. Its étale topos is that of its reduced point, by topological invariance, and sections with support depend only on that closed complement. Thus its exceptional restriction can be computed at the reduced origin. Finite pushforward is exact. Its costalk comparison is</p>
+<p><span class="math math-display">\[
+i^!\pi_*E\simeq\pi_{0*}i'^!E.
+\tag{2.4}
+\]</span></p>
+<p>Here <span class="math">\(\pi_0\)</span> is the finite map of the fibres at the origin, whose étale site is that of a point. For completeness, test (2.4) by an arbitrary complex <span class="math">\(M\)</span> on that point. Closed extension and inverse image satisfy <span class="math">\(\pi^*i_*M=i'_*\pi_0^*M\)</span>, checked on geometric stalks. The two adjunctions then give</p>
+<p><span class="math math-display">\[
+\operatorname{Hom}(M,i^!\pi_*E)
+ =\operatorname{Hom}(\pi^*i_*M,E)
+ =\operatorname{Hom}(M,\pi_{0*}i'^!E).
+\]</span></p>
+<p>Yoneda proves the comparison, including its equivariance.</p>
+<p>The two-coordinate calculation gives <span class="math">\(i'^!E=E(-2)[-4]\)</span>. The involution acts as the identity on this one-dimensional orientation space. One can check this without a degree convention: the origin's orientation is the composite of the two supported Kummer orientations of the coordinate divisors. Replacing a coordinate <span class="math">\(u\)</span> by <span class="math">\(-u\)</span> changes its Kummer class by that of the constant <span class="math">\(-1\)</span>; the latter has an <span class="math">\(\ell^n\)</span>-th root in <span class="math">\(k\)</span> and hence zero Kummer class. Each orientation, and therefore their composite, is fixed. Taking the summand in (2.3) and (2.4) gives</p>
+<p><span class="math math-display">\[
+i^*E_C=E,
+\qquad i^!E_C=E(-2)[-4].
+\tag{2.5}
+\]</span></p>
+<p>In characteristic two, (2.1) is a universal homeomorphism. For every algebraically closed extension field a point of <span class="math">\(C\)</span> has a unique lift: take the unique square roots of <span class="math">\(x,y\)</span>; their product is the unique square root of <span class="math">\(z^2\)</span>, hence equals <span class="math">\(z\)</span>. The map is finite and universally bijective, so it is integral, radicial and surjective. Topological invariance makes <span class="math">\(\pi^*\)</span> and <span class="math">\(\pi_*\)</span> inverse exact equivalences. Thus <span class="math">\(E_C=\pi_*E\)</span>, and (2.4) again gives (2.5).</p>
+<p>Now put <span class="math">\(K=E_C[2]\)</span>. On the smooth open surface it is perverse. At the vertex its stalk has only degree <span class="math">\(-2\)</span>, and its costalk has only degree <span class="math">\(2\)</span>. These satisfy the perverse conditions, with strict inequalities at the boundary. They also exclude any perverse quotient or subobject supported at the vertex, respectively. The intermediate-extension characterization proved in <a href="../GL-PERV/intermediate-extensions-and-intersection-complexes.html#1-construct-the-extension-one-stratum-at-a-time">Intermediate extensions and intersection complexes, §1</a> therefore identifies <span class="math">\(K\)</span> with <span class="math">\(j_{!*}E[2]\)</span>. All maps and the averaging projector are defined over <span class="math">\(\mathbf F_q\)</span>, and the isomorphism is the identity on the open stratum. Uniqueness of intermediate extension makes it Frobenius compatible. <span class="math">\(\square\)</span></p>
+<p>This proof uses characteristic-zero coefficients even when the ground field has characteristic two. With coefficients of characteristic two, the averaging projector in the odd-characteristic quotient calculation is unavailable; the assertion is not an integral IC calculation.</p>
+<h2 id="3-point-counts-and-the-two-smallest-ic-functions">3. Point counts and the two smallest IC functions</h2>
+<p>For <span class="math">\(SL_2\)</span>, the quasi-minuscule Schubert variety has one vertex and an open stratum which is an affine-line bundle over <span class="math">\(\mathbf P^1\)</span>. An affine-line bundle over an <span class="math">\(\mathbf F_q\)</span>-point has <span class="math">\(q\)</span> rational points: its fibre is an affine line, since the one-dimensional vector space and its translation torsor over a field are trivial. Thus</p>
+<p><span class="math math-display">\[
+\#\mathrm{Gr}_{SL_2}^{\leq\alpha^\vee}(\mathbf F_q)
+ =1+q(q+1)=q^2+q+1.
+\tag{3.1}
+\]</span></p>
+<p>Equivalently the three cells in <a href="GL-SAT-04.html">Orbits and Schubert varieties, §4</a> have <span class="math">\(q^2,q,1\)</span> points. Counting the whole closure includes the vertex.</p>
+<p>For <span class="math">\(GL_2\)</span>, write <span class="math">\(c_{ab}\)</span> for the indicator of the double coset with dominant coweight <span class="math">\((a,b)\)</span>. Normalize Haar measure by <span class="math">\(\operatorname{vol}GL_2(\mathbf F_q[[t]])=1\)</span>. The Satake transform <span class="math">\(\mathcal S\)</span> is the one proved and computed in <a href="GL-SAT-01.html">Spherical Hecke algebras as functions on the affine Grassmannian, §§4–5</a>:</p>
+<p><span class="math math-display">\[
+\begin{aligned}
+\mathcal S(c_{10})&amp;=a(x_1+x_2),\\
+\mathcal S(c_{20})&amp;=q(x_1^2+x_2^2)+(q-1)x_1x_2,\\
+\mathcal S(c_{11})&amp;=x_1x_2.
+\end{aligned}
+\tag{3.2}
+\]</span></p>
+<p>The first closure is <span class="math">\(\mathbf P^1\)</span>, so <span class="math">\(\mathcal I_{10}=E_{\mathbf P^1}[1](1/2)\)</span>. The second closure has open orbit <span class="math">\((2,0)\)</span> and closed central point <span class="math">\((1,1)\)</span>, with the cone chart (2.1) at that point. Proposition 2.1 and the smooth open chart identify its IC with the shifted constant sheaf. The central point has dimension zero. Consequently</p>
+<p><span class="math math-display">\[
+\begin{aligned}
+t_{\mathcal I_{10}}&amp;=-a^{-1}c_{10},\\
+t_{\mathcal I_{20}}&amp;=q^{-1}(c_{20}+c_{11}),\\
+t_{\mathcal I_{11}}&amp;=c_{11}.
+\end{aligned}
+\tag{3.3}
+\]</span></p>
+<p>Applying (3.2) proves</p>
+<p><span class="math math-display">\[
+\begin{aligned}
+\mathcal S(t_{\mathcal I_{10}})&amp;=-(x_1+x_2),\\
+\mathcal S(t_{\mathcal I_{20}})&amp;=x_1^2+x_1x_2+x_2^2,\\
+\mathcal S(t_{\mathcal I_{11}})&amp;=x_1x_2.
+\end{aligned}
+\tag{3.4}
+\]</span></p>
+<p>These are the negative standard character, the symmetric-square character, and the determinant character. Their representation interpretation is also proved by the rank-one and minuscule calculations in <a href="GL-SAT-11.html">Identifying the dual group, §§3–4</a>. The minus sign in the first line comes from <span class="math">\([1]\)</span>.</p>
+<h2 id="4-recovering-the-lattice-chain-product">4. Recovering the lattice-chain product</h2>
+<p>Consider the two-step modification with both relative positions <span class="math">\((1,0)\)</span>. Its source <span class="math">\(\widetilde Y\)</span> is a smooth projective surface, an iterated <span class="math">\(\mathbf P^1\)</span>-bundle, and the convolution map</p>
+<p><span class="math math-display">\[
+m:\widetilde Y\longrightarrow Y=\mathrm{Gr}_{GL_2}^{\leq(2,0)}
+\tag{4.1}
+\]</span></p>
+<p>is an isomorphism over the open orbit. Its fibre over the central point is <span class="math">\(\mathbf P^1\)</span>. Indeed an index-two quotient lattice of type <span class="math">\((2,0)\)</span> has a unique intermediate colength-one lattice; for type <span class="math">\((1,1)\)</span>, the quotient is a two-dimensional <span class="math">\(\mathbf F_q\)</span>-space, and intermediate lattices are its lines. These are the actual chain fibres computed in <a href="GL-SAT-07.html">Convolution and rigidity, §§2–3</a>.</p>
+<p>The normalized convolution is</p>
+<p><span class="math math-display">\[
+\mathcal I_{10}*\mathcal I_{10}
+ =Rm_*E_{\widetilde Y}[2](1).
+\tag{4.2}
+\]</span></p>
+<p>At an open-orbit point its stalk has trace <span class="math">\(q^{-1}\)</span>. At the central point the stalk is <span class="math">\(R\Gamma(\mathbf P^1,E)[2](1)\)</span>. The projective-line computation, with its Kummer generator, gives</p>
+<p><span class="math math-display">\[
+H^0(\mathbf P^1,E)=E,
+\qquad H^2(\mathbf P^1,E)=E(-1),
+\qquad H^i=0\quad(i\ne0,2).
+\tag{4.3}
+\]</span></p>
+<p>The two Frobenius eigenvalues before the twist are <span class="math">\(1,q\)</span>. After the shift and twist their trace sum is <span class="math">\(q^{-1}+1\)</span>. Formula (4.3) is proved by the curve computation used in <a href="../ag-etale-cohomology/torsion-sheaves-on-curves.html">Torsion sheaves on curves, §4</a>, and its Frobenius convention in <a href="../AG-LTF/frobenius-morphisms-and-their-action-on-cohomology.html">Frobenius morphisms and their action on cohomology, §6</a>. Thus direct fibre computation proves</p>
+<p><span class="math math-display">\[
+t_{\mathcal I_{10}*\mathcal I_{10}}
+ =q^{-1}c_{20}+(q^{-1}+1)c_{11}
+ =t_{\mathcal I_{20}}+t_{\mathcal I_{11}}.
+\tag{4.4}
+\]</span></p>
+<p>It also proves trace compatibility with function convolution here. The trace on the source object is constantly <span class="math">\(q^{-1}\)</span>. Summing it over the unique rational intermediate lattice in the first case or the <span class="math">\(q+1\)</span> rational lines in the second case gives exactly the two stalk traces just calculated. The chain model is the function convolution model because every right <span class="math">\(K\)</span>-coset has measure one, as proved in Lesson 1.</p>
+<p>There is a corresponding sheaf decomposition, whose Frobenius normalization matters:</p>
+<p><span class="math math-display">\[
+\mathrm{IC}^{\mathrm{raw}}_{10}*
+\mathrm{IC}^{\mathrm{raw}}_{10}
+ \simeq\mathrm{IC}^{\mathrm{raw}}_{20}
+ \oplus E_{(1,1)}(-1).
+\tag{4.5}
+\]</span></p>
+<p>To verify (4.5) without a general decomposition theorem, use the exceptional curve <span class="math">\(D\)</span>. Its normal line bundle in the cone resolution is <span class="math">\(\mathcal O_{\mathbf P^1}(-2)\)</span>, computed from the lattice-chain charts in <a href="GL-SAT-07.html">Convolution and rigidity, §10</a>. A smooth local coordinate for <span class="math">\(D\)</span> and the same pullback of (2.0) give <span class="math">\(i_D^!E=E_D(-1)[-2]\)</span>. Pushing the exceptional-support localization triangle along <span class="math">\(m\)</span>, which is an isomorphism off <span class="math">\(D\)</span>, gives, for <span class="math">\(A=Rm_*E[2]\)</span> and the vertex inclusion <span class="math">\(i\)</span>,</p>
+<p><span class="math math-display">\[
+i^*A=R\Gamma(D,E)[2],
+\qquad i^!A=R\Gamma(D,E(-1)).
+\tag{4.8}
+\]</span></p>
+<p>The first comparison is proper base change. For the second, the pushed localization triangle is the localization triangle at the vertex: the open terms agree because <span class="math">\(m\)</span> is an isomorphism there, and composition of direct image identifies their maps. The closed term is therefore the stated supported complex.</p>
+<p>Let <span class="math">\(P=E_{(1,1)}(-1)\)</span>. The inclusion of the degree-zero group in <span class="math">\(i^!A\)</span> and the projection to the degree-zero group of <span class="math">\(i^*A\)</span> define adjunction maps <span class="math">\(v:P\to A\)</span> and <span class="math">\(u:A\to P\)</span>. Their composite is multiplication by <span class="math">\(-2\)</span>. To check it, the supported divisor orientation restricts to the Kummer class of its normal line bundle. In local divisor parameters the ratios of the parameters on overlaps are the transition functions of <span class="math">\(\mathcal O(D)\)</span>; their Kummer boundary is exactly that Chern class. Restricting to <span class="math">\(D\)</span> gives <span class="math">\(c_1(\mathcal O(-2))\)</span>. The projective-line trace sends <span class="math">\(c_1(\mathcal O(1))\)</span> to <span class="math">\(+1\)</span>, so it sends this class to <span class="math">\(-2\)</span>. This is the divisor normalization also proved in <a href="../AG-LTF/support/AG-LTF--smooth-trace-and-duality.html">Smooth traces, duality and Gysin maps, Lemma 12.2</a>.</p>
+<p>Replace <span class="math">\(u\)</span> by <span class="math">\(-u/2\)</span> to get a retraction. Its complement agrees with <span class="math">\(E[2]\)</span> on the open orbit. Equations (4.3) and (4.8) show that <span class="math">\(i^*A\)</span> has groups <span class="math">\(E\)</span> in degree <span class="math">\(-2\)</span> and <span class="math">\(E(-1)\)</span> in degree zero; <span class="math">\(i^!A\)</span> has groups <span class="math">\(E(-1)\)</span> in degree zero and <span class="math">\(E(-2)\)</span> in degree two. The nonzero composite removes exactly the degree-zero group on each side. The complementary stalk and costalk therefore have only degrees <span class="math">\(-2\)</span> and <span class="math">\(2\)</span>, respectively. The strict boundary inequalities make the complement perverse and exclude a subobject or quotient on the closed point. It is <span class="math">\(\mathrm{IC}^{\mathrm{raw}}_{20}\)</span>, by intermediate extension. This proves (4.5). All coordinates, orientations, trace maps and the scalar <span class="math">\(-2\)</span> are defined over <span class="math">\(\mathbf F_q\)</span>, so the decomposition is Frobenius compatible. The two half twists then give the total twist <span class="math">\((1)\)</span>.</p>
+<p>Twisting (4.5) by <span class="math">\((1)\)</span> yields</p>
+<p><span class="math math-display">\[
+\mathcal I_{10}*\mathcal I_{10}
+ \simeq\mathcal I_{20}\oplus\mathcal I_{11}.
+\tag{4.6}
+\]</span></p>
+<p>The twist on the central raw summand is essential. Dropping it would incorrectly replace its Frobenius eigenvalue <span class="math">\(q\)</span> by <span class="math">\(1\)</span>.</p>
+<p>Finally insert (3.3) in (4.4), or take traces in (4.6):</p>
+<p><span class="math math-display">\[
+q^{-1}(c_{10}*c_{10})
+ =q^{-1}(c_{20}+c_{11})+c_{11}.
+\]</span></p>
+<p>Multiplication by <span class="math">\(q\)</span> proves the indicator relation</p>
+<p><span class="math math-display">\[
+\boxed{\ c_{10}*c_{10}=c_{20}+(q+1)c_{11}.\ }
+\tag{4.7}
+\]</span></p>
+<p>Thus one copy of the determinant representation corresponds to the normalized point sheaf, while the indicator coefficient remains <span class="math">\(q+1\)</span>.</p>
+<h2 id="5-the-general-character-formula-and-its-arithmetic-input">5. The general character formula and its arithmetic input</h2>
+<p>The formal passage from weights to functions is short once its arithmetic hypotheses are specified. They are stronger than a bound on the absolute values of Frobenius eigenvalues.</p>
+<p><strong>Proposition 5.1 (conditional trace comparison).</strong> Fix a dominant <span class="math">\(\lambda\)</span>. Suppose that, for every <span class="math">\(\nu\)</span>, the following three statements hold for <span class="math">\(\mathcal I_\lambda\)</span>:</p>
+<ol>
+<li>The compact-support trace identity holds on the supported finite-type intersection <span class="math">\(S_\nu\cap\mathrm{Gr}^{\leq\lambda}\)</span>.</li>
+<li>Its compact cohomology is zero except in degree <span class="math">\(h_\nu\)</span>.</li>
+<li>Frobenius acts on that remaining group as the scalar <span class="math">\(a^{h_\nu}\)</span>, and its dimension is <span class="math">\(\dim V_\lambda(\nu)\)</span>, the <span class="math">\(\nu\)</span>-weight multiplicity of the dual-group representation.</li>
+</ol>
+<p>Then, with the Satake normalization of Lesson 1,</p>
+<p><span class="math math-display">\[
+\mathcal S(t_{\mathcal I_\lambda})
+ =(-1)^{d_\lambda}\operatorname{ch}V_\lambda.
+\tag{5.1}
+\]</span></p>
+<p><strong>Proof.</strong> The coefficient of <span class="math">\(e^\nu\)</span> in the Satake transform is</p>
+<p><span class="math math-display">\[
+a^{-h_\nu}\sum_{x\in S_\nu(\mathbf F_q)}t_{\mathcal I_\lambda}(x).
+\tag{5.2}
+\]</span></p>
+<p>There are finitely many nonzero terms. By the three premises the sum is <span class="math">\((-1)^{h_\nu}a^{h_\nu}\dim V_\lambda(\nu)\)</span>. Every nonzero weight satisfies <span class="math">\(\lambda-\nu\in\mathbf Z\Phi^\vee\)</span>; each simple coroot pairs to <span class="math">\(2\)</span> with <span class="math">\(2\rho\)</span>. Therefore <span class="math">\(h_\nu\equiv d_\lambda\pmod2\)</span>. Substitute in (5.2) to obtain <span class="math">\((-1)^{d_\lambda}\dim V_\lambda(\nu)\)</span>. Summing over the weights proves (5.1). <span class="math">\(\square\)</span></p>
+<p>The classical concentration and representation calculations are proved in <a href="GL-SAT-05.html">Semi-infinite orbits and weight functors</a> and <a href="GL-SAT-11.html">Identifying the dual group</a>, with the general semisimplicity hypothesis recorded there. Their complex-topological proofs do not by themselves supply the finite-field scalar-Frobenius premise in Proposition 5.1. Likewise, purity alone permits eigenvalues of the form <span class="math">\(a^{h_\nu}\zeta\)</span>; it does not force <span class="math">\(\zeta=1\)</span>. A split Tate calculation, including its Weil structure, supplies the stated scalar premise. The general arithmetic IC theorem is stated here, rather than used to establish the explicit products of §§3–4.</p>
+<p>With these hypotheses, (5.1) gives the usual geometric interpretation of the classical Satake character basis. This normalization is discussed in Edward Frenkel's free <a href="https://arxiv.org/abs/hep-th/0512172">Lectures on the Langlands program and conformal field theory, §5.3</a>. If the half twist is instead defined using <span class="math">\(-a\)</span>, the trace of <span class="math">\(\mathcal I_\lambda\)</span> is multiplied by <span class="math">\((-1)^{d_\lambda}\)</span>, and (5.1) has no sign. Equivalently one may multiply functions by the parity character of <span class="math">\(L/\mathbf Z\Phi^\vee\)</span>. This is well-defined because the coroot pairings just computed are even; under convolution the component parities add.</p>
+<p>For a split torus, all the premises can be checked directly. A supported constructible sheaf ignores the nilpotent directions of its Grassmannian; its reduced support is a finite subset of <span class="math">\(L\)</span>, by <a href="GL-SAT-02.html">Loop groups and the affine Grassmannian, §6</a>. Every IC is the untwisted point object, all <span class="math">\(h_\nu\)</span> and <span class="math">\(d_\lambda\)</span> are zero, and its sole weight space is <span class="math">\(E\)</span> with Frobenius one. Point convolution adds labels. Thus <span class="math">\(c_\lambda*c_\mu=c_{\lambda+\mu}\)</span> and <span class="math">\(\mathcal S(c_\lambda)=e^\lambda\)</span> follow directly.</p>
+<h2 id="6-a-polynomial-that-remembers-stalk-degrees">6. A polynomial that remembers stalk degrees</h2>
+<p>Use the dual root system: its positive roots are the positive coroots of <span class="math">\(G\)</span>. Define <span class="math">\(P_u(\gamma)\in\mathbf Z[u]\)</span> by the formal expansion</p>
+<p><span class="math math-display">\[
+\prod_{\beta\in\widehat\Phi^+}(1-u e^\beta)^{-1}
+ =\sum_\gamma P_u(\gamma)e^\gamma.
+\tag{6.1}
+\]</span></p>
+<p>For a fixed <span class="math">\(\gamma\)</span>, its coefficient is a finite sum. Indeed every positive root has positive height in the simple-root basis, so the sum of the multiplicities in a partition of <span class="math">\(\gamma\)</span> is bounded by its height. A term with <span class="math">\(r\)</span> roots contributes <span class="math">\(u^r\)</span>. Put <span class="math">\(\widehat\rho=\frac12\sum_{\beta\in\widehat\Phi^+}\beta\)</span> and define</p>
+<p><span class="math math-display">\[
+m^\mu_\lambda(u)
+ =\sum_{w\in W}(-1)^{\ell(w)}
+ P_u\bigl(w(\lambda+\widehat\rho)-(\mu+\widehat\rho)\bigr).
+\tag{6.2}
+\]</span></p>
+<p>The variable <span class="math">\(u\)</span> in this definition is formal. It will be evaluated at the cardinality <span class="math">\(q\)</span> only after the grading convention is fixed. The stalk theorem concerns <strong>dominant</strong> <span class="math">\(\lambda,\mu\)</span> with <span class="math">\(\mu\leq\lambda\)</span>. It is not a positivity assertion about (6.2) for every nondonominant <span class="math">\(\mu\)</span>.</p>
+<p>The correctly normalized stalk identity, stated for the classical characteristic-zero IC stalks, is</p>
+<p><span class="math math-display">\[
+m^\mu_\lambda(u)
+ =u^{\langle\rho,\lambda-\mu\rangle}
+ \sum_{j\geq0}
+ \dim_E\mathcal H^{-d_\lambda+2j}
+   (i_\mu^*\mathrm{IC}^{\mathrm{raw}}_\lambda)\,u^{-j}.
+\tag{6.3}
+\]</span></p>
+<p>Here <span class="math">\(i_\mu\)</span> is the geometric point <span class="math">\(t^\mu\)</span>; the sum uses stalk cohomological degrees, not the global IC degrees. The theorem also asserts the relevant parity and vanishing, so the right side is a polynomial with nonnegative exponents. Equation (6.3) is stated, with a free source locator given below; its general proof is not used in this lesson's calculations.</p>
+<p>Equivalently the right side is <span class="math">\(\sum_{r\geq0}\dim\mathcal H^{-h_\mu-2r}(i_\mu^*\mathrm{IC}^{\mathrm{raw}}_\lambda)u^r\)</span>: set <span class="math">\(r=\langle\rho,\lambda-\mu\rangle-j\)</span>. The integer prefactor in (6.3) is integral because <span class="math">\(\lambda-\mu\)</span> is a sum of coroots. George Lusztig's freely accessible <a href="https://math.mit.edu/~gyuri/papers/ast.pdf">author copy of Singularities, character formulas, and a q-analogue of weight multiplicities</a>, equations (9.3)–(9.4) and §11(c), printed pp. 225–227, gives the polynomial and IC conventions. The equation in (9.4) is presented there as a conjecture, followed by the note that Kato proved it. Dmitri Panyushev's free <a href="https://arxiv.org/abs/1406.1453">On Lusztig's q-analogues of all weight multiplicities of a representation, §1, equation (1.1)</a>, gives (6.1)–(6.2) with the positive powers used here. These are statement locators; neither replaces a proof of (6.3).</p>
+<p>For <span class="math">\(SL_2\)</span>, let <span class="math">\(\beta=\alpha^\vee\)</span>, the positive root of its dual <span class="math">\(PGL_2\)</span>. Then <span class="math">\(\widehat\rho=\beta/2\)</span>. Since the positive root system consists of <span class="math">\(\beta\)</span>,</p>
+<p><span class="math math-display">\[
+P_u(r\beta)=u^r\quad(r\geq0),
+\qquad P_u(r\beta)=0\quad(r&lt;0).
+\]</span></p>
+<p>For <span class="math">\(\lambda=\beta\)</span> and <span class="math">\(\mu=0\)</span>, the identity Weyl element contributes <span class="math">\(P_u(\beta)=u\)</span>; the reflection contributes <span class="math">\(P_u(-2\beta)=0\)</span>. Thus</p>
+<p><span class="math math-display">\[
+m^0_{\alpha^\vee}(u)=u.
+\tag{6.4}
+\]</span></p>
+<p>The cone calculation proves the same value directly: <span class="math">\(d_\lambda=2\)</span>, <span class="math">\(\langle\rho,\lambda\rangle=1\)</span>, and the stalk of <span class="math">\(E[2]\)</span> has only <span class="math">\(\mathcal H^{-2}=E\)</span>. Hence the sum in (6.3) is <span class="math">\(1\)</span>, but its required prefactor is <span class="math">\(u\)</span>. At <span class="math">\(u=1\)</span> the multiplicity is one; at <span class="math">\(u=q\)</span> the polynomial is <span class="math">\(q\)</span>. These are different questions.</p>
+<h2 id="7-the-whittaker-character-and-the-casselmanshalika-statement">7. The Whittaker character and the Casselman–Shalika statement</h2>
+<p>We first specify the finite-characteristic statement. Work over an algebraic closure of a finite field, with <span class="math">\(\overline{\mathbf Q}_\ell\)</span>-coefficients and <span class="math">\(\ell\ne p\)</span>. Choose a pinning, so that the simple-root coordinates <span class="math">\(u_i\)</span> identify the abelianization of <span class="math">\(N\)</span> with the product of its simple-root additive groups. Choose a nontrivial additive character <span class="math">\(\psi:\mathbf F_p\to\overline{\mathbf Q}_\ell^\times\)</span> and its Artin–Schreier rank-one sheaf <span class="math">\(\mathcal L_\psi\)</span> on <span class="math">\(\mathbf A^1\)</span>. Define the conductor-zero loop character</p>
+<p><span class="math math-display">\[
+\chi_0(n)=\sum_i\operatorname{Res}(u_i(n)\,dt),
+\qquad
+\chi_\mu(n)=\chi_0(t^\mu n t^{-\mu}).
+\tag{7.1}
+\]</span></p>
+<p>The simple-root coordinates of a commutator vanish, so (7.1) is an additive group homomorphism. Its nonzero coefficient on every simple-root factor is the genericity condition.</p>
+<p>On <span class="math">\(S_\nu=N((t))t^\nu\)</span>, the expression <span class="math">\(\chi_\mu(n)\)</span>, normalized to zero at <span class="math">\(t^\nu\)</span>, descends to a function <span class="math">\(\chi_\mu^\nu\)</span> exactly when <span class="math">\(\mu+\nu\)</span> is dominant. Indeed the simple-root coordinate of the stabilizer is <span class="math">\(t^{\langle\alpha_i,\nu\rangle}O\)</span>; conjugation by <span class="math">\(t^\mu\)</span> multiplies it by <span class="math">\(t^{\langle\alpha_i,\mu\rangle}\)</span>. Residue is identically zero on that ideal exactly when <span class="math">\(\langle\alpha_i,\mu+\nu\rangle\geq0\)</span>. If the inequality fails, its <span class="math">\(t^{-1}\)</span> coefficient can be nonzero, so descent fails. Coordinates for nonsimple roots do not affect the character. This proves the descent criterion.</p>
+<p>The geometric Casselman–Shalika cohomology statement is the following, here stated without its general proof. For dominant <span class="math">\(\lambda\)</span> and for <span class="math">\(\mu,\nu\)</span> such that <span class="math">\(\mu+\nu\)</span> is dominant,</p>
+<p><span class="math math-display">\[
+H_c^r\left(\mathrm{Gr}^{\leq\lambda}\cap S_\nu,
+ \mathrm{IC}^{\mathrm{raw}}_\lambda\otimes
+ (\chi_\mu^\nu)^*\mathcal L_\psi\right)
+ \cong
+\begin{cases}
+\operatorname{Hom}_{\widehat G}
+ (V_\lambda\otimes V_\mu,V_{\mu+\nu}),
+ &amp;r=h_\nu\text{ and }\mu\text{ dominant},\\
+0,&amp;\text{otherwise}.
+\end{cases}
+\tag{7.2}
+\]</span></p>
+<p>The displayed isomorphism concerns geometric coefficient spaces; it does not assign a Weil twist to its right side. For example <span class="math">\(E[d]\)</span> on <span class="math">\(\mathbf A^d\)</span> has compact cohomology <span class="math">\(E(-d)[-d]\)</span>, so omission of the twist would change its Frobenius trace.</p>
+<p>Formula (7.2) is <a href="https://arxiv.org/pdf/math/9907133v5">Frenkel–Gaitsgory–Vilonen, Whittaker patterns in the geometry of moduli spaces of bundles on curves, Theorem 1, equation (1.7)</a>. The support is the <strong>closed</strong> Schubert variety. With <span class="math">\(\mu=0\)</span> and dominant <span class="math">\(\nu\)</span>, the right side is one-dimensional only for <span class="math">\(\nu=\lambda\)</span>, and otherwise zero. Thus the complex has its surviving group in degree <span class="math">\(h_\lambda\)</span>, or is zero. In derived notation the nonzero geometric complex is <span class="math">\(E[-h_\lambda]\)</span>. This negative shift is consistent with the cohomological convention in §1.</p>
+<p>There is also a categorical version. Its characteristic-zero incarnation requires exponential D-modules rather than ordinary complex local systems. On complex <span class="math">\(\mathbf A^1\)</span>, a rank-one local system is constant because the line is simply connected; it cannot provide the nontrivial additive character needed for Whittaker equivariance.</p>
+<p>Here is the precise derived statement used in the 2024 geometric Langlands work. For a connected reductive group over an algebraically closed field of characteristic zero and a smooth curve <span class="math">\(X\)</span>, use the <span class="math">\(\rho(\omega_X)\)</span>-twisted Grassmannian. The residue character is nonzero on every simple-root factor. Form the cocomplete derived category</p>
+<p><span class="math math-display">\[
+\operatorname{Whit}^{!}(G)
+ =D\text{-}\mathrm{mod}_{1/2}
+ (\mathrm{Gr}_{G,\rho(\omega_X)})^
+ {L(N)_{\rho(\omega_X)},\chi}.
+\tag{7.3}
+\]</span></p>
+<p>The superscript denotes character-twisted invariants, not ordinary invariant sheaves. With the half-twist and factorization structures specified there, there is a canonical equivalence of factorization categories</p>
+<p><span class="math math-display">\[
+\operatorname{CS}_G:
+ \operatorname{Whit}^{!}(G)\xrightarrow{\sim}
+ \operatorname{Rep}(\widehat G),
+\qquad \Delta_\lambda\longmapsto V_\lambda.
+\tag{7.4}
+\]</span></p>
+<p>In (7.4), the representation category is the derived cocomplete category in the source's convention. This is <a href="https://arxiv.org/pdf/2405.03648v3">Arinkin and collaborators, Proof of the geometric Langlands conjecture II, Theorem 1.4.2, §1.4.4 and Remark 1.4.6</a>. Sections 1.3–1.4 define the invariants and coinvariants and distinguish the local Grassmannian theorem from the global statement on <span class="math">\(\mathrm{Bun}_G\)</span>. The equivalence (7.4) is stated here; no proof of it is inferred from the classical Satake equivalence of Lesson 11.</p>
+<p>For a torus the categorical assertion in the perverse setting has a complete elementary proof. There is no <span class="math">\(N\)</span>, no residue character and no shift. For <span class="math">\(T=\mathbf G_m\)</span>, a bounded supported perverse sheaf is a finite family <span class="math">\((V_n)_{n\in\mathbf Z}\)</span> of finite-dimensional coefficient spaces. Multiplication of lattices gives</p>
+<p><span class="math math-display">\[
+(V*W)_r=\bigoplus_{m+n=r}V_m\otimes W_n.
+\tag{7.5}
+\]</span></p>
+<p>The unit is <span class="math">\(E\)</span> at zero. The dual places <span class="math">\(V_n^*\)</span> at <span class="math">\(-n\)</span>; evaluation and coevaluation are the usual vector-space maps. Associativity and symmetry are those of vector spaces, and their coherence identities hold on each summand.</p>
+<p>To identify this category with <span class="math">\(\operatorname{Rep}_E(\mathbf G_m)\)</span>, assign <span class="math">\(v\in V_n\)</span> the coaction <span class="math">\(v\mapsto v\otimes z^n\)</span>. Conversely, expand the coaction of a finite-dimensional representation as <span class="math">\(\delta(v)=\sum_n p_n(v)\otimes z^n\)</span>. Coassociativity and counit give</p>
+<p><span class="math math-display">\[
+p_np_m=\delta_{nm}p_n,\qquad\sum_np_n=1.
+\tag{7.6}
+\]</span></p>
+<p>A finite basis makes the sum finite. Therefore <span class="math">\(V=\bigoplus_n\operatorname{im}p_n\)</span>, and the two constructions are inverse, including on morphisms. The product coaction gives precisely (7.5). This proves the torus equivalence directly. The proof for a higher-dimensional split torus replaces <span class="math">\(\mathbf Z\)</span> by its character lattice.</p>
+<h2 id="8-factorization-over-finite-sets-of-points">8. Factorization over finite sets of points</h2>
+<p>Let <span class="math">\(X\)</span> be a smooth curve, and let <span class="math">\(I\)</span> be a finite set. Its Beilinson–Drinfeld Grassmannian classifies a <span class="math">\(G\)</span>-bundle together with a trivialization away from the graphs of <span class="math">\(I\)</span> labeled points. Over the open subset <span class="math">\(X^{I,\circ}\)</span> where all points are distinct, modifications at different discs are independent. The torsor-gluing proof and its compatibility with arbitrary parameter rings are in <a href="GL-SAT-03.html">Beauville–Laszlo gluing</a> and <a href="GL-SAT-08.html">Fusion and the commutativity constraint, §§1–3</a>. For a partition of <span class="math">\(I\)</span> into disjoint blocks, the corresponding block-disjoint open has the analogous product description.</p>
+<p>Along a diagonal the labels merge. Already for two points, the restriction of the canonical fusion extension to the diagonal gives the convolution of the two objects. Under a tensor equivalence with dual-group representations, this corresponds to</p>
+<p><span class="math math-display">\[
+\operatorname{Rep}(\widehat G\times\widehat G)
+ \xrightarrow{\operatorname{Res}_{\mathrm{diag}}}
+\operatorname{Rep}(\widehat G),
+\qquad V\boxtimes W\longmapsto V\otimes W.
+\tag{8.1}
+\]</span></p>
+<p>Indeed the diagonal element <span class="math">\(g\)</span> acts as <span class="math">\(g\)</span> on both factors. Lesson 8 proves the classical fusion extensions, the comparisons on every partial diagonal, and their associativity. These are statements about the specified equivariant, universally locally acyclic relative sheaves and their canonical extensions. They do not identify every constructible sheaf on <span class="math">\(X^I\)</span> with a representation of a fixed product group.</p>
+<p>The corresponding arithmetic theorem has further hypotheses. <a href="https://arxiv.org/pdf/2102.13459v4">Fargues–Scholze, Geometrization of the local Langlands correspondence, Definition VI.9.1 and VI.9–VI.11</a> works on the local Hecke stack over <span class="math">\((\operatorname{Div}_X^1)^I\)</span> for a nonarchimedean local field <span class="math">\(E_0\)</span>. Its coefficient ring <span class="math">\(\Lambda\)</span> is killed by an integer prime to the residue characteristic. The Satake objects are ULA, flat, relative perverse sheaves. Proposition VI.9.2 retains the continuous <span class="math">\(W_{E_0}^I\)</span>-action; VI.9.3–VI.9.4 give restriction and coherent fusion; VI.10.2–VI.10.3 reconstruct the product Hopf algebra internal to Weil representations. The dual-group identification and its cyclotomic pinning action are in VI.11.1. This arithmetic statement is not used as a proof of a classical equivalence on arbitrary <span class="math">\(X^I\)</span>.</p>
+<p>The Ran space organizes points with varying finite label sets. Its finite-set data consist of the spaces <span class="math">\(X^I\)</span>, maps of diagonals induced by surjections of label sets, and product identifications over disjoint configurations. The preceding collision rule describes how Satake objects fit those maps. Constructing a full sheaf category on that colimit, with descent and an equivalence of categories, requires an additional theorem. The finite-set fusion statements above specify the part needed for the convolution category in this course.</p>
+<h2 id="9-the-hecke-correspondence-on-bundles">9. The Hecke correspondence on bundles</h2>
+<p>The same modification geometry supplies the kernels of Hecke functors. Fix <span class="math">\(x\in X\)</span>. The Hecke correspondence at <span class="math">\(x\)</span> classifies</p>
+<p><span class="math math-display">\[
+(\mathcal E,\mathcal E',\beta),
+\qquad
+\beta:\mathcal E|_{X-\{x\}}
+ \xrightarrow{\sim}\mathcal E'|_{X-\{x\}}.
+\tag{9.1}
+\]</span></p>
+<p>Its projections <span class="math">\(h_1,h_2\)</span> forget <span class="math">\(\mathcal E'\)</span> and <span class="math">\(\mathcal E\)</span>, respectively. Trivializing <span class="math">\(\mathcal E\)</span> on the formal disc identifies the possible modifications with <span class="math">\(\mathrm{Gr}_G\)</span>. A change of disc trivialization acts by <span class="math">\(L^+G\)</span>, so an equivariant Satake object <span class="math">\(A\)</span> descends to a kernel <span class="math">\(\mathcal K_{A,x}\)</span> on this correspondence. The independence of such choices is exactly the torsor descent of Lesson 3 and the coordinate comparison of Lesson 8.</p>
+<p>In a sheaf or D-module theory on <span class="math">\(\mathrm{Bun}_G\)</span> with the indicated operations, the fixed-point Hecke transform is written</p>
+<p><span class="math math-display">\[
+\mathsf H_{A,x}(\mathcal F)
+ =h_{2!}(h_1^*\mathcal F\otimes\mathcal K_{A,x}).
+\tag{9.2}
+\]</span></p>
+<p>One fixes the shifts and, for D-modules, the choices of <span class="math">\(*\)</span> and <span class="math">\(!\)</span> according to that theory. Formula (9.2) records the geometric kernel convention; it does not assert that a six-functor theory on these stacks has been constructed in this lesson.</p>
+<p>If those operations satisfy base change, the projection formula and composition, two successive transforms are represented by the stack of two successive modifications. Pushforward under composition of the modifications is the kernel convolution of Lesson 7. This explains the action relation <span class="math">\(\mathsf H_{A,x}\mathsf H_{B,x}\simeq\mathsf H_{A*B,x}\)</span> in that formalism: the two sides integrate the same tensor product on the same chain correspondence. At distinct points the modifications are independent, as in §8. A Hecke eigensheaf for a dual-group local system has, for each representation <span class="math">\(V\)</span>, the associated local system as its parameter in these transforms. The global existence theorem and the categorical geometric Langlands equivalence are separate from this local kernel construction.</p>
+<p>For <span class="math">\(\mathbf G_m\)</span> the underlying operation is explicit even without a derived formalism. The bundle is a line bundle <span class="math">\(\mathcal L\)</span>. With the lattice convention <span class="math">\(t^nO\)</span>, a modification of index <span class="math">\(n\)</span> produces <span class="math">\(\mathcal L(-nx)\)</span>: its local sections vanish to order <span class="math">\(n\)</span>. Applying index <span class="math">\(m\)</span> next gives <span class="math">\(\mathcal L(-(n+m)x)\)</span>. This is the geometric counterpart of the point convolution (7.5).</p>
+<h2 id="10-exercises-with-solutions">10. Exercises with solutions</h2>
+<p><strong>Exercise 12.1 (easy).</strong> Count the rational points of the <span class="math">\(SL_2\)</span> quasi-minuscule Schubert closure, including its singular point.</p>
+<p><strong>Solution.</strong> Its open orbit is an affine-line bundle over <span class="math">\(\mathbf P^1\)</span>. There are <span class="math">\(q+1\)</span> rational base points and <span class="math">\(q\)</span> points over each one, so the open orbit has <span class="math">\(q(q+1)\)</span> points. The remaining stratum consists of the vertex. The result is <span class="math">\(q^2+q+1\)</span>. This also agrees with the cell sizes <span class="math">\(q^2,q,1\)</span>.</p>
+<p><strong>Exercise 12.2 (easy).</strong> For the positive square root <span class="math">\(a\)</span>, compute the trace of the minuscule <span class="math">\(GL_2\)</span> object and its Satake transform. Explain what changes if the negative square root defines the half twist.</p>
+<p><strong>Solution.</strong> The minuscule closure is <span class="math">\(\mathbf P^1\)</span>, and <span class="math">\(\mathcal I_{10}=E[1](1/2)\)</span>. Its sole stalk group is in degree <span class="math">\(-1\)</span>, with Frobenius <span class="math">\(a^{-1}\)</span>. Thus <span class="math">\(t_{\mathcal I_{10}}=-a^{-1}c_{10}\)</span>. Since <span class="math">\(\mathcal S(c_{10})=a(x_1+x_2)\)</span>, its transform is <span class="math">\(-(x_1+x_2)\)</span>. Replacing the half-twist eigenvalue by <span class="math">\((-a)^{-1}\)</span> multiplies this trace by <span class="math">\(-1\)</span>, and the transform becomes <span class="math">\(x_1+x_2\)</span>.</p>
+<p><strong>Exercise 12.3 (medium).</strong> Recover <span class="math">\(c_{10}*c_{10}=c_{20}+(q+1)c_{11}\)</span> from the normalized IC convolution. Give the raw central summand and its Frobenius eigenvalue.</p>
+<p><strong>Solution.</strong> The normalized decomposition is <span class="math">\(\mathcal I_{10}*\mathcal I_{10}=\mathcal I_{20}\oplus\mathcal I_{11}\)</span>. Here <span class="math">\(t_{\mathcal I_{10}}=-a^{-1}c_{10}\)</span>, <span class="math">\(t_{\mathcal I_{20}}=q^{-1}(c_{20}+c_{11})\)</span>, and <span class="math">\(t_{\mathcal I_{11}}=c_{11}\)</span>. Trace compatibility for this map was proved by the point and projective-line fibre calculations in §4. Hence</p>
+<p><span class="math math-display">\[
+q^{-1}c_{10}*c_{10}=q^{-1}c_{20}+(q^{-1}+1)c_{11}.
+\]</span></p>
+<p>Multiply by <span class="math">\(q\)</span>. Before half twists, the central summand is <span class="math">\(E_{(1,1)}(-1)\)</span>, with eigenvalue <span class="math">\(q\)</span>, supplied by <span class="math">\(H^2(\mathbf P^1,E)\)</span>. The total twist <span class="math">\((1)\)</span> cancels that <span class="math">\((-1)\)</span>, giving eigenvalue one in the normalized decomposition.</p>
+<p><strong>Exercise 12.4 (medium).</strong> Compute <span class="math">\(m^0_{\alpha^\vee}(u)\)</span> for <span class="math">\(SL_2\)</span> both from (6.2) and from the IC stalk. Explain why the stalk's dimension is not itself the polynomial.</p>
+<p><strong>Solution.</strong> The dual positive root is <span class="math">\(\beta=\alpha^\vee\)</span>, and <span class="math">\(\widehat\rho=\beta/2\)</span>. The identity term in (6.2) is <span class="math">\(P_u(\beta)=u\)</span>; the reflection term has argument <span class="math">\(-2\beta\)</span> and is zero. Therefore <span class="math">\(m^0_\beta(u)=u\)</span>. The raw IC stalk at the cone vertex is <span class="math">\(E[2]\)</span>, with only its degree <span class="math">\(-2\)</span> group nonzero. In (6.3) it contributes <span class="math">\(1\)</span> to the sum, multiplied by <span class="math">\(u^{\langle\rho,\beta\rangle}=u\)</span>. Its dimension and the ordinary weight multiplicity are one, the value at <span class="math">\(u=1\)</span>; its cohomological position gives the polynomial <span class="math">\(u\)</span>.</p>
+<p><strong>Exercise 12.5 (hard).</strong> State the character and support needed for (7.2), and prove the cohomology formula and the perverse Whittaker equivalence for <span class="math">\(\mathbf G_m\)</span>.</p>
+<p><strong>Solution.</strong> The character is the conductor-zero sum of residues in the pinned simple-root coordinates, conjugated by <span class="math">\(t^\mu\)</span>. It descends to <span class="math">\(S_\nu\)</span> when <span class="math">\(\mu+\nu\)</span> is dominant. The complex is restricted to the closed support <span class="math">\(\mathrm{Gr}^{\leq\lambda}\cap S_\nu\)</span> and tensor-multiplied by the pullback of the chosen nontrivial Artin–Schreier character sheaf. Formula (7.2) places its surviving cohomology in degree <span class="math">\(h_\nu\)</span> and identifies that space with <span class="math">\(\operatorname{Hom}(V_\lambda\otimes V_\mu,V_{\mu+\nu})\)</span> if <span class="math">\(\mu\)</span> is dominant; otherwise all groups vanish.</p>
+<p>For a torus there are no roots, so every integer is dominant, the character is zero, and <span class="math">\(h_\nu=0\)</span>. The intersection is a point when <span class="math">\(\lambda=\nu\)</span> and empty otherwise. Its compact cohomology is consequently <span class="math">\(E\)</span> in degree zero in the first case and zero in the second. The representation Hom space is</p>
+<p><span class="math math-display">\[
+\operatorname{Hom}_{\mathbf G_m}
+(E_\lambda\otimes E_\mu,E_{\mu+\nu})
+ =\begin{cases}E,&amp;\lambda=\nu,\\0,&amp;\lambda\ne\nu,\end{cases}
+\]</span></p>
+<p>because a morphism between two one-dimensional weight representations is zero unless their weights agree. Thus the full cohomology statement holds here. Whittaker equivariance imposes no condition because <span class="math">\(N=1\)</span>. Its perverse category is the category of finite supported families <span class="math">\((V_n)\)</span>, with convolution (7.5). The coaction construction and the mutually orthogonal projections (7.6) give inverse tensor equivalences with <span class="math">\(\operatorname{Rep}_E(\mathbf G_m)\)</span>. Evaluation and coevaluation, associativity and symmetry were checked summandwise in §7, completing the categorical assertion in this case.</p>
+<h2 id="11-what-this-lesson-does-not-prove">11. What this lesson does not prove</h2>
+<p>The general finite-field IC parity, split Tate structure and scalar-Frobenius assertion needed for Proposition 5.1 are not proved here. That proposition proves the implication from its three specified premises. The <span class="math">\(GL_2\)</span> product is proved by the bounded fibre calculation, and the torus case is proved directly. The étale examples use the curve-point purity, smooth-base-change, finite-pushforward and proper-base-change proofs identified in §§2–4, with the explicit finite free coefficient passage given there. They do not require a general decomposition or higher-dimensional trace theorem.</p>
+<p>The general stalk identity (6.3), the general Whittaker cohomology theorem (7.2), the derived D-module factorization equivalence (7.4), and the arithmetic Fargues–Scholze equivalence are stated with their hypotheses and free locators. They are not used in the proofs of the rank-one or torus calculations. A full Ran-category construction and a six-functor theory on <span class="math">\(\mathrm{Bun}_G\)</span> also lie beyond this lesson.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Edward Frenkel, <a href="https://arxiv.org/abs/hep-th/0512172">Lectures on the Langlands program and conformal field theory</a>, §§5.3–5.6: normalized functions, geometric Satake and Hecke kernels.</li>
+<li>George Lusztig, <a href="https://math.mit.edu/~gyuri/papers/ast.pdf">Singularities, character formulas, and a q-analogue of weight multiplicities, free author copy</a>, equations (9.3)–(9.4), §11(c), printed pp. 225–227: polynomial and IC conventions.</li>
+<li>Dmitri Panyushev, <a href="https://arxiv.org/abs/1406.1453">On Lusztig's q-analogues of all weight multiplicities of a representation</a>, §1, equation (1.1): the positive-power partition formula.</li>
+<li>Edward Frenkel, Dennis Gaitsgory and Kari Vilonen, <a href="https://arxiv.org/pdf/math/9907133v5">Whittaker patterns in the geometry of moduli spaces of bundles on curves</a>, Theorem 1, equation (1.7); Definition 4.2.2, Theorems 3–4 and §5.4.4: the twisted cohomology theorem and the globalized abelian Whittaker category.</li>
+<li>Dima Arinkin and collaborators, <a href="https://arxiv.org/pdf/2405.03648v3">Proof of the geometric Langlands conjecture II: Kac–Moody localization and the FLE</a>, §§1.3–1.4, especially Theorem 1.4.2 and Remark 1.4.6: the derived half-twisted factorization statement.</li>
+<li>Laurent Fargues and Peter Scholze, <a href="https://arxiv.org/pdf/2102.13459v4">Geometrization of the local Langlands correspondence</a>, VI.9–VI.11: relative arithmetic fusion, Weil actions and the reconstructed dual group.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/GL-SAT-12.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-SAT">Repository</a></nav>
+</footer>
+</body>
+</html>

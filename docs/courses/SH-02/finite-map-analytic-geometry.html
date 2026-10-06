@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SH02-FAG-UNIT — Analytic geometry for finite maps · Microlocal sheaves</title>
+<meta name="description" content="A lesson of the course Microlocal sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-02/finite-map-analytic-geometry.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Microlocal sheaves</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 5</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="sh02-fag-unit-analytic-geometry-for-finite-maps">SH02-FAG-UNIT — Analytic geometry for finite maps</h1>
+<p>A finite holomorphic map can ramify and can have image of positive codimension. The stratifications needed for sheaf theory must accommodate both phenomena. This lesson constructs compatible strata near a finite fibre, beginning with a prescribed coefficient stratification. It also proves the dimension and conormal consequences used in finite holomorphic microsupport.</p>
+<p>The proofs below are deductions from explicit analytic prerequisites. Those prerequisites are not proved in this lesson.</p>
+<h2 id="sh02-fag-contract-analytic-inputs-and-conventions">SH02-FAG-CONTRACT — Analytic inputs and conventions</h2>
+<p>All analytic spaces are reduced complex analytic spaces. Their dimensions are complex dimensions. A finite holomorphic map means a proper holomorphic map with finite fibres. A complex analytic stratification is locally finite, has connected smooth locally closed strata, and has analytic stratum closures and boundaries. No global finite number of strata is assumed.</p>
+<p>The following are the external analytic contracts used in this lesson.</p>
+<table>
+<thead>
+<tr>
+<th>Contract</th>
+<th>Required fact</th>
+<th>Exact mathematical source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Analytic components</td>
+<td>Locally finite irreducible components, a dense regular locus, analytic singular loci, and strict dimension drop for a proper analytic subset of an irreducible space</td>
+<td>Demailly, II.4.24, II.4.26, II.4.31 and II.5.3, pp.98, 100, 102–103</td>
+</tr>
+<tr>
+<td>Finite equations</td>
+<td>The ideal sheaf of an analytic subset is coherent; locally it has finitely many generators</td>
+<td>Demailly, II.4.29, pp.99–100</td>
+</tr>
+<tr>
+<td>Analytic difference</td>
+<td>For closed analytic subsets <span class="math" data-tex="$A,B$">$A,B$</span>, the closure of <span class="math" data-tex="$A\setminus B$">$A\setminus B$</span> is analytic</td>
+<td>Demailly, II.5.4, p.103</td>
+</tr>
+<tr>
+<td>One equation</td>
+<td>On an irreducible analytic space, a holomorphic function which is not identically zero has an empty zero set or a zero set of pure codimension one</td>
+<td>Demailly, II.6.2, p.106</td>
+</tr>
+<tr>
+<td>Finite image</td>
+<td>A proper holomorphic image is analytic; a finite surjective holomorphic map preserves dimension</td>
+<td>Demailly, II.8.8, pp.118–119, and II.8.1(b), p.116</td>
+</tr>
+<tr>
+<td>Whitney failure</td>
+<td>If <span class="math" data-tex="$H$">$H$</span> is reduced and equidimensional and <span class="math" data-tex="$C\subset H$">$C\subset H$</span> is closed analytic, the points of <span class="math" data-tex="$C$">$C$</span> where <span class="math" data-tex="$(H_{\mathrm{reg}},C)$">$(H_{\mathrm{reg}},C)$</span> fails the Whitney conditions form a closed analytic subset which is nowhere dense in <span class="math" data-tex="$C$">$C$</span></td>
+<td>Teissier, VI.2.1, p.477</td>
+</tr>
+</tbody>
+</table>
+<p>Demailly references mean the 21 June 2012 version of <a href="https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf"><em>Complex Analytic and Differential Geometry</em></a>. Teissier references mean <a href="https://webusers.imj-prg.fr/~bernard.teissier/documents/VarPol2.pdf"><em>Variétés polaires II</em>, Lecture Notes in Mathematics 961 (1982), pp.314–491</a>. The complex inverse and constant-rank theorems are also used. These references are precise prerequisite contracts, rather than claims that their underlying analytic foundations have been proved here.</p>
+<p>The dimension bound below is derived from the one-equation theorem. The inequality printed in Demailly II.6.3 in that version points in the opposite direction; it is not the assertion used here.</p>
+<h2 id="sh02-fag-equations-a-lower-dimension-bound-for-simultaneous-equations">SH02-FAG-EQUATIONS — A lower dimension bound for simultaneous equations</h2>
+<p><strong>Proposition.</strong> Let <span class="math" data-tex="$Z$">$Z$</span> be pure of dimension <span class="math" data-tex="$m$">$m$</span>, and let <span class="math" data-tex="$g_1,\ldots,g_r$">$g_1,\ldots,g_r$</span> be holomorphic functions. Every local irreducible component <span class="math" data-tex="$D$">$D$</span> of their common zero set satisfies</p>
+<span class="math math-display" data-tex="$$
+\dim D\geq m-r.
+\tag{FAG1}
+$$">$$
+\dim D\geq m-r.
+\tag{FAG1}
+$$</span>
+<p><strong>Proof.</strong> For one equation, work on each local irreducible component of <span class="math" data-tex="$Z$">$Z$</span>. If the function vanishes identically, that component is retained. Otherwise the one-equation contract gives either the empty set or components of dimension <span class="math" data-tex="$m-1$">$m-1$</span>.</p>
+<p>Suppose the assertion has been proved for <span class="math" data-tex="$r-1$">$r-1$</span> equations. Near a given point their zero set has finitely many irreducible components, each of dimension at least <span class="math" data-tex="$m-r+1$">$m-r+1$</span>. Intersect each with the zero set of <span class="math" data-tex="$g_r$">$g_r$</span>. An identically zero restriction leaves its component; a nonzero restriction lowers the dimension by exactly one whenever its zero set is nonempty. The common zero set is the finite union of these intersections. Each of its irreducible components is an irreducible component of at least one member of that union, so its dimension is at least <span class="math" data-tex="$m-r$">$m-r$</span>. This proves the induction. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Repeated equations and zero functions are included. For example, the two equations <span class="math" data-tex="$z_1=0$">$z_1=0$</span> and <span class="math" data-tex="$z_1=0$">$z_1=0$</span> in <span class="math" data-tex="$\mathbb C^m$">$\mathbb C^m$</span> define a set of codimension one. This also explains why a general inequality asserting codimension at least the number of equations would be false. The bound in FAG1 permits empty intersections and zero-dimensional spaces.</p>
+<h2 id="sh02-fag-image-images-and-the-rank-away-from-a-proper-analytic-subset"><span id="SH02-FAG-IMAGE"></span><span id="sh02-fag-image"></span>SH02-FAG-IMAGE — Images and the rank away from a proper analytic subset</h2>
+<p><strong>Proposition.</strong> Let <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> be finite holomorphic. If <span class="math" data-tex="$C\subset Y$">$C\subset Y$</span> is a closed irreducible analytic subset, then <span class="math" data-tex="$f(C)$">$f(C)$</span> is closed irreducible analytic and</p>
+<span class="math math-display" data-tex="$$
+\dim f(C)=\dim C.
+\tag{FAG2}
+$$">$$
+\dim f(C)=\dim C.
+\tag{FAG2}
+$$</span>
+<p><strong>Proof.</strong> The restriction to <span class="math" data-tex="$C$">$C$</span> is proper. The proper-image contract makes its image analytic, and a proper map between locally compact Hausdorff spaces is closed. If this image were a union of two proper closed analytic subsets, their inverse images would express <span class="math" data-tex="$C$">$C$</span> as such a union. Thus the image is irreducible. The map <span class="math" data-tex="$C\to f(C)$">$C\to f(C)$</span> is finite and surjective; the finite-dimension contract proves FAG2. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Rank lemma.</strong> A holomorphic map with finite fibres has differential rank <span class="math" data-tex="$k$">$k$</span> on a dense open subset of the regular part of every pure <span class="math" data-tex="$k$">$k$</span>-dimensional irreducible source component.</p>
+<p><strong>Proof.</strong> On an open subset where the differential has its maximum rank <span class="math" data-tex="$s$">$s$</span>, the constant-rank theorem gives local fibres of dimension <span class="math" data-tex="$k-s$">$k-s$</span>. A positive value would contradict finite fibres. Hence <span class="math" data-tex="$s=k$">$s=k$</span>. The locus where that rank drops is a proper analytic subset of the regular part, and its complement is dense. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For the stratification construction we need a closed analytic exceptional set on the whole component. Embed a neighbourhood of <span class="math" data-tex="$C$">$C$</span> into <span class="math" data-tex="$\mathbb C^N$">$\mathbb C^N$</span> and take local generators <span class="math" data-tex="$h_j$">$h_j$</span> of its analytic ideal. At a regular point of a pure <span class="math" data-tex="$k$">$k$</span>-dimensional component, the matrix <span class="math" data-tex="$dh$">$dh$</span> has rank <span class="math" data-tex="$N-k$">$N-k$</span>. Choose coordinates for a local embedding of the target. The restriction of <span class="math" data-tex="$df$">$df$</span> to <span class="math" data-tex="$TC$">$TC$</span> has rank less than <span class="math" data-tex="$k$">$k$</span> exactly when</p>
+<span class="math math-display" data-tex="$$
+\operatorname{rank}
+\begin{pmatrix}dh\\df\end{pmatrix}&lt;N.
+\tag{FAG3}
+$$">$$
+\operatorname{rank}
+\begin{pmatrix}dh\\df\end{pmatrix}&lt;N.
+\tag{FAG3}
+$$</span>
+<p>The maximal minors give holomorphic equations across the singular locus. Together with <span class="math" data-tex="$C_{\mathrm{sing}}$">$C_{\mathrm{sing}}$</span>, their zero set is a closed analytic exceptional subset of <span class="math" data-tex="$C$">$C$</span>. It is proper by the rank lemma. This construction uses generators of the reduced analytic ideal, so the Jacobian has the asserted rank on the regular locus.</p>
+<h2 id="sh02-fag-fibre-restricting-around-an-entire-finite-fibre">SH02-FAG-FIBRE — Restricting around an entire finite fibre</h2>
+<p><strong>Lemma.</strong> Suppose <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> is proper and <span class="math" data-tex="$x\in X$">$x\in X$</span>. If an open set <span class="math" data-tex="$V\subset Y$">$V\subset Y$</span> contains <span class="math" data-tex="$f^{-1}(x)$">$f^{-1}(x)$</span>, then there is a neighbourhood <span class="math" data-tex="$U$">$U$</span> of <span class="math" data-tex="$x$">$x$</span> such that</p>
+<span class="math math-display" data-tex="$$
+f^{-1}(U)\subset V.
+\tag{FAG4}
+$$">$$
+f^{-1}(U)\subset V.
+\tag{FAG4}
+$$</span>
+<p><strong>Proof.</strong> The closed set <span class="math" data-tex="$Y\setminus V$">$Y\setminus V$</span> has closed image under the proper map. That image does not contain <span class="math" data-tex="$x$">$x$</span>. Its complement is a possible <span class="math" data-tex="$U$">$U$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For a finite fibre, choose one source neighbourhood at each of its finitely many points. Each neighbourhood can meet only finitely many strata of a locally finite prescribed stratification. FAG4 then places the full inverse image of a smaller target neighbourhood in their union. All the refinements below can therefore use a finite list of local analytic sets. Empty fibres are allowed: with <span class="math" data-tex="$V=\varnothing$">$V=\varnothing$</span>, the same argument gives an empty inverse image near <span class="math" data-tex="$x$">$x$</span>.</p>
+<h2 id="sh02-fag-adapted-constructing-compatible-whitney-strata">SH02-FAG-ADAPTED — Constructing compatible Whitney strata</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> be finite holomorphic, and fix a locally finite complex analytic source stratification. Near each finite fibre there are compatible Whitney stratifications of source and target refining that source partition, such that every source stratum maps locally biholomorphically onto a target stratum.</p>
+<p><strong>Proof.</strong> Use FAG4 to restrict around the whole fibre. Analytic component decompositions and the prescribed partition are locally finite, so after this restriction the construction involves finitely many local components, closures and boundaries. Shrinking further during the construction is harmless. We will use at most <span class="math" data-tex="$\dim X+1$">$\dim X+1$</span> stages, including dimension zero.</p>
+<p>Proceed in descending dimension. At the stage indexed by <span class="math" data-tex="$k$">$k$</span>, let <span class="math" data-tex="$Z\subset X$">$Z\subset X$</span> be the remaining closed analytic set, with dimension at most <span class="math" data-tex="$k$">$k$</span>, and let <span class="math" data-tex="$W=f^{-1}(Z)$">$W=f^{-1}(Z)$</span>. FAG2 applied to components shows that <span class="math" data-tex="$\dim W\leq k$">$\dim W\leq k$</span>. All strata already chosen have dimension greater than <span class="math" data-tex="$k$">$k$</span>; each is open in the regular part of its analytic closure.</p>
+<p>For each <span class="math" data-tex="$k$">$k$</span>-dimensional irreducible component <span class="math" data-tex="$C$">$C$</span> of <span class="math" data-tex="$W$">$W$</span>, mark the following closed analytic exceptional subsets: its singular locus, intersections with other components, and the rank-drop set FAG3. Also mark every proper intersection of <span class="math" data-tex="$C$">$C$</span> with a closure or boundary of the prescribed source partition. On the remaining part of <span class="math" data-tex="$C$">$C$</span>, membership in every such closure and boundary is constant. Since each original stratum is its closure minus its boundary, the remaining part of <span class="math" data-tex="$C$">$C$</span> lies in one original stratum.</p>
+<p>Next consider a previously chosen source stratum <span class="math" data-tex="$S$">$S$</span>. Its closure <span class="math" data-tex="$H$">$H$</span> is pure analytic, and <span class="math" data-tex="$S$">$S$</span> is open in <span class="math" data-tex="$H_{\mathrm{reg}}$">$H_{\mathrm{reg}}$</span>. If <span class="math" data-tex="$C$">$C$</span> is not contained in <span class="math" data-tex="$H$">$H$</span>, mark the proper intersection <span class="math" data-tex="$C\cap H$">$C\cap H$</span>. If <span class="math" data-tex="$C\subset H$">$C\subset H$</span>, mark the Whitney-failure subset from the external contract. It is proper on each irreducible component of <span class="math" data-tex="$C$">$C$</span>. On the complement the pair <span class="math" data-tex="$(H_{\mathrm{reg}},C_{\mathrm{reg}})$">$(H_{\mathrm{reg}},C_{\mathrm{reg}})$</span> satisfies the Whitney conditions. Restricting the upper regular part to its open subset <span class="math" data-tex="$S$">$S$</span> keeps the same tangent spaces, so <span class="math" data-tex="$(S,C_{\mathrm{reg}})$">$(S,C_{\mathrm{reg}})$</span> satisfies them there too.</p>
+<p>On each <span class="math" data-tex="$k$">$k$</span>-dimensional target component of <span class="math" data-tex="$Z$">$Z$</span>, mark its singular locus, component intersections and its Whitney-failure subsets relative to the previously chosen target strata. Add every component of <span class="math" data-tex="$Z$">$Z$</span> of dimension below <span class="math" data-tex="$k$">$k$</span>. Finally add the images of all marked source subsets and of all source components of dimension below <span class="math" data-tex="$k$">$k$</span>.</p>
+<p>Every set just added to the target is closed analytic. For the source images this follows from properness and FAG2. Their dimensions are below <span class="math" data-tex="$k$">$k$</span>, since each marked subset in a <span class="math" data-tex="$k$">$k$</span>-dimensional irreducible component was proper. Their finite union is therefore a closed analytic set</p>
+<span class="math math-display" data-tex="$$
+Z&#x27;\subset Z,\qquad \dim Z&#x27;&lt;k.
+\tag{FAG5}
+$$">$$
+Z&#x27;\subset Z,\qquad \dim Z&#x27;&lt;k.
+\tag{FAG5}
+$$</span>
+<p>Take the connected components of <span class="math" data-tex="$Z\setminus Z&#x27;$">$Z\setminus Z&#x27;$</span> as the new target strata. Over each, take the connected components of its inverse image in the retained source components. Every source point is regular, lies in its prescribed original stratum, and has differential rank <span class="math" data-tex="$k$">$k$</span>. A <span class="math" data-tex="$k$">$k$</span>-dimensional component has a <span class="math" data-tex="$k$">$k$</span>-dimensional analytic image by FAG2; after removal of target component intersections, that image lies in one target component. The source and target strata thus have the same dimension, and the inverse function theorem makes the restriction a local biholomorphism.</p>
+<p>Each connected source stratum maps onto its connected target stratum. Its image is open because the map is a local biholomorphism. It is also closed: the source component is closed in the full inverse image of the target stratum, and the map on that inverse image is the proper base change of <span class="math" data-tex="$f$">$f$</span>. A nonempty subset both open and closed in a connected target stratum is the whole stratum.</p>
+<p>The new strata satisfy the Whitney conditions with every previously fixed higher stratum by the choice of the exceptional sets. Distinct new strata of the same dimension have disjoint closures away from <span class="math" data-tex="$Z&#x27;$">$Z&#x27;$</span> and <span class="math" data-tex="$f^{-1}(Z&#x27;)$">$f^{-1}(Z&#x27;)$</span>. Replace <span class="math" data-tex="$Z$">$Z$</span> by <span class="math" data-tex="$Z&#x27;$">$Z&#x27;$</span> and continue. Later stages leave the higher strata fixed. At each later stage, a component is either contained in or disjoint from each earlier analytic closure, because every proper intersection has been removed. This gives the frontier condition as well as the Whitney conditions.</p>
+<p>The process ends after dimension zero. Its connected-component subdivisions remain locally finite: analytic irreducible components are locally finite, and the regular connected pieces remain locally connected with finitely many branches after removal of a proper analytic subset. The regular-complement argument is the one in Demailly II.5.3 and its use of Remark II.4.2. There are only finitely many dimension stages. This proves the local theorem. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>In particular, branch points are assigned to lower strata before the restriction is declared locally biholomorphic. The theorem permits several sheets, several source components, and target strata with empty inverse image. It asserts no global injectivity.</p>
+<h2 id="sh02-fag-coefficients-why-one-refinement-serves-all-coefficients">SH02-FAG-COEFFICIENTS — Why one refinement serves all coefficients</h2>
+<p>Suppose the prescribed source partition makes the cohomology sheaves of a bounded complex <span class="math" data-tex="$G$">$G$</span> locally constant. All choices in the preceding proof concern the map and that analytic partition. A restriction of a locally constant sheaf to a smaller stratum is locally constant. Therefore the refined partition is still adapted to <span class="math" data-tex="$G$">$G$</span>.</p>
+<p>If scalar extension is derived and the stalk complexes are perfect, a locally constant model by perfect complexes remains locally constant after scalar extension. The geometric partition stays fixed. In particular, one refinement works for all residue-field extensions used in the finite-map coefficient argument. This statement requires no perverse t-structure over the original ring.</p>
+<h2 id="sh02-fag-conormal-closed-affine-conormals-and-their-dimensions"><span id="SH02-FAG-CONORMAL"></span><span id="sh02-fag-conormal"></span>SH02-FAG-CONORMAL — Closed affine conormals and their dimensions</h2>
+<p><strong>Proposition.</strong> Let <span class="math" data-tex="$S$">$S$</span> be a connected complex stratum in an <span class="math" data-tex="$n$">$n$</span>-dimensional complex manifold <span class="math" data-tex="$M$">$M$</span>, with analytic closure and boundary. Then <span class="math" data-tex="$\overline{T^*_S M}$">$\overline{T^*_S M}$</span> is a closed complex analytic conic subset of <span class="math" data-tex="$T^*M$">$T^*M$</span>, pure of dimension <span class="math" data-tex="$n$">$n$</span>.</p>
+<p><strong>Proof.</strong> Work locally on a pure <span class="math" data-tex="$d$">$d$</span>-dimensional component <span class="math" data-tex="$Z$">$Z$</span> of the closure. The stratum is dense and open in the relevant regular part. Choose generators <span class="math" data-tex="$h_j$">$h_j$</span> for the reduced analytic ideal of <span class="math" data-tex="$Z$">$Z$</span>. In <span class="math" data-tex="$T^*M$">$T^*M$</span> over <span class="math" data-tex="$Z$">$Z$</span>, impose the vanishing of the <span class="math" data-tex="$(n-d+1)$">$(n-d+1)$</span>-minors of the matrix obtained by adjoining the covector row <span class="math" data-tex="$\xi$">$\xi$</span> to the rows <span class="math" data-tex="$dh_j$">$dh_j$</span>. This gives a closed analytic set <span class="math" data-tex="$Q$">$Q$</span>.</p>
+<p>On <span class="math" data-tex="$Z_{\mathrm{reg}}$">$Z_{\mathrm{reg}}$</span>, the rows <span class="math" data-tex="$dh_j$">$dh_j$</span> span the annihilator of <span class="math" data-tex="$TZ$">$TZ$</span> and have rank <span class="math" data-tex="$n-d$">$n-d$</span>. The minor condition says exactly that <span class="math" data-tex="$\xi$">$\xi$</span> belongs to their span. Hence</p>
+<span class="math math-display" data-tex="$$
+Q|_{Z_{\mathrm{reg}}}=T^*_{Z_{\mathrm{reg}}}M.
+\tag{FAG6}
+$$">$$
+Q|_{Z_{\mathrm{reg}}}=T^*_{Z_{\mathrm{reg}}}M.
+\tag{FAG6}
+$$</span>
+<p>The analytic-difference contract makes the closure of <span class="math" data-tex="$Q$">$Q$</span> minus its part over <span class="math" data-tex="$Z_{\mathrm{sing}}$">$Z_{\mathrm{sing}}$</span> analytic. This is the desired conormal closure, because restriction of the conormal bundle to a dense open subset of the regular component does not change its closure. That bundle has base dimension <span class="math" data-tex="$d$">$d$</span> and fibre dimension <span class="math" data-tex="$n-d$">$n-d$</span>, so its components and their analytic closures have dimension <span class="math" data-tex="$n$">$n$</span>. Scaling covectors preserves the defining condition, which proves conicity. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This is an affine version of the conormal construction in Teissier II.4.1, pp.379–380. If <span class="math" data-tex="$d=n$">$d=n$</span>, the conormal is the zero section and the assertion concerns its closure. If <span class="math" data-tex="$d=0$">$d=0$</span>, it is the full cotangent fibre. These cases do not require a nonempty projectivized conormal.</p>
+<p>A locally finite union of such closed conormals is analytic: locally only finitely many source strata can occur, so the union is a finite union of analytic sets near every cotangent point.</p>
+<h2 id="sh02-fag-boundary-annihilation-at-a-boundary-stratum">SH02-FAG-BOUNDARY — Annihilation at a boundary stratum</h2>
+<p>For a Whitney stratification, every covector in a closed conormal based at a boundary stratum <span class="math" data-tex="$T$">$T$</span> annihilates <span class="math" data-tex="$TT$">$TT$</span>.</p>
+<p><strong>Proof.</strong> Choose covectors <span class="math" data-tex="$\xi_i\in T^*_{S}M$">$\xi_i\in T^*_{S}M$</span> converging to a covector <span class="math" data-tex="$\xi$">$\xi$</span> based at <span class="math" data-tex="$y\in T$">$y\in T$</span>. Pass to a subsequence for which the tangent spaces <span class="math" data-tex="$T_{y_i}S$">$T_{y_i}S$</span> converge in the Grassmannian to a plane <span class="math" data-tex="$L$">$L$</span>. The covectors <span class="math" data-tex="$\xi_i$">$\xi_i$</span> annihilate those tangent spaces, so their limit annihilates <span class="math" data-tex="$L$">$L$</span>. Whitney condition (a) gives <span class="math" data-tex="$T_yT\subset L$">$T_yT\subset L$</span>. Thus <span class="math" data-tex="$\xi$">$\xi$</span> annihilates <span class="math" data-tex="$T_yT$">$T_yT$</span>. The case where the limiting point remains in <span class="math" data-tex="$S$">$S$</span> follows directly from the same argument. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-fag-examples-two-small-maps-to-test-the-statement">SH02-FAG-EXAMPLES — Two small maps to test the statement</h2>
+<p>For <span class="math" data-tex="$f:\mathbb C\to\mathbb C$">$f:\mathbb C\to\mathbb C$</span>, <span class="math" data-tex="$f(z)=z^r$">$f(z)=z^r$</span> with <span class="math" data-tex="$r\geq1$">$r\geq1$</span>, use the strata <span class="math" data-tex="$\{0\}$">$\{0\}$</span> and <span class="math" data-tex="$\mathbb C^*$">$\mathbb C^*$</span> on both sides. The nonzero restriction has <span class="math" data-tex="$r$">$r$</span> sheets and is locally biholomorphic; the point stratum maps isomorphically to a point. The lower stratum accommodates ramification when <span class="math" data-tex="$r&gt;1$">$r&gt;1$</span>.</p>
+<p>For the closed embedding <span class="math" data-tex="$\mathbb C\hookrightarrow\mathbb C^2$">$\mathbb C\hookrightarrow\mathbb C^2$</span>, <span class="math" data-tex="$z\mapsto(z,0)$">$z\mapsto(z,0)$</span>, take the image line and its complement as target strata. The line is the image of the sole source stratum, and the complement has empty inverse image. A finite map may therefore have positive-codimension image without violating the equal-dimension assertion for corresponding nonempty strata.</p>
+<p>These examples check the role of strata, rather than replacing any hypothesis in the theorem.</p>
+<h2 id="sh02-fag-status-the-precise-contribution-to-finite-map-microsupport">SH02-FAG-STATUS — The precise contribution to finite-map microsupport</h2>
+<p>FAG1 supplies the dimension bound for the equations defining a cotangent inverse image. FAG2–FAG5 supply the adapted finite-map geometry and its coefficient independence. FAG6 and the boundary argument supply analytic conormal closures and their annihilation property. These are the analytic deductions requested by SH02-FH-ANALYTIC-INPUT.</p>
+<p>The remaining external prerequisites are the exact analytic contracts listed at the start, including the analytic Whitney-failure theorem and its own analytic dependencies. This lesson proves no Morse-pair existence, microsupport detection by normal Morse data, controlled holomorphic perturbation, intersection conservation, or perverse theorem. Their statements are given separately in the finite-map lesson.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="six-operation-pasting.html">← Proper-support composition through a change of base</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="perverse-normal-morse-inputs.html">SH02-PNM-UNIT — Perverse degrees and normal Morse complexes →</a></span></nav>
+<p class="small source-link"><a href="src/finite-map-analytic-geometry.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-02">Repository</a></nav>
+</footer>
+</body>
+</html>

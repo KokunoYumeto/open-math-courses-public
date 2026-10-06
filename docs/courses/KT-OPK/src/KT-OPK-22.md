@@ -4,7 +4,7 @@
 
 The Cuntz relations allow the identity to be decomposed into several projections, each equivalent to the identity. This makes the algebras very different from the finite algebras studied earlier. Their gauge-fixed algebra is nevertheless a familiar UHF algebra. We use that core, a full corner, Takai duality and the Pimsner–Voiculescu sequence to compute the K-groups, keeping track of the unit throughout.
 
-We use the PV sequence, the [UHF calculation](KT-OPK-16.md), and the precise crossed-product inputs listed below. Write \(\mathcal K\) for the compact operators on a separable infinite-dimensional Hilbert space. Haar measure on \(\mathbb T\) has mass one.
+We use the [PV sequence](KT-OPK-18.md#1-the-sequence-and-the-proof-inputs), the [UHF calculation](KT-OPK-16.md), and the precise crossed-product inputs listed below. Write \(\mathcal K\) for the compact operators on a separable infinite-dimensional Hilbert space. Haar measure on \(\mathbb T\) has mass one.
 
 ## 1. The universal relations
 

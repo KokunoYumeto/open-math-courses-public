@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Derived Satake · The affine Grassmannian and geometric Satake</title>
+<meta name="description" content="A lesson of the course The affine Grassmannian and geometric Satake. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-SAT/GL-SAT-13.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The affine Grassmannian and geometric Satake</a> <span aria-hidden="true">›</span> <span>Lesson 13</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written by AI.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="derived-satake">Derived Satake</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>For a connected group, equivariance on a point leaves only vector spaces in the perverse heart. Its derived category still remembers the cohomology of the classifying space. This is already enough to show why deriving the abelian Satake equivalence does not give derived geometric Satake. We calculate that difference, prove the torus model, and specify the additional categories in the general theorem.</p>
+<h2 id="1-which-derived-category">1. Which derived category?</h2>
+<p>Work with complex algebraic groups and their classical topology. Cohomological grading means <span class="math">\(H^i(K[s])=H^{i+s}(K)\)</span>; in particular a vector space <span class="math">\(V[-2]\)</span> has its vectors in degree <span class="math">\(2\)</span>. Write <span class="math">\(\Lambda\)</span> for a characteristic-zero field. The explicit commutative differential-form model in §5 uses <span class="math">\(\Lambda=\mathbf R\)</span> or <span class="math">\(\mathbf C\)</span>. The integral topological calculations, and their characteristic-zero scalar extensions, are identified separately.</p>
+<p>There are two constructions to distinguish:</p>
+<ul>
+<li><span class="math">\(D^b(\mathrm{Sat}_G)\)</span>, the bounded derived category of the abelian perverse category;</li>
+<li><span class="math">\(D^b_{L^+G,c}(\mathrm{Gr}_G)\)</span>, the Borel equivariant constructible category, with bounded underlying complexes and finite Schubert support.</li>
+</ul>
+<p>In the second category, equivariance includes the compatible derived data on all levels of the action nerve. Equivalently one uses finite-dimensional sufficiently acyclic free-action models, in the range of degrees under consideration. <a href="../GL-PERV/equivariant-perverse-sheaves-and-perverse-sheaves-on-stacks.html">Equivariant perverse sheaves and perverse sheaves on stacks, Theorem B.9</a> constructs those bounded models and their comparisons. Its §4 calculates the first extra class for <span class="math">\(\mathbf G_m\)</span>. An isomorphism on the first action product, with a cocycle on the second, describes heart equivariance; it does not replace the full derived construction.</p>
+<p>On each finite model, bounded-below injective complexes and their Hom complexes give the enhancement used for derived sections. <a href="../derived-categories-and-sheaf-operations/sheaves-of-modules-and-their-derived-categories.html#6-right-derived-functors-on-bounded-below-complexes">Sheaves of modules and their derived categories, Theorem 6.1 and Lemmas 6.2–6.3</a> prove resolution existence and the quasi-isomorphism comparison of those Hom complexes. Their differential is <span class="math">\(d(f)=d_Jf-(-1)^{|f|}fd_I\)</span>, and composition satisfies the graded product rule by expansion. The bounded model comparisons are taken in the degree range under consideration. The explicit compatible torus construction is given in §5; no general enhanced-descent theorem is inferred from triangulated full faithfulness alone.</p>
+<p>Mapping objects retain these complexes and composition; cones are homotopy cones. Thus <span class="math">\(R\operatorname{Hom}(A,B)\)</span>, and not just its cohomology groups, is part of the construction. A <strong>perfect</strong> module over a differential graded algebra is an object obtained from finite sums of shifts of the free module by finitely many cones and direct summands. Equivalently it belongs to the smallest idempotent-complete stable subcategory containing that free module. This definition does not require the algebra to be concentrated in degree zero.</p>
+<h2 id="2-the-unit-sees-a-classifying-space">2. The unit sees a classifying space</h2>
+<p>The base point <span class="math">\(e=t^0\)</span> is fixed by <span class="math">\(L^+G\)</span>. Its unit sheaf is <span class="math">\(\mathbf1=i_*\Lambda_e\)</span>. Closed extension is fully faithful also in the equivariant derived category: in every free-action model it is closed extension along the corresponding closed subspace, and the ordinary identity <span class="math">\(i^*i_*=1\)</span> identifies the unit and counit. It is compatible with the transition models. Hence</p>
+<p><span class="math math-display">\[
+R\operatorname{Hom}_{L^+G}(\mathbf1,\mathbf1)
+ \simeq R\Gamma(BL^+G,\Lambda).
+\tag{2.1}
+\]</span></p>
+<p>Indeed on a model of the point quotient the object is the constant sheaf. Its derived endomorphisms are the sections of its coefficient-resolution complex. Products are cup products, because composition of constant-sheaf endomorphisms is the product in that resolution. This proves (2.1) as an endomorphism algebra, rather than only an equality of dimensions.</p>
+<p>Evaluation at <span class="math">\(t=0\)</span> induces</p>
+<p><span class="math math-display">\[
+L^+G\longrightarrow G,
+\tag{2.2}
+\]</span></p>
+<p>with constant loops as its section. Its kernel is contractible in the coefficient topology of formal jets. Explicitly <span class="math">\(g(t)\mapsto g(st)\)</span>, <span class="math">\(0\leq s\leq1\)</span>, fixes constant loops and at <span class="math">\(s=0\)</span> is <span class="math">\(g(0)\)</span>. Substitution preserves the defining polynomial equations of <span class="math">\(G\)</span> and the group product. On each jet quotient it is polynomial in the jet coordinates and <span class="math">\(s\)</span>; the maps are compatible under truncation. On the inverse-limit topology it is therefore continuous. The kernel is contracted to its identity.</p>
+<p>This induces the classifying-space comparison at each bounded model and in each fixed cohomological degree. One can also check it on the bar nerve: the maps on its degree-<span class="math">\(r\)</span> spaces are the corresponding maps on <span class="math">\((L^+G)^r\)</span> and <span class="math">\(G^r\)</span>, and the contraction respects faces and degeneracies because it is a group homomorphism at each parameter. Realizing the homotopy gives the same comparison. Consequently</p>
+<p><span class="math math-display">\[
+\boxed{\ \operatorname{Ext}^*_{D^b_{L^+G,c}(\mathrm{Gr}_G)}
+ (\mathbf1,\mathbf1)=H^*(BG,\Lambda).\ }
+\tag{2.3}
+\]</span></p>
+<p>The jet construction of <a href="GL-SAT-06.html">The Satake category, §2</a> supplies the finite algebraic quotients used here; their successive kernels are vector groups in the classical topology. Equation (2.3) is a topological Borel computation. It is not a claim that the algebraic loop quotient functor is unchanged on nonreduced rings.</p>
+<h2 id="3-two-classifying-space-calculations">3. Two classifying-space calculations</h2>
+<h3 id="31-a-circle-and-a-degree-two-generator">3.1. A circle and a degree-two generator</h3>
+<p>The group <span class="math">\(\mathbf C^\times\)</span> retracts to its unit circle by <span class="math">\(z\mapsto z|z|^{-s}\)</span>. A model of the circle's universal bundle is</p>
+<p><span class="math math-display">\[
+S^\infty\longrightarrow\mathbf {CP}^\infty.
+\tag{3.1}
+\]</span></p>
+<p>Here the unit vectors have finitely many nonzero complex coordinates, with the weak topology from their finite spheres. This space is contractible. If <span class="math">\(S\)</span> inserts a zero first coordinate, the normalized vector <span class="math">\((1-s)v+sS(v)\)</span> never vanishes: for <span class="math">\(s&gt;0\)</span>, use the last nonzero coordinate of <span class="math">\(v\)</span> in its new shifted position. This deforms <span class="math">\(v\)</span> to <span class="math">\(S(v)\)</span>. The latter is orthogonal to the first coordinate vector, so the path <span class="math">\(\cos(\pi s/2)S(v)+\sin(\pi s/2)e_0\)</span> contracts it to <span class="math">\(e_0\)</span>. The homotopies are continuous at every finite stage and on products with the compact parameter interval. The compact-exhaustion product proof is in <a href="../DG-CHAR/grassmannians-and-classifying-maps.md">Grassmannians and classifying maps, Lemma 2.1</a>. Coordinate charts of projective space give local trivializations of (3.1).</p>
+<p>The integral computation</p>
+<p><span class="math math-display">\[
+H^*(\mathbf {CP}^n,\mathbf Z)
+ =\mathbf Z[c]/(c^{n+1}),\qquad |c|=2,
+\tag{3.2}
+\]</span></p>
+<p>is proved in <a href="../DG-CHAR/gysin-sequence-and-projective-splitting.md">Gysin sequence and projective splitting, Theorem 3.2</a>. Briefly, the unit-circle bundle of the tautological line has total space <span class="math">\(S^{2n+1}\)</span>. Its Gysin sequence says that multiplication by its Euler class is an isomorphism between consecutive even cohomology groups below the top degree. The cell decomposition has one cell in degrees <span class="math">\(0,2,\ldots,2n\)</span> and none elsewhere; thus there are no further groups, and the powers of the class generate. The class <span class="math">\(c=-c_1(\gamma)\)</span> evaluates to <span class="math">\(+1\)</span> on the complex-oriented projective line. Compatibility of the inclusions and stabilization in every fixed degree give</p>
+<p><span class="math math-display">\[
+H^*(B\mathbf G_m,\Lambda)=\Lambda[c],\qquad |c|=2.
+\tag{3.3}
+\]</span></p>
+<p>There is one group in every nonnegative even degree and no odd group. The universal-coefficient passage has no torsion term, since the integral cell homology is free. For a split torus of rank <span class="math">\(r\)</span>, take products of these bundle models. The chain product comparison and the same free even cell groups give</p>
+<p><span class="math math-display">\[
+H^*(BT,\Lambda)=\Lambda[c_1,\ldots,c_r],\qquad |c_i|=2.
+\tag{3.4}
+\]</span></p>
+<h3 id="32-sl_2-and-a-degree-four-generator">3.2. <span class="math">\(SL_2\)</span> and a degree-four generator</h3>
+<p>The maximal compact subgroup of <span class="math">\(SL_2(\mathbf C)\)</span> is <span class="math">\(SU_2\)</span>, which is the group of unit quaternions. Polar decomposition gives a deformation to it: write <span class="math">\(g=up\)</span>, with <span class="math">\(u\)</span> unitary of determinant one and <span class="math">\(p\)</span> positive Hermitian of determinant one, then use <span class="math">\(up^{1-s}\)</span>. For the right quotient, <span class="math">\(gSU_2\mapsto gg^*\)</span> identifies the quotient with the positive Hermitian determinant-one matrices; its inverse is the coset of the positive square root. The matrix logarithm identifies that space with the vector space of traceless Hermitian matrices, so it is contractible. The locally trivial associated bundle <span class="math">\(EG/SU_2\to EG/G\)</span> has that fibre. Its homotopy sequence and the weak-equivalence cohomology comparison identify the classifying-space cohomology rings. Those two results, including their proofs, are <a href="../DG-CHAR/homotopy-fibres-and-the-serre-spectral-sequence.md">Homotopy fibres and the Serre spectral sequence, Theorems C.2 and B.4</a>.</p>
+<p>A universal unit-quaternion bundle is</p>
+<p><span class="math math-display">\[
+S^\infty_{\mathbf H}\longrightarrow\mathbf {HP}^\infty.
+\tag{3.5}
+\]</span></p>
+<p>The same shift and normalization contraction proves that its total space is contractible. The quaternionic projective charts are the charts of one-dimensional right quaternionic subspaces, and their unit frames give local trivializations. For the finite space <span class="math">\(\mathbf {HP}^n\)</span>, normalize the last nonzero homogeneous coordinate to one. Its strata are affine quaternionic spaces of dimensions <span class="math">\(0,1,\ldots,n\)</span>. The closed filtration by <span class="math">\(\mathbf {HP}^j\)</span> therefore attaches one real cell in every degree <span class="math">\(4j\)</span>. The characteristic map is the projectivization of <span class="math">\((z,\sqrt{1-\|z\|^2})\)</span> on the closed quaternionic ball; on the boundary it lies in the preceding projective space. Compactness and the projective chart inverse show that the attachment quotient is the stated space. Thus its additive integral cohomology is <span class="math">\(\mathbf Z\)</span> in degrees <span class="math">\(0,4,\ldots,4n\)</span>, with no other groups.</p>
+<p>Let <span class="math">\(Q\)</span> be the tautological quaternionic line, viewed as an oriented real rank-four bundle. Its sphere bundle is <span class="math">\(S^{4n+3}\)</span>. The rank-four Gysin sequence, proved in <a href="../DG-CHAR/gysin-sequence-and-projective-splitting.md">Gysin sequence and projective splitting, Theorem 1.1</a>, now makes multiplication by <span class="math">\(e(Q)\)</span> an isomorphism from degree <span class="math">\(4j\)</span> to degree <span class="math">\(4j+4\)</span> for <span class="math">\(0\leq j&lt;n\)</span>: the intervening sphere groups vanish. Hence</p>
+<p><span class="math math-display">\[
+H^*(\mathbf {HP}^n,\mathbf Z)
+ =\mathbf Z[e]/(e^{n+1}),\qquad |e|=4.
+\tag{3.6}
+\]</span></p>
+<p>Under <span class="math">\(SU_2\subset GL_2(\mathbf C)\)</span>, this is a complex rank-two bundle with trivial determinant. Its top Chern class is its real Euler class, with the complex orientation; the identity is proved in <a href="../DG-CHAR/chern-classes-and-the-integral-universal-ring.md">Chern classes and the integral universal ring, equation (1.2)</a>. Choosing that orientation sets <span class="math">\(e=c_2\)</span>. Passing to the limit gives</p>
+<p><span class="math math-display">\[
+\boxed{\ H^*(BSL_2,\Lambda)=\Lambda[c_2],\qquad |c_2|=4.\ }
+\tag{3.7}
+\]</span></p>
+<p>In particular</p>
+<p><span class="math math-display">\[
+\operatorname{Ext}^2(\mathbf1,\mathbf1)=0,
+\qquad
+\operatorname{Ext}^4(\mathbf1,\mathbf1)=\Lambda
+\quad(G=SL_2).
+\tag{3.8}
+\]</span></p>
+<h3 id="33-the-invariant-polynomial-in-this-example">3.3. The invariant polynomial in this example</h3>
+<p>Write a trace-zero matrix as <span class="math">\(M=\begin{pmatrix}z&amp;x\\y&amp;-z\end{pmatrix}\)</span>. Its invariant quadratic polynomial is <span class="math">\(p(M)=z^2+xy=-\det M\)</span>. Every conjugation-invariant polynomial is a polynomial in <span class="math">\(p\)</span>. To prove this, restrict to <span class="math">\(\operatorname{diag}(z,-z)\)</span>. A Weyl representative exchanges the diagonal entries, so the restriction is an even polynomial <span class="math">\(f(z)=g(z^2)\)</span>. Matrices with <span class="math">\(p\ne0\)</span> have distinct eigenvalues and are conjugate to such a diagonal matrix, over an algebraic closure. A change of eigenbasis may be rescaled to determinant one, so conjugation by <span class="math">\(SL_2\)</span> suffices. Subtract <span class="math">\(g(p)\)</span>. The invariant difference vanishes on this dense open set, hence is the zero polynomial. Density follows because <span class="math">\(p\)</span> is a nonzero polynomial in the integral polynomial ring.</p>
+<p>Place each linear coordinate on <span class="math">\(\mathfrak{sl}_2\)</span> in degree two. Then <span class="math">\(p\)</span> has degree four, and the calculation proves</p>
+<p><span class="math math-display">\[
+\operatorname{Sym}(\mathfrak{sl}_2^*[-2])^{SL_2}
+ =\Lambda[p],\qquad |p|=4.
+\tag{3.9}
+\]</span></p>
+<p>Equations (3.7) and (3.9) have the same graded polynomial structure; choosing the generator normalization identifies them. No nonzero degree-two invariant is available. The general invariant-polynomial description of <span class="math">\(H^*(BG)\)</span> requires the general characteristic-class theorem; it is not needed for the two computations above.</p>
+<h2 id="4-why-the-abelian-equivalence-cannot-simply-be-derived">4. Why the abelian equivalence cannot simply be derived</h2>
+<p>For a split torus, <a href="GL-SAT-06.html">The Satake category</a> and <a href="GL-SAT-12.html">Consequences and examples, §7</a> prove that the heart is the category of finite supported graded vector spaces. Every short exact sequence splits weight by weight, by choosing a complement in each vector space. A bounded complex in this heart splits into its cohomology and contractible two-term complexes: choose complements to boundaries inside cycles and to cycles inside each term. Therefore</p>
+<p><span class="math math-display">\[
+\operatorname{Hom}_{D^b(\mathrm{Sat}_T)}
+ (\mathbf1,\mathbf1[j])=0\quad(j\ne0).
+\tag{4.1}
+\]</span></p>
+<p>For <span class="math">\(T=\mathbf G_m\)</span>, equation (2.3) instead gives a nonzero degree-two morphism in the Borel equivariant category. The two categories cannot be equivalent through a functor sending their units to one another. In degree one, both calculations give zero, so the difference is already compatible with a semisimple heart.</p>
+<p>For <span class="math">\(SL_2\)</span>, the unconditional rank-one semisimplicity proof of <a href="GL-SAT-11.html">Identifying the dual group, §3.3</a> gives the analogous vanishing in the derived heart, while (3.8) gives the extra degree-four Borel class. One must specify the group when asserting a nonzero higher self-Ext: its degree is two for a circle and four for <span class="math">\(SL_2\)</span>.</p>
+<h2 id="5-the-torus-category-as-perfect-differential-graded-modules">5. The torus category as perfect differential graded modules</h2>
+<p>Let <span class="math">\(\mathcal C_T\)</span> be the bounded Borel equivariant category supported on one reduced point of <span class="math">\(\mathrm{Gr}_T\)</span>. In the classical coefficient models, it is generated by its constant object <span class="math">\(\Lambda\)</span>. To see this, <span class="math">\(BT\)</span> is simply connected: the local trivial bundle with contractible total space has <span class="math">\(\pi_1(BT)=\pi_0(T)=0\)</span>. Thus each finite-dimensional local system is constant. This also follows in every sufficiently acyclic finite projective model, whose fundamental group is zero. The cohomology sheaves of an equivariant object on the point are such local systems on the model; its underlying bounded finite-dimensional complex gives only finitely many of them. Ordinary truncation triangles express it as finitely many extensions of shifts of finite sums of <span class="math">\(\Lambda\)</span>. Direct summands are retained. Consequently <span class="math">\(\mathcal C_T=\operatorname{thick}(\Lambda)\)</span>.</p>
+<p>Put <span class="math">\(A_T=R\operatorname{Hom}(\Lambda,\Lambda)=R\Gamma(BT,\Lambda)\)</span>, retaining its differential graded algebra. The functor</p>
+<p><span class="math math-display">\[
+F=R\operatorname{Hom}(\Lambda,-):
+\mathcal C_T\longrightarrow\operatorname{Perf}(A_T)
+\tag{5.1}
+\]</span></p>
+<p>is an equivalence. Here is the generator proof. It sends <span class="math">\(\Lambda\)</span> to the free module <span class="math">\(A_T\)</span>, and the comparison of mapping complexes is an isomorphism on that generator by the definition of <span class="math">\(A_T\)</span>. Fixing one argument, the objects for which the comparison is an isomorphism form a stable subcategory closed under direct summands, because both mapping functors turn triangles into triangles. First extend in the second argument, then in the first. This proves full faithfulness on the thick subcategory. Its image contains the free module and is closed under shifts, cones and summands; full faithfulness lifts an idempotent and its splitting. It is therefore all of <span class="math">\(\operatorname{Perf}(A_T)\)</span>. This is differential graded Morita equivalence on the generated category, proved here.</p>
+<p>For <span class="math">\(\Lambda=\mathbf R\)</span> or <span class="math">\(\mathbf C\)</span>, its algebra has the explicit commutative model</p>
+<p><span class="math math-display">\[
+A_T\simeq\Lambda[c_1,\ldots,c_r],\qquad |c_i|=2,
+\quad d=0.
+\tag{5.2}
+\]</span></p>
+<p>To justify the algebra assertion, use the finite models <span class="math">\(X_n=(\mathbf {CP}^n)^r\)</span>. On each factor choose the negative of the first Chern form of the tautological line, so that it represents <span class="math">\(c_i\)</span>. Orthogonal projection of the ordinary derivative in the trivial bundle defines its connection; projection commutes with the linear projective inclusions. Its forms are therefore compatible. The closedness, class identification and projective-line integral <span class="math">\(-1\)</span> are proved in <a href="../DG-CHAR/connections-curvature-and-characteristic-forms.md">Connections, curvature and characteristic forms, Theorem D.1 and §D.3</a>. Put <span class="math">\(D_n=\Omega^*(X_n;\Lambda)\)</span>, with wedge product, and <span class="math">\(D=\varprojlim D_n\)</span>. Sending <span class="math">\(c_i\)</span> to those compatible closed forms defines a commutative differential graded algebra map <span class="math">\(\Lambda[c_1,\ldots,c_r]\to D\)</span>.</p>
+<p>Here are the comparisons behind that assertion. On a coordinate ball, integration along the radial homotopy gives <span class="math">\(dh+hd=1-\mathrm{ev}_0\)</span>. Thus the augmented form sheaves resolve the constant real or complex sheaf. A subordinate partition of unity contracts their augmented Čech rows by insertion of its functions and summation. <a href="../DG-CHAR/connections-curvature-and-characteristic-forms.md">Connections, curvature and characteristic forms, §A.3, equations (A.7)–(A.12)</a> proves this comparison and its multiplicative Čech complexes: the product of bidegrees <span class="math">\((p,q)\)</span> and <span class="math">\((p',q')\)</span> has sign <span class="math">\((-1)^{qp'}\)</span>. Through their common constants complex these are multiplicative quasi-isomorphisms, rather than a claim that simplex integration itself preserves products.</p>
+<p>Restriction of forms from <span class="math">\(X_{n+1}\)</span> to <span class="math">\(X_n\)</span> is surjective. In charts adapted to the closed projective submanifold, extend coefficients in the normal coordinates; a partition and cutoff patch these local extensions. Consequently the map <span class="math">\(1-\mathrm{shift}\)</span> on <span class="math">\(\prod_nD_n\)</span> is degreewise surjective: choose its coordinates successively by lifting along the surjective restrictions. This gives the short exact sequence of complexes</p>
+<p><span class="math math-display">\[
+0\longrightarrow D\longrightarrow\prod_nD_n
+ \xrightarrow{1-\mathrm{shift}}\prod_nD_n\longrightarrow0.
+\]</span></p>
+<p>Products of vector-space complexes commute with cohomology, since primitives can be chosen in every coordinate. The cohomology exact sequence therefore identifies <span class="math">\(H^j(D)\)</span> with <span class="math">\(\varprojlim H^j(D_n)\)</span> once <span class="math">\(1-\mathrm{shift}\)</span> on the preceding cohomology products is surjective. The groups in every fixed degree eventually stabilize by (3.2)–(3.4); a stable tail has that surjectivity by recursive lifting, and the finitely many initial coordinates can be solved backwards. Thus the possible <span class="math">\(\varprojlim^1\)</span> correction is zero. The polynomial-to-forms map is an isomorphism on every cohomology group, proving (5.2).</p>
+<p>For completeness this also supplies compatible enhanced objects, not just a graded endomorphism calculation. A finite semifree <span class="math">\(D\)</span>-module <span class="math">\(M\)</span> gives on <span class="math">\(X_n\)</span> the sheaf complex <span class="math">\(\Omega^\bullet_{X_n}\otimes_D M\)</span>. Its free generator is the de Rham resolution of the constant sheaf. For any finite construction and fixed morphism-degree range, take <span class="math">\(n\)</span> beyond that range. The point-resolution triples and comparisons of Theorems B.7–B.9 in the equivariant lesson apply. Maps on the free generators are the just-computed stable form complexes; extending the comparison in both arguments through their finite cones proves full faithfulness. Truncation generation proves essential surjectivity. Retracts have cohomology sheaves equal to images of idempotents on finite constant local systems, and hence remain bounded and finite. This directly realizes the torus enhancement used in (5.1).</p>
+<p>For the remaining tensor assertions of this section take <span class="math">\(\Lambda=\mathbf R\)</span> or <span class="math">\(\mathbf C\)</span>; the preceding associative generator Morita assertion retains its stated characteristic-zero coefficients. The monoidal comparison is derived tensor over the commutative form algebra. For objects generated by the constant unit there is a natural map</p>
+<p><span class="math math-display">\[
+F(K)\otimes_{A_T}^{\mathbf L}F(L)
+ \longrightarrow F(K\otimes L),
+\tag{5.3}
+\]</span></p>
+<p>formed by multiplication and evaluation in the constant-sheaf endomorphism algebra. In the real or complex form model it is the inverse of the wedge-product comparison</p>
+<p><span class="math math-display">\[
+(\Omega^\bullet_{X_n}\otimes_D M)\otimes_\Lambda
+(\Omega^\bullet_{X_n}\otimes_D N)
+ \longrightarrow\Omega^\bullet_{X_n}\otimes_D(M\otimes_D N).
+\]</span></p>
+<p>That comparison is a quasi-isomorphism on the free generators, since the constant-to-forms augmentation is a stalkwise quasi-isomorphism. Exactness extends it through finite cones and summands in each argument. Wedge multiplication supplies its associativity, unit and graded symmetry directly. Equivalently (5.3) is an isomorphism first on the unit and then on its whole thick category. Thus (5.1) is a tensor equivalence with the derived tensor product; the commutative polynomial presentation uses the stated real or complex coefficients.</p>
+<p>The reduced support of <span class="math">\(\mathrm{Gr}_T\)</span> is indexed by <span class="math">\(L=X_*(T)\)</span>. Different supported points have no morphisms between them, as closed restriction detects; point convolution adds the labels. The full bounded finite-support torus statement is therefore</p>
+<p><span class="math math-display">\[
+D^b_{L^+T,c}(\mathrm{Gr}_T)
+ \simeq\bigoplus_{\lambda\in L}^{\mathrm{finite}}
+ \operatorname{Perf}(A_T),
+\qquad
+(M*N)_\gamma=\bigoplus_{\lambda+\mu=\gamma}
+ M_\lambda\otimes_{A_T}^{\mathbf L}N_\mu.
+\tag{5.4}
+\]</span></p>
+<p>The dual torus has character lattice <span class="math">\(L\)</span>. Its adjoint action on its Lie algebra is trivial, and its representation coactions split modules into weights, by the coefficient-projector proof in Lesson 12, equation (7.6), degree by degree. Finite cell modules and their summands have finitely many weights. For real or complex coefficients, (5.2) therefore makes (5.4) the torus instance of perfect dual-torus-equivariant modules over the symmetric algebra with its degree-two generators. The unit at label zero corresponds to the <strong>free module</strong>, whose endomorphism algebra is <span class="math">\(A_T\)</span>.</p>
+<p>This is not a category of ordinary graded modules with all differentials discarded. Cones, derived tensor products and mapping complexes are essential. For example the cone of multiplication by <span class="math">\(c\)</span>, with the suitable shift, gives the perfect module <span class="math">\(\Lambda=A_{\mathbf G_m}/(c)\)</span>, while the unit remains <span class="math">\(A_{\mathbf G_m}\)</span>. The two objects have different endomorphism algebras.</p>
+<h2 id="6-the-elementary-koszul-dual-pair">6. The elementary Koszul dual pair</h2>
+<p>Let <span class="math">\(V\)</span> be finite-dimensional, and put</p>
+<p><span class="math math-display">\[
+A=\operatorname{Sym}(V[-2]),\qquad d=0,
+\qquad k=\Lambda=A/(V).
+\tag{6.1}
+\]</span></p>
+<p>Choose a basis <span class="math">\(v_1,\ldots,v_r\)</span>, all in degree two. The differential graded module</p>
+<p><span class="math math-display">\[
+P=A\otimes\bigwedge(e_1,\ldots,e_r),
+\qquad |e_i|=1,
+\qquad d(e_i)=v_i
+\tag{6.2}
+\]</span></p>
+<p>has the augmentation <span class="math">\(P\to k\)</span>. It is a finite semifree resolution. In one variable its differential maps <span class="math">\(a e\)</span> to <span class="math">\(a v\)</span>. Multiplication by <span class="math">\(v\)</span> in <span class="math">\(\Lambda[v]\)</span> is injective, and its cokernel is <span class="math">\(\Lambda\)</span>; hence its cohomology is exactly the augmentation line. Tensor the one-variable resolutions over the field. Splitting complexes into cohomology and contractible summands, as in Lesson 12, Lemma 1.1, shows that their tensor has the same augmentation cohomology. Filtering by the number of exterior factors makes (6.2) semifree, because its differential lowers that number. Thus it computes derived Hom.</p>
+<p><strong>Proposition 6.1.</strong> As a differential graded algebra,</p>
+<p><span class="math math-display">\[
+R\operatorname{Hom}_A(k,k)
+ \simeq B=\bigwedge(V^*[1]),
+\qquad |\epsilon_i|=-1,
+\qquad d=0.
+\tag{6.3}
+\]</span></p>
+<p><strong>Proof.</strong> The complex <span class="math">\(\operatorname{Hom}_A(P,k)\)</span> has zero differential, since every <span class="math">\(v_i\)</span> acts by zero on <span class="math">\(k\)</span>. Its basis is dual to the exterior basis of the <span class="math">\(e_i\)</span>; dualizing a degree-one generator gives degree <span class="math">\(-1\)</span>. To verify multiplication, let <span class="math">\(\iota_i\)</span> be contraction with <span class="math">\(e_i\)</span> on <span class="math">\(P\)</span>. It has degree <span class="math">\(-1\)</span>; <span class="math">\(\iota_i^2=0\)</span>, and <span class="math">\(\iota_i\iota_j=-\iota_j\iota_i\)</span>. Since <span class="math">\(d=\sum_i v_i\iota_i\)</span>, the graded commutator of <span class="math">\(d\)</span> with each <span class="math">\(\iota_j\)</span> is zero. These operators give a differential graded algebra map</p>
+<p><span class="math math-display">\[
+B\longrightarrow\operatorname{End}_A(P).
+\]</span></p>
+<p>Postcomposition with the augmentation is a quasi-isomorphism from <span class="math">\(\operatorname{End}_A(P)\)</span> to <span class="math">\(\operatorname{Hom}_A(P,k)\)</span>: the finite semifree filtration makes <span class="math">\(\operatorname{Hom}_A(P,-)\)</span> preserve quasi-isomorphisms. The images of the products of contractions are the dual exterior basis, with their exterior signs. Thus the algebra map induces an isomorphism in cohomology and proves (6.3). Changes of basis identify contractions with <span class="math">\(V^*\)</span>, so the result is independent of the chosen basis. <span class="math">\(\square\)</span></p>
+<p>The negative degree in (6.3) is essential. For one variable the resolution has free generators in degrees zero and one. An <span class="math">\(A\)</span>-linear map from its degree-one generator to the augmentation line has degree <span class="math">\(-1\)</span>, not degree <span class="math">\(+1\)</span>.</p>
+<p>The reverse computation is equally explicit in characteristic zero. Resolve the augmentation line as a <span class="math">\(B\)</span>-module by</p>
+<p><span class="math math-display">\[
+Q=B\otimes\Lambda[f_1,\ldots,f_r],
+\qquad |f_i|=-2,
+\qquad d(f_i)=\epsilon_i.
+\tag{6.4}
+\]</span></p>
+<p>In one variable <span class="math">\(d(f^n)=n\epsilon f^{n-1}\)</span>. For <span class="math">\(n&gt;0\)</span> its coefficient is invertible, so all the negative-degree pairs contract and only the constant augmentation remains. Tensoring proves the assertion for every <span class="math">\(r\)</span>. Polynomial-degree filtration makes <span class="math">\(Q\)</span> semifree. It is infinite, but still computes derived Hom: a nullhomotopy against an acyclic target is constructed successively on that filtration. On each new free generator, the already prescribed differential makes the obstruction a cycle; acyclicity supplies a primitive. The successive choices define a homotopy on the union. This proves that <span class="math">\(\operatorname{Hom}_B(Q,-)\)</span> preserves quasi-isomorphisms.</p>
+<p>The commuting operators <span class="math">\(\partial/\partial f_i\)</span> are closed endomorphisms of degree two. Their products, followed by augmentation, evaluate on the polynomial monomials by the nonzero factorial coefficients. They therefore identify the polynomial algebra on these operators with the cohomology of <span class="math">\(\operatorname{Hom}_B(Q,k)\)</span>. As in the preceding proof, postcomposition with augmentation compares it with <span class="math">\(\operatorname{End}_B(Q)\)</span>. Consequently</p>
+<p><span class="math math-display">\[
+R\operatorname{Hom}_B(k,k)\simeq A.
+\tag{6.5}
+\]</span></p>
+<p>There is no completed power series algebra in this calculation: in each fixed cohomological degree only finitely many monomials of the <span class="math">\(f_i\)</span> occur, and their duals have that same finite degree. Characteristic zero was used in the factorial coefficients; this proof does not assert an identical divided-power statement in positive characteristic.</p>
+<p>Applying the generator proof of §5 to these two augmentation objects gives the precise category statements</p>
+<p><span class="math math-display">\[
+\operatorname{thick}_A(k)\simeq\operatorname{Perf}(B),
+\qquad
+\operatorname{thick}_B(k)\simeq\operatorname{Perf}(A).
+\tag{6.6}
+\]</span></p>
+<p>The second equivalence is <span class="math">\(R\operatorname{Hom}_B(k,-)\)</span>; the first is its corresponding <span class="math">\(A\)</span>-module construction. These are statements about the specified generated subcategories. They do not identify all differential graded modules over <span class="math">\(A\)</span> with all modules over <span class="math">\(B\)</span>.</p>
+<p>Since <span class="math">\(B\)</span> is nonpositive with <span class="math">\(H^0(B)=k\)</span>, a <span class="math">\(B\)</span>-module with bounded finite-dimensional cohomology belongs to <span class="math">\(\operatorname{thick}_B(k)\)</span>. Its ordinary truncation triangles have cohomology objects that are finite sums of shifts of the augmentation module; the negative-degree elements act trivially on a single cohomology object. There are finitely many such triangles. Conversely a finite construction from <span class="math">\(k\)</span> has bounded finite-dimensional cohomology. Thus the second category on the left of (6.6) is exactly the bounded coherent module category of this exterior algebra.</p>
+<p>If <span class="math">\(\mathfrak h\)</span> is a vector space placed in degree zero, the coordinate algebra of the derived self-intersection of the origin in <span class="math">\(\mathfrak h\)</span> is</p>
+<p><span class="math math-display">\[
+\mathcal O(\operatorname{pt}\times_{\mathfrak h}^{\mathbf R}
+ \operatorname{pt})
+ =\Lambda\otimes^{\mathbf L}_{\operatorname{Sym}(\mathfrak h^*)}\Lambda
+ \simeq\bigwedge(\mathfrak h^*[1]).
+\tag{6.7}
+\]</span></p>
+<p>To prove it, resolve the origin over the degree-zero polynomial algebra by its ordinary Koszul complex, with free exterior generators in degree <span class="math">\(-1\)</span> and differential equal to the coordinate functions. Tensoring with the origin kills that differential. Taking <span class="math">\(\mathfrak h=V\)</span>, (6.7) is precisely <span class="math">\(B\)</span>. Equations (6.5)–(6.6) explain why perfect modules with degree-two polynomial generators can also be expressed by coherent modules on this derived self-intersection.</p>
+<p>For a torus, apply this independently at each weight label in (5.4), using the coefficient hypothesis of (5.2) for the polynomial presentation. Its spectral description can therefore use either perfect modules over <span class="math">\(\operatorname{Sym}(\widehat{\mathfrak t}[-2])\)</span> or bounded coherent modules over <span class="math">\(\bigwedge(\widehat{\mathfrak t}^*[1])\)</span>, with the dual torus's weight decomposition. The latter algebra is the coordinate algebra of <span class="math">\(\operatorname{pt}\times^{\mathbf R}_{\widehat{\mathfrak t}}\operatorname{pt}\)</span>. Under the second equivalence in (6.6), its augmentation module corresponds to the free polynomial module, the Satake unit. Its product is the product transported from (5.4); this assertion does not replace that product by ordinary tensor over the exterior algebra.</p>
+<h2 id="7-what-renormalization-changes">7. What renormalization changes</h2>
+<p>For the exterior algebra <span class="math">\(B=\Lambda[\epsilon]\)</span>, <span class="math">\(|\epsilon|=-1\)</span>, the augmentation module <span class="math">\(k\)</span> is not compact in the category of all differential graded <span class="math">\(B\)</span>-modules. This can be checked from (6.4), rather than from terminology. Take the direct sum <span class="math">\(M=\bigoplus_{n\geq0}k[2n]\)</span>, all with trivial <span class="math">\(\epsilon\)</span>-action. In degree zero a map from its resolution to <span class="math">\(M\)</span> may assign the generator <span class="math">\(f^n\)</span> any scalar in the <span class="math">\(n\)</span>-th summand. Those choices are independent; the Hom differential is zero because <span class="math">\(\epsilon\)</span> acts by zero. Thus</p>
+<p><span class="math math-display">\[
+\operatorname{Hom}_{D(B)}(k,M)=\prod_{n\geq0}\Lambda,
+\qquad
+\bigoplus_{n\geq0}\operatorname{Hom}_{D(B)}(k,k[2n])
+ =\bigoplus_{n\geq0}\Lambda.
+\tag{7.1}
+\]</span></p>
+<p>The natural direct-sum comparison is not surjective. This is exactly failure of compactness.</p>
+<p>On the other hand <span class="math">\(k\)</span> is a generator of the bounded coherent category <span class="math">\(\operatorname{thick}_B(k)\)</span>. If one <strong>defines</strong> its renormalized presentable category by</p>
+<p><span class="math math-display">\[
+\operatorname{Ind}(\operatorname{thick}_B(k)),
+\tag{7.2}
+\]</span></p>
+<p>then that object is compact there: by the construction of Ind-completion, maps from an original object commute with filtered colimits. The equivalence (6.6) extends to</p>
+<p><span class="math math-display">\[
+\operatorname{Ind}(\operatorname{thick}_B(k))
+ \simeq\operatorname{Ind}(\operatorname{Perf}(A)).
+\tag{7.3}
+\]</span></p>
+<p>Its compact objects are exactly the original idempotent-complete perfect category. To see the last assertion, write an object as a filtered colimit of finite constructions; if the object is compact, its identity factors through one stage, making it a retract of that stage. These formulas give a concrete reason for specifying the completion in a derived Satake theorem. The full module category over the exterior algebra and (7.2) have different compactness behavior despite containing the same bounded coherent subcategory.</p>
+<h2 id="8-the-general-theorems-and-their-categories">8. The general theorems and their categories</h2>
+<p>The following are external theorem statements. The proofs above establish their torus algebraic model and the unit calculations; they do not prove the general equivalences in this section. None of these statements is used to justify an earlier result or an exercise below.</p>
+<h3 id="81-the-bounded-equivariant-theorem">8.1. The bounded equivariant theorem</h3>
+<p>Let <span class="math">\(G\)</span> be a complex simply connected semisimple group and <span class="math">\(\widehat G\)</span> its dual over an algebraically closed characteristic-zero coefficient field. <a href="https://arxiv.org/pdf/0707.3799v4#page=7">Bezrukavnikov–Finkelberg, Theorem 5, §2.7</a> gives monoidal triangulated equivalences</p>
+<p><span class="math math-display">\[
+D^b_{G(O),c}(\mathrm{Gr}_G)
+ \simeq\operatorname{Perf}^{\widehat G}
+       (\operatorname{Sym}(\widehat{\mathfrak g}[-2])),
+\qquad
+D^b_{G(O)\rtimes\mathbf G_m,c}(\mathrm{Gr}_G)
+ \simeq\operatorname{Perf}^{\widehat G}(U_\hbar^{[\ ]}).
+\tag{8.1}
+\]</span></p>
+<p>On the right, equivariant perfect modules are generated by <span class="math">\(A\otimes V\)</span>, for finite-dimensional representations <span class="math">\(V\)</span>, under finite cones and summands. Both displayed algebras have differential zero. In the second, Lie generators and <span class="math">\(\hbar\)</span> have degree two, and the relation is <span class="math">\(xy-yx=\hbar[x,y]\)</span>. The paper simplifies to simply connected <span class="math">\(G\)</span> after §2.4; the reductive categorical formulation is given next. Equation (8.1) is a monoidal theorem, without an asserted factorization upgrade.</p>
+<h3 id="82-ordinary-and-renormalized-spherical-categories">8.2. Ordinary and renormalized spherical categories</h3>
+<p>For a reductive group in characteristic zero, put</p>
+<p><span class="math math-display">\[
+\mathcal H_{\widehat G}
+ =B\widehat G\times^{\mathbf R}_{\widehat{\mathfrak g}/\widehat G}
+ B\widehat G
+ =(\operatorname{pt}\times^{\mathbf R}_{\widehat{\mathfrak g}}
+   \operatorname{pt})/\widehat G.
+\tag{8.2}
+\]</span></p>
+<p>Write <span class="math">\(\mathrm{Sph}=D\text{-mod}(\mathrm{Gr}_G)^{G(O)}\)</span>, with its ordinary cocompletion. Let <span class="math">\(\mathrm{Sph}^{loc.c}\)</span> consist of objects compact after forgetting equivariance, and define <span class="math">\(\mathrm{Sph}^{ren}=\operatorname{Ind}(\mathrm{Sph}^{loc.c})\)</span>. <a href="https://arxiv.org/pdf/1201.6343v4#page=109">Arinkin–Gaitsgory, §§12.3–12.5</a> distinguish the following monoidal equivalences:</p>
+<table>
+<thead>
+<tr>
+<th>Geometric category</th>
+<th>Spectral category</th>
+<th>Exact theorem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math">\(\mathrm{Sph}^{loc.c}\)</span></td>
+<td><span class="math">\(\operatorname{Coh}(\mathcal H_{\widehat G})\)</span></td>
+<td>Theorem 12.3.3</td>
+</tr>
+<tr>
+<td><span class="math">\(\mathrm{Sph}^{ren}\)</span></td>
+<td><span class="math">\(\operatorname{IndCoh}(\mathcal H_{\widehat G})\)</span></td>
+<td>Corollary 12.3.4</td>
+</tr>
+<tr>
+<td><span class="math">\(\mathrm{Sph}\)</span></td>
+<td><span class="math">\(\operatorname{IndCoh}_{\mathrm{Nilp}}(\mathcal H_{\widehat G})\)</span></td>
+<td>Theorem 12.5.3, Corollary 12.5.5</td>
+</tr>
+<tr>
+<td><span class="math">\(\mathrm{Sph}^{c}\)</span></td>
+<td><span class="math">\(\operatorname{Coh}_{\mathrm{Nilp}}(\mathcal H_{\widehat G})\)</span></td>
+<td>Corollary 12.5.5</td>
+</tr>
+</tbody>
+</table>
+<p>Here Nilp constrains singular support in <span class="math">\(\widehat{\mathfrak g}^*/\widehat G\)</span>, rather than ordinary support in the underlying point quotient. Proposition 12.4.2 and Corollary 12.4.5 give the polynomial Koszul-dual presentation of all IndCoh. Remark 12.4.3 excludes compatibility of that presentation with factorization. The functors of §12.2.4 are <span class="math">\(\Xi:\mathrm{Sph}\to\mathrm{Sph}^{ren}\)</span> and <span class="math">\(\Psi:\mathrm{Sph}^{ren}\to\mathrm{Sph}\)</span>, with <span class="math">\(\Xi\dashv\Psi\)</span> and <span class="math">\(\Xi\)</span> fully faithful. Renormalized compactness refers to <span class="math">\(\mathrm{Sph}^{loc.c}\)</span>.</p>
+<h3 id="83-factorization-is-additional-structure">8.3. Factorization is additional structure</h3>
+<p>For reductive <span class="math">\(G\)</span> over an algebraically closed characteristic-zero field, <a href="https://arxiv.org/pdf/2310.19734v2#page=59">Campbell–Raskin, Theorem 6.6.1</a> proves an equivalence</p>
+<p><span class="math math-display">\[
+\mathrm{Sat}_G:\mathrm{Sph}_G
+ \xrightarrow{\sim}\mathrm{Sph}^{spec}_{\widehat G}
+ \quad\text{in }\operatorname{AssocAlg}(\operatorname{FactCat}).
+\tag{8.3}
+\]</span></p>
+<p>Both categories are renormalized. Proposition 6.3.2 specifies geometric renormalization; §5.7 specifies spectral renormalization using integrable factorization modules. Theorem 8.10.1 and Corollary 8.10.1.1 identify its one-point algebraic models. The QCoh formal-completion presentation there precedes passage to integrable objects and renormalization. Proposition 10.2.1 identifies QCoh with the tempered subcategory, rather than with all ordinary spherical objects. The spherical theorem (8.3) is unconditional; its proof is not supplied here.</p>
+<p>The half-density convention is specified in <a href="https://arxiv.org/pdf/2405.03648v3#page=23">Gaitsgory–Raskin, §§1.5–1.7</a>:</p>
+<p><span class="math math-display">\[
+\mathrm{Sph}^{non\text{-}ren}_G
+ =D\text{-mod}_{1/2}(L^+G\backslash LG/L^+G).
+\tag{8.4}
+\]</span></p>
+<p>Renormalization ind-completes the objects compact after either forgetful functor to the Grassmannian. Theorem 1.7.2 gives the unique monoidal factorization equivalence with all IndCoh on the spectral Hecke category, compatible with the Casselman–Shalika action. Its one-point stack is the derived zero self-intersection over <span class="math">\(\widehat{\widehat{\mathfrak g}}_0/\widehat G\)</span>; that self-intersection agrees with (8.2). Appendix E constructs the Ran category. Example 1.7.4 sends <span class="math">\(\mathrm{IC}_\lambda\)</span> to <span class="math">\(\mathrm{nv}(V^{-w_0\lambda})\)</span>, preserving its dual-weight convention. Remark 1.7.5 makes the half-density twist essential for factorization.</p>
+<h2 id="9-reading-the-spectral-expression">9. Reading the spectral expression</h2>
+<p>The notation in (8.2) can be understood without assuming the general theorem. For a vector space <span class="math">\(\mathfrak h\)</span>, its derived zero self-intersection has exterior coordinate algebra (6.7). Its underlying ordinary point does not describe all its functions: the negative cohomological degrees record the intersection's excess tangent directions. For an acting group, equivariance additionally records compatible action data. In the torus case the action on <span class="math">\(\mathfrak h=\widehat{\mathfrak t}\)</span> is trivial, and coefficient projectors give exactly the weight labels in (5.4).</p>
+<p>In this finite exterior-algebra example, coherent means bounded finite-dimensional cohomology, as proved in §6. IndCoh is its Ind-completion as in (7.2). Equation (7.1) explains why this differs from simply taking all modules over its coordinate algebra. In the general statement, singular support requires additional operators on derived morphisms. It is part of the external theorem in §8; no assertion that ordinary support or a point's set of coordinates determines it is needed for our calculations.</p>
+<p>Likewise, factorization specifies compatible categories for moving finite collections of points, their products when the points are disjoint, and their behavior under collision. A one-point equivalence supplies only one part of that data. <a href="GL-SAT-08.html">Fusion, §6</a> proves the classical collision product of perverse sheaves. It does not construct the derived spectral category on Ran. Thus (5.4) is a proved fixed-point torus tensor equivalence; (8.3) includes the further moving-point structure by its external theorem.</p>
+<p>The relevance to geometric Langlands is a precise preview. Hecke correspondences act on sheaves on <span class="math">\(\operatorname{Bun}_G\)</span>, as described in <a href="GL-SAT-12.html">Consequences and examples, §8</a>. A general derived Satake equivalence expresses the local category of kernels for that action through <span class="math">\(\widehat G\)</span>. Constructing the global spectral action also requires those global correspondences and their derived descent. This lesson's torus calculation neither assumes nor proves that further action.</p>
+<h2 id="10-exercises-with-complete-solutions">10. Exercises with complete solutions</h2>
+<p><strong>Exercise 13.1 (easy).</strong> Compute <span class="math">\(H^*_{\mathbf G_m}(\operatorname{pt},\Lambda)\)</span>, including its product and odd degrees.</p>
+<p><strong>Solution.</strong> By definition this is <span class="math">\(H^*(B\mathbf G_m,\Lambda)\)</span>. The contraction and projective bundle model in §3.1 give <span class="math">\(B\mathbf G_m\simeq\mathbf {CP}^{\infty}\)</span>. There is one even cell in each nonnegative even degree. The finite Gysin calculation (3.2) proves that the positive generator <span class="math">\(c\)</span> in degree two has powers generating all those groups. Their restrictions stabilize, and all odd groups are zero. Hence the answer is the polynomial algebra <span class="math">\(\Lambda[c]\)</span>, with <span class="math">\(|c|=2\)</span>, including its multiplication.</p>
+<p><strong>Exercise 13.2 (easy).</strong> State and verify derived Satake for a rank-<span class="math">\(r\)</span> torus with real or complex coefficients. Identify the unit and convolution.</p>
+<p><strong>Solution.</strong> Put <span class="math">\(L=X_*(T)\)</span> and <span class="math">\(A=\Lambda[c_1,\ldots,c_r]\)</span>, with zero differential and each generator of degree two. At one support point, truncation triangles and constant local systems give <span class="math">\(\operatorname{thick}(\Lambda)\)</span>. The mapping-complex generator argument of (5.1), together with the multiplicative form model (5.2), identifies it with <span class="math">\(\operatorname{Perf}(A)\)</span>. Distinct support points have no morphisms; finite support therefore gives the finite sum over <span class="math">\(L\)</span>. The tensor comparison (5.3) proves that convolution adds labels and tensors over <span class="math">\(A\)</span>, exactly (5.4). Coefficient projectors identify labels with characters of <span class="math">\(\widehat T\)</span>. The object at label zero is the free module <span class="math">\(A\)</span>. Every ingredient is proved in §5, so this is the fixed-point differential graded tensor equivalence, with no claim about Ran factorization.</p>
+<p><strong>Exercise 13.3 (medium).</strong> For <span class="math">\(G=\mathbf G_m\)</span>, show that <span class="math">\(\operatorname{Ext}^1\)</span> between simple objects in the Satake heart vanishes, while the unit has nonzero <span class="math">\(\operatorname{Ext}^2\)</span> in the Borel equivariant derived category. Explain the corresponding degree for <span class="math">\(SL_2\)</span>.</p>
+<p><strong>Solution.</strong> Simple torus objects are one-dimensional vector spaces at single labels. A short exact sequence splits by the weight projectors and an ordinary vector-space complement. This proves vanishing of every heart <span class="math">\(\operatorname{Ext}^1\)</span>, including self-extensions. In the Borel category, closed extension at the base point and loop contraction prove (2.3); (3.3) identifies its degree-two self-Ext with <span class="math">\(\Lambda c\ne0\)</span>. The bounded derived heart has zero morphisms in that degree by the complex-splitting proof of (4.1). For <span class="math">\(SL_2\)</span>, (3.8) instead says that degree two is zero and the first positive class is <span class="math">\(c_2\)</span> in degree four. The group cannot be omitted from the assertion.</p>
+<p><strong>Exercise 13.4 (medium).</strong> For <span class="math">\(G=SL_2\)</span>, compare <span class="math">\(H^*(BG,\Lambda)\)</span> with <span class="math">\(\operatorname{Sym}(\mathfrak g^*[-2])^G\)</span>. Do not assume the general characteristic-class theorem.</p>
+<p><strong>Solution.</strong> Polar decomposition and the quaternionic universal bundle reduce the first ring to <span class="math">\(H^*(\mathbf {HP}^{\infty},\Lambda)\)</span>. Its rank-four Gysin sequence gives the polynomial ring <span class="math">\(\Lambda[c_2]\)</span> with generator of degree four, by (3.6)–(3.7). For the second ring, write <span class="math">\(p=z^2+xy\)</span>. Restriction of an invariant to diagonal trace-zero matrices is even by the Weyl interchange. Subtract its corresponding polynomial in <span class="math">\(p\)</span>; the difference vanishes on the dense distinct-eigenvalue locus and is zero. Thus (3.9) is <span class="math">\(\Lambda[p]\)</span>, with <span class="math">\(p\)</span> of degree four when the linear coordinates have degree two. Sending <span class="math">\(p\)</span> to <span class="math">\(c_2\)</span> defines the graded algebra isomorphism. This computes the rings and a chosen isomorphism; a universal normalization in arbitrary rank is not being inferred.</p>
+<p><strong>Exercise 13.5 (hard).</strong> For <span class="math">\(A=\Lambda[c]\)</span>, <span class="math">\(|c|=2\)</span>, and <span class="math">\(B=\bigwedge(\epsilon)\)</span>, <span class="math">\(|\epsilon|=-1\)</span>, prove both derived endomorphism calculations and the corresponding generated-category equivalences. Why does this not equate all <span class="math">\(A\)</span>-modules with all <span class="math">\(B\)</span>-modules?</p>
+<p><strong>Solution.</strong> Write <span class="math">\(k\)</span> for the augmentation object. Resolve <span class="math">\(k_A\)</span> by <span class="math">\(P=A\otimes\bigwedge(e)\)</span>, <span class="math">\(|e|=1\)</span>, <span class="math">\(de=c\)</span>. Multiplication by <span class="math">\(c\)</span> is injective, so the augmentation is a quasi-isomorphism. The closed contraction <span class="math">\(\iota_e\)</span> has degree <span class="math">\(-1\)</span>, square zero, and its two classes give all of <span class="math">\(\operatorname{Hom}_A(P,k)\)</span>. The finite free comparison therefore proves <span class="math">\(R\operatorname{End}_A(k)\simeq B\)</span>.</p>
+<p>Resolve <span class="math">\(k_B\)</span> by <span class="math">\(Q=B[f]\)</span>, <span class="math">\(|f|=-2\)</span>, <span class="math">\(df=\epsilon\)</span>. Its positive pairs cancel since <span class="math">\(d(f^{n+1})=(n+1)\epsilon f^n\)</span>; the augmentation is a quasi-isomorphism. The increasing polynomial-degree filtration makes it semi-free, and the homotopy-lifting argument in §6 shows it computes derived Hom. The closed operator <span class="math">\(\partial_f\)</span> has degree two. Its powers, followed by augmentation, give the dual basis to <span class="math">\(f^n\)</span>, with nonzero coefficients <span class="math">\(n!\)</span>. Thus <span class="math">\(\Lambda[c]\to\operatorname{End}_B(Q)\)</span>, <span class="math">\(c\mapsto\partial_f\)</span>, is a quasi-isomorphism. There is one basis element in each nonnegative even degree, without a completion.</p>
+<p>The two generator mapping-complex arguments give <span class="math">\(\operatorname{thick}_A(k)\simeq\operatorname{Perf}(B)\)</span> and <span class="math">\(\operatorname{thick}_B(k)\simeq\operatorname{Perf}(A)\)</span>. The second takes <span class="math">\(k_B\)</span> to <span class="math">\(A\)</span>, while the free <span class="math">\(B\)</span>-module goes to a different object. These equivalences specify their generated subcategories. In all <span class="math">\(B\)</span>-modules, the same <span class="math">\(k_B\)</span> fails compactness by the product-versus-sum calculation (7.1). It is compact in its own Ind-completion (7.2). There is also a direct failure of the first functor on all <span class="math">\(A\)</span>-modules: the nonzero module <span class="math">\(A[c^{-1}]\)</span> is sent to zero by <span class="math">\(R\operatorname{Hom}_A(k,-)\)</span>. Its Hom complex from <span class="math">\(P\)</span> has differential multiplication by <span class="math">\(c\)</span>, now an isomorphism, and is contractible. Thus that functor is not faithful on all modules. Passing to larger categories without specifying the completion would invalidate the assertion.</p>
+<h2 id="11-scope-and-free-reading">11. Scope and free reading</h2>
+<p>The proved statements are the unit self-Ext formula (2.3), both classifying-space rings in §3, the torus tensor Morita model with the stated coefficients in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. The general bounded, renormalized, singular-support and factorization theorems in §8 are precisely stated external results, whose proofs remain outside this lesson.</p>
+<p>Free further reading:</p>
+<ul>
+<li><a href="https://arxiv.org/abs/0707.3799v4">Bezrukavnikov–Finkelberg, <em>Equivariant Satake category and Kostant–Whittaker reduction</em>, arXiv:0707.3799v4</a>, Theorem 5 and §6.6.</li>
+<li><a href="https://arxiv.org/abs/1201.6343v4">Arinkin–Gaitsgory, <em>Singular support of coherent sheaves, and the geometric Langlands conjecture</em>, arXiv:1201.6343v4</a>, §§12.2–12.5.</li>
+<li><a href="https://arxiv.org/abs/2310.19734v2">Campbell–Raskin, <em>Langlands duality on the Beilinson–Drinfeld Grassmannian</em>, arXiv:2310.19734v2</a>, §§5.7, 6.3, 6.6 and 8.10.</li>
+<li><a href="https://arxiv.org/abs/2405.03648v3">Gaitsgory–Raskin, <em>Proof of the geometric Langlands conjecture II: Kac–Moody localization and the FLE</em>, arXiv:2405.03648v3</a>, §§1.5–1.8 and Appendix E.</li>
+</ul>
+<p>The proofs from earlier programme lessons are linked at the points where they are used. The reading list does not replace any of them.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/GL-SAT-13.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-SAT">Repository</a></nav>
+</footer>
+</body>
+</html>

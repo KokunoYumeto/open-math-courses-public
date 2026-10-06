@@ -75,6 +75,62 @@ is surjective: a prescribed germ is the germ of a section on $I$, which can be r
 
 Induction on $r$ now gives $u|_{L_r}=0$ and finally $u=0$. This proves both assertions. The empty interval has zero sections and cohomology and is harmless. $\square$
 
+### SH02-CA-LOCAL-SYSTEM — Locally constant coefficients and evaluation
+
+**Theorem.** Let $I$ be a nonempty interval in $\mathbb R$, with its subspace topology, and fix $x\in I$. An interval here may be open, closed, half-open, unbounded or a singleton. For any locally constant sheaf $F$ of $k$-modules, evaluation is an isomorphism
+
+\[
+\operatorname{ev}_x:\Gamma(I;F)\xrightarrow{\sim}F_x,
+\qquad H^p(I;F)=0\quad(p>0).
+\tag{LC1}
+\]
+
+The unique sections with prescribed germ at $x$ identify $F$ with the constant sheaf $(F_x)_I$. More generally, if $K\in D^+(I)$ has locally constant cohomology sheaves, the canonical evaluation morphism
+
+\[
+\operatorname{ev}_x:R\Gamma(I;K)\longrightarrow K_x
+\tag{LC2}
+\]
+
+is an isomorphism. It is natural in $K$, and restriction to a subinterval containing $x$ commutes with it. Neither finite generation of stalks nor an upper cohomological bound is required. The ring need not have finite global dimension.
+
+*Proof of constancy and sections.* First observe uniqueness. For two sections of a locally constant sheaf on a connected interval, the locus where their germs agree and its complement are open. Indeed, in a local constant-sheaf trivialization both sections are locally constant functions, and equality or inequality persists on a small connected neighbourhood. If they agree at one point, connectedness makes them agree everywhere. This applies equally to a restricted sheaf on a subinterval.
+
+On a compact interval $J=[a,b]$, a finite cover by trivializing relative-open intervals and a sufficiently fine partition give a chain of trivializing open intervals $W_1,\ldots,W_m$ covering $J$. Each $W_r$ contains the corresponding closed partition piece; consecutive overlaps contain the partition point. Such intervals are obtained by slightly enlarging those pieces inside their chosen trivializing sets. Each union $W_1\cup\cdots\cup W_r$ is an interval, and its nonempty intersection with $W_{r+1}$ is an interval. A prescribed germ at $a$ gives a constant section on $W_1$. At the next join its germ determines the unique constant section on $W_2$; these sections agree on their connected overlap by uniqueness. Continue and glue. This gives a unique section on $J$ for each germ at $a$.
+
+Within each trivialization, passage from the germ at one point to the germ at another is an isomorphism of $k$-modules. The construction is a finite composite of these isomorphisms. Hence evaluation at every $x\in J$, not only at $a$, is an isomorphism. Uniqueness shows that the resulting section is independent of the cover, partition and trivializations. For a singleton the assertion is immediate.
+
+For a nondegenerate arbitrary interval $I$, choose compact subintervals $J_n$ containing $x$ such that
+
+\[
+J_n\subset\operatorname{Int}_I(J_{n+1}),\qquad
+\bigcup_{n\geq0}J_n=I.
+\tag{LC3}
+\]
+
+To obtain them, move the two endpoints monotonically towards the endpoints of $I$, allowing them to tend to infinity. An endpoint belonging to $I$ can be included and then kept fixed; at an endpoint not belonging to $I$, keep the approximating endpoints strictly inside. Choose the initial interval so that $x$ is in its relative interior. The interiors in (LC3) are relative to $I$, so this also works when $x$ is an included endpoint of $I$.
+
+For $m\in F_x$, the compact case supplies a section on each $J_n$. Their restrictions agree by uniqueness. Their restrictions to $\operatorname{Int}_I(J_n)$ therefore glue to a section on $I$ with germ $m$. Uniqueness on $I$ proves (LC1)'s assertion about sections. The construction respects addition and scalar multiplication by uniqueness. The map from the constant sheaf $(F_x)_I$ to $F$ sends a locally constant $F_x$-valued function to these sections on the open sets on which that function is constant. At a point $y$ its stalk map is the continuation from $x$ to $y$, an isomorphism by the compact case on a subinterval containing both. Thus this is a sheaf isomorphism.
+
+*Proof of higher acyclicity.* On compact $J$, the just-proved surjectivity of every evaluation is exactly the hypothesis of [SH02-CA-INTERVAL](#SH02-CA-INTERVAL). It gives $H^p(J;F)=0$ for $p>0$. For arbitrary $I$, use (LC3) and the closed-exhaustion comparison and its Milnor sequence, with the tower and Mittag–Leffler proofs. The inverse system $H^0(J_n;F)$ is identified by evaluation at $x$ with the constant system $F_x$, with identity transitions. In every positive degree it is zero. Thus in each degree the inverse system is Mittag–Leffler and its first derived limit vanishes. The Milnor sequence gives the asserted vanishing on $I$ and identifies the degree-zero comparison with evaluation. This use of the closed-exhaustion theorem is not circular: its proof concerns general sheaves and tower resolutions and does not use interval acyclicity.
+
+*Proof for bounded-below complexes and the actual map.* Resolve $K$ by a bounded-below complex of injective sheaves $E^\bullet$. The morphism (LC2) is represented by the section-to-germ chain map $\Gamma(I;E^\bullet)\to E^\bullet_x$. Exactness of stalks ensures that the target represents $K_x$. The bounded-below hypercohomology proof, HC1a–HC2, gives
+
+\[
+E_2^{p,q}=H^p(I;H^qK)\Longrightarrow H^{p+q}R\Gamma(I;K).
+\tag{LC4}
+\]
+
+If $H^qK=0$ for $q<c$, the filtration in total degree $n$ is finite because $p\geq0$ and $q\geq c$. By the sheaf case all columns except $p=0$ vanish. Consequently the canonical truncation edge is an isomorphism, and HC2 identifies its composite with the section-to-germ map as the cohomology map of (LC2):
+
+\[
+H^nR\Gamma(I;K)\xrightarrow{\sim}\Gamma(I;H^nK)
+\xrightarrow{\sim}(H^nK)_x=H^n(K_x).
+\tag{LC5}
+\]
+
+This proves (LC2) in every degree without an upper bound. The section-to-germ maps commute with sheaf morphisms, resolution comparisons and restriction to a subinterval containing $x$. These identities descend to the derived category and prove the asserted naturality and restriction compatibility. For the empty interval sections and cohomology are zero; no point-evaluation assertion is made. $\square$
+
 ## Compact convex test sets
 
 ### SH02-OR-CONVEX-COMPACT — Compact convex criterion
@@ -230,7 +286,7 @@ for every convex open subset $U\subset X$. More generally the same conclusion ho
 
 *Proof.* Restricting a global extension on $X$ to $C$ proves (C10) for $F|_C$, so apply the locally closed criterion. A convex open $U$ is a permitted $C$. In particular, passing from $X$ to $U$ does not assume $X$ was convex and does not replace the original global extension hypothesis by an unverified local one. $\square$
 
-This last assertion contains the full open-ambient theorem used in the manifold theory. The stronger locally closed conclusion is what allows the same proof to handle $K+\gamma$ when that set is closed and unbounded in the directional-topology unit.
+This last assertion contains the full open-ambient theorem used in the manifold theory. The stronger locally closed conclusion is what allows the same proof to handle $K+\gamma$ when that set is closed and unbounded in the [directional-topology unit](cone-topology.md).
 
 ## Coefficients, a counterexample, and practice
 

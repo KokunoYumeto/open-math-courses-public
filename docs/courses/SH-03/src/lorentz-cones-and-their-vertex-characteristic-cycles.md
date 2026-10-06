@@ -6,7 +6,7 @@ Use Directional tests at a constructible boundary for the neighborhood definitio
 
 Let \(k\) be a field of characteristic zero. Set \(d=n+1\), with \(n\geq0\), and work on the real analytic manifold \(X=\mathbb R_t\times\mathbb R_x^n\), with its standard orientation. Every sheaf below is the indicated constant coefficient extended by zero; it lies in \(D^b_{\mathbb R\text{-}c}(k_X)\) with finite perfect stalks. Cycle normalizations and orientation coefficients are those of the linked lessons.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## Open pieces and closed carriers
 

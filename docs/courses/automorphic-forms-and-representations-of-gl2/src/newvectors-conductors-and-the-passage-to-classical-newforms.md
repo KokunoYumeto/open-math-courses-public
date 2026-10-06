@@ -1,6 +1,6 @@
 # Newvectors, conductors and the passage to classical newforms
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A representation can have many vectors at a given level, but its first nonzero level has exactly one line. Every higher-level fixed vector comes from translating this line. We prove this statement in the Kirillov model, compute the conductors of principal and special representations, and prove that a supercuspidal conductor is at least two. We then give the precise global argument that turns these local lines into classical newforms.
 

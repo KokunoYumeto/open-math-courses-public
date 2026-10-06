@@ -2,7 +2,7 @@
 
 An expanding space computes a local contribution by compact cohomology. A shrinking space computes it by sections with support in that space. The two complexes can have different degrees even when their traces agree. We prove the supported formula, including singular maps on the shrinking space, then use complex scalar transport to compute holomorphic fixed-point traces. Constant real coefficients recover the determinant sign.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Learn first Expanding subspaces and hyperbolic Lefschetz cutoffs, Homotopies and local cutoffs for Lefschetz contributions, Constructible costalks and Verdier duality, and Specializing Lefschetz contributions to the tangent space. The complex application also uses the written complex constructibility of specialization and complex Euler equation. The normalized support adjunctions, conic Euler and submersion descent, and complex-orbit descent are current SH-02 prerequisites. Their transitive foundations and independent review remain open.
 

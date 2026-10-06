@@ -6,7 +6,7 @@ Let \(M,N\subset\mathbb R^n\) be disjoint subanalytic smooth submanifolds of fix
 
 The subanalytic normal-cone operations and the analytic curve-selection theorem are proved in Subanalytic sets and limiting tangent directions. This lesson relates Whitney's secant condition to the microlocal stratification condition of M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §8.1. The triangulation case is proved in Constructible sheaves on a triangulation.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## Tangent planes, secant lines and the order of the pair
 

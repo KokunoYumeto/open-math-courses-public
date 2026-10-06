@@ -1,6 +1,6 @@
 # Borel group measures and isotropy topologies
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-check in progress; not independently reviewed. Original exposition is public domain (CC0), except the marked CC BY-NC 4.0 product-integration component below.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Original exposition is public domain (CC0), except the marked CC BY-NC 4.0 product-integration component below.*
 
 ## Introduction
 

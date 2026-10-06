@@ -2,7 +2,7 @@
 
 Transversality identifies the pulled-back conormal carrier with the conormal of the inverse-image submanifold. To obtain an equality of cycles, we must also identify their normalized coefficients. The graph comparison supplies a relative fibre trace; composition of its actual counits preserves the point unit that defines the tangent zero section. This proves the coefficient equality even when the tangential derivative changes rank.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Read Pulling back Lagrangian cycles through a graph for the actual coefficient adjoint, its proof and the definitions of normalized zero and conormal cycles. Lagrangian cycles and proper cotangent images supplies the closed-embedding trace defining the latter. Continuous sections and supported cycle intersections supplies the normalized point intersection number used in Exercise 2. The exact current SH-02 prerequisites are the counit-normalized relative orientation and dual-frame pairings, and the commuting direct microlocal square with its specified trace vertical.
 

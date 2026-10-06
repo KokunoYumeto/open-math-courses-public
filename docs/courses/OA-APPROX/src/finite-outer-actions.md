@@ -1,6 +1,6 @@
 # Finite outer actions and Bernoulli shifts
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 A finite group can act on the hyperfinite finite factor while every nonidentity element acts outerly. Averaging then produces a fixed algebra with finite-dimensional approximants. To see that this algebra is again a factor, we compute a relative commutant using finite Fourier coefficients.
 

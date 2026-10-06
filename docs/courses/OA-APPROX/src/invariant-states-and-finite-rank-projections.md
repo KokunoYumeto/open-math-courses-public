@@ -1,10 +1,10 @@
 # Invariant states and finite-rank projections
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 An invariant state can be singular. We replace its invariance by a norm estimate for a normal state, take the square root of its density, and select one spectral level. In the trace representation of an injective finite algebra, the selected projection has finite Hilbert-space rank. Its range can then be described by bounded operators in the algebra.
 
-The hypertrace construction is already proved. For general semifinite traces we retain the trace-density identification in [Trace densities and noncommutative integration](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-APPROX/prerequisites.html#trace-integration), TI-06, together with measurable-operator calculus, trace Hölder and cyclicity. We prove the square-root and spectral-level inequalities below for positive elements of the full semifinite \(L^2\) space. The spectral argument uses finite partitions and monotone approximation; the positive operators need not commute. General weights remain separate prerequisites.
+The [hypertrace construction](hypertraces-finite-injectivity.md#proposition-2-2) is already proved. For general semifinite traces we retain the trace-density identification in [Trace densities and noncommutative integration](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-APPROX/prerequisites.html#trace-integration), TI-06, together with measurable-operator calculus, trace Hölder and cyclicity. We prove the square-root and spectral-level inequalities below for positive elements of the full semifinite \(L^2\) space. The spectral argument uses finite partitions and monotone approximation; the positive operators need not commute. General weights remain separate prerequisites.
 
 For a finite algebra \(M\) with faithful normal tracial state \(\tau\), put \(H=L^2(M,\tau)\) and \(\|x\|_2=\tau(x^*x)^{1/2}\). Inner products are linear in the second variable. Write \(\operatorname{Tr}\) for the ordinary operator trace on \(B(H)\), and \(\|\cdot\|_{\mathrm{HS}}\) for its Hilbert–Schmidt norm. These differ from \(\tau\) and the norm on \(M\).
 

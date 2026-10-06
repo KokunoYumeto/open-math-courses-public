@@ -2,7 +2,7 @@
 
 A local Lefschetz contribution can be computed by compact cohomology on an expanding subspace. “Expanding” here is a condition on positive real eigenvalues. It does not mean that every vector in the subspace grows in a chosen Euclidean metric. The proof first separates directions by modulus, constructs a metric suited to that separation, and then removes the extra directions by their action on positive rays.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Learn first Homotopies and local cutoffs for Lefschetz contributions, Lefschetz traces of constructible correspondences, and Perfect operations and finite microlocal coefficients. We also use the written SH-02 proofs of normalized positive-scaling transport, ordinary and proper-support contraction to the zero section, and transport through sheaf operations, in Transport along a scaling action. The exact current proof scopes are recorded privately. These are programme prerequisites; their transitive foundations and independent review remain open.
 

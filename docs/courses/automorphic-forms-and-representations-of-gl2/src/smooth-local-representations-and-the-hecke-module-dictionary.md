@@ -1,6 +1,6 @@
 # Smooth local representations and the Hecke-module dictionary
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 At a finite place there are compact open subgroups arbitrarily close to the identity. Averaging over one of them is therefore an exact algebraic operation: it fixes a vector once the subgroup is small enough. This replaces the real Lie derivatives and compact-type projections used in the previous lesson. We will use these averages to reconstruct a smooth representation from its Hecke module, prove Schur's lemma without assuming admissibility, and identify the correct dual.
 

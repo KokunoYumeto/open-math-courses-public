@@ -2,7 +2,7 @@
 
 A Stein manifold has enough holomorphic functions to control its geometry at infinity and near each point. We construct a proper strictly plurisubharmonic function from those two properties, then perturb it so that its differential meets a prescribed cotangent set only at regular transverse points. At such a point, positivity of the Levi form bounds the Morse index. This gives the two local degree estimates needed for ordinary and compactly supported sheaf cohomology.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Learn first Generic squared distance and cotangent transversality for the finite-dimensional Sard and residual-set argument, Pure and simple sheaves from directional tests for the normalized coefficient complex, and Complex middle perversity and exterior products for the even-dimensional convention. We retain the exact earlier analytic regularity, dimension and Sard prerequisites. Their lower foundational proofs remain course obligations. The exhaustion, smooth perturbation and degree arguments below are supplied here.
 

@@ -4,7 +4,7 @@ The restriction maps of a constructible sheaf tell us which direction can obstru
 
 The prerequisite is Constructible gluing on an interval. We also use the definition of microsupport by local cohomology tests, taught in Detecting and removing directional obstructions. The source account below credits the classical definition and examples and explains the direct interval proof.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## Two local cohomology complexes
 

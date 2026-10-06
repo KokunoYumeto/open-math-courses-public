@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boundary conditions, incidence operators, and trace identities · Microlocal sheaves</title>
+<meta name="description" content="A lesson of the course Microlocal sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-02/conic-and-trace-applications.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Microlocal sheaves</a> <span aria-hidden="true">›</span> <span>Boundary conditions, incidence operators, and trace identities</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written by AI in Codex.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="boundary-conditions-incidence-operators-and-trace-identities">Boundary conditions, incidence operators, and trace identities</h1>
+<p>Course SH-02. Unit SH02-CTA. Proofs use the explicitly named sheaf-theoretic imports.</p>
+<p>The same boundary distinction has several consequences. It controls which sheaves descend to a directional topology, makes certain incidence operators invertible, and determines the local classes whose traces are residues. We keep the connecting morphisms in the calculations, since listing cohomology groups would lose extension and sign information.</p>
+<h2 id="sh02-cta-conventions-coefficients-and-exact-dependencies">SH02-CTA-CONVENTIONS — Coefficients and exact dependencies</h2>
+<p>Except in the explicitly field-valued failure example and differential-form calculation, <span class="math" data-tex="$k$">$k$</span> is a commutative unital ring of finite global dimension. Categories are <span class="math" data-tex="$D^+(k_X)$">$D^+(k_X)$</span> unless a bounded complex is specified. All locally compact spaces are Hausdorff. Manifolds have finite dimension, are countable at infinity, and have no boundary unless the text explicitly uses a compact manifold as a closed subset of its double. The orientation complex is <span class="math" data-tex="$\omega_X=o_X[\dim X]$">$\omega_X=o_X[\dim X]$</span>. Every tensor product and internal Hom is derived.</p>
+<p>The operations, comparisons and support conventions are those of <a href="../sheaf-proof-readings/SH02-exceptional-operations.html">exceptional operations</a>, especially SH02-EX-ADJOINT, SH02-EX-COMPOSITION, SH02-EX-BASECHANGE and SH02-EX-INTERNAL. Ordinary direct image remains <span class="math" data-tex="$Rf_*$">$Rf_*$</span>, whereas integration along a nonproper map is <span class="math" data-tex="$Rf_!$">$Rf_!$</span>. We use localization, proper-support base change, and the bounded-below projection formula at their stated finite-dimensional map bounds. The orientation and normalized trace are SH02-MD-SUBMERSION and SH02-MD-TRACE in <a href="../sheaf-proof-readings/SH02-manifold-duality.html">manifold duality</a>. The finite-dimensional kernel formalism is SH02-KER-004 through SH02-KER-008 in <a href="../sheaf-proof-readings/SH02-kernel-calculus.html">kernel calculus</a>.</p>
+<h3 id="sh02-cta-imp-triangulation-finite-compatible-triangulations">SH02-CTA-IMP-TRIANGULATION — Finite compatible triangulations</h3>
+<p>A compact real semialgebraic set, together with finitely many semialgebraic subsets, admits a finite compatible triangulation. This is a triangulation theorem, not a consequence of finite stalk dimension, and its exact external-source match remains open. The sheaf consequence needed here follows from a finite filtration by open simplices: constant extension sheaves on these simplices have the local stabilization and perfectness property of SH02-CB-SYSTEMS, by the convex calculations in SH02-CB-CONVEX; finite localization triangles preserve that property. Thus <span class="math" data-tex="$k_U$">$k_U$</span> for a semialgebraic open subset of a compact manifold is cohomologically constructible. This implication does not claim arbitrary open subsets have that property.</p>
+<h3 id="sh02-cta-imp-derham-differential-forms-and-compact-supports">SH02-CTA-IMP-DERHAM — Differential forms and compact supports</h3>
+<p>The smooth de Rham complex resolves the constant complex sheaf; its terms, also after tensoring by the orientation local system, are acyclic for compact supports; smooth partitions of unity subordinate to coordinate covers exist; integration obeys Stokes' theorem for compactly supported forms and the iterated-integral formula. These are the same SH-01 analytic prerequisites used by SH02-MD-DENSITIES.</p>
+<h3 id="sh02-cta-imp-polyhedra-a-finite-pair-with-a-local-system">SH02-CTA-IMP-POLYHEDRA — A finite pair with a local system</h3>
+<p>We use finite triangulability of a mapping torus of a piecewise-linear map, compatible Euclidean triangulation of an embedded finite polyhedron, and cellular computation of cohomology with a rank-one local system. No sheaf-theoretic conclusion is hidden in this contract. Its exact external-source match remains open; the neighborhood and orientation construction needed after those inputs is given in SH02-CTA-ORIENTATION-OBSTRUCTION.</p>
+<h2 id="sh02-cta-line-trace-fixing-an-integration-sign-on-one-line">SH02-CTA-LINE-TRACE — Fixing an integration sign on one line</h2>
+<p>The trace of an orientation complex is normalized locally. A short resolution makes its comparison with integration of differential forms explicit, including the coefficient map from integers to complex numbers.</p>
+<p>Choose real numbers <span class="math" data-tex="$a&lt;b$">$a&lt;b$</span>, and write <span class="math" data-tex="$L=(-\infty,b]$">$L=(-\infty,b]$</span>, <span class="math" data-tex="$R=[a,\infty)$">$R=[a,\infty)$</span> and <span class="math" data-tex="$J=[a,b]$">$J=[a,b]$</span>. On the increasing oriented line consider the complex</p>
+<span class="math math-display" data-tex="$$
+K^0=\mathbb Z_L\oplus\mathbb Z_R,
+\qquad K^1=\mathbb Z_J,
+\qquad d_K(s,t)=t|_J-s|_J,
+$$">$$
+K^0=\mathbb Z_L\oplus\mathbb Z_R,
+\qquad K^1=\mathbb Z_J,
+\qquad d_K(s,t)=t|_J-s|_J,
+$$</span>
+<p>with no other terms. The diagonal map <span class="math" data-tex="$\mathbb Z_{\mathbb R}\to K$">$\mathbb Z_{\mathbb R}\to K$</span> is a quasi-isomorphism. At a point of <span class="math" data-tex="$J$">$J$</span> its stalk complex is <span class="math" data-tex="$\mathbb Z^2\xrightarrow{t-s}\mathbb Z$">$\mathbb Z^2\xrightarrow{t-s}\mathbb Z$</span>, whose kernel is the diagonal and whose cokernel is zero. Outside <span class="math" data-tex="$J$">$J$</span> the sole nonzero stalk is one copy of <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> in degree zero, and the diagonal map is the identity on it. This also checks the two endpoints.</p>
+<p>Choose a smooth function <span class="math" data-tex="$\rho$">$\rho$</span> that is zero near <span class="math" data-tex="$(-\infty,a]$">$(-\infty,a]$</span> and one near <span class="math" data-tex="$[b,\infty)$">$[b,\infty)$</span>. There is a sheaf morphism from <span class="math" data-tex="$K$">$K$</span> to the complex <span class="math" data-tex="$\mathcal A^0_{\mathbb R}\xrightarrow{d}\mathcal A^1_{\mathbb R}$">$\mathcal A^0_{\mathbb R}\xrightarrow{d}\mathcal A^1_{\mathbb R}$</span> of smooth complex-valued forms:</p>
+<span class="math math-display" data-tex="$$
+\phi^0(s,t)=(1-\rho)s+\rho t,
+\qquad
+\phi^1(u)=u\rho&#x27;(x)\,dx.
+$$">$$
+\phi^0(s,t)=(1-\rho)s+\rho t,
+\qquad
+\phi^1(u)=u\rho&#x27;(x)\,dx.
+$$</span>
+<p>Each product is extended by zero where the original closed-support sheaf is absent. The factor <span class="math" data-tex="$1-\rho$">$1-\rho$</span> vanishes on a neighborhood of the right endpoint of <span class="math" data-tex="$L$">$L$</span>, the factor <span class="math" data-tex="$\rho$">$\rho$</span> vanishes near the left endpoint of <span class="math" data-tex="$R$">$R$</span>, and <span class="math" data-tex="$\rho&#x27;$">$\rho&#x27;$</span> vanishes near both endpoints of <span class="math" data-tex="$J$">$J$</span>. Thus these are smooth extensions and define sheaf morphisms on arbitrary open subsets, including those crossing endpoints. Local constancy of <span class="math" data-tex="$s,t$">$s,t$</span> gives</p>
+<span class="math math-display" data-tex="$$
+d\phi^0(s,t)=(t-s)\rho&#x27;\,dx=\phi^1d_K(s,t).
+$$">$$
+d\phi^0(s,t)=(t-s)\rho&#x27;\,dx=\phi^1d_K(s,t).
+$$</span>
+<p>The diagonal integer section <span class="math" data-tex="$m$">$m$</span> maps to the constant function <span class="math" data-tex="$m$">$m$</span>. Hence the map induced on degree-zero cohomology is precisely the specified embedding <span class="math" data-tex="$\mathbb Z\to\mathbb C$">$\mathbb Z\to\mathbb C$</span>.</p>
+<p>The two closed rays have zero compactly supported cohomology over <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>: their one-point compactifications are compact intervals, and the relative cohomology of an interval and the added endpoint is zero by the constant interval calculation. The compact interval <span class="math" data-tex="$J$">$J$</span> has compact cohomology <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> in degree zero. The terms of <span class="math" data-tex="$K$">$K$</span> are therefore acyclic for compactly supported sections, and its bounded complex of compactly supported sections computes <span class="math" data-tex="$R\Gamma_c(\mathbb R;\mathbb Z)$">$R\Gamma_c(\mathbb R;\mathbb Z)$</span> by the bounded hypercohomology argument. That complex has only one nonzero term, <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> in degree one: a nonzero constant section on either ray cannot have compact support. Its generator maps to <span class="math" data-tex="$\rho&#x27;\,dx$">$\rho&#x27;\,dx$</span>, and</p>
+<span class="math math-display" data-tex="$$
+\int_{\mathbb R}\rho&#x27;(x)\,dx=1.
+$$">$$
+\int_{\mathbb R}\rho&#x27;(x)\,dx=1.
+$$</span>
+<p>The normalization can be recorded by the commuting diagram</p>
+<span class="math math-display" data-tex="$$
+\begin{array}{ccc}
+H_c^1(\mathbb R;\mathbb Z)&amp;\xrightarrow{\sim}&amp;H^1\Gamma_c(K)\\
+\downarrow\scriptstyle{\operatorname{tr}}&amp;&amp;
+\downarrow\scriptstyle{H^1\Gamma_c(\phi)}\\
+\mathbb Z&amp;&amp;H_c^1(\mathbb R;\mathcal A^\bullet)\\
+\downarrow\scriptstyle{\mathbb Z\hookrightarrow\mathbb C}&amp;&amp;
+\downarrow\scriptstyle{\int}\\
+\mathbb C&amp;\xrightarrow{\mathrm{id}}&amp;\mathbb C.
+\end{array}
+$$">$$
+\begin{array}{ccc}
+H_c^1(\mathbb R;\mathbb Z)&amp;\xrightarrow{\sim}&amp;H^1\Gamma_c(K)\\
+\downarrow\scriptstyle{\operatorname{tr}}&amp;&amp;
+\downarrow\scriptstyle{H^1\Gamma_c(\phi)}\\
+\mathbb Z&amp;&amp;H_c^1(\mathbb R;\mathcal A^\bullet)\\
+\downarrow\scriptstyle{\mathbb Z\hookrightarrow\mathbb C}&amp;&amp;
+\downarrow\scriptstyle{\int}\\
+\mathbb C&amp;\xrightarrow{\mathrm{id}}&amp;\mathbb C.
+\end{array}
+$$</span>
+<p>The increasing-coordinate compact-support generator used in SH02-MD-EUCLIDEAN is the same endpoint-difference class. Its abstract trace is also <span class="math" data-tex="$1$">$1$</span>. This proves equality of the abstract and analytic maps after extension of scalars to <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. If the differential of <span class="math" data-tex="$K$">$K$</span> is replaced by <span class="math" data-tex="$s-t$">$s-t$</span>, the chain map uses <span class="math" data-tex="$-\rho&#x27;\,dx$">$-\rho&#x27;\,dx$</span> and the coordinate generator changes by the same sign. A convention must be changed consistently on both sides.</p>
+<h2 id="sh02-cta-form-trace-from-a-coordinate-generator-to-a-manifold">SH02-CTA-FORM-TRACE — From a coordinate generator to a manifold</h2>
+<p>Let <span class="math" data-tex="$X$">$X$</span> be a smooth <span class="math" data-tex="$n$">$n$</span>-manifold, with no orientability assumption. The de Rham resolution identifies compactly supported cohomology of <span class="math" data-tex="$o_X^{\mathbb C}$">$o_X^{\mathbb C}$</span> with cohomology of compactly supported smooth forms twisted by the complex orientation line. Under this identification the trace</p>
+<span class="math math-display" data-tex="$$
+H_c^n(X;o_X^{\mathbb C})\longrightarrow\mathbb C
+$$">$$
+H_c^n(X;o_X^{\mathbb C})\longrightarrow\mathbb C
+$$</span>
+<p>is analytic integration of an orientation-twisted top form.</p>
+<p>The exact analytic prerequisites are SH02-CTA-IMP-DERHAM; their role is isolated in the coordinate and partition-of-unity steps below.</p>
+<p>On <span class="math" data-tex="$\mathbb R^n$">$\mathbb R^n$</span> take the ordered external product of the one-dimensional generators from SH02-CTA-LINE-TRACE. Its form representative is</p>
+<span class="math math-display" data-tex="$$
+\rho_1&#x27;(x_1)\cdots\rho_n&#x27;(x_n)
+\,dx_1\wedge\cdots\wedge dx_n.
+$$">$$
+\rho_1&#x27;(x_1)\cdots\rho_n&#x27;(x_n)
+\,dx_1\wedge\cdots\wedge dx_n.
+$$</span>
+<p>Its integral is <span class="math" data-tex="$1$">$1$</span>, and ordered composition of the normalized sheaf traces also gives <span class="math" data-tex="$1$">$1$</span>. The compact-support group in top degree is a free rank-one module with this generator by SH02-MD-EUCLIDEAN; thus the two functionals agree on the whole group of a coordinate ball. The ordering of the coordinates is part of this comparison. A coordinate change of negative orientation changes the local orientation generator and the form orientation by the same sign, so the statement glues for the orientation-twisted complex.</p>
+<p>For a compactly supported top form <span class="math" data-tex="$\alpha$">$\alpha$</span> on <span class="math" data-tex="$X$">$X$</span>, choose a finite coordinate cover near its support and a subordinate smooth partition of unity there. It expresses <span class="math" data-tex="$\alpha$">$\alpha$</span> as a finite sum of top forms supported compactly inside coordinate balls. Each is closed, because it has top degree. Analytic integration and the abstract trace are additive and commute with open extension, so the local equality proves equality on the class of <span class="math" data-tex="$\alpha$">$\alpha$</span>. Stokes' theorem makes analytic integration independent of the representative. The empty manifold gives the zero map; in dimension zero the statement is the sum of the values, with the prescribed orientation generators. This proves the comparison at every allowed dimension and fixes the possible overall sign rather than leaving it implicit.</p>
+<h2 id="sh02-cta-residues-a-finite-set-of-local-trace-classes">SH02-CTA-RESIDUES — A finite set of local trace classes</h2>
+<p>Let <span class="math" data-tex="$X$">$X$</span> be a topological <span class="math" data-tex="$n$">$n$</span>-manifold, and let <span class="math" data-tex="$o_X$">$o_X$</span> be its orientation sheaf over <span class="math" data-tex="$k$">$k$</span>. For a point <span class="math" data-tex="$x$">$x$</span> and an open neighborhood <span class="math" data-tex="$U$">$U$</span>, define</p>
+<span class="math math-display" data-tex="$$
+\operatorname{res}_x:
+H^{n-1}(U\setminus\{x\};o_X)
+\longrightarrow H^n_{\{x\}}(U;o_X)
+\xrightarrow{\sim}k
+$$">$$
+\operatorname{res}_x:
+H^{n-1}(U\setminus\{x\};o_X)
+\longrightarrow H^n_{\{x\}}(U;o_X)
+\xrightarrow{\sim}k
+$$</span>
+<p>as the localization connecting map followed by the local trace identification. Excision identifies the middle group with <span class="math" data-tex="$H^n_{\{x\}}(X;o_X)$">$H^n_{\{x\}}(X;o_X)$</span>. Its normalization is that the local orientation class has trace <span class="math" data-tex="$1$">$1$</span>. Naturality of localization makes this definition commute with restriction to a smaller neighborhood; no global orientation is chosen.</p>
+<p>If <span class="math" data-tex="$X$">$X$</span> is compact and <span class="math" data-tex="$Z$">$Z$</span> is finite, every <span class="math" data-tex="$v\in H^{n-1}(X\setminus Z;o_X)$">$v\in H^{n-1}(X\setminus Z;o_X)$</span> satisfies</p>
+<span class="math math-display" data-tex="$$
+\sum_{x\in Z}\operatorname{res}_x(v)=0.
+$$">$$
+\sum_{x\in Z}\operatorname{res}_x(v)=0.
+$$</span>
+<p>Indeed, disjoint small neighborhoods of the points and excision identify</p>
+<span class="math math-display" data-tex="$$
+H_Z^n(X;o_X)=\bigoplus_{x\in Z}H^n_{\{x\}}(X;o_X)=k^Z.
+$$">$$
+H_Z^n(X;o_X)=\bigoplus_{x\in Z}H^n_{\{x\}}(X;o_X)=k^Z.
+$$</span>
+<p>The coordinates of the connecting map into this group are the residues just defined. The following map, from supported to ordinary cohomology, has zero composite with the connecting map by the localization triangle. Since <span class="math" data-tex="$X$">$X$</span> is compact, compose it with the trace on <span class="math" data-tex="$H^n(X;o_X)$">$H^n(X;o_X)$</span>. On each direct summand this composite is the local trace, by composition of trace and extension of compact supports. It therefore sends <span class="math" data-tex="$(a_x)$">$(a_x)$</span> to <span class="math" data-tex="$\sum_x a_x$">$\sum_x a_x$</span>. This proves the formula. Applying the same argument to each connected component gives vanishing of the sum on that component separately. The assertion includes disconnected or nonorientable manifolds and arbitrary coefficient modules as allowed by the chapter ring. When <span class="math" data-tex="$n=0$">$n=0$</span> the input group is zero, so the formula remains valid.</p>
+<h2 id="sh02-cta-index-residues-weighted-by-a-mapping-index">SH02-CTA-INDEX — Residues weighted by a mapping index</h2>
+<p>Now suppose</p>
+<span class="math math-display" data-tex="$$
+H^{n-1}(X;o_X)=H^n(X;o_X)=0.
+$$">$$
+H^{n-1}(X;o_X)=H^n(X;o_X)=0.
+$$</span>
+<p>For any finite <span class="math" data-tex="$Z\subset X$">$Z\subset X$</span>, localization gives an isomorphism</p>
+<span class="math math-display" data-tex="$$
+\delta_Z:H^{n-1}(X\setminus Z;o_X)\xrightarrow{\sim}k^Z.
+$$">$$
+\delta_Z:H^{n-1}(X\setminus Z;o_X)\xrightarrow{\sim}k^Z.
+$$</span>
+<p>Let <span class="math" data-tex="$e_x\in H^{n-1}(X\setminus\{x\};o_X)$">$e_x\in H^{n-1}(X\setminus\{x\};o_X)$</span> be the class with residue <span class="math" data-tex="$1$">$1$</span>. Naturality for the inclusion of one point into <span class="math" data-tex="$Z$">$Z$</span> identifies its restriction to <span class="math" data-tex="$X\setminus Z$">$X\setminus Z$</span> with the coordinate vector at <span class="math" data-tex="$x$">$x$</span> under <span class="math" data-tex="$\delta_Z$">$\delta_Z$</span>. Consequently every <span class="math" data-tex="$v$">$v$</span> has the expansion</p>
+<span class="math math-display" data-tex="$$
+v=\sum_{x\in Z}\operatorname{res}_x(v)
+\,e_x|_{X\setminus Z}.
+$$">$$
+v=\sum_{x\in Z}\operatorname{res}_x(v)
+\,e_x|_{X\setminus Z}.
+$$</span>
+<p>Let <span class="math" data-tex="$Y$">$Y$</span> be a compact topological <span class="math" data-tex="$(n-1)$">$(n-1)$</span>-manifold, and let <span class="math" data-tex="$g:Y\to X$">$g:Y\to X$</span> be continuous. Include in the data an isomorphism <span class="math" data-tex="$g^{-1}o_X\simeq o_Y$">$g^{-1}o_X\simeq o_Y$</span>.</p>
+<p>For every closed <span class="math" data-tex="$Z\subset X$">$Z\subset X$</span> disjoint from <span class="math" data-tex="$g(Y)$">$g(Y)$</span>, the map factors as <span class="math" data-tex="$g_Z:Y\to X\setminus Z$">$g_Z:Y\to X\setminus Z$</span>. The unit of inverse image and ordinary derived direct image, followed by the given coefficient isomorphism, defines</p>
+<span class="math math-display" data-tex="$$
+R\Gamma(X\setminus Z;o_X)
+\longrightarrow R\Gamma\bigl(Y;g_Z^{-1}(o_X|_{X\setminus Z})\bigr)
+\xrightarrow{\sim}R\Gamma(Y;o_Y).
+$$">$$
+R\Gamma(X\setminus Z;o_X)
+\longrightarrow R\Gamma\bigl(Y;g_Z^{-1}(o_X|_{X\setminus Z})\bigr)
+\xrightarrow{\sim}R\Gamma(Y;o_Y).
+$$</span>
+<p>Its degree-<span class="math" data-tex="$(n-1)$">$(n-1)$</span> map is the pullback used below. Exact inverse image and the derived adjunction define it for arbitrary closed <span class="math" data-tex="$Z$">$Z$</span>; no finiteness of <span class="math" data-tex="$Z$">$Z$</span> is required. If <span class="math" data-tex="$Z\subset Z&#x27;$">$Z\subset Z&#x27;$</span> and both avoid <span class="math" data-tex="$g(Y)$">$g(Y)$</span>, adjunction naturality identifies pullback after restriction with the same map to <span class="math" data-tex="$Y$">$Y$</span>. The assumptions on the two cohomology groups of <span class="math" data-tex="$X$">$X$</span> are used to obtain the singleton residue classes, not to define this pullback.</p>
+<p>For <span class="math" data-tex="$x\notin g(Y)$">$x\notin g(Y)$</span> define</p>
+<span class="math math-display" data-tex="$$
+\operatorname{ind}_x(g)=\int_Y g^{-1}e_x.
+$$">$$
+\operatorname{ind}_x(g)=\int_Y g^{-1}e_x.
+$$</span>
+<p>If <span class="math" data-tex="$Z$">$Z$</span> is finite and disjoint from <span class="math" data-tex="$g(Y)$">$g(Y)$</span>, pull the expansion of <span class="math" data-tex="$v$">$v$</span> back to <span class="math" data-tex="$Y$">$Y$</span> and integrate. The result is</p>
+<span class="math math-display" data-tex="$$
+\int_Y g^{-1}v
+=\sum_{x\in Z}\operatorname{ind}_x(g)\operatorname{res}_x(v).
+$$">$$
+\int_Y g^{-1}v
+=\sum_{x\in Z}\operatorname{ind}_x(g)\operatorname{res}_x(v).
+$$</span>
+<p>This proof uses linearity and the actual localization basis, so it works over any of the stated rings and does not use division. Over <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> the indices are integers. They depend on the specified orientation-sheaf comparison: reversing that comparison changes both the relevant pullback integral and the indices. If <span class="math" data-tex="$Y$">$Y$</span> or <span class="math" data-tex="$Z$">$Z$</span> is empty the equation is zero on both sides. For <span class="math" data-tex="$n=0$">$n=0$</span> the hypotheses force the pointwise construction to be vacuous; a nonempty index construction concerns <span class="math" data-tex="$n\ge1$">$n\ge1$</span>.</p>
+<h2 id="sh02-cta-homotopy-trace-proper-homotopies-preserve-the-adjunction-trace">SH02-CTA-HOMOTOPY-TRACE — Proper homotopies preserve the adjunction trace</h2>
+<p>Let <span class="math" data-tex="$p_X:X\to S$">$p_X:X\to S$</span> and <span class="math" data-tex="$p_Y:Y\to S$">$p_Y:Y\to S$</span> be maps of locally compact Hausdorff spaces. Put <span class="math" data-tex="$I=[0,1]$">$I=[0,1]$</span>, let <span class="math" data-tex="$p:Y\times I\to Y$">$p:Y\times I\to Y$</span> be projection, and let <span class="math" data-tex="$j_t:Y\to Y\times I$">$j_t:Y\to Y\times I$</span> be its endpoint sections. Suppose a proper map <span class="math" data-tex="$h:Y\times I\to X$">$h:Y\times I\to X$</span> satisfies <span class="math" data-tex="$p_Xh=p_Yp$">$p_Xh=p_Yp$</span>, and put <span class="math" data-tex="$f_t=hj_t$">$f_t=hj_t$</span> for <span class="math" data-tex="$t=0,1$">$t=0,1$</span>. Assume that <span class="math" data-tex="$h_!$">$h_!$</span>, <span class="math" data-tex="$p_{X!}$">$p_{X!}$</span> and <span class="math" data-tex="$p_{Y!}$">$p_{Y!}$</span> have finite cohomological dimension. The interval projection and its closed sections have finite cohomological dimension as well, so the exceptional adjunctions and their compositions are defined on <span class="math" data-tex="$D^+$">$D^+$</span>.</p>
+<p>For <span class="math" data-tex="$F\in D^+(k_S)$">$F\in D^+(k_S)$</span>, the map associated with <span class="math" data-tex="$f_t$">$f_t$</span> is</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\operatorname{tr}_{f_t}:Rp_{Y!}p_Y^!F
+&amp;\simeq Rp_{X!}Rf_{t!}f_t^!p_X^!F\\
+&amp;\xrightarrow{Rp_{X!}\epsilon_{f_t}}
+Rp_{X!}p_X^!F,
+\end{aligned}
+$$">$$
+\begin{aligned}
+\operatorname{tr}_{f_t}:Rp_{Y!}p_Y^!F
+&amp;\simeq Rp_{X!}Rf_{t!}f_t^!p_X^!F\\
+&amp;\xrightarrow{Rp_{X!}\epsilon_{f_t}}
+Rp_{X!}p_X^!F,
+\end{aligned}
+$$</span>
+<p>where <span class="math" data-tex="$\epsilon$">$\epsilon$</span> denotes the exceptional counit. Then <span class="math" data-tex="$\operatorname{tr}_{f_0}=\operatorname{tr}_{f_1}$">$\operatorname{tr}_{f_0}=\operatorname{tr}_{f_1}$</span> as natural transformations.</p>
+<p>The projection <span class="math" data-tex="$p$">$p$</span> is proper. Proper base change and the constant interval calculation show that its ordinary unit <span class="math" data-tex="$\mathrm{id}\to Rp_*p^{-1}$">$\mathrm{id}\to Rp_*p^{-1}$</span> is an isomorphism. Its right-adjoint mate is the exceptional counit</p>
+<span class="math math-display" data-tex="$$
+\epsilon_p:Rp_!p^!\xrightarrow{\sim}\mathrm{id}.
+$$">$$
+\epsilon_p:Rp_!p^!\xrightarrow{\sim}\mathrm{id}.
+$$</span>
+<p>Here is a direct way to justify the mate within the bounded-below theory. For bounded test complexes <span class="math" data-tex="$A$">$A$</span> and <span class="math" data-tex="$B\in D^+$">$B\in D^+$</span>, successive ordinary and exceptional adjunctions identify the map induced by <span class="math" data-tex="$\epsilon_p$">$\epsilon_p$</span> on <span class="math" data-tex="$R\operatorname{Hom}(A,-)$">$R\operatorname{Hom}(A,-)$</span> with precomposition by <span class="math" data-tex="$A\to Rp_*p^{-1}A$">$A\to Rp_*p^{-1}A$</span>. The latter is an isomorphism. Bounded sheaves and all their shifts detect a zero cone in <span class="math" data-tex="$D^+$">$D^+$</span>, so <span class="math" data-tex="$\epsilon_p$">$\epsilon_p$</span> is an isomorphism. This argument does not require an unbounded exceptional theory.</p>
+<p>The two endpoint traces give maps</p>
+<span class="math math-display" data-tex="$$
+c_t=Rp_!\epsilon_{j_t}:
+\mathrm{id}
+=Rp_!Rj_{t!}j_t^!p^!
+\longrightarrow Rp_!p^!.
+$$">$$
+c_t=Rp_!\epsilon_{j_t}:
+\mathrm{id}
+=Rp_!Rj_{t!}j_t^!p^!
+\longrightarrow Rp_!p^!.
+$$</span>
+<p>Trace composition for <span class="math" data-tex="$pj_t=\mathrm{id}_Y$">$pj_t=\mathrm{id}_Y$</span> says <span class="math" data-tex="$\epsilon_pc_t=\mathrm{id}$">$\epsilon_pc_t=\mathrm{id}$</span>. Therefore <span class="math" data-tex="$c_0=c_1=\epsilon_p^{-1}$">$c_0=c_1=\epsilon_p^{-1}$</span>. Apply these equal natural transformations to <span class="math" data-tex="$p_Y^!F$">$p_Y^!F$</span> and then apply <span class="math" data-tex="$Rp_{Y!}$">$Rp_{Y!}$</span>. Using <span class="math" data-tex="$p^!p_Y^!=h^!p_X^!$">$p^!p_Y^!=h^!p_X^!$</span>, follow each by <span class="math" data-tex="$Rp_{X!}\epsilon_h$">$Rp_{X!}\epsilon_h$</span>. Trace composition for <span class="math" data-tex="$hj_t=f_t$">$hj_t=f_t$</span> identifies the resulting maps with <span class="math" data-tex="$\operatorname{tr}_{f_t}$">$\operatorname{tr}_{f_t}$</span>. They are equal, with their original unit and counit normalizations preserved. In particular the statement concerns equality of maps, not only isomorphism of their source and target objects.</p>
+<h2 id="sh02-cta-support-which-coefficient-system-tests-a-support-comparison">SH02-CTA-SUPPORT — Which coefficient system tests a support comparison?</h2>
+<p>Let <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> be a topological submersion of fixed finite fiber dimension <span class="math" data-tex="$d$">$d$</span> between locally compact Hausdorff spaces. Let <span class="math" data-tex="$Z_1\subset Z_2$">$Z_1\subset Z_2$</span> be closed subsets of <span class="math" data-tex="$Y$">$Y$</span>, and write <span class="math" data-tex="$W=Z_2\setminus Z_1$">$W=Z_2\setminus Z_1$</span>. Denote the relative dualizing object by</p>
+<span class="math math-display" data-tex="$$
+\omega_f=f^!k_X=o_f[d].
+$$">$$
+\omega_f=f^!k_X=o_f[d].
+$$</span>
+<p>For <span class="math" data-tex="$F\in D^b(k_X)$">$F\in D^b(k_X)$</span> there are two useful vanishing tests.</p>
+<p>If <span class="math" data-tex="$H_c^j(W\cap Y_x;\mathbb Z)=0$">$H_c^j(W\cap Y_x;\mathbb Z)=0$</span> for every fiber <span class="math" data-tex="$Y_x=f^{-1}(x)$">$Y_x=f^{-1}(x)$</span> and every <span class="math" data-tex="$j$">$j$</span>, then the natural map</p>
+<span class="math math-display" data-tex="$$
+Rf_*R\Gamma_{Z_1}(f^!F)
+\longrightarrow Rf_*R\Gamma_{Z_2}(f^!F)
+$$">$$
+Rf_*R\Gamma_{Z_1}(f^!F)
+\longrightarrow Rf_*R\Gamma_{Z_2}(f^!F)
+$$</span>
+<p>is an isomorphism. If instead</p>
+<span class="math math-display" data-tex="$$
+H_c^j(W\cap Y_x;o_{Y_x}^{\mathbb Z})=0
+\quad\hbox{for every }x,j,
+$$">$$
+H_c^j(W\cap Y_x;o_{Y_x}^{\mathbb Z})=0
+\quad\hbox{for every }x,j,
+$$</span>
+<p>then the natural map</p>
+<span class="math math-display" data-tex="$$
+Rf_*R\Gamma_{Z_1}(f^{-1}F)
+\longrightarrow Rf_*R\Gamma_{Z_2}(f^{-1}F)
+$$">$$
+Rf_*R\Gamma_{Z_1}(f^{-1}F)
+\longrightarrow Rf_*R\Gamma_{Z_2}(f^{-1}F)
+$$</span>
+<p>is an isomorphism. Thus the constant integral test also proves the second statement whenever the relative orientation restricts trivially on each <span class="math" data-tex="$W\cap Y_x$">$W\cap Y_x$</span>, for example for a relatively orientable submersion. No coherent choice of those individual trivializations is needed to test stalkwise vanishing.</p>
+<p>To prove the first assertion, proper-support base change identifies the stalk cohomology of <span class="math" data-tex="$Rf_!\mathbb Z_W$">$Rf_!\mathbb Z_W$</span> with the assumed fiber groups, so that object is zero. It is bounded by the finite-dimensional fiber bound. The projection formula over <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> gives</p>
+<span class="math math-display" data-tex="$$
+Rf_!k_W
+\simeq (Rf_!\mathbb Z_W)\otimes^L_{\mathbb Z}k_X=0.
+$$">$$
+Rf_!k_W
+\simeq (Rf_!\mathbb Z_W)\otimes^L_{\mathbb Z}k_X=0.
+$$</span>
+<p>No flatness of <span class="math" data-tex="$k$">$k$</span> as an abelian group is needed: the derived tensor and the length-one flat-resolution bound over <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> give the stated comparison. The constant-extension triangle <span class="math" data-tex="$k_W\to k_{Z_2}\to k_{Z_1}\to$">$k_W\to k_{Z_2}\to k_{Z_1}\to$</span> yields, after applying internal Hom into <span class="math" data-tex="$f^!F$">$f^!F$</span> and <span class="math" data-tex="$Rf_*$">$Rf_*$</span>, a triangle whose third term is</p>
+<span class="math math-display" data-tex="$$
+Rf_*R\mathcal Hom(k_W,f^!F)
+\simeq R\mathcal Hom(Rf_!k_W,F)=0.
+$$">$$
+Rf_*R\mathcal Hom(k_W,f^!F)
+\simeq R\mathcal Hom(Rf_!k_W,F)=0.
+$$</span>
+<p>Its first map is exactly the support inclusion in the statement, proving the first assertion.</p>
+<p>For the second assertion the relevant comparison is</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+Rf_*R\mathcal Hom(k_W,f^{-1}F)
+&amp;\simeq Rf_*R\mathcal Hom(k_W\otimes\omega_f,f^!F)\\
+&amp;\simeq R\mathcal Hom(Rf_!(k_W\otimes\omega_f),F).
+\end{aligned}
+$$">$$
+\begin{aligned}
+Rf_*R\mathcal Hom(k_W,f^{-1}F)
+&amp;\simeq Rf_*R\mathcal Hom(k_W\otimes\omega_f,f^!F)\\
+&amp;\simeq R\mathcal Hom(Rf_!(k_W\otimes\omega_f),F).
+\end{aligned}
+$$</span>
+<p>The first isomorphism uses invertibility of the shifted orientation line, and the second is internal exceptional duality with bounded first argument. The integral orientation line restricts to <span class="math" data-tex="$o_{Y_x}^{\mathbb Z}$">$o_{Y_x}^{\mathbb Z}$</span> on a fiber. Proper-support base change, the assumed vanishing, and coefficient extension therefore make <span class="math" data-tex="$Rf_!(k_W\otimes\omega_f)$">$Rf_!(k_W\otimes\omega_f)$</span> zero. The same support triangle proves the assertion. These arguments retain an arbitrary locally compact base and the full bounded input range. They use no base change for a nonproper ordinary direct image.</p>
+<h2 id="sh02-cta-orientation-obstruction-a-finite-torsion-test-for-the-missing-twist">SH02-CTA-ORIENTATION-OBSTRUCTION — A finite torsion test for the missing twist</h2>
+<p>The constant-coefficient hypothesis in SH02-CTA-SUPPORT cannot in general be used for the ordinary-inverse-image conclusion without its orientation qualification. We give an explicit counterexample over <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>.</p>
+<p>Let <span class="math" data-tex="$B$">$B$</span> be the two-dimensional mapping-torus polyhedron of the degree-two map of a circle, and let <span class="math" data-tex="$A\subset B$">$A\subset B$</span> be the base-point trajectory, a circle. A cellular presentation has edges <span class="math" data-tex="$a,b$">$a,b$</span> and one two-cell with attaching word <span class="math" data-tex="$aba^{-1}b^{-2}$">$aba^{-1}b^{-2}$</span>; <span class="math" data-tex="$A$">$A$</span> is the <span class="math" data-tex="$a$">$a$</span>-edge and the vertex. The relative cellular chain complex with constant coefficients has one copy of <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> in degrees two and one, with boundary <span class="math" data-tex="$-1$">$-1$</span>. Its relative cochain complex is also <span class="math" data-tex="$\mathbb Z\xrightarrow{-1}\mathbb Z$">$\mathbb Z\xrightarrow{-1}\mathbb Z$</span> in degrees one and two. Hence</p>
+<span class="math math-display" data-tex="$$
+R\Gamma(B,A;\mathbb Z)=0.
+$$">$$
+R\Gamma(B,A;\mathbb Z)=0.
+$$</span>
+<p>Let <span class="math" data-tex="$\chi$">$\chi$</span> be the sign local system with <span class="math" data-tex="$\chi(a)=-1$">$\chi(a)=-1$</span> and <span class="math" data-tex="$\chi(b)=1$">$\chi(b)=1$</span>. The relation preserves the sign, so this is well defined. In the relative complex the coefficient of the <span class="math" data-tex="$b$">$b$</span>-edge in the boundary of the two-cell is <span class="math" data-tex="$-3$">$-3$</span>: the positive <span class="math" data-tex="$b$">$b$</span> is preceded by <span class="math" data-tex="$a$">$a$</span> and contributes <span class="math" data-tex="$-1$">$-1$</span>, while each inverse <span class="math" data-tex="$b$">$b$</span> contributes <span class="math" data-tex="$-1$">$-1$</span>. Explicitly the derivative of the attaching word with respect to <span class="math" data-tex="$b$">$b$</span> is</p>
+<span class="math math-display" data-tex="$$
+a-aba^{-1}b^{-1}-aba^{-1}b^{-2},
+$$">$$
+a-aba^{-1}b^{-1}-aba^{-1}b^{-2},
+$$</span>
+<p>which evaluates to <span class="math" data-tex="$-3$">$-3$</span> under <span class="math" data-tex="$\chi$">$\chi$</span>. The local system is its own dual, so the relative cochain differential is also <span class="math" data-tex="$-3$">$-3$</span>. Consequently</p>
+<span class="math math-display" data-tex="$$
+R\Gamma(B,A;\mathbb Z_\chi)\simeq(\mathbb Z/3)[-2].
+$$">$$
+R\Gamma(B,A;\mathbb Z_\chi)\simeq(\mathbb Z/3)[-2].
+$$</span>
+<p>We now realize this sign system as the restriction of a manifold orientation system. Use the elementary topology inputs SH02-CTA-IMP-POLYHEDRA. The neighborhood and orientation construction after those inputs is explicit below.</p>
+<p>Triangulate the finite two-dimensional polyhedron <span class="math" data-tex="$B$">$B$</span> and embed it in <span class="math" data-tex="$\mathbb R^5$">$\mathbb R^5$</span> by placing its finitely many vertices in general position and extending affinely over simplices. Two disjoint simplices have dimensions with sum at most four, and general position makes their affine hulls disjoint; the corresponding assertion for simplices with a common face shows they meet exactly in that face. Choose a locally finite ambient triangulation containing <span class="math" data-tex="$B$">$B$</span> as a subcomplex and subdivide barycentrically. Then <span class="math" data-tex="$B$">$B$</span> is full: any simplex all of whose vertices lie in <span class="math" data-tex="$B$">$B$</span> belongs to <span class="math" data-tex="$B$">$B$</span>.</p>
+<p>For a point <span class="math" data-tex="$z$">$z$</span> in this triangulated Euclidean space, let <span class="math" data-tex="$s(z)$">$s(z)$</span> be the sum of its barycentric coordinates at vertices belonging to <span class="math" data-tex="$B$">$B$</span>, and put <span class="math" data-tex="$N=\{s&gt;0\}$">$N=\{s&gt;0\}$</span>. This is an open neighborhood of <span class="math" data-tex="$B$">$B$</span>. On <span class="math" data-tex="$N$">$N$</span>, discard coordinates at vertices outside <span class="math" data-tex="$B$">$B$</span> and divide the remaining ones by <span class="math" data-tex="$s(z)$">$s(z)$</span>. Fullness makes the resulting point <span class="math" data-tex="$r(z)$">$r(z)$</span> belong to <span class="math" data-tex="$B$">$B$</span>. The formula agrees on simplex faces and is continuous. The straight segment from <span class="math" data-tex="$z$">$z$</span> to <span class="math" data-tex="$r(z)$">$r(z)$</span> remains in the same simplex and in <span class="math" data-tex="$N$">$N$</span>, and it fixes <span class="math" data-tex="$B$">$B$</span>. Thus <span class="math" data-tex="$r:N\to B$">$r:N\to B$</span> is a deformation retraction.</p>
+<p>Pull the real sign line associated with <span class="math" data-tex="$\chi$">$\chi$</span> back through <span class="math" data-tex="$r$">$r$</span>, and let <span class="math" data-tex="$Y$">$Y$</span> be its total space. Local trivializations identify <span class="math" data-tex="$Y$">$Y$</span> with open subsets of <span class="math" data-tex="$N\times\mathbb R$">$N\times\mathbb R$</span>, so <span class="math" data-tex="$Y$">$Y$</span> is a six-dimensional manifold without boundary. The base <span class="math" data-tex="$N\subset\mathbb R^5$">$N\subset\mathbb R^5$</span> is oriented. The sign of the transition maps in the remaining one-dimensional direction is <span class="math" data-tex="$\chi$">$\chi$</span>, and consequently <span class="math" data-tex="$o_Y^{\mathbb Z}|_B=\mathbb Z_\chi$">$o_Y^{\mathbb Z}|_B=\mathbb Z_\chi$</span> on the zero section. The compact sets <span class="math" data-tex="$A\subset B$">$A\subset B$</span> are closed in <span class="math" data-tex="$Y$">$Y$</span>.</p>
+<p>Set <span class="math" data-tex="$f:Y\to\mathrm{pt}$">$f:Y\to\mathrm{pt}$</span>, <span class="math" data-tex="$Z_1=A$">$Z_1=A$</span>, <span class="math" data-tex="$Z_2=B$">$Z_2=B$</span> and <span class="math" data-tex="$F=\mathbb Z$">$F=\mathbb Z$</span>. This is a topological submersion of fiber dimension six. Compactness of <span class="math" data-tex="$B$">$B$</span> identifies compactly supported cohomology of its complement of <span class="math" data-tex="$A$">$A$</span> with relative cohomology, giving</p>
+<span class="math math-display" data-tex="$$
+R\Gamma_c(B\setminus A;\mathbb Z)=0,
+\qquad
+R\Gamma_c(B\setminus A;o_Y^{\mathbb Z})
+\simeq(\mathbb Z/3)[-2].
+$$">$$
+R\Gamma_c(B\setminus A;\mathbb Z)=0,
+\qquad
+R\Gamma_c(B\setminus A;o_Y^{\mathbb Z})
+\simeq(\mathbb Z/3)[-2].
+$$</span>
+<p>The cone of the ordinary-coefficient support map is therefore</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\operatorname{Cone}\bigl(R\Gamma_A(Y;\mathbb Z)
+\longrightarrow R\Gamma_B(Y;\mathbb Z)\bigr)
+&amp;\simeq R\operatorname{Hom}_{\mathbb Z}
+\bigl(R\Gamma_c(B\setminus A;o_Y^{\mathbb Z})[6],\mathbb Z\bigr)\\
+&amp;\simeq(\mathbb Z/3)[-5].
+\end{aligned}
+$$">$$
+\begin{aligned}
+\operatorname{Cone}\bigl(R\Gamma_A(Y;\mathbb Z)
+\longrightarrow R\Gamma_B(Y;\mathbb Z)\bigr)
+&amp;\simeq R\operatorname{Hom}_{\mathbb Z}
+\bigl(R\Gamma_c(B\setminus A;o_Y^{\mathbb Z})[6],\mathbb Z\bigr)\\
+&amp;\simeq(\mathbb Z/3)[-5].
+\end{aligned}
+$$</span>
+<p>The last degree uses <span class="math" data-tex="$R\operatorname{Hom}_{\mathbb Z}(\mathbb Z/3,\mathbb Z)=(\mathbb Z/3)[-1]$">$R\operatorname{Hom}_{\mathbb Z}(\mathbb Z/3,\mathbb Z)=(\mathbb Z/3)[-1]$</span>. The cone is nonzero. This identifies exactly why extension from constant integral coefficients to constant <span class="math" data-tex="$k$">$k$</span> coefficients is valid, whereas the additional passage to a nontrivial orientation system is not. The observation is an independently checked correction to the unqualified support exercise in the cited book, not a claim of an official author-issued erratum.</p>
+<h2 id="sh02-cta-directional-locally-closed-directional-sets-are-fixed-objects">SH02-CTA-DIRECTIONAL — Locally closed directional sets are fixed objects</h2>
+<p>Let <span class="math" data-tex="$V$">$V$</span> be a finite-dimensional real vector space and let <span class="math" data-tex="$\gamma\subset V$">$\gamma\subset V$</span> be a closed convex cone containing zero. It may contain lines or have empty interior. Let <span class="math" data-tex="$\phi:V\to V_\gamma$">$\phi:V\to V_\gamma$</span> be the identity to the topology whose open sets satisfy <span class="math" data-tex="$U+\gamma=U$">$U+\gamma=U$</span>.</p>
+<p>If <span class="math" data-tex="$A$">$A$</span> is locally closed in <span class="math" data-tex="$V_\gamma$">$V_\gamma$</span>, then the ordinary extension sheaf <span class="math" data-tex="$k_A$">$k_A$</span> is canonically a fixed object of the directional projector:</p>
+<span class="math math-display" data-tex="$$
+\phi^{-1}R\phi_*k_A\xrightarrow{\sim}k_A.
+$$">$$
+\phi^{-1}R\phi_*k_A\xrightarrow{\sim}k_A.
+$$</span>
+<p>To prove this, form <span class="math" data-tex="$k_A$">$k_A$</span> first on <span class="math" data-tex="$V_\gamma$">$V_\gamma$</span>, using an open inclusion followed by a closed inclusion. Pullback to the ordinary topology gives the ordinary <span class="math" data-tex="$k_A$">$k_A$</span>: inverse image commutes with open extension by zero and with the constant sheaf of a closed subset, as one checks from their restriction maps and their stalks, which are <span class="math" data-tex="$k$">$k$</span> on <span class="math" data-tex="$A$">$A$</span> and zero outside it. Write the resulting object as <span class="math" data-tex="$\phi^{-1}L$">$\phi^{-1}L$</span>. The unit <span class="math" data-tex="$L\to R\phi_*\phi^{-1}L$">$L\to R\phi_*\phi^{-1}L$</span> is an isomorphism by SH02-GAM-UNIT. The triangle identity says that the counit on <span class="math" data-tex="$\phi^{-1}L$">$\phi^{-1}L$</span> is its inverse after pullback. This proves the assertion with its actual counit.</p>
+<p>In particular <span class="math" data-tex="$-\gamma$">$-\gamma$</span> is directionally closed. Indeed, if <span class="math" data-tex="$x\notin-\gamma$">$x\notin-\gamma$</span> and <span class="math" data-tex="$g\in\gamma$">$g\in\gamma$</span>, then <span class="math" data-tex="$x+g\in-\gamma$">$x+g\in-\gamma$</span> would imply <span class="math" data-tex="$-x=g+(-x-g)\in\gamma$">$-x=g+(-x-g)\in\gamma$</span>, a contradiction. Its complement is ordinarily open, so it is directionally open. Every directionally open <span class="math" data-tex="$\Omega$">$\Omega$</span> is itself locally closed in the directional topology. Both <span class="math" data-tex="$k_{-\gamma}$">$k_{-\gamma}$</span> and <span class="math" data-tex="$k_\Omega$">$k_\Omega$</span> therefore satisfy the displayed fixed-object identity. This proof includes <span class="math" data-tex="$\gamma=0$">$\gamma=0$</span>, <span class="math" data-tex="$\gamma=V$">$\gamma=V$</span>, empty <span class="math" data-tex="$\Omega$">$\Omega$</span>, and the zero coefficient ring.</p>
+<h2 id="sh02-cta-quadratic-a-calculation-that-retains-the-gluing-class">SH02-CTA-QUADRATIC — A calculation that retains the gluing class</h2>
+<p>Let <span class="math" data-tex="$W$">$W$</span> be a Euclidean space of dimension <span class="math" data-tex="$r\ge0$">$r\ge0$</span>, let <span class="math" data-tex="$V=\mathbb R_t\oplus W$">$V=\mathbb R_t\oplus W$</span>, and set <span class="math" data-tex="$N=r+1$">$N=r+1$</span>. Write <span class="math" data-tex="$O=\operatorname{or}(V)$">$O=\operatorname{or}(V)$</span> and <span class="math" data-tex="$O_W=\operatorname{or}(W)$">$O_W=\operatorname{or}(W)$</span>, so the increasing <span class="math" data-tex="$t$">$t$</span> coordinate identifies <span class="math" data-tex="$O=O_W$">$O=O_W$</span>. Let <span class="math" data-tex="$T$">$T$</span> be the negative-halfspace Fourier functor of SH02-FS-SETUP. In the dual variables <span class="math" data-tex="$(\tau,\xi)$">$(\tau,\xi)$</span> put</p>
+<span class="math math-display" data-tex="$$
+C_\pm=\{(t,w):\ \pm t\ge\|w\|\},\quad
+A_\pm=\{(\tau,\xi):\ \pm\tau&gt;\|\xi\|\},\quad
+P_\pm=\overline{A_\pm},
+$$">$$
+C_\pm=\{(t,w):\ \pm t\ge\|w\|\},\quad
+A_\pm=\{(\tau,\xi):\ \pm\tau&gt;\|\xi\|\},\quad
+P_\pm=\overline{A_\pm},
+$$</span>
+<p>and let <span class="math" data-tex="$i:\mathbb R_\tau\hookrightarrow V^*$">$i:\mathbb R_\tau\hookrightarrow V^*$</span> be the zero-<span class="math" data-tex="$\xi$">$\xi$</span> axis. We compute the closed double cone <span class="math" data-tex="$C=C_+\cup C_-$">$C=C_+\cup C_-$</span>, its exterior <span class="math" data-tex="$D=\{|t|\le\|w\|\}$">$D=\{|t|\le\|w\|\}$</span>, their common boundary <span class="math" data-tex="$B$">$B$</span>, and the intersections <span class="math" data-tex="$C_+,D_+,B_+$">$C_+,D_+,B_+$</span> of these three sets with <span class="math" data-tex="$\{t\ge0\}$">$\{t\ge0\}$</span>.</p>
+<p>Two elementary objects will encode all boundary gluing. Choose a generator of the free rank-one <span class="math" data-tex="$k$">$k$</span>-module</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Hom}\bigl(k_{P_-}\otimes O[-N],k_{A_+}\bigr)=k
+$$">$$
+\operatorname{Hom}\bigl(k_{P_-}\otimes O[-N],k_{A_+}\bigr)=k
+$$</span>
+<p>and denote its cone by <span class="math" data-tex="$Q_+$">$Q_+$</span>. Define <span class="math" data-tex="$Q_-$">$Q_-$</span> by exchanging the two signs. A different generator changes the cone by an isomorphism, so this defines the isomorphism class of <span class="math" data-tex="$Q_\pm$">$Q_\pm$</span>, which is what a transform calculation requires. To verify the displayed Hom calculation without guessing an extension, use</p>
+<span class="math math-display" data-tex="$$
+D_{V^*}k_{P_+}=k_{A_+}\otimes O[N]
+$$">$$
+D_{V^*}k_{P_+}=k_{A_+}\otimes O[N]
+$$</span>
+<p>from SH02-CB-CONVEX. Tensor–Hom adjunction and compact duality reduce the Hom complex to the dual of the cohomology of <span class="math" data-tex="$P_-\cap P_+=\{0\}$">$P_-\cap P_+=\{0\}$</span>, with the displayed orientation and shift canceled. It is <span class="math" data-tex="$k$">$k$</span> in degree zero. Thus a generator specifies the required extension class; for <span class="math" data-tex="$k\ne0$">$k\ne0$</span> it is nonzero, including over rings with torsion. For the zero ring all objects and comparisons are zero.</p>
+<p>There is a unique morphism <span class="math" data-tex="$e_+:Q_+\to k_{V^*}$">$e_+:Q_+\to k_{V^*}$</span> extending the usual map <span class="math" data-tex="$k_{A_+}\to k_{V^*}$">$k_{A_+}\to k_{V^*}$</span>, and similarly <span class="math" data-tex="$e_-$">$e_-$</span>. Indeed <span class="math" data-tex="$R\operatorname{Hom}(k_{P_-},k_{V^*})=R\Gamma_{P_-}(V^*;k)=0$">$R\operatorname{Hom}(k_{P_-},k_{V^*})=R\Gamma_{P_-}(V^*;k)=0$</span>: localization compares the constant cohomology of <span class="math" data-tex="$V^*$">$V^*$</span> and <span class="math" data-tex="$V^*\setminus P_-$">$V^*\setminus P_-$</span>, both <span class="math" data-tex="$k$">$k$</span>, by an identity on constants. The latter complement contracts to an open spherical cap. This proves both existence and uniqueness through the cone triangle. Choosing a different generator of the first Hom group transports <span class="math" data-tex="$e_+$">$e_+$</span> along the same cone isomorphism.</p>
+<p>For a second object use the following explicit morphism:</p>
+<span class="math math-display" data-tex="$$
+k_{P_-}\otimes O[-N]
+\longrightarrow i_*k_{\{\tau\le0\}}\otimes O[-N]
+\longrightarrow i_*k_{\{\tau&gt;0\}}\otimes O_W[-r].
+$$">$$
+k_{P_-}\otimes O[-N]
+\longrightarrow i_*k_{\{\tau\le0\}}\otimes O[-N]
+\longrightarrow i_*k_{\{\tau&gt;0\}}\otimes O_W[-r].
+$$</span>
+<p>The first arrow is restriction to the axis. The second is the connecting class of the open–closed decomposition of the oriented line, shifted and tensored by <span class="math" data-tex="$O_W[-r]$">$O_W[-r]$</span>. Let its cone be <span class="math" data-tex="$R_+$">$R_+$</span>. The Hom group from the first object to the last is <span class="math" data-tex="$k$">$k$</span>: adjunction along <span class="math" data-tex="$i$">$i$</span> reduces it to the same one-dimensional connecting-class group. We have therefore specified the unit gluing class rather than merely two disjoint support strata.</p>
+<p>The answers are</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+T k_{C_+}&amp;=k_{A_+},\\
+T k_C&amp;\simeq k_{\{|\tau|\le\|\xi\|\}}[-1],\\
+T k_D&amp;\simeq k_{P_+\cup P_-}\otimes O[-r],\\
+T k_{B_+}&amp;\simeq Q_+,\\
+T k_{D_+}&amp;\simeq R_+,\\
+T k_B&amp;\simeq
+\operatorname{fib}\bigl(Q_+\oplus Q_-\xrightarrow{e_+-e_-}k_{V^*}\bigr).
+\end{aligned}
+$$">$$
+\begin{aligned}
+T k_{C_+}&amp;=k_{A_+},\\
+T k_C&amp;\simeq k_{\{|\tau|\le\|\xi\|\}}[-1],\\
+T k_D&amp;\simeq k_{P_+\cup P_-}\otimes O[-r],\\
+T k_{B_+}&amp;\simeq Q_+,\\
+T k_{D_+}&amp;\simeq R_+,\\
+T k_B&amp;\simeq
+\operatorname{fib}\bigl(Q_+\oplus Q_-\xrightarrow{e_+-e_-}k_{V^*}\bigr).
+\end{aligned}
+$$</span>
+<p>We prove all the answers and the asserted unit classes. The first is SH02-FS-CONE. Applying <span class="math" data-tex="$T$">$T$</span> to the closed-cover sequence for <span class="math" data-tex="$C_+\cup C_-$">$C_+\cup C_-$</span> gives the fibre of</p>
+<span class="math math-display" data-tex="$$
+k_{A_+}\oplus k_{A_-}\longrightarrow k_{V^*}.
+$$">$$
+k_{A_+}\oplus k_{A_-}\longrightarrow k_{V^*}.
+$$</span>
+<p>Each component is the inclusion of its open constant sheaf, with the difference sign from the closed-cover sequence. The map is injective and its cokernel is the constant sheaf on the closed complement of <span class="math" data-tex="$A_+\cup A_-$">$A_+\cup A_-$</span>. This proves the second answer, including its <span class="math" data-tex="$[-1]$">$[-1]$</span>.</p>
+<p>The complement of <span class="math" data-tex="$D$">$D$</span> is the union of the two open interiors of <span class="math" data-tex="$C_+$">$C_+$</span> and <span class="math" data-tex="$C_-$">$C_-$</span>. Their transforms are <span class="math" data-tex="$k_{P_-}\otimes O[-N]$">$k_{P_-}\otimes O[-N]$</span> and <span class="math" data-tex="$k_{P_+}\otimes O[-N]$">$k_{P_+}\otimes O[-N]$</span>. The transform of <span class="math" data-tex="$k_V$">$k_V$</span> is <span class="math" data-tex="$k_0\otimes O[-N]$">$k_0\otimes O[-N]$</span>. The map to this point sheaf is the sum of the two restrictions; they are the trace-normalized compact-cohomology maps on the open cones. The sum is surjective and its kernel is <span class="math" data-tex="$k_{P_+\cup P_-}\otimes O[-N]$">$k_{P_+\cup P_-}\otimes O[-N]$</span>. Taking its cone shifts the kernel by <span class="math" data-tex="$[1]$">$[1]$</span>, proving the third answer.</p>
+<p>For <span class="math" data-tex="$B_+$">$B_+$</span> use the localization triangle of the open interior in <span class="math" data-tex="$C_+$">$C_+$</span>. Its transformed first arrow has the source and target used to define <span class="math" data-tex="$Q_+$">$Q_+$</span>. It is a generator: full faithfulness of <span class="math" data-tex="$T$">$T$</span> identifies its Hom group with</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Hom}(k_{\operatorname{int}C_+},k_{C_+})
+=H^0(\operatorname{int}C_+;k)=k,
+$$">$$
+\operatorname{Hom}(k_{\operatorname{int}C_+},k_{C_+})
+=H^0(\operatorname{int}C_+;k)=k,
+$$</span>
+<p>and the original inclusion is the unit generator. This proves the fourth answer without an unsupported splitting of its two cohomology sheaves.</p>
+<p>For <span class="math" data-tex="$D_+$">$D_+$</span> localize the open interior of <span class="math" data-tex="$C_+$">$C_+$</span> in the closed halfspace <span class="math" data-tex="$H=\{t\ge0\}$">$H=\{t\ge0\}$</span>. The product formula of SH02-FF-PRODUCT gives</p>
+<span class="math math-display" data-tex="$$
+Tk_H=i_*k_{\{\tau&gt;0\}}\otimes O_W[-r].
+$$">$$
+Tk_H=i_*k_{\{\tau&gt;0\}}\otimes O_W[-r].
+$$</span>
+<p>Again the transformed inclusion is a generator, since the original Hom group is <span class="math" data-tex="$H^0(\operatorname{int}C_+;k)=k$">$H^0(\operatorname{int}C_+;k)=k$</span>. The explicit axis morphism defining <span class="math" data-tex="$R_+$">$R_+$</span> is also a generator by the line adjunction calculation. Their cones are isomorphic. This proves the fifth answer and specifies its extension up to the harmless change of a unit generator.</p>
+<p>Finally <span class="math" data-tex="$B=B_+\cup B_-$">$B=B_+\cup B_-$</span> with intersection the origin. Transform its closed-cover triangle. The restrictions to the origin become the maps <span class="math" data-tex="$e_\pm$">$e_\pm$</span>: on <span class="math" data-tex="$A_\pm$">$A_\pm$</span> the defining compact-support fibre is the origin and the restriction is its identity. The uniqueness just proved fixes the full maps. This is the last answer.</p>
+<p>No positive-rank assumption was hidden. If <span class="math" data-tex="$r=0$">$r=0$</span>, then <span class="math" data-tex="$D=B=\{0\}$">$D=B=\{0\}$</span> and <span class="math" data-tex="$D_+=B_+=\{0\}$">$D_+=B_+=\{0\}$</span>. The cones <span class="math" data-tex="$Q_\pm$">$Q_\pm$</span> and <span class="math" data-tex="$R_+$">$R_+$</span> are <span class="math" data-tex="$k_\mathbb R$">$k_\mathbb R$</span> by the ordinary line localization triangle, and the last fibre is also <span class="math" data-tex="$k_\mathbb R$">$k_\mathbb R$</span>. All answers reduce to <span class="math" data-tex="$Tk_{\{0\}}=k_\mathbb R$">$Tk_{\{0\}}=k_\mathbb R$</span> and <span class="math" data-tex="$Tk_\mathbb R=k_0[-1]$">$Tk_\mathbb R=k_0[-1]$</span> with the increasing orientation. Empty open strata are handled by the zero sheaf.</p>
+<p>The calculation also treats a positive semidefinite quadratic form. If its null space is <span class="math" data-tex="$K$">$K$</span>, split the ambient space as <span class="math" data-tex="$\mathbb R_t\oplus W\oplus K$">$\mathbb R_t\oplus W\oplus K$</span> and replace the norm on <span class="math" data-tex="$W$">$W$</span> by the positive-definite quotient norm. Each of the six sets is the corresponding set above times <span class="math" data-tex="$K$">$K$</span>. Its transform is the displayed answer externally tensored with</p>
+<span class="math math-display" data-tex="$$
+k_{\{0\}\subset K^*}\otimes\operatorname{or}(K)[-\dim K].
+$$">$$
+k_{\{0\}\subset K^*}\otimes\operatorname{or}(K)[-\dim K].
+$$</span>
+<p>This follows from the biconic product theorem, with the order <span class="math" data-tex="$t,W,K$">$t,W,K$</span> used for the orientation tensor. An isomorphism between two positive-definite quotient norms transports the formula by the transpose map. Thus degeneracy introduces a zero-dual-space support and an orientation shift; it does not justify applying the proper-cone formula to a cone containing lines.</p>
+<h2 id="sh02-cta-radial-passing-from-vector-bundles-to-their-direction-spaces">SH02-CTA-RADIAL — Passing from vector bundles to their direction spaces</h2>
+<p>Let <span class="math" data-tex="$E\to Z$">$E\to Z$</span> be a rank-<span class="math" data-tex="$n$">$n$</span> real vector bundle over an arbitrary locally compact Hausdorff base. Let <span class="math" data-tex="$j:E\setminus0\hookrightarrow E$">$j:E\setminus0\hookrightarrow E$</span>, <span class="math" data-tex="$\gamma:E\setminus0\to S(E)$">$\gamma:E\setminus0\to S(E)$</span>, and use <span class="math" data-tex="$j^*,\gamma^*$">$j^*,\gamma^*$</span> for the corresponding maps of the dual bundle. Here the star in the name of a map labels the dual bundle, not a direct-image operation. Write <span class="math" data-tex="$p,q$">$p,q$</span> for the projections from <span class="math" data-tex="$S(E)\times_ZS(E^*)$">$S(E)\times_ZS(E^*)$</span>, and put <span class="math" data-tex="$D=\{(u,\eta):\langle u,\eta\rangle\ge0\}$">$D=\{(u,\eta):\langle u,\eta\rangle\ge0\}$</span>. Define</p>
+<span class="math math-display" data-tex="$$
+\mathcal A(F)=Rq_*R\Gamma_D(p^{-1}F),\qquad
+\mathcal B(G)=Rp_!\bigl((q^{-1}G)_D\otimes q^{-1}\omega_{S(E^*)/Z}\bigr).
+$$">$$
+\mathcal A(F)=Rq_*R\Gamma_D(p^{-1}F),\qquad
+\mathcal B(G)=Rp_!\bigl((q^{-1}G)_D\otimes q^{-1}\omega_{S(E^*)/Z}\bigr).
+$$</span>
+<p>These are respectively the right and left operators of the orientation-twisted sphere kernel in SH02-SPH-SETUP. Let <span class="math" data-tex="$T_E,S_E$">$T_E,S_E$</span> be the Fourier functor and its inverse in SH02-FS-SETUP. There are canonical isomorphisms</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\mathcal A(F)&amp;\simeq R\gamma^*_*\,(j^*)^{-1}T_E(Rj_*\gamma^{-1}F),\\
+\mathcal B(G)&amp;\simeq R\gamma_*\,j^{-1}S_E(Rj^*_!(\gamma^*)^{-1}G).
+\end{aligned}
+$$">$$
+\begin{aligned}
+\mathcal A(F)&amp;\simeq R\gamma^*_*\,(j^*)^{-1}T_E(Rj_*\gamma^{-1}F),\\
+\mathcal B(G)&amp;\simeq R\gamma_*\,j^{-1}S_E(Rj^*_!(\gamma^*)^{-1}G).
+\end{aligned}
+$$</span>
+<p>All functors act on <span class="math" data-tex="$D^+$">$D^+$</span>, with arbitrary module coefficients. The statement identifies the displayed composites; it does not forget the choice of <span class="math" data-tex="$Rj_*$">$Rj_*$</span> in the first line or <span class="math" data-tex="$Rj_!$">$Rj_!$</span> in the second.</p>
+<p>For the first comparison use the ordinary-image presentation <span class="math" data-tex="$T_E=Rq_*R\Gamma_{\langle x,\xi\rangle\ge0}p^{-1}$">$T_E=Rq_*R\Gamma_{\langle x,\xi\rangle\ge0}p^{-1}$</span> of SH02-FS-COMPARE. Restrict the output to <span class="math" data-tex="$E^*\setminus0$">$E^*\setminus0$</span>. Ordinary open restriction commutes with direct image. Pulling <span class="math" data-tex="$Rj_*\gamma^{-1}F$">$Rj_*\gamma^{-1}F$</span> through the product projection is the smooth base-change comparison for that product, and support Hom commutes with the ensuing open direct image by adjunction. The remaining correspondence is the product of the two positive radial bundles over <span class="math" data-tex="$D$">$D$</span>. Its coefficient and support condition are pulled back from the direction spaces. Integrating the input radial coordinate with ordinary direct image gives the identity by SH02-CON-CYLINDER; the same is true of the output radial coordinate when applying <span class="math" data-tex="$R\gamma^*_*$">$R\gamma^*_*$</span>. This proves the first formula. Every map used is a product base-change, support-adjunction, or radial unit comparison, so these local calculations agree under changes of radial trivialization.</p>
+<p>For the second formula use the proper-support presentation</p>
+<span class="math math-display" data-tex="$$
+S_EG=Rp_!\bigl((q^{-1}G)_{\langle x,\xi\rangle\ge0}\bigr)
+\otimes\operatorname{or}(E)[n].
+$$">$$
+S_EG=Rp_!\bigl((q^{-1}G)_{\langle x,\xi\rangle\ge0}\bigr)
+\otimes\operatorname{or}(E)[n].
+$$</span>
+<p>Open extension by zero commutes with inverse image and with proper-support composition, so <span class="math" data-tex="$Rj^*_!$">$Rj^*_!$</span> restricts the integrated variable to the positive radial bundle. Its fibre has compact cohomology <span class="math" data-tex="$k[-1]$">$k[-1]$</span>, normalized by the increasing logarithmic radial coordinate. This cancels one unit of the shift <span class="math" data-tex="$[n]$">$[n]$</span>. The radial-first orientation rule in SH02-MD-SPHERE identifies the remaining factor with <span class="math" data-tex="$\omega_{S(E^*)/Z}$">$\omega_{S(E^*)/Z}$</span>, using positive dual orientation. Proper-support base change and projection formula now give <span class="math" data-tex="$\gamma^{-1}\mathcal B(G)$">$\gamma^{-1}\mathcal B(G)$</span> on the punctured output. Applying <span class="math" data-tex="$R\gamma_*$">$R\gamma_*$</span> gives the displayed result by the radial unit isomorphism. This proof records the radial shift and the side on which its orientation belongs.</p>
+<p>In rank zero both direction spaces are empty, so both comparisons are the unique isomorphisms of zero functors. A nontrivial orientation local system of <span class="math" data-tex="$E$">$E$</span> is retained by the sphere dualizing object. No compactness or finite dimension of the base is required. The exact smooth base-change comparison for arbitrary locally compact base, together with the corresponding proper-support operation contracts, remains an explicit prerequisite; a nonproper fibre calculation alone does not supply it.</p>
+<h2 id="sh02-cta-intersection-smooth-factors-can-have-irregular-intersections">SH02-CTA-INTERSECTION — Smooth factors can have irregular intersections</h2>
+<p>Cohomological constructibility is not preserved by tensor product or internal Hom. The following construction separates smoothness of each support from the topology of their intersection.</p>
+<p>Work over a nonzero field <span class="math" data-tex="$k$">$k$</span>. Put <span class="math" data-tex="$Z=\{0\}\cup\{2^{-j}:j\ge1\}\subset\mathbb R$">$Z=\{0\}\cup\{2^{-j}:j\ge1\}\subset\mathbb R$</span>. There is a smooth nonnegative function <span class="math" data-tex="$b$">$b$</span> with zero set exactly <span class="math" data-tex="$Z$">$Z$</span>. Here is a construction that also verifies smoothness at the accumulation point. On the interval <span class="math" data-tex="$(2^{-j-1},2^{-j})$">$(2^{-j-1},2^{-j})$</span> use</p>
+<span class="math math-display" data-tex="$$
+b(t)=e^{-4^j}\rho(2^{j+1}t-1),\qquad
+\rho(s)=
+\begin{cases}
+e^{-1/(s(1-s))},&amp;0&lt;s&lt;1,\\
+0,&amp;s\notin(0,1).
+\end{cases}
+$$">$$
+b(t)=e^{-4^j}\rho(2^{j+1}t-1),\qquad
+\rho(s)=
+\begin{cases}
+e^{-1/(s(1-s))},&amp;0&lt;s&lt;1,\\
+0,&amp;s\notin(0,1).
+\end{cases}
+$$</span>
+<p>On <span class="math" data-tex="$t&lt;0$">$t&lt;0$</span> use <span class="math" data-tex="$e^{-1/t^2}$">$e^{-1/t^2}$</span>, and on <span class="math" data-tex="$t&gt;1/2$">$t&gt;1/2$</span> use <span class="math" data-tex="$e^{-1/(t-1/2)^2}$">$e^{-1/(t-1/2)^2}$</span>. Set <span class="math" data-tex="$b=0$">$b=0$</span> on <span class="math" data-tex="$Z$">$Z$</span>. Each derivative of order <span class="math" data-tex="$r$">$r$</span> on the <span class="math" data-tex="$j$">$j$</span>th interval is bounded by <span class="math" data-tex="$C_r e^{-4^j}2^{(j+1)r}$">$C_r e^{-4^j}2^{(j+1)r}$</span>, which tends to zero faster than every power of <span class="math" data-tex="$2^{-j}$">$2^{-j}$</span>. Induction on derivatives proves that the pieces extend smoothly at zero with all derivatives zero; the other joins are flat by the definition of <span class="math" data-tex="$\rho$">$\rho$</span>.</p>
+<p>In the plane take the two closed smooth curves <span class="math" data-tex="$L=\mathbb R\times\{0\}$">$L=\mathbb R\times\{0\}$</span> and <span class="math" data-tex="$M=\{(t,b(t))\}$">$M=\{(t,b(t))\}$</span>, and put <span class="math" data-tex="$F=k_L$">$F=k_L$</span>, <span class="math" data-tex="$G=k_M$">$G=k_M$</span>. Both are cohomologically constructible by SH02-CB-SUBMANIFOLDS. Since their constant extension sheaves are stalkwise flat,</p>
+<span class="math math-display" data-tex="$$
+F\otimes^L G=k_{Z\times\{0\}}.
+$$">$$
+F\otimes^L G=k_{Z\times\{0\}}.
+$$</span>
+<p>This tensor product fails the stabilization condition at the origin. A section on a small neighborhood of the origin restricts to a locally constant function on a tail of the convergent sequence <span class="math" data-tex="$Z$">$Z$</span>. Such a function is eventually constant, but it may have independent values on any finite collection of the isolated points. For any pair of nested neighborhoods there is an isolated point in the smaller one, and its indicator function extends by zero to a section on the larger one. It is killed by the map to the stalk at zero but survives that restriction. Consequently the kernel of the canonical neighborhood ind-system map to the stalk <span class="math" data-tex="$k$">$k$</span> is not an ind-zero system: no restriction to one smaller neighborhood kills all its sections. A representable system with the canonical stalk comparison would have ind-zero kernel. Thus the tensor product is not cohomologically constructible.</p>
+<p>Internal Hom already fails stalk perfectness. If <span class="math" data-tex="$i:M\hookrightarrow\mathbb R^2$">$i:M\hookrightarrow\mathbb R^2$</span>, closed-support adjunction gives</p>
+<span class="math math-display" data-tex="$$
+R\mathcal Hom(k_L,k_M)=R\Gamma_L k_M
+=i_*R\Gamma_{Z}^{M}k_M.
+$$">$$
+R\mathcal Hom(k_L,k_M)=R\Gamma_L k_M
+=i_*R\Gamma_{Z}^{M}k_M.
+$$</span>
+<p>Use the coordinate <span class="math" data-tex="$t$">$t$</span> on <span class="math" data-tex="$M$">$M$</span>. The localization sequence for <span class="math" data-tex="$Z$">$Z$</span> on a small interval <span class="math" data-tex="$I$">$I$</span> contains</p>
+<span class="math math-display" data-tex="$$
+k=H^0(I;k)\longrightarrow H^0(I\setminus Z;k)
+\longrightarrow H^1_Z(I;k)\longrightarrow0.
+$$">$$
+k=H^0(I;k)\longrightarrow H^0(I\setminus Z;k)
+\longrightarrow H^1_Z(I;k)\longrightarrow0.
+$$</span>
+<p>The middle term is the product of one copy of <span class="math" data-tex="$k$">$k$</span> for each component of <span class="math" data-tex="$I\setminus Z$">$I\setminus Z$</span>. After shrinking toward zero, it still contains independent values on all the successive gaps <span class="math" data-tex="$(2^{-j-1},2^{-j})$">$(2^{-j-1},2^{-j})$</span>. Partition these gaps into infinitely many infinite subsequences. Their indicator functions give linearly independent elements of the direct-limit quotient by constant functions: a nonzero finite linear combination cannot become constant on a tail, because at least one chosen subsequence and an unchosen infinite subsequence both persist. Hence the degree-one stalk of <span class="math" data-tex="$R\Gamma_Z^M k_M$">$R\Gamma_Z^M k_M$</span> at zero is infinite-dimensional. It is not a perfect complex over <span class="math" data-tex="$k$">$k$</span>. This proves the second failure without assuming biduality for the irregular intersection.</p>
+<h3 id="sh02-cta-accumulating-graphs-two-sequences-of-intersections">SH02-CTA-ACCUMULATING-GRAPHS — Two sequences of intersections</h3>
+<p>The same failure occurs for continuous graphs with isolated intersections approaching from both sides. Let <span class="math" data-tex="$h:\mathbb R\to\mathbb R$">$h:\mathbb R\to\mathbb R$</span> be continuous, with <span class="math" data-tex="$h(0)=0$">$h(0)=0$</span>, and suppose that in an interval about zero its zero set is</p>
+<span class="math math-display" data-tex="$$
+Z_h=\{0\}\cup\{a_j:j\ge1\}\cup\{-b_j:j\ge1\},
+\qquad a_j\downarrow0,\quad b_j\downarrow0,
+$$">$$
+Z_h=\{0\}\cup\{a_j:j\ge1\}\cup\{-b_j:j\ge1\},
+\qquad a_j\downarrow0,\quad b_j\downarrow0,
+$$</span>
+<p>where both sequences are strictly decreasing. Put <span class="math" data-tex="$L=\mathbb R\times\{0\}$">$L=\mathbb R\times\{0\}$</span> and <span class="math" data-tex="$M_h=\{(t,h(t))\}$">$M_h=\{(t,h(t))\}$</span>. The homeomorphism <span class="math" data-tex="$(t,y)\mapsto(t,y-h(t))$">$(t,y)\mapsto(t,y-h(t))$</span> carries the closed graph onto a coordinate line. Hence <span class="math" data-tex="$k_{M_h}$">$k_{M_h}$</span> is cohomologically constructible, as is <span class="math" data-tex="$k_L$">$k_L$</span>: homeomorphisms identify the neighborhood and compact-support systems and the perfect stalks. Differentiability at the accumulation point is unnecessary.</p>
+<p>Their derived tensor is <span class="math" data-tex="$k_{L\cap M_h}$">$k_{L\cap M_h}$</span> because both extension sheaves have flat stalks. For any two sufficiently small nested neighborhoods of the origin, an isolated positive intersection remains in the smaller one. Its indicator section on the larger neighborhood vanishes in the stalk at zero and survives restriction to the smaller neighborhood. Thus the kernel of the ordinary neighborhood system's map to its stalk is not ind-zero. Formal stabilization fails, so the tensor is not cohomologically constructible.</p>
+<p>For internal Hom, closed-support adjunction gives</p>
+<span class="math math-display" data-tex="$$
+R\mathcal Hom(k_L,k_{M_h})
+=i_*R\Gamma_{Z_h}^{M_h}k_{M_h},
+$$">$$
+R\mathcal Hom(k_L,k_{M_h})
+=i_*R\Gamma_{Z_h}^{M_h}k_{M_h},
+$$</span>
+<p>where <span class="math" data-tex="$i:M_h\hookrightarrow\mathbb R^2$">$i:M_h\hookrightarrow\mathbb R^2$</span>. On a small coordinate interval <span class="math" data-tex="$I$">$I$</span> in the graph, the degree-one local-support group is the cokernel of the constant-function inclusion <span class="math" data-tex="$k\to H^0(I\setminus Z_h;k)$">$k\to H^0(I\setminus Z_h;k)$</span>. The latter group is the product of one <span class="math" data-tex="$k$">$k$</span> for every complementary interval. Partition the positive gaps <span class="math" data-tex="$(a_{j+1},a_j)$">$(a_{j+1},a_j)$</span> into countably many infinite families, each having gaps in every neighborhood of zero. Set each family's indicator to zero on all the other gaps, including the negative ones. These functions give linearly independent classes in the stalk cokernel: if a finite linear combination becomes constant after shrinking, its values on the negative gaps force the constant to be zero, and a surviving positive gap in each chosen family then forces its coefficient to be zero. Over a nonzero field the stalk is infinite-dimensional, so it is not perfect. This proves the internal-Hom failure as well.</p>
+<p>For a concrete two-sided oscillation, set <span class="math" data-tex="$h(t)=t\sin(1/t)$">$h(t)=t\sin(1/t)$</span> for <span class="math" data-tex="$t\ne0$">$t\ne0$</span> and <span class="math" data-tex="$h(0)=0$">$h(0)=0$</span>. Continuity follows from <span class="math" data-tex="$|h(t)|\le|t|$">$|h(t)|\le|t|$</span>. Its nonzero zeros are exactly <span class="math" data-tex="$t=1/(m\pi)$">$t=1/(m\pi)$</span> for nonzero integers <span class="math" data-tex="$m$">$m$</span>, so the preceding theorem applies with <span class="math" data-tex="$a_j=b_j=1/(j\pi)$">$a_j=b_j=1/(j\pi)$</span>. The flattening homeomorphism supplies the individual support condition, and the two independent local calculations give both failures over <span class="math" data-tex="$\mathbb Q$">$\mathbb Q$</span> in particular.</p>
+<h2 id="sh02-cta-incidence-criterion-a-pair-calculation-detects-an-inverse-kernel">SH02-CTA-INCIDENCE-CRITERION — A pair calculation detects an inverse kernel</h2>
+<p>Let <span class="math" data-tex="$P,Q$">$P,Q$</span> be compact oriented manifolds of the same dimension <span class="math" data-tex="$d$">$d$</span>. Let <span class="math" data-tex="$\Omega\subset P\times Q$">$\Omega\subset P\times Q$</span> be open, and put <span class="math" data-tex="$U_p=\{q:(p,q)\in\Omega\}$">$U_p=\{q:(p,q)\in\Omega\}$</span> and <span class="math" data-tex="$V_q=\{p:(p,q)\in\Omega\}$">$V_q=\{p:(p,q)\in\Omega\}$</span>. Assume:</p>
+<ol>
+<li>Each row and column is a nonempty open <span class="math" data-tex="$d$">$d$</span>-cell and is cohomologically constructible as an extension sheaf in its ambient compact manifold.</li>
+<li>Locally in each parameter, a homeomorphism of the ambient product that fixes that parameter trivializes the pair consisting of the fibre and its open cell.</li>
+<li>Every pair of rows, and every pair of columns, admits a finite compatible triangulation in its compact ambient manifold. In particular the tensor products of either row sheaf with the Verdier dual of the other have perfect global cohomology, by the finite cellular complex.</li>
+<li>For distinct parameters <span class="math" data-tex="$p,p&#x27;$">$p,p&#x27;$</span>, the closed subset <span class="math" data-tex="$U_p\setminus U_{p&#x27;}$">$U_p\setminus U_{p&#x27;}$</span> of <span class="math" data-tex="$U_p$">$U_p$</span> is nonempty and has constant-complex cohomology <span class="math" data-tex="$k$">$k$</span> in degree zero; the analogous assertion holds for columns.</li>
+</ol>
+<p>Then the operator</p>
+<span class="math math-display" data-tex="$$
+\Phi(F)=Rq_!(k_\Omega\otimes p^{-1}F)
+$$">$$
+\Phi(F)=Rq_!(k_\Omega\otimes p^{-1}F)
+$$</span>
+<p>and its right adjoint</p>
+<span class="math math-display" data-tex="$$
+\Psi(G)=Rp_*R\mathcal Hom(k_\Omega,q^!G)
+$$">$$
+\Psi(G)=Rp_*R\mathcal Hom(k_\Omega,q^!G)
+$$</span>
+<p>are mutually inverse equivalences on <span class="math" data-tex="$D^+$">$D^+$</span>. Here <span class="math" data-tex="$p,q$">$p,q$</span> are the two projections, and <span class="math" data-tex="$q^!G=p^{-1}\omega_P\otimes q^{-1}G$">$q^!G=p^{-1}\omega_P\otimes q^{-1}G$</span>.</p>
+<p>We give the kernel proof, including the maps. Write <span class="math" data-tex="$j:\Omega\hookrightarrow P\times Q$">$j:\Omega\hookrightarrow P\times Q$</span>. The right-adjoint kernel, with factors interchanged, is</p>
+<span class="math math-display" data-tex="$$
+L=Rj_*k_\Omega\otimes p^{-1}\omega_P.
+$$">$$
+L=Rj_*k_\Omega\otimes p^{-1}\omega_P.
+$$</span>
+<p>Indeed, locally over <span class="math" data-tex="$Q$">$Q$</span> the pair is constant, so SH02-CB-EXTERNAL-HOM applies to its cohomologically constructible column in the <span class="math" data-tex="$P$">$P$</span> variable and to the arbitrary bounded-below coefficient <span class="math" data-tex="$G$">$G$</span>. It identifies internal Hom with tensoring by this kernel. These comparisons are the canonical evaluation comparisons and therefore agree on overlaps. Compactness of the projections identifies <span class="math" data-tex="$*$">$*$</span> and <span class="math" data-tex="$!$">$!$</span> at this step.</p>
+<p>For fixed <span class="math" data-tex="$p,p&#x27;$">$p,p&#x27;$</span>, the stalk of the composite kernel is</p>
+<span class="math math-display" data-tex="$$
+R\Gamma\bigl(Q;k_{U_p}\otimes D_Q k_{U_{p&#x27;}}\bigr).
+$$">$$
+R\Gamma\bigl(Q;k_{U_p}\otimes D_Q k_{U_{p&#x27;}}\bigr).
+$$</span>
+<p>The orientation shifts from <span class="math" data-tex="$\omega_P$">$\omega_P$</span> and <span class="math" data-tex="$\omega_Q$">$\omega_Q$</span> cancel in the chosen oriented identifications; equivalently retain their orientation lines throughout and use the trace pairing on the diagonal. Proper-support base change justifies the stalk calculation, and local triviality of the pair over <span class="math" data-tex="$P$">$P$</span> justifies restriction of <span class="math" data-tex="$Rj_*k_\Omega$">$Rj_*k_\Omega$</span> to a row. Compact-support duality and tensor–Hom adjunction identify the dual of the displayed complex with <span class="math" data-tex="$R\Gamma(U_p;k_{U_{p&#x27;}})$">$R\Gamma(U_p;k_{U_{p&#x27;}})$</span>. The displayed complex is perfect by the finite compatible triangulation hypothesis, so algebraic biduality identifies it with</p>
+<span class="math math-display" data-tex="$$
+R\operatorname{Hom}_k\bigl(R\Gamma(U_p;k_{U_{p&#x27;}}),k\bigr).
+$$">$$
+R\operatorname{Hom}_k\bigl(R\Gamma(U_p;k_{U_{p&#x27;}}),k\bigr).
+$$</span>
+<p>For <span class="math" data-tex="$p=p&#x27;$">$p=p&#x27;$</span>, the inner complex is <span class="math" data-tex="$R\Gamma(U_p;k)=k$">$R\Gamma(U_p;k)=k$</span>. For <span class="math" data-tex="$p\ne p&#x27;$">$p\ne p&#x27;$</span>, localization on <span class="math" data-tex="$U_p$">$U_p$</span> gives the triangle</p>
+<span class="math math-display" data-tex="$$
+R\Gamma(U_p;k_{U_{p&#x27;}})\longrightarrow R\Gamma(U_p;k)
+\longrightarrow R\Gamma(U_p\setminus U_{p&#x27;};k)\longrightarrow.
+$$">$$
+R\Gamma(U_p;k_{U_{p&#x27;}})\longrightarrow R\Gamma(U_p;k)
+\longrightarrow R\Gamma(U_p\setminus U_{p&#x27;};k)\longrightarrow.
+$$</span>
+<p>The last arrow before the connecting map is pullback of the constant class. Both its source and target are canonically <span class="math" data-tex="$k$">$k$</span> by the hypotheses, and it sends <span class="math" data-tex="$1$">$1$</span> to <span class="math" data-tex="$1$">$1$</span>. Hence the first term is zero. The composite kernel is therefore supported on the diagonal. The adjunction unit is the kernel map <span class="math" data-tex="$k_{\Delta_P}\to L\circ k_\Omega$">$k_{\Delta_P}\to L\circ k_\Omega$</span>; its restriction at <span class="math" data-tex="$(p,p)$">$(p,p)$</span> corresponds under the preceding adjunctions to the identity of <span class="math" data-tex="$k_{U_p}$">$k_{U_p}$</span>. It sends <span class="math" data-tex="$1$">$1$</span> to <span class="math" data-tex="$1$">$1$</span>, so it is an isomorphism at every diagonal stalk as well. This proves the first composite identity as a morphism, including its normalization. Repeating the argument with columns proves the other composite identity. Kernel composition now proves both functor identities on all of <span class="math" data-tex="$D^+$">$D^+$</span>; it is not an argument restricted to point sheaves or finite-rank inputs.</p>
+<p>The argument also works in dimension zero. Orientations may be retained as local systems instead of trivialized, provided the row/column trace identifications in the displayed kernel calculation are supplied. The two applications below have the needed orientations.</p>
+<h2 id="sh02-cta-caps-spherical-windows-of-arbitrary-radius">SH02-CTA-CAPS — Spherical windows of arbitrary radius</h2>
+<p>Let <span class="math" data-tex="$P=Q=S^d$">$P=Q=S^d$</span> be the unit sphere in an oriented Euclidean space, with its boundary orientation, and choose <span class="math" data-tex="$-1\le c&lt;1$">$-1\le c&lt;1$</span>. Define</p>
+<span class="math math-display" data-tex="$$
+\Omega_c=\{(u,v):\langle u,v\rangle&gt;c\}.
+$$">$$
+\Omega_c=\{(u,v):\langle u,v\rangle&gt;c\}.
+$$</span>
+<p>First suppose <span class="math" data-tex="$-1&lt;c&lt;1$">$-1&lt;c&lt;1$</span>. Its rows and columns are equal-radius open spherical caps. They are open <span class="math" data-tex="$d$">$d$</span>-balls, vary by rotations, and have a smooth boundary. Two caps and their boundaries are semialgebraic and admit a finite compatible triangulation by SH02-CTA-IMP-TRIANGULATION. Local charts reduce their extension sheaves to the open halfspace calculation in SH02-CB-CONVEX, so they satisfy the constructibility hypothesis of SH02-CTA-INCIDENCE-CRITERION.</p>
+<p>We verify the difference hypothesis uniformly for <span class="math" data-tex="$d\ge1$">$d\ge1$</span>. Write <span class="math" data-tex="$U,V$">$U,V$</span> for two distinct equal-radius caps. Neither can properly contain the other: they have the same spherical volume, and a strict containment of round caps would have a difference with nonempty interior. Thus <span class="math" data-tex="$U\setminus V$">$U\setminus V$</span> is nonempty. If some point <span class="math" data-tex="$z\in\partial V$">$z\in\partial V$</span> lies outside <span class="math" data-tex="$U$">$U$</span>, stereographic projection from <span class="math" data-tex="$z$">$z$</span> sends <span class="math" data-tex="$V$">$V$</span> to an open affine halfspace. It sends <span class="math" data-tex="$U$">$U$</span> to an open ball when <span class="math" data-tex="$z\notin\overline U$">$z\notin\overline U$</span>, and to an open affine halfspace when <span class="math" data-tex="$z\in\partial U$">$z\in\partial U$</span>. The image of <span class="math" data-tex="$U\setminus V$">$U\setminus V$</span> is therefore the intersection of that convex open set with a closed halfspace. It is convex, and its constant-complex cohomology is canonically <span class="math" data-tex="$k$">$k$</span> by SH02-CA-CONSTANT.</p>
+<p>Otherwise <span class="math" data-tex="$\partial V\subset U$">$\partial V\subset U$</span>. The connected closed ball <span class="math" data-tex="$S^d\setminus U$">$S^d\setminus U$</span> avoids <span class="math" data-tex="$\partial V$">$\partial V$</span>. It lies either inside <span class="math" data-tex="$V$">$V$</span> or in <span class="math" data-tex="$S^d\setminus\overline V$">$S^d\setminus\overline V$</span>, the two components of that complement. The latter possibility would imply a strict inclusion <span class="math" data-tex="$V\subset U$">$V\subset U$</span>, already excluded. Hence <span class="math" data-tex="$S^d\setminus U\subset V$">$S^d\setminus U\subset V$</span>, and <span class="math" data-tex="$U\setminus V=S^d\setminus V$">$U\setminus V=S^d\setminus V$</span> is a closed ball. It again has constant cohomology <span class="math" data-tex="$k$">$k$</span>. In dimension zero every cap is the singleton consisting of its centre, and distinct rows have singleton difference.</p>
+<p>At <span class="math" data-tex="$c=-1$">$c=-1$</span>, a row is <span class="math" data-tex="$U_u=S^d\setminus\{-u\}$">$U_u=S^d\setminus\{-u\}$</span>, again an open <span class="math" data-tex="$d$">$d$</span>-cell. For distinct centres, <span class="math" data-tex="$U_u\setminus U_{u&#x27;}=\{-u&#x27;\}$">$U_u\setminus U_{u&#x27;}=\{-u&#x27;\}$</span>, whose constant-complex cohomology is canonically <span class="math" data-tex="$k$">$k$</span>. Rotations still trivialize the pairs, and finite triangulations compatible with two points supply the constructibility and perfectness conditions. This includes <span class="math" data-tex="$d=0$">$d=0$</span>. The criterion therefore applies in both variables for the entire range <span class="math" data-tex="$-1\le c&lt;1$">$-1\le c&lt;1$</span>. At <span class="math" data-tex="$c\ge1$">$c\ge1$</span> the kernel is zero, whereas at <span class="math" data-tex="$c&lt;-1$">$c&lt;-1$</span> it is the constant kernel and factors through global cohomology; for a nonzero coefficient ring these excluded values do not satisfy the same conclusion.</p>
+<h2 id="sh02-cta-grassmann-oriented-complements-and-a-determinant-contraction">SH02-CTA-GRASSMANN — Oriented complements and a determinant contraction</h2>
+<p>Let <span class="math" data-tex="$W$">$W$</span> be an oriented real vector space of dimension <span class="math" data-tex="$n$">$n$</span>, and <span class="math" data-tex="$1\le m\le n$">$1\le m\le n$</span>. Let <span class="math" data-tex="$P$">$P$</span> parametrize oriented <span class="math" data-tex="$m$">$m$</span>-planes and <span class="math" data-tex="$Q$">$Q$</span> oriented <span class="math" data-tex="$(n-m)$">$(n-m)$</span>-planes. Define <span class="math" data-tex="$\Omega$">$\Omega$</span> to consist of pairs <span class="math" data-tex="$(A,B)$">$(A,B)$</span> with <span class="math" data-tex="$W=A\oplus B$">$W=A\oplus B$</span> and with the ordered direct-sum orientation agreeing with that of <span class="math" data-tex="$W$">$W$</span>. Both Grassmannians are compact manifolds of dimension <span class="math" data-tex="$d=m(n-m)$">$d=m(n-m)$</span>. Their orientations are canonical from the oriented tautological plane and its oriented quotient: the tangent space is <span class="math" data-tex="$\operatorname{Hom}(A,W/A)$">$\operatorname{Hom}(A,W/A)$</span>, whose determinant orientation is unchanged by orientation-preserving changes of bases. Local lifts to the oriented linear group trivialize the pairs of each Grassmannian and its complement chart.</p>
+<p>Fix one oriented plane <span class="math" data-tex="$A_0$">$A_0$</span> and choose its positively oriented complement <span class="math" data-tex="$B_0$">$B_0$</span>. Each element of its row is the graph of a unique linear map <span class="math" data-tex="$T:B_0\to A_0$">$T:B_0\to A_0$</span>, with the orientation transported from <span class="math" data-tex="$B_0$">$B_0$</span>. Thus the row is the affine space <span class="math" data-tex="$\operatorname{Hom}(B_0,A_0)$">$\operatorname{Hom}(B_0,A_0)$</span>. The analogous description holds for columns, with the order sign <span class="math" data-tex="$(-1)^{m(n-m)}$">$(-1)^{m(n-m)}$</span> included when the two summands are exchanged. Reversing that sign merely selects the opposite orientation chart.</p>
+<p>To compare another row, write its plane <span class="math" data-tex="$A_1$">$A_1$</span> in the fixed decomposition by its projections <span class="math" data-tex="$P_1:A_1\to A_0$">$P_1:A_1\to A_0$</span> and <span class="math" data-tex="$Q_1:A_1\to B_0$">$Q_1:A_1\to B_0$</span>. It is transverse to the graph of <span class="math" data-tex="$T$">$T$</span> with the required orientation exactly when</p>
+<span class="math math-display" data-tex="$$
+\det(P_1-TQ_1)&gt;0,
+$$">$$
+\det(P_1-TQ_1)&gt;0,
+$$</span>
+<p>where oriented bases of <span class="math" data-tex="$A_1,A_0$">$A_1,A_0$</span> define the determinant. If <span class="math" data-tex="$r=\operatorname{rank}Q_1&gt;0$">$r=\operatorname{rank}Q_1&gt;0$</span>, choose a basis beginning with <span class="math" data-tex="$\ker Q_1$">$\ker Q_1$</span> and then a basis in its image. The first <span class="math" data-tex="$m-r$">$m-r$</span> columns of <span class="math" data-tex="$P_1-TQ_1$">$P_1-TQ_1$</span> are fixed and independent. Row and column operations reduce its determinant to a nonzero constant times the determinant of an arbitrary affine <span class="math" data-tex="$r\times r$">$r\times r$</span> block. The remaining matrix coordinates are free. More explicitly, quotient <span class="math" data-tex="$A_0$">$A_0$</span> by <span class="math" data-tex="$P_1(\ker Q_1)$">$P_1(\ker Q_1)$</span>; the induced map from <span class="math" data-tex="$Q_1(A_1)$">$Q_1(A_1)$</span> to that quotient is an unrestricted <span class="math" data-tex="$r\times r$">$r\times r$</span> part of <span class="math" data-tex="$T$">$T$</span>, translated by the corresponding part of <span class="math" data-tex="$P_1$">$P_1$</span>. A linear complement supplies all unused coordinates.</p>
+<p>The row difference is therefore a product of Euclidean space with one of</p>
+<span class="math math-display" data-tex="$$
+\{M\in\operatorname{Mat}_r(\mathbb R):\det M\le0\},
+\qquad
+\{M\in\operatorname{Mat}_r(\mathbb R):\det M\ge0\}.
+$$">$$
+\{M\in\operatorname{Mat}_r(\mathbb R):\det M\le0\},
+\qquad
+\{M\in\operatorname{Mat}_r(\mathbb R):\det M\ge0\}.
+$$</span>
+<p>Both contract to the zero matrix by <span class="math" data-tex="$M\mapsto sM$">$M\mapsto sM$</span>, <span class="math" data-tex="$0\le s\le1$">$0\le s\le1$</span>, because <span class="math" data-tex="$\det(sM)=s^r\det M$">$\det(sM)=s^r\det M$</span>. Simultaneously contract the unused coordinates. The resulting nonempty locally compact space has constant-complex cohomology <span class="math" data-tex="$k$">$k$</span>: homotopy invariance for constant coefficients follows from proper projection along the compact homotopy interval and SH02-CA-CONSTANT. If <span class="math" data-tex="$r=0$">$r=0$</span>, the underlying planes agree. Equal orientations give the same parameter; opposite orientations give disjoint rows, so their difference is the entire affine chart. These are all cases.</p>
+<p>The row sheaves are cohomologically constructible by SH02-CTA-IMP-TRIANGULATION: oriented Grassmannians and the determinant conditions are compact semialgebraic data. The same argument applies to columns. SH02-CTA-INCIDENCE-CRITERION now proves that the oriented-complement kernel and its exceptional right adjoint are inverse equivalences on <span class="math" data-tex="$D^+$">$D^+$</span> with arbitrary <span class="math" data-tex="$k$">$k$</span>-module coefficients.</p>
+<p>Here an orientation means one of the two generators of the integral orientation line, including in dimension zero. Equivalently, oriented planes are unit decomposable elements of the corresponding exterior power; the zeroth exterior power has the two unit elements <span class="math" data-tex="$+1,-1$">$+1,-1$</span>. For <span class="math" data-tex="$m=n$">$m=n$</span>, the two Grassmannians are consequently two-point sets, and the compatibility relation is a bijection between them. Its kernel is a permutation kernel. This checks the endpoint without assigning a positive-dimensional chart to the zero plane.</p>
+<h2 id="sh02-cta-problems-four-further-calculations-with-solutions">SH02-CTA-PROBLEMS — Four further calculations with solutions</h2>
+<p><strong>An index with two components.</strong> Let <span class="math" data-tex="$X=\mathbb R^2$">$X=\mathbb R^2$</span> with its standard orientation, and let <span class="math" data-tex="$Y$">$Y$</span> be two copies of the circle with increasing angular parameter <span class="math" data-tex="$\theta$">$\theta$</span>. On the first component use <span class="math" data-tex="$g_1(\theta)=(\cos\theta,\sin\theta)$">$g_1(\theta)=(\cos\theta,\sin\theta)$</span> and on the second use <span class="math" data-tex="$g_2(\theta)=(4+\cos\theta,-\sin\theta)$">$g_2(\theta)=(4+\cos\theta,-\sin\theta)$</span>. Specify the orientation-sheaf comparisons by sending the standard plane generator to the increasing-angle generator on both components. A class on the complement of the two centres has residues <span class="math" data-tex="$r,s\in k$">$r,s\in k$</span>. Find its pullback integral over <span class="math" data-tex="$Y$">$Y$</span>.</p>
+<p><strong>Solution.</strong> An annulus containing either circle identifies the singleton residue generator with the positive angular generator by the local boundary map. The first circle has index <span class="math" data-tex="$1$">$1$</span> about its centre and zero about the other; the second has index <span class="math" data-tex="$-1$">$-1$</span> about its own centre and zero about the first. The zero assertions also follow by extending each circle across its disk in the complement of the other centre. SH02-CTA-INDEX therefore gives <span class="math" data-tex="$r-s$">$r-s$</span>. This example uses neither complex analysis nor field coefficients.</p>
+<p><strong>A spherical endpoint kernel.</strong> On <span class="math" data-tex="$S^0=\{-1,1\}$">$S^0=\{-1,1\}$</span>, compute the spherical-window transform for any <span class="math" data-tex="$-1\le c&lt;1$">$-1\le c&lt;1$</span>, and compare it with <span class="math" data-tex="$c&lt;-1$">$c&lt;-1$</span>.</p>
+<p><strong>Solution.</strong> The inequality <span class="math" data-tex="$uv&gt;c$">$uv&gt;c$</span> holds exactly when <span class="math" data-tex="$u=v$">$u=v$</span> in the first range, so the kernel is the diagonal constant sheaf. The functor is the identity on the pair of coefficient complexes. In the second range all four pairs occur, so the output at each point is the direct sum of both input complexes; it is not an equivalence for a nonzero ring. The shift and orientation dimension are both zero.</p>
+<p><strong>A null direction in a quadratic transform.</strong> In <span class="math" data-tex="$\mathbb R_t\oplus\mathbb R_x\oplus\mathbb R_z$">$\mathbb R_t\oplus\mathbb R_x\oplus\mathbb R_z$</span>, let <span class="math" data-tex="$C=\{t\ge|x|\}$">$C=\{t\ge|x|\}$</span>, with <span class="math" data-tex="$z$">$z$</span> unrestricted, and use ordered coordinates <span class="math" data-tex="$(t,x,z)$">$(t,x,z)$</span>. Compute <span class="math" data-tex="$Tk_C$">$Tk_C$</span>.</p>
+<p><strong>Solution.</strong> The two-dimensional proper-cone answer is <span class="math" data-tex="$k_{\{\tau&gt;|\xi|\}}$">$k_{\{\tau&gt;|\xi|\}}$</span>. The unrestricted <span class="math" data-tex="$z$">$z$</span> direction transforms to <span class="math" data-tex="$k_{\{\zeta=0\}}\otimes\operatorname{or}(\mathbb R_z)[-1]$">$k_{\{\zeta=0\}}\otimes\operatorname{or}(\mathbb R_z)[-1]$</span>. The biconic external-product formula gives their external product. In the indicated orientation it is the extension sheaf of <span class="math" data-tex="$\{\tau&gt;|\xi|,\ \zeta=0\}$">$\{\tau&gt;|\xi|,\ \zeta=0\}$</span> shifted by <span class="math" data-tex="$[-1]$">$[-1]$</span>. This detects the shift lost by treating a cone with a line as a proper cone.</p>
+<p><strong>Change the coefficient ring in the support obstruction.</strong> In the six-manifold example, determine the cone of the support map over a commutative ring <span class="math" data-tex="$k$">$k$</span> of finite global dimension, including <span class="math" data-tex="$k=\mathbb Q$">$k=\mathbb Q$</span> and <span class="math" data-tex="$k=\mathbb F_3$">$k=\mathbb F_3$</span>.</p>
+<p><strong>Solution.</strong> The compactly supported orientation cochains of the finite pair are the free complex <span class="math" data-tex="$k\xrightarrow{-3}k$">$k\xrightarrow{-3}k$</span> in degrees one and two. Shift it by six and take its <span class="math" data-tex="$k$">$k$</span>-linear dual. The resulting support cone is represented by <span class="math" data-tex="$k\xrightarrow{3}k$">$k\xrightarrow{3}k$</span> in degrees four and five, where changing both generator signs does not change its isomorphism class. Its degree-four cohomology is <span class="math" data-tex="$\ker(3:k\to k)$">$\ker(3:k\to k)$</span> and its degree-five cohomology is <span class="math" data-tex="$k/3k$">$k/3k$</span>. It vanishes over <span class="math" data-tex="$\mathbb Q$">$\mathbb Q$</span>. Over <span class="math" data-tex="$\mathbb F_3$">$\mathbb F_3$</span> the differential is zero, so the cone is <span class="math" data-tex="$k[-4]\oplus k[-5]$">$k[-4]\oplus k[-5]$</span>. Tensoring the integral answer with <span class="math" data-tex="$k$">$k$</span> must be derived; using an ordinary tensor would miss the degree-four term.</p>
+<h2 id="sh02-cta-antecedents-antecedents-and-further-work">SH02-CTA-ANTECEDENTS — Antecedents and further work</h2>
+<p>The cone, incidence, residue, trace and support questions treated here come from the conic and Fourier–Sato theory of Kashiwara and Schapira; see M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), Chapters 1–2. The residue discussion goes back to Birger Iversen. The course's <a href="../sheaf-proof-readings/SH02-open-prerequisites.html">open prerequisite contracts</a> state the Stacks project foundations actually used.</p>
+<p>Three research directions follow from the calculations. One can seek geometric row-difference criteria for other compact incidence correspondences, retaining the evaluation map on the diagonal. One can study how the gluing class in a quadratic transform changes in a family whose null space jumps. One can classify support comparisons by the orientation-twisted fiber complex rather than a list of constant-coefficient Betti numbers. These are questions for further work, not additional theorems asserted here.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/conic-and-trace-applications.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-02">Repository</a></nav>
+</footer>
+</body>
+</html>

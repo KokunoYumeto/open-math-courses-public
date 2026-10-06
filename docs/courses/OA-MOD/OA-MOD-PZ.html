@@ -1,0 +1,982 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unbounded products in the standard positive cone · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-PZ.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 45 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="unbounded-products-in-the-standard-positive-cone">Unbounded products in the standard positive cone</h1>
+<p>For a bounded operator <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, the standard-form axioms put <span class="math" data-tex="\(aJaJ\alpha\)">\(aJaJ\alpha\)</span> in the positive cone whenever <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is in that cone. Extending this observation to an unbounded operator requires two separate domain conditions. It also requires different spectral cutoffs on its initial and final spaces. After proving that extension and giving explicit model constructions, we obtain every cone vector from a positive self-adjoint affiliated operator when <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is cyclic. A comparison of quadratic forms supplies the vector-domain argument.</p>
+<p><strong>Self-checked by the writing AI.</strong> Write <span class="math" data-tex="\((M,H,J,P)\)">\((M,H,J,P)\)</span> for a standard form. Inner products are linear in the first variable. PZ01–03 impose no separability or faithfulness assumption. The existence constructions require a cyclic vector <span class="math" data-tex="\(\alpha\in P\)">\(\alpha\in P\)</span>; PZ07–11 treat every von Neumann algebra under that hypothesis, without a separability assumption on <span class="math" data-tex="\(H\)">\(H\)</span> or faithfulness of the target vector.</p>
+<p>The source problem is Masamichi Takesaki, <em>Theory of Operator Algebras II</em>, Exercise IX.1(13). Hideki Kosaki proves the general existence assertion in <a href="https://www.ams.org/journals/proc/1982-084-02/S0002-9939-1982-0637170-5/S0002-9939-1982-0637170-5.pdf">his 1982 paper</a>, Theorem 2.3 and Lemmas 3.1–3.3, and the positive self-adjoint refinement in <a href="https://www.ams.org/journals/proc/1983-087-02/S0002-9939-1983-0681835-7/S0002-9939-1983-0681835-7.pdf">his 1983 sequel</a>, §§2–3. Both journal editions are freely readable. Our argument retains their strip estimate and positive-extension strategy, while proving the quarter-domain bridge by equality of forms on an explicit core. It does not assume a general adjoint identity for products of spatial <span class="math" data-tex="\(L^p\)">\(L^p\)</span> operators. The exposition here is independently written.</p>
+<h2 id="conjugation-and-the-actual-product-domain">Conjugation and the actual product domain</h2>
+<p>A closed densely defined linear operator <span class="math" data-tex="\(T\)">\(T\)</span> is <strong>affiliated with <span class="math" data-tex="\(M\)">\(M\)</span></strong> if every unitary <span class="math" data-tex="\(v\in M&#x27;\)">\(v\in M&#x27;\)</span> preserves its domain and <span class="math" data-tex="\(Tv\zeta=vT\zeta\)">\(Tv\zeta=vT\zeta\)</span> there. In fact every <span class="math" data-tex="\(b\in M&#x27;\)">\(b\in M&#x27;\)</span> has</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+bD(T)\subseteq D(T),\\
+Tb\zeta=bT\zeta\\
+(\zeta\in D(T)).
+\end{gathered}
+\tag{PZ.1}
+\]">\[
+\begin{gathered}
+bD(T)\subseteq D(T),\\
+Tb\zeta=bT\zeta\\
+(\zeta\in D(T)).
+\end{gathered}
+\tag{PZ.1}
+\]</span>
+<p>Indeed, <a href="OA-MOD-BK.html#oa-mod-bk-08">BK08</a> expresses <span class="math" data-tex="\(b\)">\(b\)</span> as a finite linear combination of unitaries in <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>. Domain linearity and the defining commutation identities prove both claims. In particular every commutant projection reduces the graph of <span class="math" data-tex="\(T\)">\(T\)</span>; no invariance of the domain under arbitrary operators is being assumed.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T&#x27;=JTJ,\\
+D(T&#x27;)=JD(T),\\
+T&#x27;(J\zeta)=JT\zeta\\
+(\zeta\in D(T)).
+\end{gathered}
+\tag{PZ.2}
+\]">\[
+\begin{gathered}
+T&#x27;=JTJ,\\
+D(T&#x27;)=JD(T),\\
+T&#x27;(J\zeta)=JT\zeta\\
+(\zeta\in D(T)).
+\end{gathered}
+\tag{PZ.2}
+\]</span>
+<p>This is a linear closed densely defined operator: anti-linearity occurs twice, and applying the isometry <span class="math" data-tex="\(J\)">\(J\)</span> to both coordinates transports the closed graph. Since <span class="math" data-tex="\(JMJ=M&#x27;\)">\(JMJ=M&#x27;\)</span> by <a href="OA-MOD-SF.html#oa-mod-sf-05">SF05</a>, conjugating the affiliation identities shows that <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> is affiliated with <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>.</p>
+<p>For <span class="math" data-tex="\(\alpha\in P\)">\(\alpha\in P\)</span>, the same standard-form theorem gives <span class="math" data-tex="\(J\alpha=\alpha\)">\(J\alpha=\alpha\)</span>. Thus <span class="math" data-tex="\(\alpha\in D(T)\)">\(\alpha\in D(T)\)</span> implies <span class="math" data-tex="\(\alpha\in D(T&#x27;)\)">\(\alpha\in D(T&#x27;)\)</span> and <span class="math" data-tex="\(T&#x27;\alpha=JT\alpha\)">\(T&#x27;\alpha=JT\alpha\)</span>. The expression we shall use has the following exact meaning:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\xi=TT&#x27;\alpha\\
+=TJTJ\alpha,\\
+\alpha\in D(T),\\
+JT\alpha\in D(T).
+\end{gathered}
+\tag{PZ.3}
+\]">\[
+\begin{gathered}
+\xi=TT&#x27;\alpha\\
+=TJTJ\alpha,\\
+\alpha\in D(T),\\
+JT\alpha\in D(T).
+\end{gathered}
+\tag{PZ.3}
+\]</span>
+<p>The second condition puts <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> in the composition domain of <span class="math" data-tex="\(TT&#x27;\)">\(TT&#x27;\)</span>. Neither taking a closure of that product nor assuming that the product is densely defined is part of this notation.</p>
+<h2 id="initial-and-final-cutoffs">Initial and final cutoffs</h2>
+<p>Let <span class="math" data-tex="\(T\)">\(T\)</span> be as in PZ01. The closed-operator polar decomposition in <a href="OA-MOD-RD.html#oa-mod-rd-02">RD02</a> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T=uh,\qquad h\ge0,\\
+D(h)=D(T),\\
+p=u^*u=s(h),\\
+q=uu^*,\\
+u,p,q\in M.
+\end{gathered}
+\tag{PZ.4}
+\]">\[
+\begin{gathered}
+T=uh,\qquad h\ge0,\\
+D(h)=D(T),\\
+p=u^*u=s(h),\\
+q=uu^*,\\
+u,p,q\in M.
+\end{gathered}
+\tag{PZ.4}
+\]</span>
+<p>All spectral projections of <span class="math" data-tex="\(h\)">\(h\)</span> lie in <span class="math" data-tex="\(M\)">\(M\)</span>. For integers <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e_n=1_{[0,n]}(h),\\
+g_n=ue_nu^*,\\
+a_n=Te_n\\
+=u(he_n)\in M.
+\end{gathered}
+\tag{PZ.5}
+\]">\[
+\begin{gathered}
+e_n=1_{[0,n]}(h),\\
+g_n=ue_nu^*,\\
+a_n=Te_n\\
+=u(he_n)\in M.
+\end{gathered}
+\tag{PZ.5}
+\]</span>
+<p>Here <span class="math" data-tex="\(e_nH\subseteq D(T)\)">\(e_nH\subseteq D(T)\)</span>, and <span class="math" data-tex="\(he_n\)">\(he_n\)</span> is the bounded spectral function <span class="math" data-tex="\(t1_{[0,n]}(t)\)">\(t1_{[0,n]}(t)\)</span>, of norm at most <span class="math" data-tex="\(n\)">\(n\)</span>. Its membership in <span class="math" data-tex="\(M\)">\(M\)</span> follows from <a href="OA-MOD-SK.html#oa-mod-sk-08">SK08</a>. Since <span class="math" data-tex="\(e_n\)">\(e_n\)</span> commutes with <span class="math" data-tex="\(p\)">\(p\)</span>, direct multiplication shows <span class="math" data-tex="\(g_n^2=g_n=g_n^*\)">\(g_n^2=g_n=g_n^*\)</span>. Spectral convergence in <a href="OA-MOD-SK.html#oa-mod-sk-09">SK09</a> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e_n\longrightarrow I,\\
+g_n\longrightarrow q\\
+\text{strongly},\\
+Te_n\zeta\longrightarrow T\zeta\\
+(\zeta\in D(T)).
+\end{gathered}
+\tag{PZ.6}
+\]">\[
+\begin{gathered}
+e_n\longrightarrow I,\\
+g_n\longrightarrow q\\
+\text{strongly},\\
+Te_n\zeta\longrightarrow T\zeta\\
+(\zeta\in D(T)).
+\end{gathered}
+\tag{PZ.6}
+\]</span>
+<p>On this domain the cutoffs also satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_nT\zeta=ue_np h\zeta\\
+=uh e_n\zeta\\
+=Te_n\zeta.
+\end{gathered}
+\tag{PZ.7}
+\]">\[
+\begin{gathered}
+g_nT\zeta=ue_np h\zeta\\
+=uh e_n\zeta\\
+=Te_n\zeta.
+\end{gathered}
+\tag{PZ.7}
+\]</span>
+<p>In the middle equality we used <span class="math" data-tex="\(ph=h\)">\(ph=h\)</span> on <span class="math" data-tex="\(D(h)\)">\(D(h)\)</span> and the spectral commutation of <span class="math" data-tex="\(e_n\)">\(e_n\)</span> with <span class="math" data-tex="\(h\)">\(h\)</span>. Although <span class="math" data-tex="\(e_n\)">\(e_n\)</span> includes the kernel of <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(g_n\)">\(g_n\)</span> converges to the final support <span class="math" data-tex="\(q\)">\(q\)</span>, which need not be the identity.</p>
+<p>Conjugate these identities by <span class="math" data-tex="\(J\)">\(J\)</span>, writing <span class="math" data-tex="\(e_n&#x27;=Je_nJ\)">\(e_n&#x27;=Je_nJ\)</span>, <span class="math" data-tex="\(g_n&#x27;=Jg_nJ\)">\(g_n&#x27;=Jg_nJ\)</span>, <span class="math" data-tex="\(q&#x27;=JqJ\)">\(q&#x27;=JqJ\)</span>, and <span class="math" data-tex="\(a_n&#x27;=Ja_nJ\)">\(a_n&#x27;=Ja_nJ\)</span>. They give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_n&#x27;=T&#x27;e_n&#x27;,\\
+a_n&#x27;\zeta=g_n&#x27;T&#x27;\zeta\\
+(\zeta\in D(T&#x27;)),\\
+g_n&#x27;\longrightarrow q&#x27;\\
+\text{strongly}.
+\end{gathered}
+\tag{PZ.8}
+\]">\[
+\begin{gathered}
+a_n&#x27;=T&#x27;e_n&#x27;,\\
+a_n&#x27;\zeta=g_n&#x27;T&#x27;\zeta\\
+(\zeta\in D(T&#x27;)),\\
+g_n&#x27;\longrightarrow q&#x27;\\
+\text{strongly}.
+\end{gathered}
+\tag{PZ.8}
+\]</span>
+<p>The first equality is an equality of bounded operators on all of <span class="math" data-tex="\(H\)">\(H\)</span>. The second is asserted on the indicated domain. For a general <span class="math" data-tex="\(T\)">\(T\)</span>, replacing the final cutoff <span class="math" data-tex="\(g_n&#x27;\)">\(g_n&#x27;\)</span> by the initial cutoff <span class="math" data-tex="\(e_n&#x27;\)">\(e_n&#x27;\)</span> in that second identity would be unjustified.</p>
+<h2 id="every-admissible-product-is-positive">Every admissible product is positive</h2>
+<p><strong>Theorem.</strong> If <span class="math" data-tex="\(\alpha\in P\)">\(\alpha\in P\)</span> and the affiliated operator <span class="math" data-tex="\(T\)">\(T\)</span> satisfies both conditions in PZ.3, then <span class="math" data-tex="\(TJTJ\alpha\in P\)">\(TJTJ\alpha\in P\)</span>. The operator need not be positive, self-adjoint, injective or surjective, and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> need not be cyclic.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(v=T&#x27;\alpha\)">\(v=T&#x27;\alpha\)</span> and <span class="math" data-tex="\(\xi=Tv\)">\(\xi=Tv\)</span>. These are defined by PZ.3. The range of <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> is contained in <span class="math" data-tex="\(q&#x27;H\)">\(q&#x27;H\)</span>, so <span class="math" data-tex="\(q&#x27;v=v\)">\(q&#x27;v=v\)</span>. As <span class="math" data-tex="\(q&#x27;\in M&#x27;\)">\(q&#x27;\in M&#x27;\)</span>, PZ.1 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q&#x27;\xi=q&#x27;Tv\\
+=Tq&#x27;v\\
+=Tv=\xi.
+\end{gathered}
+\tag{PZ.9}
+\]">\[
+\begin{gathered}
+q&#x27;\xi=q&#x27;Tv\\
+=Tq&#x27;v\\
+=Tv=\xi.
+\end{gathered}
+\tag{PZ.9}
+\]</span>
+<p>By PZ.8, <span class="math" data-tex="\(a_n&#x27;\alpha=g_n&#x27;v\)">\(a_n&#x27;\alpha=g_n&#x27;v\)</span>. Since <span class="math" data-tex="\(g_n&#x27;\in M&#x27;\)">\(g_n&#x27;\in M&#x27;\)</span> commutes with the bounded operator <span class="math" data-tex="\(a_n\in M\)">\(a_n\in M\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_nJa_nJ\alpha\\
+=a_ng_n&#x27;v\\
+=g_n&#x27;Te_nv.
+\end{gathered}
+\tag{PZ.10}
+\]">\[
+\begin{gathered}
+a_nJa_nJ\alpha\\
+=a_ng_n&#x27;v\\
+=g_n&#x27;Te_nv.
+\end{gathered}
+\tag{PZ.10}
+\]</span>
+<p>All products on this line are defined: <span class="math" data-tex="\(e_nH\subseteq D(T)\)">\(e_nH\subseteq D(T)\)</span>, and every other operator used in the calculation is bounded. The estimate</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|g_n&#x27;Te_nv-\xi\|\\
+\le \|Te_nv-Tv\|\\
++\|(g_n&#x27;-q&#x27;)\xi\|.
+\end{gathered}
+\tag{PZ.11}
+\]">\[
+\begin{gathered}
+\|g_n&#x27;Te_nv-\xi\|\\
+\le \|Te_nv-Tv\|\\
++\|(g_n&#x27;-q&#x27;)\xi\|.
+\end{gathered}
+\tag{PZ.11}
+\]</span>
+<p>tends to zero by PZ.6, PZ.8 and PZ.9. Each left-hand vector in PZ.10 belongs to <span class="math" data-tex="\(P\)">\(P\)</span> by the bounded standard-cone invariance in SF05. The cone is norm closed, so its limit <span class="math" data-tex="\(\xi\)">\(\xi\)</span> belongs to <span class="math" data-tex="\(P\)">\(P\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The support identity PZ.9 is essential to this argument: the strong limit of the final cutoffs is <span class="math" data-tex="\(q&#x27;\)">\(q&#x27;\)</span>, not necessarily <span class="math" data-tex="\(I\)">\(I\)</span>. This proof never exchanges two unbounded factors.</p>
+<h2 id="multiplication-operators-and-a-missing-domain-example">Multiplication operators and a missing-domain example</h2>
+<p>Consider the standard multiplication form <span class="math" data-tex="\(M=L^\infty(X,\mu)\)">\(M=L^\infty(X,\mu)\)</span> on <span class="math" data-tex="\(H=L^2(X,\mu)\)">\(H=L^2(X,\mu)\)</span>, with <span class="math" data-tex="\(Jf=\overline f\)">\(Jf=\overline f\)</span> and <span class="math" data-tex="\(P=L^2(X,\mu)_+\)">\(P=L^2(X,\mu)_+\)</span>. Assume this is a standard representation and that <span class="math" data-tex="\(\alpha\in P\)">\(\alpha\in P\)</span> is strictly positive almost everywhere. The latter condition makes it cyclic: for <span class="math" data-tex="\(f\in L^2\)">\(f\in L^2\)</span>, truncate <span class="math" data-tex="\(f/\alpha\)">\(f/\alpha\)</span> to where its absolute value is at most <span class="math" data-tex="\(n\)">\(n\)</span>; multiplication of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by these bounded functions converges to <span class="math" data-tex="\(f\)">\(f\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Dominated convergence here is the written scalar theorem <a href="notes/analytic-programme/scalar-integration-programme.html">MCT/DCT, Theorems 2.1–2.2</a>.</p>
+<p>Given any <span class="math" data-tex="\(\xi\in P\)">\(\xi\in P\)</span>, let <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> consist of the functions <span class="math" data-tex="\(f\in L^2\)">\(f\in L^2\)</span> for which <span class="math" data-tex="\(tf\in L^2\)">\(tf\in L^2\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t=\sqrt{\xi/\alpha},\\
+Tf=tf.
+\end{gathered}
+\tag{PZ.12}
+\]">\[
+\begin{gathered}
+t=\sqrt{\xi/\alpha},\\
+Tf=tf.
+\end{gathered}
+\tag{PZ.12}
+\]</span>
+<p>All functions are understood almost everywhere, so arbitrary values on the null exceptional set do not matter. The real function <span class="math" data-tex="\(t\)">\(t\)</span> is finite and nonnegative almost everywhere.</p>
+<p>Here are the operator details. The projections <span class="math" data-tex="\(r_n=1_{\{t\le n\}}\)">\(r_n=1_{\{t\le n\}}\)</span> increase strongly to <span class="math" data-tex="\(I\)">\(I\)</span>, and <span class="math" data-tex="\(r_nH\subseteq D(T)\)">\(r_nH\subseteq D(T)\)</span>; thus the domain is dense. If <span class="math" data-tex="\(f_k\to f\)">\(f_k\to f\)</span> and <span class="math" data-tex="\(Tf_k\to g\)">\(Tf_k\to g\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, bounded multiplication on each cutoff gives <span class="math" data-tex="\(r_ng=tr_nf\)">\(r_ng=tr_nf\)</span>. Letting <span class="math" data-tex="\(n\)">\(n\)</span> increase shows <span class="math" data-tex="\(g=tf\)">\(g=tf\)</span> almost everywhere, so <span class="math" data-tex="\(T\)">\(T\)</span> is closed. The reality of <span class="math" data-tex="\(t\)">\(t\)</span> makes it symmetric. If <span class="math" data-tex="\(f\in D(T^*)\)">\(f\in D(T^*)\)</span>, test the adjoint identity against all vectors supported in <span class="math" data-tex="\(\{t\le n\}\)">\(\{t\le n\}\)</span>. It gives <span class="math" data-tex="\(r_nT^*f=tr_nf\)">\(r_nT^*f=tr_nf\)</span>; hence <span class="math" data-tex="\(tf=T^*f\in L^2\)">\(tf=T^*f\in L^2\)</span>. This proves self-adjointness, and its quadratic form is nonnegative. Finally every unitary in <span class="math" data-tex="\(M&#x27;=JMJ=M\)">\(M&#x27;=JMJ=M\)</span> is multiplication by a function of modulus one, and preserves the displayed domain while commuting with <span class="math" data-tex="\(T\)">\(T\)</span>. Thus <span class="math" data-tex="\(T\)">\(T\)</span> is affiliated.</p>
+<p>Cauchy–Schwarz in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, proved in <a href="OA-MOD-BK.html#oa-mod-bk-01">BK01</a>, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|T\alpha\|_2^2\\
+=\int_X\xi\alpha\,d\mu\\
+\le\|\xi\|_2\|\alpha\|_2,\\
+JT\alpha=T\alpha\\
+=\sqrt{\xi\alpha},\\
+T(JT\alpha)=\xi\in L^2.
+\end{gathered}
+\tag{PZ.13}
+\]">\[
+\begin{gathered}
+\|T\alpha\|_2^2\\
+=\int_X\xi\alpha\,d\mu\\
+\le\|\xi\|_2\|\alpha\|_2,\\
+JT\alpha=T\alpha\\
+=\sqrt{\xi\alpha},\\
+T(JT\alpha)=\xi\in L^2.
+\end{gathered}
+\tag{PZ.13}
+\]</span>
+<p>These are exactly the two domain checks in PZ.3. Together with PZ03, they prove the full parametrization in this multiplication model.</p>
+<p>The second domain condition cannot be omitted even here. On <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, with indices <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, take</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha_n=2^{-2n},\\
+(Tf)_n=2^nf_n.
+\end{gathered}
+\tag{PZ.14}
+\]">\[
+\begin{gathered}
+\alpha_n=2^{-2n},\\
+(Tf)_n=2^nf_n.
+\end{gathered}
+\tag{PZ.14}
+\]</span>
+<p>on its maximal domain. The preceding argument makes <span class="math" data-tex="\(T\)">\(T\)</span> positive self-adjoint and affiliated with the diagonal algebra, and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is cyclic. But <span class="math" data-tex="\(T\alpha=(2^{-n})\)">\(T\alpha=(2^{-n})\)</span> is square summable whereas <span class="math" data-tex="\(T(JT\alpha)\)">\(T(JT\alpha)\)</span> would be the constant sequence <span class="math" data-tex="\(1\)">\(1\)</span>. Therefore <span class="math" data-tex="\(\alpha\in D(T)\)">\(\alpha\in D(T)\)</span> and <span class="math" data-tex="\(JT\alpha\notin D(T)\)">\(JT\alpha\notin D(T)\)</span>.</p>
+<h2 id="the-positive-hilbert-schmidt-model">The positive Hilbert–Schmidt model</h2>
+<p>Let <span class="math" data-tex="\(K\ne0\)">\(K\ne0\)</span>, let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be a positive injective Hilbert–Schmidt operator on <span class="math" data-tex="\(K\)">\(K\)</span>, and represent <span class="math" data-tex="\(B(K)\)">\(B(K)\)</span> on <span class="math" data-tex="\(\mathcal S_2(K)\)">\(\mathcal S_2(K)\)</span> by left multiplication <span class="math" data-tex="\(L_aZ=aZ\)">\(L_aZ=aZ\)</span>. The finite-trace spectral argument in <a href="OA-MOD-KL.html#oa-mod-kl-09">KL09</a>, applied to <span class="math" data-tex="\(\alpha^2\)">\(\alpha^2\)</span>, gives an orthonormal basis <span class="math" data-tex="\((e_j)\)">\((e_j)\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha e_j=\alpha_j e_j,\\
+\alpha_j&gt;0,\\
+\sum_j\alpha_j^2&lt;\infty.
+\end{gathered}
+\tag{PZ.15}
+\]">\[
+\begin{gathered}
+\alpha e_j=\alpha_j e_j,\\
+\alpha_j&gt;0,\\
+\sum_j\alpha_j^2&lt;\infty.
+\end{gathered}
+\tag{PZ.15}
+\]</span>
+<p>The index set is finite or countable. Separability is a consequence of this faithful vector, not an extra hypothesis on a type-I factor. The same spectral argument, without injectivity, diagonalizes any positive Hilbert–Schmidt operator on its support; adjoining a basis of its kernel completes an orthonormal basis of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>For clarity we identify the natural cone in this realization. Use the faithful finite functional with density <span class="math" data-tex="\(h=\alpha^2\)">\(h=\alpha^2\)</span>. KL09 identifies its GNS space with <span class="math" data-tex="\(\mathcal S_2(K)\)">\(\mathcal S_2(K)\)</span>, its cyclic vector with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and its modular conjugation with <span class="math" data-tex="\(JZ=Z^*\)">\(JZ=Z^*\)</span>. Its modular operator on matrix coefficients is</p>
+<span class="math math-display" data-tex="\[
+(\Delta Z)_{ij}
+=\frac{\alpha_i^2}{\alpha_j^2}Z_{ij}.
+\tag{PZ.16}
+\]">\[
+(\Delta Z)_{ij}
+=\frac{\alpha_i^2}{\alpha_j^2}Z_{ij}.
+\tag{PZ.16}
+\]</span>
+<p>The square generators in <a href="OA-MOD-SF.html#oa-mod-sf-04">SF04</a> are <span class="math" data-tex="\(\Delta^{1/4}(xx^*\alpha)\)">\(\Delta^{1/4}(xx^*\alpha)\)</span>, for <span class="math" data-tex="\(x\in B(K)\)">\(x\in B(K)\)</span>. Every finite principal compression of this vector is
+<span class="math" data-tex="\(p\alpha^{1/2}xx^*\alpha^{1/2}p\)">\(p\alpha^{1/2}xx^*\alpha^{1/2}p\)</span>, by PZ.16, and hence positive. Hilbert–Schmidt convergence implies operator-norm convergence, since rowwise Cauchy–Schwarz gives <span class="math" data-tex="\(\|Z\|\le\|Z\|_2\)">\(\|Z\|\le\|Z\|_2\)</span>. Positivity of all these compressions therefore makes each generator a positive operator, and their closed cone is contained in the positive Hilbert–Schmidt operators.</p>
+<p>Conversely, on a finite spectral coordinate subspace <span class="math" data-tex="\(pK\)">\(pK\)</span>, write <span class="math" data-tex="\(\alpha_p=\alpha|_{pK}\)">\(\alpha_p=\alpha|_{pK}\)</span>. Every positive matrix <span class="math" data-tex="\(r=prp\)">\(r=prp\)</span> is such a generator: take</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x=\alpha_p^{-1/2}r^{1/2},
+\end{gathered}
+\tag{PZ.17}
+\]">\[
+\begin{gathered}
+x=\alpha_p^{-1/2}r^{1/2},
+\end{gathered}
+\tag{PZ.17}
+\]</span>
+<p>defined on <span class="math" data-tex="\(pK\)">\(pK\)</span> and extended by zero. Direct multiplication gives <span class="math" data-tex="\(\alpha^{1/2}xx^*\alpha^{1/2}=r\)">\(\alpha^{1/2}xx^*\alpha^{1/2}=r\)</span>. For any positive <span class="math" data-tex="\(Z\in\mathcal S_2(K)\)">\(Z\in\mathcal S_2(K)\)</span>, increasing finite coordinate projections have <span class="math" data-tex="\(pZp\to Z\)">\(pZp\to Z\)</span> in Hilbert–Schmidt norm, by the tails of <span class="math" data-tex="\(\sum_{i,j}|Z_{ij}|^2\)">\(\sum_{i,j}|Z_{ij}|^2\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P=\mathcal S_2(K)_+,\\
+JZ=Z^*.
+\end{gathered}
+\tag{PZ.18}
+\]">\[
+\begin{gathered}
+P=\mathcal S_2(K)_+,\\
+JZ=Z^*.
+\end{gathered}
+\tag{PZ.18}
+\]</span>
+<p>Matrix units show cyclicity of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>: <span class="math" data-tex="\(E_{ij}=\alpha_j^{-1}E_{ij}\alpha\)">\(E_{ij}=\alpha_j^{-1}E_{ij}\alpha\)</span>. Its range is dense, so <span class="math" data-tex="\(a\alpha=0\)">\(a\alpha=0\)</span> forces <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, proving separation. Conversely, if a positive Hilbert–Schmidt <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> had a nonzero kernel vector, its entire left orbit would annihilate that vector. The continuous evaluation map <span class="math" data-tex="\(Z\mapsto Zk\)">\(Z\mapsto Zk\)</span> then shows that this orbit could not be dense. This proves that the cyclic positive vectors in the model are exactly the injective ones.</p>
+<h2 id="existence-for-every-type-i-factor-with-a-cyclic-vector">Existence for every type-I factor with a cyclic vector</h2>
+<p>Work in PZ05, and let <span class="math" data-tex="\(\xi\in\mathcal S_2(K)_+\)">\(\xi\in\mathcal S_2(K)_+\)</span> be arbitrary. Diagonalize it in a complete orthonormal basis <span class="math" data-tex="\((f_j)\)">\((f_j)\)</span>, including its kernel:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\xi f_j=\beta_j f_j,\\
+\beta_j\ge0.
+\end{gathered}
+\tag{PZ.19}
+\]">\[
+\begin{gathered}
+\xi f_j=\beta_j f_j,\\
+\beta_j\ge0.
+\end{gathered}
+\tag{PZ.19}
+\]</span>
+<p>Choose any bijection between this basis and the basis in PZ.15, and let <span class="math" data-tex="\(Ue_j=f_j\)">\(Ue_j=f_j\)</span>. Define the finite scalars</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d_j=\sqrt{\beta_j/\alpha_j},\\
+De_j=d_je_j.
+\end{gathered}
+\tag{PZ.20}
+\]">\[
+\begin{gathered}
+d_j=\sqrt{\beta_j/\alpha_j},\\
+De_j=d_je_j.
+\end{gathered}
+\tag{PZ.20}
+\]</span>
+<p>with the maximal diagonal domain. No uniform bound on <span class="math" data-tex="\(d_j\)">\(d_j\)</span> is required. On the Hilbert–Schmidt space define <span class="math" data-tex="\(A\)">\(A\)</span> on precisely those <span class="math" data-tex="\(Z\in\mathcal S_2(K)\)">\(Z\in\mathcal S_2(K)\)</span> for which <span class="math" data-tex="\(Q(Z)&lt;\infty\)">\(Q(Z)&lt;\infty\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q(Z)\\
+=\sum_{i,j}d_i^2|Z_{ij}|^2,\\
+(AZ)_{ij}=d_iZ_{ij},\\
+T=L_UA,\\
+D(T)=D(A).
+\end{gathered}
+\tag{PZ.21}
+\]">\[
+\begin{gathered}
+Q(Z)\\
+=\sum_{i,j}d_i^2|Z_{ij}|^2,\\
+(AZ)_{ij}=d_iZ_{ij},\\
+T=L_UA,\\
+D(T)=D(A).
+\end{gathered}
+\tag{PZ.21}
+\]</span>
+<p>The diagonal spectral theorem <a href="OA-MOD-SK.html#oa-mod-sk-05">SK05</a> makes <span class="math" data-tex="\(A\)">\(A\)</span> positive self-adjoint. Its spectral projections are left multiplication by the corresponding diagonal projections on <span class="math" data-tex="\(K\)">\(K\)</span>, so <span class="math" data-tex="\(A\)">\(A\)</span> is affiliated with <span class="math" data-tex="\(L(B(K))\)">\(L(B(K))\)</span> by SK08. Multiplication by the unitary <span class="math" data-tex="\(L_U\)">\(L_U\)</span> preserves closedness and density of the domain. Every commutant unitary commutes with both <span class="math" data-tex="\(L_U\)">\(L_U\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span> on that domain; hence <span class="math" data-tex="\(T\)">\(T\)</span> is closed, densely defined and affiliated with the represented algebra.</p>
+<p>Set <span class="math" data-tex="\(C e_j=\sqrt{\alpha_j\beta_j}\,e_j\)">\(C e_j=\sqrt{\alpha_j\beta_j}\,e_j\)</span>. Cauchy–Schwarz for the two square-summable eigenvalue sequences gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_j\alpha_j\beta_j\\
+\le\|\alpha\|_2\|\xi\|_2&lt;\infty,\\
+T\alpha=UC,\\
+JT\alpha=CU^*.
+\end{gathered}
+\tag{PZ.22}
+\]">\[
+\begin{gathered}
+\sum_j\alpha_j\beta_j\\
+\le\|\alpha\|_2\|\xi\|_2&lt;\infty,\\
+T\alpha=UC,\\
+JT\alpha=CU^*.
+\end{gathered}
+\tag{PZ.22}
+\]</span>
+<p>In particular <span class="math" data-tex="\(\alpha\in D(T)\)">\(\alpha\in D(T)\)</span>. The second domain check uses the row norms of the unitary matrix <span class="math" data-tex="\(U^*\)">\(U^*\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{i,j}d_i^2|(CU^*)_{ij}|^2\\
+=\sum_i d_i^2\alpha_i\beta_i\\
+=\sum_i\beta_i^2&lt;\infty.
+\end{gathered}
+\tag{PZ.23}
+\]">\[
+\begin{gathered}
+\sum_{i,j}d_i^2|(CU^*)_{ij}|^2\\
+=\sum_i d_i^2\alpha_i\beta_i\\
+=\sum_i\beta_i^2&lt;\infty.
+\end{gathered}
+\tag{PZ.23}
+\]</span>
+<p>All summands are nonnegative, so passing between the iterated and double sums is justified by their finite-subsum definition. Thus <span class="math" data-tex="\(JT\alpha\in D(T)\)">\(JT\alpha\in D(T)\)</span>, and the coefficient calculation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T(JT\alpha)\\
+=U\operatorname{diag}(\beta_j)U^*\\
+=\xi.
+\end{gathered}
+\tag{PZ.24}
+\]">\[
+\begin{gathered}
+T(JT\alpha)\\
+=U\operatorname{diag}(\beta_j)U^*\\
+=\xi.
+\end{gathered}
+\tag{PZ.24}
+\]</span>
+<p>These are identities of vectors in <span class="math" data-tex="\(\mathcal S_2(K)\)">\(\mathcal S_2(K)\)</span>; no closure of a formal operator product has replaced either domain check. PZ03 proves the reverse containment. This proves the full parametrization for the stated type-I model.</p>
+<p>To obtain the assertion for an arbitrary standard representation of a type-I factor, identify the algebra with <span class="math" data-tex="\(B(K)\)">\(B(K)\)</span>. A cyclic cone vector is separating: if <span class="math" data-tex="\(a\alpha=0\)">\(a\alpha=0\)</span>, then <span class="math" data-tex="\(JaJ\alpha=0\)">\(JaJ\alpha=0\)</span>, and commutation with <span class="math" data-tex="\(M\)">\(M\)</span> makes <span class="math" data-tex="\(JaJ\)">\(JaJ\)</span> vanish on the dense set <span class="math" data-tex="\(M\alpha\)">\(M\alpha\)</span>. Its vector functional is therefore faithful, and it is normal by <a href="OA-MOD-CP.html#oa-mod-cp-07">CP07</a>. It assigns strictly positive masses to the rank-one projections of any orthonormal basis of <span class="math" data-tex="\(K\)">\(K\)</span>. Every finite sum of these masses is at most <span class="math" data-tex="\(\|\alpha\|^2\)">\(\|\alpha\|^2\)</span>, so there are only countably many: for each positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, only finitely many can be at least <span class="math" data-tex="\(1/m\)">\(1/m\)</span>. Thus <span class="math" data-tex="\(K\)">\(K\)</span> is separable. Choose any positive injective Hilbert–Schmidt diagonal density to construct the standard model of PZ05. The standard-form unitary in <a href="OA-MOD-SE.html#oa-mod-se-10">SE10</a> sends the given cyclic cone vector to a cyclic positive Hilbert–Schmidt vector, hence an injective one by PZ05. Apply the construction above to that vector and the transported target. Conjugation back by this unitary transports the closed graph, affiliation and both product-domain conditions.</p>
+<p>In finite dimension there is also a positive choice, which need not diagonalize <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in the same basis. Put <span class="math" data-tex="\(c=\alpha^{1/2}\)">\(c=\alpha^{1/2}\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r=(c\xi c)^{1/2},\\
+b=c^{-1}rc^{-1}.
+\end{gathered}
+\tag{PZ.25}
+\]">\[
+\begin{gathered}
+r=(c\xi c)^{1/2},\\
+b=c^{-1}rc^{-1}.
+\end{gathered}
+\tag{PZ.25}
+\]</span>
+<p>Positive square roots exist by BK01. Direct multiplication gives <span class="math" data-tex="\(b\alpha b=\xi\)">\(b\alpha b=\xi\)</span>, and <span class="math" data-tex="\(b\ge0\)">\(b\ge0\)</span>. Taking <span class="math" data-tex="\(T=L_b\)">\(T=L_b\)</span> works because <span class="math" data-tex="\(JL_bJ\)">\(JL_bJ\)</span> is right multiplication by <span class="math" data-tex="\(b\)">\(b\)</span>. Every domain is the full finite-dimensional Hilbert–Schmidt space. In infinite dimension <span class="math" data-tex="\(\alpha^{-1/2}\)">\(\alpha^{-1/2}\)</span> may be unbounded; PZ25 alone is not a definition or a proof of an admissible operator there. The construction PZ20–24 supplies one without that assumption.</p>
+<p>The model arguments remain useful even after the general construction below: they display the domains directly and give a different choice of factor. The formal inverse expression in PZ.25 will not be used in the general proof.</p>
+<h2 id="a-positive-functional-between-two-cone-vectors">A positive functional between two cone vectors</h2>
+<p>Assume <span class="math" data-tex="\(\alpha\in P\)">\(\alpha\in P\)</span> is cyclic and fix <span class="math" data-tex="\(\xi\in P\)">\(\xi\in P\)</span>. As proved in PZ06, <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is separating. Its faithful finite vector functional has GNS space <span class="math" data-tex="\(H\)">\(H\)</span>, modular conjugation <span class="math" data-tex="\(J\)">\(J\)</span>, and modular operator <span class="math" data-tex="\(\Delta&gt;0\)">\(\Delta&gt;0\)</span>, by <a href="OA-MOD-SE.html#oa-mod-se-06">SE06</a>. Put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sigma_t(x)=\Delta^{it}x\Delta^{-it},\\
+\tau_t(b)=\Delta^{it}b\Delta^{-it}\\
+(x\in M,\ b\in M&#x27;).
+\end{gathered}
+\tag{PZ.26}
+\]">\[
+\begin{gathered}
+\sigma_t(x)=\Delta^{it}x\Delta^{-it},\\
+\tau_t(b)=\Delta^{it}b\Delta^{-it}\\
+(x\in M,\ b\in M&#x27;).
+\end{gathered}
+\tag{PZ.26}
+\]</span>
+<p>Here <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is the action on the commutant with this displayed sign convention. Both actions have norm-entire subalgebras, supplied by <a href="OA-MOD-CZ.html">CZ02</a> and <a href="OA-MOD-MA.html#oa-mod-ma-16">MA16</a>. Gaussian smoothing gives uniformly bounded strong-star approximants. Write <span class="math" data-tex="\(M_{\rm an}\)">\(M_{\rm an}\)</span> and <span class="math" data-tex="\(M&#x27;_{\rm an}\)">\(M&#x27;_{\rm an}\)</span> for these subalgebras.</p>
+<p>We need relative operators for positive functionals which need not be faithful. The precise finite version of the <a href="OA-MOD-SF.html#oa-mod-sf-13">SF13 relative graph</a>, including its zero part, is as follows. For each <span class="math" data-tex="\(\beta\in P\)">\(\beta\in P\)</span>, there is a positive self-adjoint <span class="math" data-tex="\(A_\beta\)">\(A_\beta\)</span>, supported by <span class="math" data-tex="\(p_\beta=s_M(\omega_\beta)\)">\(p_\beta=s_M(\omega_\beta)\)</span>, such that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M\alpha\text{ is a core}\\
+\text{for }A_\beta^{1/2},\\
+A_\beta^{1/2}x\alpha=Jx^*\beta,\\
+A_\beta^{it}b=\tau_t(b)A_\beta^{it}.
+\end{gathered}
+\tag{PZ.27}
+\]">\[
+\begin{gathered}
+M\alpha\text{ is a core}\\
+\text{for }A_\beta^{1/2},\\
+A_\beta^{1/2}x\alpha=Jx^*\beta,\\
+A_\beta^{it}b=\tau_t(b)A_\beta^{it}.
+\end{gathered}
+\tag{PZ.27}
+\]</span>
+<p>Imaginary powers in the last line are zero on <span class="math" data-tex="\((1-p_\beta)H\)">\((1-p_\beta)H\)</span>, including <span class="math" data-tex="\(A_\beta^0=p_\beta\)">\(A_\beta^0=p_\beta\)</span>; positive powers have the full zero-operator summand there. Moreover <span class="math" data-tex="\(A_\beta^{it}\Delta^{-it}\in M\)">\(A_\beta^{it}\Delta^{-it}\in M\)</span> is a contraction.</p>
+<p>Here is the support reduction, to avoid using a faithful theorem with an omitted kernel. Complete <span class="math" data-tex="\(\omega_\beta\)">\(\omega_\beta\)</span> by
+<span class="math" data-tex="\(\rho(x)=\omega_\beta(x)+\omega_\alpha(qxq)\)">\(\rho(x)=\omega_\beta(x)+\omega_\alpha(qxq)\)</span>, where <span class="math" data-tex="\(q=1-p_\beta\)">\(q=1-p_\beta\)</span>. This is a faithful finite normal functional: vanishing at a positive <span class="math" data-tex="\(x\)">\(x\)</span> makes <span class="math" data-tex="\(x^{1/2}p_\beta=x^{1/2}q=0\)">\(x^{1/2}p_\beta=x^{1/2}q=0\)</span>. Also <span class="math" data-tex="\(\rho(p_\beta x)=\rho(xp_\beta)\)">\(\rho(p_\beta x)=\rho(xp_\beta)\)</span>, so <a href="OA-MOD-CZ.html">CZ05</a> fixes <span class="math" data-tex="\(p_\beta\)">\(p_\beta\)</span> under its modular group. The two summand vectors have orthogonal left and right supports, by SF06; hence the cone vector of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is their sum and <span class="math" data-tex="\(Jp_\beta J\beta_\rho=\beta\)">\(Jp_\beta J\beta_\rho=\beta\)</span>. Let <span class="math" data-tex="\(R=\Delta_{\rho,\omega_\alpha}\)">\(R=\Delta_{\rho,\omega_\alpha}\)</span>. SF13 and <a href="OA-MOD-SI.html#oa-mod-si-08">SI08/12</a> give its relative graph, its two modular actions, and its common conjugation. The projection <span class="math" data-tex="\(p_\beta\)">\(p_\beta\)</span> reduces <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>Take <span class="math" data-tex="\(A_\beta=R|_{p_\beta H}\oplus0|_{qH}\)">\(A_\beta=R|_{p_\beta H}\oplus0|_{qH}\)</span>. To verify the core, approximate an arbitrary <span class="math" data-tex="\(q\)">\(q\)</span>-component by <span class="math" data-tex="\(q1_{[1/n,n]}(R)\)">\(q1_{[1/n,n]}(R)\)</span> applied to it; this changes no <span class="math" data-tex="\(A_\beta^{1/2}\)">\(A_\beta^{1/2}\)</span>-image. The resulting vector is in <span class="math" data-tex="\(D(R^{1/2})\)">\(D(R^{1/2})\)</span>, where the SF13 core <span class="math" data-tex="\(M\alpha\)">\(M\alpha\)</span> approximates in the stronger graph norm. On that core,
+<span class="math" data-tex="\(JA_\beta^{1/2}x\alpha=Jp_\beta Jx^*\beta_\rho=x^*\beta\)">\(JA_\beta^{1/2}x\alpha=Jp_\beta Jx^*\beta_\rho=x^*\beta\)</span>.
+The commutant identity follows from SI08's second action, transported by SI12, since <span class="math" data-tex="\(p_\beta\in M\)">\(p_\beta\in M\)</span>. Finally <a href="OA-MOD-SI.html#oa-mod-si-14">SI14</a> gives <span class="math" data-tex="\(R^{it}\Delta^{-it}\in M\)">\(R^{it}\Delta^{-it}\in M\)</span>; multiplication by <span class="math" data-tex="\(p_\beta\)">\(p_\beta\)</span> proves the last assertion. None of this reduction requires <span class="math" data-tex="\(\omega_\beta\le c\omega_\alpha\)">\(\omega_\beta\le c\omega_\alpha\)</span>.</p>
+<p>The same core may be restricted to <span class="math" data-tex="\(M_{\rm an}\alpha\)">\(M_{\rm an}\alpha\)</span>: bounded strong-star smoothing of <span class="math" data-tex="\(x\)">\(x\)</span> makes both <span class="math" data-tex="\(x\alpha\)">\(x\alpha\)</span> and <span class="math" data-tex="\(Jx^*\beta\)">\(Jx^*\beta\)</span> converge. We will use that graph core, not merely its Hilbert-space density.</p>
+<p>By <a href="OA-MOD-QO.html#oa-mod-qo-01">QO01–02</a>, <span class="math" data-tex="\(\Theta(x)=\Delta^{1/4}x\alpha\)">\(\Theta(x)=\Delta^{1/4}x\alpha\)</span> is defined on all of <span class="math" data-tex="\(M\)">\(M\)</span>, is positive into <span class="math" data-tex="\(P\)">\(P\)</span>, and has norm at most <span class="math" data-tex="\(\|\alpha\|\)">\(\|\alpha\|\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\psi(x)=\langle\Theta(x),\xi\rangle,\\
+x\in M.
+\end{gathered}
+\tag{PZ.28}
+\]">\[
+\begin{gathered}
+\psi(x)=\langle\Theta(x),\xi\rangle,\\
+x\in M.
+\end{gathered}
+\tag{PZ.28}
+\]</span>
+<p>It is a bounded positive functional by self-duality of <span class="math" data-tex="\(P\)">\(P\)</span>. It is normal as well. Indeed, if <span class="math" data-tex="\(0\le x_i\uparrow x\)">\(0\le x_i\uparrow x\)</span>, put <span class="math" data-tex="\(v_i=(x-x_i)\alpha\)">\(v_i=(x-x_i)\alpha\)</span>. Then <span class="math" data-tex="\(v_i\to0\)">\(v_i\to0\)</span> and
+<span class="math" data-tex="\(\Delta^{1/2}v_i=J(x-x_i)\alpha\to0\)">\(\Delta^{1/2}v_i=J(x-x_i)\alpha\to0\)</span>.
+The spectral inequality
+<span class="math" data-tex="\(\|\Delta^{1/4}v_i\|^2\le\|v_i\|\|\Delta^{1/2}v_i\|\)">\(\|\Delta^{1/4}v_i\|^2\le\|v_i\|\|\Delta^{1/2}v_i\|\)</span>
+therefore gives <span class="math" data-tex="\(\psi(x_i)\to\psi(x)\)">\(\psi(x_i)\to\psi(x)\)</span>. This is the positive normality criterion of <a href="OA-MOD-CP.html#oa-mod-cp-07">CP07</a>.
+Let <span class="math" data-tex="\(\zeta\in P\)">\(\zeta\in P\)</span> be its unique implementing vector, supplied by SF10. Set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A=A_\xi,\\
+B=A_\zeta^{1/2}.
+\end{gathered}
+\tag{PZ.29}
+\]">\[
+\begin{gathered}
+A=A_\xi,\\
+B=A_\zeta^{1/2}.
+\end{gathered}
+\tag{PZ.29}
+\]</span>
+<p>Thus <span class="math" data-tex="\(B\alpha=\zeta\)">\(B\alpha=\zeta\)</span>. Our next task is to prove, rather than assume, that <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> lies in both quarter-power domains of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>.</p>
+<h2 id="a-mixed-quarter-power-estimate-on-the-full-finite-core">A mixed quarter-power estimate on the full finite core</h2>
+<p>For every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A^{1/4}x\alpha\\
+\in D(\Delta^{1/4}),\\
+\|\Delta^{1/4}A^{1/4}x\alpha\|\\
+\le \|x\|\sqrt{\|\alpha\|\,\|\xi\|}.
+\end{gathered}
+\tag{PZ.30}
+\]">\[
+\begin{gathered}
+A^{1/4}x\alpha\\
+\in D(\Delta^{1/4}),\\
+\|\Delta^{1/4}A^{1/4}x\alpha\|\\
+\le \|x\|\sqrt{\|\alpha\|\,\|\xi\|}.
+\end{gathered}
+\tag{PZ.30}
+\]</span>
+<p>If <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>, <span class="math" data-tex="\(A=0\)">\(A=0\)</span> and the assertion is immediate. Otherwise fix <span class="math" data-tex="\(y\in M\)">\(y\in M\)</span> and, on <span class="math" data-tex="\(0\le\operatorname{Re}z\le1\)">\(0\le\operatorname{Re}z\le1\)</span>, put <span class="math" data-tex="\(v_z=\Delta^{(1-\bar z)/2}y\alpha\)">\(v_z=\Delta^{(1-\bar z)/2}y\alpha\)</span> and consider</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(z)\\
+=\langle A^{z/2}x\alpha,v_z\rangle.
+\end{gathered}
+\tag{PZ.31}
+\]">\[
+\begin{gathered}
+f(z)\\
+=\langle A^{z/2}x\alpha,v_z\rangle.
+\end{gathered}
+\tag{PZ.31}
+\]</span>
+<p>At the imaginary boundary the first power uses the supported convention in PZ.27. Spectral integration on the positive support gives a continuous bounded function on the closed strip and a holomorphic function inside it. Specifically, the squared norms of the two vector factors are bounded by their domain norms at exponents <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1/2\)">\(1/2\)</span>; dominated spectral integration proves continuity and holomorphy. Those domain norms are finite by PZ.27 and the ordinary Tomita graph. Conjugation of <span class="math" data-tex="\(z\)">\(z\)</span> in the second factor makes <span class="math" data-tex="\(f\)">\(f\)</span> holomorphic under our first-variable-linear convention.</p>
+<p>For real <span class="math" data-tex="\(t\)">\(t\)</span>, put <span class="math" data-tex="\(C_t=\Delta^{-it/2}A^{it/2}\)">\(C_t=\Delta^{-it/2}A^{it/2}\)</span>. The last assertion of PZ07, applied at <span class="math" data-tex="\(-t/2\)">\(-t/2\)</span> and then adjointed, puts <span class="math" data-tex="\(C_t\)">\(C_t\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span> with norm at most one. Since <span class="math" data-tex="\(\Delta^{1/2}y\alpha=Jy^*\alpha\)">\(\Delta^{1/2}y\alpha=Jy^*\alpha\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|f(it)|\\
+=|\langle C_t x\alpha,Jy^*J\alpha\rangle|\\
+=|\langle C_t xJyJ\alpha,\alpha\rangle|\\
+\le\|x\|\,\|\alpha\|\,\|y\alpha\|.
+\end{gathered}
+\tag{PZ.32}
+\]">\[
+\begin{gathered}
+|f(it)|\\
+=|\langle C_t x\alpha,Jy^*J\alpha\rangle|\\
+=|\langle C_t xJyJ\alpha,\alpha\rangle|\\
+\le\|x\|\,\|\alpha\|\,\|y\alpha\|.
+\end{gathered}
+\tag{PZ.32}
+\]</span>
+<p>Only bounded operators in the mutually commuting algebras were interchanged. At the other boundary, PZ.27 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|f(1+it)|\\
+\le\|A^{1/2}x\alpha\|\,\|y\alpha\|\\
+\le\|x\|\,\|\xi\|\,\|y\alpha\|.
+\end{gathered}
+\tag{PZ.33}
+\]">\[
+\begin{gathered}
+|f(1+it)|\\
+\le\|A^{1/2}x\alpha\|\,\|y\alpha\|\\
+\le\|x\|\,\|\xi\|\,\|y\alpha\|.
+\end{gathered}
+\tag{PZ.33}
+\]</span>
+<p>For completeness, the geometric boundary estimate follows from the constant-bound strip theorem <a href="OA-MOD-MA.html#oa-mod-ma-08">MA08</a>. If the two positive bounds in PZ.32 and PZ.33 are <span class="math" data-tex="\(m_0,m_1\)">\(m_0,m_1\)</span>, apply that theorem, after rotating the strip, to
+<span class="math" data-tex="\(f(z)m_0^{z-1}m_1^{-z}\)">\(f(z)m_0^{z-1}m_1^{-z}\)</span>, whose boundary bounds are one. At <span class="math" data-tex="\(z=1/2\)">\(z=1/2\)</span> this gives <span class="math" data-tex="\(|f(1/2)|\le\sqrt{m_0m_1}\)">\(|f(1/2)|\le\sqrt{m_0m_1}\)</span>. If <span class="math" data-tex="\(x=0\)">\(x=0\)</span> or <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, the scalar function is zero and the same conclusion is immediate.</p>
+<p>To pass from this scalar estimate to an actual domain statement, <span class="math" data-tex="\(M\alpha\)">\(M\alpha\)</span> is a core for <span class="math" data-tex="\(\Delta^{1/4}\)">\(\Delta^{1/4}\)</span>. Here are the core details. A graph core for a positive self-adjoint <span class="math" data-tex="\(h\)">\(h\)</span> is a core for <span class="math" data-tex="\(h^r\)">\(h^r\)</span>, <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>: first approximate a vector in <span class="math" data-tex="\(D(h^r)\)">\(D(h^r)\)</span> by bounded spectral truncations lying in <span class="math" data-tex="\(D(h)\)">\(D(h)\)</span>, then use the given graph core and <span class="math" data-tex="\(\lambda^{2r}\le1+\lambda^2\)">\(\lambda^{2r}\le1+\lambda^2\)</span>. Apply this with <span class="math" data-tex="\(h=\Delta^{1/2}\)">\(h=\Delta^{1/2}\)</span>, <span class="math" data-tex="\(r=1/2\)">\(r=1/2\)</span>. The bound on
+<span class="math" data-tex="\(\langle A^{1/4}x\alpha,\Delta^{1/4}y\alpha\rangle\)">\(\langle A^{1/4}x\alpha,\Delta^{1/4}y\alpha\rangle\)</span>
+therefore extends to all of <span class="math" data-tex="\(D(\Delta^{1/4})\)">\(D(\Delta^{1/4})\)</span>, bounded by the Hilbert norm of the test vector. Self-adjointness identifies the adjoint domain with <span class="math" data-tex="\(D(\Delta^{1/4})\)">\(D(\Delta^{1/4})\)</span> and proves both assertions of PZ.30.</p>
+<h2 id="identify-a-polar-operator-by-equality-of-forms">Identify a polar operator by equality of forms</h2>
+<p>On <span class="math" data-tex="\(\mathcal E=M_{\rm an}\alpha\)">\(\mathcal E=M_{\rm an}\alpha\)</span>, define a linear map</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(x\alpha)\\
+=A^{1/4}\Delta^{1/4}x\alpha.
+\end{gathered}
+\tag{PZ.34}
+\]">\[
+\begin{gathered}
+K_0(x\alpha)\\
+=A^{1/4}\Delta^{1/4}x\alpha.
+\end{gathered}
+\tag{PZ.34}
+\]</span>
+<p>This composition is defined there: <span class="math" data-tex="\(\Delta^{1/4}x\alpha=\sigma_{-i/4}(x)\alpha\)">\(\Delta^{1/4}x\alpha=\sigma_{-i/4}(x)\alpha\)</span>, which lies in <span class="math" data-tex="\(D(A^{1/2})\)">\(D(A^{1/2})\)</span>. Put <span class="math" data-tex="\(z=\sigma_{-i/4}(x)\)">\(z=\sigma_{-i/4}(x)\)</span>. PZ.27 and the ordinary analytic Tomita identity give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|K_0(x\alpha)\|^2\\
+=\langle A^{1/2}z\alpha,z\alpha\rangle\\
+=\langle Jz^*\xi,z\alpha\rangle\\
+=\langle zJzJ\alpha,\xi\rangle\\
+=\langle\Delta^{1/4}xx^*\alpha,\xi\rangle\\
+=\psi(xx^*)\\
+=\|Bx\alpha\|^2.
+\end{gathered}
+\tag{PZ.35}
+\]">\[
+\begin{gathered}
+\|K_0(x\alpha)\|^2\\
+=\langle A^{1/2}z\alpha,z\alpha\rangle\\
+=\langle Jz^*\xi,z\alpha\rangle\\
+=\langle zJzJ\alpha,\xi\rangle\\
+=\langle\Delta^{1/4}xx^*\alpha,\xi\rangle\\
+=\psi(xx^*)\\
+=\|Bx\alpha\|^2.
+\end{gathered}
+\tag{PZ.35}
+\]</span>
+<p>For the fourth equality, <span class="math" data-tex="\(JzJ\alpha=\Delta^{1/2}z^*\alpha
+=\sigma_{-i/2}(z^*)\alpha\)">\(JzJ\alpha=\Delta^{1/2}z^*\alpha
+=\sigma_{-i/2}(z^*)\alpha\)</span>, and
+<span class="math" data-tex="\(z^*=\sigma_{i/4}(x^*)\)">\(z^*=\sigma_{i/4}(x^*)\)</span>; hence
+<span class="math" data-tex="\(zJzJ\alpha=\sigma_{-i/4}(xx^*)\alpha\)">\(zJzJ\alpha=\sigma_{-i/4}(xx^*)\alpha\)</span>.
+All elements involved are entire, so these are identities on actual spectral domains.</p>
+<p>Polarization of PZ.35 makes</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U(Bx\alpha)\\
+=K_0(x\alpha)\\
+(x\in M_{\rm an})
+\end{gathered}
+\tag{PZ.36}
+\]">\[
+\begin{gathered}
+U(Bx\alpha)\\
+=K_0(x\alpha)\\
+(x\in M_{\rm an})
+\end{gathered}
+\tag{PZ.36}
+\]</span>
+<p>a well-defined isometry on <span class="math" data-tex="\(B\mathcal E\)">\(B\mathcal E\)</span>. The core established in PZ07 makes this subspace dense in <span class="math" data-tex="\(\overline{\operatorname{Ran}B}=p_\zeta H\)">\(\overline{\operatorname{Ran}B}=p_\zeta H\)</span>. Extend <span class="math" data-tex="\(U\)">\(U\)</span> isometrically there and set it equal to zero on <span class="math" data-tex="\((1-p_\zeta)H\)">\((1-p_\zeta)H\)</span>. Thus <span class="math" data-tex="\(U^*U=p_\zeta\)">\(U^*U=p_\zeta\)</span>. The operator <span class="math" data-tex="\(K=UB\)">\(K=UB\)</span>, with domain <span class="math" data-tex="\(D(B)\)">\(D(B)\)</span>, is closed: convergence of its graph gives convergence of <span class="math" data-tex="\(B\)">\(B\)</span>-images after applying <span class="math" data-tex="\(U^*\)">\(U^*\)</span>. The identical graph norms and the same core imply</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\overline{K_0}=UB,\\
+|K|=B.
+\end{gathered}
+\tag{PZ.37}
+\]">\[
+\begin{gathered}
+\overline{K_0}=UB,\\
+|K|=B.
+\end{gathered}
+\tag{PZ.37}
+\]</span>
+<p>This constructs the polar operator from the core; it makes no assertion about the closure of a product on a larger, unexamined domain.</p>
+<p>We now prove <span class="math" data-tex="\(U\in M\)">\(U\in M\)</span>. We use this consequence of PZ.27: for <span class="math" data-tex="\(b\in M&#x27;_{\rm an}\)">\(b\in M&#x27;_{\rm an}\)</span> and <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+bD(A_\beta^r)\\
+\subset D(A_\beta^r),\\
+A_\beta^r b v\\
+=\tau_{-ir}(b)A_\beta^r v\\
+(v\in D(A_\beta^r)).
+\end{gathered}
+\tag{PZ.38}
+\]">\[
+\begin{gathered}
+bD(A_\beta^r)\\
+\subset D(A_\beta^r),\\
+A_\beta^r b v\\
+=\tau_{-ir}(b)A_\beta^r v\\
+(v\in D(A_\beta^r)).
+\end{gathered}
+\tag{PZ.38}
+\]</span>
+<p>To justify the complex time, restrict to <span class="math" data-tex="\(p_\beta H\)">\(p_\beta H\)</span>, where the imaginary powers are a unitary group. The function
+<span class="math" data-tex="\(\tau_z(b)A_\beta^{iz}v\)">\(\tau_z(b)A_\beta^{iz}v\)</span> is bounded and continuous on the closed strip <span class="math" data-tex="\(-r\le\operatorname{Im}z\le0\)">\(-r\le\operatorname{Im}z\le0\)</span>, holomorphic inside, and equals <span class="math" data-tex="\(A_\beta^{it}bv\)">\(A_\beta^{it}bv\)</span> on the real boundary. Bounds reduce to the compact imaginary segment for the first factor and the two spectral endpoint norms for the second. The spectral-domain strip criterion <a href="OA-MOD-MA.html#oa-mod-ma-09">MA09</a> identifies its endpoint with <span class="math" data-tex="\(A_\beta^rbv\)">\(A_\beta^rbv\)</span>. On the kernel both sides vanish, since <span class="math" data-tex="\(p_\beta\in M\)">\(p_\beta\in M\)</span>. This proves PZ.38; the same proof applies to <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>.</p>
+<p>The subspace <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> is invariant under every <span class="math" data-tex="\(b\in M&#x27;_{\rm an}\)">\(b\in M&#x27;_{\rm an}\)</span>. Indeed write <span class="math" data-tex="\(b=JcJ\)">\(b=JcJ\)</span> with <span class="math" data-tex="\(c\in M_{\rm an}\)">\(c\in M_{\rm an}\)</span>; then
+<span class="math" data-tex="\(b\alpha=\sigma_{-i/2}(c^*)\alpha\)">\(b\alpha=\sigma_{-i/2}(c^*)\alpha\)</span>, and <span class="math" data-tex="\(b\)">\(b\)</span> commutes with <span class="math" data-tex="\(M\)">\(M\)</span>. Two applications of PZ.38, at <span class="math" data-tex="\(r=1/4\)">\(r=1/4\)</span>, and one at <span class="math" data-tex="\(r=1/2\)">\(r=1/2\)</span>, give on <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span></p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0 b=\tau_{-i/2}(b)K_0,\\
+B b=\tau_{-i/2}(b)B.
+\end{gathered}
+\tag{PZ.39}
+\]">\[
+\begin{gathered}
+K_0 b=\tau_{-i/2}(b)K_0,\\
+B b=\tau_{-i/2}(b)B.
+\end{gathered}
+\tag{PZ.39}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(U\)">\(U\)</span> commutes with <span class="math" data-tex="\(\tau_{-i/2}(b)\)">\(\tau_{-i/2}(b)\)</span> on <span class="math" data-tex="\(B\mathcal E\)">\(B\mathcal E\)</span>, hence on <span class="math" data-tex="\(p_\zeta H\)">\(p_\zeta H\)</span>. It also commutes on the complement, where it vanishes and which <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> preserves. Complex translation is a bijection of <span class="math" data-tex="\(M&#x27;_{\rm an}\)">\(M&#x27;_{\rm an}\)</span>, so <span class="math" data-tex="\(U\)">\(U\)</span> commutes with that entire subalgebra. Strong density and boundedness give <span class="math" data-tex="\(U\in(M&#x27;)&#x27;=M\)">\(U\in(M&#x27;)&#x27;=M\)</span>.</p>
+<p>Only one adjoint inclusion is now needed. For</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v\in D(Q)\\
+\iff v\in D(A^{1/4})\\
+\text{and }A^{1/4}v\in D(\Delta^{1/4}),\\
+Qv=\Delta^{1/4}A^{1/4}v.
+\end{gathered}
+\]">\[
+\begin{gathered}
+v\in D(Q)\\
+\iff v\in D(A^{1/4})\\
+\text{and }A^{1/4}v\in D(\Delta^{1/4}),\\
+Qv=\Delta^{1/4}A^{1/4}v.
+\end{gathered}
+\]</span>
+<p>self-adjoint pairing on the two domains gives
+<span class="math" data-tex="\(\langle K_0w,v\rangle=\langle w,Qv\rangle\)">\(\langle K_0w,v\rangle=\langle w,Qv\rangle\)</span>, <span class="math" data-tex="\(w\in\mathcal E\)">\(w\in\mathcal E\)</span>.
+Thus <span class="math" data-tex="\(Q\subset K_0^*=K^*\)">\(Q\subset K_0^*=K^*\)</span>. PZ08 applies to <span class="math" data-tex="\(x=U\)">\(x=U\)</span>, so <span class="math" data-tex="\(U\alpha\in D(Q)\)">\(U\alpha\in D(Q)\)</span>. Since <span class="math" data-tex="\(K=UB\)">\(K=UB\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\zeta=B\alpha\\
+=Bp_\zeta\alpha\\
+=K^*U\alpha\\
+=\Delta^{1/4}A^{1/4}U\alpha.
+\end{gathered}
+\tag{PZ.40}
+\]">\[
+\begin{gathered}
+\zeta=B\alpha\\
+=Bp_\zeta\alpha\\
+=K^*U\alpha\\
+=\Delta^{1/4}A^{1/4}U\alpha.
+\end{gathered}
+\tag{PZ.40}
+\]</span>
+<p>Here <span class="math" data-tex="\(p_\zeta\)">\(p_\zeta\)</span> is a spectral support of <span class="math" data-tex="\(B\)">\(B\)</span>, so it preserves its domain. Injectivity of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> identifies <span class="math" data-tex="\(\operatorname{Ran}\Delta^{1/4}\)">\(\operatorname{Ran}\Delta^{1/4}\)</span> with <span class="math" data-tex="\(D(\Delta^{-1/4})\)">\(D(\Delta^{-1/4})\)</span>. Equation PZ.40 therefore proves</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\eta:=\Delta^{-1/4}\zeta\\
+=A^{1/4}U\alpha.
+\end{gathered}
+\tag{PZ.41}
+\]">\[
+\begin{gathered}
+\eta:=\Delta^{-1/4}\zeta\\
+=A^{1/4}U\alpha.
+\end{gathered}
+\tag{PZ.41}
+\]</span>
+<p>Because <span class="math" data-tex="\(J\zeta=\zeta\)">\(J\zeta=\zeta\)</span> and <span class="math" data-tex="\(J\Delta^{1/4}J=\Delta^{-1/4}\)">\(J\Delta^{1/4}J=\Delta^{-1/4}\)</span>, spectral transport also gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\zeta\in D(\Delta^{1/4})\\
+\cap D(\Delta^{-1/4}),\\
+J\eta=\Delta^{1/4}\zeta,\\
+\|\eta\|^2\le\|\alpha\|\,\|\xi\|.
+\end{gathered}
+\tag{PZ.42}
+\]">\[
+\begin{gathered}
+\zeta\in D(\Delta^{1/4})\\
+\cap D(\Delta^{-1/4}),\\
+J\eta=\Delta^{1/4}\zeta,\\
+\|\eta\|^2\le\|\alpha\|\,\|\xi\|.
+\end{gathered}
+\tag{PZ.42}
+\]</span>
+<p>For the last inequality apply spectral Cauchy–Schwarz to
+<span class="math" data-tex="\(A^{1/4}U\alpha\)">\(A^{1/4}U\alpha\)</span>: its squared norm is at most
+<span class="math" data-tex="\(\|U\alpha\|\|A^{1/2}U\alpha\|\le\|\alpha\|\|U^*\xi\|\)">\(\|U\alpha\|\|A^{1/2}U\alpha\|\le\|\alpha\|\|U^*\xi\|\)</span>,
+by PZ.27 and <span class="math" data-tex="\(\|U\|\le1\)">\(\|U\|\le1\)</span>.</p>
+<h2 id="build-the-positive-symmetric-operator-on-a-specified-domain">Build the positive symmetric operator on a specified domain</h2>
+<p>In this finite GNS representation the multiplication cones from <a href="OA-MOD-SF.html#oa-mod-sf-03">SF03</a> are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_l=\overline{M_+\alpha},\\
+C_r=\overline{M&#x27;_+\alpha},\\
+C_l=C_r^\vee.
+\end{gathered}
+\tag{PZ.43}
+\]">\[
+\begin{gathered}
+C_l=\overline{M_+\alpha},\\
+C_r=\overline{M&#x27;_+\alpha},\\
+C_l=C_r^\vee.
+\end{gathered}
+\tag{PZ.43}
+\]</span>
+<p>Indeed the finite left ideal is all of <span class="math" data-tex="\(M\)">\(M\)</span>, so its square vectors are <span class="math" data-tex="\(xx^*\alpha\)">\(xx^*\alpha\)</span>, exhausting <span class="math" data-tex="\(M_+\alpha\)">\(M_+\alpha\)</span>; the same argument in the commutant gives the other cone. SF03 also gives <span class="math" data-tex="\(C_r\subset D(\Delta^{-1/2})\)">\(C_r\subset D(\Delta^{-1/2})\)</span>, while SF04 gives <span class="math" data-tex="\(\Delta^{-1/4}C_r\subset P\)">\(\Delta^{-1/4}C_r\subset P\)</span>. For <span class="math" data-tex="\(v\in C_r\)">\(v\in C_r\)</span>, the pairing of the two quarter-power domains consequently yields</p>
+<span class="math math-display" data-tex="\[
+\langle\eta,v\rangle
+=\langle\zeta,\Delta^{-1/4}v\rangle\ge0.
+\]">\[
+\langle\eta,v\rangle
+=\langle\zeta,\Delta^{-1/4}v\rangle\ge0.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\eta\in C_l\)">\(\eta\in C_l\)</span>.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(a_0)=M&#x27;\alpha,\\
+a_0(b\alpha)=b\eta\\
+(b\in M&#x27;).
+\end{gathered}
+\tag{PZ.44}
+\]">\[
+\begin{gathered}
+D(a_0)=M&#x27;\alpha,\\
+a_0(b\alpha)=b\eta\\
+(b\in M&#x27;).
+\end{gathered}
+\tag{PZ.44}
+\]</span>
+<p>The vector <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is separating for <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, so the map is well-defined. It is cyclic for <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, so its domain is dense. Positivity follows from</p>
+<span class="math math-display" data-tex="\[
+\langle a_0(b\alpha),b\alpha\rangle
+=\langle\eta,b^*b\alpha\rangle\ge0.
+\]">\[
+\langle a_0(b\alpha),b\alpha\rangle
+=\langle\eta,b^*b\alpha\rangle\ge0.
+\]</span>
+<p>Polarization makes <span class="math" data-tex="\(a_0\)">\(a_0\)</span> symmetric; its adjoint contains its dense domain, so it is closable. Let <span class="math" data-tex="\(a=\overline{a_0}\)">\(a=\overline{a_0}\)</span>. Graph limits preserve positivity and symmetry. Each unitary in <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, together with its inverse, preserves <span class="math" data-tex="\(D(a_0)\)">\(D(a_0)\)</span> and commutes with <span class="math" data-tex="\(a_0\)">\(a_0\)</span>. Passing to graph closures proves that <span class="math" data-tex="\(a\)">\(a\)</span> is affiliated with <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>We need one more vector in its adjoint domain. In the following computation put <span class="math" data-tex="\(h=\Delta^{1/4}\)">\(h=\Delta^{1/4}\)</span>. For <span class="math" data-tex="\(b\in M&#x27;_{\rm an}\)">\(b\in M&#x27;_{\rm an}\)</span>, PZ.41–42 give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\langle J\eta,b\eta\rangle\\
+=\langle h\zeta,bh^{-1}\zeta\rangle\\
+=\langle\zeta,\tau_{-i/4}(b)\zeta\rangle\\
+=\psi\bigl(\sigma_{i/4}(JbJ)\bigr)\\
+=\langle JbJ\alpha,\xi\rangle\\
+=\langle\xi,b\alpha\rangle.
+\end{gathered}
+\tag{PZ.45}
+\]">\[
+\begin{gathered}
+\langle J\eta,b\eta\rangle\\
+=\langle h\zeta,bh^{-1}\zeta\rangle\\
+=\langle\zeta,\tau_{-i/4}(b)\zeta\rangle\\
+=\psi\bigl(\sigma_{i/4}(JbJ)\bigr)\\
+=\langle JbJ\alpha,\xi\rangle\\
+=\langle\xi,b\alpha\rangle.
+\end{gathered}
+\tag{PZ.45}
+\]</span>
+<p>The second line is legitimate because <span class="math" data-tex="\(\eta\in D(\Delta^{1/4})\)">\(\eta\in D(\Delta^{1/4})\)</span>, with <span class="math" data-tex="\(\Delta^{1/4}\eta=\zeta\)">\(\Delta^{1/4}\eta=\zeta\)</span>, and PZ.38 preserves this domain under <span class="math" data-tex="\(b\)">\(b\)</span>. For the third line, antiunitarity and <span class="math" data-tex="\(J\zeta=\zeta\)">\(J\zeta=\zeta\)</span> give
+<span class="math" data-tex="\(J\tau_{-i/4}(b)J=\sigma_{i/4}(JbJ)\)">\(J\tau_{-i/4}(b)J=\sigma_{i/4}(JbJ)\)</span>; the sign changes because <span class="math" data-tex="\(J\)">\(J\)</span> is antilinear. The fourth line is PZ.28 and the entire-vector identity
+<span class="math" data-tex="\(\Delta^{1/4}\sigma_{i/4}(JbJ)\alpha=JbJ\alpha\)">\(\Delta^{1/4}\sigma_{i/4}(JbJ)\alpha=JbJ\alpha\)</span>.</p>
+<p>Uniformly bounded strong Gaussian approximation extends PZ.45 to every <span class="math" data-tex="\(b\in M&#x27;\)">\(b\in M&#x27;\)</span>, by convergence on the two fixed vectors <span class="math" data-tex="\(\eta,\alpha\)">\(\eta,\alpha\)</span>. Taking conjugates of that equality is exactly the adjoint test for <span class="math" data-tex="\(a_0\)">\(a_0\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J\eta\in D(a_0^*),\\
+D(a_0^*)=D(a^*),\\
+a^*J\eta=\xi.
+\end{gathered}
+\tag{PZ.46}
+\]">\[
+\begin{gathered}
+J\eta\in D(a_0^*),\\
+D(a_0^*)=D(a^*),\\
+a^*J\eta=\xi.
+\end{gathered}
+\tag{PZ.46}
+\]</span>
+<p>An adjoint domain is not automatically the domain of the closure. The next step proves the required stronger assertion.</p>
+<h2 id="promote-the-adjoint-identity-to-the-graph-closure">Promote the adjoint identity to the graph closure</h2>
+<p>Set <span class="math" data-tex="\(L=Ja^*J\)">\(L=Ja^*J\)</span>. Adjoint graph orthogonality shows that the adjoint of a closed densely defined affiliated operator is again affiliated: conjugate its graph identity by any commutant unitary and take orthogonal complements. Thus <span class="math" data-tex="\(L\)">\(L\)</span> is a closed densely defined operator affiliated with <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>. Since <span class="math" data-tex="\(a_0\subset a\subset a^*\)">\(a_0\subset a\subset a^*\)</span>, <span class="math" data-tex="\(a^*\alpha=\eta\)">\(a^*\alpha=\eta\)</span>. PZ.46 and <span class="math" data-tex="\(J\xi=\xi\)">\(J\xi=\xi\)</span> consequently give the two actual domain identities</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L\alpha=J\eta,\\
+L\eta=\xi.
+\end{gathered}
+\tag{PZ.47}
+\]">\[
+\begin{gathered}
+L\alpha=J\eta,\\
+L\eta=\xi.
+\end{gathered}
+\tag{PZ.47}
+\]</span>
+<p>Take the spectral projections <span class="math" data-tex="\(e_n=1_{[0,n]}(|L|)\)">\(e_n=1_{[0,n]}(|L|)\)</span> and the bounded cutoffs <span class="math" data-tex="\(b_n=Le_n\in M&#x27;\)">\(b_n=Le_n\in M&#x27;\)</span>. The polar and spectral facts proved in PZ02, now in the commutant, imply</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b_n\alpha\longrightarrow J\eta,\\
+b_n\eta\longrightarrow\xi.
+\end{gathered}
+\tag{PZ.48}
+\]">\[
+\begin{gathered}
+b_n\alpha\longrightarrow J\eta,\\
+b_n\eta\longrightarrow\xi.
+\end{gathered}
+\tag{PZ.48}
+\]</span>
+<p>Both limits use vectors in <span class="math" data-tex="\(D(L)\)">\(D(L)\)</span>, established in PZ.47. By the defining domain of <span class="math" data-tex="\(a_0\)">\(a_0\)</span>,
+<span class="math" data-tex="\(a_0(b_n\alpha)=b_n\eta\)">\(a_0(b_n\alpha)=b_n\eta\)</span>.
+Thus the pairs in PZ.48 belong to its graph and converge to <span class="math" data-tex="\((J\eta,\xi)\)">\((J\eta,\xi)\)</span>. We have proved</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J\eta\in D(a),\\
+aJ\eta=\xi.
+\end{gathered}
+\tag{PZ.49}
+\]">\[
+\begin{gathered}
+J\eta\in D(a),\\
+aJ\eta=\xi.
+\end{gathered}
+\tag{PZ.49}
+\]</span>
+<p>Apply the positive-extension theorem <a href="OA-MOD-SF.html#oa-mod-sf-02">SF02</a> to <span class="math" data-tex="\(a\)">\(a\)</span>. It constructs a positive self-adjoint extension <span class="math" data-tex="\(T\)">\(T\)</span> from the closed positive form and proves its affiliation with <span class="math" data-tex="\(M\)">\(M\)</span>. Since <span class="math" data-tex="\(a_0\subset a\subset T\)">\(a_0\subset a\subset T\)</span>, PZ.44 and PZ.49 give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha\in D(T),\\
+T\alpha=\eta,\\
+JT\alpha=J\eta,\\
+J\eta\in D(T),\\
+TJTJ\alpha=\xi.
+\end{gathered}
+\tag{PZ.50}
+\]">\[
+\begin{gathered}
+\alpha\in D(T),\\
+T\alpha=\eta,\\
+JT\alpha=J\eta,\\
+J\eta\in D(T),\\
+TJTJ\alpha=\xi.
+\end{gathered}
+\tag{PZ.50}
+\]</span>
+<p>If <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>, the choice <span class="math" data-tex="\(T=0\)">\(T=0\)</span> supplies the same conclusion directly. The zero standard form is also immediate. No invertibility of <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, semifiniteness of <span class="math" data-tex="\(M\)">\(M\)</span>, or separability of <span class="math" data-tex="\(H\)">\(H\)</span> was imposed.</p>
+<p>Combining this construction with PZ03 proves the full product characterization: for cyclic <span class="math" data-tex="\(\alpha\in P\)">\(\alpha\in P\)</span>, every cone vector is an admissible affiliated product, and every such product lies in the cone. The factor may be chosen positive self-adjoint, with
+<span class="math" data-tex="\(\|T\alpha\|^2\le\|\alpha\|\,\|\xi\|\)">\(\|T\alpha\|^2\le\|\alpha\|\,\|\xi\|\)</span>.
+The existence of this choice does not assert that every positive self-adjoint factor is the same operator. The finite matrix formula and the independent model constructions remain valid alternatives.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-PX.html">← Positivity seen through two components</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-CL.html">Canonical L2 and standard implementations →</a></span></nav>
+<p class="small source-link"><a href="src/affiliated-cone-products.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

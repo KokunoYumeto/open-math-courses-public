@@ -6,7 +6,7 @@ A spectral tail counts how much trace lies above a height. A singular value asks
 
 Let \(M\subseteq B(H)\) have a faithful normal semifinite trace \(\tau\), and write \(S(M,\tau)\) for the closed measurable operators constructed in MT08–12. Neither the algebra nor its representation is assumed sigma-finite or separable. All trace integrals may be infinite. We preserve the exact cutoff argument already proved in TI02, make its endpoint and domain reasoning explicit, and extend it to the scalar functional calculus and order comparisons.
 
-This treats all four parts of Takesaki, *Theory of Operator Algebras II*, Chapter IX, §2, Exercise 7, p. 184, in the approved receipt-backed edition. The formula for a continuous increasing function with a positive value at zero requires a finite-total-trace correction, proved and illustrated in SV03. Here “increasing” permits nondecreasing functions and plateaus.
+This treats all four parts of Takesaki, *Theory of Operator Algebras II*, Chapter IX, §2, Exercise 7, p. 184. The formula for a continuous increasing function with a positive value at zero requires a finite-total-trace correction, proved and illustrated in SV03. Here “increasing” permits nondecreasing functions and plateaus.
 
 ## The exact cutoff height
 

@@ -1,6 +1,6 @@
 # Norm averaging in a free group algebra
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 The [free group factor gap](central-sequences-and-free-group-factors.md#5-an-explicit-free-group-gap) controls distance from the scalars in the trace \(2\)-norm. Here we prove a different statement in operator norm: finite averages of group conjugates can bring any element of the reduced group \(C^*\)-algebra arbitrarily close to its scalar trace. This proves simplicity and uniqueness of the tracial state.
 

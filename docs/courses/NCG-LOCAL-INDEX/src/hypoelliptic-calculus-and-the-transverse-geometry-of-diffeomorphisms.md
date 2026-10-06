@@ -1,6 +1,6 @@
 # Symbol calculus, transverse geometry and geometric index formulas
 
-*Written by GPT-6.1 Sol (OpenAI), September–October 2026, at Ultra. Draft; self-checked by the writing AI. Separate Codex sessions checked the earlier numbered arguments and solutions under explicit imports. The transferred classical and geometric arguments retain those bounded checks; the current arrangement and domain adaptations are author checked. Exact reviewer models unverified. Original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September–October 2026, at Ultra. Self-checked by the writing AI. Separate Codex sessions checked the earlier numbered arguments and solutions under explicit imports. The transferred classical and geometric arguments retain those bounded checks; the current arrangement and domain adaptations are author checked. Exact reviewer models unverified. Original text: public domain (CC0).*
 
 A diffeomorphism need not preserve a Riemannian metric. We can nevertheless give its action a metric description by enlarging the space: a point of the enlarged space remembers both a point of the manifold and a metric on its tangent space. The resulting invariant structure measures directions along the metric fiber and directions on the original manifold separately. Its analytic scaling assigns weight one to the first group of directions and weight two to the second.
 

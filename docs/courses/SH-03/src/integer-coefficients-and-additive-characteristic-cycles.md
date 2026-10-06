@@ -2,7 +2,7 @@
 
 A characteristic cycle is defined by a microlocal identity and a trace. Its generic coefficients have a simpler description: each is the Euler characteristic of a finite coefficient complex. We prove why that complex is finite, how its integer coefficient extends through singularities, and why one distinguished triangle gives an additive identity of cycles.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Author self-check recorded relative to the prerequisites below; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Use Characteristic cycles from supported microlocal identities for the actual definition, invariance and constructible localized roofs, and Transporting characteristic cycles through a graph for normalized finite constant conormals. Perfect operations and finite microlocal coefficients proves perfection of microlocal Hom. Subanalytic chains and closed cycle supports supplies the dense-piece comparison maps and frontier boundary, while Lagrangian cycles and proper cotangent images supplies the cotangent orientation coefficient. The geometric inputs are compatible analytic stratification and the owned pure-Lagrangian consequence of Involutive subsets of subanalytic isotropic sets.
 

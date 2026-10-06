@@ -2,7 +2,7 @@
 
 The characteristic class follows an identity through exceptional restriction, ordinary restriction and evaluation. To transport the class, we need the comparisons between these maps, not just isomorphisms between their objects. Closed embeddings let us test the comparisons by a fully faithful direct image. Proper-support base change and the two adjunctions then reduce them to units, counits and their triangular identities.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 This lesson treats the identity square of the characteristic class under proper transport, together with its graph diagram and the supporting lemmas. Use Constructible traces and local Euler indices for the characteristic-class chain, graded contraction and closed-embedding comparison. We use the normalized exceptional and ordinary adjunctions, proper-support composition and base change, internal adjunction and compatibility with forgetting support in their bounded forms, with their evaluated maps. The full middle graph comparison, the proper characteristic-class theorem and the compact index formula are proved in Proper characteristic classes and the compact index.
 

@@ -1,6 +1,6 @@
 # SH02-NDF-UNIT. The geometric normalization of Fourier adjunctions
 
-Original English supplement for Course SH-02, dedicated under CC0 1.0 Universal. The proofs retain the named operation prerequisites and their stated scope.
+Original programme text: CC0 1.0 Universal. The proofs retain the named operation prerequisites and their stated scope.
 
 Two presentations of an inverse Fourier transform can agree as functors while their chosen comparison has the wrong scalar for a prescribed pair of adjunctions. This lesson computes that scalar on the full conic derived category, then identifies the unique comparison that makes the two pairs of adjunction maps inverse. The proof first reduces an actual natural transformation to a base scalar, computes its trace, and finally uses a uniqueness argument to identify the normalized comparison.
 
@@ -45,7 +45,7 @@ Let \(\phi:W_x\to W_y\) be an orientation-complex isomorphism. It has the form \
 \tag{NDF3}
 \]
 
-The exact prerequisites are Fourier kernels, The linear Fourier comparison, and [Comparing traces after Fourier transformation](fourier-trace-comparisons.md), with the following scoped uses: the actual FS6 comparison; SH02-FS-INVERSION (FS12 and its full proof), which makes both raw adjunctions equivalence adjunctions and hence makes their units and counits invertible; the full conic-topology derived equivalence SH02-LFT-CONIC-TOPOLOGY; the enhanced-center theorem SH02-LFT-CENTER; and the relative-cochain trace calculation FTC20–FTC22 and the following explicit counit and arbitrary-rank paragraphs, including its arbitrary-rank zero-section extension and the cancellation of the actual Thom trace coefficients. These are scoped mathematical prerequisites, with their operation imports retained.
+The exact prerequisites are [Fourier kernels](fourier-sato.md), [The linear Fourier comparison](linear-fourier-trace.md), and [Comparing traces after Fourier transformation](fourier-trace-comparisons.md), with the following scoped uses: the actual FS6 comparison; SH02-FS-INVERSION (FS12 and its full proof), which makes both raw adjunctions equivalence adjunctions and hence makes their units and counits invertible; the full conic-topology derived equivalence SH02-LFT-CONIC-TOPOLOGY; the enhanced-center theorem SH02-LFT-CENTER; and the relative-cochain trace calculation FTC20–FTC22 and the following explicit counit and arbitrary-rank paragraphs, including its arbitrary-rank zero-section extension and the cancellation of the actual Thom trace coefficients. These are scoped mathematical prerequisites, with their operation imports retained.
 
 ## SH02-NDF-DEFECT. Determine the entire natural transformation
 

@@ -1,6 +1,6 @@
 # Index selection and uniform multiplier control
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 A double sequence has a row index for an element of \(M^\omega\) and a column index for its representative in \(M\). Index selection chooses a row slowly while the column follows the ultrafilter. To produce an element of the nontracial multiplier quotient, the rows need common multiplier moduli. Separate membership of every row is insufficient.
 

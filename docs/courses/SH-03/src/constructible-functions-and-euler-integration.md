@@ -2,7 +2,7 @@
 
 The Euler characteristic of each stalk turns a constructible complex into an integer-valued function. We prove that this gives exactly its Grothendieck class, including on a noncompact manifold with infinitely many strata. Compactly supported cohomology then defines integration, and point-supported cohomology defines duality. These two operations retain the difference between an open endpoint and a closed endpoint.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded relative to the prerequisites below; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Use Constructible sheaves on a triangulation for face models and bounded constructible categories, Perfect coefficients on compact fibres for finite proper images, Small balls, central fibres and supported cohomology for the actual local contraction maps, and Constructible costalks and Verdier duality for perfect costalks and evaluation biduality. Perfect operations and finite microlocal coefficients proves exceptional inverse-image and internal-Hom closure; Duality maps for constructible inverse and direct images proves their normalized duality comparisons. The geometric prerequisite is locally finite compatible subanalytic triangulation, subordinate to an open cover when required, with a uniform dimension bound. Its lower Boolean, regularity and triangulation proofs are owned SH-03 foundations still being completed; the present proof is relative to that exact geometric input. Ordinary and proper-support adjunction, localization and composition are the standing sheaf-operation prerequisites.
 

@@ -24,7 +24,7 @@ no Front-Cover Texts and no Back-Cover Texts. The [licence](notices/COPYING),
 proves the completed Lebesgue measure, convergence theorems, \(L^1,L^2\)
 inequalities, \(L^2\) completeness, compact smooth density and simultaneous
 \(L^1\cap L^2\) density. Its M8 proves agreement with the integrals in the
-earlier Schwartz Fourier proofs, U001 Q3–Q4
+earlier [Schwartz Fourier proofs, U001 Q3–Q4](../../20261004-free-stationary-phase/quadratic-stationary-phase.md#q3-schwartz-estimates-and-the-signs-in-the-fourier-rules)
 and [Schwartz Parseval proof, U001 Appendix A.2](../../20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md#a-2-plancherel-and-the-pairing-calculation).
 In the retained text below, Theorem 1.1 means that inversion proof and
 Theorem 2.1 means that Parseval proof. Thus the original AN03 paragraph

@@ -2,7 +2,7 @@
 
 Transport of a characteristic cycle must carry its identity and its evaluated trace. A graph separates a map into two changes of one product variable. This makes ordinary restriction, proper duality and the relative orientation visible. We prove proper direct image and noncharacteristic inverse image with their actual microlocal comparisons, then obtain normalized conormal cycles for globally constant finite coefficients.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Use Characteristic cycles from supported microlocal identities for the supported construction, graded evaluation and closed-point normalization. Proper characteristic classes and the compact index proves the evaluated proper-duality and identity comparisons. Pulling back Lagrangian cycles through a graph and Transverse pullback of normalized conormal cycles fix the actual inverse-cycle coefficient and its relative fibre trace. The current SH-02 prerequisites are the two microlocal functorial squares, their specified unit/counit identities, the support estimates and the inverse-comparison theorem with a submersive center.
 

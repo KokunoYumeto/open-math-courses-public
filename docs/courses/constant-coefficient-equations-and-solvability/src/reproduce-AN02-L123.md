@@ -6,7 +6,7 @@ Read the complete learner and formal proof. The reader retains LP0–LP10, every
 
 All eleven files below retain their original bytes. Keep the renderer, original proof, original README and licence at the root of a fresh scratch directory and the seven figure/geometry files in `figures/`.
 
-- local-polynomial-annihilator-proof.md — 26956 bytes; SHA256 `4272787FD760CC61926DBAF883B642DE902271507E4009F63E3864015867169C`.
+- [local-polynomial-annihilator-proof.md](../reproduce/L123/local-polynomial-annihilator-proof.md) — 26956 bytes; SHA256 `4272787FD760CC61926DBAF883B642DE902271507E4009F63E3864015867169C`.
 - [make_figures.py](../reproduce/L123/make_figures.py) — 8171 bytes; SHA256 `4583CA03AA65ED58D0FDA7315E74EC83771F07EA8DBCD0BD22ABD249F0EB910A`.
 - [README-reproduce.md](../reproduce/L123/README-reproduce.md) — 2309 bytes; SHA256 `80C815D9C8E2F201BBE28B0A980CD3A151F823D57DB171816D22594B52FA262B`.
 - [LICENSE-ORIGINAL.txt](../reproduce/L123/LICENSE-ORIGINAL.txt) — 549 bytes; SHA256 `76B0CD8C9C2F0F37B7F6F13C08318093D4FFA5E3FFCE39333E77CA95375DA953`.

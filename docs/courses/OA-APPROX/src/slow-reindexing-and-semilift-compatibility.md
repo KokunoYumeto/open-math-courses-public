@@ -1,6 +1,6 @@
 # Slow reindexing and semi-lift compatibility
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 Fast reindexing makes a centralizing input commute with a prescribed separable algebra. Slow reindexing reverses which sequences are held fixed during the selection: its entire image commutes with the centralizing part of that prescribed algebra. It also makes a semi-lift agree on the image with its constant limit lift. That compatibility survives the counterexample to unrestricted fast equivariance.
 

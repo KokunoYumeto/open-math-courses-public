@@ -7,7 +7,7 @@ An automorphism of an infinite algebraic extension is determined by its actions 
 We use field operations, polynomial division, finite-dimensional linear algebra and the basic definitions of compact Hausdorff spaces and product topology. Section 0 proves the finite Galois correspondence and the Chinese remainder theorem used below. We also prove the required compactness and multiquadratic facts. The irreducibility and finite Galois groups of cyclotomic polynomials are proved in [Cyclotomic fields](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/cyclotomic-polynomials-and-their-automorphisms.html), Theorem 12.1. Here we use that theorem to pass to infinite extensions. Freely accessible comparisons are Milne's *Fields and Galois Theory* and Kedlaya's *Notes on class field theory*.
 
 
-**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-1) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-1) shows which results are proved in published lessons and which full proofs are still missing. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
 
 ## 0. The finite algebra behind the limits
 

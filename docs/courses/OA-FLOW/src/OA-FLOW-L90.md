@@ -29,7 +29,7 @@ The negative powers in (R2) would not be available for a proper isometric embedd
 
 ## The bidual makes the action eligible
 
-The action \(\gamma\) on \(X\) need not be a dual Banach action. Instead set \(Y=X^{**}=(X^*)^*\) with its specified predual \(X^*\), and define \(\widetilde\gamma_n=(S^{**})^n\). Each operator is weak-star continuous, and its preadjoint is \((S^*)^n\). Because \(\mathbb Z\) is discrete, every predual orbit is norm continuous. Equation (R2) bounds all positive and negative powers. Thus \(\widetilde\gamma\) meets the exact specified-dual hypotheses of [AF0](OA-FLOW-AF.md#af-0), BS0, and [the individual-operator proof](OA-FLOW-L89.md#oa-flow.frequency.operator). The norming-functional and separation statements used below are proved in CF1.
+The action \(\gamma\) on \(X\) need not be a dual Banach action. Instead set \(Y=X^{**}=(X^*)^*\) with its specified predual \(X^*\), and define \(\widetilde\gamma_n=(S^{**})^n\). Each operator is weak-star continuous, and its preadjoint is \((S^*)^n\). Because \(\mathbb Z\) is discrete, every predual orbit is norm continuous. Equation (R2) bounds all positive and negative powers. Thus \(\widetilde\gamma\) meets the exact specified-dual hypotheses of [AF0](OA-FLOW-AF.md#af-0), BS0, and [the individual-operator proof](OA-FLOW-L89.md#oa-flow.frequency.operator). The norming-functional and separation statements used below are proved in [CF1](OA-FLOW-CF.md#oa-flow.cf.1).
 
 The bidual does not add spectral values to a bounded operator:
 

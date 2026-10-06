@@ -2,7 +2,7 @@
 
 A scalar integer multiple of one central support is a strong rounding requirement. There is a weaker, unconditional conclusion for an arbitrary actual core: the entire Følner projection can be perturbed to have a bounded integer-valued central dimension. That integer may vary over the center. Its cyclic summands have a finite nested flag of central supports. We prove this conclusion and convert its columns into bounded finite-stage frames with a nested flag, preserving their total energy.
 
-The proofs use the actual core changes and central prescription in 52.3–52.4, the relative Følner criterion [49.2](relative-hypertraces-and-folner-projections.md), finite-stage expectations and column estimates 53.1–53.3, and finite matrix functional calculus. General trace, expectation and projection-comparison prerequisites retain their exact programme scopes. We do not invoke a new averaging theorem. The original rounding target has human-source credit to Sorin Popa, Theorem 4.2.2, printed pp. 213–214, [DOI 10.1007/BF02392646](https://doi.org/10.1007/BF02392646). The common-support conclusion of that theorem remains a further requirement.
+The proofs use the actual core changes and central prescription in [52.3–52.4](canonical-core-traces-and-integer-rounding.md), the relative Følner criterion [49.2](relative-hypertraces-and-folner-projections.md), finite-stage expectations and column estimates [53.1–53.3](bounded-frames-with-central-support.md), and finite matrix functional calculus. General trace, expectation and projection-comparison prerequisites retain their exact programme scopes. We do not invoke a new averaging theorem. The original rounding target has human-source credit to Sorin Popa, Theorem 4.2.2, printed pp. 213–214, [DOI 10.1007/BF02392646](https://doi.org/10.1007/BF02392646). The common-support conclusion of that theorem remains a further requirement.
 
 Let \(N\subset M\) be a proper finite-index II₁ inclusion, with an actual core \(S\subset R\). Write
 
@@ -395,4 +395,4 @@ Prove (73.27), find a commuting projection close to \(p\), and identify the rema
 
 **Figure 73.1.** The three central atoms have measures \(1/2,1/3,1/6\). Their amplified dimensions, floors, fractional losses and nested supports are the exact values in (73.26) and Exercise 73.3. The solid arrows are the proved implications 73.1–73.5. The dashed arrow to a common support is an unresolved additional implication. The drawing shows central arithmetic, not actual core geometry. [Editable source](figures/variable-integer-dimensions-and-central-flags.py).
 
-Author self-check. The full course goal remains active and incomplete.
+Self-checked by the writing AI. The full course goal remains active and incomplete.

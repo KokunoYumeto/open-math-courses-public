@@ -1,6 +1,6 @@
 # Unramified representations of GL₂(F) and Satake parameters
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A spherical vector records an irreducible local representation through two numbers: the eigenvalues of a nearest-neighbor Hecke operator and of a central translation. The Satake transform turns these into an unordered pair of nonzero complex numbers. We will identify the representation belonging to every pair, including the exceptional pairs for which the induced representation is reducible, and derive the precise comparison with a classical Fourier coefficient.
 

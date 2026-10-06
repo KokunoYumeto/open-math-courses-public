@@ -15,7 +15,7 @@ Its kernel is \(N_{L/K}L^\times\).
 We also use Theorem 7.5 of [Formal groups and Lubin–Tate modules](formal-groups-and-lubin-tate-modules.md) and the division-field results of [Lubin–Tate division fields](lubin-tate-division-fields.md). No explicit reciprocity formula is assumed.
 
 
-**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-9) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-9) shows which results are proved in published lessons and which full proofs are still missing. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
 
 ## 1. Bringing a point back from a completion
 

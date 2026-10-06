@@ -2,16 +2,16 @@
 
 *Independent proof development, GPT-6.1 Sol (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
 
-Let \(M\ne0\) be a von Neumann algebra and \(\varphi\) a faithful normal semifinite weight. Its complete GNS construction, faithful normal representation \(\pi_\varphi\), closed finite-star involution and nonsingular modular operator are the actual earlier [GW](OA-FLOW-GW.md), [NF-5](OA-FLOW-NF.md#oa-flow.nf.5), WR and MW-4 proofs. Inner products are linear in the first variable. Put \(N_\varphi=\{x:\varphi(x^*x)<\infty\}\), \(A_\varphi=N_\varphi\cap N_\varphi^*\), and \(m_\varphi=\operatorname{span}N_\varphi^*N_\varphi\). No finite-total-weight hypothesis is used.
+Let \(M\ne0\) be a von Neumann algebra and \(\varphi\) a faithful normal semifinite weight. Its complete GNS construction, faithful normal representation \(\pi_\varphi\), closed finite-star involution and nonsingular modular operator are the actual earlier [GW](OA-FLOW-GW.md), [NF-5](OA-FLOW-NF.md#oa-flow.nf.5), [WR](OA-FLOW-WR.md) and [MW-4](OA-FLOW-MW.md#oa-flow.mw.4) proofs. Inner products are linear in the first variable. Put \(N_\varphi=\{x:\varphi(x^*x)<\infty\}\), \(A_\varphi=N_\varphi\cap N_\varphi^*\), and \(m_\varphi=\operatorname{span}N_\varphi^*N_\varphi\). No finite-total-weight hypothesis is used.
 
-The additional actual earlier inputs are [EW-3](OA-FLOW-EW.md#oa-flow.ew.3) for the bounded GNS graph's ultraweak-times-weak closedness, [SF](OA-FLOW-SF.md) for the full self-adjoint spectral calculus and real-power domains, [RF-5](OA-FLOW-RF.md#oa-flow.rf.5) and [AL-1–3](OA-FLOW-AL.md#oa-flow.al.1) for real filters, [CZ-0](OA-FLOW-CZ.md#oa-flow.cz.0), [KT-2](OA-FLOW-KT.md#oa-flow.kt.2) and [KU-3](OA-FLOW-KU.md#oa-flow.ku.3) for exact invariant-corner restriction, [BC-1–3](OA-FLOW-BC.md#oa-flow.bc.1) for actual balanced modular weights, TD-1 for a given trace, and [CT-1–2](OA-FLOW-CT.md#oa-flow.ct.1) for the stated type III corner transport. The preceding complete [CS chapter](OA-FLOW-CS.md) proves the real-action Connes-spectrum facts used below.
+The additional actual earlier inputs are [EW-3](OA-FLOW-EW.md#oa-flow.ew.3) for the bounded GNS graph's ultraweak-times-weak closedness, [SF](OA-FLOW-SF.md) for the full self-adjoint spectral calculus and real-power domains, [RF-5](OA-FLOW-RF.md#oa-flow.rf.5) and [AL-1–3](OA-FLOW-AL.md#oa-flow.al.1) for real filters, [CZ-0](OA-FLOW-CZ.md#oa-flow.cz.0), [KT-2](OA-FLOW-KT.md#oa-flow.kt.2) and [KU-3](OA-FLOW-KU.md#oa-flow.ku.3) for exact invariant-corner restriction, [BC-1–3](OA-FLOW-BC.md#oa-flow.bc.1) for actual balanced modular weights, [TD-1](OA-FLOW-TD.md#oa-flow.td.1) for a given trace, and [CT-1–2](OA-FLOW-CT.md#oa-flow.ct.1) for the stated type III corner transport. The preceding complete [CS chapter](OA-FLOW-CS.md) proves the real-action Connes-spectrum facts used below.
 
 The free primary development context actually read is [Connes (1973), Theorem 3.2.1, Lemma 3.2.2, Definition 3.2.4 and Lemma 3.2.6, printed pp.190–192](https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=59). We prove the GNS integral passage on the complete finite ideal. The positive spectral comparison below uses the present programme's exact corner transport and balanced-weight proofs; it does not import the source's general action-realization theorem.
 
 <a id="oa-flow.mg.0"></a>
 ## MG-0. Every integrable modular filter has its full GNS domain
 
-Set \(U_t=\Delta_\varphi^{it}\). MW-4 proves, on the full finite ideal and the whole positive cone,
+Set \(U_t=\Delta_\varphi^{it}\). [MW-4](OA-FLOW-MW.md#oa-flow.mw.4) proves, on the full finite ideal and the whole positive cone,
 
 <a id="equation-mg1"></a>
 
@@ -197,7 +197,7 @@ Every nonzero fixed corner is included; its projection need not have finite weig
 <a id="oa-flow.mg.5"></a>
 ## MG-5. Equality for factors equipped with a faithful n.s.f. trace
 
-Instead suppose the factor has a given faithful normal semifinite trace \(\tau\), with no predual restriction. TD-1 proves that its full finite-star involution extends to the antiunitary \(J_\tau\), so \(\Delta_\tau=I\). Its modular action is the identity by MW-4. Since the GNS space is nonzero, \(\operatorname{Sp}(\Delta_\tau)=\{1\}\); the identity corner actions have spectrum \(\{0\}\), so \(G_M=\{0\}\) by ([MG10](OA-FLOW-MG.md#equation-mg10)). Equation ([MG11](OA-FLOW-MG.md#equation-mg11)) contains \(1\) in \(S_+(M)\), while the trace's spectrum contains that intersection in \(\{1\}\). Hence
+Instead suppose the factor has a given faithful normal semifinite trace \(\tau\), with no predual restriction. [TD-1](OA-FLOW-TD.md#oa-flow.td.1) proves that its full finite-star involution extends to the antiunitary \(J_\tau\), so \(\Delta_\tau=I\). Its modular action is the identity by [MW-4](OA-FLOW-MW.md#oa-flow.mw.4). Since the GNS space is nonzero, \(\operatorname{Sp}(\Delta_\tau)=\{1\}\); the identity corner actions have spectrum \(\{0\}\), so \(G_M=\{0\}\) by ([MG10](OA-FLOW-MG.md#equation-mg10)). Equation ([MG11](OA-FLOW-MG.md#equation-mg11)) contains \(1\) in \(S_+(M)\), while the trace's spectrum contains that intersection in \(\{1\}\). Hence
 
 <a id="equation-mg15"></a>
 

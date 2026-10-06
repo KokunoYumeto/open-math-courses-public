@@ -21,7 +21,7 @@ The earlier [Maslov component](../20261004-free-intrinsic-graph/prerequisites/re
 supplies M0a's inertia and signature proof, M1–M2's description of a
 Lagrangian relative to a vertical plane, M3's full Hessian comparison,
 and M4–M6's relative Maslov line and phase frames. The earlier
-quadratic stationary component
+[quadratic stationary component](../20261004-free-stationary-phase/quadratic-stationary-phase.md)
 supplies Q4–Q6, including distributional Fourier inversion and the
 regularized Gaussian integral. Inverse matrices and compact parameter
 integration use the exact earlier proofs identified there.

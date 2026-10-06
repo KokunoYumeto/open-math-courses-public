@@ -58,7 +58,7 @@ where \(B=\{|w_1|=\cdots=|w_{d-1}|=1\}\) is oriented in the order \(w_1,\ldots,w
 
 ## PR2. The finite-chain tools actually used
 
-We spell out the homological mechanism rather than import a product or cellular homology theorem. The chain tools also occur in the fully written, owner-admitted WT035 and CD034 proofs. They are ordinary, unaugmented singular chains except when an augmentation is explicitly mentioned. There is no compact-support restriction on differential forms, and chains always have finite support.
+We spell out the homological mechanism rather than import a product or cellular homology theorem. The chain tools also occur in the fully written, WT035 and CD034 proofs. They are ordinary, unaugmented singular chains except when an augmentation is explicitly mentioned. There is no compact-support restriction on differential forms, and chains always have finite support.
 
 For a homotopy \(H:A\times[0,1]\to B\), triangulate \(\Delta^q\times[0,1]\) with the \(q+1\) ordered simplices
 \([v_0^0,\ldots,v_j^0,v_j^1,\ldots,v_q^1]\), with alternating coefficients \((-1)^j\). Composing with \(H\circ(\sigma\times1)\) gives the prism operator. The top and bottom faces and the paired interior faces give
@@ -162,7 +162,7 @@ The sign is common to every basis vector and is a unit in \(\mathbb Z\). By indu
 
 Each \(\Omega_{\mathbf a}\) is a holomorphic differential form of maximal complex degree \(d\) on \(V\); its exterior derivative is zero. On one small circle the direct parametrization \(t=a+\rho e^{i\theta}\) gives \(dt/(t-a)=i\,d\theta\). For another puncture \(a'\neq a\), the denominator is nonzero on the filled disk around \(a\), so the integral is zero by the one-variable primitive (or its uniformly convergent geometric series on a sufficiently small disk). With product orientation and iterated integration, these facts prove (PR6).
 
-We use one explicit transitive prerequisite: owner-admitted CD034, CD6.2 and CD8.4, proves that integration of ordinary smooth complex differential forms is an isomorphism to singular cohomology and that the latter equals \(\operatorname{Hom}_{\mathbb C}(H_d(V;\mathbb C),\mathbb C)\) in degree \(d\). That proof includes the local Poincaré homotopy, finite small-chain comparison, cover elimination and actual integration map; it is not a rational-form comparison theorem. Here its smooth comparison is sufficient because we have already computed a finite integral homology basis and the complete diagonal periods of the specific rational forms.
+We use one explicit transitive prerequisite: CD034, CD6.2 and CD8.4, proves that integration of ordinary smooth complex differential forms is an isomorphism to singular cohomology and that the latter equals \(\operatorname{Hom}_{\mathbb C}(H_d(V;\mathbb C),\mathbb C)\) in degree \(d\). That proof includes the local Poincaré homotopy, finite small-chain comparison, cover elimination and actual integration map; it is not a rational-form comparison theorem. Here its smooth comparison is sufficient because we have already computed a finite integral homology basis and the complete diagonal periods of the specific rational forms.
 
 For any closed smooth complex \(d\)-form \(\eta\), put
 

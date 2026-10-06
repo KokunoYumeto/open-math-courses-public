@@ -93,7 +93,7 @@ Free comparisons: [J. S. Milne, Class Field Theory, version 4.03](https://www.jm
 
 ### 12. Weil groups and one-dimensional representations
 
-[Read the lesson](src/weil-groups-and-one-dimensional-representations.md). The local Weil construction and one-dimensional formulas use the written rank-one Fourier prerequisites. Global Weil constructions are supplied in lessons 17 and 24. General higher-dimensional epsilon existence remains an explicit, incomplete LG-GAL-06 prerequisite; the free research paper is not its programme proof.
+[Read the lesson](src/weil-groups-and-one-dimensional-representations.md). The local Weil construction and one-dimensional formulas use the written rank-one Fourier prerequisites. Global Weil constructions are supplied in lessons 17 and 24. General higher-dimensional epsilon existence is supplied by LG-GAL-06, Theorem 3.0 and sections 3A–3D; its uniqueness theorem is Theorem 3.2. These are programme proofs, distinct from the external reading sources.
 
 Free comparisons: [Bjorn Poonen, Tate’s Thesis, MIT 18.786 lecture notes (2015)](https://math.mit.edu/~poonen/786/notes.pdf); [John Tate, Number theoretic background (1979), freely available paper](https://ncatlab.org/nlab/files/TateNumberTheory.pdf); [Pierre Deligne, Les constantes des équations fonctionnelles des fonctions L (1973), IAS archive](https://publications.ias.edu/sites/default/files/Number20.pdf).
 
@@ -147,7 +147,7 @@ Free comparisons: [J. S. Milne, Algebraic Number Theory](https://www.jmilne.org/
 
 ### 21. Artin L-functions, conductors and discriminants
 
-[Read the lesson](src/artin-l-functions-conductors-and-discriminants.md). The ramified induction identities, conductor integrality, conductor–discriminant identity and meromorphic functional equation are proved using the named internal character and Fourier lessons. The function-field analytic argument is written in section 6. The orthogonal deduction retains the missing full local LG-GAL-06 theorem.
+[Read the lesson](src/artin-l-functions-conductors-and-discriminants.md). The ramified induction identities, conductor integrality, conductor–discriminant identity and meromorphic functional equation are proved using the named internal character and Fourier lessons. The function-field analytic argument is written in section 6. The orthogonal deduction uses LG-GAL-06, Theorem 7.4, with its real-induction, Clifford-class and dihedral Fourier lemmas 7.5–7.8.
 
 Free comparisons: [Bjorn Poonen, Tate’s Thesis, MIT 18.786 lecture notes (2015)](https://math.mit.edu/~poonen/786/notes.pdf); [Wen-Wei Li, Yanqi Lake Lectures on Algebra: Part 1, author edition dated 2026-06-09](https://www.wwli.asia/downloads/YAlg1.pdf); [Pierre Deligne, Les constantes des équations fonctionnelles des fonctions L (1973), IAS archive](https://publications.ias.edu/sites/default/files/Number20.pdf); [Pierre Deligne, Les constantes locales de l’équation fonctionnelle de la fonction L d’Artin d’une représentation orthogonale (1976), IAS archive](https://publications.ias.edu/sites/default/files/Number26.pdf).
 
@@ -173,4 +173,4 @@ Free comparisons: [J. S. Milne, Class Field Theory, version 4.03](https://www.jm
 
 The full statements, hypotheses and proof locators of the arithmetic, Fourier, character-theory, algebra and cochain prerequisites belong to their named programme lessons. An external source and a dependency record do not establish that a missing proof has been supplied.
 
-In particular, the full higher-dimensional local epsilon-existence theorem and Deligne’s local orthogonal theorem in LG-GAL-06 remain prerequisites of lessons 12 and 21. The deductions there retain that explicit dependency. The free Deligne papers give the research statements and arguments, but do not discharge the programme’s obligation to write those proofs.
+In particular, lessons 12 and 21 use LG-GAL-06, Theorem 3.0 with sections 3A–3D and Theorem 7.4 with Lemmas 7.5–7.8. The deductions retain these explicit programme dependencies. The free Deligne papers are additional reading, not substitutes for these internal arguments.

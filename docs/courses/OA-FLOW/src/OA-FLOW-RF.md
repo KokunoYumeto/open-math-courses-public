@@ -2,7 +2,7 @@
 
 *Fresh local proof, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
 
-These are real-line lemmas, not a claim about arbitrary locally compact groups. Actual earlier inputs are [SC-2–9](OA-FLOW-SC.md#sc-02), FF scalar interchange and FF-1/2, the norm-integral and separation proofs in CF Section 1, and the full [SF spectral calculus](OA-FLOW-SF.md#oa-flow.sf.sf1). In particular FF-2 proves Fourier uniqueness and the unitary inverse transform, rather than assuming inversion. The free primary route is [Connes (1973), Definitions 2.1.1–2.1.2 and Lemmas 2.1.3–2.1.6, printed pp.170–174](https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=39). All harmonic statements used below are proved here at those scalar inputs.
+These are real-line lemmas, not a claim about arbitrary locally compact groups. Actual earlier inputs are [SC-2–9](OA-FLOW-SC.md#sc-02), [FF scalar interchange and FF-1/2](OA-FLOW-FF.md#oa-flow.ff.1), the norm-integral and separation proofs in [CF Section 1](OA-FLOW-CF.md#oa-flow.cf.1), and the full [SF spectral calculus](OA-FLOW-SF.md#oa-flow.sf.sf1). In particular [FF-2](OA-FLOW-FF.md#oa-flow.ff.3) proves Fourier uniqueness and the unitary inverse transform, rather than assuming inversion. The free primary route is [Connes (1973), Definitions 2.1.1–2.1.2 and Lemmas 2.1.3–2.1.6, printed pp.170–174](https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=39). All harmonic statements used below are proved here at those scalar inputs.
 
 The convention throughout is
 
@@ -15,7 +15,7 @@ The convention throughout is
 \]
 Thus a time orbit \(e^{itr_0}x\) has spectral parameter \(r_0\). Inner products are linear in the first variable.
 
-Exact individual earlier proof locators: [OA-FLOW.SC.2](OA-FLOW-SC.md#sc-02), [OA-FLOW.SC.3](OA-FLOW-SC.md#sc-03), [OA-FLOW.SC.4](OA-FLOW-SC.md#sc-04), [OA-FLOW.SC.5](OA-FLOW-SC.md#sc-05), [OA-FLOW.SC.6](OA-FLOW-SC.md#sc-06), [OA-FLOW.SC.7](OA-FLOW-SC.md#sc-07), [OA-FLOW.SC.8](OA-FLOW-SC.md#sc-08), [OA-FLOW.SC.9](OA-FLOW-SC.md#sc-09), OA-FLOW.FF.1, OA-FLOW.FF.2, OA-FLOW.FF.3, [OA-FLOW.SF.SF0](OA-FLOW-SF.md#oa-flow.sf.sf0), [OA-FLOW.SF.SB0](OA-FLOW-SF.md#oa-flow.sf.sb0), [OA-FLOW.SF.SB1](OA-FLOW-SF.md#oa-flow.sf.sb1), [OA-FLOW.SF.SB2](OA-FLOW-SF.md#oa-flow.sf.sb2), [OA-FLOW.SF.SB3](OA-FLOW-SF.md#oa-flow.sf.sb3), [OA-FLOW.SF.SB4](OA-FLOW-SF.md#oa-flow.sf.sb4), [OA-FLOW.SF.SB5](OA-FLOW-SF.md#oa-flow.sf.sb5), [OA-FLOW.SF.SB6](OA-FLOW-SF.md#oa-flow.sf.sb6), [OA-FLOW.SF.SF1](OA-FLOW-SF.md#oa-flow.sf.sf1), [OA-FLOW.SF.SF2](OA-FLOW-SF.md#oa-flow.sf.sf2), OA-FLOW.CF.1.
+Exact individual earlier proof locators: [OA-FLOW.SC.2](OA-FLOW-SC.md#sc-02), [OA-FLOW.SC.3](OA-FLOW-SC.md#sc-03), [OA-FLOW.SC.4](OA-FLOW-SC.md#sc-04), [OA-FLOW.SC.5](OA-FLOW-SC.md#sc-05), [OA-FLOW.SC.6](OA-FLOW-SC.md#sc-06), [OA-FLOW.SC.7](OA-FLOW-SC.md#sc-07), [OA-FLOW.SC.8](OA-FLOW-SC.md#sc-08), [OA-FLOW.SC.9](OA-FLOW-SC.md#sc-09), [OA-FLOW.FF.1](OA-FLOW-FF.md#oa-flow.ff.1), [OA-FLOW.FF.2](OA-FLOW-FF.md#oa-flow.ff.2), [OA-FLOW.FF.3](OA-FLOW-FF.md#oa-flow.ff.3), [OA-FLOW.SF.SF0](OA-FLOW-SF.md#oa-flow.sf.sf0), [OA-FLOW.SF.SB0](OA-FLOW-SF.md#oa-flow.sf.sb0), [OA-FLOW.SF.SB1](OA-FLOW-SF.md#oa-flow.sf.sb1), [OA-FLOW.SF.SB2](OA-FLOW-SF.md#oa-flow.sf.sb2), [OA-FLOW.SF.SB3](OA-FLOW-SF.md#oa-flow.sf.sb3), [OA-FLOW.SF.SB4](OA-FLOW-SF.md#oa-flow.sf.sb4), [OA-FLOW.SF.SB5](OA-FLOW-SF.md#oa-flow.sf.sb5), [OA-FLOW.SF.SB6](OA-FLOW-SF.md#oa-flow.sf.sb6), [OA-FLOW.SF.SF1](OA-FLOW-SF.md#oa-flow.sf.sf1), [OA-FLOW.SF.SF2](OA-FLOW-SF.md#oa-flow.sf.sf2), [OA-FLOW.CF.1](OA-FLOW-CF.md#oa-flow.cf.1).
 
 <a id="oa-flow.rf.1"></a><a id="rf-1"></a>
 
@@ -35,10 +35,10 @@ For \(\chi\in C_c^\infty\), differentiation under its compact integral and repea
  \quad(m\geq1).
  \tag{RF2}
 \]
-The boundary terms vanish, since all derivatives are zero outside a compact interval. In particular \(k_\chi\in L^1\cap L^2\); its derivatives have the same decay after applying this argument to \((-ir)^j\chi(r)\). FF-2's inverse identity on \(L^2\), with its explicit normalization, gives \(\widehat{k_\chi}=\chi\) almost everywhere. Both sides are continuous, the left by scalar DCT; hence equality holds everywhere. Also \(\int k_\chi=\chi(0)\).
+The boundary terms vanish, since all derivatives are zero outside a compact interval. In particular \(k_\chi\in L^1\cap L^2\); its derivatives have the same decay after applying this argument to \((-ir)^j\chi(r)\). [FF-2](OA-FLOW-FF.md#oa-flow.ff.3)'s inverse identity on \(L^2\), with its explicit normalization, gives \(\widehat{k_\chi}=\chi\) almost everywhere. Both sides are continuous, the left by scalar DCT; hence equality holds everywhere. Also \(\int k_\chi=\chi(0)\).
 
 For \(f,g\in L^1\), scalar interchange gives \(\|f*g\|_1\leq\|f\|_1\|g\|_1\), associativity, commutativity and
-\(\widehat{f*g}=\widehat f\widehat g\). The transforms are continuous. FF-2's uniqueness proves equality of two \(L^1\) functions when their transforms agree; it applies to complex functions as well. The translation \(f_s(t)=f(t-s)\) has transform \(e^{isr}\widehat f(r)\). Modulation \(e^{ict}f(t)\) has transform \(\widehat f(r+c)\), and
+\(\widehat{f*g}=\widehat f\widehat g\). The transforms are continuous. [FF-2](OA-FLOW-FF.md#oa-flow.ff.3)'s uniqueness proves equality of two \(L^1\) functions when their transforms agree; it applies to complex functions as well. The translation \(f_s(t)=f(t-s)\) has transform \(e^{isr}\widehat f(r)\). Modulation \(e^{ict}f(t)\) has transform \(\widehat f(r+c)\), and
 \(\widehat{\overline f}(r)=\overline{\widehat f(-r)}\). All follow by an absolutely convergent substitution.
 
 <a id="oa-flow.rf.2"></a><a id="rf-2"></a>
@@ -64,7 +64,7 @@ For fixed \(s\),
  \|k_\delta(\,\cdot-s)-e^{ir_0s}k_\delta\|_1
  =\|k_\chi(\,\cdot-\delta s)-k_\chi\|_1\longrightarrow0.
 \]
-This is FF-1's actual \(L^1\) translation continuity. The norm is at most \(2\|k_\chi\|_1\), so scalar DCT against \(|f(s)|\) gives \(\|b_\delta\|_1\to0\). Fix \(\delta\) with \(\|b_\delta\|_1<|c|\).
+This is [FF-1](OA-FLOW-FF.md#oa-flow.ff.2)'s actual \(L^1\) translation continuity. The norm is at most \(2\|k_\chi\|_1\), so scalar DCT against \(|f(s)|\) gives \(\|b_\delta\|_1\to0\). Fix \(\delta\) with \(\|b_\delta\|_1<|c|\).
 
 Adjoin a formal convolution identity \(\delta_0\) to \(L^1\), with norm \(\|a\delta_0+g\|=|a|+\|g\|_1\). The convolution bound proves this is a unital Banach algebra; its transform is \(a+\widehat g\). The series
 

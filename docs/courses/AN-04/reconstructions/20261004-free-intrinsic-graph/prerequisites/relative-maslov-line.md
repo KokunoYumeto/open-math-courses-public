@@ -29,7 +29,7 @@ bases, rank, annihilators, smooth invertible minors and a common
 transversal to two Lagrangian planes when one is vertical.
 Congruence invariance for nonsingular forms is proved in
 [U001 P5](../../20261004-free-stationary-phase/prerequisite-completions.md);
-U001 Q5
+[U001 Q5](../../20261004-free-stationary-phase/quadratic-stationary-phase.md)
 proves orthogonal diagonalization, including singular matrices.
 M0a below supplies the singular-form extension and local constancy.
 Finite inverse and implicit maps, matrix inverses and mixed derivatives

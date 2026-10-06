@@ -10,11 +10,11 @@ Every input used below is a complete proof in one of the following earlier notes
 
 | Local proof | Exact scope used here |
 | --- | --- |
-| CF Section 1 | Continuous Banach-valued Riemann integrals, norm bounds, bounded-map commutation and the fundamental theorem |
+| [CF Section 1](OA-FLOW-CF.md#OA-FLOW.CF.1) | Continuous Banach-valued Riemann integrals, norm bounds, bounded-map commutation and the fundamental theorem |
 | [SC-02–05](OA-FLOW-SC.md#sc-02) | Normalized Lebesgue measure, affine changes of variables, complex integration and monotone/dominated convergence |
 | [SC-08–09](OA-FLOW-SC.md#sc-08) | Continuous Riemann/Lebesgue agreement, oriented substitution and dominated scalar differentiation |
-| FF scalar interchange | Interchange on sigma-finite real Borel spaces; the complex case only after absolute integrability is checked |
-| FF-1 | Gaussian normalization, transform and concentration, proved from disk sections and scalar calculus |
+| [FF scalar interchange](OA-FLOW-FF.md#oa-flow.ff.1) | Interchange on sigma-finite real Borel spaces; the complex case only after absolute integrability is checked |
+| [FF-1](OA-FLOW-FF.md#oa-flow.ff.2) | Gaussian normalization, transform and concentration, proved from disk sections and scalar calculus |
 | [SF-4](OA-FLOW-SF.md#oa-flow.sf4.rectangle-cauchy) | Rectangle Cauchy theorem, the directly computed small-square integral, and the local rectangle criterion for holomorphy |
 
 These proofs use the earlier CF/SC foundations and explicit scalar/set conventions. All double integrals below concern the real line and Lebesgue measure, so the stated real-Borel interchange theorem supplies exactly their required generality. No theorem about product measures on arbitrary spaces is imported. Hilbert spaces remain arbitrary.

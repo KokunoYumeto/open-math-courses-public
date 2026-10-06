@@ -2,7 +2,7 @@
 
 A complex constructible sheaf has the same integer Euler number at a stalk and at its point costalk. Its punctured normal model explains this: complex scalar orbits meet a unit sphere in circles, and every finite local system on a circle has Euler characteristic zero. This remains true when the orbit monodromy is nontrivial. It follows that duality fixes every complex constructible function.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Learn first Complex nearby cycles as normal and conormal sections for complex and perfect constructibility of specialization, and Holomorphic operations and complex Fourier symmetries for the complex Euler annihilator. Perfect operations and finite microlocal coefficients and Perfect coefficients on compact fibres supply the finite complexes used below. Euler numbers and vector-field indices proves integer Euler additivity, including arbitrary fields. Constructible functions and Euler integration supplies the germ-local costalk description of function duality.
 

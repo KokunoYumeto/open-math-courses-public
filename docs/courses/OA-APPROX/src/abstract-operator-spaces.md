@@ -1,6 +1,6 @@
 # From matrix norms to operators
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
 A normed vector space remembers the size of a single vector. A subspace of bounded operators also remembers the size of every matrix of its vectors. These matrix norms interact with direct sums and scalar matrix multiplication. Ruan's theorem says that those two interactions are enough to recover an operator realization.
 

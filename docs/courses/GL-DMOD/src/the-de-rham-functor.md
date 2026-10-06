@@ -245,7 +245,7 @@ For instance, on the line $\mathbb C[1]$ has a point stalk in degree $-1$ and po
 \simeq \mathbf D_X\operatorname{DR}_X(M).
 \tag{4.3}
 \]
-For this statement see V. Ginzburg, [*Lectures on D-modules*](https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf), on duality for holonomic modules. Here $\mathbf D_XK=R\mathcal Hom_{\mathbb C}(K,\mathbb C[2d_X])$ uses the canonical complex orientation. Verdier duality is developed in Microlocal sheaves.
+For this statement see V. Ginzburg, [*Lectures on D-modules*](https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf), on duality for holonomic modules. Here $\mathbf D_XK=R\mathcal Hom_{\mathbb C}(K,\mathbb C[2d_X])$ uses the canonical complex orientation. Verdier duality is developed in [Microlocal sheaves](https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-02/).
 
 **Inverse-image compatibility, stated with its hypothesis.** For every morphism of smooth algebraic varieties and every *regular holonomic* complex $N$,
 \[

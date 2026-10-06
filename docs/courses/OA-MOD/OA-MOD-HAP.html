@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approximating multiplication without losing its bound · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-HAP.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 28 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="approximating-multiplication-without-losing-its-bound">Approximating multiplication without losing its bound</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>A vector can be close to an algebra vector while its multiplication operator is much larger. We construct approximations that control both quantities. For a vector in the full Hilbert algebra we also control its involution; for a vector that is only left bounded we retain the vector limit and the exact multiplication bound. These different conclusions require different arguments.</p>
+<p>Free comparisons are Brent Nelson, <a href="https://users.math.msu.edu/users/banelson/files/Tomita-Takesaki%20Theory.pdf"><em>Tomita–Takesaki Theory</em>, Proposition 1.25, Proposition 1.26, Lemma 1.27 and Theorem 1.28, pages 12–14</a>, and Jesse Peterson, <a href="https://math.vanderbilt.edu/peters10/teaching/spring2013/vonNeumannAlgebras.pdf"><em>Notes on von Neumann algebras</em>, Theorem 2.6.4, page 31</a>. The canonical Kaplansky statement belongs to the foundation course, Theorem 7.1(1)–(2); HAP04–05 supplies a complete alternative proof for the nondegenerate algebra used here. The spectral-convergence step invoked by citation in Nelson’s Lemma 1.27 is proved locally in SK09; the approximation below uses real polynomials on each bounded spectral interval and rescales the polynomial algebra vector. Central elements are treated through multiplication domains and uniqueness of polar decomposition.</p>
+<h2 id="spaces-topologies-and-prerequisites"><span id="oa-mod-hap-01"></span><span id="OA-MOD-HAP-01"></span>Spaces, topologies and prerequisites</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A\subseteq H\)">\(\mathcal A\subseteq H\)</span> be an arbitrary left Hilbert algebra. Inner products are linear in the first variable. Retain the constructions of <a href="OA-MOD-HA.html#oa-mod-ha-02">HA02–05</a>, <a href="OA-MOD-RD.html#oa-mod-rd-04">RD04–07</a> and <a href="OA-MOD-FL.html#oa-mod-fl-01">FL01–04</a>:</p>
+<span class="math math-display" data-tex="\[
+M=L(\mathcal A)&#x27;&#x27;,\qquad S=\overline{\sharp},\qquad F=S^*,
+\]">\[
+M=L(\mathcal A)&#x27;&#x27;,\qquad S=\overline{\sharp},\qquad F=S^*,
+\]</span>
+<span class="math math-display" data-tex="\[
+\mathcal A_r=\mathcal B_r\cap D(F),\qquad
+\mathcal A_l=\mathcal B_l\cap D(S).
+\tag{HAP.1}
+\]">\[
+\mathcal A_r=\mathcal B_r\cap D(F),\qquad
+\mathcal A_l=\mathcal B_l\cap D(S).
+\tag{HAP.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span> is the full left completion, and <span class="math" data-tex="\(\lambda_\xi\in M\)">\(\lambda_\xi\in M\)</span> is left multiplication for <span class="math" data-tex="\(\xi\in\mathcal B_l\)">\(\xi\in\mathcal B_l\)</span>. The original algebra embeds in <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span>, with <span class="math" data-tex="\(\lambda_a=L_a\)">\(\lambda_a=L_a\)</span>. The defining identities include</p>
+<span class="math math-display" data-tex="\[
+\lambda_\xi\eta=R_\eta\xi
+\quad(\xi\in\mathcal B_l,\ \eta\in\mathcal B_r),
+\qquad
+\lambda_{S\xi}=\lambda_\xi^*
+\quad(\xi\in\mathcal A_l).
+\tag{HAP.2}
+\]">\[
+\lambda_\xi\eta=R_\eta\xi
+\quad(\xi\in\mathcal B_l,\ \eta\in\mathcal B_r),
+\qquad
+\lambda_{S\xi}=\lambda_\xi^*
+\quad(\xi\in\mathcal A_l).
+\tag{HAP.2}
+\]</span>
+<p><a href="OA-MOD-WH.html#oa-mod-wh-04">WH04</a> proves the mixed identity also for every right-bounded vector in the displayed domain. Both multiplication assignments are injective. Their ranges</p>
+<span class="math math-display" data-tex="\[
+\mathfrak n_l=\lambda(\mathcal B_l)\subseteq M,\qquad
+\mathfrak n_r=R(\mathcal B_r)\subseteq M&#x27;
+\]">\[
+\mathfrak n_l=\lambda(\mathcal B_l)\subseteq M,\qquad
+\mathfrak n_r=R(\mathcal B_r)\subseteq M&#x27;
+\]</span>
+<p>are left ideals, with covariance</p>
+<span class="math math-display" data-tex="\[
+\lambda_{x\xi}=x\lambda_\xi,\qquad
+R_{y\eta}=yR_\eta
+\quad(x\in M,\ y\in M&#x27;),
+\tag{HAP.3}
+\]">\[
+\lambda_{x\xi}=x\lambda_\xi,\qquad
+R_{y\eta}=yR_\eta
+\quad(x\in M,\ y\in M&#x27;),
+\tag{HAP.3}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\lambda(\mathcal A_l)=\mathfrak n_l\cap\mathfrak n_l^*,
+\qquad R(\mathcal A_r)=\mathfrak n_r\cap\mathfrak n_r^*.
+\tag{HAP.4}
+\]">\[
+\lambda(\mathcal A_l)=\mathfrak n_l\cap\mathfrak n_l^*,
+\qquad R(\mathcal A_r)=\mathfrak n_r\cap\mathfrak n_r^*.
+\tag{HAP.4}
+\]</span>
+<p>The spaces <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> and <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span> are graph cores for <span class="math" data-tex="\(S\)">\(S\)</span>, and <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> is a graph core for <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Strong convergence of bounded operators means convergence on each vector; strong* convergence additionally requires convergence of the adjoints. Neither assertion about an arbitrary net supplies a uniform operator-norm bound unless one is proved. Sigma-strong convergence uses square-summable vector families as tests; sigma-strong* includes the adjoints. These topologies imply their corresponding strong topologies.</p>
+<p>The exact bounded-operator inputs are <a href="OA-MOD-BK.html#oa-mod-bk-01">BK01</a>, which proves Riesz representation and continuous functional calculus, <a href="OA-MOD-BK.html#oa-mod-bk-03">BK03</a> for operator topologies, and <a href="OA-MOD-BK.html#oa-mod-bk-07">BK07</a> for polar decomposition. The sigma-strong vector tests are proved in <a href="OA-MOD-CP.html#oa-mod-cp-08">CP08</a>. Real Hahn–Banach extension and locally convex separation have complete proofs in <a href="notes/real-coercivity/predual-prerequisites.html#np1-norm-preserving-extension-and-the-norming-identity">NP1–2 of the prerequisite note</a>. HAP-03 and HAP-06 use the arbitrary-net common-core convergence theorem <a href="OA-MOD-SK.html#oa-mod-sk-09">SK09</a>: convergence of self-adjoint operators on a graph core for their self-adjoint limit implies strong convergence of every bounded continuous function of those operators. The approximating operators need not have uniformly bounded norms. For a bounded limit, any Hilbert-dense linear domain is a graph core.</p>
+<p>Only HAP-08 uses the polar identities</p>
+<span class="math math-display" data-tex="\[
+S=J\Delta^{1/2},\qquad
+F=J\Delta^{-1/2},\qquad J^2=I,
+\tag{HAP.5}
+\]">\[
+S=J\Delta^{1/2},\qquad
+F=J\Delta^{-1/2},\qquad J^2=I,
+\tag{HAP.5}
+\]</span>
+<p>including exact domains, from <a href="OA-MOD-TC.html#oa-mod-tc-08">TC08–10</a>, together with <a href="OA-MOD-SK.html#oa-mod-sk-08">SK08</a>. No identification <span class="math" data-tex="\(JMJ=M&#x27;\)">\(JMJ=M&#x27;\)</span>, modular automorphism theorem, faithful state or countability restriction is an input to this unit.</p>
+<h2 id="closed-graphs-in-the-appropriate-ambient-spaces">Closed graphs in the appropriate ambient spaces</h2>
+<p><strong>Proposition.</strong> The graph</p>
+<span class="math math-display" data-tex="\[
+\{(\xi,\lambda_\xi):\xi\in\mathcal B_l\}
+\subseteq H\times M
+\tag{HAP.6}
+\]">\[
+\{(\xi,\lambda_\xi):\xi\in\mathcal B_l\}
+\subseteq H\times M
+\tag{HAP.6}
+\]</span>
+<p>is closed for Hilbert norm on <span class="math" data-tex="\(H\)">\(H\)</span> and the strong operator topology on <span class="math" data-tex="\(M\)">\(M\)</span>. Consequently it is closed when the latter topology is replaced by the sigma-strong topology.</p>
+<p>The graph of <span class="math" data-tex="\(\lambda|_{\mathcal A_l}\)">\(\lambda|_{\mathcal A_l}\)</span> is closed in</p>
+<span class="math math-display" data-tex="\[
+D(S)\times M
+\tag{HAP.7}
+\]">\[
+D(S)\times M
+\tag{HAP.7}
+\]</span>
+<p>when <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span> has the topology induced by the Hilbert norm and <span class="math" data-tex="\(M\)">\(M\)</span> has the strong topology. In particular it is closed for that domain topology and the sigma-strong* topology in the range.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(\xi_i\in\mathcal B_l\)">\(\xi_i\in\mathcal B_l\)</span>, <span class="math" data-tex="\(\xi_i\to\xi\)">\(\xi_i\to\xi\)</span> in Hilbert norm, and <span class="math" data-tex="\(\lambda_{\xi_i}\to x\in M\)">\(\lambda_{\xi_i}\to x\in M\)</span> strongly. For every <span class="math" data-tex="\(\eta\in\mathcal A_r\)">\(\eta\in\mathcal A_r\)</span>,</p>
+<span class="math math-display" data-tex="\[
+R_\eta\xi=\lim_i R_\eta\xi_i
+=\lim_i\lambda_{\xi_i}\eta=x\eta.
+\tag{HAP.8}
+\]">\[
+R_\eta\xi=\lim_i R_\eta\xi_i
+=\lim_i\lambda_{\xi_i}\eta=x\eta.
+\tag{HAP.8}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\|R_\eta\xi\|\leq\|x\|\|\eta\|\)">\(\|R_\eta\xi\|\leq\|x\|\|\eta\|\)</span>. This is exactly the criterion for <span class="math" data-tex="\(\xi\in\mathcal B_l\)">\(\xi\in\mathcal B_l\)</span>, and it identifies <span class="math" data-tex="\(\lambda_\xi=x\)">\(\lambda_\xi=x\)</span>. This argument treats every convergent net, proving (HAP.6).</p>
+<p>For (HAP.7), the limiting first coordinate is, by the specified ambient space, already in <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span>. The first assertion puts it in <span class="math" data-tex="\(\mathcal B_l\)">\(\mathcal B_l\)</span>, hence in <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span>. Alternatively the graph in (HAP.7) is the intersection of (HAP.6) with <span class="math" data-tex="\(D(S)\times M\)">\(D(S)\times M\)</span>. Strengthening the operator topology preserves closedness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The induced Hilbert topology on <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span> is not its graph-norm topology. Nor does this proposition assert that the <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span> graph is closed in <span class="math" data-tex="\(H\times M\)">\(H\times M\)</span>. A later example shows that even operator-norm convergence in the second coordinate does not justify that larger ambient space.</p>
+<h2 id="two-quadratic-products-from-one-block-operator">Two quadratic products from one block operator</h2>
+<p><strong>Lemma.</strong> Let <span class="math" data-tex="\((x_i)\)">\((x_i)\)</span> be a net of bounded operators on <span class="math" data-tex="\(H\)">\(H\)</span>, and let <span class="math" data-tex="\(x\in B(H)\)">\(x\in B(H)\)</span>. Suppose dense linear subspaces <span class="math" data-tex="\(D_1,D_2\subseteq H\)">\(D_1,D_2\subseteq H\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+x_i\xi\longrightarrow x\xi\quad(\xi\in D_1),\qquad
+x_i^*\eta\longrightarrow x^*\eta\quad(\eta\in D_2).
+\tag{HAP.9}
+\]">\[
+x_i\xi\longrightarrow x\xi\quad(\xi\in D_1),\qquad
+x_i^*\eta\longrightarrow x^*\eta\quad(\eta\in D_2).
+\tag{HAP.9}
+\]</span>
+<p>For every bounded continuous <span class="math" data-tex="\(f:[0,\infty)\to\mathbb C\)">\(f:[0,\infty)\to\mathbb C\)</span>,</p>
+<span class="math math-display" data-tex="\[
+f(x_i^*x_i)\longrightarrow f(x^*x),\qquad
+f(x_i x_i^*)\longrightarrow f(xx^*)
+\quad\hbox{strongly}.
+\tag{HAP.10}
+\]">\[
+f(x_i^*x_i)\longrightarrow f(x^*x),\qquad
+f(x_i x_i^*)\longrightarrow f(xx^*)
+\quad\hbox{strongly}.
+\tag{HAP.10}
+\]</span>
+<p>No bound on <span class="math" data-tex="\(\sup_i\|x_i\|\)">\(\sup_i\|x_i\|\)</span> is assumed.</p>
+<p>Each dense test set may be replaced by its complex linear span, because convergence in its half of (HAP.9) extends through finite linear combinations. The two subspaces may be different; no common dense intersection is required.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(H\oplus H\)">\(H\oplus H\)</span> form the bounded self-adjoint operators</p>
+<span class="math math-display" data-tex="\[
+h_i=\begin{pmatrix}0&amp;x_i^*\\x_i&amp;0\end{pmatrix},
+\qquad
+h=\begin{pmatrix}0&amp;x^*\\x&amp;0\end{pmatrix}.
+\tag{HAP.11}
+\]">\[
+h_i=\begin{pmatrix}0&amp;x_i^*\\x_i&amp;0\end{pmatrix},
+\qquad
+h=\begin{pmatrix}0&amp;x^*\\x&amp;0\end{pmatrix}.
+\tag{HAP.11}
+\]</span>
+<p>For <span class="math" data-tex="\(\zeta=(\xi,\eta)\in D_1\oplus D_2\)">\(\zeta=(\xi,\eta)\in D_1\oplus D_2\)</span>, the two limits in (HAP.9) give <span class="math" data-tex="\(h_i\zeta\to h\zeta\)">\(h_i\zeta\to h\zeta\)</span>. This product subspace is dense in <span class="math" data-tex="\(H\oplus H\)">\(H\oplus H\)</span>, hence is a graph core for the bounded operator <span class="math" data-tex="\(h\)">\(h\)</span>. Apply SK-09 to the bounded continuous function <span class="math" data-tex="\(g(t)=f(t^2)\)">\(g(t)=f(t^2)\)</span>. It gives <span class="math" data-tex="\(g(h_i)\to g(h)\)">\(g(h_i)\to g(h)\)</span> strongly.</p>
+<p>Since <span class="math" data-tex="\(h_i^2=\operatorname{diag}(x_i^*x_i,x_i x_i^*)\)">\(h_i^2=\operatorname{diag}(x_i^*x_i,x_i x_i^*)\)</span>, the composition and direct-sum properties of bounded functional calculus give</p>
+<span class="math math-display" data-tex="\[
+g(h_i)=
+\begin{pmatrix}f(x_i^*x_i)&amp;0\\0&amp;f(x_i x_i^*)\end{pmatrix}.
+\]">\[
+g(h_i)=
+\begin{pmatrix}f(x_i^*x_i)&amp;0\\0&amp;f(x_i x_i^*)\end{pmatrix}.
+\]</span>
+<p>Those properties also follow by uniformly approximating <span class="math" data-tex="\(f\)">\(f\)</span> by polynomials on an interval containing the spectrum of the individual <span class="math" data-tex="\(h_i^2\)">\(h_i^2\)</span>; the interval may depend on <span class="math" data-tex="\(i\)">\(i\)</span>. Testing the two coordinate subspaces proves (HAP.10). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Boundedness of <span class="math" data-tex="\(f\)">\(f\)</span> is essential. Knowing both first-order limits on a dense domain does not alone provide convergence of the unrestricted quadratic products.</p>
+<h2 id="why-self-adjoint-weak-density-gives-strong-density"><span id="oa-mod-hap-04"></span><span id="OA-MOD-HAP-04"></span>Why self-adjoint weak density gives strong density</h2>
+<p>We need an approximation theorem for the original multiplication algebra, which need not contain an identity or be norm closed. We first prove its topological ingredient.</p>
+<p>Let <span class="math" data-tex="\(\mathcal C\subseteq B(K)\)">\(\mathcal C\subseteq B(K)\)</span> be a nondegenerate *-subalgebra, and write <span class="math" data-tex="\(N=\mathcal C&#x27;&#x27;\)">\(N=\mathcal C&#x27;&#x27;\)</span>. <a href="OA-MOD-HA.html#oa-mod-ha-03">HA03, the nonunital proof</a>, gives</p>
+<span class="math math-display" data-tex="\[
+\overline{\mathcal C}^{\,\mathrm{WOT}}
+=\overline{\mathcal C}^{\,\mathrm{SOT}}=N.
+\tag{HAP.12}
+\]">\[
+\overline{\mathcal C}^{\,\mathrm{WOT}}
+=\overline{\mathcal C}^{\,\mathrm{SOT}}=N.
+\tag{HAP.12}
+\]</span>
+<p>Its proof uses nondegeneracy in place of a unit. In particular, it does not put an unproved bound on its approximants.</p>
+<p><strong>Lemma.</strong> The self-adjoint part <span class="math" data-tex="\(\mathcal C_{\mathrm{sa}}\)">\(\mathcal C_{\mathrm{sa}}\)</span> is strongly dense in <span class="math" data-tex="\(N_{\mathrm{sa}}\)">\(N_{\mathrm{sa}}\)</span>.</p>
+<p><strong>Proof.</strong> Regard <span class="math" data-tex="\(V=N_{\mathrm{sa}}\)">\(V=N_{\mathrm{sa}}\)</span> as a real vector space. A strongly continuous real-linear functional <span class="math" data-tex="\(\ell\)">\(\ell\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span> is bounded by finitely many strong seminorms. More explicitly, continuity at zero and homogeneity give <span class="math" data-tex="\(\xi_1,\ldots,\xi_n\in K\)">\(\xi_1,\ldots,\xi_n\in K\)</span> and <span class="math" data-tex="\(C&lt;\infty\)">\(C&lt;\infty\)</span> with</p>
+<span class="math math-display" data-tex="\[
+|\ell(a)|\leq C\left(\sum_{j=1}^n\|a\xi_j\|^2\right)^{1/2}
+\quad(a\in V).
+\tag{HAP.13}
+\]">\[
+|\ell(a)|\leq C\left(\sum_{j=1}^n\|a\xi_j\|^2\right)^{1/2}
+\quad(a\in V).
+\tag{HAP.13}
+\]</span>
+<p>If the seminorm on the right vanishes, homogeneity forces <span class="math" data-tex="\(\ell(a)=0\)">\(\ell(a)=0\)</span>. Thus <span class="math" data-tex="\(\ell\)">\(\ell\)</span> factors through the real-linear map</p>
+<span class="math math-display" data-tex="\[
+a\longmapsto(a\xi_1,\ldots,a\xi_n)\in K^n.
+\]">\[
+a\longmapsto(a\xi_1,\ldots,a\xi_n)\in K^n.
+\]</span>
+<p>The induced bounded real functional on its range extends to the underlying real Hilbert space <span class="math" data-tex="\(K^n_{\mathbb R}\)">\(K^n_{\mathbb R}\)</span>, by real Hahn–Banach. Real Riesz representation supplies <span class="math" data-tex="\(\eta_1,\ldots,\eta_n\in K\)">\(\eta_1,\ldots,\eta_n\in K\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\ell(a)=\operatorname{Re}\sum_{j=1}^n\langle a\xi_j,\eta_j\rangle.
+\tag{HAP.14}
+\]">\[
+\ell(a)=\operatorname{Re}\sum_{j=1}^n\langle a\xi_j,\eta_j\rangle.
+\tag{HAP.14}
+\]</span>
+<p>This is weak-operator continuous. Conversely every weak-operator continuous functional is strongly continuous, since the strong topology is finer.</p>
+<p>It follows directly from real locally convex separation that a convex subset of <span class="math" data-tex="\(V\)">\(V\)</span> has the same strong and weak-operator closures. Indeed, a point outside its strong closed convex closure is separated from that closure by a strongly continuous real functional, which by (HAP.14) is weak-operator continuous. Such a point is also outside its weak closure; the opposite closure inclusion follows from the relative strength of the topologies.</p>
+<p>Finally, if <span class="math" data-tex="\(a=a^*\in N\)">\(a=a^*\in N\)</span>, (HAP.12) supplies <span class="math" data-tex="\(c_i\in\mathcal C\)">\(c_i\in\mathcal C\)</span> with <span class="math" data-tex="\(c_i\to a\)">\(c_i\to a\)</span> weakly. Adjoint is weak-operator continuous, so
+<span class="math" data-tex="\((c_i+c_i^*)/2\to a\)">\((c_i+c_i^*)/2\to a\)</span> weakly. Hence <span class="math" data-tex="\(\mathcal C_{\mathrm{sa}}\)">\(\mathcal C_{\mathrm{sa}}\)</span> is weakly dense in <span class="math" data-tex="\(V\)">\(V\)</span>. It is convex, and the preceding paragraph proves strong density. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="contractive-approximation-from-a-nonunital-algebra"><span id="oa-mod-hap-05"></span><span id="OA-MOD-HAP-05"></span>Contractive approximation from a nonunital algebra</h2>
+<p><strong>Foundation theorem and alternative proof.</strong> The canonical programme statement is Theorem 7.1(1)–(2) of <em>Kaplansky’s density theorem and its consequences</em>, in <em>Foundations of von Neumann algebras</em>. It allows degenerate as well as nondegenerate subalgebras and does not require norm closure. That foundation lesson retains statement ownership. HAP04 identifies the weak closure in the present nondegenerate setting; the complete proof below is an alternative for that setting. Peterson’s free Theorem 2.6.4 provides a comparison. The proof explicitly returns from the norm closure to the original algebra, which need not contain an identity.</p>
+<p><strong>Theorem.</strong> For the algebra <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> in HAP-04, every contraction <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span> is the strong* limit of a net of contractions from <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. If <span class="math" data-tex="\(x=x^*\)">\(x=x^*\)</span>, the approximants may also be chosen self-adjoint.</p>
+<p><strong>Alternative proof for self-adjoint contractions.</strong> Define by bounded continuous functional calculus</p>
+<span class="math math-display" data-tex="\[
+y=x\bigl(I+(I-x^2)^{1/2}\bigr)^{-1},
+\qquad
+f(t)=\frac{2t}{1+t^2}\quad(t\in\mathbb R).
+\tag{HAP.15}
+\]">\[
+y=x\bigl(I+(I-x^2)^{1/2}\bigr)^{-1},
+\qquad
+f(t)=\frac{2t}{1+t^2}\quad(t\in\mathbb R).
+\tag{HAP.15}
+\]</span>
+<p>The inverse exists because its positive denominator is at least <span class="math" data-tex="\(I\)">\(I\)</span>. The operator <span class="math" data-tex="\(y\)">\(y\)</span> is self-adjoint. The scalar identity</p>
+<span class="math math-display" data-tex="\[
+f\left(\frac{t}{1+\sqrt{1-t^2}}\right)=t
+\quad(-1\leq t\leq1)
+\]">\[
+f\left(\frac{t}{1+\sqrt{1-t^2}}\right)=t
+\quad(-1\leq t\leq1)
+\]</span>
+<p>gives <span class="math" data-tex="\(f(y)=x\)">\(f(y)=x\)</span>. Also <span class="math" data-tex="\(|f(t)|\leq1\)">\(|f(t)|\leq1\)</span> for every real <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(c_i\in\mathcal C_{\mathrm{sa}}\)">\(c_i\in\mathcal C_{\mathrm{sa}}\)</span> with <span class="math" data-tex="\(c_i\to y\)">\(c_i\to y\)</span> strongly, by HAP-04. For <span class="math" data-tex="\(z=i\)">\(z=i\)</span> and <span class="math" data-tex="\(z=-i\)">\(z=-i\)</span>, the resolvent identity is</p>
+<span class="math math-display" data-tex="\[
+(c_i-zI)^{-1}-(y-zI)^{-1}
+=(c_i-zI)^{-1}(y-c_i)(y-zI)^{-1}.
+\tag{HAP.16}
+\]">\[
+(c_i-zI)^{-1}-(y-zI)^{-1}
+=(c_i-zI)^{-1}(y-c_i)(y-zI)^{-1}.
+\tag{HAP.16}
+\]</span>
+<p>The first factor has norm at most one, by the continuous calculus of the bounded self-adjoint <span class="math" data-tex="\(c_i\)">\(c_i\)</span>. Applying strong convergence to the fixed vector <span class="math" data-tex="\((y-zI)^{-1}\xi\)">\((y-zI)^{-1}\xi\)</span> proves strong convergence of these resolvents. Consequently</p>
+<span class="math math-display" data-tex="\[
+f(c_i)=(c_i-iI)^{-1}+(c_i+iI)^{-1}
+\longrightarrow f(y)=x
+\quad\hbox{strongly}.
+\tag{HAP.17}
+\]">\[
+f(c_i)=(c_i-iI)^{-1}+(c_i+iI)^{-1}
+\longrightarrow f(y)=x
+\quad\hbox{strongly}.
+\tag{HAP.17}
+\]</span>
+<p>This argument has not assumed uniform bounds on the <span class="math" data-tex="\(c_i\)">\(c_i\)</span>.</p>
+<p>Each <span class="math" data-tex="\(d_i=f(c_i)\)">\(d_i=f(c_i)\)</span> is a self-adjoint contraction in the norm closure of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. To check the last assertion in the nonunital case, approximate <span class="math" data-tex="\(f\)">\(f\)</span> by real polynomials <span class="math" data-tex="\(p_k\)">\(p_k\)</span> on a compact interval containing <span class="math" data-tex="\(\sigma(c_i)\)">\(\sigma(c_i)\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span>. Since <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>, the polynomials <span class="math" data-tex="\(p_k(t)-p_k(0)\)">\(p_k(t)-p_k(0)\)</span> still approximate <span class="math" data-tex="\(f\)">\(f\)</span> uniformly and have zero constant term. Their values at <span class="math" data-tex="\(c_i\)">\(c_i\)</span> belong to <span class="math" data-tex="\(\mathcal C_{\mathrm{sa}}\)">\(\mathcal C_{\mathrm{sa}}\)</span>.</p>
+<p>For <span class="math" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span>, choose <span class="math" data-tex="\(b_{i,\varepsilon}\in\mathcal C_{\mathrm{sa}}\)">\(b_{i,\varepsilon}\in\mathcal C_{\mathrm{sa}}\)</span> with
+<span class="math" data-tex="\(\|b_{i,\varepsilon}-d_i\|&lt;\varepsilon\)">\(\|b_{i,\varepsilon}-d_i\|&lt;\varepsilon\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+a_{i,\varepsilon}=(1+\varepsilon)^{-1}b_{i,\varepsilon}.
+\tag{HAP.18}
+\]">\[
+a_{i,\varepsilon}=(1+\varepsilon)^{-1}b_{i,\varepsilon}.
+\tag{HAP.18}
+\]</span>
+<p>Then <span class="math" data-tex="\(\|a_{i,\varepsilon}\|\leq1\)">\(\|a_{i,\varepsilon}\|\leq1\)</span>, and
+<span class="math" data-tex="\(\|a_{i,\varepsilon}-d_i\|&lt;2\varepsilon\)">\(\|a_{i,\varepsilon}-d_i\|&lt;2\varepsilon\)</span>.
+The product net, directed by increasing <span class="math" data-tex="\(i\)">\(i\)</span> and decreasing <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, converges strongly to <span class="math" data-tex="\(x\)">\(x\)</span>. All its terms and its limit are self-adjoint, so it also converges strongly*.</p>
+<p><strong>Alternative proof for arbitrary contractions.</strong> The algebra <span class="math" data-tex="\(M_2(\mathcal C)\)">\(M_2(\mathcal C)\)</span> is nondegenerate on <span class="math" data-tex="\(K\oplus K\)">\(K\oplus K\)</span>. Its weak closure is <span class="math" data-tex="\(M_2(N)\)">\(M_2(N)\)</span>: weak operator convergence of these finite matrices is exactly entrywise weak convergence, and (HAP.12) approximates each entry, with the finite product of the indexing sets handling simultaneous approximation. Thus its generated von Neumann algebra is <span class="math" data-tex="\(M_2(N)\)">\(M_2(N)\)</span>.</p>
+<p>Apply the self-adjoint result to</p>
+<span class="math math-display" data-tex="\[
+X=\begin{pmatrix}0&amp;x\\x^*&amp;0\end{pmatrix}\in M_2(N),
+\qquad \|X\|=\|x\|\leq1.
+\tag{HAP.19}
+\]">\[
+X=\begin{pmatrix}0&amp;x\\x^*&amp;0\end{pmatrix}\in M_2(N),
+\qquad \|X\|=\|x\|\leq1.
+\tag{HAP.19}
+\]</span>
+<p>Let <span class="math" data-tex="\(A_i\in M_2(\mathcal C)\)">\(A_i\in M_2(\mathcal C)\)</span> be self-adjoint contractions converging strongly to <span class="math" data-tex="\(X\)">\(X\)</span>. If <span class="math" data-tex="\(b_i=(A_i)_{12}\)">\(b_i=(A_i)_{12}\)</span>, then <span class="math" data-tex="\(b_i\in\mathcal C\)">\(b_i\in\mathcal C\)</span>, <span class="math" data-tex="\(\|b_i\|\leq1\)">\(\|b_i\|\leq1\)</span>, and <span class="math" data-tex="\((A_i)_{21}=b_i^*\)">\((A_i)_{21}=b_i^*\)</span>. Coordinate-vector tests give both <span class="math" data-tex="\(b_i\to x\)">\(b_i\to x\)</span> and <span class="math" data-tex="\(b_i^*\to x^*\)">\(b_i^*\to x^*\)</span> strongly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This alternative proves the canonical Kaplansky statement in the present nondegenerate case by bounded functional calculus and real separation. It applies to <span class="math" data-tex="\(\mathcal C=L(\mathcal A)\)">\(\mathcal C=L(\mathcal A)\)</span>, not merely to its norm closure. It requires neither SK-09 nor modular theory. Scaling gives the corresponding approximation bound <span class="math" data-tex="\(\|b_i\|\leq\|x\|\)">\(\|b_i\|\leq\|x\|\)</span> for every <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>, with the zero case handled by the constant zero net.</p>
+<h2 id="approximation-in-the-full-involution-graph"><span id="oa-mod-hap-06"></span><span id="OA-MOD-HAP-06"></span>Approximation in the full involution graph</h2>
+<p><strong>Theorem.</strong> For every <span class="math" data-tex="\(\xi\in\mathcal A_l\)">\(\xi\in\mathcal A_l\)</span>, there exists a sequence <span class="math" data-tex="\(a_n\in\mathcal A\)">\(a_n\in\mathcal A\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+a_n\longrightarrow\xi,\qquad a_n^\sharp\longrightarrow S\xi
+\quad\hbox{in Hilbert norm},\qquad
+\|L_{a_n}\|\leq\|\lambda_\xi\|\quad(n\geq1).
+\tag{HAP.20}
+\]">\[
+a_n\longrightarrow\xi,\qquad a_n^\sharp\longrightarrow S\xi
+\quad\hbox{in Hilbert norm},\qquad
+\|L_{a_n}\|\leq\|\lambda_\xi\|\quad(n\geq1).
+\tag{HAP.20}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(L_{a_n}\to\lambda_\xi\)">\(L_{a_n}\to\lambda_\xi\)</span> strongly*.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\lambda_\xi=0\)">\(\lambda_\xi=0\)</span>, injectivity gives <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>, and choose <span class="math" data-tex="\(a_n=0\)">\(a_n=0\)</span>. Otherwise scale <span class="math" data-tex="\(\xi\)">\(\xi\)</span> by the positive number <span class="math" data-tex="\(\|\lambda_\xi\|\)">\(\|\lambda_\xi\|\)</span>; it suffices to prove the result when <span class="math" data-tex="\(\|\lambda_\xi\|=1\)">\(\|\lambda_\xi\|=1\)</span>.</p>
+<p>Since <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is a graph core for <span class="math" data-tex="\(S\)">\(S\)</span>, choose <span class="math" data-tex="\(v_n\in\mathcal A\)">\(v_n\in\mathcal A\)</span> with</p>
+<span class="math math-display" data-tex="\[
+v_n\to\xi,\qquad v_n^\sharp\to S\xi.
+\]">\[
+v_n\to\xi,\qquad v_n^\sharp\to S\xi.
+\]</span>
+<p>Put <span class="math" data-tex="\(T_n=L_{v_n}\)">\(T_n=L_{v_n}\)</span>, <span class="math" data-tex="\(T=\lambda_\xi\)">\(T=\lambda_\xi\)</span>. For <span class="math" data-tex="\(\eta\in\mathcal A_r\)">\(\eta\in\mathcal A_r\)</span>, (HAP.2) gives</p>
+<span class="math math-display" data-tex="\[
+T_n\eta=R_\eta v_n\to R_\eta\xi=T\eta,\qquad
+T_n^*\eta=R_\eta v_n^\sharp\to R_\eta S\xi=T^*\eta.
+\tag{HAP.21}
+\]">\[
+T_n\eta=R_\eta v_n\to R_\eta\xi=T\eta,\qquad
+T_n^*\eta=R_\eta v_n^\sharp\to R_\eta S\xi=T^*\eta.
+\tag{HAP.21}
+\]</span>
+<p>The subspace <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> is dense. Apply HAP-03 to</p>
+<span class="math math-display" data-tex="\[
+k(t)=
+\begin{cases}
+1,&amp;0\leq t\leq1,\\
+t^{-1/2},&amp;t\geq1.
+\end{cases}
+\tag{HAP.22}
+\]">\[
+k(t)=
+\begin{cases}
+1,&amp;0\leq t\leq1,\\
+t^{-1/2},&amp;t\geq1.
+\end{cases}
+\tag{HAP.22}
+\]</span>
+<p>This is bounded and continuous. Since <span class="math" data-tex="\(T\)">\(T\)</span> is a contraction,</p>
+<span class="math math-display" data-tex="\[
+k(T_nT_n^*)\to I,\qquad k(T_n^*T_n)\to I
+\quad\hbox{strongly}.
+\tag{HAP.23}
+\]">\[
+k(T_nT_n^*)\to I,\qquad k(T_n^*T_n)\to I
+\quad\hbox{strongly}.
+\tag{HAP.23}
+\]</span>
+<p>Define vectors</p>
+<span class="math math-display" data-tex="\[
+w_n=k(T_nT_n^*)v_n,\qquad
+z_n=k(T_n^*T_n)v_n^\sharp.
+\tag{HAP.24}
+\]">\[
+w_n=k(T_nT_n^*)v_n,\qquad
+z_n=k(T_n^*T_n)v_n^\sharp.
+\tag{HAP.24}
+\]</span>
+<p>Both lie in <span class="math" data-tex="\(\mathcal B_l\)">\(\mathcal B_l\)</span> by covariance. Continuous functional calculus and polynomial intertwining give</p>
+<span class="math math-display" data-tex="\[
+T_n^*k(T_nT_n^*)=k(T_n^*T_n)T_n^*.
+\tag{HAP.25}
+\]">\[
+T_n^*k(T_nT_n^*)=k(T_n^*T_n)T_n^*.
+\tag{HAP.25}
+\]</span>
+<p>For this identity it is enough to approximate <span class="math" data-tex="\(k\)">\(k\)</span> uniformly on the compact interval <span class="math" data-tex="\([0,\|T_n\|^2]\)">\([0,\|T_n\|^2]\)</span>; polynomial intertwining follows by induction. Thus <span class="math" data-tex="\(\lambda_{w_n}^*=\lambda_{z_n}\)">\(\lambda_{w_n}^*=\lambda_{z_n}\)</span>. The ideal-intersection identity (HAP.4) puts <span class="math" data-tex="\(w_n\)">\(w_n\)</span> in <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span> and gives <span class="math" data-tex="\(Sw_n=z_n\)">\(Sw_n=z_n\)</span>.</p>
+<p>Since <span class="math" data-tex="\(\|k(T_nT_n^*)\|\leq1\)">\(\|k(T_nT_n^*)\|\leq1\)</span>, equation (HAP.23) yields</p>
+<span class="math math-display" data-tex="\[
+\|w_n-\xi\|
+\leq\|v_n-\xi\|+\|(k(T_nT_n^*)-I)\xi\|\longrightarrow0.
+\]">\[
+\|w_n-\xi\|
+\leq\|v_n-\xi\|+\|(k(T_nT_n^*)-I)\xi\|\longrightarrow0.
+\]</span>
+<p>The same reasoning gives <span class="math" data-tex="\(z_n\to S\xi\)">\(z_n\to S\xi\)</span>. Moreover</p>
+<span class="math math-display" data-tex="\[
+\|\lambda_{w_n}\|^2
+=\|k(T_nT_n^*)T_nT_n^*k(T_nT_n^*)\|
+\leq\sup_{t\geq0}t\,k(t)^2=1.
+\tag{HAP.26}
+\]">\[
+\|\lambda_{w_n}\|^2
+=\|k(T_nT_n^*)T_nT_n^*k(T_nT_n^*)\|
+\leq\sup_{t\geq0}t\,k(t)^2=1.
+\tag{HAP.26}
+\]</span>
+<p>It remains to return from <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span> to the original algebra. Choose a real polynomial <span class="math" data-tex="\(p_n\)">\(p_n\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\sup_{0\leq t\leq\|T_n\|^2}|p_n(t)-k(t)|
+\leq\delta_n,\qquad
+\delta_n=\frac{1}{n(1+\|v_n\|+\|v_n^\sharp\|+\|T_n\|)}.
+\tag{HAP.27}
+\]">\[
+\sup_{0\leq t\leq\|T_n\|^2}|p_n(t)-k(t)|
+\leq\delta_n,\qquad
+\delta_n=\frac{1}{n(1+\|v_n\|+\|v_n^\sharp\|+\|T_n\|)}.
+\tag{HAP.27}
+\]</span>
+<p>Only this compact interval is involved. Let</p>
+<span class="math math-display" data-tex="\[
+b_n=p_n(v_nv_n^\sharp)v_n\in\mathcal A.
+\tag{HAP.28}
+\]">\[
+b_n=p_n(v_nv_n^\sharp)v_n\in\mathcal A.
+\tag{HAP.28}
+\]</span>
+<p>The formula means the corresponding finite sum of products; its constant term is a scalar multiple of <span class="math" data-tex="\(v_n\)">\(v_n\)</span>, so no identity in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is needed. Real coefficients and algebraic intertwining give</p>
+<span class="math math-display" data-tex="\[
+b_n=p_n(T_nT_n^*)v_n,\qquad
+b_n^\sharp=p_n(T_n^*T_n)v_n^\sharp,\qquad
+L_{b_n}=p_n(T_nT_n^*)T_n.
+\]">\[
+b_n=p_n(T_nT_n^*)v_n,\qquad
+b_n^\sharp=p_n(T_n^*T_n)v_n^\sharp,\qquad
+L_{b_n}=p_n(T_nT_n^*)T_n.
+\]</span>
+<p>Equations (HAP.24–27) imply</p>
+<span class="math math-display" data-tex="\[
+\|b_n-w_n\|\leq n^{-1},\qquad
+\|b_n^\sharp-z_n\|\leq n^{-1},\qquad
+\|L_{b_n}\|\leq1+n^{-1}.
+\tag{HAP.29}
+\]">\[
+\|b_n-w_n\|\leq n^{-1},\qquad
+\|b_n^\sharp-z_n\|\leq n^{-1},\qquad
+\|L_{b_n}\|\leq1+n^{-1}.
+\tag{HAP.29}
+\]</span>
+<p>Set <span class="math" data-tex="\(a_n=(1+n^{-1})^{-1}b_n\)">\(a_n=(1+n^{-1})^{-1}b_n\)</span>. Then <span class="math" data-tex="\(\|L_{a_n}\|\leq1\)">\(\|L_{a_n}\|\leq1\)</span>, and both vector limits in (HAP.20) persist, because the scalar factor tends to one and <span class="math" data-tex="\(b_n,b_n^\sharp\)">\(b_n,b_n^\sharp\)</span> converge.</p>
+<p>Finally (HAP.2) gives strong convergence of <span class="math" data-tex="\(L_{a_n}\)">\(L_{a_n}\)</span> and <span class="math" data-tex="\(L_{a_n}^*\)">\(L_{a_n}^*\)</span> on the dense domain <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span>. Their uniform bounds extend it to all of <span class="math" data-tex="\(H\)">\(H\)</span>: for uniformly bounded <span class="math" data-tex="\(Q_n,Q\)">\(Q_n,Q\)</span>, approximate a fixed vector by <span class="math" data-tex="\(\eta\in\mathcal A_r\)">\(\eta\in\mathcal A_r\)</span> in</p>
+<span class="math math-display" data-tex="\[
+\|(Q_n-Q)v\|\leq(\sup_n\|Q_n\|+\|Q\|)\|v-\eta\|+\|(Q_n-Q)\eta\|.
+\]">\[
+\|(Q_n-Q)v\|\leq(\sup_n\|Q_n\|+\|Q\|)\|v-\eta\|+\|(Q_n-Q)\eta\|.
+\]</span>
+<p>This proves the final assertion. Undoing the initial positive scaling proves the general case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The sequence is chosen for one vector in the Hilbert graph. It supplies no countable dense set for <span class="math" data-tex="\(H\)">\(H\)</span>. The strong* conclusion is stronger than the strong conclusion alone and follows from the explicit second vector limit.</p>
+<h2 id="approximation-of-every-left-bounded-vector">Approximation of every left-bounded vector</h2>
+<p><strong>Theorem.</strong> If <span class="math" data-tex="\(\xi\in\mathcal B_l\)">\(\xi\in\mathcal B_l\)</span>, there is a sequence <span class="math" data-tex="\(a_n\in\mathcal A\)">\(a_n\in\mathcal A\)</span> with</p>
+<span class="math math-display" data-tex="\[
+a_n\to\xi\quad\hbox{in Hilbert norm},\qquad
+\|L_{a_n}\|\leq\|\lambda_\xi\|,\qquad
+L_{a_n}\to\lambda_\xi\quad\hbox{strongly}.
+\tag{HAP.30}
+\]">\[
+a_n\to\xi\quad\hbox{in Hilbert norm},\qquad
+\|L_{a_n}\|\leq\|\lambda_\xi\|,\qquad
+L_{a_n}\to\lambda_\xi\quad\hbox{strongly}.
+\tag{HAP.30}
+\]</span>
+<p>No membership of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span> is required.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(T=\lambda_\xi\)">\(T=\lambda_\xi\)</span>. The case <span class="math" data-tex="\(T=0\)">\(T=0\)</span> is again trivial. Take the bounded polar decomposition <span class="math" data-tex="\(T=u|T|\)">\(T=u|T|\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+\zeta=u^*\xi.
+\]">\[
+\zeta=u^*\xi.
+\]</span>
+<p>Covariance gives <span class="math" data-tex="\(\zeta\in\mathcal B_l\)">\(\zeta\in\mathcal B_l\)</span> and <span class="math" data-tex="\(\lambda_\zeta=|T|\)">\(\lambda_\zeta=|T|\)</span>. Because this multiplier is self-adjoint, (HAP.4) gives <span class="math" data-tex="\(\zeta\in\mathcal A_l\)">\(\zeta\in\mathcal A_l\)</span>, with <span class="math" data-tex="\(S\zeta=\zeta\)">\(S\zeta=\zeta\)</span>. The final support <span class="math" data-tex="\(q=uu^*\)">\(q=uu^*\)</span> satisfies <span class="math" data-tex="\(qT=T\)">\(qT=T\)</span>; injectivity of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> gives <span class="math" data-tex="\(q\xi=\xi\)">\(q\xi=\xi\)</span>. Thus <span class="math" data-tex="\(u\zeta=\xi\)">\(u\zeta=\xi\)</span>.</p>
+<p>Use HAP-06 to choose <span class="math" data-tex="\(v_n\in\mathcal A\)">\(v_n\in\mathcal A\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\|v_n-\zeta\|&lt;(2n)^{-1},\qquad
+\|L_{v_n}\|\leq\||T|\|=\|T\|.
+\tag{HAP.31}
+\]">\[
+\|v_n-\zeta\|&lt;(2n)^{-1},\qquad
+\|L_{v_n}\|\leq\||T|\|=\|T\|.
+\tag{HAP.31}
+\]</span>
+<p>HAP-05, applied to the contraction <span class="math" data-tex="\(u\in M\)">\(u\in M\)</span> and <span class="math" data-tex="\(\mathcal C=L(\mathcal A)\)">\(\mathcal C=L(\mathcal A)\)</span>, supplies a contraction <span class="math" data-tex="\(L_{b_n}\)">\(L_{b_n}\)</span>, <span class="math" data-tex="\(b_n\in\mathcal A\)">\(b_n\in\mathcal A\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\|(L_{b_n}-u)v_n\|&lt;(2n)^{-1}.
+\tag{HAP.32}
+\]">\[
+\|(L_{b_n}-u)v_n\|&lt;(2n)^{-1}.
+\tag{HAP.32}
+\]</span>
+<p>This is one vector test for each <span class="math" data-tex="\(n\)">\(n\)</span>; choosing its witness from the approximating net does not replace that global net by a globally convergent sequence.</p>
+<p>Set <span class="math" data-tex="\(a_n=b_nv_n\)">\(a_n=b_nv_n\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\|a_n-\xi\|
+\leq\|(L_{b_n}-u)v_n\|+\|u(v_n-\zeta)\|&lt;n^{-1},
+\qquad
+\|L_{a_n}\|\leq\|L_{b_n}\|\,\|L_{v_n}\|\leq\|T\|.
+\]">\[
+\|a_n-\xi\|
+\leq\|(L_{b_n}-u)v_n\|+\|u(v_n-\zeta)\|&lt;n^{-1},
+\qquad
+\|L_{a_n}\|\leq\|L_{b_n}\|\,\|L_{v_n}\|\leq\|T\|.
+\]</span>
+<p>On <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span>, (HAP.2) now gives <span class="math" data-tex="\(L_{a_n}\eta=R_\eta a_n\to R_\eta\xi=T\eta\)">\(L_{a_n}\eta=R_\eta a_n\to R_\eta\xi=T\eta\)</span>. The uniform bound extends convergence to every vector as in HAP-06. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The statement supplies no limit for <span class="math" data-tex="\(a_n^\sharp\)">\(a_n^\sharp\)</span>. In particular it must not be used to put a merely left-bounded vector in the closed involution domain.</p>
+<h2 id="central-elements-preserve-both-involution-domains">Central elements preserve both involution domains</h2>
+<p><strong>Proposition.</strong> Every <span class="math" data-tex="\(z\in Z(M)=M\cap M&#x27;\)">\(z\in Z(M)=M\cap M&#x27;\)</span> preserves <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span> and <span class="math" data-tex="\(D(F)\)">\(D(F)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+S(z\xi)=z^*S\xi\quad(\xi\in D(S)),\qquad
+F(z\eta)=z^*F\eta\quad(\eta\in D(F)).
+\tag{HAP.33}
+\]">\[
+S(z\xi)=z^*S\xi\quad(\xi\in D(S)),\qquad
+F(z\eta)=z^*F\eta\quad(\eta\in D(F)).
+\tag{HAP.33}
+\]</span>
+<p>For the polar data in (HAP.5),</p>
+<span class="math math-display" data-tex="\[
+JzJ=z^*,\qquad
+\Delta^{it}z\Delta^{-it}=z\quad(t\in\mathbb R).
+\tag{HAP.34}
+\]">\[
+JzJ=z^*,\qquad
+\Delta^{it}z\Delta^{-it}=z\quad(t\in\mathbb R).
+\tag{HAP.34}
+\]</span>
+<p><strong>Proof of the domain assertions.</strong> If <span class="math" data-tex="\(\xi\in\mathcal A_l\)">\(\xi\in\mathcal A_l\)</span>, then <span class="math" data-tex="\(z\lambda_\xi\in\mathfrak n_l\)">\(z\lambda_\xi\in\mathfrak n_l\)</span>. Its adjoint equals</p>
+<span class="math math-display" data-tex="\[
+(z\lambda_\xi)^*=\lambda_\xi^*z^*=z^*\lambda_{S\xi}\in\mathfrak n_l,
+\]">\[
+(z\lambda_\xi)^*=\lambda_\xi^*z^*=z^*\lambda_{S\xi}\in\mathfrak n_l,
+\]</span>
+<p>where centrality permits the middle interchange. By covariance and (HAP.4), <span class="math" data-tex="\(z\xi\in\mathcal A_l\)">\(z\xi\in\mathcal A_l\)</span>, and injectivity gives</p>
+<span class="math math-display" data-tex="\[
+S(z\xi)=z^*S\xi.
+\tag{HAP.35}
+\]">\[
+S(z\xi)=z^*S\xi.
+\tag{HAP.35}
+\]</span>
+<p>For <span class="math" data-tex="\(\xi\in D(S)\)">\(\xi\in D(S)\)</span>, take a graph-approximating sequence <span class="math" data-tex="\(\xi_n\in\mathcal A_l\)">\(\xi_n\in\mathcal A_l\)</span>. Boundedness of <span class="math" data-tex="\(z,z^*\)">\(z,z^*\)</span> gives <span class="math" data-tex="\(z\xi_n\to z\xi\)">\(z\xi_n\to z\xi\)</span> and <span class="math" data-tex="\(S(z\xi_n)=z^*S\xi_n\to z^*S\xi\)">\(S(z\xi_n)=z^*S\xi_n\to z^*S\xi\)</span>. Closedness of <span class="math" data-tex="\(S\)">\(S\)</span> proves the first half of (HAP.33).</p>
+<p>The element <span class="math" data-tex="\(z\)">\(z\)</span> is also central in <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>: it belongs to <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, and every element of <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> commutes with it because <span class="math" data-tex="\(z\in M\)">\(z\in M\)</span>. The same argument with <span class="math" data-tex="\(\mathfrak n_r\)">\(\mathfrak n_r\)</span>, <span class="math" data-tex="\(R\)">\(R\)</span>, <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> proves the other half. This uses the right ideal-intersection identity and the graph core <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span>.</p>
+<p><strong>Proof of the polar assertions.</strong> First let <span class="math" data-tex="\(u\in Z(M)\)">\(u\in Z(M)\)</span> be unitary. Equation (HAP.33), applied also to <span class="math" data-tex="\(u^*\)">\(u^*\)</span>, gives <span class="math" data-tex="\(uD(S)=D(S)\)">\(uD(S)=D(S)\)</span> and the exact operator identity</p>
+<span class="math math-display" data-tex="\[
+uSu=S.
+\tag{HAP.36}
+\]">\[
+uSu=S.
+\tag{HAP.36}
+\]</span>
+<p>Write <span class="math" data-tex="\(A=\Delta^{1/2}\)">\(A=\Delta^{1/2}\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+S=uJAu=(uJu)(u^*Au).
+\]">\[
+S=uJAu=(uJu)(u^*Au).
+\]</span>
+<p>The second factor is positive self-adjoint with its unitary-transported domain, and the first factor is antiunitary. Since <span class="math" data-tex="\(A\)">\(A\)</span> has zero kernel and dense range, uniqueness of the polar decomposition from TC gives</p>
+<span class="math math-display" data-tex="\[
+J=uJu,\qquad A=u^*Au.
+\tag{HAP.37}
+\]">\[
+J=uJu,\qquad A=u^*Au.
+\tag{HAP.37}
+\]</span>
+<p>Therefore <span class="math" data-tex="\(JuJ=u^*\)">\(JuJ=u^*\)</span>. The second identity says that <span class="math" data-tex="\(u\)">\(u\)</span> commutes with <span class="math" data-tex="\(A\)">\(A\)</span> on its domain; unitary covariance of the spectral calculus gives commutation with every bounded Borel function of <span class="math" data-tex="\(A\)">\(A\)</span>, in particular with <span class="math" data-tex="\(\Delta^{it}\)">\(\Delta^{it}\)</span>.</p>
+<p>Finally, every central element is a finite complex linear combination of central unitaries. For completeness, if <span class="math" data-tex="\(h=h^*\in Z(M)\)">\(h=h^*\in Z(M)\)</span>, scale to a self-adjoint contraction and put <span class="math" data-tex="\(v=h+i(I-h^2)^{1/2}\)">\(v=h+i(I-h^2)^{1/2}\)</span>; this is a central unitary with <span class="math" data-tex="\(h=(v+v^*)/2\)">\(h=(v+v^*)/2\)</span>. Real and imaginary parts treat a general element, with the zero case immediate. The conjugate-linearity of <span class="math" data-tex="\(J\)">\(J\)</span> then extends <span class="math" data-tex="\(JuJ=u^*\)">\(JuJ=u^*\)</span> to <span class="math" data-tex="\(JzJ=z^*\)">\(JzJ=z^*\)</span>, and linearity extends the commutation relation with <span class="math" data-tex="\(\Delta^{it}\)">\(\Delta^{it}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These central identities follow before the fundamental modular theorem. The use of the full completion above is legitimate for every original <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, because its closed involution and generated algebra remain <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<h2 id="a-block-model-that-separates-the-domains">A block model that separates the domains</h2>
+<p>On the algebra of finite-support sequences of <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrices, use componentwise product, matrix adjoint, and</p>
+<span class="math math-display" data-tex="\[
+\langle a,b\rangle
+=\sum_{n\geq1}\operatorname{Tr}(D_n b_n^*a_n),
+\qquad D_n=\operatorname{diag}(1,n^4).
+\tag{HAP.38}
+\]">\[
+\langle a,b\rangle
+=\sum_{n\geq1}\operatorname{Tr}(D_n b_n^*a_n),
+\qquad D_n=\operatorname{diag}(1,n^4).
+\tag{HAP.38}
+\]</span>
+<p>The sum is finite on the original algebra <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Its Hilbert completion consists of sequences with</p>
+<span class="math math-display" data-tex="\[
+\sum_n\|a_nD_n^{1/2}\|_{\mathrm{HS}}^2&lt;\infty.
+\]">\[
+\sum_n\|a_nD_n^{1/2}\|_{\mathrm{HS}}^2&lt;\infty.
+\]</span>
+<p>The completion is justified by <a href="OA-MOD-OW.html#oa-mod-ow-09">OW09</a>: index the matrix entries by triples <span class="math" data-tex="\((n,i,j)\)">\((n,i,j)\)</span>, where <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> and <span class="math" data-tex="\(i,j\in\{1,2\}\)">\(i,j\in\{1,2\}\)</span>, and use the positive column weights from <span class="math" data-tex="\(D_n\)">\(D_n\)</span>. Its square-sum completeness and finite-support density proof identifies exactly the Hilbert space displayed above. The finite matrix identities and multiplication norm tests used below are proved in <a href="OA-MOD-OW.html#oa-mod-ow-10">OW10</a>.</p>
+<p>Left multiplication by a sequence <span class="math" data-tex="\(x\)">\(x\)</span> has operator norm <span class="math" data-tex="\(\sup_n\|x_n\|_{\mathrm{op}}\)">\(\sup_n\|x_n\|_{\mathrm{op}}\)</span>, whenever that supremum is finite. Indeed the map <span class="math" data-tex="\(a_n\mapsto a_nD_n^{1/2}\)">\(a_n\mapsto a_nD_n^{1/2}\)</span> changes each block norm to the Hilbert–Schmidt norm while preserving left multiplication. Testing one block and a rank-one matrix gives the lower bound, and summing the block upper bounds gives the reverse inequality.</p>
+<p>The adjoint identity follows by matrix multiplication and the trace. Involution is closable because convergence in the Hilbert space implies convergence in every finite-dimensional block. Products are dense since a finite-support vector is its product with the block identity on its finite support. These verify the Hilbert algebra axioms.</p>
+<p>Finite block truncations identify the exact closed involution:</p>
+<span class="math math-display" data-tex="\[
+D(S)=\left\{a\in H:\sum_n\|a_n^*D_n^{1/2}\|_{\mathrm{HS}}^2&lt;\infty\right\},
+\qquad (Sa)_n=a_n^*.
+\tag{HAP.39}
+\]">\[
+D(S)=\left\{a\in H:\sum_n\|a_n^*D_n^{1/2}\|_{\mathrm{HS}}^2&lt;\infty\right\},
+\qquad (Sa)_n=a_n^*.
+\tag{HAP.39}
+\]</span>
+<p>Necessity follows from coordinate convergence of a graph limit; sufficiency follows by truncating both square-summable sums. Here the left-bounded space and full algebra are</p>
+<span class="math math-display" data-tex="\[
+\mathcal B_l=\{a\in H:\sup_n\|a_n\|_{\mathrm{op}}&lt;\infty\},
+\qquad
+\mathcal A_l=\mathcal B_l\cap D(S).
+\tag{HAP.40}
+\]">\[
+\mathcal B_l=\{a\in H:\sup_n\|a_n\|_{\mathrm{op}}&lt;\infty\},
+\qquad
+\mathcal A_l=\mathcal B_l\cap D(S).
+\tag{HAP.40}
+\]</span>
+<p>First verify the asserted finite vectors in the right algebra. Right multiplication by a finite-support vector <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, in the Hilbert–Schmidt coordinate <span class="math" data-tex="\(X_n=a_nD_n^{1/2}\)">\(X_n=a_nD_n^{1/2}\)</span>, is</p>
+<span class="math math-display" data-tex="\[
+X_n\longmapsto X_nD_n^{-1/2}\eta_nD_n^{1/2}.
+\]">\[
+X_n\longmapsto X_nD_n^{-1/2}\eta_nD_n^{1/2}.
+\]</span>
+<p>Only finitely many blocks are nonzero, so the maximum of their matrix operator norms gives a finite bound for this map on the completed Hilbert space. Thus <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is right bounded. It also belongs to <span class="math" data-tex="\(D(F)\)">\(D(F)\)</span>: the pairing of <span class="math" data-tex="\(Sa\)">\(Sa\)</span> with <span class="math" data-tex="\(\eta\)">\(\eta\)</span> uses only those finitely many coordinates, and adjoint on each finite-dimensional block is bounded. Hence that pairing is bounded by a constant times <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span>, which is exactly the adjoint-domain criterion of <a href="OA-MOD-TC.html#oa-mod-tc-03">TC03</a>. This proves <span class="math" data-tex="\(\eta\in\mathcal A_r\)">\(\eta\in\mathcal A_r\)</span>.</p>
+<p>To verify the bounded-space statement, test the defining left-boundedness inequality on these finite block vectors in the right algebra. It forces the stated block multiplier bound. Conversely a uniformly bounded left multiplier gives the defining inequality first on those finite vectors; arbitrary right-bounded vectors act blockwise by their continuous extension, giving <span class="math" data-tex="\(\lambda_a\eta=R_\eta a\)">\(\lambda_a\eta=R_\eta a\)</span> and the same bound on all of <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span>. Thus these spaces agree with (HAP.1), rather than merely being proposed extensions.</p>
+<p>In this example the approximants in HAP-06 and HAP-07 can be the finite block truncations. Their multiplication norms do not increase. For <span class="math" data-tex="\(\xi\in\mathcal A_l\)">\(\xi\in\mathcal A_l\)</span>, both <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and <span class="math" data-tex="\(S\xi\)">\(S\xi\)</span> have square-summable tails, giving the two limits in (HAP.20). For <span class="math" data-tex="\(\xi\in\mathcal B_l\)">\(\xi\in\mathcal B_l\)</span>, only the first tail condition is automatic.</p>
+<h2 id="problems-with-complete-solutions">Problems with complete solutions</h2>
+<p><strong>Problem 1: a limit outside the involution domain.</strong> In HAP-09 let</p>
+<span class="math math-display" data-tex="\[
+\xi_n=n^{-2}E_{21},\qquad
+a^{(N)}_n=
+\begin{cases}\xi_n,&amp;n\leq N,\\0,&amp;n&gt;N.\end{cases}
+\]">\[
+\xi_n=n^{-2}E_{21},\qquad
+a^{(N)}_n=
+\begin{cases}\xi_n,&amp;n\leq N,\\0,&amp;n&gt;N.\end{cases}
+\]</span>
+<p>Show that <span class="math" data-tex="\(a^{(N)}\to\xi\)">\(a^{(N)}\to\xi\)</span> in Hilbert norm and <span class="math" data-tex="\(L_{a^{(N)}}\to\lambda_\xi\)">\(L_{a^{(N)}}\to\lambda_\xi\)</span> in operator norm, but <span class="math" data-tex="\(\xi\notin D(S)\)">\(\xi\notin D(S)\)</span>. Explain which ambient space in HAP-02 matters.</p>
+<p><strong>Solution.</strong> The squared Hilbert norm of <span class="math" data-tex="\(E_{21}\)">\(E_{21}\)</span> in the <span class="math" data-tex="\(n\)">\(n\)</span>-th block is <span class="math" data-tex="\(1\)">\(1\)</span>. Hence
+<span class="math" data-tex="\(\|\xi\|^2=\sum_n n^{-4}&lt;\infty\)">\(\|\xi\|^2=\sum_n n^{-4}&lt;\infty\)</span>, and the tail sums prove the vector convergence. The left multiplication norm of the tail is
+<span class="math" data-tex="\(\sup_{n&gt;N}n^{-2}=(N+1)^{-2}\)">\(\sup_{n&gt;N}n^{-2}=(N+1)^{-2}\)</span>, which tends to zero. In particular <span class="math" data-tex="\(\xi\in\mathcal B_l\)">\(\xi\in\mathcal B_l\)</span>.</p>
+<p>The convergence of the first scalar series can be checked without an integral test. In the block <span class="math" data-tex="\(2^k\leq n&lt;2^{k+1}\)">\(2^k\leq n&lt;2^{k+1}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{n=2^k}^{2^{k+1}-1}n^{-4}\leq2^{-3k}.
+\]">\[
+\sum_{n=2^k}^{2^{k+1}-1}n^{-4}\leq2^{-3k}.
+\]</span>
+<p>The finite geometric-sum identity gives <span class="math" data-tex="\(\sum_{k=K}^{\infty}2^{-3k}=(8/7)2^{-3K}\)">\(\sum_{k=K}^{\infty}2^{-3k}=(8/7)2^{-3K}\)</span>, tending to zero. This proves convergence and the required vanishing tails.</p>
+<p>The squared norm of <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span> in that block is <span class="math" data-tex="\(n^4\)">\(n^4\)</span>. Thus the proposed adjoint sequence has total squared norm</p>
+<span class="math math-display" data-tex="\[
+\sum_n\|n^{-2}E_{12}\|_n^2=\sum_n1=\infty.
+\]">\[
+\sum_n\|n^{-2}E_{12}\|_n^2=\sum_n1=\infty.
+\]</span>
+<p>Equation (HAP.39) gives <span class="math" data-tex="\(\xi\notin D(S)\)">\(\xi\notin D(S)\)</span>; also <span class="math" data-tex="\(\|(a^{(N)})^\sharp\|^2=N\)">\(\|(a^{(N)})^\sharp\|^2=N\)</span>. The <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span> graph therefore is not closed in <span class="math" data-tex="\(H\times M\)">\(H\times M\)</span>, even with operator norm on <span class="math" data-tex="\(M\)">\(M\)</span>. HAP-02 places its first coordinate in <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span>, and this limit is outside that ambient space.</p>
+<p><strong>Problem 2: the global density theorem still needs nets.</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be uncountable and let <span class="math" data-tex="\(\mathcal C=c_{00}(I)\)">\(\mathcal C=c_{00}(I)\)</span> act diagonally on <span class="math" data-tex="\(\ell^2(I)\)">\(\ell^2(I)\)</span>. Verify the hypotheses of HAP-05 and show that no sequence in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> converges strongly to the identity.</p>
+<p><strong>Solution.</strong> This is a nondegenerate *-algebra: every single-coordinate vector is in the range of its coordinate projection. Its weak closure is the full diagonal algebra <span class="math" data-tex="\(\ell^\infty(I)\)">\(\ell^\infty(I)\)</span>. One may see this directly by finite-coordinate truncation nets for each bounded diagonal function, whose norms do not increase and which converge strongly by the square-summable tails of each vector. Conversely commuting with the coordinate projections forces an operator to be diagonal, so the bicommutant is precisely that diagonal algebra.</p>
+<p>The union of the finite supports of any sequence from <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is countable. Choose a coordinate outside it. Every sequence member annihilates the corresponding unit vector, whereas the identity fixes it. Thus there is no such strong limit. The sequences in HAP-06–07 approximate a single vector and do not contradict this fact about simultaneous convergence on every vector.</p>
+<p><strong>Problem 3: why the multiplier cutoff also controls the adjoint.</strong> In HAP-06, derive (HAP.25) first for monomials and explain why using complex polynomial coefficients in (HAP.28) would require changing the displayed adjoint formula.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>, induction gives</p>
+<span class="math math-display" data-tex="\[
+T^*(TT^*)^k=(T^*T)^kT^*.
+\]">\[
+T^*(TT^*)^k=(T^*T)^kT^*.
+\]</span>
+<p>Linearity proves the intertwining identity for every polynomial. Uniform approximation on the compact interval containing both positive spectra gives (HAP.25) for the real continuous cutoff. If <span class="math" data-tex="\(p(t)=\sum_j c_jt^j\)">\(p(t)=\sum_j c_jt^j\)</span>, taking adjoints conjugates the coefficients, so</p>
+<span class="math math-display" data-tex="\[
+\bigl(p(vv^\sharp)v\bigr)^\sharp
+=\overline p(v^\sharp v)v^\sharp,
+\qquad \overline p(t)=\sum_j\overline{c_j}t^j.
+\]">\[
+\bigl(p(vv^\sharp)v\bigr)^\sharp
+=\overline p(v^\sharp v)v^\sharp,
+\qquad \overline p(t)=\sum_j\overline{c_j}t^j.
+\]</span>
+<p>Choosing real coefficients lets the same polynomial occur in the two graph estimates. The order of the two quadratic products still differs and cannot be suppressed.</p>
+<h2 id="exact-conclusions-and-remaining-scope">Exact conclusions and remaining scope</h2>
+<p>HAP-02 supplies both source closed-graph statements, with a slightly weaker operator topology sufficient for each proof. HAP-03 gives the full arbitrary-net functional-calculus lemma. HAP-06 proves the original-algebra approximation of every vector in the full completion, with simultaneous graph-norm and strong* convergence; HAP-07 gives the exact bound and strong convergence for every left-bounded vector. HAP-08 supplies the two central domain identities and both polar consequences.</p>
+<p>The algebra need not be unital, the Hilbert space need not be separable, and the bounded-vector limit need not lie in the involution domain. The global density theorem is a net theorem; the two vector approximation theorems are sequence theorems with separately stated conclusions. No uniform polynomial approximation on an unbounded interval is used.</p>
+<p>The block model makes the domain distinction explicit: bounded multiplication controls the vector approximation, while the adjoint vector requires a separate square-sum condition. The central identities follow from graph domains and polar uniqueness, before any modular commutant theorem.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-MA.html">← Analytic kernels for unbounded modular operators</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-MF.html">The modular group and its analytic algebra →</a></span></nav>
+<p class="small source-link"><a href="src/hilbert-algebra-approximation.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

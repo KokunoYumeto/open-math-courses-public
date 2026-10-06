@@ -19,7 +19,7 @@ If $\operatorname{WF}(u)\cap N_f=\varnothing$, there is a canonical scalar distr
  =\{(y,df_y^T\xi):(f(y),\xi)\in\operatorname{WF}(u)\}.
  \tag{R2}
 \]
-All covectors on the right are nonzero. For a closed conic set $\Gamma$ avoiding $N_f$, pullback is sequentially continuous from $\mathcal D'_\Gamma(X)$ to $\mathcal D'_{f^*\Gamma}(Y)$ in the following sense. A sequence converges in $\mathcal D'_\Gamma$ when it converges weakly as distributions and, for every compactly supported smooth $\chi$ and closed frequency cone $V$ with $(\operatorname{supp}\chi\times V)\cap\Gamma=\varnothing$ in a chart,
+All covectors on the right are nonzero. Write $\mathcal D'_\Gamma(X)=\{v\in\mathcal D'(X):\operatorname{WF}(v)\subset\Gamma\}$. For a closed conic set $\Gamma$ avoiding $N_f$, pullback is sequentially continuous from $\mathcal D'_\Gamma(X)$ to $\mathcal D'_{f^*\Gamma}(Y)$ in the following sense. A sequence $u_j$ with every $u_j$ and its limit $u$ in this same $\mathcal D'_\Gamma$ converges there when it converges weakly as distributions and, for every compactly supported smooth $\chi$ and closed frequency cone $V$ with $(\operatorname{supp}\chi\times V)\cap\Gamma=\varnothing$ in a chart,
 \[
  \sup_{\xi\in V}\langle\xi\rangle^L
        |\widehat{\chi(u_j-u)}(\xi)|\longrightarrow0
@@ -30,12 +30,12 @@ Coordinate invariance of this convergence is proved below. This specifies both e
 
 ## 2. The absolutely convergent local construction
 
-Fix $y_0$, put $x_0=f(y_0)$, and work in compactly contained coordinate neighborhoods. By closedness of the wavefront set and compactness of unit directions, these neighborhoods may be made small enough that a closed cone $B$ contains every wavefront direction over the chosen $x$ neighborhood in its angular interior and
+Fix $y_0$, put $x_0=f(y_0)$, and work in compactly contained coordinate neighborhoods. For existence take $\Gamma=\operatorname{WF}(u)$; for sequential continuity use the fixed closed cone $\Gamma$ from Section 1, containing all the wavefronts in the sequence. Closedness of $\Gamma$ and compactness of unit directions allow these neighborhoods to be made small enough that a closed cone $B$ contains every direction of $\Gamma$ over the chosen $x$ neighborhood in its angular interior and
 \[
  |df_y^T\xi|\ge c|\xi|\quad(\xi\in B)
  \tag{R4}
 \]
-throughout the chosen $y$ neighborhood. Indeed, failure after arbitrarily small shrinkings would give unit directions tending to a wavefront direction over $x_0$ killed by $df_{y_0}^T$. This contradicts (R1). If there are no wavefront directions over $x_0$, take $B$ empty after localizing.
+throughout the chosen $y$ neighborhood. Indeed, failure after arbitrarily small shrinkings would give unit directions tending to a direction of $\Gamma$ over $x_0$ killed by $df_{y_0}^T$. This contradicts $\Gamma\cap N_f=\varnothing$. If $\Gamma$ has no directions over $x_0$, it has none over a sufficiently small neighborhood, by the same compactness argument; take $B$ empty there. In the sequential statement, the neighborhoods, cone $B$ and constant $c$ are thus fixed for the whole sequence.
 
 Choose $\chi=1$ near the image of the smaller $y$ neighborhood and set $v=\chi u$, compactly supported in that $x$ neighborhood. The Fourier transform of $v$ has polynomial growth everywhere and is rapidly decreasing outside $B$, by the finite angular covering and cutoff estimates in the wavefront prerequisite. For $\psi\in C_c^\infty(Y)$ supported in the smaller neighborhood, put
 \[

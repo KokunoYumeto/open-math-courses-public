@@ -2,7 +2,7 @@
 
 A compactly supported sheaf with nonzero ordinary cohomology has a microsupport point over every covector direction. A single isolated linear test can certify that its cohomology is nonzero: when its localized coefficient is an unshifted rank-\(m\) skyscraper, the whole global cohomology complex is \(k^m\). This proves the assigned cotangent-projection theorem over every field.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 Learn first Pure and simple sheaves from directional tests for the closed support test and its compatibility with localized representatives. Pure test degrees and strong Morse inequalities states and proves the exact arbitrary-field filtration used here, separately from its characteristic-cycle formulas. Its written SH-02 provider is Local jumps and finite Morse data and A finite filtration by local tests. Their proper-support, endpoint, localization and connecting-map proofs retain their exact earlier foundational obligations. The argument below supplies the localized-model and projection steps in full.
 
