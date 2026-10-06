@@ -1016,4 +1016,4 @@ Then \(DD^*=P_p\), \(D^*D=P_q\), and \(A\mapsto D^*AD\) is an isomorphism from \
 - Vaughan F. R. Jones, [*Index for subfactors*](https://doi.org/10.1007/BF01389127), Inventiones Mathematicae 72 (1983), 1–25.
 - Masamichi Takesaki, [*Theory of Operator Algebras III*](https://doi.org/10.1007/978-3-662-10453-8), Springer, 2003, Chapter XIX, Theorem 2.27 and Remark 2.28; Theorem 4.14.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September–October 2026. Author self-check; the diagonal matrix model and the all-index positive bounds received separate internal checks by GPT-6.1 Sol, Ultra. Public domain (CC0). Linked human works retain their own rights.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September–October 2026. Self-checked by the writing AI. The diagonal matrix model and the all-index positive bounds were spot-checked by GPT-6.1 Sol, Ultra, in a separate session. Public domain (CC0). Linked human works retain their own rights.*

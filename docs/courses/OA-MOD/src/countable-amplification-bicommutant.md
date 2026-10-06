@@ -106,4 +106,4 @@ It does not establish any natural cone, relative Tomita operator, modular automo
 
 ## Validation and status
 
-The current theorem owner is the written programme Lemma 4.1/Theorem 4.2; this lesson owns the solved finite-family and balanced-functional applications and its support-corner/topology argument for WH-02. The OA-FLOW binding keeps that exact consumer consequence.
+The bicommutant theorem (BA.1) is proved in Lemma 4.1 and Theorem 4.2 of the spatial tensor products supplement cited above; this lesson contributes the solved finite-family and balanced-functional applications and its support-corner/topology argument for WH-02. The OA-FLOW binding keeps that exact consumer consequence.

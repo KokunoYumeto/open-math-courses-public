@@ -2,7 +2,7 @@
 
 *Complete proof excerpt from AN-04, “Fourier-integral operators,” lesson “Real and complex symplectic normal forms of functions,” §4. Original AN-04 exposition, CC0 1.0 Universal.*
 
-This component retains the AN-04 proof's ownership and construction. The fifty-line statement and proof below are preserved verbatim after LF newline normalization. The surrounding symplectic normal-form argument is outside this excerpt. Its citation to a book identifies the classical theorem; the complete proof is supplied here.
+The fifty-line statement and proof below are preserved verbatim after LF newline normalization. The surrounding symplectic normal-form argument is outside this excerpt. Its citation to a book identifies the classical theorem; the complete proof is supplied here.
 
 The dividend is used on its actual supplied neighborhood. A common output neighborhood applies to dividends actually supplied on one common domain; unrelated local germs first require intersection with their individual domains. In the receiver, the preparation of the divisor and all dividend restrictions retain this distinction.
 

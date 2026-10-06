@@ -1,0 +1,1238 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The core trace and its changes of weight · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L19.html">Previous lesson</a><a href="OA-FLOW-ET.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-CORE.md">Lesson source</a></nav><h1 id="OA-FLOW.CORE.SETTING">The core trace and its changes of weight</h1>
+<p><em>Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.</em></p>
+<p>The crossed product by a modular action has a trace even when the original algebra has none. To calculate that trace one must distinguish three objects: the dual weight, the positive generator of the translation unitaries, and the weight obtained by removing that generator. We first construct these objects with their full domains. We then show that changing the original weight preserves the trace, and use the resulting coordinate changes to define the core and its center flow independently of a weight.</p>
+<p><a id="core-setting"></a></p>
+<h2 id="setting-and-the-trace-to-be-constructed">Setting and the trace to be constructed</h2>
+<p>Let <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> be an arbitrary von Neumann algebra and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> a faithful normal semifinite weight. No faithful state, separability, factor or countability assumption is made. The zero algebra has the unique zero-algebra version of every construction below. Write
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ C_\varphi=M\rtimes_{\sigma^\varphi}\mathbb R
+   =\{\pi_\varphi(M),\lambda_\varphi(\mathbb R)\}'',\\
+ \theta_s^\varphi(\lambda_\varphi(t))=e^{-ist}\lambda_\varphi(t),
+ \qquad \theta_s^\varphi(\pi_\varphi(a))=\pi_\varphi(a).
+ \end{gathered}
+\]">\[
+ \begin{gathered}
+ C_\varphi=M\rtimes_{\sigma^\varphi}\mathbb R
+   =\{\pi_\varphi(M),\lambda_\varphi(\mathbb R)\}'',\\
+ \theta_s^\varphi(\lambda_\varphi(t))=e^{-ist}\lambda_\varphi(t),
+ \qquad \theta_s^\varphi(\pi_\varphi(a))=\pi_\varphi(a).
+ \end{gathered}
+\]</span>
+The original real group has Lebesgue measure <span class="math" data-tex="\(dt\)">\(dt\)</span>; its Plancherel-dual measure is <span class="math" data-tex="\(ds/(2\pi)\)">\(ds/(2\pi)\)</span>. Set
+<span class="math math-display" data-tex="\[
+ T_\varphi(X)=\int_{\mathbb R}\theta_s^\varphi(X)\,\frac{ds}{2\pi},
+ \qquad \Phi_\varphi=\widehat{\varphi\circ\pi_\varphi^{-1}}\circ T_\varphi.
+\]">\[
+ T_\varphi(X)=\int_{\mathbb R}\theta_s^\varphi(X)\,\frac{ds}{2\pi},
+ \qquad \Phi_\varphi=\widehat{\varphi\circ\pi_\varphi^{-1}}\circ T_\varphi.
+\]</span>
+The integral is an extended positive value, and the outer hat denotes extension of a scalar weight to that cone. These constructions and their normality are proved in <a href="OA-FLOW-DA.html#da-positive">DA's positive average</a> and <a href="OA-FLOW-GDA.html#gda-8">GDA8</a>. We will construct <span class="math" data-tex="\(h_\varphi\)">\(h_\varphi\)</span>, with <span class="math" data-tex="\(h_\varphi^{it}=\lambda_\varphi(t)\)">\(h_\varphi^{it}=\lambda_\varphi(t)\)</span>, and prove on the entire positive cone that
+<span class="math math-display" data-tex="\[
+ \tau_\varphi=(\Phi_\varphi)_{h_\varphi^{-1}},\qquad
+ \Phi_\varphi=(\tau_\varphi)_{h_\varphi},\qquad
+ \tau_\varphi\circ\theta_s^\varphi=e^{-s}\tau_\varphi.
+\]">\[
+ \tau_\varphi=(\Phi_\varphi)_{h_\varphi^{-1}},\qquad
+ \Phi_\varphi=(\tau_\varphi)_{h_\varphi},\qquad
+ \tau_\varphi\circ\theta_s^\varphi=e^{-s}\tau_\varphi.
+\]</span>
+Here the subscript denotes the bounded-spectral construction of <a href="OA-FLOW-CZ.html#oa-flow.cz.2">CZ2</a>, including infinite values. In particular, an expression involving an unbounded inverse is always interpreted through that construction. Each <span class="math" data-tex="\(\tau_\varphi\)">\(\tau_\varphi\)</span> will be a faithful normal semifinite trace.</p>
+<p><span id="OA-FLOW.CORE.1"></span><a id="core-1"></a></p>
+<h2 id="1-the-positive-generator-and-the-inner-modular-group">1. The positive generator and the inner modular group</h2>
+<p>Temporarily omit the subscript <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. The regular crossed-product representation is normal and faithful by <a href="OA-FLOW-NR.html#oa-flow.nr.3">NR3</a>; its translations <span class="math" data-tex="\(\lambda(t)\)">\(\lambda(t)\)</span> form a strongly continuous unitary group. <a href="OA-FLOW-RF.html#oa-flow.rf.5">RF5</a> constructs its unique self-adjoint generator <span class="math" data-tex="\(P\)">\(P\)</span>, including its entire domain, from the bounded Laplace resolvent
+<span class="math math-display" data-tex="\[
+ R\xi=\int_0^\infty e^{-t}\lambda(t)\xi\,dt,
+ \qquad R=(1-iP)^{-1},\qquad D(P)=\operatorname{ran}R.
+ \tag{CORE.1.a}
+\]">\[
+ R\xi=\int_0^\infty e^{-t}\lambda(t)\xi\,dt,
+ \qquad R=(1-iP)^{-1},\qquad D(P)=\operatorname{ran}R.
+ \tag{CORE.1.a}
+\]</span>
+Because <span class="math" data-tex="\(R\in C\)">\(R\in C\)</span>, the spectral construction in RF5 puts every spectral projection of <span class="math" data-tex="\(P\)">\(P\)</span> in <span class="math" data-tex="\(C\)">\(C\)</span>. Thus <span class="math" data-tex="\(P\)">\(P\)</span> is affiliated with <span class="math" data-tex="\(C\)">\(C\)</span>. Define <span class="math" data-tex="\(h=e^P\)">\(h=e^P\)</span> by the complete <a href="OA-FLOW-SF.html#oa-flow.sf.sf1">SF spectral calculus</a>. It is positive self-adjoint and nonsingular: the function <span class="math" data-tex="\(e^p\)">\(e^p\)</span> is strictly positive at every real <span class="math" data-tex="\(p\)">\(p\)</span>. Its inverse <span class="math" data-tex="\(e^{-P}\)">\(e^{-P}\)</span> is densely defined, and
+<span class="math math-display" data-tex="\[
+ h^{it}=e^{itP}=\lambda(t).
+ \tag{CORE.1.b}
+\]">\[
+ h^{it}=e^{itP}=\lambda(t).
+ \tag{CORE.1.b}
+\]</span>
+For precision, if <span class="math" data-tex="\(E\)">\(E\)</span> is the spectral measure of <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(\mu_\xi(B)=\|E(B)\xi\|^2\)">\(\mu_\xi(B)=\|E(B)\xi\|^2\)</span>, then every finite complex-valued Borel function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> has the full domain
+<span class="math math-display" data-tex="\[
+ D(f(h))=
+ \left\{\xi:\int_{\mathbb R}|f(e^p)|^2\,d\mu_\xi(p)&lt;\infty\right\}.
+ \tag{CORE.1.c}
+\]">\[
+ D(f(h))=
+ \left\{\xi:\int_{\mathbb R}|f(e^p)|^2\,d\mu_\xi(p)&lt;\infty\right\}.
+ \tag{CORE.1.c}
+\]</span>
+Bounded truncations define its value there. This includes <span class="math" data-tex="\(h^{1/2}\)">\(h^{1/2}\)</span>, <span class="math" data-tex="\(h^{-1/2}\)">\(h^{-1/2}\)</span>, all real powers and <span class="math" data-tex="\(\log h=P\)">\(\log h=P\)</span>; it makes no boundedness assertion about these operators.</p>
+<p><a href="OA-FLOW-GDA.html#gda-8">GDA8</a> identifies <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> with the full faithful normal semifinite dual weight, and <a href="OA-FLOW-GDW.html#gdw-7">GDW7</a> gives its modular group on both generating families. Since <span class="math" data-tex="\(\varphi\circ\sigma_t^\varphi=\varphi\)">\(\varphi\circ\sigma_t^\varphi=\varphi\)</span>, its formulas specialize to
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \sigma_r^\Phi(\pi(a))&amp;=\pi(\sigma_r^\varphi(a)),\\
+ \sigma_r^\Phi(\lambda(t))&amp;=\lambda(t).
+ \end{aligned}
+ \tag{CORE.1.d}
+\]">\[
+ \begin{aligned}
+ \sigma_r^\Phi(\pi(a))&amp;=\pi(\sigma_r^\varphi(a)),\\
+ \sigma_r^\Phi(\lambda(t))&amp;=\lambda(t).
+ \end{aligned}
+ \tag{CORE.1.d}
+\]</span>
+The second equality uses unimodularity of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> and the normalized self-cocycle <span class="math" data-tex="\((D\varphi:D\varphi)_r=1\)">\((D\varphi:D\varphi)_r=1\)</span>, proved in <a href="OA-FLOW-BC.html#oa-flow.bc.4">BC4</a>. Conjugation by <span class="math" data-tex="\(\lambda(r)\)">\(\lambda(r)\)</span> has exactly the same two values: covariance gives the first and commutativity of the real translations gives the second. The two normal automorphisms therefore agree on the generated von Neumann algebra:
+<span class="math math-display" data-tex="\[
+ \sigma_r^\Phi=\operatorname{Ad}\lambda(r)
+              =\operatorname{Ad}h^{ir}.
+ \tag{CORE.1.e}
+\]">\[
+ \sigma_r^\Phi=\operatorname{Ad}\lambda(r)
+              =\operatorname{Ad}h^{ir}.
+ \tag{CORE.1.e}
+\]</span>
+Every spectral projection of <span class="math" data-tex="\(h\)">\(h\)</span> is fixed by this group, since it commutes with all <span class="math" data-tex="\(h^{ir}\)">\(h^{ir}\)</span>. Consequently <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(h^{-1}\)">\(h^{-1}\)</span> are affiliated with the centralizer <span class="math" data-tex="\(C_\Phi\)">\(C_\Phi\)</span>. All hypotheses for centralizer perturbation are now established.</p>
+<p><span id="OA-FLOW.CORE.2"></span><a id="core-2"></a></p>
+<h2 id="2-removing-the-density-with-its-exact-normalization">2. Removing the density, with its exact normalization</h2>
+<p>Define <span class="math" data-tex="\(\tau=\Phi_{h^{-1}}\)">\(\tau=\Phi_{h^{-1}}\)</span>. <a href="OA-FLOW-CZ.html#oa-flow.cz.2">CZ2</a> proves directly that this is a faithful normal semifinite weight. The full modular formula of <a href="OA-FLOW-CZ.html#oa-flow.cz.5">CZ5</a> and (CORE.1.e) give
+<span class="math math-display" data-tex="\[
+ \sigma_t^\tau(X)=h^{-it}\sigma_t^\Phi(X)h^{it}=X.
+ \tag{CORE.2.a}
+\]">\[
+ \sigma_t^\tau(X)=h^{-it}\sigma_t^\Phi(X)h^{it}=X.
+ \tag{CORE.2.a}
+\]</span>
+The whole-cone trace criterion of <a href="OA-FLOW-KT.html#oa-flow.kt.5">KT5</a> therefore makes <span class="math" data-tex="\(\tau\)">\(\tau\)</span> a trace: <span class="math" data-tex="\(\tau(x^*x)=\tau(xx^*)\)">\(\tau(x^*x)=\tau(xx^*)\)</span> for every bounded <span class="math" data-tex="\(x\in C\)">\(x\in C\)</span>, including when the value is infinite. <a href="OA-FLOW-CZ.html#oa-flow.cz.6">CZ6</a> fixes the actual weight normalization:
+<span class="math math-display" data-tex="\[
+ (D\tau:D\Phi)_t=h^{-it},\qquad
+ (D\Phi:D\tau)_t=h^{it}.
+ \tag{CORE.2.b}
+\]">\[
+ (D\tau:D\Phi)_t=h^{-it},\qquad
+ (D\Phi:D\tau)_t=h^{it}.
+ \tag{CORE.2.b}
+\]</span>
+The second identity is the adjoint rule of <a href="OA-FLOW-BC.html#oa-flow.bc.4">BC4</a>.</p>
+<p>We need an inverse-perturbation fact on the entire positive cone. Let <span class="math" data-tex="\(\rho\)">\(\rho\)</span> be any faithful normal semifinite weight and <span class="math" data-tex="\(k\)">\(k\)</span> any nonsingular positive operator affiliated with its centralizer. Put <span class="math" data-tex="\(\nu=\rho_k\)">\(\nu=\rho_k\)</span>. CZ5 shows that the spectral projections of <span class="math" data-tex="\(k\)">\(k\)</span> are still fixed by <span class="math" data-tex="\(\sigma^\nu\)">\(\sigma^\nu\)</span>; hence <span class="math" data-tex="\(\nu_{k^{-1}}\)">\(\nu_{k^{-1}}\)</span> is defined and faithful normal semifinite. CZ6 and BC4 give
+<span class="math math-display" data-tex="\[
+ (D\nu_{k^{-1}}:D\nu)_t=k^{-it}
+       =(D\rho:D\nu)_t.
+\]">\[
+ (D\nu_{k^{-1}}:D\nu)_t=k^{-it}
+       =(D\rho:D\nu)_t.
+\]</span>
+The fixed-reference injectivity proved in <a href="OA-FLOW-GDA.html#gda-7">GDA7</a> now yields
+<span class="math math-display" data-tex="\[
+ (\rho_k)_{k^{-1}}=\rho\quad\hbox{on the whole positive cone}.
+ \tag{CORE.2.c}
+\]">\[
+ (\rho_k)_{k^{-1}}=\rho\quad\hbox{on the whole positive cone}.
+ \tag{CORE.2.c}
+\]</span>
+This uses equality of normalized cocycles, rather than equality of modular groups. Applying it to <span class="math" data-tex="\(\rho=\Phi\)">\(\rho=\Phi\)</span> and <span class="math" data-tex="\(k=h^{-1}\)">\(k=h^{-1}\)</span> proves <span class="math" data-tex="\(\Phi=\tau_h\)">\(\Phi=\tau_h\)</span>, including every infinite value. It also proves uniqueness with this normalization: if a faithful normal semifinite trace <span class="math" data-tex="\(\eta\)">\(\eta\)</span> satisfies <span class="math" data-tex="\(\Phi=\eta_h\)">\(\Phi=\eta_h\)</span>, then <span class="math" data-tex="\(\eta=\Phi_{h^{-1}}=\tau\)">\(\eta=\Phi_{h^{-1}}=\tau\)</span>.</p>
+<p><span id="OA-FLOW.CORE.3"></span><a id="core-3"></a></p>
+<h2 id="3-bounded-trace-evaluations-and-every-finite-domain">3. Bounded trace evaluations and every finite domain</h2>
+<p>For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the bounded density used in the construction of <span class="math" data-tex="\(\Phi_{h^{-1}}\)">\(\Phi_{h^{-1}}\)</span> is
+<span class="math math-display" data-tex="\[
+ (h^{-1})_\varepsilon
+   =h^{-1}(1+\varepsilon h^{-1})^{-1}
+   =(h+\varepsilon)^{-1}.
+\]">\[
+ (h^{-1})_\varepsilon
+   =h^{-1}(1+\varepsilon h^{-1})^{-1}
+   =(h+\varepsilon)^{-1}.
+\]</span>
+Thus, for every bounded <span class="math" data-tex="\(X\in C_+\)">\(X\in C_+\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \tau(X)&amp;=\sup_{\varepsilon&gt;0}
+   \Phi\big((h+\varepsilon)^{-1/2}X(h+\varepsilon)^{-1/2}\big)\\
+ &amp;=\sup_{n\ge1}\Phi(h^{-1/2}p_nXp_nh^{-1/2}),
+ \qquad p_n=1_{[1/n,n]}(h).
+ \end{aligned}
+ \tag{CORE.3.a}
+\]">\[
+ \begin{aligned}
+ \tau(X)&amp;=\sup_{\varepsilon&gt;0}
+   \Phi\big((h+\varepsilon)^{-1/2}X(h+\varepsilon)^{-1/2}\big)\\
+ &amp;=\sup_{n\ge1}\Phi(h^{-1/2}p_nXp_nh^{-1/2}),
+ \qquad p_n=1_{[1/n,n]}(h).
+ \end{aligned}
+ \tag{CORE.3.a}
+\]</span>
+Both lines are exactly <a href="OA-FLOW-CZ.html#oa-flow.cz.2">CZ2</a>, since the interval <span class="math" data-tex="\([1/n,n]\)">\([1/n,n]\)</span> is unchanged under inversion. All products inside <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> are bounded. The scalar values in the first line increase as <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>, by the bounded centralizer parameter order proved in <a href="OA-FLOW-CZ.html#oa-flow.cz.1">CZ1</a>. The sandwiched operators themselves need not be ordered.</p>
+<p>Here is an exact finite-dimensional check of that distinction. In <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span> let
+<span class="math math-display" data-tex="\[
+ h=\begin{pmatrix}1&amp;0\\0&amp;4\end{pmatrix},\qquad
+ X=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix},\qquad
+ \Phi(Y)=\operatorname{Tr}(hY).
+\]">\[
+ h=\begin{pmatrix}1&amp;0\\0&amp;4\end{pmatrix},\qquad
+ X=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix},\qquad
+ \Phi(Y)=\operatorname{Tr}(hY).
+\]</span>
+Then <span class="math" data-tex="\(B_\varepsilon=(h+\varepsilon)^{-1/2}X(h+\varepsilon)^{-1/2}
+=v_\varepsilon v_\varepsilon^*\)">\(B_\varepsilon=(h+\varepsilon)^{-1/2}X(h+\varepsilon)^{-1/2}
+=v_\varepsilon v_\varepsilon^*\)</span>, where
+<span class="math math-display" data-tex="\[
+ v_\varepsilon=
+ \begin{pmatrix}(1+\varepsilon)^{-1/2}\\(4+\varepsilon)^{-1/2}\end{pmatrix}.
+\]">\[
+ v_\varepsilon=
+ \begin{pmatrix}(1+\varepsilon)^{-1/2}\\(4+\varepsilon)^{-1/2}\end{pmatrix}.
+\]</span>
+For real two-vectors <span class="math" data-tex="\(v,w\)">\(v,w\)</span>, expansion of the two-by-two determinant gives
+<span class="math" data-tex="\(\det(vv^*-ww^*)=-(v_1w_2-v_2w_1)^2\)">\(\det(vv^*-ww^*)=-(v_1w_2-v_2w_1)^2\)</span>. At <span class="math" data-tex="\(\varepsilon=1,4\)">\(\varepsilon=1,4\)</span>, the inner determinant is <span class="math" data-tex="\(1/4-1/5=1/20\)">\(1/4-1/5=1/20\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ \det(B_1-B_4)=-\frac1{400}&lt;0,
+ \qquad
+ \Phi(B_\varepsilon)=\frac1{1+\varepsilon}+\frac4{4+\varepsilon}
+     \uparrow2=\operatorname{Tr}(X).
+ \tag{CORE.3.b}
+\]">\[
+ \det(B_1-B_4)=-\frac1{400}&lt;0,
+ \qquad
+ \Phi(B_\varepsilon)=\frac1{1+\varepsilon}+\frac4{4+\varepsilon}
+     \uparrow2=\operatorname{Tr}(X).
+ \tag{CORE.3.b}
+\]</span>
+The Hermitian difference has eigenvalues of opposite signs, so neither operator dominates the other. The increasing scalar values are exactly the trace construction. This is a model of centralizer perturbation; it is not a finite-dimensional trace-scaling core.</p>
+<p>Write <span class="math" data-tex="\(N_\Phi=\{x:\Phi(x^*x)&lt;\infty\}\)">\(N_\Phi=\{x:\Phi(x^*x)&lt;\infty\}\)</span>, and use its full GNS map <span class="math" data-tex="\(\Lambda_\Phi:N_\Phi\to H_\Phi\)">\(\Lambda_\Phi:N_\Phi\to H_\Phi\)</span>. Specializing <a href="OA-FLOW-CZ.html#oa-flow.cz.3">CZ3</a> gives the exact new finite left ideal:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ x\in N_\tau\quad\Longleftrightarrow\quad&amp;
+ xh^{-1/2}p_n\in N_\Phi\quad\hbox{for every }n,\\
+ &amp;\sup_n\|\Lambda_\Phi(xh^{-1/2}p_n)\|^2&lt;\infty.
+ \end{aligned}
+ \tag{CORE.3.c}
+\]">\[
+ \begin{aligned}
+ x\in N_\tau\quad\Longleftrightarrow\quad&amp;
+ xh^{-1/2}p_n\in N_\Phi\quad\hbox{for every }n,\\
+ &amp;\sup_n\|\Lambda_\Phi(xh^{-1/2}p_n)\|^2&lt;\infty.
+ \end{aligned}
+ \tag{CORE.3.c}
+\]</span>
+This applies to every bounded <span class="math" data-tex="\(x\in C\)">\(x\in C\)</span>, without assuming <span class="math" data-tex="\(x\in N_\Phi\)">\(x\in N_\Phi\)</span>. The supremum in (CORE.3.c) is <span class="math" data-tex="\(\tau(x^*x)\)">\(\tau(x^*x)\)</span>. Set <span class="math" data-tex="\(\eta_n(x)=\Lambda_\Phi(xh^{-1/2}p_n)\)">\(\eta_n(x)=\Lambda_\Phi(xh^{-1/2}p_n)\)</span> whenever (CORE.3.c) holds. For <span class="math" data-tex="\(m\ge n\)">\(m\ge n\)</span>, the disjoint spectral bands and CZ1's additivity in the bounded density give
+<span class="math math-display" data-tex="\[
+ \|\eta_m(x)-\eta_n(x)\|^2
+   =\|\eta_m(x)\|^2-\|\eta_n(x)\|^2.
+ \tag{CORE.3.d}
+\]">\[
+ \|\eta_m(x)-\eta_n(x)\|^2
+   =\|\eta_m(x)\|^2-\|\eta_n(x)\|^2.
+ \tag{CORE.3.d}
+\]</span>
+The vectors are Cauchy, and their limit defines
+<span class="math math-display" data-tex="\[
+ \Lambda_\tau(x)=\lim_n\Lambda_\Phi(xh^{-1/2}p_n),\qquad
+ \|\Lambda_\tau(x)\|^2=\tau(x^*x).
+ \tag{CORE.3.e}
+\]">\[
+ \Lambda_\tau(x)=\lim_n\Lambda_\Phi(xh^{-1/2}p_n),\qquad
+ \|\Lambda_\tau(x)\|^2=\tau(x^*x).
+ \tag{CORE.3.e}
+\]</span>
+It intertwines the left action of <span class="math" data-tex="\(C\)">\(C\)</span>. It has dense range in the entire original <span class="math" data-tex="\(H_\Phi\)">\(H_\Phi\)</span>: for <span class="math" data-tex="\(y\in N_\Phi\)">\(y\in N_\Phi\)</span>, choose the bounded element <span class="math" data-tex="\(x_n=yh^{1/2}p_n\)">\(x_n=yh^{1/2}p_n\)</span>. Formula (CORE.3.c) gives <span class="math" data-tex="\(x_n\in N_\tau\)">\(x_n\in N_\tau\)</span> and
+<span class="math math-display" data-tex="\[
+ \Lambda_\tau(x_n)=\Lambda_\Phi(yp_n)
+       =J_\Phi\pi_\Phi^{\rm GNS}(p_n)J_\Phi\Lambda_\Phi(y)
+       \longrightarrow\Lambda_\Phi(y).
+\]">\[
+ \Lambda_\tau(x_n)=\Lambda_\Phi(yp_n)
+       =J_\Phi\pi_\Phi^{\rm GNS}(p_n)J_\Phi\Lambda_\Phi(y)
+       \longrightarrow\Lambda_\Phi(y).
+\]</span>
+The bounded centralizer right-action identity and its strong convergence are proved in CZ1–3. Here <span class="math" data-tex="\(\pi_\Phi^{\rm GNS}\)">\(\pi_\Phi^{\rm GNS}\)</span> denotes the GNS representation of <span class="math" data-tex="\(C\)">\(C\)</span>, distinct from the coefficient embedding <span class="math" data-tex="\(\pi_\varphi\)">\(\pi_\varphi\)</span>.</p>
+<p>Consequently all the finite domains are specified by
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ F_\tau=\{X\in C_+:X^{1/2}\in N_\tau\},\qquad
+ A_\tau=N_\tau\cap N_\tau^*,\qquad
+ \mathfrak m_\tau=\operatorname{span}N_\tau^*N_\tau,\\
+ \tau_0(y^*x)=\langle\Lambda_\tau(x),\Lambda_\tau(y)\rangle
+       \quad(x,y\in N_\tau).
+ \end{gathered}
+ \tag{CORE.3.f}
+\]">\[
+ \begin{gathered}
+ F_\tau=\{X\in C_+:X^{1/2}\in N_\tau\},\qquad
+ A_\tau=N_\tau\cap N_\tau^*,\qquad
+ \mathfrak m_\tau=\operatorname{span}N_\tau^*N_\tau,\\
+ \tau_0(y^*x)=\langle\Lambda_\tau(x),\Lambda_\tau(y)\rangle
+       \quad(x,y\in N_\tau).
+ \end{gathered}
+ \tag{CORE.3.f}
+\]</span>
+The independence of presentation of the finite extension is <a href="OA-FLOW-GW.html#oa-flow.gw.2">GW2</a>. Apply (CORE.3.c) separately to <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(x^*\)">\(x^*\)</span> to test the finite-star domain. On each spectral band one also has the full extended-value comparison
+<span class="math math-display" data-tex="\[
+ \frac1n\Phi(p_nx^*xp_n)
+ \le\tau(p_nx^*xp_n)
+ \le n\Phi(p_nx^*xp_n).
+ \tag{CORE.3.g}
+\]">\[
+ \frac1n\Phi(p_nx^*xp_n)
+ \le\tau(p_nx^*xp_n)
+ \le n\Phi(p_nx^*xp_n).
+ \tag{CORE.3.g}
+\]</span>
+This follows from <span class="math" data-tex="\(n^{-1}p_n\le h^{-1}p_n\le np_n\)">\(n^{-1}p_n\le h^{-1}p_n\le np_n\)</span> and CZ1's parameter order; in particular <span class="math" data-tex="\(xp_n\in N_\tau\)">\(xp_n\in N_\tau\)</span> exactly when <span class="math" data-tex="\(xp_n\in N_\Phi\)">\(xp_n\in N_\Phi\)</span>.</p>
+<p>There is also an exact unbounded-operator formulation on the intersection of the two ideals. Let <span class="math" data-tex="\(R_h\)">\(R_h\)</span> be the positive self-adjoint operator on <span class="math" data-tex="\(H_\Phi\)">\(H_\Phi\)</span> whose spectral projections are
+<span class="math" data-tex="\(J_\Phi\pi_\Phi^{\rm GNS}(1_B(h))J_\Phi\)">\(J_\Phi\pi_\Phi^{\rm GNS}(1_B(h))J_\Phi\)</span>. Normal spectral transport in <a href="OA-FLOW-SF.html#oa-flow.sf.sf1">SF</a> defines it. The bounded right-action formula identifies the spectral cutoffs of <span class="math" data-tex="\(R_h^{-1/2}\Lambda_\Phi(x)\)">\(R_h^{-1/2}\Lambda_\Phi(x)\)</span> with <span class="math" data-tex="\(\eta_n(x)\)">\(\eta_n(x)\)</span>. The spectral-domain criterion therefore gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ N_\tau\cap N_\Phi
+   &amp;=\{x\in N_\Phi:\Lambda_\Phi(x)\in D(R_h^{-1/2})\},\\
+ \Lambda_\tau(x)&amp;=R_h^{-1/2}\Lambda_\Phi(x)
+       \quad(x\in N_\tau\cap N_\Phi).
+ \end{aligned}
+ \tag{CORE.3.h}
+\]">\[
+ \begin{aligned}
+ N_\tau\cap N_\Phi
+   &amp;=\{x\in N_\Phi:\Lambda_\Phi(x)\in D(R_h^{-1/2})\},\\
+ \Lambda_\tau(x)&amp;=R_h^{-1/2}\Lambda_\Phi(x)
+       \quad(x\in N_\tau\cap N_\Phi).
+ \end{aligned}
+ \tag{CORE.3.h}
+\]</span>
+Thus the finite-domain description uses the actual closed operator and its whole domain. It does not identify the two finite ideals.</p>
+<p><span id="OA-FLOW.CORE.4"></span><a id="core-4"></a></p>
+<h2 id="4-the-exact-scaling-of-the-trace">4. The exact scaling of the trace</h2>
+<p>The dual action translates its own Haar average. By substitution in the nonnegative scalar integrals defining the extended value, for every <span class="math" data-tex="\(X\ge0\)">\(X\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+ T(\theta_s(X))=T(X),\qquad \Phi\circ\theta_s=\Phi.
+ \tag{CORE.4.a}
+\]">\[
+ T(\theta_s(X))=T(X),\qquad \Phi\circ\theta_s=\Phi.
+ \tag{CORE.4.a}
+\]</span>
+This includes infinite values; equivalently it follows from <a href="OA-FLOW-DA.html#da-positive">DA's positive average</a> and its scalar composition. On the positive generator, normal transport of the spectral calculus gives
+<span class="math math-display" data-tex="\[
+ \theta_s(h)^{it}=\theta_s(h^{it})
+     =e^{-ist}h^{it}=(e^{-s}h)^{it}.
+\]">\[
+ \theta_s(h)^{it}=\theta_s(h^{it})
+     =e^{-ist}h^{it}=(e^{-s}h)^{it}.
+\]</span>
+<a href="OA-FLOW-RF.html#oa-flow.rf.5">RF5</a>'s uniqueness of a self-adjoint generator, applied to the logarithms, proves
+<span class="math math-display" data-tex="\[
+ \theta_s(P)=P-s1,\qquad \theta_s(h)=e^{-s}h.
+ \tag{CORE.4.b}
+\]">\[
+ \theta_s(P)=P-s1,\qquad \theta_s(h)=e^{-s}h.
+ \tag{CORE.4.b}
+\]</span>
+These are equalities of transported affiliated operators with their full spectral domains. In particular <span class="math" data-tex="\(\theta_s^{-1}(h^{-1})=e^{-s}h^{-1}\)">\(\theta_s^{-1}(h^{-1})=e^{-s}h^{-1}\)</span>. The covariance and scalar rules of <a href="OA-FLOW-CZ.html#oa-flow.cz.7">CZ7</a> now give on the whole positive cone
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \tau\circ\theta_s
+  &amp;=(\Phi\circ\theta_s)_{\theta_s^{-1}(h^{-1})}\\
+  &amp;=\Phi_{e^{-s}h^{-1}}=e^{-s}\tau.
+ \end{aligned}
+ \tag{CORE.4.c}
+\]">\[
+ \begin{aligned}
+ \tau\circ\theta_s
+  &amp;=(\Phi\circ\theta_s)_{\theta_s^{-1}(h^{-1})}\\
+  &amp;=\Phi_{e^{-s}h^{-1}}=e^{-s}\tau.
+ \end{aligned}
+ \tag{CORE.4.c}
+\]</span>
+The inverse on the transported density is essential to this sign. It is justified term by term in the bounded-resolvent formula (CORE.3.a), so no cyclic rearrangement of an unbounded product is required.</p>
+<p><span id="OA-FLOW.CORE.5"></span><a id="core-5"></a></p>
+<h2 id="5-the-normal-transition-between-two-faithful-charts">5. The normal transition between two faithful charts</h2>
+<p>Let <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> be faithful normal semifinite weights on <span class="math" data-tex="\(M\)">\(M\)</span>. Write
+<span class="math math-display" data-tex="\[
+ c_{\psi,\varphi}(t)=(D\psi:D\varphi)_t.
+ \tag{CORE.5.a}
+\]">\[
+ c_{\psi,\varphi}(t)=(D\psi:D\varphi)_t.
+ \tag{CORE.5.a}
+\]</span>
+The <a href="OA-FLOW-BC.html#oa-flow.bc.4">balanced cocycle theorem</a> proves strong-star continuity, the cocycle identity, and
+<span class="math math-display" data-tex="\[
+ c_{\psi,\varphi}(t+u)
+ =c_{\psi,\varphi}(t)\sigma_t^\varphi(c_{\psi,\varphi}(u)),
+ \qquad
+ \sigma_t^\psi=\operatorname{Ad}(c_{\psi,\varphi}(t))\sigma_t^\varphi.
+ \tag{CORE.5.b}
+\]">\[
+ c_{\psi,\varphi}(t+u)
+ =c_{\psi,\varphi}(t)\sigma_t^\varphi(c_{\psi,\varphi}(u)),
+ \qquad
+ \sigma_t^\psi=\operatorname{Ad}(c_{\psi,\varphi}(t))\sigma_t^\varphi.
+ \tag{CORE.5.b}
+\]</span>
+These are normalized cocycles, so their scalar factors are part of the data.</p>
+<p>There is a unique normal <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism with normal inverse
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ J_{\psi,\varphi}:C_\psi&amp;\longrightarrow C_\varphi,\\
+ J_{\psi,\varphi}(\pi_\psi(x))&amp;=\pi_\varphi(x),\\
+ J_{\psi,\varphi}(\lambda_\psi(t))
+ &amp;=\pi_\varphi(c_{\psi,\varphi}(t))\lambda_\varphi(t).
+ \end{aligned}
+ \tag{CORE.5.c}
+\]">\[
+ \begin{aligned}
+ J_{\psi,\varphi}:C_\psi&amp;\longrightarrow C_\varphi,\\
+ J_{\psi,\varphi}(\pi_\psi(x))&amp;=\pi_\varphi(x),\\
+ J_{\psi,\varphi}(\lambda_\psi(t))
+ &amp;=\pi_\varphi(c_{\psi,\varphi}(t))\lambda_\varphi(t).
+ \end{aligned}
+ \tag{CORE.5.c}
+\]</span>
+Here is its actual spatial construction, including the direction of the adjoint. Realize <span class="math" data-tex="\(M\)">\(M\)</span> faithfully and normally on any Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>, and use the two regular models on <span class="math" data-tex="\(L^2(\mathbb R,H)\)">\(L^2(\mathbb R,H)\)</span>:
+<span class="math math-display" data-tex="\[
+ [\pi_\eta(x)\xi](r)=\sigma_{-r}^\eta(x)\xi(r),
+ \qquad [\lambda_\eta(t)\xi](r)=\xi(r-t)
+ \quad(\eta=\varphi,\psi).
+\]">\[
+ [\pi_\eta(x)\xi](r)=\sigma_{-r}^\eta(x)\xi(r),
+ \qquad [\lambda_\eta(t)\xi](r)=\xi(r-t)
+ \quad(\eta=\varphi,\psi).
+\]</span>
+Define
+<span class="math math-display" data-tex="\[
+ [W_{\psi,\varphi}\xi](r)=c_{\psi,\varphi}(-r)^*\xi(r).
+ \tag{CORE.5.d}
+\]">\[
+ [W_{\psi,\varphi}\xi](r)=c_{\psi,\varphi}(-r)^*\xi(r).
+ \tag{CORE.5.d}
+\]</span>
+<a href="OA-FLOW-NR.html#oa-flow.nr.5">NR5</a> proves that this multiplication field and its adjoint define inverse unitaries on the full Hilbert space. In particular its proof uses strong continuity on compact tensors and Hilbert density, and requires no countable basis of <span class="math" data-tex="\(H\)">\(H\)</span>. Directly, the coefficient calculation is
+<span class="math math-display" data-tex="\[
+ c_{\psi,\varphi}(-r)^*\sigma_{-r}^\psi(x)c_{\psi,\varphi}(-r)
+ =\sigma_{-r}^\varphi(x).
+\]">\[
+ c_{\psi,\varphi}(-r)^*\sigma_{-r}^\psi(x)c_{\psi,\varphi}(-r)
+ =\sigma_{-r}^\varphi(x).
+\]</span>
+For translations, (CORE.5.b) gives
+<span class="math math-display" data-tex="\[
+ c_{\psi,\varphi}(-r)^*c_{\psi,\varphi}(t-r)
+ =\sigma_{-r}^\varphi(c_{\psi,\varphi}(t)).
+\]">\[
+ c_{\psi,\varphi}(-r)^*c_{\psi,\varphi}(t-r)
+ =\sigma_{-r}^\varphi(c_{\psi,\varphi}(t)).
+\]</span>
+Thus conjugation by <span class="math" data-tex="\(W_{\psi,\varphi}\)">\(W_{\psi,\varphi}\)</span> has exactly the values in (CORE.5.c). Its image contains the coefficient algebra and every
+<span class="math" data-tex="\(\lambda_\varphi(t)=\pi_\varphi(c_{\psi,\varphi}(t)^*)J_{\psi,\varphi}(\lambda_\psi(t))\)">\(\lambda_\varphi(t)=\pi_\varphi(c_{\psi,\varphi}(t)^*)J_{\psi,\varphi}(\lambda_\psi(t))\)</span>.
+It is therefore onto. Unitary conjugation gives normality in both directions. <a href="OA-FLOW-NR.html#oa-flow.nr.4">NR4</a> transports the construction to any other faithful normal regular realizations, with the same formulas. Two normal maps with these generator values agree on the ultraweakly dense generated <span class="math" data-tex="\(*\)">\(*\)</span>-algebra, hence everywhere.</p>
+<p>The scalar multiplier <span class="math" data-tex="\(\xi(r)\mapsto e^{-isr}\xi(r)\)">\(\xi(r)\mapsto e^{-isr}\xi(r)\)</span>, which implements the <a href="OA-FLOW-DA.html#da-action">dual action</a>, commutes with <span class="math" data-tex="\(W_{\psi,\varphi}\)">\(W_{\psi,\varphi}\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ J_{\psi,\varphi}\theta_s^\psi
+ =\theta_s^\varphi J_{\psi,\varphi}.
+ \tag{CORE.5.e}
+\]">\[
+ J_{\psi,\varphi}\theta_s^\psi
+ =\theta_s^\varphi J_{\psi,\varphi}.
+ \tag{CORE.5.e}
+\]</span>
+For a third faithful normal semifinite weight <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, the ordered <a href="OA-FLOW-BC.html#oa-flow.bc.4">chain and inverse laws</a> give
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ c_{\omega,\varphi}(t)
+ =c_{\omega,\psi}(t)c_{\psi,\varphi}(t),\\
+ J_{\psi,\varphi}\circ J_{\omega,\psi}=J_{\omega,\varphi},
+ \qquad J_{\varphi,\varphi}=\operatorname{id},
+ \qquad J_{\psi,\varphi}^{-1}=J_{\varphi,\psi}.
+ \end{gathered}
+ \tag{CORE.5.f}
+\]">\[
+ \begin{gathered}
+ c_{\omega,\varphi}(t)
+ =c_{\omega,\psi}(t)c_{\psi,\varphi}(t),\\
+ J_{\psi,\varphi}\circ J_{\omega,\psi}=J_{\omega,\varphi},
+ \qquad J_{\varphi,\varphi}=\operatorname{id},
+ \qquad J_{\psi,\varphi}^{-1}=J_{\varphi,\psi}.
+ \end{gathered}
+ \tag{CORE.5.f}
+\]</span>
+For the composition, applying the left side to <span class="math" data-tex="\(\lambda_\omega(t)\)">\(\lambda_\omega(t)\)</span> gives
+<span class="math" data-tex="\(\pi_\varphi(c_{\omega,\psi}(t)c_{\psi,\varphi}(t))\lambda_\varphi(t)\)">\(\pi_\varphi(c_{\omega,\psi}(t)c_{\psi,\varphi}(t))\lambda_\varphi(t)\)</span>.
+The coefficient images agree too, so normality proves the identity on the entire algebra. No two cocycle factors have been interchanged.</p>
+<p><span id="OA-FLOW.CORE.6"></span><a id="core-6"></a></p>
+<h2 id="6-whole-cone-transport-and-the-normalized-trace">6. Whole-cone transport and the normalized trace</h2>
+<p>Write <span class="math" data-tex="\(\iota_{\psi,\varphi}:\pi_\psi(M)\to\pi_\varphi(M)\)">\(\iota_{\psi,\varphi}:\pi_\psi(M)\to\pi_\varphi(M)\)</span> for the coefficient restriction of <span class="math" data-tex="\(J_{\psi,\varphi}\)">\(J_{\psi,\varphi}\)</span>. Normal isomorphisms act on the complete extended positive cone through their predual maps, as proved in <a href="OA-FLOW-EP.html#oa-flow.ep.4">EP4</a>. Then
+<span class="math math-display" data-tex="\[
+ T_\varphi(J_{\psi,\varphi}(X))
+ =\widehat\iota_{\psi,\varphi}(T_\psi(X))
+ \qquad(X\in(C_\psi)_+).
+ \tag{CORE.6.a}
+\]">\[
+ T_\varphi(J_{\psi,\varphi}(X))
+ =\widehat\iota_{\psi,\varphi}(T_\psi(X))
+ \qquad(X\in(C_\psi)_+).
+ \tag{CORE.6.a}
+\]</span>
+To prove this on all positives, use the <a href="OA-FLOW-DA.html#da-equality">whole-cone averaging formula</a> with the same measure <span class="math" data-tex="\(ds/(2\pi)\)">\(ds/(2\pi)\)</span> in both charts. For <span class="math" data-tex="\(f\in(C_\varphi)_*^+\)">\(f\in(C_\varphi)_*^+\)</span>, equivariance gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_{\mathbb R}f(\theta_s^\varphi(J_{\psi,\varphi}(X)))\,
+                 \frac{ds}{2\pi}
+ &amp;=\int_{\mathbb R}(f\circ J_{\psi,\varphi})(\theta_s^\psi(X))\,
+                 \frac{ds}{2\pi}.
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ \int_{\mathbb R}f(\theta_s^\varphi(J_{\psi,\varphi}(X)))\,
+                 \frac{ds}{2\pi}
+ &amp;=\int_{\mathbb R}(f\circ J_{\psi,\varphi})(\theta_s^\psi(X))\,
+                 \frac{ds}{2\pi}.
+ \end{aligned}
+\]</span>
+These nonnegative integrals include infinite values. Equivalently, commute the normal map with each bounded interval average and take the increasing extended supremum. Positive normal functionals on a coefficient algebra extend to the ambient algebra by <a href="OA-FLOW-EP.html#oa-flow.ep.1">EP1</a>, so these tests identify the coefficient-valued elements as well. This proves (CORE.6.a).</p>
+<p>For any normal weight <span class="math" data-tex="\(\eta\)">\(\eta\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>, define its dual in the <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-chart by
+<span class="math math-display" data-tex="\[
+ \mathcal D_\varphi\eta(X)
+ =\widehat{\eta\circ\pi_\varphi^{-1}}(T_\varphi(X)),
+ \qquad X\in(C_\varphi)_+.
+\]">\[
+ \mathcal D_\varphi\eta(X)
+ =\widehat{\eta\circ\pi_\varphi^{-1}}(T_\varphi(X)),
+ \qquad X\in(C_\varphi)_+.
+\]</span>
+This definition has the full <a href="OA-FLOW-GDA.html#gda-8">normal-input scope</a>; relative modular conclusions below will use faithful normal semifinite inputs. By <a href="OA-FLOW-EP.html#oa-flow.ep.5">EP5</a>, normal-weight extension commutes with transport: apply both sides to an increasing bounded spectral approximation of the extended value. Therefore
+<span class="math math-display" data-tex="\[
+ (\mathcal D_\varphi\eta)\circ J_{\psi,\varphi}
+ =\mathcal D_\psi\eta
+ \quad\text{on }(C_\psi)_+.
+ \tag{CORE.6.b}
+\]">\[
+ (\mathcal D_\varphi\eta)\circ J_{\psi,\varphi}
+ =\mathcal D_\psi\eta
+ \quad\text{on }(C_\psi)_+.
+ \tag{CORE.6.b}
+\]</span>
+In particular, with <span class="math" data-tex="\(\Phi_\eta\)">\(\Phi_\eta\)</span> denoting the weight constructed in its own <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-chart, put
+<span class="math math-display" data-tex="\[
+ \Psi=\Phi_\psi\circ J_{\psi,\varphi}^{-1}
+      =\mathcal D_\varphi\psi,\qquad
+ \Phi_\varphi=\mathcal D_\varphi\varphi,\qquad
+ k=J_{\psi,\varphi}(h_\psi).
+ \tag{CORE.6.c}
+\]">\[
+ \Psi=\Phi_\psi\circ J_{\psi,\varphi}^{-1}
+      =\mathcal D_\varphi\psi,\qquad
+ \Phi_\varphi=\mathcal D_\varphi\varphi,\qquad
+ k=J_{\psi,\varphi}(h_\psi).
+ \tag{CORE.6.c}
+\]</span>
+For the last expression, transport the spectral projections of <span class="math" data-tex="\(h_\psi\)">\(h_\psi\)</span>; the <a href="OA-FLOW-SF.html#oa-flow.sf1.normal-transport">normal spectral transport theorem</a> defines the nonsingular positive affiliated operator <span class="math" data-tex="\(k\)">\(k\)</span> and all of its domains.</p>
+<p>Both <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> and <span class="math" data-tex="\(\Phi_\varphi\)">\(\Phi_\varphi\)</span> are faithful normal semifinite, and they now use one action and one operator-valued weight. The <a href="OA-FLOW-GDA.html#gda-9">normalized two-weight comparison</a> and (CORE.5.c) yield
+<span class="math math-display" data-tex="\[
+ (D\Psi:D\Phi_\varphi)_t=\pi_\varphi(c_{\psi,\varphi}(t)),
+ \qquad
+ k^{it}=\pi_\varphi(c_{\psi,\varphi}(t))h_\varphi^{it}.
+ \tag{CORE.6.d}
+\]">\[
+ (D\Psi:D\Phi_\varphi)_t=\pi_\varphi(c_{\psi,\varphi}(t)),
+ \qquad
+ k^{it}=\pi_\varphi(c_{\psi,\varphi}(t))h_\varphi^{it}.
+ \tag{CORE.6.d}
+\]</span>
+The factors in the second expression need not commute. Their product is a one-parameter group: use (CORE.5.b) and
+<span class="math" data-tex="\(h_\varphi^{it}\pi_\varphi(x)h_\varphi^{-it}
+=\pi_\varphi(\sigma_t^\varphi(x))\)">\(h_\varphi^{it}\pi_\varphi(x)h_\varphi^{-it}
+=\pi_\varphi(\sigma_t^\varphi(x))\)</span>.
+It is also the transported group <span class="math" data-tex="\(J_{\psi,\varphi}(h_\psi^{it})\)">\(J_{\psi,\varphi}(h_\psi^{it})\)</span>, so it specifies <span class="math" data-tex="\(k\)">\(k\)</span> uniquely.</p>
+<p>The trace is preserved with its exact scalar normalization:
+<span class="math math-display" data-tex="\[
+ \tau_\varphi(J_{\psi,\varphi}(X))=\tau_\psi(X)
+ \qquad(X\in(C_\psi)_+).
+ \tag{CORE.6.e}
+\]">\[
+ \tau_\varphi(J_{\psi,\varphi}(X))=\tau_\psi(X)
+ \qquad(X\in(C_\psi)_+).
+ \tag{CORE.6.e}
+\]</span>
+For a proof, <a href="OA-FLOW-CZ.html#oa-flow.cz.6">CZ6</a> applied to the identity
+<span class="math" data-tex="\(\Phi_\varphi=(\tau_\varphi)_{h_\varphi}\)">\(\Phi_\varphi=(\tau_\varphi)_{h_\varphi}\)</span> from Sections 1–4 gives
+<span class="math" data-tex="\((D\Phi_\varphi:D\tau_\varphi)_t=h_\varphi^{it}\)">\((D\Phi_\varphi:D\tau_\varphi)_t=h_\varphi^{it}\)</span>.
+Its centralizer hypothesis holds because <span class="math" data-tex="\(\tau_\varphi\)">\(\tau_\varphi\)</span> is a trace.
+The <a href="OA-FLOW-BC.html#oa-flow.bc.4">ordered chain law</a> and (CORE.6.d) imply
+<span class="math math-display" data-tex="\[
+ (D\Psi:D\tau_\varphi)_t
+ =\pi_\varphi(c_{\psi,\varphi}(t))h_\varphi^{it}
+ =k^{it}.
+\]">\[
+ (D\Psi:D\tau_\varphi)_t
+ =\pi_\varphi(c_{\psi,\varphi}(t))h_\varphi^{it}
+ =k^{it}.
+\]</span>
+On the other hand let <span class="math" data-tex="\(\nu=\tau_\psi\circ J_{\psi,\varphi}^{-1}\)">\(\nu=\tau_\psi\circ J_{\psi,\varphi}^{-1}\)</span>. It is a faithful normal semifinite trace. <a href="OA-FLOW-BC.html#oa-flow.bc.5">Normal-isomorphism covariance of the normalized derivative</a> gives
+<span class="math math-display" data-tex="\[
+ (D\Psi:D\nu)_t
+ =J_{\psi,\varphi}((D\Phi_\psi:D\tau_\psi)_t)
+ =k^{it}.
+\]">\[
+ (D\Psi:D\nu)_t
+ =J_{\psi,\varphi}((D\Phi_\psi:D\tau_\psi)_t)
+ =k^{it}.
+\]</span>
+Taking the adjoint derivatives produces
+<span class="math math-display" data-tex="\[
+ (D\nu:D\Psi)_t=k^{-it}=(D\tau_\varphi:D\Psi)_t.
+ \tag{CORE.6.f}
+\]">\[
+ (D\nu:D\Psi)_t=k^{-it}=(D\tau_\varphi:D\Psi)_t.
+ \tag{CORE.6.f}
+\]</span>
+<a href="OA-FLOW-GDA.html#gda-7">GDA7's fixed-reference injectivity</a> now proves
+<span class="math" data-tex="\(\nu=\tau_\varphi\)">\(\nu=\tau_\varphi\)</span> on the entire positive cone. Its hypothesis is equality of the normalized cocycles; equality of modular automorphism groups would not supply this conclusion. Every weight in this comparison is faithful normal semifinite, and no infinite values have been subtracted.</p>
+<p>For example, if <span class="math" data-tex="\(\psi=a\varphi\)">\(\psi=a\varphi\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <a href="OA-FLOW-BC.html#oa-flow.bc.5">BC5</a> gives <span class="math" data-tex="\(c_{\psi,\varphi}(t)=a^{it}1\)">\(c_{\psi,\varphi}(t)=a^{it}1\)</span>. Thus <span class="math" data-tex="\(J_{\psi,\varphi}(h_\psi)=a h_\varphi\)">\(J_{\psi,\varphi}(h_\psi)=a h_\varphi\)</span> and <span class="math" data-tex="\(\Psi=a\Phi_\varphi\)">\(\Psi=a\Phi_\varphi\)</span>, while (CORE.6.e) still identifies the traces exactly. The change in the density records the scalar factor.</p>
+<p><span id="OA-FLOW.CORE.7"></span><a id="core-7"></a></p>
+<h2 id="7-gluing-a-set-of-faithful-charts">7. Gluing a set of faithful charts</h2>
+<p>Let <span class="math" data-tex="\(\mathcal W(M)\)">\(\mathcal W(M)\)</span> be the set of faithful normal semifinite weights on <span class="math" data-tex="\(M\)">\(M\)</span>. It is a set because its elements are functions from the set <span class="math" data-tex="\(M_+\)">\(M_+\)</span> to <span class="math" data-tex="\([0,\infty]\)">\([0,\infty]\)</span>, and it is nonempty by <a href="OA-FLOW-FR.html#oa-flow.fr.1">FR1</a>. Fix one faithful normal concrete realization of <span class="math" data-tex="\(M\)">\(M\)</span> on an arbitrary Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>, and form the regular <span class="math" data-tex="\(C_\varphi\subset B(L^2(\mathbb R,H))\)">\(C_\varphi\subset B(L^2(\mathbb R,H))\)</span> for every <span class="math" data-tex="\(\varphi\in\mathcal W(M)\)">\(\varphi\in\mathcal W(M)\)</span>. This chooses a set of regular models. Any further faithful normal regular realization is identified with its representative by <a href="OA-FLOW-NR.html#oa-flow.nr.4">NR4</a>; no collection of all Hilbert spaces is needed.</p>
+<p>Take the disjoint union of the sets <span class="math" data-tex="\(\{\varphi\}\times C_\varphi\)">\(\{\varphi\}\times C_\varphi\)</span> and impose
+<span class="math math-display" data-tex="\[
+ (\psi,X)\sim(\varphi,Y)
+ \quad\Longleftrightarrow\quad Y=J_{\psi,\varphi}(X).
+ \tag{CORE.7.a}
+\]">\[
+ (\psi,X)\sim(\varphi,Y)
+ \quad\Longleftrightarrow\quad Y=J_{\psi,\varphi}(X).
+ \tag{CORE.7.a}
+\]</span>
+The identity, inverse and ordered composition in (CORE.5.f) prove that this is an equivalence relation. Write <span class="math" data-tex="\(C(M)\)">\(C(M)\)</span> for its quotient and
+<span class="math" data-tex="\(\kappa_\varphi(X)=[\varphi,X]\)">\(\kappa_\varphi(X)=[\varphi,X]\)</span>.
+Each <span class="math" data-tex="\(\kappa_\varphi:C_\varphi\to C(M)\)">\(\kappa_\varphi:C_\varphi\to C(M)\)</span> is bijective: every class has a representative in the <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-chart, and two representatives in that chart coincide. Moreover
+<span class="math math-display" data-tex="\[
+ \kappa_\psi=\kappa_\varphi\circ J_{\psi,\varphi}.
+ \tag{CORE.7.b}
+\]">\[
+ \kappa_\psi=\kappa_\varphi\circ J_{\psi,\varphi}.
+ \tag{CORE.7.b}
+\]</span></p>
+<p>Transport addition, multiplication, involution, the norm, the positive cone and the ultraweak topology through any <span class="math" data-tex="\(\kappa_\varphi\)">\(\kappa_\varphi\)</span>. The result is independent of the chart because every transition is a normal isometric <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism with normal inverse. Choosing one chart identifies the resulting algebra with a concrete von Neumann algebra, so it is complete and has a faithful normal representation with weakly closed image. All charts become normal isomorphisms. Choosing different initial regular realizations produces the same construction up to the unique normal isomorphism prescribed by their regular generators, because NR4's comparisons commute with (CORE.5.c).</p>
+<p>The coefficient embedding, flow, trace and operator-valued weight are
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ j_M(x)&amp;=\kappa_\varphi(\pi_\varphi(x)),\\
+ \theta_s(\kappa_\varphi(X))&amp;=\kappa_\varphi(\theta_s^\varphi(X)),\\
+ \tau(\kappa_\varphi(X))&amp;=\tau_\varphi(X)\quad(X\ge0),\\
+ T(\kappa_\varphi(X))&amp;=\widehat\kappa_\varphi(T_\varphi(X))
+          \in\widehat{j_M(M)}_+\quad(X\ge0).
+ \end{aligned}
+ \tag{CORE.7.c}
+\]">\[
+ \begin{aligned}
+ j_M(x)&amp;=\kappa_\varphi(\pi_\varphi(x)),\\
+ \theta_s(\kappa_\varphi(X))&amp;=\kappa_\varphi(\theta_s^\varphi(X)),\\
+ \tau(\kappa_\varphi(X))&amp;=\tau_\varphi(X)\quad(X\ge0),\\
+ T(\kappa_\varphi(X))&amp;=\widehat\kappa_\varphi(T_\varphi(X))
+          \in\widehat{j_M(M)}_+\quad(X\ge0).
+ \end{aligned}
+ \tag{CORE.7.c}
+\]</span>
+In the last line <span class="math" data-tex="\(\widehat\kappa_\varphi\)">\(\widehat\kappa_\varphi\)</span> denotes the restriction of the extended transport to <span class="math" data-tex="\(\widehat{\pi_\varphi(M)}_+\)">\(\widehat{\pi_\varphi(M)}_+\)</span>. Equations (CORE.5.c), (CORE.5.e), (CORE.6.a) and (CORE.6.e) prove respectively that these definitions are independent of the representative. Their properties transfer through one chart: <span class="math" data-tex="\(j_M\)">\(j_M\)</span> is faithful and normal; <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is point-ultraweakly continuous; <span class="math" data-tex="\(T\)">\(T\)</span> is faithful normal semifinite; <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is a faithful normal semifinite trace; and
+<span class="math" data-tex="\(\tau\circ\theta_s=e^{-s}\tau\)">\(\tau\circ\theta_s=e^{-s}\tau\)</span>.
+For any normal <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, (CORE.6.b) also glues <span class="math" data-tex="\(\mathcal D_\varphi\eta\)">\(\mathcal D_\varphi\eta\)</span> to the single whole-cone weight
+<span class="math" data-tex="\(\mathcal D\eta=\widehat{\eta\circ j_M^{-1}}\circ T\)">\(\mathcal D\eta=\widehat{\eta\circ j_M^{-1}}\circ T\)</span>.</p>
+<p>The coordinate unitary groups retain their weight labels:
+<span class="math math-display" data-tex="\[
+ \lambda^\varphi(t)=\kappa_\varphi(\lambda_\varphi(t)),\qquad
+ \lambda^\psi(t)
+ =j_M(c_{\psi,\varphi}(t))\lambda^\varphi(t).
+ \tag{CORE.7.d}
+\]">\[
+ \lambda^\varphi(t)=\kappa_\varphi(\lambda_\varphi(t)),\qquad
+ \lambda^\psi(t)
+ =j_M(c_{\psi,\varphi}(t))\lambda^\varphi(t).
+ \tag{CORE.7.d}
+\]</span>
+Their positive affiliated generators therefore depend on the labeled weight; the trace and flow in (CORE.7.c) have already descended independently of that label. The construction covers arbitrary <span class="math" data-tex="\(M,H\)">\(M,H\)</span>, with no state or countability restriction. For <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, use the unique zero algebra, maps and weight.</p>
+<p><span id="OA-FLOW.CORE.8"></span><a id="core-8"></a></p>
+<h2 id="8-normal-isomorphisms-and-the-center-flow">8. Normal isomorphisms and the center flow</h2>
+<p>Let <span class="math" data-tex="\(\gamma:M\to N\)">\(\gamma:M\to N\)</span> be a normal <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism with normal inverse. For <span class="math" data-tex="\(\varphi\in\mathcal W(M)\)">\(\varphi\in\mathcal W(M)\)</span>, set
+<span class="math" data-tex="\(\varphi^\gamma=\varphi\circ\gamma^{-1}\)">\(\varphi^\gamma=\varphi\circ\gamma^{-1}\)</span>.
+Normality, faithfulness and semifiniteness transport directly; the finite positive cone and its linear span are carried onto their counterparts. The <a href="OA-FLOW-BC.html#oa-flow.bc.5">balanced covariance theorem</a>, including its diagonal modular groups, gives
+<span class="math math-display" data-tex="\[
+ \sigma_t^{\varphi^\gamma}\gamma=\gamma\sigma_t^\varphi,\qquad
+ (D\psi^\gamma:D\varphi^\gamma)_t
+ =\gamma(c_{\psi,\varphi}(t)).
+ \tag{CORE.8.a}
+\]">\[
+ \sigma_t^{\varphi^\gamma}\gamma=\gamma\sigma_t^\varphi,\qquad
+ (D\psi^\gamma:D\varphi^\gamma)_t
+ =\gamma(c_{\psi,\varphi}(t)).
+ \tag{CORE.8.a}
+\]</span>
+For the first identity, the same proof transports the finite-star KMS products of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> through <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, and modular uniqueness identifies the transported group with that of <span class="math" data-tex="\(\varphi^\gamma\)">\(\varphi^\gamma\)</span>.</p>
+<p>There is an onto normal isomorphism
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ K_{\gamma,\varphi}:C_\varphi(M)&amp;\longrightarrow C_{\varphi^\gamma}(N),\\
+ \pi_\varphi(x)&amp;\longmapsto\pi_{\varphi^\gamma}(\gamma(x)),\\
+ \lambda_\varphi(t)&amp;\longmapsto\lambda_{\varphi^\gamma}(t).
+ \end{aligned}
+ \tag{CORE.8.b}
+\]">\[
+ \begin{aligned}
+ K_{\gamma,\varphi}:C_\varphi(M)&amp;\longrightarrow C_{\varphi^\gamma}(N),\\
+ \pi_\varphi(x)&amp;\longmapsto\pi_{\varphi^\gamma}(\gamma(x)),\\
+ \lambda_\varphi(t)&amp;\longmapsto\lambda_{\varphi^\gamma}(t).
+ \end{aligned}
+ \tag{CORE.8.b}
+\]</span>
+To construct it, represent <span class="math" data-tex="\(N\)">\(N\)</span> faithfully normally on <span class="math" data-tex="\(K\)">\(K\)</span>, and represent <span class="math" data-tex="\(M\)">\(M\)</span> on the same space through <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Equation (CORE.8.a) makes the displayed coefficient fields identical in their regular <span class="math" data-tex="\(L^2(\mathbb R,K)\)">\(L^2(\mathbb R,K)\)</span> realizations, and the translations are identical. <a href="OA-FLOW-NR.html#oa-flow.nr.4">NR4</a> then compares these realizations with the chosen charts, with normal inverses. This proves existence, normality and surjectivity, and ultraweak generation proves uniqueness.</p>
+<p>The map intertwines dual actions. Bounded interval averages and extended suprema, as in Section 6, show that it transports <span class="math" data-tex="\(T_\varphi\)">\(T_\varphi\)</span> to <span class="math" data-tex="\(T_{\varphi^\gamma}\)">\(T_{\varphi^\gamma}\)</span>, with the coefficient map induced by <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Hence
+<span class="math math-display" data-tex="\[
+ \Phi_{\varphi^\gamma}(K_{\gamma,\varphi}(X))=\Phi_\varphi(X),
+ \qquad
+ K_{\gamma,\varphi}(h_\varphi)=h_{\varphi^\gamma}.
+\]">\[
+ \Phi_{\varphi^\gamma}(K_{\gamma,\varphi}(X))=\Phi_\varphi(X),
+ \qquad
+ K_{\gamma,\varphi}(h_\varphi)=h_{\varphi^\gamma}.
+\]</span>
+The second equality follows by transporting every imaginary power and using uniqueness of the affiliated generator. For clarity, trace preservation follows directly from the bounded spectral formula of Sections 1–4. Put <span class="math" data-tex="\(a_\varepsilon=(h_\varphi+\varepsilon)^{-1}\)">\(a_\varepsilon=(h_\varphi+\varepsilon)^{-1}\)</span>. Spectral transport gives
+<span class="math" data-tex="\(K_{\gamma,\varphi}(a_\varepsilon)=(h_{\varphi^\gamma}+\varepsilon)^{-1}\)">\(K_{\gamma,\varphi}(a_\varepsilon)=(h_{\varphi^\gamma}+\varepsilon)^{-1}\)</span>.
+Transport each bounded sandwich in
+<span class="math" data-tex="\(\tau_\varphi(X)=\sup_{\varepsilon&gt;0}
+\Phi_\varphi(a_\varepsilon^{1/2}Xa_\varepsilon^{1/2})\)">\(\tau_\varphi(X)=\sup_{\varepsilon&gt;0}
+\Phi_\varphi(a_\varepsilon^{1/2}Xa_\varepsilon^{1/2})\)</span>.
+Taking the same supremum proves, including infinite values,
+<span class="math math-display" data-tex="\[
+ \tau_{\varphi^\gamma}\circ K_{\gamma,\varphi}=\tau_\varphi.
+ \tag{CORE.8.c}
+\]">\[
+ \tau_{\varphi^\gamma}\circ K_{\gamma,\varphi}=\tau_\varphi.
+ \tag{CORE.8.c}
+\]</span>
+This also supplies the isomorphism form of the spectral-cutoff covariance underlying <a href="OA-FLOW-CZ.html#oa-flow.cz.7">CZ7</a>.</p>
+<p>The chart squares commute:
+<span class="math math-display" data-tex="\[
+ K_{\gamma,\varphi}\circ J^M_{\psi,\varphi}
+ =J^N_{\psi^\gamma,\varphi^\gamma}\circ K_{\gamma,\psi}.
+ \tag{CORE.8.d}
+\]">\[
+ K_{\gamma,\varphi}\circ J^M_{\psi,\varphi}
+ =J^N_{\psi^\gamma,\varphi^\gamma}\circ K_{\gamma,\psi}.
+ \tag{CORE.8.d}
+\]</span>
+On coefficients this is immediate. On <span class="math" data-tex="\(\lambda_\psi(t)\)">\(\lambda_\psi(t)\)</span>, both sides are
+<span class="math" data-tex="\(\pi_{\varphi^\gamma}(\gamma(c_{\psi,\varphi}(t)))
+  \lambda_{\varphi^\gamma}(t)\)">\(\pi_{\varphi^\gamma}(\gamma(c_{\psi,\varphi}(t)))
+  \lambda_{\varphi^\gamma}(t)\)</span>
+by (CORE.8.a); normality proves equality everywhere. Therefore (CORE.8.b) descends to a normal isomorphism
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ C(\gamma):C(M)\longrightarrow C(N),\qquad
+ C(\gamma)\kappa_\varphi
+   =\kappa_{\varphi^\gamma}K_{\gamma,\varphi},\\
+ C(\gamma)j_M=j_N\gamma,\qquad
+ C(\gamma)\theta_s^M=\theta_s^N C(\gamma),\qquad
+ \tau_N\circ C(\gamma)=\tau_M.
+ \end{gathered}
+ \tag{CORE.8.e}
+\]">\[
+ \begin{gathered}
+ C(\gamma):C(M)\longrightarrow C(N),\qquad
+ C(\gamma)\kappa_\varphi
+   =\kappa_{\varphi^\gamma}K_{\gamma,\varphi},\\
+ C(\gamma)j_M=j_N\gamma,\qquad
+ C(\gamma)\theta_s^M=\theta_s^N C(\gamma),\qquad
+ \tau_N\circ C(\gamma)=\tau_M.
+ \end{gathered}
+ \tag{CORE.8.e}
+\]</span>
+For composable normal isomorphisms <span class="math" data-tex="\(\gamma,\delta\)">\(\gamma,\delta\)</span>, one has
+<span class="math" data-tex="\((\varphi^\gamma)^\delta=\varphi^{\delta\gamma}\)">\((\varphi^\gamma)^\delta=\varphi^{\delta\gamma}\)</span>.
+The maps <span class="math" data-tex="\(K_{\delta,\varphi^\gamma}K_{\gamma,\varphi}\)">\(K_{\delta,\varphi^\gamma}K_{\gamma,\varphi}\)</span> and
+<span class="math" data-tex="\(K_{\delta\gamma,\varphi}\)">\(K_{\delta\gamma,\varphi}\)</span> have identical coefficient and translation images. This proves
+<span class="math" data-tex="\(C(\delta)C(\gamma)=C(\delta\gamma)\)">\(C(\delta)C(\gamma)=C(\delta\gamma)\)</span>, and the same generator test proves
+<span class="math" data-tex="\(C(\operatorname{id})=\operatorname{id}\)">\(C(\operatorname{id})=\operatorname{id}\)</span>.
+Thus this construction is a functor on normal isomorphisms.</p>
+<p>For the center, the exact equality is
+<span class="math math-display" data-tex="\[
+ Z(C(M))^\theta=j_M(Z(M)).
+ \tag{CORE.8.f}
+\]">\[
+ Z(C(M))^\theta=j_M(Z(M)).
+ \tag{CORE.8.f}
+\]</span>
+Indeed <a href="OA-FLOW-DA.html#da-fixed">DA's full fixed-algebra theorem</a> gives
+<span class="math" data-tex="\(C(M)^\theta=j_M(M)\)">\(C(M)^\theta=j_M(M)\)</span>.
+If a fixed element is central in <span class="math" data-tex="\(C(M)\)">\(C(M)\)</span>, write it as <span class="math" data-tex="\(j_M(x)\)">\(j_M(x)\)</span>; commutation with all <span class="math" data-tex="\(j_M(a)\)">\(j_M(a)\)</span> and faithfulness imply <span class="math" data-tex="\(x\in Z(M)\)">\(x\in Z(M)\)</span>. Conversely, <a href="OA-FLOW-NC.html#oa-flow.nc.4">NC4</a> proves that every modular group fixes <span class="math" data-tex="\(Z(M)\)">\(Z(M)\)</span> pointwise: a central selfadjoint element commutes with the full modular operator, and then with its imaginary powers. Thus, for <span class="math" data-tex="\(z\in Z(M)\)">\(z\in Z(M)\)</span>, <span class="math" data-tex="\(\pi_\varphi(z)\)">\(\pi_\varphi(z)\)</span> commutes with both the coefficient algebra and every <span class="math" data-tex="\(\lambda_\varphi(t)\)">\(\lambda_\varphi(t)\)</span>. It is central and fixed, proving the reverse inclusion.</p>
+<p>For nonzero <span class="math" data-tex="\(M\)">\(M\)</span>, define algebraic ergodicity of the center flow to mean
+<span class="math" data-tex="\(Z(C(M))^\theta=\mathbb C1\)">\(Z(C(M))^\theta=\mathbb C1\)</span>.
+Equation (CORE.8.f) proves
+<span class="math math-display" data-tex="\[
+ M\text{ is a factor}
+ \quad\Longleftrightarrow\quad
+ \theta|_{Z(C(M))}\text{ is algebraically ergodic}.
+ \tag{CORE.8.g}
+\]">\[
+ M\text{ is a factor}
+ \quad\Longleftrightarrow\quad
+ \theta|_{Z(C(M))}\text{ is algebraically ergodic}.
+ \tag{CORE.8.g}
+\]</span>
+The center <span class="math" data-tex="\(Z(C(M))\)">\(Z(C(M))\)</span> itself may be nontrivial. Restricting <span class="math" data-tex="\(C(\gamma)\)">\(C(\gamma)\)</span> to the centers gives exact conjugacy of these flows, with identity and composition inherited from (CORE.8.e). This assertion requires no measure-space realization of the center.</p>
+<p>There is also a short double-crossing consequence at the same generality. Fix a faithful chart <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and let <span class="math" data-tex="\(j_C\)">\(j_C\)</span> and <span class="math" data-tex="\(\ell_s\)">\(\ell_s\)</span> be the coefficient map and implementing unitaries of <span class="math" data-tex="\(C(M)\rtimes_\theta\mathbb R\)">\(C(M)\rtimes_\theta\mathbb R\)</span>, where the second group has Haar measure <span class="math" data-tex="\(ds/(2\pi)\)">\(ds/(2\pi)\)</span>. Apply the earlier <a href="OA-FLOW-ND.html#nd-construction">normal double-duality theorem and full onto construction</a>, to <span class="math" data-tex="\(\alpha=\sigma^\varphi\)">\(\alpha=\sigma^\varphi\)</span>. It gives a normal isomorphism
+<span class="math math-display" data-tex="\[
+ \mathscr S_\varphi:
+ C(M)\rtimes_\theta\mathbb R
+ \longrightarrow M\,\overline\otimes\,B(L^2(\mathbb R,dr))
+ \tag{CORE.8.h}
+\]">\[
+ \mathscr S_\varphi:
+ C(M)\rtimes_\theta\mathbb R
+ \longrightarrow M\,\overline\otimes\,B(L^2(\mathbb R,dr))
+ \tag{CORE.8.h}
+\]</span>
+specified in a faithful normal realization of <span class="math" data-tex="\(M\)">\(M\)</span> by
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ [\mathscr S_\varphi(j_C(j_M(x)))\xi](r)
+   &amp;=\sigma_{-r}^\varphi(x)\xi(r),\\
+ \mathscr S_\varphi(j_C(\lambda^\varphi(t)))&amp;=1\otimes L_t,
+       &amp; [L_t\xi](r)&amp;=\xi(r-t),\\
+ \mathscr S_\varphi(\ell_s)&amp;=1\otimes Q_s,
+       &amp; [Q_s\xi](r)&amp;=e^{-isr}\xi(r).
+ \end{aligned}
+ \tag{CORE.8.i}
+\]">\[
+ \begin{aligned}
+ [\mathscr S_\varphi(j_C(j_M(x)))\xi](r)
+   &amp;=\sigma_{-r}^\varphi(x)\xi(r),\\
+ \mathscr S_\varphi(j_C(\lambda^\varphi(t)))&amp;=1\otimes L_t,
+       &amp; [L_t\xi](r)&amp;=\xi(r-t),\\
+ \mathscr S_\varphi(\ell_s)&amp;=1\otimes Q_s,
+       &amp; [Q_s\xi](r)&amp;=e^{-isr}\xi(r).
+ \end{aligned}
+ \tag{CORE.8.i}
+\]</span>
+The equivariant normal chart map <span class="math" data-tex="\(\kappa_\varphi\)">\(\kappa_\varphi\)</span> first identifies the two second crossed products. To justify normality of this identification, represent <span class="math" data-tex="\(C(M)\)">\(C(M)\)</span> faithfully normally, pull that representation back through <span class="math" data-tex="\(\kappa_\varphi\)">\(\kappa_\varphi\)</span>, and use the identical regular coefficient fields and translations; NR4 compares these regular realizations with any others. The remaining assertion is exactly ND's Fourier-and-shear isomorphism, whose normality, inverse and onto tensor image have already been proved for arbitrary algebras and Hilbert multiplicities.</p>
+<p>The surviving bidual action <span class="math" data-tex="\(\delta_a\)">\(\delta_a\)</span> fixes <span class="math" data-tex="\(j_C(C(M))\)">\(j_C(C(M))\)</span> and sends
+<span class="math" data-tex="\(\ell_s\)">\(\ell_s\)</span> to <span class="math" data-tex="\(e^{-ias}\ell_s\)">\(e^{-ias}\ell_s\)</span>. Its transported action is
+<span class="math math-display" data-tex="\[
+ \mathscr S_\varphi\delta_a\mathscr S_\varphi^{-1}
+ =\sigma_a^\varphi\otimes\operatorname{Ad}R_a,
+ \qquad [R_a\xi](r)=\xi(r+a).
+ \tag{CORE.8.j}
+\]">\[
+ \mathscr S_\varphi\delta_a\mathscr S_\varphi^{-1}
+ =\sigma_a^\varphi\otimes\operatorname{Ad}R_a,
+ \qquad [R_a\xi](r)=\xi(r+a).
+ \tag{CORE.8.j}
+\]</span>
+For the coefficient field, right translation changes
+<span class="math" data-tex="\(\sigma_{-r}^\varphi(x)\)">\(\sigma_{-r}^\varphi(x)\)</span> to <span class="math" data-tex="\(\sigma_{-(r+a)}^\varphi(x)\)">\(\sigma_{-(r+a)}^\varphi(x)\)</span>, and the coefficient automorphism restores it. Left and right translations commute, while <span class="math" data-tex="\(R_aQ_sR_a^*=e^{-ias}Q_s\)">\(R_aQ_sR_a^*=e^{-ias}Q_s\)</span>. These three generator checks prove the stated action and its sign. The conclusion identifies the second crossed product; it makes no assertion that the core itself, or <span class="math" data-tex="\(M\)">\(M\)</span> itself, absorbs the operator tensor factor.</p>
+<p><span id="OA-FLOW.CORE.9"></span><a id="core-9"></a></p>
+<h2 id="9-the-semifinite-fourier-model-on-every-positive-element">9. The semifinite Fourier model on every positive element</h2>
+<p>Suppose <span class="math" data-tex="\(M\)">\(M\)</span> has a faithful normal semifinite trace <span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span>. Its modular group is trivial, so the regular crossed product and the positive-sign Fourier transform give a normal identification
+<span class="math math-display" data-tex="\[
+ C_{\tau_0}(M)
+ =M\,\overline\otimes\,\operatorname{VN}(\mathbb R)
+ \cong M\,\overline\otimes\,L^\infty(\mathbb R,\mu),
+ \qquad d\mu(p)=\frac{dp}{2\pi}.
+ \tag{CORE.9.a}
+\]">\[
+ C_{\tau_0}(M)
+ =M\,\overline\otimes\,\operatorname{VN}(\mathbb R)
+ \cong M\,\overline\otimes\,L^\infty(\mathbb R,\mu),
+ \qquad d\mu(p)=\frac{dp}{2\pi}.
+ \tag{CORE.9.a}
+\]</span>
+Here <span class="math" data-tex="\(\lambda(t)\)">\(\lambda(t)\)</span> becomes <span class="math" data-tex="\(1\otimes e^{itp}\)">\(1\otimes e^{itp}\)</span>. To obtain this for an arbitrary faithful representation <span class="math" data-tex="\(M\subset B(\mathcal H)\)">\(M\subset B(\mathcal H)\)</span>, tensor <a href="OA-FLOW-FF.html#oa-flow.ff.3">the scalar positive Fourier unitary</a> with <span class="math" data-tex="\(1_{\mathcal H}\)">\(1_{\mathcal H}\)</span>. Finite simple tensors are dense in the Hilbert tensor product even when <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> is nonseparable. <a href="OA-FLOW-ND.html#nd-weyl-proof">The character-density proof</a> identifies the entire scalar multiplier algebra, so the generated image is the full spatial tensor product. Spatial conjugation makes the identification and its inverse normal.</p>
+<p>In these coordinates,
+<span class="math math-display" data-tex="\[
+ h=1\otimes e^p,\qquad
+ \theta_s=\operatorname{id}_M\otimes
+           \bigl(f(p)\mapsto f(p-s)\bigr).
+ \tag{CORE.9.b}
+\]">\[
+ h=1\otimes e^p,\qquad
+ \theta_s=\operatorname{id}_M\otimes
+           \bigl(f(p)\mapsto f(p-s)\bigr).
+ \tag{CORE.9.b}
+\]</span>
+The density identity follows from <span class="math" data-tex="\(h^{it}=\lambda(t)\)">\(h^{it}=\lambda(t)\)</span>. The translation sign follows on <span class="math" data-tex="\(e^{itp}\)">\(e^{itp}\)</span>, since replacing <span class="math" data-tex="\(p\)">\(p\)</span> by <span class="math" data-tex="\(p-s\)">\(p-s\)</span> multiplies it by <span class="math" data-tex="\(e^{-ist}\)">\(e^{-ist}\)</span>.</p>
+<p>We now compute both weights on the whole positive cone. No measurable <span class="math" data-tex="\(M\)">\(M\)</span>-valued field representation is assumed. For <span class="math" data-tex="\(\omega\in M_*^+\)">\(\omega\in M_*^+\)</span> and <span class="math" data-tex="\(X\in(M\overline\otimes L^\infty)_+\)">\(X\in(M\overline\otimes L^\infty)_+\)</span>, denote the normal scalar slice by
+<span class="math math-display" data-tex="\[
+ x_\omega=(\omega\otimes\operatorname{id})(X)\in L^\infty(\mathbb R,\mu)_+.
+ \tag{CORE.9.c}
+\]">\[
+ x_\omega=(\omega\otimes\operatorname{id})(X)\in L^\infty(\mathbb R,\mu)_+.
+ \tag{CORE.9.c}
+\]</span></p>
+<p><strong>Construction of the normal slices.</strong> By <a href="OA-FLOW-EP.html#oa-flow.ep.1">EP1's positive vector-series theorem</a>, write
+<span class="math" data-tex="\(\omega(a)=\sum_j\langle a\xi_j,\xi_j\rangle\)">\(\omega(a)=\sum_j\langle a\xi_j,\xi_j\rangle\)</span>, where
+<span class="math" data-tex="\(\sum_j\|\xi_j\|^2=\|\omega\|\)">\(\sum_j\|\xi_j\|^2=\|\omega\|\)</span>. Let
+<span class="math" data-tex="\(V_\xi:L^2(\mu)\to\mathcal H\otimes L^2(\mu)\)">\(V_\xi:L^2(\mu)\to\mathcal H\otimes L^2(\mu)\)</span> send <span class="math" data-tex="\(\eta\)">\(\eta\)</span> to <span class="math" data-tex="\(\xi\otimes\eta\)">\(\xi\otimes\eta\)</span>. The norm-convergent sum
+<span class="math math-display" data-tex="\[
+ S_\omega(X)=\sum_jV_{\xi_j}^*XV_{\xi_j},
+ \qquad \|S_\omega\|\leq\|\omega\|
+ \tag{CORE.9.d}
+\]">\[
+ S_\omega(X)=\sum_jV_{\xi_j}^*XV_{\xi_j},
+ \qquad \|S_\omega\|\leq\|\omega\|
+ \tag{CORE.9.d}
+\]</span>
+is a positive normal map. Normality follows either from its convergent predual sum or by a finite initial sum and its uniform norm tail. Every <span class="math" data-tex="\(X\)">\(X\)</span> commutes with <span class="math" data-tex="\(1\otimes L^\infty\)">\(1\otimes L^\infty\)</span>; hence <span class="math" data-tex="\(S_\omega(X)\)">\(S_\omega(X)\)</span> commutes with all scalar multipliers. <a href="OA-FLOW-ND.html#nd-multiplication">ND's multiplier-commutant proof</a> puts the result in <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span>. On <span class="math" data-tex="\(a\otimes f\)">\(a\otimes f\)</span> it equals <span class="math" data-tex="\(\omega(a)f\)">\(\omega(a)f\)</span>. Any two such constructions agree there and are bounded normal maps, so ultraweak density proves independence of the vector series.</p>
+<p>For <span class="math" data-tex="\(g\in L^1(\mu)_+\)">\(g\in L^1(\mu)_+\)</span>, compression by
+<span class="math" data-tex="\(\xi\mapsto\xi\otimes\sqrt g\)">\(\xi\mapsto\xi\otimes\sqrt g\)</span> similarly defines the normal slice
+<span class="math" data-tex="\(R_g=\operatorname{id}\otimes g\)">\(R_g=\operatorname{id}\otimes g\)</span> into <span class="math" data-tex="\(M\)">\(M\)</span>: its output commutes with <span class="math" data-tex="\(M'\)">\(M'\)</span>, as follows from the commutation of <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(M'\otimes1\)">\(M'\otimes1\)</span>. The product functional is normal and satisfies
+<span class="math math-display" data-tex="\[
+ (\omega\otimes g)(X)
+   =\omega(R_gX)
+   =\int_{\mathbb R}g(p)x_\omega(p)\,d\mu(p).
+ \tag{CORE.9.e}
+\]">\[
+ (\omega\otimes g)(X)
+   =\omega(R_gX)
+   =\int_{\mathbb R}g(p)x_\omega(p)\,d\mu(p).
+ \tag{CORE.9.e}
+\]</span>
+The identities follow on elementary tensors and extend because all three maps are bounded and normal. Linear extension also defines these slices for complex normal functionals and complex <span class="math" data-tex="\(L^1\)">\(L^1\)</span> functions. This use of bounded normal maps makes no assertion about uniqueness of unbounded weights from elementary tensors.</p>
+<p>Choose <span class="math" data-tex="\(g\geq0\)">\(g\geq0\)</span> with <span class="math" data-tex="\(\int g\,d\mu=1\)">\(\int g\,d\mu=1\)</span>. The restriction of <span class="math" data-tex="\(\omega\otimes g\)">\(\omega\otimes g\)</span> to <span class="math" data-tex="\(M\otimes1\)">\(M\otimes1\)</span> is <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. <a href="OA-FLOW-DA.html#da-equality">The whole dual-action average</a>, the just-constructed slices, and <a href="OA-FLOW-FF.html#oa-flow.ff.1">nonnegative scalar interchange</a> give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ T(X)(\omega)
+ &amp;=\int_{\mathbb R}\int_{\mathbb R}
+       g(p)x_\omega(p-s)\,d\mu(p)\,\frac{ds}{2\pi}\\
+ &amp;=\int_{\mathbb R}x_\omega(q)\,d\mu(q).
+ \end{aligned}
+ \tag{CORE.9.f}
+\]">\[
+ \begin{aligned}
+ T(X)(\omega)
+ &amp;=\int_{\mathbb R}\int_{\mathbb R}
+       g(p)x_\omega(p-s)\,d\mu(p)\,\frac{ds}{2\pi}\\
+ &amp;=\int_{\mathbb R}x_\omega(q)\,d\mu(q).
+ \end{aligned}
+ \tag{CORE.9.f}
+\]</span>
+The left side denotes evaluation of the extended-positive <span class="math" data-tex="\(M\)">\(M\)</span>-value. For the scalar interchange choose nonnegative Borel representatives of <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(x_\omega\)">\(x_\omega\)</span>; translation and integration leave the resulting values independent of their null-set choices. The equality includes infinite integrals.</p>
+<p>Let <span class="math" data-tex="\(\mathcal F_{\tau_0}=\{\omega\in M_*^+:\omega\leq\tau_0\}\)">\(\mathcal F_{\tau_0}=\{\omega\in M_*^+:\omega\leq\tau_0\}\)</span>, where the order means inequality on <span class="math" data-tex="\(M_+\)">\(M_+\)</span>. <a href="OA-FLOW-EP.html#oa-flow.ep.5">EP5's normal-minorant formula</a> now proves the full dual-weight formula
+<span class="math math-display" data-tex="\[
+ \Phi_{\tau_0}(X)
+   =\sup_{\omega\in\mathcal F_{\tau_0}}
+       \int_{\mathbb R}x_\omega(p)\,d\mu(p).
+ \tag{CORE.9.g}
+\]">\[
+ \Phi_{\tau_0}(X)
+   =\sup_{\omega\in\mathcal F_{\tau_0}}
+       \int_{\mathbb R}x_\omega(p)\,d\mu(p).
+ \tag{CORE.9.g}
+\]</span>
+Directedness of <span class="math" data-tex="\(\mathcal F_{\tau_0}\)">\(\mathcal F_{\tau_0}\)</span> is not required.</p>
+<p>The inverse-density cutoff is central in this model. Put
+<span class="math" data-tex="\(b_\varepsilon(p)=(e^p+\varepsilon)^{-1}\)">\(b_\varepsilon(p)=(e^p+\varepsilon)^{-1}\)</span>. It is bounded for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, and the slice of
+<span class="math" data-tex="\((1\otimes b_\varepsilon^{1/2})X(1\otimes b_\varepsilon^{1/2})\)">\((1\otimes b_\varepsilon^{1/2})X(1\otimes b_\varepsilon^{1/2})\)</span>
+is <span class="math" data-tex="\(b_\varepsilon x_\omega\)">\(b_\varepsilon x_\omega\)</span>. This follows directly from (CORE.9.d). The bounded trace formula of <a href="OA-FLOW-CORE.html#core-3">Section 3</a> therefore yields
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \tau_{\tau_0}(X)
+ &amp;=\sup_{\varepsilon&gt;0}\sup_{\omega\in\mathcal F_{\tau_0}}
+       \int_{\mathbb R}\frac{x_\omega(p)}{e^p+\varepsilon}\,d\mu(p)\\
+ &amp;=\sup_{\omega\in\mathcal F_{\tau_0}}
+       \int_{\mathbb R}e^{-p}x_\omega(p)\,d\mu(p).
+ \end{aligned}
+ \tag{CORE.9.h}
+\]">\[
+ \begin{aligned}
+ \tau_{\tau_0}(X)
+ &amp;=\sup_{\varepsilon&gt;0}\sup_{\omega\in\mathcal F_{\tau_0}}
+       \int_{\mathbb R}\frac{x_\omega(p)}{e^p+\varepsilon}\,d\mu(p)\\
+ &amp;=\sup_{\omega\in\mathcal F_{\tau_0}}
+       \int_{\mathbb R}e^{-p}x_\omega(p)\,d\mu(p).
+ \end{aligned}
+ \tag{CORE.9.h}
+\]</span>
+For the second equality, interchange the two suprema, then let
+<span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> by scalar monotone convergence for each fixed <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. This proves equality with the already constructed canonical trace at every <span class="math" data-tex="\(X\geq0\)">\(X\geq0\)</span>, including all infinite values.</p>
+<p>In particular the elementary-tensor formulas are consequences:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \Phi_{\tau_0}(a\otimes f)
+   &amp;=\tau_0(a)\int_{\mathbb R}f(p)\,\frac{dp}{2\pi},\\
+ \tau_{\tau_0}(a\otimes f)
+   &amp;=\tau_0(a)\int_{\mathbb R}f(p)e^{-p}\,\frac{dp}{2\pi}
+       \qquad(a\in M_+,\ f\in L^\infty_+).
+ \end{aligned}
+ \tag{CORE.9.i}
+\]">\[
+ \begin{aligned}
+ \Phi_{\tau_0}(a\otimes f)
+   &amp;=\tau_0(a)\int_{\mathbb R}f(p)\,\frac{dp}{2\pi},\\
+ \tau_{\tau_0}(a\otimes f)
+   &amp;=\tau_0(a)\int_{\mathbb R}f(p)e^{-p}\,\frac{dp}{2\pi}
+       \qquad(a\in M_+,\ f\in L^\infty_+).
+ \end{aligned}
+ \tag{CORE.9.i}
+\]</span>
+The convention <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span> is retained. Thus the notation
+<span class="math" data-tex="\(\tau_0\otimes e^{-p}dp/(2\pi)\)">\(\tau_0\otimes e^{-p}dp/(2\pi)\)</span> may abbreviate the weight in (CORE.9.h); its meaning on the whole positive cone has been proved.</p>
+<p>The same full formula checks scaling without any density cancellation:
+<span class="math" data-tex="\(x_\omega^{\,\theta_sX}(p)=x_\omega^X(p-s)\)">\(x_\omega^{\,\theta_sX}(p)=x_\omega^X(p-s)\)</span>, so substitution <span class="math" data-tex="\(q=p-s\)">\(q=p-s\)</span> gives
+<span class="math math-display" data-tex="\[
+ \tau_{\tau_0}(\theta_sX)
+ =\sup_{\omega\leq\tau_0}\int e^{-p}x_\omega(p-s)\,d\mu(p)
+ =e^{-s}\tau_{\tau_0}(X).
+ \tag{CORE.9.j}
+\]">\[
+ \tau_{\tau_0}(\theta_sX)
+ =\sup_{\omega\leq\tau_0}\int e^{-p}x_\omega(p-s)\,d\mu(p)
+ =e^{-s}\tau_{\tau_0}(X).
+ \tag{CORE.9.j}
+\]</span></p>
+<p><strong>The center in this model.</strong> One has
+<span class="math math-display" data-tex="\[
+ Z(C_{\tau_0}(M))
+   =Z(M)\,\overline\otimes\,L^\infty(\mathbb R),
+ \tag{CORE.9.k}
+\]">\[
+ Z(C_{\tau_0}(M))
+   =Z(M)\,\overline\otimes\,L^\infty(\mathbb R),
+ \tag{CORE.9.k}
+\]</span>
+and the center flow translates the second coordinate. Here is a proof that also avoids a measurable-field assumption. For dyadic intervals
+<span class="math" data-tex="\(I_{n,j}=[j2^{-n},(j+1)2^{-n})\)">\(I_{n,j}=[j2^{-n},(j+1)2^{-n})\)</span>, define
+<span class="math math-display" data-tex="\[
+ a_{n,j}=R_{\mu(I_{n,j})^{-1}1_{I_{n,j}}}(X),\qquad
+ X_n=\sum_{j\in\mathbb Z}a_{n,j}\otimes1_{I_{n,j}}.
+ \tag{CORE.9.l}
+\]">\[
+ a_{n,j}=R_{\mu(I_{n,j})^{-1}1_{I_{n,j}}}(X),\qquad
+ X_n=\sum_{j\in\mathbb Z}a_{n,j}\otimes1_{I_{n,j}}.
+ \tag{CORE.9.l}
+\]</span>
+For bounded <span class="math" data-tex="\(X\)">\(X\)</span>, the orthogonal block sum is strongly defined and satisfies
+<span class="math" data-tex="\(\|X_n\|\leq\|X\|\)">\(\|X_n\|\leq\|X\|\)</span>. If <span class="math" data-tex="\(X\)">\(X\)</span> is central, every <span class="math" data-tex="\(a_{n,j}\)">\(a_{n,j}\)</span> commutes with <span class="math" data-tex="\(M\)">\(M\)</span>, by moving a coefficient through the compression defining <span class="math" data-tex="\(R_g\)">\(R_g\)</span>. Thus <span class="math" data-tex="\(X_n\in Z(M)\overline\otimes L^\infty\)">\(X_n\in Z(M)\overline\otimes L^\infty\)</span>.</p>
+<p>Let <span class="math" data-tex="\(E_ng\)">\(E_ng\)</span> be the scalar function obtained by averaging <span class="math" data-tex="\(g\in L^1(\mu)\)">\(g\in L^1(\mu)\)</span> on these intervals. Then <span class="math" data-tex="\(\|E_ng-g\|_1\to0\)">\(\|E_ng-g\|_1\to0\)</span>. Indeed the maps are <span class="math" data-tex="\(L^1\)">\(L^1\)</span> contractions; on a continuous compactly supported function the assertion follows from uniform continuity and a common bounded support, and <a href="OA-FLOW-FF.html#oa-flow.ff.2"><span class="math" data-tex="\(L^1\)">\(L^1\)</span> density</a> gives the general assertion. Formula (CORE.9.e) gives
+<span class="math" data-tex="\((\omega\otimes g)(X_n)=(\omega\otimes E_ng)(X)\)">\((\omega\otimes g)(X_n)=(\omega\otimes E_ng)(X)\)</span>, so these values converge to <span class="math" data-tex="\((\omega\otimes g)(X)\)">\((\omega\otimes g)(X)\)</span>. Finite sums of product normal functionals are norm dense in the spatial tensor-product predual: use EP1's vector series on <span class="math" data-tex="\(\mathcal H\otimes L^2(\mu)\)">\(\mathcal H\otimes L^2(\mu)\)</span>, approximate each of finitely many vectors by finite sums of simple tensors, and expand the resulting vector functionals. The uniform bound on <span class="math" data-tex="\(X_n\)">\(X_n\)</span> therefore implies <span class="math" data-tex="\(X_n\to X\)">\(X_n\to X\)</span> ultraweakly. The algebra <span class="math" data-tex="\(Z(M)\overline\otimes L^\infty\)">\(Z(M)\overline\otimes L^\infty\)</span> is ultraweakly closed, proving the required inclusion. Its reverse inclusion is immediate from commutation on both tensor factors. This proves (CORE.9.k) for arbitrary <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Even when <span class="math" data-tex="\(M\)">\(M\)</span> is a factor, this center is not trivial. The model also applies to <span class="math" data-tex="\(M=B(\mathcal K)\)">\(M=B(\mathcal K)\)</span> at arbitrary Hilbert dimension, without choosing a faithful normal state.</p>
+<p>The <a href="OA-FLOW-CORE.html#core-8">double-crossing result in Section 8</a> retains the full algebra and its bidual action, while the center and its flow retain less information.</p>
+<p><span id="OA-FLOW.CORE.10"></span><a id="core-10"></a></p>
+<h2 id="10-two-noncommuting-matrix-densities-give-the-same-trace">10. Two noncommuting matrix densities give the same trace</h2>
+<p>Take <span class="math" data-tex="\(M=M_2(\mathbb C)\)">\(M=M_2(\mathbb C)\)</span>, and let
+<span class="math math-display" data-tex="\[
+ H=\begin{pmatrix}4&amp;0\\0&amp;1\end{pmatrix},\qquad
+ K=\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix},\qquad
+ \varphi_D(x)=\operatorname{Tr}(Dx)\quad(D=H,K).
+ \tag{CORE.10.a}
+\]">\[
+ H=\begin{pmatrix}4&amp;0\\0&amp;1\end{pmatrix},\qquad
+ K=\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix},\qquad
+ \varphi_D(x)=\operatorname{Tr}(Dx)\quad(D=H,K).
+ \tag{CORE.10.a}
+\]</span>
+The eigenvalues are <span class="math" data-tex="\(4,1\)">\(4,1\)</span> for <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(3,1\)">\(3,1\)</span> for <span class="math" data-tex="\(K\)">\(K\)</span>. They are strictly positive and
+<span class="math" data-tex="\(HK-KH=\begin{pmatrix}0&amp;3\\-3&amp;0\end{pmatrix}\ne0\)">\(HK-KH=\begin{pmatrix}0&amp;3\\-3&amp;0\end{pmatrix}\ne0\)</span>.
+<a href="OA-FLOW-BC.html#oa-flow.bc.6">The finite-matrix modular and balanced-weight calculation</a> gives, without normalizing these weights to states,
+<span class="math math-display" data-tex="\[
+ \sigma_t^{\varphi_D}(x)=D^{it}xD^{-it},\qquad
+ c_{K,H}(t)=(D\varphi_K:D\varphi_H)_t=K^{it}H^{-it}.
+ \tag{CORE.10.b}
+\]">\[
+ \sigma_t^{\varphi_D}(x)=D^{it}xD^{-it},\qquad
+ c_{K,H}(t)=(D\varphi_K:D\varphi_H)_t=K^{it}H^{-it}.
+ \tag{CORE.10.b}
+\]</span></p>
+<p>The untwisting is a normal spatial isomorphism, not merely a generator substitution. In the regular representation on <span class="math" data-tex="\(L^2(\mathbb R,\mathbb C^2)\)">\(L^2(\mathbb R,\mathbb C^2)\)</span>, the coefficient operator is
+<span class="math" data-tex="\(\pi_D(x)\xi(r)=D^{-ir}xD^{ir}\xi(r)\)">\(\pi_D(x)\xi(r)=D^{-ir}xD^{ir}\xi(r)\)</span>. Conjugate by the multiplication unitary
+<span class="math" data-tex="\((U_D\xi)(r)=D^{ir}\xi(r)\)">\((U_D\xi)(r)=D^{ir}\xi(r)\)</span>, then apply the positive Fourier unitary. The resulting map <span class="math" data-tex="\(\mathcal U_D\)">\(\mathcal U_D\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \mathcal U_D(\pi_D(x))=x\otimes1,\qquad
+ \mathcal U_D(\lambda_D(t))=D^{it}\otimes e^{itp}.
+ \tag{CORE.10.c}
+\]">\[
+ \mathcal U_D(\pi_D(x))=x\otimes1,\qquad
+ \mathcal U_D(\lambda_D(t))=D^{it}\otimes e^{itp}.
+ \tag{CORE.10.c}
+\]</span>
+Multiplying the second generator by <span class="math" data-tex="\(D^{-it}\otimes1\)">\(D^{-it}\otimes1\)</span> gives every scalar Fourier character, so the image is all
+<span class="math" data-tex="\(M_2\overline\otimes L^\infty(\mathbb R)\)">\(M_2\overline\otimes L^\infty(\mathbb R)\)</span>. Spatial conjugation proves normality and faithfulness, and this generation argument proves surjectivity. The dual action becomes <span class="math" data-tex="\(Y(p)\mapsto Y(p-s)\)">\(Y(p)\mapsto Y(p-s)\)</span>, since the untwisting unitary commutes with its scalar implementation.</p>
+<p>Let <span class="math" data-tex="\(Y\)">\(Y\)</span> be any bounded positive measurable matrix field. After untwisting, dual averaging is translation averaging. Thus (CORE.9.f) in <a href="OA-FLOW-CORE.html#core-9">Section 9</a>, applied to the normal positive functional <span class="math" data-tex="\(x\mapsto\operatorname{Tr}(Dx)\)">\(x\mapsto\operatorname{Tr}(Dx)\)</span>, gives
+<span class="math math-display" data-tex="\[
+ \Phi_D(\mathcal U_D^{-1}Y)
+   =\int_{\mathbb R}\operatorname{Tr}(D Y(p))\,\frac{dp}{2\pi},
+ \qquad
+ \mathcal U_D(h_D)(p)=e^pD.
+ \tag{CORE.10.d}
+\]">\[
+ \Phi_D(\mathcal U_D^{-1}Y)
+   =\int_{\mathbb R}\operatorname{Tr}(D Y(p))\,\frac{dp}{2\pi},
+ \qquad
+ \mathcal U_D(h_D)(p)=e^pD.
+ \tag{CORE.10.d}
+\]</span>
+The first identity includes an infinite integral. The second follows from the imaginary powers in (CORE.10.c).</p>
+<p>Now evaluate the full inverse-density cutoff. Finite-dimensional trace cyclicity, with <span class="math" data-tex="\(D\)">\(D\)</span> commuting with its own resolvent, gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ &amp;\tau_D(\mathcal U_D^{-1}Y)\\
+ &amp;=\sup_{\varepsilon&gt;0}\int_{\mathbb R}
+   \operatorname{Tr}\!\left(
+      D(e^pD+\varepsilon I)^{-1/2}
+      Y(p)(e^pD+\varepsilon I)^{-1/2}\right)\frac{dp}{2\pi}\\
+ &amp;=\sup_{\varepsilon&gt;0}\int_{\mathbb R}
+   \operatorname{Tr}\!\left(D(e^pD+\varepsilon I)^{-1}Y(p)\right)
+     \frac{dp}{2\pi}\\
+ &amp;=\int_{\mathbb R}e^{-p}\operatorname{Tr}(Y(p))\,\frac{dp}{2\pi}.
+ \end{aligned}
+ \tag{CORE.10.e}
+\]">\[
+ \begin{aligned}
+ &amp;\tau_D(\mathcal U_D^{-1}Y)\\
+ &amp;=\sup_{\varepsilon&gt;0}\int_{\mathbb R}
+   \operatorname{Tr}\!\left(
+      D(e^pD+\varepsilon I)^{-1/2}
+      Y(p)(e^pD+\varepsilon I)^{-1/2}\right)\frac{dp}{2\pi}\\
+ &amp;=\sup_{\varepsilon&gt;0}\int_{\mathbb R}
+   \operatorname{Tr}\!\left(D(e^pD+\varepsilon I)^{-1}Y(p)\right)
+     \frac{dp}{2\pi}\\
+ &amp;=\int_{\mathbb R}e^{-p}\operatorname{Tr}(Y(p))\,\frac{dp}{2\pi}.
+ \end{aligned}
+ \tag{CORE.10.e}
+\]</span>
+For the last equality, the positive matrices
+<span class="math" data-tex="\(D(e^pD+\varepsilon I)^{-1}\)">\(D(e^pD+\varepsilon I)^{-1}\)</span> increase to <span class="math" data-tex="\(e^{-p}I\)">\(e^{-p}I\)</span> as
+<span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. Their traces against <span class="math" data-tex="\(Y(p)\geq0\)">\(Y(p)\geq0\)</span> therefore increase, and scalar monotone convergence applies. No commutation of <span class="math" data-tex="\(Y(p)\)">\(Y(p)\)</span> with <span class="math" data-tex="\(D\)">\(D\)</span> is required. This computes the canonical trace on the whole positive cone for both <span class="math" data-tex="\(D=H\)">\(D=H\)</span> and <span class="math" data-tex="\(D=K\)">\(D=K\)</span>.</p>
+<p>The <a href="OA-FLOW-CORE.html#core-5">normal chart transition</a> fixes the coefficient algebra and has the ordered formula
+<span class="math math-display" data-tex="\[
+ J_{K,H}(\lambda_K(t))
+   =\pi_H(K^{it}H^{-it})\lambda_H(t).
+ \tag{CORE.10.f}
+\]">\[
+ J_{K,H}(\lambda_K(t))
+   =\pi_H(K^{it}H^{-it})\lambda_H(t).
+ \tag{CORE.10.f}
+\]</span>
+In the common Fourier model its image is
+<span class="math math-display" data-tex="\[
+ (K^{it}H^{-it})(H^{it}e^{itp})
+       =K^{it}e^{itp}.
+ \tag{CORE.10.g}
+\]">\[
+ (K^{it}H^{-it})(H^{it}e^{itp})
+       =K^{it}e^{itp}.
+ \tag{CORE.10.g}
+\]</span>
+Only the adjacent factors <span class="math" data-tex="\(H^{-it}H^{it}\)">\(H^{-it}H^{it}\)</span> have been cancelled. Thus
+<span class="math" data-tex="\(\mathcal U_HJ_{K,H}=\mathcal U_K\)">\(\mathcal U_HJ_{K,H}=\mathcal U_K\)</span> on the generators and hence, by normality, on the entire core. Formula (CORE.10.e) proves trace preservation in these coordinates for every positive field. The cancellation does not turn <span class="math" data-tex="\(t\mapsto K^{it}H^{-it}\)">\(t\mapsto K^{it}H^{-it}\)</span> into an ordinary unitary group; its exact relation is the twisted cocycle identity in Diagnostic 4 below.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The tracial Fourier coordinate fixes the negative trace-scaling sign, while ordered noncommuting chart factors cancel to the same trace" src="assets/general-core-trace/general-core-trace.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p>The figure combines the exact Fourier coordinates of (CORE.9.b), the whole-cone trace formula (CORE.9.h), and the ordered matrix transition (CORE.10.g). Its translated interval test uses <span class="math" data-tex="\(M=\mathbb C\)">\(M=\mathbb C\)</span>, <span class="math" data-tex="\(f=1_{[0,1)}\)">\(f=1_{[0,1)}\)</span>, <span class="math" data-tex="\(s=\log2\)">\(s=\log2\)</span>: the support of <span class="math" data-tex="\(\theta_sf(p)=f(p-s)\)">\(\theta_sf(p)=f(p-s)\)</span> is <span class="math" data-tex="\([\log2,1+\log2)\)">\([\log2,1+\log2)\)</span>, and its weighted integral is half the original one. The matrix panel uses the exact <span class="math" data-tex="\(H,K\)">\(H,K\)</span> in (CORE.10.a); the factors retain their displayed order. The plot of <span class="math" data-tex="\(e^{-p}\)">\(e^{-p}\)</span> is a graph of the exact scalar trace density, and the shaded integrals have their exact values recorded in the data. It does not represent a probability density or a finite total trace. The cutoff panel shows the separate finite-dimensional centralizer example in <a href="OA-FLOW-CORE.html#core-3">Section 3</a>: as <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decreases from <span class="math" data-tex="\(4\)">\(4\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>, the scalar value rises from <span class="math" data-tex="\(7/10\)">\(7/10\)</span> to <span class="math" data-tex="\(13/10\)">\(13/10\)</span>, although <span class="math" data-tex="\(\det(B_1-B_4)=-1/400\)">\(\det(B_1-B_4)=-1/400\)</span>. Its limit is <span class="math" data-tex="\(2\)">\(2\)</span>. That panel illustrates (CORE.3.b), not a finite-dimensional trace-scaling core. For human-source context, see <a href="OA-FLOW-CORE.html#core-reading">Further reading</a>. Original diagram, data and renderer: CC0-1.0 to the extent of rights held; font terms are retained separately. <a href="assets/general-core-trace/general-core-trace.svg">Editable SVG</a>, <a href="assets/general-core-trace/general-core-trace-data.json">exact data</a>, <a href="assets/general-core-trace/render_general_core_trace.py">renderer</a>, and <a href="assets/general-core-trace/FONT-LICENSE.txt">font terms</a> are included.</p>
+<p><span id="OA-FLOW.CORE.11"></span><a id="core-11"></a></p>
+<h2 id="11-five-diagnostics-with-complete-solutions">11. Five diagnostics with complete solutions</h2>
+<h3 id="1-rescale-the-input-weight">1. Rescale the input weight</h3>
+<p>Let <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and <span class="math" data-tex="\(\psi=a\varphi\)">\(\psi=a\varphi\)</span>. Determine the chart map, the transported affiliated density, and the trace.</p>
+<p><strong>Solution.</strong> Positive scalar rescaling preserves the modular group, while its normalized derivative is
+<span class="math" data-tex="\((D\psi:D\varphi)_t=a^{it}1\)">\((D\psi:D\varphi)_t=a^{it}1\)</span>. The chart formula therefore fixes <span class="math" data-tex="\(M\)">\(M\)</span> and gives
+<span class="math math-display" data-tex="\[
+ J_{\psi,\varphi}(\lambda_\psi(t))
+       =a^{it}\lambda_\varphi(t),\qquad
+ J_{\psi,\varphi}(h_\psi)=a h_\varphi.
+ \tag{CORE.11.a}
+\]">\[
+ J_{\psi,\varphi}(\lambda_\psi(t))
+       =a^{it}\lambda_\varphi(t),\qquad
+ J_{\psi,\varphi}(h_\psi)=a h_\varphi.
+ \tag{CORE.11.a}
+\]</span>
+The transported dual weight is <span class="math" data-tex="\(a\Phi_\varphi\)">\(a\Phi_\varphi\)</span>, by the whole-cone composition formula. The transported trace is
+<span class="math" data-tex="\((a\Phi_\varphi)_{(a h_\varphi)^{-1}}=\tau_\varphi\)">\((a\Phi_\varphi)_{(a h_\varphi)^{-1}}=\tau_\varphi\)</span>.
+This last identity follows directly from the resolvent formula: after multiplying the scalar weight by <span class="math" data-tex="\(a\)">\(a\)</span>, its integrand is the <span class="math" data-tex="\(\Phi_\varphi\)">\(\Phi_\varphi\)</span>-value at the cutoff with <span class="math" data-tex="\(\varepsilon/a\)">\(\varepsilon/a\)</span>. Taking the supremum gives exactly the original trace, including infinite values.</p>
+<p>When <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is tracial and both trivial-action cores use their own generator Fourier coordinate, the map is
+<span class="math math-display" data-tex="\[
+ f(p)\longmapsto f(p+\log a).
+ \tag{CORE.11.b}
+\]">\[
+ f(p)\longmapsto f(p+\log a).
+ \tag{CORE.11.b}
+\]</span>
+Indeed this sends <span class="math" data-tex="\(e^{itp}\)">\(e^{itp}\)</span> to <span class="math" data-tex="\(a^{it}e^{itp}\)">\(a^{it}e^{itp}\)</span>. The source trace in that coordinate carries the factor <span class="math" data-tex="\(a\)">\(a\)</span>, and
+<span class="math" data-tex="\(\int f(p+\log a)e^{-p}\,dp
+ =a\int f(q)e^{-q}\,dq\)">\(\int f(p+\log a)e^{-p}\,dp
+ =a\int f(q)e^{-q}\,dq\)</span>, as required for trace preservation.</p>
+<h3 id="2-why-the-core-trace-is-infinite-at-the-identity">2. Why the core trace is infinite at the identity</h3>
+<p>Let <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span> have a faithful finite trace <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and let <span class="math" data-tex="\(\beta\)">\(\beta\)</span> be a unital automorphism satisfying <span class="math" data-tex="\(\rho\circ\beta=c\rho\)">\(\rho\circ\beta=c\rho\)</span>. Show that <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. What follows for the canonical core trace?</p>
+<p><strong>Solution.</strong> At the identity,
+<span class="math" data-tex="\(\rho(1)=c\rho(1)\)">\(\rho(1)=c\rho(1)\)</span>. Faithfulness and <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span> give
+<span class="math" data-tex="\(0&lt;\rho(1)&lt;\infty\)">\(0&lt;\rho(1)&lt;\infty\)</span>, so <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. Since the canonical core trace satisfies
+<span class="math" data-tex="\(\tau_\varphi\circ\theta_s^\varphi=e^{-s}\tau_\varphi\)">\(\tau_\varphi\circ\theta_s^\varphi=e^{-s}\tau_\varphi\)</span> at every real <span class="math" data-tex="\(s\)">\(s\)</span>, it follows that
+<span class="math math-display" data-tex="\[
+ \tau_\varphi(1)=\infty\qquad(M\ne0).
+ \tag{CORE.11.c}
+\]">\[
+ \tau_\varphi(1)=\infty\qquad(M\ne0).
+ \tag{CORE.11.c}
+\]</span>
+This does not eliminate finite projections. For instance the scalar tracial model has the nonzero projection <span class="math" data-tex="\(1_{[0,1)}\)">\(1_{[0,1)}\)</span>, with trace
+<span class="math" data-tex="\((1-e^{-1})/(2\pi)\)">\((1-e^{-1})/(2\pi)\)</span>. Nor does the argument make the core a factor: even the core of <span class="math" data-tex="\(M_n\)">\(M_n\)</span> has the nontrivial center computed next.</p>
+<h3 id="3-detect-a-factor-without-making-its-core-a-factor">3. Detect a factor without making its core a factor</h3>
+<p>For <span class="math" data-tex="\(M=M_n(\mathbb C)\)">\(M=M_n(\mathbb C)\)</span>, compute the center flow and its fixed algebra.</p>
+<p><strong>Solution.</strong> Formula (CORE.9.k) gives
+<span class="math math-display" data-tex="\[
+ Z(C(M))=1\otimes L^\infty(\mathbb R),\qquad
+ \theta_s(f)(p)=f(p-s),\qquad
+ Z(C(M))^\theta=\mathbb C1.
+ \tag{CORE.11.d}
+\]">\[
+ Z(C(M))=1\otimes L^\infty(\mathbb R),\qquad
+ \theta_s(f)(p)=f(p-s),\qquad
+ Z(C(M))^\theta=\mathbb C1.
+ \tag{CORE.11.d}
+\]</span>
+For the last equality, let <span class="math" data-tex="\(f\)">\(f\)</span> be fixed as an <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> class by every translation. Convolving with a compactly supported continuous function gives a continuous translation-invariant function, hence a constant. An approximate identity converges to <span class="math" data-tex="\(f\)">\(f\)</span> weak*, by the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> translation-continuity argument; constants form a weak* closed subspace. This is <a href="OA-FLOW-ND.html#nd-weyl-proof">ND's full fixed-multiplier proof</a>, and it does not intersect uncountably many full-measure sets. The flow is algebraically ergodic, while its center is infinite dimensional.</p>
+<h3 id="4-verify-the-cocycle-law-in-the-correct-order">4. Verify the cocycle law in the correct order</h3>
+<p>For arbitrary positive invertible matrices <span class="math" data-tex="\(H,K\)">\(H,K\)</span>, put <span class="math" data-tex="\(u_t=K^{it}H^{-it}\)">\(u_t=K^{it}H^{-it}\)</span>. Prove its action-cocycle law relative to <span class="math" data-tex="\(\sigma_t^{\varphi_H}=\operatorname{Ad}H^{it}\)">\(\sigma_t^{\varphi_H}=\operatorname{Ad}H^{it}\)</span>, without assuming <span class="math" data-tex="\(HK=KH\)">\(HK=KH\)</span>.</p>
+<p><strong>Solution.</strong> Preserve the order:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ u_t\sigma_t^{\varphi_H}(u_s)
+ &amp;=K^{it}H^{-it}H^{it}
+       (K^{is}H^{-is})H^{-it}\\
+ &amp;=K^{it}K^{is}H^{-is}H^{-it}
+ =K^{i(t+s)}H^{-i(t+s)}
+ =u_{t+s}.
+ \end{aligned}
+ \tag{CORE.11.e}
+\]">\[
+ \begin{aligned}
+ u_t\sigma_t^{\varphi_H}(u_s)
+ &amp;=K^{it}H^{-it}H^{it}
+       (K^{is}H^{-is})H^{-it}\\
+ &amp;=K^{it}K^{is}H^{-is}H^{-it}
+ =K^{i(t+s)}H^{-i(t+s)}
+ =u_{t+s}.
+ \end{aligned}
+ \tag{CORE.11.e}
+\]</span>
+The first cancellation is adjacent, and the remaining combinations concern only powers of the same positive matrix. The calculation never moves an <span class="math" data-tex="\(H\)">\(H\)</span>-power through a <span class="math" data-tex="\(K\)">\(K\)</span>-power. An ordinary product <span class="math" data-tex="\(u_tu_s\)">\(u_tu_s\)</span> has no corresponding cancellation in general.</p>
+<h3 id="5-restrict-the-isomorphism-functor-to-the-centers">5. Restrict the isomorphism functor to the centers</h3>
+<p>Given normal isomorphisms
+<span class="math" data-tex="\(M\xrightarrow{\rho}N\xrightarrow{\eta}P\)">\(M\xrightarrow{\rho}N\xrightarrow{\eta}P\)</span>, show that the induced conjugacies of center flows compose exactly, including after changing the weight charts.</p>
+<p><strong>Solution.</strong> A normal isomorphism takes the center onto the center: it preserves commutation and its inverse gives the converse. The <a href="OA-FLOW-CORE.html#core-8">isomorphism functor of Section 8</a> and its compatibility with every normalized chart transition therefore restrict to maps of the centers. Restricting the equality on the full cores gives
+<span class="math math-display" data-tex="\[
+ C(\eta\rho)|_{Z(C(M))}
+ =\bigl(C(\eta)|_{Z(C(N))}\bigr)
+    \bigl(C(\rho)|_{Z(C(M))}\bigr).
+ \tag{CORE.11.f}
+\]">\[
+ C(\eta\rho)|_{Z(C(M))}
+ =\bigl(C(\eta)|_{Z(C(N))}\bigr)
+    \bigl(C(\rho)|_{Z(C(M))}\bigr).
+ \tag{CORE.11.f}
+\]</span>
+Flow equivariance survives restriction because each center is flow invariant. The chart compatibility gives the same identity in every weight chart. Thus these are exact conjugacies with exact composition; no unspecified inner automorphism is introduced.</p>
+<p><span id="OA-FLOW.CORE.READING"></span><a id="core-reading"></a></p>
+<h2 id="reading-and-the-two-constructions-behind-the-trace">Reading and the two constructions behind the trace</h2>
+<p>Masamichi Takesaki, <a href="https://projecteuclid.org/euclid.acta/1485889792"><em>Duality for crossed products and the structure of von Neumann algebras of type III</em></a>, Acta Mathematica 131 (1973), 249–310, §8, Theorem 8.1 and Lemma 8.2, printed pages 287–288, give the weight-independence and trace-scaling mechanism in the paper's type III setting. The calculation uses the positive generator of the modular translations. The full weight construction and the bounded formulas in Sections 1–4 above apply to arbitrary faithful normal semifinite input weights, with their hypotheses and domains supplied by the earlier programme proofs.</p>
+<p>Two complementary constructions explain the normalization. <a href="OA-FLOW-GDA.html#gda-8">GDA8–9</a> construct and compare the whole dual weights by normal averaging; <a href="OA-FLOW-CZ.html#oa-flow.cz.2">CZ2–6</a> construct the perturbed weights by bounded centralizer densities and calculate their normalized cocycles. Together they give the trace-preserving coordinate changes, including the ordered noncommutative products and infinite positive values. Sections 3 and 9–11 make these formulas concrete through bounded evaluations, a Fourier coordinate and noncommuting matrix densities.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L19.html">Previous lesson</a><a href="OA-FLOW-ET.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-CORE.md">Lesson source</a></nav></main></body></html>

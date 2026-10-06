@@ -1,8 +1,7 @@
-# Elliptic and polynomial proof readings
+# Polynomial and contour proof reading
 
-Two readings from *Elliptic Operators & Boundary Problems* (AN-03), selected as supporting mathematics for *Kasparov's KK-theory*:
+One independently written reading from *Elliptic Operators & Boundary Problems* (AN-03), selected as supporting mathematics for *Kasparov's KK-theory*:
 
-- [Symbols, finite defects, and the index on a closed manifold](html/global-elliptic-symbol-index.html).
 - [Polynomial and contour interfaces for stable boundary models](html/stable-prerequisite-bridges.html).
 
 Programme drafting: the AN-03 course-writing task in OpenAI Codex. Selection and reader presentation: GPT-6.1 Sol (OpenAI), Codex, Ultra. Human mathematical sources are credited in the readings.

@@ -1,6 +1,6 @@
 # Stable modes and the algebra of boundary data
 
-**AN-03 · Unit AN03-U003 · Independent English AI draft, not admitted.**
+**AN-03 · Unit AN03-U003 · Self-checked by the writing AI.**
 
 A frozen boundary equation asks which normal profiles remain bounded inside the domain, and which boundary measurements determine those profiles. For systems, the number of profiles counts algebraic multiplicity. Eigenvectors alone can miss solutions. This unit constructs the bounded solution space from Cauchy data, then changes the equation while preserving that space and its boundary measurements.
 

@@ -57,8 +57,7 @@ derived unless a displayed factor is an invertible orientation complex.
 The support of a complex means the closed support: the closure of the union
 of the supports of its cohomology stalks.
 
-The proof dependencies are as follows. The identifiers are contracts, not
-claims of an already admitted proof.
+The proof dependencies are as follows. The identifiers are contracts, not claims that these inputs are proved.
 
 | Contract | Exact input used here |
 |---|---|
@@ -1034,7 +1033,7 @@ have proofs in this unit relative to the contracts in SH02-SP-CONVENTIONS.
 The properness argument and the solved comparisons also test the exceptional
 cases that a support-only or unshifted account would miss.
 
-This lesson uses deformation geometry, noncompact tautness, the bounded six-operation package with trace-compatible base change, the orientation trace and conic contraction as prerequisites; their full proofs are not given here. A next mathematical use is to apply Fourier--Sato transform in the normal fibres; that step belongs to the microlocalization unit and requires its separately audited sign and orientation conventions.
+This lesson uses deformation geometry, noncompact tautness, the bounded six-operation package with trace-compatible base change, the orientation trace and conic contraction as prerequisites; their full proofs are not given here. A next mathematical use is to apply Fourier--Sato transform in the normal fibres; that step belongs to the microlocalization unit and requires its sign and orientation conventions.
 
 ## SH02-SP-SOURCE-ACCOUNT — Sources and proof mechanisms
 

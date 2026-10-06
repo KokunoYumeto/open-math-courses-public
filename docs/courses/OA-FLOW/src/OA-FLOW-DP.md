@@ -1,6 +1,6 @@
 # Normal-state orbit diameter at a positive type III parameter
 
-This is an original private exposition of the compact-core spectral method, followed by a sharp scalar argument using probability mixtures. The spectral method is reconstructed from the freely readable Haagerup–Størmer paper, §5; its final isometry theorem is **proved below**, not imported. No state-diameter theorem is a premise. The argument concerns the predual norm of finite normal states. It makes no assertion about an extended metric on infinite weights.
+This is an original exposition of the compact-core spectral method, followed by a sharp scalar argument using probability mixtures. The spectral method is reconstructed from the freely readable Haagerup–Størmer paper, §5; its final isometry theorem is **proved below**, not imported. No state-diameter theorem is a premise. The argument concerns the predual norm of finite normal states. It makes no assertion about an extended metric on infinite weights.
 
 The positive-parameter theorem is proved at the actual earlier programme proofs linked below. The complete discrete-decomposition existence theorem supplies the periodic weight; no classification premise remains in Section 2. The spectral-family construction in Section 6 is written locally.
 

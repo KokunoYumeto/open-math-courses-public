@@ -2,7 +2,7 @@
 
 The spectrum intersection is governed by one construction: amplify a fixed corner, identify the amplification with the ambient algebra while fixing its first corner exactly, and lift the two agreeing corner actions to a continuous cocycle. We prove the spectral and topological transport before constructing the matrix families. A normal-state covering bound supplies the cardinal comparison when the algebra is too large to have a faithful normal state.
 
-*Independent L120 restoration, GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026. Sound earlier programme arguments and the owner's four proof developments are retained and checked at the exact inputs below. Added original exposition, illustration and code are CC0-1.0 to the extent of rights held; existing components retain their recorded terms. Spot-checked in a separate AI session.*
+*Independent L120 restoration, GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026. Earlier programme arguments and four proof developments by a separate AI session are included. Added original exposition, illustration and code are CC0-1.0 to the extent of rights held; existing components retain their recorded terms. Spot-checked in a separate AI session.*
 
 <a id="oa-flow.l120.setting"></a>
 
@@ -155,7 +155,7 @@ u_{s+t}
 
 AT1 proves that \(t\mapsto\alpha_t(v)\) is strong-star continuous on its uniformly bounded orbit. Fixed multiplication by \(v^*\) gives strong continuity of \(u_t\); its adjoint is continuous by the same bounded product estimate. The corner isomorphism and its inverse are normal by CP6's vector substitutions. Pulling every scalar Fourier integral through them proves equality of the filter-annihilator ideals, hence (C11). This is the elementary alternative to the first-corner amplification, with no new countability assumption.
 
-Equivalently write \(s=v\). The same computation retains the owner development identity:
+Equivalently write \(s=v\). The same computation gives the identity:
 
 <a id="equation-fc10"></a>
 

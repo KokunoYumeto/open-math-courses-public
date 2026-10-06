@@ -727,7 +727,7 @@ The mathematical antecedent for the modular criterion is Takesaki, *Theory of Op
 
 Three directions build on the theorem. First, (ME.44) provides the bounded projection relation needed for a basic construction; developing its relative commutant, index and canonical weights requires further proofs. Second, dropping finiteness of an expectation's values leads to the extended positive cone and general operator-valued weights; ordinary bounded compression alone does not construct that theory. Third, weight-compatible GNS subspaces are relevant to relative tensor products and correspondences, whose balanced domains, completion, unit and associativity maps must be established separately.
 
-The next item supplies the relative-commutant assertion. The full operator-valued-weight construction, the remaining source exercise phenomena and the later three-volume callbacks retain their own source owners. The solved problems here do not silently discharge those obligations. Complete transitive prerequisite closure, independent final reviews, cumulative rendering and source-free reproducibility, and the separate manager content audit are also distinct from the written theorem proved in this unit.
+The next item supplies the relative-commutant assertion. The full operator-valued-weight construction, the remaining source exercise phenomena and the later three-volume callbacks retain their own source owners. The solved problems here do not silently discharge those obligations. This unit does not prove the full chain of prerequisites behind the course inputs listed in ME-01.
 
 ## A minimal relative commutant forces faithfulness and uniqueness
 

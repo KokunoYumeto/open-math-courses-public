@@ -1,6 +1,6 @@
 # Compact Fourier division and multiplicity-sensitive annihilators
 
-*Learner orientation written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026; CC0. The complete formal proof below is the independently reviewed, course-owner-admitted CF042 proof by GPT-6.1 Sol (OpenAI), Ultra. Its Fourier and Cauchy entries keep their stated scope.*
+*Learner orientation written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026; CC0. The complete formal proof below is by GPT-6.1 Sol (OpenAI), Ultra; it was spot-checked in a separate AI session. Its Fourier and Cauchy entries keep their stated scope.*
 
 A differential equation can have a solution without having a **compactly supported** solution. This lesson gives an exact test for the compact problem. Transform the compact data, divide by the symbol, and ask whether the quotient extends to an entire function. The proof then controls its growth and constructs the compact inverse. The growth step matters: holomorphic continuation alone is not a statement about the support of a distribution.
 
@@ -78,7 +78,7 @@ Apply the one-coordinate fundamental theorem to the two differences and use Fubi
 
 because \(\partial_vH=i\partial_sH\). In CF11, \(H\) is the entire product of the data transform and the reflected test transform, with the other real coordinates fixed. CF12 controls the integrated vertical sides; only after this finite equality is established is the limit \(R\to\infty\) taken. The strict requirement \(2M>N+n\) makes the horizontal integrals and their tails integrable and makes the integrated side contributions vanish.
 
-The separate [Boundary flux and weak identities](../prerequisites/boundary-flux-and-weak-identities.html) reader now supplies the complete reconstructed Green proof and its complete earlier alternative, with bounded independent AI mathematical review and owner adoption at their declared entries. The calculation above supplies this finite rectangle step, not its general Green, weak-equation or regularity claims. The formal proof retains the declared Fourier inversion, Cauchy, compact parameter integration and identity-principle entries, with their lower provider scope.
+The separate lesson [Boundary flux and weak identities](../prerequisites/boundary-flux-and-weak-identities.html) gives the complete Green proof and a complete alternative proof. The calculation above supplies this finite rectangle step, not its general Green, weak-equation or regularity claims. The formal proof retains the declared Fourier inversion, Cauchy, compact parameter integration and identity-principle entries, with their lower provider scope.
 
 ## What this lesson supplies to the approximation lessons
 
@@ -416,4 +416,4 @@ The repeated factor contributes twice; treating it as only one factor would prod
 
 The mathematical source is Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition, Springer, 2003 reprint of the 1990 edition. Theorem 7.3.1, printed pp.181–182, gives the compact support growth criterion; Theorem 7.3.2 and Lemma 7.3.3, printed pp.182–183, give the polynomial division criterion; Definition 7.3.5 and Lemma 7.3.7, printed pp.185–186, give the multiplicity-sensitive annihilator class and argument. [Publisher record](https://link.springer.com/book/10.1007/978-3-642-61497-2).
 
-This is independently written mathematical exposition. The bounded-radius division proof (CF14)–(CF19) uses explicit excluded intervals; the support proof (CF9)–(CF13) writes the displaced-plane boundary estimates, and (CF22)–(CF25) checks every line, including its multiple roots. No book image, distinctive prose, exercise sequence or book structure is included. The local native page crosswalk and authorized-copy checks remain private evidence. The original figure source and coordinate ledger are included separately so every illustrated radius, support plane, moment, sign and bound can be reproduced.
+This is independently written mathematical exposition. The bounded-radius division proof (CF14)–(CF19) uses explicit excluded intervals; the support proof (CF9)–(CF13) writes the displaced-plane boundary estimates, and (CF22)–(CF25) checks every line, including its multiple roots. No book image, distinctive prose, exercise sequence or book structure is included. The original figure source and coordinate ledger are included separately so every illustrated radius, support plane, moment, sign and bound can be reproduced.

@@ -1,4 +1,1 @@
-window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],tags:'ams'},options:{enableMenu:false},chtml:{fontURL:'assets/mathjax/output/chtml/fonts/woff-v2'}};(()=>{const p=location.pathname.split('/').pop(),h=decodeURIComponent(location.hash.slice(1));const routes={
-'singular-values-and-the-dixmier-trace.html':{'NCGLI-L01-SECTION-07':'classical-trace','7-the-trace-of-a-classical-pseudodifferential-operator':'classical-trace'},
-'the-local-index-formula.html':{'NCGLI-L03-SECTION-12':'geometric-dirac','12-geometric-dirac-operators-and-their-index-formulas':'geometric-dirac'},
-'spectral-triples-and-dimension-spectrum.html':{'the-coordinate-facts-required-by-the-classical-trace':'coordinate-transport'}};if(routes[p]?.[h])location.replace('hypoelliptic-calculus-and-the-transverse-geometry-of-diffeomorphisms.html#'+routes[p][h]);})();
+window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],tags:'ams'},options:{enableMenu:false},chtml:{fontURL:'assets/mathjax/output/chtml/fonts/woff-v2'}};

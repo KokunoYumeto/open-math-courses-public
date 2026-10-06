@@ -10,7 +10,7 @@ Save all five files together:
 - Unchanged renderer and 206 bounded algebra/model checks
 - Standalone reproduction wrapper
 
-Use Python with NumPy, SymPy and Matplotlib. The checked reproduction used Python 3.13.9, NumPy 2.4.4, SymPy 1.13.1 and Matplotlib 3.10.9. Different rendering-library versions or fonts may change picture bytes; the wrapper fails clearly if the mathematical figure no longer matches its supplied original. No private source, page image, manuscript, course tree or workflow input is required.
+Use Python with NumPy, SymPy and Matplotlib. The checked reproduction used Python 3.13.9, NumPy 2.4.4, SymPy 1.13.1 and Matplotlib 3.10.9. Different rendering-library versions or fonts may change picture bytes; the wrapper fails clearly if the mathematical figure no longer matches its supplied original. No other input is required.
 
 From the directory containing the five files, choose an output directory that does not exist and run:
 
@@ -24,6 +24,6 @@ The PNG must reproduce exactly. Matplotlib's SVG includes a rendering date and g
 
 The renderer also regenerates the complete mathematical geometry description. The supplied geometry includes an original historical visual-inspection annotation added after rendering. The wrapper checks all mathematical and descriptive fields, preserves that annotation separately, and records the distinction. It retains the freshly generated unannotated geometry. The final named PNG, SVG and geometry files have exactly the supplied original bytes.
 
-The output directory also contains the complete fresh 206-check report and a reproduction receipt with versions, verification details and exact file digests. The numerical samples and symbolic checks supplement the lesson's written proof. They do not replace its global denominator estimates, support argument or proof that every boundary derivative vanishes.
+The output directory also contains the complete fresh 206-check report and a reproduction record with versions, verification details and exact file digests. The numerical samples and symbolic checks supplement the lesson's written proof. They do not replace its global denominator estimates, support argument or proof that every boundary derivative vanishes.
 
 The original proof, expressions and figure are GPT-6.1 Sol (OpenAI), Ultra, October 2026; CC0.

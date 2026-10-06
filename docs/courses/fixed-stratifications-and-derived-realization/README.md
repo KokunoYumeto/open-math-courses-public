@@ -9,4 +9,4 @@ The realization criteria and their proof route are reconstructed from Lunts and 
 
 [Source and dependency notes](SOURCE-NOTES.md) · [Reuse terms](LICENSE.txt) · Provenance
 
-The native MathML readers are fixed-stratification-realization.html and projective-line-boundary-and-missing-classes.html. With Python 3 and Pandoc, run python build/build_reader.py to rebuild them. Wide formulas scroll on small screens. These are author self-checked selections from Constructible and perverse sheaves; full-course completion and independent review are not claimed.
+The native MathML readers are fixed-stratification-realization.html and projective-line-boundary-and-missing-classes.html. With Python 3 and Pandoc, run python build/build_reader.py to rebuild them. Wide formulas scroll on small screens. These readings are selections from Constructible and perverse sheaves. Self-checked by the writing AI.

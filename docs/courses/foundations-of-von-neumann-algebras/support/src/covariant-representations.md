@@ -381,4 +381,4 @@ Thus integrated operators include the rank-one operators formed from compact con
 
 ## Programme provenance
 
-The original programme records the transformation antecedents as Takesaki, *Theory of Operator Algebras I*, Chapter I, exercises 1.2 and 9.5, and the coefficient convolution antecedent in *Theory of Operator Algebras II*, Chapter X, exercise 4.1. The full argument reused here is the programme’s independent exposition, whose proofs retain arbitrary coefficients, groups and Hilbert spaces. Exact consumed ranges and byte hashes, source credit and dependency correspondence are in the accompanying receipt.
+The transformation antecedents are Takesaki, *Theory of Operator Algebras I*, Chapter I, exercises 1.2 and 9.5, and the coefficient convolution antecedent is in *Theory of Operator Algebras II*, Chapter X, exercise 4.1. The full argument reused here is the programme’s independent exposition, whose proofs retain arbitrary coefficients, groups and Hilbert spaces.

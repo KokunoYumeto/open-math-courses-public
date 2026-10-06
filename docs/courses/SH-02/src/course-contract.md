@@ -48,9 +48,8 @@ must return to these conventions before being used in a composition.
 Each lesson separates statements proved there, exact imports, conditional proofs whose inputs remain open, and outstanding source obligations.
 
 Examples and exercises are newly designed. Their solutions show the algebra
-and topology needed to check the formulas. Source examples that expose a
-mathematical phenomenon enter the private coverage map; their protected
-expression and organization do not enter this course. Detected source
+and topology needed to check the formulas. The protected expression and
+organization of source examples do not enter this course. Detected source
 misprints or false assertions receive a visible correction and an explicit
 mathematical reason.
 

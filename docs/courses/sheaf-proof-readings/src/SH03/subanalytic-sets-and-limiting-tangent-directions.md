@@ -3864,7 +3864,7 @@ This function is invariant, \(C^r\), locally subanalytic, still in \([0,1]\), an
 
 #### Exact dependency boundary
 
-For the constructed \(C^r\) partitions and cutoffs, the dependencies are finite-dimensional analytic chart topology; second countability and Hausdorff compactness; density of rational coordinate data; finite subcovers of compact sets; elementary differentiation and division by a nonvanishing \(C^r\) function; the definition of locally semianalytic sets and its invariance under analytic coordinate changes; and semianalytic inclusion in the local subanalytic class. The compact-exhaustion and locally finite refinement steps are fully proved in Section 2. No analytic partition of unity, analytic embedding theorem, arbitrary globally definable cover, or prescribed subanalyticity of an arbitrary open/closed input set is assumed. General local graph consequences G1–G4 additionally use only the lower calculus stated with its proper-on-closure condition in the owned lesson; those deeper statements are not needed for the explicit finite-branch construction.
+For the constructed \(C^r\) partitions and cutoffs, the dependencies are finite-dimensional analytic chart topology; second countability and Hausdorff compactness; density of rational coordinate data; finite subcovers of compact sets; elementary differentiation and division by a nonvanishing \(C^r\) function; the definition of locally semianalytic sets and its invariance under analytic coordinate changes; and semianalytic inclusion in the local subanalytic class. The compact-exhaustion and locally finite refinement steps are fully proved in Section 2. No analytic partition of unity, analytic embedding theorem, arbitrary globally definable cover, or prescribed subanalyticity of an arbitrary open/closed input set is assumed. General local graph consequences G1–G4 additionally use only the lower calculus stated with its proper-on-closure condition in this lesson; those deeper statements are not needed for the explicit finite-branch construction.
 
 ### Finite-colour refinement for a manifold
 
@@ -3887,7 +3887,7 @@ which covers \(M\), such that distinct members of each \(\mathcal O_k\) are disj
 
 Thus the statement requested for a second-countable Hausdorff paracompact manifold follows. Paracompactness need not be used separately: the elementary exhaustion below provides the needed locally finite covers. The empty manifold is immediate. The usual convention here is that manifold charts are open subsets of \(\mathbb R^n\), so no boundary is involved.
 
-#### Source comparison and provenance
+#### Source comparison and attribution
 
 Marja Kankaanrinta, [*A subanalytic triangulation theorem for real analytic orbifolds*](https://arxiv.org/abs/1105.0209), arXiv:1105.0209v2, Section 2, states the finite-colour theorem for a paracompact space of covering dimension \(n\), attributes the result originally to J. Milnor, and also credits R. S. Palais. Its next paragraph explains the indexing by finite unordered tuples.
 

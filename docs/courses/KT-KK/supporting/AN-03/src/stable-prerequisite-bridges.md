@@ -1,16 +1,16 @@
 # Polynomial and contour interfaces for stable boundary models
 
-Stable modes of a boundary model require polynomial projections and contour moments at every nilpotent pole order. This lesson establishes those tools; Stable modes and the algebra of boundary data applies them.
+Stable modes of a boundary model require polynomial projections and contour moments at every nilpotent pole order. This lesson establishes those tools; [Stable modes and the algebra of boundary data](../../../../elliptic-boundary-reduction/stable-boundary-models.html) applies them.
 
-Section 13 of Metric and topological foundations proves the full original scalar and finite-coordinate calculus. Its Section 13.12 gives the exact Gaussian, Rayleigh, logarithmic-contour, matrix and half-line receiving maps, retaining every original factor, endpoint and norm.
+Section 13 of [Metric and topological foundations](../../../../elliptic-boundary-reduction/metric-foundation-bridges.html#original-scalar-calculus-and-its-finite-coordinate-receivers) proves the full original scalar and finite-coordinate calculus. Its Section 13.12 gives the exact Gaussian, Rayleigh, logarithmic-contour, matrix and half-line receiving maps, retaining every original factor, endpoint and norm.
 
-The complete original real-number, compactness, extrema and finite-norm proofs are in Section 12 of Metric and topological foundations. Its Section 12.10 gives the exact receiving minimum and spectral-contour maps; the original coordinates, norms and constants are retained.
+The complete original real-number, compactness, extrema and finite-norm proofs are in Section 12 of [Metric and topological foundations](../../../../elliptic-boundary-reduction/metric-foundation-bridges.html#real-numbers-and-finite-dimensional-topology). Its Section 12.10 gives the exact receiving minimum and spectral-contour maps; the original coordinates, norms and constants are retained.
 
 The route has three steps: scalar polynomial division and Bézout give finite algebraic projections; triangularization gives Cayley–Hamilton without using those projections; and directly integrated power series give the contour moments needed for every nilpotent pole order. This last step concerns globally convergent power-series numerators. It does not assert a Cauchy theorem for arbitrary holomorphic functions on arbitrary domains.
 
 ## 1. Facts used from earlier lessons
 
-We use the entry facts from Fourier transforms, finite spectra and convex separation, including real multivariable calculus, Taylor's formula, smooth compact cutoffs, absolutely integrable change of variables and Fubini, dominated convergence and differentiation, Cauchy–Schwarz, real completeness, finite-dimensional compactness, and the stated Schwartz-space and continuous-dual conventions. This companion needs only the following finite algebra and calculus part of that base, with elementary conventions made explicit.
+We use the entry facts from [Fourier transforms, finite spectra and convex separation](../../../../elliptic-boundary-reduction/prerequisite-bridges.html), including real multivariable calculus, Taylor's formula, smooth compact cutoffs, absolutely integrable change of variables and Fubini, dominated convergence and differentiation, Cauchy–Schwarz, real completeness, finite-dimensional compactness, and the stated Schwartz-space and continuous-dual conventions. This companion needs only the following finite algebra and calculus part of that base, with elementary conventions made explicit.
 
 Sections 10.1--10.9 prove the following finite algebra facts at the stated real/complex scalar base: field arithmetic over \(\mathbb C\); finite polynomial arithmetic and induction on degree; basis extension, rank-nullity and direct sums in finite dimension; matrix multiplication, inverses, adjoints and operator norms; determinant multiplicativity, triangular and block-triangular determinants, elementary row operations, the characteristic-polynomial eigenvalue criterion and invariance under change of basis; continuity of determinants and matrix inversion; and trace and rank for projections. Sections 9.1--9.4 prove complex-root existence and full finite factorization with the original leading coefficient and all multiplicities. Sections 9.6--9.7 prove determinant identities, the actual root-to-kernel map and both invariant quotient constructions used below. Section 10.10 proves their exact receiving maps for the earlier spectral and metric arguments. No Jordan decomposition is assumed.
 
@@ -36,7 +36,7 @@ Thomas W. Judson, [*Abstract Algebra: Theory and Applications*, polynomial divis
 
 Two details in the division and gcd proofs matter here. The original nonzero element of the linear-combination ideal remains the working divisor. Its monic comparison retains the full leading coefficient and inverse in (CR14). Uniqueness of the monic gcd follows from mutual divisibility: the quotient is constant by degree, and monicity makes it \(1\). Monicity and equality of degrees alone would not prove equality. The pair \((0,0)\) is excluded from this monic-gcd contract. The division assertion includes the zero dividend and a nonzero constant divisor, and does not assign a degree to the zero remainder.
 
-This is scalar division. The typed division \(B=Qp+R\) for a monic \(\operatorname{End}(E)\)-valued polynomial \(p\) and a \(\operatorname{Hom}(E,G)\)-valued polynomial \(B\) is proved separately in Stable modes and the algebra of boundary data, Problem 3. That argument keeps \(Q\) on the left and preserves every coefficient order; it is not an application of the scalar reading to a noncommutative coefficient ring.
+This is scalar division. The typed division \(B=Qp+R\) for a monic \(\operatorname{End}(E)\)-valued polynomial \(p\) and a \(\operatorname{Hom}(E,G)\)-valued polynomial \(B\) is proved separately in [Stable modes and the algebra of boundary data](../../../../elliptic-boundary-reduction/stable-boundary-models.html), Problem 3. That argument keeps \(Q\) on the left and preserves every coefficient order; it is not an application of the scalar reading to a noncommutative coefficient ring.
 
 ## 3. From coprime factors to projections
 
@@ -101,7 +101,7 @@ All factors are polynomials in \(A\) and hence commute. The triangular determina
 \]
 so the vanishing product is exactly \(\chi_A(A)\). Both determinant and polynomial evaluation commute with change of basis, and the result holds for the original operator. If \(n=0\), the determinant is \(1\); evaluation gives \(I_V\), which is the zero endomorphism of the zero space. This proves that case as well. The characteristic polynomial is the actual \(\det(zI-A)\). Its leading coefficient is computed from every original permutation term in (CR17); the full sign comparison with \(\det(A-zI)\) is (CR18).
 
-For completeness, this gives the exact minimal-polynomial interface used next in Stable modes and the algebra of boundary data. There is a nonzero annihilating polynomial, namely \(\chi_A\). Keep an original least-degree nonzero annihilator \(m\) and its original leading coefficient \(c_m\ne0\). Formula (CR15) records its exact comparison with the named monic polynomial \(\mu_A\): \(m=c_m\mu_A\). For any annihilator \(f\), divide by the original \(m\), with its full leading coefficient, rather than using \(\mu_A\) as a replacement. The remainder also annihilates \(A\), so it is zero by minimality. Consequently the original annihilator divides every other one. The exact inverse scalar-unit map in (CR13)--(CR15) proves the corresponding divisibility and uniqueness assertion for \(\mu_A\). In the zero space it is \(1\). In positive dimension it is nonconstant, since a nonzero constant evaluates to a nonzero scalar identity. Sections 9.1--9.4 factor the original \(m=c_mH\) into distinct linear powers with every multiplicity retained. Formula (CR16) applies Section 3 through the actual quotient \(M_j=m/h_j=c_mH_j\); each projection keeps both \(c_m\) and its inverse in its full evaluation. The order of these steps avoids using primary decomposition to prove the Cayley–Hamilton prerequisite for that same decomposition.
+For completeness, this gives the exact minimal-polynomial interface used next in [Stable modes and the algebra of boundary data](../../../../elliptic-boundary-reduction/stable-boundary-models.html). There is a nonzero annihilating polynomial, namely \(\chi_A\). Keep an original least-degree nonzero annihilator \(m\) and its original leading coefficient \(c_m\ne0\). Formula (CR15) records its exact comparison with the named monic polynomial \(\mu_A\): \(m=c_m\mu_A\). For any annihilator \(f\), divide by the original \(m\), with its full leading coefficient, rather than using \(\mu_A\) as a replacement. The remainder also annihilates \(A\), so it is zero by minimality. Consequently the original annihilator divides every other one. The exact inverse scalar-unit map in (CR13)--(CR15) proves the corresponding divisibility and uniqueness assertion for \(\mu_A\). In the zero space it is \(1\). In positive dimension it is nonconstant, since a nonzero constant evaluates to a nonzero scalar identity. Sections 9.1--9.4 factor the original \(m=c_mH\) into distinct linear powers with every multiplicity retained. Formula (CR16) applies Section 3 through the actual quotient \(M_j=m/h_j=c_mH_j\); each projection keeps both \(c_m\) and its inverse in its full evaluation. The order of these steps avoids using primary decomposition to prove the Cayley–Hamilton prerequisite for that same decomposition.
 
 ## 5. Contour moments from entire series
 
@@ -145,7 +145,7 @@ For any \(a\in\mathbb C\), the exponential series gives
 \frac{e^{az}}{(z-\zeta)^{k+1}}\,dz
 =\operatorname{ind}_\Gamma(\zeta)e^{a\zeta}\frac{a^k}{k!}.
 \]
-Indeed \(e^{az}=e^{a\zeta}\sum_{r\geq0}a^r(z-\zeta)^r/r!\); the exponential addition identity follows by the absolutely convergent product of its two series and the binomial formula. Constants and finite polynomials times exponentials also have the required series about every \(\zeta\). This includes \(1\), \(e^{itz}\) and \(z^j e^{itz}\) for every \(j\geq0\) and every real \(t\). Matrix-valued finite sums are handled entrywise. In Stable modes and the algebra of boundary data the resolvent is explicitly decomposed into finitely many nilpotent principal parts, so all pole orders are covered by the formula above; a general residue theorem adds nothing to that calculation.
+Indeed \(e^{az}=e^{a\zeta}\sum_{r\geq0}a^r(z-\zeta)^r/r!\); the exponential addition identity follows by the absolutely convergent product of its two series and the binomial formula. Constants and finite polynomials times exponentials also have the required series about every \(\zeta\). This includes \(1\), \(e^{itz}\) and \(z^j e^{itz}\) for every \(j\geq0\) and every real \(t\). Matrix-valued finite sums are handled entrywise. In [Stable modes and the algebra of boundary data](../../../../elliptic-boundary-reduction/stable-boundary-models.html) the resolvent is explicitly decomposed into finitely many nilpotent principal parts, so all pole orders are covered by the formula above; a general residue theorem adds nothing to that calculation.
 
 The phrase “encloses a spectral point once” means precisely index \(1\) at that point; “excludes” means index \(0\). These conditions, rather than an implicit picture of a contour, govern the matrix projection formula. This theorem says nothing about a merely holomorphic numerator lacking the asserted global series. A later need for a more general Cauchy theorem remains a separate prerequisite.
 
@@ -224,7 +224,7 @@ R(\partial^\eta A)(\partial^{\beta-\eta}R).
 
 The same reasoning applies to multiplication by \(e^{itz}\), for \(t\) in a compact real interval, and to all of its time derivatives \((iz)^j e^{itz}\). On a fixed compact contour they are bounded uniformly for bounded \(t\). On an upper contour with \(\operatorname{Im}z\geq\delta>0\), their absolute values for \(t\geq0\) are at most \(|z|^j e^{-\delta t}\). Ordered products of parameter derivatives of the resolvent require this integration estimate, not an additional evaluation theorem for holomorphic matrix functions.
 
-Here is the exact contour-existence boundary used in Stable modes and the algebra of boundary data. Let \(K\) be a compact parameter set, let \(A\) be continuous on it, and suppose no \(A(y)\) has a real eigenvalue. If \(K=\varnothing\), any rectangle lying strictly above the real axis satisfies the contour requirements on \(K\) vacuously, and the empty neighborhood suffices for the neighborhood assertion below. Assume now \(K\ne\varnothing\), and let \(M=\max_K\|A(y)\|\). Every eigenvalue satisfies \(|\lambda|\leq M\), by applying the norm inequality to an eigenvector. There is also a uniform positive distance \(\varepsilon\) from all those eigenvalues to the real axis. Otherwise a sequence of parameters and eigenvalues has, by compactness and the bound \(M\), a subsequence tending to \(y_*\in K\) and a real \(\lambda_*\); continuity of \(\det(\lambda I-A(y))\) would make \(\lambda_*\) a real eigenvalue of \(A(y_*)\), a contradiction.
+Here is the exact contour-existence boundary used in [Stable modes and the algebra of boundary data](../../../../elliptic-boundary-reduction/stable-boundary-models.html). Let \(K\) be a compact parameter set, let \(A\) be continuous on it, and suppose no \(A(y)\) has a real eigenvalue. If \(K=\varnothing\), any rectangle lying strictly above the real axis satisfies the contour requirements on \(K\) vacuously, and the empty neighborhood suffices for the neighborhood assertion below. Assume now \(K\ne\varnothing\), and let \(M=\max_K\|A(y)\|\). Every eigenvalue satisfies \(|\lambda|\leq M\), by applying the norm inequality to an eigenvector. There is also a uniform positive distance \(\varepsilon\) from all those eigenvalues to the real axis. Otherwise a sequence of parameters and eigenvalues has, by compactness and the bound \(M\), a subsequence tending to \(y_*\in K\) and a real \(\lambda_*\); continuity of \(\det(\lambda I-A(y))\) would make \(\lambda_*\) a real eigenvalue of \(A(y_*)\), a contradiction.
 
 Choose \(R>M+1\) and \(0<\delta<\min(\varepsilon,R)\). The positively oriented rectangle with real sides \(-R,R\) and imaginary sides \(\delta,R\) has index \(1\) on every upper eigenvalue and \(0\) on every lower eigenvalue, by Section 6. It meets no spectrum and can be kept fixed over \(K\). If the family is defined on an open parameter set containing \(K\), compactness and determinant continuity preserve invertibility on this contour in some neighborhood of \(K\), allowing the preceding differentiation result there. For \(V=0\), all invertibility and contour assertions have their unique empty-dimensional meaning and any positive \(\varepsilon\) may be used. This is a compact-parameter statement. It does not claim a uniform gap on a noncompact parameter space, choose eigenvalue branches, impose semisimplicity or assert global triviality of a stable bundle.
 
@@ -349,7 +349,7 @@ Such a choice follows from the proved positive real roots; for example take half
  |p(z_0+tc)|
  &\leq |b_0+b_qt^qc^q|+\sum_{r=q+1}^N|b_r|t^r\\
  &= |b_0|-|b_q|t^q+\sum_{r=q+1}^N|b_r|t^r\\
- &\leq |b_0|-|b_q|t^q+Ht^{q+1}<|b_0| .                       
+ &\leq |b_0|-|b_q|t^q+Ht^{q+1}<|b_0| .
  \end{split} \tag{CR10}
 \]
 The middle equality uses \(b_qc^q=-|b_q|b_0/|b_0|\) and the strict bound on \(t^q\). The last inequality also holds when \(H=0\), since the full higher sum is then zero. This contradicts the global minimum. Hence \(p(z_0)=0\). Every nonconstant original complex polynomial has a root, with all its original coefficients and full translated remainder retained. \(\square\)
@@ -477,7 +477,7 @@ The upper block \(C\) is retained. Block triangular determinant and the exact or
  &=\det(S)\det\begin{pmatrix}zI_W-A_W&-C\\0&(z-\lambda)I_d\end{pmatrix}
                                                    \det(S^{-1})\\
  &=\det(S)\,\chi_{A_W}(z)(z-\lambda)^d\,\det(S^{-1}),\qquad
-                    \det(S)\det(S^{-1})=1 .                  
+                    \det(S)\det(S^{-1})=1 .
  \end{split} \tag{CR21}
 \]
 Thus its original root multiplicity is at least \(d\), with every coordinate and unit factor shown.
@@ -513,7 +513,7 @@ All vectors, coefficient matrices, pivots, signs and inner products in a calcula
 The scalar arithmetic used here is explicit. Real arithmetic is the given ordered-field arithmetic. For complex numbers keep their original pairs and define
 \[
 \begin{gathered}
-(a,b)+(c,d)=(a+c,b+d), \\ 
+(a,b)+(c,d)=(a+c,b+d), \\
 (a,b)(c,d)=(ac-bd,ad+bc), \\ 1=(1,0),\quad 0=(0,0),\quad i=(0,1).
 \end{gathered}
 \tag{FA0a}
@@ -710,7 +710,7 @@ For any chosen original basis \(b\), keep the full matrix
 
 \[
 \begin{gathered}
-H_{jk}=h(b_k,b_j), \\ 
+H_{jk}=h(b_k,b_j), \\
 h(J_bx,J_by)=y^\dagger Hx
  =\sum_{j,k}\overline{y_j}H_{jk}x_k, \\ H^\dagger=H.
 \end{gathered}
@@ -745,8 +745,8 @@ The requested orthonormal Gram--Schmidt comparison consists of the explicitly de
 
 \[
 \begin{gathered}
-J_{e'}=J_b U, \\  x=Uz, \\ 
-z=D^{1/2}S^{-1}x, \\ 
+J_{e'}=J_b U, \\  x=Uz, \\
+z=D^{1/2}S^{-1}x, \\
 U^\dagger HU=D^{-1/2}S^\dagger HS D^{-1/2}=I_n, \\ \det U=\prod_j d_j^{-1/2}.
 \end{gathered}
 \tag{FA18}
@@ -831,7 +831,7 @@ For actual composable maps, the defining identity and uniqueness, or the full or
 
 \[
 \begin{gathered}
-(UT)^*=T^*U^*, \\  (T^*)^*=T, \\ 
+(UT)^*=T^*U^*, \\  (T^*)^*=T, \\
 (T+Q)^*=T^*+Q^*, \\  (aT)^*=\overline a T^*, \\ (T^{-1})^*=(T^*)^{-1}\quad(T\text{ bijective}).
 \end{gathered}
 \tag{FA25}
@@ -938,19 +938,19 @@ The original block \(C\) is still part of the operator; each term containing it 
 
 This lesson, Sections 9.1--9.4, already prove the original complex-root theorem with its complete leading coefficient and multiplicities. For a nonzero complex vector space, apply that proved theorem to the actual \(\chi_A\) in (FA29); (FA30) gives a nonzero eigenvector through the original pivot construction. Its line is invariant. Sections 10.1--10.3 provide the exact quotient basis and its lifts; (FA32) keeps every original block and change-of-basis factor. Induction on the original dimension now gives an upper triangular matrix for the same original complex operator. The induction starts with the empty matrix, and each lift is kept as an actual vector. This supplies the basis-extension and rank-nullity steps previously used without their full base proofs in the earlier Sections 4 and 9.6--9.7. It does not use primary spectral projections to prove the prerequisites for those projections.
 
-For the primary spaces and nilpotent flag in Stable modes and the algebra of boundary data, Sections 16.1--16.3, Sections 10.1--10.3 now justify extending every successive kernel basis and concatenating the actual direct-sum bases. Formula (FA32) justifies the full triangular characteristic calculation with its original comparison determinants; (FA30) justifies its spectrum/eigenvalue criterion. The exact norms in Section 10.6 give boundedness of all its original coordinate and projection maps; no length of a vector in that calculation is changed. The original scalar polynomial growth and compact-contour bounds keep their separate scalar and compactness proofs.
+For the primary spaces and nilpotent flag in [Stable modes and the algebra of boundary data](../../../../elliptic-boundary-reduction/stable-boundary-models.html), Sections 16.1--16.3, Sections 10.1--10.3 now justify extending every successive kernel basis and concatenating the actual direct-sum bases. Formula (FA32) justifies the full triangular characteristic calculation with its original comparison determinants; (FA30) justifies its spectrum/eigenvalue criterion. The exact norms in Section 10.6 give boundedness of all its original coordinate and projection maps; no length of a vector in that calculation is changed. The original scalar polynomial growth and compact-contour bounds keep their separate scalar and compactness proofs.
 
-For Metric and topological foundations, Section 1, its actual positive real quadratic form has the original bilinear Gram matrix \(G\). Take \(F=\mathbb R\), \(H=G\), and apply (FA16)--(FA18). The original residual matrix \(S\), lengths \(d_j\), full coordinate transformation \(U=S D^{-1/2}\), inverse \(D^{1/2}S^{-1}\), determinant \(\prod_jd_j^{-1/2}\), and original metric \(G\) are explicit. This supplies the earlier Gram construction and its volume-change factor without replacing \(G\) by an identity as the working metric. The tensor coefficients in the existing lesson's orthonormal comparison basis are received through this exact map; its tensor norm is still the original \(Q\)-norm. Fourier transforms, finite spectra and convex separation likewise receives the basis construction for its original real spectral induction from these formulas. Its independent compact-sphere maximization proof remains the proof of spectral decomposition.
+For [Metric and topological foundations](../../../../elliptic-boundary-reduction/metric-foundation-bridges.html), Section 1, its actual positive real quadratic form has the original bilinear Gram matrix \(G\). Take \(F=\mathbb R\), \(H=G\), and apply (FA16)--(FA18). The original residual matrix \(S\), lengths \(d_j\), full coordinate transformation \(U=S D^{-1/2}\), inverse \(D^{1/2}S^{-1}\), determinant \(\prod_jd_j^{-1/2}\), and original metric \(G\) are explicit. This supplies the earlier Gram construction and its volume-change factor without replacing \(G\) by an identity as the working metric. The tensor coefficients in the existing lesson's orthonormal comparison basis are received through this exact map; its tensor norm is still the original \(Q\)-norm. [Fourier transforms, finite spectra and convex separation](../../../../elliptic-boundary-reduction/prerequisite-bridges.html) likewise receives the basis construction for its original real spectral induction from these formulas. Its independent compact-sphere maximization proof remains the proof of spectral decomposition.
 
 Finally the original basis and metric adjoints used by every finite-dimensional matrix interface receive (FA24)--(FA27); an arbitrary conjugate transpose becomes an adjoint only with the actual Gram factors supplied. Projection rank and trace receive Section 10.8 with their literal original matrices. The full finite algebra used by these receiving arguments is thereby proved at the stated scalar base. The separate compactness and infinite-dimensional analytic steps retain their own hypotheses and proofs.
 
 ## 11. Matrix-entry differentiation under the integral
 
-The measure construction and dominated-convergence proof in Banach and Hilbert foundations, Sections 15.0--15.1, and the complete scalar and coordinate calculus in Metric and topological foundations, Section 13, supply the independent entries used here. Every original matrix coordinate, operator norm, derivative order, path coefficient and endpoint is retained.
+The measure construction and dominated-convergence proof in [Banach and Hilbert foundations](../../../../elliptic-boundary-reduction/banach-foundation-bridges.html), Sections 15.0--15.1, and the complete scalar and coordinate calculus in [Metric and topological foundations](../../../../elliptic-boundary-reduction/metric-foundation-bridges.html), Section 13, supply the independent entries used here. Every original matrix coordinate, operator norm, derivative order, path coefficient and endpoint is retained.
 
 ### 11.1. The exact entry map and its original operator norm
 
-Let \(V,W\) be finite-dimensional real or complex normed spaces with their original norms and fixed original bases \((v_b)_{b=1}^n\), \((w_a)_{a=1}^m\). Let \(\lambda_b:V\to\mathbb F\) be the actual coordinate functional, so \(\lambda_b(v_c)=\delta_{bc}\). No basis vector, norm or coordinate is replaced. Define \(B_{ab}:V\to W\) by \(B_{ab}v=\lambda_b(v)w_a\). For the original arbitrary norms, use Metric and topological foundations, Section 12.9, (RT32)--(RT36). For a positive real dimension its actual constant \(c_v>0\) gives \(c_v|x|_2\le\|\sum_bx_bv_b\|\). Therefore \(|\lambda_b(\sum_cx_cv_c)|=|x_b|\le|x|_2\le c_v^{-1}\|\sum_cx_cv_c\|\), so \(\|\lambda_b\|\le c_v^{-1}\). For a complex basis retain the entire real basis \(v_1,iv_1,\ldots,v_n,iv_n\): \(|x_b|=((\operatorname{Re}x_b)^2+(\operatorname{Im}x_b)^2)^{1/2}\le|x|_2\), with \(c_v\) the constant of that actual real basis. The same original-norm comparison for \(W\) gives \(\|\omega_a\|\le c_w^{-1}\). These proofs retain both original norms; Section 10's Gram bounds apply separately when the given norms arise from inner products. Empty dimensions have empty functional lists and require no positive sphere constant. Thus the actual coordinate-functional norms \(\|\lambda_b\|\) are finite and
+Let \(V,W\) be finite-dimensional real or complex normed spaces with their original norms and fixed original bases \((v_b)_{b=1}^n\), \((w_a)_{a=1}^m\). Let \(\lambda_b:V\to\mathbb F\) be the actual coordinate functional, so \(\lambda_b(v_c)=\delta_{bc}\). No basis vector, norm or coordinate is replaced. Define \(B_{ab}:V\to W\) by \(B_{ab}v=\lambda_b(v)w_a\). For the original arbitrary norms, use [Metric and topological foundations](../../../../elliptic-boundary-reduction/metric-foundation-bridges.html), Section 12.9, (RT32)--(RT36). For a positive real dimension its actual constant \(c_v>0\) gives \(c_v|x|_2\le\|\sum_bx_bv_b\|\). Therefore \(|\lambda_b(\sum_cx_cv_c)|=|x_b|\le|x|_2\le c_v^{-1}\|\sum_cx_cv_c\|\), so \(\|\lambda_b\|\le c_v^{-1}\). For a complex basis retain the entire real basis \(v_1,iv_1,\ldots,v_n,iv_n\): \(|x_b|=((\operatorname{Re}x_b)^2+(\operatorname{Im}x_b)^2)^{1/2}\le|x|_2\), with \(c_v\) the constant of that actual real basis. The same original-norm comparison for \(W\) gives \(\|\omega_a\|\le c_w^{-1}\). These proofs retain both original norms; Section 10's Gram bounds apply separately when the given norms arise from inner products. Empty dimensions have empty functional lists and require no positive sphere constant. Thus the actual coordinate-functional norms \(\|\lambda_b\|\) are finite and
 \[
 \begin{gathered}
 B_{ab}v=\lambda_b(v)w_a,\qquad \|B_{ab}\|=\|\lambda_b\|\,\|w_a\|,\\
@@ -1111,7 +1111,7 @@ Use the original open parameter set \(Y\), operator family \(A:Y\to\operatorname
 \begin{gathered}
 R(y,z)=(zI-A(y))^{-1}
 =\frac{\operatorname{adj}(zI-A(y))}{\det(zI-A(y))},\\
-\partial_jR=R(\partial_jA)R 
+\partial_jR=R(\partial_jA)R
 \end{gathered}
 \tag{MD15}
 \]

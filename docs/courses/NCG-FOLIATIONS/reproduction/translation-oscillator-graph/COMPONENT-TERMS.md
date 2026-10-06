@@ -4,9 +4,9 @@ The original mathematical expression, complete solved exercises, caption and
 original generator/checker expression are dedicated to CC0 1.0. This dedication
 applies to the independently written expression. The preceding normal orientation,
 product criterion and graph correspondence are explicitly supplied interfaces.
-Heath Emerson's 2024 Sections 11.4–11.5 are admitted research context, not a
+Heath Emerson's 2024 Sections 11.4–11.5 are research context, not a
 replacement for the complete new proofs. No protected book text or pixels,
-purchased-copy receipts, historical source extracts or runtime binaries are
+historical source extracts or runtime binaries are
 distributed in this finite payload.
 
 All 13 bundled DejaVu/STIX fonts are unmodified. DejaVu incorporates the complete

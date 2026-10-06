@@ -4,9 +4,9 @@
 
 An oper is a connection with a maximally transverse Borel reduction. The reduction produces scalar differential equations and gives concrete affine families of local systems. At critical level, an affine Lie algebra's center is described by functions on opers. Localization assigns to a global oper a system of differential equations on the bundle stack with a tensor-compatible Hecke eigenproperty.
 
-We construct the adjoint-semisimple principal slice, prove its unique gauge normal form in ordinary families, and derive the coordinate action and global affine oper space. We also prove the homogeneous invariant ring over the stated characteristic-zero field, identify its degrees with the principal heights and construct the weighted Kostant section. A separate scalar proof treats \(PGL_n\) through jets. We also prove the Schwarzian rule, algebraic \(PGL_2\) irreducibility and the critical \(\mathfrak{sl}_2\) invariant. Section 3.2 extends that calculation to the entire rank-one polynomial vacuum center and its coordinate-equivariant ordinary disc-oper comparison. Section 3.3 proves the general current-jet invariant algebra, PBW symbol bound, ordinary-family base change and vacuum commutativity; it constructs every basic type A lift and proves the whole type A polynomial vacuum algebra. Section 3.4 proves the exact quantum coordinate laws and the coordinate-equivariant ordinary disc-oper comparison for every type A factor, including nilpotent parameter families. Section 3.5 proves reductive vacuum factorization, the whole type A reductive polynomial algebra and its framed central coefficient comparison, and the exact algebraic distinction between central frames and gauges. The full center, localization, quantization and fundamental local equivalence theorems remain unproved; their precise statements below retain their complete scope.
+We construct the adjoint-semisimple principal slice, prove its unique gauge normal form in ordinary families, and derive the coordinate action and global affine oper space. We also prove the homogeneous invariant ring over the stated characteristic-zero field, identify its degrees with the principal heights and construct the weighted Kostant section. A separate scalar proof treats \(PGL_n\) through jets. We also prove the Schwarzian rule, algebraic \(PGL_2\) irreducibility and the critical \(\mathfrak{sl}_2\) invariant. Section 3.2 extends that calculation to the entire rank-one polynomial vacuum center and its coordinate-equivariant ordinary disc-oper comparison. Section 3.3 proves the general current-jet invariant algebra, PBW symbol bound, ordinary-family base change and vacuum commutativity; it constructs every basic type A lift and proves the whole type A polynomial vacuum algebra. Section 3.4 proves the exact quantum coordinate laws and the coordinate-equivariant ordinary disc-oper comparison for every type A factor, including nilpotent parameter families. Section 3.5 proves reductive vacuum factorization, the whole type A reductive polynomial algebra and its framed central coefficient comparison, and the exact algebraic distinction between central frames and gauges. Section 3.6 constructs the smooth affine completion, proves its full type A center and ordinary punctured-disc coordinate comparison, and computes the complete abelian center at every fixed form. The center theorem in other types, localization, quantization and fundamental local equivalence remain unproved; their precise statements below retain their complete scope.
 
-The classical calculations use a fixed smooth projective connected curve over an algebraically closed characteristic-zero field, \(g\ge2\). The regular singular example separately uses the punctured projective line. The classical center and eigenobject statements in §§4–5 have their stated complex semisimple or simply connected hypotheses. Their full-field and reductive extensions remain unproved. Connections are algebraic de Rham connections; localization uses left D-modules. Ordinary-family assertions concern the fixed curve. Analytic comparisons and full derived moduli retain separate foundations.
+The classical calculations use a fixed smooth projective connected curve over an algebraically closed characteristic-zero field, \(g\ge2\). The regular singular example separately uses the punctured projective line. The classical center and eigenobject statements in §§4–5 have their stated complex semisimple or simply connected hypotheses. The type A center and framed reductive coefficient comparison in §§3.3–3.6 hold over every characteristic-zero field and ordinary coefficient algebra at their stated foundations. The full eigenobject theorem and intrinsic/global reductive extensions remain unproved. Connections are algebraic de Rham connections; localization uses left D-modules. Ordinary-family assertions concern the fixed curve. Analytic comparisons and full derived moduli retain separate foundations.
 
 ## 1. General oper condition and the full adjoint target
 
@@ -1386,7 +1386,7 @@ For mode two, the \(e_2,f_2\) terms end in \(e_0v,f_0v\), hence vanish. For \(h_
 
 At \(\ell=-2\), therefore, \(Q\in V_{-2}^{\mathfrak{sl}_2[[t]]}\), and (K2.3) gives an actual affine-module endomorphism. At any other level \(e_1Q\ne0\), since \(e_{-1}v\) is a basis vector and the field has characteristic zero. This proves the central-vector calculation at exactly the critical level.
 
-The result just proved is a vacuum invariant and its corresponding endomorphism. A claim that all normally ordered Fourier coefficients are central in a completed enveloping algebra also requires the completion, vertex operations and their compatibility. Section 3.2 supplies all quadratic mode operators, their commutativity and the full rank-one vacuum-center proof. The completed-enveloping-algebra, chiral and general higher-rank scopes remain additional parts of the theorem below.
+The result just proved is a vacuum invariant and its corresponding endomorphism. A claim that all normally ordered Fourier coefficients are central in a completed enveloping algebra also requires the completion, vertex operations and their compatibility. Section 3.2 supplies all quadratic mode operators, their commutativity and the full rank-one vacuum-center proof. Section 3.6 proves completed centrality and the full type A completed center. Chiral compatibility and quantum lifting in other types retain their separate proof obligations.
 
 
 ### 3.2. The full rank-one vacuum center and its coordinate action
@@ -2601,7 +2601,7 @@ The proof separates the relevant statements as follows:
 | Polynomial independence and exhaustion after quantum lifting | Translation (GJ.P7), unconditional commutativity (VC.20), and the finite degree induction in (GJ.Q1)–(GJ.Q2) | Actual invariant basic lifts with the prescribed leading symbols. |
 | Functions on dual-group opers with the full coordinate action | The ordinary oper construction in §§1.1–1.2, the rank-one comparison in §3.2 and the full type A comparison in §3.4 | In other simple types, construct the basic lifts and identify every lower-filtration coordinate term. |
 
-The general basic-lift hypothesis remains open for the other simple types; §3.3.5 supplies the full list for every type A factor. Once such lifts are supplied, the written argument proves the whole polynomial vacuum algebra and its ordinary coefficient extensions. The completed punctured-disc center, critical-level Poisson/chiral structures, Satake compatibility, derived parameter families and central-convention comparison also retain their separate complete-proof obligations in §4.
+The general basic-lift hypothesis remains open for the other simple types; §3.3.5 supplies the full list for every type A factor. Once such lifts are supplied, the written argument proves the whole polynomial vacuum algebra and its ordinary coefficient extensions. Section 3.6 proves the full type A completed punctured-disc center and its ordinary coordinate action. The completed center in other types, critical-level Poisson/chiral structures, Satake compatibility, derived parameter families and geometric central-convention comparison retain their separate proof obligations in §4.
 
 #### 3.3.5. Basic critical \(\mathfrak{sl}_n\) lifts and the polynomial vacuum center
 
@@ -2877,7 +2877,7 @@ Give \(\tau\), \(u\), and \(E_{ab}[-j]\) energies \(1\), \(1\), and \(j\), respe
 \]
 All listed generators are algebraically independent. Equation (GJ.P5) extends this algebra identity to every ordinary \(k\)-algebra \(R\), including nonreduced ones. Each endomorphism is a finite polynomial; no completed polynomial algebra is asserted.
 
-For a direct sum of type A factors, the critical bracket has no cross-factor terms. A basic lift from one factor, with the vacuum in every other factor, is invariant for the entire sum. Its symbol is the corresponding basic polynomial of that factor. Thus the same general reduction proves (SL.C1) with the concatenated lists of generators. The zero Lie algebra gives the coefficient ring. Section 3.4 proves the full quantum coordinate law and ordinary oper comparison for these type A factors. Basic lifting and the coordinate comparison in other simple types, and the completed/chiral/Poisson/Satake/derived comparisons, remain separate proof obligations.
+For a direct sum of type A factors, the critical bracket has no cross-factor terms. A basic lift from one factor, with the vacuum in every other factor, is invariant for the entire sum. Its symbol is the corresponding basic polynomial of that factor. Thus the same general reduction proves (SL.C1) with the concatenated lists of generators. The zero Lie algebra gives the coefficient ring. Section 3.4 proves the full quantum coordinate law and ordinary oper comparison for these type A factors. Section 3.6 proves the type A completed center and its punctured-disc comparison. Basic lifting and the coordinate comparison in other simple types, their completed center, and chiral/Poisson/Satake/derived comparisons remain separate proof obligations.
 
 
 ### 3.4. Coordinate laws of scalar opers and critical vacuum centers
@@ -4099,7 +4099,7 @@ b_3=s_3-\frac{n-2}{2}s_2',\qquad
 To verify the second equality, differentiate (TC.A11), substitute it together with (TC.A12), and cancel the \(v''s_2\) and \(v''''\) terms. The remaining derivative and weight terms are exactly those displayed. Thus \(b_3\) transforms as a cubic differential under the full ordinary coordinate group, by the same integration argument. On the vacuum side its matching vector is
 \(w_3-\tfrac{n-2}{2}Tw_2\). The derivative correction has lower PBW degree than the cubic leading symbol. This example exhibits why the coordinate law of quantum generators cannot be read from their highest symbols alone.
 
-For products of type A factors, use the factor generators and scalar oper operators. Cross-factor currents commute and the critical form is their direct sum. The proved polynomial algebra (SL.C1), the coordinate laws and the map (TC.A9) therefore give the product comparison as well. The proof concerns the regular algebraic vacuum algebra and the ordinary disc-oper coefficient functor. Section 3.5 supplies reductive vacuum factorization and the framed central coefficient comparison. Non-type-A basic lifting, the completed punctured-disc center, Poisson/chiral/Satake compatibility, full derived families and intrinsic nonadjoint/global central conventions retain their separate proof obligations.
+For products of type A factors, use the factor generators and scalar oper operators. Cross-factor currents commute and the critical form is their direct sum. The proved polynomial algebra (SL.C1), the coordinate laws and the map (TC.A9) therefore give the product comparison as well. The proof concerns the regular algebraic vacuum algebra and the ordinary disc-oper coefficient functor. Section 3.5 supplies reductive vacuum factorization and the framed central coefficient comparison. Section 3.6 proves the full smooth completed type A center and its punctured-disc coefficient and coordinate comparison. Non-type-A basic lifting, coordinate comparison and completed center, Poisson/chiral/Satake compatibility, full derived families and intrinsic nonadjoint/global central conventions retain their separate proof obligations.
 
 
 ### 3.5. Reductive vacuum algebras and central data
@@ -4487,7 +4487,7 @@ The translation is \(\exp(-bT)\) on each generator, a finite sum because \(b^\nu
 
 If the semisimple factor is zero, the whole statement is the central derivative calculation and its one-form action. If the center is zero, (RV.15) is the original semisimple vacuum algebra. If \(\mathfrak g=0\), the vacuum and its endomorphism algebra are \(R\), and all coordinate actions are the identity. The construction applies without change to any number of split simple factors in \(\mathfrak s\).
 
-This proves the reductive algebraic vacuum factorization for every fixed invariant form and every ordinary coefficient extension. At critical level it adjoins one free divided-translation family for each central direction, equivariantly with its inverse one-form action. It does not identify this coefficient space with the full intrinsic oper stack of a nonadjoint reductive group. Central bundles and their automorphisms, finite central-isogeny choices, the dual-group central convention, and any global or derived descent comparison retain their own geometric premises. Full non-type-A basic lifting and coordinate comparison, completed/chiral/Poisson/Satake/derived centers and the other original theorem obligations are also unaffected.
+This proves the reductive algebraic vacuum factorization for every fixed invariant form and every ordinary coefficient extension. At critical level it adjoins one free divided-translation family for each central direction, equivariantly with its inverse one-form action. It does not identify this coefficient space with the full intrinsic oper stack of a nonadjoint reductive group. Central bundles and their automorphisms, finite central-isogeny choices, the dual-group central convention, and any global or derived descent comparison retain their own geometric premises. Section 3.6 proves the completed type A and abelian centers. Full non-type-A basic lifting, coordinate comparison and completed center, chiral/Poisson/Satake/derived comparisons and the other theorem obligations remain required.
 
 #### 3.5.2. The trace splitting of the critical \(GL_n\) vacuum
 
@@ -5133,7 +5133,1149 @@ The central square showing the exact coordinate convention is
 
 In the \(\mathfrak{gl}_n\) example, the trace current represents the central direction \(I\), and the determinant character of the dual group pairs with that direction by the trace. The coefficient called \(c\) in §3.5.2 is one \(n\)-th of the trace coefficient; the raw scalar operator has subprincipal coefficient \(s_1=nc\). Thus the trace decomposition gives a concrete realization of (CF.12). Its framed scalar operators are acted on by central gauge through \(c\mapsto c-u'/u\); the normalized trace-free oper is unchanged because scalar conjugation sends every \(\partial+c\) to \(\partial+c-u'/u\). The proof of (CF.8) shows exactly which central coefficients disappear if this gauge quotient is taken.
 
-These results establish the regular algebraic reductive vacuum factorization and its framed central coefficient comparison. A statement about intrinsic nonadjoint opers must specify its retained central data, gauge group and torsor descent. Completed punctured-disc centers, central-line geometry in localization, chiral or Poisson structures, Satake compatibility and derived parameter families also retain their separate mathematical requirements.
+These results establish the regular algebraic reductive vacuum factorization and its framed central coefficient comparison. A statement about intrinsic nonadjoint opers must specify its retained central data, gauge group and torsor descent. Section 3.6 supplies the full completed type A center and ordinary punctured-disc comparison. The completed center in other types, central-line geometry in localization, chiral or Poisson structures, Satake compatibility and derived parameter families retain their separate mathematical requirements.
+
+
+### 3.6. Smooth affine completion and punctured-disc centers
+
+#### 3.6.1. The affine completion through its smooth modules
+
+Let \(k\) be a characteristic-zero field, let \(\mathfrak g\) be a finite-dimensional \(k\)-Lie algebra, and fix an invariant symmetric form \(\kappa\). No nondegeneracy or reductivity is needed in this subsection. Write \(\widehat{\mathfrak g}_{\kappa,\mathrm{pol}}\) for the central extension of \(\mathfrak g[t,t^{-1}]\) with
+\[
+[x_m,y_j]=[x,y]_{m+j}
+ +m\kappa(x,y)\delta_{m+j,0}K,
+\qquad [K,x_m]=0.
+\]
+For an ordinary commutative \(k\)-algebra \(R\), extend this fixed form and set
+\[
+\begin{gathered}
+A_R=U_R(\widehat{\mathfrak g}_{\kappa,\mathrm{pol},R})/(K-1),\\
+\mathfrak q_{N,R}=t^N\mathfrak g_R[t],
+\qquad
+I_{N,R}=A_R\mathfrak q_{N,R},
+\qquad
+M_{N,R}=A_R/I_{N,R},
+\qquad N\geq1.
+\end{gathered}
+\tag{CW.1}
+\]
+Thus the enveloping algebra in (CW.1) includes the affine central extension before the scalar relation \(K=1\) is imposed. The ideals \(I_{N,R}\) are left ideals. The quotients \(M_{N,R}\) are left modules, and their distinguished vectors are \(\xi_N=1+I_{N,R}\).
+
+**PBW quotients and separation.** The complete ordered-word proof in §3 of [Opers, critical level and the Beilinson–Drinfeld construction](opers-critical-level-and-the-beilinson-drinfeld-construction.md), preceding (K2.3), applies to this bracket. Its reduction of inverted pairs terminates; disjoint reductions commute, and the overlapping three-letter ambiguity is exactly Jacobi. Hence ordered monomials are independent as well as spanning. Put \(K\) first, then all negative modes, then the nonnegative modes in increasing mode index, using a fixed finite basis of \(\mathfrak g\) at each index. The negative block can be well ordered as \(-1,-2,\ldots\). Removing the central powers by \(K=1\) gives an \(R\)-basis of \(A_R\) consisting of the ordered current-mode monomials.
+
+For fixed \(N\), all basis modes with index at least \(N\) form the last block. That block is a Lie subalgebra: its bracket has index at least \(2N\), and has no scalar term. A monomial containing this block ends in one of its generators, and therefore belongs to \(I_{N,R}\). Conversely, multiplying an ordered monomial by a high generator on the right requires reordering only the final high block. Each of its bracket terms still contains a high generator. Thus \(I_{N,R}\) is exactly the span of ordered monomials containing at least one mode of index at least \(N\). Consequently
+\[
+M_{N,R}\text{ has the ordered-monomial basis whose every mode index is }<N.
+\tag{CW.2}
+\]
+The transition \(M_{L,R}\to M_{N,R}\), \(L\geq N\), retains these basis monomials and kills those containing an index at least \(N\).
+
+Every element of \(A_R\) is a finite sum of finite words. Choose \(N\) larger than every nonnegative index occurring in its ordered normal form. Every nonzero coefficient then survives in (CW.2). Therefore
+\[
+\bigcap_{N\geq1}I_{N,R}=0.
+\tag{CW.3}
+\]
+This proves separation directly over \(R\), including rings with nilpotents.
+
+One cannot multiply arbitrary quotient classes as if \(M_{N,R}\) were an algebra. For instance, take a one-dimensional abelian Lie algebra with generator \(z\), \(\kappa(z,z)=1\), and \(R=k\). Then \(z_N\in I_N\), but
+\[
+z_Nz_{-N}=z_{-N}z_N+N,
+\qquad
+z_Nz_{-N}+I_N=N+I_N\ne0 .
+\tag{CW.4}
+\]
+Here \(z_{-N}z_N\in I_N\), and the constant survives by (CW.2). Thus the left ideal is not a right ideal in this example.
+
+**A uniform bound for each finite word.** A smooth \(A_R\)-module means a module in which, for every vector \(w\), some \(N\geq1\) satisfies
+\(\mathfrak q_{N,R}w=0\). This bound can depend on \(w\). For a finite current word
+\[
+c=y^{(1)}_{p_1}\cdots y^{(a)}_{p_a},
+\qquad
+d(c)=\sum_{i=1}^a\max(-p_i,0),
+\]
+commuting \(x_m\) to the right through \(c\) produces current terms whose indices are \(m\) plus sums of subsets of the \(p_i\). If
+\[
+m\geq N+d(c),
+\]
+every such index is at least \(N\). A scalar contraction would require an intermediate index sum to be zero; the same bound makes every such sum at least \(N\geq1\), so it cannot occur. The current eventually reaching the right kills \(\xi_N\). Hence
+\[
+\mathfrak q_{N+d(c),R}\,c\xi_N=0,
+\qquad
+I_{N+d(c),R}\,c\subset I_{N,R}.
+\tag{CW.5}
+\]
+The second assertion follows by applying its left side to \(\xi_N\). The first applies to every basis current and hence to their finite sums. For a finite linear combination of words, take the largest of these bounds. This proves both that every \(M_{N,R}\) is smooth and that right multiplication by every element of \(A_R\) is continuous for the neighborhoods \(I_{N,R}\). Left multiplication is continuous because the neighborhoods are left ideals.
+
+These smooth modules also carry formal Laurent currents. On a vector killed by modes of index at least \(N\), a series with finite negative part acts through its finitely many terms of index less than \(N\). To verify its bracket, choose a common truncation for the vector, its images under the two series, and the brackets with either finite negative part. Make the truncation larger than the annihilation bounds plus the absolute values of all their negative indices. Both compositions then have the same finite polynomial-current truncations; brackets involving omitted tails still have indices above the annihilation bound. Scalar residue contractions have only finitely many matching indices, all retained in that truncation. The polynomial bracket identity therefore proves the formal bracket identity. This is the common-tail argument of §3 with the bound (CW.5), rather than an assumption that the \(M_{N,R}\) satisfy the stronger vacuum relations.
+
+**The underlying completion and its action.** Define the complete \(R\)-module
+\[
+\widehat A_R=\varprojlim_{N\geq1}M_{N,R},
+\qquad
+J_{N,R}=\ker(\widehat A_R\to M_{N,R}).
+\tag{CW.6}
+\]
+The projections and neighborhoods here are projections of modules. Equation (CW.3) embeds \(A_R\) in this inverse limit. Its image is dense: a representative \(a_N\in A_R\) of the \(N\)-th component of \(u\) agrees with \(u\) in every smaller quotient. Such representatives, indexed by \(N\), converge to \(u\). Also \(J_{N,R}\) is the closure of \(I_{N,R}\). Indeed an element of \(J_{N,R}\) has representatives in \(I_{N,R}\) in every quotient of index at least \(N\), by compatibility. The limit is complete: a Cauchy net has an eventually constant image in each discrete quotient \(M_{N,R}\); these images are compatible and define its unique limit. Separation follows from its embedding in the product of these quotients.
+
+Let \(V\) be any smooth \(A_R\)-module and let \(w\in V\) be killed by \(\mathfrak q_{N,R}\). For \(u=(u_L)_L\in\widehat A_R\), choose an \(A_R\)-representative \(a_N\) of \(u_N\) and define
+\[
+u_Vw=a_Nw .
+\tag{CW.7}
+\]
+Changing the representative adds an element of \(I_{N,R}\), whose final high current kills \(w\). Choosing a larger valid bound changes the representative by an element of the same \(I_{N,R}\), and has the same effect. Two possible bounds are compared through their maximum. Thus (CW.7) is well defined, is \(R\)-linear, and extends the original \(A_R\)-action. In checking additivity, choose a common bound for the finitely many vectors involved. For fixed \(w\), evaluation \(u\mapsto u_Vw\) is continuous with its discrete target, since \(J_{N,R}\) kills \(w\).
+
+If \(f:V\to V'\) is an \(A_R\)-linear map, the same annihilation bound is valid for \(f(w)\), and
+\[
+f(u_Vw)=u_{V'}f(w).
+\tag{CW.8}
+\]
+Thus these operators are natural on the category of smooth modules. They are faithful as a family: on \(M_{N,R}\),
+\[
+u_{M_{N,R}}\xi_N=u_N.
+\tag{CW.9}
+\]
+An element acting as zero on all these distinguished vectors has every component zero.
+
+There is also a precise reconstruction statement. Suppose \(\eta_V:V\to V\) is a family of \(R\)-linear operators natural for all \(A_R\)-linear maps between smooth modules. Its values
+\(\eta_{M_{N,R}}\xi_N\) are compatible under the quotient maps, and therefore define \(u\in\widehat A_R\). For a vector \(w\in V\) with bound \(N\), the map
+\[
+f_w:M_{N,R}\to V,\qquad a\xi_N\mapsto aw
+\]
+is well defined and \(A_R\)-linear. Naturality gives
+\[
+\eta_Vw=f_w(\eta_{M_{N,R}}\xi_N)=u_Vw .
+\tag{CW.10}
+\]
+Equations (CW.9)–(CW.10) prove uniqueness and existence of the reconstruction. Naturality here concerns \(R\)-linear operators on the underlying modules; these operators themselves need not be \(A_R\)-linear.
+
+**Multiplication by composition.** The composite of two such natural families is again natural. Reconstruction consequently defines a unique product \(ab\in\widehat A_R\) by
+\[
+(ab)_V=a_V\circ b_V\quad\text{on every smooth }V.
+\tag{CW.11}
+\]
+This constructs multiplication in the inverse limit. It does not multiply classes in \(A_R/I_{N,R}\). More explicitly, the vector \(b_N=b_{M_{N,R}}\xi_N\) is an actual finite element of the smooth module \(M_{N,R}\). Choose an annihilation bound \(L\) for that vector, and an \(A_R\)-representative \(\widetilde a_L\) of \(a_L\). Then
+\[
+(ab)_N=\widetilde a_L\,b_N
+\quad\text{in the left module }M_{N,R}.
+\tag{CW.12}
+\]
+The action (CW.7) proves independence of both choices. Naturality under \(M_{N',R}\to M_{N,R}\) proves compatibility of these components. Formula (CW.10) shows that the resulting element acts by the composite on every smooth module, not only on the universal ones.
+
+Composition proves associativity; addition and \(R\)-scalar multiplication prove bilinearity; the identity family gives the unit represented by \(1\). Faithfulness in (CW.9) transfers these identities from families to elements. For elements of \(A_R\), the composite is their usual product on every module, so the dense embedding \(A_R\to\widehat A_R\) is an algebra map. Thus every smooth module has an actual unital \(\widehat A_R\)-action.
+
+This multiplication is jointly continuous. First, \(J_{N,R}\) is a left ideal: if \(d\in J_{N,R}\), then \((ad)_{M_{N,R}}\xi_N=a_{M_{N,R}}0=0\). For fixed \(b\), the vector \(b_N\) has some annihilation bound \(L\); every \(d\in J_{L,R}\) kills that vector, so
+\[
+\widehat A_R J_{N,R}\subset J_{N,R},
+\qquad
+J_{L,R}b\subset J_{N,R}.
+\tag{CW.13}
+\]
+The second bound can depend on \(b\) and \(N\). For perturbations \(d\in J_{L,R}\), \(e\in J_{N,R}\),
+\[
+(a+d)(b+e)-ab=db+(a+d)e\in J_{N,R}.
+\tag{CW.14}
+\]
+This proves joint continuity at \((a,b)\); it also proves right multiplication continuity for every completed element. The topology is therefore a complete separated linear topology on a unital algebra, despite its defining quotients being only left modules.
+
+Write \(\mathcal N_R\) for the algebra of natural \(R\)-linear operators on smooth modules reconstructed in (CW.7)–(CW.10). The product mechanism is:
+\[
+\begin{array}{ccc}
+\widehat A_R\times\widehat A_R
+&\xrightarrow{\quad(a,b)\mapsto ab\quad}&\widehat A_R\\
+\big\downarrow &&\big\downarrow\\
+\mathcal N_R^2
+&\xrightarrow{\quad\text{composition}\quad}&
+\mathcal N_R.
+\end{array}
+\tag{CW.15}
+\]
+*The vertical maps are (CW.7)–(CW.10). Universal smooth modules reconstruct the upper product from the lower composite; (CW.12) computes a quotient component after choosing a bound for the intermediate vector.*
+
+**The center and the same-bound argument.** Polynomial currents generate \(A_R\) as an algebra. We claim
+\[
+Z(\widehat A_R)
+=\{u\in\widehat A_R:[u,x_m]=0
+       \text{ for all }x\in\mathfrak g_R,\ m\in\mathbf Z\}.
+\tag{CW.16}
+\]
+One inclusion is immediate. For the reverse inclusion, \(u_V\) commutes with every polynomial-current operator and their finite products on every smooth module, by (CW.11). If \(\mathfrak q_{N,R}w=0\), then
+\[
+x_m u_Vw=u_Vx_mw=0\quad(m\geq N).
+\tag{CW.17}
+\]
+The vector \(u_Vw\) has the same annihilation bound as \(w\). For an arbitrary \(b\in\widehat A_R\), choose one representative \(\widetilde b_N\in A_R\) of \(b_N\). It computes both \(b_Vw\) and \(b_Vu_Vw\). Hence
+\[
+u_V b_Vw
+=u_V\widetilde b_Nw
+=\widetilde b_Nu_Vw
+=b_Vu_Vw .
+\tag{CW.18}
+\]
+This holds on every smooth module and vector. Faithfulness of the universal modules gives \([u,b]=0\), proving (CW.16). In particular a current-commuting completed element commutes with every completed element.
+
+Formal Laurent currents are themselves elements of \(\widehat A_R\): take their finite negative part and truncate the positive part at index \(N\) in the \(N\)-th quotient. Their components are compatible, and their completed action is the common-tail action already proved. The same bound in (CW.17) permits \(u_V\) to pass through their finite truncation on \(w\). Thus polynomial-current commutation, formal-current commutation, and membership in the completed center are equivalent. This characterization does not infer centrality in the completion merely from being a vacuum endomorphism. The theorem (VC.17)–(VC.20) proves the latter commutation on the vacuum; the present criterion tests every universal smooth module.
+
+**Coefficient extension and coordinate independence.** The PBW bases in (CW.2) give, for every ordinary \(R\),
+\[
+A_R/I_{N,R}=R\otimes_k(A_k/I_{N,k}),
+\qquad
+\widehat A_R
+=\varprojlim_N R\otimes_k(A_k/I_{N,k}).
+\tag{CW.19}
+\]
+This is the completed coefficient extension \(\widehat A_k\widehat\otimes_kR\), defined by the displayed quotients. The ordinary tensor product \(R\otimes_k\widehat A_k\) need not be the completion. For example, take \(\mathfrak g=kz\), \(\kappa=0\), \(R=k[s]\). The series
+\[
+u=\sum_{j\geq1}s^j z_j
+\tag{CW.20}
+\]
+defines a completed element because its image modulo \(I_{N,R}\) has only \(j<N\). It cannot come from a finite sum \(\sum_{i=1}^a r_i(s)\otimes u_i\). In such a sum the coefficients of every individual linear mode \(z_j\), extracted in a quotient with \(N>j\), belong to the finite-dimensional \(k\)-span of the \(r_i(s)\). The coefficients \(s^j\) in (CW.20) are linearly independent over \(k\), a contradiction.
+
+For \(R\to R'\), stagewise tensoring of (CW.19) identifies
+\[
+R'\widehat\otimes_R\widehat A_R
+:=\varprojlim_N R'\otimes_R(A_R/I_{N,R})
+=\widehat A_{R'} .
+\tag{CW.21}
+\]
+Its products are the products just constructed over \(R'\). The coefficient map on the dense polynomial-current algebra is an algebra homomorphism and preserves every high-current ideal. Its stagewise extension is continuous. Approximation by that dense algebra and joint multiplication continuity prove that the extension is multiplicative. This uses the actual free PBW quotients and actions over the new coefficient ring.
+
+Let \(\phi(t)=a_0+a_1t+\cdots\) be a continuous coordinate over \(R\), with \(a_0^\nu=0\) and \(a_1\) a unit. Its inverse and coefficient-finite Laurent substitutions are constructed in §1.1.8. For \(m\geq N+\nu-1\), any term of degree less than \(N\) in \(\phi(t)^m\) uses at least \(\nu\) constant factors. Thus
+\[
+\phi(t)^m\in t^NR[[t]]
+\quad(m\geq N+\nu-1).
+\tag{CW.22}
+\]
+The inverse satisfies the same assertion with its own nilpotence bound. This is the required cofinality of the high-current neighborhoods; there is no requirement that the coordinate fix \(0\) exactly.
+
+The residue identity (RC.C7), with its full monomial proof, shows that substitution preserves the affine bracket and the relation \(K=1\). Sending \(x_m\) to the completed formal current \(x\phi(t)^m\) therefore defines an algebra map
+\(\sigma_\phi:A_R\to\widehat A_R\). Equation (CW.22) gives
+\[
+\sigma_\phi(I_{N+\nu-1,R})\subset J_{N,R}.
+\tag{CW.23}
+\]
+Indeed the substituted final high generator kills \(\xi_N\), and left multiplication by a completed element preserves \(J_{N,R}\). Hence \(\sigma_\phi\) is continuous, extends uniquely to the completion, and sends \(J_{N+\nu-1,R}\) into \(J_{N,R}\). The extension can be constructed by limits of representatives from (CW.6); independence follows from (CW.23). Completeness supplies these limits. Joint multiplication continuity proves that the extension is an algebra map. The inverse substitution gives its inverse: the two composites are identity on the current generators and then on the dense algebra \(A_R\), and continuity extends that equality. Consequently the algebra and its center have their full ordinary coordinate action, including nilpotent coordinate constants.
+
+These constructions establish the topology, multiplication and center criterion of the completed affine enveloping algebra. A presentation of the completed semisimple center, its comparison with punctured-disc opers and its chiral or derived interpretation requires further proofs.
+
+#### 3.6.2. Universal current fields and critical modes on smooth modules
+
+Let \(k\) have characteristic zero, \(R\) be any ordinary commutative \(k\)-algebra, and \(\mathfrak g_R=R\otimes_k\mathfrak g\), with \(\mathfrak g\) finite-dimensional. Fix an invariant symmetric form \(\kappa\), without a nondegeneracy assumption. Use
+\[
+ [x_m,y_q]=[x,y]_{m+q}
+                  +m\kappa(x,y)\delta_{m+q,0}\,1.
+ \tag{UC.1}
+\]
+Let \(A_R\) be the polynomial-mode enveloping algebra at this fixed central level. A smooth \(A_R\)-module \(M\) means that every \(\mu\in M\) is killed by all \(x_m\), for all \(x\), when \(m\) is sufficiently large. No vacuum, cyclicity, energy grading or translation operator on \(M\) is assumed. The induced vacuum \(V_{\kappa,R}\), with its state translation \(T\), remains the source of the state-field map.
+
+**Normal reconstruction and the relations it must respect.** A field on \(M\) is a series \(F(z)=\sum_qF_{(q)}z^{-q-1}\) with \(F(z)\mu\in M((z))\) for every \(\mu\). Currents are fields by smoothness. Write
+\[
+ \begin{aligned}
+ x(z)&=\sum_{m\in\mathbb Z}x_mz^{-m-1},&
+ x^{[r]}&=\frac{\partial_z^{r-1}x(z)}{(r-1)!},\\
+ x^{[r]}_-&=\sum_{s\geq0}\binom{r+s-1}{r-1}x_{-r-s}z^s,&
+ x^{[r]}_+&=(-1)^{r-1}\sum_{p\geq0}
+                  \binom{r+p-1}{r-1}x_pz^{-r-p}.
+ \end{aligned}
+ \tag{UC.2}
+\]
+Define an operator on the space of fields by
+\[
+ L_{x,r}F=x^{[r]}_-F+Fx^{[r]}_+,\qquad r\geq1.
+ \tag{UC.3}
+\]
+This is a field. In the second term only finitely many positive modes act on a fixed input. In the first, a fixed coefficient uses only finitely many nonnegative powers of \(x^{[r]}_-\), because \(F(z)\mu\) has a lower Laurent bound. In any fixed iterated product, choose its finitely many minus/plus alternatives. Each alternative has a negative-mode block on the left and a nonnegative-mode block on the right. The right block acts through a finite tree of intermediate states and finite smoothness bounds. The left block then has only finitely many terms at a fixed coefficient. The same argument gives a common cutoff for any specified finite list of input and intermediate states.
+
+The negative-mode operators satisfy
+\[
+ [L_{x,r},L_{y,s}]=L_{[x,y],r+s}.
+ \tag{UC.4}
+\]
+Indeed left and right multiplication commute, so the commutator on \(F\) is
+\([x^{[r]}_-,y^{[s]}_-]F-F[x^{[r]}_+,y^{[s]}_+]\).
+There is no affine scalar in either bracket: negative indices cannot sum to zero, and two nonnegative indices can do so only at index zero, with zero cocycle coefficient. The convolution of the two binomial expansions in (UC.2), obtained by multiplying \((1-u)^{-r}\) and \((1-u)^{-s}\), gives respectively
+\([x,y]^{[r+s]}_-\) and \(-[x,y]^{[r+s]}_+\).
+This proves (UC.4) with the common finite cutoffs just described. It is exactly the negative-current enveloping relation, on every \(M\).
+
+Thus PBW and the negative-current enveloping universal property define
+\[
+ Y_M(v,z)=\operatorname{Id}_M,\qquad
+ Y_M(x_{-r}u,z)=L_{x,r}Y_M(u,z).
+ \tag{UC.5}
+\]
+This map is independent of every ordered-word representative, including bracket replacements inside a longer word. It is not merely a choice of fields for PBW basis vectors. The calculation proving (UC.4) on the vacuum in §3.3.3 used only current brackets and field truncation; these have now been checked directly on arbitrary smooth \(M\).
+
+**The missing universal current-product identification.** We give the additional argument needed when the target has no cyclic vacuum. For \(j\geq0\), define the finite polynomial operator
+\[
+ X^x_j(z)=\sum_{i=0}^j\binom ji(-z)^{j-i}x_i,\qquad
+ \rho(x_j)F=[X^x_j(z),F(z)],
+ \qquad
+ \rho(x_{-r})F=L_{x,r}F.
+ \tag{UC.6}
+\]
+We will prove that \(\rho\) is an affine representation on the space of fields, at precisely the form \(\kappa\).
+
+The mixed bracket is the substantive step. Put \(b=[x,a]\), and \(B_q(z)=X^b_q(z)\) for \(q\geq0\). Direct expansion of (UC.2) gives
+\[
+ \begin{array}{c|c|c}
+ & [X^x_j,a^{[r]}_-]&[X^x_j,a^{[r]}_+]\\ \hline
+ 0\leq j<r& b^{[r-j]}_-&b^{[r-j]}_+\\
+ j\geq r&B_{j-r}+r\kappa(x,a)\delta_{j,r}&-B_{j-r}.
+ \end{array}
+ \tag{UC.7}
+\]
+Here are complete coefficient checks for this boundary identity. For a negative output mode \(b_{-u}\), \(u\geq1\), the coefficient in the minus part, apart from its power \(z^{j-r+u}\), is
+\[
+ \sum_{i=0}^j(-1)^{j-i}\binom ji
+                    \binom{i+u-1}{r-1}
+   =\binom{u-1}{r-j-1}.
+\]
+Repeated finite differences of \(\binom{u+i-1}{r-1}\) prove this equality by Pascal's identity. If \(j\geq r\) it is zero; otherwise it is exactly the coefficient of \(b^{[r-j]}_-\).
+
+For a nonnegative output mode \(b_q\), the minus-part coefficient is
+\[
+ \sum_{i=r+q}^j(-1)^{j-i}\binom ji
+                       \binom{i-q-1}{r-1}
+   =(-1)^{j-r-q}\binom{j-r}{q}
+ \quad(j\geq r),
+ \tag{UC.8}
+\]
+with zero outside the indicated range. To prove all these finite identities at once, multiply by \(U^rV^q\) and sum over \(r\geq1,q\geq0\). For a fixed \(i\), the inner sum is
+\(U((1+U)^i-V^i)/(1+U-V)\). The alternating binomial sum over \(i\) is
+\[
+ \frac{U(U^j-(V-1)^j)}{1+U-V}
+       =\sum_{r=1}^j U^r(V-1)^{j-r}.
+\]
+The expression is a polynomial; extracting its coefficient proves (UC.8). For the plus part, the generating series of the coefficient at \(b_q\), after its common \(z^{j-r-q}\) is removed, is
+\[
+ (-1)^{r-1+j}(1-V)^{j-r}.
+\]
+If \(j<r\), its coefficients give \(b^{[r-j]}_+\); if \(j\geq r\), they give \(-B_{j-r}\). Finally, the only scalar term occurs in the minus part and is
+\[
+ \kappa(x,a)z^{j-r}
+ \sum_{i=r}^j(-1)^{j-i}\binom ji\,i\binom{i-1}{r-1}
+ =r\kappa(x,a)\delta_{j,r}.
+\]
+Use \(i\binom{i-1}{r-1}=r\binom ir\) and the alternating sum
+\(\sum_{i=r}^j(-1)^{j-i}\binom{j-r}{i-r}\).
+This proves every entry of (UC.7), including the affine boundary term.
+
+Since an adjoint operator obeys the product rule, (UC.7) yields
+\[
+ [\rho(x_j),\rho(a_{-r})]
+   =\rho([x,a]_{j-r})
+                 +j\kappa(x,a)\delta_{j,r}\operatorname{Id}
+       \quad(j\geq0,r\geq1).
+ \tag{UC.9}
+\]
+For two negative modes use (UC.4). For two nonnegative modes, their operators are finite adjoint sums. Multiplying the two binomial polynomials gives
+\([X^x_j,X^a_q]=X^{[x,a]}_{j+q}\); no scalar occurs at nonnegative indices. Thus all affine brackets hold for \(\rho\), with the central generator acting as the identity on fields.
+
+Moreover \(\rho(x_j)\operatorname{Id}_M=0\) for \(j\geq0\). Induction from the defining vacuum, now into this affine representation on fields, therefore proves
+\[
+ \rho(x_j)Y_M(w,z)=Y_M(x_jw,z)
+                  \qquad(j\in\mathbb Z).
+ \tag{UC.10}
+\]
+For negative \(j\) this recovers (UC.5). For nonnegative \(j\) it identifies the actual current products universally. No uniqueness argument using a vacuum in \(M\) occurs.
+
+**Locality and every physical integer current mode.** To pass from (UC.10) to all physical modes \(x_m\), we supply the formal-distribution step. The current bracket is
+\[
+ [x(s),a(z)]=x,a\delta(s,z)
+                      +\kappa(x,a)\partial_z\delta(s,z),\qquad
+ \delta(s,z)=\sum_{m\in\mathbb Z}s^{-m-1}z^m.
+ \tag{UC.11}
+\]
+The identities \((s-z)\delta=0\) and
+\((s-z)\partial_z\delta=\delta\) show current locality of order two. A derivative increases a locality order by at most its derivative order.
+
+Here is the finite product closure used for the reconstructed fields. For any integer \(q\), define
+\[
+ (A_{(q)}B)(z)=\operatorname{Res}_s\!
+  \left(\iota_{s,z}(s-z)^qA(s)B(z)
+             -\iota_{z,s}(s-z)^qB(z)A(s)\right).
+ \tag{UC.12}
+\]
+For \(q\geq0\) this is a finite polynomial commutator sum. For \(q=-r<0\), the two geometric-series expansions give
+\[
+ A_{(-r)}B
+  =\left(\frac{\partial_z^{r-1}A}{(r-1)!}\right)_-B
+       +B\left(\frac{\partial_z^{r-1}A}{(r-1)!}\right)_+.
+\]
+Thus these products are fields by the same coefficient-finite argument as (UC.3).
+
+If \(A,B,C\) are pairwise local of orders \(a,b,c\) for the pairs
+\((A,B),(A,C),(B,C)\), then \(A_{(q)}B\) is local with \(C\).
+Put \(p=s-z\), \(v=z-u\), and choose \(L=a+b+c+|q|+1\).
+Multiply the commutator of (UC.12) with \(C(u)\) by \(v^L\).
+Its factor \(v^c\) permits \(C\) to pass through \(B\).
+Expand the remaining factor as
+\[
+ v^{L-c}=((s-u)-p)^{L-c}.
+\]
+Terms with at least \(b\) factors \(s-u\) vanish by the \(A,C\) locality relation. In every remaining term the power \(q+L-c-j\) of \(p\) is at least \(a\), so the two expanded kernels become the same polynomial. Their difference is a multiple of
+\[
+ v^cp^{q+L-c-j}(s-u)^j[[C(u),A(s)],B(z)].
+\]
+Jacobi rewrites the double bracket as
+\([C,[A,B]]-[A,[C,B]]\). The first term is killed by \(p^a\), the second by \(v^c\). This proves closure. When a negative kernel occurs, fix the input and the finitely many third-mode coefficients involved and take common smoothness and field cutoffs before extracting the residue. Thus every comparison is of finite sums of actual operators. Induction from currents and the identity proves locality of all reconstructed fields with every current, and with one another, on every smooth \(M\).
+
+Set \(H(s,z)=[x(s),Y_M(w,z)]\), and choose a locality order \(L\geq1\). Its residues are, by (UC.6) and (UC.10),
+\[
+ C_j(z)=\operatorname{Res}_s(s-z)^jH(s,z)
+       =\rho(x_j)Y_M(w,z)=Y_M(x_jw,z)
+             \quad(j\geq0).
+ \tag{UC.13}
+\]
+The finite delta identity is
+\[
+ H(s,z)=\sum_{j=0}^{L-1}C_j(z)\frac{\partial_z^j\delta(s,z)}{j!}.
+\]
+For a proof, subtract the right side. Multiplication by \((s-z)^L\) kills the remainder. Its first \(L\) residues against powers of \(s-z\) vanish, so its first \(L\) coefficients as a series in \(s^{-1}\) vanish successively. The relation \((s-z)^LG=0\) is the recurrence
+\(\sum_{i=0}^L\binom Li(-z)^{L-i}G_{m+i}=0\).
+The leading coefficient is one and the constant coefficient is the invertible Laurent monomial \((-z)^L\). It propagates the zero coefficients in both directions. This proves the delta identity coefficientwise over \(R\).
+
+Finally,
+\(\operatorname{Res}_s s^m\partial_z^j\delta/j!
+ =\binom mjz^{m-j}\) for every integer \(m\), by differentiating \(z^m\). Therefore
+\[
+ \boxed{[x_m,Y_M(w,z)]
+   =\sum_{j\geq0}\binom mj z^{m-j}Y_M(x_jw,z)
+                         \qquad(m\in\mathbb Z).}
+ \tag{UC.14}
+\]
+The upper support is finite, independently of \(m\) and \(M\): a sufficiently high nonnegative current kills the finite-energy source state \(w\). Generalized binomial coefficients include negative \(m\). Formula (UC.14) is proved on every smooth target; it has not been inferred from its action on a cyclic vacuum.
+
+The construction is natural in module maps. Such a map intertwines the current parts and every finite summand of an iterated normal product, proving
+\(fY_M(w,z)=Y_{M'}(w,z)f\). It is also compatible with every ordinary coefficient extension \(R\to R'\), and the induced maps of modules and source states. Each coefficient on a specified input uses finite current words and rational constants; tensoring those equalities needs no flatness assumption on \(R'\) over \(R\).
+
+**Critical invariants and their universal Fourier coefficients.** Let \(w_i\) be an actual invariant vacuum state over \(k\), extended to \(R\), homogeneous of energy \(D_i>0\), of PBW length at most \(D_i\), with nonzero degree-\(D_i\) symbol \(p_i\) in the \(-1\) currents. In type A these hypotheses are proved for the raw matrix determinant degrees \(1,\ldots,a\) and traceless degrees \(2,\ldots,a\) in SL.L1–SL.L7; the critical forms retain the exact conventions of that section. In another type, the assertions below are conditional on such actual lifts, without an existence claim.
+
+Write
+\[
+ Y_M(w_i,z)=\sum_{n\in\mathbb Z}S^M_{i,n}z^{-n-D_i}.
+ \tag{UC.15}
+\]
+Invariance makes the right side of (UC.14) zero, so every \(S^M_{i,n}\) commutes with every physical current mode. It preserves the same current annihilation bound as its input. The finite-tail argument for formal Laurent currents therefore extends this to the full formal affine action. Thus these are natural affine-module endomorphisms on all smooth \(M\). Any such current-commuting operator commutes with every reconstructed field, by induction in (UC.5): commute it through each minus and plus current factor using common cutoffs on the input and its image. Consequently all invariant-field Fourier coefficients commute with one another on every smooth module.
+
+We make their universal completion coefficients explicit. Let
+\[
+ I_N=A_R(\mathfrak g_R\otimes t^N R[t]),\qquad
+ M_N=A_R/I_N,\qquad N\geq1.
+\]
+These are left ideals and left modules. Their cyclic vectors are the classes of \(1\), not vacuum vectors. PBW, ordering the modes \(m\geq N\) last, makes \(M_N\) free on words in the remaining modes. It is smooth: for any finite word, a mode with index at least \(N\) plus the sum of the absolute values of its negative indices remains at least \(N\) after every relevant bracket and reaches the cyclic vector, where it vanishes; possible scalar brackets are excluded by the same strict positive bound.
+
+For a reconstructed field of finite source energy \(D\), each expanded normal-product term has a negative-mode block followed by a nonnegative-mode block. Modulo \(I_N\), any nonnegative mode of index at least \(N\) can be commuted to the right through that latter block. Every resulting bracket still has index at least \(N\), with no scalar term. Thus the term vanishes modulo \(I_N\). The remaining nonnegative indices lie in the finite interval \(0,\ldots,N-1\). At a fixed field coefficient, the sum of all mode indices is fixed. The remaining negative indices are strictly negative with fixed sum, so they also have only finitely many possibilities. It follows that each coefficient gives a finite class in \(A_R/I_N\). These classes are compatible as \(N\) increases: the newly admitted terms have a positive index at least the smaller \(N\), and vanish in that smaller quotient. We have therefore constructed
+\[
+ S_{i,n}\in\varprojlim_{N\geq1}A_R/I_N.
+ \tag{UC.16}
+\]
+This is the underlying smooth completion of CW. Its action on any input \(\mu\) killed by modes \(m\geq N\) is evaluation of the finite class (UC.16) on \(\mu\), since the map \(M_N\to M\), \(a+I_N\mapsto a\mu\), is a module map. Thus its universal action is exactly (UC.15). The current-commuting natural operators are central in the smooth completion under the natural-operator identification proved in CW. No cyclic-vacuum test is used to establish that commutation.
+
+For clarity, \(S_{i,n}\in I_N\) in completed notation means that its projection to \(A_R/I_N\) is zero. Write \(\widehat I_N\) for this kernel when distinguishing a completed coefficient from a polynomial element of \(A_R\).
+
+**PBW symbol, mode sum and the sharp smoothness cutoff.** A homogeneous negative word
+\(x^1_{-r_1}\cdots x^d_{-r_d}v\) of energy \(D\) has
+\(r_a\geq1\) and \(\sum_ar_a=D\). Its reconstructed factors have powers
+\(z^{-m_a-r_a}\). Hence every coefficient of weight \(D\), including every lower-length derivative correction, has
+\[
+ \sum_a m_a=n
+ \quad\text{at the coefficient of }z^{-n-D},\qquad d\leq D.
+ \tag{UC.17}
+\]
+A current bracket replaces two indices by their sum. A scalar bracket can occur only when their sum is zero. Thus subsequent reorderings preserve this total mode sum as well. This proves the stated conservation for every PBW representative.
+
+For \(w_i\) of degree and energy \(D_i\), the length-\(D_i\) source words have all \(r_a=1\). Normal ordering becomes ordinary multiplication in the PBW associated graded; reordering corrections have lower length. Let
+\[
+ \mathcal A(z)=\sum_{m\in\mathbb Z}\mathcal A_mz^{-m-1},
+ \qquad B(x,\mathcal A_m)=\sigma(x_m),
+\]
+For this symbol interpretation assume the chosen nondegenerate pairing \(B\), as in the semisimple or matrix cases, and use it to define the dual-current coordinates. The universal field and commutator arguments themselves did not require such a pairing. For matrices \(B=\operatorname{tr}\) uses the transpose matrix coordinates, which leave the characteristic coefficients unchanged. We obtain the exact leading symbol
+\[
+ \boxed{\sigma_{D_i}(S_{i,n})
+        =[z^{-n-D_i}]\,p_i(\mathcal A(z)).}
+ \tag{UC.18}
+\]
+This is a coefficient in the PBW completion, equivalently a finite polynomial after setting the symbols of modes \(m\geq N\) to zero. In particular the PBW length is at most \(D_i\).
+
+If
+\[
+ \boxed{n>D_i(N-1),}
+ \tag{UC.19}
+\]
+a term with \(d\leq D_i\) current indices summing to \(n\) must have an index at least \(N\), since otherwise their sum is at most
+\(d(N-1)\leq D_i(N-1)\). That index is in the nonnegative block. Moving it right through that block leaves a high nonnegative current in every resulting term, and no scalar bracket. Therefore
+\[
+ S_{i,n}\in\widehat I_N
+                 \quad\text{for }n>D_i(N-1).
+ \tag{UC.20}
+\]
+This proof includes lower derivative terms, because (UC.17) retained their full energy and mode sum.
+
+The sufficient bound is sharp for every nonzero basic symbol. At
+\(n=D_i(N-1)\), the degree-\(D_i\) symbol modulo \(I_N\) can reach that sum only if every index equals \(N-1\). Its coefficient is exactly
+\(p_i(\mathcal A_{N-1})\), which is nonzero in the free PBW polynomial ring. Hence the boundary mode is nonzero in \(A_R/I_N\) for a nonzero coefficient ring \(R\); the strict inequality cannot be replaced by a weak one. For every integer \(n\), (UC.18) is also nonzero at a sufficiently large quotient. If \(n\ne0\), specialize
+\(\mathcal A(z)=a(z^{-1}+u z^{-n-1})\) with \(p_i(a)\ne0\); the term linear in \(u\) at that coefficient is \(D_i p_i(a)\ne0\). Such an \(a\) exists because \(k\) is infinite and \(p_i\) is a nonzero polynomial. For \(n=0\), use \(\mathcal A(z)=az^{-1}\). Taking \(N>\max(n,0)\) retains the required modes. Thus each universal \(S_{i,n}\) has PBW degree exactly \(D_i\), even when it vanishes on the vacuum.
+
+On the vacuum, the already proved creation identity gives the more restrictive statement
+\[
+ S_{i,n}|_{V_{\kappa,R}}=0\quad(n>-D_i),\qquad
+ S_{i,-D_i-r}(v)=\frac{T^rw_i}{r!}\quad(r\geq0).
+ \tag{UC.21}
+\]
+Here creation first identifies the vacuum images, and (UC.14) makes them endomorphisms; cyclicity is used only for this explicitly vacuum-restricted conclusion. It is not used for (UC.14), (UC.16) or (UC.20).
+
+**Universal coordinate-derivation covariance.** The coefficient derivations
+\(D_lx_m=mx_{m+l}\), \(l\geq-1\), act on the universal coefficients, rather than as assumed operators on \(M\). Their affine central defect is
+\(m(m+q+l)\kappa(x,y)\delta_{m+q+l,0}=0\). They are continuous on the underlying completion: \(D_lI_N\subseteq I_N\) for \(l\geq0\), and \(D_{-1}I_{N+1}\subseteq I_N\). Thus they can be applied to (UC.16) by finite quotient computations.
+
+These computations do not need an assumed action of \(D_l\) on \(M\), or an unproved multiplication of arbitrary completed elements. Left multiplication by a polynomial current is defined on each left quotient. Right multiplication by a nonnegative current also preserves \(I_N\): commuting a high generator \(x_h\), \(h\geq N\), past \(y_q\), \(q\geq0\), leaves either that high generator on the right or the bracket of index \(h+q\geq N\), with no scalar term. Thus the right multiplications in (UC.3) and (UC.6) are defined on the quotient coefficients; right indices at least \(N\) give zero. The minus part is coefficient-finite by the field bound on the class of \(1\) in \(M_N\). The coefficient product rule for \(D_l\) is first applied to finite polynomial representatives and then passed to the quotient, using \(N+1\) when \(D_{-1}\) occurs. This proves the universal coefficient calculus used below directly from (UC.16).
+
+Define the moving-origin coefficient operator
+\[
+ \mathscr D_l
+   =\sum_{s=0}^{l+1}\binom{l+1}{s}(-z)^sD_{l-s}^{\mathrm{coeff}}
+       \quad(l\geq0),\qquad
+ \mathscr D_{-1}=D_{-1}^{\mathrm{coeff}}.
+ \tag{UC.22}
+\]
+All these operators fix \(z\); they differentiate the completed-current coefficients. We prove their boundary identity directly. Set
+\(X_q^x(z)=\sum_{i=0}^q\binom qi(-z)^{q-i}x_i\) for \(q\geq0\). Then
+\[
+ \begin{array}{c|c|c}
+ &\mathscr D_l x^{[r]}_-&\mathscr D_l x^{[r]}_+\\ \hline
+ -1\leq l<r&-r x^{[r-l]}_-&-r x^{[r-l]}_+\\
+ l\geq r&-rX^x_{l-r}&+rX^x_{l-r}.
+ \end{array}
+ \tag{UC.23}
+\]
+To check every coefficient, in the minus part use
+\[
+ (r+p)\binom{r+p-1}{r-1}
+       =r\binom{r+p}{r}.
+\]
+Writing \(i=l+1-s\) reduces its binomial sum to the Lie part of (UC.7) with \(j=l+1\) and derivative index \(r+1\), multiplied by \(-r\). In the plus part use
+\(p\binom{r+p-1}{r-1}=r\binom{r+p-1}{r}\) and replace \(p\) by \(p-1\); it reduces to the plus part of that same identity with the same factor \(-r\). There is no scalar term, since these are coefficient derivations, not an affine bracket. For \(l=-1\), (UC.2) gives the first row directly. This proves (UC.23), including every splitting boundary.
+
+Apply the coefficient product rule to (UC.3). By (UC.23),
+\[
+ [\mathscr D_l,L_{x,r}]
+       =-r\,\rho(x_{l-r}).
+ \tag{UC.24}
+\]
+All computations can be made modulo \(I_N\) with a common larger cutoff; for the \(D_{-1}\) term use \(I_{N+1}\). No derivative on an input vector of \(M\) is involved. Since \(\mathscr D_l\operatorname{Id}=0\), induction on a negative word, using the universal intertwining (UC.10), proves
+\[
+ \begin{aligned}
+ \mathscr D_lY(x_{-r}u,z)
+ &=L_{x,r}Y(D_lu,z)-rY(x_{l-r}u,z)\\
+ &=Y(D_l(x_{-r}u),z).
+ \end{aligned}
+\]
+Consequently \(\mathscr D_lY(w,z)=Y(D_lw,z)\).
+Invert the finite alternating binomial change (UC.22). The coefficient identity
+\(\binom{l+1}{s}\binom{l+1-s}{a}
+ =\binom{l+1}{s+a}\binom{s+a}{s}\)
+and the sum \(\sum_{s=0}^b(-1)^s\binom bs=\delta_{b,0}\) give
+\[
+ \boxed{D_l^{\mathrm{coeff}}Y(w,z)
+    =\sum_{s=0}^{l+1}\binom{l+1}{s}z^sY(D_{l-s}w,z),
+                 \qquad l\geq0.}
+ \tag{UC.25}
+\]
+This is a universal full-Laurent-coefficient identity, not a test on vacuum creation series. For \(l=-1\), the first-row computation gives
+\(D_{-1}^{\mathrm{coeff}}Y(w,z)=Y(D_{-1}w,z)\).
+The derivative identity follows directly from (UC.5):
+\(\partial_zL_{x,r}F=rL_{x,r+1}F+L_{x,r}\partial_zF\), while
+\(T(x_{-r}u)=r x_{-r-1}u+x_{-r}Tu\).
+Starting with the identity field proves \(Y(Tw,z)=\partial_zY(w,z)\).
+Hence
+\[
+ D_{-1}^{\mathrm{coeff}}Y(w,z)=-\partial_zY(w,z).
+ \tag{UC.26}
+\]
+
+For type A of matrix size \(a\), retain the actual raw or traceless determinant states \(w_i\) and \(D_i=i\). Put \(w_0=v\), with the actual trace state \(w_1\) in the raw case and \(w_1=0\) in the traceless case. The proved SL.X13 identity is
+\[
+ D_jw_i=(j+1)!\,C_{i,i-j}w_{i-j}\quad(1\leq j\leq i),\qquad
+ C_{iq}=\binom{a-q}{i-q+1}
+           +\frac{1-a}{2}\binom{a-q}{i-q}.
+\]
+The modes \(D_jw_i\) with \(j>i\) vanish by energy. Together with \(D_0w_i=-iw_i\), \(D_{-1}w_i=-Tw_i\), (UC.25)–(UC.26) give, for every regular formal vector field \(f(z)\partial_z\),
+\[
+ \boxed{D_f^{\mathrm{coeff}}\mathcal S_i(z)
+  =-f\mathcal S_i'-D_i f'\mathcal S_i
+       +\sum_{0\leq q<i}C_{iq}f^{(D_i-D_q+1)}\mathcal S_q(z).}
+ \tag{UC.27}
+\]
+Here \(\mathcal S_i=Y(w_i,z)\), \(\mathcal S_0=1\) has indexed weight zero. This is the full universal field, including negative powers, rather than its vacuum regular restriction. For \(f=z^{l+1}\), extraction of the coefficient of \(z^{-n-D_i}\) gives the all-integer formula
+\[
+ \boxed{D_l^{\mathrm{coeff}}S_{i,n}
+  =\bigl(n-(D_i-1)l\bigr)S_{i,n+l}
+       +\sum_{0\leq q<i}C_{iq}(l+1)_{\underline{D_i-D_q+1}}
+                                      S_{q,n+l},
+       \qquad n\in\mathbb Z,\quad l\geq-1.}
+ \tag{UC.28}
+\]
+Use \(S_{0,n}=\delta_{n,0}\operatorname{Id}\), and the falling factorial convention. The exponent check in the lower term is
+\(z^{l-(D_i-D_q)}z^{-(n+l)-D_q}=z^{-n-D_i}\);
+thus every term has mode index \(n+l\). For \(l=-1\), the derivatives of \(f=1\) vanish and the first coefficient is \(n+D_i-1\), exactly the coefficient of \(-\partial_z\mathcal S_i\).
+
+A general \(f=\sum_{l\geq-1}f_lz^{l+1}\) is interpreted in the completion coefficientwise. Modulo \(\widehat I_N\), (UC.20) kills every term in (UC.28) for sufficiently large \(l\), so the sum is finite at each quotient. The same proof applies to any actual homogeneous invariant lifts with a separately established basic-vector coordinate law; it does not establish that such lifts exist in other types. Integration to full completed coordinate substitutions and exhaustion of a specified completed centre are separate consequences that require their stated completion and comparison arguments.
+
+The universal descent and current commutation can be viewed as the following exact diagram:
+\[
+ \begin{array}{ccc}
+ V_{\kappa,R}
+ &\xrightarrow{\ Y_M\ }&\operatorname{Fields}(M)\\[2pt]
+ x_j\downarrow&&\downarrow\rho(x_j)\\[2pt]
+ V_{\kappa,R}
+ &\xrightarrow{\ Y_M\ }&\operatorname{Fields}(M).
+ \end{array}
+\]
+*For negative \(j\), the right arrow is normal multiplication (UC.3).
+For nonnegative \(j\), it is the finite commutator sum (UC.6).
+The mixed boundary (UC.7), including its affine scalar, proves that these
+are one affine action. Induction gives the square (UC.10); locality and
+the finite delta expansion then give every physical integer commutator
+in (UC.14). The target need not have a vacuum. The independent
+moving-origin boundary (UC.23) supplies the universal coordinate
+identity (UC.25).*
+
+All assertions above hold over ordinary nonreduced rings. They use free PBW words, finite sums at each module input or quotient, and rational binomial identities. The resulting critical Fourier coefficients are independent of PBW representatives, natural on every smooth module, mutually commuting, and have the exact PBW symbols, conserved mode sums and strict cutoff (UC.20). The completed algebra structure is the specified smooth completion of CW; no derived-module, chiral or Poisson comparison is included here.
+
+#### 3.6.3. The whole completed polynomial center in type A
+
+Let \(k\) be a characteristic-zero field, let \(R\) be any ordinary commutative \(k\)-algebra, and let \(\mathfrak g\) be a finite direct sum of split \(\mathfrak{sl}_{n_j}\) factors and a finite-dimensional abelian center \(\mathfrak z\). Use the critical form \(-\operatorname{Kil}/2\), including its zero restriction to \(\mathfrak z\), with the \(df\)-first cocycle and central action \(K=1\). The following argument identifies the center of the precise smooth-module completion. The completion and universal-mode constructions of §§3.6.1–3.6.2 prove the precise inputs stated next.
+
+**Exact inputs.** Write \(A_R\) for the algebraic critically specialized enveloping algebra of polynomial currents, and, for \(N\geq1\), put
+\[
+\mathfrak h_N=\mathfrak g_R\otimes t^NR[t],\qquad
+I_{N,R}=A_R\mathfrak h_N,\qquad M_{N,R}=A_R/I_{N,R}.
+\tag{CT.1}
+\]
+We require the following precise results of the preceding completion and universal-mode constructions.
+
+1. The **smooth completion of §3.6.1** constructs an associative complete separated topological algebra
+\(\widehat A_R=\varprojlim_NM_{N,R}\), with \(A_R\) dense, and identifies the kernel \(\widehat I_{N,R}\) of its projection with the closure of \(I_{N,R}\). Each \(M_{N,R}\) is an actual smooth cyclic left module on which this completion acts continuously. Its PBW length filtration is exhaustive, with
+\[
+\operatorname{gr}M_{N,R}
+=\operatorname{Sym}_R(\mathfrak g_R\otimes\operatorname{span}_R\{t^m:m<N\}).
+\tag{CT.2}
+\]
+The projection of \(u\in\widehat A_R\) is its action on \(1_N=1+I_{N,R}\). Fixed-current commutators extend continuously; commuting with all polynomial currents is equivalent to centrality in the completion, by density and the multiplication continuity. These are the constructions and criteria (CW.1)–(CW.19). Nonnegative-current adjoint actions preserve \(I_{N,R}\) directly: if \(q\geq0\) and \(m\geq N\), then \([x_q,y_m]=[x,y]_{q+m}\) is still in \(\mathfrak h_N\), with no central contraction since \(q+m>0\). The derivation rule gives preservation of its generated left ideal, and brackets preserve the PBW filtration. The same assertions hold after every ordinary coefficient extension in the defined inverse-limit sense.
+
+2. The **universal-mode construction of §3.6.2** reconstructs, from each proved invariant basic state \(w_i\) of length degree and energy \(D_i\), an actual normally ordered field
+\[
+\mathscr S_i(t)=\sum_{n\in\mathbb Z}S_{i,n}t^{-n-D_i}
+\tag{CT.3}
+\]
+in this completion. Every mode \(S_{i,n}\) commutes with every current as an element of \(\widehat A_R\), not merely as an operator on the vacuum. Its normally ordered expression is the finite linear combination prescribed by the negative-mode word expression of \(w_i\), with derivative currents and every integer current mode. The construction is relative over \(R\).
+
+The UC input is proved by the arbitrary-target normal reconstruction, affine intertwining and finite-distribution argument (UC.1)–(UC.16); its mode sum, symbol and cutoff are (UC.17)–(UC.20). The basic states required in that input exist in all type A factors by (SL.L1)–(SL.L23); their polynomial independence and vacuum exhaustion are (SL.C1). Central degree-one states are the zero-form currents of (RV.16)–(RV.20). We also use the already proved classical current-invariant theorem (GJ.1)–(GJ.13), with its explicit split-root, principal-section and invariant-polynomial foundations retained. It applies to the semisimple factors, while the central variables are invariant separately. No chiral, Poisson, Satake or derived comparison is an input here.
+
+**The completed-center theorem** is the topological algebra isomorphism
+\[
+\boxed{
+Z(\widehat A_R)
+\simeq\varprojlim_{N\geq1}
+ R[S_{i,n}:n\leq D_i(N-1)].
+}
+\tag{CT.4}
+\]
+Each ring on the right is an ordinary polynomial ring: every element of an individual stage involves finitely many variables and has finite degree. Its transition maps set the newly admitted higher-index modes equal to zero. The inverse limit permits PBW degrees to grow with \(N\); no globally bounded degree is imposed.
+
+##### Classical symbols at a fixed pole bound
+
+Choose a nondegenerate invariant pairing on the semisimple factors, using the matrix trace pairing on each \(\mathfrak{sl}_n\). For the center use its vector-space dual rather than its zero critical form. The residue pairing identifies (CT.2) with the polynomial coefficient algebra of
+\[
+\alpha(t)\in t^{-N}\mathfrak g^*[[t]]\,dt,
+\qquad
+x_m\longmapsto\bigl(\alpha\mapsto\langle x,\alpha_{-m-1}\rangle\bigr).
+\tag{CT.5}
+\]
+On the semisimple factors the chosen invariant pairing identifies \(\alpha\) with \(A(t)\,dt\). On the center it keeps \(\mathfrak z^*\) explicitly. Let \(p_i\) be the basic homogeneous invariant polynomials of degree \(D_i\): elementary characteristic coefficients on the type A factors and linear coefficient functions on the center. The infinitesimal action of a nonnegative current on a symbol is the derivation
+\([x_q,y_m]=[x,y]_{q+m}\), with indices \(q+m\geq N\) set to zero. The central cocycle lowers PBW degree and is absent on symbols. By invariance of the chosen pairing this is exactly the contragredient adjoint action on the Laurent coefficient space in (CT.5).
+
+Rescale the semisimple series by
+\(B(t)=t^NA(t)\). This is an isomorphism of coefficient polynomial rings and intertwines all nonnegative-current derivations: scalar multiplication by \(t^N\) commutes with adjoint brackets. Homogeneity gives
+\[
+p_i(B(t))=t^{ND_i}p_i(A(t)).
+\tag{CT.6}
+\]
+The complete theorem (GJ.13), applied to \(B\), therefore proves
+\[
+\boxed{
+\bigl(\operatorname{gr}M_{N,R}\bigr)^{\mathfrak g_R[[t]]}
+=R[p_i(A)_r:r\geq-ND_i].
+}
+\tag{CT.7}
+\]
+The coefficients on the right are algebraically independent over \(R\). Every invariant polynomial uses only finitely many coefficient variables; the finite-kernel argument (GJ.11)–(GJ.12) covers each such polynomial over nonreduced \(R\) too. The center contributes independent linear variables with \(D_i=1\), since its adjoint derivations are zero. Expanding in the monomial basis of those central variables reduces the remaining condition coefficient by coefficient to (GJ.13). Thus this central extension of (CT.7) uses no nondegenerate critical form on \(\mathfrak z\).
+
+Under the restriction from pole bound \(N+1\) to \(N\), set \(A_{-N-1}=0\). For every degree \(D_i\), this sets precisely the new coefficients
+\(- (N+1)D_i\leq r<-ND_i\) equal to zero, and leaves all coefficients \(r\geq-ND_i\) equal to their equally indexed polynomial at the smaller pole bound. Their independence proves that the transition on the invariant polynomial rings is exactly this substitution.
+
+There is also no additional Laurent-current invariant condition on their completed inverse limit. For an index \(q=-b<0\), adjoint differentiation carries the kernel of the symbol projection at \(N+b\) into the kernel at \(N\): a generator of index \(m\geq N+b\) is replaced by one of index \(m-b\geq N\). The product rule proves the same containment for its generated ideal. For \(q\geq0\), the kernel at \(N\) is preserved. This gives the continuous derivations on the inverse limit. For a finite Laurent current \(x(t)\), invariance of \(p_i\) gives the identity
+\[
+d p_i(A(t))([x(t),A(t)])=0
+\tag{CT.8}
+\]
+as a Laurent series, coefficient by coefficient; it is the same polynomial infinitesimal identity evaluated over the Laurent coefficient ring. A negative mode can raise the pole bound by a finite amount, so (CT.8) is read at that larger bound before restriction. A polynomial in invariant coefficients is lifted to larger pole bounds using those same equally indexed coefficients; (CT.8) holds on these compatible lifts. Formal positive tails affect any fixed polynomial through only finitely many modes. Consequently every finite polynomial in these completed invariant coefficients, and then every compatible inverse-limit tuple by continuity of these derivations, is invariant under all Laurent currents. Conversely a Laurent-current invariant tuple is in particular nonnegative-current invariant at every stage, so (CT.7) applies. This identifies the completed classical invariant ring with
+\[
+\varprojlim_N R[p_i(A)_r:r\geq-ND_i].
+\tag{CT.9}
+\]
+This is a statement about continuous current derivations on the inverse limit. A negative current is not asserted to preserve any single pole-bound stage.
+
+##### Every mode at the finite cutoff
+
+The universal normal expression of a basic state of energy \(D_i\) is a finite sum of words with \(q\leq D_i\) derivative-current factors. If its underlying negative-mode indices are \(-a_1,\ldots,-a_q\), then \(a_j\geq1\) and \(\sum a_j=D_i\). After taking a field coefficient, a term has current indices \(m_1,\ldots,m_q\) satisfying
+\[
+\sum_{j=1}^q m_j=n.
+\tag{CT.10}
+\]
+Indeed differentiating a current \(a_j-1\) times changes its power to \(t^{-m_j-a_j}\), and the product power is \(t^{-n-D_i}\). Reordering currents can only decrease the number of letters; a bracket replaces its two indices by their sum, and a central contraction requires their sum to be zero. Thus (CT.10) is preserved in every lower-length contribution.
+
+In a normally ordered term, negative currents occur to the left of nonnegative currents. A nonnegative index at least \(N\) can be moved to the far right through the other nonnegative indices: their brackets still have index at least \(N\), and no central term is possible. It then kills \(1_N\). Thus only terms with every \(m_j<N\) remain modulo \(I_{N,R}\). For a surviving term,
+\[
+m_j\geq n-(q-1)(N-1).
+\tag{CT.11}
+\]
+There are finitely many integer index lists between this lower bound and \(N-1\). This proves that each mode has a finite normally ordered representative at this cutoff, of PBW length at most \(D_i\). It also proves the exact vanishing
+\[
+S_{i,n}\in\widehat I_{N,R}
+\qquad\text{if }n>D_i(N-1).
+\tag{CT.12}
+\]
+The restriction \(N\geq1\) matters in the last bound: \(q(N-1)\leq D_i(N-1)\).
+
+At length \(D_i\), energy \(D_i\) forces every \(a_j=1\). The top normal-expression part is therefore the commutative product of current series prescribed by the leading invariant \(p_i\). The residue identification (CT.5) and (CT.10) give
+\[
+\sigma_{D_i}(S_{i,n}\bmod\widehat I_{N,R})
+=p_i(A)_{-n-D_i}.
+\tag{CT.13}
+\]
+For type A, the transpose in the trace pairing leaves characteristic coefficients unchanged, exactly as in the proof of (SL.C1). Every allowed mode \(n\leq D_i(N-1)\) has a nonzero independent degree-\(D_i\) symbol by (CT.7); disallowed modes have zero class by (CT.12), not merely a vanishing highest symbol.
+
+The cutoff dictionary is exact:
+
+| Homogeneous degree | Laurent coefficient allowed at pole bound \(N\) | Equally indexed central field mode |
+|---|---|---|
+| \(D_i\) | \(r\geq-ND_i\) | \(n=-r-D_i\leq D_i(N-1)\) |
+| Quadratic type A coefficient | \(r\geq-2N\) | \(n\leq2(N-1)\) |
+| Linear central coefficient | \(r\geq-N\) | \(n\leq N-1\) |
+
+*The top-symbol identification is (CT.13); the high-mode vanishing is (CT.12). At \(N=1\), only modes \(n\leq0\) survive, and the dual current series permits a simple pole. This cutoff retains the zero currents and is distinct from the ordinary vacuum quotient by all nonnegative currents. Increasing \(N\) admits finitely many additional negative Laurent coefficients for each basic degree.*
+
+##### Why the polynomial kernel is an ideal despite the left-module quotient
+
+The quotient \(M_{N,R}\) is not asserted to be an algebra: \(I_{N,R}\) is a left ideal. For an actual central element \(z\in\widehat A_R\), choose a finite representative \(a_N\in A_R\) of \(z1_N\). For \(h\in\mathfrak h_N\),
+\[
+h a_N1_N=h z1_N=z h1_N=0.
+\]
+Therefore \(h a_N\in I_{N,R}\), and multiplying on the left by arbitrary algebra elements proves
+\[
+I_{N,R}a_N\subseteq I_{N,R}.
+\tag{CT.14}
+\]
+Thus each such representative belongs to the right normalizer of the left ideal. Its image determines an \(A_R\)-module endomorphism on the cyclic quotient, by right multiplication on representatives. The actual central operator has the same value on every vector, because
+\(z(b1_N)=b(z1_N)=b a_N1_N\).
+
+For two central elements with representatives \(a_N,b_N\), their product on \(1_N\) is represented by \(b_Na_N\). Since the central operators commute, \(a_Nb_N\) gives the same class as well. Multiplying these finite representatives is legitimate by (CT.14), and its top symbol in (CT.2) is the ordinary commutative product of their symbols. Reordering a finite product produces only smaller-length brackets; killing indices at least \(N\) kills their symbols in (CT.2). A product of allowed generator symbols remains a nonzero polynomial in the independent coordinates (CT.7). Hence for a polynomial in the central modes,
+\[
+\sigma\bigl(P(S_{i,n})1_N\bigr)
+=P_{\rm top}\bigl(p_i(A)_{-n-D_i}\bigr),
+\tag{CT.15}
+\]
+where \(P_{\rm top}\) is its highest part for the weight assignment \(\deg S_{i,n}=D_i\). The right side is nonzero if that part is nonzero, over arbitrary \(R\) as well: algebraic independence is an injective polynomial-coordinate map, not a domain assumption on \(R\).
+
+Let \(\mathscr P_R=R[s_{i,n}:n\in\mathbb Z]\) be the ordinary polynomial algebra, with only finite polynomials allowed. Its evaluation in the actual central modes, followed by \(z\mapsto z1_N\), has kernel exactly
+\[
+J_{N,R}=(s_{i,n}:n>D_i(N-1)).
+\tag{CT.16}
+\]
+Containment of this ideal in the kernel follows from (CT.12) and centrality: multiplying a vanishing central mode by any other central polynomial still kills \(1_N\). For the reverse inclusion, first remove the disallowed variables. A nonzero remaining polynomial has nonzero highest weighted part and hence nonzero class by (CT.15). Thus
+\(\mathscr P_R/J_{N,R}=R[s_{i,n}:n\leq D_i(N-1)]\) injects into \(M_{N,R}\), with its algebra structure supplied by the central operators and their normalizers, not by all of \(M_{N,R}\).
+
+##### Finite decreasing-degree exhaustion
+
+Let \(u\in Z(\widehat A_R)\), and fix \(N\). Its image \(u_N\in M_{N,R}\) is a finite vector with some finite PBW degree \(d\), by the CW input. Nonnegative currents preserve \(I_{N,R}\); on the quotient their adjoint action is therefore well defined. Projection of the equation \([x_q,u]=0\), \(q\geq0\), gives adjoint invariance of \(u_N\). Its top symbol lies in (CT.7), so is a finite polynomial in the coefficients \(p_i(A)_r\).
+
+This top symbol is homogeneous of PBW degree \(d\). Since the variables in (CT.7) are independent and homogeneous of degrees \(D_i\), take the uniquely corresponding weighted-degree-\(d\) polynomial \(P_d\) in the allowed modes, using \(r=-n-D_i\). By (CT.13) and (CT.15), its evaluation has the same top symbol. Consequently
+\[
+(u-P_d(S))_N\in F_{d-1}M_{N,R}.
+\tag{CT.17}
+\]
+The subtracted element is actually central, so the same invariance argument applies to its remaining top symbol. Repeat. The nonnegative integer degree strictly decreases at every nonzero step. Degree zero is a scalar in \(R\). After finitely many steps,
+\[
+u_N=P_N(S)1_N,
+\qquad
+P_N\in R[s_{i,n}:n\leq D_i(N-1)].
+\tag{CT.18}
+\]
+Uniqueness follows from (CT.16). This argument is repeated for each finite cutoff, not for a global filtration degree of \(u\). An element of \(\widehat A_R\) need not have any uniform PBW bound.
+
+Compatibility of the classes \(u_N\) and the exact kernel (CT.16) imply compatibility of their unique polynomials: the restriction of \(P_{N+1}\) sets the new high modes to zero and equals \(P_N\). This gives an injective map
+\[
+Z(\widehat A_R)\longrightarrow
+\varprojlim_N\mathscr P_R/J_{N,R}.
+\tag{CT.19}
+\]
+Injectivity also follows immediately from separatedness of the CW completion.
+
+Conversely, take a compatible tuple \((P_N)\) in that limit. Evaluate each finite polynomial in the actual central modes, obtaining \(z_N\in Z(\widehat A_R)\). By compatibility and (CT.16),
+\(z_{N+1}-z_N\in\widehat I_{N,R}\). More generally \(z_M-z_N\in\widehat I_{N,R}\) for \(M\geq N\). Thus these finite central polynomial approximants are Cauchy in the specified topology and have a unique limit \(z\in\widehat A_R\). Every fixed-current commutator is continuous and vanishes on every approximant, so vanishes on \(z\). By the CW centrality criterion, \(z\) is central. Its image at cutoff \(N\) is exactly \(P_N(S)1_N\). This proves surjectivity of (CT.19), and proves (CT.4).
+
+On the center, each \(\widehat I_{N,R}\cap Z(\widehat A_R)\) is an ideal. Under (CT.4) it is the kernel of projection to \(\mathscr P_R/J_{N,R}\). Hence the isomorphism and its inverse preserve these neighborhood bases: it is a topological algebra isomorphism, not merely a bijection of underlying sets. The proof has established that the center is the closure of finite polynomials in the universal central modes.
+
+##### Type A reductive factors and scalar variables
+
+For a direct sum, the semisimple basic invariant lists concatenate and the center contributes a degree-one list. The critical center form is zero, so every central current mode is already central in the algebraic enveloping algebra. Its cutoff is \(m<N\), exactly (CT.12) with degree one. The classical coefficient-ring proof and the universal-mode proof then apply to the whole direct sum at once. This establishes (CT.4) for all the stated split type A reductive Lie algebras. No completed tensor product is replaced by an ordinary tensor product: the common pole-bound inverse limit is the specified topology on the entire list.
+
+In particular the matrix algebra \(\mathfrak{gl}_n\) has scalar current \(c=I/n\), as in (TR.2), and a traceless factor. On symbols write \(A=F+c\mathbf1\). The elementary identity
+\(\det(z\mathbf1+A)=\det((z+c)\mathbf1+F)\) gives, by the ordinary binomial expansion,
+\[
+e_i(A)=\sum_{j=0}^{i}\binom{n-j}{i-j}c^{i-j}e_j(F),
+\qquad e_0(F)=1,\quad e_1(F)=0.
+\tag{CT.20}
+\]
+This is an invertible triangular polynomial change: \(e_1(A)=nc\) determines \(c\), and then each \(e_i(F)\) is solved successively with coefficient one. The identities hold for Laurent series and their finite coefficient polynomials at each pole bound. Hence the raw matrix characteristic coefficients also give the independent classical list of degrees \(1,2,\ldots,n\). Applying the universal construction of §3.6.2 to the raw invariant determinant states of (SL.L1)–(SL.L23) before the traceless quotient gives the version of (CT.4) on their raw modes. Equivalently, the semisimple modes and the degree-one scalar modes are always a proved generator list under the stated inputs. The normalization of the latter is \(c=I/n\), so the trace variable is \(n\) times that coefficient, as in (TR.2)–(TR.24).
+
+##### Completed coefficient extension and the continuous functor
+
+The coefficient-base statement is
+\[
+Z(\widehat A_R)
+\simeq\varprojlim_N
+\left(R\otimes_k k[s_{i,n}:n\leq D_i(N-1)]\right).
+\tag{CT.21}
+\]
+This is the completed coefficient extension of the center over \(k\), with completion defined by these stage quotients. It is not an assertion that ordinary \(R\otimes_k-\) commutes with the inverse limit. Its proof above is relative over \(R\): the classical kernels commute with coefficient extension by (GJ.11)–(GJ.13), PBW quotients remain free, normal-expression identities are relative, and no step divides by a coefficient of \(R\). Nilpotents are retained throughout.
+
+To specify its coefficient functor, give \(R\) the discrete topology. A continuous unital \(k\)-algebra homomorphism from the completed center over \(k\) to \(R\) kills an open neighborhood ideal, hence factors through some stage in (CT.4). A stage homomorphism chooses arbitrary coefficients in \(R\) for all its allowed variables. Under \(r=-n-D_i\), these are the coefficients of Laurent series
+\[
+s_i(t)\in t^{-ND_i}R[[t]],
+\qquad
+\operatorname{Hom}_{\rm cont}\bigl(Z(\widehat A_k),R\bigr)
+\simeq\varinjlim_N\prod_i t^{-ND_i}R[[t]].
+\tag{CT.22}
+\]
+This is a coefficient ind-functor with bounded poles at each stage. Increasing \(N\) sets newly available negative coefficients to zero on the inclusion of an earlier stage. All \(D_i\) are positive and there are finitely many basic factors, so these common bounds are cofinal among all finite pole bounds on the lists. One may append the density symbols \((dt)^{D_i}\) for their leading classical weights; the full quantum coordinate laws include the lower terms already proved in §3.4, rather than only this highest-weight notation.
+
+Equation (CT.22) concerns continuous characters into a discrete ordinary ring. It does not identify the ordinary \(\operatorname{Spec}\) of the underlying abstract inverse-limit algebra, with all possible discontinuous characters, with that ind-functor. Nor is the completed center a ring of arbitrary formal series in the modes already surviving at \(N=1\): each finite-cutoff expression must still be a finite polynomial. Completion permits infinite sums only when their tails vanish at every prescribed cutoff.
+
+The exact proof mechanism is
+\[
+\begin{array}{ccc}
+\text{central }u\text{ in the CW completion}
+ &\longrightarrow&u_N\text{ of finite PBW degree}\\
+ &&\downarrow\ \text{nonnegative-current top symbol, (CT.7)}\\
+\text{compatible polynomials }(P_N)
+ &\longleftarrow&\text{finite degree descent using (CT.13)–(CT.17)}\\
+\downarrow\ \text{central Cauchy approximants}
+ &&\\
+Z(\widehat A_R)\simeq\varprojlim_N\mathscr P_R/J_{N,R}.&&
+\end{array}
+\tag{CT.23}
+\]
+*Finite PBW degree is used only on the right, at an individual cutoff. Normalizer representatives supply its polynomial products; exact independence supplies compatibility. Completion and continuity supply the final central limit.*
+
+Applying the preceding CW/UC constructions, the theorem proves the full completed center for the stated type A and zero-form central factors at the exact classical structural premises retained above. It does not supply chiral or Poisson structures, Satake compatibility, a derived-family comparison, non-type-A basic lifts, or the geometric central-line convention needed by localization. Those remain their separate mathematical statements.
+
+#### 3.6.4. The complete abelian center at an arbitrary fixed form
+
+Now let \(\mathfrak z\) be a finite-dimensional abelian Lie algebra over \(k\), with any fixed symmetric form \(\kappa\). Its affine brackets are
+\[
+[z_j,y_m]=j\kappa(z,y)\delta_{j+m,0}.
+\tag{HC.1}
+\]
+Use \(A_R,I_{N,R},M_{N,R},\widehat A_R\) from (CW.1)–(CW.6), with \(\mathfrak g=\mathfrak z\), and put \(W=\operatorname{rad}(\kappa)\). The fixed form extends to \(R\). Choose a basis of \(\mathfrak z\) and its ordered modes. As an \(R\)-module, \(M_{N,R}\) has the polynomial basis in all mode variables \(z_j\) with \(j<N\). This polynomial identification initially describes only a vector space. When \(\kappa\ne0\), the products of paired positive and negative modes in \(A_R\) still have the scalar commutator (HC.1).
+
+**Commutators are exact derivatives in the quotient.** Fix \(j<N\), \(j\ne0\), and \(y\in\mathfrak z_R\). Right commutation defines
+\[
+\partial_{y,j}:M_{N,R}\to M_{N,R},
+\qquad
+a+I_{N,R}\longmapsto[a,y_{-j}]+I_{N,R}.
+\tag{HC.2}
+\]
+It is well defined. For a high generator \(z_m\), \(m\geq N\), the bracket \([z_m,y_{-j}]\) vanishes because \(m\ne j\). Thus
+\([az_m,y_{-j}]=[a,y_{-j}]z_m\in I_{N,R}\).
+This proves preservation of the left ideal, without imposing two-sidedness.
+
+On a basis letter with index \(i<N\), its right commutator is
+\[
+[z_i,y_{-j}]=j\kappa(z_i,y)\delta_{i,j}.
+\]
+The commutator product rule removes one matching letter at a time. Its scalar coefficients commute with every remaining letter, and removing a letter from an ordered monomial keeps that monomial ordered. Therefore, if \(z_1,\ldots,z_q\) is a basis and \(Z_{a,j}\) is its mode variable,
+\[
+\partial_{y,j}
+=j\sum_{a=1}^q\kappa(z_a,y)
+       \frac{\partial}{\partial Z_{a,j}}
+\quad\text{on }M_{N,R}.
+\tag{HC.3}
+\]
+The sign in (HC.3) belongs to \([a,y_{-j}]\); the left commutator \([y_{-j},a]\) is its negative.
+
+Every zero mode \(z_0\) commutes with every current at every form, since the coefficient in (HC.1) is zero. It is a nonzero PBW variable in every \(M_{N,R}\). For the nonzero modes, choose a complement \(C\) to \(W\) in \(\mathfrak z\). The proof in (RV.9)–(RV.11) gives a nondegenerate restriction on \(C\) and dual elements \(\eta_a\) for a basis \(c_a\). It follows from (HC.3) that
+\[
+\partial_{\eta_a,j}=j\,\partial_{C_{a,j}}
+\qquad(j<N,\ j\ne0).
+\tag{HC.4}
+\]
+The integer \(j\), positive or negative, is a unit over every ordinary \(R\).
+
+The coefficient proof is elementary over \(R\). If \(\partial_Xp=0\) for \(p=\sum_{d=0}^D p_dX^d\), then each \(d p_d=0\), and integer invertibility forces \(p_d=0\) for \(d\geq1\). A polynomial uses finitely many variables, so imposing (HC.4) for every indicated index removes every \(C\)-direction at a nonzero mode. Hence their joint kernel is exactly
+\[
+P_{N,R}
+=\operatorname{Sym}_R\left(
+\mathfrak z_{0,R}\oplus
+ W_R\otimes_R
+ \bigoplus_{\substack{j<N\\j\ne0}}Rt^j
+\right).
+\tag{HC.5}
+\]
+Here \(\mathfrak z_{0,R}\) is a copy of the entire \(\mathfrak z_R\) at mode zero. The second summand excludes zero, so radical zero modes are counted once. The map from this polynomial algebra into \(M_{N,R}\) is injective by its PBW basis.
+
+In fact these variables have mutually central representatives in \(A_R\). The zero modes commute by (HC.1), and every mode of \(W_R\) commutes because the form pairs it with zero. Thus \(P_{N,R}\) has its genuine ordinary polynomial multiplication. Its transition to \(P_{L,R}\), \(L<N\), sets the radical variables of index at least \(L\) to zero and retains the zero modes. This multiplication is a feature of the central subalgebra just exhibited, not an algebra structure on the ambient \(M_{N,R}\).
+
+**Necessity and sufficiency in the completion.** If \(u\in Z(\widehat A_R)\), it commutes with every \(y_{-j}\). Passing its commutator to \(M_{N,R}\) is legitimate for \(j<N\), because (HC.2) preserves \(I_{N,R}\) and extends continuously. Equations (HC.3)–(HC.5) therefore imply \(u_N\in P_{N,R}\). These components are compatible.
+
+Conversely, a compatible family \(p_N\in P_{N,R}\) is an element of \(\widehat A_R\). Choose its representative in the polynomial algebra of the central modes of \(A_R\). Each representative commutes with every polynomial current, and the representatives converge to the given family. Left and right current multiplication are continuous by (CW.13), so their limit commutes with every current. The center criterion (CW.16) then makes this family central. Products agree with the polynomial transition products: at each quotient a central representative of \(p_N\) acts on a central representative of \(q_N\); their difference from any later representative belongs to \(I_{N,R}\), and its product with the central \(q_N\) remains in \(I_{N,R}\). Equivalently one can apply the action construction (CW.12) and commute these actual central representatives.
+
+We have consequently proved an isomorphism of complete algebras
+\[
+\boxed{\quad
+Z(\widehat A_R)
+=\varprojlim_{N\geq1}
+\operatorname{Sym}_R\left(
+\mathfrak z_{0,R}\oplus
+ W_R\otimes_R
+ \bigoplus_{\substack{j<N\\j\ne0}}Rt^j
+\right).
+\quad}
+\tag{HC.6}
+\]
+The topology is the induced quotient topology. The radical and the PBW variables in this formula extend from \(k\), and the integer-coefficient argument proves it directly over every ordinary \(R\), including nonreduced rings. It is also precisely the completed scalar extension of the center computed over \(k\), with these specified polynomial quotients. It need not be its ordinary tensor product with \(R\).
+
+If \(\kappa\) is nondegenerate, \(W=0\), and (HC.6) is the ordinary polynomial algebra
+\[
+Z(\widehat A_R)=\operatorname{Sym}_R(\mathfrak z_{0,R}).
+\tag{HC.7}
+\]
+It does not reduce to \(R\): all central zero modes survive. Nor does the completion permit an arbitrary formal power series in those zero modes. Every quotient in (HC.7) is the same polynomial algebra and has identity transition, so its inverse limit contains only polynomials.
+
+At the abelian critical form \(\kappa=-\tfrac12\operatorname{Kil}_{\mathfrak z}=0\), the radical is \(\mathfrak z\). The zero and nonzero summands in (HC.6) combine, giving
+\[
+Z(\widehat A_{0,R})
+=\widehat A_{0,R}
+=\varprojlim_N
+ \operatorname{Sym}_R\left(
+ \mathfrak z_R\otimes_R\bigoplus_{j<N}Rt^j
+ \right).
+\tag{HC.8}
+\]
+All currents are central in this case. For the central factor of a split reductive Lie algebra, the same zero Killing restriction is the direct proof in (RV.18); the reductive decomposition itself retains its structural premise.
+
+**The vacuum quotient removes the zero modes.** The abelian vacuum imposes the stronger relations
+\[
+V_{\kappa,R}=A_R/A_R\mathfrak z_R[t],
+\qquad z_jv=0\quad(j\geq0).
+\tag{HC.9}
+\]
+It is smooth, so the completion acts on it. For a central family \(u=(p_N)\), use \(N=1\) to compute \(uv\). The component \(p_1\) has only the full zero-mode variables and negative radical-mode variables. Every zero mode kills \(v\); thus its vacuum image is
+\[
+p_1\big|_{\mathfrak z_0=0}
+\in\operatorname{Sym}_R(t^{-1}W_R[t^{-1}]).
+\tag{HC.10}
+\]
+This polynomial acts as multiplication on the vacuum and commutes with all currents. The induction argument (K2.3) and the exact derivative proof (RV.9)–(RV.11) show that every vacuum endomorphism arises in this way. Therefore the natural map is a surjective algebra map
+\[
+Z(\widehat A_R)\longrightarrow
+\operatorname{End}_{\widehat{\mathfrak z}_{\kappa,R}}(V_{\kappa,R})
+=\operatorname{Sym}_R(t^{-1}W_R[t^{-1}]).
+\tag{HC.11}
+\]
+Its kernel is the closed ideal generated inside (HC.6) by every zero mode and every positive radical mode. To check this description, a family in the kernel has, in each finite quotient, a central polynomial whose value after setting those modes to zero is zero. Polynomial coefficient uniqueness places that representative in their ordinary polynomial ideal. Its representatives then converge into the closure of that ideal. Conversely these nonnegative modes kill the vacuum, and evaluation on \(v\) is continuous by (CW.7); their closed ideal lies in the kernel.
+
+The difference between the completed center and the vacuum algebra is explicit:
+
+| Central form | Completed center | Vacuum endomorphism algebra |
+|---|---|---|
+| Nondegenerate | \(\operatorname{Sym}_R(\mathfrak z_0)\) | \(R\) |
+| Arbitrary radical \(W\) | The inverse limit in (HC.6), with all zero modes | \(\operatorname{Sym}_R(t^{-1}W_R[t^{-1}])\) |
+| Critical form \(0\) | Every current, completed in the positive-mode direction as in (HC.8) | \(\operatorname{Sym}_R(t^{-1}\mathfrak z_R[t^{-1}])\) |
+
+*The quotient removes every nonnegative mode, including all \(z_0\). The remaining negative radical modes are exactly the abelian vacuum invariants of (RV.11).*
+
+Finally, the coordinate automorphisms constructed in (CW.22)–(CW.23) preserve (HC.6). They fix \(z_0\), and on a radical current are exactly
+\[
+\sigma_\phi(w_j)=w\phi(t)^j,
+\qquad w\in W_R,\quad j\in\mathbf Z,
+\tag{HC.12}
+\]
+with the positive tail interpreted in the completion. A Laurent substitution has finite negative part and a coefficient-finite positive tail. The cofinal bounds in both directions make (HC.12) a continuous automorphism of the displayed center. It also preserves the vacuum relations, since \(\phi(t)^j\in R[[t]]\) for \(j\geq0\). Hence (HC.11) is coordinate equivariant. On its negative-mode generator \(w_{-r-1}v\), the residue calculation (RV.25) gives the already proved inverse one-form coefficient rule
+\[
+w_{-r-1}v\longmapsto
+\sum_{a\geq0}[t^r]\psi'(t)\psi(t)^a\,w_{-a-1}v,
+\qquad \psi=\phi^{-1}.
+\tag{HC.13}
+\]
+The sum is finite if \(\psi(0)\) is nilpotent, as proved in (RV.24)–(RV.27). This verifies the compatibility of the complete central algebra with its ordinary vacuum coefficient quotient.
+
+The construction and the entire abelian completed-center calculation are proved here. They establish neither the presentation of the completed semisimple center nor its geometric, chiral, Poisson, Satake or derived comparisons. Those assertions, and all intrinsic reductive-oper and global central-convention questions, retain their separate mathematical scope.
+
+#### 3.6.5. Laurent coefficients, coordinates and restriction to the vacuum
+
+We now give the coefficient interpretation and coordinate action of the completed type A center. We retain the split root-data and scalar-oper foundations stated in §§1–2. Let the basic degrees of one traceless matrix factor be \(D_i=i\), \(2\le i\le n\). Write its normalized scalar operator on the punctured disc as
+\[
+L=\partial_t^n+\sum_{i=2}^n s_i(t)\partial_t^{n-i},
+\qquad s_i(t)=\sum_{r\in\mathbb Z}s_{i,r}t^r\in R((t)).
+\tag{PC.1}
+\]
+Each coefficient series has a finite negative part. Since there are finitely many basic indices, the subfunctors
+\[
+\mathcal O_N(R)=\{(s_i):s_i\in t^{-ND_i}R[[t]]\},
+\qquad N\ge1,
+\tag{PC.2}
+\]
+are cofinal: every tuple belongs to one of them. Their coordinate rings and transition maps are
+\[
+P_{N,R}=R[s_{i,r}:r\ge-ND_i],\qquad
+P_{N+1,R}\longrightarrow P_{N,R},\quad
+s_{i,r}\longmapsto
+\begin{cases}s_{i,r}&r\ge-ND_i,\\0&r<-ND_i.\end{cases}
+\tag{PC.3}
+\]
+Indeed assigning the displayed variables arbitrarily is precisely assigning the corresponding formal series. The transition is restriction to the smaller pole-bound functor. In particular it is a surjection of polynomial rings, rather than an inclusion of their variable lists.
+
+Give \(P_R=\varprojlim_NP_{N,R}\) the inverse-limit topology, with kernels of its projections as a neighborhood basis of zero. A continuous unital \(R\)-algebra homomorphism from \(P_R\) to a discrete \(R\)-algebra \(R'\) factors through some \(P_{N,R}\): continuity of the inverse image of zero places one of these kernels in its kernel, and the projection to \(P_{N,R}\) is surjective. Surjectivity follows by successively extending a polynomial in the existing variables and setting newly admitted variables to zero. Conversely every map through such a projection is continuous. Consequently
+\[
+\operatorname{Hom}_{R\text{-alg}}^{\mathrm{cont}}(P_R,R')
+ =\underset{N}{\operatorname{colim}}\,\mathcal O_N(R').
+\tag{PC.4}
+\]
+Equality here means the evident bijection of sets, natural in the ordinary coefficient algebra. No claim about all discontinuous characters of the abstract inverse-limit ring is needed. An element of \(P_R\) is a compatible sequence of finite polynomials; its polynomial degree may grow with \(N\).
+
+Let \(S_{i,m}\) denote the completed central modes of §3.6.2, with field convention
+\(S_i(z)=\sum_mS_{i,m}z^{-m-D_i}\). The completed-center theorem of §3.6.3 and the index change
+\[
+\Phi_R:S_{i,m}\longmapsto s_{i,-m-D_i}
+\tag{PC.5}
+\]
+identify its cutoff ring with (PC.3), because
+\[
+m\le D_i(N-1)\quad\Longleftrightarrow\quad
+-m-D_i\ge-ND_i.
+\tag{PC.6}
+\]
+Thus \(\Phi_R:Z(\widehat A_{\mathrm{crit},R})\xrightarrow{\sim}P_R\) is an isomorphism of topological algebras. The multiplication is the central multiplication constructed using the smooth cyclic test modules in §3.6.1. It is not obtained by declaring their left-module quotients to be algebras. The finite polynomial independence and finite-degree exhaustion in §3.6.3 prove (PC.5) at each cutoff, hence prove the inverse-limit isomorphism.
+
+For products of traceless matrix factors, take all their coefficient lists and use a common \(N\); their finitely many pole bounds have a common bound. At a zero-form central factor, add the coefficient series of the framed Laurent one-forms of §3.5.5. These have degree one and the same index change \(m=-r-1\). The split type A reductive comparison of §3.6.3 therefore gives the product of the adjoint scalar-oper coefficient functors and these framed central Laurent coefficient functors. The central framing and root-datum boundary of (CF.10)–(CF.13) remain in force. For \(\mathfrak{gl}_n\), one may instead use the raw scalar coefficients \(s_1,\ldots,s_n\): the finite triangular identities (TR.14)–(TR.17) remain valid for Laurent coefficients and identify the two descriptions. The common bounds in (PC.2) are cofinal under these identities. Differentiation increases the pole order of a series by at most one, and each of the finitely many polynomial expressions has a finite pole bound; this proves continuity in both directions.
+
+Ordinary coefficient extension uses the completed expression
+\[
+P_R=\varprojlim_N(R\otimes_kP_{N,k}),
+\tag{PC.7}
+\]
+and the corresponding expression for the center proved in §3.6.3. This formula applies to nonflat and nonreduced \(R\). It does not assert that ordinary tensor product commutes with this infinite inverse limit.
+
+We next prove continuity of coordinate substitution on the actual affine completion. Let \(\phi(t)=b+t a(t)\), where \(a(0)\) is a unit and \(b^\nu=0\). Substitution and its inverse on Laurent series were constructed in §1.1.8. If \(M\ge\nu\), the finite binomial expansion shows
+\[
+\phi(t)^M\in t^{M-\nu+1}R[[t]],
+\qquad
+\sigma_\phi(t^M\mathfrak g[[t]])
+ \subset t^{M-\nu+1}\mathfrak g[[t]].
+\tag{PC.8}
+\]
+The second inclusion also follows term by term for a formal current: at a fixed output coefficient only finitely many input coefficients contribute. In particular, given \(N\), taking \(M\ge N+\nu-1\) places the substituted positive tail inside the \(N\)-th positive tail. The inverse coordinate has a nilpotent constant as well, so the same argument applies to it. The residue calculation (RC.C7) says that substitution preserves the affine cocycle. Therefore it extends to mutually inverse continuous automorphisms of \(\widehat A_{\kappa,R}\), and consequently of its center. These conclusions use the completion and smooth action proved in §3.6.1.
+
+The density transport of §3.4.2 is also defined on (PC.1). A Laurent series has finitely many negative powers; nilpotent substitution of each such power is the finite inverse expansion of §1.1.8. Its nonnegative part contributes finitely to any fixed output coefficient, because powers of the nilpotent constant eventually vanish. Multiplication by units and the finitely many derivatives in (SC.O7)–(SC.O10) preserve finite pole order. The square-root descent in (SC.O4)–(SC.O6) is unchanged: its free rank-two extension and its two sign choices concern the unit derivative of the coordinate, not the presence of Laurent coefficients. Thus the exact scalar law extends to every ordinary punctured-disc coefficient tuple.
+
+A pointed coordinate preserves \(\mathcal O_N\). In (SC.O10), the term involving \(s_j\) is multiplied by a regular coefficient and a unit derivative to its \(j\)-th power, and \(j\le i\); its pole order is at most \(Nj\le Ni\). The term from the monic leading coefficient is regular. A nilpotent translation with nilpotence exponent \(\nu\) increases a pole bound by at most \(\nu-1\), as follows directly from the finite binomial expansion of a negative power. It therefore carries \(\mathcal O_N\) into \(\mathcal O_{N+\nu-1}\). These bounds prove continuity of the scalar coordinate action on the inverse-limit ring.
+
+The universal coordinate calculation in §3.6.2 now provides the part that a vacuum-only calculation would not supply: for every Fourier mode, including those which vanish on the vacuum, the exact determinant law is
+\[
+D_lS_{i,m}=(m-(D_i-1)l)S_{i,m+l}
+ +\sum_{j<i}C_{ij}(l+1)_{D_i-D_j+1}S_{j,m+l},
+\qquad l\ge0.
+\tag{PC.9}
+\]
+Here \(C_{ij}\) are the constants of (SL.X12), \((a)_d=a(a-1)\cdots(a-d+1)\), \(S_0(z)=1\), and hence \(S_{0,m}=\delta_{m,0}\). The traceless coefficient \(S_1\) is zero; the raw matrix case retains it. Translation and scaling are
+\[
+D_{-1}S_{i,m}=(m+D_i-1)S_{i,m-1},\qquad
+\sigma_{t\mapsto at}(S_{i,m})=a^mS_{i,m}.
+\tag{PC.10}
+\]
+The first equality follows by taking coefficients in the universal identity \(D_{-1}S_i(z)=-S_i'(z)\). The second follows from the total current-mode index of each homogeneous normal-field term, proved in §3.6.2. This includes the lower PBW terms: their derivatives change their powers of the field variable and retain the total current-mode index.
+
+For completeness, taking the coefficient of \(z^{-m-D_i}\) in the Laurent scalar law
+\[
+\delta_v s_i=-v s_i'-D_iv's_i
+ +\sum_{j<i}C_{ij}v^{(D_i-D_j+1)}s_j
+\tag{PC.11}
+\]
+with \(v=z^{l+1}\) gives exactly (PC.9). In its first term, the contributing exponent is \(-m-l-D_i\), giving \(m+l+D_i-D_i(l+1)=m-(D_i-1)l\). In a term with index \(j\), the power of the derivative of \(v\) is \(l-D_i+D_j\), so its contributing mode is again \(m+l\). Translation and unit scaling likewise give (PC.10). Thus the generator map (PC.5) intertwines the exact infinitesimal laws, with the inverse-coordinate convention on coefficient functions.
+
+We prove that this equality integrates on the completed rings. For \(l>0\), the derivation (PC.9) descends to the cutoff polynomial ring: an index \(m>D_i(N-1)\) stays beyond the permitted cutoff in its same-degree term, and every lower-degree term has a smaller permitted bound. Repeated application to a permitted generator increases its mode index by \(l\) at each nonconstant step and never increases its degree index. After finitely many steps it vanishes at this cutoff. An anomalous constant term has zero subsequent derivative. The product rule then proves local nilpotence on each finite polynomial. Hence the positive coordinate flow acts there by the finite sum
+\[
+\exp(cD_l)f=\sum_{q\ge0}\frac{c^q}{q!}D_l^qf.
+\tag{PC.12}
+\]
+On affine currents this is the actual flow substitution: both solve the coefficient recursion obtained from \(t^{l+1}\partial_t\), starting with the same Laurent monomial. On each finite PBW representative modulo the cutoff, that recursion is finite. On scalar coefficients it is the actual inverse density flow, by differentiating (SC.O4); the resulting recursion has the same initial value and divides only by positive integers. Thus (PC.12) is the actual action on both sides.
+
+The successive positive-flow factorization (TC.A8) still suffices, although completed central elements have no common finite energy bound. At a fixed cutoff their images are finite polynomials. On a generator \(S_{i,m}\), all \(l>D_i(N-1)-m\) vanish in (PC.9), including its lower-index terms. The finitely many earlier positive flows can only increase mode indices and lower degree indices, so this bound remains sufficient for their resulting finite expressions. Alternatively a coordinate whose first new term has arbitrarily high order acts trivially on any fixed finite PBW representative modulo \(I_N\): a changed factor acquires that order in its current index; commuting it past the finitely many factors to its right leaves an index at least \(N\), once the order exceeds the sum of their negative indices and the original factor's negative index. No central contraction can then occur. This proves directly that the successive flows equal actual substitution at every required cutoff.
+
+A unit scaling is handled by (PC.10). A nilpotent translation acts by the finite sum \(\exp(bD_{-1})\), since \(b^\nu=0\); the binomial formula on Laurent monomials and the product rule prove equality with actual substitution. Factoring every continuous coordinate into these three kinds of substitutions, as in §1.1.8, now proves full ordinary equivariance:
+\[
+\begin{array}{ccc}
+Z(\widehat A_{\mathrm{crit},R})&\xrightarrow{\ \Phi_R\ }&P_R\\
+{\scriptstyle \sigma_\phi}\downarrow&&\downarrow{\scriptstyle f\mapsto f\circ\mathcal P_{\phi^{-1}}}\\
+Z(\widehat A_{\mathrm{crit},R})&\xrightarrow{\ \Phi_R\ }&P_R.
+\end{array}
+\tag{PC.13}
+\]
+*The horizontal maps match the Fourier index \(m\) with the Laurent coefficient index \(-m-D_i\). Their cutoff bounds agree by (PC.6). The universal mode identities (PC.9)–(PC.10), proved in §3.6.2, and the finite integration (PC.12) prove this square for every ordinary coordinate, including nilpotent translations. The proof is cutoff by cutoff and requires no uniform polynomial-degree bound.*
+
+For central Laurent one-forms, the current substitution and residue pairing give directly the inverse one-form law of (RV.24) and (RV.30). This proof applies to Laurent series by the same finite nilpotent substitution. Products therefore satisfy (PC.13), and the raw \(\mathfrak{gl}_n\) description satisfies it by the continuous Laurent extension of the shift identities (TR.14)–(TR.23).
+
+Finally restrict central operators to the algebraic vacuum. Every vector in it is smooth, so the action of §3.6.1 defines a homomorphism to its affine endomorphism algebra. The universal creation identity in §3.6.2 gives
+\[
+S_{i,m}v=0\ (m>-D_i),\qquad
+S_{i,-D_i-r}v=\frac{T^rw_i}{r!}\ (r\ge0).
+\tag{PC.14}
+\]
+Since these modes commute with every current, their vacuum values determine their full vacuum operators by (K2.3). The polynomial independence and exhaustion of (SL.C1), or their reductive version (TR.19), therefore give the surjection
+\[
+Z(\widehat A_{\mathrm{crit},R})\longrightarrow
+\operatorname{End}_{\widehat{\mathfrak g}_{\mathrm{crit},R}}(V_R),
+\quad S_{i,-D_i-r}\longmapsto A_{i,r}.
+\tag{PC.15}
+\]
+Its kernel is the closed ideal topologically generated by the modes \(S_{i,m}\) with \(m>-D_i\). Here is an explicit proof of this kernel statement. Let \(K_N\) be the kernel of the projection to the cutoff polynomial ring. The closed ideal in question contains every \(K_N\): the image of an element of \(K_N\) at a larger cutoff is a finite polynomial in which every term contains a newly admitted generator, all of which have mode index \(>D_i(N-1)\ge0>-D_i\); these expressions converge to the element. Modulo \(K_1\), setting the remaining finitely bounded high-mode variables to zero gives the ordinary free ring \(R[S_{i,-D_i-r}:r\ge0]\). Its independence in the vacuum proves that no further kernel exists. Thus the quotient is an ordinary polynomial ring, even though the original center is complete.
+
+The coefficient meaning is restriction from Laurent tuples to regular tuples, setting all negative Laurent coefficients to zero. Combining (PC.5) and (PC.15) gives
+\[
+\begin{array}{ccc}
+Z(\widehat A_{\mathrm{crit},R})&\xrightarrow{\ \Phi_R\ }&P_R\\
+\downarrow&&\downarrow{\scriptstyle s_{i,r}=0\ (r<0)}\\
+\operatorname{End}_{\widehat{\mathfrak g}_{\mathrm{crit},R}}(V_R)
+&\xrightarrow{\ (TC.A9),\ (CF.12)\ }&R[s_{i,r}:r\ge0].
+\end{array}
+\tag{PC.16}
+\]
+*The vertical maps kill exactly the negative Laurent coefficients, whose Fourier indices are \(m>-D_i\). The lower map is the already proved ordinary vacuum comparison; the upper map is the full type A completed-center comparison. Creation (PC.14) and polynomial independence prove commutativity and the kernel. The regular coefficient functor is stable under the full ordinary continuous coordinate group, including nilpotent translations, so this square is coordinate equivariant as well.*
+
+The following cases show what the vacuum forgets. In the abelian rows, the coefficient form is fixed over \(k\), and the completed-center descriptions are those proved in §3.6.4.
+
+| Current algebra and fixed form | Completed central variables | Variables surviving on the vacuum |
+| --- | --- | --- |
+| \(\mathfrak{sl}_n\), \(-n\operatorname{tr}\) | \(S_{i,m}\), all \(m\in\mathbb Z\), completed with \(m\le i(N-1)\) | \(S_{i,-i-r}=A_{i,r}\), \(r\ge0\) |
+| \(\mathfrak{gl}_n\), \(-n\operatorname{tr}(XY)+\operatorname{tr}(X)\operatorname{tr}(Y)\) | Raw \(S_{i,m}\), \(1\le i\le n\), with the same degree-dependent cutoffs | Raw divided determinant coefficients, \(r\ge0\) |
+| Abelian \(\mathfrak z\), zero form | All \(z_m\), including \(z_0\), completed by upper mode cutoff | All negative \(z_m\); every nonnegative mode vanishes |
+| Abelian \(\mathfrak z\), nondegenerate form | Ordinary \(\operatorname{Sym}_R(\mathfrak z_0)\) | Only scalar operators; the zero modes vanish |
+
+*The difference in the last two rows comes from the paired nonzero modes, not from the zero modes. Zero modes are central for every abelian form. The exact center at an intermediate radical is (HC.1)–(HC.12); its vacuum restriction retains precisely the negative radical modes by (RV.11).*
+
+These arguments prove the full smooth completed type A center and its ordinary punctured-disc coefficient comparison, at the explicit finite invariant-theory and scalar-oper foundations already stated. They do not supply basic quantum lifts in other types, a chiral or Poisson comparison, a Satake construction, a derived-family comparison, or the intrinsic and global central-convention comparisons of §3.5.3. Those retain their distinct proof obligations.
 
 ## 4. The exact center theorem (K4)
 
@@ -5158,7 +6300,7 @@ The center statement is formulated in Frenkel's [*Lectures on the Langlands prog
 \]
 where the superscript \(R\) retains that source's vacuum and center convention, \(\mathcal W_{\rm Op}\) comes from the universal dual-group bundle, and \(W\in\operatorname{Rep}(\check G)\). Its proof must construct that universal bundle and compatibility; the formula is not merely an equality of dimensions.
 
-Equations (K4.1)–(K4.2) in their full generality are **not yet proved in this lesson**. Section 3.2 proves (K4.1) for the rank-one vacuum, including all polynomial generators, ordinary base change and coordinate compatibility. The finite-mode, jet-invariant and filtered arguments for \(\mathfrak{sl}_2\) in §3.2 establish the full rank-one polynomial algebra and coordinate action. Section 3.3 proves the general classical current invariants, the PBW upper bound and unconditional vacuum commutativity. The finite-degree reduction to basic lifts and the determinant construction prove the entire type A polynomial vacuum algebra. Section 3.4 proves the full coordinate-equivariant ordinary disc-oper comparison for every type A factor. Basic lifts and the coordinate comparison in other simple types, and the Satake assertion (K4.2), remain unproved. The geometric route through affine Grassmannian global sections, semi-infinite cohomology and the birth of opers needs its complete argument and foundations. These classical statements are over \(\mathbb C\). The rank-one vacuum-center proof in §3.2 holds over the full characteristic-zero field convention and every ordinary parameter algebra. The type A polynomial vacuum algebra in §3.3.5 and its full ordinary coordinate comparison in §3.4 hold over every characteristic-zero field and ordinary parameter algebra. Section 3.5 proves the reductive vacuum factorization and the full framed central coefficient comparison for type A reductive Lie algebras. The full center/oper comparison in other simple types and the intrinsic/global central-data comparison, as well as the completed, chiral, Poisson, Satake and derived-family center comparisons, remain unproved.
+Equations (K4.1)–(K4.2) in their full generality are **not yet proved in this lesson**. Section 3.2 proves (K4.1) for the rank-one vacuum, including all polynomial generators, ordinary base change and coordinate compatibility. The finite-mode, jet-invariant and filtered arguments for \(\mathfrak{sl}_2\) in §3.2 establish the full rank-one polynomial algebra and coordinate action. Section 3.3 proves the general classical current invariants, the PBW upper bound and unconditional vacuum commutativity. The finite-degree reduction to basic lifts and the determinant construction prove the entire type A polynomial vacuum algebra. Section 3.4 proves the full coordinate-equivariant ordinary disc-oper comparison for every type A factor. Basic lifts and the coordinate comparison in other simple types, and the Satake assertion (K4.2), remain unproved. The geometric route through affine Grassmannian global sections, semi-infinite cohomology and the birth of opers needs its complete argument and foundations. These classical statements are over \(\mathbb C\). The rank-one vacuum-center proof in §3.2 holds over the full characteristic-zero field convention and every ordinary parameter algebra. The type A polynomial vacuum algebra in §3.3.5 and its full ordinary coordinate comparison in §3.4 hold over every characteristic-zero field and ordinary parameter algebra. Section 3.5 proves the reductive vacuum factorization and the full framed central coefficient comparison for type A reductive Lie algebras. Section 3.6 constructs the actual smooth completion, proves the full type A completed center and its coordinate-equivariant ordinary punctured-disc comparison, computes the abelian completed center at every fixed form, and identifies the vacuum restriction kernel. The full center/oper comparison and completed center in other simple types, intrinsic/global central data, and chiral, Poisson, Satake and derived-family center comparisons remain unproved.
 
 Regular opers on \(D\) and meromorphic opers on \(D^\times\) also give different center statements: the vacuum center uses the first, and the completed enveloping-algebra center uses the second. Neither can silently replace the other.
 
@@ -5324,6 +6466,6 @@ Differences cancel the Schwarzian and are quadratic differentials. This fixes th
 
 The adjoint-semisimple argument proves the finite principal decomposition, unique ordinary-family gauge, coordinate cocycle, intrinsic oper classification, global affine parameter space and dimension from its explicit Lie/group and curve premises. It constructs regular and Laurent coefficient functors, including the continuous coordinate action over nilpotent bases. The independent scalar argument supplies intrinsic/scalar equivalence, normalized lifts, theta choices, ordinary-family representability, Schwarzian, nonsplit extension and algebraic irreducibility. The invariant-ring argument supplies characteristic-zero field transfer, arbitrary ordinary coaction base change, the Molien degree identities, a weighted polynomial Kostant section and the graded classical oper/Hitchin ring. The critical argument supplies the ordered basis, formal affine action, invariant/end correspondence and every-mode \(\mathfrak{sl}_2\) check. Section 3.2 proves the full rank-one polynomial vacuum center, current-jet invariant algebra, PBW exhaustion and coordinate-equivariant ordinary projective-connection identification. Section 3.3 proves the general classical current invariants, exact PBW upper bound, ordinary vacuum-invariant base change, coordinate action on symbols and unconditional vacuum commutativity. Its basic-lift reduction and all-n determinant construction prove the entire type A polynomial vacuum algebra over every ordinary parameter algebra. Section 3.4 proves the full ordinary coordinate-equivariant type A disc-oper comparison and the arbitrary-type quadratic coordinate law, with every anomaly and normalization retained. Section 3.5 proves reductive affine-vacuum factorization, all abelian invariants at arbitrary affine form, the trace splitting and whole polynomial vacuum algebra in reductive type A, and their exact framed central coordinate laws. It also proves the ordinary central gauge groupoid and the algebraic cocycle comparison.
 
-Complete proofs remain required for the recursive root-space/pinning, split-unipotent and faithful adjoint-group constructions, ordinary bundle descent, and the recursive Serre/highest-weight and finite-algebra foundations of the invariant-ring proof; non-type-A basic quantum lifts and the non-type-A coordinate-equivariant vacuum-center/oper comparison, completed punctured-disc center, chiral/Poisson/Satake and derived-family compatibility, and the geometric/Satake/global central-convention comparison; half-root, uniformization, localization, nonzero specialization, holonomicity, tensor/fusion Hecke property and filtered quantization; full derived opers and full-field/reductive-center passages; and the critical FLE, Ran, factorization, determinant, convergence and \(\operatorname{IndCoh}^{*}/\operatorname{IndCoh}^{!}\) foundations. The fixed-curve Picard/coherent/local-algebra/Ext chains, bundle-stack algebraization and optional analytic comparison retain their explicit earlier unproved foundations. Each is a mathematical theorem or construction whose full proof is still required.
+Complete proofs remain required for the recursive root-space/pinning, split-unipotent and faithful adjoint-group constructions, ordinary bundle descent, and the recursive Serre/highest-weight and finite-algebra foundations of the invariant-ring proof; non-type-A basic quantum lifts and the non-type-A coordinate-equivariant vacuum-center/oper comparison, non-type-A completed punctured-disc center, chiral/Poisson/Satake and derived-family compatibility, and the geometric/Satake/global central-convention comparison; half-root, uniformization, localization, nonzero specialization, holonomicity, tensor/fusion Hecke property and filtered quantization; full derived opers and full-field/reductive-center passages; and the critical FLE, Ran, factorization, determinant, convergence and \(\operatorname{IndCoh}^{*}/\operatorname{IndCoh}^{!}\) foundations. The fixed-curve Picard/coherent/local-algebra/Ext chains, bundle-stack algebraization and optional analytic comparison retain their explicit earlier unproved foundations. Each is a mathematical theorem or construction whose full proof is still required.
 
 Further reading: [Frenkel, *Lectures on the Langlands program and conformal field theory*, §§8–9](https://arxiv.org/abs/hep-th/0512172v1); [Raskin, *A geometric proof of the Feigin–Frenkel theorem*, introduction](https://arxiv.org/abs/1106.3112v1); [Frenkel–Gaitsgory, *Local geometric Langlands correspondence and affine Kac-Moody algebras*, introduction](https://arxiv.org/abs/math/0508382v3); [Beilinson–Drinfeld, *Quantization of Hitchin's integrable system and Hecke eigensheaves*, §§2.6, 3, 7.8 and 7.14](https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf); and [Arinkin, Beraldo, Campbell, Chen, Faergeman, Gaitsgory, Lin, Raskin and Rozenblyum, *Proof of the geometric Langlands conjecture II: Kac-Moody localization and the FLE*, introduction and §3](https://arxiv.org/abs/2405.03648v3).

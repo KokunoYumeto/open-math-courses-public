@@ -1096,4 +1096,4 @@ To count the genus, triangulate the base modular sphere with vertices its cusp a
 - P. Deligne, *La conjecture de Weil I*, freely accessible original, §§3–7 and Theorem 8.2. [Original article](https://www.numdam.org/item/PMIHES_1974__43__273_0/).
 - The Stacks project authors, [the Legendre family, Tag 03VA](https://stacks.math.columbia.edu/tag/03VA). Section 2 writes the all-extension count and the vanishing argument used here; the source's trace formula is bound to the earlier programme proof with its own prerequisite scope.
 
-The earlier programme proof locators and the exact versions inspected are recorded in the accompanying rewrite receipt. The sources retain their own rights; this independently written exposition retains the public-domain declaration above.
+The sources retain their own rights; this independently written exposition retains the public-domain declaration above.

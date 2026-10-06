@@ -1,6 +1,6 @@
 # From symbol estimates to operators on every Sobolev scale
 
-**AN-03 · Unit AN03-U010 · Independent English AI draft, not admitted.**
+**AN-03 · Unit AN03-U010 · Self-checked by the writing AI.**
 
 Frequency differentiation improves a symbol, while differentiation in the base variable may worsen it. The balance between those two effects controls an expansion. Boundedness requires a different argument: a decomposition into frequency bands continues to work when the two effects exactly balance. We develop these mechanisms separately, then combine them to construct inverses and act on Sobolev and Besov spaces.
 
@@ -503,7 +503,7 @@ P^{-1}\prod_{\nu=1}^k
 \]
 with numerical coefficients. Induction follows by differentiating one factor at a time, using the quotient rule; total derivative degree increases by one in each resulting term. Equation (E48) bounds (E49) by \(C_\alpha\langle\xi\rangle^{-d\rho-\rho|\alpha|}\). A smooth cutoff \(\theta\) that is zero on a sufficiently large ball and one outside a larger ball therefore gives
 \(\theta(\xi)/P(\xi)\in S^{-d\rho}_{\rho,0}\), independent of \(x\).
-Cutoff derivatives occur only in a compact region where \(P\ne0\) and do not change the conclusion. A nonzero constant polynomial has its constant reciprocal in \(S^0_{\rho,0}\) for any allowed \(\rho\). No reciprocal is asserted across real zeros of a nonconstant polynomial. Thus the adapter is proved, while the hypoellipticity characterization itself remains with its other-volume owner.
+Cutoff derivatives occur only in a compact region where \(P\ne0\) and do not change the conclusion. A nonzero constant polynomial has its constant reciprocal in \(S^0_{\rho,0}\) for any allowed \(\rho\). No reciprocal is asserted across real zeros of a nonconstant polynomial. Thus the adapter is proved; the hypoellipticity characterization itself is not proved in this unit.
 
 ## AN03-EUC-EX-001 — Two exact products and an endpoint obstruction
 

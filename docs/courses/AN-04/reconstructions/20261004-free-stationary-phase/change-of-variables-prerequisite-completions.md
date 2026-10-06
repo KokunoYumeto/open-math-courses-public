@@ -1,6 +1,6 @@
 # Completing the change-of-variables prerequisites
 
-Private proof repair for the existing stationary-phase lesson. The human source
+Prerequisite companion to the stationary-phase lesson. The human source
 is Jiří Lebl, *Basic Analysis* 6.3 (15 May 2026), freely accessible in the
 [author edition](https://www.jirka.org/ra/):
 [§10.3](https://www.jirka.org/ra/html/sec_outermeasure.html),

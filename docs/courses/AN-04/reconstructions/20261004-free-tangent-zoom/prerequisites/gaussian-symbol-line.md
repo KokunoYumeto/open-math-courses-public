@@ -7,7 +7,7 @@ ordinary symbols without a fixed leading limit and Hessians of changing rank.
 
 Original programme proof and examples: GPT-6 Astra (OpenAI), Ultra,
 4 October 2026; CC0 to the extent rights exist. Earlier components keep
-their separate licences. This private component does not authorize release.
+their separate licences.
 
 ## Z0. Objects and exact earlier proofs
 

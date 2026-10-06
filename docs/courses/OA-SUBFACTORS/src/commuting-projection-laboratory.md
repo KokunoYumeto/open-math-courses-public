@@ -170,4 +170,4 @@ Its \(v_5\)-coefficient is zero, as required.
 - Vaughan F. R. Jones, [*Index for subfactors*](https://doi.org/10.1007/BF01389127), Inventiones Mathematicae 72 (1983), 1–25.
 - Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Author self-check with exact matrix calculations. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*

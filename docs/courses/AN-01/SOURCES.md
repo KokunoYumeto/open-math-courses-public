@@ -1,6 +1,6 @@
 # Lesson sources
 
-Exact recorded freely accessible editions and verified receipt-backed copies may support independent mathematical construction and ordinary citations. The confirmed purchases of Hörmander I–IV, Takesaki II–III, A Journey Through Representation Theory, and An Introduction to C*-Algebras and Noncommutative Geometry are valid; earlier exact-copy approvals remain valid. Permission to read and cite does not permit reproducing protected expression or book structure. Every used result is proved in the lesson or an exact supplied programme prerequisite. An external citation does not replace that proof.
+Permission to read and cite does not permit reproducing protected expression or book structure. Every used result is proved in the lesson or an exact supplied programme prerequisite. An external citation does not replace that proof.
 
 - [Distributions as kernels of continuous operators](src/distributions-as-kernels.md) · [reader](reader/AN01-U001.html)
 - [When a kernel is smooth](src/when-a-kernel-is-smooth.md) · [reader](reader/AN01-U002.html)

@@ -503,4 +503,4 @@ Thus \(57.34\) is less than \(3\beta^2\tau(s)<\alpha^2\operatorname{Tr}(p)\). Th
 
 The forward transport from BF, both local forms, their exact supported specialization under BF₁, the converse for every core, and the complete smaller-core factorial corollary are fully written here. The implication from a general core Følner condition to BF remains open. Corollary 58.8 proves the larger-\(R\)-factor implication to BF₁ by its own central-balancing argument; Corollary 57.5 remains the separate smaller-factor specialization. The global approximation and smooth/generating implications require their own arguments.
 
-Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition and figure released under CC0 1.0. Author self-check of the written arguments relative to the declared programme prerequisites.
+Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition and figure released under CC0 1.0. Self-checked by the writing AI.

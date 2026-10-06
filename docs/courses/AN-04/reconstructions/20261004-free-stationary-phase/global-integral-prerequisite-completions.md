@@ -1,6 +1,6 @@
 # Rectangle integrals, tails and the interchanges used in stationary phase
 
-Private prerequisite companion, adapted and extended from Jiří Lebl,
+Prerequisite companion, adapted and extended from Jiří Lebl,
 *Basic Analysis* 6.3, [freely accessible author edition](https://www.jirka.org/ra/),
 under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 The selected human proofs are in §§10.1–10.2 and §5.5. Their complete arguments

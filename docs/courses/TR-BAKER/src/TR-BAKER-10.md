@@ -2739,7 +2739,233 @@ The support congruence in Theorem 10.51 does put each of these integer values in
 
 The phase and support passage, the local phase construction and the conditional closure of the missing nodes now have complete proofs. A numerical Yu estimate still requires a verified coefficient construction and a check of the slope, order and strict height comparisons at every stage with its actual parameters.
 
-## 21. Exercises with solutions
+## 21. Constructing coefficients for the phased values
+
+The initial coefficient construction can also be performed over \(K\) when the separate phased torus bases lie outside \(K\). What matters is the field of each normalized row entry. The support congruence determines that field and removes the root-of-unity phase from every absolute-value estimate.
+
+**Theorem 10.55 (an initial kernel over the original field).** Let \(K\) have degree \(d\) and discriminant \(\Delta_K\). Take nonzero \(\theta_i\in K\), a root of unity \(\alpha_0\in K\), an integer \(G_0\ge1\), and a root of unity \(\zeta\) with \(\zeta^{G_0}=\alpha_0\). Let \(P\in\mathbb Z_{\ge1}\), \(d_i\in\mathbb Z\), and set \(\gamma_i=\theta_i^P\zeta^{d_i}\). The separate \(\gamma_i\) need not lie in \(K\).
+
+Take integers \(r,k,L\ge1\), \(S,T\ge0\), and a nonempty finite set \(\Lambda\subset\mathbb Z^r\) of distinct vectors satisfying \(\boldsymbol d\cdot\lambda\equiv\varepsilon\pmod{G_0}\), where \(\boldsymbol d=(d_1,\ldots,d_r)\). Fix \(\lambda_0\in\Lambda\), put \(A_i=\max_{\lambda\in\Lambda}|\lambda_i-\lambda_{0i}|\), and take integer Euler forms \(\omega_j(\lambda)=C_j(\lambda-\lambda_0)\), \(1\le j<r\). Write \(D=kL\), \(N=kL|\Lambda|\), and use \(\mathcal J_T,J_T,M_*=(2S+1)J_T\) from (10.126), with these new Euler arguments. Define \(H_{\mathrm{ph}}=P\sum_iA_i h(\theta_i)\).
+
+If \(N>M_*\), there is a nonzero vector \(c\in\mathcal O_K^N\) for which
+
+\[
+\begin{aligned}
+Q(X,Y)&=\sum_{\lambda,a,\ell}c_{\lambda,a,\ell}
+\Delta(X+a;k)^\ell Y^{\lambda-\lambda_0},\\
+\Psi_0(s;\boldsymbol t)&=\sum_{\lambda,a,\ell}c_{\lambda,a,\ell}
+v(k)^{t_0}\Theta(s+a;k,\ell,t_0)
+\prod_{j<r}\Delta(\omega_j(\lambda);t_j)
+\gamma^{s(\lambda-\lambda_0)}
+=0
+\end{aligned}
+\tag{10.150}
+\]
+
+for every integer \(|s|\le S\) and every \(|\boldsymbol t|\le T\), with \(0\le a<k\), \(1\le\ell\le L\). The Laurent polynomial \(Q\) is nonzero. Every normalized monomial in these equations belongs to \(K\), since
+
+\[
+v_\lambda=\frac{\boldsymbol d\cdot(\lambda-\lambda_0)}{G_0}\in\mathbb Z,
+\qquad
+\gamma^{s(\lambda-\lambda_0)}
+=\alpha_0^{s v_\lambda}
+\prod_i\theta_i^{Ps(\lambda_i-\lambda_{0i})}\in K.
+\tag{10.151}
+\]
+
+The vector may be chosen with the separate-row budget
+
+\[
+\begin{aligned}
+h_\infty(c)\le h_2(c)\le&
+\tfrac12\ln N+\frac{\ln|\Delta_K|}{2d}\\
+&+\frac1{N-M_*}
+\sum_{s=-S}^S\sum_{\boldsymbol t\in\mathcal J_T}
+\left(\tfrac12\ln N+
+\ln\mathcal H_0(|s|;\boldsymbol t)+2|s|H_{\mathrm{ph}}\right),
+\end{aligned}
+\tag{10.152}
+\]
+
+and hence with the mean-node budget
+
+\[
+\begin{aligned}
+h_2(c)\le&
+\tfrac12\ln N+\frac{\ln|\Delta_K|}{2d}\\
+&+\frac{M_*}{N-M_*}
+\left(\tfrac12\ln N+\ln\mathcal B_0^*(S,T)
++\frac{2S(S+1)}{2S+1}H_{\mathrm{ph}}\right).
+\end{aligned}
+\tag{10.153}
+\]
+
+These estimates involve \(K\) and the original \(\theta_i\), even when the individual phases require a larger global field.
+
+**Proof.** Subtracting the two support congruences gives the integer \(v_\lambda\). Raising \(\zeta^{G_0}=\alpha_0\) to \(s v_\lambda\) proves (10.151), for negative \(s\) and negative exponent differences as well. This identity puts every matrix entry of (10.150) in \(K\).
+
+The prepared scalar in each entry is an integer: Lemma 10.28 proves the additive assertion at every integer \(s+a\), and each rising Euler binomial at an integer is an integer. An index with \(t_0>D\) has zero row. If \(\omega_j\) vanishes throughout the support, its factor is \(\Delta(0;t_j)=1\); setting \(t_j=0\) gives the same row and a no larger total order. Thus imposing the representative rows imposes every stated equation. Counting them exactly as in (10.126) gives \(M_*\) rows and \(N\) columns, including any further zero or dependent rows.
+
+We bound each representative row over \(K\). At an archimedean embedding its Euclidean norm is at most
+\[
+\sqrt N\,\mathcal H_0(|s|;\boldsymbol t)
+\prod_i\max\{|\sigma(\theta_i)|,|\sigma(\theta_i)|^{-1}\}^{P|s|A_i}.
+\]
+At a finite place its maximum norm is at most the analogous product without the first two factors. Indeed the scalar is an integer, while the root of unity \(\alpha_0^{s v_\lambda}\) in (10.151) has absolute value one at every place. Theorem 10.44 supplies the scalar bound. The product formula, with the height conventions of Section 14, gives the exact identity
+\[
+\frac1d\sum_v\ln\max\{|\theta_i|_v,|\theta_i|_v^{-1}\}
+=2h(\theta_i).
+\]
+Consequently the logarithm of the row-norm bound is
+\(\tfrac12\ln N+\ln\mathcal H_0(|s|;\boldsymbol t)+2|s|H_{\mathrm{ph}}\). This bound is nonnegative, since its scalar majorant is at least one by Theorem 10.44. A zero row has the allowed row factor one.
+
+Apply the complete weighted Siegel lemma (8.40) from [Small solutions over the coefficient field](../TR-BAKER-08.html#small-solutions-over-the-coefficient-field), with all weights one and with these actual \(K\)-rows. Its finite-place conditions give \(c\in\mathcal O_K^N\setminus\{0\}\). Taking logarithms of its bound proves (10.152); no discriminant or degree of a field containing the individual \(\gamma_i\) enters. The monomials \(Y^{\lambda-\lambda_0}\) are distinct, and Lemma 10.29 gives the independence of the additive polynomials within each monomial block. Hence the nonzero coefficient vector gives \(Q\ne0\).
+
+Finally \(\mathcal H_0(|s|;\boldsymbol t)\le\mathcal B_0^*(S,T)\), and \(\sum_{s=-S}^S|s|=S(S+1)\). Summing the separate bounds proves (10.153). \(\square\)
+
+Multiplying \(Q\) by a monomial clears its negative exponents. The complete prepared-to-ordinary jet argument of Proposition 10.31 applies when the \(\gamma_i\) are nonzero elements of the chosen local field and the Euler directions are the selected integral basis. Each monomial factor is nonzero at the evaluation point, so the order of vanishing is preserved. A coefficient of minimum local valuation can also be divided out as in (10.97), preserving the heights and equations; this last normalization is locally integral and need not remain globally integral.
+
+![Four phased columns give a rational three-row kernel](../figures/phase-kernel-matrix.png)
+
+*Figure 10.9. In \(\mathbb Q_5\), choose the root \(\zeta^2=-1\) with \(\zeta\equiv2\pmod5\), and put \(P=125\), \(G_0=2\), \(\alpha_0=-1\), \(\theta=(2,3)\), \(d=(-P,-3P)\). Both \(\gamma_1=2^P\zeta^{-P}\) and \(\gamma_2=3^P\zeta^{-3P}\) are outside \(\mathbb Q\), but \(\gamma_1\gamma_2=6^P=b\in\mathbb Q\). For support \(\Lambda=\{(j,j):0\le j\le3\}\), reference \((0,0)\), \(k=L=1\), \(S=1\), \(T=0\), the normalized torus column is \(b^{sj}\). The drawn matrix includes the additive factor \(\Delta(s;1)=s+1\), so its first row is zero. With \(C=b^2+b+1\), its integer vector \((-b,C,-C,b)\) is a kernel vector. Equations (10.150)–(10.153) prove the general field and height mechanism; Solution 28 checks this exact example and its extra zero. The plotted support points and matrix entries are exact. Human-source context: the field reduction and initial kernel in Lemma 4.2 of Yu's free 2013 paper, cited below. [Figure program](../figure_sources/phase_kernel_matrix.py).*
+
+## 22. The field and budget at the first fractional nodes
+
+At a fractional node the value need not be in \(K\), even if its chosen completion is still \(K_{\mathfrak p}\). We now determine the smaller field generated by the support, and then prove the arithmetic comparison needed before the next coset extraction.
+
+### The support-generated root field
+
+**Theorem 10.56 (the field of the normalized fractional monomials).** Retain the saturated Kummer and phase data of Section 20: in particular \(\mu_q\subset K\), \(q\ne p\), \(q\nmid P\), and
+\([K(\beta,\rho_1,\ldots,\rho_r):K]=q^{r+1}\), with \(\beta^q=\alpha_0\), \(\rho_i^q=\theta_i\). Suppose \(\gamma_i\in K_{\mathfrak p}\) have \(v_p(\gamma_i-1)>1/(p-1)\), and use the compatible principal roots
+\(\eta_i=\exp(q^{-1}\log\gamma_i)=\rho_i^P\xi^{d_i}\) of Corollary 10.52.
+
+Let \(\Lambda\) be a nonempty finite support with \(\boldsymbol d\cdot\lambda\equiv\varepsilon\pmod{G_0}\), and fix \(\lambda_0\in\Lambda\). Define
+
+\[
+\begin{aligned}
+m_\lambda&=\lambda-\lambda_0,&
+w_\lambda&=\frac{\boldsymbol d\cdot m_\lambda}{G_0}\in\mathbb Z,\\
+g&=\gcd(G_0,d_1,\ldots,d_r),&
+G_*&=G_0/g,\qquad d_{*i}=d_i/g,\\
+v_\lambda&=(w_\lambda,Pm_{\lambda1},\ldots,Pm_{\lambda r})
+\in\mathbb F_q^{r+1},&
+h_\Lambda&=\dim_{\mathbb F_q}\langle v_\lambda:\lambda\in\Lambda\rangle,\\
+U_\lambda&=\eta^{m_\lambda},&
+E_\Lambda&=K(U_\lambda:\lambda\in\Lambda).
+\end{aligned}
+\tag{10.154}
+\]
+
+Then
+
+\[
+P G_*(v_\lambda)_0-\sum_i d_{*i}(v_\lambda)_i=0,\qquad
+h_\Lambda\le r,\qquad
+[E_\Lambda:K]=q^{h_\Lambda},\qquad
+(E_\Lambda)_{\mathfrak P}=K_{\mathfrak p}
+\tag{10.155}
+\]
+
+for the prime \(\mathfrak P\) selected by these principal roots. The first relation is a nonzero linear equation over \(\mathbb F_q\). In particular the global degree can increase while the chosen local degree stays one.
+
+**Proof.** Cancelling the positive gcd gives \(G_*w_\lambda=\sum_i d_{*i}m_{\lambda i}\), and \(\gcd(G_*,d_{*1},\ldots,d_{*r})=1\). Multiply by \(P\) and reduce modulo \(q\) to obtain the relation in (10.155). If \(q\nmid G_*\), its first coefficient is nonzero, since \(q\nmid P\). If \(q\mid G_*\), at least one \(d_{*i}\) is nonzero modulo \(q\). Thus it defines a hyperplane of dimension \(r\), proving \(h_\Lambda\le r\). Cancelling the gcd is essential: the unreduced equation can otherwise be the identity \(0=0\).
+
+The phase congruence and the compatible roots give
+\[
+U_\lambda=\beta^{w_\lambda}\prod_i\rho_i^{Pm_{\lambda i}},
+\qquad
+U_\lambda^q=\alpha_0^{w_\lambda}\prod_i\theta_i^{Pm_{\lambda i}}\in K.
+\]
+Choose \(\lambda_1,\ldots,\lambda_h\), \(h=h_\Lambda\), whose residue vectors form a basis of the support span. Express any \(v_\lambda\) as \(\sum_j a_jv_{\lambda_j}\), with \(0\le a_j<q\). The corresponding integer exponent vectors differ by \(q(z_0,z_1,\ldots,z_r)\). The displayed exact monomial identity therefore gives
+\[
+U_\lambda=\alpha_0^{z_0}\prod_i\theta_i^{z_i}
+\prod_{j=1}^h U_{\lambda_j}^{a_j}.
+\]
+Consequently the \(h\) selected roots generate \(E_\Lambda\), and their q-th powers lie in \(K\), so its degree is at most \(q^h\).
+
+For the reverse bound, the monomials \(\prod_jU_{\lambda_j}^{a_j}\), \(0\le a_j<q\), have distinct residue vectors \(\sum_j a_jv_{\lambda_j}\). Reduce their exponents in the full root field \(K(\beta,\rho_1,\ldots,\rho_r)\). Its degree is \(q^{r+1}\), so the root monomials with exponents in \(\{0,\ldots,q-1\}^{r+1}\) are a basis by Theorem 10.47. Our \(q^h\) monomials are nonzero \(K\)-multiples of distinct elements of that basis, and are therefore independent. This proves the exact degree, including \(h=0\).
+
+Each \(\eta_i\) lies in \(K_{\mathfrak p}\) by the exponential proof in Lesson 9, hence \(E_\Lambda\subset K_{\mathfrak p}\). Its closure contains the closure \(K_{\mathfrak p}\) of \(K\), and is contained in \(K_{\mathfrak p}\). Thus its chosen completion is precisely \(K_{\mathfrak p}\). The absolute ramification index and residue degree at \(\mathfrak P\) are the original \(e,f\). \(\square\)
+
+### A nonzero fractional prepared value
+
+**Corollary 10.57 (the phase-sensitive fractional arithmetic budget).** Take the support of Theorem 10.56, integers \(I\ge0,k,L\ge1\), a nonzero coefficient vector \(c\in K^N\), \(N=kL|\Lambda|\), and integer Euler arguments \(C_j(m_\lambda)\). Put \(D=kL\), \(A_i=\max_\lambda|m_{\lambda i}|\), \(\delta=\min_jv_p(c_j)\), and take \(x=s/q\), \(s\in\mathbb Z\), with \(|x|\le X\). Let \(V=\Psi_I(s/q;\boldsymbol t)\) be the prepared value whose torus term is \(U_\lambda^s\) and whose additive argument is \(q^{-I}x+a\). If \(t_0>D\), it is zero. Otherwise it belongs to \(E_\Lambda\), and if it is nonzero,
+
+\[
+\begin{aligned}
+v_p(V)-\delta\le \mathcal A_{\mathrm{frac},\boldsymbol t}(X)
+:=\frac{q^{h_\Lambda}[K:\mathbb Q]}{ef\ln p}\biggl(&
+\min\{h_\infty(c)+\ln N,h_2(c)+\tfrac12\ln N\}\\
+&+\ln\mathcal H_I(X;\boldsymbol t)
++\Xi_{I,1,t_0}\ln q
++2PX\sum_iA_i h(\theta_i)\biggr).
+\end{aligned}
+\tag{10.156}
+\]
+
+Here \(\mathcal H_I\) and \(\Xi_{I,1,t_0}\) are the already proved scalar majorant and q-clearing exponent of (10.123) and (10.115).
+
+**Proof.** Every torus term lies in \(E_\Lambda\), and every prepared scalar is rational, so \(V\in E_\Lambda\). Lemma 10.28 and Theorem 10.41 clear each scalar's denominator by \(q^{\Xi_{I,1,t_0}}\), with no denominator at any other prime; Theorem 10.44 bounds its ordinary absolute value by \(\mathcal H_I(X;\boldsymbol t)\).
+
+At every place of \(E_\Lambda\), taking the absolute value of \(U_\lambda^q\) removes the root-of-unity phase. Its signed torus contribution is bounded by
+\[
+\sum_i \frac{P|s|A_i}{q}
+\ln\max\{|\theta_i|_v,|\theta_i|_v^{-1}\}.
+\]
+The torus terms are units at \(\mathfrak P\). Summing this contribution outside that prime is therefore at most
+\(2[E_\Lambda:\mathbb Q]PX\sum_iA_i h(\theta_i)\), by the same inverse-height identity as in Theorem 10.41. The coefficient heights retain their values over \(K\): each archimedean embedding is repeated \([E_\Lambda:K]\) times, and the local degrees over a finite place sum to that same factor.
+
+Now repeat the full coefficient-normalized product-formula argument of Theorem 10.41 over \(E_\Lambda\), retaining its Euclidean and maximum coefficient bounds and the new scalar majorant. Theorem 10.56 gives \([E_\Lambda:\mathbb Q]=q^{h_\Lambda}[K:\mathbb Q]\) and the unchanged \(e,f\) at the selected prime. These are exactly the factor and all terms in (10.156). \(\square\)
+
+The unchanged completion does not remove \(q^{h_\Lambda}\). Nor does a high valuation at the principal-root prime give that valuation at the other primes of the global field.
+
+### Closing the first fractional-node extension
+
+**Corollary 10.58 (a proved first fractional extension).** Retain the phase family of Corollary 10.57 and all selected-basis, slope, normality and projection hypotheses of Corollary 10.40 for its local curve \(\gamma^x=\exp(x\log\gamma)\). Suppose its prepared values vanish at all integers \(|s|\le R\) through total order \(T\), where \(R\ge1,T\ge0\) are integers. Choose an integer \(\mu\ge1\) with \(T'=T-\mu+1\ge0\), and put
+\(n=2R+1\), \(B=\lfloor\log_p(2R)\rfloor\),
+\(C_0=\max\{v_p(v(k)),v_p(b_n)\}\), \(M_0=\max\{B,C_0\}\).
+Let
+\(\mathcal A_{\mathrm{frac}}(X,T')=
+\max_{|\boldsymbol t|\le T',\,t_0\le D}
+\mathcal A_{\mathrm{frac},\boldsymbol t}(X)\),
+using (10.156). If
+
+\[
+\begin{aligned}
+U+D\theta+Lv_p(k!)&\ge n\mu\theta+\mu M_0,\\
+(n\mu-D)\theta-Lv_p(k!)&>
+\mathcal A_{\mathrm{frac}}(X,T'),
+\end{aligned}
+\tag{10.157}
+\]
+
+then every first fractional prepared value \(\Psi_I(s/q;\boldsymbol t)\) is zero for integers \(|s|\le qX\) and \(|\boldsymbol t|\le T'\). With the larger normalizing scale, an alternative sufficient pair is
+
+\[
+\begin{aligned}
+U+D\left(\theta+\frac1{p-1}\right)&\ge n\mu\theta+\mu M_0,\\
+(n\mu-D)\theta-\frac D{p-1}&>
+\mathcal A_{\mathrm{frac}}(X,T').
+\end{aligned}
+\tag{10.158}
+\]
+
+**Proof.** The full integer input interval has separation cost \(\kappa=0\), as proved in Corollary 10.35. The first inequality of (10.157) is consequently the sufficient analytic budget (10.113). Its complete proof, retaining the loss from the selected integer Euler basis, gives
+\[
+v_p(\Psi_I(x;\boldsymbol t))-\delta
+\ge(n\mu-D)\theta-Lv_p(k!)
+\]
+for every \(x\in\mathbb Z_p\) and each output index. The local curve satisfies the same proof when its separate torus bases lie outside \(K\), since that argument uses their local logarithms, prepared scalars and projection data.
+
+For \(x=s/q\), the assumption \(q\ne p\) gives \(x\in\mathbb Z_p\). Proposition 9.4 identifies the local exponential torus factors with the principal roots \(\eta^s\), so this analytic value is exactly the algebraic value of Corollary 10.57. If it were nonzero, (10.156) would give the opposite upper bound \(\mathcal A_{\mathrm{frac}}(X,T')\), contradicting the strict second inequality. Indices with \(t_0>D\) are already zero. This proves every asserted fractional zero. Repeating the same comparison with the proved larger-scale conclusion (10.114) gives (10.158). \(\square\)
+
+These hypotheses separate the two tasks in a numerical descent: constructing the integer input zeros and verifying the precision and strict height comparisons. Once the fractional zeros are available at nodes prime to \(q\), Theorem 10.51 performs the exact phase and support passage.
+
+![A smaller fractional root field with unequal valuations at its two selected embeddings](../figures/fractional-phase-field.png)
+
+*Figure 10.10. The exact example has \(K=\mathbb Q,p=5,q=2,\alpha_0=-1,\theta_1=6,P=1,G_0=2,d_1=0,\Lambda=\{0,1\}\). The cancelled relation is \(w=0\), and the support vectors span \((0,1)\) over \(\mathbb F_2\), so \(h_\Lambda=1\). The support field \(E=\mathbb Q(\sqrt6)\) has degree two; the full root field \(F=\mathbb Q(i,\sqrt6)\) has degree four. Choose the completion sending \(\sqrt6\) to \(\eta\equiv1\pmod5\). Both these roots and \(i\equiv2\pmod5\) lie in \(\mathbb Q_5\), so all three chosen completions in the diagram are \(\mathbb Q_5\). Their global-to-local degree factors are \(1,2,4\). The value \(V=\tfrac32(1-\sqrt6)\) has valuation one at this root and zero at the other root \(-\eta\); the two bars display these exact valuations. Theorem 10.56 and (10.154)–(10.155) prove the field mechanism, Corollary 10.57 proves its arithmetic budget, and Solution 29 verifies every number in this example. Human-source context: the first fractional step and product-formula field discussion in Yu's free 2013 paper, printed pp. 352 and 365–366, cited below. [Figure program](../figure_sources/fractional_phase_field.py).*
+
+## 23. Exercises with solutions
 
 1. **Easy.** Explain exactly how nonunit bases can be reduced to unit bases. Give an example showing that the conclusion of Theorem 10.8 cannot be extended unchanged to nonunits.
 2. **Medium.** Derive (10.34) from (10.22), including the maximum in \(H\).
@@ -2788,6 +3014,10 @@ The phase and support passage, the local phase construction and the conditional 
 26. **Hard.** Over \(\mathbb Q_5\), apply the Newton construction to \(f(X)=X^2+1\), starting at \(x_0=2\). Compute \(x_1,x_2\), the three error valuations and the primitive fourth root \(\zeta\) modulo \(625\). Take \(K=\mathbb Q,\alpha_0=-1,q=2,\theta_1=2\), and \(g=2/\zeta\). Prove \(v_5(g-1)=1\). For the target \(\vartheta=3\), verify the choices \(t=0,j=3,P=125,d_1=-125\) in Lemma 10.53 and compute the exact valuation of \(\gamma_1-1\).
 
 27. **Medium.** In Corollary 10.54, assume the other hypotheses and \(\mathcal A_{\mathrm{ph}}(4,4)=11\). Take \(p=3,q=2,R=4,T=5,\mu=2,k=L=2,\theta=3,C_0=0\). Compute the exact input node set, \(n,B,M_0,T'\), and the least \(U\) meeting the exact first budget. State the resulting zeros. Compare both lines of the alternative larger-scale budget; explain why its first line alone does not give the same zero conclusion.
+
+28. **Hard.** In Figure 10.9, verify that the individual \(\gamma_i\) lie outside \(\mathbb Q\), whereas every normalized row entry is rational. Determine \(N,M_*,H_{\mathrm{ph}}\), and check the vector \((-b,C,-C,b)\) at all three nodes. Factor its torus polynomial, compute its two projective heights and its minimum 5-adic coefficient valuation, and compare its height with (10.152). Explain why the zero first row does not invalidate the bound.
+
+29. **Hard.** Use the data of Figure 10.10. Compute the cancelled congruence and \(h_\Lambda\), prove the degrees and chosen completions of \(E\) and \(F\), and evaluate both 5-adic valuations of \(V\). For \(I=0,k=L=1,\lambda_0=0,c=(1,-1),s=1,x=1/2,\boldsymbol t=0\), compute every term in (10.156). Compare the support-field budget with the budget from the full root field, and explain why equal local degrees do not justify using the original global degree.
 
 **Solution 1.** Put \(q_i=v(\alpha_i)\). If \(b_1q_1\ne b_2q_2\), the ultrametric inequality gives the exact valuation \(\min(b_1q_1,b_2q_2)\), so no cancellation estimate is needed. If they are equal, choose \(\pi=p^{1/e}\) in an algebraic extension and set \(\epsilon_i=\alpha_i\pi^{-e q_i}\). The exponents \(e q_i\) are integers, the \(\epsilon_i\) are units, and
 
@@ -3000,6 +3230,45 @@ The factorization \((2-\zeta)(2+\zeta)=5\) and the unit \(2+\zeta\equiv4\pmod5\)
 **Solution 27.** The input nodes are \(-3,-1,1,3\), so \(n=4=2(1-1/2)R\). Here \(B=\lfloor\log_3 8\rfloor=1\), \(M_0=1\), \(T'=4\), \(D=4\), and \(Lv_3(k!)=0\). The exact first budget is \(U+12\ge24+4=28\), hence \(U\ge16\). The exact output lower bound is \((8-4)3=12>11\). Therefore every integer \(-4\le x\le4\) has all prepared zeros through total order four, including the previously omitted \(-4,-2,0,2,4\).
 
 For the larger scale, the first line is \(U+14\ge28\), requiring only \(U\ge14\). Its corresponding lower bound is \(12-4/2=10\), which does not exceed eleven. Thus the second line fails; this alternative pair does not certify the same zeros. These computations evaluate the stated conditional budgets, rather than construct their auxiliary coefficients.
+
+**Solution 28.** Since \(P=125\) is odd, the two powers of \(\zeta\) are \(\pm\zeta\); neither nonzero rational multiple belongs to \(\mathbb Q\), because \(\zeta^2=-1\) has no rational root. Their product phase is \(\zeta^{-4P}=1\), giving \(\gamma_1\gamma_2=b=6^P\). On the support \((j,j)\), \(d\cdot(j,j)=-4Pj\) is divisible by \(G_0=2\), so (10.151) gives \(b^{sj}\) at every positive or negative integer node.
+
+Here \(N=4,D=1,J_0=1,M_*=3\), and \(A_1=A_2=3\), so \(H_{\mathrm{ph}}=3P(\ln2+\ln3)=3\ln b\). The torus polynomial is
+\[
+A(Y)=-b+CY-CY^2+bY^3
+=b(Y-b^{-1})(Y-1)(Y-b).
+\]
+It vanishes at \(b^{-1},1,b\). Consequently \(\Psi_0(s;0)=(s+1)A(b^s)\) is zero for \(s=-1,0,1\). At \(-1\) the additive factor alone already gives zero, and the vector supplies the additional torus zero. Directly the other two rows give \(-b+C-C+b=0\) and \(-b+Cb-Cb^2+b^4=0\).
+
+Since \(C=b^2+b+1\equiv1\pmod b\), the integer coordinates have greatest common divisor one. Their heights are therefore
+\[
+h_\infty(c)=\ln C,\qquad
+h_2(c)=\tfrac12\ln\bigl(2b^2+2C^2\bigr).
+\]
+Also \(b\equiv1\pmod5\), \(C\equiv3\pmod5\), so every coordinate is a 5-adic unit and the minimum valuation is zero. With \(k=L=1,T=0\), the scalar majorant is \(\mathcal H_0(|s|;0)=|s|+1\). The separate-row bound (10.152) is exactly
+\[
+\ln2+\sum_{s=-1}^1\bigl(\ln2+\ln(|s|+1)+6|s|\ln b\bigr)
+=6\ln2+12\ln b.
+\]
+It bounds the displayed height: \(C\le3b^2\) and \(b\ge1\) give \(h_2(c)\le2\ln b+\tfrac12\ln20\le12\ln b+6\ln2\), since \(20<2^{12}\). The weighted Siegel proof permits zero and dependent rows. Counting the first row in \(M_*=3\) merely keeps a sufficient budget; it does not assert that the matrix has rank three.
+
+**Solution 29.** Here \(g=\gcd(2,0)=2\), \(G_*=1,d_{*1}=0\), so the cancelled relation is \(w=0\). The two support vectors are \((0,0),(0,1)\) modulo two, and \(h_\Lambda=1\). Theorem 10.56 gives \(E=\mathbb Q(\eta)\), with \(\eta^2=6\), and degree two. A rational square has even prime valuations, whereas \(v_2(6)=1\), so \(\sqrt6\) is not rational. The square classes of \(-1,6\) are independent: a relation \((-1)^a6^b\) that is a rational square first forces \(b\) even by valuation at two, then \(a\) even by positivity. Thus the proved Kummer theorem gives \([F:\mathbb Q]=4\).
+
+The simple residue root of \(X^2-6\) at \(1\) modulo five has unit derivative two, and the complete Newton proof in Lemma 10.53 supplies \(\eta\in\mathbb Q_5\), \(\eta\equiv1\pmod5\). That same proof gives \(i\in\mathbb Q_5\), \(i\equiv2\pmod5\). Hence the chosen closures of \(E,F\) are both \(\mathbb Q_5\); their absolute indices are \(e=f=1\). Their global degrees are still two and four.
+
+The normalized torus terms are \(1,\eta\), and the prepared additive factor is \(\Delta(1/2;1)=3/2\). Hence \(V=\tfrac32(1-\eta)\). The identity
+\((1-\eta)(1+\eta)=1-6=-5\) and the unit \(1+\eta\equiv2\pmod5\) give \(v_5(V)=1\). Under the other embedding \(\eta\mapsto-\eta\), the value is \(\tfrac32(1+\eta)\), a unit, with valuation zero. In particular a lower bound at one embedding cannot be counted twice.
+
+Here \(\delta=0,N=2,A_1=1\),
+\(h_\infty(c)=0,h_2(c)=\tfrac12\ln2\),
+\(\mathcal H_0(1/2;0)=3/2\), and \(\Xi_{0,1,0}=1\).
+The torus term is \(2PXh(6)=\ln6\). Therefore (10.156) is exactly
+\[
+v_5(V)\le \frac2{\ln5}
+\left(\ln2+\ln(3/2)+\ln2+\ln6\right)
+=\frac{2\ln36}{\ln5}.
+\]
+It bounds the exact valuation one, since \(36^2>5\). Applying the same row estimate over \(F\) would instead give \(4\ln36/\ln5\). The support field halves this sufficient budget. Its unchanged completion removes no further factor: \(V\notin\mathbb Q\), and the product formula still sums over a global field of degree two.
 
 ## References
 

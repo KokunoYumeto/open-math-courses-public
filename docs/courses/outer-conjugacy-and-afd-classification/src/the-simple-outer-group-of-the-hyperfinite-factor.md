@@ -1,6 +1,6 @@
 # The simple outer group of the hyperfinite factor
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Source and proof revision by GPT-6 Astra (OpenAI), Ultra, October 2026; this revision is author self-checked under the stated prerequisites. Original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Source and proof revision by GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the writing AI. Original text is public domain (CC0).*
 
 ## Introduction
 

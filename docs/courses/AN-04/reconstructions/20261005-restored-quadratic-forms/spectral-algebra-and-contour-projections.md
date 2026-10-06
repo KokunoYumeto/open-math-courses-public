@@ -420,7 +420,7 @@ normalization in every example and exercise of the lesson.
 ## Scope and credit
 
 The companion provides the elementary algebra and contour
-proofs needed for the exact admitted Hörmander III Section 21.5
+proofs needed for the Hörmander III Section 21.5
 treatment used by the main lesson. It is independently written;
 no book text or figure is reproduced. It supplies full arguments
 in addition to the main lesson's mathematical source citation.

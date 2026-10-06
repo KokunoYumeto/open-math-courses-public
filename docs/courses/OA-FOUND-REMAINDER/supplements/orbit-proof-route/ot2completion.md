@@ -1,7 +1,7 @@
 <span id="explicit-completion-lemma-for-the-diagonal-tensor-weight-proof"></span>
 # Explicit completion lemma for the diagonal tensor-weight proof
 
-Private bounded independent check of the root's OT.2 application, 5 October 2026. The target equality is valid by the following exact application proof. This supplies the converse completion test that the first version of the root module compressed into a sentence. It uses the existing WH03–08 construction and **WH11**, the actual full finite-ideal/fullness/recovery proof. WH10 proves closability; it does not by itself prove fullness or recovery of the original weight.
+This page verifies the root module's application of OT.2. The target equality is valid by the following exact application proof. This supplies the converse completion test that the first version of the root module compressed into a sentence. It uses the existing WH03–08 construction and **WH11**, the actual full finite-ideal/fullness/recovery proof. WH10 proves closability; it does not by itself prove fullness or recovery of the original weight.
 
 <span id="the-right-column-acts-on-the-whole-completed-multiplication-domain"></span>
 ## The right column acts on the whole completed multiplication domain

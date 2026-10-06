@@ -386,6 +386,6 @@ The general necessary estimate without its radial exclusions, nonordinary symbol
 ## Sources and restoration
 
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, approved purchased reprint of the corrected second printing (1994), Theorem 25.3.11, printed 35 / PDF 46. Its complete hypotheses and all-real conclusion are retained above; every proof is supplied here or in an exact earlier programme lesson.
-- The source and restoration record identifies the admitted source and exact proof edition. The reproducible operator diagram retains its [DejaVu font notice](figures/notices/LICENSE_DEJAVU.txt).
+- The source and restoration record identifies the source and exact proof edition. The reproducible operator diagram retains its [DejaVu font notice](figures/notices/LICENSE_DEJAVU.txt).
 
 Original lesson, ten solutions and exact operator diagram: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Restoration and exact prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original additions here are CC0. Linked components retain their individual licences. No book file or text is included.

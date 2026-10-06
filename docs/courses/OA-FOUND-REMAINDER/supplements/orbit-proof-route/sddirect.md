@@ -25,8 +25,8 @@ Thus \(\Lambda_{\psi'}\) maps the finite left ideal into its Hilbert completion,
 
 The following are exact dependencies, with their current status visible.
 
-* **SD-DEP-GNS:** [OA-MOD-WG-003 through OA-MOD-WG-010](../../reader/orbit-proof-route/wg.html#OA-MOD-WG-003), for finite ideals, the linear extension of a weight, the semicyclic triple, its normal representation and semifinite cutoffs. These are local proof drafts, not admitted imports.
-* **SD-DEP-BOUNDED:** arbitrary Hilbert-space completions, bounded adjoints, positivity, continuous functional calculus, and the bicommutant theorem. The course foundation contracts remain subject to closure and audit.
+* **SD-DEP-GNS:** [OA-MOD-WG-003 through OA-MOD-WG-010](../../reader/orbit-proof-route/wg.html#OA-MOD-WG-003), for finite ideals, the linear extension of a weight, the semicyclic triple, its normal representation and semifinite cutoffs. Their proofs are given on the linked page.
+* **SD-DEP-BOUNDED:** arbitrary Hilbert-space completions, bounded adjoints, positivity, continuous functional calculus, and the bicommutant theorem. These foundational results are used here without proof.
 
 
 The bounded-vector proofs below use only SD-DEP-GNS and SD-DEP-BOUNDED. They do not assume SD-DEP-STANDARD or any spatial derivative already exists. References to OA-MOD-SC record downstream proofs of later contracts: SC uses SD-02, SD-04 and SD-05, while those three proofs have no SC premise. The direct construction does not use SD-DEP-STANDARD or SD-DEP-RELATIVE; those contracts govern the separate convention dictionary and relative modular identification.

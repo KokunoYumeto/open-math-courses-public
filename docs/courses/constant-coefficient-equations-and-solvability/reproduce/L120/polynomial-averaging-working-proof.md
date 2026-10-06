@@ -2,7 +2,7 @@
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October2026. Original exposition CC0.*
 
-This is the exact finite-degree averaging receiver used in AN02-L004. Its construction is written below, rather than supplied by a reference to a private book. The ordinary scalar complex Taylor theorem for an entire function restricted to a complex line, elementary finite-dimensional compactness, smooth scalar cutoffs, and real Lebesgue integration/Fubini remain declared inputs. No general analytic functional theorem is assumed. No wider AN-01 assignment is transferred.
+This is the exact finite-degree averaging receiver used in AN02-L004. Its construction is written below. The ordinary scalar complex Taylor theorem for an entire function restricted to a complex line, elementary finite-dimensional compactness, smooth scalar cutoffs, and real Lebesgue integration/Fubini remain declared inputs. No general analytic functional theorem is assumed. No wider AN-01 assignment is transferred.
 
 ## PA036-1. The precise statement
 

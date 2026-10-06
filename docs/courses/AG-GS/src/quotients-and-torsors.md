@@ -2444,7 +2444,7 @@ The exact source is [SGA 3 VIII 7.11](https://webusers.imj-prg.fr/~patrick.polo/
 
 This insertion proves the special pair-form effectivity, the full affine Gille normalizer statement, and general commutative no-additive-subgroup structure. Already existing programme proofs remain separate inputs: field quotients and normal affine quotients; the flat algebraic-space bootstrap and separated quasi-finite recognition; finite locally free free-action quotients and ample finite-set neighbourhoods; finite-presentation approximation and its full native connectedness provider; perfect-field reduction and Cartier's characteristic-zero theorem; solvable affine structure with additive filtration; smooth-source rational maps to abelian varieties, proper-factor rigidity and finite multiplication. Exact file hashes and actual read scopes are in the accompanying workflow JSON.
 
-The source records admit exact research reading. Native Stacks components retain the GFDL and truthful Stacks authors/AI Integrated Stacks provenance. Source prose from SGA, Gille and Milne is not reproduced, translated or re-licensed. New required editions and the existing matching native limit file are recorded in the owner-specific source contribution; matching existing source holdings were reused.
+The source records admit exact research reading. Native Stacks components retain the GFDL and their credit to the Stacks Project authors and the AI Integrated Stacks Project. Source prose from SGA, Gille and Milne is not reproduced, translated or re-licensed.
 
 ## Appendix C. Finite group structures, scheme tests and proper quotients
 
@@ -2640,7 +2640,7 @@ Its pullback is a nonzerodivisor on \(P_z\), by the associated-prime criterion. 
 
 For the local arbitrary-base version, choose the equations on the Noetherian fibre, using precisely the same associated points and prime avoidance, and lift them to the chart coordinate rings. The flatness criterion for one lifted equation can be verified without asserting that \(X/S\) is finitely presented. On a chart of the flat locally finitely presented map \(v\), its algebra \(B\) is a flat finitely presented algebra over the coordinate ring \(A\) of the target chart. Descend **this \(A\)-algebra and this one equation** to a finitely generated subring \(A_0\subset A\); enlarge \(A_0\) so that \(B_0/A_0\) is flat. At the prime under the chosen base point, its fibre becomes the original fibre after a faithful field extension. The nonzerodivisor condition on that fibre therefore descends. The Noetherian flatness criterion proves that \(B_0/(f)\) is flat on a neighbourhood of its cut fibre, and pullback proves the same for \(B/(f)\). This also proves that the relevant flat locus is open for these cut maps. Apply the argument on the finitely many charts meeting the cut fibre and repeat for its finite list of equations. The dimension decrease is a statement on the original Noetherian fibre and is unaffected by these algebra approximations. This descends neither an infinitely presented \(S\)-scheme nor an infinite-component group to a fictitious finite-type model. It proves exactly the stated local cutting assertion. \(\square\)
 
-The flat finite-presentation approximation in the preceding argument is the exact native [Commutative Algebra proof, lemma-flat-finite-presentation-limit-flat](https://raw.githubusercontent.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/565b10e987aba5969b21145a0833f42d69f96790/algebra.tex), applied to the finitely presented flat chart algebra and its module. Its scheme form is [Limits of Schemes, lemma-descend-flat-finite-presentation](https://raw.githubusercontent.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/565b10e987aba5969b21145a0833f42d69f96790/limits.tex). These proofs retain their Stacks provenance and original component terms.
+The flat finite-presentation approximation in the preceding argument is the exact native [Commutative Algebra proof, lemma-flat-finite-presentation-limit-flat](https://raw.githubusercontent.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/565b10e987aba5969b21145a0833f42d69f96790/algebra.tex), applied to the finitely presented flat chart algebra and its module. Its scheme form is [Limits of Schemes, lemma-descend-flat-finite-presentation](https://raw.githubusercontent.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/565b10e987aba5969b21145a0833f42d69f96790/limits.tex). These proofs retain their Stacks attribution and original component terms.
 
 **Theorem C.16.** Let \(G\) be proper and flat of finite type over a locally Noetherian scheme \(S\), and let it act strictly freely on a quasi-projective \(S\)-scheme \(X\). Then its fppf orbit sheaf is a scheme. The quotient is a \(G\)-torsor, so is flat and locally of finite presentation. In particular, if \(G\) is quasi-projective and \(H\subset G\) is closed, flat and proper over this base, the quotient \(G/H\) is a scheme; if \(H\) is normal it is a group scheme.
 
@@ -2656,7 +2656,7 @@ These saturated opens cover \(X\). Indeed their union contains every point close
 
 For the subgroup application, right translation by \(H\) has closed endpoint graph: the difference morphism \((g,g')\mapsto g^{-1}g'\) pulls back the closed immersion \(H\hookrightarrow G\). It is free on all tests. Apply the theorem with acting group \(H\) and object scheme \(G\). Normality makes the orbit sheaf a group sheaf, whose law and unit are morphisms by Yoneda. \(\square\)
 
-This is the full proper-flat, possibly non-smooth and noncommutative proof of AV IV.38 and IV.39(b), following the exact admitted corrected SGA 3, Exposé V, §§7.1–7.4 (PDF pages 24–29). Its finite quotient input is the existing programme theorem, not a new special case.
+This is the full proper-flat, possibly non-smooth and noncommutative proof of AV IV.38 and IV.39(b), following the corrected edition of SGA 3, Exposé V, §§7.1–7.4 (PDF pages 24–29). Its finite quotient input is the existing programme theorem, not a new special case.
 
 **Corollary C.17.** For an abelian variety \(A/k\) and any closed subgroup scheme \(H\), the fppf quotient \(A/H\) is an abelian variety, including over an imperfect field and for a non-smooth \(H\).
 
@@ -3823,7 +3823,7 @@ Finally \(B\), as an \(R\)-module, is torsion free. Flatness can be checked at t
 
 Every invertible \(B\)-module is free. To see this without a finiteness claim over \(R\), choose its generators modulo the finitely many maximal ideals of the semilocal \(B\), combine them by the Chinese remainder theorem, and apply Nakayama at every maximal ideal. The resulting homomorphism from \(B\) is an isomorphism everywhere. Thus \(\operatorname{Pic}B=0\), the exact base-line input needed by H.3.
 
-Human comparison: the Stacks Project authors' Krull–Akizuki and integral-closure lemmas, in the admitted native `algebra.tex` at revision `565b10e987aba5969b21145a0833f42d69f96790`, labels `lemma-finite-length`, `lemma-finite-length-global`, `lemma-krull-akizuki` and `lemma-integral-closure-Dedekind`. The preceding argument is independently expressed for the Dedekind scope actually consumed here. It does not infer finiteness from Noetherianity.
+Human comparison: the Stacks Project authors' Krull–Akizuki and integral-closure lemmas, in the native Stacks `algebra.tex` at revision `565b10e987aba5969b21145a0833f42d69f96790`, labels `lemma-finite-length`, `lemma-finite-length-global`, `lemma-krull-akizuki` and `lemma-integral-closure-Dedekind`. The preceding argument is independently expressed for the Dedekind scope actually consumed here. It does not infer finiteness from Noetherianity.
 
 ### H.6. Finite splitting and total-space components
 
@@ -3937,7 +3937,7 @@ Each section open is a separated scheme of finite presentation over this Noether
 
 For the relative version of H.4, take a Noetherian affine neighbourhood of any point \(s\in S\). Its local ring is a field or a DVR on its normal component. Smooth finite-type schemes and the affine-section/orbit hypotheses persist on that local base. Apply H.4 there, and then H.8 to return to an open neighbourhood of \(s\). These neighbourhoods prove relative ampleness. If the original affine neighbourhood has several normal components, they are open and closed and can first be treated separately. This is the full locally Noetherian normal dimension-at-most-one conclusion, not just an assertion on local or geometric fibres.
 
-### H.application. Application and ownership boundary
+### H.application. Application and scope boundary
 
 For the smooth almost-homogeneous stage, replace \(X\) by \(G\cdot U\) when necessary. The action map \(G\times_SX\to X\) is smooth and open, since the action shear identifies it with the projection. Its image of \(G\times_SU\) is therefore the open saturation. On a Noetherian affine base this open is quasi-compact and remains of finite type, separated and smooth. It contains exactly the geometric orbits which meet \(U\). H.2 makes the dense affine complement a Cartier boundary, and any positive integral multiplicities have that same complement. H.4 and H.8 prove ampleness of each such boundary bundle on the saturation.
 
@@ -4079,7 +4079,7 @@ This supplies an independent return from a finite closure at the Gauss valuation
 
 ### I.6. An affine finite-chart return, using the algebraic Zariski Main proof
 
-The following argument avoids the source's separate étale finite-chart construction. Its exact existing programme input is the algebraic Zariski Main Theorem, openness of the quasi-finite locus, and affine finite completion: AG-MO-12, Theorems 1.1, 3.1 and 3.2, in the delivered curated source revision `c4554ce66ab6b601d651ba6fdb4033a0f8ea33684df0ee0d6465031913d9fc55`. The entire supplied lesson was read. The two conductor proofs it imports were also read in the exact admitted native `algebra.tex`, including the leading-coefficient reduction and the reduced strongly-transcendental argument. This input is an actual earlier proof with specified arbitrary-ring hypotheses, not a citation to an unread book.
+The following argument avoids the source's separate étale finite-chart construction. Its exact existing programme input is the algebraic Zariski Main Theorem, openness of the quasi-finite locus, and affine finite completion: AG-MO-12, Theorems 1.1, 3.1 and 3.2, in the delivered curated source revision `c4554ce66ab6b601d651ba6fdb4033a0f8ea33684df0ee0d6465031913d9fc55`. The entire supplied lesson was read. This input is an actual earlier proof with specified arbitrary-ring hypotheses, not a citation to an unread book.
 
 **Lemma (generic polynomial normalization).** If \(K\) is perfect, \(R=K[T_1,\ldots,T_n]\), \(F=\operatorname{Frac}(R)\), and \(L/F\) is finite, the integral closure \(N_R\) of \(R\) in \(L\) is a finite \(R\)-module.
 
@@ -4440,7 +4440,7 @@ Finally \(\nu_i\) is a generic isomorphism, since it becomes one over \(\overlin
 
 The same finite-data argument works over a quasi-compact Dedekind scheme, using a finite base cover and its finite overlap data. It does not work over the non-quasi-compact base in I.14: there the presentations on countably many base charts do not form a finite list. This proposition supplies finite-field descent once Theorem 1's actual normalization has been established; the existence theorem itself is proved in I.16.
 
-Human comparison for the one-dimensional length argument: the admitted native Stacks `algebra.tex`, labels `lemma-finite-length`, `lemma-finite-length-global`, and `lemma-krull-akizuki`. The argument is supplied above in its needed finite-extension generality, including the nonfinite normalization of a nonexcellent Dedekind ring.
+Human comparison for the one-dimensional length argument: the native Stacks `algebra.tex`, labels `lemma-finite-length`, `lemma-finite-length-global`, and `lemma-krull-akizuki`. The argument is supplied above in its needed finite-extension generality, including the nonfinite normalization of a nonexcellent Dedekind ring.
 
 ### I.14. The original global Corollary 2 is false on the paper's noncompact base class
 

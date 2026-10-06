@@ -336,7 +336,7 @@ These are concrete measurable fields. WH-11 identifies them with elements of \(\
 
 This proves the reverse implication and completes the theorem of GFR-01.
 
-MC-02–04 constructs a nonmeasurable weight field on constant \(M_2\) whose abstract associated algebras become measurable after a nonmeasurable change of frame. Its two canonical transports to and from the prescribed concrete field both fail. That counterexample remains valid. The theorem proved here concerns existence of the associated compatible realization constructed from (GFR.2), and the reverse statement uses its specified inverse transport. It does not state that every arbitrary abstract measurable realization supplies that compatibility. Source Lemma VIII.4.5 is compared using the associated meaning of its algebra given by formula (5); the interpretation issue and the independent source-owner adjudication must remain visible in registration.
+MC-02–04 constructs a nonmeasurable weight field on constant \(M_2\) whose abstract associated algebras become measurable after a nonmeasurable change of frame. Its two canonical transports to and from the prescribed concrete field both fail. That counterexample remains valid. The theorem proved here concerns existence of the associated compatible realization constructed from (GFR.2), and the reverse statement uses its specified inverse transport. It does not state that every arbitrary abstract measurable realization supplies that compatibility. Source Lemma VIII.4.5 is compared using the associated meaning of its algebra given by formula (5).
 
 ## Exact models and worked problems
 
@@ -388,6 +388,6 @@ On the interval of length \(n^{-3}\), the block is \(\begin{pmatrix}0&n\\n&0\end
 
 ## Exact exports and the remaining course boundary
 
-At the named inputs, GFR-02–06 constructs the compatible actual GNS Hilbert-algebra field; GFR-07–08 proves both typed operator transports; GFR-09 proves all positive weight values and all finite-left-ideal GNS sections; and GFR-10 proves the reverse comparison. These are the three proof obligations of the existing noncounting MW-DEP-GNS-FIELD alias, whose sole canonical source owner is TT2-VIII-lemma-4.5. Neither the construction nor the matrix check creates a second owner.
+At the named inputs, GFR-02–06 constructs the compatible actual GNS Hilbert-algebra field; GFR-07–08 proves both typed operator transports; GFR-09 proves all positive weight values and all finite-left-ideal GNS sections; and GFR-10 proves the reverse comparison. Together these prove the three statements that the lesson on measurable weight fields uses as its GNS-field input; they correspond to Lemma VIII.4.5 of the source.
 
 These author proofs do not establish the entire central disintegration theorem, complete the course, remove the MC arbitrary-realization obstruction, settle independent source interpretation, or discharge every transitive prerequisite. Figures have reproducible sources and exact proof locators; actual render inspection is recorded separately.

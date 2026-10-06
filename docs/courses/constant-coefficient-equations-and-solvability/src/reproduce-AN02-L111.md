@@ -10,7 +10,7 @@ Save these five files together:
 - Unchanged rendering source
 - Standalone reproduction wrapper
 
-Use Python with NumPy and Matplotlib. The checked environment used Python 3.13.9, NumPy 2.4.4 and Matplotlib 3.10.9, with DejaVu Sans. The five files form a self-contained reproduction bundle: no private scan, OCR, manuscript, course source tree or workflow input is required.
+Use Python with NumPy and Matplotlib. The checked environment used Python 3.13.9, NumPy 2.4.4 and Matplotlib 3.10.9, with DejaVu Sans. The five files form a self-contained reproduction bundle: no other input is required.
 
 From the directory containing the five files, choose a fresh output directory and run:
 

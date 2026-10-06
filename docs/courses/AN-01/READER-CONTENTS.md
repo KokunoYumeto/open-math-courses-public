@@ -1,8 +1,8 @@
 # Course contents
 
-All 72 authored lessons and their used prerequisite routes have owner source/proof checks. The private reader includes exact prerequisite copies, editable sources and a verified offline archive.
+All 72 authored lessons and their used prerequisite routes are self-checked by the writing AI. The reader includes exact prerequisite copies, editable sources and a verified offline archive.
 
-[Learning guide](LEARNING_GUIDE.md) · [Supplied prerequisites](ONLINE-PREREQUISITES.md) · [Private download](downloads/README.md)
+[Learning guide](LEARNING_GUIDE.md) · [Supplied prerequisites](ONLINE-PREREQUISITES.md) · [Offline reader and editable sources](downloads/README.md)
 
 - [Distributions as kernels of continuous operators](reader/AN01-U001.html)
 - [When a kernel is smooth](reader/AN01-U002.html)

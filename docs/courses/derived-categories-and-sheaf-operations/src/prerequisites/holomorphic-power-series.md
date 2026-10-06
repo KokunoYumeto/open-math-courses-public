@@ -84,6 +84,6 @@ For a fixed coordinate slice, group the absolutely convergent sum according to t
 
 ## Sources and sheaf examples
 
-The programme's analytic lesson credits Jean-Pierre Demailly and Jiří Lebl. Background readings are Demailly's [Complex Analytic and Differential Geometry](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf) and Lebl's [Tasty Bits of Several Complex Variables, version 3.4](https://www.jirka.org/scv/scv-3.4.pdf). These are scholarly reading links; the full proof used here is the preceding programme argument. The [source and edition notice](assets/notices/holomorphic-power-series-source-notice.html) identifies its selected scope and provenance.
+The programme's analytic lesson credits Jean-Pierre Demailly and Jiří Lebl. Background readings are Demailly's [Complex Analytic and Differential Geometry](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf) and Lebl's [Tasty Bits of Several Complex Variables, version 3.4](https://www.jirka.org/scv/scv-3.4.pdf). These are scholarly reading links; the full proof used here is the preceding programme argument. The [source and edition notice](assets/notices/holomorphic-power-series-source-notice.html) identifies its selected scope and sources.
 
 Theorems 1.2 and 2.1 and Proposition 2.2 give the local expansions and convergent division used in the holomorphic curve residue resolution and the surface Koszul resolution of the sheaf course.

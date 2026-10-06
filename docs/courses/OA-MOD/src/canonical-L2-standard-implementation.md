@@ -166,7 +166,7 @@ Let \(\psi\) be any normal semifinite weight on \(M\), with support \(e\). The s
  \tag{CL.13}
 \]
 
-The zero-corner conventions are included in that theorem. Thus every \(\psi\) has such a completion; \(\psi\) need not be finite at \(1\). The completion is an auxiliary choice, whose weight and centralizer properties have already been proved by the existing corner-weight owner.
+The zero-corner conventions are included in that theorem. Thus every \(\psi\) has such a completion; \(\psi\) need not be finite at \(1\). The completion is an auxiliary choice, whose weight and centralizer properties are proved in the corner-completion theorem cited above.
 
 In canonical coordinates put \(R_e=JeJ\). This is an orthogonal projection in \(M'\). Since \(e\) is fixed by the modular group of \(\varphi\), its entire orbit is constant. The full finite-domain multiplier identity in the centralizer theorem, equation (CZ.3), gives
 

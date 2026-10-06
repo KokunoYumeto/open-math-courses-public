@@ -10,7 +10,7 @@ The earlier [bounded-topology companion](bounded-topology-foundations.md) suppli
 
 The normal-weight construction records both its genuine historical correspondence with Masamichi Takesaki, *Theory of Operator Algebras II*, VII.1, Theorem 1.11 and preparatory lemmas and its later comparison with Uffe Haagerup, [*Normal weights on W*-algebras* (1975)](https://doi.org/10.1016/0022-1236(75)90060-9), Lemmas 1.4–1.7/Theorem 1.8 and Proposition 2.1/Theorem 2.2. The programme proves the bounded GNS graph step by summable energy increments and uses direct downward-set closure for positive separation. These are existing OA-MOD proofs, not a claim of new mathematical results. The older NW records do not identify an exact authoring model; this integration's model is not assigned retrospectively to them.
 
-The passages below are programme exposition, with source locations, exact byte provenance and the original source/change records in the accompanying manifest. Earlier agent-selected GFDL metadata does not override the current CC0 dedication for independently written AI text. No new blanket clearance of human-source expression is inferred from this selection. The full course, general Borel/unbounded spectral theory and the P514 dependency graph remain separately scoped.
+The passages below are programme exposition, with source locations and the original source/change records in the accompanying manifest. Earlier agent-selected GFDL metadata does not override the current CC0 dedication for independently written AI text. No new blanket clearance of human-source expression is inferred from this selection. General Borel/unbounded spectral theory is not treated here.
 
 ## Concrete topology and corner preduals
 
@@ -234,8 +234,6 @@ Indeed \(U|C|U^*\) is positive and has square \(U|C|^2U^*=CC^*\), since \(U^*U\)
 If \(C\) is injective with dense range, the initial and final spaces are all of \(H,K\); thus \(U:H\to K\) is unitary.
 
 ## Supports of positive normal functionals
-
-*Programme source: OA-MOD, audit/real-coercivity/predual-prerequisites.md, original lines 68–104.*
 
 ### NP3 — Supports of positive ultraweakly continuous functionals
 
@@ -502,8 +500,6 @@ Density yields \(\pi_\varphi(a)^*=\pi_\varphi(a^*)\). Finally,
 Here “semicyclic” means this representation together with its dense-range module map. Some treatments impose additional closedness conditions when defining an abstract semicyclic object. No such closedness is included silently in the present terminology.
 
 ## Convex closure and Krein–Šmulian
-
-*Programme source: OA-MOD, audit/analytic-programme/convex-foundations-programme.md, original lines 1–136.*
 
 **Compactness and convex closure for normal-weight proofs**
 

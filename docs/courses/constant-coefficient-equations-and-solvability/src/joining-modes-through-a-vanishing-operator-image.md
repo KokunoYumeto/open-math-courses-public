@@ -358,5 +358,6 @@ Cutoff and mode derivatives cost only finite powers. Divide by the dominant M ti
 
 ## References
 
-- [Grubb] Gerd Grubb, *Distributions and Operators*, lecture notes, University of Copenhagen, 2007–2008. [Author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm).
+- [Grubb] Gerd Grubb, author-hosted lecture chapter 5, *Fourier transformation of distributions*, §§5.1–5.3, from the 2007–2008 lecture notes for *Distributions and Operators*. [Exact freely readable chapter](https://www.math.ku.dk/~grubb/dist5.pdf). [Author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm). Fourier and tempered-distribution background; the construction proofs use the written lessons cited below.
 - [Hörmander] Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 1983.
+- Written proof input: [Physical transport scales and curved phases](physical-transport-scales-and-curved-phases.md#rational-input-and-the-physical-scale), (1)–(20), including both switching-curve corrections and [the joint-flatness estimate](physical-transport-scales-and-curved-phases.md#the-normalized-q-image-and-estimates-retained-for-assembly), (20). Under these declared physical-mode inputs, Theorem 1 is proved here: centre matching (5)–(14), sum decay (15)–(19), nodal division (20)–(23), cutoff bounds (24)–(25), and the global nonzero tail (26). Integer periodicity and global coefficient smallness are proved in the next lesson.

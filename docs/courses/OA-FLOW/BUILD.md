@@ -20,7 +20,7 @@ python build_reader.py --archive ../group-representations-and-covariance.zip
 
 The ZIP sorts its files, fixes timestamps and permissions, and contains the lesson sources, reader, build script, mathematical result index, references and component notices. With identical inputs and Python compression runtime its bytes are reproducible.
 
-Original lesson authorship and the actual human references are recorded in the lessons and `provenance.json`. Author self-check does not assert human review or formal verification.
+Original lesson authorship and the human references are recorded in the lessons and `provenance.json`. The lessons are self-checked by the writing AI; human review and formal verification are not asserted.
 
 The cyclic matrix illustration is supplied as PNG, editable SVG and an original reproduction program under `assets/`. The SVG is reproducible with Python alone; PNG rasterization additionally uses Playwright and Edge and may differ with fonts or browser versions.
 
@@ -30,4 +30,4 @@ The power-strip illustration is supplied as PNG, SVG and `assets/render-power-st
 
 The spectral-tail figure retains its included GFDL/MIT component terms. The faithful-state core figure is supplied as PNG, SVG and assets/render-core-construction.py; run the program in its containing directory. Both figures preserve exact mathematical coordinates and proof locators.
 
-Builds default to a private review draft. The `--release` option requires complete review records bound to the exact current lesson sources, verified free research materials, and complete programme proof dependencies. The records are currently incomplete. Rendering, link checks and formula preservation do not establish that mathematical review.
+The `--release` option requires complete review records bound to the exact current lesson sources, verified free research materials, and complete programme proof dependencies. The records are currently incomplete. Rendering, link checks and formula preservation do not establish that mathematical review.

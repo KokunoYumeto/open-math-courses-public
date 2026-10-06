@@ -386,4 +386,4 @@ For \(f_\beta(y)=y^\beta\), \(\beta>0\), the two different finite-domain thresho
  \tag{WD.34}
 \]
 
-The second expression denotes the extended energy; an actual GNS vector exists only in its finite case. Integrating \(y^{\gamma-2}\) from \(\varepsilon\) to one and taking \(\varepsilon\downarrow0\) proves each branch, including logarithmic divergence at its boundary. For example, \(f_{3/4}\) has a GNS vector of squared norm two while its positive weight is infinite. All fibre evaluations remain finite. The private reproducible figures distinguish these domains, depict the closed-graph/core argument and the countable fibre-totality mechanism, and identify finite samples separately from the proved limiting statements.
+The second expression denotes the extended energy; an actual GNS vector exists only in its finite case. Integrating \(y^{\gamma-2}\) from \(\varepsilon\) to one and taking \(\varepsilon\downarrow0\) proves each branch, including logarithmic divergence at its boundary. For example, \(f_{3/4}\) has a GNS vector of squared norm two while its positive weight is infinite. All fibre evaluations remain finite.

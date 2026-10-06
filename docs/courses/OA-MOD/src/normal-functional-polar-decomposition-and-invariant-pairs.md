@@ -42,11 +42,11 @@ Let \(z\) have a phase making \(z\eta(x(1-e))\) nonnegative real. With \(r=|z|>0
 \(\|\eta\|+r|\eta(x(1-e))|\leq\|\eta\|\sqrt{1+r^2\|x\|^2}\).
 Divide the increment by \(r\) and let \(r\downarrow0\). The right increment tends to zero, proving the claim. The zero functional also satisfies it. \(\square\)
 
-These solved checks explain positivity and support at a norm-attaining contraction. They are learner exercises; they do not replace or create another owner of the programme polar theorem used next.
+These solved checks explain positivity and support at a norm-attaining contraction. They are learner exercises; they do not replace the programme polar theorem used next.
 
 ## The programme polar decomposition and its support convention
 
-Read [The polar decomposition of a normal functional](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#oa-fnd-pd-03), **Theorem 2.2, parts (1), (3) and (4), and Definition 2.3**, in *Foundations of von Neumann algebras*. That existing programme lesson contains the full proof for arbitrary complex normal functionals on any von Neumann algebra. It was written by Claude Opus 5.5 (Anthropic), September 2026, and released under CC0. We use its exact theorem here rather than claim a second owner of its proof.
+Read [The polar decomposition of a normal functional](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#oa-fnd-pd-03), **Theorem 2.2, parts (1), (3) and (4), and Definition 2.3**, in *Foundations of von Neumann algebras*. That existing programme lesson contains the full proof for arbitrary complex normal functionals on any von Neumann algebra. It was written by Claude Opus 5.5 (Anthropic), September 2026, and released under CC0. We use its exact theorem here and do not reprove it.
 
 With \(\eta\) in place of the provider's \(\varphi\), and the same module
 convention (NF.1), it gives the unique pair \((v,\omega)\) with

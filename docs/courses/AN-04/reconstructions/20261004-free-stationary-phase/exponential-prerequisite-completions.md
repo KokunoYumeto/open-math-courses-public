@@ -1,6 +1,6 @@
 # Exponentials, circle coordinates and the Gaussian branch
 
-Private prerequisite companion. This is an attributed adaptation and extension
+Prerequisite companion. This is an attributed adaptation and extension
 of Jiří Lebl's freely accessible *Basic Analysis*, version 6.3,
 [author edition](https://www.jirka.org/ra/), under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

@@ -8,4 +8,4 @@ A proof of finite-heart realization for constructible sheaves with appropriate i
 
 Lunts and Schnürer receive credit for the modern comparisons; the Stacks project authors and Guillaume Valette receive credit for the linked algebra and derived foundations. Their component licences remain at the linked providers. Their expression is not imported. Original AI teaching and reader code here are CC0.
 
-Rebuild with Python 3 and Pandoc by running python build/build_reader.py in this directory. Wide formulas scroll on small screens. This is an author self-checked selection from Constructible and perverse sheaves. The general toric geometry and remaining parent-course foundations are separate work.
+Rebuild with Python 3 and Pandoc by running python build/build_reader.py in this directory. Wide formulas scroll on small screens. This is a selection from Constructible and perverse sheaves. Self-checked by the writing AI. The general toric geometry and remaining parent-course foundations are separate work.

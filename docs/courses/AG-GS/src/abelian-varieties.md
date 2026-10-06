@@ -1332,13 +1332,13 @@ The following statements are the inputs actually used.
 5. The local analytic construction uses the bridge's Oka Theorem 2.1, local parametrization Theorem 4.1, Nullstellensatz Theorem 5.1 and dimension Theorem 5.4, and Cartan coherence Theorem 1.1 and Theorem 3.2. Their proof bodies were read, including the primitive-element/discriminant construction and the argument giving generators on a neighbourhood, rather than merely at one stalk.
 6. Formal functions, Theorem 5.2 proves that a proper map with finite fibres over a locally Noetherian base is finite. It is used in the graph argument, with the exact completion comparison above.
 
-The current GAGA structure-sheaf calculation also uses the existing Laurent series and homogeneous projections, Theorems 2–5. Their complete product estimates, extension on every \(\Omega_N\), homogeneous decomposition and signed contraction were read in Sections 2–4. That existing unit retains CC BY-SA 4.0, including its separately credited Lebl v1.9 Laurent component; its current source/reader and native-excerpt hashes are recorded, without relabelling it as CC0 or claiming a new audit of all one-variable source material.
+The current GAGA structure-sheaf calculation also uses the existing Laurent series and homogeneous projections, Theorems 2–5. Their complete product estimates, extension on every \(\Omega_N\), homogeneous decomposition and signed contraction were read in Sections 2–4. That existing unit retains CC BY-SA 4.0, including its separately credited Lebl v1.9 Laurent component.
 
 Here is the finite graph step, specifying why an analytic isomorphism of graphs suffices. If \(h:X^{\mathrm{an}}\to Y^{\mathrm{an}}\) is holomorphic and \(X,Y\) are reduced projective complex varieties, its graph is a closed reduced analytic subset of \((X\times Y)^{\mathrm{an}}\). Chow gives a reduced algebraic graph \(Z\subset X\times Y\). The proper first projection \(p:Z\to X\) has one point in each closed fibre, and those fibres are zero-dimensional. The proper fibre-dimension theorem makes all fibres zero-dimensional: a nonempty closed locus of positive-dimensional fibres would have a closed point. Thus \(p\) is finite by Formal functions 5.2.
 
 At a closed point \(x\) let \(A=\mathcal O_{X,x}\) and \(B=(p_*\mathcal O_Z)_x\). The finite \(A\)-algebra \(B\) has one maximal ideal \(\mathfrak n\), because the closed fibre has one point. The quotient \(B/\mathfrak m_A B\) is an Artinian local algebra, so \(\mathfrak n^s\subset\mathfrak m_A B\) for some \(s\); also \(\mathfrak m_A B\subset\mathfrak n\). The two adic topologies are therefore cofinal. Exact finite-module completion gives \(B\otimes_A\widehat A=\widehat B\). The analytic graph isomorphism and the local analytic completion comparison identify \(\widehat A\to\widehat B\) with an isomorphism. Faithful flatness of \(A\to\widehat A\) makes \(A\to B\) an isomorphism. The coherent kernel and cokernel vanish at every closed point, hence everywhere. Since a finite map is the relative spectrum of its direct-image algebra, \(p\) is an isomorphism. The second projection composed with \(p^{-1}\) algebraizes \(h\). Uniqueness follows from uniqueness of its reduced graph. This is exactly the reduced projective scope needed below; it assumes neither arbitrary-proper nor nonreduced GAGA.
 
-The preceding provider identification is a bounded point-of-use check. It is not a new independent audit of every foundational result in the analytic courses. For example the L² proof still uses Lebesgue integration, distributional calculus, mollifier approximation and Hilbert-space representation, and the Fréchet proof uses Baire and the stated algebraic completion results. Their programme locators remain explicit prerequisites.
+The preceding provider identification is a bounded point-of-use check. The foundational results on which the analytic courses rest are not proved here. For example the L² proof still uses Lebesgue integration, distributional calculus, mollifier approximation and Hilbert-space representation, and the Fréchet proof uses Baire and the stated algebraic completion results. Their programme locators remain explicit prerequisites.
 
 #### The exponential and the quotient
 
@@ -1513,14 +1513,14 @@ The middle isomorphism is multiplication by n, and the last uses any lattice bas
 
 #### Source credit and scope
 
-The analytic bridge is independently written by Claude Opus 5.5 (Anthropic), with its author self-check and CC0 declaration. The existing Laurent unit retains CC BY-SA 4.0 and its credited Jiri Lebl v1.9 component. The preparation-and-division component retains its Demailly/Siegel credit and OpenContent notice. These component terms remain attached to their exact companion readings.
+The analytic bridge is independently written by Claude Opus 5.5 (Anthropic), with its CC0 declaration. Self-checked by the writing AI. The existing Laurent unit retains CC BY-SA 4.0 and its credited Jiri Lebl v1.9 component. The preparation-and-division component retains its Demailly/Siegel credit and OpenContent notice. These component terms remain attached to their exact companion readings.
 
 The proofs use the smooth parameter ODE theorem and GAGA for reduced projective complex varieties. They do not assert algebraization for arbitrary proper or nonreduced spaces, or projectivity of every abstract compact complex torus. The analytic inputs retain their explicitly stated integration, distributional, Hilbert-space and Baire prerequisites. Bibliographic comparison does not substitute for those proofs.
 
 ### Biduality, isogeny kernels and the Picard component group
 
 This independently written supplement is dedicated to CC0 1.0. It compares
-the admitted Edixhoven–van der Geer–Moonen preliminary *Abelian Varieties*,
+the Edixhoven–van der Geer–Moonen preliminary *Abelian Varieties*,
 Chapter VII, with the existing programme proofs. The sixteen results below continue the duality proofs. The base field is arbitrary, including
 imperfect fields. Functor assertions concern all schemes over the field,
 including schemes with nilpotents.
@@ -2309,7 +2309,7 @@ Chapter VII with 8 February 2012 footers, printed
 pages 98–111,
 [author-hosted PDF](https://van-der-geer.nl/AV.pdf).
 6.32 expands the cohomological argument attributed to
-Mumford in that admitted chapter; 6.31 gives its exact
+Mumford in that chapter; 6.31 gives its exact
 flat-sheaf and tensor hypotheses. 6.41 supplies the
 exterior-algebra version of the degeneration argument
 attributed there to Oda. These mathematical credits
@@ -3431,11 +3431,11 @@ For \(g=0\) take \(\operatorname{Spec}k\). Products of proper geometrically inte
 
 #### Comparison, scope and source credit
 
-The source statement is Edixhoven–van der Geer–Moonen, *Abelian Varieties*, Chapter V, remark (5.25)(ii), in the admitted preliminary edition with 8 February 2012 footers. The coefficient and other prime-field arguments of the preceding supplement remain useful and unchanged.
+The source statement is Edixhoven–van der Geer–Moonen, *Abelian Varieties*, Chapter V, remark (5.25)(ii), in the preliminary edition with 8 February 2012 footers. The coefficient and other prime-field arguments of the preceding supplement remain useful and unchanged.
 
 The analytic ingredients, the lattice construction and the endomorphisms of complex elliptic curves, are treated in J. S. Milne, [*Elliptic Curves*](https://www.jmilne.org/math/Books/EC2.pdf), second edition, Chapter III, §§2–3. The modular polynomial is treated in Don Zagier, [*Elliptic Modular Forms and Their Applications*](https://people.mpim-bonn.mpg.de/zagier/files/doi/10.1007/978-3-540-74119-0_1/fulltext.pdf), §6.1, equations (77)–(79) and Proposition 24. Here we prove only the needed prime-degree diagonal polynomial and use \(\mathbf Z[1/6]\), which suffices for the remaining primes. The number-field, good-model and extension arguments are written out, rather than importing class fields, a CM reduction classification, Tate's theorem, quaternionic classification or a global existence theorem. The theorem of Honda and Tate gives another route to these existence results; see Kirsten Eisenträger's notes [*The theorem of Honda and Tate*](https://math.stanford.edu/~conrad/vigregroup/vigre04/hondatate.pdf). The proof above does not use it.
 
-No source prose, source figures or distinctive lesson organization is reproduced. These are proofs of established results, not a claim of new mathematical research. Exact admitted editions, checked byte hashes, input lessons, proof decisions and output hash are recorded in the companion workflow JSON.
+No source prose, source figures or distinctive lesson organization is reproduced. These are proofs of established results, not a claim of new mathematical research.
 
 ### The sharp curve example and a two-factor warning
 

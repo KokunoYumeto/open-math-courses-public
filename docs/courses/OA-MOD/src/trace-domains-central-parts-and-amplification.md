@@ -2,7 +2,7 @@
 
 For a general weight, finite values and zero values are controlled by different projections, neither of which need be central. The trace identity changes this geometry: the finite domain becomes a two-sided ideal, both projections become central, and ordered finite approximations become available. These facts let us add traces on disjoint central pieces and amplify a trace by an arbitrary type I factor.
 
-The source correspondence is Masamichi Takesaki, *Theory of Operator Algebras I*, V.2: Definition 2.1; Proposition 2.10, Definition 2.11 and Lemmas 2.12–2.13; Proposition 2.14; Lemma 2.16, its following remark and Definition 2.17. These are PDF pages 317 and 323–327 in the approved edition. The present organization starts with the finite-domain algebra, constructs the two central parts, and then uses ordered cutoffs for amplification. Every invoked weight result has an exact earlier proof below. Existing programme trace proofs retain their ownership; this direct route supplements their uses in the course.
+The source correspondence is Masamichi Takesaki, *Theory of Operator Algebras I*, V.2: Definition 2.1; Proposition 2.10, Definition 2.11 and Lemmas 2.12–2.13; Proposition 2.14; Lemma 2.16, its following remark and Definition 2.17. These are PDF pages 317 and 323–327 in the approved edition. The present organization starts with the finite-domain algebra, constructs the two central parts, and then uses ordered cutoffs for amplification. Every invoked weight result has an exact earlier proof below. Trace results are also proved in existing programme lessons; this direct route supplements their uses in the course.
 
 ## Trace axioms and the two finite ideals
 

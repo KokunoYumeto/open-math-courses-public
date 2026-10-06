@@ -5,7 +5,7 @@ order. In a frequency graph the concealed factor is explicit. Removing it
 turns suitable operators on the distribution into ordinary derivatives of
 the amplitude. Dyadic \(L^2\) estimates then recover the exact symbol order.
 
-**Private receiving draft.** The graph argument below is written in full.
+The graph argument below is written in full.
 The selected operator, \(L^2\) and dyadic analytic proofs are supplied
 in the linked companions, including the proper local representation
 needed to apply the endpoint estimate. This draft does not

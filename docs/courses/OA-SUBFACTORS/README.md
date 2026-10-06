@@ -1,6 +1,6 @@
 # Subfactors, index and finite-depth classification
 
-A private working edition of the complete assigned course. It contains 99 readings: 96 teaching chapters and three supporting proof readings. The course and its transitive proof dependencies remain incomplete.
+This course contains 99 readings: 96 teaching chapters and three supporting proof readings. The course and its transitive proof dependencies remain incomplete.
 
 Read [the overview](index.html) or [all chapters](html/index.html). The source archive preserves the exact validated checkpoint088 reader and editable mathematical and figure sources. After extraction, open `courses/OA-SUBFACTORS/public/html/index.html`.
 
@@ -12,7 +12,7 @@ The common-center variance and controlled-tunnel readings add four complete solu
 
 The reflected-tower reading now records the exact approved source route for its finite commutant and skipped-level comparison, preserving every proof and all seven solved exercises.
 
-See [sources and proof status](sources.html), [the license](LICENSE.md) and [third-party notices](THIRD-PARTY.txt). Original exposition is CC0 1.0. Referenced human books, private source transcriptions and external lesson bodies are not included.
+See [sources and proof status](sources.html), [the license](LICENSE.md) and [third-party notices](THIRD-PARTY.txt). Original exposition is CC0 1.0. Referenced human books and external lesson bodies are not included.
 
 These readings supply explicit proofs and precise links to their construction providers. Takesaki III provides the compared path and tower exposition; the lesson proofs retain the corrected scalar endpoint, support conditions and trace normalizations. The course is incomplete and separately identified proof and source obligations remain.
 

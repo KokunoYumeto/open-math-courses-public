@@ -2,9 +2,9 @@
 
 The coefficient type of a simple sheaf can stay fixed while its numerical shift changes. A projection singularity is where the inertia correction can change. The right continuity statement follows a continuous family of auxiliary Lagrangian planes, rather than the numerical shift alone. We prove that statement, calculate a cusp including its missing boundary, and explain why the corresponding numerical shift stays constant along a connected complex Lagrangian.
 
-Use Pure and simple sheaves from directional tests. Manifolds are finite-dimensional smooth real manifolds unless specified otherwise; \(k\) is a commutative ring of finite global dimension and \(F\in D^b(k_X)\). Coefficient complexes may have arbitrary modules. We retain the earlier local conormal object and support-test prerequisites. The ordered inertia index uses \(\omega=d\theta\). Local existence of contact kernel equivalences proves the local hypersurface contact normal form with the required auxiliary-plane condition. Pure and simple sheaves from directional tests proves the zero-covector conormal geometry. The ordered index proof proves continuity at fixed pairwise-intersection dimensions and the four-plane cocycle, including degenerate triples.
+Use Pure and simple sheaves from directional tests. Manifolds are finite-dimensional smooth real manifolds unless specified otherwise; \(k\) is a commutative ring of finite global dimension and \(F\in D^b(k_X)\). Coefficient complexes may have arbitrary modules. The conormal coefficient equivalence supplies their local sheaf models, and the conormal support-test calculation fixes the type normalization. The ordered inertia index uses \(\omega=d\theta\). Simultaneous hypersurface normalization supplies a contact chart with the required auxiliary-plane condition; the zero-covector conormal proof treats points on the zero section. The ordered index proof includes continuity at fixed pairwise-intersection dimensions and the four-plane cocycle, including degenerate triples.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
 ## Follow a transverse auxiliary plane
 
@@ -34,11 +34,36 @@ the isomorphism class of the type of \(F\) with shift \(d(s)\) at \(p(s)\) is co
 
 An auxiliary plane transverse to \(V\) is a graph of a symmetric Hessian. At a fixed point it can therefore be realized as the tangent graph of a test function with the prescribed value and differential. The other condition in (1) makes that test transverse to \(\Lambda\). Test independence permits use of its index in (2), without a requirement that the whole family arise from one global function.
 
+The definition of type uses the exponent \(-d+n/2+\tau(V,A,\mu)/2\) on the raw test complex. Thus the degree parameter in that exponent is \(-\kappa+n/2\). This specifies the minus sign in (2) with the displayed order of the three planes. It does not assert that raw tests at different points have already been identified; the next proof supplies the required local comparisons.
+
+### A common complement over the reals
+
+ Every two real Lagrangian planes \(V,A\) in a symplectic space of dimension \(2n\) admit a Lagrangian plane transverse to both. Put \(K=V\cap A\) and \(r=\dim K\). In \(K^\omega/K\), the images of \(V,A\) are transverse Lagrangians: their intersection is zero, each has dimension \(n-r\), and the pairing between them is nondegenerate. Choose dual bases for this pairing and lift them to \(V,A\). Their span \(E\) is symplectic, since its pairing matrix has invertible off-diagonal blocks, and \(K\subset E^\omega\). The space \(E^\omega\) has dimension \(2r\), with \(K\) Lagrangian in it.
+
+For completeness, extend a basis \(f_1,\ldots,f_r\) of \(K\) to a symplectic basis of \(E^\omega\) as follows. Nondegeneracy supplies \(e_i\) with \(\omega(e_i,f_j)=\delta_{ij}\). Set \(c_{ij}=\omega(e_i,e_j)\) and replace \(e_i\) by \(e_i+\frac12\sum_j c_{ij}f_j\). Their mutual pairing becomes \(c_{ij}+c_{ji}/2-c_{ij}/2=0\), while their pairing with the \(f_j\) stays unchanged. Together with the paired bases in \(E\), this gives symplectic coordinates \((Q',Q'';P',P'')\), with \(\dim Q''=r\), in which
+
+\[
+V=\{Q'=Q''=0\},\qquad
+A=\{P'=Q''=0\}.
+\]
+
+The graph plane \(\mu=\{P'=Q',\ P''=0\}\) is Lagrangian. Its intersection with either displayed plane is zero, by substituting those equations. The construction includes \(r=0\) and \(r=n\). To obtain a continuous family near a selected point, extend this one plane as a constant plane in a local symplectic frame. Transversality to both varying planes persists by openness. Their intersection dimension may vary; no constant-rank assumption on \(V\cap A\) is needed for this local choice.
+
 ## The conormal chart and the contact correction
 
-**Proof.** First suppose \(\Lambda=T_M^*X\) in a small cotangent chart. Its vertical intersection has constant dimension \(c=\operatorname{codim}M\). The three pairwise intersection dimensions of \((V,A,\mu)\) are \((c,0,0)\). The proved constant-intersection continuity of the ordered index therefore makes \(\tau(V,A,\mu)\) locally constant. Equation (2) makes \(d\) locally constant too. The conormal coefficient-object model extends from a chosen point to a small cotangent neighborhood: the finitely many denominator cones in a representing isomorphism avoid that point and then avoid a smaller neighborhood. On the resulting chart \(F\simeq Q_M\) for a fixed bounded \(Q\). Its type at shift \(d\) is \(Q[c/2-d]\), which is locally constant.
+**Proof.** First suppose \(\Lambda=T_M^*X\) in a small cotangent chart. Its vertical intersection has constant dimension \(c=\operatorname{codim}M\). The three pairwise intersection dimensions of \((V,A,\mu)\) are \((c,0,0)\), so the constant-intersection index theorem makes \(\tau(V,A,\mu)\) locally constant. Equation (2) makes \(d\) locally constant too.
 
-Near a nonzero point of a general \(\Lambda\), use a hypersurface contact transformation \(\chi\) taking \(\Lambda\) to a conormal. Choose it so that \(\chi_*\mu(s_0)\) is also transverse to the target vertical plane. Apply the proved finite normalization to \(\Lambda\) and the auxiliary plane \(\mu(s_0)\); the latter does not contain the radial line because it is transverse to the original vertical. This supplies the required target transversality without an additional geometric input. Transversality is open, so it persists for \(s\) near \(s_0\). Write
+The conormal coefficient equivalence gives \(F\simeq Q_M\) in the category localized at a selected point, with \(Q\in D^b(k)\). This one model holds on a smaller cotangent neighborhood by the finite denominator-cone argument: choose the finite roofs, inverses and equalities representing the isomorphism; the microsupport of each denominator cone avoids the point, so all these cones avoid one common smaller neighborhood. No finiteness of the modules in \(Q\) is used. All comparisons here are in the corresponding localized categories.
+
+In the conormal test calculation, a test with negative Morse dimension \(m\) on \(M\) gives \(C_\varphi(Q_M)\simeq Q[-m]\) and \(\tau(V,A,\mu)=2m-\dim M\). Substituting these into the normalized exponent gives
+
+\[
+Q[-m-d+n/2+(2m-\dim M)/2]=Q[c/2-d].
+\]
+
+The possible coordinate orientation line is locally trivialized in naming this coefficient type. The fixed \(Q\), locally constant \(c\) and locally constant \(d\) make its isomorphism class locally constant. This includes arbitrary bounded and zero coefficient complexes.
+
+Near a nonzero point of a general \(\Lambda\), use a hypersurface contact transformation \(\chi\) taking \(\Lambda\) to a conormal. Choose it so that \(\chi_*\mu(s_0)\) is also transverse to the target vertical plane. Apply simultaneous hypersurface normalization to \(\Lambda\) and the auxiliary plane \(\mu(s_0)\); the latter does not contain the radial line because it is transverse to the original vertical. This supplies the required target transversality without an additional geometric input. Transversality is open, so it persists for \(s\) near \(s_0\). Write
 
 \[
 W(s)=\chi_*^{-1}(V'(s)),\qquad
@@ -68,7 +93,7 @@ The pairwise intersections in the last triple have constant dimensions: \(\mu\ca
 
 Here is a geometric verification of (5). The contact graph is the conormal of a hypersurface \(H\subset X'\times X\). A vector in \(V\cap W\) corresponds through the graph to a tangent conormal vector with both base components zero. In a local defining equation for \(H\), its base is fixed and only its conormal multiplier varies. This is the one-dimensional radial line. Both cotangent graph projections are local diffeomorphisms, so the correspondence between this line and \(V\cap W\) is an isomorphism. This calculation holds on the whole selected graph patch, not just at one point.
 
-Inertia continuity applied to \((V,\mu,W)\) now makes the right side of (4) locally constant. The already proved conormal case gives locally constant transformed type, and (3) gives locally constant original type. At a zero covector use the local closed-conic conormal model directly, so the first part applies there.
+Inertia continuity applied to \((V,\mu,W)\) now makes the right side of (4) locally constant. The already proved conormal case gives locally constant transformed type, and (3) gives locally constant original type. At a zero covector the smooth-conic conormal proof identifies the actual local germ, including its zero covectors, with a conormal. Apply the first part directly. This zero-covector step does not require a contact transformation on the punctured cotangent bundle.
 
 We have proved local constancy on the parameter space \(S\). A locally constant map from a connected space to isomorphism classes has a single value: the inverse image of any value and its complement are both open. This last argument does not assume that \(S\) is path connected or locally connected. It completes the proof. \(\square\)
 
@@ -83,7 +108,7 @@ Z=\{x>0,-x^{3/2}\leq y<x^{3/2}\},\qquad F=k_Z.
 \qquad\text{(6)}
 \]
 
-The lower boundary is included; the upper boundary and the cusp point are excluded. The standard locally closed-subset microsupport calculation for this set gives, in the region \(\eta>0\), the following full nonzero microsupport:
+The lower boundary is included; the upper boundary and the cusp point are excluded. We claim that, in the region \(\eta>0\), the full nonzero microsupport is
 
 \[
 \Lambda=\left\{
@@ -93,7 +118,17 @@ a\in\mathbb R,\ \lambda>0
 \qquad\text{(7)}
 \]
 
-The subset calculation is a foundational microsupport input. We use its exact included/excluded boundaries, rather than a generic drawing of a closed cusp.
+**Proof of the microsupport equality.** Extend the two boundary functions to all real \(x\) by \(b_-(x)=-(x_+)^{3/2}\) and \(b_+(x)=(x_+)^{3/2}\), where \(x_+=\max(x,0)\). Both are \(C^1\); they agree for \(x\leq0\), have common derivative zero at the origin, and satisfy \(b_-<b_+\) for \(x>0\). Thus they satisfy every hypothesis of the half-open channel theorem, (S20)–(S22). Put \(A=\{y\geq b_-(x)\}\) and \(B=\{y\geq b_+(x)\}\). These are closed, \(B\subset A\), and \(A\setminus B=Z\), including the exclusion of the whole common part for \(x\leq0\).
+
+The actual localization triangle is
+
+\[
+k_Z\longrightarrow k_A\longrightarrow k_B\xrightarrow{+1}.
+\]
+
+The closed-epigraph estimates bound its first term by the union of the two positive conormal families. Their defining functions have \(y\)-derivative one, so the regular-boundary estimate applies even at the origin. At the origin their nonzero conormals coincide with \(\mathbb R_{>0}dy\). This is the full upper bound there, with the neighborhood control for arbitrary \(C^1\) tests supplied by the channel theorem; a calculation for the single test \(y\) would not prove it. Off \(\overline Z\), the coefficient sheaf is locally zero, so the common epigraph boundary for \(x<0\) contributes nothing.
+
+For \(x>0\), a small neighborhood of the lower face misses \(B\), and the sheaf there is the closed upper side with positive covector \(\lambda(\frac32\sqrt{x},1)\). At the upper face it is the open lower side, whose positive covector is \(\lambda(-\frac32\sqrt{x},1)\). Both boundary calculations are equalities when \(k\ne0\). Set \(a=\sqrt{x}\) on the lower face and \(a=-\sqrt{x}\) on the upper face. This gives exactly the two nonzero-\(a\) portions of (7). For every fixed \(\lambda>0\), these covectors tend to \((0,0;0,\lambda)\); closedness of microsupport supplies the entire positive ray at the tip. These lower inclusions exhaust the preceding upper bound. The zero covectors, outside the selected region \(\eta>0\), occur over \(\overline Z\). \(\square\)
 
 The relation (7) is smooth even at \(a=0\). The covector coordinates recover \(a=2\xi/(3\eta)\) and \(\lambda=\eta\), and their parameter derivative has determinant \(3\lambda/2\ne0\). It is therefore a smooth embedded two-dimensional conic manifold. Its tautological form is
 \((3a\lambda/2)d(a^2)+\lambda d(-a^3)=0\).
@@ -116,7 +151,7 @@ We calculate the raw support test instead of extrapolating a branch shift. Since
 Use the cofinal rectangles \(U_\epsilon=\{|x|<\epsilon,|y|<\epsilon^{3/2}\}\). In their negative part, the support of \(j^{-1}F\) is
 \(0<x<\epsilon\), \(-x^{3/2}\leq y<0\).
 It is closed relative to that negative open set. The substitution \(t=-y/x^{3/2}\) identifies it with
-\((0,\epsilon)\times(0,1]\), a contractible locally contractible product. The constant-coefficient acyclicity and restriction-unit comparison give ordinary cohomology \(k\) in degree zero and no other degree. Smaller rectangles restrict its constant generator to the same generator. Thus \((Rj_*j^{-1}F)_0\simeq k\) with this actual restriction comparison, and
+\((0,\epsilon)\times(0,1]\), a nonempty locally closed convex product. The constant-coefficient unit and restriction comparison give ordinary cohomology \(k\) in degree zero and no other degree. Smaller rectangles restrict its constant generator to the same generator. Thus \((Rj_*j^{-1}F)_0\simeq k\) with this actual restriction comparison, and
 
 \[
 C_y(F)\simeq k[-1].
@@ -152,6 +187,14 @@ Putting \(z=u-v\) rewrites it as \(v^tBv+z^t(Bv-w)\). The latter pairing is hype
 d(a)=\frac12\operatorname{sgn}a.
 \qquad\text{(11)}
 \]
+
+The support calculation and the tangent calculation can be read together:
+
+| Parameter | Local support model | \(\dim(V\cap T\Lambda)\) | \(\tau(V,T\Lambda,\mu)\) | Simple shift \(d\) | Type at that shift |
+| --- | --- | --- | --- | --- | --- |
+| \(a>0\) | Included lower face, closed upper side | \(1\) | \(1\) | \(1/2\) | \(k\) |
+| \(a=0\) | Omitted tip, raw test \(C_y=k[-1]\) | \(2\) | \(0\) | \(0\) | \(k\) |
+| \(a<0\) | Excluded upper face, open lower side | \(1\) | \(-1\) | \(-1/2\) | \(k\) |
 
 The allowed parity also agrees: \(\dim(V\cap T\Lambda)=1\) on either regular branch and is two at the cusp. Equations (11) make \(d-\tau/2=0\) throughout. The continuity theorem consequently keeps type \(k\) fixed across all three numerical shifts. Keeping \(d=1/2\) through the cusp instead would not even satisfy the required integer parity there.
 
@@ -222,4 +265,8 @@ A family has \(d=1/2\), \(\tau(V,A,\mu)=1\) on one branch, and \(d=-1/2\), \(\ta
 
 ## References
 
-The change of the shift of a simple sheaf along a Lagrangian, and its relation to the inertia index, are part of Kashiwara and Schapira's theory of simple sheaves; see M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), Chapter 7. The ordered-index continuity and the cocycle are proved in the linked normal-forms lesson; the complex simultaneous-complement construction, the parameter-space proof, the local multiplier calculation, the cusp relative-support and matrix calculations and the complex argument are proved here.
+Masaki Kashiwara and Pierre Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), Definition 7.2.5 and Examples 7.2.6, printed pp. 127–128 (PDF pp. 130–131), give the purity normalization, the half-line degrees and the half-open cusp used here. In particular, the geometry and the three simple shifts in (6)–(11) are the classical example 7.2.6(iv). The support triangle, coefficient maps and tangent-matrix calculation above explain that example explicitly.
+
+Remark 7.2.7 on printed p. 128 gives auxiliary-plane transport. With the ordered signature of Definition 7.1.1, positive minus negative inertia and the symplectic form in Example 7.1.4, our convention is the source's normalization \(j=-d+\dim X/2+\tau/2\). Thus the constant corrected shift is \(d-\tau/2\). The printed difference in (7.2.4) has the opposite order of its two index values. Equations (3)–(4) derive the transport sign from the ordered cocycle, and the explicit cusp values in (11) check it: \(d=\tau/2\) on both branches and at the cusp.
+
+The linked programme proofs supply the conormal coefficient object, contact transform and closed/open boundary tests. The connected-parameter argument retains bounded coefficient complexes and proves constancy of their isomorphism classes. The complex complement calculation explains separately why the numerical degree is constant for a complex Lagrangian.

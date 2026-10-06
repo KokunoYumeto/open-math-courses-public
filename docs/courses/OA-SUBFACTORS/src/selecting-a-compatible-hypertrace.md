@@ -291,7 +291,7 @@ This is an exact operator-level obstruction, not an abstract numerical Jones cou
 
 Sorin Popa, *Classification of amenable subfactors of type II*, Acta Mathematica 172 (1994), [DOI10.1007/BF02392646](https://doi.org/10.1007/BF02392646), provides the original source context. Definitions 3.1.1–3.1.2, pages 203–204, and Proposition 3.2.2, page 205, give the actual compatibility and expectation conditions. Section 4.2 and Theorem 4.2.2, pages 211–214, give the original finite-projection and integer-rounding outcome. Those source definitions supply the compatible-state input; they add no central normality or zero-cost requirement. The [finite-partition reading](finite-residual-cells-and-canonical-overlap.md) retains the unrestricted full-partition statement and its conditional constructions.
 
-Full common-support BF, near-one support, unrestricted exact full finite partition, common-stage alignment and generation, every original finite-pair/bicommutant comparison, represented/opposite canonical trace and model, arbitrary-depth reconstruction, source clause, note, exercise and prerequisite remain assigned. No admitted normal, finite-capacity, cut, index-four or special-factor result is reopened or counted as the general missing implication.
+Full common-support BF, near-one support, unrestricted exact full finite partition, common-stage alignment and generation, every original finite-pair/bicommutant comparison, represented/opposite canonical trace and model, arbitrary-depth reconstruction, source clause, note, exercise and prerequisite remain assigned. No normal, finite-capacity, cut, index-four or special-factor result is reopened or counted as the general missing implication.
 
 ## Solved learner checks
 

@@ -11,7 +11,7 @@ The preparation proof specifies the classical projective product definition of g
 
 Guillaume Valette's On subanalytic geometry, arXiv:2507.23622v1, is adapted under CC BY 4.0. Jean-Pierre Demailly's Complex Analytic and Differential Geometry, 21 June 2012, supplies the division reading under his custom OpenContent grant. Human credit, reuse terms and identified AI additions remain visible. Lion–Rolin's primary definition is cited as research context; their article is not imported or relicensed.
 
-These readings are a selection from Constructible and perverse sheaves. The proofs are author self-checked; independent review and completion of the full parent course are not claimed.
+These readings are a selection from Constructible and perverse sheaves. Self-checked by the writing AI.
 
 [Attribution and reuse terms](../LICENSE.txt) · Provenance · [Preparation source](../src/analytic-finiteness-for-preparation.md) · [Division source](../src/weierstrass-preparation-and-division.md) · [Curve source](../src/curve-selection-and-lojasiewicz.md) · [Exercise source](../src/preparation-exercises.md)
 

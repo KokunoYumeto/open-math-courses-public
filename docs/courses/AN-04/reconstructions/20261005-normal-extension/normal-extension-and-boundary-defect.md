@@ -8,7 +8,7 @@ has smooth finite matrix coefficients and \(Pu=f\) in the interior, with \(f\) i
 
 The proof below retains Sections 5.1–5.5 of AN03-U034, *Global boundary operators, compressed wave fronts, and normal extension*, with corrected transpose terminology, explicit nested compact sets in the bootstrap, a direct construction of the supported distribution and the complete boundary defect. Original source credit: Codex, September 2026, CC0. Current source connections and clarifications: AN-04 course-writing task and OpenAI Codex, 5 October 2026, CC0.
 
-The mathematical antecedent is the approved Hörmander III, 2007 eBook, ISBN 978-3-540-49938-1, Section 18.3; its use in the higher-order Cauchy problem is in Section 23.2. This source and its ordinary citation are admitted. The proof is supplied here in full, using the exact earlier programme proofs below.
+The mathematical antecedent is the approved Hörmander III, 2007 eBook, ISBN 978-3-540-49938-1, Section 18.3; its use in the higher-order Cauchy problem is in Section 23.2. The proof is supplied here in full, using the exact earlier programme proofs below.
 
 ## Definitions and exact prerequisites
 

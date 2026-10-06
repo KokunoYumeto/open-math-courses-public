@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Compact spectral decompositions and Schatten estimates</title><link rel="stylesheet" href="reader.css"><script src="math-config.js"></script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><header><nav><a href="../../../">Kasparov's KK-theory</a><a href="index.html">Analytic foundations</a><a href="dependency-trace-ideals.html#AN03-TRC-002">Trace ideal</a><a href="singular-values-and-the-dixmier-trace.html">Compact spectral and Schatten foundations</a><a href="dependency-banach-foundations.html">Banach foundations</a><a href="dependency-positive-spectral-calculus.html">Positive spectral calculus</a><a href="dependency-cyclic-foundations.html">Cyclic foundations</a></nav></header><main><article><p><a href="../src/singular-values-and-the-dixmier-trace.md">Structured source</a> · <span class="unlinked">Programme sources</span></p><h1>Compact spectral decompositions and Schatten estimates</h1>
+<p>The operators act on complex Hilbert spaces, possibly nonseparable. Inner products are linear in the first variable. Bounded operators are everywhere defined. The Hilbert projection, orthonormal-basis, positive-root and bounded trace foundations used below are proved in <a href="../reader/dependency-trace-ideals.html#AN03-TRC-001">Bounded trace foundations, AN03-TRC-001–003</a>. The real Hahn–Banach extension used in Lemma 9.4 has its complete proof in <a href="../reader/dependency-banach-foundations.html#section-5">Banach foundations, Section 5</a>. Both are retained independently written programme proofs. The original programme expression is dedicated under CC0 1.0 Universal, to the extent rights are held.</p>
+<p><a id="spectral-decomposition-and-schatten-estimates"></a></p>
+<h2>Spectral decomposition and Schatten estimates</h2>
+<p><strong>Lemma 9.1 (compact positive operators).</strong> A positive compact operator <span class="math">\(K\)</span> has an orthonormal basis of its kernel and its positive eigenspaces. Its nonzero eigenvalues have finite multiplicity and tend to zero if there are infinitely many.</p>
+<p><strong>Proof.</strong> Positivity of the form <span class="math">\(\langle Kx,y\rangle\)</span> and scalar quadratic minimization give
+<span class="math math-display">\[
+|\langle Kx,y\rangle|^2\leq\langle Kx,x\rangle\langle Ky,y\rangle .
+\]</span>
+Writing <span class="math">\(a=\sup_{\|x\|=1}\langle Kx,x\rangle\)</span>, taking the supremum over unit <span class="math">\(y\)</span> proves
+<span class="math">\(\|Kx\|^2\leq a\langle Kx,x\rangle\)</span>. Thus <span class="math">\(a=\|K\|\)</span>.
+If <span class="math">\(a&gt;0\)</span>, choose unit <span class="math">\(x_j\)</span> with <span class="math">\(\langle Kx_j,x_j\rangle\to a\)</span>. Then
+<span class="math math-display">\[
+\|(K-a)x_j\|^2
+\leq a^2-a\langle Kx_j,x_j\rangle\longrightarrow0.
+\tag{9.1}
+\]</span>
+Compactness gives a convergent subsequence of <span class="math">\(Kx_j\)</span>; (9.1) then gives convergence of that subsequence of <span class="math">\(x_j\)</span> to a unit eigenvector with eigenvalue <span class="math">\(a\)</span>.</p>
+<p>The orthogonal complement of an eigenspace is invariant under <span class="math">\(K\)</span>, by selfadjointness. Repeat the construction there. An infinite orthonormal family of eigenvectors with eigenvalues bounded below by <span class="math">\(\varepsilon&gt;0\)</span> would have images at pairwise distance at least <span class="math">\(\sqrt2\varepsilon\)</span>, contradicting compactness. This proves finite multiplicity away from zero and convergence of the selected eigenvalues to zero. If <span class="math">\(K\)</span> were nonzero on the orthogonal complement of all selected eigenspaces, the same maximum argument would produce a positive eigenvalue there. Every previously selected maximum would be at least that value, giving the contradiction just proved. The remaining complement is therefore the kernel. Choose an orthonormal basis in that closed subspace. This proves the result, including finite rank and <span class="math">\(K=0\)</span>. <span class="math">\(\square\)</span></p>
+<p>Apply this to <span class="math">\(T^*T\)</span> for compact <span class="math">\(T\)</span>. On an eigenvector with eigenvalue <span class="math">\(\mu^2&gt;0\)</span>, put <span class="math">\(Ve=T e/\mu\)</span>. These images are orthonormal, since
+<span class="math">\(\langle Te,Tf\rangle=\langle T^*Te,f\rangle\)</span>. Extend <span class="math">\(V\)</span> by zero on the kernel. It is a partial isometry and <span class="math">\(T=V|T|\)</span>, where <span class="math">\(|T|\)</span> multiplies those eigenvectors by <span class="math">\(\mu\)</span>. This is the compact polar decomposition used below.</p>
+<p><strong>Lemma 9.2 (a compact-resolvent spectral core).</strong> A selfadjoint <span class="math">\(D\)</span> with compact resolvent has an orthonormal eigenbasis <span class="math">\((e_j)\)</span>, with real eigenvalues <span class="math">\(d_j\)</span>. Each bounded interval contains only finitely many eigenvalues, counted with multiplicity, and
+<span class="math math-display">\[
+\operatorname{Dom}D
+=\left\{x:\sum_j |d_j|^2|\langle x,e_j\rangle|^2&lt;\infty\right\}.
+\tag{9.2}
+\]</span>
+Finite spectral sums are dense in this domain with its graph norm.</p>
+<p><strong>Proof.</strong> An adjoint is closed. Indeed, if <span class="math">\(y_n\in\operatorname{Dom}D^*\)</span>, <span class="math">\(y_n\to y\)</span> and <span class="math">\(D^*y_n\to z\)</span>, then for every <span class="math">\(x\in\operatorname{Dom}D\)</span>,
+<span class="math math-display">\[
+\langle Dx,y\rangle
+=\lim_n\langle Dx,y_n\rangle
+=\lim_n\langle x,D^*y_n\rangle
+=\langle x,z\rangle.
+\]</span>
+This is the adjoint-domain condition: <span class="math">\(y\in\operatorname{Dom}D^*\)</span> and <span class="math">\(D^*y=z\)</span>. Density of <span class="math">\(\operatorname{Dom}D\)</span> gives uniqueness of the representing vector. Since selfadjointness means <span class="math">\(D=D^*\)</span> with equality of domains, <span class="math">\(D\)</span> is closed.</p>
+<p>For either sign,
+<span class="math">\(\|(D\pm i)x\|^2=\|Dx\|^2+\|x\|^2\)</span>. The range is closed, using closedness of <span class="math">\(D\)</span>, and its orthogonal complement is <span class="math">\(\ker(D\mp i)=0\)</span>, using the adjoint definition. Thus <span class="math">\(D\pm i\)</span> are bijective with bounded inverses. Their resolvent identity shows that these inverses commute. Put
+<span class="math math-display">\[
+R=(D-i)^{-1}(D+i)^{-1}.
+\]</span>
+Then <span class="math">\(R=(D+i)^{-1*}(D+i)^{-1}\)</span> is positive, injective and compact. The identity <span class="math">\(D(D\pm i)^{-1}=I\mp i(D\pm i)^{-1}\)</span> shows that its range is exactly <span class="math">\(\operatorname{Dom}D^2\)</span> and that <span class="math">\(R=(1+D^2)^{-1}\)</span> there.</p>
+<p>Lemma 9.1 decomposes <span class="math">\(H\)</span> into the finite-dimensional positive eigenspaces of <span class="math">\(R\)</span>; there is no kernel. Every such eigenspace lies in <span class="math">\(\operatorname{Dom}D^2\)</span>. The resolvent identities imply <span class="math">\(DRx=RDx\)</span> for <span class="math">\(x\in\operatorname{Dom}D\)</span>, so <span class="math">\(D\)</span> preserves each of them. Its restriction is a bounded Hermitian matrix: in an orthonormal basis, Cauchy–Schwarz bounds its norm by the square root of the sum of the squared norms of the images. Add that norm times the identity to make it positive. Lemma 9.1 applies in this finite-dimensional space; subtracting the same scalar gives a real eigenbasis for the original restriction. If <span class="math">\(De_j=d_je_j\)</span>, then <span class="math">\(Re_j=(1+d_j^2)^{-1}e_j\)</span>. Compactness of <span class="math">\(R\)</span> proves the bounded-interval assertion.</p>
+<p>For <span class="math">\(x\in\operatorname{Dom}D\)</span>, selfadjointness gives the coordinate of <span class="math">\(Dx\)</span> as <span class="math">\(d_j\langle x,e_j\rangle\)</span>, so (9.2) is necessary by Parseval. Conversely that condition makes the images of the finite partial sums converge in <span class="math">\(H\)</span>. Closedness of <span class="math">\(D\)</span> puts their limit in its domain and identifies its image with that coordinate sequence. The same argument proves graph density. Every scalar function of <span class="math">\(D\)</span> consequently has its indicated square-sum domain, and the spectral cutoffs used in the corresponding spectral domains converge in every graph norm on which the vector belongs. <span class="math">\(\square\)</span></p>
+<p>For the decreasing singular values obtained from the compact decomposition, including a zero tail after finite rank, one has
+<span class="math math-display">\[
+\mu_j(T)=\inf_{\operatorname{rank}R\leq j}\|T-R\|.
+\tag{1.1}
+\]</span>
+The rank-<span class="math">\(j\)</span> singular truncation proves the upper bound. For any rank-at-most-<span class="math">\(j\)</span> map <span class="math">\(R\)</span>, its restriction to the span of the first <span class="math">\(j+1\)</span> singular vectors has a nonzero kernel vector, by rank-nullity. On a unit vector there, <span class="math">\(\|(T-R)x\|=\|Tx\|\geq\mu_j(T)\)</span>. If the displayed singular value is zero, the lower bound is automatic. This proves the formula. Taking approximants and the triangle inequality gives <span class="math">\(|\mu_j(S)-\mu_j(T)|\leq\|S-T\|\)</span>. Multiplying the finite-rank approximants by a bounded map on either side gives both ideal inequalities used below.</p>
+<p>For <span class="math">\(0&lt;p&lt;\infty\)</span>, define
+<span class="math math-display">\[
+\mathcal S^p=\{T\text{ compact}:\sum_j\mu_j(T)^p&lt;\infty\},
+\qquad \|T\|_p=\left(\sum_j\mu_j(T)^p\right)^{1/p}.
+\]</span>
+Use <span class="math">\(\mathcal S^\infty=B(H)\)</span> and <span class="math">\(\|T\|_\infty=\|T\|\)</span>. For <span class="math">\(p=1\)</span>, (T6) of AN03-TRC-002 applied in the singular eigenbasis identifies this quantity with its trace norm. For <span class="math">\(p=2\)</span>, Parseval identifies it with the Hilbert-Schmidt norm there. We need normed ideals for <span class="math">\(p\geq1\)</span>; the product estimate itself also makes sense below one.</p>
+<p><strong>Theorem 9.3 (Schatten Hölder).</strong> If <span class="math">\(0&lt;p,q,r\leq\infty\)</span> and
+<span class="math">\(1/r=1/p+1/q\)</span>, with <span class="math">\(1/\infty=0\)</span>, then
+<span class="math math-display">\[
+\|AB\|_r\leq\|A\|_p\|B\|_q.
+\tag{9.3}
+\]</span>
+At least one finite exponent ensures compactness of the product. When both exponents are infinite, (9.3) is ordinary operator submultiplicativity.</p>
+<p><strong>Proof.</strong> First use finite-rank operators in a common finite-dimensional space. On its <span class="math">\(k\)</span>-th exterior power, the singular decomposition gives
+<span class="math math-display">\[
+\|\wedge^kT\|=\prod_{j&lt;k}\mu_j(T),\qquad
+\wedge^k(AB)=(\wedge^kA)(\wedge^kB).
+\]</span>
+Indeed the wedge products of distinct orthonormal singular vectors form orthonormal systems, and the largest coefficient is the product of the <span class="math">\(k\)</span> largest singular values. Operator submultiplicativity therefore yields
+<span class="math math-display">\[
+\prod_{j&lt;k}\mu_j(AB)\leq
+\prod_{j&lt;k}\mu_j(A)\mu_j(B)\qquad(k\geq1).
+\tag{9.4}
+\]</span></p>
+<p>Here is the precise passage from products to sums. If decreasing real vectors <span class="math">\(u,v\)</span> satisfy <span class="math">\(\sum_{j&lt;k}u_j\leq\sum_{j&lt;k}v_j\)</span> for every <span class="math">\(k\)</span>, then for every real <span class="math">\(t\)</span>
+<span class="math math-display">\[
+\sum_j(u_j-t)_+
+=\max_{k\geq0}\sum_{j&lt;k}(u_j-t)
+\leq\max_{k\geq0}\sum_{j&lt;k}(v_j-t)
+=\sum_j(v_j-t)_+.
+\]</span>
+For <span class="math">\(r&gt;0\)</span>, multiply by <span class="math">\(r^2e^{rt}\)</span> and integrate over <span class="math">\(t\in\mathbb R\)</span>. The identity
+<span class="math">\(\int_{-\infty}^w r^2e^{rt}(w-t)\,dt=e^{rw}\)</span> proves
+<span class="math">\(\sum_j e^{ru_j}\leq\sum_j e^{rv_j}\)</span>.
+Apply this to
+<span class="math">\(u_j=\log\mu_j(AB)\)</span>, <span class="math">\(v_j=\log(\mu_j(A)\mu_j(B))\)</span>, using (9.4).
+Zeros cause no difficulty: discard the zero tail of the latter product vector, on which the product has rank zero by the rank inequality; replace any remaining zero in the former vector by a sufficiently small positive number. All prefix inequalities still hold, and passage of that number to zero gives
+<span class="math math-display">\[
+\sum_j\mu_j(AB)^r
+\leq\sum_j(\mu_j(A)\mu_j(B))^r.
+\tag{9.5}
+\]</span></p>
+<p>If <span class="math">\(p,q\)</span> are finite, ordinary sequence Hölder with exponents <span class="math">\(p/r,q/r\)</span> bounds the right side by <span class="math">\(\|A\|_p^r\|B\|_q^r\)</span>.
+To recall its proof, normalize the two nonnegative power sums to one and apply
+<span class="math">\(ab\leq a^P/P+b^Q/Q\)</span>, <span class="math">\(1/P+1/Q=1\)</span>, term by term. This scalar inequality follows by minimizing <span class="math">\(a^P/P-ab+b^Q/Q\)</span> in <span class="math">\(a\)</span>. Zero norms are immediate.</p>
+<p>Finite-rank singular truncations <span class="math">\(A_n,B_n\)</span> converge in operator norm and in their respective finite-exponent quantities. Their products converge in operator norm to <span class="math">\(AB\)</span>. Formula (1.1) gives
+<span class="math">\(|\mu_j(S)-\mu_j(T)|\leq\|S-T\|\)</span>, so each product singular value converges. Taking every finite partial sum in (9.5) and then its supremum proves (9.3) for compact <span class="math">\(A,B\)</span>.
+For a bounded factor, (1.1) gives directly
+<span class="math">\(\mu_j(AB)\leq\|A\|\mu_j(B)\)</span> and
+<span class="math">\(\mu_j(BA)\leq\|A\|\mu_j(B)\)</span>, by multiplying finite-rank approximants. These prove the infinite-exponent cases. <span class="math">\(\square\)</span></p>
+<p>Iteration gives the corresponding estimate for any finite product, including bounded factors. In particular, if <span class="math">\(s_j\geq0\)</span>, <span class="math">\(\sum_j s_j=1\)</span>, and <span class="math">\(e^{-uD^2}\)</span> is trace class, then
+<span class="math math-display">\[
+\left\|a_0e^{-us_0D^2}a_1e^{-us_1D^2}\cdots
+ a_ne^{-us_nD^2}\right\|_1
+\leq\left(\prod_{j=0}^n\|a_j\|\right)
+ \operatorname{Tr}(e^{-uD^2}).
+\tag{9.6}
+\]</span>
+For <span class="math">\(s_j&gt;0\)</span>, its heat factor has Schatten exponent <span class="math">\(1/s_j\)</span> and norm
+<span class="math">\((\operatorname{Tr}e^{-uD^2})^{s_j}\)</span>. For <span class="math">\(s_j=0\)</span>, it is the identity with operator norm one. Thus (9.6) holds also on the boundary of the simplex, with constant one. This proves the trace-ideal estimate whenever its explicit trace-class heat hypothesis holds.</p>
+<p>For completeness, <span class="math">\(\mathcal S^p\)</span> is a Banach ideal when <span class="math">\(1\leq p&lt;\infty\)</span>. Hölder and bounded trace duality give
+<span class="math math-display">\[
+\|T\|_p=\sup_{\substack{X\text{ finite rank}\\\|X\|_{p&#x27;}\leq1}}
+ |\operatorname{Tr}(TX)|,\qquad 1/p+1/p&#x27;=1.
+\tag{9.7}
+\]</span>
+For the reverse inequality when <span class="math">\(p&gt;1\)</span>, take <span class="math">\(T=V|T|\)</span> and test with
+<span class="math">\(|T|^{p-1}P_N V^*/(\sum_{j&lt;N}\mu_j(T)^p)^{1/p&#x27;}\)</span>; let <span class="math">\(N\to\infty\)</span>. For <span class="math">\(p=1\)</span>, test with <span class="math">\(P_NV^*\)</span>. Zero partial sums are omitted. Formula (9.7) proves the triangle inequality. A Cauchy sequence in this norm is Cauchy in operator norm and has a compact operator limit. Continuity of each singular value and finite partial sums show
+<span class="math">\(\|T-T_n\|_p\leq\liminf_m\|T_m-T_n\|_p\)</span>, which proves convergence in the ideal norm and completeness. Bounded left and right multiplication obey (9.3). These facts justify trace-norm limits and integrals under their stated integrability hypotheses.</p>
+<p><strong>Lemma 9.4 (the extension used to construct a state).</strong> A bounded real linear functional on a subspace of a real normed space has an extension with the same norm. In particular, the ordinary limit on convergent sequences extends to a positive unital complex functional of norm one on <span class="math">\(\ell^\infty\)</span>.</p>
+<p><strong>Proof.</strong> The norm-preserving extension theorem is proved in <a href="../reader/dependency-banach-foundations.html#section-5">Banach foundations</a>, Section 5. Its proof uses the explicitly stated Zorn choice principle and a one-dimensional extension interval; no completeness or closedness of the subspace is required. Apply its real form to the limit functional on real convergent sequences. We prove the positive unital extension here.</p>
+<p>For the limit functional <span class="math">\(l\)</span> on real convergent sequences, this gives <span class="math">\(l(1)=\|l\|=1\)</span> on real <span class="math">\(\ell^\infty\)</span>. If <span class="math">\(0\leq x\leq1\)</span>, then
+<span class="math">\(l(x)=1-l(1-x)\geq0\)</span>; rescaling proves positivity for every bounded nonnegative sequence. Complexify by
+<span class="math">\(L(x+iy)=l(x)+il(y)\)</span>. This is complex linear and positive. If <span class="math">\(L(z)\ne0\)</span>, choose a scalar <span class="math">\(c\)</span> of modulus one with <span class="math">\(cL(z)=|L(z)|\)</span>. Then
+<span class="math math-display">\[
+|L(z)|=l(\operatorname{Re}(cz))\leq\|z\|_\infty.
+\]</span>
+Thus its complex norm is one and it extends the complex ordinary limit. This proves the asserted positive unital extension. <span class="math">\(\square\)</span></p>
+</article></main></body></html>

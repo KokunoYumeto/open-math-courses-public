@@ -1,8 +1,7 @@
 # Intrinsic regularity: the current proof sequence
 
-This private reading guide joins the completed local components.
-The linked components and their exact prerequisite edition are checked and
-synchronized in the private repository. The full course remains unfinished.
+This reading guide joins the completed local components.
+The full course remains unfinished.
 
 1. [Frequency amplitudes and iterated regularity](intrinsic-frequency-graphs.md)
    proves both directions of the exact graph criterion, retaining the

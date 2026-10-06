@@ -353,4 +353,4 @@ Their squared sum is \(4|\alpha|^2|\beta|^2+(|\alpha|^2-|\beta|^2)^2=1\). At lea
 
 ---
 
-Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition and figure released under CC0 1.0. Author self-check of the written arguments relative to the declared programme prerequisites.
+Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition and figure released under CC0 1.0. Self-checked by the writing AI.

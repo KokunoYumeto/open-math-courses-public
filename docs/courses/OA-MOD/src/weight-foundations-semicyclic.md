@@ -8,7 +8,7 @@ A freely accessible comparison is Brent Nelson, [*Tomita–Takesaki Theory*, Def
 
 The foundational statements already have exact course owners: the regularity definitions, hereditary-cone algebra, finite complex extension, Cauchy–Schwarz and null quotient, GNS semicyclic construction, normality, finite cutoffs and faithfulness. The support-normalized factorization lemma owns the single-factor statement below. These owners retain their statements; the local arguments are alternative proofs and a direct reconstruction from these free inputs. The coefficient check, the convention counterexample and the full strong-family and increasing-net conclusions remain explicit local material. No duplicate foundational completion is claimed.
 
-The earlier ownership bridges, semifiniteness correction and solved comparison are by GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0. The current free-source reconstruction and added proof details are by GPT-6 Astra (OpenAI), Ultra, October 2026, CC0. Earlier exposition and provider credits retain their existing licences.
+The earlier bridges to the foundation statements, semifiniteness correction and solved comparison are by GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0. The current free-source reconstruction and added proof details are by GPT-6 Astra (OpenAI), Ultra, October 2026, CC0. Earlier exposition and provider credits retain their existing licences.
 
 The bounded inputs have exact written proofs: BK01 for Hilbert completion, bounded extensions, square roots and continuous calculus; BK02 for the bicommutant theorem; BK04 for arbitrary bounded increasing positive nets; BK06 for supports; and BK08 for testing commutation on unitaries. Inner products are linear in the first variable.
 
@@ -190,7 +190,7 @@ Here \(a,b,c,d\in P\). This is the asserted four-element decomposition. \(\squar
 
 ## The definition subalgebra and finite linear extension
 
-The existing finite-domain extension is the owner of this statement. We give the direct four-positive-elements argument, including independence of the decomposition; Nelson’s Definition 3.3 states the extension without these details.
+The existing finite-domain extension also proves this statement. We give the direct four-positive-elements argument, including independence of the decomposition; Nelson’s Definition 3.3 states the extension without these details.
 
 For a weight \(\varphi\), its finite cone is hereditary: if \(0\leq a\leq b\), then additivity in \(b=a+(b-a)\) gives \(\varphi(a)\leq\varphi(b)\). Additivity and homogeneity preserve finite values, and zero homogeneity gives \(\varphi(0)=0\). Thus apply WF-02 to \(P=\mathfrak p_\varphi\) and write
 

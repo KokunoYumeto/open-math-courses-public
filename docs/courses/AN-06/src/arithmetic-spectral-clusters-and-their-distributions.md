@@ -8,7 +8,7 @@ When every Hamiltonian trajectory closes after the same time, the high spectrum 
 
 The spectral articles of Duistermaat and Guillemin [DG] and Colin de Verdière [CV] provide the periodic-spectrum construction, with the qualifications recorded below. Guillemin and Sternberg [GS] supplies the geometric symbol framework. We use [Wave evolution and cotangent flow](wave-evolution-and-cotangent-flow.md), [Local spectral density and the subprincipal correction](local-spectral-density-and-subprincipal-correction.md), and the full-return trace criterion in [Return times and spectral counting](return-times-and-spectral-counting.md). The programme construction of the geometric Maslov line, its fourth-root transitions, flat transport and distinguished identity section is [Phase geometry, stationary phase and the Maslov symbol, Section 7](../providers/analysis/phase-geometry-and-stationary-phase.md#maslov-line). Its Sections 8–9 prove the principal-symbol correspondence and wavefront detection. For comparison, see [Hörmander, Fourier integral operators I, Section 3.2](https://projecteuclid.org/journalArticle/Download?urlid=10.1007%2FBF02392052#page=64). [Transverse composition and graph operators, Sections 5–7](../providers/analysis/transverse-composition-and-graph-operators.md#maslov-contraction), proves the density and line multiplication with the actual identity normalization. Scalar composition, asymptotic summation and Sobolev mapping are proved in [Classical scalar symbols, summation and regularity](../providers/analysis/classical-scalar-calculus.md#finite-symbol-calculus). We use the exact powers and domains from [Positive real powers and spectral rescaling](positive-real-powers-and-spectral-rescaling.md).
 
-The wave lesson now uses the written [scalar-transport proof](../providers/analysis/scalar-transport-and-phase-action.md#scalar-transport) and [qualified-pullback proof](../providers/analysis/wavefront-qualified-pullback.md#qualified-pullback), including its joint-time normalization. 
+The wave construction uses [Scalar transport and phase action](../providers/analysis/scalar-transport-and-phase-action.md#scalar-transport) and [qualified-pullback proof](../providers/analysis/wavefront-qualified-pullback.md#qualified-pullback), including its joint-time normalization. 
 
 Throughout, \(X\) is compact, connected and without boundary, with \(n=\dim X\geq2\). Operators act on scalar half densities. Let \(P\in\Psi^1_{\mathrm{cl}}\) be elliptic, positive and self-adjoint, with domain \(H^1\), positive principal symbol \(p\), and constant real subprincipal symbol \(c\). Write
 \[
@@ -17,6 +17,8 @@ Throughout, \(X\) is compact, connected and without boundary, with \(n=\dim X\ge
 \tag{1}
 \]
 The integral uses symplectic volume. We assume \(\chi_\Pi=\mathrm{Id}\). Starting in Section 4, we assume more: every nonzero covector orbit has the same **minimal** positive period \(\Pi\).
+
+<a id="clusters-integer-polynomial"></a>
 
 ## 1. An integer polynomial cannot approach the wrong lattice
 
@@ -37,6 +39,8 @@ Indeed the exponential of \(v(k)\) tends to one. Lemma 1.1 makes \(v(k)\) integr
 
 The condition is distance to the integer lattice, rather than convergence of a chosen one-sided fractional part. This avoids a distinction between errors approaching zero from above and below.
 
+<a id="clusters-return-phase"></a>
+
 ## 2. The return phase and its normalization
 
 The wave canonical relation is parametrized by \((t,z)\in\mathbb R\times(T^*X\setminus0)\). Its Maslov line has locally constant transition functions in
@@ -50,6 +54,8 @@ At time \(\Pi\), identify the restricted relation with the identity graph again.
 \tag{3}
 \]
 Any integer representative of this phase may be used. What enters the operator normalization is the phase itself. Our sign convention is fixed by (3). For \(e^{-itP}\), [DG, printed page 53] writes the return factor as \(i^{-\alpha_{\rm DG}}\); hence \(\alpha\equiv-\alpha_{\rm DG}\pmod4\). The zero-subprincipal cluster centers in Section 8 are therefore \(h(k-\alpha/4)=h(k+\alpha_{\rm DG}/4)\), up to integer relabeling, in agreement with [DG] and [CV]. One must convert the phase convention before comparing these integer symbols.
+
+<a id="clusters-classical-wave"></a>
 
 We also need a classical, rather than merely ordinary, wave amplitude. The wave construction has this property when \(P\) is classical. In each homogeneous phase chart, its initial identity amplitude has a homogeneous expansion. The recursive transport equation at each successive degree has a forcing term assembled from finitely many homogeneous symbol terms and previous amplitude terms of exactly that degree. Its transport coefficient \(p_s=c\) has degree zero. Uniqueness of the scalar initial-value equation therefore preserves homogeneity at each step: dilating the frequency and multiplying by the assigned degree gives another solution with the same initial value and forcing.
 
@@ -74,6 +80,8 @@ A=E(\Pi)-I\in\Psi^{-1}_{\mathrm{cl}}.
 \tag{6}
 \]
 The operator \(A\) is compact and normal on \(L^2\). It is diagonal in the smooth eigenbasis of \(P\). A different constant \(c\) will be treated in Section 8.
+
+<a id="clusters-logarithmic-correction"></a>
 
 ## 3. A commuting correction gives an exact arithmetic spectrum
 
@@ -109,6 +117,8 @@ q_{2j}=
 \tag{8}
 \]
 Here the logarithm is defined by \(\ell(w)=\sum_{m\ge1}(-1)^{m+1}w^m/m\) on \(|w|<1\). On every smaller closed disk its derivative series converges uniformly to \((1+w)^{-1}\). Differentiating \(e^{\ell(w)}/(1+w)\) gives zero and its value at zero is one; hence \(e^{\ell(w)}=1+w\). If \(|1+w|=1\), taking moduli gives \(e^{\operatorname{Re}\ell(w)}=1\), so this logarithm is purely imaginary. The first values in (8) are therefore real, bounded and tend to zero. The second operator has finite rank with a smooth kernel. Thus \(Q_1,Q_2\) are bounded, self-adjoint, commute with \(P\), and \(Q=Q_1+Q_2\) satisfies the first identity in (7).
+
+<a id="clusters-logarithmic-symbol"></a>
 
 We prove the pseudodifferential assertion without a contour functional calculus. For \(N\geq1\), put
 \[
@@ -147,6 +157,8 @@ The operators share the \(\phi_j\) basis. Their sum has eigenvalues \(\lambda_j+
 
 The positive normalization removes any ambiguity in the later negative powers \(L^{-j}\).
 
+<a id="clusters-exact-windows"></a>
+
 **Proposition 3.2.** There are constants \(C,k_0\) such that the large eigenvalues of \(P\) lie in the disjoint windows
 \[
 \mathcal W_k=\left[hk-\frac Ck,\ hk+\frac Ck\right],\qquad k>k_0.
@@ -168,6 +180,8 @@ Only finitely many eigenvalues of \(P\) remain outside these windows.
 where \(\lambda_j+q_j=hk_j\). For large \(k_j\), boundedness of \(Q\) gives \(\lambda_j\geq hk_j/2\); thus (14) implies (12), after enlarging \(C\).
 
 Choose \(k_0\) so that these windows are disjoint, since their widths tend to zero and their centers have fixed separation \(h\). Increase it again to place every exceptional low eigenvalue below the windows under discussion. Every large eigenvector belongs to its own corrected block \(V_{k_j}\) and its own window. Disjointness shows that a window cannot contain eigenvalues belonging to another block. This proves the exact membership claim. ∎
+
+<a id="clusters-multiplicity"></a>
 
 ## 4. Multiplicities are eventually polynomial
 
@@ -245,6 +259,8 @@ When \(n=2\), \(v_0\) has degree one and its difference from the affine expressi
 
 By Proposition 3.2, the same polynomial counts the eigenvalues of the original \(P\) in each sufficiently large window (12). Lower modes contribute only a finite exception.
 
+<a id="clusters-arithmetic"></a>
+
 **Corollary 4.2 (integer constraints in every dimension).** Under the common minimal-period and phase-normalization hypotheses of Theorem 4.1, put
 \[
  D=\frac{n!V}{\Pi^n},\qquad d=n-1.
@@ -283,7 +299,9 @@ For \(d=1\), the first contribution is zero, so the same formula includes \(A_0=
 \[
  A_{d-1}=\frac{D(2n-4-\alpha)}4-D\ell\in\mathbb Z,
 \]
-which proves the divisibility. The standard integer identity \(4\mid Dm\) iff \(4/\gcd(4,m)\mid D\) gives the last assertion, including \(m=0\). Changing \(\alpha\) by a multiple of four, or shifting \(c\) by \(hj\), preserves these constraints; the latter changes \(A_{d-1}\) by the integer \(-Dj\) and relabels the lattice as in Section 8. In dimension two this recovers Exercise 9.3 with \(D=A\). ∎
+which proves the divisibility. For the final divisibility assertion, put \(m=2n-4-\alpha\). If \(m\) is odd, its residue modulo four is invertible, so \(4\mid Dm\) is equivalent to \(4\mid D\). If \(m\equiv2\pmod4\), it is equivalent to \(2\mid D\); if \(m\equiv0\pmod4\), it imposes no further restriction. These three cases give exactly \(4/\gcd(4,m)\mid D\), including \(m=0\). Changing \(\alpha\) by a multiple of four, or shifting \(c\) by \(hj\), preserves these constraints; the latter changes \(A_{d-1}\) by the integer \(-Dj\) and relabels the lattice as in Section 8. In dimension two this recovers Exercise 9.3 with \(D=A\). ∎
+
+<a id="clusters-counting-jumps"></a>
 
 **Corollary 4.3 (the counting jump obstruction).** Under the same hypotheses, no continuous function \(F:(0,\infty)\to\mathbb R\) satisfies
 \[
@@ -293,11 +311,15 @@ at all real energies tending to infinity, with either sharp counting endpoint co
 
 **Proof.** At \(hk\), the two one-sided limits of \(N_L\) differ by \(\mu(k)\sim ak^{n-1}\). Continuity gives the same limit \(F(hk)\) from both sides. At least one limiting error has magnitude at least \(\mu(k)/2\). On that side choose an energy \(\lambda_k\) with \(|\lambda_k-hk|<1/k\) and error at least \(\mu(k)/4\). Such energies exist by the one-sided limit, independently of the sharp value at the jump. Since \(\lambda_k/(hk)\to1\) and \(a>0\), these errors are bounded below by a positive constant times \(\lambda_k^{n-1}\), contradicting the claimed little-o. For \(P\), a cluster split into at most \(M\) distinct values has an individual jump of at least \(\mu(k)/M\); those values lie in (12), so the same argument applies. Without that extra splitting hypothesis, no such conclusion about \(P\) is asserted. Continuity alone gives no uniform modulus on the moving cluster windows. ∎
 
+<a id="clusters-observable"></a>
+
 ## 5. An observable on one arithmetic eigenspace
 
 Let \(B\in\Psi^0_{\mathrm{cl}}\) be self-adjoint, with real principal symbol \(b\), and suppose it commutes with \(L\) on smooth half densities. Then \(B\) preserves each \(V_k\): for a smooth \(\phi\in V_k\), the commutation identity gives \(LB\phi=hkB\phi\). Its bounded extension consequently commutes with the corresponding orthogonal projectors.
 
 Write the eigenvalues of \(B|_{V_k}\), with multiplicities, as \(b_{k,1},\ldots,b_{k,\mu(k)}\). Theorem 4.1 makes \(\mu(k)>0\) for all sufficiently large \(k\).
+
+<a id="clusters-orbit-density"></a>
 
 **Energy-surface normalization.** The phase-volume law below agrees with the normalized Liouville law used for Zoll clusters. Here is the precise conversion for our arbitrary positive degree-one symbol. Put \(Z=\{p=1\}\), let \(\mathcal E=\xi\cdot\partial_\xi\) be the radial vector field, and denote the positive density \(\iota_{\mathcal E}dz|_Z\) by \(d\Sigma\). The map
 \[
@@ -315,7 +337,11 @@ For every bounded degree-zero function \(F\), integration in \(r\) yields
 \]
 Thus the factor \(n\) in the weighted trace coefficient cancels exactly on probability normalization. Under the common minimal-period hypothesis the flow gives a free circle action on \(Z\). Since \(B\) commutes with \(L\), the principal commutator identity gives \(H_pb=0\), so \(b\) descends to the orbit space.
 
-Here is the local density calculation on that space. The coordinate divergence of \(H_p=(p_\xi,-p_x)\) is zero, by equality of the mixed partial derivatives. The flow Jacobian therefore has derivative zero after logarithmic differentiation, so symplectic volume is preserved. Homogeneity gives \([\mathcal E,H_p]=0\); the flow also preserves \(p\) and hence \(d\Sigma\). Euler's identity \(\xi\cdot p_\xi=p=1\) shows that \(H_p\ne0\) on \(Z\). Choose a transverse local section \(S\) at \(z\). The derivative of \((t,y)\mapsto\chi_t(y)\) is invertible at \((0,z)\), giving a local flow chart. For times outside a small neighborhood of zero modulo \(\Pi\), the compact arc \(\{\chi_t(z)\}\) stays away from \(z\), since \(\Pi\) is minimal. Shrinking \(S\) makes \(\chi_t(S)\cap S\) empty for these times; for the remaining short times, uniqueness in the flow chart gives intersection only at time zero. Thus \((\mathbb R/\Pi\mathbb Z)\times S\) maps injectively onto its saturated neighborhood. It is a local diffeomorphism everywhere, by flow translation, hence a diffeomorphism there. These sections give local coordinates on the orbit space. In those coordinates invariance makes the pulled-back density \(dt\,d\tau(y)\), independent of \(t\). Integration over each circle contributes exactly \(\Pi\). Normalizing the total mass proves equality with the orbit-space law. The argument applies to every positive degree-one symbol used here.
+Here is the local density calculation on that space. The coordinate divergence of \(H_p=(p_\xi,-p_x)\) is zero, by equality of the mixed partial derivatives. The flow Jacobian therefore has derivative zero after logarithmic differentiation, so symplectic volume is preserved. Homogeneity gives \([\mathcal E,H_p]=0\); the flow also preserves \(p\) and hence \(d\Sigma\). Euler's identity \(\xi\cdot p_\xi=p=1\) shows that \(H_p\ne0\) on \(Z\). Choose a transverse local section \(S\) at \(z\). The derivative of \((t,y)\mapsto\chi_t(y)\) is invertible at \((0,z)\), giving a local flow chart. For times outside a small neighborhood of zero modulo \(\Pi\), the compact arc \(\{\chi_t(z)\}\) stays away from \(z\), since \(\Pi\) is minimal. Shrinking \(S\) makes \(\chi_t(S)\cap S\) empty for these times; for the remaining short times, uniqueness in the flow chart gives intersection only at time zero. Thus \((\mathbb R/\Pi\mathbb Z)\times S\) maps injectively onto its saturated neighborhood. It is a local diffeomorphism everywhere, by flow translation, hence a diffeomorphism there. These sections give local coordinates on the orbit space. Their transitions are smooth: the inverse of either flow chart expresses the other section by a smooth return time and transverse coordinate. The quotient is Hausdorff as well. For any compatible metric \(d\) on the compact \(Z\), the metric \(d_*(z,w)=\max_{0\leq t\leq\Pi}d(\chi_tz,\chi_tw)\) has the same topology, by uniform continuity of the flow on its compact time interval, and is invariant under the circle action. Two distinct compact orbits have positive \(d_*\)-distance. Invariant neighborhoods of radius less than one third of that distance separate their images in the quotient. Compactness supplies a finite collection of these section charts, hence a countable coordinate base. The orbit space is therefore a compact smooth manifold.
+
+In those coordinates invariance makes the pulled-back density \(dt\,d\tau(y)\), independent of \(t\). The [finite smooth partition of unity](../providers/analysis/coordinate-inverses-and-integration.md#finite-partitions) in the section charts, pulled back from the quotient, reduces integration to these product coordinates. Integration over each circle contributes exactly \(\Pi\). Normalizing the total mass proves equality with the orbit-space law. The argument applies to every positive degree-one symbol used here.
+
+<a id="clusters-real-law"></a>
 
 **Theorem 5.1.** For every continuous real or complex function \(f\) on \(\mathbb R\),
 \[
@@ -348,6 +374,8 @@ Choose a fixed interval containing both \([-\|B\|,\|B\|]\) and the principal-sym
 This is a statement about one exact eigenspace at a time. Commutation makes its finite-dimensional powers exact; no comparison with a cumulative compression is involved.
 
 Self-adjointness ensures that this probability law is defined on \(\mathbb R\). Commutation alone does not: \(B=iI\) commutes with \(L\), but has principal symbol \(i\) and only the eigenvalue \(i\). A test function defined on \(\mathbb R\) cannot be evaluated at those values.
+
+<a id="clusters-complex-law"></a>
 
 **Proposition 5.2 (complex observables).** If a classical order-zero \(B\) commutes with \(L\), without a self-adjointness assumption, then for every complex polynomial \(q\),
 \[
@@ -383,6 +411,8 @@ Choose \(\delta\) and then \(m\) to make both terms small. This works for comple
 
 For a nonnormal \(B\), (25) alone is a polynomial trace statement. Holomorphic polynomials do not approximate every continuous function on a two-dimensional rectangle, and (26) need not hold for its eigenvalues.
 
+<a id="clusters-polynomial-rate"></a>
+
 **Corollary 5.3 (rate for a fixed polynomial).** Under Theorem 5.1, for each fixed real or complex polynomial \(f\),
 \[
  \begin{gathered}
@@ -414,7 +444,9 @@ The constants may depend on the polynomial and the observable. No rate for arbit
 
 ![Newton coefficients, arithmetic divisibility and the counting jump](../figures/cluster-arithmetic-and-jumps.png)
 
-The coefficient diagram follows the exact two leading Newton coefficients in Corollary 4.2, using Theorem 4.1 and Solution 9.1. The table shows the necessary divisibility factor for each residue of \(2n-4-\alpha\), without asserting geometric realization. The jump diagram normalizes one counting jump by its actual size \(\mu(k)\): its two limits differ by one, so at least one continuous approximation error is at least one half; the best common midpoint value is drawn. Corollary 4.3 proves the corresponding \(\lambda^{n-1}\) obstruction. The final box states Corollary 5.3's exact quotient bound for a fixed polynomial. [Vector figure](../figures/cluster-arithmetic-and-jumps.svg). These are local consequences of the authored trace and Newton arguments; no historical novelty claim is made.
+The coefficient diagram follows the exact two leading Newton coefficients in Corollary 4.2, using Theorem 4.1 and Solution 9.1. The table shows the necessary divisibility factor for each residue of \(2n-4-\alpha\), without asserting geometric realization. The jump diagram normalizes one counting jump by its actual size \(\mu(k)\): its two limits differ by one, so at least one continuous approximation error is at least one half; the best common midpoint value is drawn. Corollary 4.3 proves the corresponding \(\lambda^{n-1}\) obstruction. The final box states Corollary 5.3's exact quotient bound for a fixed polynomial. [Vector figure](../figures/cluster-arithmetic-and-jumps.svg). These consequences use the trace and Newton arguments above.
+
+<a id="clusters-internal-positions"></a>
 
 ## 6. The positions within a cluster
 
@@ -439,6 +471,8 @@ Theorem 5.1 therefore gives the cluster law
 \tag{29}
 \]
 The scale \(hk\) resolves widths of order \(1/k\). Both its sign and the factor \(h\) follow from the exact identity (28).
+
+<a id="clusters-finer-scales"></a>
 
 ## 7. Resolving a cluster at every finer scale
 
@@ -500,6 +534,8 @@ This proves (33). Since \(\lambda_{k,j}/(hk)\to1\) uniformly, replacing \(k^N\) 
 
 The second alternative is a full asymptotic sequence. It asserts no convergence of the infinite series \(\sum c_rL^{-r}\).
 
+<a id="clusters-shift"></a>
+
 ## 8. A different constant subprincipal symbol
 
 Suppose the subprincipal symbol is the constant \(c\), but (5) fails. Choose one
@@ -528,6 +564,8 @@ The arithmetic constraints of Corollary 4.2 transfer with \(c_0\), giving \(D[(n
 ### Use the conclusion
 
 Check the necessary divisibility condition and the jump obstruction, then compare a whole cluster with its finer-scale probability law. Retain complex and nonnormal observables in the polynomial-moment statement.
+
+<a id="clusters-solutions"></a>
 
 ## 9. Exercises and complete solutions
 
@@ -608,12 +646,12 @@ The first scaled deviation is \(d+e/(hk)\), so its limiting law is \(\delta_d\).
 
 ## References
 
-The result-level source boundaries matter here. [DG, §3, Theorems 3.1 and 3.4] proves concentration for a periodic flow with constant averaged subprincipal symbol; the return symbol and transport are calculated in its proof. Theorem 3.4 assumes a minimal common period and a measure-zero set of subperiodic orbits. Its majority concentration estimate is distinct from our all-eigenvalue windows (12), which follow from the written logarithmic correction and the order-minus-one norm bound. Our polynomial multiplicity theorem assumes that every orbit has the common minimal period. The commuting logarithmic correction is [CV, §1, Theorem 1.1]. [CV, Theorem 1.4] allows subperiodic orbits and a quasipolynomial; its common minimal-period specialization is polynomial. [CV, §2, Theorem 2.1 and Lemma 2.4] proves the integer-coefficient constraints for zero subprincipal symbol. The explicit constant-\(c\) normalization, Newton coefficients and counting-jump qualification above retain the broader hypotheses of this lesson. [CV, §3, Theorem 3.1] describes cluster dispersion through weighted trace expansions. Our single-block moment proof gives the precise continuous probability law, including its normal-complex extension.
+[DG, §3, Theorems 3.1 and 3.4] proves concentration for a periodic flow with constant averaged subprincipal symbol; the return symbol and transport are calculated in its proof. Theorem 3.4 assumes a minimal common period and a measure-zero set of subperiodic orbits. Its majority concentration estimate is distinct from our all-eigenvalue windows (12), which follow from the written logarithmic correction and the order-minus-one norm bound. Our polynomial multiplicity theorem assumes that every orbit has the common minimal period. The commuting logarithmic correction is [CV, §1, Theorem 1.1]. [CV, Theorem 1.4] allows subperiodic orbits and a quasipolynomial; its common minimal-period specialization is polynomial. [CV, §2, Theorem 2.1 and Lemma 2.4] proves the integer-coefficient constraints for zero subprincipal symbol. The explicit constant-\(c\) normalization, Newton coefficients and counting-jump qualification above retain the broader hypotheses of this lesson. [CV, §3, Theorem 3.1] describes cluster dispersion through weighted trace expansions. Our single-block moment proof gives the precise continuous probability law, including its normal-complex extension.
 
-[Z, §0] describes the Liouville pushforward law for Laplace clusters on Zoll manifolds. Its §4, especially Proposition 4.9, obtains the band symbol from solvability of a periodic transport equation; Theorem 3 computes that symbol geometrically for an \(SC_{2\pi}\) metric on \(S^2\). Those passages do not prove the general scalar arithmetic constraints or identify every band's symbol with an average of curvature. The energy-surface calculation above explains the measure normalization without importing a geometric restriction. [I, §2.1.6] is a review of periodic trajectories and clustering; its sharper drift discussion has additional nondegeneracy hypotheses. It is contextual evidence, not a full proof of Theorems 4.1 or 5.1.
+[Z, §0] describes the Liouville pushforward law for Laplace clusters on Zoll manifolds. Its §4, especially Proposition 4.9, obtains the band symbol from solvability of a periodic transport equation; Theorem 3 computes that symbol geometrically for an \(SC_{2\pi}\) metric on \(S^2\). Those passages do not prove the general scalar arithmetic constraints or identify every band's symbol with an average of curvature. The energy-surface calculation above explains the measure normalization without importing a geometric restriction. [I, §2.1.6] is a review of periodic trajectories and clustering; its sharper drift discussion has additional nondegeneracy hypotheses. Theorems 4.1 and 5.1 use the exact periodic trace and block-moment arguments above.
 
 - [DG] Johannes J. Duistermaat and Victor W. Guillemin, “The spectrum of positive elliptic operators and periodic bicharacteristics,” *Inventiones Mathematicae* 29 (1975), 39–79. [Freely accessible digitized full article](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0029/LOG_0010.pdf), §§2–3; clean-composition theorem in §§5 and 7.
 - [CV] Yves Colin de Verdière, “Sur le spectre des opérateurs elliptiques à bicaractéristiques toutes périodiques,” *Commentarii Mathematici Helvetici* 54 (1979), 508–522. [Freely accessible digitized full article](https://gdz.sub.uni-goettingen.de/download/pdf/PPN358147735_0054/LOG_0041.pdf), §§1–3.
-- [GS] Victor Guillemin and Shlomo Sternberg, *Semi-classical Analysis*, author edition dated April 25, 2012. [Freely accessible author text](https://people.math.harvard.edu/~shlomo/docs/Semi_Classical_Analysis_Start.pdf), §5.13 and §§11.3–11.4. Their geometric line, trace and period constructions are compared with the written programme proofs cited above; a semiclassical trace formula alone is not the classical symbol expansion used in (18).
+- [GS] Victor Guillemin and Shlomo Sternberg, *Semi-classical Analysis*, author edition dated April 25, 2012. [Freely accessible author text](https://people.math.harvard.edu/~shlomo/docs/Semi_Classical_Analysis_Start.pdf), §5.13 and §§11.3–11.4. These sections discuss the geometric line, traces and periods; equation (18) uses the classical spectral-density expansion.
 - [Z] Steve Zelditch, “Fine structure of Zoll spectra,” *Journal of Functional Analysis* 143 (1997), 415–460. [Elsevier open archive](https://doi.org/10.1006/jfan.1996.2981), §0 and §4, Proposition 4.9. 
 - [I] Victor Ivrii, “100 years of Weyl's law,” *Bulletin of Mathematical Sciences* 6 (2016), 379–452. [Published article](https://link.springer.com/article/10.1007/s13373-016-0089-y), §2.1.6; [arXiv version](https://arxiv.org/abs/1608.03963v2).

@@ -1,6 +1,6 @@
 # Compactness of continuous families: prerequisite proofs
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Independently written mathematical exposition; author self-check only. Public domain (CC0 1.0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Independently written mathematical exposition. Self-checked by the writing AI. Public domain (CC0 1.0).*
 
 This prerequisite proves the compactness and finite-net results used for smooth tests and short paths in AN-01. Its elementary bases are completeness of the real and complex numbers, finite-dimensional Euclidean norm estimates, compactness of Euclidean closed bounded sets, and ordinary differential calculus with the fundamental theorem of calculus. Compactness means that every open cover has a finite subcover. No function-space compactness theorem is assumed.
 

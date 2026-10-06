@@ -6,7 +6,7 @@ Analytic continuation in modular theory moves between Banach-valued functions, u
 
 The two programme sources are [Analytic elements and strip arguments](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/analytic-elements-and-strip-arguments.html) and [Holomorphy in Banach spaces, Stone's theorem and resolvent convergence](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/holomorphy-in-banach-spaces-stone-s-theorem-and-resolvent-convergence.html), written by Claude Opus 5.5 (Anthropic), September 2026, under CC0. The exact selected clauses are identified below. The proofs in those two lessons rely on complex-analysis, integration, spectral-calculus and analytic-generator results that are not all proved in these courses.
 
-The human-source antecedent is Takesaki, *Theory of Operator Algebras II*, Appendix A.1–A.6. Its printed A.6(ii) omits a necessary condition: on a nonzero Hilbert space, \(A_n=nI\) has both half-plane resolvents tending to zero, while zero is not a self-adjoint resolvent. This correction already has an exact written programme owner, Theorem 8.2(5), with Lemma 8.1 and Example 8.3. SG-08 imports that result and preserves the counterexample. Earlier competing proofs are retained privately, without duplicate theorem ownership.
+The human-source antecedent is Takesaki, *Theory of Operator Algebras II*, Appendix A.1–A.6. Its printed A.6(ii) omits a necessary condition: on a nonzero Hilbert space, \(A_n=nI\) has both half-plane resolvents tending to zero, while zero is not a self-adjoint resolvent. This correction is proved in the programme's Theorem 8.2(5), with Lemma 8.1 and Example 8.3. SG-08 imports that result and preserves the counterexample.
 
 ## Conventions and inputs
 
@@ -218,7 +218,7 @@ For every \(f\in C_0(\mathbb R)\), it also gives \(f(A_j)\to f(A_0)P\) strongly.
 
 The complete propagation, adjoint, domain and necessity proofs belong to the programme lemma and theorem. The construction on \(N^\perp\) includes a zero effective Hilbert space and does not erase the escaped subspace \(N\).
 
-**Solved source-error check.** On a nonzero \(H\), take \(A_n=nI\). For every nonreal \(z\), \((A_n-z)^{-1}=(n-z)^{-1}I\to0\) in norm. Both hypotheses hold but \(N=H\); the zero operator cannot be a resolvent on \(H\), because it is not injective and has no dense range. This is the defective Appendix A.6(ii) clause and the counterexample retained in SG-11. The correction and its complete general proof already have the programme owner Theorem 8.2(5), with Example 8.3; this lesson does not claim a second foundational correction.
+**Solved source-error check.** On a nonzero \(H\), take \(A_n=nI\). For every nonreal \(z\), \((A_n-z)^{-1}=(n-z)^{-1}I\to0\) in norm. Both hypotheses hold but \(N=H\); the zero operator cannot be a resolvent on \(H\), because it is not injective and has no dense range. This is the defective Appendix A.6(ii) clause and the counterexample retained in SG-11. The correction and its complete general proof are the programme's Theorem 8.2(5), with Example 8.3.
 
 ## Convergence on one common core
 
@@ -250,7 +250,7 @@ in the strong resolvent sense, and for every \(x\in H\) and \(T<\infty\),
 \tag{SG.31}
 \]
 
-**Exact programme owner.** Read **Theorem 9.1 and Corollary 9.2(1)** of [Holomorphy in Banach spaces, Stone's theorem and resolvent convergence](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/holomorphy-in-banach-spaces-stone-s-theorem-and-resolvent-convergence.html#oa-fnd-sg-09). They prove this conclusion for arbitrary nets of positive injective self-adjoint operators, with an injective proposed limit. The full transformation proof and time-uniform conclusion remain with that source. In particular no spectral gap at zero or bounded inverse is assumed.
+**Earlier programme proof.** Read **Theorem 9.1 and Corollary 9.2(1)** of [Holomorphy in Banach spaces, Stone's theorem and resolvent convergence](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/holomorphy-in-banach-spaces-stone-s-theorem-and-resolvent-convergence.html#oa-fnd-sg-09). They prove this conclusion for arbitrary nets of positive injective self-adjoint operators, with an injective proposed limit. The full transformation proof and time-uniform conclusion remain with that source. In particular no spectral gap at zero or bounded inverse is assumed.
 
 **Solved bounded-transform check.** Let \(K_n=(I+A_n)^{-1}\) and \(K=(I+A)^{-1}\). Choose a bounded
 continuous function on the real line which equals \(t\mapsto(1+t)^{-1}\)

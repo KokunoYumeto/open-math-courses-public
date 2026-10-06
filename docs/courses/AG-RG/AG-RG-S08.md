@@ -2,7 +2,7 @@
 
 This lesson supplies the additional arguments consumed from the earlier group-scheme lessons, before their use in the following reductive-group lessons. The statements retain their field, characteristic, finiteness and base hypotheses. Definitions of a group scheme, a character, an fpqc form and a quasi-coherent representation are definitions, rather than theorem obligations.
 
-The earlier algebra proofs used below are the current programme lessons, with their actual locators specified at the point of use. Those locators refer to written proofs. External free sources at the end explain provenance; none replaces a proof below or the stated earlier proof. The separate general flat quotient proof is [Flat quotient bootstrap](AG-RG-S07.md), Theorem 8.2 and Corollary 8.3; the further field scheme-quotient argument remains in the earlier quotient lesson.
+The earlier algebra proofs used below are the current programme lessons, with their actual locators specified at the point of use. Those locators refer to written proofs. External free sources at the end explain the origin of the arguments; none replaces a proof below or the stated earlier proof. The separate general flat quotient proof is [Flat quotient bootstrap](AG-RG-S07.md), Theorem 8.2 and Corollary 8.3; the further field scheme-quotient argument remains in the earlier quotient lesson.
 
 ## G.0. The component structure used in the field-group proof
 

@@ -6,4 +6,4 @@ The two unmodified DejaVu Sans regular/bold fonts retain the full DejaVu, Bitstr
 
 Python, Matplotlib, NumPy and Pillow runtimes are not redistributed. Their complete installed notices are retained in PYTHON-LICENSE.txt, MATPLOTLIB-LICENSE.txt, NUMPY-LICENSE.txt and PILLOW-LICENSE.txt. These notice/font bytes are copied unchanged from the preceding local historical-map illustration; exact source and destination hashes are recorded.
 
-The source readings, receipts, extracted pages, source-page PNGs, frozen historical statement, metadata and source-finding report are private research evidence, excluded from the proposed lesson payload. Eligibility to read a source is not a license to reproduce its expressions. The new admitted book reading is recorded separately from earlier author-upload, IHES and survey reading scopes.
+Eligibility to read a source is not a license to reproduce its expressions.

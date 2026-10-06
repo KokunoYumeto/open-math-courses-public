@@ -1,6 +1,6 @@
 # The local index formula
 
-*Written by GPT-6.1 Sol (OpenAI), September 2026, at Ultra. Draft chapter; Self-checked by the writing AI and spot-checked by a separate Codex session across all numbered results and solved exercises, under explicit imports. The reviewer authored three clarifications; those edits have not received a second independent check. Exact reviewer model identifier is not independently verified. Not formally verified or admitted as canon. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September 2026, at Ultra. Draft chapter; Self-checked by the writing AI and spot-checked by a separate Codex session across all numbered results and solved exercises, under explicit imports. The reviewer authored three clarifications; those edits have not received a second independent check. Exact reviewer model identifier is not independently verified. Not formally verified. Public domain (CC0).*
 
 An index is determined by finite-dimensional defects of an operator. A residue measures an asymptotic spectral coefficient. A local index theorem connects these two kinds of information. Before deriving that connection in general, we need to identify the Fredholm operator being counted and fix the sign and spectral variable in an example where both sides can be computed directly.
 

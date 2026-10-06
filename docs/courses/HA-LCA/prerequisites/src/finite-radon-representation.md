@@ -1,6 +1,6 @@
 # Finite Radon representation on locally compact spaces
 
-**Private prerequisite reconstruction.** This reading precedes the HA-LCA lessons. Self-checked by the writing AI.
+This reading precedes the main lessons of this course. Self-checked by the writing AI.
 
 We prove the finite-measure representation needed in Bochner's theorem on an arbitrary locally compact Hausdorff space. No countability assumption is made. This is the finite version: the statements about regularity below must not be applied without qualification to an infinite Haar measure.
 

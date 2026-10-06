@@ -1,10 +1,9 @@
 # Gaussian regularization and quadratic stationary phase
 
-Private reconstruction draft, 4 October 2026. This is newly written exposition
+Written 4 October 2026. This is newly written exposition
 from the freely accessible sources named below. It is not a revision obtained
-by deleting references from an inherited lesson. It has not been admitted for
-publication. The exact elementary programme chains in F0 are now supplied;
-the full original lesson and its distributed source components remain under review.
+by deleting references from an inherited lesson.
+The exact elementary programme proofs used are listed in F0.
 The parameter Morse argument is now written in
 [its companion](parameter-morse-reduction.md), with specific prerequisite
 completions. The existing full stationary-phase revision is retained for
@@ -22,7 +21,7 @@ every used result inside the programme.
 | F0-CALC | Fundamental theorem of one-variable calculus, product and chain rules, elementary real and complex exponential differentiation, and smoothness of the positive square root | Q1–Q9 | Exact combined chain in `exponential-proof-chain.json`: differential rules and roots, compact FTC/Taylor, real and complex exponentials, their modulus and derivative rules, and the right-half-plane root phase are proved. Global integration remains separate |
 | F0-INT | Construction, linearity and norm bounds for the used compact and absolutely convergent improper integrals, their tails, and iteration under the explicit product majorants in these proofs | Q1–Q9 | Exact chain in `global-integral-proof-chain.json`, including full compact-rectangle Fubini and its omitted steps, global tails, compact-uniform limits and the interchanges in Q3–Q6. Change of variables remains separate |
 | F0-COV | Change of variables for orthogonal linear maps, positive dilations, and planar polar coordinates, with their Jacobians | Q2, Q4, Q6 | Exact chain in `change-of-variables-proof-chain.json`: full compact Jordan substitution, determinant–volume scaling, global affine changes, compact chart substitution and the polar exhaustion needed for the Gaussian are proved |
-| F0-COMP | Compactness of a closed bounded Euclidean set; attainment of extrema and uniform continuity for continuous functions on it | Q1, Q5, Q9 | Exact transitive proof chain in `topology-proof-chain.json`, including P1/P6/P8 and existing compactness, extrema and uniform-continuity proofs; closed relative to its explicit axioms. Whole source carriers are not thereby cleared for distribution |
+| F0-COMP | Compactness of a closed bounded Euclidean set; attainment of extrema and uniform continuity for continuous functions on it | Q1, Q5, Q9 | Exact transitive proof chain in `topology-proof-chain.json`, including P1/P6/P8 and existing compactness, extrema and uniform-continuity proofs; closed relative to its explicit axioms |
 | F0-ALG | Determinant multiplication, the cofactor inverse formula, and their smooth dependence on matrix entries | Q5, Q6, Q8 | Exact algebra and differentiation chain in `differential-proof-chain.json`, with specific omissions supplied by P7/P9/P10; closed relative to its declared axioms |
 
 Finite sums, multi-indices, Euclidean scalar products and the determinant are
@@ -478,7 +477,7 @@ The mathematical source versions actually consulted are:
   Gaussian-regularization proof explicitly, so no distribution-kernel
   theorem or exercise is silently imported.
 
-The source PDFs are private reading evidence, not redistributed components.
+The source PDFs are not redistributed here.
 No permission to copy their text is inferred from free access. All arguments
 above are written out here in new exposition, and the displayed normalization
 is verified directly by (G) and (EX), rather than copied without checking.

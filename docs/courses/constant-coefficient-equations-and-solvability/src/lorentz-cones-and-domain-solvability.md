@@ -166,7 +166,7 @@ d_X(\operatorname{supp}Av_\varepsilon)\geq
 \tag{14}
 \]
 
-The real analytic function \(-|x-(x_0-a)|^2\) attains its maximum on \(\operatorname{supp}v_0\) at \(x_0\), with nonzero differential \(-2a\). The support-normal theorem puts \((x_0,a)\) in the analytic wavefront set, using its conic symmetry at a support normal. Since \(Av_0=0\) near \(x_0\), analytic elliptic regularity gives \(\Lambda(a)=0\).
+The real analytic function \(-|x-(x_0-a)|^2\) attains its maximum on \(\operatorname{supp}v_0\) at \(x_0\), with nonzero differential \(-2a\). The support-normal theorem puts \((x_0,-a)\) in the analytic wavefront set: its supplied covector is \(-2a\), and positive conicity permits division by two. Since \(Av_0=0\) near \(x_0\), analytic elliptic regularity gives \(\Lambda(a)=0\).
 
 Write \(\nu=a/r\), and reverse time if necessary so that it is future. Define
 \[
@@ -176,7 +176,7 @@ g=H\nu.
 \end{gathered}
 \tag{15}
 \]
-Both \(\nu\) and \(g\) are future null unit vectors in the Euclidean metric, and \(\nu\cdot g=0\). A bicharacteristic line at covector \(a\) runs in direction \(g\), since \(\nabla P_2(a)=-2Ha\).
+Both \(\nu\) and \(g\) are future null unit vectors in the Euclidean metric, and \(\nu\cdot g=0\). A bicharacteristic line at the supplied covector \(-a\) runs in direction \(g\), since \(\nabla P_2(-a)=2Ha=2rg\).
 
 Choose
 \[
@@ -191,14 +191,14 @@ Let \(J\) be the maximal compact interval in
 \]
 containing \(x_0\). It may initially be a singleton. Such an interval exists as the connected component containing \(x_0\) in a compact closed subset of a line.
 
-Every \(x\in J\) satisfies \(x+a\in\operatorname{supp}u\). Because \(x\notin X\), its distance from \(\operatorname{supp}u\) is at least \(r\), and the point \(x+a\) makes it exactly \(r\). The entire contact argument (14) therefore applies at \(x\). In particular \(v_0=0\) in \(B(x-a,r)\), and the support-normal theorem gives the analytic covector \(a\) at \(x\).
+Every \(x\in J\) satisfies \(x+a\in\operatorname{supp}u\). Because \(x\notin X\), its distance from \(\operatorname{supp}u\) is at least \(r\), and the point \(x+a\) makes it exactly \(r\). The entire contact argument (14) therefore applies at \(x\). In particular \(v_0=0\) in \(B(x-a,r)\), and the support-normal theorem gives the analytic covector \(-a\) at \(x\), by the same positive rescaling of its differential \(-2a\).
 
 The smaller ball \(B(x-R\nu,R)\) lies in \(B(x-a,r)\). Its concentric diamond is contained in \(B(x-R\nu,\sqrt2R)\), on which \(Av_0=0\): every point of that ball is within \(R+\sqrt2R<\delta\) of \(x\in X^c\). Lemma 1.1 thus gives
 \[
 v_0=0\text{ on }\Omega(x):=x-R\nu+D_R.
 \tag{18}
 \]
-Analytic propagation at covector \(a\) also gives
+Analytic propagation at the supplied covector \(-a\) also gives
 \[
 \widehat J:=J+(-R,R)g
 \subset\operatorname{supp}v_0\subset\overline X.

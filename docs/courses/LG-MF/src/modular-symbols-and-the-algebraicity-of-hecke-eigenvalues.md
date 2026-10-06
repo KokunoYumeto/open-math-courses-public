@@ -606,7 +606,7 @@ T_ne_{c:d}
 e_{(c,d)\left(\begin{smallmatrix}a&b\\c'&d'\end{smallmatrix}\right)}.
 \tag{5.5}
 \]
-Omit a summand whose resulting row is not primitive modulo \(N\). A local proof of this shortcut remains required; its statement is not admitted as a proved input. The computations that follow use the independently derived path formula (4.12) and (5.3), so do not depend on (5.5).
+Omit a summand whose resulting row is not primitive modulo \(N\). This shortcut is not proved in these lessons and is not used as a proved result. The computations that follow use the independently derived path formula (4.12) and (5.3), so do not depend on (5.5).
 
 ### 5.2. Level 11
 

@@ -303,8 +303,8 @@ with the ultraweakly dense finite-output ideal, gives each positive
 output in that ideal a positive bounded-input lift by bimodule
 factorization, resolves \(1\) by a possibly uncountable family of
 such outputs, and then lifts spectral increments of an arbitrary
-extended positive target. That public proof remains under review;
-it cannot be replaced by a countable analytic test on the finite cone.
+extended positive target. That proof cannot be replaced by a countable analytic test
+on the finite cone.
 
 Take **any** \(y\in M_+\), including \(\psi(y)=\infty\), and
 choose \(X\in\widehat P_+\) with
@@ -381,10 +381,8 @@ value. The all-normal trace representation is stronger than the
 semifinite-density statement in PT-08. The public OVW-03 full-range property is stronger than density
 of the bounded-output ideal. The positive
 Tonelli identity is an identity of **extended** maps, not only of
-ordinary bounded operators. Until the exact providers and their
-transitive foundations receive public proof or admitted imports,
-OE-01 is a complete author-side draft **relative to those contracts**,
-not an internally closed or admitted B9 theorem.
+ordinary bounded operators. OE-01 is proved **relative to those contracts**;
+not every foundation of those providers is proved in these lessons.
 
 The target statement is Takesaki, *Theory of Operator Algebras II*,
 IX.4 Theorem 4.18, printed p. 223/PDF p. 243; its printed proof
@@ -395,5 +393,3 @@ Theorem 5.1/Lemma 5.2. IX.4.20 has a false all-positive reverse
 implication, corrected in What the analytic strong sum actually proves through Analytic rank-one operators with the wrong infinite value.
 Nothing in OE-05 invokes that reverse. The argument does not import
 the converse modular theorem that would presuppose OE-01.
-
-The original mechanism figure for the shared density and onto square is retained as a reproducible private figure pending a separate public figure review. The exact primary pages, source identities, and open dependency boundaries are recorded in the course source audit.

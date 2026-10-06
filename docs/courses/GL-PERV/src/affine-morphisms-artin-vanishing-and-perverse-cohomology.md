@@ -97,7 +97,7 @@ Ordinary pullback is exact, so (2.1) bounds the support of \(\mathcal H^qf^*A\) 
 
 Next take \(B\in{}^pD^{\ge0}(X)\). For every \(A\in{}^pD^{\le-d-1}(Y)\), the first inclusion puts \(f^*A\) in \({}^pD^{\le-1}(X)\). Adjunction and orthogonality give
 \(\operatorname{Hom}(A,Rf_*B)=\operatorname{Hom}(f^*A,B)=0\).
-The orthogonal characterization of the lower half therefore gives the last inclusion. Over our field coefficients, Verdier duality reverses the two perverse halves and exchanges star with shriek. Dualizing the two proved inclusions gives the other two. These last deductions require the precise operation and duality prerequisites, which remain part of the course audit. \(\square\)
+The orthogonal characterization of the lower half therefore gives the last inclusion. Over our field coefficients, Verdier duality reverses the two perverse halves and exchanges star with shriek. Dualizing the two proved inclusions gives the other two. These last deductions require the precise operation and duality prerequisites, not all of which are proved in these lessons. \(\square\)
 
 For proper \(f\), identify \(Rf_!=Rf_*\). A perverse input then has image only in perverse degrees \([-d,d]\). For finite \(f\), use \(d=0\): **finite direct image is t-exact**. Smoothness is unnecessary. For quasi-finite \(f\), properness is unnecessary for the individual conclusions
 

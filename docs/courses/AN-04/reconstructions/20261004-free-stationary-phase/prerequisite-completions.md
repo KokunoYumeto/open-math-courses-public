@@ -1,6 +1,6 @@
 # Completing the finite-dimensional prerequisites
 
-These arguments fill explicit steps used by the existing lesson. They do not replace the earlier programme proofs that are already present. The exact earlier files and proof fragments are recorded in `prerequisite-bindings.json`. The selected P1–P5 dependency chains are now closed relative to their explicit axioms; full source carriers and the assembled lesson remain under review. This companion does not certify the whole lesson for publication.
+These arguments fill explicit steps used by the existing lesson. They do not replace the earlier programme proofs that are already present. The exact earlier files and proof fragments are recorded in `prerequisite-bindings.json`. The selected P1–P5 dependency chains are closed relative to their explicit axioms. This companion does not certify the whole lesson for publication.
 
 The freely accessible human source is Jiří Lebl, *Basic Analysis*, volumes I
 and II, version 6.3 (15 May 2026), [author edition](https://www.jirka.org/ra/).

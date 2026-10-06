@@ -258,7 +258,7 @@ Read Sections 9–12 of [Ideal Theory in Ring Domains, work 19](https://github.c
 
 ## References
 
-* Emmy Noether, *Idealtheorie in Ringbereichen*, 1921, Sections 9–12. [Free English working edition, work 19](https://github.com/KokunoYumeto/emmy-noether-en/blob/main/source/Noether_English_ED0014.tex), with the original bibliographic information and machine-assisted translation provenance.
+* Emmy Noether, *Idealtheorie in Ringbereichen*, 1921, Sections 9–12. [Free English working edition, work 19](https://github.com/KokunoYumeto/emmy-noether-en/blob/main/source/Noether_English_ED0014.tex), a machine-assisted translation with the original bibliographic information.
 * J. S. Milne, *Algebraic Number Theory*, Chapter 3, Dedekind domains and ideal factorization. [Author's notes](https://www.jmilne.org/math/CourseNotes/ANT.pdf).
 
 ## Editable sources

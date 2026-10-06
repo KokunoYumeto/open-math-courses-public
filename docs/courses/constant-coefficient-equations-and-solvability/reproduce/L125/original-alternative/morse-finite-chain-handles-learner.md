@@ -116,7 +116,7 @@ For the general bounding statement let z be a finite cycle in one W_i and suppos
 
 The full proof below supplies the geometric finite-chain handle input H. At a strictly plurisubharmonic Morse critical point on a complex d-manifold, B(v,v)+B(Jv,Jv)=4ℒ(v)>0 bounds the real index by d. The exact SH03 zero-section perturbation interface supplies such a proper Morse function relative to its retained smooth/Sard foundations. The explicit projective exhaustion already proved in TP041 is its starting function. Consequently the geometric handle construction gives the ordinary H_{d+1}(U;Q) vanishing used in the separately reviewed ordinary-pair normal-tube argument. No sheaf/singular comparison is substituted for that proof.
 
-This candidate is not independently admitted yet. It does not close lower Sard/analytic programme foundations, general rational-form spanning, the actual affine C8 tube/scalar/multiplicity comparison, the alternative closed–open compact-support comparison, historical coefficient conventions, full component constancy or recursive course closure. The complete formal proof, exact source credits and scope statement follow without abridgement.
+This lesson does not close lower Sard/analytic programme foundations, general rational-form spanning, the actual affine C8 tube/scalar/multiplicity comparison, the alternative closed–open compact-support comparison, historical coefficient conventions, full component constancy or recursive course closure. The complete formal proof, exact source credits and scope statement follow without abridgement.
 
 ---
 

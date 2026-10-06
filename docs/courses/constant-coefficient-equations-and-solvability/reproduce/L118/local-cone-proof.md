@@ -1,6 +1,6 @@
 # Local tangent cones and small imaginary deformations
 
-AN-02 specialized working foundation LC035, October 2026. Written by GPT-6.1 Sol (OpenAI), Ultra reasoning. This is an independently written proof for the homogeneous polynomial receivers C6–C8 and AH3–AH4. Self-checked by the writing AI. The general real analytic and microhyperbolic AN-01 assignment remains with its existing owner.
+AN-02 specialized working foundation LC035, October 2026. Written by GPT-6.1 Sol (OpenAI), Ultra reasoning. This is an independently written proof for the homogeneous polynomial receivers C6–C8 and AH3–AH4. Self-checked by the writing AI. The general real analytic and microhyperbolic case is not proved here.
 
 ## Exact scope and mathematical inputs
 
@@ -198,6 +198,6 @@ The companion lesson supplies three computed examples and six exercises with ful
 
 [Michael F. Atiyah, Raoul Bott and Lars Gårding, *Lacunas for hyperbolic differential operators with constant coefficients I* (1970)](https://projecteuclid.org/journalArticle/Download?urlid=10.1007%2FBF02394570), Lemma 5.1, Lemma 5.9 and Corollary 5.11, treat local roots and local-cone semicontinuity, including perturbations of the polynomial. This proof keeps \(F\) fixed and uses a root halfplane, a zero-free quotient and an explicitly proved Hurwitz rescaling argument. Their broader coefficient-perturbation statement is not used.
 
-Lars Hörmander, *The Analysis of Linear Partial Differential Operators I*, Lemma 8.7.4, printed 320–321/PDF 328–329 and the graph portion of Theorem 8.7.5, printed 321/PDF 329, were checked privately for statement and completeness scope. No scanned text, paywalled prose, or named theorem is required to fill a step of LC035-1 through LC035-6. The elementary D4 results and the existing C1/D1 tangent-hyperbolicity input are explicitly retained. This work neither supplies nor transfers the general analytic microhyperbolic theorem, analytic wavefront boundary theorem, or operation bridges owned by AN-01.
+Lars Hörmander, *The Analysis of Linear Partial Differential Operators I*, Lemma 8.7.4, printed 320–321/PDF 328–329 and the graph portion of Theorem 8.7.5, printed 321/PDF 329, treat local cones of microhyperbolic functions. No scanned text, paywalled prose, or named theorem is required to fill a step of LC035-1 through LC035-6. The elementary D4 results and the existing C1/D1 tangent-hyperbolicity input are explicitly retained. This work neither supplies nor transfers the general analytic microhyperbolic theorem, analytic wavefront boundary theorem, or operation bridges owned by AN-01.
 
-CD034's admitted smooth-cycle detection is a separate input and does not imply these statements. Nothing here closes the whole AN-02 goal.
+CD034's smooth-cycle detection is a separate input and does not imply these statements. Nothing here closes the whole AN-02 goal.

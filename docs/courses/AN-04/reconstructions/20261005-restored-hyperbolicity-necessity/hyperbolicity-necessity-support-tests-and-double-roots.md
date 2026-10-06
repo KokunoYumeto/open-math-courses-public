@@ -561,4 +561,4 @@ The planar solver is [U026, Lemma 7.1 and its full parameter proof](../20261005-
 
 Hörmander I, Lemma 8.7.2, printed pages 318–319 (PDF pages 333–334), was checked as stronger real-analytic microhyperbolic context. Its lower-jet assertion is not used as an imported result: Lemma 7.2 above proves exactly the smooth-parameter, polynomial-root first-derivative statement needed for the full alternative. The strictly hyperbolic sufficiency remains the complete earlier [U031 lesson](../20261005-restored-higher-order-cauchy/higher-order-cauchy-roots-jets-and-propagation.md).
 
-The current owner review covers all three source results, their complete supporting arguments and every original exercise solution. Nine retained finite diagnostic groups and one added circle-homotopy group supplement the written proofs. Independent human review, the remaining full course and any future public clearance remain pending.
+Self-checked by the writing AI. Nine retained finite diagnostic groups and one added circle-homotopy group supplement the written proofs. Independent human review, the remaining full course and any future public clearance remain pending.

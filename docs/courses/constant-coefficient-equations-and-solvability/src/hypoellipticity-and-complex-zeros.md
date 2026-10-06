@@ -11,7 +11,7 @@ Keep \(D=-i\partial\). All polynomials may have complex coefficients. The smooth
 \operatorname{WF}(E*f)\subset\operatorname{WF}(f).
 \tag{1}
 \]
-The convolution exists because \(f\) is compact. This is the usual wavefront estimate for convolution specialized to a kernel whose only possible singular base point is zero. We assume this exact estimate as the [planned smooth-wavefront convolution prerequisite](../prerequisites/planned-foundation-proofs.html#smooth-wavefront-convolution); its separate foundational proof is still to be written.
+The convolution exists because \(f\) is compact. The complete [smooth-wavefront convolution proof](smooth-wavefront-convolution.md) supplies this exact estimate at its declared compact-distribution, Fourier and test-family entries. The proof covers equation (1), the compact inverse identity and the separated-support commutator calculation; the other lower entries and containing-lesson assertions remain separate.
 
 [Banach estimates, quotient spaces and compact parameter arguments](../prerequisites/banach-foundation-bridges.html), Section 14.5, proves the Fréchet closed graph theorem used for the solution spaces. [Continuous functionals, test families and compact limits](continuous-functionals-and-test-families.md), Section 3, proves compact smooth subsequences. [Cauchy bounds, root counts and analytic extensions](cauchy-bounds-and-root-counts.md), Section 1, gives uniform holomorphic limits and the Cauchy estimates used in their specialization.
 

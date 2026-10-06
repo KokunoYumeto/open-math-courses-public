@@ -1,6 +1,6 @@
 # Local inverses and distance-weighted elliptic estimates
 
-**AN-03 · Unit AN03-U006 · Independent English AI draft, not admitted.**
+**AN-03 · Unit AN03-U006 · Self-checked by the writing AI.**
 
 Ellipticity gives a local inverse with exactly as many derivatives as the order of the operator. The useful question here is how little regularity its coefficients may have. Continuity will suffice for the highest-order coefficients. Lower-order coefficients can be unbounded; their admissible integrability depends on how many derivatives separate their term from the principal part.
 

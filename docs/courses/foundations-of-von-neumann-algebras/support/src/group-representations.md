@@ -320,4 +320,4 @@ The second identity counts \(4\cdot3^k\) edges from depth \(k\) to depth \(k+1\)
 
 ## Programme provenance
 
-The scalar mathematical antecedent recorded by the original programme lesson is Takesaki, *Theory of Operator Algebras I*, Chapter I, the group-representation exercise in section 9 and the convolution algebra in section 1. The complete argument reused here is the independently written programme proof, with its nondegenerate and degenerate cases explicit. The exact selected source ranges and byte hashes, source credit and dependency correspondence are recorded in the accompanying receipt.
+The scalar mathematical antecedent is Takesaki, *Theory of Operator Algebras I*, Chapter I, the group-representation exercise in section 9 and the convolution algebra in section 1. The complete argument reused here is the independently written programme proof, with its nondegenerate and degenerate cases explicit.

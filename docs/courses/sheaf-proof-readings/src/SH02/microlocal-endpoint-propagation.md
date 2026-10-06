@@ -14,7 +14,7 @@ The four Fourier endpoints are subsequently written in their original tensor ord
 
 MEP11 identifies the support half by composing specialization, linear exchange and base exchange. MEP14 identifies the trace half using the original ordinary and exceptional inverse Fourier comparisons, with the relative trace on the actual invertible source coefficient. Thus the proof concerns specified natural transformations, rather than only isomorphic endpoints. Its linear input retains conic bounded-below complexes with a global lower bound over locally compact Hausdorff bases, including rank-jumping bundle maps; the subsequent microlocal application uses bounded arbitrary sheaves on manifolds. The source account does not silently narrow either scope to constructible objects or constant-rank kernels.
 
-The organization is normal orientation, four endpoints, the module-mate calculation, and the two assembled squares, followed by three solved checks. The admitted sources supply the classical framework and operation mechanisms; the detailed endpoint word and sign calculation are expressed through the separately named programme proofs. Those suppliers retain their own foundation obligations. Human source expression and diagrams are not imported or relicensed, and no expression comparison with an unread treatment or complete transitive clearance is claimed.
+The organization is normal orientation, four endpoints, the module-mate calculation, and the two assembled squares, followed by three solved checks. The cited sources supply the classical framework and operation mechanisms; the detailed endpoint word and sign calculation are expressed through the separately named programme proofs. Those suppliers retain their own foundation obligations. Human source expression and diagrams are not imported or relicensed, and no claim is made that every transitive prerequisite is proved.
 
 ## SH02-MEP-SCOPE. Domains and the finite proof inputs
 
@@ -49,7 +49,7 @@ Here is the sufficient proof cut. Each entry supplies the indicated map, not mer
 | SH02-MD-TRACE, M28 | Counit-normalized exceptional base change for the two time submersions, used only to identify the normal orientation map |
 | The declared six-operation contracts | Proper-support composition and base change, projection formula, bounded exceptional adjunction, module compatibility, and the corresponding unit/counit pasting identities |
 
-No result about field coefficients, finite stalks, constructibility, Verdier biduality or compact support of an input object is used. A proof of the map calculation does not itself admit those suppliers or the course.
+No result about field coefficients, finite stalks, constructibility, Verdier biduality or compact support of an input object is used. A proof of the map calculation does not by itself prove the results listed in the table above.
 
 ## SH02-MEP-ORIENTATION. The normal orientation is a specified trace map
 

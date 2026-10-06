@@ -579,7 +579,7 @@ The proof carries one mixed kernel through its actual module maps and exceptiona
 
 The paired-defect theorem and enhanced-center argument remain supplied by SH02-LFT-ANTIPODE-CHECK and SH02-LFT-CENTER, with their own foundations. The direct/graded support identification is supplied by SH02-FGC-SUPPORT. The programme's further conic, orientation, enhancement, mate-coherence and six-operation obligations remain open where stated; this repair does not clear them transitively.
 
-The exposition is organized around a common target, two explicit line crossings and the final adjunction transpose. The admitted sources provide classical operation and orientation ingredients, not this sequence of named endpoint calculations. No source diagram or exercise sequence is incorporated, and no correspondence with an unread treatment is claimed. Independently expressed programme text is CC0, while actual human components retain their existing terms.
+The exposition is organized around a common target, two explicit line crossings and the final adjunction transpose. The cited sources provide classical operation and orientation ingredients, not this sequence of named endpoint calculations. No source diagram or exercise sequence is incorporated. Independently expressed programme text is CC0, while actual human components retain their existing terms.
 
 ## SH02-FTE-STATUS. What the complete calculation proves
 

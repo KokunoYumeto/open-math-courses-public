@@ -70,8 +70,8 @@ Our convention is \[
 \tag{0.1}
 \] For an odd exact involution \(F\), the projection is \(P=(1+F)/2\).
 With these two choices the Hardy module pairs with the circle coordinate
-\(z\) to \(-1\). This agrees with the positive-compression convention in
-\emph{The local index formula}.
+\(z\) to \(-1\). Section 7 proves its trace-character expression with
+the same positive-compression convention.
 
 We use the preceding lesson's normalization, group laws and bounded
 transform, the Hilbert-space Fredholm facts specified there, and the
@@ -649,10 +649,10 @@ norm with \(H^1\). The equality \(F_{D_E}^+=D_E^+R_+\) therefore
 identifies kernels and ranges with those of the Sobolev realization of
 \(D_E^+\). Their indices agree. This proves (5.1). \(\square\)
 
-The same argument shows independence from the connection. The full
-topological expression for this index, with its orientation hypotheses
-and symbol class, remains a proof obligation in \emph{Dirac classes,
-Poincaré duality and the index theorem in KK}. It is not a premise of
+The same argument shows independence from the connection. The
+closed-manifold topological expression, with its orientation hypotheses
+and symbol class, is proved in \href{KT-KK-15.html}{Dirac classes and
+the cotangent Dolbeault element}, Sections 3--10. It is not a premise of
 the analytic comparison proved here.
 
 \subsection{6. Circle and noncommutative-torus
@@ -714,37 +714,425 @@ presupposing a trace or a cyclic formula for that integer.
 \subsection{7. Comparison with the Fredholm
 character}\label{comparison-with-the-fredholm-character}
 
-The analytic pairing is defined for every cycle in this lesson.
-Additional summability hypotheses allow it to be computed by trace
-expressions. The published lesson
-\href{https://kokunoyumeto.github.io/open-math-courses/courses/NCG-LOCAL-INDEX/the-local-index-formula.html}{The
-local index formula} proves the precise comparison: Theorem 9.2
-identifies its residue cocycle with the bounded Fredholm character under
-that lesson's explicitly stated hypotheses of Theorem 8.4; Theorems 10.2
-and 10.3 compute its odd and even K-theory evaluations as the
-compression indices used here. For an odd kernel the paragraph after
-Theorem 9.2 replaces \(D\) by \(D+P_0\) and proves invariance of
-positive-degree residues; Theorem 10.2 explicitly uses that phase. The
-even kernel comparison is Theorem 9.4, with the harmonic degree-zero
-completion of Corollary 7.3, and the full even index is Theorem 10.4.
-These additional hypotheses and completions are required for the
-character assertion.
+The compression indices admit trace formulas when their defects satisfy
+a summability condition. We prove that comparison directly, using the
+same kernel-minus-cokernel convention as in Sections 1--4.
 
-In particular its odd formula (10.3) has the leading minus sign that
-converts its alternating cyclic evaluation into
-\(\operatorname{index}(PUP)\). Its even formula (10.6) counts the
-positive-to-negative block. Thus our circle value \(-1\) and even index
-convention agree with that course. We use those exact internal character
-theorems for this comparison; compactness alone does not justify a trace
-of an arbitrary product of commutators.
+Write \(\mathcal S_q(H_0,H_1)\), \(1\leq q<\infty\), for the compact
+operators whose singular values have finite \(q\)-sum. The earlier
+lesson
+\href{../NCG-CYCLIC/public/reader/n-traces.html\#7-geometric-and-operator-examples}{\emph{Cyclic
+forms that survive norm completion}, Lemma 7.3a} proves completeness,
+finite-rank density, the bounded-multiplier estimate, inclusions
+\(\mathcal S_q\subset\mathcal S_r\) for \(r\geq q\), and the full
+Schatten Hölder inequality. In particular, \[
+ \|X_1\cdots X_k\|_1\leq\prod_{j=1}^k\|X_j\|_k
+ \tag{7.1}
+\] for composable \(\mathcal S_k\) operators, also with bounded factors
+inserted between them. Rectangular operators are included by putting
+them in the appropriate off-diagonal corner of
+\(\mathcal B(H_0\oplus H_1)\); their nonzero singular values and norms
+are unchanged.
 
-The further identity of these pairings with Kasparov products remains a
-proof obligation for \emph{Homotopy, associativity, the index pairing
-and KK-equivalence}. Its required statement is that, under
-\(K_i(A)=KK^i(\mathbb C,A)\) and \(K^i(A)=KK^i(A,\mathbb C)\), their
-product in \(KK^0(\mathbb C,\mathbb C)=\mathbb Z\) is the compression
-index above, with these signs. The present Fredholm and boundary proofs
-do not require that product construction.
+The ordinary trace is the trace of
+\href{../foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html\#OA-FND-LT-05}{\emph{Compact
+and trace-class operators, the predual of \(B(H)\), and the operator
+topologies}, Theorem 4.6}. That theorem proves basis independence,
+continuity in trace norm, and cyclicity with a bounded multiplier.
+Schatten products have cyclically invariant traces as well: approximate
+each Schatten factor by finite-rank operators in its own norm, use (7.1)
+and telescoping to pass every product to the trace-norm limit, and use
+finite-dimensional cyclicity before taking the limit. For a trace-class
+\(C:H_1\to H_0\) and bounded \(R:H_0\to H_1\), the same corner argument
+gives \[
+ \operatorname{Tr}_{H_0}(CR)=\operatorname{Tr}_{H_1}(RC).
+ \tag{7.2}
+\] These assertions never assign a trace to an individual factor which
+is not trace class.
+
+\subsubsection{7.1. The defect-power index
+formula}\label{the-defect-power-index-formula}
+
+\textbf{Lemma 7.1.} Let \(T:H_0\to H_1\) be bounded and suppose \[
+ A_T=1_{H_0}-T^*T\in\mathcal S_q(H_0),\qquad
+ B_T=1_{H_1}-TT^*\in\mathcal S_q(H_1).
+ \tag{7.3}
+\] Then \(T\) is Fredholm. For every integer \(m\geq q\), \[
+ \operatorname{index}T
+   =\operatorname{Tr}_{H_0}(A_T^m)
+      -\operatorname{Tr}_{H_1}(B_T^m).
+ \tag{7.4}
+\]
+
+\textbf{Proof.} First we obtain the closed range and the bounded inverse
+needed in the trace calculation. On \(\ker T\), the compact operator
+\(A_T\) acts as the identity. An infinite orthonormal family there would
+have no convergent image subsequence, so \(\ker T\) is finite
+dimensional. The same argument with \(B_T\) proves that \(\ker T^*\) is
+finite dimensional.
+
+There is a constant \(c>0\) with \(\|T\xi\|\geq c\|\xi\|\) on
+\((\ker T)^\perp\). Otherwise choose unit vectors \(\xi_j\) in that
+subspace with \(T\xi_j\to0\). Since \(T^*T\xi_j\to0\), compactness of
+\(A_T\) supplies a subsequence on which \(\xi_j=A_T\xi_j+T^*T\xi_j\)
+converges. Its limit is a unit vector in \((\ker T)^\perp\) annihilated
+by \(T\), a contradiction. The lower bound proves that
+\(\operatorname{ran}T\) is closed: a convergent sequence \(T\xi_j\) may
+first have its kernel components removed, after which \(\xi_j\) is
+Cauchy. The orthogonal complement of the range is \(\ker T^*\). Thus
+\(T\) is Fredholm with the index of (0.1).
+
+Let \(K\) and \(C\) be the orthogonal projections onto
+\(\ker T\subset H_0\) and \(\ker T^*\subset H_1\). Define \[
+ S_0:H_1\longrightarrow H_0
+\] to be the inverse of \(T:(\ker T)^\perp\to\operatorname{ran}T\) on
+that range and zero on its orthogonal complement. Its norm is at most
+\(c^{-1}\). All operators here are bounded on their whole Hilbert
+spaces; there is no unbounded-domain restriction. We have \[
+ S_0T=1-K,\qquad TS_0=1-C,\qquad T^*C=0.
+ \tag{7.5}
+\] The typed difference \(R=T^*-S_0:H_1\to H_0\) satisfies \[
+ R=-A_TS_0\in\mathcal S_q(H_1,H_0),
+ \tag{7.6}
+\] because \(A_TS_0=S_0-T^*TS_0=S_0-T^*(1-C)=S_0-T^*\).
+
+Interpolate the inverse, keeping \(T\) fixed: \[
+\begin{split}
+ S_t&=S_0+tR,\\
+ A_t&=1-S_tT=K-tRT,\\
+ B_t&=1-TS_t=C-tTR,\qquad 0\leq t\leq1 .
+\end{split}
+ \tag{7.7}
+\] The defects belong to \(\mathcal S_q\), and hence to
+\(\mathcal S_m\), continuously and differentiably in those norms. They
+need not be positive. They are self-adjoint in this construction, since
+\(A_t=(1-t)K+tA_T\) and \(B_t=(1-t)C+tB_T\). Every \(m\)-fold product
+used below is trace class by (7.1). The multiplication map from \(m\)
+copies of \(\mathcal S_m\) to \(\mathcal S_1\) is continuous
+multilinear. Expanding \(A_{t+h}^m\) gives the usual noncommutative
+derivative, with trace-norm remainder bounded by a constant times
+\(h^2\); each remainder term still has \(m\) Schatten factors. This also
+covers \(m=1\), when the remainder is zero. Consequently, \[
+\begin{split}
+ \frac d{dt}\operatorname{Tr}(A_t^m)
+   &=-m\operatorname{Tr}_{H_0}(RT A_t^{m-1}),\\
+ \frac d{dt}\operatorname{Tr}(B_t^m)
+   &=-m\operatorname{Tr}_{H_1}(TR B_t^{m-1}).
+\end{split}
+ \tag{7.8}
+\] Cyclicity combines the \(m\) derivative summands; it is applied to
+their complete trace-class products.
+
+The exact identity \(TA_t=B_tT\) implies \(TA_t^{m-1}=B_t^{m-1}T\).
+Moreover \(RB_t^{m-1}:H_1\to H_0\) is trace class: it has \(m\) factors
+in \(\mathcal S_m\), including \(R\). Equations (7.2) and (7.8)
+therefore give \[
+ \operatorname{Tr}_{H_0}(RT A_t^{m-1})
+   =\operatorname{Tr}_{H_0}(RB_t^{m-1}T)
+   =\operatorname{Tr}_{H_1}(TR B_t^{m-1}).
+\] The trace difference is constant. At \(t=0\), its two powers are the
+finite-rank projections \(K,C\), so its value is
+\(\dim\ker T-\dim\ker T^*\). At \(t=1\), \(S_1=T^*\) and the defects are
+exactly (7.3). This proves (7.4). \(\square\)
+
+\subsubsection{7.2. The odd compression and its
+sign}\label{the-odd-compression-and-its-sign}
+
+Use an exact self-adjoint involution \(F\), put \(P=(1+F)/2\), and let
+\(U\) be the actual represented unitary of Section 2 or Section 3.
+Amplifications are understood. Suppose \([F,U]\in\mathcal S_q\), and
+choose an integer \(m\geq1\) with \(2m\geq q\). For \[
+ T=PUP:PH\longrightarrow PH
+\] its two defects, with identities on this closed range, are \[
+\begin{split}
+ A&=P-PU^*PUP=PU^*(1-P)UP,\\
+ B&=P-PUPU^*P=PU(1-P)U^*P .
+\end{split}
+ \tag{7.9}
+\] The operators \(V=(1-P)UP:PH\to(1-P)H\) and
+\(W=PU(1-P):(1-P)H\to PH\) are corners of \([P,U]\), up to a sign. They
+belong to \(\mathcal S_{2m}\). Therefore \(A=V^*V\) and \(B=WW^*\)
+belong to \(\mathcal S_m\), and Lemma 7.1 gives \[
+ \langle[u],x\rangle=\operatorname{Tr}_{PH}(A^m-B^m).
+ \tag{7.10}
+\]
+
+There is an exact character version of this formula: \[
+ \boxed{\quad
+ \langle[u],x\rangle
+  =\frac{(-1)^m}{2^{2m}}
+     \operatorname{Tr}_H
+       \left(F\bigl([F,U^*][F,U]\bigr)^m\right).
+ \quad}
+ \tag{7.11}
+\] To prove it, write \(H=PH\oplus(1-P)H\). Since \([P,U^*]=-[P,U]^*\),
+multiplication of these two off-diagonal blocks gives \[
+ [F,U^*][F,U]=-4
+       \begin{pmatrix}A&0\\0&W^*W\end{pmatrix}.
+ \tag{7.12}
+\] The traces of \((W^*W)^m\) and \((WW^*)^m=B^m\) are equal. One fully
+typed verification approximates \(W:(1-P)H\to PH\) in
+\(\mathcal S_{2m}\) by finite-rank operators. The \(2m\)-factor products
+converge in trace norm by (7.1), and the two finite-rank traces are
+equal before taking the limit. As \(F=1\oplus(-1)\), (7.12) and (7.10)
+prove (7.11).
+
+For the Hardy projection and the bilateral coordinate unitary \(U=z\),
+\(T\) is the unilateral shift. Here \(A=0\) and \(B\) is the rank-one
+projection onto the constant mode. Formula (7.10) gives \(-1\) in every
+permitted degree. In degree one, (7.11) is specifically
+\(-\frac14\operatorname{Tr}(F[F,U^*][F,U])\). This retains the positive
+compression \(P=(1+F)/2\); replacing the compression or replacing \(U\)
+by \(U^*\) changes the convention.
+
+\subsubsection{7.3. The even compression}\label{the-even-compression-1}
+
+Let \(\Gamma\) be the grading, let \(F\) be odd and satisfy \(F=F^*\),
+\(F^2=1\), and write \(e=\rho^{(n)}(p)\) for a represented projection.
+Put \(e_\pm=\rho_\pm^{(n)}(p)\) and retain the typed operator of (1.1),
+\[
+ T_p=e_-F_+e_+:e_+H_+^n\longrightarrow e_-H_-^n .
+\] Assume \([F,e]\in\mathcal S_q\) and choose \(m\geq1\) with
+\(2m\geq q\). Exactness makes \(F_-=F_+^*\), so the inverse errors are
+\[
+\begin{split}
+ A_p&=e_+-T_p^*T_p
+      =e_+F_-(1-e_-)F_+e_+,\\
+ B_p&=e_--T_pT_p^*
+      =e_-F_+(1-e_+)F_-e_- .
+\end{split}
+ \tag{7.13}
+\] Each is a product of two \(\mathcal S_{2m}\) corners of \([F,e]\),
+with bounded factors. Thus they lie in \(\mathcal S_m\) on their
+respective, possibly different, Hilbert spaces. Lemma 7.1 proves \[
+ \langle[p],x\rangle
+    =\operatorname{Tr}_{e_+H_+^n}(A_p^m)
+       -\operatorname{Tr}_{e_-H_-^n}(B_p^m).
+ \tag{7.14}
+\]
+
+Writing \(D_e=[F,e]\), its two diagonal corners relative to \(e\) are
+zero, so \(D_e^2\) commutes with \(e\). Direct multiplication gives \[
+ eD_e^2e=-eF(1-e)Fe
+         =-\begin{pmatrix}A_p&0\\0&B_p\end{pmatrix}
+             \quad\hbox{on }eH^n.
+\] Taking powers and the grading trace in (7.14) gives \[
+ \langle[p],x\rangle
+       =(-1)^m\operatorname{Tr}_{H^n}
+                         \bigl(\Gamma e[F,e]^{2m}\bigr).
+ \tag{7.15}
+\] Its full bounded-character form is \[
+ \boxed{\quad
+ \langle[p],x\rangle
+   =\frac{(-1)^m}{2}\operatorname{Tr}_{H^n}
+                         \bigl(\Gamma F[F,e]^{2m+1}\bigr).
+ \quad}
+ \tag{7.16}
+\] Here every displayed trace is defined, since \(2m\) commutators
+already have a trace-class product. For the identity between the two
+traces, set \(\omega=e[F,e]^{2m}\). On operator forms use the derivation
+\[
+ d\omega=F\omega-(-1)^{\deg\omega}\omega F .
+ \tag{7.17}
+\] It has \(d^2=0\), since \(F^2=1\), and \(d\omega=[F,e]^{2m+1}\).
+Cyclicity and \(F\Gamma F=-\Gamma\) give \[
+ \tfrac12\operatorname{Tr}(\Gamma Fd\omega)
+   =\tfrac12\bigl(\operatorname{Tr}(\Gamma\omega)
+                  -\operatorname{Tr}(\Gamma F\omega F)\bigr)
+   =\operatorname{Tr}(\Gamma\omega).
+\] This proves (7.16) with the positive-to-negative block, including its
+sign.
+
+\subsubsection{7.4. The character cocycles and their
+normalization}\label{the-character-cocycles-and-their-normalization}
+
+Suppose that an exact representative has a norm-dense \(*\)-subalgebra
+\(\mathcal D\subset A\) with \([F,\rho(a)]\in\mathcal S_q\) for
+\(a\in\mathcal D\). Coefficients act through the unital extension
+\(\rho^+\) on the forced unitization; this is also the unitary
+completion of Section 2 in the unital case. Suppress \(\rho^+\) in the
+products. The scalar matrix trace is included after amplification.
+
+For a positive even degree \(n=2m\geq q\), and an odd degree
+\(n=2m-1\geq q\), respectively, define the raw bounded Fredholm
+characters \[
+\begin{split}
+ \kappa_{2m}(a_0,\ldots,a_{2m})
+  &=\tfrac12\operatorname{Tr}
+             \bigl(\Gamma F[F,a_0]\cdots[F,a_{2m}]\bigr),\\
+ \kappa_{2m-1}(a_0,\ldots,a_{2m-1})
+  &=\tfrac12\operatorname{Tr}
+             \bigl(F[F,a_0]\cdots[F,a_{2m-1}]\bigr).
+\end{split}
+ \tag{7.18}
+\] The condition \(n\geq q\) is sufficient for the cocycle and
+coefficient estimates below; the individual compression identities
+(7.11) and (7.16) only need the weaker indicated \(2m\geq q\).
+
+Here is a proof of their cyclic-cocycle assertions. Represent a
+degree-\(k\) operator form by \(a_0da_1\cdots da_k\), retaining the
+degree as part of the form. The derivation (7.17) agrees with
+\(da=[F,a]\), obeys the graded Leibniz rule, and has square zero. Forms
+of degree \(n\) are trace class by (7.1). In even degree use
+\(\int\omega=\operatorname{Tr}(\Gamma\omega)\), and in odd degree use
+\(\int\omega=\operatorname{Tr}(\omega)\).
+
+These are graded traces in degree \(n\). In the even case, moving a
+degree-\(r\) factor past \(\Gamma\) gives \((-1)^r=(-1)^{r(n-r)}\). In
+the odd case \(r(n-r)\) is even, so ordinary cyclicity has precisely the
+required graded sign. All these rotations are justified for their
+complete Schatten products. In both cases, \[
+ \int\omega=\tfrac12\operatorname{Tr}(J Fd\omega),
+ \qquad
+ J=\Gamma\ \hbox{in even degree},\quad J=1\ \hbox{in odd degree}.
+ \tag{7.19}
+\] The even identity was proved above. For odd \(\omega\), it follows
+from \(d\omega=F\omega+\omega F\) and
+\(\operatorname{Tr}(F\omega F)=\operatorname{Tr}(\omega)\). Thus
+\(\int d\eta=0\), by \(d^2=0\), without assigning a trace to a
+degree-\((n-1)\) form \(\eta\). Equation (7.19) also proves
+\(\kappa_n(a_0,\ldots,a_n)=\int a_0da_1\cdots da_n\).
+
+Expand the Hochschild differential using \(d(ab)=(da)b+a\,db\).
+Consecutive terms cancel, leaving \[
+ (-1)^n\int a_0da_1\cdots da_n\,a_{n+1}
+   +(-1)^{n+1}\int a_{n+1}a_0da_1\cdots da_n=0 .
+\] Hence \(b\kappa_n=0\). Closedness applied to
+\(a_na_0da_1\cdots da_{n-1}\), followed by moving \(da_n\) around the
+graded trace, gives \[
+ \kappa_n(a_n,a_0,\ldots,a_{n-1})
+         =(-1)^n\kappa_n(a_0,\ldots,a_n).
+\] This proves cyclicity. It also gives the coefficient estimate \[
+ \left|\int x_1da_1\cdots x_nda_n\right|
+     \leq\prod_{j=1}^n\|\rho^+(x_j)\|
+                     \prod_{j=1}^n\|[F,\rho^+(a_j)]\|_n ,
+ \tag{7.20}
+\] again by (7.1). Thus the characters have the \(n\)-trace estimate
+with the actual unitized coefficient action.
+
+Fix the cyclic evaluation convention \[
+\begin{aligned}
+ J_\tau[p]&=\tau^{(N)}(p,\ldots,p)
+                    &&\text{in even degree},\\
+ J_\tau[u]&=\tau^{(N)}(u^*,u,\ldots,u^*,u)
+                    &&\text{in odd degree}.
+\end{aligned}
+ \tag{7.21}
+\] This is the convention of
+\href{../NCG-CYCLIC/public/reader/n-traces.html\#4-the-form-reaches-k-theory}{\emph{Cyclic
+forms that survive norm completion}, Theorem 4.3}; it puts no additional
+factorial in these evaluations. With that explicit convention the
+index-normalized characters are \[
+ \operatorname{Ch}_{2m}=(-1)^m\kappa_{2m},\qquad
+ \operatorname{Ch}_{2m-1}
+       =\frac{(-1)^m}{2^{\,2m-1}}\kappa_{2m-1}.
+ \tag{7.22}
+\] Equations (7.11) and (7.16) now state exactly \[
+ J_{\operatorname{Ch}_{2m}}[p]=\langle[p],x\rangle,\qquad
+ J_{\operatorname{Ch}_{2m-1}}[u]=\langle[u],x\rangle .
+ \tag{7.23}
+\] All entries and traces use the amplified representation, including
+for a rectangular even compression.
+
+\subsubsection{7.5. Relative classes and all K-theory
+representatives}\label{relative-classes-and-all-k-theory-representatives}
+
+For a nonunital algebra use the exact representative and
+forced-unitization action of Theorem 3.1. We require the stated Schatten
+condition on that representative; exact normalization of a general
+compact-defect cycle alone is not a Schatten estimate. If \([p]-[r]\) is
+a relative class with equal scalar ranks, (7.23) gives \[
+ \langle[p]-[r],x\rangle
+    =J_{\operatorname{Ch}_{2m}}[p]
+       -J_{\operatorname{Ch}_{2m}}[r].
+ \tag{7.24}
+\] A scalar projection commutes exactly with \(F\), so its
+positive-degree character is zero; its compression is a unitary between
+the two scalar-selected graded ranges. A scalar unitary also commutes
+with \(P\), has unitary compression, and has zero character. The old
+identity of a unital \(A\), viewed in its forced unitization, is not the
+newly adjoined scalar identity. Only the latter is subject to this
+scalar-zero assertion. This preserves the ordinary unit pairing of
+Section 1.
+
+There is no additional assumption that every ambient K-class already has
+a representative in an arbitrarily chosen smaller smooth algebra. For
+the Schatten domain itself put \[
+ \mathcal D_F=\{a\in A:[F,\rho(a)]\in\mathcal S_q\},\qquad
+ \|a\|_{\mathcal D_F}=\|a\|+\|[F,\rho(a)]\|_q .
+\] It is a \(*\)-algebra: the commutator product rule and the ideal
+estimate give closure under products, and
+\([F,\rho(a^*)]=-[F,\rho(a)]^*\) gives closure under adjoints.
+Contractivity of \(\rho\) also gives
+\(\|ab\|_{\mathcal D_F}\leq\|a\|_{\mathcal D_F}\|b\|_{\mathcal D_F}\).
+Its derivation is closed: convergence in \(\mathcal S_q\) implies
+operator-norm convergence, so if \(a_j\to a\) in \(A\) and
+\([F,\rho(a_j)]\to R\) in \(\mathcal S_q\), then \(R=[F,\rho(a)]\).
+Completeness of \(A\) and \(\mathcal S_q\) proves completeness in the
+displayed graph norm. The same statements hold in every finite matrix
+size. We use the continuous functional calculus and its norm continuity
+proved in
+\href{../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html\#OA-FND-CF-07}{\emph{C*-algebras:
+continuous functional calculus, automatic continuity, positive cones,
+approximate identities and quotients}, Theorems 5.1 and 6.1}.
+
+For an invertible matrix \(a\) over \(A^+\) lying in this domain, \[
+ [F,\rho^+(a^{-1})]
+     =-\rho^+(a^{-1})[F,\rho^+(a)]\rho^+(a^{-1}).
+ \tag{7.25}
+\] Consequently the domain is closed under resolvents. If a self-adjoint
+matrix \(b\) in the domain is sufficiently close to a projection \(p\),
+its spectrum lies in disjoint small neighborhoods of \(0,1\). The
+projection \[
+ e=\frac1{2\pi i}\int_\gamma(z-b)^{-1}\,dz
+\] for a positively oriented circle around the neighborhood of \(1\)
+lies in the domain. Indeed the resolvents are continuous in operator
+norm and their commutators are continuous in \(\mathcal S_q\) by (7.25),
+so both contour integrals exist in their respective Banach norms.
+Continuous functional calculus for the self-adjoint \(b\) identifies
+this integral with its spectral cut: the scalar circle integral is one
+inside and zero outside, by the geometric series on a circle. The
+Neumann resolvent identity also shows that \(e\to p\) as \(b\to p\).
+Thus they are equivalent by the close-projection unitary of the
+preceding lesson. A relative projection can be approximated while fixing
+its scalar part, which this cut preserves.
+
+Likewise approximate a unitary \(u\) by a matrix \(v\) in the domain,
+sufficiently closely to make \(v\) invertible. Its polar unitary
+\(w=v(v^*v)^{-1/2}\) belongs to the domain. To check the inverse square
+root without a differentiability assumption on functional calculus,
+choose \(c>0\) with \(\|1-cv^*v\|<1\). The binomial series \[
+ (v^*v)^{-1/2}
+    =\sqrt c\sum_{k\geq0}\frac{\binom{2k}{k}}{4^k}(1-cv^*v)^k
+\] converges in the graph norm: its commutator is bounded term by term
+by \(k\|1-cv^*v\|^{k-1}\|[F,1-c\rho^+(v^*v)]\|_q\), and the resulting
+scalar series converges. If \(v\to u\), the binomial estimate or
+continuous functional calculus gives \(w\to u\). Close unitaries are
+homotopic, for example by polarizing their straight segment, which
+remains invertible. Approximations fixing the scalar unit of a relative
+unitary give \(w\) with that same scalar unit.
+
+When \(\mathcal D_F\) is norm dense, these arguments supply domain
+representatives for every K-class. Formulas (7.23)--(7.24) on those
+representatives are the already-defined analytic pairings. Their
+independence, bilinearity, homotopy invariance and relative scalar
+convention therefore follow from Sections 1--3, with no additional
+summability requirement on a path used to identify ambient K-classes.
+This proves the bounded Fredholm-character comparison on the full
+K-theory pairing.
+
+The equality with Kasparov products is proved for even projection
+classes by \href{KT-KK-09.html}{Connections and the existence of the
+Kasparov product}, Solution to Exercise 10.2, and for odd classes by
+\href{KT-KK-10.html}{Homotopy, associativity, the index pairing and
+KK-equivalence}, Theorem 6.2, with the ordered Clifford and
+positive-exponential conventions there. Under
+\(K_i(A)=KK_i(\mathbb C,A)\) and \(K^i(A)=KK_i(A,\mathbb C)\), the
+product has the compression index of Sections 1--4 in
+\(KK_0(\mathbb C,\mathbb C)=\mathbb Z\), with those signs. The trace
+proof here does not require that product construction. Residue formulas
+for unbounded spectral triples require further analytic hypotheses and a
+separate comparison theorem; none is a premise of (7.4)--(7.24).
 
 \subsection{8. Exercises}\label{exercises}
 
@@ -835,13 +1223,15 @@ Lemmas 4.1a--4.1c and Corollary 4.2 prove the entire closed-manifold
 Sobolev, elliptic-estimate and adjoint-domain foundation used by Theorem
 5.2 here.
 
-The character comparison uses the exact published results and their
-additional hypotheses identified in Section 7. The Kasparov-product
-interpretation and topological Dirac index formula remain proof
-obligations in the course lessons named there and in Section 5. The
-pairings, their invariance, the relative scalar check, the extension
-boundary sign, the analytic twisting bridge, and all examples and
-exercises above are proved here.
+The bounded Fredholm-character comparison is proved in Section 7 using
+the exact Schatten and ordinary-trace foundations named there. The
+Kasparov-product interpretation is proved in the earlier product lessons
+identified in Section 7. The closed-manifold topological Dirac index
+comparison is proved in \href{KT-KK-15.html}{Dirac classes and the
+cotangent Dolbeault element}, Sections 3--10. The pairings, their
+invariance, the relative scalar check, the extension boundary sign, the
+analytic twisting bridge, and all examples and exercises above are
+proved here.
 
 \subsection{References}\label{references}
 

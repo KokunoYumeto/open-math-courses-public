@@ -41,6 +41,6 @@ MF-06's general full-Hilbert-algebra proof can therefore be applied with CI/HA-R
 
 ## ST-4. Exact remaining distinctions
 
-This route uses the actual free-developed CP-01–06 construction at newly specified Hilbert/Hahn–Banach inputs, not its support or arbitrary-weight descendants. It still requires those exact CP proof bodies to be admitted before the reader invokes them. Their earlier source records support their independently written tensor construction; a review receipt or current bibliography alone is not historical proof of every ancestor.
+This route uses the actual free-developed CP-01–06 construction at newly specified Hilbert/Hahn–Banach inputs, not its support or arbitrary-weight descendants.
 
 The arbitrary given-weight finite ideals, GNS construction, cutoffs, density and normal faithful representation now have the earlier GW/NF proof bodies. Its finite-star involution closability and full/reverse/opposite-weight correspondence now have the earlier [WR-3](OA-FLOW-WR.md#wr-3)–[WR-6](OA-FLOW-WR.md#wr-6) faithful n.s.f. proofs. WF proves the full forward algebra-to-weight construction and its GNS/involution-domain transport. The earlier [extended-valued normality theorem](OA-FLOW-EW.md#ew-5) covers every weight, and [MW](OA-FLOW-MW.md#mw-4) supplies the faithful modular opposite formula. Broader nonfaithful statements retain their precise scopes.

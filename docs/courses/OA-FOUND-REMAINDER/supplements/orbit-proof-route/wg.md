@@ -15,7 +15,7 @@ The bounded operator-algebra prerequisites used here are:
 3. On a norm-bounded set of operators, strong convergence implies ultraweak convergence. Multiplication by a fixed bounded operator is separately ultraweakly continuous.
 4. A positive map between von Neumann algebras is normal precisely when it preserves the suprema of bounded increasing positive nets. Equivalently, for such a map, normality is ultraweak continuity. This equivalence is a bounded-map theorem; it is not being asserted here for extended-valued weights.
 
-These are exact prerequisite statements, not claims that an open-text import has already been admitted. The course dependency audit records their import status. None is a theorem about closability of an unbounded operator or lower semicontinuity of a weight.
+These prerequisites are stated exactly and are used here without proof. None is a theorem about closability of an unbounded operator or lower semicontinuity of a weight.
 
 <a id="OA-MOD-WG-002"></a>
 <span id="oa-mod-wg-002-the-finite-part-of-an-extended-valued-weight"></span>

@@ -1,6 +1,6 @@
 # Moduli stacks are algebraic
 
-*Source proofs by the Stacks Project authors, as distributed in the AI Integrated Stacks Project. Source copyright: Copyright (C) 2005 -- 2025 Johan de Jong. This private modified course edition is published by the Open Math Courses project, `KokunoYumeto/open-math-courses`. Writing, adaptation and integration: GPT-6.1 Sol (OpenAI), Codex, Ultra, October 2026. Permission is granted to copy, distribute and modify this modified chapter under the GNU Free Documentation License, Version 1.2 or any later version, with no Invariant Sections, Front-Cover Texts or Back-Cover Texts. Eligible independently written additions retain their CC0 1.0 dedication. Self-checked by the writing AI. The [complete licence](../licenses/GFDL-1.2.txt) accompanies this edition.*
+*Source proofs by the Stacks Project authors, as distributed in the AI Integrated Stacks Project. Source copyright: Copyright (C) 2005 -- 2025 Johan de Jong. This modified course edition is published by the Open Math Courses project, `KokunoYumeto/open-math-courses`. Writing, adaptation and integration: GPT-6.1 Sol (OpenAI), Codex, Ultra, October 2026. Permission is granted to copy, distribute and modify this modified chapter under the GNU Free Documentation License, Version 1.2 or any later version, with no Invariant Sections, Front-Cover Texts or Back-Cover Texts. Eligible independently written additions retain their CC0 1.0 dedication. Self-checked by the writing AI. The [complete licence](../licenses/GFDL-1.2.txt) accompanies this edition.*
 
 A coherent sheaf can move on a space which is neither proper nor flat over the base. Its moduli problem is nevertheless algebraic if the sheaf itself is flat over the parameter space and has proper support. Quotients and closed subschemes then inherit algebraic coordinates from this stack. Line bundles require a further distinction: their stack remembers scalar automorphisms, whereas the Picard sheaf removes them by descent.
 
@@ -558,7 +558,7 @@ The ordinary proper-support existence and direct-image support are written in Ap
 
 Section and statement numbers within this appendix are local to the appendix; an explicit course or provider title qualifies every outside reference.
 
-This chapter supplies the coherent-existence and moduli arguments used in Lesson 8. The theorem statements retain arbitrary inverse ring sequences, algebraic-space ambient objects, and the full dimension-at-most-one curve stack. The mathematical proofs below are adaptations of the human Stacks Project treatment in the admitted AI Integrated Stacks edition. The mathematical adaptation is distributed under GNU FDL 1.2 or any later version, with no Invariant Sections, Front-Cover Texts, or Back-Cover Texts. The full licence is included below. Human authorship belongs to the Stacks Project authors; AI Integrated Stacks provenance and this AI adaptation are additional, separate credits. Independently written programme integration notes and verification records remain CC0 1.0. No AI rights holder is invented.
+This chapter supplies the coherent-existence and moduli arguments used in Lesson 8. The theorem statements retain arbitrary inverse ring sequences, algebraic-space ambient objects, and the full dimension-at-most-one curve stack. The mathematical proofs below are adaptations of the human Stacks Project treatment in the AI Integrated Stacks edition. The mathematical adaptation is distributed under GNU FDL 1.2 or any later version, with no Invariant Sections, Front-Cover Texts, or Back-Cover Texts. The full licence is included below. Human authorship belongs to the Stacks Project authors; the AI Integrated Stacks Project and this AI adaptation are additional, separate credits. Independently written programme integration notes and verification records remain CC0 1.0. No AI rights holder is invented.
 
 A compatible family over finite quotients carries both objects and specified comparison maps. The central problem is to recover that marked family over the inverse-limit ring. We first construct finite cohomological tests, then prove coherent existence, and finally use it to construct the two moduli stacks. The supporting mathematical constructions are proved below at their stated scope.
 
@@ -925,7 +925,7 @@ Lesson 3, Section 5.6.7, C.1, supplies the actually written finite flat-module m
 
 ### A.12. The supporting cohomological and deformation constructions
 
-These are the supporting mathematical statements and their complete proofs. The independent reader proofs in Sections 3–8 supply the scope extensions, repaired statements and two alternate constructions. The native source units preserve exact human-source provenance and make every remaining reference inspectable. The converted proofs retain the exact statement scope and the explicit prerequisites. The known statement and map corrections have been applied to these reader proofs. The unchanged human arguments retain their original mathematical scope and source credit.
+These are the supporting mathematical statements and their complete proofs. The independent reader proofs in Sections 3–8 supply the scope extensions, repaired statements and two alternate constructions. The converted proofs retain the exact statement scope and the explicit prerequisites. The known statement and map corrections have been applied to these reader proofs. The unchanged human arguments retain their original mathematical scope and source credit.
 
 The projective-space pseudo-coherence criterion and sequential approximation in Section 5 are complete reader alternatives. The native countable proof and the second quasi-coherator proof are retained as sound optional alternatives; their additional unbound prerequisites are not dependencies of the selected reader routes. The source proper-support lemma is omitted because its nonflat annihilator-base-change claim requires the Fitting replacement proved in Sections 2 and 6. The printed nonproper formal algebraization statement is also omitted; Section 8 proves its actual proper consumer.
 
@@ -2603,7 +2603,7 @@ Assume $T$ is quasi-compact. In this case $T \to S$ is separated and quasi-finit
 
 ### Additional proofs of the supporting constructions
 
-These statements and full proofs supply local support for the preceding arguments. They reuse the same admitted human edition; their exact units and source correspondence are recorded separately. A remaining genuine prerequisite is marked explicitly rather than treated as proved.
+These statements and full proofs supply local support for the preceding arguments. They reuse the same Stacks Project edition. A remaining genuine prerequisite is marked explicitly rather than treated as proved.
 
 #### Descent of algebraic spaces through inverse limits
 

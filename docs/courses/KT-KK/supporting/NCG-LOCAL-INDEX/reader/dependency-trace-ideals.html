@@ -1,0 +1,208 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The bounded trace ideal and cyclic transport</title><link rel="stylesheet" href="reader.css"><script src="math-config.js"></script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><header><nav><a href="../../../">Kasparov's KK-theory</a><a href="index.html">Analytic foundations</a><a href="dependency-trace-ideals.html#AN03-TRC-002">Trace ideal</a><a href="singular-values-and-the-dixmier-trace.html">Compact spectral and Schatten foundations</a><a href="dependency-banach-foundations.html">Banach foundations</a><a href="dependency-positive-spectral-calculus.html">Positive spectral calculus</a><a href="dependency-cyclic-foundations.html">Cyclic foundations</a></nav></header><main><article><p><a href="../dependencies/AN-03/traces-and-complexes.md">Structured source</a> · <span class="unlinked">Programme sources</span> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></p><h1>The bounded trace ideal and cyclic transport</h1>
+<p>All Hilbert spaces below are complex, complete and possibly nonseparable or zero-dimensional. Inner products are linear in the first variable. Operators are bounded and everywhere defined unless a different qualification is given. A sum of nonnegative numbers over an arbitrary set means the supremum of its finite subsums. Absolutely summable complex families are summed by finite-subset limits. Zorn's maximality principle is the set-theoretic assumption used to choose orthonormal bases.</p>
+<p>The proofs give the trace ideal between two Hilbert spaces, its complete norm, the basis-independent trace and rectangular cyclicity. They use no unbounded spectral theorem, Fredholm criterion or differential-operator calculus. The original programme expression is dedicated under CC0 1.0 Universal, to the extent rights are held.</p>
+<p><a id="AN03-TRC-001"></a></p>
+<h2>AN03-TRC-001 — Hilbert and positive-root foundations</h2>
+<h3>Orthogonal projection, bases and adjoints</h3>
+<p>Let <span class="math">\(M\)</span> be a closed subspace of a Hilbert space <span class="math">\(H\)</span>, and let <span class="math">\(d=\inf_{y\in M}\|x-y\|\)</span>. Choose <span class="math">\(y_n\in M\)</span> with <span class="math">\(\|x-y_n\|^2\to d^2\)</span>. The parallelogram identity gives
+<span class="math math-display">\[
+\|y_n-y_k\|^2
+=2\|x-y_n\|^2+2\|x-y_k\|^2
+ -4\left\|x-\frac{y_n+y_k}{2}\right\|^2\longrightarrow0.
+\]</span>
+Completeness and closedness give a limit <span class="math">\(y\in M\)</span> attaining the infimum. Minimizing <span class="math">\(\|x-y-tz\|^2\)</span> for real <span class="math">\(t\)</span>, and then replacing <span class="math">\(z\)</span> by <span class="math">\(iz\)</span>, proves <span class="math">\(x-y\perp M\)</span>. The decomposition <span class="math">\(H=M\oplus M^\perp\)</span> is unique. Its projection <span class="math">\(P_M\)</span> is linear and has norm at most one, by the Pythagorean identity.</p>
+<p>Every orthonormal system extends to a maximal one by Zorn: the union of a chain is still orthonormal. If the closed span of a maximal system were proper, its orthogonal complement would contain a unit vector that could be added. Thus the system is an orthonormal basis. For a finite subset <span class="math">\(F\)</span> of a basis <span class="math">\((e_i)\)</span>, orthogonal projection gives
+<span class="math math-display">\[
+P_Fx=\sum_{i\in F}\langle x,e_i\rangle e_i,
+\qquad \sum_{i\in F}|\langle x,e_i\rangle|^2\leq\|x\|^2.
+\]</span>
+The finite-subset net <span class="math">\(P_Fx\)</span> converges to <span class="math">\(x\)</span>, since finite linear combinations are dense and <span class="math">\(\|P_F\|\leq1\)</span>. Taking squared norms gives Parseval. In particular, each square-summable scalar family has at most countable support: for each positive integer <span class="math">\(n\)</span>, only finitely many terms can exceed <span class="math">\(1/n\)</span>.</p>
+<p>A bounded complex-linear functional <span class="math">\(\ell\)</span> has the form <span class="math">\(\ell(x)=\langle x,v\rangle\)</span> for a unique <span class="math">\(v\)</span>. For <span class="math">\(\ell\ne0\)</span>, project onto <span class="math">\(\ker\ell\)</span>. Its orthogonal complement is one-dimensional: subtracting a suitable multiple of any vector with nonzero functional value places an arbitrary vector in the kernel. For a unit vector <span class="math">\(u\)</span> in that complement, take <span class="math">\(v=\overline{\ell(u)}u\)</span>. This proves the formula; uniqueness and <span class="math">\(\|v\|=\|\ell\|\)</span> follow by testing unit vectors. The zero functional is represented by zero. Applying this to <span class="math">\(x\mapsto\langle Tx,y\rangle\)</span> constructs the bounded adjoint, with
+<span class="math math-display">\[
+\langle Tx,y\rangle=\langle x,T^*y\rangle,
+\qquad \|T^*\|=\|T\|,
+\qquad (\operatorname{ran}T)^\perp=\ker T^*.
+\]</span>
+Linearity of <span class="math">\(T^*\)</span> follows from the conjugate-linearity in the second variable. Its norm equality follows by taking the two unit-ball suprema in the adjoint identity.</p>
+<h3>The bounded positive square root</h3>
+<p>For a positive bounded operator <span class="math">\(A\)</span>, positivity means selfadjointness and <span class="math">\(\langle Ax,x\rangle\geq0\)</span>. Positivity of <span class="math">\(\langle A(x+ty),x+ty\rangle\)</span>, minimized over complex <span class="math">\(t\)</span>, gives
+<span class="math math-display">\[
+|\langle Ax,y\rangle|^2
+\leq\langle Ax,x\rangle\langle Ay,y\rangle.
+\tag{R1}
+\]</span>
+This also follows when a diagonal term is zero by letting the modulus of <span class="math">\(t\)</span> tend to zero with its argument chosen against the cross term. If <span class="math">\(c=\sup_{\|x\|=1}\langle Ax,x\rangle\)</span>, taking the supremum over unit <span class="math">\(y\)</span> in (R1) gives <span class="math">\(\|Ax\|^2\leq c\langle Ax,x\rangle\)</span>. Consequently <span class="math">\(\|A\|=c\)</span>. Thus <span class="math">\(0\leq A\leq MI\)</span> implies <span class="math">\(\|A\|\leq M\)</span>, without a spectral theorem.</p>
+<p>Suppose <span class="math">\(A\ne0\)</span>, put <span class="math">\(M=\|A\|\)</span>, and set <span class="math">\(E=I-A/M\)</span>. Then <span class="math">\(E\)</span> is a positive contraction. Define
+<span class="math math-display">\[
+a_0=1,\qquad
+a_n=\frac{\binom{2n}{n}}{4^n},\qquad
+b_n=a_{n-1}-a_n=\frac{a_{n-1}}{2n}&gt;0\quad(n\geq1).
+\]</span>
+The ratio <span class="math">\(a_n/a_{n-1}=1-1/(2n)\)</span> shows <span class="math">\(a_n\to0\)</span>: use <span class="math">\(1-t\leq e^{-t}\)</span> and the divergence of the harmonic series, whose dyadic blocks are bounded below by <span class="math">\(1/2\)</span>. Therefore <span class="math">\(\sum_{n\geq1}b_n=1\)</span>. The series
+<span class="math math-display">\[
+S=I-\sum_{n\geq1}b_nE^n
+\tag{R2}
+\]</span>
+converges absolutely in operator norm. Every partial sum is positive, because each <span class="math">\(E^n\)</span> is a positive contraction and
+<span class="math">\(I-\sum_{n=1}^N b_nE^n\geq(1-\sum_{n=1}^N b_n)I\)</span>.
+Even powers are positive by <span class="math">\(E^{2k}=(E^k)^*E^k\)</span>, and odd powers by <span class="math">\(E^{2k+1}=(E^k)^*EE^k\)</span>. Positivity passes to a norm limit.</p>
+<p>Here is the scalar coefficient identity needed to square (R2). For <span class="math">\(|r|&lt;1\)</span>, let <span class="math">\(G(r)=\sum_{n\geq0}a_nr^n\)</span>. Its coefficient recurrence gives
+<span class="math">\((1-r)G&#x27;(r)=G(r)/2\)</span>. Direct differentiation therefore gives
+<span class="math">\(((1-r)G(r)^2)&#x27;=0\)</span>, so <span class="math">\((1-r)G(r)^2=1\)</span>. The equality
+<span class="math">\(1-\sum_{n\geq1}b_nr^n=(1-r)G(r)\)</span> follows by subtracting coefficients. Squaring gives <span class="math">\((1-\sum b_nr^n)^2=1-r\)</span>. These operations are justified by uniform convergence of power series and their derivatives on each smaller closed disk; the coefficient bounds <span class="math">\(a_n\leq1\)</span> make the differentiated series there summable. Equality of coefficients now gives the operator identity for <span class="math">\(rE\)</span>, <span class="math">\(0&lt;r&lt;1\)</span>, by norm-convergent multiplication. As <span class="math">\(r\uparrow1\)</span>, the summability of <span class="math">\(b_n\)</span> gives norm convergence of the same series, hence <span class="math">\(S^2=I-E\)</span>.</p>
+<p>Thus <span class="math">\(C=\sqrt M\,S\)</span> is a positive root of <span class="math">\(A\)</span>. For <span class="math">\(A=0\)</span>, use <span class="math">\(C=0\)</span>. The construction commutes with every bounded operator commuting with <span class="math">\(A\)</span>. If <span class="math">\(D\)</span> is any other positive root, it commutes with <span class="math">\(A=D^2\)</span>, hence with <span class="math">\(C\)</span>. Therefore <span class="math">\((C+D)(C-D)=0\)</span>. A vector in <span class="math">\(\ker(C+D)\)</span> is in both <span class="math">\(\ker C\)</span> and <span class="math">\(\ker D\)</span>, by positivity and (R1). For <span class="math">\(y=(C-D)x\)</span>, it follows that <span class="math">\((C-D)y=0\)</span>, and then
+<span class="math">\(\|y\|^2=\langle (C-D)x,y\rangle=\langle x,(C-D)y\rangle=0\)</span>.
+So <span class="math">\(C=D\)</span>. Finally
+<span class="math math-display">\[
+\|Cx\|^2=\langle Ax,x\rangle,
+\qquad \ker C=\ker A,
+\qquad \|C\|^2=\|A\|.
+\tag{R3}
+\]</span>
+For the kernel assertion, (R1) shows that a zero quadratic value of <span class="math">\(A\)</span> implies <span class="math">\(Ax=0\)</span>. The norm assertion follows by taking the unit-ball supremum in the first identity.</p>
+<h3>Operator limits, compactness and bounded inverses</h3>
+<p>An operator-norm Cauchy sequence of bounded maps <span class="math">\(H\to K\)</span> has a bounded operator limit: define its value on each vector by completeness of <span class="math">\(K\)</span>, pass linearity and a common norm bound to the limit, and then take the unit-ball supremum in the Cauchy estimate. Thus these operator spaces are Banach. Finite-rank maps are compact because a bounded set in a finite-dimensional space is totally bounded. An operator-norm limit of compact maps has totally bounded unit-ball image: a sufficiently close approximant and its finite <span class="math">\(\varepsilon\)</span>-net give a finite <span class="math">\(2\varepsilon\)</span>-net for the limit. The closure of that image is complete and totally bounded, hence compact. To see the last assertion directly, finite covers by balls of radii tending to zero give a Cauchy subsequence of every sequence. If an open cover of this closure had no finite subcover, then for every positive integer <span class="math">\(n\)</span> some radius-<span class="math">\(1/n\)</span> ball about a point would fail to lie in any member; otherwise total boundedness would give a finite subcover. A convergent subsequence of those points lies eventually in a single open member together with its radius-<span class="math">\(1/n\)</span> ball, a contradiction.</p>
+<p>For use in bounded similarity, we also prove the bounded inverse theorem. In a complete metric space, a countable intersection of dense open sets is dense: inside any given nonempty open set, choose successively closed balls of positive radii at most <span class="math">\(2^{-n}\)</span>, with each ball inside the preceding open ball and the <span class="math">\(n\)</span>-th dense open set. Their centres form a Cauchy sequence, and its limit belongs to every closed ball. This proves the assertion, including isolated points. Consequently a nonempty complete space covered by countably many closed sets has one of them with nonempty interior.</p>
+<p>Let <span class="math">\(V:H\to K\)</span> be a bounded bijection, with both spaces nonzero. Surjectivity gives
+<span class="math">\(K=\bigcup_{n\geq1}\overline{V(nB_H)}\)</span>, where <span class="math">\(B_H\)</span> is the open unit ball. Baire gives <span class="math">\(B_K(y_0,r)\subset\overline{V(nB_H)}\)</span> for some <span class="math">\(r&gt;0\)</span>. Subtract approximants for <span class="math">\(y_0+y\)</span> and <span class="math">\(y_0\)</span>, and rescale, to obtain
+<span class="math math-display">\[
+B_K(0,\delta)\subset\overline{V(B_H)},
+\qquad \delta=r/(2n)&gt;0.
+\]</span>
+If <span class="math">\(\|y\|&lt;\delta/2\)</span>, choose <span class="math">\(x_1\)</span> with <span class="math">\(\|x_1\|&lt;1/2\)</span> and residual norm below <span class="math">\(\delta/4\)</span>. At the next step use the scaled inclusion to choose <span class="math">\(\|x_j\|&lt;2^{-j}\)</span> so that the residual after <span class="math">\(j\)</span> steps is below <span class="math">\(\delta2^{-j-1}\)</span>. Completeness gives <span class="math">\(x=\sum_jx_j\)</span>, <span class="math">\(\|x\|\leq1\)</span>, and continuity gives <span class="math">\(Vx=y\)</span>. Apply this to <span class="math">\(\delta y/(4\|y\|)\)</span> and rescale. Uniqueness of preimages proves <span class="math">\(\|V^{-1}y\|\leq4\|y\|/\delta\)</span>. The zero spaces have the unique zero inverse. Thus every bounded Hilbert-space bijection has a bounded inverse.</p>
+<h3>Hilbert-Schmidt maps</h3>
+<p>Let <span class="math">\((e_i)_{i\in I}\)</span> be an orthonormal basis of <span class="math">\(H\)</span>. For <span class="math">\(A:H\to K\)</span>, set</p>
+<p><span class="math math-display">\[
+\|A\|_2^2=\sum_{i\in I}\|Ae_i\|^2.                            \tag{T1}
+\]</span></p>
+<p>The operator is <strong>Hilbert-Schmidt</strong> when this is finite; the class is denoted <span class="math">\(\mathcal S_2(H,K)\)</span>.</p>
+<p><strong>Theorem.</strong> Formula (T1) is independent of the basis. The adjoint has the same Hilbert-Schmidt norm. The class is complete in that norm, contains every finite-rank operator densely, and</p>
+<p><span class="math math-display">\[
+\|A\|\leq\|A\|_2,\qquad
+\|BAC\|_2\leq\|B\|\|A\|_2\|C\|                               \tag{T2}
+\]</span></p>
+<p>for bounded maps of the indicated source and target spaces. Every Hilbert-Schmidt map is compact.</p>
+<p><strong>Proof.</strong> Choose an orthonormal basis <span class="math">\((f_j)_{j\in J}\)</span> of <span class="math">\(K\)</span>. Parseval, followed by the definition of a nonnegative double sum, gives</p>
+<p><span class="math math-display">\[
+\sum_i\|Ae_i\|^2
+=\sum_{i,j}|\langle Ae_i,f_j\rangle|^2
+=\sum_j\|A^*f_j\|^2.                                        \tag{T3}
+\]</span></p>
+<p>Both orders of summation equal the supremum over finite subsets of <span class="math">\(I\times J\)</span>. For any finite subset of the product, its two coordinate projections are finite, so finite rectangles give the same supremum. Fixing either basis in (T3) proves independence of the other, and proves adjoint equality.</p>
+<p>For a finite orthogonal expansion <span class="math">\(x=\sum_i c_ie_i\)</span>, Cauchy-Schwarz gives <span class="math">\(\|Ax\|\leq(\sum_i|c_i|^2)^{1/2}(\sum_i\|Ae_i\|^2)^{1/2}\)</span>; passing to the dense span proves the first estimate in (T2). The left ideal estimate follows directly from <span class="math">\(\|BAe_i\|\leq\|B\|\|Ae_i\|\)</span>. Taking adjoints gives the right ideal estimate, and combining them proves (T2).</p>
+<p>If <span class="math">\(A\)</span> has finite rank, then <span class="math">\((\ker A)^\perp=\operatorname{ran}A^*\)</span> is finite-dimensional. Here equality follows because the finite-dimensional range of <span class="math">\(A^*\)</span> is closed and its orthogonal complement is <span class="math">\(\ker A\)</span>; finite rank of <span class="math">\(A^*\)</span> follows by writing <span class="math">\(A\)</span> in coordinates in its finite-dimensional range. A basis adapted to <span class="math">\(\ker A\)</span> makes (T1) a finite sum. Conversely, if (T1) is finite, let <span class="math">\(P_F\)</span> project onto the span of a finite subset <span class="math">\(F\subset I\)</span>. Then</p>
+<p><span class="math math-display">\[
+\|A-AP_F\|_2^2=\sum_{i\notin F}\|Ae_i\|^2\longrightarrow0.    \tag{T4}
+\]</span></p>
+<p>Thus finite-rank maps are dense. One can choose a sequence of finite sets giving errors below <span class="math">\(1/n\)</span>; no countability of <span class="math">\(I\)</span> is being assumed. The operator norm estimate makes the same approximation converge in operator norm, so <span class="math">\(A\)</span> is compact by the operator-norm closure argument above.</p>
+<p>For completeness, a Hilbert-Schmidt Cauchy sequence <span class="math">\(A_n\)</span> is operator norm Cauchy and has a bounded operator limit <span class="math">\(A\)</span>. The existence of the operator norm limit follows by taking limits <span class="math">\(A_nx\)</span> in the Banach target and passing linearity and the uniform norm bound to those limits. For each finite <span class="math">\(F\)</span>,</p>
+<p><span class="math math-display">\[
+\sum_{i\in F}\|(A-A_n)e_i\|^2
+=\lim_{m\to\infty}\sum_{i\in F}\|(A_m-A_n)e_i\|^2
+\leq\liminf_{m\to\infty}\|A_m-A_n\|_2^2.
+\]</span></p>
+<p>Taking the supremum in <span class="math">\(F\)</span> proves both <span class="math">\(A\in\mathcal S_2\)</span> and <span class="math">\(\|A-A_n\|_2\to0\)</span>. The mixed sum <span class="math">\(\sum_i\langle Ae_i,Be_i\rangle\)</span> converges absolutely by Cauchy-Schwarz; polarization of the basis-independent squared norm makes it a basis-independent inner product. Together with completeness, this makes <span class="math">\(\mathcal S_2(H,K)\)</span> a Hilbert space. <span class="math">\(\square\)</span></p>
+<p>Nonseparability causes no missing sums here. For a Hilbert-Schmidt <span class="math">\(A\)</span>, only countably many basis vectors have nonzero image, and the range is contained in the closed span of their images. It is the operator's effective support that becomes separable.</p>
+<p><a id="AN03-TRC-002"></a></p>
+<h2>AN03-TRC-002 — The trace ideal from paired orthonormal systems</h2>
+<p>For <span class="math">\(T:H\to K\)</span>, define</p>
+<p><span class="math math-display">\[
+q(T)=\sup\left\{
+\sum_{i\in F}|\langle Te_i,f_i\rangle|:
+(e_i)_{i\in F},(f_i)_{i\in F}\text{ finite orthonormal systems}
+\right\}.                                                    \tag{T5}
+\]</span></p>
+<p>The same finite set labels the two systems; they need not be complete bases. The value may be infinite.</p>
+<p><strong>Theorem: factorization.</strong> The following conditions are equivalent:</p>
+<ol>
+<li><span class="math">\(q(T)&lt;\infty\)</span>.</li>
+<li>For every pair of orthonormal systems with a common, possibly infinite index set, <span class="math">\(\sum_i|\langle Te_i,f_i\rangle|&lt;\infty\)</span>.</li>
+<li>For some Hilbert space <span class="math">\(G\)</span>, there are <span class="math">\(A\in\mathcal S_2(H,G)\)</span> and <span class="math">\(B\in\mathcal S_2(K,G)\)</span> such that <span class="math">\(T=B^*A\)</span>.</li>
+</ol>
+<p>When these hold,</p>
+<p><span class="math math-display">\[
+q(T)=\inf_{T=B^*A}\|A\|_2\|B\|_2
+=\sum_i\langle |T|e_i,e_i\rangle,\qquad |T|=(T^*T)^{1/2},     \tag{T6}
+\]</span></p>
+<p>where the last sum is over any orthonormal basis of <span class="math">\(H\)</span>. In particular, the infimum is attained by a factorization constructed below.</p>
+<p><strong>Proof.</strong> If <span class="math">\(T=B^*A\)</span>, then for any paired systems,</p>
+<p><span class="math math-display">\[
+\sum_i|\langle Te_i,f_i\rangle|
+\leq\left(\sum_i\|Ae_i\|^2\right)^{1/2}
+     \left(\sum_i\|Bf_i\|^2\right)^{1/2}
+\leq\|A\|_2\|B\|_2.                                        \tag{T7}
+\]</span></p>
+<p>Extend each orthonormal system to a basis to justify the last inequality. Finite sums and then suprema justify Cauchy-Schwarz for arbitrary indices. Thus 3 implies 1, and 1 implies 2.</p>
+<p>Suppose 2. Put <span class="math">\(C=|T|\)</span> and <span class="math">\(N=\ker T=\ker C\)</span>. Indeed <span class="math">\(\|Cx\|^2=\langle T^*Tx,x\rangle=\|Tx\|^2\)</span>. The map <span class="math">\(Cx\mapsto Tx\)</span> is a well-defined isometry on <span class="math">\(\operatorname{ran}C\)</span>, whose closure is <span class="math">\(N^\perp\)</span>. Extend it continuously to <span class="math">\(N^\perp\)</span>, and by zero on <span class="math">\(N\)</span>, obtaining a partial isometry <span class="math">\(U:H\to K\)</span> with <span class="math">\(T=UC\)</span>. This is a direct construction of the bounded polar factor, using the bounded positive square root proved in AN03-TRC-001.</p>
+<p>Choose an orthonormal basis <span class="math">\((e_i)\)</span> of <span class="math">\(N^\perp\)</span>. Then <span class="math">\((Ue_i)\)</span> is orthonormal in <span class="math">\(K\)</span>, so condition 2 gives</p>
+<p><span class="math math-display">\[
+s=\sum_i\langle Ce_i,e_i\rangle
+=\sum_i|\langle Te_i,Ue_i\rangle|&lt;\infty.                    \tag{T8}
+\]</span></p>
+<p>Let <span class="math">\(D=C^{1/2}\)</span>. Its kernel is <span class="math">\(N\)</span>: <span class="math">\(\|Dx\|^2=\langle Cx,x\rangle\)</span>, and <span class="math">\(C=D^2\)</span>. Therefore <span class="math">\(\operatorname{ran}D\subset N^\perp\)</span>. A basis of <span class="math">\(N\)</span> contributes zeros, so (T8) and (T1) give <span class="math">\(\|D\|_2^2=s\)</span>. Since <span class="math">\(U\)</span> is isometric on <span class="math">\(\operatorname{ran}D\)</span>, <span class="math">\(\|UD\|_2=\|D\|_2\)</span>. Take</p>
+<p><span class="math math-display">\[
+G=H,\qquad A=D,\qquad B=DU^*.
+\]</span></p>
+<p>Then <span class="math">\(B^*A=UD^2=T\)</span>, and <span class="math">\(\|A\|_2\|B\|_2=s\)</span> by adjoint equality. On the other hand, the finite parts of the paired systems in (T8) show <span class="math">\(q(T)\geq s\)</span>. Inequality (T7) proves the reverse inequality and the infimum formula. The final sum in (T6) is independent of basis because it equals <span class="math">\(\|C^{1/2}\|_2^2\)</span>. This also covers <span class="math">\(T=0\)</span>, with zero factors. <span class="math">\(\square\)</span></p>
+<p>The distinction between the existence of a Hilbert-Schmidt factorization and a statement about arbitrary specified factors is essential. A trace-class product does not force its two given factors to be Hilbert-Schmidt; the zero operator composed with the identity on an infinite-dimensional space is an immediate counterexample.</p>
+<p>Define <span class="math">\(\mathcal S_1(H,K)\)</span> to be this class, and <span class="math">\(\|T\|_1=q(T)\)</span>.</p>
+<p><strong>Theorem: norm and ideal properties.</strong> This is a Banach space. Finite-rank maps are dense, and for bounded <span class="math">\(L:K\to K&#x27;\)</span>, <span class="math">\(R:H&#x27;\to H\)</span>,</p>
+<p><span class="math math-display">\[
+\|T\|\leq\|T\|_1,\qquad
+\|LTR\|_1\leq\|L\|\|T\|_1\|R\|.                             \tag{T9}
+\]</span></p>
+<p>Every trace-class map is compact, and <span class="math">\(\|T^*\|_1=\|T\|_1\)</span>.</p>
+<p><strong>Proof.</strong> Homogeneity and the triangle inequality follow from the supremum of finite absolute sums in (T5). For unit <span class="math">\(x\)</span> with <span class="math">\(Tx\ne0\)</span>, pair <span class="math">\(x\)</span> with <span class="math">\(Tx/\|Tx\|\)</span>; this proves <span class="math">\(\|T\|\leq q(T)\)</span>, including definiteness. From <span class="math">\(T=B^*A\)</span> obtain <span class="math">\(LTR=(BL^*)^*(AR)\)</span>, and apply (T2), then the infimum in (T6). Exchanging the two orthonormal systems proves the adjoint equality.</p>
+<p>For density, choose Hilbert-Schmidt finite-rank approximations <span class="math">\(A_n\to A\)</span>, <span class="math">\(B_n\to B\)</span>. Then <span class="math">\(B_n^*A_n\)</span> has finite rank and</p>
+<p><span class="math math-display">\[
+\|B^*A-B_n^*A_n\|_1
+\leq\|B-B_n\|_2\|A\|_2+\|B_n\|_2\|A-A_n\|_2\longrightarrow0. \tag{T10}
+\]</span></p>
+<p>In particular, trace-class maps are compact, by (T9) and operator norm closure of the compact maps.</p>
+<p>If <span class="math">\(T_n\)</span> is trace norm Cauchy, it converges in operator norm to some <span class="math">\(T\)</span>. For every finite paired system, continuity of its finitely many terms gives</p>
+<p><span class="math math-display">\[
+\sum_i|\langle (T-T_n)e_i,f_i\rangle|
+\leq\liminf_{m\to\infty}\|T_m-T_n\|_1.
+\]</span></p>
+<p>Taking the supremum proves that <span class="math">\(T-T_n\)</span> is trace class with trace norm tending to zero. Thus <span class="math">\(T\)</span> is trace class and the space is complete. <span class="math">\(\square\)</span></p>
+<p>For later use, the rank-one operator <span class="math">\(u\otimes v^*:x\mapsto\langle x,v\rangle u\)</span> satisfies</p>
+<p><span class="math math-display">\[
+\|u\otimes v^*\|_1=\|u\|\|v\|.                               \tag{T11}
+\]</span></p>
+<p>The lower bound comes from pairing the normalized <span class="math">\(v,u\)</span> when neither is zero. For the upper bound use <span class="math">\(G=\mathbb C\)</span>, <span class="math">\(Ax=\langle x,v\rangle\)</span>, <span class="math">\(By=\langle y,u\rangle\)</span> in (T7); Parseval gives their Hilbert-Schmidt norms <span class="math">\(\|v\|,\|u\|\)</span>.</p>
+<p><a id="AN03-TRC-003"></a></p>
+<h2>AN03-TRC-003 — Traces, invariant subspaces, and cyclic transport</h2>
+<p>For <span class="math">\(T\in\mathcal S_1(H,H)\)</span>, define</p>
+<p><span class="math math-display">\[
+\operatorname{Tr}_H T=\sum_i\langle Te_i,e_i\rangle.           \tag{T12}
+\]</span></p>
+<p>The sum is absolutely convergent by (T5). It is independent of the orthonormal basis.</p>
+<p><strong>Proof of independence and continuity.</strong> Factor <span class="math">\(T=B^*A\)</span>. The sum is <span class="math">\(\sum_i\langle Ae_i,Be_i\rangle\)</span>. It can be recovered from the four basis-independent Hilbert-Schmidt norms of <span class="math">\(A+B,A-B,A+iB,A-iB\)</span> by complex polarization. More explicitly, with the chosen convention it equals</p>
+<p><span class="math math-display">\[
+\frac14\left(\|A+B\|_2^2-\|A-B\|_2^2
++i\|A+iB\|_2^2-i\|A-iB\|_2^2\right).
+\]</span></p>
+<p>Expansion of each squared norm verifies the formula, with all mixed sums absolutely convergent by Cauchy-Schwarz. This proves independence. Linearity follows termwise using any one basis, and <span class="math">\(|\operatorname{Tr}T|\leq\|T\|_1\)</span> follows from (T5). On a nonzero Hilbert space this functional has norm one, since a rank-one orthogonal projection has trace and trace norm one. On the zero space the functional has norm zero. <span class="math">\(\square\)</span></p>
+<p>The rank-one formula is</p>
+<p><span class="math math-display">\[
+\operatorname{Tr}(u\otimes v^*)=\langle u,v\rangle,            \tag{T13}
+\]</span></p>
+<p>by Parseval. This also recovers the ordinary matrix trace in finite dimension.</p>
+<p><strong>Invariant-subspace additivity.</strong> If <span class="math">\(M\subset H\)</span> is closed and <span class="math">\(TM\subset M\)</span>, then <span class="math">\(T|_M\)</span> and the induced map <span class="math">\(\overline T\)</span> on the Hilbert quotient <span class="math">\(H/M\)</span> are trace class, and</p>
+<p><span class="math math-display">\[
+\operatorname{Tr}_H T
+=\operatorname{Tr}_M(T|_M)+\operatorname{Tr}_{H/M}\overline T. \tag{T14}
+\]</span></p>
+<p>Indeed identify <span class="math">\(H/M\)</span> isometrically with <span class="math">\(M^\perp\)</span>. The induced map is the compression <span class="math">\(P_{M^\perp}T|_{M^\perp}\)</span>; the restriction is <span class="math">\(P_MT|_M\)</span>. These are trace class by the ideal estimate. Joining bases of <span class="math">\(M\)</span> and <span class="math">\(M^\perp\)</span> proves (T14). The off-diagonal block can be nonzero and contributes no diagonal terms. The same reasoning gives <span class="math">\(\operatorname{Tr}_M(P_MT|_M)=\operatorname{Tr}_H(P_MTP_M)\)</span> even if <span class="math">\(M\)</span> is not invariant.</p>
+<p><strong>Cyclicity and bounded similarity.</strong> If <span class="math">\(T:H\to K\)</span> is trace class and <span class="math">\(S:K\to H\)</span> bounded, then</p>
+<p><span class="math math-display">\[
+\operatorname{Tr}_K(TS)=\operatorname{Tr}_H(ST).              \tag{T15}
+\]</span></p>
+<p>For rank one, (T13) and the adjoint identity give <span class="math">\(\langle u,S^*v\rangle=\langle Su,v\rangle\)</span>. Every finite-rank operator is a finite sum of rank-one maps: choose an orthonormal basis <span class="math">\(u_1,\ldots,u_r\)</span> of its range and write <span class="math">\(Tx=\sum_j\langle x,T^*u_j\rangle u_j\)</span>. Thus (T15) holds in finite rank. Approximate in trace norm and use (T9) and trace continuity to obtain the general statement. For <span class="math">\(T\in\mathcal S_1(H,H)\)</span>, if <span class="math">\(V:H\to K\)</span> is a bounded bijection, its inverse is bounded by the bounded inverse proof in AN03-TRC-001, and (T15) gives</p>
+<p><span class="math math-display">\[
+\operatorname{Tr}_K(VTV^{-1})=\operatorname{Tr}_H T.          \tag{T16}
+\]</span></p>
+<p>The boundedness of <span class="math">\(V\)</span> and <span class="math">\(V^{-1}\)</span> supplies the ideal estimates used in this proof; <span class="math">\(V\)</span> may be any bounded Hilbert-space bijection.</p>
+<h2>Related freely proved programme foundations</h2>
+<p>The Hilbert projection, basis and adjoint argument is also proved in <a href="../../representations-of-compact-groups/compact-foundations.html#cpt-f-006">Compact-group foundations, CPT-F-006</a>. The complete Baire and bounded inverse arguments are also given in <a href="dependency-banach-foundations.html#section-8">Banach foundations, Sections 6 and 8</a>. These links identify independently written programme proofs; every result used in the bounded trace proofs above has been proved locally.</p>
+</article></main></body></html>

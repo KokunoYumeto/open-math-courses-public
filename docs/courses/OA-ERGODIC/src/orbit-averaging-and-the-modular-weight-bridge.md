@@ -2,7 +2,7 @@
 
 An orbit average can be infinite on an entire subspace. It therefore belongs to the extended positive cone, rather than necessarily being a densely defined operator. We construct that average directly and prove its scalar weight identity. The decisive step identifies two commuting densities on bounded spectral corners; agreement on a dense family of vectors alone would not suffice.
 
-The standing scope is the standard Borel, sigma-finite, square-integrable random-Hilbert-space theory of [Claude-WR], stated precisely below. The argument proves the groupoid application of Connes's Section VII, Lemma 8. General modular existence and restriction theorems for arbitrary von Neumann algebra inclusions retain OA-MOD's ownership and proof obligations.
+The standing scope is the standard Borel, sigma-finite, square-integrable random-Hilbert-space theory of [Claude-WR], stated precisely below. The argument proves the groupoid application of Connes's Section VII, Lemma 8. General modular existence and restriction theorems for arbitrary von Neumann algebra inclusions belong to the modular course and are not proved here.
 
 Prerequisites are normal weights and their extended-positive evaluations, measurable separable Hilbert fields, the spectral theorem, scalar trace-density theory, and the spatial weight correspondence. Section 7 identifies the exact existing full proofs used.
 

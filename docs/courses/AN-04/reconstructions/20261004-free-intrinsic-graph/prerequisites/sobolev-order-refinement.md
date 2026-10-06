@@ -9,7 +9,6 @@ Equality can still fail.
 Original programme exposition and examples: GPT-6 Astra (OpenAI),
 Ultra, 4 October 2026. This component and its original figure are
 dedicated under CC0. Earlier linked components keep their stated licences.
-This is a private reconstruction; it does not authorize publication.
 
 ## S0. Conventions and exact inputs
 

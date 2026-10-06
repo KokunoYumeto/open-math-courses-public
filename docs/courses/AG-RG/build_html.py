@@ -67,7 +67,17 @@ for s in source['sources']:
         refs.append('<ul>'+''.join('<li>'+h(x)+'</li>' for x in checked)+'</ul>')
     refs.append('</section>')
 refs.append('<p><a href="SOURCES.json">Full source and version record</a> · <a href="COMPONENTS.json">Component licences and expression boundaries</a> · <a href="assets/GFDL-1.2.txt">Unaltered GNU FDL 1.2</a></p>')
-(root/'references.html').write_text(page('Human sources and rights',''.join(refs)),encoding='utf8')
+reference_body=''.join(refs)
+# Retain the current reader wording when rebuilding from historical source records.
+reference_wording={
+    'Previously recorded actual readings in SOURCES.json, including §§2.1–2.3, 3.2, rank-one/root-data sections, pinned classification and automorphisms; exact source corrections remain in PROVENANCE.json.':'Sections read include §§2.1–2.3, 3.2, rank-one/root-data sections, pinned classification and automorphisms.',
+    'Public edition checked 4 October 2026; AG-ET source last changed in commit 88d1416.':'Read 4 October 2026 (commit 88d1416).',
+    'The supporting lesson Projective cohomology and smooth affine models contains the reconstructed model and smoothness arguments. Its transitive programme inputs remain under review.':'The supporting lesson Projective cohomology and smooth affine models contains the reconstructed model and smoothness arguments.',
+    'Manager verified exact current author-hosted bytes, title and contents:':'Relevant contents:',
+}
+for old,new in reference_wording.items():
+    reference_body=reference_body.replace(h(old),h(new))
+(root/'references.html').write_text(page('Human sources and rights',reference_body),encoding='utf8')
 missing=[d for d in deps if not d['source_sha256']]
 intro='<h1>Reductive group schemes</h1><p>Six main lessons, preceded by supporting lessons: tori, centralizers, root groups, Bruhat decomposition, integral pinned classification, and forms and flag schemes, with worked examples and solved exercises.</p><p>The relative Bruhat and Schubert arguments retain their scope over every base, including the integers.</p><div class="note">Approximation, quotient, Lie and group foundations have written proofs. Self-checked by the writing AI. The <a href="prerequisites.html">prerequisite guide</a> identifies the required statements and their proof positions.</div><nav><a href="Reductive-group-schemes.pdf">Collected draft PDF</a><a href="Reductive-group-schemes-source.zip">Editable sources</a></nav><h2>Reading order</h2><ol>'
 intro+=''.join('<li><a href="'+u['id']+'.html">'+h(u['title'])+'</a> · <a href="'+u['id']+'.pdf">PDF</a></li>' for u in course['units'])+'</ol><h2>Reading and reuse</h2><p><a href="references.html">Human sources and rights</a> · <a href="prerequisites.html">Supporting statements and reading order</a></p><p>Original contributions retain CC0 1.0. Attributed Stacks adaptations retain their GNU Free Documentation License obligations; the cumulative edition includes the full version 1.2 licence.</p><p><a href="PROVIDER_HANDOFF.json">Result and consumer map</a> · <a href="COMPONENTS.json">Component and licence record</a> · <a href="PROVENANCE.json">Edition provenance</a></p>'

@@ -26,7 +26,7 @@ For composable maps, the natural proper-support comparison $Rf_!Rg_!\simeq R(fg)
 
 The full proper-support base-change theorem for arbitrary locally compact Hausdorff maps belongs to the earlier foundations. Under the finite dimension assumption of this lesson, the required case and its pasting compatibility are proved below as `SH02-EX-BASECHANGE-BRIDGE`, using the fibre and soft contracts.
 
-The soft, fibre, and composition contracts are used as imports, with their receipt still outstanding. The finite-dimensional case of nonproper base change and the projection formula required below are proved from those contracts. A theorem about a proper map or a perfect tensor factor is not used as a substitute for either assertion.
+The soft, fibre, and composition contracts are used as imports; their proofs are not given here. The finite-dimensional case of nonproper base change and the projection formula required below are proved from those contracts. A theorem about a proper map or a perfect tensor factor is not used as a substitute for either assertion.
 
 We will also use two elementary consequences of the stated compact-support contracts. A compact subset meets only finitely many members of a locally finite family of supports, after passage to a finite open cover. This explains why compactly supported sections of a sheaf coproduct are a coproduct, even though unrestricted sections need not commute with coproducts. Restriction to a closed subset preserves c-softness: a compact subset of the closed subset is compact in the ambient space, and restriction to that compact subset has the same sections.
 

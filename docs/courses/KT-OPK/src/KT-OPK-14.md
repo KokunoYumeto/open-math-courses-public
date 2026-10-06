@@ -1119,7 +1119,7 @@ Any positive homomorphism \(G_\vartheta\to\mathbb R\) sending one to one must se
 
 #### Strict positivity and an actual unital realization map
 
-These lemmas are restricted to targets given as increasing dense unions of finite-dimensional **unital** C*-subalgebras. No uncountable dimension-group realization theorem is being admitted.
+These lemmas are restricted to targets given as increasing dense unions of finite-dimensional **unital** C*-subalgebras. No realization theorem for uncountable dimension groups is assumed or proved here.
 
 **Lemma 2.9f (strict trace positivity).** Let \(C=\overline{\bigcup_m C_m}\) be such a unital sequential AF algebra. If \(y\in K_0(C)\) satisfies \(\tau_*(y)>0\) for every normalized tracial state \(\tau\), then \(y\) is positive in \(K_0(C)\).
 

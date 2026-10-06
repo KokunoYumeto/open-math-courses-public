@@ -1,6 +1,6 @@
 # Building a local inverse from radial singularities
 
-**AN-03 · Unit AN03-U020 · Independent Self-checked by the writing AI.**
+**AN-03 · Unit AN03-U020 · Self-checked by the writing AI.**
 
 A local inverse of a differential operator has more structure than its mapping estimates reveal. Near the diagonal, its leading singularity is the Euclidean inverse kernel measured in the metric of the principal symbol. Successive corrections are found by ordinary differential equations along short geodesics. The corrections improve the error by two orders at a time, while the same radial kernels continue to describe the singular part.
 

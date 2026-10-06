@@ -1,6 +1,6 @@
 # Reproducing the compact-division figures
 
-The original proof, explanatory text, coordinate ledger, plotting source and six figure files are CC0. The source book pages are private verification evidence and are not part of this component.
+The original proof, explanatory text, coordinate ledger, plotting source and six figure files are CC0. The source book pages are not part of this component.
 
 Use Python with Matplotlib and NumPy. To reproduce into a fresh directory without changing the checked originals:
 

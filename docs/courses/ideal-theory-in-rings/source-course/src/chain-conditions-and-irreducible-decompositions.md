@@ -186,11 +186,11 @@ Their socles are spanned by \(x^2\) and \(xy\). The witnesses \(y\) and \(x^2\) 
 
 ## In Noether's words
 
-Noether's 1921 paper treats intersections as least common multiples and sums as greatest common divisors. Her divisibility convention reverses containment. Sections 2–3 establish finite irreducible decompositions and equality of their counts. Her rings may have no identity; our unital convention becomes important for the residue-field and socle language. The entire work can be read in the [linked English edition, work 19](https://github.com/KokunoYumeto/emmy-noether-en/blob/main/source/Noether_English_ED0014.tex) alongside the [German authority edition](https://doi.org/10.5281/zenodo.21908301). Those linked editions retain their own rights and provenance.
+Noether's 1921 paper treats intersections as least common multiples and sums as greatest common divisors. Her divisibility convention reverses containment. Sections 2–3 establish finite irreducible decompositions and equality of their counts. Her rings may have no identity; our unital convention becomes important for the residue-field and socle language. The entire work can be read in the [linked English edition, work 19](https://github.com/KokunoYumeto/emmy-noether-en/blob/main/source/Noether_English_ED0014.tex) alongside the [German authority edition](https://doi.org/10.5281/zenodo.21908301). Those linked editions retain their own rights.
 
 ## References
 
-* Emmy Noether, *Idealtheorie in Ringbereichen*, 1921, introduction and Sections 1–4, 9. [Free English working edition, work 19](https://github.com/KokunoYumeto/emmy-noether-en/blob/main/source/Noether_English_ED0014.tex), with the original bibliographic information and machine-assisted translation provenance.
+* Emmy Noether, *Idealtheorie in Ringbereichen*, 1921, introduction and Sections 1–4, 9. [Free English working edition, work 19](https://github.com/KokunoYumeto/emmy-noether-en/blob/main/source/Noether_English_ED0014.tex), a machine-assisted translation with the original bibliographic information.
 * The Stacks project authors, Noetherian rings and associated primes: [Tag 00FM](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#section-Noetherian), [Tag 00FN](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#lemma-Noetherian-permanence), [Tag 00L9](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#section-ass). The [official Stacks project](https://stacks.math.columbia.edu/) is the original work. These tag links use AI Integrated Stacks Project, an edition with AI-proposed corrections and AI-written additions, not reviewed by the Stacks project's maintainers. The source text is GFDL; this lesson independently states its mathematics.
 
 ## Editable sources

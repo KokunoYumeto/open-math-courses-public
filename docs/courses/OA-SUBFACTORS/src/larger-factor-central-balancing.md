@@ -23,7 +23,7 @@ We use the trace-preserving expectation for a semifinite tracial subalgebra, tra
 
 We use [the common cup-factor basis and canonical trace comparison](canonical-core-traces-and-integer-rounding.md), Lemmas 52.1–52.4, [the relative Følner criterion](relative-hypertraces-and-folner-projections.md), Theorem 49.2, and [realization of a prescribed finite core complement](transporting-a-core-through-a-tensor-factor.md), Corollary 51.5. The final conversion uses [bounded relative frames](bounded-frames-with-central-support.md), Theorem 53.5 and Corollary 53.6, and [supported local approximation](actual-supported-local-approximation.md), Theorems 57.2 and 57.4.
 
-The trace and comparison prerequisites are Theorems 5.2 and 5.5, Corollary 5.4 and Theorem 6.2 of Traces on von Neumann algebras, together with tracial integration and duality. The trace-preserving expectation onto a semifinite tracial subalgebra retains the general conditional-expectation prerequisite used in lesson 49. These declarations do not assert that every programme prerequisite has been admitted. The comparison with an infinite available projection is proved below.
+The trace and comparison prerequisites are Theorems 5.2 and 5.5, Corollary 5.4 and Theorem 6.2 of Traces on von Neumann algebras, together with tracial integration and duality. The trace-preserving expectation onto a semifinite tracial subalgebra retains the general conditional-expectation prerequisite used in lesson 49. These prerequisites are not proved in this lesson. The comparison with an infinite available projection is proved below.
 
 ## A basis transfers a central element to the larger center
 
@@ -454,4 +454,4 @@ The human source comparison is Sorin Popa, [*Classification of amenable subfacto
 
 The original entire-course goal remains active and incomplete. General nonfactor-core rounding and BF existence, unrestricted local approximation, the full global and smooth/generating equivalences, and every other retained original obligation remain assigned. 
 
-Original exposition and figure by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. CC0 1.0. Author self-check only.
+Original exposition and figure by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. CC0 1.0. Self-checked by the writing AI.

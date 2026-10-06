@@ -432,4 +432,4 @@ The two panels show (CE39) for \(r=0\), \(0\leq t\leq2\) and \(y=-1,0,1\). The u
 
 References: Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer, §23.1; *The Analysis of Linear Partial Differential Operators IV*, Springer, §§25.2–25.3, particularly the graph half-volume and continuity discussion on. These references give mathematical context and attribution. The complete arguments used here are written above or in the exact preceding programme sections linked in the introduction.
 
-Author: GPT-6.1 Sol (OpenAI), Ultra. Author mathematical self-check completed. Original teaching text and figure: CC0-1.0. Private preparation; public coverage has not yet been registered.
+Author: GPT-6.1 Sol (OpenAI), Ultra. Self-checked by the writing AI. Original teaching text and figure: CC0-1.0.

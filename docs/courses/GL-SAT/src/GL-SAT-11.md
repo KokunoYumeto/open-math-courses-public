@@ -24,7 +24,7 @@ We will prove the following assertion, without using a general IC stalk-parity t
 \text{ is a finite direct sum of simple objects.}
 \tag{1.3}
 \]
-Lesson 10, Theorem 9.1 supplies a finite connected reductive quotient \(H_G\to R_G\) carrying every simple IC. Sections 7–8 identify its dual root datum and centre. Section 8 then removes the remaining kernel by the vanishing of IC self-extensions, proving (S) and the full classical equivalence. The Levi functor, rank-one characters and quotient identification are established before this semisimplicity argument.
+Lesson 10, Theorem 9.1 supplies a finite connected reductive quotient \(H_G\to R_G\) carrying every simple IC. Sections 7–8 identify its dual root datum and centre. Section 8 then removes the remaining kernel by the vanishing of IC self-extensions, proving (S) and the full classical equivalence. The Levi functor, rank-one characters and quotient identification are established before this semisimplicity argument. Section 8.7 then uses the geometric parity inputs proved in Lesson 06 to conclude ordinary IC stalk and costalk parity over every characteristic-zero coefficient field.
 
 ## 1. The largest weight and the component of a simple object
 
@@ -669,6 +669,26 @@ E_i v_i=2v_0.
 \]
 There is exactly one such frame. Characteristic-zero root parametrization, proved in Roots and reductive groups of rank one, Theorem 4.1, integrates it to a root-group pinning. Thus (8.17) and the fixed torus and Borel give a specified pinning over \(\Lambda\), and a unique pinning-preserving isomorphism with the pinned dual group. This proves a precise normalization by the cycle basis. Its comparison with a pinning defined by cup product with a first Chern class, or with the Weil-equivariant normalization of §9, requires a further comparison and is not asserted here.
 
+### 8.7. All intersection complexes have parity
+
+The geometric parity arguments have now all preceded their use. The Satake category, Lemma 5.6 proves the conditional tensor-generator statement by a minimum-norm lattice argument and a schematically faithful representation. Its Proposition 5.9 proves parity of every dominant-short-coroot IC by the actual cone neighborhood, ordinary flag-variety Lefschetz and the Gysin sequence. Lemma 5.10 proves parity under convolution with a parity IC, using equivariant derived retractions to ordinary Bott–Samelson pushforwards and explicit rank-one wall fibres. None of those geometric proofs uses the equivalence established here.
+
+**Theorem 8.4 (classical IC parity).** For every connected reductive \(G/\mathbb C\), every characteristic-zero coefficient field \(\Lambda\), and every dominant \(\lambda\), the ordinary cohomology sheaves of both
+\[
+i_\mu^*IC_\lambda,\qquad i_\mu^!IC_\lambda
+\]
+vanish in degrees \(q\not\equiv\langle2\rho,\lambda\rangle\pmod2\), on every spherical orbit \(O_\mu\). The objects may have zero restriction to an orbit.
+
+*Proof.* Theorem 8.3 supplies precisely the tensor equivalence hypothesized in Lemma 5.6: its reconstructed root datum is dual, and (8.14) identifies the IC objects with the corresponding irreducible highest-weight modules. Hence every IC is an actual summand of a finite sum of convolution words in the chosen minuscule and dominant-short-coroot ICs and their duals.
+
+Each generating factor has parity. A minuscule support is a smooth closed flag variety; each short-coroot support has the cone chart proved in Proposition 5.9. Dual labels are \(-w_0\xi\), which preserve these two forms and their dimension parity. Apply Lemma 5.10 successively, from the rightmost factor of each word. This is the same unshifted convolution as in Lesson 07, whose finite frames and endpoints agree with the correspondence used in that lemma. Each word therefore has pure parity equal to the sum of its factors' component parities.
+
+Take the summand \(IC_\lambda\). Restriction to its open-and-closed Grassmannian component discards all words in other components. Within its component their parity is \(d_\lambda\), since \(\langle2\rho,\alpha_i^\vee\rangle=2\) and component labels differ by the coroot lattice. Stalk and dual-stalk cohomology inherit that parity under the summand maps. Stratum duality contributes an even shift, so dual-stalk parity is exactly the claimed ordinary costalk parity. This proves the theorem over the given coefficient field. \(\square\)
+
+The retraction argument also resolves the identity-lift criterion in Lesson 06, (5.9), for its rootwise resolutions: with IC parity now proved, equation (5.27) lifts the dense-cell identity to the actual equivariant derived inclusion, and its dual projection has identity composite. This supplies the required lift directly. The general relative-Lefschetz and intersection-form criteria in that lesson are alternative sufficient methods, and are not needed for this conclusion.
+
+Thus (S), the full classical equivalence and the IC cycle basis are established before general (P). This proof order supplies both results without assuming parity in reconstruction or using semisimplicity to split an entire derived resolution complex.
+
 ## 9. Integral and Weil-equivariant versions: statements only
 
 These variants are not inputs to any proof above. For a Noetherian commutative coefficient ring of finite global dimension, the integral theorem identifies the finite-support equivariant perverse category with finitely generated representations of the split group with dual root datum. Its exact source is Mirković–Vilonen, [the corrected arXiv version, Theorem 12.1 and §13, equation (13.1)](https://arxiv.org/html/math/0401222v5#S12). In the subcategory with free finite total cohomology, the representations have free finite underlying modules. General integral perverse objects need not be semisimple, and the rigid field-valued argument of §7 is not an integral proof. The corrected version includes Appendix B addressing a gap in the original integral group identification.
@@ -706,6 +726,6 @@ Convolution for a torus adds lattice labels, so (10.1) is exactly the required i
 
 ## What this lesson does not prove
 
-The general classical characteristic-zero Satake equivalence, full-heart semisimplicity and the IC cycle basis are proved in §§7–8. A general IC stalk and costalk parity theorem has not been proved; it is not an input to this equivalence. The integral and Weil-equivariant theorems of §9, comparison of the cycle-basis pinning with other geometric normalizations, and the rational-adic extension to other algebraically closed ground fields are stated or excluded explicitly and are not used as proof inputs.
+The general classical characteristic-zero Satake equivalence, full-heart semisimplicity, IC cycle basis and ordinary IC stalk and costalk parity are proved in §§7–8. Parity is concluded only after the equivalence, and is not its proof input. The integral and Weil-equivariant theorems of §9, comparison of the cycle-basis pinning with other geometric normalizations, and the rational-adic extension to other algebraically closed ground fields are stated or excluded explicitly and are not used as proof inputs.
 
 The free reading for comparison is Mirković–Vilonen, [§§6–7, especially Remark 7.2, and the corrected integral discussion](https://arxiv.org/abs/math/0401222v5), and Zhu, [the affine-Grassmannian notes](https://arxiv.org/abs/1603.05593). The finite-stage kernel argument in §8 is written out with its actual earlier programme proofs; the corrected integral theorem is complementary reading, not an input replacing those arguments.

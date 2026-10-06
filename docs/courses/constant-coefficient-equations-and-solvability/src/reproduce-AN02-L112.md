@@ -4,14 +4,14 @@ The two original figures in [Null-section curvature and the Riesz comparison](nu
 
 ## Download and run
 
-Download [build_and_check.py](../reproduce/L112/build_and_check.py) into an empty folder. No private scan or additional course file is needed. From that folder, with Python 3.13, run:
+Download [build_and_check.py](../reproduce/L112/build_and_check.py) into an empty folder. No additional file is needed. From that folder, with Python 3.13, run:
 
 ```text
 python -m pip install numpy==2.4.4 sympy==1.13.1 scipy==1.17.1 matplotlib==3.10.9
 python build_and_check.py
 ```
 
-The script creates a `figures` subfolder and writes both PNGs, both SVGs and both geometry JSONs listed below. It also runs 15 exact symbolic checks of arbitrary radial two-jets and 24 polynomial wave-integral checks. Its locally generated `computational-checks.json` is a diagnostic receipt, not part of the public reproduction package.
+The script creates a `figures` subfolder and writes both PNGs, both SVGs and both geometry JSONs listed below. It also runs 15 exact symbolic checks of arbitrary radial two-jets and 24 polynomial wave-integral checks. Its locally generated `computational-checks.json` is a diagnostic record, not part of the downloadable reproduction package.
 
 The observed reproduction environment was Python 3.13.9, NumPy 2.4.4, SymPy 1.13.1, SciPy 1.17.1 and Matplotlib 3.10.9, with DejaVu Sans and the Agg renderer. Pillow 12.2.0 was used only for the package's image inspection. The script uses no TeX or Blender.
 

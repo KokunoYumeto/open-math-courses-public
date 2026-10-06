@@ -222,9 +222,9 @@ The character is evaluation at the nonzero group element. This illustrates the d
 
 ## HC5. Source and retained work
 
-The target is the homogeneous centralizer theorem in Takesaki, [*Theory of Operator Algebras II*](https://doi.org/10.1007/978-3-662-10451-4), Exercise XI.1.5, printed330–331, in the exact registered receipt-backed edition. Its proposed route uses twisted two-by-two matrix fixed points, properly infinite projection comparison, a calculation with a unitary fiber generator, and stabilization under a sigma-finiteness hypothesis. Those mathematical antecedents are credited here.
+The target is the homogeneous centralizer theorem in Takesaki, [*Theory of Operator Algebras II*](https://doi.org/10.1007/978-3-662-10451-4), Exercise XI.1.5, printed330–331. Its proposed route uses twisted two-by-two matrix fixed points, properly infinite projection comparison, a calculation with a unitary fiber generator, and stabilization under a sigma-finiteness hypothesis. Those mathematical antecedents are credited here.
 
-The present proof is organized around the densely defined Gram isometry (HC4). It supplies scalar action on a fiber directly and does not consume those matrix-comparison or stabilization steps. Its arbitrary-algebra scope follows from that independently reviewed proof at its exact earlier inputs; it is not inferred from the source's restricted statement. Historical lessons105–107 remain preserved privately, including their valid aggregate-support reasoning and their separate matrix-fiber calculations. Not all ancillary results of those historical works are reproved here.
+The present proof is organized around the densely defined Gram isometry (HC4). It supplies scalar action on a fiber directly and does not consume those matrix-comparison or stabilization steps. Its arbitrary-algebra scope follows from that independently reviewed proof at its exact earlier inputs; it is not inferred from the source's restricted statement. Not all ancillary results of those historical works are reproved here.
 
 <a id="oa-flow.hcr.figure"></a>
 

@@ -195,4 +195,4 @@ Thus \(\tau_h\) is a faithful normal finite functional with unbounded density. I
 
 The accompanying reproducible draft figure shows the hypothetical logarithmic translation and its mass contradiction, the exact matrix density and fixed projection, and the conditional unbounded spectral model. These panels explain FT-03–05; they do not replace the all-positive transport identity or the full closed-operator domains in the proofs.
 
-Compare Masamichi Takesaki, *Theory of Operator Algebras I*, Definitions V.1.15 and V.1.17; Corollary V.1.20; Theorem V.2.15. Masamichi Takesaki, *Theory of Operator Algebras II*, Exercise VIII.3(4). Source pages are inspected privately; the prose, proofs and figure are original drafts.
+Compare Masamichi Takesaki, *Theory of Operator Algebras I*, Definitions V.1.15 and V.1.17; Corollary V.1.20; Theorem V.2.15. Masamichi Takesaki, *Theory of Operator Algebras II*, Exercise VIII.3(4). The prose, proofs and figure are original.

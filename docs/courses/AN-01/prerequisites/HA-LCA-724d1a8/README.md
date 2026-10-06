@@ -6,6 +6,6 @@ Edition of 4 October 2026. Self-checked by the writing AI. This course contains 
 
 The mathematical sources are verified freely accessible versions. Every used result has a complete proof in this edition or an exact earlier reading within it.
 
-Download the current private offline reader and editable sources. The package contains this course directory, including its metadata and required original source packages. Research PDFs are not redistributed.
+Download the offline reader and editable sources. The package contains this course directory, including its metadata and required original source packages. Research PDFs are not redistributed.
 
-Earlier lesson addresses provide links from previous result labels to the corrected proofs. Superseded copied prerequisites are marked explicitly and are not current proof providers. The previous editions remain in private Git history.
+Earlier lesson addresses provide links from previous result labels to the corrected proofs. Superseded copied prerequisites are marked explicitly and are not current proof providers.

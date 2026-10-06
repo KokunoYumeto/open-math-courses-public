@@ -6,4 +6,4 @@ The two unmodified DejaVu Sans fonts and the outlined glyphs in the SVG retain t
 
 Python, Matplotlib, NumPy and Pillow are required for reproduction. Their runtimes are not included. Their complete notices accompany the source as PYTHON-LICENSE.txt, MATPLOTLIB-LICENSE.txt, NUMPY-LICENSE.txt and PILLOW-LICENSE.txt. Those notices apply to their respective components.
 
-Primary mathematical papers and the receipted Emerson book are cited for their actual statements. Their protected prose, original page pixels and private reading extracts are not included in the original diagram or reader payload.
+Primary mathematical papers and the Emerson book are cited for their actual statements. Their protected prose and original page pixels are not included in the original diagram or reader payload.

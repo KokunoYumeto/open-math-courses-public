@@ -4,7 +4,7 @@ The finite-weight boundedness proof, exact prerequisite bindings, trace-model do
 
 A modular boundary condition on a C*-algebra does more than prescribe scalar functions. It makes the finite-domain involution closable, identifies a faithful normal semifinite weight on the represented von Neumann algebra, and determines the dynamics of that weight. The identification of the normal weight is essential: agreeing on a few finite elements would not identify its values at infinity.
 
-The antecedents are Takesaki, *Theory of Operator Algebras II*, VIII.1 Proposition 1.5 and Exercises 1–2, printed pages 95–96 (PDF pages 116–117 in the checked receipt-backed edition). The formula for the normal envelope is VII.4(5), printed pages 89–90 (PDF pages 110–111). The domain, proofs, model, and problems below are independently written. Inner products are linear in the first variable, and neither the algebra nor its GNS Hilbert space is assumed separable.
+The antecedents are Takesaki, *Theory of Operator Algebras II*, VIII.1 Proposition 1.5 and Exercises 1–2, printed pages 95–96 (PDF pages 116–117). The formula for the normal envelope is VII.4(5), printed pages 89–90 (PDF pages 110–111). The domain, proofs, model, and problems below are independently written. Inner products are linear in the first variable, and neither the algebra nor its GNS Hilbert space is assumed separable.
 
 ## The exact dense domains and their approximate identity
 

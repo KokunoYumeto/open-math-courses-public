@@ -1,6 +1,6 @@
 # Causal kernels, initial data, and short-time geometry
 
-**AN-03 · Unit AN03-U021 · Independent Self-checked by the writing AI.**
+**AN-03 · Unit AN03-U021 · Self-checked by the writing AI.**
 
 A wave kernel has two useful descriptions. In frequency space it solves an ordinary differential equation with prescribed initial data. In physical space its singularities sit on a cone. The frequency description fixes constants and initial traces; the cone description explains which parts of a local geometric construction can influence a short time interval. We develop both descriptions before introducing variable coefficients.
 

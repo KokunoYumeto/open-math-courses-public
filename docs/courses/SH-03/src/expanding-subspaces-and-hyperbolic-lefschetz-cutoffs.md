@@ -4,7 +4,7 @@ A local Lefschetz contribution can be computed by compact cohomology on an expan
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
-Learn first Homotopies and local cutoffs for Lefschetz contributions, Lefschetz traces of constructible correspondences, and Perfect operations and finite microlocal coefficients. We also use the written SH-02 proofs of normalized positive-scaling transport, ordinary and proper-support contraction to the zero section, and transport through sheaf operations, in Transport along a scaling action. The exact current proof scopes are recorded privately. These are programme prerequisites; their transitive foundations and independent review remain open.
+Learn first Homotopies and local cutoffs for Lefschetz contributions, Lefschetz traces of constructible correspondences, and Perfect operations and finite microlocal coefficients. We also use the written SH-02 proofs of normalized positive-scaling transport, ordinary and proper-support contraction to the zero section, and transport through sheaf operations, in Transport along a scaling action. These are programme prerequisites; their transitive foundations and independent review remain open.
 
 Let \(V\) be a finite-dimensional real vector space, \(k\) a characteristic-zero field, and \(F\) a bounded positively conic, real constructible complex with perfect stalks. Conicity means local constancy along parametrized positive scaling orbits. On a vector space the nonzero orbits are embedded rays. Fix
 \[

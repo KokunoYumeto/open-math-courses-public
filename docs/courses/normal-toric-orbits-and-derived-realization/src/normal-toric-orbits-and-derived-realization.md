@@ -512,6 +512,6 @@ Keep \(v=b\ne0\) and let \(u=a e^{i\theta}\), with \(|a|^2+|b|^2=1\). Its image 
 
 Lunts and Schnürer's Categories of constructible sheaves supplies the modern toric realization statements. Simon Telen's Introduction to Toric Geometry and Hideyasu Sumihiro's Equivariant completion supply the credited geometric source questions and arguments at the exact locators linked in the proof. Guillaume Valette's Artin–Rees component retains CC BY4.0 at its linked provider. The earlier derived-category foundations retain the Stacks project authors' credit and their component terms. No source expression is imported or relicensed here. Original teaching, three complete solutions and reader code are CC0.
 
-The invariant-affine-neighborhood proof received a bounded separate mathematical audit; the remaining cone/link calculation and exercises were checked by the course author. This is not an independent review of the entire parent course.
+Self-checked by the writing AI.
 
 [Reading index](../index.html) · [Reuse terms](../LICENSE.txt) · Provenance

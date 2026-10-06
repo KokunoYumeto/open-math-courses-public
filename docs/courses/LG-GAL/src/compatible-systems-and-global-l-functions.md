@@ -333,7 +333,7 @@ Lemma 3.2 continues this product meromorphically. The finite coset pairing ident
 
 These continuations and constants are independent of the chosen Brauer expression. The Euler products agree on the common nonempty half-plane, so their meromorphic continuations agree by the identity theorem. On an open set where the dual completed function is finite and nonzero, their quotient determines the constant uniquely. Such an open set exists by the nonzero initial Euler product and meromorphic continuation. This proves the theorem, without asserting holomorphy of the negative-power product. ∎
 
-The precise written analytic and character-theory scopes have thus been used. Their transitive free-source provenance and currently accessible public editions remain under verification; mathematical existence of those written proofs does not by itself certify their source chain. Section 4 proves the further local-product identity from the actual orthogonal and global Brauer proofs.
+The precise written analytic and character-theory scopes have thus been used. Section 4 proves the further local-product identity from the actual orthogonal and global Brauer proofs.
 
 **Artin's holomorphy conjecture.** If \(\rho\) is nontrivial and irreducible, \(L(s,\rho)\) is entire. Meromorphic continuation is a theorem; removal of all possible poles in this generality is the conjecture. Brauer induction gives products with negative as well as positive powers, which explains why it yields meromorphy. A nontrivial irreducible representation induced from a one-dimensional character has an entire L-function, by induction and the Hecke theorem. This argument requires that induced-character hypothesis; solvability of a finite group by itself does not supply it.
 
@@ -637,8 +637,6 @@ Proposition 3.1 proves all ramified Euler induction and convergence. The conduct
 The earlier local-factor lesson's Theorem 3.0 and §§3A–3D supply the actual local epsilon existence proof and all Brauer relations. Its Lemma 2.2 proves the trace conductor, §§4–5 prove scaling and normalization, and Theorem 7.4 with Lemmas 7.5–7.8 proves the local orthogonal formula. Theorem 4.2 here proves the global product of induction constants, hence the full Artin root-number identity, using the actual global invariant-sum proof NT-CFT-24, §4 and Theorem 24.4. Proposition 4.1 proves additive-character independence with the actual adelic annihilator theorem NT-ADL-05, Theorem 5.4, and the preceding Weil lesson's Proposition 6.1.
 
 The full modularity, exact conductor level and local newform/elliptic comparison of Theorem 5.3 remain without an actual programme proof. Lemma 5.4 proves the complete Mellin analytic deduction once those data are available, including entireness and the exact Fricke sign. The elliptic global root-number comparison also needs that local automorphic comparison. The general cohomological construction, comparison and purity assertions in §6 remain without the corresponding written proofs. These are genuine retained mathematical obligations, so this edition is not certified as a fully proved lesson.
-
-The earlier programme locators above identify inspected written arguments, not a certificate of their public availability or transitive free-source origin. Those two checks are separate programme integration work. A private fetched file, a theorem title, a free statement, or a promised later chapter cannot discharge either a proof or a publication obligation.
 
 ## 8. Exercises with complete solutions
 

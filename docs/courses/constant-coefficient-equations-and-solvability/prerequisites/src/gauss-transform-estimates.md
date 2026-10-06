@@ -1,6 +1,6 @@
 # Quadratic Fourier multipliers at a moving scale
 
-**AN-03 · Unit AN03-U002 · Independent English AI draft, not admitted.**
+**AN-03 · Unit AN03-U002 · Self-checked by the writing AI.**
 
 A quadratic Fourier multiplier spreads a localized function in directions determined by the quadratic form. Its Taylor polynomial is local, while its remaining tail can cross many localization balls. We will estimate the two parts separately and then prove that they combine in the full slowly varying metric symbol class.
 

@@ -232,4 +232,4 @@ of modules then give the Milnor sequence by the same product-triangle argument
 underlying 0D60. The internal tower and module proofs above establish these facts with this
 coefficient interpretation; the links also provide source credit and further reading.
 
-Original text is dedicated under CC0 1.0 Universal. No private source text or images are included. 
+Original text is dedicated under CC0 1.0 Universal. 

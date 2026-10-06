@@ -24,7 +24,7 @@ For a codimension \(c\) embedding \(i:M\hookrightarrow X\),
 
 Evaluation of an orientation line with its inverse is fixed before any permutation of factors. Permutations of shifted complexes use the Koszul symmetry: interchanging homogeneous factors of degrees \(r,s\) multiplies by \((-1)^{rs}\). In local coordinates, an ambient product is ordered in the displayed order of its factors. These choices make orientation cancellations reproducible.
 
-The following are prerequisite contracts. Their proofs, coefficient ranges and exact remaining imports belong to the indicated course units; the table identifies the required content rather than assigning a publication or approval state.
+The following are prerequisite contracts. Their proofs, coefficient ranges and exact remaining imports belong to the indicated course units; the table identifies the required content.
 
 | Contract | Required content | Provider and scope |
 |---|---|---|
@@ -798,9 +798,9 @@ Explain where the antipode enters.
 
 **Solution.** The strict inequality permits only the zero cone. Its cone topology is the ordinary topology, so the projector is the identity. On \(U\), the sheaf \(G_U\) restricts to \(G\), and the term is \(H^rR\Gamma(U;R\mathcal Hom(G,F))\). The filtered colimit over \(U\) is \(H^r(R\mathcal Hom(G,F))_{x_0}\), agreeing with zero-direction recovery. A conic sheaf may be nonzero away from the zero section while having zero ordinary restriction to it. For example extension by zero of the constant sheaf on an open positive ray in a one-dimensional fibre has zero zero-stalk and nonzero positive stalks. Consequently zero-direction equality cannot detect every morphism of conic sheaves; the composition and unit arguments above use actual kernels.
 
-## SH02-MH-ROUTES — What remains to audit and what comes next
+## SH02-MH-ROUTES — What remains open and what comes next
 
-The lesson now contains the graph and diagonal definitions, recoveries, submanifold and cone-topology tests, all four graph squares, all four graph-elimination comparisons, transport of two arguments, the external tensor map, the established external Hom maps, graph and kernel composition, units, associativity, and solved coefficient, orientation, and stabilization tests. These constructions feed the later study of localized categories and microsupport functorial estimates: the support of \(\mathsf M_X(A,B)\) restricts where a morphism can survive after localization, and MH34 describes how such restrictions behave under convolution.
+The lesson contains the graph and diagonal definitions, recoveries, submanifold and cone-topology tests, all four graph squares, all four graph-elimination comparisons, transport of two arguments, the external tensor map, the established external Hom maps, graph and kernel composition, units, associativity, and solved coefficient, orientation, and stabilization tests. These constructions feed the later study of localized categories and microsupport functorial estimates: the support of \(\mathsf M_X(A,B)\) restricts where a morphism can survive after localization, and MH34 describes how such restrictions behave under convolution.
 
 The exact general fibre-product ordinary-Hom target has the relative proof `SH02-MHPC-FIBRE-PRODUCT`; SH02-MH-HOM-PRODUCT-OPEN explains the limitation of direct exceptional restriction. The trace and support verticals in the functorial graph squares have the exact identifications supplied by SH02-MIC-TRACE-EXCHANGE and the endpoint supplement. The zero-section recovery-map comparison is proved with the explicit compact normalization in SH02-MH-RECOVERY. Compatibility of the multi-kernel composition with the separately normalized product recoveries is proved relative to its stated contracts in the [product-recovery supplement](microlocal-hom-product-recovery.md). All uses of six operations, cohomological constructibility, specialization, cone topology and Fourier exchange retain the individual hypotheses and proof obligations stated by their providers. The arguments here do not close those obligations merely by citing them.
 

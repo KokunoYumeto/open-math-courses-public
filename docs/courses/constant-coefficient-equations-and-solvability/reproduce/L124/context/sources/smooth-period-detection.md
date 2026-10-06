@@ -1,6 +1,6 @@
 # Smooth periods detect finite singular cycles
 
-AN02 prerequisite CD034. Original, self-contained exposition of a classical theorem, prepared for independent owner review. This is a proof of smooth complex de Rham detection and coefficient comparison, not a proof of rational-form completeness, tube injectivity, affine/projective multiplicity comparison, or the global Petrowsky component theorem.
+AN02 prerequisite CD034. Original, self-contained exposition of a classical theorem. Self-checked by the writing AI and spot-checked in a separate AI session. This is a proof of smooth complex de Rham detection and coefficient comparison, not a proof of rational-form completeness, tube injectivity, affine/projective multiplicity comparison, or the global Petrowsky component theorem.
 
 ## CD0. Statement and entry conventions
 
@@ -399,4 +399,4 @@ For the canonical \(k_x\) and \(q=n-2\), AH4 supplies (CD9.2) **relative to its 
 
 The period-detection result is classical. [Georges de Rham, *Sur l'analysis situs des varietes a n dimensions* (1931)](https://www.numdam.org/item/THESE_1931__129__1_0/), chapter III, section 26, Theorem II, printed thesis page 72 (PDF page 77), prescribes periods on independent closed fields. His surrounding section 22, printed pages 61-62 (PDF 66-67), and section 23 impose compact/polyhedral hypotheses; we do not transfer those historical hypotheses to the present noncompact theorem. The scanned relevant pages were inspected. The present proof uses the explicit cover and cochain calculations above to handle noncompact ordinary singular homology.
 
-[Allen Hatcher, *Algebraic Topology*, chapter 2](https://pi.math.cornell.edu/~hatcher/AT/ATch2.pdf), proof of Theorem 2.10, printed pages 112-113 (PDF 16-17), credits the prism construction. Proposition 2.21 and its proof, printed pages 119-124 (PDF 23-28), credit the small-chain/subdivision method. CD2-CD3 give the needed formulas and arguments directly, with our carried cone recursion (CD3.4). The cited author-hosted PDF is freely readable. No private textbook page, paid-required proof, book prose, or scan is reproduced in the learner lesson. These citations acknowledge the classical theorem and methods.
+[Allen Hatcher, *Algebraic Topology*, chapter 2](https://pi.math.cornell.edu/~hatcher/AT/ATch2.pdf), proof of Theorem 2.10, printed pages 112-113 (PDF 16-17), credits the prism construction. Proposition 2.21 and its proof, printed pages 119-124 (PDF 23-28), credit the small-chain/subdivision method. CD2-CD3 give the needed formulas and arguments directly, with our carried cone recursion (CD3.4). The cited author-hosted PDF is freely readable. These citations acknowledge the classical theorem and methods.

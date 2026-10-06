@@ -1,6 +1,6 @@
 # Sources and component terms
 
-The lessons were written and self-checked by GPT-6.1 Sol (OpenAI), using the Ultra setting in Codex. Each lesson names its mathematical references and states its prerequisite imports. Author self-check is recorded separately from independent review; no blanket independent review of this edition is claimed.
+The lessons were written and self-checked by GPT-6.1 Sol (OpenAI), using the Ultra setting in Codex. Each lesson names its mathematical references and states its prerequisite imports.
 
 The independently authored text and course code are dedicated under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). One explicitly marked component has different terms: the first kernel-expansion proof paragraph and its displayed series in Lesson 15, Lemma 1.2, are adapted from Darij Grinberg and Victor Reiner, [*Hopf Algebras in Combinatorics*](https://www.cip.ifi.lmu.de/~grinberg/algebra/HopfComb.pdf), Proposition 2.5.15 and proof, pp. 64–66, July 27, 2020 text with minor corrections dated September 6, 2026, under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The AI adaptation uses finite alphabets first, the lesson's notation, and explicit degreewise specialization. The following duality proof and later character arguments are independently authored. Preserve the credit and indicate further changes when reusing the adapted component.
 
@@ -10,7 +10,7 @@ The full signed, integer Brauer theorem and its local induction argument are pro
 
 [Source component identities](SOURCES.json) and [the 17-lesson source dispositions](source-dispositions.json) give versions, source hashes and the boundaries of reuse. Other references retain their own rights; none of the reference PDFs is redistributed here.
 
-The mathematical reader uses MathJax 3.2.2, whose JavaScript is under the Apache License 2.0. Its fonts retain the upstream component terms, including SIL Open Font License 1.1. The shared site's `assets/mathjax/LICENSE` and `assets/mathjax/FONT-LICENSES.txt` retain those notices. The vendored Markdown renderer and this course's build wrapper are CC0; their source and provenance are included under `tools/`.
+The mathematical reader uses MathJax 3.2.2, whose JavaScript is under the Apache License 2.0. Its fonts retain the upstream component terms, including SIL Open Font License 1.1. The shared site's `assets/mathjax/LICENSE` and `assets/mathjax/FONT-LICENSES.txt` retain those notices. The vendored Markdown renderer and this course's build wrapper are CC0; their source and a record of their origin and changes are included under `tools/`.
 
 ## Proof routes and references
 

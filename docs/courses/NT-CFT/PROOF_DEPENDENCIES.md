@@ -306,7 +306,7 @@ Used in NT-CFT-12, NT-CFT-21.
 
 Optional Bost–Connes connection: Gibbs states for beta>1 and their cooled limit beta→infinity have arithmetic values e(vr). The number-theoretic equivariance proved in NT-CFT-20 does not prove state positivity, the KMS classification or their operator-algebra prerequisites.
 
-**Optional connection:** the inspected owner lesson contains the indicated discussion and proofs, with its separate operator-algebra prerequisites. Its programme reader is not yet available in this collection.
+**Optional connection:** the lesson named in the heading contains the indicated discussion and proofs, with its separate operator-algebra prerequisites. Its programme reader is not yet available in this collection.
 
 Used in NT-CFT-20.
 
@@ -316,7 +316,7 @@ Used in NT-CFT-20.
 
 Optional operator-algebra symmetry uses the compatible unit as cyclotomic exponent. Arithmetic idèle coordinates require the inverse. Its operator-algebra proofs and dependencies stay in QSM-L03.
 
-**Optional connection:** the inspected owner lesson contains the indicated discussion and proofs, with its separate operator-algebra prerequisites. Its programme reader is not yet available in this collection.
+**Optional connection:** the lesson named in the heading contains the indicated discussion and proofs, with its separate operator-algebra prerequisites. Its programme reader is not yet available in this collection.
 
 Used in NT-CFT-20.
 

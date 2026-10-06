@@ -17,7 +17,7 @@ fonts, used = {}, set()
 svg = [
     f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
     "<title>Coarse geometry, proper cone and the coefficient oscillator identity</title>",
-    "<desc>Six panels: faithful rational-function linearization; kernel and probability base; exact one-dimensional cone translation; exact two-mode confining oscillator energies; integrable phase bound; distinction between coefficient identity and the missing proper scalar factorization.</desc>",
+    "<desc>Six panels: faithful rational-function linearization; kernel and probability base; exact one-dimensional cone translation; exact two-mode confining oscillator energies; integrable phase bound; distinction between the coefficient identity and the proper scalar factorization proved in Sections11V–11Y.</desc>",
     "<metadata>" + html.escape("Original diagram and generator: CC0-1.0.\nUnmodified font terms:\n" + NOTICE) + "</metadata>",
     "<style>@font-face{font-family:AuxiliarySans;src:url(data:font/ttf;base64," + base64.b64encode(FONT.read_bytes()).decode() + ")}text{font-family:AuxiliarySans}</style>",
     f'<rect width="{W}" height="{H}" fill="#f8fafc"/>',
@@ -54,7 +54,7 @@ def curve(points, color="#16764b", width=4):
     svg.append('<polyline points="' + " ".join(f"{x:.3f},{y:.3f}" for x,y in points) + f'" fill="none" stroke="{color}" stroke-width="{width}"/>')
 
 text(50, 35, "From compact-Lie subgroups to a proper Hilbert-field cone", 46)
-text(50, 108, "The scalar unit construction still needs a proper Bott/Dirac factorization. The coefficient oscillator alone does not supply it.", 28)
+text(50, 108, "Sections 11V–11Y supply the proper scalar factorization. The coefficient oscillator remains its coefficient calibration.", 28)
 for x in [50, 830, 1610]:
     for y in [185, 820]:
         box(x, y, 740, 600)
@@ -134,20 +134,20 @@ text(901, 1039, "(1+t²)^(−2/3)", 24, "#16764b")
 text(860, 1321, "Illustrated bound shape; not a computed defect norm.", 23)
 text(860, 1383, "Weighted field: WF.14–20", 22)
 
-text(1636, 843, "6. The identity and the missing interface", 30)
+text(1636, 843, "6. The two distinct completed interfaces", 30)
 box(1653, 909, 652, 102, "#eef9f1")
 text(1671, 930, "[coefficient oscillator] = 1_C(X)", 29)
 text(1671, 974, "KK^Γ(C(X),C(X)); complete homotopy proved", 23)
 text(1650, 1050, "A point evaluation is equivariant only at a fixed point.", 23)
-text(1650, 1100, "Still needed: η:C→P and d:P→C with", 26)
+text(1650, 1100, "11V–11Y: η:C→P and d:P→C with", 26)
 text(1650, 1145, "P proper,   forget(η⊗d)=+1.", 28)
 box(1653, 1207, 652, 112, "#fff5e9", "#d3ab7d")
-text(1671, 1228, "If supplied: κ = j_rη · q_P⁻¹ · j_max d · ε_max", 24)
+text(1671, 1228, "Now proved: κ = j_rη · q_P⁻¹ · j_max d · ε_max", 24)
 text(1671, 1275, "κ([1])=+1; no equivariant γ=1 is inferred.", 24)
-text(1650, 1383, "Scalar theorem 11J.3; identity Theorem 11P.3", 20)
+text(1650, 1383, "Scalar11Y.1; coefficient identity11P.3", 20)
 
 text(50, 1465, "Sources: Guentner–Higson–Weinberger (2003), §§2–4; Tu (1999), §§6–9; Tu (2004), Theorem 3.3.", 23)
-text(50, 1505, "Original proofs and diagram: CC0. Exact hypotheses, domains and remaining factorization are stated in the accompanying texts.", 23)
+text(50, 1505, "Original proofs and diagram: CC0. Exact hypotheses, domains and completed discrete factorization are stated in the accompanying texts.", 23)
 svg.append("</svg>")
 im.save(args.output / "coarse-field-unit.png", compress_level=9)
 (args.output / "coarse-field-unit.svg").write_text("\n".join(svg)+"\n", encoding="utf-8", newline="\n")

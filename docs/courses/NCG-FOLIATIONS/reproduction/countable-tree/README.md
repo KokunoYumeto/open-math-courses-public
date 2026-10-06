@@ -8,7 +8,7 @@ python draw_countable_tree.py
 python check_formulas.py
 ```
 
-The two complete generators create `../../figures/kt-proper-tree-normal-inverse.png` and `.svg`, and `../../figures/kt-countable-tree-proper-weight.png` and `.svg`. Their bounds reports and [FORMULA-CHECKS.json](FORMULA-CHECKS.json) stay beside these sources. The bundled exact DejaVu/STIX typefaces are loaded locally; outlined SVGs carry the full actual font notices. No private proof, machine path or external font service is needed.
+The two complete generators create `../../figures/kt-proper-tree-normal-inverse.png` and `.svg`, and `../../figures/kt-countable-tree-proper-weight.png` and `.svg`. Their bounds reports and [FORMULA-CHECKS.json](FORMULA-CHECKS.json) stay beside these sources. The bundled exact DejaVu/STIX typefaces are loaded locally; outlined SVGs carry the full actual font notices. No machine path or external font service is needed.
 
 The reference environment is Python 3.13.9, Matplotlib 3.10.9, NumPy 2.4.4 and Pillow 12.2.0. Two reference runs are compared byte for byte. Other software/renderer versions can change bytes without changing the formulas. These numerical checks cover 108,257 finite typed cases and seven exact window counts. They do not prove infinite domains, compact tails, reduced descent or local Bott normalization; the complete arguments are in Section 11D.
 

@@ -317,6 +317,6 @@ The preserved proof and its exact current programme dependencies were reviewed f
 ## Sources and restoration
 
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, approved purchased reprint of the second edition (1994), Theorem 21.2.10 and Corollary 21.2.11, printed 288–289 / PDF 303–304. Both full normal forms and the pointwise linear transversal statement are proved above with their precise ranges and germ qualifications.
-- The [source and restoration record](source-provenance.json) identifies the admitted edition, exact restored proof and reproducible finite checks.
+- The [source and restoration record](source-provenance.json) identifies the edition, exact restored proof and reproducible finite checks.
 
 Original lesson, examples and ten solutions: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Restoration and exact prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original additions here are CC0. Linked components retain their individual licences. No book file or text is included.

@@ -1,6 +1,6 @@
 # Artin's axioms
 
-*Source proofs by the Stacks Project authors, as distributed in the AI Integrated Stacks Project. Source copyright: Copyright (C) 2005 -- 2025 Johan de Jong. This private modified course edition is published by the Open Math Courses project, `KokunoYumeto/open-math-courses`. Writing, adaptation and integration: GPT-6.1 Sol (OpenAI), Codex, Ultra, October 2026. Permission is granted to copy, distribute and modify this modified chapter under the GNU Free Documentation License, Version 1.2 or any later version, with no Invariant Sections, Front-Cover Texts or Back-Cover Texts. Eligible independently written additions retain their CC0 1.0 dedication. Self-checked by the writing AI. The [complete licence](../licenses/GFDL-1.2.txt) accompanies this edition.*
+*Source proofs by the Stacks Project authors, as distributed in the AI Integrated Stacks Project. Source copyright: Copyright (C) 2005 -- 2025 Johan de Jong. This modified course edition is published by the Open Math Courses project, `KokunoYumeto/open-math-courses`. Writing, adaptation and integration: GPT-6.1 Sol (OpenAI), Codex, Ultra, October 2026. Permission is granted to copy, distribute and modify this modified chapter under the GNU Free Documentation License, Version 1.2 or any later version, with no Invariant Sections, Front-Cover Texts or Back-Cover Texts. Eligible independently written additions retain their CC0 1.0 dedication. Self-checked by the writing AI. The [complete licence](../licenses/GFDL-1.2.txt) accompanies this edition.*
 
 An algebraic stack has smooth coordinates, whereas a moduli problem usually arrives as a rule assigning a groupoid to each scheme. Artin's criterion constructs coordinates from that rule. The construction has three stages: obtain a versal deformation over a complete local ring, approximate it by a family of finite type, and enlarge its versal locus to an open set. A second argument explains why a flat presentation, even one with inseparable fibres, can be replaced by a smooth presentation.
 
@@ -262,7 +262,7 @@ $$A_{\mathfrak m_A}\simeq (A^*)_{\mathfrak m^*}.$$
 
 Localization at a maximal ideal preserves every quotient by its powers and therefore its associated graded algebra. All the ring comparisons constructed above consequently descend to $A$. Restricting the specified isomorphism $x_A|_{A^*}\simeq x^*$ to their common finite-order quotient supplies the required marking on objects; no finite-stage descent of an arbitrary arrow was needed. This proves all assertions. $\square$
 
-The construction follows the admitted human proof of [family approximation](#native-artin-lemma-approximate), Tag 07XB. The proof above spells out the complete-local presentation and the final finite-stage point and object comparisons. Its Popescu, G-ring and étale-completion inputs are proved in this reader or bound to the exact written commutative-algebra providers. The separate finite-complex comparison is bound to the actual written Lesson 7 appendix.
+The construction follows the Stacks Project proof of [family approximation](#native-artin-lemma-approximate), Tag 07XB. The proof above spells out the complete-local presentation and the final finite-stage point and object comparisons. Its Popescu, G-ring and étale-completion inputs are proved in this reader or bound to the exact written commutative-algebra providers. The separate finite-complex comparison is bound to the actual written Lesson 7 appendix.
 
 *Reference:* [Stacks, Tag 07XB]. Appendix A proves the finite-complex comparison as commutative algebra before applying it to algebraicity.
 
@@ -903,7 +903,7 @@ The geometric idea is to replace a finite algebraic problem by a smooth one and 
 
 ### B.1. Sources, authorship and proof status
 
-The incorporated proofs adapt the Stacks Project Authors' *Smoothing Ring Maps* chapter, the marked family-approximation proof from *Artin's Axioms*, and the specified predecessor proofs from *More on Algebra* and *Commutative Algebra*, as distributed by [AI Integrated Stacks Project](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/tree/565b10e987aba5969b21145a0833f42d69f96790). Popescu proved the main theorem; the Stacks exposition follows Richard Swan's treatment, which credits André's notes and Ogoma's arguments. This draft reuses the admitted Stacks exposition; it does not claim to have read or incorporated the separately cited papers.
+The incorporated proofs adapt the Stacks Project Authors' *Smoothing Ring Maps* chapter, the marked family-approximation proof from *Artin's Axioms*, and the specified predecessor proofs from *More on Algebra* and *Commutative Algebra*, as distributed by [AI Integrated Stacks Project](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/tree/565b10e987aba5969b21145a0833f42d69f96790). Popescu proved the main theorem; the Stacks exposition follows Richard Swan's treatment, which credits André's notes and Ogoma's arguments. This appendix reuses the Stacks exposition; it does not draw directly on the separately cited papers.
 
 Human source credit: the Stacks Project Authors, with the source copyright notice Copyright (C) 2005–2025 Johan de Jong. AI source credit: the credited contributors to the pinned AI Integrated Stacks Project edition, to the extent their contributions occur in the retained material. Adaptation, dependency comparison and the explicit supplementary verifications here: OpenAI Codex, GPT-6.1 Sol, Ultra, 5 October 2026. These credits do not assert that an AI independently reviewed the unchanged human proof.
 
@@ -1069,7 +1069,7 @@ $$A_{\mathfrak m_A}\simeq (A^*)_{\mathfrak m^*}.$$
 
 Localization at a maximal ideal preserves every quotient by its powers and therefore its associated graded algebra. All the ring comparisons constructed above consequently descend to $A$. Restricting the specified isomorphism $x_A|_{A^*}\simeq x^*$ to their common finite-order quotient supplies the required marking on objects; no finite-stage descent of an arbitrary arrow was needed. This proves all assertions. $\square$
 
-The construction follows the admitted human proof of [family approximation](#native-artin-lemma-approximate), Tag 07XB. The proof above spells out the complete-local presentation and the final finite-stage point and object comparisons. Its Popescu, G-ring and étale-completion inputs are proved in this reader or bound to the exact written commutative-algebra providers. The separate finite-complex comparison is bound to the actual written Lesson 7 appendix.
+The construction follows the Stacks Project proof of [family approximation](#native-artin-lemma-approximate), Tag 07XB. The proof above spells out the complete-local presentation and the final finite-stage point and object comparisons. Its Popescu, G-ring and étale-completion inputs are proved in this reader or bound to the exact written commutative-algebra providers. The separate finite-complex comparison is bound to the actual written Lesson 7 appendix.
 
 ### B.7. Jacobian, parameter and cotangent calculations
 
@@ -1118,7 +1118,7 @@ Section 6.1 proves the full family-approximation construction used in Lesson 7, 
 
 ### B.9. Desingularization from singularity ideals
 
-We now give the full proof chain from the admitted `smoothing.tex`: singular ideals and improved presentations; flat nilpotent lifting; lifting and desingularization; reduction to fields; localization; separable and inseparable residue fields; Popescu's theorem; both approximation theorems and the prime-localized variant. The independent Néron-DVR interlude is not needed for this chain and has not been imported into this assigned support chapter. Its omission does not narrow the regular Noetherian map theorem. All corrections are identified in §7 and applied in the incorporated derivative.
+We now give the full proof chain from the Stacks source `smoothing.tex`: singular ideals and improved presentations; flat nilpotent lifting; lifting and desingularization; reduction to fields; localization; separable and inseparable residue fields; Popescu's theorem; both approximation theorems and the prime-localized variant. The independent Néron-DVR interlude is not needed for this chain and has not been imported into this assigned support chapter. Its omission does not narrow the regular Noetherian map theorem. All corrections are identified in §7 and applied in the incorporated derivative.
 
 #### Singular ideals
 
@@ -2028,7 +2028,7 @@ such that $\kappa(\mathfrak p) = \kappa(\mathfrak p')$ and $a_i - b_i \in (\math
 
 ### B.10. Predecessor constructions used in the proof
 
-These are the complete selected statements and proofs from the admitted native files. Their source labels are retained for precise cross-references. Remaining lower dependencies are listed in §12; incorporation alone does not audit them recursively.
+These are the complete selected statements and proofs from the native Stacks source files. Their source labels are retained for precise cross-references. Remaining lower dependencies are listed in §12; not all of them are proved in this lesson.
 
 #### B.10.1. More on Algebra
 
@@ -2477,7 +2477,7 @@ Let $R$ be a G-ring and let $I \subset R$ be an ideal. In general it is not the 
 
 ### Additional proofs of the supporting constructions
 
-These statements and full proofs supply local support for the preceding arguments. They reuse the same admitted human edition; their exact units and source correspondence are recorded separately. A remaining genuine prerequisite is marked explicitly rather than treated as proved.
+These statements and full proofs supply local support for the preceding arguments. They reuse the same Stacks Project edition. A remaining genuine prerequisite is marked explicitly rather than treated as proved.
 
 #### Versality and algebraicity criteria
 

@@ -4,7 +4,7 @@ Two folding projections give two sheet exchanges on the same critical hypersurfa
 
 We prove the smooth and homogeneous coordinate theorems here. The proof separates normalization of all normal Taylor coefficients from removal of the remaining flat error. The second step requires an actual smooth solution of a difference equation; a formal Taylor series alone cannot finish it. The arguments support the subsequent folded symplectic geometry. No symplectic coordinate theorem is asserted in this lesson.
 
-The primary source is the approved purchased reprint of Hörmander III, corrected second printing (1994), Appendix C.4, Theorems C.4.6–C.4.8 PDF pages 509–515 in this exact edition. We use the single-involution reflection theorem proved in [Folds, reflections and uniform smooth descent](../20261005-restored-smooth-descent/folds-reflections-and-uniform-descent.md). The remaining ingredients are local differential calculus, smooth flows, the inverse function theorem and the explicit constructions below.
+The primary source is the reprint of Hörmander III, corrected second printing (1994), Appendix C.4, Theorems C.4.6–C.4.8 PDF pages 509–515 in this exact edition. We use the single-involution reflection theorem proved in [Folds, reflections and uniform smooth descent](../20261005-restored-smooth-descent/folds-reflections-and-uniform-descent.md). The remaining ingredients are local differential calculus, smooth flows, the inverse function theorem and the explicit constructions below.
 
 The [proof map](proof-map.json) binds all results and exercises to their exact current programme proofs. In particular, the [flow and coordinate companion F0](../20261005-restored-submanifolds/flows-constant-rank-and-leaves.md) gives the transverse flow chart, using the complete [smooth-flow providers NF1–NF7](../20261005-restored-phase-space/finite-coordinate-flows.md). All series and remainder arguments required below are proved here, with the earlier compact-parameter calculus and smooth cutoffs explicitly bound in the map.
 
@@ -563,7 +563,7 @@ The full smooth simultaneous coordinate theorem is now proved through its first 
 
 ## References and component notices
 
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, approved purchased reprint of the corrected second printing (1994), Appendix C.4, Theorems C.4.6–C.4.8; Definition 21.1.8. Exact current-copy locators and the source/proof review are recorded in [source provenance](source-provenance.json).
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the corrected second printing (1994), Appendix C.4, Theorems C.4.6–C.4.8; Definition 21.1.8. Exact locators are recorded in [source provenance](source-provenance.json).
 - The original coordinate figure retains its embedded DejaVu and STIX font outlines under their respective [DejaVu notice](figures/notices/LICENSE_DEJAVU.txt) and [STIX notice](figures/notices/LICENSE_STIX.txt).
 
 *Original lesson, exercises and coordinate artwork: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Restoration, supporting details and exact programme prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Human mathematical review remains pending. The cited book is a mathematical source; its text and files are not included in this reader.*

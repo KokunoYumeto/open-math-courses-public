@@ -21,7 +21,7 @@ The unchanged program requires Python, NumPy, SymPy, SciPy and Matplotlib. In th
 python -X utf8 build_and_check.py
 ```
 
-It writes the two PNGs, two SVGs and `figures/geometry.json`, and produces `checks.json` with exact symbolic identities, independent heat integrals and numerical checks of the proved matrix bound. It also creates an empty `src/` directory. No private material is needed. The optional manuscript-copy branch is inactive when no `manuscript.md` is present.
+It writes the two PNGs, two SVGs and `figures/geometry.json`, and produces `checks.json` with exact symbolic identities, independent heat integrals and numerical checks of the proved matrix bound. It also creates an empty `src/` directory. No other material is needed. The optional manuscript-copy branch is inactive when no `manuscript.md` is present.
 
 The observed fresh replay used Python 3.13.9, NumPy 2.4.4, SymPy 1.13.1, SciPy 1.17.1 and Matplotlib 3.10.9, with Matplotlib’s bundled DejaVu Sans font. The supplied program and all five figure outputs matched byte for byte in that environment; both PNGs also matched decoded RGBA pixels. The SVG date is omitted and the hash salt is fixed by the supplied program. No date or identifier normalization was used. Other software or font versions can change rendering bytes. The geometry JSON records the exact mathematical expressions and support points independently of the drawing libraries.
 
@@ -33,6 +33,6 @@ Figure 2 has 1598×1088 native pixels, with horizontal coordinate x and vertical
 
 ## Credits and proof scope
 
-The program, geometry and diagrams are original GPT-6.1 Sol (OpenAI), Ultra work, October 2026, dedicated under CC0. Matplotlib and font components retain their own terms. Human mathematical provenance includes Laurent Schwartz, Jan Kisyński and I. G. Petrovskii, with precise reading qualifications in the lesson. The original 1938 Petrovskii article is historical bibliographic attribution only and supplies no required proof.
+The program, geometry and diagrams are original GPT-6.1 Sol (OpenAI), Ultra work, October 2026, dedicated under CC0. Matplotlib and font components retain their own terms. The human mathematical sources include work by Laurent Schwartz, Jan Kisyński and I. G. Petrovskii, with precise reading qualifications in the lesson. The original 1938 Petrovskii article is historical bibliographic attribution only and supplies no required proof.
 
 Fourier, Fréchet and algebraic providers retain the exact declared scopes. The lesson proves the autonomous finite-dimensional logarithmic evolution theorem and its scalar nowherezero leading-time specialization, including characteristic heat and the explicit delay inverse. The general compact-kernel convolution support and reciprocal theorem remains a separate unproved task.

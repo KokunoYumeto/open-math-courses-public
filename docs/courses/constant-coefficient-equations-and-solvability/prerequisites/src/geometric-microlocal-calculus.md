@@ -1,6 +1,6 @@
 # Detecting regularity without choosing coordinates
 
-**AN-03 · Unit AN03-U012 · Independent English AI draft, not admitted.**
+**AN-03 · Unit AN03-U012 · Self-checked by the writing AI.**
 
 An operator has two kinds of locality. Its kernel determines which input points can influence an output point. Its symbol determines which cotangent directions can carry an irregularity. We construct these two structures together, then use them to measure regularity of sections of arbitrary finite-rank complex bundles. All manifolds below are Hausdorff, second countable, smooth, and without boundary; compactness is imposed only where stated.
 

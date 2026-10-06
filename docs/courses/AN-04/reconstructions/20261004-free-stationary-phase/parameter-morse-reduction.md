@@ -1,10 +1,9 @@
 # A smooth quadratic reduction with parameters
 
-Private stationary-phase repair. This supplies the full local reduction needed
+Prerequisite companion to the stationary-phase lesson. This supplies the full local reduction needed
 between the quadratic calculation and the isolated/clean stationary-phase
 formulae. It retains the parameter scope of the earlier AN04-U001 Lemma 4.1
 and makes its inverse-function, elimination and signature steps explicit.
-The earlier lesson remains private evidence; no old clearance is reused.
 
 The free human inputs are Lebl's *Basic Analysis II*, version 6.3,
 [§8.5](https://www.jirka.org/ra/html/sec_svinvfuncthm.html), and the
@@ -22,8 +21,7 @@ material and is offered under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 The Guillemin–Sternberg source is cited for mathematics actually read, without
 copying its text or distributing its PDF. The selected local Morse inputs are
-bound in `integration-proof-chain.json`. The complete stationary-phase lesson
-and its distributed sources remain under review.
+bound in `integration-proof-chain.json`.
 
 ## M1. Parameter Morse lemma and its Jacobian
 

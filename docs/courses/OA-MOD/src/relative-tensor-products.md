@@ -3125,7 +3125,7 @@ equals the original operator \(\rho_H(b)\). Thus it is well-defined and bounded 
 
 Using \(T\pi(b)\) instead would give \(2E_{12}\). This calculation checks both the negative-half endpoint and which side multiplies the operator coordinate.
 
-This original exposition supplies the detail left to the reader in Takesaki II IX.3.4, printed p.190 / PDF p.210. FU-03 retains ownership of bounded-vector coordinates; FU-08 retains the full endpoint multiplier theorem. The present item proves their finite-coefficient dictionary and normal-action application, including the analytic-algebra continuity check. It does not close the spatial-derivative operator appearing after IX.3.5.
+This original exposition supplies the detail left to the reader in Takesaki II IX.3.4, printed p.190 / PDF p.210. Bounded-vector coordinates are established in FU-03, and the full endpoint multiplier theorem in FU-08. The present item proves their finite-coefficient dictionary and normal-action application, including the analytic-algebra continuity check. It does not close the spatial-derivative operator appearing after IX.3.5.
 
 ## A linking weight with a nonfaithful second corner
 

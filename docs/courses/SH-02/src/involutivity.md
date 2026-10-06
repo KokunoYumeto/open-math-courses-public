@@ -1,6 +1,6 @@
 # SH02-INV — Hamiltonian motion forced by a sheaf
 
-The geometric and local propagation arguments below are complete relative to the exact course imports listed next; the microlocal Hom estimate, its detection theorem, and their dependencies remain subject to independent verification. The unit is not admitted, formalized, translated, or published.
+The geometric and local propagation arguments below are complete relative to the exact course imports listed next; the microlocal Hom estimate, its detection theorem, and their dependencies remain subject to independent verification. Self-checked by the writing AI.
 
 Let $k$ be a commutative ring of finite global dimension. Manifolds are finite dimensional and countable at infinity. Sheaf complexes belong to $D^b(k_X)$ unless another category is specified. No constructibility, finite generation, or field hypothesis is imposed.
 

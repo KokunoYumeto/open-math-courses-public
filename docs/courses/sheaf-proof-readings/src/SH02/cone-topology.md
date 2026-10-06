@@ -341,9 +341,9 @@ Thus (G10) includes the pullback of global cohomology as well as the identity pr
 
    This explicitly rules out base change along $K\hookrightarrow V$ for this nonproper $p_1$. The properness of the *other* projection on a compact slice cannot repair that inference.
 
-## Proof and release boundaries
+## Proof boundaries
 
-The advanced statements have been drafted at the full cone generality above. Exercise 2 additionally imports proper-support base change and compact-support localization; it is marked dependency-pending until those course contracts are audited. The unit makes no claim about microsupport characterization, cutoff under proper cones, Fourier–Sato inversion, specialization, or involutivity.
+The advanced statements have been drafted at the full cone generality above. Exercise 2 additionally imports proper-support base change and compact-support localization; their proofs are not given in this lesson. The unit makes no claim about microsupport characterization, cutoff under proper cones, Fourier–Sato inversion, specialization, or involutivity.
 
 Compare Kashiwara and Schapira, [*Microlocal Study of Sheaves*, Astérisque 128 (1985)](https://www.numdam.org/item/AST_1985__128__1_0/). In the inspected Numdam scan, printed page numbers are three less than PDF page numbers. Section 1.5.2 defines the directional topology on printed p. 33; Lemma 1.5.4 proves section continuation on pp. 34–35; Lemma 1.5.5, Theorem 1.5.3 and Corollary 1.5.6 supply the underived unit, derived unit and convex-open cohomology comparison on pp. 34–36. These are the precise antecedents for (G2), (G3), (G6) and (G8).
 
@@ -355,5 +355,5 @@ The correspondence formula (G10) is justified by the additional proof in `SH02-G
 
 The support comparison (G12) is supplied by open restriction, direct-image composition and the localization triangle for a directionally locally closed support. It neither enlarges that support class nor imports a microsupport characterization. The source's Proposition 3.2.2, printed pp. 58–60, is a later characterization involving microsupport; that separate theorem is not needed for the topology and kernel proofs here. The comparison distinguishes these arguments instead of assigning all of them to one source theorem.
 
-Original programme expression and this source comparison are CC0 1.0 Universal. The cited Astérisque volume retains the Société mathématique de France's 1985 copyright and archive terms. The proper-base-change input retains the Stacks attribution and component terms recorded in [the prerequisite contracts](open-prerequisites.md). Reading access does not relicense either human source. Earlier source attributions remain in private history; no source text, figures or private comparison files are included in the reader.
+Original programme expression and this source comparison are CC0 1.0 Universal. The cited Astérisque volume retains the Société mathématique de France's 1985 copyright and archive terms. The proper-base-change input retains the Stacks attribution and component terms recorded in [the prerequisite contracts](open-prerequisites.md). Reading access does not relicense either human source.
 

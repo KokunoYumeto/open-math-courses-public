@@ -4,7 +4,7 @@ External products put two independent directional problems on one product manifo
 
 Use How simple-sheaf shifts change along a Lagrangian for the coefficient-object normalization and type transport. Let \(k\) be a commutative ring of finite global dimension and \(X_i\) finite-dimensional real smooth manifolds. The input sheaves and their coefficient complexes are arbitrary bounded objects. The proofs below use the derived tensor–Hom adjunction, the exceptional-operation identities, and duality and cohomological dimension on manifolds. The constant-coefficient and closed-support comparisons needed here are given explicitly below.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026; revised by GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the writing AI. Original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
 ## The two product statements
 
@@ -291,9 +291,21 @@ The first covector is antipodal by (3). In a full conormal fibre the antipode pr
 
 ## Move from regular projection points to every point
 
-We now prove (1)–(2) on general smooth conic \(\Lambda_i\). Points at which the base projection has locally constant rank form a dense open subset. Indeed every open chart contains a point of maximal rank attained in that chart; a nonzero maximal minor makes that rank persist on a smaller open neighborhood. At such a regular point, the conic Lagrangian projection normal form identifies the germ with a conormal. That geometric normal form is a prerequisite. Near a zero covector use the closed-conic conormal model directly.
+We now prove (1)–(2) on general smooth conic \(\Lambda_i\). Points where the base projection has locally constant rank form an open dense subset. To see density, choose in any nonempty coordinate patch the largest integer rank attained there. A nonzero minor at a point of that rank stays nonzero on a smaller neighborhood, while maximality in the patch prevents a larger rank. The rank is therefore constant there. Rank zero causes no exception: if that is the maximum, every derivative in the patch is zero.
 
-Take a small connected coordinate neighborhood \(P_i\subset\Lambda_i\) of each chosen \(p_i\). Choose a continuous auxiliary Lagrangian \(\mu_i\) transverse both to the vertical plane \(V_i\) and to \(A_i=T\Lambda_i\). Such a local choice follows by choosing a common complement at the initial point and using openness in a tangent trivialization. Define
+Here is the actual conormal geometry at a nonzero point of constant rank \(r\), as in constant-rank conormal recognition, Theorem 5.1. Write \(n=\dim X\). Use an invertible \(r\)-by-\(r\) minor of the projection to take its first \(r\) output coordinates and the remaining domain coordinates as coordinates \((u,v)\) on \(\Lambda\). The inverse function theorem gives
+
+\[
+\pi(u,v)=(u,h(u,v)).
+\]
+
+Since the first derivative block is \((I,0)\), constant rank \(r\) forces \(\partial_v h=0\). On a small coordinate product, integration along a segment in the \(v\)-variables gives \(h(u,v)=h(u,v_0)\). The image is therefore the embedded base germ \(M=\{(u,h(u,v_0))\}\), and \(d\pi(T\Lambda)=TM\). For \(r=0\), the same segment argument makes \(\pi\) constant and \(M\) is a point.
+
+The fibre-radial vector \(R\) is tangent to \(\Lambda\) by conicity. Since \(\omega=d\theta\) and \(\iota_R\omega=\theta\), isotropy gives \(\theta|_{T\Lambda}=0\). For \((x,\xi)\in\Lambda\) and \(v\in T_xM\), choose \(w\in T_{(x,\xi)}\Lambda\) with \(d\pi(w)=v\); then \(\xi(v)=\theta(w)=0\). Thus \(\Lambda\subset T_M^*X\) locally. Both embedded manifolds have dimension \(n\); the inclusion has an invertible derivative and is an open embedding after shrinking. This proves equality of germs near the selected covector. It asserts no equality with all conormal directions or with a global conormal bundle. At a nonzero point \(R\ne0\) lies in the projection kernel, so \(r<n\).
+
+At a zero covector use the smooth-conic zero-covector proof. To recall its essential step, dilation invariance splits the tangent Lagrangian as \(P\oplus P^\perp\). In adapted coordinates, projection to tangential base coordinates \(a\) and normal covectors \(\beta\) is invertible, so the germ is \(b=g(a,\beta)\), \(\alpha=h(a,\beta)\). Dilation gives \(g(a,t\beta)=g(a,\beta)\) and \(h(a,t\beta)=t h(a,\beta)\). Smoothness at \(\beta=0\) makes \(g=g_0(a)\) and \(h\) linear in \(\beta\); the vanishing tautological form gives \(h=-dg_0(a)^T\beta\). These are exactly the conormal equations of \(b=g_0(a)\), including zero covectors. Thus this case also supplies the conormal chart needed for (4)–(9).
+
+Take a small connected coordinate neighborhood \(P_i\subset\Lambda_i\) of each chosen \(p_i\). The real common-complement construction gives at \(p_i\) a Lagrangian plane transverse to both \(V_i\) and \(A_i=T\Lambda_i\), in every possible intersection dimension. Extend that plane as a constant Lagrangian plane in a local symplectic frame. After shrinking \(P_i\), openness of transversality gives a continuous family \(\mu_i\) transverse to both varying planes. The rank of their intersection need not be locally constant. Define
 
 \[
 d_i(q)=d_i+\frac12\bigl[
@@ -303,11 +315,17 @@ d_i(q)=d_i+\frac12\bigl[
 \qquad\text{(10)}
 \]
 
-The parity rule makes these allowed shifts. The continuous-family type theorem makes \(F_i\) have type \(L_i\) with shift \(d_i(q)\) throughout \(P_i\).
+These shifts have the required parity even where the projection rank jumps. Put \(n_i=\dim X_i\) and \(r_i(q)=\dim(V_i(q)\cap A_i(q))\). Since the other two pairwise intersections with \(\mu_i\) vanish, the degenerate ordered-index parity formula gives
+
+\[
+\tau(V_i(q),A_i(q),\mu_i(q))\equiv n_i+r_i(q)\pmod2.
+\]
+
+Subtract the same congruence at \(p_i\) and use \(d_i-r_i(p_i)/2\in\mathbb Z\). Formula (10) then gives \(d_i(q)-r_i(q)/2\in\mathbb Z\), as required. It also makes \(d_i(q)-\tau(V_i(q),A_i(q),\mu_i(q))/2\) constant. The continuous-family type theorem consequently gives type \(L_i\) with shift \(d_i(q)\) throughout the connected \(P_i\). This uses local constancy of type; it does not require the half-integer-valued shifts in (10) themselves to be continuous.
 
 For the tensor output, use \(\mu_1\oplus\mu_2\). Its inertia is the sum of the two input inertias, because the product symplectic space is the direct sum. Hence
 \(d_1(q_1)+d_2(q_2)-\tau_{\mathrm{product}}/2\)
-is constant on \(P_1\times P_2\). The output is bounded and has smooth-Lagrangian microsupport by (3), so its type at those allowed shifts is constant. At a pair of regular points formula (5) computes it as \(L_1\otimes^LL_2\). It has the same type at the selected pair, where the shifts in (10) are the original \(d_i\). This proves (1).
+is constant on \(P_1\times P_2\). Its allowed parity follows by adding the two input parity conditions: the product vertical intersection has dimension \(r_1+r_2\). The output is bounded by (T1), and (3) contains its microsupport in the smooth product Lagrangian on this chart. The continuous-family theorem therefore makes its type constant there. Each \(P_i\) contains a regular projection point by the density just proved. At one such pair, the conormal calculation (5) gives type \(L_1\otimes^LL_2\). Constancy gives this same type at the selected pair, where (10) recovers the original shifts \(d_i\). This proves (1). No limit of coefficient complexes at regular points is taken.
 
 For Hom, let \(\bar a(q_1,q_2)=(q_1^a,q_2)\) act on the two cotangent factors. Its first tangent map reverses the first symplectic form. Thus the auxiliary plane \(a_*\mu_1\oplus\mu_2\) is transverse to the product vertical and \(T(\Lambda_1^a\times\Lambda_2)\), with index
 
@@ -317,7 +335,7 @@ For Hom, let \(\bar a(q_1,q_2)=(q_1^a,q_2)\) act on the two cotangent factors. I
 \qquad\text{(11)}
 \]
 
-The corrected candidate shift \(d_2(q_2)-d_1(q_1)-\tau_{\mathrm{Hom}}/2\) is constant. The output is bounded by the arbitrary-input internal-Hom theorem and has the required microsupport by (3). Its type is therefore constant on the antipodal product chart. At a regular pair (6)–(9) compute it as \(R\operatorname{Hom}_k(L_1,L_2)\), with the local orientation choice specified there. This gives (2) at the original antipodal pair. The proof covers zero covectors and does not require globally orientable manifolds. \(\square\)
+The corrected candidate shift \(d_2(q_2)-d_1(q_1)-\tau_{\mathrm{Hom}}/2\) is constant. Its allowed parity is again \((r_1+r_2)/2\): the difference between \((r_2-r_1)/2\) and \((r_1+r_2)/2\) is the integer \(-r_1\). The output is bounded by the arbitrary-input internal-Hom estimate (H2), and (3) gives the required microsupport containment. Its type is therefore constant on the antipodal product chart. At a regular pair (6)–(9) compute it as \(R\operatorname{Hom}_k(L_1,L_2)\), with the local orientation choice specified there. This gives (2) at the original antipodal pair. The proof covers zero covectors and does not require globally orientable manifolds. \(\square\)
 
 ## Pure inputs can have several product degrees
 
@@ -373,4 +391,6 @@ The first auxiliary inertia changes from one to three and the second from minus 
 
 ## References
 
-M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §7.2, Proposition 7.2.9, p. 129, gives the tensor and external Hom rules for pure module types under the stated Tor- or Ext-vanishing hypotheses. Lemmas 7.2.3–7.2.4 and Examples 7.2.6(i)–(ii), pp. 125–128, develop the conormal normalization and the reduction through regular projection points. The formulas above retain the full derived coefficient complexes: the Tor and Ext examples explain why purity need not survive. The linked programme lessons supply the external microsupport estimates and the normalized type transport; the coefficient bounds, evaluation comparison and relative normal-orientation calculation above give the general coefficient formulas (1)–(2).
+Masaki Kashiwara and Pierre Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), Proposition 7.2.9, printed p. 129 (PDF p. 132), gives the tensor and external Hom rules for pure module types. Its tensor statement assumes finite weak global dimension and vanishing higher Tor; its Hom statement assumes vanishing higher Ext and a bounded first sheaf input. Its first covector is antipodal in the Hom formula. Definition 7.2.5 and Examples 7.2.6(i)–(ii), printed pp. 127–128, give the normalization in which a constant codimension-\(c\) submanifold has shift \(c/2\).
+
+Here the types are bounded coefficient complexes over a ring of finite global dimension. The coefficient bounds, evaluation comparison and normal-orientation calculation prove the full derived formulas (1)–(2). The Tor and Ext examples show exactly why those formulas need not produce pure objects from pure inputs. The linked programme lessons prove the external microsupport estimates and auxiliary-plane transport; the conormal geometry and common-complement arguments above explain how the local coefficient computations reach every selected covector.

@@ -77,7 +77,7 @@ The scalar2 is invertible in \(\mathbb C\), so the sphere period vanishes. Secti
 
 ## Exercise6: reverse the canonical orientation and examine degree zero
 
-**Problem (advanced).** The admitted C8 convention gives \(k_x=-k_{\mathrm{out}}\). Compute its integer class and a rational chain bounding it. Then explain precisely why the two-dimensional example from Comparison3 cannot be inferred from the \(S^2\) matrix result.
+**Problem (advanced).** The C8 convention gives \(k_x=-k_{\mathrm{out}}\). Compute its integer class and a rational chain bounding it. Then explain precisely why the two-dimensional example from Comparison3 cannot be inferred from the \(S^2\) matrix result.
 
 **Solution.** In \(\mathbb Z/2\mathbb Z\), negation fixes the nonzero class, so \([k_x]=[k_{\mathrm{out}}]\ne0\). Since \(\partial A_{\mathrm{out}}=-2k_{\mathrm{out}}=2k_x\), the rational chain \(A_{\mathrm{out}}/2\) bounds \(k_x\). There is no integral chain bounding it, by the nonzero class.
 
@@ -85,13 +85,13 @@ For the two-dimensional wave the fiber consists of two points, and the sphere cy
 
 ## Exact scope and credit
 
-The full working proof gives every needed chain, open-cover, sphere and mapping-torus argument and identifies the actual outward generator. It credits Allen Hatcher's author-hosted *Algebraic Topology*, Chapter2, for prism, subdivision, Mayer--Vietoris and mapping-torus background. The existing AH032-2 orientation and explicit cylinder are retained exactly. This companion does not decide the intended coefficient convention of a private source, general Petrowsky component constancy, rational-form completeness, projective tube injectivity or recursive course foundations. Those remain separate tasks.
+The full working proof gives every needed chain, open-cover, sphere and mapping-torus argument and identifies the actual outward generator. It credits Allen Hatcher's author-hosted *Algebraic Topology*, Chapter2, for prism, subdivision, Mayer--Vietoris and mapping-torus background. The existing AH032-2 orientation and explicit cylinder are retained exactly. This companion does not prove general Petrowsky component constancy, rational-form completeness, projective tube injectivity or the underlying course foundations. Those remain separate tasks.
 
 ---
 
 # The four-dimensional wave cycle has nonzero integral torsion
 
-Owner working proof, October 2026. Written by GPT-6.1 Sol (OpenAI), Ultra reasoning. Original exposition: CC0. It strengthens the explicit wave calculation in AH032-2 without changing that frozen proof or asserting the coefficient convention of a private source.
+Working proof, October 2026. Written by GPT-6.1 Sol (OpenAI), Ultra reasoning. Original exposition: CC0. It strengthens the explicit wave calculation in AH032-2.
 
 The exact polynomial and direction are
 
@@ -109,7 +109,7 @@ Its affine equatorial complement is identified, using \(\tau=0\), with
  \tag{WT2}
 \]
 
-Let \(k_{\mathrm{out}}\) be the real unit sphere in this complement, with its outward orientation. The admitted AH032-2 canonical C8 representative is \(k_x=-k_{\mathrm{out}}\). At every point of this sphere, \(F=-1\ne0\), so the zero equatorial deformation field is allowed. The result concerns these actual finite cycles with ordinary integral singular homology, not compactly supported or Borel--Moore homology.
+Let \(k_{\mathrm{out}}\) be the real unit sphere in this complement, with its outward orientation. The AH032-2 canonical C8 representative is \(k_x=-k_{\mathrm{out}}\). At every point of this sphere, \(F=-1\ne0\), so the zero equatorial deformation field is allowed. The result concerns these actual finite cycles with ordinary integral singular homology, not compactly supported or Borel--Moore homology.
 
 **Theorem.** In the model (WT1)--(WT2),
 
@@ -286,7 +286,7 @@ The same calculation may instead be made directly over any field of characterist
 
 ## 6. The explicit bounding cylinder agrees with the group calculation
 
-The already admitted exact cylinder is
+The exact cylinder of AH032-2 is
 
 \[
  A_{\mathrm{out}}(s,u)=e^{is}u,
@@ -313,4 +313,4 @@ Its rational multiple \(-A_{\mathrm{out}}/2\) bounds the single outward sphere. 
 
 Allen Hatcher's freely readable [*Algebraic Topology*, Chapter2](https://pi.math.cornell.edu/~hatcher/AT/ATch2.pdf) credits the standard background: Theorem2.10, printed112--113, for prism homotopy; Proposition2.21, printed119--124, for small chains; the Mayer--Vietoris derivation, printed149--150; Example2.46, printed150, for the sphere calculation; and Example2.48, printed151--152, for the mapping-torus sequence. The present proof gives its needed integral chain arguments and uses an explicit two-arc matrix instead of presuming the mapping-torus result. The polynomial fiber and equivariant deformation (WT4)--(WT10) are calculated here. No novelty priority is claimed.
 
-The exact admitted AH032-2 input has SHA256 B35BF16D5E015814179084DB3791F91876A992B8AF96CBF098D29B161260FAA7. This proof confirms and strengthens its coefficient qualification without modifying those bytes. The private Definition12.6.5 did not name a coefficient ring on its inspected page. This particular counterexample rules out treating rational detection as a proof of integral null homology. It does not decide the intended source convention, general topology, tube injectivity, rational-form cohomology completeness or D7's receiver.
+This proof confirms and strengthens the coefficient qualification of AH032-2. This particular counterexample rules out treating rational detection as a proof of integral null homology. General topology, tube injectivity, rational-form cohomology completeness and D7's receiver are not proved here.

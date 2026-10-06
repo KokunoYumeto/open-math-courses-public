@@ -1,10 +1,10 @@
 # Joint spectral charts and measurable intertwiners
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author checked; not independently reviewed. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 A spectral theorem in each Hilbert space does not by itself choose measurable spectral coordinates across a family. This lesson constructs those coordinates together. The construction uses one abelian algebra on the full Hilbert integral, then takes scalar densities on the product of the original base and the real line. It also proves joint measurability of the fields carrying bounded intertwiners. These are the two assertions of the measurable spectral input (B6) in the existing programme proof of Connes' integrable centralizer theorem.
 
-We import the exact written OA-MOD results on abelian realization, scalar densities and the diagonal commutant. Their constructions remain with their owner. The new argument is their application to the specified spectral family and its original base, including the passage back to individual fibres. The following [Almost homomorphisms on measured groupoids](almost-homomorphisms-on-measured-groupoids.md) proves the separate groupoid homomorphism repair. The general modular operator-weight bridge retains its explicit owner prerequisites.
+We import the exact written OA-MOD results on abelian realization, scalar densities and the diagonal commutant. Their constructions are not repeated here. The new argument is their application to the specified spectral family and its original base, including the passage back to individual fibres. The following [Almost homomorphisms on measured groupoids](almost-homomorphisms-on-measured-groupoids.md) proves the separate groupoid homomorphism repair. The general modular operator-weight bridge is not proved here.
 
 Prerequisites are measurable separable Hilbert fields, scalar product integration, the self-adjoint spectral calculus, the bounded bicommutant theorem and Hilbert space completion. Inner products are linear in the first variable. All measures and fields may be completed. Representatives in a standard sigma-finite space can be chosen Borel outside a null set. Equality of fields means equality almost everywhere for the particular countable data in the argument.
 

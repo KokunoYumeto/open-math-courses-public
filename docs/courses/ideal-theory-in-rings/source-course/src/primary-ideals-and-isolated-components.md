@@ -161,7 +161,7 @@ Sections 4–8 of [Ideal Theory in Ring Domains, work 19](https://github.com/Kok
 
 ## References
 
-* Emmy Noether, *Idealtheorie in Ringbereichen*, 1921, Sections 4–8. [Free English working edition, work 19](https://github.com/KokunoYumeto/emmy-noether-en/blob/main/source/Noether_English_ED0014.tex), with the original bibliographic information and machine-assisted translation provenance.
+* Emmy Noether, *Idealtheorie in Ringbereichen*, 1921, Sections 4–8. [Free English working edition, work 19](https://github.com/KokunoYumeto/emmy-noether-en/blob/main/source/Noether_English_ED0014.tex), a machine-assisted translation with the original bibliographic information.
 * The Stacks project authors, [associated primes, Tag 00L9](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#section-ass), [prime avoidance, Tag 00DS](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#lemma-silly), [Artinian decomposition, Tag 00JA](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#lemma-product-local). These AI Integrated Stacks Project links use the edition described in the course introduction. No primary-decomposition theorem is attributed to a Stacks tag.
 
 ## Editable sources

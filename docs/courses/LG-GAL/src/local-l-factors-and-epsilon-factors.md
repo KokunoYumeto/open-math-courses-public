@@ -625,8 +625,6 @@ Sections 3A–3D prove existence, including every Brauer relation and all smooth
 
 Lemma 7.5 supplies its own real induction proof. The real/complex/quaternionic classification used there is the actual conjugate-linear proof in RT-FIN-04, Theorems 2.1 and 3.1 and Proposition 3.2. Lemmas 7.6–7.8 prove the real generator, Clifford class and dihedral Fourier assertions. Hilbert 90 is NT-CFT-03, Theorem 3.1. The Brauer invariant and corestriction law are NT-CFT-24, Theorem 24.2. Theorem 7.4 then proves the orthogonal formula, including characteristic two. No monodromy operator is included in these L-factors yet.
 
-These locators refer to actual inspected earlier programme proofs. Their present public editions and transitive free-source provenance remain subject to the programme revision; a locally retained or privately fetched source does not certify public accessibility. The new proof reconstruction also requires the programme's integration review before any claim of complete compliance. This paragraph records those limits rather than treating a bibliography or a future lesson title as a proof provider.
-
 The following human-authored materials are freely readable. They were used to verify conventions and the original theorem scopes; the arguments and exact earlier proof providers above carry the proof obligations.
 
 - **Pierre Deligne**, [*Les constantes des équations fonctionnelles des fonctions L*, free IAS author text](https://publications.ias.edu/sites/default/files/Number20.pdf), §1.5 for virtual induction, §§3.3–3.4 for character constants, and §§4.2–4.16 for the existence relation argument. The arithmetic and geometric reciprocity conventions are fixed in its §2.3.

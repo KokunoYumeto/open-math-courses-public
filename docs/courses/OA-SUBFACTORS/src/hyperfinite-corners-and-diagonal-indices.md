@@ -332,7 +332,7 @@ Equivalently its checked algebra-compression rule GM7 gives dimensions \(1/t\) a
 
 At \(d=4\), \(t=1/2\). At \(d=9/2\), \(t=1/3\). As finite \(d\) grows, \(t\) remains strictly positive. No limit \(p=0\) is used, and the symbol \(d\ge4\) here means finite real indices, as in the original example.
 
-The owner's separately retained stable trace-scaling construction for arbitrary \(M\) remains useful and unchanged. C14–C17 supply an unconditional concrete realization for the separable hyperfinite factor and every finite real \(d\ge4\), rather than replacing that assigned outcome with a single specialized example.
+C14–C17 supply an unconditional concrete realization for the separable hyperfinite factor and every finite real \(d\ge4\), rather than replacing the stable trace-scaling construction for arbitrary \(M\) with a single specialized example.
 
 ![Exact-trace corner repair, nested dyadic matrices and the diagonal index](figures/hyperfinite-corners-v3.svg)
 

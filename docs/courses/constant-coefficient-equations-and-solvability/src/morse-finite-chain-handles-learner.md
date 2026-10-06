@@ -10,9 +10,9 @@ Then read the compatible open-stage argument. Every ordinary singular chain has 
 
 ## The topology receiver and its boundaries
 
-L124 supplies the explicit projective exhaustion and the oriented normal-first homological tube receiver. Applying its index bound also uses the qualified smooth Morse perturbation and Sard entries retained in the complete SH03 programme source. Real form/right-cap and compact-support closed–open comparisons are separate admitted programme entries; rational spanning, integral or rational connecting-map comparison, affine C8 and full component constancy remain separate.
+L124 supplies the explicit projective exhaustion and the oriented normal-first homological tube receiver. Applying its index bound also uses the qualified smooth Morse perturbation and Sard entries retained in the complete SH03 programme source. The real form/right-cap and compact-support closed–open comparisons are separate programme results; rational spanning, integral or rational connecting-map comparison, affine C8 and full component constancy are not proved here.
 
-The exact corrected packet, original diagram alternative, native figures, reproducible sources and terms are supplied in full. The corrected block drawing changes label placement only; the original proof, coordinates, stopping times and geometry are preserved. This reader adds reversible math delimiters around original inline index and power notation. Reversing those presentation additions and heading/path changes recovers every byte of the admitted learner and its complete formal proof.
+The exact corrected packet, original diagram alternative, native figures, reproducible sources and terms are supplied in full. The corrected block drawing changes label placement only; the original proof, coordinates, stopping times and geometry are preserved. This reader adds reversible math delimiters around original inline index and power notation.
 
 ---
 
@@ -134,7 +134,7 @@ For the general bounding statement let z be a finite cycle in one \(W_i\) and su
 
 The full proof below supplies the geometric finite-chain handle input H. At a strictly plurisubharmonic Morse critical point on a complex d-manifold, B(v,v)+B(Jv,Jv)=4ℒ(v)>0 bounds the real index by d. The exact SH03 zero-section perturbation interface supplies such a proper Morse function relative to its retained smooth/Sard foundations. The explicit projective exhaustion already proved in TP041 is its starting function. Consequently the geometric handle construction gives the ordinary \(H_{d+1}(U;Q)\) vanishing used in the separately reviewed ordinary-pair normal-tube argument. No sheaf/singular comparison is substituted for that proof.
 
-This candidate is not independently admitted yet. It does not close lower Sard/analytic programme foundations, general rational-form spanning, the actual affine C8 tube/scalar/multiplicity comparison, the alternative closed–open compact-support comparison, historical coefficient conventions, full component constancy or recursive course closure. The complete formal proof, exact source credits and scope statement follow without abridgement.
+This lesson does not close lower Sard/analytic programme foundations, general rational-form spanning, the actual affine C8 tube/scalar/multiplicity comparison, the alternative closed–open compact-support comparison, historical coefficient conventions, full component constancy or recursive course closure. The complete formal proof, exact source credits and scope statement follow without abridgement.
 
 ---
 

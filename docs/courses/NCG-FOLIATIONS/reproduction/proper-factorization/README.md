@@ -1,0 +1,7 @@
+# Proper scalar factorization for discrete groups
+
+Sections 11V–11Y of *K-theory of the leaf space* prove supported equivariant completely positive averaging, proper-source localization with its telescope, the actual infinite Bott deformation, the nuclear nearest-face proper algebra, its shifted exterior Dirac family and the typed scalar transfer. Exercises 160–163 give complete solutions. Together with the earlier uniform embedding and descent proofs, they construct a reduced scalar KK class whose unit pairing is +1 for every finitely generated abstract compact-Lie subgroup and every finitely generated characteristic-zero linear group. A general anchored holonomy factorization and its graph operator remain separate requirements.
+
+Figure 11Y.1 gives the exact even equivariant source/coefficient chain, the two ordinary contractions, and the exact two-vertex Clifford sample with probability (1/4,3/4). The simplex module has degree |sigma|-1, so its one-dimensional kernel is even and contributes +1. The finite diagram and matrix illustrate the complete accompanying proof rather than substitute for it. render-data.json preserves the exact sample, grading and proof locators.
+
+Use Python 3.13.9 and Pillow 12.2.0 with the bundled unmodified font and FONT-NOTICE.txt beside reproduce.py. Run `python -B reproduce.py --output OUTPUT` to produce PNG, SVG and render-data.json. SVG embeds the exact font and complete terms. The full CC0 dedication and Python/Pillow notices accompany the generator. No TeX installation, network data or source extracts are needed.

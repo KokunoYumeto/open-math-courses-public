@@ -456,7 +456,7 @@ The first three derivatives have the original order, and their scalar coefficien
 
 ## References
 
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, approved purchased reprint of the corrected second printing (1994), §25.3, printed 32–33 / PDF 43–44, especially (25.3.7)–(25.3.8). Exact identity and review are recorded in [source provenance](source-provenance.json).
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, approved purchased reprint of the corrected second printing (1994), §25.3, printed 32–33 / PDF 43–44, especially (25.3.7)–(25.3.8). Exact identity is recorded in [source provenance](source-provenance.json).
 - The AN-03 support-preserving symbol-summation theorem (earlier label E6), with its complete programme proof [K1](../20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md) and the component notices linked there.
 - The original exact density diagram retains its embedded DejaVu outlines under the [font notice](figures/notices/LICENSE_DEJAVU.txt).
 

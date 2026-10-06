@@ -6,4 +6,4 @@ The two unmodified bundled DejaVu Sans fonts retain the full installed DejaVu/Bi
 
 The optional reference renderer uses Python, Matplotlib, NumPy and Pillow; the runtimes are not redistributed. Their complete installed primary licence texts are retained as PYTHON-LICENSE.txt, MATPLOTLIB-LICENSE.txt, NUMPY-LICENSE.txt and PILLOW-LICENSE.txt. RENDER-INPUTS.json records the bundled fonts, notices and current generator. The actual reference Matplotlib version is 3.10.9.
 
-MODEL-OBSERVATION.json, SOURCE-READING.json, SOURCE-CHECK.json, RESEARCH-NOTE.md, PROVIDERS.json and the private-connes files are private task evidence. They are not proposed public source payloads. The Connes author-hosted source was eligible for reading at its exact current bytes; no source-expression reproduction permission is inferred.
+No permission to reproduce the expression of the Connes author-hosted source is inferred.

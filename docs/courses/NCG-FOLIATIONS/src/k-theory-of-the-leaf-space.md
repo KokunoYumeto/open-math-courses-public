@@ -17306,7 +17306,7 @@ Jean-Louis Tu, [La conjecture de Baum–Connes pour les feuilletages moyennables
 
 ![Coarse geometry, proper cone and the coefficient oscillator identity](../figures/coarse-field-unit.png)
 
-**Figure 11P.1.** The first two panels show the faithful characteristic-zero linearization and the kernel/probability construction, with their exact scope. The third is the one-dimensional sample \(g=3\), \(v=-1.5\), \(t=3\) of the squared-height action; its excess remains \(0.75\). The fourth gives the exact energies from (WF.10) at \(s=1\), \(\lambda=(1,3)\), including the unique even vacuum. The fifth plots the integrable bound shape at \(p=2/3\), rather than a measured operator error. The final panel distinguishes Theorem 11P.3’s coefficient identity from the still required proper scalar factorization. The complete accompanying proofs state all domains, supports and quantifiers. [Vector figure](../figures/coarse-field-unit.svg); [reproducible generator](../reproduction/general-auxiliary-providers/reproduce.py); [component terms](../reproduction/general-auxiliary-providers/COMPONENT-TERMS.md).
+**Figure 11P.1.** The first two panels show the faithful characteristic-zero linearization and the kernel/probability construction, with their exact scope. The third is the one-dimensional sample \(g=3\), \(v=-1.5\), \(t=3\) of the squared-height action; its excess remains \(0.75\). The fourth gives the exact energies from (WF.10) at \(s=1\), \(\lambda=(1,3)\), including the unique even vacuum. The fifth plots the integrable bound shape at \(p=2/3\), rather than a measured operator error. The final panel distinguishes Theorem 11P.3’s coefficient identity from the separate proper scalar factorization, now constructed in Sections 11V–11Y. The complete accompanying proofs state all domains, supports and quantifiers. [Vector figure](../figures/coarse-field-unit.svg); [reproducible generator](../reproduction/general-auxiliary-providers/reproduce.py); [component terms](../reproduction/general-auxiliary-providers/COMPONENT-TERMS.md).
 
 
 ## 11Q. A locally compact universal proper base and its probability map
@@ -17378,12 +17378,12 @@ with \(g_n\) escaping every finite set, tends to \(\tfrac34\delta_e\) in \(M\), 
 
 Theorem 11Q.1 and Proposition 11Q.2 supply the actual proper central space and the continuous equivariant probability-base map required in the compact-base transfer route. Pullback of \(C(X)\) along \(\Phi\) acts in \(C_b(Z)=M(C_0(Z))\), and is nondegenerate: on a compact support its continuous image in \(X\) is compact, so a function equal to one on that image acts as the identity there. For this unital \(C(X)\) the constant one already proves the assertion.
 
-They do not construct a proper coefficient algebra with a Dirac class. In particular an equivariant map \(M\to X\) gives a homomorphism \(C(X)\to M(C_0(M))\), not a scalar equivariant evaluation \(C(X)\to\mathbb C\). The still required interfaces in the source route are:
+They do not construct a proper coefficient algebra with a Dirac class. In particular an equivariant map \(M\to X\) gives a homomorphism \(C(X)\to M(C_0(M))\), not a scalar equivariant evaluation \(C(X)\to\mathbb C\). Two stronger forms of the separate factorization interfaces in the source route are:
 
 1. a proper algebra \(A\), a class \(D\in KK^\Gamma(A,\mathbb C)\), and a family \(\theta\in RKK^\Gamma(M;\mathbb C,A)\) with \(\theta\otimes_A D=1\);
 2. a proper algebra \(B\) for the affine Hilbert field over \(X\), and classes \(\eta_X\in KK^\Gamma_X(C(X),B)\), \(d_X\in KK^\Gamma_X(B,C(X))\) with the supplied coefficient product identity.
 
-The existing coefficient oscillator identity proves the homotopy calibration needed for the second construction's eventual product. It is not either of these two factorization statements.
+The existing coefficient oscillator identity proves the homotopy calibration needed for the second construction's eventual product. It is not either of these two factorization statements. Sections 11V–11Y construct both proper algebras and the actual equivariant factors. Their transfer uses only the ordinary coefficient identity and each ordinary universal-family calibration; neither stronger equivariant product identity in the preceding list is required. This completes the discrete scalar-unit construction under the coarse-field hypotheses. It does not replace the original anchored holonomy factorization of Section 11R.
 
 ### 11Q. Reading
 
@@ -19118,6 +19118,685 @@ intertwiner explicitly. The complete
 Theorem 11S.3 cutoff proof is its exact geometric
 provider, and Theorem 11R.2 retains the other
 factorization inputs separately.
+
+## 11V. Proper source localization for a contractible-kernel quotient
+
+All groups below are countable and discrete, all algebras are separable and graded, and all homomorphisms preserve grading. A proper algebra has a nondegenerate equivariant central action of \(C_0(W)\), where \(W\) is a second-countable locally compact Hausdorff proper group space. This text supplies the localization step needed to lift a Dirac class. It does not by itself construct a Bott deformation.
+
+### 11V.1. A supported equivariant completely positive section
+
+**Lemma 11V.1.** A square cutoff \(c\) on \(W\) can be chosen together with a continuous \(d:W\to[0,1]\) such that \(dc=c\), and the translates of \(\operatorname{supp}d\) meet each compact set only finitely often.
+
+**Proof.** Use the locally finite quotient partition and compact bumps in the square-cutoff proof in the already supplied Section 11J, Lemma 11J.1. Denote their quotient partition functions by \(\rho_i\) and their compact bumps by \(\phi_i\). Enlarge each compact support of \(\phi_i\) to a relatively compact open \(O_i\). Enlarge the quotient supports of \(\rho_i\) to a locally finite open family \(V_i\). The closed locally finite set
+\[
+ L=\bigcup_i\bigl(q^{-1}(\operatorname{supp}\rho_i)\cap
+                              \operatorname{supp}\phi_i\bigr)
+ \tag{PX.1}
+\]
+contains \(\operatorname{supp}c\). It is contained in the open set
+\(O=\bigcup_i(q^{-1}V_i\cap O_i)\).
+Only finitely many \(V_i\) meet the image of a given compact \(K\). For each of these indices, the proper transporter of \(\overline O_i\) to \(K\) is finite. Thus the translates of \(\overline O\) have the asserted local finiteness; the same argument applies if the quotient enlargements are first shrunk to have closures in a locally finite family. A metrizable locally compact space is normal. Shrink \(O\) about its closed subset \(L\) and use the continuous separating function to choose \(d=1\) on \(L\), with support in that shrink. The transporter assertion follows from the enlargement just constructed. This proves \(dc=c\) and the stronger support property. \(\square\)
+
+**Theorem 11V.2.** Suppose
+\[
+ 0\longrightarrow I\longrightarrow E\xrightarrow q Q\longrightarrow0
+ \tag{PX.2}
+\]
+is an equivariant extension of proper \(C_0(W)\)-algebras, with the same central structure map and with \(q\) respecting it. If \(q\) has an ordinary completely positive contractive section \(s\), it has an equivariant such section.
+
+**Proof.** Make \(s\) even by averaging its two grading conjugates. Put
+\(c_g=\alpha_g(c)\), \(d_g=\alpha_g(d)\). For a finite set \(F\subset\Gamma\) set
+\[
+ S_F(a)=\sum_{g\in F}c_g\,
+   \alpha_g^E\!\left(s\bigl(\alpha_{g^{-1}}^Q(d_g a d_g)\bigr)\right)c_g.
+ \tag{PX.3}
+\]
+Every term is completely positive. At every matrix level a positive input of norm at most one gives a positive output at most
+\(\sum_{g\in F}c_g^2\leq1\)
+in the corresponding multiplier algebra: the input compression is contractive, \(s\) is contractive, and the two output cutoffs are central. Hence every \(S_F\) is a completely positive contraction.
+
+If \(a\) is compactly localized over \(W\), meaning \(a=f a\) for some compactly supported central \(f\), only finitely many input compressions \(d_ga d_g\) are nonzero, by Lemma 11V.1. Therefore (PX.3) stabilizes for this dense subspace of \(Q\). Uniform contractivity shows that the net stabilizing there converges in norm on every \(a\in Q\); approximate \(a\) by a compactly localized input and use the two contraction bounds to control any tail. Its limit \(S:Q\to E\) is a completely positive contraction. This argument proves norm convergence, rather than presuming strict convergence gives an element of \(E\).
+
+The quotient of each summand is
+\(c_gd_ga d_gc_g=c_g^2a\), since \(d_gc_g=c_g\).
+Thus
+\[
+ qS(a)=\sum_g c_g^2a=a.
+ \tag{PX.4}
+\]
+The last equality is the square-cutoff strict approximate-identity identity, applied in the quotient algebra. Replacing \(g\) by \(hg\) in (PX.3) proves
+\(\alpha_h^E S(a)=S(\alpha_h^Q a)\)
+first for compactly localized inputs and then by continuity. The map is even. \(\square\)
+
+Both input and output localizations in (PX.3) are essential: output localization alone need not give norm convergence, and using the same cutoff twice in both positions would give \(\sum_g c_g^4\), rather than (PX.4).
+
+### 11V.2. Exactness for the source extensions used here
+
+We use the following already proved ordinary foundations with their precise scope: the completely positive lifting theorem in Ext groups, absorption and Brown–Douglas–Fillmore theory, Lemmas 3.0a--3.0e; the Stinespring extension cycle, cone excision and both exact sequences in Exact sequences in KK and the universal coefficient theorem, Sections 3--4; its countable additivity and telescope construction in Sections 5 and 9; and the equivariant technical theorem and product in Equivariant KK-theory and the Green–Julg theorem, Lemma 2.4 and Theorems 2.5--2.6.
+
+Here is the equivariant adaptation at the exact interfaces consumed below. For an equivariant completely positive section the Stinespring completion has action
+\[
+ U_g(a\otimes j)=\alpha_g(a)\otimes\alpha_g(j).
+ \tag{PX.5}
+\]
+Complete positivity and covariance preserve its inner product. The cyclic isometry \(Vj=1\otimes j\) is equivariant, so \(VV^*\) and the extension involution are invariant. Their commutator defects are the ordinary multiplicativity defects, which remain compact. Convex interpolation of equivariant sections is equivariant and proves independence and naturality with the same two-by-two rotation of cyclic isometries; it requires no complemented cyclic submodule.
+
+In cone excision, every cone homomorphism, scalar taper, reflection and rotation is equivariant. If the algebras have a common proper central space, the suspended-ideal section is made equivariant by Theorem 11V.2; all its cone algebras still have that space. The auxiliary cone-to-cone section is equivariant once the original section is. For a finite group one may instead average each section over that finite group. The locally compact technical theorem supplies approximate identities with both commutator and fixed-group-element defects tending to zero, so the operator normalization and Puppe-cycle constructions have the required equivariance defects. The extension involutions themselves use (PX.5) and are exactly invariant. Consequently the two cone inverse identities and the boundary-product exact sequences hold for these extensions in \(KK^\Gamma\), with the same ordered Clifford signs as in the ordinary proof.
+
+More explicitly, write \(e:I\to C_q\) for the ideal-to-cone map and \(u\) for the negative of the suspended extension class followed by positive inverse suspension. Pullback to \(e\) is the ordinary coefficient cone, equivariantly contracted by its scalar parameter, so
+\[
+ [e]u=1_I.
+ \tag{PX.6}
+\]
+The auxiliary extension from the cone of \(C_q\) onto the cone of \(Q\) has both middle and quotient equivariantly contractible. The same left-inverse assertion makes its kernel cone have zero equivariant KK groups, by Puppe exactness. Puppe exactness for \(e\) then produces a right inverse \(w\), and associativity gives \(w=w([e]u)=u\). Thus
+\[
+ u[e]=1_{C_q}.
+ \tag{PX.7}
+\]
+Replacing the mapping cone by the ideal gives both cyclic sequences, and their arrows are product with the invariant extension class from (PX.5). The odd interchange cancels the negative left-endpoint sign exactly as in the written ordinary proof. This explains the equivariant adaptations rather than treating an ordinary theorem as an equivariant one without checking it.
+
+### 11V.3. Discrete open-subgroup reciprocity in the source variable
+
+Let \(F\leq\Gamma\) be finite and \(D\) an \(F\)-algebra. The algebra \(\operatorname{Ind}_F^\Gamma D\) consists of \(D\)-valued functions on \(\Gamma\), covariant on right \(F\)-cosets and vanishing at infinity on \(\Gamma/F\).
+
+**Lemma 11V.3.** For every \(\Gamma\)-algebra \(B\), there is a natural isomorphism
+\[
+ KK^\Gamma(\operatorname{Ind}_F^\Gamma D,B)
+        \simeq KK^F(D,\operatorname{Res}_F B).
+ \tag{PX.8}
+\]
+It applies in both degrees and commutes with coefficient maps.
+
+**Proof.** In the forward direction take the essential part of a cycle. The central \(c_0(\Gamma/F)\)-multipliers give mutually orthogonal adjointable projections \(P_r\), whose ranges sum to the essential module. Restrict to the identity-coset range and to \(F\). This gives an \(F\)-cycle with source \(D\).
+
+Conversely average the operator of an \(F\)-cycle over the finite group, using the localized compact perturbation formula proved in the equivariant lesson. For representatives \(r\in\Gamma/F\), take a copy of its module with right multiplication twisted by \(\alpha_{r^{-1}}\) and inner product twisted by \(\alpha_r\). Their Hilbert-module direct sum is a \(B\)-module. A group element sends the summand \(r\) to the summand \(hr\), using the \(F\)-transition in the chosen representatives. Those transitions satisfy the exact cocycle identity, so this is an action. Put the averaged operator on each summand and let the induced source act at its coset value. The operator is invariant. Each localized defect is a diagonal compact field with a \(c_0\) norm tail; finite truncation proves that it is compact on the sum. This produces a countably generated \(\Gamma\)-cycle.
+
+For the other composite, replace an original operator \(T\) by its coset compression \(T^{\rm diag}=\bigoplus_rP_rTP_r\). For a homogeneous source element \(a\) supported on coset \(r\), exact identities give
+\((T-T^{\rm diag})\pi(a)=(1-P_r)[T,\pi(a)]_{\rm gr}\) and
+\(\pi(a)(T-T^{\rm diag})=[\pi(a),T]_{\rm gr}(1-P_r)\).
+The omitted opposite products vanish because \(\pi(a)=P_r\pi(a)=\pi(a)P_r\), so both displayed operators are compact by the cycle commutator condition. Finite support and then the \(c_0\) source tail give two-sided local compactness for every source element. The difference between each diagonal block and the translate of the identity block is locally compact by the original equivariance defect. These differences have common norm bound two after contraction normalization. Multiplication by a \(c_0\) source element again makes their sum compact. After the finite \(F\)-average, the induced operator therefore differs from the original by a two-sided locally compact operator. Straight interpolation is an equivariant cycle homotopy. The identity-coset composite is visibly the original finite-group cycle up to its averaging homotopy. All constructions are unchanged on interval modules and under coefficient extension. This proves (PX.8), including relations and naturality. \(\square\)
+
+This is reciprocity for an open subgroup in a discrete group. It is distinct from the compact ambient-group reciprocity stated in the earlier lesson.
+
+### 11V.4. The localization theorem
+
+**Theorem 11V.4.** Let \(q:E\to Q\) be an equivariant quotient with an ordinary completely positive contractive section. Suppose its kernel \(J\) is equivariantly KK-contractible, including after restriction to finite subgroups. For every nuclear proper \(\Gamma\)-algebra \(A\), the map
+\[
+ q_*:KK^\Gamma_k(A,E)\longrightarrow KK^\Gamma_k(A,Q)
+ \tag{PX.9}
+\]
+is an isomorphism for \(k=0,1\).
+
+**Proof.** For a finite subgroup \(F\), average the given section to obtain an \(F\)-equivariant section. The exact sequences from Section 11V.2 and the zero groups for \(J\) make \(q_*\) an isomorphism for every \(F\)-source. Lemma 11V.3 implies the same statement for every induced source \(\operatorname{Ind}_F^\Gamma D\).
+
+Choose a countable slice cover of \(W\). Its members are \(U_i=\Gamma V_i\), where \(V_i\) is invariant under a finite stabilizer \(F_i\), and \(gV_i\cap V_i=\varnothing\) for \(g\notin F_i\). To construct a slice at \(w\), first choose a precompact neighborhood. Its compact transporter is finite by properness. For each transporter element not fixing \(w\), shrink to separate the point from its translate; intersect the finitely many shrinks and then the finitely many stabilizer translates. This is the required \(F_i\)-invariant slice. Second countability gives a countable cover.
+
+Put
+\[
+ A_n=C_0(U_1\cup\cdots\cup U_n)A.
+ \tag{PX.10}
+\]
+The first algebra is induced from \(F_1\), by the disjoint slice decomposition. In the extension
+\[
+ 0\longrightarrow A_{n-1}\longrightarrow A_n
+                 \longrightarrow A_n/A_{n-1}\longrightarrow0,
+ \tag{PX.11}
+\]
+the quotient is the image of \(C_0(U_n)A\). It is induced from \(F_n\): an invariant ideal of an induced algebra corresponds to its identity-slice ideal, and evaluation and disjoint translation identify the quotient with the induced identity-slice quotient. This follows directly on compactly supported coset sections, then by norm completion.
+
+All algebras in (PX.11) are nuclear and retain the common proper central space \(W\). Ideals and quotients of a nuclear algebra are nuclear; equivalently use the finite-matrix approximation theorem, compress its approximating maps by an ideal approximate identity for ideals, and use the completely positive lifting and quotient approximation for quotients. The ordinary nuclear lifting theorem supplies a section of (PX.11), and Theorem 11V.2 makes it equivariant. Its two contravariant exact sequences with coefficients \(E\) and \(Q\) commute with \(q_*\). The two outer source types are already in the isomorphism class, by induction and the induced-source case. An exact-sequence chase, or the five lemma on five consecutive cyclic terms, gives (PX.9) for \(A_n\).
+
+Finally \(A=\overline{\bigcup_n A_n}\). To check passage to this increasing union without assuming contravariant continuity, use the telescope of the earlier exact-sequence lesson, Section 9. Each eventual path family carries the same central \(C_0(W)\)-action. It is nondegenerate: a compactly localized approximation to the finitely many initial paths and their eventual endpoint uniformly approximates an eventual family; these families are dense. The telescope contraction is equivariant and \(C_0(W)\)-linear. Its quotient-at-infinity extension has nuclear quotient \(A\), so its ordinary section becomes equivariant by Theorem 11V.2. Its integer-evaluation extension has the already explicit equivariant convex-interpolation section. Thus its two exact sequences and source additivity give, in both degrees,
+\[
+ 0\longrightarrow \varprojlim{}^1 KK^\Gamma_{k-1}(A_n,B)
+ \longrightarrow KK^\Gamma_k(A,B)
+ \longrightarrow \varprojlim KK^\Gamma_k(A_n,B)
+ \longrightarrow0.
+ \tag{PX.12}
+\]
+Here \(\varprojlim\) and \(\varprojlim{}^1\) are the kernel and cokernel of
+\((z_n)\mapsto(z_n-i_n^*z_{n+1})\) on the product of the stage groups. The telescope sign is the positive suspension of identity minus shift; the proof is the two adjacent scalar intervals, which are equivariant and carry the unchanged action. Source additivity holds with the same direct-sum projections and localized compact estimates; those projections are invariant because each summand is invariant.
+
+All stage maps for \(q_*\) are isomorphisms and commute with restriction. They conjugate the two product operators just displayed, so induce isomorphisms on both kernels and cokernels. The short-exact-sequence chase in (PX.12) proves (PX.9) for \(A\). This accounts explicitly for the possible \(\varprojlim{}^1\) term. \(\square\)
+
+### 11V.5. The deformation specialization
+
+Suppose the proposed deformation has the exact form
+\[
+ 0\longrightarrow C_0((0,1])\widehat\otimes
+          \mathcal K(\mathcal F)\widehat\otimes S
+ \longrightarrow\mathcal E\xrightarrow{h_0}\mathcal B
+ \longrightarrow0,
+ \tag{PX.13}
+\]
+with an equivariant Hilbert \(C(X)\)-module field \(\mathcal F\), an exact affine-unitary action, and a nuclear proper Bott quotient \(\mathcal B\). The kernel is equivariantly Morita equivalent to \(C_0((0,1])\widehat\otimes C(X)\widehat\otimes S\). Its cone contraction is \(f(t)\mapsto f(ut)\), with zero at \(u=0\). The contraction is equivariant on the coefficient algebra, and hence gives zero KK groups for the kernel. The ordinary section follows from nuclearity of \(\mathcal B\). Theorem 11V.4 therefore gives a unique
+\[
+ z\in KK^\Gamma(\mathcal B,\mathcal E),\qquad z[h_0]=1_{\mathcal B}.
+ \tag{PX.14}
+\]
+Evaluation at one, Fock Morita equivalence, and the even map \(S\to\mathbb C\), \(f\mapsto f(0)\), define the desired equivariant Dirac from this lift.
+
+Equation (PX.14) is conditional on actually constructing (PX.13), proving its equivariance and identifying its kernel. This text closes the proper-source localization interface, not those analytic deformation assertions.
+
+
+### 11V. Reading
+
+Tu, *La conjecture de Baum--Connes pour les feuilletages moyennables*, original printed pp.232--234 and 251, motivates the proper-source exactness interface. The proof here uses discrete slices, supported completely positive averaging and an equivariant telescope, with the exact adaptations written above. The original source's nuclear equivariant exactness citation is not used as a missing-proof substitute. The companion construction supplies the infinite-field Bott algebra and its deformation.
+
+## 11W. A proper Bott algebra and its equivariant deformation
+
+**Theorem 11W.1.** For the compact-base affine field in Section 11O, the proper nuclear Bott algebra and actual equivariant deformation below give even classes with the ordinary coefficient product (BD.22). All positive-time domains, zero-endpoint norms and transported finite-frame estimates are part of the construction.
+
+
+The hypotheses are those already proved in Section 11O: a compact metrizable \(\Gamma\)-space \(X\), a separable continuous real Hilbert field \(E\), and a continuous affine action with exact cocycle and uniform proper displacement. We require only an equivariant factorization whose product becomes the identity in ordinary KK. We do not claim that its equivariant product is the identity.
+
+### 11W.1. Stabilize before defining the algebra
+
+The real version of the actual operator-range stabilization proof in Graded algebras and Hilbert modules, Theorem 6.2, gives
+\[
+ E\oplus C(X,\ell^2_{\mathbb R})\simeq C(X,H),
+ \qquad H=\ell^2_{\mathbb R}.
+ \tag{BD.1}
+\]
+Here is the real check. Choose real generators, use the real maps \(R_j\), repeat them with the real factors \(2^{-j},4^{-j}\), and take the positive square root of \(T^*T\). Its continuous functional calculus commutes with conjugation. The dense-range polar rule \(U(|T|v)=Tv\) therefore commutes with conjugation and restricts to an orthogonal real module isomorphism. No continuous choice of eigenvectors or constant original field rank is involved.
+
+Extend the original linear action by identity on the new summand and the cocycle by zero, then transport them through (BD.1). We obtain strongly continuous orthogonal maps \(L_g(x)\) on the fixed fibre and continuous vectors \(b_g(x)\), satisfying the exact affine identities. The original displacement bound is unchanged:
+\[
+ \inf_{x\in X}\|b_g(x)\|\longrightarrow\infty
+                          \quad(g\longrightarrow\infty).
+ \tag{BD.2}
+\]
+
+The compact-module weight proof in Section 11P can now start with the fixed diagonal compact operator \(h e_j=2^{-j}e_j\). Its nested cutoff approximate identities are diagonal and independent of \(x\). Finite convex combinations stay so. The quasicentrality test is performed in \(C(X,\mathcal K(H))\), simultaneously with all the cocycle sections. Consequently that proof produces a fixed diagonal positive weight \(\Theta e_j=\lambda_je_j\), with \(\lambda_j\geq1\), \(\lambda_j\to\infty\), and
+\[
+ S_g(x)=L_g(x)\Theta L_g(x)^{-1}-\Theta
+        \in C(X,\mathcal K(H)),
+ \qquad \Theta b_g\in C(X,H).
+ \tag{BD.3}
+\]
+All domains in (BD.3) are the closed regular domains from that proof. In particular \(L_g(x)\operatorname{Dom}\Theta=\operatorname{Dom}\Theta\). This convenient diagonal choice is made after stabilization, not by diagonalizing a varying field.
+
+### 11W.2. The phase-space Bott limit
+
+Write \(S=C_0(\mathbb R)\), graded by reflection. For a finite affine plane \(V\subset H\), let
+\[
+ C(V)=C_0(V\times V_0,\operatorname{End}\Lambda^*V_{0,\mathbb C}).
+ \tag{BD.4}
+\]
+The matrix grading is exterior degree. On the phase space of a vector plane \(W\), put
+\(\beta_W(q,p)=\varepsilon(q+ip)+\varepsilon(q+ip)^*\).
+The creation and contraction relations give \(\beta_W^2=\|q\|^2+\|p\|^2\), fixing the outward \(q+ip\) convention.
+
+For \(V\subset V'=V\oplus W\), the connecting homomorphism is
+\[
+ a\widehat\otimes f\longmapsto
+ a\widehat\otimes f(T+\beta_W).
+ \tag{BD.5}
+\]
+The summands anticommute, so their square is \(T^2+\beta_W^2\). Functional calculus gives a graded homomorphism. It is injective: restriction to \((q,p)=(0,0)\) in the added plane is a left inverse. For two added orthogonal planes the odd sum is associative; computing the image of its resolvents, or of its affiliated coordinate \(T\), gives the same map in either order. Thus (BD.5) is an inductive system. Call its limit \(A(H)\).
+
+The fixed coordinate planes \(V_n=\operatorname{span}(e_1,\ldots,e_n)\), with origin zero, have dense union in this limit. To check this for an arbitrary finite affine plane, approximate its origin and orthonormal basis by vectors in \(V_n\), and apply the finite Gram-matrix inverse square root to restore orthonormality. The resulting finite affine isometries approach the original one. Their effects on a compactly supported symbol and on the compactly supported functional-calculus factor in (BD.5) tend to zero uniformly. Indeed the square of that factor bounds the entire added phase radius on its support; on this bounded radius the finite coordinate and matrix formulas are uniformly continuous. The comparison can be made in an ambient plane of dimension at most twice the given dimension plus one. Its constants are therefore fixed, not growing with \(n\). Dense compactly supported symbols and functional-calculus functions prove the assertion for every element. This also proves norm continuity of the affine functor on finite generating planes when the finite basis vectors converge in norm.
+
+Hence \(A(H)\) is separable. It is nuclear: its finite stages are finite matrix-valued commutative algebras with the reflection grading, and the graded matrix corner description preserves their nuclear finite-matrix models. Given a finite set in the limit, approximate it inside one stage, take that stage's completely positive finite-matrix model, extend the first map to the limit by the proved matrix-valued completely positive extension theorem, and include the second map into the limit. This gives finite-matrix approximation of the given set.
+
+Set
+\[
+ \mathcal B=C(X)\widehat\otimes A(H).
+ \tag{BD.6}
+\]
+The affine maps \(L_g(x)v+b_g(x)\) induce its equivariant action by the just defined functor. The norm-continuity check is on the finite generating planes: their base-dependent origins and basis vectors have compact images, and the preceding finite-dimensional uniform-continuity argument is uniform over the compact base. Thus it gives actual automorphisms of the section algebra, rather than only fibre automorphisms. The cocycle law gives the exact group law. Nuclearity of \(C(X)\) follows from finite partitions and evaluation maps; tensoring its models with those above gives nuclearity of \(\mathcal B\).
+
+### 11W.3. Its proper central space
+
+Use the phase cone
+\[
+ Z=\{(x,v,p,r):x\in X,\ v,p\in H,
+                         \|v\|^2+\|p\|^2\leq r\}.
+ \tag{BD.7}
+\]
+Its topology is base, weak coordinates in the two fibres, and the continuous total squared height \(r\). The compact-product Gram-inequality proof in the supplied coarse-interface text, Section 11W.3, applies to \(H\oplus H\): every bounded-height set is compact metrizable, and open bounded-height neighborhoods have compact closures. Thus \(Z\) is second countable and locally compact. The action is
+\[
+ (x,v,p,r)\longmapsto
+ (gx,L_gv+b_g,L_gp,
+                      r+2\langle L_gv,b_g\rangle+\|b_g\|^2).
+ \tag{BD.8}
+\]
+It preserves the excess \(r-\|v\|^2-\|p\|^2\). Strong continuity of \(L_g(x)\), norm continuity of \(b_g(x)\), and bounded weak-coordinate tests prove continuity on bounded-height sets, hence everywhere. If a point and its translate have height at most \(R\), then \(\|b_g(x)\|\leq2\sqrt R\). Equation (BD.2) gives finitely many possible \(g\). The closed action relation inside their finite union of compact input sets proves properness.
+
+There is a nondegenerate equivariant central map
+\[
+ C_0(Z)\longrightarrow ZM(\mathcal B).
+ \tag{BD.9}
+\]
+To prove it, at a finite plane use the scalar functions of its two projected coordinates and of \(T^2\). Under (BD.5), the final variable becomes \(T^2+\|q_W\|^2+\|p_W\|^2\), which is exactly the residual squared height in the cone projection. These scalar functions remain central in every larger stage. Their cylinder functions separate the points of \(Z\); bounded-height compactness and a radial taper give their dense span in \(C_0(Z)\). The injective maps at the finite stages therefore complete to (BD.9). Radial total-height cutoffs are an approximate identity on every compactly supported finite generator, and hence on \(\mathcal B\). This proves nondegeneracy. The affine coordinate and height formulas give equivariance. The construction retains the momentum coordinate: the proper central space of the phase-space Bott algebra is not just the position cone.
+
+### 11W.4. The finite quantum provider and a uniform weight comparison
+
+For a finite vector plane \(V\), let \(\mathcal Q(V)\) be the Euclidean semiclassical algebra with zero fibre \(C(V)\) and positive fibre \(\mathcal K(L^2(V,\Lambda^*V))\). Its explicit Gaussian completely positive section, exact cone kernel, exterior oscillator and resolvents are proved in Deformations and the analytic index, Lemmas 22.7–22.8, with the actual Schur/Fourier kernel estimates in Dirac classes and the cotangent Dolbeault element, Lemma CI.10. Those finite proofs, including the \(q+ip\) sign, are the finite input used here.
+
+In particular, on \(L^2(V,\Lambda^*V)\),
+\[
+ D_{V,t}=\sum_j\big((q_j+t\partial_j)\varepsilon_j
+                         +(q_j-t\partial_j)\varepsilon_j^*\big),
+ \qquad D_{V,t}^2=-t^2\Delta+\|q\|^2+t(2N-\dim V).
+ \tag{BD.10}
+\]
+Its zero symbol is \(\beta_V\). The exact heat-kernel and resolvent proof in that finite provider makes \(f(T+D_{V,t})\) a section for every \(f\in S\). Consequently finite orthogonal inclusion defines the exact homomorphism of finite deformation algebras using this odd sum. This is not an assertion based solely on the oscillator index.
+
+Let \(\mathcal F_t\) be the completed Fock space obtained by Gaussian inclusions of these finite \(L^2\) spaces, with Gaussian variance \(t\). Dilation identifies it with the completed Fock space from the supplied weighted-oscillator text, and \(D_t=\sqrt t D\), \(B_t(A)=\sqrt t B(A)\). The completed-domain proofs there apply after this dilation.
+
+We need the uniform estimate
+\[
+ \|f_0(T+B_t(A_1))-f_0(T+B_t(A_2))\|
+                                  \leq3\|A_1-A_2\|,
+ \quad A_i\geq1,
+ \tag{BD.11}
+\]
+where \(f_0(u)=u(1+u^2)^{-1/2}\) and the difference of the weights is bounded. Here is the order check and estimate. The creation/contraction identity is
+\[
+ B_t(S)^2\leq\|S\|^2D_t^2.
+ \tag{BD.12}
+\]
+It is the corrected \(\leq\) identity from the supplied oscillator proof. All these operators commute with \(D_t^2\). On its spectral subspace of value \(\mu\), the perturbation has norm at most \(\|S\|\sqrt\mu\), and \((T+B_t(A_i))^2\geq T^2+\mu\). Use the three-term phase-resolvent identity proved with bounded perturbations in the supplied source reading. For its first and third terms the norm integral is bounded by
+\[
+ \|S\|\sup_{\mu\geq0}\frac1\pi\int_0^\infty
+ \frac{\lambda^{-1/2}\sqrt\mu}{1+\lambda+T^2+\mu}\,d\lambda
+ \leq\|S\|.
+ \tag{BD.13}
+\]
+For its middle term place the two phase numerators against their adjacent square-root resolvents, of norm at most one, and obtain the same integral. Add the three bounds. Initially this is on finite occupation cores; their completed resolvents and the uniform estimates extend it to the closed operators. For \(f\in S\), approximate \(f\circ f_0^{-1}\) on \([-1,1]\) by polynomials, with its endpoint values zero. Equation (BD.11) then proves continuity for the general \(f\)-calculus, uniformly in \(t\). No inequality in the wrong direction is used.
+
+### 11W.5. The infinite deformation algebra
+
+For a finite affine \(V\subset\operatorname{Dom}\Theta\), define, at \(t>0\),
+\[
+ \Phi_{V,t}(a\widehat\otimes f)
+ =a_t\widehat\otimes
+              f(T+B_t(1+t\Theta_{V^\perp})),
+ \tag{BD.14}
+\]
+and at zero use its Bott image in \(A(H)\). Here \(a\) is a section of \(\mathcal Q(V)\), the tail weight is the compression of \(\Theta\), and the Gaussian factorization is \(\mathcal F_t=\mathcal F_{V,t}\widehat\otimes\mathcal F_{V^\perp,t}\). It is a homomorphism on that finite deformation algebra, because the two factors graded commute.
+
+Positive-time continuity needs a separate check, since \((t-s)\Theta\) is unbounded. Use the Gaussian dilation to identify all positive Fock fibres with \(\mathcal F_1\). In a joint occupation block the tail Clifford coefficients are \(\sqrt{2n_i}\,w_i(t)\), where \(w_i(t)=\sqrt t(1+t\lambda_i)\). On \([a,b]\subset(0,1]\),
+\[
+ \left|\frac{d}{dt}\log w_i(t)\right|
+ =\frac1{2t}+\frac{\lambda_i}{1+t\lambda_i}
+ \leq\frac3{2a}.
+ \tag{BD.23}
+\]
+Consequently the coefficient ratios tend uniformly to one as \(t-s\to0\), independently of \(i\) and of the occupations. Include the unchanged scalar \(T\) coefficient. If \(|w-v|\leq\varepsilon|v|\), with \(\varepsilon\leq1/2\), the triangle inequality and \(\big|\sqrt{1+|w|^2}-\sqrt{1+|v|^2}\big|\leq|w-v|\) give
+\(\|c(w)/\sqrt{1+|w|^2}-c(v)/\sqrt{1+|v|^2}\|\leq4\varepsilon\).
+Taking the supremum over the occupation blocks and \(T\) proves norm continuity of the phase. Polynomial approximation of \(f\circ f_0^{-1}\), with its zero endpoint values, proves norm continuity for every \(f\in S\). Compactness of each value follows from the weighted compact-resolvent proof. This proves positive-time norm continuity of (BD.14); it does not apply the bounded-difference estimate to an unbounded difference.
+
+For the fixed coordinate planes, include all these sections and the ideal
+\[
+ J=C_0((0,1],\mathcal K(\mathcal F_t)\widehat\otimes S).
+ \tag{BD.15}
+\]
+If \(V\subset V'\), split the tail into the added finite plane and the remaining tail. Replacing the original tail weight by zero on the added plane changes the single-particle weight by a bounded finite-rank operator. After multiplying by \(t\), (BD.11) makes the functional-calculus error tend to zero as \(t\downarrow0\). The exact finite quantum inclusion from Section 11W.4 therefore identifies the two lifts modulo \(J\). The same argument treats the off-diagonal blocks for a non-coordinate plane: \(V\subset\operatorname{Dom}\Theta\) makes both finite off-diagonal blocks bounded, by the adjoint of the finite-column map \(\Theta|_V\). Thus the finite lift images form an increasing system modulo \(J\). Their union plus \(J\) is a star algebra; its closure is \(\mathcal E_\Theta\).
+
+The norm at zero is the correct quotient norm. The tail map \(f\mapsto f(T+B_t(1+t\Theta_{V^\perp}))\) is injective, since restriction to the even tail vacuum is \(f(T)\). Minimal tensor injectivity therefore gives
+\(\|\Phi_{V,t}(\beta)\|=\|\beta_t\|\).
+The finite Euclidean continuous-field proof gives the limit \(\|\beta_0\|\). All finite words reduce modulo \(J\) to a common finite stage, so their zero norms have the same limit. Uniform closure proves this for every element. Zero evaluation is onto the dense finite Bott stages and has closed range. An element with zero value has norm tending to zero and is a positive compact field, hence belongs to \(J\). This proves the exact sequence
+\[
+ 0\longrightarrow J\longrightarrow\mathcal E_\Theta
+             \xrightarrow{h_0}A(H)\longrightarrow0.
+ \tag{BD.16}
+\]
+Separability follows from the coordinate stages and the countable compact-field ideal. Positive evaluation is onto the compact fibre by (BD.15).
+
+For clarity, the construction is independent of using only coordinate planes. If \(V\subset\operatorname{Dom}\Theta\), approximate its origin and orthonormal basis in the graph norm of \(\Theta\) by their spectral-coordinate truncations, followed by the finite Gram inverse square root. The correcting finite-rank orthogonal rotation \(R_n\) satisfies
+\(\|R_n-1\|\to0\) and \(\|\Theta(R_n-1)\|+\|(R_n-1)\Theta\|\to0\).
+For an explicit rotation, put \(P=P_V\) and \(P'=P_{V_n}\), and take the orthogonal polar part of \(P'P+(1-P')(1-P)\). Its denominator is \((1-(P'-P)^2)^{1/2}\). When \(\|P'-P\|<1/2\), the inverse square-root series converges uniformly. The finite frame formulas and their graph-norm differences therefore give the two displayed graph bounds. In particular \(R_n\Theta R_n^{-1}-\Theta\to0\) in operator norm.
+
+Here is the uniform geometric estimate needed for the finite deformation factors. Work in the common finite ambient plane, of dimension at most \(2\dim V+1\), including the origin displacement. A dense section algebra consists of smooth compactly supported tangent-coordinate kernels and their products with the added oscillator Gaussian kernels in the finite inclusion formula (22.21). Differentiate those formulas once in the finite translation and orthogonal-frame parameters. The differentiated Gaussian kernels have a common bound
+\(C(1+|q|+|v|)^N\exp[-c(|q|^2+|v|^2)]\), with \(c>0\) independent of \(0\leq t\leq1\); the compactly supported kernels have a common compact majorant. Near identity, a finite frame change and translation act by \((q,v)\mapsto(R^{-1}(q-a),R^{-1}v)\), together with conjugation by the finite exterior matrix. The mean-value theorem adds at most one polynomial factor. Its row and column integrals are uniformly finite, so
+\[
+ \sup_{0\leq t\leq1}\|k^{R,a}_t-k_t\|_I
+       \leq C_k(\|R-1\|+\|a\|),
+ \tag{BD.24}
+\]
+where \(\|\cdot\|_I\) is the maximum of the two absolute kernel-integral bounds. The Schur estimate gives the same operator-norm control at positive time, and the zero-time Fourier estimate gives it at zero. Density and contractivity extend uniform frame continuity to every finite deformation section. This is an estimate in the frame parameter, beyond continuity in \(t\) alone.
+
+Combine (BD.24) with the preceding graph rotation and the bounded tail-weight difference estimate (BD.11). The lifts for the approximating planes converge in the full section norm to (BD.14). This proves their membership in \(\mathcal E_\Theta\), including the zero endpoint.
+
+The same argument is uniform for compact families of graph-continuous finite frames: their graphs have compact image, their spectral truncations converge uniformly, and the Gram inverse square roots retain a uniform lower bound. Scalar partitions on \(X\) then give sections for every such family.
+
+### 11W.6. The action on the deformation
+
+At positive time let
+\[
+ U_{g,t}(x)=T_{b_g(x)/\sqrt t}L_g(x),
+ \tag{BD.17}
+\]
+where the real Weyl maps are the exact unitary maps of the supplied Fock proof. They satisfy the group law without a phase. On compact positive parameter intervals they are strongly continuous in base and parameter; conjugation is norm continuous on compact operators.
+
+Conjugating (BD.14) transports its finite plane to the affine plane \(gV\) and its tail weight to the corresponding compression of \(g\Theta\). The actual transported plane is graph-continuous, by (BD.3). Section 11W.5 proves that its geometric lift belongs to the algebra. The bounded difference of the two tail weights is the compression of \(S_g\); its functional-calculus error tends uniformly to zero by (BD.11), since the deformation uses \(1+t\Theta\). Thus it lies in \(C(X)\widehat\otimes J\). This proves invariance of the entire section algebra under (BD.17), with its stated affine action at zero. Applying the inverse element proves equality. The automorphisms have the exact group law on every fibre, so jointly faithful fibre evaluation proves it in the algebra.
+
+Set \(\mathcal E=C(X)\widehat\otimes\mathcal E_\Theta\), with this base-dependent action. We have constructed the actual equivariant extension
+\[
+ 0\longrightarrow C(X)\widehat\otimes J
+ \longrightarrow\mathcal E\xrightarrow{h_0}\mathcal B
+ \longrightarrow0.
+ \tag{BD.18}
+\]
+The kernel is equivariantly Morita equivalent, using the module with action (BD.17), to \(C_0((0,1])\widehat\otimes C(X)\widehat\otimes S\). Its scalar cone contraction is equivariant. The ordinary section exists by the nuclear lifting theorem for \(A(H)\), tensored with identity on \(C(X)\). The proper-source theorem in the companion text therefore produces a unique \(z\in KK^\Gamma(\mathcal B,\mathcal E)\) with \(z[h_0]=1\). Define
+\[
+ d_X=z[h_1]m_{\mathcal F_1}[\operatorname{ev}_0]
+                      \in KK^\Gamma(\mathcal B,C(X)).
+ \tag{BD.19}
+\]
+The equivariant Fock Morita module in this formula has the original exact affine action at time one. The evaluation map on \(S\) is even. No equivariant section of (BD.18) or equivariant inverse of \(h_0\) in the whole KK category has been asserted.
+
+### 11W.7. The dual class and the ordinary product
+
+The origin-point Bott coordinate defines an odd regular multiplier \(T_0\) of \(A(H)\), with \((1+T_0^2)^{-1}\) in the algebra. Changing the origin by \(b\) changes it by bounded Clifford multiplication of norm \(\|b\|\). The bounded-perturbation resolvent identity and its norm-integrable phase difference therefore show that \((\mathcal B,f_0(T_0))\) is an equivariant \(C(X),\mathcal B\)-cycle. Write its class as \(\eta_X\).
+
+After forgetting equivariance, (BD.18) is the tensor product of (BD.16) by \(C(X)\). Its cone ideal has zero KK groups, so its ordinary zero evaluation is a KK-equivalence. Uniqueness implies that the ordinary image of \(z\) is its inverse. It suffices to lift the origin Bott cycle in ordinary KK.
+
+Use at positive time the odd multiplier
+\[
+ \widetilde T_t=T+tD_t^3+B_t(1+t\Theta),
+ \qquad \widetilde T_0=T_0.
+ \tag{BD.20}
+\]
+Here no equivariance of this lifting cycle is required. To verify the ordinary lift, put \(A_t=T+B_t(1+t\Theta)\). Its compactly supported functional calculus is the origin-plane lift (BD.14). Its even radial cutoffs form an approximate identity of \(\mathcal E_\Theta\): they do so on every fibre, including zero, and the norm of each cutoff error is a decreasing continuous function of the compact parameter interval. Finite-stage norm continuity and uniform closure give that continuity; the elementary finite-subcover argument for monotone continuous functions makes it uniform.
+
+The cubic phase is also norm continuous on positive intervals. On a block of total occupation \(n\), its Clifford coefficients are \(\sqrt{2n_i}\sqrt t(1+2t^2n+t\lambda_i)\), in the fixed dilation. For \(t\in[a,b]\),
+\[
+ \frac{d}{dt}\log\!\big(\sqrt t(1+2t^2n+t\lambda_i)\big)
+ =\frac1{2t}+\frac{4tn+\lambda_i}{1+2t^2n+t\lambda_i}
+ \leq\frac5{2a}.
+ \tag{BD.25}
+\]
+The relative-vector phase bound after (BD.23) is therefore uniform in \(n,i,T\). It proves the positive-time phase continuity, and polynomial approximation proves the positive-time compact resolvent continuity used below.
+
+On a cutoff of \(A_t^2\) below \(R\), \(D_t^2\leq R\), and the perturbation \(tD_t^3\) has norm at most \(tR^{3/2}\). All these cutoffs commute with the involved operators, because the occupation-square operators commute. The bounded phase estimate gives a localized phase error at most \(3tR^{3/2}\). It therefore is a compact field vanishing at zero after localization. This proves that the phase of (BD.20) is a multiplier of the section algebra with zero phase \(f_0(T_0)\).
+
+The exact completed Fock square gives
+\[
+ \widetilde T_t^2\geq T^2+B_t(1+t\Theta)^2=A_t^2.
+ \tag{BD.21}
+\]
+On the cutoff just used the inverse-resolvent difference tends to zero. On its complement both inverse resolvents have norm at most \((1+R)^{-1}\). Let \(R\) tend to infinity after the small-time limit. Their difference is consequently a compact field vanishing at zero. Thus \((1+\widetilde T^2)^{-1}\in\mathcal E_\Theta\). The two adjoint resolvents define the completed self-adjoint regular multiplier: on the cutoff core they have the usual inverse identities, their ranges contain the dense cutoff union, and those identities extend by the uniform resolvent bound. These checks give the ordinary lifting Kasparov cycle, rather than only a fibrewise operator family.
+
+At time one followed by \(\operatorname{ev}_0\), its operator is precisely \(D^3+B(1+\Theta)\), the completed oscillator already proved. Its only kernel is its even vacuum, with a uniform gap on the complement. Replacing its phase on the complement by the exact sign changes it by a compact operator and leaves a degenerate ordinary cycle. The vacuum contributes \(+1\). Tensoring this argument with \(C(X)\) gives
+\[
+ \operatorname{For}_\Gamma(\eta_X\otimes_{\mathcal B}d_X)
+                              =1_{C(X)}\quad\hbox{in }KK(C(X),C(X)).
+ \tag{BD.22}
+\]
+This equality is deliberately the ordinary one. It needs no unproved scalar equivariant evaluation on \(X\), and no claim that the equivariant product equals its identity.
+
+
+### 11W. Reading
+
+The construction follows the infinite phase-space Bott/deformation mechanism in Tu's 1999 original, Sections 7--9, while using real stabilization to remove the varying-rank field issue, the independently completed weight and oscillator estimates, and the separately proved proper-source localization. The finite quantization input is the complete Euclidean provider already in the course. The corrected bounded-weight comparison and the identity part of translation are written explicitly. The conclusion used later is (BD.22), not the stronger equivariant gamma identity.
+
+## 11X. A universal proper algebra with an ordinary calibrated Dirac family
+
+**Theorem 11X.1.** Every countable discrete group has the proper nuclear algebra, equivariant Dirac and continuous universal family below, with the ordinary positive calibration (UD.16). The simplex Morita grading is shifted throughout.
+
+
+Let \(\Gamma\) be countable discrete, with a proper left-invariant metric. The construction is independent of uniform embedding. Its conclusion is a proper nuclear algebra \(A\), an equivariant \(D\in KK^\Gamma(A,\mathbb C)\), and a family \(\theta\) over a universal proper base, such that every ordinary parameter evaluation satisfies \(\theta_mD=+1\). That is the weaker universal interface needed for the scalar transfer; an equivariant RKK product identity is not used.
+
+For finite \(\Gamma\), take \(A=\mathbb C\), \(D=1\), and the constant identity family. Give \(A\) its central \(C_0(M)\)-action by evaluation at the fixed uniform probability \(m_\Gamma=|\Gamma|^{-1}\sum_g\delta_g\) in the half-mass space. This action is nondegenerate and equivariant. The one-point action is proper, and the ordinary product is \(+1\). The construction below treats infinite \(\Gamma\), so \(\ell^2(\Gamma)\) is the infinite real Hilbert space required by the deformation input. Together these cases give the stated countable scope, including the central map needed for transfer.
+
+### 11X.1. Finite probabilities with a continuous radius coordinate
+
+Put
+\[
+ Z=\{(\mu,t):\mu\text{ is a probability on }\Gamma,
+                     \operatorname{diam}(\operatorname{supp}\mu)\leq t\},
+ \tag{UD.1}
+\]
+with coordinatewise probability convergence and \(t\in[0,\infty)\). Every support here is finite by metric properness. Near a point choose \(g\) with \(\mu(g)>a>0\), and bound \(t<T\). All probabilities in this neighborhood have support in the finite ball \(B(g,T)\). Its closed smaller neighborhood is a compact finite-dimensional probability simplex times a compact interval. Thus \(Z\) is locally compact and second countable. Its action is proper by the strict half-mass compact transporter argument in the supplied proper probability-base proof: a compact set has one finite coordinate set carrying mass greater than one half, so its transporter lies in the finite set \(EE^{-1}\).
+
+Every proper second-countable \(\Gamma\)-space \(W\) maps equivariantly to \(Z\). The square-cutoff probability \(\mu_w(g)=c(g^{-1}w)^2\) has finite support locally uniformly on \(W\). Its support diameter is locally bounded, invariant, and hence has a continuous invariant upper bound: use a locally finite quotient cover on whose inverse images the diameter is bounded by constants \(T_i\), and take \(1+\sum_i\rho_iT_i\). Every positive partition term bounds the diameter at that point, so the weighted average does as well. Pair this function with \(\mu_w\). In particular there is a map from the proper half-mass space \(M\) already constructed to \(Z\).
+
+### 11X.2. The nearest-face algebra
+
+Let \(H=\ell^2_{\mathbb R}(\Gamma)\), with its left permutation action. For each finite nonempty \(\sigma\subset\Gamma\), write \(H_\sigma\) for the affine span of its basis vertices and \(q_\sigma:H\to|\sigma|\) for nearest-point projection onto their probability simplex. Projection depends only on the finite affine coordinates, so is continuous in the weak topology.
+
+For two finite subsets define the open cylinder
+\[
+ Y_{\sigma\tau}=\operatorname{int}\{v:q_\sigma(v)=q_\tau(v)\}.
+ \tag{UD.2}
+\]
+Equality of the two projections is equivalent to
+\(q_{\sigma\cup\tau}(v)\in|\sigma\cap\tau|\).
+Indeed a nearest point satisfies \(\langle v-y,z-y\rangle\leq0\) for every point in the simplex. If it is nearest in both simplices, this inequality holds on their convex hull. Conversely a point nearest in the union and lying in the intersection is nearest in each. This also proves
+\[
+ Y_{\sigma\rho}\cap Y_{\rho\tau}\subset Y_{\sigma\tau}.
+ \tag{UD.3}
+\]
+The interiors can be taken in the weak or norm topology, since the conditions involve only the finite union of the coordinates.
+
+Use the phase-space Bott algebra \(A(H)\) from Section 11W. It has central finite-position-coordinate multipliers. Put \(\Omega_{\sigma\tau}=Y_{\sigma\tau}\cap H_{\sigma\cup\tau}\), an open subset of the finite-dimensional affine plane. The cylinder \(Y_{\sigma\tau}\) is its inverse image under affine orthogonal projection. Let
+\(I_{\sigma\tau}=C_0(\Omega_{\sigma\tau})A(H)\),
+with the functions acting through those finite coordinates. This notation does not put an undefined \(C_0\)-algebra on the full weak Hilbert cylinder. Define the simplex Hilbert space and ambient algebra by
+\[
+ \mathcal H=(\Lambda^*H_{\mathbb C}\ominus\Lambda^0H_{\mathbb C})[1],
+ \qquad A_1=A(H)\widehat\otimes\mathcal K(\mathcal H),
+ \tag{UD.4}
+\]
+and
+\[
+ A=\{a\in A_1:a_{\sigma\tau}\in I_{\sigma\tau}
+                                      \text{ for all }\sigma,\tau\}.
+ \tag{UD.5}
+\]
+The grading on the simplex line \(L_\sigma\) is \(|\sigma|-1\), not \(|\sigma|\). The bracket in (UD.4) records this shift. Reversing the module grading leaves the grading automorphism of its compact algebra unchanged, but changes its Morita correspondence; that correspondence will retain (UD.4).
+
+Equation (UD.3) gives \(I_{\sigma\rho}I_{\rho\tau}\subset I_{\sigma\tau}\), and symmetry gives the adjoint condition. Finite matrix corners therefore form a star algebra. Truncating the compact matrix factor approximates every element of (UD.5), so it is exactly their closed union. This proves it is a separable C-star algebra. Its diagonal entries are all of \(A(H)\), and their approximate identities show that its faithful inclusion in \(A_1\) is nondegenerate.
+
+Here is the nuclearity check, which cannot follow merely from inclusion in a nuclear algebra. A finite matrix corner is a central algebra over the phase cone of \(H\). At a point, the nonzero ideals \(I_{\sigma\tau}\) specify an equivalence relation by (UD.3); its fibre is the direct sum of the corresponding finite full matrix blocks over the fibre of \(A(H)\). Those coefficient fibres are nuclear quotients of \(A(H)\), so every finite-corner fibre is nuclear.
+
+We recall the elementary central patching proof used here. For a finite set in a central \(C_0(T)\)-algebra, first localize it over a compact subset of \(T\). A nuclear fibre gives a completely positive matrix factorization of its images. Lift the second finite-matrix map by the proved finite Choi-matrix lifting lemma; compose the first map with fibre evaluation. At that point the factorization error is small. The norm of a fibre of any fixed algebra element is upper semicontinuous, so the same error remains small on a neighborhood. Cover the compact set finitely and take a scalar partition with sum at most one and equal to one on the localization. The direct sum of the first maps is contractive; the partition-weighted sum of the lifted second maps is completely positive and contractive. On the covered points its error is the weighted sum of the small errors; the localization controls the outside tail. This is finite-matrix approximation. Thus the finite corner is nuclear. Increasing-corner approximation and matrix-valued extension give nuclearity of \(A\), as in the Bott-limit proof.
+
+The proper half-mass space \(M\) acts centrally on \(A\) by
+\[
+ (m_fa)_{\sigma\tau}(v)=f(q_\sigma(v))a_{\sigma\tau}(v),
+                         \qquad f\in C_0(M).
+ \tag{UD.6}
+\]
+On \(Y_{\sigma\tau}\), \(q_\sigma=q_\tau\), so this is central and preserves multiplication. It is equivariant by permutation of the vertices. On each finite matrix corner a compactly supported \(f\) equal to one on the finitely many compact simplices \(|\sigma|\) acts as identity. Hence the map is nondegenerate. The supplied properness proof for \(M\) proves that \(A\) is a proper \(\Gamma\)-algebra.
+
+### 11X.3. An explicit nearest-face estimate
+
+For a finite simplex, the projection of a vector \(v\) has coordinates
+\[
+ q_\sigma(v)_i=(v_i-a)_+,
+                    \qquad\sum_{i\in\sigma}(v_i-a)_+=1.
+ \tag{UD.7}
+\]
+When \(v\) lies in its affine span the coordinate sum of \(v\) is one, so the uniquely determined threshold is nonnegative. The threshold exists and is unique because the displayed sum is continuous, strictly decreasing until it reaches zero, and crosses one. To verify the projection formula, put \(y_i=(v_i-a)_+\). Then \((v_i-y_i)y_i=ay_i\), so \(\langle v-y,y\rangle=a\) and \(\langle v-y,e_i-y\rangle=v_i-y_i-a\leq0\). This is the nearest-point inequality.
+
+Suppose \(F\subset\sigma\), \(v_i\leq0\) for \(i\notin F\), and some \(k\in F\) has \(v_k>1+\sqrt2\|v-w\|\). Apply (UD.7) to \(w\). For \(i\notin F\),
+\[
+ w_i-a\leq 1+|w_i-v_i|+|w_k-v_k|-v_k
+             \leq1+\sqrt2\|v-w\|-v_k<0.
+ \tag{UD.8}
+\]
+Thus the projection has no coordinate outside \(F\). The strict bound persists in a neighborhood, so \(w\in Y_{\sigma F}\). The constant \(\sqrt2\) comes from precisely the two tested coordinates.
+
+### 11X.4. The family cycle
+
+For \((\mu,t)\in Z\), put \(\xi_\mu=\sqrt\mu\in H\), and let \(Q\) remove the exterior vacuum. Define
+\[
+ F_\mu=Q(\varepsilon(\xi_\mu)+\varepsilon(\xi_\mu)^*)Q.
+ \tag{UD.9}
+\]
+It is odd and self-adjoint, and
+\(F_\mu^2=1-P_{\xi_\mu}\).
+This follows from the Clifford square before compression; the only lost vacuum-to-one-form transition is the line \(\xi_\mu\). That line is even in (UD.4). Thus its ordinary index is \(+1\).
+
+Set
+\[
+ \begin{split}
+ D(g,\mu)&=\sum_h\mu(h)d(g,h),\quad
+ c_g=\min(1,(D(g,\mu)-t)_+),\quad c_\sigma=\max_{g\in\sigma}c_g,\\
+ w_{\sigma,g}&=6\min(2c_\sigma,1)c_g,\\
+ a_\sigma&=(1-\sum_{g\in\sigma}w_{\sigma,g})\mu
+                                  +\sum_{g\in\sigma}w_{\sigma,g}e_g,\\
+ \chi_\sigma&=(2c_\sigma-1)_+.
+ \end{split}
+ \tag{UD.10}
+\]
+In particular \(c_g=0\) on \(\operatorname{supp}\mu\). If \(\sigma\triangle\tau\) is in that support, then \(c_\sigma=c_\tau\), \(a_\sigma=a_\tau\), and \(\chi_\sigma=\chi_\tau\). Only such pairs occur in (UD.9).
+
+Let \(f_c(u)=\max(-1,\min(u,1))\). It is an odd bounded multiplier of \(S\); it is not an element of \(S\). Its defect \(1-f_c^2\) is in \(S\). Let \(\beta\) be the diagonal multiplier with entries \(i_{a_\sigma}(f_c)\), the origin-point Bott multiplier. Define
+\[
+ P_{\mu,t}=\beta+\chi(1-\beta^2)^{1/2}(1\widehat\otimes F_\mu).
+ \tag{UD.11}
+\]
+The finite-support observations after (UD.10) give the graded anticommutation of \(\beta\) and \(F_\mu\), and the ordinary commutation of \(\chi\) with both. Hence this is an odd self-adjoint contraction.
+
+It is a multiplier of \(A\). The only off-diagonal coefficients have a factor \((1-\beta_\sigma^2)^{1/2}\), so their position support lies in the radius-one ball about \(a_\sigma\). If \(\chi_\sigma\ne0\), a maximum coordinate outside \(\operatorname{supp}\mu\) in (UD.10) is greater than three, and all coordinates outside \(\sigma-\operatorname{supp}\mu\) are nonpositive. Equation (UD.8), with radius one and \(3>1+\sqrt2\), puts that entire support strictly in
+\(Y_{\sigma\cup\operatorname{supp}\mu,\sigma-\operatorname{supp}\mu}\).
+This is contained in \(Y_{\sigma\tau}\) for every coefficient connected by \(F_\mu\). Thus the required support ideal is satisfied. On a compact parameter set only finitely many \(\mu\)-coordinates occur, as in Section 11X.1, so multiplication of a fixed finite matrix by (UD.11) involves only finitely many matrix entries. Their support condition and (UD.3) put the product in \(A\). Uniform norm bounds and finite-matrix density extend this multiplier action to all of \(A\), on both sides.
+
+The localized compact defect is checked in the ambient algebra and then in \(A\). Put
+\(P'=\beta+(1-\beta^2)^{1/2}(1\widehat\otimes F_\mu)\).
+The difference \(P-P'\) has only finitely many matrix entries locally in parameters: \(\chi_\sigma<1\) implies \(\sigma\subset B(\operatorname{supp}\mu,t+1)\), a finite set. These entries are in \(A(H)\), because the square-root Bott defect is compact in that algebra. Also
+\(1-(P')^2=(1-\beta^2)(1\widehat\otimes P_{\xi_\mu})\)
+has finite matrix support. Thus \(1-P^2\in A_1\). Since \(P\) preserves \(A\), the defect does too. Multiply it by a column-diagonal approximate identity of \(A(H)\). Its \(\sigma,\tau\) coefficient belongs to \(I_{\sigma\tau}\), and converges in norm to the defect's coefficient because that coefficient is already in \(A(H)\). Closedness gives the required coefficient ideal; finite truncation then puts the defect in \(A\).
+
+All entries of these localized defects are norm continuous in parameters. The finite supported input/output test also gives adjoint-strong continuity of \(P\) as a module multiplier. The formulas are equivariant under vertex permutations and left metric translations. Therefore (UD.11) defines
+\[
+ \theta_Z\in RKK^\Gamma(Z;\mathbb C,A).
+ \tag{UD.12}
+\]
+Composing its parameter with the map \(M\to Z\) from Section 11X.1 gives \(\theta_M\). Pullback here means the explicit family module over \(M\); compact subsets have compact image, so the localized defect proof just given applies even if the parameter map is not proper.
+
+### 11X.5. The Dirac and its ordinary calibration
+
+Apply the deformation construction of Section 11W to the linear Hilbert action on \(H\), using \(b=0\). Its positive kernel is an equivariant cone up to Fock Morita equivalence. Tensor the extension with \(\mathcal K(\mathcal H)\). Nuclearity and properness of the source \(A\), together with the proved proper-source theorem, give a unique lift
+\[
+ z_A\in KK^\Gamma(A,\mathcal E_\Theta\widehat\otimes\mathcal K(\mathcal H)),
+ \qquad z_A[h_0\widehat\otimes1]=[i:A\to A_1].
+ \tag{UD.13}
+\]
+Define
+\[
+ D=z_A[h_1\widehat\otimes1]
+           m_{\mathcal F_1\widehat\otimes\mathcal H}
+                  [\operatorname{ev}_0]\in KK^\Gamma(A,\mathbb C).
+ \tag{UD.14}
+\]
+The Morita correspondence retains the shifted grading (UD.4).
+
+Fix an ordinary parameter \((\mu,t)\). In the ambient algebra, remove \(\chi\) using the compact difference above. Move each origin \(a_\sigma\) linearly to \(\mu\). The anticommutation with \(F_\mu\) persists, since the origins remain equal on its connected entries. Their finite-entry multiplier tests give a strict continuous homotopy; the compact defect has the fixed finite matrix support \(P_{\xi_\mu}\). At the endpoint the operator is
+\[
+ i_\mu(f_c)+(1-i_\mu(f_c)^2)^{1/2}(1\widehat\otimes F_\mu).
+ \tag{UD.15}
+\]
+On the orthogonal complement of \(\xi_\mu\), its square is exactly one, so that summand is degenerate for the scalar source. On the even line \(\xi_\mu\) it is the origin Bott cycle. Changing the clipped phase to the smooth phase changes it by an element of \(A(H)\); straight interpolation of contractions is an allowed compact perturbation homotopy. Thus after ordinary Morita equivalence, \(\theta_{\mu,t}[i]\) is exactly the origin Bott class \(\eta_\mu\), with positive sign.
+
+The ordinary image of (UD.13) is the unique lift through the ordinary cone-kernel KK-equivalence. It consequently is the restriction of the full ordinary Hilbert deformation Dirac. The origin \(\mu\) has finite coordinate support and lies in the weight domain. Its Bott class is homotopic to the zero-origin class by the bounded origin perturbation. The completed cubic oscillator calibration in Section 11W gives
+\[
+ \theta_m\otimes_A\operatorname{For}_\Gamma(D)=+1
+                                      \quad(m\in M).
+ \tag{UD.16}
+\]
+This is an ordinary evaluation of a family, not evaluation at an equivariant scalar point of \(M\). No such point is assumed.
+
+
+### 11X. Reading
+
+Tu's 2004 original, printed pp.275--281, supplies the nearest-face and exterior-family mechanism. The algebra, nuclearity, supports, finite parameter topology and shifted sign are proved above. The universal construction uses the earlier complete finite Euclidean quantization input and the newly supplied proper-source localization. It does not cite Tu's gamma-existence theorem as a proof of the required factorization.
+
+## 11Y. The ordinary product is enough for the full compact-base transfer
+
+**Theorem 11Y.1.** Every countable discrete group with the compact-base proper affine field constructed in Section 11O has the even proper factorization (ST.4) and ordinary product (ST.8). Thus the reduced scalar unit pairs as +1. Section 11N supplies the field for every finitely generated abstract compact-Lie subgroup and every finitely generated characteristic-zero linear group.
+
+
+Use the compact convex probability base \(X\), the proper Bott algebra \(\mathcal B\), and the classes \(\eta_X,d_X\) from the Bott deformation proof. Its actual conclusion is
+\[
+ \operatorname{For}_\Gamma(\eta_Xd_X)=1_{C(X)}.
+ \tag{ST.1}
+\]
+Use also the proper universal algebra \(A\), its central half-mass space \(M\), the family \(\theta_M\), and the equivariant \(D:A\to\mathbb C\). Every ordinary parameter of that family satisfies \(\theta_mD=+1\). Neither stronger equivariant product identity is a premise below.
+
+Let \(W\) be the proper central phase cone of \(\mathcal B\). The supplied universal proper-space construction gives an equivariant map \(\psi:W\to M\). Pull back the explicit family \(\theta_M\) to \(W\), then extend its coefficients along the central action on \(\mathcal B\). This gives
+\[
+ T_{\mathcal B}\in KK^\Gamma(\mathcal B,\mathcal B\widehat\otimes A).
+ \tag{ST.2}
+\]
+The module is the coefficient extension of the family module; for a compactly localized element of \(\mathcal B\), its image parameters lie in a compact subset of \(M\), so the family's compact defects extend to compact module defects. Approximation by such elements proves all cycle conditions. The central functions commute with the left source, and the exact group actions give equivariance. This explains the balanced extension rather than substituting an untyped pullback notation.
+
+The square-cutoff probability map from the already supplied proper probability-base proof gives an equivariant \(\Phi:M\to X\). Its pullback functions act centrally on \(A\) through (UD.6). Therefore
+\[
+ e_A:C(X)\widehat\otimes A\longrightarrow A,
+               \qquad f\widehat\otimes a\longmapsto\Phi^*(f)a
+ \tag{ST.3}
+\]
+is an equivariant homomorphism. It is nondegenerate, since the constant one of \(C(X)\) acts as identity. Write \(u:\mathbb C\to C(X)\) for the constant homomorphism, and define
+\[
+ \eta=[u]\eta_X\,T_{\mathcal B}\,(d_X\widehat\otimes1_A)[e_A]
+                         \in KK^\Gamma(\mathbb C,A),
+ \qquad d=D\in KK^\Gamma(A,\mathbb C).
+ \tag{ST.4}
+\]
+All factors have even degree. Their successive sources and coefficients are
+\[
+ \mathbb C\to C(X)\to\mathcal B
+ \to\mathcal B\widehat\otimes A
+ \to C(X)\widehat\otimes A\to A\to\mathbb C.
+ \tag{ST.5}
+\]
+This supplies one separable graded proper algebra, with genuinely equivariant classes of the required types.
+
+To compute the ordinary product, fix \(m_0\in M\) and \(x_0\in X\). After forgetting \(\Gamma\), the map \(\psi:W\to M\) contracts to the constant \(m_0\), by the continuous convex interpolation in the actual weak half-mass topology. Pulling the explicit family along that homotopy and extending coefficients as above gives
+\[
+ \operatorname{For}(T_{\mathcal B})
+                      =1_{\mathcal B}\widehat\otimes\theta_{m_0}.
+ \tag{ST.6}
+\]
+This homotopy is valid without properness of the map: on a compact source support, its image times the compact homotopy interval is compact, exactly the condition used for the localized defects.
+
+Similarly \(X\) is convex in its weak probability topology, so \(\Phi:M\to X\) contracts ordinarily to \(x_0\). The homomorphisms (ST.3) consequently give
+\[
+ \operatorname{For}([e_A])=[\operatorname{ev}_{x_0}]\widehat\otimes1_A.
+ \tag{ST.7}
+\]
+The even exterior-product interchange and (ST.1), (ST.6), (ST.7) now compute
+\[
+ \begin{split}
+ \operatorname{For}(\eta d)
+ &= [u]\operatorname{For}(\eta_Xd_X)
+                         [\operatorname{ev}_{x_0}]
+                           (\theta_{m_0}\otimes_A D)\\
+ &= [u]1_{C(X)}[\operatorname{ev}_{x_0}]\cdot1_{\mathbb C}
+   =1_{\mathbb C}.
+ \end{split}
+ \tag{ST.8}
+\]
+The two scalar evaluations in this computation occur only after forgetting equivariance. Before that step every factor in (ST.4) is equivariant, and neither a \(\Gamma\)-fixed probability nor an equivariant scalar evaluation has been invented.
+
+For each finitely generated abstract subgroup of a compact Lie group, the already completed uniform-embedding proof supplies the Hilbert-field hypotheses and (BD.2). The present construction then supplies (ST.4)--(ST.8) for the full stated scope, including dense subgroups and nontrivial finite stabilizers. It makes no topological closed-subgroup assumption and no equivariant \(\gamma=1\) assertion.
+
+The same completed uniform-embedding proof applies to every finitely generated linear group over a field of characteristic zero. Start with its given faithful finite matrix representation. Its finitely many generator coefficients lie in a finitely generated characteristic-zero field \(K\); the regular representation over a finite extension of a purely transcendental subfield is the same faithful characteristic-zero reduction used there. The coarse construction, probability base, Hilbert field and the present factorization then apply unchanged. No positive-characteristic linear-group conclusion is inferred.
+
+Finally apply the already complete scalar proper-factorization theorem. For \(R=C_r^*\Gamma\), \(M_\Gamma=C^*_{\max}\Gamma\), and the actual proper coefficient quotient \(q_A\), define
+\[
+ \kappa=j_r(\eta)[q_A]^{-1}j_{\max}(D)[\epsilon]
+                             \in KK(R,\mathbb C).
+ \tag{ST.9}
+\]
+Its exact descent square and ordinary full-character evaluation give
+\([u_R]\kappa=+1\).
+The character is on the full group algebra; there is no reduced trivial character in the construction. Thus the unit generates a direct integral summand of \(K_0(C_r^*\Gamma)\), with the splitting induced by this KK class.
+
+
+### 11Y. Reading
+
+The compact-base transfer mechanism is due to Tu, *The Gamma Element for Groups which Admit a Uniform Embedding into Hilbert Space*, original pp.282--284. The proof above specializes it to the weaker ordinary normalization actually required by the reduced scalar-unit construction, and supplies all types and ordinary contractions explicitly. The result remains a discrete-group theorem. A coherent étale-groupoid factorization requires additional anchored kernel and coefficient data and is not asserted here.
+
+![The exact proper factorization, ordinary contractions and even simplex kernel](../figures/proper-factorization.png)
+
+**Figure 11Y.1.** The upper row gives the exact even equivariant sources and coefficients of (ST.4)–(ST.5). The lower left shows the ordinary contractions (ST.6)–(ST.8). The lower right is the exact sample \(\mu=(1/4,3/4)\) of (UD.9), with the shifted grading (UD.4): its kernel is even and its complement is paired by the displayed Clifford matrix. The positive sign and full coefficient chain are proved in Sections 11V–11Y. [Vector figure](../figures/proper-factorization.svg) · [Generator](../reproduction/proper-factorization/reproduce.py) · [Component terms](../reproduction/proper-factorization/COMPONENT-TERMS.md).
+
 
 ## 12. Exercises
 
@@ -21667,6 +22346,32 @@ local Bott product, and says nothing
 about an inverse of the coefficient-free
 quotient or a finite-order graph operator
 (4 points).
+
+### Exercises 160–163. The completed proper scalar factorization (58 points)
+
+**Exercise 160 (14 points).**
+
+Prove norm convergence and the quotient identity for (PX.3), explain the need for the \(\varprojlim{}^1\) term, and specialize the result to the cone kernel in (PX.13).
+
+**Solution.** Compactly localized inputs have only finitely many nonzero input compressions by the supported enlarged cutoff. All finite partial sums are completely positive contractions because their positive matrix outputs are bounded by \(\sum c_g^2\leq1\). Approximating a general input by a compactly localized one bounds every remaining tail by twice its approximation error; this proves norm convergence in the middle algebra (4 points). The quotient of a summand is \(c_g^2d_g^2a=c_g^2a\), giving identity after square normalization. A formula with \(d_g=c_g\) would instead have \(\sum c_g^4\), which need not equal one (3 points). Contravariant KK is not asserted to be continuous. The telescope gives a kernel and cokernel of identity minus shift; the cokernel is the \(\varprojlim{}^1\) term. Commuting isomorphisms of stage groups preserve both, so (PX.12) permits the correct limit argument (3 points). Finally the equivariant Fock Morita module removes the compact factor in the ideal, leaving a coefficient cone. Its explicit equivariant scalar contraction gives zero in both degrees, even after restriction to finite subgroups. Nuclear lifting and Theorem 11V.4 then give the unique lift (PX.14), without asserting that an ordinary section is already equivariant (4 points).
+
+**Exercise 161 (16 points).**
+
+Explain stabilization, prove properness of (BD.8), identify the correct tail error in (BD.11), and compute the ordinary product sign.
+
+**Solution.** Real generators make the stabilization operator and its positive square root commute with conjugation. Its polar unitary therefore restricts to the real modules, so rank variation is absorbed by a trivial infinite summand while the cocycle is extended by zero (4 points). Bounded-height input and output vectors each have norm at most \(\sqrt R\); their difference is the affine cocycle, so \(\|b_g\|\leq2\sqrt R\). Uniform proper displacement makes its transporter finite, proving the actual proper action (4 points). A bounded single-particle difference satisfies (BD.12) with \(\leq\); the three phase integrals are each bounded by (BD.13), and the deformation inserts the factor \(t\), giving a tail error tending to zero. Translations change the weighted potential by \(c_{(1+t\Theta)b}\); its identity summand is retained (4 points). Finally the positive-time scalar evaluation of the lifted Bott class is the cubic weighted oscillator. Its even vacuum contributes \(+1\), and its invertible complement becomes degenerate after taking the exact sign. Tensoring with \(C(X)\) gives (BD.22), with coefficients retained (4 points).
+
+**Exercise 162 (16 points).**
+
+Prove the face test, verify the grading, and explain the calibration's exact scope.
+
+**Solution.** The nearest-simplex threshold gives (UD.7) by the half-space criterion. Applying it to the two tested coordinates gives \(|w_i-v_i|+|w_k-v_k|\leq\sqrt2\|w-v\|\); the strict hypothesis therefore excludes every inactive coordinate, including a neighborhood of the tested point (4 points). Compression of the Clifford operator removes exactly its vacuum-to-\(\xi_\mu\) transition, so its square differs from identity by that rank-one line. Raw exterior degree makes the line odd; the simplex degree \(|\sigma|-1\) makes it even. The corresponding Morita module must use that shifted grading (4 points). The off-diagonal Bott defect is supported within radius one, while (UD.10) gives a coordinate greater than three and nonpositive unwanted coordinates. Since \(3>1+\sqrt2\), (UD.8) proves the exact support ideal and multiplier property (4 points). Finally the ordinary ambient homotopy leaves the even rank-one Bott summand and an exactly degenerate complement. The ordinary cone inverse identifies its product with the completed oscillator's even vacuum index. This proves (UD.16); it does not assert an equivariant scalar evaluation or an equivariant gamma identity (4 points).
+
+**Exercise 163 (12 points).**
+
+Track the coefficient algebras in (ST.4), justify the ordinary contractions, and identify the two exact product hypotheses used.
+
+**Solution.** The factors have the types in (ST.5), so the two intermediate coefficient extensions are \(\mathcal B\widehat\otimes A\) and \(C(X)\widehat\otimes A\). The latter is collapsed by a genuine equivariant central homomorphism (ST.3), not a scalar evaluation (4 points). The weak half-mass space and the probability space are convex. On each compact source support their convex homotopy images are compact, so the explicit localized family defects remain compact throughout the homotopy. This proves (ST.6)--(ST.7) after equivariance is forgotten (4 points). The only product inputs are the ordinary coefficient identity (ST.1) and the ordinary universal parameter calibration (UD.16). Even interchange brings them together with \(u\operatorname{ev}_{x_0}=1\), proving (ST.8). Stronger equivariant gamma identities are unnecessary and are not inferred (4 points).
 
 ## References
 

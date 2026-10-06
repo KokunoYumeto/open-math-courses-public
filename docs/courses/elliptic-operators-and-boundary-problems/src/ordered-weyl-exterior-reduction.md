@@ -771,4 +771,4 @@ Its proof uses the actual finite analytic remainder and every higher-coefficient
 \]
 The left side is a formal coefficientwise integral, and the right side has precisely its degree-\(n\) formal multiplier. The zero coefficients in every other degree remain those actually proved in (FC10). No convergence of the formal series or pointwise identity of formal and classical symbols is asserted. This is a consequence of the direct finite coefficient calculation, not an input to it, and it uses no result from the later formal/classical bridge lesson.
 
-These are complete consequences of the original course formulas. The bounded source-reading route and exact earlier programme versions are retained privately.
+These are complete consequences of the original course formulas.

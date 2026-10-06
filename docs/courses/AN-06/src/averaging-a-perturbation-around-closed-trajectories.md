@@ -6,7 +6,7 @@
 
 A periodic principal flow lets us average a lower-order perturbation along each closed trajectory. The average commutes with the exact arithmetic spectral model. A unitary change of variables removes the remaining order-zero part, leaving an error of order minus one. This produces a counting approximation that remembers the distribution of the orbit averages inside each cluster.
 
-The free clustering article of Sher, Uribe and Villegas-Blas [SUV] supplies the comparison with averaging on Zoll manifolds. Duistermaat and Guillemin [DG], Colin de Verdière [CV] and the open text of Guillemin and Sternberg [GS] provide the periodic spectral background. We use the exact lattice operator, multiplicity polynomial and single-cluster probability law from [Arithmetic spectral clusters and their distributions](arithmetic-spectral-clusters-and-their-distributions.md), the powers and domains from [Positive real powers and spectral rescaling](positive-real-powers-and-spectral-rescaling.md), and [Wave evolution and cotangent flow](wave-evolution-and-cotangent-flow.md). The ordered symbol rule is proved in [Transverse composition and graph operators, Section 9, (G17)](../providers/analysis/transverse-composition-and-graph-operators.md#graph-egorov), after its actual composition and adjoint proofs. The underlying wave construction uses the written [scalar-transport proof](../providers/analysis/scalar-transport-and-phase-action.md#scalar-transport) and [qualified-pullback proof](../providers/analysis/wavefront-qualified-pullback.md#qualified-pullback). Scalar composition and summation are proved in [Classical scalar symbols, summation and regularity](../providers/analysis/classical-scalar-calculus.md#finite-symbol-calculus).
+The clustering article of Sher, Uribe and Villegas-Blas [SUV] supplies the comparison with averaging on Zoll manifolds. Duistermaat and Guillemin [DG], Colin de Verdière [CV] and the text of Guillemin and Sternberg [GS] provide the periodic spectral background. We use the exact lattice operator, multiplicity polynomial and single-cluster probability law from [Arithmetic spectral clusters and their distributions](arithmetic-spectral-clusters-and-their-distributions.md), the powers and domains from [Positive real powers and spectral rescaling](positive-real-powers-and-spectral-rescaling.md), and [Wave evolution and cotangent flow](wave-evolution-and-cotangent-flow.md). The ordered symbol rule is proved in [Transverse composition and graph operators, Section 9, (G17)](../providers/analysis/transverse-composition-and-graph-operators.md#graph-egorov), after its actual composition and adjoint proofs. The underlying wave construction uses [Scalar transport and phase action](../providers/analysis/scalar-transport-and-phase-action.md#scalar-transport) and [qualified-pullback proof](../providers/analysis/wavefront-qualified-pullback.md#qualified-pullback). Scalar composition and summation are proved in [Classical scalar symbols, summation and regularity](../providers/analysis/classical-scalar-calculus.md#finite-symbol-calculus).
 
 Throughout, \(X\) is compact, connected and without boundary, and \(n=\dim X\geq2\). Operators act on scalar half densities. Let \(L>0\) be a self-adjoint classical elliptic operator of order one, with domain \(H^1\), positive principal symbol \(p\), constant subprincipal symbol \(c\), and
 \[
@@ -28,6 +28,8 @@ w(k)=n\Pi^{-n}\mathcal W\left(k-\frac c h\right)^{n-1}.
 \]
 When \(n=2\), \(\mu(k)=w(k)\) exactly for all large \(k\). Fix \(k_0\) beyond these finite exceptions, increasing it so \(w(k)>0\).
 
+<a id="averaging-bounded-perturbations"></a>
+
 Let \(V\in\Psi^0_{\mathrm{cl}}\) be self-adjoint, with real principal symbol \(v\). Here is the precise bounded-perturbation argument used throughout. If \(A=A^*\) and \(D=D^*\) is bounded, the adjoint identity shows that \(y\in\mathcal D((A+D)^*)\) exactly when the functional \(u\mapsto(Au,y)\) is bounded in \(\|u\|\): subtract the bounded term \((Du,y)\). Thus \(\mathcal D((A+D)^*)=\mathcal D(A)\) and \((A+D)^*=A+D\) there. Applying this with \(A=L,D=V\) gives domain \(H^1\).
 
 Choose \(a>\|D\|\) for any bounded self-adjoint perturbation \(D\) of \(L\) below. The exact factorization on \(H^1\) is
@@ -41,7 +43,9 @@ Since \(\|D(L+a)^{-1}\|\le\|D\|/a<1\), the inverse of the first factor is its no
  &=(L+a)^{-1}\bigl(I+D(L+a)^{-1}\bigr)^{-1}
  \end{aligned}
 \]
-is compact and injective. It is self-adjoint: for \(f=(L+D+a)u\) and \(g=(L+D+a)v\), symmetry gives \((Kf,g)=(f,Kg)\). Its quadratic form is \((Kf,f)=(u,(L+D+a)u)\ge0\). The [written positive compact spectral and inverse-domain proof](../providers/analysis/compact-spectrum-domains.md#the-positive-compact-spectral-proof) supplies a complete eigenbasis, finite multiplicities and eigenvalues of \(L+D\) tending to infinity. Elliptic regularity makes the eigenvectors smooth for the classical perturbations used here. This proves compact resolvent and discreteness in the exact generality used in the count comparison. There are only finitely many eigenvalues below zero.
+is compact and injective. It is self-adjoint: for \(f=(L+D+a)u\) and \(g=(L+D+a)v\), symmetry gives \((Kf,g)=(f,Kg)\). Its quadratic form is \((Kf,f)=(u,(L+D+a)u)\ge0\). The [Positive compact spectra and inverse domains](../providers/analysis/compact-spectrum-domains.md#the-positive-compact-spectral-proof) supplies a complete eigenbasis, finite multiplicities and eigenvalues of \(L+D\) tending to infinity. Elliptic regularity makes the eigenvectors smooth for the classical perturbations used here. This proves compact resolvent and discreteness in the exact generality used in the count comparison. There are only finitely many eigenvalues below zero.
+
+<a id="averaging-orbit-operator"></a>
 
 ## 1. The orbit average and an exact commutator
 
@@ -80,6 +84,8 @@ Equations (5) and (7), first on smooth half densities, give
 \]
 The sign comes from interchanging the commutator members. This is an exact operator identity.
 
+<a id="averaging-exact-blocks"></a>
+
 There is also an exact block verification that fixes the sign and shows which part survives. Let \(\mathsf P_k\) be the orthogonal projection onto \(\mathcal V_k\). On a finite sum of eigenspaces,
 \[
  \mathsf P_k V_t\mathsf P_\ell
@@ -102,6 +108,8 @@ Indeed \(\int_0^\Pi(\Pi-t)e^{iat}\,dt=-\Pi/(ia)\) when \(a=h(k-\ell)\ne0\). Mult
  B=\sum_k\mathsf P_kV\mathsf P_k
 \]
 in the strong operator topology: orthogonality bounds every partial sum by \(\|V\|\), and the squared norm of its tail on \(u\) is at most \(\|V\|^2\sum_{k\text{ in the tail}}\|\mathsf P_ku\|^2\). The diagonal term in \(S\) is harmless because it commutes with \(L\). This calculation supplies the exact operator averaging identity; the preceding classical Egorov argument supplies the symbol and Sobolev regularity that the matrix calculation alone would not establish.
+
+<a id="averaging-bounded-conjugation"></a>
 
 ## 2. Conjugation by a bounded generator
 
@@ -145,6 +153,8 @@ R\in\Psi^{-1}_{\mathrm{cl}},\qquad R=R^*.
 \tag{13}
 \]
 Both sides have exact self-adjoint domain \(H^1\), since \(U\) preserves it. The residual is bounded; its equality and symmetry on smooth inputs extend to \(L^2\).
+
+<a id="averaging-form-comparison"></a>
 
 ## 3. A form bound and comparison counts
 
@@ -202,6 +212,8 @@ N(\lambda)&\leq N_0+\sum_{k>k_0}\mu(k)\,
 \]
 Every sum is finite, and all endpoint counts are closed.
 
+<a id="averaging-uniform-distributions"></a>
+
 ## 4. Uniform distribution bounds, including atoms
 
 Weak convergence need not give convergence of distribution functions at their jumps.
@@ -232,6 +244,8 @@ If \(\rho\) has no atoms, \(\theta\) is continuous and constant outside a compac
 \tag{23}
 \]
 Absolute continuity of \(\rho\) is unnecessary.
+
+<a id="averaging-staircase"></a>
 
 ## 5. The averaged staircase
 
@@ -287,6 +301,8 @@ The constant \(C_\delta\) is independent of the sufficiently small \(\varepsilon
 
 Replacing \(\mu(k)\) by \(w(k)\) costs \(O(\lambda^{n-2})\) when \(n\geq3\): only \(k=O(\lambda)\) contribute, and sum (3). For \(n=2\), the eventual equality in (3) makes this replacement exact beyond the fixed threshold. The remaining \(N_0\) is \(O(1)=o(\lambda^{n-1})\). Divide (29) by \(\lambda^{n-1}\), take the indicated limits, and let \(\varepsilon\) decrease to zero. This proves (25).
 
+<a id="averaging-atom-free"></a>
+
 If \(\rho\) is atom-free, let
 \(\omega_\theta(r)=\sup_{|s-t|\leq r}|\theta(s)-\theta(t)|\).
 For \(0<\delta\leq1\),
@@ -300,6 +316,8 @@ Only uniformly finitely many lattice centers contribute; each weight is at most 
 \(C\lambda^{n-1}\omega_\theta(2\delta)\), with \(C\) independent of \(\delta\leq1\). Use (25) to bound the upper limits of both signed differences \(N-N_a\) and \(N_a-N\) by this quantity. Let \(\delta\) decrease to zero, proving (26). ∎
 
 Adding an \(\varepsilon\mu(k)\) error to every fully counted earlier cluster would instead produce \(\varepsilon\lambda^n\), which does not prove the theorem. The exact cancellations outside (28) prevent that error.
+
+<a id="averaging-round-sphere"></a>
 
 ## 6. Great-circle averages on the round sphere
 
@@ -341,6 +359,8 @@ The real-power theorem gives domain \(H^1\) and principal symbol \(p=|\xi|\). Th
 \((i/2)\partial_x\partial_\xi(g^{ij}\xi_i\xi_j)\).
 Thus \(L\) has subprincipal symbol \(c=1/2\). Unit-speed covector geodesics return minimally after \(\Pi=2\pi\); (35) also gives \(e^{-2\pi iL}=I\). The phase volume is \(\mathcal W=4\pi^2\), so (3) agrees exactly with \(w(k)=2k-1\).
 
+<a id="averaging-sphere-law"></a>
+
 For \(V\) multiplication by \(x_3^2\), a great circle with oriented normal \(\nu\) is \(x(t)=e\cos t+f\sin t\), with \(e,f,\nu\) an oriented orthonormal frame. Its orbit mean is
 \[
 b(\nu)=\frac{e_3^2+f_3^2}{2}=\frac{1-\nu_3^2}{2}.
@@ -367,9 +387,11 @@ N_{L+x_3^2}(\lambda)=
 \]
 Extending the sum through finitely many low blocks costs only \(O(1)\).
 
+<a id="averaging-all-dimensions"></a>
+
 ### The spectral lattice in every sphere dimension
 
-The same square-root comparison applies to the unit round sphere \(S^n\) for every \(n\geq2\). We now extend the preceding polynomial argument directly to this round model, including completeness and the operator spectrum. The programme's elliptic Sobolev-domain and real-power results retain their existing analytic scope. The local harmonic interface to be proved is that restrictions of degree-\(\ell\) homogeneous harmonic polynomials in \(\mathbb R^{n+1}\) form a complete orthogonal collection of eigenspaces, with
+The same square-root comparison applies to the unit round sphere \(S^n\) for every \(n\geq2\). We extend the polynomial argument to prove that restrictions of degree-\(\ell\) homogeneous harmonic polynomials in \(\mathbb R^{n+1}\) form a complete orthogonal collection of eigenspaces, with
 
 \[
  -\Delta_{S^n}|_{\mathcal H_\ell}=\ell(\ell+n-1),\qquad
@@ -377,7 +399,9 @@ The same square-root comparison applies to the unit round sphere \(S^n\) for eve
  =\binom{\ell+n}{n}-\binom{\ell+n-2}{n},\qquad \ell\geq0.
 \]
 
-The second binomial is zero for \(\ell=0,1\). A list of harmonic eigenfunctions alone would not exclude additional spectrum. The following proof establishes the full interface, after which the retained arithmetic applies without a planned harmonic-spectrum input.
+The second binomial is zero for \(\ell=0,1\). The proof includes completeness, so these eigenspaces give the entire spectrum.
+
+<a id="averaging-harmonic-decomposition"></a>
 
 **The harmonic decomposition in every dimension.** For this proof, let \(\mathcal P_\ell\) be the complex homogeneous polynomials on \(\mathbb R^{n+1}\), and \(\mathcal H_\ell=\ker(\Delta:\mathcal P_\ell\to\mathcal P_{\ell-2})\), with negative-degree spaces zero. Euler's identity gives \(x\cdot\nabla H_m=mH_m\) for \(H_m\in\mathcal H_m\). Since
 \[
@@ -417,6 +441,8 @@ Applying it to \(r^\ell H_\ell|_{S^n}\) proves the displayed eigenvalue \(\ell(\
 \]
 Applying this to two harmonic restrictions proves orthogonality. This also proves positivity and symmetry in the operator argument below.
 
+<a id="averaging-harmonic-density"></a>
+
 **Density, including the approximation estimate.** Iterating the direct decomposition expresses every polynomial restriction as a finite sum of harmonic restrictions. Given \(f\in C(S^n)\), extend it to the cube \([-1,1]^{n+1}\) by
 \[
  F(x)=\begin{cases}
@@ -424,7 +450,7 @@ Applying this to two harmonic restrictions proves orthogonality. This also prove
  0,&x=0.
  \end{cases}
 \]
-It agrees with \(f\) on the sphere and is continuous, including at zero since \(|F(x)|\leq |x|\|f\|_\infty\) there. Put \(G(t)=F(2t-1)\) on \([0,1]^{n+1}\). The tensor Bernstein polynomial \(B_MG(t)\) is the expectation of \(G(J_1/M,\ldots,J_{n+1}/M)\), where the independent \(J_i\) have binomial parameters \((M,t_i)\). Their coordinate variances are at most \(1/(4M)\). For every \(\eta>0\), Chebyshev and the union bound give
+It agrees with \(f\) on the sphere and is continuous, including at zero since \(|F(x)|\leq |x|\|f\|_\infty\) there. Put \(G(t)=F(2t-1)\) on \([0,1]^{n+1}\). The tensor Bernstein polynomial \(B_MG(t)\) is the expectation of \(G(J_1/M,\ldots,J_{n+1}/M)\), where the independent \(J_i\) have binomial parameters \((M,t_i)\). Their coordinate variances are at most \(1/(4M)\). On the event that one coordinate error exceeds \(\eta>0\), the sum of all squared coordinate errors exceeds \(\eta^2\). Multiply this pointwise inequality by the finite product weights and sum. The expectation of that sum of squared errors is at most \((n+1)/(4M)\), so
 \[
  \mathbb P\!\left(\max_i|J_i/M-t_i|>\eta\right)
  \leq\frac{n+1}{4M\eta^2}.
@@ -441,15 +467,19 @@ First choose \(\eta\) small, then \(M\) large. This proves uniform polynomial ap
 
 To pass to \(L^2\), use the written [Euclidean finite-norm density proof](../providers/analysis/euclidean-approximation-and-convolution.md#finite-p-density) and [surface-coordinate and finite-partition construction](../providers/analysis/coordinate-inverses-and-integration.md#finite-partitions). Multiply an arbitrary sphere \(L^2\) function by a finite smooth partition subordinate to relatively compact coordinate patches. Each coordinate piece has compact support inside its chart. On a fixed larger compact chart set, the smooth surface density is bounded above and below by positive constants, so weighted and ordinary \(L^2\) norms are comparable. Approximate the piece by Euclidean compact smooth functions in \(L^2\), multiplying the approximants by a fixed chart cutoff equal to one on its support. This retains convergence and makes extension by zero smooth on the sphere. Summing the finitely many approximants proves that smooth, hence continuous, functions are dense in sphere \(L^2\). The uniform polynomial approximation above now proves that the harmonic restrictions are a complete orthogonal collection in \(L^2(S^n)\).
 
+<a id="averaging-laplacian-domain"></a>
+
 **The full operator spectrum.** Start \(-\Delta_{S^n}\) on smooth functions. It is densely defined, symmetric and nonnegative by the just-proved Green identity. Define \(D\) to be the diagonal operator on the complete harmonic decomposition, with eigenvalues \(\ell(\ell+n-1)\) and domain consisting exactly of the vectors satisfying
 \[
  \sum_{\ell\geq0}
  [\ell(\ell+n-1)]^2\|\mathsf P_\ell u\|_2^2<\infty,
 \]
-where \(\mathsf P_\ell\) is the orthogonal projection onto the harmonic restrictions. Testing the adjoint against each basis vector forces its image coordinates to be these real eigenvalues times the coordinates of its input. Such an image is in \(L^2\) exactly on the displayed domain; there the pairing identity holds by Cauchy–Schwarz. Thus \(D=D^*\). Finite harmonic sums approximate every vector in this domain in graph norm, by truncating the two convergent squared sums. For smooth \(u\), integration by parts identifies the coefficients of \(-\Delta u\) with those of \(Du\); Parseval gives the domain condition and equality. Hence the smooth operator is contained in the closed operator \(D\), while its graph closure contains the graph closure of all finite harmonic sums, which is \(D\). Both inclusions prove that its closure is exactly \(D\), with no separate deficiency-index theorem. The eigenvalues tend to infinity with finite multiplicities, so the diagonal resolvent is compact and there is no additional spectrum. The [classical scalar elliptic-domain proof](../providers/analysis/classical-scalar-calculus.md) and the preceding real-power lesson identify the usual domain as \(H^2\) and the square-root domain as \(H^1\). This completes the local harmonic-spectrum proof. ∎
+where \(\mathsf P_\ell\) is the orthogonal projection onto the harmonic restrictions. Testing the adjoint against each basis vector forces its image coordinates to be these real eigenvalues times the coordinates of its input. Such an image is in \(L^2\) exactly on the displayed domain; there the pairing identity holds by Cauchy–Schwarz. Thus \(D=D^*\). Finite harmonic sums approximate every vector in this domain in graph norm, by truncating the two convergent squared sums. For smooth \(u\), integration by parts identifies the coefficients of \(-\Delta u\) with those of \(Du\); Parseval gives the domain condition and equality. Hence the smooth operator is contained in the closed operator \(D\), while its graph closure contains the graph closure of all finite harmonic sums, which is \(D\). Both inclusions prove that its closure is exactly \(D\), with no separate deficiency-index theorem. The eigenvalues tend to infinity with finite multiplicities, so the diagonal resolvent is compact and there is no additional spectrum. The [classical scalar elliptic-domain proof](../providers/analysis/classical-scalar-calculus.md) and the preceding real-power lesson identify the usual domain as \(H^2\) and the square-root domain as \(H^1\). This proves the full harmonic spectrum. ∎
 
-This proof extends the original \(S^2\) argument for this round model. The elliptic course's programme carrier retains its actual writing state; no foreign proof or provider completion is being claimed. The following square-root shifts, multiplicity products and classical and quantum phases remain exactly those of the model.
+We can now determine the square-root shifts, multiplicity products and both return phases in every dimension.
 
+
+<a id="averaging-square-root-shifts"></a>
 
 Set \(\alpha=(n-1)/2\) and, for a fixed \(c>0\), let \(A_c=(-\Delta_{S^n}+c)^{1/2}\). The positive spectral square root acts on the same eigenspaces, so
 
@@ -500,7 +530,9 @@ The spectral phase of the unshifted exact model is
 
 Indeed each eigenspace has multiplier \(e^{-2\pi i(\ell+\alpha)}\), and completeness supplies the operator identity. If an integer lattice is wanted, put \(\beta=\lceil\alpha\rceil-\alpha\), which is zero or one half. Then \(L_n=A_{\alpha^2}+\beta\) has eigenvalues \(\ell+\lceil\alpha\rceil\) and \(e^{-2\pi iL_n}=I\). Formula (31) is precisely the case \(n=2\).
 
-The corresponding classical period is also \(2\pi\). At a unit tangent vector \(v\perp x\), the round geodesic and its tangent are
+<a id="averaging-hamilton-return"></a>
+
+The corresponding classical period is also \(2\pi\). Under the metric identification of tangent and cotangent vectors, the canonical one-form is \(v\cdot dx\). At \(|x|=|v|=1\), \(x\cdot v=0\), the vector \((v,-x)\) is tangent to the sphere's tangent bundle: it differentiates both constraints \(|x|^2=1\) and \(x\cdot v=0\) to zero. For any tangent variation \((\delta x,\delta v)\), its pairing with the canonical symplectic form is \(v\cdot\delta v+x\cdot\delta x=v\cdot\delta v\), since \(x\cdot\delta x=0\). This equals \(d|v|(\delta x,\delta v)\) at \(|v|=1\). Thus the Hamilton equations for \(p=|\xi|\) on the unit energy surface are exactly \(x'=v\), \(v'=-x\). Differentiation and the initial values verify their unique solution:
 
 \[
  x(t)=x\cos t+v\sin t,\qquad
@@ -511,11 +543,13 @@ Both vectors return exactly when \(\cos t=1\) and \(\sin t=0\), whose least posi
 
 ![The complete round-sphere harmonic spectrum and its quantum phase](../figures/sphere-harmonics-and-phase.png)
 
-The proof diagram records the positive Laplacian coefficient, the direct decomposition, injective restriction and complete orthogonal spectral resolution proved above. The multiplicity table contains exact values of the retained binomial formula. The phase table uses the exact \(\alpha=(n-1)/2\), \(\beta=\lceil\alpha\rceil-\alpha\), unshifted phase \((-1)^{n-1}\), and lowest eigenvalue of \(L_n\); the additive shift is retained in every dimension. Section 6, “The harmonic decomposition,” “Density” and “The full operator spectrum,” supplies the proof, and the displayed square-root and phase formulas supply the model constants. [Vector figure](../figures/sphere-harmonics-and-phase.svg). This is a local extension of the course's polynomial argument, with no historical novelty claim.
+The proof diagram records the positive Laplacian coefficient, the direct decomposition, injective restriction and complete orthogonal spectral resolution proved above. The multiplicity table contains exact values of the retained binomial formula. The phase table uses the exact \(\alpha=(n-1)/2\), \(\beta=\lceil\alpha\rceil-\alpha\), unshifted phase \((-1)^{n-1}\), and lowest eigenvalue of \(L_n\); the additive shift is retained in every dimension. Section 6, “The harmonic decomposition,” “Density” and “The full operator spectrum,” supplies the proof, and the displayed square-root and phase formulas supply the model constants. [Vector figure](../figures/sphere-harmonics-and-phase.svg). The diagram collects the polynomial and spectral calculations above.
 
 ### Use the conclusion
 
 Use the complete local round-sphere proof to check the quantum return phase in every dimension. Then distinguish the averaged principal observable, the conjugation error and the distribution bounds at atoms.
+
+<a id="averaging-solutions"></a>
 
 ## 7. Exercises with complete solutions
 
@@ -588,7 +622,7 @@ where \(\theta\) is the unscaled law (37). This law is atom-free and independent
 
 The normal-form source has a different order convention. [SUV, §3.1, Proposition 3.1] treats the order-two Laplacian plus an order-zero, possibly complex potential; its proof is explicitly a sketch of an iteration producing a commuting term and a smoothing residual. For the scalar order-one model here, (4)–(8) and the block verification solve the commutator exactly, and Proposition 2.1 proves the required classical conjugation with an order-minus-one residual. The form comparison and distribution argument then establish the full atom-qualified counting statement. No all-orders smoothing normal form is needed. [SUV, §5.1] identifies the space of oriented great circles on \(S^2\) and its averaging transform; our direct great-circle computation obtains (36)–(37). The full harmonic-spectrum proof and the shifts in every dimension \(n\) are the local arguments of Section 6.
 
-[CV, §§1–3] supplies the lattice and single-cluster setting used in the preceding lesson. [Z, §4, Proposition 4.9] explains the periodic transport obstruction for a Zoll Laplacian's band symbol; its geometric Theorem 3 is restricted to \(S^2\). Those results contextualize the averaging mechanism without replacing the exact bounded-generator and domain argument here. [GS, §10.2] constructs an unscaled-time semiclassical pseudodifferential family. The Hamiltonian-graph evolution required in (4) instead uses the classical construction and Egorov adapter in the linked course prerequisites; §§11.3–11.4 of [GS] are trace and mapping-torus background.
+[CV, §§1–3] supplies the lattice and single-cluster setting used in the preceding lesson. [Z, §4, Proposition 4.9] explains the periodic transport obstruction for a Zoll Laplacian's band symbol; its geometric Theorem 3 is restricted to \(S^2\). Those results contextualize the averaging mechanism without replacing the exact bounded-generator and domain argument here. [GS, §10.2] constructs an unscaled-time semiclassical pseudodifferential family. The Hamiltonian-graph evolution required in (4) instead uses the classical wave construction and ordered Egorov formula proved in the linked lessons; §§11.3–11.4 of [GS] are trace and mapping-torus background.
 
 - [SUV] David Sher, Alejandro Uribe and Carlos Villegas-Blas, “On the pseudospectra of Schrödinger operators on Zoll manifolds,” arXiv:1812.01769v1 (2018). [Freely accessible full preprint](https://arxiv.org/abs/1812.01769v1), §§3.1 and 5.1.
 - [CV] Yves Colin de Verdière, “Sur le spectre des opérateurs elliptiques à bicaractéristiques toutes périodiques,” *Commentarii Mathematici Helvetici* 54 (1979), 508–522. [Freely accessible digitized full article](https://gdz.sub.uni-goettingen.de/download/pdf/PPN358147735_0054/LOG_0041.pdf), §§1–3.

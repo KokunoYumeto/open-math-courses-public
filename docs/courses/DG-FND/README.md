@@ -1,6 +1,6 @@
 # Bundles, curvature and holonomy
 
-Sixteen of 34 units have completed the owner's source, proof, reader and portable-download checks.
+Sixteen of the course's 34 units are listed below; they are self-checked by the writing AI.
 
 - [Local tools for bundles and transport](src/local-tools-for-bundles-and-transport.md)
 - [Integral Thom classes and Euler indices](supporting/DG-CHAR-8e0b5f71efec/src/DG-CHAR-06.md)
@@ -19,4 +19,4 @@ Sixteen of 34 units have completed the owner's source, proof, reader and portabl
 - [Riemannian connections and convex neighbourhoods](src/riemannian-connections-and-convex-neighbourhoods.md)
 - [Completeness and the Hopf–Rinow theorem](src/completeness-and-the-hopf-rinow-theorem.md)
 
-Sixteen-chapter reading download. Human-source credits and component licences remain in each chapter. Earlier partial reviews and complete-edition records, including the nine-proof Hopf draft, remain private history alongside the withdrawn originals.
+Sixteen-chapter reading download. Human-source credits and component licences remain in each chapter.

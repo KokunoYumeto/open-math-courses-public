@@ -33,7 +33,7 @@ u^m+c_1(x)u^{m-1}+\cdots+c_m(x)=0,
 \]
 If \(w(u)<0\), the term \(u^m\) has value \(m w(u)\), strictly less than the value of every other nonzero term, since \(w(c_i)\geq0\). This contradicts the least-value property. Hence every coefficient of \(u\) belongs to \(V\). The intersection assertion puts all coefficients in \(R\), proving that \(R[x]\) is integrally closed. Induction on the number of variables proves the lemma. \(\square\)
 
-This proof supplies the polynomial-normality step of the supporting algebraic argument. It does not certify all its other inputs; their exact earlier proof locations and remaining audit boundaries are recorded in the prerequisite record.
+This proof supplies the polynomial-normality step of the supporting algebraic argument. Not all of the other inputs of that argument are proved here.
 
 ## 1. The completion map
 

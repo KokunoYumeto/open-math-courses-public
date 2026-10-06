@@ -348,7 +348,7 @@ There is a nonzero pulse at its left endpoint and a direct/image tail begins at 
 
 ![The exact fronts in a fixed-time section](../figures/oblique-wave-point-source-outer-front-023.png)
 
-The source is (a,z,t)=(2,0,0), b=√3/2 and c=1/2. At integer times 1 through 8, the outer front consists of a direct circle arc and the admitted faster straight branches. Both spatial axes use the same unit scale. The right panel displays the regular integral I, whose unit jump creates the pulse with coefficient √3. It is not a function plot of a Dirac mass. Between √3+1 and 2√2 the Green distribution vanishes in an open region. Equations 20–25 and Exercises 2–3 prove these claims.
+The source is (a,z,t)=(2,0,0), b=√3/2 and c=1/2. At integer times 1 through 8, the outer front consists of a direct circle arc and the allowed faster straight branches. Both spatial axes use the same unit scale. The right panel displays the regular integral I, whose unit jump creates the pulse with coefficient √3. It is not a function plot of a Dirac mass. Between √3+1 and 2√2 the Green distribution vanishes in an open region. Equations 20–25 and Exercises 2–3 prove these claims.
 
 The original figure, editable SVG and reproducible Python source are included with this lesson.
 

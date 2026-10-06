@@ -1,6 +1,6 @@
 # Moving Fourier kernels across maps and products
 
-Course SH-02. Unit SH02-FF. Original programme text: CC0 1.0 Universal. This unit is not admitted English. Formalization and translation are separate tasks.
+Course SH-02. Unit SH02-FF. Original programme text: CC0 1.0 Universal.
 
 The classical bundle-map and base-change statements are compared with Kashiwara and Schapira, [*Microlocal Study of Sheaves*, Astérisque 128 (1985), §2.1, Propositions 2.1.5–2.1.6, p. 41](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=44). That section expressly omits proofs. Here one pairing identity constructs the primitive exchange; adjoint mates and ordered orientation evaluation give the remaining maps. The two inverse relative factors are checked by integral rank-one degree tests. Those tests check the displayed inverse factors in rank one and refute the stated alternatives; the general formulas are proved below. They are not claims about an unverified printed formula. The source account at the end compares the actual proof mechanisms and their domains.
 
@@ -514,7 +514,7 @@ Schapira's [§4.9, pp. 100–101](https://webusers.imj-prg.fr/~pierre.schapira/L
 
 The product argument has an additional geometric step. FF16 separates the two mixed-sign wedges, compactifies each by three edges of a square, and computes the restriction map with arbitrary coefficient modules. FF19 constructs the parameterized map before testing stalks. FF20 combines that cut comparison with the bounded-below Künneth construction, then checks the associator, symmetry and rank-zero unit. Neither the statement-only Astérisque passage nor the bounded sphere-bundle inversion proof in Schapira's §5.4 substitutes for this biconic argument. The rank-jumping, nonorientable, torsion and diagonal-conic counterexamples test the hypotheses and ordered factors used in these proofs.
 
-The teaching order follows those local tasks: operation bounds, primitive exchange, adjoint mates, base change, biconic geometry, degree tests and solved problems. The admitted passages share standard mathematical constructions, but they do not present this sequence of complete course-map comparisons. The source accounts do not claim a comparison against an unread treatment. Independently expressed programme text is CC0; genuine human components retain their recorded terms.
+The teaching order follows those local tasks: operation bounds, primitive exchange, adjoint mates, base change, biconic geometry, degree tests and solved problems. The cited passages share standard mathematical constructions, but they do not present this sequence of complete course-map comparisons. Independently expressed programme text is CC0; genuine human components retain their recorded terms.
 
 ## SH02-FF-BOUNDARY. Verified content and remaining dependencies
 

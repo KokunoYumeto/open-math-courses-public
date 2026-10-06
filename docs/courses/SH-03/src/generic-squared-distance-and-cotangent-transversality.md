@@ -13,7 +13,7 @@ The submanifold \(\Lambda_0\) need not be declared equal to the whole regular lo
 
 We use the canonical-form calculus in Subanalytic sets and limiting tangent directions, cotangent restriction in Isotropic cotangent transport and discrete critical values, and the explicit subanalytic dimension prerequisites in Finite conormal closures and generic base directions. The analytic critical-value theorem, including its elementary lower-dimensional image estimate in Step A.1, formula (A2), supplies the null-set arguments used here. Countable atlases and the stated analytic-calculus inputs remain prerequisites. Schapira–Tose's freely readable [*Morse Inequalities for R-constructible Sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/ResPapers/Tose.pdf), §3, explains the Morse application of proper functions with transverse cotangent intersections. We prove the generic-center existence and the ambient-to-intrinsic comparison below rather than attribute them to that paper.
 
-*Programme exposition: CC0. Reconstructed and checked by GPT-6 Astra (OpenAI), Ultra, October 2026, preserving the mathematical scope of the earlier GPT-6.1 Sol lesson. Owner and internal AI review are recorded separately; full transitive proof clearance remains open.*
+*Programme exposition: CC0. Reconstructed and checked by GPT-6 Astra (OpenAI), Ultra, October 2026, preserving the mathematical scope of the earlier GPT-6.1 Sol lesson. Self-checked by the writing AI. The prerequisites of the cited lessons are not proved here.*
 
 ## The precise generic statement
 

@@ -215,7 +215,7 @@ For one chosen route, prepare a short mathematical note with four parts:
 1. Specify the objects, coefficient category, bounds, ambient geometry, and support conditions.
 2. Draw the comparison with its actual arrows. Name the units, counits, restriction maps, and orientation identifications that define them.
 3. Work through a local model and an exceptional case, such as an open endpoint, a zero vector, a rank change, or a stationary trajectory.
-4. State the exact additional theorem needed for the external step, its source and owner, and the conclusion it would add.
+4. State the exact additional theorem needed for the external step, its source and the conclusion it would add.
 
 The local model tests a proposed theorem; it does not prove its full generality. Within SH-02, Fourier normalization and the exact remaining trace comparison retain their owning proof obligations. The general fibre-product Hom comparison is constructed in SH02-MHPC-FIBRE-PRODUCT, conditional on its named operation and Fourier prerequisites. A route that uses one of those comparisons must retain that dependency rather than selecting an arbitrary isomorphism with the same endpoints.
 

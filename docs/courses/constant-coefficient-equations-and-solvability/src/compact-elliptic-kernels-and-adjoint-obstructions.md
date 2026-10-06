@@ -496,5 +496,6 @@ These are compatible exactly when \(a<2b-3\), equivalently \(b>(a+3)/2\). Under 
 
 ## References
 
-- [Grubb] Gerd Grubb, *Distributions and Operators*, lecture notes, University of Copenhagen, 2007–2008. [Author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm).
+- [Grubb] Gerd Grubb, author-hosted lecture chapter 5, *Fourier transformation of distributions*, §§5.1–5.3, from the 2007–2008 lecture notes for *Distributions and Operators*. [Exact freely readable chapter](https://www.math.ku.dk/~grubb/dist5.pdf). [Author's lecture-note index](https://web.math.ku.dk/~grubb/distribution.htm). Fourier and tempered-distribution background; the compact gluing and obstruction proofs are written here.
 - [Hörmander] Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 1983.
+- Written proof inputs: [Periodic flat solutions and uniform integer frequencies](periodic-flat-solutions-and-uniform-integer-frequencies.md#the-seed-statement), Theorem 1 and equations (3), (30), with global smallness proved in [the upper-tail construction](periodic-flat-solutions-and-uniform-integer-frequencies.md#global-smallness-and-the-nonzero-upper-tail), equations (27)–(30). Reflection and compact joining are Proposition 1 here; the Euclidean embedding and exterior elliptic patch are Proposition 2; the bilinear transpose and localization obstruction are Proposition 3 and Corollary 4. The additional general-frequency applications retain their separate open status.

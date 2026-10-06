@@ -77,7 +77,7 @@ The scalar2 is invertible in \(\mathbb C\), so the sphere period vanishes. Secti
 
 ## Exercise6: reverse the canonical orientation and examine degree zero
 
-**Problem (advanced).** The admitted C8 convention gives \(k_x=-k_{\mathrm{out}}\). Compute its integer class and a rational chain bounding it. Then explain precisely why the two-dimensional example from Comparison3 cannot be inferred from the \(S^2\) matrix result.
+**Problem (advanced).** The C8 convention gives \(k_x=-k_{\mathrm{out}}\). Compute its integer class and a rational chain bounding it. Then explain precisely why the two-dimensional example from Comparison3 cannot be inferred from the \(S^2\) matrix result.
 
 **Solution.** In \(\mathbb Z/2\mathbb Z\), negation fixes the nonzero class, so \([k_x]=[k_{\mathrm{out}}]\ne0\). Since \(\partial A_{\mathrm{out}}=-2k_{\mathrm{out}}=2k_x\), the rational chain \(A_{\mathrm{out}}/2\) bounds \(k_x\). There is no integral chain bounding it, by the nonzero class.
 
@@ -85,4 +85,4 @@ For the two-dimensional wave the fiber consists of two points, and the sphere cy
 
 ## Exact scope and credit
 
-The full working proof gives every needed chain, open-cover, sphere and mapping-torus argument and identifies the actual outward generator. It credits Allen Hatcher's author-hosted *Algebraic Topology*, Chapter2, for prism, subdivision, Mayer--Vietoris and mapping-torus background. The existing AH032-2 orientation and explicit cylinder are retained exactly. This companion does not decide the intended coefficient convention of a private source, general Petrowsky component constancy, rational-form completeness, projective tube injectivity or recursive course foundations. Those remain separate tasks.
+The full working proof gives every needed chain, open-cover, sphere and mapping-torus argument and identifies the actual outward generator. It credits Allen Hatcher's author-hosted *Algebraic Topology*, Chapter2, for prism, subdivision, Mayer--Vietoris and mapping-torus background. The existing AH032-2 orientation and explicit cylinder are retained exactly. This companion does not prove general Petrowsky component constancy, rational-form completeness, projective tube injectivity or the underlying course foundations. Those remain separate tasks.

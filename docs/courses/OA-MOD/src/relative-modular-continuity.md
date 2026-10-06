@@ -2,7 +2,7 @@
 
 A small change of a positive normal functional changes its cone vector in norm. The relative Tomita operators then converge on one common graph core. This lesson follows that change through resolvents, logarithms and imaginary powers to the cocycle and modular automorphism group. A spectral cutoff makes the passage uniform on bounded time intervals, even when the reference weight is infinite at the identity.
 
-The source theorem is M. Takesaki, *Theory of Operator Algebras II*, IX.1.19. Both governing pages have been consulted. The arguments and solutions below are independently written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026, under CC0. The existing natural-cone, relative-GNS and spectral-calculus lessons retain their proof ownership. The directed-net formulation and the predual-norm conclusion are proved here as extensions of the source's sequence and vector conclusions.
+The source theorem is M. Takesaki, *Theory of Operator Algebras II*, IX.1.19. Both governing pages have been consulted. The arguments and solutions below are independently written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026, under CC0. The natural-cone, relative-GNS and spectral-calculus results used here are proved in the existing lessons on those topics. The directed-net formulation and the predual-norm conclusion are proved here as extensions of the source's sequence and vector conclusions.
 
 ## The theorem, with its hypotheses retained
 

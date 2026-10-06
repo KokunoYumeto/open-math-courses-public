@@ -1,6 +1,6 @@
 # Almost homomorphisms on measured groupoids
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author checked; not independently reviewed. Original expression is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. Original expression is public domain (CC0).*
 
 A cocycle identity valid for almost every composable pair need not hold on every arrow of a conull reduction. For uncountable fibres, an exceptional set can meet every orbit. This lesson proves the almost-homomorphism theorem used in the programme's integrable centralizer argument, including the saturated unit set and a Borel homomorphism on all its arrows. The theorem is classical and attributed to Arlan Ramsay. The proof below supplies every repair step at the stated standard Borel, faithful proper kernel hypotheses; no research novelty is claimed.
 

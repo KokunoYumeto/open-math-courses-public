@@ -1,6 +1,6 @@
 # Completing the elementary inputs actually used
 
-Private prerequisite companion. The source is Jiří Lebl's freely accessible
+Prerequisite companion. The source is Jiří Lebl's freely accessible
 *Basic Analysis*, version 6.3, [author edition](https://www.jirka.org/ra/).
 This is an attributed adaptation and extension under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
@@ -280,4 +280,4 @@ declared elementary product and chain rules; it does not close all of F0-CALC.
 
 ## Remaining proof review
 
-The exact existing programme files, anchors and these local completions form one dependency chain. Their mathematical arguments must be distinguished from the eligibility of whole source pages or whole-book downloads. The selected dimension and differential-calculus inputs, including P8's smoothness, are now bound in `differential-proof-chain.json`. The compact integral, fundamental theorem and Taylor inputs are bound separately in `integration-proof-chain.json`. Global integration, exponentials, multidimensional change of variables and the final assembled lesson remain under review.
+The exact existing programme files, anchors and these local completions form one dependency chain. Their mathematical arguments must be distinguished from the eligibility of whole source pages or whole-book downloads. The selected dimension and differential-calculus inputs, including P8's smoothness, are now bound in `differential-proof-chain.json`. The compact integral, fundamental theorem and Taylor inputs are bound separately in `integration-proof-chain.json`. Global integration, exponentials and multidimensional change of variables are not proved in this companion.

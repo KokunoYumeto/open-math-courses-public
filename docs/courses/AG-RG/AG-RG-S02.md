@@ -385,7 +385,7 @@ These isomorphisms are canonical. The epimorphisms just used efface all positive
 
 If \(i<0\), the left side vanishes, and the right side is cohomology above dimension \(n\), hence also zero. This proves the displayed duality for all integers. \(\square\)
 
-The following direct DVR argument is retained from the owner's CC0 curve-completion support; it supplies this local algebra before the degree calculations.
+The following direct DVR argument supplies this local algebra before the degree calculations.
 
 **DVR Lemma 6.C.** A one-dimensional Noetherian normal local domain is a discrete valuation ring.
 

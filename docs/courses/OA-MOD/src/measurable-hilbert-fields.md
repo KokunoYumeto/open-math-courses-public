@@ -6,7 +6,7 @@ A Hilbert field needs a specified measurable structure. Fibrewise isometries alo
 
 The human antecedent is M. Takesaki, *Theory of Operator Algebras I*, IV.8: Definition 8.9, Lemmas 8.10 and 8.12, Theorem 8.13, Definitions 8.14–8.15, and Corollary 8.16, printed 269–273/PDF 276–280. The governing page images were actually inspected. The calculations below are independently written alternative derivations of the shared foundation statements identified next. They supply every clause of the course's existing FIELD contract; they do not supply central disintegration existence, the other SELECTION coding constructions, or by themselves the compatible GNS representation transport for VIII.4.5. The latter is constructed from these Hilbert-field tools in Two Gram fields before measurability of the involution through Forward and inverse transport by least indices.
 
-**Statement ownership.** The shared clauses below have one existing programme owner. Measurable fields of Hilbert spaces and their direct integrals supplies the eight HF clauses; Decomposable operators and the diagonal algebra supplies the diagonal-commutant clause. The retained calculations are alternative derivations in our notation.
+**Foundation statements.** Each shared clause below is proved in an existing programme lesson. Measurable fields of Hilbert spaces and their direct integrals supplies the eight HF clauses; Decomposable operators and the diagonal algebra supplies the diagonal-commutant clause. The retained calculations are alternative derivations in our notation.
 
 | Local argument | Exact foundation statement |
 | --- | --- |

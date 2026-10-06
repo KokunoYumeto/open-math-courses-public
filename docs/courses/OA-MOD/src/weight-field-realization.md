@@ -212,6 +212,6 @@ The compatible forward construction is proved in Two Gram fields before measurab
 
 The source's associated realization remains tied to its prescribed concrete field. GFR constructs precisely that compatible associated realization from the source test fields. The source leaves Lemma VIII.4.5's proof to the reader; interpreting its associated meaning is recorded explicitly, with independent source-interpretation adjudication still pending.
 
-The sole canonical owner is **TT2-VIII-lemma-4.5**, now with an original public author proof at the named inputs; **MW-DEP-GNS-FIELD** remains its noncounting alias. MC-05 remains a conditional reverse theorem; GFR supplies the compatible construction and the two transports that MC-05 alone did not prove.
+Lemma VIII.4.5 has an original proof at the named inputs in GFR; **MW-DEP-GNS-FIELD** names the same statement. MC-05 remains a conditional reverse theorem; GFR supplies the compatible construction and the two transports that MC-05 alone did not prove.
 
 The MW consumers use precise GFR clauses. MW-04 identifies the two global represented algebras through the actual measurable normal isomorphism, and MW-07 constructs the pulled-back GNS field for the reverse application. Their full transitive and independent closure remains open. The direct finite-dimensional violation of the definition and concrete matrix-coefficient failure in MC-03/04 require no GFR conclusion.

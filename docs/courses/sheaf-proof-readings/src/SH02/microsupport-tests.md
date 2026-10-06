@@ -1,6 +1,6 @@
 # SH02-MST — Detecting and removing directional obstructions
 
-Local unit: `SH02-MST`. The directional test equivalence, propagation theorem, and cone cutoff theorem are proved below relative to the explicitly stated sheaf-theoretic imports. No formalization, translation, or publication is claimed.
+Local unit: `SH02-MST`. The directional test equivalence, propagation theorem, and cone cutoff theorem are proved below relative to the explicitly stated sheaf-theoretic imports.
 
 Throughout, $k$ is a commutative ring of finite global dimension, $X$ is a finite-dimensional real manifold countable at infinity, and $F\in D^b(k_X)$. No constructibility or finiteness of stalks is assumed. The notation $\operatorname{supp}(F)$ means the closure of the union of the supports of its cohomology sheaves. A closed convex cone contains its vertex $0$; it is **pointed** when it contains no nonzero vector together with its negative. For a cone $C\subset E$ put
 
@@ -304,7 +304,7 @@ P_CF\xrightarrow{\sim}F
 \tag{T24}
 \]
 
-We first prove the forward implication and the microlocal accuracy of the counit. These parts do not use the propagation theorem whose localization is audited separately below.
+We first prove the forward implication and the microlocal accuracy of the counit. These parts do not use the propagation theorem whose localization is treated separately below.
 
 Work locally on $Y$ and replace $C$ by $\{0\}\times C$ in the product vector space. If $\xi\notin C^{\circ a}$, choose $v\in C$ with $\langle v,\xi\rangle>0$. There is a full-dimensional pointed cone $D$ centered tightly around $-v$, with $\xi\in\operatorname{Int}D^{\circ a}$. Its aperture can be chosen so that $D+C$ is the entire vector space: a cone neighborhood of $-v$, translated by sufficiently large positive multiples of $v$, contains any prescribed vector. For any nonempty convex $D$-open set $O$, this gives $O+C=E$.
 
@@ -717,7 +717,7 @@ The counit $P_CF\to F$ is a useful first cutoff because its error is invisible o
 
 A productive next calculation is to compare two nested cones. The natural maps between their directional topologies supply maps between their projectors; the support-test criterion identifies where the comparison is a microlocal isomorphism. Any claim that the two projectors agree globally must also account for the boundary of the polar cones. Another route is to apply the propagation proof to a family of bounded windows and track the compatible restriction maps. The compactness checks in (T50) and (T56) specify which window limits preserve the conclusion, and expose exactly where a limit escaping to infinity requires additional input.
 
-## SH02-MST-STATUS — Provenance and open verification
+## SH02-MST-STATUS — Sources and open verification
 
 Local identifier: `SH02-MST-STATUS`.
 
@@ -725,4 +725,4 @@ The source mechanisms have been checked against Astérisque Theorem 1.4.3, Theor
 
 This independently authored exposition, including its proofs and solved problems, is dedicated to the public domain under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The cited sources retain their own terms; no source text or figures are incorporated.
 
-The local proofs are complete relative to the displayed dependency contracts. They include the bounded convex-extension repair, the rounded-front proof of propagation under interior-polar avoidance, and the passage from directional sections to ordinary support stalks. All declared imports remain subject to course-level dependency verification, and the manuscript requires independent mathematical and expression review. These are explicit open obligations, not additional assumptions on the objects to which the statements apply.
+The local proofs are complete relative to the displayed dependency contracts. They include the bounded convex-extension repair, the rounded-front proof of propagation under interior-polar avoidance, and the passage from directional sections to ordinary support stalks. The declared imports are not proved in this lesson. These are explicit open obligations, not additional assumptions on the objects to which the statements apply.

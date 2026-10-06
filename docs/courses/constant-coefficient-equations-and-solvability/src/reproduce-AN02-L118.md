@@ -29,7 +29,7 @@ It writes the supplied PNG, SVG and exact geometry files. A fresh replay with Py
 
 ## Check the mathematics and credits
 
-The first figure shows exact component slices vτ = 1 and positive-polar slices xτ = 1 for the crossing, simple and noncharacteristic points of (τ−η₁)(τ−η₂). Excluded cone boundaries are dashed; included polar points and segment are solid. The second shows exact rotating wave tangent halfplanes, both trajectories ε²/4 ± iε/√2 and the meridian modulus at ε = 1/4 with proved lower bound 1/16. These are slices and exact sampled functions, not general theorem proofs. Full captions, LC035-2–4 and learner E1–E3 give locators. The full formal proof follows the complete learner and all six solutions. C1/D1 and D4 inputs, AN-01 ownership, D5–D6 and full C6–C8/component scope remain explicit.
+The first figure shows exact component slices vτ = 1 and positive-polar slices xτ = 1 for the crossing, simple and noncharacteristic points of (τ−η₁)(τ−η₂). Excluded cone boundaries are dashed; included polar points and segment are solid. The second shows exact rotating wave tangent halfplanes, both trajectories ε²/4 ± iε/√2 and the meridian modulus at ε = 1/4 with proved lower bound 1/16. These are slices and exact sampled functions, not general theorem proofs. Full captions, LC035-2–4 and learner E1–E3 give locators. The full formal proof follows the complete learner and all six solutions. The C1/D1 and D4 inputs, the general real analytic and microhyperbolic case, D5–D6 and the full C6–C8/component scope are not proved in the lesson.
 
 CREDITS.txt gives every human source and locator. Original prose and figures are CC0; copyrighted references are comparison credits and are not imported.
 

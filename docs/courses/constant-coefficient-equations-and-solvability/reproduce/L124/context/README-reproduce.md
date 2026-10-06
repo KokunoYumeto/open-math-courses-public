@@ -1,4 +1,4 @@
-# Read and reproduce this private prerequisite
+# Read and reproduce this prerequisite
 
 Open `index.html` through an ordinary local HTTP server. The packet contains its own MathJax runtime and fonts; it does not fetch a mathematical proof at runtime. The main learner is `projective-exhaustion-and-the-finite-chain-tube-receiver.html`, with the exact Markdown beside it. Complete supporting readings are under `providers/`, and exact Markdown downloads under `sources/`. The duality/tubular download explicitly contains selected complete sections, as its reader notice explains.
 
@@ -8,4 +8,4 @@ The figures are generated independently by the included CC0 `make_figures.py` us
 
 The delivery verification reruns the renderer into a fresh local output, compares exact figure/geometry bytes and PNG RGBA, checks all source downloads and ordered prose/math, and exercises the actual browser at widths1100 and390. Any wider expression has a focusable horizontal scroll control; use the left/right keys after focusing it. The exact source TeX remains in the HTML.
 
-New prose, diagrams and renderer are CC0-1.0; source author/component credits remain with every reading. MathJax and figure font licenses are included separately. No source-book scan, book prose, private mailbox or runtime filesystem path is included in the candidate payload.
+New prose, diagrams and renderer are CC0-1.0; source author/component credits remain with every reading. MathJax and figure font licenses are included separately. No source-book scan, book prose or runtime filesystem path is included in this packet.

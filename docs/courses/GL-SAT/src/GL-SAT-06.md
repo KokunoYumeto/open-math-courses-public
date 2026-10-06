@@ -2,9 +2,9 @@
 
 *Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
-The objects of the Satake category are perverse sheaves on the affine Grassmannian whose equivariance records the integral loop-group action. Each object has support in finitely many Schubert varieties. This makes the definition a finite-dimensional question, despite the infinite-dimensional notation. We construct that category, prove independence of the jet level, classify its simple objects, and establish duality and the exact faithful cohomology functor. We also prove the precise implication from IC parity to semisimplicity. General IC parity remains an unfinished assertion in this lesson; it is not used in the other constructions.
+The objects of the Satake category are perverse sheaves on the affine Grassmannian whose equivariance records the integral loop-group action. Each object has support in finitely many Schubert varieties. This makes the definition a finite-dimensional question, despite the infinite-dimensional notation. We construct that category, prove independence of the jet level, classify its simple objects, and establish duality and the exact faithful cohomology functor. We also prove the precise implication from IC parity to semisimplicity, a finite-generator reduction of the parity question, ordinary Lefschetz and IC parity for homogeneous affine cones, and parity for every quasi-minuscule label. The general parity theorem is concluded in Lesson 11 after the classical tensor equivalence; this lesson proves its geometric inputs and conditional generator criterion.
 
-Full classical characteristic-zero semisimplicity is proved later in Identifying the dual group, Theorem 8.3, using the convolution and reconstruction developed after this lesson and the vanishing of IC self-extensions. That proof also gives every standard-object equality. It is independent of general ordinary IC parity, which remains a separate geometric assertion. The later equivalence is not an input to the constructions in this lesson.
+Full classical characteristic-zero semisimplicity is proved later in Identifying the dual group, Theorem 8.3, using the convolution and reconstruction developed after this lesson and the vanishing of IC self-extensions. That proof also gives every standard-object equality. It is proved before general ordinary IC parity, which is then concluded in that lesson, Theorem 8.4. The later equivalence is not an input to the constructions in this lesson.
 
 We work with a connected reductive group \(G/\mathbb C\), a maximal torus \(T\subset B\), and a coefficient field \(\Lambda\). The category and finite-jet arguments work over every coefficient field. Statements conditional on characteristic-zero IC parity are identified explicitly. Put \(O=\mathbb C[[t]]\), \(K=\mathbb C((t))\),
 \[
@@ -333,7 +333,7 @@ i_*i^!K_\lambda\longrightarrow K_\lambda
  \longrightarrow Rj_*\underline\Lambda[d_\lambda]
  \xrightarrow{\partial}i_*i^!K_\lambda[1]
 \]
-vanishes. Thus the remaining assertion is \(\partial\eta=0\). If it is proved, a lift \(u\) restricts to the identity on that dense open. Proper smooth-source duality makes \(K_\lambda\) self-dual; dualizing \(u\) gives \(v\) with identity open restriction. Equation (3.2) then forces \(vu=1\). Proper base change and (5.8) make the stalks of IC a direct summand in the correct parity, establishing (P). The vanishing of \(\partial\eta\) is unfinished here. The conditional deductions above do not assume it.
+vanishes. Thus the remaining assertion is \(\partial\eta=0\). If it is proved, a lift \(u\) restricts to the identity on that dense open. Proper smooth-source duality makes \(K_\lambda\) self-dual; dualizing \(u\) gives \(v\) with identity open restriction. Equation (3.2) then forces \(vu=1\). Proper base change and (5.8) make the stalks of IC a direct summand in the correct parity, establishing (P). The vanishing of \(\partial\eta\) is obtained in Lesson 11, §8.7, after general parity; the sufficient criterion just proved does not assume that later result.
 
 ### 5.4. A criterion using standard objects
 
@@ -435,6 +435,373 @@ The proved construction gives \(i_\mu^*IC_\lambda=\tau^{\le-s-1}B_\mu\). Since \
 \tag{5.15}
 \]
 This retained lower-degree vanishing has not been proved for general higher-codimension slices. Upper truncation cannot remove a surviving degree below its cutoff. Likewise, semisimplicity of spherical perverse objects does not split the derived rootwise resolution of §5.3: that resolution is Iwahori-equivariant and need not be spherical, and semisimple perverse cohomology alone does not supply its derived inclusions. Either (5.15) or the explicit identity-extension lift in (5.9) would supply the remaining geometric step.
+
+### 5.7. A finite family that detects general parity
+
+The following lemma separates an unconditional lattice fact from a conditional tensor-generation statement. The latter will be applied only after the classical equivalence has been proved in Lesson 11; that equivalence is not a proof input here. Put
+\[
+L=X_*(T),\qquad Q^\vee=\mathbb Z\Phi^\vee,\qquad
+\Gamma=L/Q^\vee.
+\]
+
+**Lemma 5.6.** Every class in \(\Gamma\) has a dominant minuscule representative. Choose such representatives \(\mu_1,\ldots,\mu_a\) for a finite set of generators of \(\Gamma\). In each irreducible coroot component choose its dominant short coroot \(\nu_i\). Let \(R/\Lambda\) be the split reductive group with dual root datum. If the Satake category admits a rigid tensor structure with product convolution and an exact tensor equivalence to \(\operatorname{Rep}_\Lambda(R)\) carrying \(IC_\xi\) to the highest-weight module \(V_\xi\), then every \(IC_\lambda\) is a direct summand of a finite direct sum of convolution words in
+\[
+IC_{\mu_1},\ldots,IC_{\mu_a},IC_{\nu_1},\ldots,IC_{\nu_b}
+\quad\text{and their tensor duals}.                         \tag{5.16}
+\]
+
+*Proof of the lattice assertion.* Let \(E=\mathbb RQ^\vee\). The reflection calculation in Root data, Weyl chambers and the Bruhat decomposition, §1, applied to the dual datum, gives
+\(L_{\mathbb R}=E\oplus E^W\). Give \(E\) a Weyl-invariant positive definite inner product and take this sum orthogonally. A coset \(\eta+Q^\vee\) has fixed central projection and semisimple projections forming the discrete lattice translate \(\eta_E+Q^\vee\). Only finitely many points of that translate lie in any bounded ball, so its norm attains a minimum. Reflections preserve the coset, since
+\(s_\alpha\eta-\eta=-\langle\alpha,\eta\rangle\alpha^\vee\).
+Move a minimizing representative \(\mu\) into the dominant chamber. For every positive root \(\beta\), comparison with \(\mu-\beta^\vee\) gives
+\[
+2(\mu_E,\beta^\vee)\le\|\beta^\vee\|^2,
+\qquad
+\langle\beta,\mu\rangle
+=\frac{2(\mu_E,\beta^\vee)}{\|\beta^\vee\|^2}\le1.
+\]
+Dominance and integrality make every positive-root pairing zero or one. This is precisely the minuscule condition. The argument allows an infinite component group, nonprimitive coroots and arbitrary central torus directions.
+
+Here is also the root fact needed to choose \(\nu_i\), without a list of types. In an irreducible root system choose a positive short root of maximum height. If its pairing with a simple coroot were negative, reflection would add a positive multiple of that simple root, preserving length and increasing height. Thus it is dominant. Its simple-root support is the whole connected diagram: a missing node adjacent to the support would have negative pairing. Two distinct dominant short roots would have positive inner product, because one has full support and the other has nonnegative simple-root pairings, at least one strictly positive. For roots of equal length this positive inner product is strictly smaller than their common squared length, and their difference is a root, by the reflection argument proved in Lie proofs for the characteristic-zero group construction, §5. If the difference is positive, its pairing with the second root is negative; if negative, its negative has negative pairing with the first root. Both contradict dominance. Hence the dominant short root is unique. Apply this argument to each coroot component. Each \(\nu_i\) belongs to \(Q^\vee\subset L\).
+
+*Proof of the conditional generation assertion.* The root-datum construction in Pinnings and the classification of split reductive groups, §§6–10 supplies \(R\) and its highest-weight modules. Its character lattice is \(L\). The schematic centralizer theorem in Regular elements and centralizers, Theorem 2.2 places its centre inside its torus. There it consists exactly of elements killed by every root character: this condition commutes with each root group on every parameter algebra, and the torus and root groups generate fppf locally by the pinned-group lesson, Lemma 4.1. Since the roots of \(R\) span \(Q^\vee\), this proves
+\[
+Z(R)=D(\Gamma).
+\]
+All weights of \(V_\xi\) differ from \(\xi\) by the root lattice of \(R\), so its central character is the class of \(\xi\) in \(\Gamma\). Form
+\[
+V=\bigoplus_j V_{\mu_j}\oplus\bigoplus_i V_{\nu_i}.
+\]
+The first family has central characters generating \(\Gamma\). On every coefficient algebra \(A\), an element of \(D(\Gamma)(A)=\operatorname{Hom}(\Gamma,A^\times)\) acting trivially on this family is one on every generator, hence is the identity. Thus the representation kernel has trivial intersection with the entire centre, including its finite part.
+
+Let \(\mathfrak k\) be the differential kernel. The derived Lie algebra is a sum of simple ideals, and every ideal is a sum of these factors, as proved in the Lie-construction lesson, Proposition 3.2. The module \(V_{\nu_i}\) is nontrivial on its indicated simple factor: its highest weight has a nonzero simple-coroot pairing there. Thus
+\(\mathfrak k\cap[\mathfrak r,\mathfrak r]=0\). Moreover
+\[
+[\mathfrak r,\mathfrak k]
+\subset\mathfrak k\cap[\mathfrak r,\mathfrak r]=0,
+\]
+so \(\mathfrak k\) is central. The centre calculation already kills its central part; therefore \(\mathfrak k=0\).
+
+The schematic kernel \(K\) is affine of finite type. The characteristic-zero smoothness theorem proved in Supporting proofs for the consumed group-scheme foundations, Theorem G.3.4 makes \(K\) smooth. Its zero Lie algebra makes it zero-dimensional and finite étale. After algebraic closure, connected \(R\) acts trivially by conjugation on this finite discrete group. Equivalently, the morphism to its finite automorphism group is constant and is the identity at the unit. Hence \(K\) is central; faithful flat descent gives the same assertion over the coefficient field. The previously trivial central intersection forces \(K=1\). The closed-image theorem in Group schemes over a field, Proposition 5.8 now makes \(R\to GL(V)\) a closed immersion.
+
+For completeness, this closed immersion yields the actual tensor-generation argument. The algebra \(\Lambda[R]\) is generated by matrix coefficients of \(V\) and the inverse determinant. The latter is a coefficient of \(\bigwedge^{\dim V}V^\vee\), which is a summand of a tensor power in characteristic zero: average the signed permutations to obtain its alternating projector. Thus finite products of coefficients of \(V,V^\vee\) span \(\Lambda[R]\). The coefficients of words of bounded total length form finite-dimensional subcomodules, each a quotient of a finite sum of those tensor words. Any finite-dimensional rational module \(M\) embeds by its coaction
+\[
+M\longrightarrow M_{\mathrm{triv}}\otimes\Lambda[R]
+\]
+into finitely many copies of one such coefficient space; injectivity follows by applying the counit. Consequently \(M\) is a subquotient of a finite sum of words in \(V,V^\vee\). Complete reducibility, proved in Group schemes, actions and Hopf algebras, Theorem 5.22, splits this subquotient and makes it a direct summand. Expand the direct sums defining \(V\), and transport the splitting through the tensor equivalence assumed in the lemma. This proves the conditional assertion (5.16). \(\square\)
+
+Every minuscule object in this family already satisfies (P). Indeed the stabilizer computation in Orbits and Schubert varieties, §2 identifies its orbit with \(G/P_\mu^-\): all positive root pairings are zero or one, so every first congruence coefficient lies in the stabilizer. This flag variety is smooth and projective, hence its orbit is closed in the separated Grassmannian. Its IC is \(\Lambda[d_\mu]\), with the same ordinary stalk and costalk parity. A central minuscule label gives a point.
+
+Under the lemma's tensor-equivalence hypothesis, the dual of \(IC_\xi\) has label \(-w_0\xi\): the dual irreducible module has that highest weight. The ordinary highest-weight construction above proves this by negating its weights and its one-dimensional extremal lines. A minuscule label stays minuscule under \(-w_0\), and \(-w_0\nu_i=\nu_i\), by uniqueness of the dominant short coroot. Thus the finite family and its duals all have the same two geometric forms. Sums and direct summands preserve parity degree by degree, and component parity is additive, since \(d_{\lambda+\eta}=d_\lambda+d_\eta\). The geometric inputs still to establish are parity of \(IC_{\nu_i}\) and preservation of parity under convolution; they do not follow merely from the conditional tensor-generation statement.
+
+### 5.8. Ordinary Lefschetz for a flag variety
+
+We prove the cohomological fact needed to compute IC at a cone vertex. The proof uses a finite complex of invariant differential forms.
+
+**Theorem 5.7.** Let \(B_0=G/P\) have complex dimension \(n\), and let \(\mathcal L\) be an ample line bundle. For every characteristic-zero field \(\Lambda\) and \(0\le q\le n\), cup product gives an isomorphism
+\[
+c_1(\mathcal L)^{n-q}:H^q(B_0,\Lambda)
+\xrightarrow{\sim}H^{2n-q}(B_0,\Lambda).                    \tag{5.17}
+\]
+
+*A compact transitive group.* The pinned-group theorem in Pinnings and the classification of split reductive groups, Theorem 5.1 constructs an automorphism \(\theta\) by mapping the character datum to its negative and the positive simple root frames \(e_i\) to the opposite frames \(-f_i\). It sends the linked negative frames to \(-e_i\) and the torus to its inverse. Its square fixes the pinning and datum, so uniqueness gives \(\theta^2=1\). This construction is defined on the integral split model. Consequently it commutes with split complex conjugation, and \(\sigma=\theta\circ\text{conjugation}\) is an antiholomorphic involution.
+
+Let \(K_0=G(\mathbb C)^{\sigma,0}\). The exponential and local inversion used here are proved in Local tools for bundles and transport, §§1–2. ODE uniqueness identifies the invariant-flow exponential with the convergent matrix exponential and gives \(\sigma(\exp X)=\exp(d\sigma X)\). Choose a small exponential domain stable under \(d\sigma\). Injectivity of that chart identifies its fixed locus with the fixed real vector space; translates supply real Lie-group charts everywhere. Its semisimple Lie algebra has the rootwise form
+\[
+i\mathfrak h_{\mathbb R}\oplus
+\bigoplus_{\alpha>0}
+\bigl(\mathbb R(e_\alpha-f_\alpha)
+\oplus\mathbb R\,i(e_\alpha+f_\alpha)\bigr).
+\]
+The explicit Killing-form computation in Compact forms and the unitary trick, Theorem 2.1 makes its Killing form negative definite. That lesson, §3, proves that its derivations are inner and that its automorphism group is a closed subgroup of the corresponding orthogonal group. The latter is compact; the embedded subgroup and Lie-algebra identification are proved in Invariant connections on homogeneous bundles, Theorem A.1. The adjoint map from \(K_0\) to the identity component of this automorphism group has surjective differential. Local sections follow by exponentiating a complement to the kernel Lie algebra and applying the inverse-function theorem, or directly from the local-tools lesson, Corollary 1.3. Its image is therefore an open subgroup of a connected group, hence is the whole target.
+
+The kernel is \(Z(G)^\sigma\cap K_0\). On the diagonalizable centre \(\sigma(z)=\bar z^{-1}\), so its fixed points consist of a compact torus and finitely many components; the kernel is closed there and is compact. A local section \(s\) gives the product coordinates \((y,c)\mapsto s(y)c\), with inverse \(x\mapsto(p(x),s(p(x))^{-1}x)\). Cover the compact target by finitely many smaller neighborhoods whose compact closures lie in these section domains. The inverse images of those closures are compact by the product coordinates and compact kernel, and cover \(K_0\). Thus \(K_0\) is compact.
+
+Take first \(P\) containing the positive Borel. In each negative root plane surviving in \(\mathfrak g/\mathfrak p\), the real vectors above project to \(-f_\alpha\) and \(if_\alpha\). They span that complex plane over \(\mathbb R\). Hence the \(K_0\)-orbit through the base point is open. It is closed by compactness. Root coordinates make \(G/P\) connected, so this orbit is all of \(B_0\). Conjugating handles every parabolic. For a torus, \(B_0\) is a point and the same assertions have their immediate interpretation.
+
+*Invariant forms compute cohomology.* Put
+\[
+C^\bullet=\Omega^\bullet(B_0;\mathbb C)^{K_0},\qquad
+\mathcal A\alpha=\int_{K_0}k^*\alpha\,dk.
+\]
+Normalized Haar integration is constructed directly from invariant densities in the compact-form lesson, §5. Invariance makes evaluation at one point injective on \(C^q\), so \(C^q\) is finite dimensional. The operator \(\mathcal A\) projects onto \(C^\bullet\) and commutes with \(d\).
+
+There is an actual cochain homotopy from \(\mathcal A\) to the identity. Cover \(K_0\) by finitely many exponential neighborhoods \(V_i\). For \(k\in V_i\), choose a path from the identity to the center of \(V_i\), followed by the short exponential path to \(k\). Each piece depends smoothly on \(k\); add its two homotopy operators. The differential-form homotopy formula proved in Connections, curvature and characteristic forms, Part A.2 gives
+\(k^*-1=dT_i(k)+T_i(k)d\). Choose a subordinate smooth partition \(\chi_i\) and set
+\[
+T=\sum_i\int_{K_0}\chi_i(k)T_i(k)\,dk.
+\]
+The compact parameter integrals can be differentiated coefficientwise, and their weights sum to one. Therefore
+\[
+\mathcal A-1=dT+Td.                                       \tag{5.18}
+\]
+Inclusion of \(C^\bullet\) and averaging are thus inverse on cohomology. The multiplicative de Rham comparison, proved in the same characteristic-forms lesson, Part A.3, identifies it with singular cohomology.
+
+*A finite harmonic space.* Embed \(B_0\) by a sufficiently high power \(\mathcal L^m\). The restricted normalized Fubini–Study form is positive, closed and of type \((1,1)\), and represents \(m c_1(\mathcal L)\). Explicitly its local potential is \((i/2\pi)\partial\bar\partial\log\sum|z_j|^2\); the line-bundle curvature normalization is proved in the characteristic-forms lesson, Theorem D.1. Average this form over \(K_0\). Holomorphic pullback and positive averaging preserve the three properties, and (5.18) preserves its cohomology class. Call the resulting Kähler form \(\omega\).
+
+Its metric, Hodge star, formal adjoint \(d^*\), and the operators \(L=\omega\wedge-\), \(\Lambda_0=L^*\), preserve \(C^\bullet\). Stokes' formula, proved in Part A.1 of the characteristic-forms lesson, gives the adjoint identity on this finite complex. For
+\(\Delta=dd^*+d^*d\), positivity gives
+\(\ker\Delta=\ker d\cap\ker d^*\). The images of \(d\) and \(d^*\) are orthogonal because \(d^2=0\); their common orthogonal complement is this kernel. Thus
+\[
+C^q=\operatorname{im}d\oplus\ker\Delta\oplus\operatorname{im}d^*.
+\]
+A closed vector has no \(\operatorname{im}d^*\) component, by taking its inner product with that component. Every cohomology class consequently has a unique harmonic invariant representative. All these spaces are finite dimensional.
+
+*The local operator calculation.* Write \(d=\partial+\bar\partial\). At each point choose normal holomorphic coordinates with \(dz_j\) unitary and \(\omega=i\sum_jdz_j\wedge d\bar z_j\) there. Here is why the first derivatives can be removed. In coordinates with Hermitian matrix \(g_{a\bar b}(0)=\delta_{ab}\), closedness of \(\omega\) says \(\partial_cg_{a\bar b}=\partial_ag_{c\bar b}\). In the change
+\[
+z_b=w_b+\tfrac12\sum_{a,c}C^b_{ac}w_aw_c,
+\qquad C^b_{ac}=-\partial_cg_{a\bar b}(0),
+\]
+the symmetric coefficients make every holomorphic first derivative of the transformed matrix zero. Conjugation removes the antiholomorphic first derivatives as well.
+
+The underlying real metric at that point is \(g=2\sum_j(dx_j^2+dy_j^2)\); thus \(dz_j,d\bar z_j\) have unit Hermitian cotangent norm. Let \(a_j,b_j\) be wedge multiplication by these forms, and let \(A_j=\iota_{\partial/\partial z_j}\), \(B_j=\iota_{\partial/\partial\bar z_j}\) be their adjoint contractions. At this point the coordinate formulas are
+\[
+\begin{aligned}
+L&=i\sum_j a_jb_j,&\Lambda_0&=-i\sum_jB_jA_j,\\
+\partial&=\sum_j a_j\partial_{z_j},&
+\partial^*&=-\sum_jA_j\partial_{\bar z_j},\\
+\bar\partial&=\sum_j b_j\partial_{\bar z_j},&
+\bar\partial^*&=-\sum_jB_j\partial_{z_j}.
+\end{aligned}                                             \tag{5.19}
+\]
+The adjoint derivative formulas follow by integration by parts; the first derivatives of the metric and volume density vanish here. Wedge and contraction anticommute, except
+\(A_ja_l+a_lA_j=B_jb_l+b_lB_j=\delta_{jl}\). Expanding these relations gives
+\[
+[B_jA_j,a_l]=\delta_{jl}B_j,
+\qquad [B_jA_j,b_l]=-\delta_{jl}A_j.
+\]
+Substitute in (5.19):
+\[
+[\Lambda_0,\partial]=i\bar\partial^*,\qquad
+[\Lambda_0,\bar\partial]=-i\partial^*.
+\]
+These first-order identities involve only the metric and its first derivatives, so the pointwise normal-coordinate calculation proves them globally. Taking adjoints yields
+\[
+[L,d^*]=d^c,
+\qquad d^c=i(\bar\partial-\partial).
+\]
+Since \(d\omega=0\), \([L,d]=0\). The identities \(\partial^2=\bar\partial^2=0\) and \(\partial\bar\partial+\bar\partial\partial=0\), obtained by separating types in \(d^2=0\), give
+\[
+[L,\Delta]=d\,d^c+d^cd=0.
+\]
+Adjunction also gives \([\Lambda_0,\Delta]=0\). Hence both operators preserve the harmonic space.
+
+*Finite strings and coefficient fields.* The same wedge-contraction relations, checked on each of the four basis vectors \(1,dz_j,d\bar z_j,dz_j\wedge d\bar z_j\) and added over \(j\), give
+\[
+[L,\Lambda_0]=h,\qquad h|_{C^q}=q-n,\qquad
+[h,L]=2L,\qquad[h,\Lambda_0]=-2\Lambda_0.
+\]
+The finite harmonic space is therefore an \(\mathfrak{sl}_2\)-module. It is completely reducible: \(L^*=\Lambda_0\) and \(h^*=h\), so the orthogonal complement of every invariant subspace is invariant under all three operators. Induction decomposes it into simple modules. On each summand the string theorem proved in Representations of \(\mathfrak{sl}_2\), Theorem 2.1 says that raising a weight \(q-n\le0\) by \(L^{n-q}\) maps it isomorphically to the opposite weight. It follows that \(L^{n-q}\) is an isomorphism on cohomology. By the multiplicative comparison this is cup product by \((m c_1(\mathcal L))^{n-q}\); divide by \(m^{n-q}\).
+
+Finally choose a finite good cover of the compact manifold \(B_0\), using the construction in the characteristic-forms lesson, Part A.2, and compactness. Its singular-cochain comparison in Part A.3 works over every field: the prism, subdivision and small-cochain contractions use only integer sums and signs, and each contractible intersection has just the constants as cohomology. Thus the finite constant Čech complex over \(\mathbb Q\), with the displayed Čech product, computes the rational cohomology ring. Tensoring it with any characteristic-zero field computes the cohomology ring over that field and preserves the coefficient image of the integral \(c_1(\mathcal L)\). Tensoring finite complexes of vector spaces preserves their cohomology, by choosing complements to cycles and boundaries. The rational Lefschetz map becomes an isomorphism over \(\mathbb C\), so its finite rational matrix is already invertible over \(\mathbb Q\), and remains so over \(\Lambda\). This proves (5.17). \(\square\)
+
+### 5.9. Parity at a homogeneous cone vertex
+
+**Corollary 5.8.** Let \(B_0=G/P\subset\mathbb P(W)\) be a projective embedding, and let \(C\subset W\) be its reduced affine cone. Its intersection complex, for the two strata \(C\setminus\{0\}\) and \(\{0\}\), has ordinary stalk and costalk cohomology only in degrees of parity \(d=\dim_{\mathbb C}C\), over every characteristic-zero field.
+
+*Proof.* The punctured cone is the nonzero-vector bundle of the tautological line \(\mathcal L^{-1}=\mathcal O_{B_0}(-1)\). Indeed a nonzero vector determines its line, and this identifies it with the corresponding pair in the tautological bundle. It is smooth of dimension \(d=n+1\), where \(n=\dim B_0\). Scalar radial coordinates identify a sufficiently small punctured neighborhood of the vertex with the unit circle bundle times a contractible interval. The same circle bundle is a deformation retract of the whole punctured cone. The sheaf–singular comparison is proved in Constructible complexes on algebraic varieties, Appendix C.2, equation (C.6); it identifies these cohomology groups with the vertex stalk of \(Rj_*\Lambda\).
+
+The Gysin sequence proved in The Gysin sequence and projective splitting, Theorem 1.1 uses the Euler class \(c_1(\mathcal L^{-1})=-c_1(\mathcal L)\). Since the base has only even cohomology, it identifies, for odd \(k\),
+\[
+H^k(C\setminus\{0\},\Lambda)
+=\ker\bigl(c_1(\mathcal L):H^{k-1}(B_0,\Lambda)
+\longrightarrow H^{k+1}(B_0,\Lambda)\bigr).
+\]
+For \(k\le n\) this kernel is zero. If a class in degree \(k-1<n\) is killed by \(c_1\), it is killed by \(c_1^{n-k+1}\), an isomorphism by Theorem 5.7, and must vanish. Negative cohomology degrees are zero as well.
+
+The ordinary-truncation construction of IC, proved in Intermediate extensions and intersection complexes, §1, gives at the zero-dimensional vertex
+\[
+i^*IC_C=\tau^{\le-1}i^*Rj_*\Lambda[d].
+\]
+Its retained degree \(q\le-1\) is \(H^{q+d}(C\setminus\{0\},\Lambda)\), with \(q+d\le n\). If \(q\not\equiv d\pmod2\), then \(q+d\) is odd, so that group vanishes by the calculation above. Self-duality of IC gives the same parity for its vertex costalk. On the smooth open stratum both restrictions are \(\Lambda[d]\). This proves the assertion. \(\square\)
+
+### 5.10. The quasi-minuscule neighborhood is that cone
+
+**Proposition 5.9.** Let \(\nu\) be the dominant short coroot in one irreducible factor. The Schubert variety \(Z_\nu\) has precisely the spherical strata \(O_\nu\) and the unit point. A neighborhood of that point is the affine cone over the projective highest-root orbit in the selected simple Lie ideal. Consequently \(IC_\nu\) satisfies (P), over every characteristic-zero coefficient field and for every central or isogeny lattice of \(G\).
+
+*The root line and its projective orbit.* Choose the corresponding root \(\theta\), so \(\theta^\vee=\nu\), and compatible root vectors \(e_\theta,f_\theta\). Since \(\nu\) is short, \(\theta\) is a longest root. The signs of its simple-coroot pairings equal those of the simple-root pairings with \(\nu\), so \(\theta\) is dominant. For a positive root \(\beta\),
+\(\|\theta+\beta\|^2>\|\theta\|^2\), because \((\theta,\beta)\ge0\). Thus \(\theta+\beta\) is not a root and the positive root groups fix \(e_\theta\).
+
+The \(\nu\)-grading has degrees \(-2,-1,0,1,2\), with its degree-two and degree-minus-two spaces the single lines \(\mathbb C e_\theta,\mathbb C f_\theta\). Indeed Cauchy–Schwarz and the integral root pairing give
+\[
+|\langle\beta,\nu\rangle|\le1\quad(\beta\ne\pm\theta),
+\qquad\langle\theta,\nu\rangle=2.
+\]
+The selected factor is the only one with nonzero grading. Put
+\(N=\#\{\beta>0:\langle\beta,\nu\rangle=1\}\).
+The rank-one strings of its adjoint module identify the degree-minus-one and degree-one spaces by raising with \(e_\theta\). Raising on degree minus two has the coroot line as image, and raising from degree zero onto degree two has rank one. Therefore
+\[
+\dim Ge_\theta=N+2=\langle2\rho,\nu\rangle=:d.              \tag{5.20}
+\]
+The orbit dimension here is the rank of the orbit differential: its stabilizer is a smooth characteristic-zero group, by Cartier, and the schematic orbit theorem in Group schemes over a field, §7 identifies the orbit with the stabilizer quotient.
+
+The line stabilizer is exactly \(P=P_G(\nu)\). Its root groups of nonnegative degree preserve the line: raising by a root of degree zero cannot produce another degree-two root, and raising by positive degree cannot produce degree three or higher. The torus scales the line. This gives a schematic inclusion \(P\subset H=\operatorname{Stab}(\mathbb C e_\theta)\).
+
+To exclude additional components, write a complex point of \(H\) as \(b_1n_wb_2\), using Root data, Weyl chambers and the Bruhat decomposition, Theorem 6.2. The factor \(b_2\) preserves the line. The \(b_1\)-action on \(e_{w\theta}\) has a nonzero coefficient at its original weight \(w\theta\), and its other weights are obtained by adding positive roots. Preservation of the line therefore forces \(w\theta=\theta\). For a reduced word \(w=s_{i_1}\cdots s_{i_m}\),
+\[
+\theta-w\theta=
+\sum_{j=1}^m\langle\theta,\alpha_{i_j}^\vee\rangle
+s_{i_1}\cdots s_{i_{j-1}}\alpha_{i_j}.
+\]
+All the displayed roots are positive by the reduced-word rule, Proposition 3.1 of that lesson; their coefficients are nonnegative. A strictly dominant functional shows that a zero sum forces each coefficient to vanish. Thus \(w\) belongs to the subgroup generated by the simple roots perpendicular to \(\theta\), whose representatives lie in \(P\). Hence \(H\) and \(P\) have the same complex points. Both are reduced closed subgroups by smoothness and Cartier, so they are equal. The projective quotient theorem in Automorphisms, forms and parabolic subgroups, Theorem 1.1 now gives the smooth projective orbit
+\[
+Y=G/P\hookrightarrow\mathbb P(\mathfrak g),\qquad
+\dim Y=N+1=d-1.
+\]
+The immersion is the schematic orbit immersion, and projectivity makes it closed.
+
+Let \(L_0=\mathcal O_Y(-1)\) be its actual tautological line. The incidence morphism
+\[
+\pi:L_0=G\times^P\mathbb C e_\theta\longrightarrow\mathfrak g
+\]
+is proper, since its total space is closed in \(Y\times\mathfrak g\). Its reduced image is the affine cone \(C\). The character \(\theta:T\to\mathbb G_m\) is surjective over \(\mathbb C\), even when it is nonprimitive, so the torus supplies every nonzero scalar. Thus
+\[
+C=Ge_\theta\sqcup\{0\},\qquad L_0^\times\simeq C\setminus\{0\}.
+\]
+The second isomorphism sends a nonzero vector to its line and that vector. Every element of the nonzero orbit is nilpotent, being conjugate to a root vector. These assertions establish the two-stratum cone directly.
+
+*Its map to the Grassmannian.* Choose a faithful closed matrix representation of \(G\). The operator \(e_\theta\) raises torus weights by \(\theta\), so the finite weight set makes it nilpotent: \(e_\theta^{b+1}=0\) for some integer \(b\). The same matrix identity holds on the reduced cone, by density of its nonzero orbit. Hence
+\[
+\Phi:C\longrightarrow\operatorname{Gr}_G,
+\qquad X\longmapsto\exp(t^{-1}X)G(O),
+\qquad
+\exp(t^{-1}X)=\sum_{j=0}^b\frac{t^{-j}X^j}{j!}.             \tag{5.21}
+\]
+The group equations hold on the dense orbit, where this polynomial is a conjugate of \(u_\theta(a/t)\); they therefore hold on all of \(C\). Uniform finite pole bounds place (5.21) in a finite scheme stage, using Loop groups and the affine Grassmannian, Lemma 7.3. It is a monomorphism on every parameter algebra \(A\). Indeed equality of its two cosets makes
+\[
+\exp(-t^{-1}X_2)\exp(t^{-1}X_1)
+\]
+integral, first fpqc locally and then over \(A\) by coefficient descent. Its matrix entries also lie in \(A[t^{-1}]\) and its constant term is the identity. Since \(A[t^{-1}]\cap A[[t]]=A\) inside \(A((t))\), that product is the identity. Its \(t^{-1}\) coefficient is \(X_1-X_2\), so \(X_1=X_2\), including for nonreduced \(A\).
+
+*A proper compactification.* Form the projective bundle of lines
+\[
+\widetilde Z=\mathbb P_Y(\mathcal O\oplus L_0).
+\]
+On its affine \(L_0\)-chart define \([g,a]\mapsto g u_\theta(a/t)G(O)\), which equals \(\Phi\pi\). The \(P\)-action on \(e_\theta\) through its line character makes this formula independent of its local frame. On the infinity chart set \(c=a^{-1}\). The actual rank-one homomorphism \(SL_2\to G\), constructed in Roots and reductive groups of rank one, Theorem 7.1, gives
+\[
+u_\theta(a/t)G(O)=u_{-\theta}(ct)t^{-\nu}G(O),\qquad ac=1.  \tag{5.22}
+\]
+To check it, multiply the first \(SL_2\) matrix on the right by
+\(\begin{pmatrix}0&-a\\c&t\end{pmatrix}\in SL_2(A[[t]])\).
+The result is
+\(\begin{pmatrix}t^{-1}&0\\c&t\end{pmatrix}\), exactly the second expression. Thus the infinity formula extends regularly to \(c=0\), where it is \(g t^{-\nu}\). On overlaps the formulas agree on the dense locus where \(a\) is invertible. Reducedness of the bundle charts and separatedness of the target extend equality over each whole overlap. They therefore glue to an algebraic morphism with a uniform finite pole bound.
+
+The three constant-\(G\) pieces of this smooth projective bundle have images
+\[
+Y_{0}\mapsto t^0,\qquad
+L_0^\times\mapsto\Phi(Ge_\theta),\qquad
+Y_{\infty}\mapsto Gt^{-\nu}.                              \tag{5.23}
+\]
+Equation (5.22) shows that the last two pieces lie in \(O_\nu\); the chosen root reflection gives \(s_\theta(\nu)=\nu-\langle\theta,\nu\rangle\theta^\vee=-\nu\), so these two labels are Weyl conjugate. The first lies at the unit, which belongs to \(Z_\nu\) by the closure theorem of Lesson 04. Reducedness makes the morphism factor schematically through \(Z_\nu\). Its middle image has dimension \(d\), by the monomorphism and (5.20), equal to \(\dim Z_\nu\). Properness and irreducibility therefore make
+\(f:\widetilde Z\to Z_\nu\) surjective. Since all its points have the two indicated relative positions, there are no other spherical strata.
+
+The infinity image is a closed embedded \(Y_\infty\simeq G/P\): the root stabilizer calculation of Lesson 04, §2, gives the constant stabilizer of \(t^{-\nu}\) as \(P_G(\nu)\). It has dimension \(d-1\), whereas the middle image is one constant-\(G\) orbit of dimension \(d\). These orbits are disjoint, since intersecting orbits coincide. Neither contains the unit. Consequently for
+\(U=Z_\nu\setminus Y_\infty\), the open inverse image is exactly \(L_0\), and \(f|_{L_0}=\Phi\pi\).
+
+The map \(\Phi:C\to U\) is proper. After any base change, the image of a closed subset of \(C\) is the image under the proper \(f|_{L_0}\) of its closed inverse image under \(\pi\); the latter is universally surjective because it is proper and surjective. Thus \(\Phi\) is universally closed, as well as separated and of finite type. A finite-type monomorphism is quasi-finite by Unramified morphisms, Proposition 6.1. A proper quasi-finite morphism is finite, and a finite monomorphism is a closed immersion, by the written proofs in Affine descent, Zariski Main and recognition of spaces, Corollary D7.3 and Lemma E4.1. Since \(\Phi\) is surjective on points and \(U\) is reduced, its defining ideal is zero. We have proved
+\[
+U\simeq C,\qquad X\longmapsto\exp(t^{-1}X)G(O).             \tag{5.24}
+\]
+
+The punctured cone has the negative tautological line, with Euler class \(-c_1(\mathcal O_Y(1))\). Corollary 5.8 proves the required parity at its vertex. On the other spherical stratum IC is already \(\Lambda[d]\). Restriction of intermediate extension to the open neighborhood (5.24) is its cone IC, by the local construction, so both stalk and costalk assertions in (P) follow.
+
+All formulas use the actual root line and the actual coroot in \(Q^\vee\), without replacing \(G\) by a simply connected form. The other simple ideals and the centre act trivially on this cone and lie in \(P\). Hence the argument applies to every reductive lattice in Lemma 5.6. For \(SL_2\), \(Y\) is the adjoint conic in projective space and \(L_0=\mathcal O_{\mathbb P^1}(-2)\); this recovers the sign and the local surface calculation in §7. \(\square\)
+
+### 5.11. Convolution preserves the required parity
+
+For this calculation call a complex **pure parity \(\epsilon\)** if both its point stalks and its Verdier dual's point stalks vanish outside degrees congruent to \(\epsilon\). For an orbit-constructible complex this is equivalent to its ordinary orbit stalk and costalk parity: stratum duality contributes the even shift \(2\dim_{\mathbb C}O\). This definition also applies to Iwahori-constructible complexes.
+
+We first specify the bounded derived correspondence used here. Take finite closed spherical supports \(X_1,X_2\) and choose \(n\) so deep that \(K_n\) fixes \(X_2\). The universal formal-disc torsor and its étale frame charts are constructed in Loop groups and the affine Grassmannian, §§4,7. Its frames modulo \(t^n\) form \(E_n\to X_1\): on those charts this is \(U\times J_nG\), and the frame changes glue these products as an actual finite-type \(J_nG\)-torsor. Formal frames lift on affine charts by successive smooth square-zero lifting; two lifts of a truncated frame differ by \(K_n\). Form
+\[
+Y=E_n\times^{J_nG}X_2,\qquad m:Y\longrightarrow\operatorname{Gr},
+\quad[g,z]\longmapsto gz.
+\]
+Choose the frames deeply enough for the displayed endpoint map: changing a frame by \(K_n\) fixes its relative endpoint. If the two lattice bounds are \(N_1,N_2\), the last lattice lies between \(t^{N_2}L_1\) and \(t^{-N_2}L_1\), hence has bound \(M=N_1+N_2\). This also proves representability and properness directly. On an étale formal-frame chart \(U\to X_1\), with frame \(g_U\), impose \(g_U^{-1}z\in X_2\) in \(U\times X_M\). The inverse frame puts this endpoint in bound \(M+N_1\), so this is the inverse image of a closed immersion in a finite stage. An integral change of frame preserves \(X_2\); the closed ideals therefore agree on overlaps. Faithfully flat ideal descent, proved in the gluing lesson, gives a closed scheme \(Y\subset X_1\times X_M\). Choosing and forgetting the first frame are inverse maps between this endpoint scheme and the displayed associated functor, on every parameter algebra. Thus \(Y\) is projective and \(m\) is proper.
+
+For complexes \(A,Q\), with \(Q\) spherical equivariant, its twisted external product is the descended complex on \(Y\) whose pullback to \(E_n\times X_2\) is the unshifted pullback of \(A\boxtimes Q\). The finite classical equivariant construction is proved in Equivariant perverse sheaves and perverse sheaves on stacks, Lemma B.7, Proposition B.8 and Theorem B.9. In each finite cohomological interval it uses a sufficiently acyclic free frame. Torsor descent in this model can be checked on a chart \(E=H\times U\): adding a free frame \(V\) makes \((V\times E)/H=V\times U\), and restriction to \(h=1\) identifies the quotient complex as a pullback from \(U\). To construct the global object, put \(\pi:(V\times E)/H\to Y\). For its quotient complex \(B\), with upper bound \(b\), take \(B_Y=\tau^{\le b}R\pi_*B\). On each torsor chart the pullback description and Lemmas B.5–B.7 make the counit \(\pi^*B_Y\to B\) an isomorphism. It is therefore an isomorphism globally; those charts also prove constructibility of the displayed truncation. B.7's full faithfulness descends morphisms and the required cones. This supplies actual global derived descent, including its behavior on retractions.
+
+Define \(A*Q=Rm_*(A\widetilde\boxtimes Q)\). Its local formula has no frame-dimension shift. Increasing jet levels compares the models by the contractible congruence kernels of Lemma 1.1 and the arbitrary-base-sheaf product proof in the equivariant lesson, Lemma B.5. Increasing free-frame acyclicity compares each prescribed finite interval by B.7–B.8. Thus this is a well-defined bounded derived correspondence, also when \(A\) is only Iwahori equivariant. The same finite frame recipe will be used for perverse convolution in Lesson 07.
+
+**Lemma 5.10.** If \(IC_\lambda\) satisfies (P) and \(Q\) is a spherical pure-parity complex of parity \(\eta\), then
+\[
+IC_\lambda*Q\text{ has pure parity }d_\lambda+\eta.           \tag{5.25}
+\]
+
+*Equivariant odd Hom on Iwahori cells.* All following actions and maps are taken at sufficiently deep finite jet levels, on finite support bounds. Choose free-frame acyclicity separately large enough for the complexes, their cones and the Hom degrees used in each finite diagram. No single finite model is claimed to calculate all degrees.
+
+For an Iwahori cell represented by \(t^\xi K^+\), its stabilizer has full constant torus \(T\) and root levels
+\[
+\max\{r_I(\alpha),\langle\alpha,\xi\rangle\},\qquad
+r_I(\alpha)=0\ (\alpha>0),\quad r_I(\alpha)=1\ (\alpha<0).
+\]
+This is the same ordered-coordinate intersection calculation as the Iwahori normal form in Lesson 01, Theorem 2.C, replacing the second Iwahori threshold by the integral-loop threshold. Torus arcs occur without restriction. At a finite jet level the projection to the constant torus has its constant section, and the remaining affine-root and congruence-torus coordinates form a connected unipotent group \(U\). Thus the stabilizer is \(H=T\ltimes U\), with \(U\) an affine space as a variety. Equivariant orbit local systems are constant: a connected stabilizer has no nontrivial action on a locally constant fibre, as proved in §3.
+
+Here is the requisite equivariant cohomology calculation. Choose a sufficiently acyclic free \(I_m\)-frame \(V\), where \(I_m=I/K_m\) is the finite jet group acting on the cell, and regard it also as a free \(H\)-frame. The map \(V/T\to V/H\) has contractible fibre \(H/T\simeq U\), with local torsor product charts. Lemma B.5 makes its constant-sheaf adjunction unit an isomorphism. Compare \(V/T\) with \((\mathbb P^{M-1})^{\operatorname{rk}T}\) through
+\[
+\bigl(V\times(\mathbb C^M\setminus0)^{\operatorname{rk}T}\bigr)/T.
+\]
+Both projections have sufficiently acyclic fibres in any prescribed finite range when the frame and \(M\) are large: punctured affine space retracts to its sphere, whose cochains give that range, and the other fibre is \(V\). The bounded comparisons of B.7 identify cohomology in that range. The projective-space product has only even cohomology, by its affine-cell calculation. Consequently
+\[
+H^{\mathrm{odd}}(BH,\Lambda)=0                              \tag{5.26}
+\]
+in every finite degree range, and these groups are finite dimensional in each degree. For the orbit, the identity \((V\times I_m/H)/I_m=V/H\) identifies its equivariant constant-sheaf Hom groups with this calculation.
+
+An equivariant complex on this cell with constant cohomology in a single parity splits into its cohomology shifts. The Postnikov attaching map between two such shifts has odd equivariant Hom degree and vanishes by (5.26); ordinary truncations commute with the exact pullbacks in the frame model. It follows that matching stalk-parity and costalk-parity complexes have zero odd Hom on a cell. Localization and adjunction, by the same finite-stratum induction as Proposition 5.2, give this vanishing on a finite union of cells. In particular, for its open union \(j\) of maximal cells and closed complement \(i\),
+\[
+\operatorname{Hom}(E,F)\longrightarrow
+\operatorname{Hom}(j^*E,j^*F)\quad\text{is surjective}         \tag{5.27}
+\]
+when \(E\) is stalk-parity \(\epsilon\) and \(F\) is costalk-parity \(\epsilon\). The obstruction is \(\operatorname{Hom}(i^*E,i^!F[1])=0\). This is vanishing in the equivariant derived category, rather than forgetting an equivariance condition on a derived map.
+
+*An actual derived IC retraction.* Let \(f_\lambda\) be the ordinary Bott–Samelson resolution (5.5) and
+\(B_\lambda=Rf_{\lambda*}\Lambda[d_\lambda]\).
+Its affine-paved fibres in §5.3 prove stalk parity. Its proper smooth-source duality makes it self-dual, so it has costalk parity too. Its restriction to the dense Iwahori cell of \(Z_\lambda\) is \(\Lambda[d_\lambda]\). The assumed IC parity makes the same statements for \(IC_\lambda\). Refinement to Iwahori cells preserves point-stalk and dual-point-stalk parity.
+
+Apply (5.27) in both directions. The dense-cell identity lifts to equivariant derived maps
+\[
+IC_\lambda\xrightarrow{u}B_\lambda\xrightarrow{v}IC_\lambda.
+\]
+Their composite restricts to the identity. Both its source and target are perverse, and the equivariant derived heart is the ordinary equivariant heart by Theorem B.9. Equation (3.2) therefore gives \(vu=1\). This is a genuine derived retraction. It uses the parity assumption on this IC and the proved odd Hom vanishing, rather than a splitting of perverse cohomology or an IC decomposition theorem.
+
+*One wall preserves parity.* For an affine simple reflection \(s\), form
+\[
+a_s:P_s\times^I\operatorname{Gr}\longrightarrow\operatorname{Gr},
+\qquad[p,z]\longmapsto pz,
+\qquad\Theta_s(E)=Ra_{s*}E_s,
+\]
+where \(E_s\) is the unshifted associated complex. The actual \(P_s/I=\mathbb P^1\) quotient and its two root sections were proved in Lesson 02, §§7.4–7.5. On bounded supports their pole bounds permit a finite congruence quotient of the final \(I\)-torsor, and a deeper left jet acts because conjugation loses only a fixed finite number of powers of \(t\). Gluing the two chart products constructs the finite associated source and its complex. Its projection to \(\mathbb P^1\) is proper, with the given proper support as fibre, so the endpoint map is proper.
+
+At a normalizer endpoint \(x=n_wK^+\), the full endpoint fibre is \(P_s/I\); extend the associated complex by zero from its chosen bounded support to this full fibre. Let \(a\) be the simple affine root, and use the two root sections
+\[
+p_0(z)=x_{-a}(z),\qquad p_\infty(c)=x_a(c)n_s.
+\]
+The relative endpoint in either chart is \(p^{-1}x\). If \(w^{-1}a>0\), then \(n_w^{-1}x_a(c)n_w\in I\), and throughout the infinity chart this endpoint is the constant point \(n_s^{-1}n_wK^+\). Its complementary point has endpoint \(n_wK^+\). If \(w^{-1}a<0\), the zero chart has constant endpoint \(n_wK^+\), since \(w^{-1}(-a)>0\), and its complementary point has endpoint \(n_s^{-1}n_wK^+\). Hence the fibre has one closed point and an open \(\mathbb A^1\), on both of which the associated complex has constant cohomology in the input parity. The two endpoints may coincide as Grassmannian cosets; the calculation remains valid.
+
+Compact cohomology of a point and of \(\mathbb A^1\) occurs in even degrees. Ordinary truncation on each piece and the compact-support localization triangle show that \(\Theta_s(E)\) has the input stalk parity. Proper base change identifies this computation with its endpoint stalk, and Iwahori equivariance transports it over that entire cell. Locally the associated source is a complex one-dimensional smooth chart times the support of \(E\). Smooth product duality and proper duality therefore give
+\[
+D\Theta_s(E)=\Theta_s(DE)[2].                              \tag{5.28}
+\]
+Complex orientations make these chart identifications agree on overlaps. Applying the stalk calculation to \(DE\) proves costalk parity. Thus the unshifted wall functor preserves pure parity.
+
+*Concatenation is convolution.* Write the reduced word in (5.5) as \(w_\lambda=\omega s_1\cdots s_r\), with \(r=d_\lambda\). Its final principal \(I\)-torsor \(\mathcal E\) extends to the pullback of the endpoint's principal \(K^+\)-torsor:
+\(\mathcal E\times^I K^+\).
+After a deep truncation, the associated second support is exactly
+\((\mathcal E/I_n)\times^{I/I_n}X_2\). This identifies the base change of the bounded convolution correspondence with the successive wall correspondence, on its actual root charts and on every parameter ring. Products of the finitely many wall representatives have a fixed pole bound, so the identification stays in finite stages.
+
+Proper base change and the projection formula now give
+\[
+B_\lambda*Q=
+(n_\omega\cdot)_*\Theta_{s_1}\cdots\Theta_{s_r}(Q)[r].        \tag{5.29}
+\]
+To check the sheaf identity, pull both sides to a common finite frame. There the first endpoint pushforward commutes with pullback to its associated second support by proper base change, and the external \(Q\) factor moves through that pushforward by the projection formula. Iterating the wall torsor charts gives precisely the right side. The bounded fully faithful frame comparisons descend this identity and its compatibility with maps. These two classical operations, including constructibility and proper duality on separated finite stages, are proved in Constructible complexes on algebraic varieties, Appendices H and J. The rightmost wall acts first; the sole shift \([r]\) comes from the definition of \(B_\lambda\), since the associated complexes were unshifted. The length-zero representative normalizes \(I\) and transports its cells.
+
+Equations (5.28)–(5.29) make \(B_\lambda*Q\) pure of parity \(d_\lambda+\eta\). Apply the actual derived convolution functor to \(u,v\); their composite remains the identity. Thus \(IC_\lambda*Q\) is a derived retract of this pure-parity complex and has the same parity. This proves (5.25). \(\square\)
+
+**Corollary 5.11 (generator criterion).** Under the tensor-equivalence hypothesis in Lemma 5.6, every Grassmannian \(IC_\lambda\) satisfies (P).
+
+*Proof.* The minuscule members of (5.16) have parity by their smooth closed supports, and the dominant-short-coroot members have parity by Proposition 5.9. Their dual labels have those same forms, as proved after Lemma 5.6. Starting with the rightmost factor of any convolution word, apply Lemma 5.10 successively to its left IC factors. The word has pure parity equal to the sum of their component parities. If \(IC_\lambda\) is a summand, exact restriction to Grassmannian components removes words outside its component. Additivity of component parity makes each remaining word pure of parity \(d_\lambda\). Stalk and dual-stalk cohomology of the summand inherit that parity. Lemma 5.6 supplies these summands under exactly the stated hypothesis, proving the conditional assertion. \(\square\)
+
+The hypothesis of this corollary will be established in Lesson 11 before it is applied there. The geometric and derived proofs in §§5.8–5.11 use no general Satake equivalence or general IC parity assertion as an input.
 
 ## 6. Exact and faithful total cohomology
 
@@ -804,9 +1171,14 @@ The other two slices lie in the smooth orbit: \(\mathbb A^2\) has shifted compac
 
 ## 10. Remaining general assertions
 
-The category, jet-level independence, characteristic-zero constructible-equivariant equivalence, simple classification, duality, orbit even cohomology, affine pavings of resolution fibres, exact faithful total cohomology, torus case, minuscule case, cyclic immediate-boundary charts, characteristic-zero type-three IC and bounded semisimplicity, quasi-minuscule surface calculation, and characteristic-two nonsplit extensions and slice connecting maps are proved above. Proposition 5.3 gives the standard-object criterion; Lemma 5.4 proves the intersection-map splitting step. General characteristic-zero semisimplicity and the vanishing of all standard-object boundary kernels are proved subsequently in Lesson 11, §§8.4–8.5. The remaining local geometric assertion is the IC lift obstruction \(\partial\eta=0\), which would prove ordinary IC parity (P). Semisimplicity alone does not supply the splitting of the entire derived resolution complex required for that deduction. The geometric Lefschetz and nondegeneracy premises in §5.5 remain unproved here. Convolution, tensor duals and the commutativity constraint have their separate proofs in Lessons 7–8.
+The category, jet-level independence, characteristic-zero constructible-equivariant equivalence, simple classification, duality, orbit even cohomology, affine pavings of resolution fibres, exact faithful total cohomology, and the bounded examples and modular counterexamples are proved above. Proposition 5.3 gives the standard-object criterion and Lemma 5.4 the intersection-map splitting step. Lemma 5.6 proves the minimum-norm lattice assertion and a conditional faithful tensor-generator statement. Theorems 5.7–5.10 prove ordinary homogeneous Lefschetz, cone IC parity, every quasi-minuscule IC's parity, and parity under convolution with a parity IC. Corollary 5.11 combines those inputs under its explicit tensor-equivalence hypothesis.
+
+General characteristic-zero semisimplicity, standard–IC equality and the full classical equivalence are proved subsequently in Identifying the dual group, §§8.4–8.5. Its Theorem 8.4 then applies the conditional generator criterion and concludes general ordinary IC stalk and costalk parity. It also resolves the rootwise identity-lift criterion (5.9). This order does not use general parity in reconstruction. The relative-Lefschetz and intersection-form premises in §5.5 remain alternative sufficient conditions, and are not needed for the proved classical theorem. Perversity, tensor duals and the commutativity constraint have their separate proofs in Lessons 7–8. No extension to other algebraically closed ground fields with rational-adic coefficients is proved in this lesson.
 
 ## References
 
 - I. Mirković and K. Vilonen, [*Geometric Langlands duality and representations of algebraic groups over commutative rings*](https://arxiv.org/abs/math/0401222v5), freely accessible corrected preprint, §2, §7 and Appendix A, for reading alongside the finite-support category and the equivariance question.
 - X. Zhu, [*An introduction to affine Grassmannians and the geometric Satake equivalence*](https://arxiv.org/abs/1603.05593v2), freely accessible lecture notes, §5.1 and Appendix A, for the geometric Satake category and finite-dimensional equivariant conventions.
+- C. Schnell, [*Complex Manifolds*, Fall 2024 lecture notes](https://www.math.stonybrook.edu/~cschnell/pdf/notes/complex-manifolds.pdf), Class 15 and the standard-proof appendix, printed pp. 94–96, for further reading on the local Kähler operator identities calculated in §5.8.
+- D. Juteau, C. Mautner and G. Williamson, [*Parity sheaves*](https://arxiv.org/abs/0906.2994v3), §§2 and 4, and [*Parity sheaves and tilting modules*](https://arxiv.org/abs/1403.1647), §3.3, for further reading on the geometric parity question. The finite-generator reduction and homogeneous-cone calculation above include their own proofs.
+- A. Malkin, V. Ostrik and M. Vybornov, [*The minimal degeneration singularities in the affine Grassmannians*](https://arxiv.org/abs/math/0305095v1), §2.3.3, for further reading on the quasi-minuscule cone chart constructed in §5.10.

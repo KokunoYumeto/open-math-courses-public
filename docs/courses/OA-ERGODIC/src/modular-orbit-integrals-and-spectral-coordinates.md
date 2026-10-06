@@ -6,7 +6,7 @@ An integrable modular action can turn rank-one operators into multiplication ope
 
 Prerequisites are the normal-weight and extended-positive calculus, the density modular formula, measurable separable Hilbert fields, and real Plancherel theory. The exact programme results used below are identified in Section 6. General spectral realization and strictification of groupoid representations retain their separate prerequisite obligations.
 
-[Orbit averaging and the modular weight bridge](orbit-averaging-and-the-modular-weight-bridge.md), Theorem 1.1, now supplies the scalar composition and modular compatibility required here for the standing standard Borel groupoid application. Its Corollary 5.2 identifies the subsequent application; general OA-MOD existence retains its separate owner scope.
+[Orbit averaging and the modular weight bridge](orbit-averaging-and-the-modular-weight-bridge.md), Theorem 1.1, now supplies the scalar composition and modular compatibility required here for the standing standard Borel groupoid application. Its Corollary 5.2 identifies the subsequent application; the general existence theorem for arbitrary von Neumann algebra inclusions belongs to the modular course and is not proved here.
 
 ## 1. Bounded orbit integrals and the exact transfer hypothesis
 

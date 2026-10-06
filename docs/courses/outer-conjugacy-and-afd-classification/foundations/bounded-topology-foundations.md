@@ -4,7 +4,7 @@
 
 This companion supplies the complete earlier arguments used by [Bounded topology and tracial representations](../src/bounded-topology-and-tracial-representations.md) for its bounded representation and faithful-state results. It contains the Hilbert, norm-extension, compactness, bounded calculus, predual and density proofs used there, with arbitrary Hilbert dimensions and arbitrary directed nets. The entry assumptions are complete real and complex scalars, inner-product axioms, elementary algebra and topology, and the maximal principle of set theory.
 
-These are copies of existing independently written programme proofs, not extracts from the cited human books or articles. Source locations and exact original-file and excerpt hashes are recorded in [the provenance manifest](bounded-topology-foundations.provenance.json). Mathematical statements and proofs are retained; local cross-references point within this companion. References in the copied context to later modular or general-weight results do not import those results here. This companion does not certify those broader branches or the whole course.
+These are copies of existing independently written programme proofs, not extracts from the cited human books or articles. Source locations are recorded in [the provenance manifest](bounded-topology-foundations.provenance.json). Mathematical statements and proofs are retained; local cross-references point within this companion. References in the copied context to later modular or general-weight results do not import those results here.
 
 The source module for the finite-vector commutant argument credits Jacob Lurie's [Math 261y, Lecture 5, Theorem 4 and Proposition 5](https://people.math.harvard.edu/~lurie/261ynotes/lecture5.pdf). The norm-extension module credits Yury Kudryashov and Heather Macbeth's [mathlib Hahn–Banach formulations](https://github.com/leanprover-community/mathlib4/blob/71a80585ee495fc24472fd0eaffc89d94e4fd8d6/Mathlib/Analysis/Normed/Module/HahnBanach.lean#L44). The Kaplansky module compares Jesse Peterson's [Notes on von Neumann algebras, Theorem 2.6.4](https://math.vanderbilt.edu/peters10/teaching/spring2013/vonNeumannAlgebras.pdf). The exact arguments needed below are written in full.
 
@@ -59,9 +59,7 @@ one may take \(v=\ell(u)u/\|u\|^2\). The case \(\ell=0\) uses \(v=0\). The norm 
 
 ## Foundation B: Norm extension and convex separation
 
-*Programme source: OA-MOD, `audit/real-coercivity/predual-prerequisites.md`, lines 3–66.*
-
-**Original mathematical exposition by GPT-6 Astra / Ultra. Owner proof draft; native CP integration and separate review remain pending.**
+**Original mathematical exposition by GPT-6 Astra / Ultra. Self-checked by the writing AI.**
 
 These proofs supply the elementary functional-analysis inputs used in the concrete predual construction. We assume the complete real and complex scalar fields, the inner-product axioms and the set-theoretic maximal principle. Hilbert spaces have arbitrary dimension. Locally convex spaces below need not be Hausdorff or complete, and operator limits may be arbitrary directed nets.
 
@@ -717,7 +715,7 @@ Finally, if \(a=a^*\in N\), (HAP.12) supplies \(c_i\in\mathcal C\) with \(c_i\to
 
 ## OA-MOD-HAP-05 — Contractive approximation from a nonunital algebra
 
-**Foundation theorem and alternative proof.** The canonical programme statement is Theorem 7.1(1)–(2) of *Kaplansky’s density theorem and its consequences*, in *Foundations of von Neumann algebras*. It allows degenerate as well as nondegenerate subalgebras and does not require norm closure. That foundation lesson retains statement ownership. HAP04 identifies the weak closure in the present nondegenerate setting; the complete proof below is an alternative for that setting. Peterson’s free Theorem 2.6.4 provides a comparison. The proof explicitly returns from the norm closure to the original algebra, which need not contain an identity.
+**Foundation theorem and alternative proof.** The canonical programme statement is Theorem 7.1(1)–(2) of *Kaplansky’s density theorem and its consequences*, in *Foundations of von Neumann algebras*. It allows degenerate as well as nondegenerate subalgebras and does not require norm closure. HAP04 identifies the weak closure in the present nondegenerate setting; the complete proof below is an alternative for that setting. Peterson’s free Theorem 2.6.4 provides a comparison. The proof explicitly returns from the norm closure to the original algebra, which need not contain an identity.
 
 **Theorem.** For the algebra \(\mathcal C\) in HAP-04, every contraction \(x\in N\) is the strong* limit of a net of contractions from \(\mathcal C\). If \(x=x^*\), the approximants may also be chosen self-adjoint.
 

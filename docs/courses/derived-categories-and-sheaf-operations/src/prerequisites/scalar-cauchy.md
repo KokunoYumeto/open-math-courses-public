@@ -185,6 +185,6 @@ Consequently \(f\) has derivatives of all orders, and \(a_n=f^{(n)}(c)/n!\).
 
 ## Source and next reading
 
-The scalar programme proofs preserve the mathematical credit of Édouard Goursat and of the programme lesson's original writers. The full source lesson also credits John D. Dixon, Zuoqin Wang under Sigurdur Helgason's guidance, and Ilja Černý for its cycle-theorem comparisons; those later comparisons are outside this selection. Their established free reading routes and exact programme provenance appear in the [source and edition notice](assets/notices/scalar-cauchy-source-notice.html).
+The scalar programme proofs preserve the mathematical credit of Édouard Goursat and of the programme lesson's original writers. The full source lesson also credits John D. Dixon, Zuoqin Wang under Sigurdur Helgason's guidance, and Ilja Černý for its cycle-theorem comparisons; those later comparisons are outside this selection. Links to freely readable versions of their works appear in the [source and edition notice](assets/notices/scalar-cauchy-source-notice.html).
 
 Continue with [Holomorphic functions and convergent power series](holomorphic-power-series.md).

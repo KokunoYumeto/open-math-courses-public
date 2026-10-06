@@ -1,6 +1,6 @@
 # Hyperbolic Cauchy problems at a principal-type boundary
 
-Original independent programme exposition and all twenty complete original solutions are retained. Current source and proof review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. This lesson, its added proof completions and original figure are dedicated under CC0. Linked components retain their own licences. All nine approved purchased books are valid mathematical sources and ordinary citations; citations replace no programme proof.
+Original independent programme exposition and all twenty complete original solutions are retained. Current source and proof review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. This lesson, its added proof completions and original figure are dedicated under CC0. Linked components retain their own licences.
 
 Begin with [higher-order Cauchy roots, jets and propagation](../20261005-restored-higher-order-cauchy/higher-order-cauchy-roots-jets-and-propagation.md) and [the necessity of hyperbolicity](../20261005-restored-hyperbolicity-necessity/hyperbolicity-necessity-support-tests-and-double-roots.md). We now prove energy estimates, supported existence and boundary propagation when two real normal roots merge at the initial surface while the characteristic remains of principal type. The [ordinary symbol calculus](../20261004-free-intrinsic-graph/prerequisites/ordinary-operator-calculus.md) supplies the composition and Sobolev mapping conventions used below.
 
@@ -29,7 +29,7 @@ Normalize the noncharacteristic principal polynomial as
 p(x',t,\xi',\tau)=\sum_{j=0}^m p_j(x',t,\xi')\tau^j,
 \qquad p_m=1.
 \]
-This is the index convention on printed page 404, PDF page 419 of the approved 2007 edition. Assume every normal root is simple and real for \(t>0,\xi'\ne0\). At \(t=0\) the roots are real; at every double root require
+This is the index convention on printed page 404, PDF page 419 of the 2007 edition. Assume every normal root is simple and real for \(t>0,\xi'\ne0\). At \(t=0\) the roots are real; at every double root require
 \[
 p_t p_{\tau\tau}<0.
 \]
@@ -335,7 +335,7 @@ The first inequality keeps the initial boundary term, which has the correct sign
 \]
 For \(m=1\) the second sum is empty. First order problems also have the ordinary unweighted backward estimate of the strict Cauchy lesson. The quadratic case and (PT12) do not give an unweighted top jet at \(t=0\).
 
-Source comparison note: the two references to (23.4.6) in the forward higher order proof and its forward existence application, on printed 409–410/PDF 424–425 of the approved 2007 edition, have incompatible backward weights. The estimate used at those steps is (23.4.8), represented here by (PT9). The source is preserved; the teaching argument uses its actual forward orders and direction.
+Source comparison note: the two references to (23.4.6) in the forward higher order proof and its forward existence application, on printed 409–410/PDF 424–425 of the 2007 edition, have incompatible backward weights. The estimate used at those steps is (23.4.8), represented here by (PT9). The source is preserved; the teaching argument uses its actual forward orders and direction.
 
 ## 7. Supported existence, arbitrary orders and the extra half derivative in the data
 
@@ -810,10 +810,10 @@ On \((-1,1)_t\times(0,1)_x\), verify \(P=D_t-D_x\), \(u=\delta(x+t-3/2)\) has ze
 
 ## 13. Source and validation boundaries
 
-The approved mathematical source is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, 2007 eBook, ISBN 978-3-540-49938-1, Section 23.4, printed pages 404–414 (PDF pages 419–429). This entire section has been read and compared. The normal coefficient is indexed by \(p_m=1\). The two forward references to (23.4.6) on printed pages 409–410 actually require (23.4.8), the higher-order forward estimate; PT9 uses its correct direction and weights.
+The mathematical source is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, 2007 eBook, ISBN 978-3-540-49938-1, Section 23.4, printed pages 404–414 (PDF pages 419–429). This entire section has been read and compared. The normal coefficient is indexed by \(p_m=1\). The two forward references to (23.4.6) on printed pages 409–410 actually require (23.4.8), the higher-order forward estimate; PT9 uses its correct direction and weights.
 
 The localized proof retains the additional \(w/t^2\) multiplier and both terminal bounds on the original forcing interval. It proves the sufficient global forcing error in PT34 without assuming the stronger inverse-parameter remainder printed in the source. The tangential pseudodifferential normal-recovery argument is fully supplied in Section 8, so no differential-only theorem is applied to that model.
 
-The nonnegative gradient estimate in Section 9 credits Hörmander I, *Distribution Theory and Fourier Analysis*, approved 2003 eBook, second edition, ISBN 978-3-642-61497-2, Lemma 7.7.2. Its complete needed proof is included. Appendix B.2 of Volume III is scholarly attribution for the earlier fully proved mixed spaces, duality, traces and differential recovery. The exact ordinary, positivity, boundary and Hilbert providers are connected in the [proof map](proof-map.json), with every current source hash and proof locator.
+The nonnegative gradient estimate in Section 9 credits Hörmander I, *Distribution Theory and Fourier Analysis*, 2003 eBook, second edition, ISBN 978-3-642-61497-2, Lemma 7.7.2. Its complete needed proof is included. Appendix B.2 of Volume III is scholarly attribution for the earlier fully proved mixed spaces, duality, traces and differential recovery. The exact ordinary, positivity, boundary and Hilbert providers are connected in the [proof map](proof-map.json), with every current source hash and proof locator.
 
-All twenty original solutions and all original mathematical displays remain. The added weak-limit, quotient-inverse, endpoint and matrix explanations complete the actual receivers. Source and proof review is the author's review; independent human review and the remaining full-course work are not claimed complete. No source book pages, source images, receipts or personal details are included.
+All twenty original solutions and all original mathematical displays remain. The added weak-limit, quotient-inverse, endpoint and matrix explanations complete the actual receivers. Source and proof review is the author's review; independent human review and the remaining full-course work are not claimed complete. No source book pages or source images are included.

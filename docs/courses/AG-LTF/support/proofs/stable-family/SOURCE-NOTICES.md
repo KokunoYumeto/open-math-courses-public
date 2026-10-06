@@ -18,8 +18,8 @@ The complete unchanged [GNU Free Documentation License](native/COPYING), its [or
 
 The new readers, packaging manifest, proof indexes and bridge explanations are independent AI-authored exposition under **CC0 1.0**, subject to the rights the contributors control. Their source citations do not relicense the cited human expression. The separately copied existing course providers retain their own source notices and terms.
 
-The complete numerical completion **NS.11a** is the existing independently authored AG-GS writer's CC0 exposition. Its existing author-workflow metadata records GPT-6.1 Sol at Ultra. It is credited to that actual workflow; no human author is inferred or invented. The native classification and heart bound underlying the completion retain their original GFDL provenance.
+The complete numerical completion **NS.11a** is the existing independently authored AG-GS writer's CC0 exposition. Its existing author-workflow metadata records GPT-6.1 Sol at Ultra. It is credited to that actual workflow; no human author is inferred or invented. The native classification and heart bound underlying the completion retain their original GFDL terms.
 
 Human primary comparisons are **Pierre Deligne and David Mumford**, *The irreducibility of the space of curves of given genus*, Theorem(1.13), printed pp.85–87; **Pierre Deligne**, *Le lemme de Gabber*, §§3.2–3.7; and **A. Johan de Jong**, *Smoothness, semi-stability and alterations*, §2.24. Freely accessible source links and exact reading scopes remain in [proof-check-record.json](proof-check-record.json). No source PDF is redistributed by this package and free reading is not represented as redistribution permission.
 
-The bounded internal model and level reviews and the writing owner’s integration check are complete. Their scopes are preserved in the proof record.
+Self-checked by the writing AI.

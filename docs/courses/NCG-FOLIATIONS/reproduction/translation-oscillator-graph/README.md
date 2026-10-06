@@ -34,5 +34,4 @@ global graph compact resolvent or normal index is inferred from the picture.
 Read COMPONENT-TERMS.md, FONT-NOTICE.txt, both font notices and all retained
 software notices for the separately scoped actual component terms. Original
 proof/caption/generator/checker expression is CC0 1.0. No protected source
-expression or pixels, private audit receipts, or dependency binaries are
-included.
+expression or pixels and no dependency binaries are included.

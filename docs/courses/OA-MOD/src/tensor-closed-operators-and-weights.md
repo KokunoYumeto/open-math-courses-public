@@ -289,7 +289,7 @@ The vector \(\zeta=\sum_{n\geq1}n^{-1}e_n\otimes e_n\) lies in this domain and \
 \tag{TG.28}
 \]
 
-This is graph convergence for the product, despite the infinite separate energy. The private reproducible figure for this unit shows the ratio \(n/m\), this diagonal vector and the exact tail bound. Its finite grid is labeled as a sample; the domain and estimate are established by (TG.27–28), not inferred from pixels. Public figure binding remains pending.
+This is graph convergence for the product, despite the infinite separate energy.
 
 **A matrix modular calculation.** Let \(M=N=M_2(\mathbb C)\), \(\varphi(x)=\operatorname{Tr}(hx)\), \(\psi(y)=\operatorname{Tr}(ky)\), with \(h=\operatorname{diag}(1,4)\), \(k=\operatorname{diag}(1,9)\). In basis order \((1,1),(1,2),(2,1),(2,2)\), the tensor density is \(h\otimes k=\operatorname{diag}(1,9,4,36)\). Identifying GNS vectors with \(xh^{1/2}\) and \(yk^{1/2}\) in Hilbert–Schmidt spaces verifies (TG.19). The modular operator multiplies \(E_{ij}\otimes E_{rs}\) by \((h_i/h_j)(k_r/k_s)\). In particular \(E_{12}\otimes E_{21}\) has eigenvalue \(9/4\), and its modular automorphism multiplier is \((9/4)^{it}\). This checks both the factor order and the sign of \(t\) in (TG.21).
 

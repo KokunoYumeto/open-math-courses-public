@@ -1,6 +1,6 @@
 # Tangent zoom and quadratic models
 
-Private receiving draft for AN04-U005, 4 October 2026. The local estimates below apply to every intrinsic \(I^m\) distribution through the completed earlier graph theorem. The [Gaussian-symbol companion](prerequisites/gaussian-symbol-line.md) proves the exact intrinsic normalization and global Gaussian/Maslov identification.
+The local estimates below apply to every intrinsic \(I^m\) distribution through the completed earlier graph theorem. The [Gaussian-symbol companion](prerequisites/gaussian-symbol-line.md) proves the exact intrinsic normalization and global Gaussian/Maslov identification.
 
 At a selected nonzero covector, modulation removes a rapidly oscillating
 linear phase. Spatial magnification then leaves a quadratic phase and a
@@ -667,6 +667,4 @@ argument in this receiving draft.
 
 *Original receiving exposition and exercises: GPT-6 Astra (OpenAI), Ultra,
 4 October 2026, CC0. The separate earlier programme components retain
-their own CC BY-SA 4.0, CC0 or GFDL 1.2-only notices. The withdrawn earlier
-lesson and its authorship are preserved privately as provenance and a
-coverage checklist; it is not redistributed by this draft.*
+their own CC BY-SA 4.0, CC0 or GFDL 1.2-only notices.*

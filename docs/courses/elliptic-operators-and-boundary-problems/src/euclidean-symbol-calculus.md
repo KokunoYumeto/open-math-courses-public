@@ -1037,7 +1037,7 @@ All scalar derivatives commute with the actual matrix derivative of \(h\). Group
 =\begin{cases}1,&\lambda=0,\\0,&|\lambda|>0.\end{cases}
 \tag{OC7}
 \]
-This proves the cancellations of all scalar derivative contributions rather than omitting them. Substitution in OC6 gives exactly OI6's remaining original cutoff and inverse derivative sum. At the zero-extension boundary the symbols are smooth and coincide, so all derivatives coincide there too. Their actual quantizations are equal by the full original Fourier formula, hence their left and right composition defects and finite ordered inverse powers coincide. The new proof supplies each original inverse derivative and every subsequent remainder directly, while this comparison preserves the exact provenance of the preceding expression.
+This proves the cancellations of all scalar derivative contributions rather than omitting them. Substitution in OC6 gives exactly OI6's remaining original cutoff and inverse derivative sum. At the zero-extension boundary the symbols are smooth and coincide, so all derivatives coincide there too. Their actual quantizations are equal by the full original Fourier formula, hence their left and right composition defects and finite ordered inverse powers coincide. The proof gives each original inverse derivative and every subsequent remainder directly, while this comparison identifies the preceding expression exactly with the current one.
 
 ## 10. Hypoelliptic polynomials and the symbol calculus
 

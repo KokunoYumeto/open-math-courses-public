@@ -1,0 +1,243 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>Smooth-wavefront convolution with a kernel singular only at zero</title><style>body{margin:0;background:#f8fafc;color:#182d40;font:18px/1.6 system-ui,sans-serif}main{max-width:900px;margin:auto;padding:24px;overflow-wrap:anywhere}h1,h2{line-height:1.25}h2{margin-top:2em}img{display:block;width:100%;height:auto}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;margin:1.1em 0}.math:focus{outline:2px solid #146b98;outline-offset:3px}.math mjx-assistive-mml{width:1px!important;height:1px!important}nav,.native,.status{font-size:15px}a{color:#075d91}article{border-top:1px solid #ccd8e0;margin-top:2em;padding-top:1em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="components.html">Proofs and figures</a> <a href="src/smooth-wavefront-convolution.md" download>Download complete learner source</a></nav><h1>Smooth-wavefront convolution with a kernel singular only at zero</h1>
+<h2>Reading guide</h2>
+<p>This complete lesson proves that convolution with a distribution kernel smooth away from zero adds no smooth-wavefront directions to a compact distribution input. It defines the compact-factor convolution on tests, proves the frequency-cone estimate, splits off a compact kernel and differentiates the smooth remainder through a fixed compact test family. No temperateness of the whole kernel is required.</p>
+<p></p>
+<p>The retained lower entries include fixed-compact finite-order distribution bounds, compact-distribution Fourier evaluation, tensor products and compact-factor convolution, Schwartz inversion and the compact smooth multiplication formula, cutoffs and ordinary scalar integration. The L021 receiving interface comprises its equation (1), compact inverse identity and separated-support commutator/test-family calculation. Strong-distribution topology and differential wavefront decrease remain separate entries, as do all other containing-lesson assertions and recursive foundations. Read WFC0–WFC6, all three examples and all six complete solutions below.</p>
+<h2>Proof</h2>
+<p class="status">Complete original packet downloads: <span class="unlinked">COMPONENT-NOTICE.md</span> <a href="reproduce/L130/figures/cones-and-frequency-separation.png" download>figures/cones-and-frequency-separation.png</a> <a href="reproduce/L130/figures/cones-and-frequency-separation.svg" download>figures/cones-and-frequency-separation.svg</a> <a href="reproduce/L130/figures/geometry.json" download>figures/geometry.json</a> <a href="reproduce/L130/figures/spatial-support-witness.png" download>figures/spatial-support-witness.png</a> <a href="reproduce/L130/figures/spatial-support-witness.svg" download>figures/spatial-support-witness.svg</a> <a href="reproduce/L130/make_figures.py" download>make_figures.py</a> <span class="unlinked">smooth-wavefront-convolution.md</span></p><article id="complete-original-proof"><h1>A singular kernel at the origin does not add wavefront directions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Classical exposition and original diagrams, dedicated under CC0. </em></p>
+<p>Let <span class="math" data-index="0" data-tex="\(E\)">\(E\)</span> be a distribution on <span class="math" data-index="1" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> that is smooth away from the origin, and let <span class="math" data-index="2" data-tex="\(f\)">\(f\)</span> be a compactly supported distribution. The convolution exists even when <span class="math" data-index="3" data-tex="\(E\)">\(E\)</span> grows too fast to be tempered. We prove the precise smooth-wavefront inclusion needed in the hypoellipticity lesson:
+<span class="math math-display" data-index="4" data-tex="\[
+ \operatorname{WF}(E*f)\subset\operatorname{WF}(f).
+ \tag{WFC1}
+\]">\[
+ \operatorname{WF}(E*f)\subset\operatorname{WF}(f).
+ \tag{WFC1}
+\]</span>
+The claim concerns points and nonzero covectors, not only the projection called singular support. The proof uses a compact part of the kernel, a spatial support witness, and a frequency-cone estimate. It does not assume the general wavefront theorem for convolution or a general pseudodifferential calculus.</p>
+<h2>WFC0. Objects, conventions and actual lower entries</h2>
+<p>We use the negative-exponential Fourier transform, its inverse factor <span class="math" data-index="5" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>, and <span class="math" data-index="6" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>. A smooth wavefront point <span class="math" data-index="7" data-tex="\((x_0,\xi_0)\)">\((x_0,\xi_0)\)</span>, with <span class="math" data-index="8" data-tex="\(\xi_0\ne0\)">\(\xi_0\ne0\)</span>, is absent from <span class="math" data-index="9" data-tex="\(\operatorname{WF}(u)\)">\(\operatorname{WF}(u)\)</span> when there is a cutoff <span class="math" data-index="10" data-tex="\(\chi\in C_c^\infty\)">\(\chi\in C_c^\infty\)</span>, equal to one near <span class="math" data-index="11" data-tex="\(x_0\)">\(x_0\)</span>, and an open cone <span class="math" data-index="12" data-tex="\(\Gamma\)">\(\Gamma\)</span> containing <span class="math" data-index="13" data-tex="\(\xi_0\)">\(\xi_0\)</span>, such that
+<span class="math math-display" data-index="14" data-tex="\[
+ |\widehat{\chi u}(\eta)|\le C_L\langle\eta\rangle^{-L}
+ \quad(\eta\in\Gamma,\ L\ge0),
+ \qquad \langle\eta\rangle=(1+|\eta|^2)^{1/2}.
+ \tag{WFC2}
+\]">\[
+ |\widehat{\chi u}(\eta)|\le C_L\langle\eta\rangle^{-L}
+ \quad(\eta\in\Gamma,\ L\ge0),
+ \qquad \langle\eta\rangle=(1+|\eta|^2)^{1/2}.
+ \tag{WFC2}
+\]</span>
+An open cone is invariant under every positive dilation and is a subset of the nonzero covectors. Values at zero have no effect on integrals or on the definition.</p>
+<p>The lower distribution and scalar Fourier entries are explicit: a distribution restricted to tests with support in a fixed compact set has a finite-order bound; compact distributions have their Fourier transforms by evaluation on exponentials with a cutoff; tensor products and convolution with one compact factor have their usual test-function definitions; Fourier inversion on Schwartz tests and the product formula for multiplication by a compact smooth function hold; and compact smooth cutoffs exist. Ordinary integration, dominated convergence and the scalar product rule are also used. These are the distribution/Fourier contracts already used by the receiving course. This lesson does not claim to close all those foundations recursively.</p>
+<p>For clarity, the particular compact-distribution facts used here can be seen directly. If <span class="math" data-index="15" data-tex="\(a\)">\(a\)</span> has compact support, choose <span class="math" data-index="16" data-tex="\(\nu=1\)">\(\nu=1\)</span> on a neighborhood of that support. Its finite-order bound gives
+<span class="math math-display" data-index="17" data-tex="\[
+ \widehat a(\eta)=\langle a,\nu(x)e^{-ix\cdot\eta}\rangle,
+ \qquad |\widehat a(\eta)|\le C\langle\eta\rangle^M.
+ \tag{WFC3}
+\]">\[
+ \widehat a(\eta)=\langle a,\nu(x)e^{-ix\cdot\eta}\rangle,
+ \qquad |\widehat a(\eta)|\le C\langle\eta\rangle^M.
+ \tag{WFC3}
+\]</span>
+It is smooth in <span class="math" data-index="18" data-tex="\(\eta\)">\(\eta\)</span>: differentiating the exponential produces a fixed compact test times a monomial in <span class="math" data-index="19" data-tex="\(x\)">\(x\)</span>; difference quotients converge in every required test seminorm. The transform does not depend on <span class="math" data-index="20" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<p>If <span class="math" data-index="21" data-tex="\(a,b\)">\(a,b\)</span> both have compact support, their convolution is compactly supported and
+<span class="math math-display" data-index="22" data-tex="\[
+ \operatorname{supp}(a*b)\subset
+ \operatorname{supp}a+\operatorname{supp}b,
+ \qquad \widehat{a*b}(\eta)=\widehat a(\eta)\widehat b(\eta).
+ \tag{WFC4}
+\]">\[
+ \operatorname{supp}(a*b)\subset
+ \operatorname{supp}a+\operatorname{supp}b,
+ \qquad \widehat{a*b}(\eta)=\widehat a(\eta)\widehat b(\eta).
+ \tag{WFC4}
+\]</span>
+For the support assertion, a test supported outside the compact sum pulls back to a function vanishing on a neighborhood of <span class="math" data-index="23" data-tex="\(\operatorname{supp}a\times\operatorname{supp}b\)">\(\operatorname{supp}a\times\operatorname{supp}b\)</span>. For the Fourier assertion, insert <span class="math" data-index="24" data-tex="\(e^{-i(x+y)\cdot\eta}\)">\(e^{-i(x+y)\cdot\eta}\)</span> with cutoffs equal to one on the two compact supports in the tensor-product definition. The exponential factors into the same two Fourier tests. These calculations supply the actual maps used below.</p>
+<p>More generally, <span class="math" data-index="25" data-tex="\(E*f\)">\(E*f\)</span> for compact <span class="math" data-index="26" data-tex="\(f\)">\(f\)</span> is defined by testing the tensor product against <span class="math" data-index="27" data-tex="\(\varphi(x+y)\)">\(\varphi(x+y)\)</span>, with compact cutoffs in both variables. On the support of a compact output test and the fixed compact support of <span class="math" data-index="28" data-tex="\(f\)">\(f\)</span>, the possible first coordinates lie in a compact difference set. Thus these cutoffs can be chosen, their choices agree, and the resulting distribution exists without a tempered-growth assumption on <span class="math" data-index="29" data-tex="\(E\)">\(E\)</span>.</p>
+<h2>WFC1. The frequency-cone estimate</h2>
+<p><strong>Lemma.</strong> Suppose <span class="math" data-index="30" data-tex="\(F\)">\(F\)</span> is a measurable function on frequency space with
+<span class="math math-display" data-index="31" data-tex="\[
+ |F(\eta)|\le C\langle\eta\rangle^B
+ \quad\text{everywhere},\qquad
+ |F(\eta)|\le C_L\langle\eta\rangle^{-L}
+ \quad(\eta\in\Gamma,\ L\ge0),
+ \tag{WFC5}
+\]">\[
+ |F(\eta)|\le C\langle\eta\rangle^B
+ \quad\text{everywhere},\qquad
+ |F(\eta)|\le C_L\langle\eta\rangle^{-L}
+ \quad(\eta\in\Gamma,\ L\ge0),
+ \tag{WFC5}
+\]</span>
+where <span class="math" data-index="32" data-tex="\(B\ge0\)">\(B\ge0\)</span> and <span class="math" data-index="33" data-tex="\(\Gamma\)">\(\Gamma\)</span> is an open cone. If <span class="math" data-index="34" data-tex="\(a\)">\(a\)</span> is Schwartz and <span class="math" data-index="35" data-tex="\(\Gamma&#x27;\)">\(\Gamma&#x27;\)</span> has its closed unit-direction set inside <span class="math" data-index="36" data-tex="\(\Gamma\)">\(\Gamma\)</span>, then <span class="math" data-index="37" data-tex="\(a*F\)">\(a*F\)</span> decreases faster than every power on <span class="math" data-index="38" data-tex="\(\Gamma&#x27;\)">\(\Gamma&#x27;\)</span>.</p>
+<p><strong>Proof.</strong> The integral defining <span class="math" data-index="39" data-tex="\(a*F\)">\(a*F\)</span> is absolutely convergent because <span class="math" data-index="40" data-tex="\(a\)">\(a\)</span> is Schwartz and <span class="math" data-index="41" data-tex="\(F\)">\(F\)</span> has polynomial growth. Split it into <span class="math" data-index="42" data-tex="\(\eta\in\Gamma\)">\(\eta\in\Gamma\)</span> and <span class="math" data-index="43" data-tex="\(\eta\notin\Gamma\)">\(\eta\notin\Gamma\)</span>.</p>
+<p>For the first part use
+<span class="math math-display" data-index="44" data-tex="\[
+ \langle\xi\rangle^L
+ \le 2^{L/2}\langle\xi-\eta\rangle^L\langle\eta\rangle^L.
+ \tag{WFC6}
+\]">\[
+ \langle\xi\rangle^L
+ \le 2^{L/2}\langle\xi-\eta\rangle^L\langle\eta\rangle^L.
+ \tag{WFC6}
+\]</span>
+This follows by bounding <span class="math" data-index="45" data-tex="\(1+|\xi|^2\)">\(1+|\xi|^2\)</span> by <span class="math" data-index="46" data-tex="\(2(1+|\xi-\eta|^2)(1+|\eta|^2)\)">\(2(1+|\xi-\eta|^2)(1+|\eta|^2)\)</span>. Apply the Schwartz bound of order <span class="math" data-index="47" data-tex="\(L+n+1\)">\(L+n+1\)</span> to <span class="math" data-index="48" data-tex="\(a\)">\(a\)</span> and the rapid bound of order <span class="math" data-index="49" data-tex="\(L+n+1\)">\(L+n+1\)</span> to <span class="math" data-index="50" data-tex="\(F\)">\(F\)</span> on <span class="math" data-index="51" data-tex="\(\Gamma\)">\(\Gamma\)</span>. The weighted integrand is at most
+<span class="math math-display" data-index="52" data-tex="\[
+ C_L\langle\xi-\eta\rangle^{-n-1}
+            \langle\eta\rangle^{-n-1}.
+ \tag{WFC7}
+\]">\[
+ C_L\langle\xi-\eta\rangle^{-n-1}
+            \langle\eta\rangle^{-n-1}.
+ \tag{WFC7}
+\]</span>
+Its integral is bounded independently of <span class="math" data-index="53" data-tex="\(\xi\)">\(\xi\)</span>, since the first factor is at most one and the second is integrable.</p>
+<p>For the second part compact angular separation gives a constant <span class="math" data-index="54" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> with
+<span class="math math-display" data-index="55" data-tex="\[
+ |\xi-\eta|\ge c(|\xi|+|\eta|)
+ \quad(\xi\in\Gamma&#x27;,\ \eta\notin\Gamma).
+ \tag{WFC8}
+\]">\[
+ |\xi-\eta|\ge c(|\xi|+|\eta|)
+ \quad(\xi\in\Gamma&#x27;,\ \eta\notin\Gamma).
+ \tag{WFC8}
+\]</span>
+Here is the exact geometric argument. For nonzero <span class="math" data-index="56" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span>, their unit directions have distance at least <span class="math" data-index="57" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>: the first directions lie in a compact subset of <span class="math" data-index="58" data-tex="\(\Gamma\)">\(\Gamma\)</span>'s unit directions and the second in its closed complement. With <span class="math" data-index="59" data-tex="\(r=|\xi|\)">\(r=|\xi|\)</span>, <span class="math" data-index="60" data-tex="\(s=|\eta|\)">\(s=|\eta|\)</span>, and unit directions <span class="math" data-index="61" data-tex="\(\omega,\nu\)">\(\omega,\nu\)</span>,
+<span class="math math-display" data-index="62" data-tex="\[
+ |r\omega-s\nu|^2=(r-s)^2+rs|\omega-\nu|^2
+ \ge \frac{\delta^2}{4}(r+s)^2.
+ \tag{WFC9}
+\]">\[
+ |r\omega-s\nu|^2=(r-s)^2+rs|\omega-\nu|^2
+ \ge \frac{\delta^2}{4}(r+s)^2.
+ \tag{WFC9}
+\]</span>
+The last inequality uses <span class="math" data-index="63" data-tex="\(0&lt;\delta\le2\)">\(0&lt;\delta\le2\)</span>. If there are no complementary unit directions there is no such integral part except a measure-zero point. If <span class="math" data-index="64" data-tex="\(\eta=0\)">\(\eta=0\)</span>, WFC8 holds directly after decreasing <span class="math" data-index="65" data-tex="\(c\)">\(c\)</span>.</p>
+<p>WFC8 implies both <span class="math" data-index="66" data-tex="\(\langle\xi-\eta\rangle\ge c&#x27;\langle\xi\rangle\)">\(\langle\xi-\eta\rangle\ge c&#x27;\langle\xi\rangle\)</span> and <span class="math" data-index="67" data-tex="\(\langle\xi-\eta\rangle\ge c&#x27;\langle\eta\rangle\)">\(\langle\xi-\eta\rangle\ge c&#x27;\langle\eta\rangle\)</span>. Apply the Schwartz bound of order <span class="math" data-index="68" data-tex="\(L+B+n+1\)">\(L+B+n+1\)</span> to <span class="math" data-index="69" data-tex="\(a\)">\(a\)</span>, allocating <span class="math" data-index="70" data-tex="\(L\)">\(L\)</span> powers to the first inequality and <span class="math" data-index="71" data-tex="\(B+n+1\)">\(B+n+1\)</span> to the second. The polynomial bound for <span class="math" data-index="72" data-tex="\(F\)">\(F\)</span> leaves
+<span class="math math-display" data-index="73" data-tex="\[
+ |a(\xi-\eta)F(\eta)|
+ \le C_L\langle\xi\rangle^{-L}\langle\eta\rangle^{-n-1}.
+ \tag{WFC10}
+\]">\[
+ |a(\xi-\eta)F(\eta)|
+ \le C_L\langle\xi\rangle^{-L}\langle\eta\rangle^{-n-1}.
+ \tag{WFC10}
+\]</span>
+Its integral is at most <span class="math" data-index="74" data-tex="\(C&#x27;_L\langle\xi\rangle^{-L}\)">\(C&#x27;_L\langle\xi\rangle^{-L}\)</span>. Together with the first part this proves the lemma. <span class="math" data-index="75" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, if a compact distribution <span class="math" data-index="76" data-tex="\(g\)">\(g\)</span> has rapid Fourier decrease of <span class="math" data-index="77" data-tex="\(\widehat g\)">\(\widehat g\)</span> itself on <span class="math" data-index="78" data-tex="\(\Gamma\)">\(\Gamma\)</span>, multiplication by any <span class="math" data-index="79" data-tex="\(\psi\in C_c^\infty\)">\(\psi\in C_c^\infty\)</span> retains rapid Fourier decrease on a smaller cone:
+<span class="math math-display" data-index="80" data-tex="\[
+ \widehat{\psi g}
+ =(2\pi)^{-n}\widehat\psi*\widehat g.
+ \tag{WFC11}
+\]">\[
+ \widehat{\psi g}
+ =(2\pi)^{-n}\widehat\psi*\widehat g.
+ \tag{WFC11}
+\]</span>
+The scalar multiplication formula and the proved cone lemma justify this statement. They also reconcile a definition using a cutoff merely nonzero at <span class="math" data-index="81" data-tex="\(x_0\)">\(x_0\)</span> with the definition above: choose <span class="math" data-index="82" data-tex="\(\psi=1\)">\(\psi=1\)</span> near <span class="math" data-index="83" data-tex="\(x_0\)">\(x_0\)</span>, supported where the first cutoff is nonzero, and multiply its localized distribution by the compact smooth quotient. No independent cutoff-stability theorem is concealed here.</p>
+<p><img src="reproduce/L130/figures/cones-and-frequency-separation.png" alt="Exact nested cones and the separated-frequency estimate." /><p class="native"><a href="reproduce/L130/figures/cones-and-frequency-separation.png">Open original full-size figure</a></p></p>
+<p><em>Figure 1.</em> This is a two-dimensional frequency section. The larger open cone has angles strictly between <span class="math" data-index="84" data-tex="\(-\pi/6\)">\(-\pi/6\)</span> and <span class="math" data-index="85" data-tex="\(\pi/6\)">\(\pi/6\)</span>; the smaller closed unit-direction interval has angles between <span class="math" data-index="86" data-tex="\(-\pi/12\)">\(-\pi/12\)</span> and <span class="math" data-index="87" data-tex="\(\pi/12\)">\(\pi/12\)</span>. The smallest angular gap to the complement is <span class="math" data-index="88" data-tex="\(\pi/12\)">\(\pi/12\)</span>, so one may take <span class="math" data-index="89" data-tex="\(\delta=2\sin(\pi/24)\)">\(\delta=2\sin(\pi/24)\)</span> and <span class="math" data-index="90" data-tex="\(c=\sin(\pi/24)\)">\(c=\sin(\pi/24)\)</span> in WFC8–WFC9. The displayed sample is <span class="math" data-index="91" data-tex="\(\xi=(3,0)\)">\(\xi=(3,0)\)</span> and <span class="math" data-index="92" data-tex="\(\eta=(1,2)\)">\(\eta=(1,2)\)</span>, with <span class="math" data-index="93" data-tex="\(\xi-\eta=(2,-2)\)">\(\xi-\eta=(2,-2)\)</span>. Its actual lengths satisfy the bound. The cones describe covectors at the same base point; they are not support cones in physical space. The general proof uses compact unit-direction separation in any dimension.</p>
+<h2>WFC2. The smooth part of the kernel</h2>
+<p>If <span class="math" data-index="94" data-tex="\(A\in C^\infty(\mathbb R^n)\)">\(A\in C^\infty(\mathbb R^n)\)</span> and <span class="math" data-index="95" data-tex="\(f\)">\(f\)</span> is compactly supported, then <span class="math" data-index="96" data-tex="\(A*f\)">\(A*f\)</span> is smooth even when <span class="math" data-index="97" data-tex="\(A\)">\(A\)</span> is untempered. Choose one cutoff <span class="math" data-index="98" data-tex="\(\nu=1\)">\(\nu=1\)</span> near <span class="math" data-index="99" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span>. The formula is
+<span class="math math-display" data-index="100" data-tex="\[
+ (A*f)(x)=\langle f(y),\nu(y)A(x-y)\rangle,
+ \qquad
+ \partial_x^\alpha(A*f)(x)
+ =\langle f(y),\nu(y)\partial_x^\alpha A(x-y)\rangle.
+ \tag{WFC12}
+\]">\[
+ (A*f)(x)=\langle f(y),\nu(y)A(x-y)\rangle,
+ \qquad
+ \partial_x^\alpha(A*f)(x)
+ =\langle f(y),\nu(y)\partial_x^\alpha A(x-y)\rangle.
+ \tag{WFC12}
+\]</span>
+On any compact set of <span class="math" data-index="101" data-tex="\(x\)">\(x\)</span>'s the functions on the right have one common compact test support and bounded derivatives of every order. Taylor remainders in <span class="math" data-index="102" data-tex="\(x\)">\(x\)</span> tend to zero in the finite test seminorm controlling <span class="math" data-index="103" data-tex="\(f\)">\(f\)</span>. Thus differentiation under this pairing is justified, and iteration proves every displayed derivative is continuous. This argument is local in <span class="math" data-index="104" data-tex="\(x\)">\(x\)</span>; it imposes no global bound on <span class="math" data-index="105" data-tex="\(A\)">\(A\)</span>.</p>
+<h2>WFC3. The actual spatial and frequency proof</h2>
+<p>Fix <span class="math" data-index="106" data-tex="\((x_0,\xi_0)\notin\operatorname{WF}(f)\)">\((x_0,\xi_0)\notin\operatorname{WF}(f)\)</span>. Choose a cutoff <span class="math" data-index="107" data-tex="\(\chi\)">\(\chi\)</span>, equal to one near <span class="math" data-index="108" data-tex="\(x_0\)">\(x_0\)</span>, and cone <span class="math" data-index="109" data-tex="\(\Gamma\)">\(\Gamma\)</span> satisfying WFC2 for <span class="math" data-index="110" data-tex="\(f\)">\(f\)</span>. Choose <span class="math" data-index="111" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span> with
+<span class="math math-display" data-index="112" data-tex="\[
+ \chi=1\text{ on }B(x_0,3\epsilon).
+\]">\[
+ \chi=1\text{ on }B(x_0,3\epsilon).
+\]</span>
+Choose <span class="math" data-index="113" data-tex="\(\rho\in C_c^\infty(B(0,\epsilon))\)">\(\rho\in C_c^\infty(B(0,\epsilon))\)</span>, equal to one near zero, and split
+<span class="math math-display" data-index="114" data-tex="\[
+ E_0=\rho E,\qquad E_\infty=(1-\rho)E,\qquad
+ E*f=E_0*f+E_\infty*f.
+ \tag{WFC13}
+\]">\[
+ E_0=\rho E,\qquad E_\infty=(1-\rho)E,\qquad
+ E*f=E_0*f+E_\infty*f.
+ \tag{WFC13}
+\]</span>
+The first distribution has compact support in the kernel ball. The second is globally smooth: it vanishes near zero and equals a smooth multiple of <span class="math" data-index="115" data-tex="\(E\)">\(E\)</span> elsewhere. WFC12 proves its convolution with <span class="math" data-index="116" data-tex="\(f\)">\(f\)</span> is smooth.</p>
+<p>On <span class="math" data-index="117" data-tex="\(B(x_0,\epsilon)\)">\(B(x_0,\epsilon)\)</span>,
+<span class="math math-display" data-index="118" data-tex="\[
+ E_0*f=E_0*(\chi f).
+ \tag{WFC14}
+\]">\[
+ E_0*f=E_0*(\chi f).
+ \tag{WFC14}
+\]</span>
+Indeed <span class="math" data-index="119" data-tex="\(\operatorname{supp}((1-\chi)f)\)">\(\operatorname{supp}((1-\chi)f)\)</span> misses the larger ball <span class="math" data-index="120" data-tex="\(B(x_0,3\epsilon)\)">\(B(x_0,3\epsilon)\)</span>. If <span class="math" data-index="121" data-tex="\(z\in\operatorname{supp}E_0\)">\(z\in\operatorname{supp}E_0\)</span>, then <span class="math" data-index="122" data-tex="\(|z|&lt;\epsilon\)">\(|z|&lt;\epsilon\)</span>. For <span class="math" data-index="123" data-tex="\(x\in B(x_0,\epsilon)\)">\(x\in B(x_0,\epsilon)\)</span>, <span class="math" data-index="124" data-tex="\(y=x-z\)">\(y=x-z\)</span> has <span class="math" data-index="125" data-tex="\(|y-x_0|&lt;2\epsilon\)">\(|y-x_0|&lt;2\epsilon\)</span>, where <span class="math" data-index="126" data-tex="\(\chi=1\)">\(\chi=1\)</span>. Thus no support sum <span class="math" data-index="127" data-tex="\(z+y\)">\(z+y\)</span> of the discarded convolution reaches the output ball. WFC4, or its identical test-support argument for this pair, proves WFC14 as an equality of distributions on that open ball.</p>
+<p>The compact distribution <span class="math" data-index="128" data-tex="\(h=E_0*(\chi f)\)">\(h=E_0*(\chi f)\)</span> has transform
+<span class="math math-display" data-index="129" data-tex="\[
+ \widehat h(\eta)=\widehat E_0(\eta)\widehat{\chi f}(\eta).
+ \tag{WFC15}
+\]">\[
+ \widehat h(\eta)=\widehat E_0(\eta)\widehat{\chi f}(\eta).
+ \tag{WFC15}
+\]</span>
+The first factor has polynomial growth by WFC3, and the second has polynomial growth globally and rapid decrease in <span class="math" data-index="130" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Their product therefore has polynomial growth globally and rapid decrease in <span class="math" data-index="131" data-tex="\(\Gamma\)">\(\Gamma\)</span>, of every order.</p>
+<p>Take <span class="math" data-index="132" data-tex="\(\psi\in C_c^\infty(B(x_0,\epsilon))\)">\(\psi\in C_c^\infty(B(x_0,\epsilon))\)</span>, equal to one near <span class="math" data-index="133" data-tex="\(x_0\)">\(x_0\)</span>, and an open cone <span class="math" data-index="134" data-tex="\(\Gamma&#x27;\)">\(\Gamma&#x27;\)</span> containing <span class="math" data-index="135" data-tex="\(\xi_0\)">\(\xi_0\)</span> whose closed unit directions lie inside <span class="math" data-index="136" data-tex="\(\Gamma\)">\(\Gamma\)</span>. WFC11 and the cone lemma show that <span class="math" data-index="137" data-tex="\(\widehat{\psi h}\)">\(\widehat{\psi h}\)</span> decreases rapidly in <span class="math" data-index="138" data-tex="\(\Gamma&#x27;\)">\(\Gamma&#x27;\)</span>. The other localized term <span class="math" data-index="139" data-tex="\(\psi(E_\infty*f)\)">\(\psi(E_\infty*f)\)</span> is compact smooth and has Schwartz transform. WFC13–WFC14 now give rapid decrease of <span class="math" data-index="140" data-tex="\(\widehat{\psi(E*f)}\)">\(\widehat{\psi(E*f)}\)</span> on <span class="math" data-index="141" data-tex="\(\Gamma&#x27;\)">\(\Gamma&#x27;\)</span>. By the definition WFC2, <span class="math" data-index="142" data-tex="\((x_0,\xi_0)\notin\operatorname{WF}(E*f)\)">\((x_0,\xi_0)\notin\operatorname{WF}(E*f)\)</span>. This proves WFC1. <span class="math" data-index="143" data-tex="\(\square\)">\(\square\)</span></p>
+<p><img src="reproduce/L130/figures/spatial-support-witness.png" alt="The spatial support witness uses the actual convolution difference x minus y." /><p class="native"><a href="reproduce/L130/figures/spatial-support-witness.png">Open original full-size figure</a></p></p>
+<p><em>Figure 2.</em> In the one-dimensional section <span class="math" data-index="144" data-tex="\(x_0=0\)">\(x_0=0\)</span>, <span class="math" data-index="145" data-tex="\(\epsilon=1\)">\(\epsilon=1\)</span>, the vertical output strip is <span class="math" data-index="146" data-tex="\(|x|&lt;1\)">\(|x|&lt;1\)</span>, the diagonal kernel-support band is <span class="math" data-index="147" data-tex="\(|x-y|&lt;1\)">\(|x-y|&lt;1\)</span>, and the cutoff equals one on the horizontal source strip <span class="math" data-index="148" data-tex="\(|y|&lt;3\)">\(|y|&lt;3\)</span>. Their intersection has <span class="math" data-index="149" data-tex="\(|y|&lt;2\)">\(|y|&lt;2\)</span>, strictly inside the cutoff strip. It proves WFC14 by the triangle inequality. The plot bounds neither an arbitrary distribution's values nor its full support; only these exact spatial witnesses are displayed. WFC13 and WFC15 separately describe the kernel split and Fourier factors. No whole-space Fourier transform of an untempered <span class="math" data-index="150" data-tex="\(E\)">\(E\)</span> is used.</p>
+<h2>WFC4. The receiving hypoellipticity calculation</h2>
+<p>The exact assumed estimate at equation (1) of <em>Hypoellipticity and complex zeros</em> is WFC1. Its other incoming existence, localization, topology and Fourier entries remain separate.</p>
+<p>Suppose additionally that <span class="math" data-index="151" data-tex="\(P(D)E=\delta_0\)">\(P(D)E=\delta_0\)</span>. For every compact distribution <span class="math" data-index="152" data-tex="\(v\)">\(v\)</span>, differentiating the compact-factor convolution gives
+<span class="math math-display" data-index="153" data-tex="\[
+ E*P(D)v=P(D)E*v=\delta_0*v=v.
+ \tag{WFC16}
+\]">\[
+ E*P(D)v=P(D)E*v=\delta_0*v=v.
+ \tag{WFC16}
+\]</span>
+The equality follows directly by moving each constant-coefficient derivative between the two factors in the tensor/test definition; integration by parts supplies the matching signs. In the <span class="math" data-index="154" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> convention the two factors use the same <span class="math" data-index="155" data-tex="\(D\)">\(D\)</span>, so no new minus sign is inserted. Applying WFC1 to the compact input <span class="math" data-index="156" data-tex="\(P(D)v\)">\(P(D)v\)</span> gives <span class="math" data-index="157" data-tex="\(\operatorname{WF}(v)\subset\operatorname{WF}(P(D)v)\)">\(\operatorname{WF}(v)\subset\operatorname{WF}(P(D)v)\)</span>.</p>
+<p>For a distribution <span class="math" data-index="158" data-tex="\(u\)">\(u\)</span> on an open set, use <span class="math" data-index="159" data-tex="\(v=\chi u\)">\(v=\chi u\)</span> with a compact cutoff equal to one near the observation point. The commutator <span class="math" data-index="160" data-tex="\([P(D),\chi]u\)">\([P(D),\chi]u\)</span> is compactly supported away from a smaller observation neighborhood. Its convolution with <span class="math" data-index="161" data-tex="\(E\)">\(E\)</span> is smooth there: all involved differences <span class="math" data-index="162" data-tex="\(x-y\)">\(x-y\)</span> avoid zero, and WFC12's compact-test differentiation proof applies on these separated compact sets after a local cutoff in the kernel. WFC1 applies to <span class="math" data-index="163" data-tex="\(\chi P(D)u\)">\(\chi P(D)u\)</span>. This supplies precisely the previously assumed convolution step, with point and covector localization preserved. Differential decrease of wavefront sets and the receiving lesson's other prerequisite proofs are not inferred from this one step.</p>
+<h2>WFC5. Three worked examples</h2>
+<h3>Example 1: the point kernel</h3>
+<p>Take <span class="math" data-index="164" data-tex="\(E=\delta_0\)">\(E=\delta_0\)</span>. It is zero, hence smooth, away from zero. Its convolution with any compact <span class="math" data-index="165" data-tex="\(f\)">\(f\)</span> is exactly <span class="math" data-index="166" data-tex="\(f\)">\(f\)</span>, by evaluating the point factor in the test definition. WFC1 is equality. This shows that a singular kernel at zero can retain every existing wavefront direction rather than smooth its input. Its compact Fourier factor is the constant one, so WFC15 likewise leaves the localized transform unchanged.</p>
+<h3>Example 2: the Heaviside kernel on the line</h3>
+<p>Let <span class="math" data-index="167" data-tex="\(E=H\)">\(E=H\)</span> on <span class="math" data-index="168" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. It is smooth off zero and satisfies <span class="math" data-index="169" data-tex="\(\partial E=\delta_0\)">\(\partial E=\delta_0\)</span>. For a compact smooth function <span class="math" data-index="170" data-tex="\(f\)">\(f\)</span>, the convolution is
+<span class="math math-display" data-index="171" data-tex="\[
+ (H*f)(x)=\int_{-\infty}^x f(y)\,dy.
+\]">\[
+ (H*f)(x)=\int_{-\infty}^x f(y)\,dy.
+\]</span>
+It is smooth, as WFC1 predicts from the empty wavefront set of <span class="math" data-index="172" data-tex="\(f\)">\(f\)</span>. For the compact distribution <span class="math" data-index="173" data-tex="\(f=\delta_a\)">\(f=\delta_a\)</span>, the convolution is <span class="math" data-index="174" data-tex="\(H(x-a)\)">\(H(x-a)\)</span>. It is smooth away from <span class="math" data-index="175" data-tex="\(a\)">\(a\)</span>. At <span class="math" data-index="176" data-tex="\(a\)">\(a\)</span>, neither nonzero one-dimensional covector is absent: if a cutoff equal to one there gave rapid decrease on either frequency half-line, then its derivative would give rapid decrease on that half-line too. But
+<span class="math math-display" data-index="177" data-tex="\[
+ \partial(\chi H(\,\cdot-a))=\delta_a+\chi&#x27;H(\,\cdot-a),
+\]">\[
+ \partial(\chi H(\,\cdot-a))=\delta_a+\chi&#x27;H(\,\cdot-a),
+\]</span>
+and the second term is compact smooth while the Fourier transform of <span class="math" data-index="178" data-tex="\(\delta_a\)">\(\delta_a\)</span> has modulus one. This is impossible. The derivative multiplier is <span class="math" data-index="179" data-tex="\(i\xi\)">\(i\xi\)</span>, which preserves rapid decrease; the argument applies to both signs of <span class="math" data-index="180" data-tex="\(\xi\)">\(\xi\)</span>. Thus its wavefront set at <span class="math" data-index="181" data-tex="\(a\)">\(a\)</span> agrees with that of <span class="math" data-index="182" data-tex="\(\delta_a\)">\(\delta_a\)</span>, and the inclusion is exact in this example.</p>
+<h3>Example 3: an untempered smooth kernel</h3>
+<p>Take <span class="math" data-index="183" data-tex="\(E(x)=e^{|x|^2}\)">\(E(x)=e^{|x|^2}\)</span> and <span class="math" data-index="184" data-tex="\(f=\delta_a\)">\(f=\delta_a\)</span>. The kernel is smooth everywhere and need not be Fourier transformed on all of space. The test-pairing formula gives <span class="math" data-index="185" data-tex="\((E*f)(x)=e^{|x-a|^2}\)">\((E*f)(x)=e^{|x-a|^2}\)</span>, again smooth. More generally WFC12 proves <span class="math" data-index="186" data-tex="\(E*f\)">\(E*f\)</span> smooth for every compact distribution <span class="math" data-index="187" data-tex="\(f\)">\(f\)</span>. No tempered estimate on <span class="math" data-index="188" data-tex="\(E\)">\(E\)</span> or on this output is required. The empty output wavefront is a subset of the possibly nonempty input wavefront.</p>
+<h2>WFC6. Six exercises with full solutions</h2>
+<p><strong>Exercise 1.</strong> Why must the kernel be split before using Fourier transformation when <span class="math" data-index="189" data-tex="\(E\)">\(E\)</span> is untempered?</p>
+<p><strong>Solution 1.</strong> The whole <span class="math" data-index="190" data-tex="\(E\)">\(E\)</span> may have no tempered Fourier transform. Multiplication by <span class="math" data-index="191" data-tex="\(\rho\)">\(\rho\)</span> produces the compact distribution <span class="math" data-index="192" data-tex="\(E_0\)">\(E_0\)</span>, whose transform has the finite-order polynomial bound WFC3. The remainder <span class="math" data-index="193" data-tex="\(E_\infty\)">\(E_\infty\)</span> is smooth because the only possible singular base point was zero and <span class="math" data-index="194" data-tex="\(\rho=1\)">\(\rho=1\)</span> near it. Its compact-factor convolution is handled by the local test pairing WFC12, with no Fourier transform of that remainder. The proof thus uses only legitimate Fourier objects.</p>
+<p><strong>Exercise 2.</strong> Verify the exact spatial margin in WFC14.</p>
+<p><strong>Solution 2.</strong> The output point has distance less than <span class="math" data-index="195" data-tex="\(\epsilon\)">\(\epsilon\)</span> from <span class="math" data-index="196" data-tex="\(x_0\)">\(x_0\)</span>, and the kernel difference <span class="math" data-index="197" data-tex="\(z\)">\(z\)</span> has norm less than <span class="math" data-index="198" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Their difference <span class="math" data-index="199" data-tex="\(y=x-z\)">\(y=x-z\)</span> therefore has distance less than <span class="math" data-index="200" data-tex="\(2\epsilon\)">\(2\epsilon\)</span> from <span class="math" data-index="201" data-tex="\(x_0\)">\(x_0\)</span>. The cutoff is one on the larger ball of radius <span class="math" data-index="202" data-tex="\(3\epsilon\)">\(3\epsilon\)</span>. A point in the discarded input's support must lie outside that latter ball, so it cannot equal this <span class="math" data-index="203" data-tex="\(y\)">\(y\)</span>. The positive spare margin also gives vanishing on neighborhoods needed when testing distributions, rather than only a pointwise cancellation.</p>
+<p><strong>Exercise 3.</strong> Derive the separated-frequency constant in Figure 1.</p>
+<p><strong>Solution 3.</strong> The nearest unit directions have angle <span class="math" data-index="204" data-tex="\(\pi/12\)">\(\pi/12\)</span>, whose chord length is <span class="math" data-index="205" data-tex="\(\delta=2\sin(\pi/24)\)">\(\delta=2\sin(\pi/24)\)</span>. WFC9 gives a square-distance bound <span class="math" data-index="206" data-tex="\(\delta^2(r+s)^2/4\)">\(\delta^2(r+s)^2/4\)</span>, so WFC8 holds with <span class="math" data-index="207" data-tex="\(c=\delta/2=\sin(\pi/24)\)">\(c=\delta/2=\sin(\pi/24)\)</span>. For the displayed points the actual left side is <span class="math" data-index="208" data-tex="\(2\sqrt2\)">\(2\sqrt2\)</span>, and the right side is <span class="math" data-index="209" data-tex="\(\sin(\pi/24)(3+\sqrt5)\)">\(\sin(\pi/24)(3+\sqrt5)\)</span>, which is smaller. The constant is obtained from all allowed directions, rather than fitted to that sample.</p>
+<p><strong>Exercise 4.</strong> Why is polynomial growth of <span class="math" data-index="210" data-tex="\(F\)">\(F\)</span> outside the good cone sufficient for the cone lemma?</p>
+<p><strong>Solution 4.</strong> On the complementary frequencies the angular gap forces <span class="math" data-index="211" data-tex="\(\langle\xi-\eta\rangle\)">\(\langle\xi-\eta\rangle\)</span> to dominate both <span class="math" data-index="212" data-tex="\(\langle\xi\rangle\)">\(\langle\xi\rangle\)</span> and <span class="math" data-index="213" data-tex="\(\langle\eta\rangle\)">\(\langle\eta\rangle\)</span>. A Schwartz bound of order <span class="math" data-index="214" data-tex="\(L+B+n+1\)">\(L+B+n+1\)</span> on <span class="math" data-index="215" data-tex="\(a\)">\(a\)</span> spends <span class="math" data-index="216" data-tex="\(L\)">\(L\)</span> powers to give the desired output decay and the other <span class="math" data-index="217" data-tex="\(B+n+1\)">\(B+n+1\)</span> to cancel the <span class="math" data-index="218" data-tex="\(B\)">\(B\)</span>-power growth of <span class="math" data-index="219" data-tex="\(F\)">\(F\)</span> and leave an integrable <span class="math" data-index="220" data-tex="\(\langle\eta\rangle^{-n-1}\)">\(\langle\eta\rangle^{-n-1}\)</span>. Integrating WFC10 proves the bound for every <span class="math" data-index="221" data-tex="\(L\)">\(L\)</span>. No rapid decrease of <span class="math" data-index="222" data-tex="\(F\)">\(F\)</span> on the complement is needed.</p>
+<p><strong>Exercise 5.</strong> Explain why this theorem would fail for a singular kernel based away from zero.</p>
+<p><strong>Solution 5.</strong> If <span class="math" data-index="223" data-tex="\(E=\delta_b\)">\(E=\delta_b\)</span> with <span class="math" data-index="224" data-tex="\(b\ne0\)">\(b\ne0\)</span> and <span class="math" data-index="225" data-tex="\(f=\delta_a\)">\(f=\delta_a\)</span>, their convolution is <span class="math" data-index="226" data-tex="\(\delta_{a+b}\)">\(\delta_{a+b}\)</span>. Its wavefront is based at <span class="math" data-index="227" data-tex="\(a+b\)">\(a+b\)</span>, whereas the input's is based at <span class="math" data-index="228" data-tex="\(a\)">\(a\)</span>. The stated same-base-point inclusion therefore fails. The hypothesis that <span class="math" data-index="229" data-tex="\(E\)">\(E\)</span> is smooth away from zero is exactly what allows the singular compact kernel to be chosen in an arbitrarily small ball around the origin. A smooth kernel, in contrast, satisfies the theorem because its output is smooth.</p>
+<p><strong>Exercise 6.</strong> Identify the proof used in the local homogeneous-solution topology estimate of the receiving lesson.</p>
+<p><strong>Solution 6.</strong> A compact commutator is supported away from the compact observation set. Thus the differences <span class="math" data-index="230" data-tex="\(x-y\)">\(x-y\)</span> in that term stay in a compact subset avoiding the sole possible singularity of <span class="math" data-index="231" data-tex="\(E\)">\(E\)</span>. After multiplying by a kernel cutoff equal to one on those differences, the pairing has the form in WFC12. Every observation derivative is paired with a test family on one fixed compact source support, with all derivatives uniformly bounded. The finite-order distribution bound makes differentiation legitimate. The receiving strong-distribution topology controls the supremum over each such bounded test family. This is a spatial separated-support calculation, while WFC1 supplies the other term's covector estimate.</p>
+<h2>Credits and remaining scope</h2>
+<p>Smooth-wavefront cutoff tests and the microlocal convolution principle are classical. Human method credit follows the receiving lesson's open Fourier/distribution readings by Gerd Grubb and Richard Melrose and its <a href="https://www.numdam.org/item/SEDP_1971-1972____A25_0/">Hörmander seminar reference</a>. This proof does not reproduce those sources' wording or diagrams and makes no historical novelty claim. No new external source body was imported or source license changed. The Fourier cone estimate, compact support witness, examples, solutions and diagrams here are independently written.</p>
+<p>This proof supplies the specific smooth-wavefront convolution prerequisite at its explicit lower distribution/Fourier entries. It does not prove every theorem of the containing hypoellipticity lesson, its minimal-linear-support theorem, the averaging existence proof, the semialgebraic power lemmas, general wavefront calculus or all recursive foundations. </p>
+</article></main><script>addEventListener("load",async()=>{await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll('.math'))if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute('role','group');e.setAttribute('aria-label','Mathematical expression; scroll horizontally to read the whole expression');}});</script></body></html>

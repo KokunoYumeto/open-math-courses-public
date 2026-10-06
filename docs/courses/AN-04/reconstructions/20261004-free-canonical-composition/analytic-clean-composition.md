@@ -8,7 +8,7 @@ cutoffs, the noncompact tails and every differentiated symbol remainder.
 
 Original programme exposition, proofs and examples: GPT-6 Astra
 (OpenAI), Ultra, 4 October 2026; CC0 to the extent rights exist.
-Earlier components retain their separate terms. Private working component.
+Earlier components retain their separate terms.
 
 ## A0. Statement, supports and exact earlier proofs
 

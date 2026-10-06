@@ -305,7 +305,7 @@ One can also see the failure of C directly. Choose \(x\) whose range is \(\mathb
 
 ## References and provenance
 
-Masamichi Takesaki, *Theory of Operator Algebras III* (2003), Exercise XIII.2(2) supplied PDF page 51, specifies C, D and the Glimm equivalences. Its bibliography entry [508] identifies Edward G. Effros, *Transformation Groups and C\*-Algebras*, *Annals of Mathematics* 81 (1965), 38–55, [publisher record](https://doi.org/10.2307/1970381). The full arguments here are newly written course exposition of known mathematics; a complete comparison of wording and distinctive arrangement against all cited sources remains in progress.
+Masamichi Takesaki, *Theory of Operator Algebras III* (2003), Exercise XIII.2(2), PDF page 51, specifies C, D and the Glimm equivalences. Its bibliography entry [508] identifies Edward G. Effros, *Transformation Groups and C\*-Algebras*, *Annals of Mathematics* 81 (1965), 38–55, [publisher record](https://doi.org/10.2307/1970381). The full arguments here are newly written course exposition of known mathematics; a complete comparison of wording and distinctive arrangement against all cited sources remains in progress.
 
 David Marker, [*Descriptive Set Theory*](https://www.math.uic.edu/~marker/math512/dst.pdf), Lemma 4.21, Theorem 4.22 and Corollary 4.23 provides the Baire-envelope and Souslin-operation treatment used to check Lemma 3.1. That public draft is a reference source; no copying or translation permission is inferred from access. Lemmas 3.1–3.2 give the required complete course arguments.
 

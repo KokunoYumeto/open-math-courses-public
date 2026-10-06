@@ -297,7 +297,7 @@ $$
 
 The triangle inequality for microsupport and $N^*(\Omega)=-N^*(Z)$ give the last two rows. $\square$
 
-The four rows align with Kashiwara–Schapira, [*Microlocal Study of Sheaves*, Astérisque 128 (1985), Propositions 4.3.1–4.3.2, pp. 67–69](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=70), and the two localization triangles. The source uses the nonnegative polar convention, as here. Its Corollary 4.3.3 already places the point on the boundary of the closed subset. The boundary qualification in the next statement therefore agrees with that approved source; it corrects an overbroad formulation, not that corollary.
+The four rows align with Kashiwara–Schapira, [*Microlocal Study of Sheaves*, Astérisque 128 (1985), Propositions 4.3.1–4.3.2, pp. 67–69](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=70), and the two localization triangles. The source uses the nonnegative polar convention, as here. Its Corollary 4.3.3 already places the point on the boundary of the closed subset. The boundary qualification in the next statement therefore agrees with that source; it corrects an overbroad formulation, not that corollary.
 
 ## SH02-MO-VANISH — An outward direction forces a costalk to vanish
 
@@ -543,7 +543,7 @@ $$
 
 The second relation is an inclusion. Equality of those two geometric images does not follow from the hypotheses; an example below shows why.
 
-The approved antecedent for nonproper control is Kashiwara–Schapira, *Microlocal Study of Sheaves*, Theorem 4.4.1, pp. 73–75 (PDF pp. 76–78): an exhausting family with proper support and one-sided strict-normal exclusion gives stable open cutoffs and the direct-image estimate. That theorem explains why horizontal covectors must be included in the exclusion. Its printed statement is not the four-map endpoint statement (MO26) or the localized bound (MO27). Those statements are proved below by the proper map formed from the original map and the exhaustion, the two one-sided mechanisms (MO29)–(MO30), and the separate compact-neighborhood and support-colimit passages. In particular, the relative cutoff proof is part of this unit; neither its negative-sign case nor its closed endpoint is being supplied by a change of citation.
+The antecedent for nonproper control is Kashiwara–Schapira, *Microlocal Study of Sheaves*, Theorem 4.4.1, pp. 73–75 (PDF pp. 76–78): an exhausting family with proper support and one-sided strict-normal exclusion gives stable open cutoffs and the direct-image estimate. That theorem explains why horizontal covectors must be included in the exclusion. Its printed statement is not the four-map endpoint statement (MO26) or the localized bound (MO27). Those statements are proved below by the proper map formed from the original map and the exhaustion, the two one-sided mechanisms (MO29)–(MO30), and the separate compact-neighborhood and support-colimit passages. In particular, the relative cutoff proof is part of this unit; neither its negative-sign case nor its closed endpoint is being supplied by a change of citation.
 
 ### SH02-MO-ONE-SIDED — The one-parameter mechanism
 
@@ -980,7 +980,7 @@ $$
 \operatorname{SS}(Rf_*G)=f_\pi f_d^{-1}\operatorname{SS}(G)
 $$
 
-for finite holomorphic $f$, with $G$ complex constructible in the relevant bounded coefficient category. This is not proved by MO8, and it is not admitted here without a source-and-dependency receipt for that stronger hypothesis package. The two real examples above do not satisfy that package.
+for finite holomorphic $f$, with $G$ complex constructible in the relevant bounded coefficient category. This is not proved by MO8, and this lesson neither proves nor assumes it under that stronger hypothesis package. The two real examples above do not satisfy that package.
 
 ## SH02-MO-STRICT-PULL — A disappearing sector with a nonempty estimate
 
@@ -1115,7 +1115,7 @@ The next microlocal operation estimates replace transversality by limiting cones
 
 The mathematical source comparison uses M. Kashiwara and P. Schapira, [*Microlocal Study of Sheaves*, Astérisque 128 (1985)](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), and Pierre Schapira, [*A short review on microlocal sheaf theory*, version dated 19 January 2016](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf). The Astérisque scan has three preliminary PDF pages before printed page 1; the review’s printed and PDF page numbers agree. These are the editions actually compared with the present proofs.
 
-| Results here | Exact approved passage | Mechanism and scope retained here |
+| Results here | Exact source passage | Mechanism and scope retained here |
 |---|---|---|
 | (MO1), (MO5)–(MO10), (MO19)–(MO22) | Astérisque, Propositions 4.1.1–4.1.2 and 4.2.1–4.2.2, pp. 61–65, and Proposition 5.3.2, pp. 83–84; review, Definition 2.7, Theorems 2.8–2.9 and 2.11, Corollary 2.12, pp. 10–13 | Compact-cap tests give the product estimate; open-rectangle adjunction and opposite directional supports give external Hom. Proper-support base change proves the proper-image bound. The graph and diagonal reductions preserve the actual noncharacteristic comparison and the two different no-cancellation hypotheses. |
 | (MO2)–(MO4), the four boundary operations, (MO13)–(MO18) | Astérisque, proof of Proposition 4.2.2, pp. 64–65; Propositions 4.3.1–4.3.2 and Corollary 4.3.3, pp. 67–70; Theorem 5.2.1(iii), p. 81, and Proposition 5.3.2, pp. 83–84 | The proof here makes enlarged supports cofinal and uses open directional identities. Boundary-point vanishing and the microlocal support test then supply the transverse embedding comparison. None of these arguments requires arbitrary closed restriction to commute with a nonproper ordinary image. |
@@ -1130,4 +1130,4 @@ The review states the external estimates and gives only a sketch of the inverse-
 
 The finite complex-constructible equality in `SH02-MO-HOLOMORPHIC-IMPORT` remains a distinct external obligation, exactly as stated there; it is not needed for the real operation, cutoff or Fourier proofs. The worked strictness examples, the corrected sector coordinates, and the counterexample to testing only one conic direction are all retained.
 
-Original AI expression in this lesson and its new comparison is CC0 1.0 Universal. The human results are credited to their authors above. The Astérisque volume retains the Société mathématique de France’s 1985 copyright and archive terms; neither that source nor the review is placed under CC0 by a programme citation. Earlier source attributions are retained in the private version history. No unconsulted edition is treated as having been read for this repair.
+Original AI expression in this lesson and its new comparison is CC0 1.0 Universal. The human results are credited to their authors above. The Astérisque volume retains the Société mathématique de France’s 1985 copyright and archive terms; neither that source nor the review is placed under CC0 by a programme citation.

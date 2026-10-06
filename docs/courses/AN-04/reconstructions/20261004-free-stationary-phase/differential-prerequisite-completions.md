@@ -1,6 +1,6 @@
 # Completing the algebra and differentiation inputs
 
-Private prerequisite companion to the stationary-phase lesson. This is an
+Prerequisite companion to the stationary-phase lesson. This is an
 attributed adaptation and extension of Jiří Lebl, *Basic Analysis*, version
 6.3, [freely accessible author edition](https://www.jirka.org/ra/), under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

@@ -22,7 +22,7 @@ x\cdot\theta=0\quad\text{on }\mathcal F_P.
 \]
 The same equation holds on the closure by continuity.
 
-The holomorphic polynomial averaging used to construct the inverse is the exact planned prerequisite stated in [Regular kernels and changes in the equation](regular-kernels-and-parameter-changes.md). [Cauchy bounds, root counts and analytic extensions](cauchy-bounds-and-root-counts.md) proves the disk estimates and compact-contour calculus.
+The holomorphic polynomial averaging used to construct the inverse is proved in [Averaging an entire function while avoiding polynomial zeros](averaging-an-entire-function-while-avoiding-polynomial-zeros.md) and stated at its exact receiving interface in [Regular kernels and changes in the equation](regular-kernels-and-parameter-changes.md). The PA1–PA16 construction uses the stated scalar Taylor, finite-polynomial, compactness, cutoff and integration inputs. The other Fourier and wavefront prerequisites remain explicit. [Cauchy bounds, root counts and analytic extensions](cauchy-bounds-and-root-counts.md) proves the disk estimates and compact-contour calculus.
 
 ## Extracting an inverse from a high-frequency limit
 

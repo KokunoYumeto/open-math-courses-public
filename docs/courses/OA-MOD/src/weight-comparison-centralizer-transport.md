@@ -218,7 +218,7 @@ The symmetric initial/final placement in (WC.17) is deliberate. The printed XII.
 
 ## Cantor–Bernstein for normal semifinite weights
 
-**Foundation input.** Schröder–Bernstein for projections, TY Proposition 5.1, states that mutual Murray–von Neumann subequivalence of projections in any von Neumann algebra implies equivalence. The foundation lesson retains statement ownership. We retain the following alternative shift proof to exhibit the partial isometry used in the weight application.
+**Foundation input.** Schröder–Bernstein for projections, TY Proposition 5.1, states that mutual Murray–von Neumann subequivalence of projections in any von Neumann algebra implies equivalence. We retain the following alternative shift proof to exhibit the partial isometry used in the weight application.
 
 **Alternative proof of the projection lemma.** Let \(e,f\) be projections in a von Neumann algebra \(N\), and suppose \(e\precsim f\) and \(f\precsim e\). Choose partial isometries \(a,b\in N\) with
 
@@ -329,7 +329,7 @@ Let \(\omega\in M_*^+\) be faithful. For a compact interval \(K\subset\mathbb R\
  \tag{WC.28}
 \]
 
-**Spectral inputs.** Use the positive Fourier convention \(f(s)=\int k(t)e^{its}\,dt\) and \(\alpha_f y=\int k(t)\alpha_t(y)\,dt\), with \(\alpha=\sigma^\omega\). The exact action-spectral inputs are the filter law, weak-star approximation, local cutoffs and closed-space criterion in OA-FLOW lesson 17, equations S4–S6, S9 and S13–S16; lesson 78, compact cutoff L3 and localization sandwich L6; and lesson 84, adjoint reflection A4 and product-frequency inclusion A9–A10. General action spectral calculus retains OA-FLOW ownership. The Hilbert-space measure and modular domains below use SK04–07, TC07–08 and TC10, the finite-domain involution, and the GNS modular implementation.
+**Spectral inputs.** Use the positive Fourier convention \(f(s)=\int k(t)e^{its}\,dt\) and \(\alpha_f y=\int k(t)\alpha_t(y)\,dt\), with \(\alpha=\sigma^\omega\). The exact action-spectral inputs are the filter law, weak-star approximation, local cutoffs and closed-space criterion in OA-FLOW lesson 17, equations S4–S6, S9 and S13–S16; lesson 78, compact cutoff L3 and localization sandwich L6; and lesson 84, adjoint reflection A4 and product-frequency inclusion A9–A10. General action spectral calculus is treated in OA-FLOW, not here. The Hilbert-space measure and modular domains below use SK04–07, TC07–08 and TC10, the finite-domain involution, and the GNS modular implementation.
 
 We use the following localized spanning fact. If \(C\subseteq M\) is a sigma-weakly closed subspace invariant under \(\sigma^\omega\), then, as \(a\in\mathbb R\) and \(\varepsilon>0\) vary, \(C\) is the sigma-weak closed span of
 

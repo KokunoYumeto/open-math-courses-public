@@ -317,4 +317,4 @@ The proofs retain every bounded conclusion needed by the downstream lessons:
 
 The earlier RC Hilbert proof and GP0 Bernstein proof, together with the extensions written in BK-01, discharge this lesson's Hilbert and self-adjoint continuous-calculus contracts. The arguments construct the spectrum restriction, its exact norm, inverse and order rules, and square-root uniqueness before using them in subsequent sections. They do not require an unbounded spectral theorem.
 
-Borel calculus, unbounded polar decomposition, normal-map characterization, weight-map closability and modular derivatives are separate theorems with separate proofs. The parent course's full source and transitive-proof audit remains unfinished.
+Borel calculus, unbounded polar decomposition, normal-map characterization, weight-map closability and modular derivatives are separate theorems with separate proofs.

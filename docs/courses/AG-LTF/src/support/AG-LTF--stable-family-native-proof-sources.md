@@ -1,6 +1,6 @@
 # Exact native proof sources
 
-Every file linked below is the complete unchanged original editable source, byte-verified at its listed pinned revision. The corpus retains human Stacks authorship and AI Integrated Stacks provenance under the source terms. It is a bounded proof-source package, not a claimed standalone build of the entire Stacks distribution.
+Every file linked below is the complete unchanged original editable source at its listed pinned revision. The corpus retains human Stacks authorship and credited AI Integrated Stacks contributions under the source terms. It is a bounded proof-source package, not a claimed standalone build of the entire Stacks distribution.
 
 The exact hashes, original paths, public pinned identities and scoped dependency edges are in native-manifest.json.
 

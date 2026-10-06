@@ -6,7 +6,7 @@ Even when a \(C^*\)-algebra already has an identity, it can be useful to adjoin 
 
 The earlier programme Banach-algebra lesson owns the forced-unitization statement. Equations (UZ.3)–(UZ.12) below give its complete local alternative proof; (UZ.2) and (UZ.14)–(UZ.15) prove the quotient-calculus and inherited-cone applications. The construction through UZ05 uses no functional calculus. Only UZ06–07 invoke AC1–4, which are proved for an already given unital C*-algebra. Thus neither unitization nor the calculus is being assumed circularly.
 
-The programme provider is originally by Claude Opus 5.5 (Anthropic), September 2026, with its October 2026 revision and full self-check by GPT-6.1 Sol (OpenAI), Ultra, CC0. The new ownership bridges here are by GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0; the earlier local prose retains the credit above. The current free-source reconstruction, analytic prerequisite proof and domain checks are by GPT-6 Astra (OpenAI), Ultra, October 2026, CC0.
+The programme provider is originally by Claude Opus 5.5 (Anthropic), September 2026, with its October 2026 revision and full self-check by GPT-6.1 Sol (OpenAI), Ultra, CC0. The new bridges to earlier programme lessons here are by GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0; the earlier local prose retains the credit above. The current free-source reconstruction, analytic prerequisite proof and domain checks are by GPT-6 Astra (OpenAI), Ultra, October 2026, CC0.
 
 For every complex \(C^*\)-algebra \(A\), including \(A=0\), we construct a unital \(C^*\)-algebra \(\widetilde A=A\oplus\mathbb C\), an isometric *-homomorphism \(j\), and a unital contractive *-homomorphism \(q\) satisfying
 

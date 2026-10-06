@@ -692,4 +692,4 @@ This records the actual mathematical ancestry and the bounded comparison of expo
 
 [Takesaki II] Masamichi Takesaki, *Theory of Operator Algebras II*, Encyclopaedia of Mathematical Sciences 125, Springer, 2003. [Publisher record](https://doi.org/10.1007/978-3-662-10451-4).
 
-[Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. XVII.2.11, printed pp. 268–269, and XVII.3.11–3.12, printed pp. 282–283. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). The exact registered receipt-backed edition was used for the source and proof comparison; no book text is reproduced.
+[Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. XVII.2.11, printed pp. 268–269, and XVII.3.11–3.12, printed pp. 282–283. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). No book text is reproduced.

@@ -197,7 +197,7 @@ Finally, if \(a=a^*\in N\), (HAP.12) supplies \(c_i\in\mathcal C\) with \(c_i\to
 
 ## Contractive approximation from a nonunital algebra
 
-**Foundation theorem and alternative proof.** The canonical programme statement is Theorem 7.1(1)–(2) of *Kaplansky’s density theorem and its consequences*, in *Foundations of von Neumann algebras*. It allows degenerate as well as nondegenerate subalgebras and does not require norm closure. That foundation lesson retains statement ownership. HAP04 identifies the weak closure in the present nondegenerate setting; the complete proof below is an alternative for that setting. Peterson’s free Theorem 2.6.4 provides a comparison. The proof explicitly returns from the norm closure to the original algebra, which need not contain an identity.
+**Foundation theorem and alternative proof.** The canonical programme statement is Theorem 7.1(1)–(2) of *Kaplansky’s density theorem and its consequences*, in *Foundations of von Neumann algebras*. It allows degenerate as well as nondegenerate subalgebras and does not require norm closure. HAP04 identifies the weak closure in the present nondegenerate setting; the complete proof below is an alternative for that setting. Peterson’s free Theorem 2.6.4 provides a comparison. The proof explicitly returns from the norm closure to the original algebra, which need not contain an identity.
 
 **Theorem.** For the algebra \(\mathcal C\) in HAP-04, every contraction \(x\in N\) is the strong* limit of a net of contractions from \(\mathcal C\). If \(x=x^*\), the approximants may also be chosen self-adjoint.
 

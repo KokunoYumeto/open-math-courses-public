@@ -1,6 +1,6 @@
 # Localizing symbols when the measuring scale moves
 
-**AN-03 · Unit AN03-U001 · Independent English AI draft, not admitted.**
+**AN-03 · Unit AN03-U001 · Self-checked by the writing AI.**
 
 The purpose of this unit is to turn estimates measured by a different ellipsoid at every point into a usable localization procedure. The ellipsoids may be anisotropic, their coefficients need not be smooth, and the weight may initially be discontinuous. No uncertainty inequality, symplectic structure, or temperateness is assumed. Those are additional hypotheses for later operator theorems.
 

@@ -474,4 +474,4 @@ Gruson–Serganova was used in earlier versions, and its source-use locators rem
 
 ## Accessible source notes
 
-The free human comparisons above concern the exact finite-dimensional passages listed. The arbitrary compact Hausdorff and arbitrary-Hilbert conclusions have the complete proofs and exact prerequisites stated here. Historical source use is distinguished from the current proof dependencies in the accompanying provenance records.
+The free human comparisons above concern the exact finite-dimensional passages listed. The arbitrary compact Hausdorff and arbitrary-Hilbert conclusions have the complete proofs and exact prerequisites stated here.

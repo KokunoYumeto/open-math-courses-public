@@ -4,7 +4,7 @@
 
 An inner action on a type I algebra is integrable exactly when its entire spectral measure is absolutely continuous. For random-operator algebras, passing to that type I algebra uses a modular operator-valued-weight bridge. We prove the subsequent Fourier, transfer and diagonal-cutoff arguments in full, and identify precisely what that bridge must supply. In particular, the diagonal converse uses cutoffs increasing to the identity; a merely increasing finite-domain family is insufficient.
 
-[Orbit averaging and the modular weight bridge](orbit-averaging-and-the-modular-weight-bridge.md), Theorem 1.1, now supplies the scalar composition and modular compatibility required here for the standing standard Borel groupoid application. Its Corollary 5.2 identifies the subsequent application; general OA-MOD existence retains its separate owner scope.
+[Orbit averaging and the modular weight bridge](orbit-averaging-and-the-modular-weight-bridge.md), Theorem 1.1, now supplies the scalar composition and modular compatibility required here for the standing standard Borel groupoid application. Its Corollary 5.2 identifies the subsequent application; the general existence theorem for arbitrary von Neumann algebra inclusions belongs to the modular course and is not proved here.
 
 ## 1. Standing inputs and the integrability criterion
 
@@ -111,7 +111,7 @@ Let \(N\subset P\) be unital, \(E:P_+\to\widehat N_+\) a faithful normal semifin
 \qquad E\circ\sigma_t^\psi=\sigma_t^\varphi\circ E.
 \tag{4.1}
 \]
-For an unrestricted operator-valued weight, establishing these identities is the B1 owner obligation. The proof below uses them as inputs.
+For an unrestricted operator-valued weight, these identities depend on the general bridge (B1), which is not proved in these lessons. The proof below uses them as inputs.
 
 **Proposition 4.1 (both directions of transfer).** Integrability of \(\sigma^\varphi\) implies integrability of \(\sigma^\psi\). The converse holds if there are positive \(x_i\in P_\psi\), increasing strongly to \(1\), with \(E(x_i)\) bounded for every \(i\).
 
@@ -239,11 +239,11 @@ In the diagonal model, absolute continuity makes \(\sigma^\psi\) integrable by T
 
 Claude-WR, Lemma 8.2, Proposition 8.3 and Theorem 8.4, are compared with their complete proofs and standing scope. Section 2 proves the finite-measure Fourier fact used by that proposition. Section 3 proves both directions for the whole measurable type I field, with a common countable null-set test in the necessary direction and an actual countable total interval family in the sufficient direction. Section 4 writes the entire transfer proof, including both support exhaustions and normal extended-cone evaluation. Section 5 derives a strictly positive normalizer from the properness certificate, produces the centralizer cutoffs and proves the exact saturated-negligibility conclusion. Corollary 5.4 joins these results to the already complete spectral, strictification and centralizer application.
 
-[Orbit averaging and the modular weight bridge](orbit-averaging-and-the-modular-weight-bridge.md), Theorem 1.1, now constructs \(E_\kappa\) and proves the composition identity and modular restriction/equivariance (4.1) for the standing standard Borel groupoid application. Its direct extended average and commuting-density corner argument replace Claude-WR Theorem 6.3's generic B1 invocation. Corollary 5.2 makes the resulting application explicit. General OA-MOD-OR-03 remains conditional on its own contracts; that generic owner theorem is not inferred. The supported standard Borel source review is complete in that lesson, Corollary 5.2 and Lemma 5.3; final full-course prerequisite/source validation remains separate. The standard wandering-set interpretation and weak-measurable factor question also retain their separate open records. No independent review or full-course completion is claimed.
+[Orbit averaging and the modular weight bridge](orbit-averaging-and-the-modular-weight-bridge.md), Theorem 1.1, now constructs \(E_\kappa\) and proves the composition identity and modular restriction/equivariance (4.1) for the standing standard Borel groupoid application. Its direct extended average and commuting-density corner argument replace Claude-WR Theorem 6.3's generic B1 invocation. Corollary 5.2 makes the resulting application explicit. The general result OR-03 of *Operator-valued-weight rigidity* remains conditional on its own unproved inputs and is not asserted here. The supported standard Borel source review is complete in that lesson, Corollary 5.2 and Lemma 5.3; final full-course prerequisite/source validation remains separate. The standard wandering-set interpretation and weak-measurable factor question also retain their separate open records. No independent review or full-course completion is claimed.
 
 Bibliography:
 
 - [Claude-WR] Claude (Anthropic), *Weights on random operators and formal dimension*, existing programme *Noncommutative integration*, September 2026, R2–R4, Lemmas 8.1–8.2, Proposition 8.3, Theorem 8.4, and Theorem 6.3/Proposition 6.5 at the explicit B1 boundary. Complete selected statements and proofs were compared; sources remain read only.
 - [OA-MOD-PF] *Regular representations, Fourier algebra and Fourier–Stieltjes coefficients*, existing OA-MOD programme, PF-18–22 and PF-25, complete compared Plancherel proof at its declared background; the real Gaussian fixes the dual measure \(dt/(2\pi)\).
-- [OA-MOD-OR] *Operator-valued-weight rigidity*, OR-03–04, exact current conditional assembly and its three outstanding contracts. Generic modular foundations remain with their owner.
+- [OA-MOD-OR] *Operator-valued-weight rigidity*, OR-03–04, exact current conditional assembly and its three outstanding contracts. Generic modular foundations are not proved here.
 - [Connes] Alain Connes, *Sur la théorie non commutative de l'intégration*, Lecture Notes in Mathematics 725, 1979, pp. 19–143; [author-hosted typeset version](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf), PDF 50–53, integrable centralizer application and Lemma 13. The later typeset version and the original Springer edition are distinguished in the source records.

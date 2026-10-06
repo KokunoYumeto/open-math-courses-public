@@ -13,7 +13,7 @@ D=x+JxJ \\
 \end{gathered}
 \]
 
-This is the full generator assertion of Takesaki II, Exercise IX.1(9) in the approved edition. It follows from positive cone automorphisms, Jordan reconstruction and the innerness theorem for bounded derivations. The innerness provider is the programme spectral-tail proof, imported from OA-FLOW with its bounded input bridge and exact analytic foundations. Canonical ownership of the spectral proof remains OA-FLOW.
+This is the full generator assertion of Takesaki II, Exercise IX.1(9) in the approved edition. It follows from positive cone automorphisms, Jordan reconstruction and the innerness theorem for bounded derivations. The innerness provider is the programme spectral-tail proof, imported from OA-FLOW with its bounded input bridge and exact analytic foundations.
 
 The earlier inputs are positive cone automorphisms, Jordan reconstruction, central splitting and implementation, standard implementation and uniqueness, the standard-form axioms, bounded calculus, spectral calculus and normality. No Hilbert-space separability is assumed.
 

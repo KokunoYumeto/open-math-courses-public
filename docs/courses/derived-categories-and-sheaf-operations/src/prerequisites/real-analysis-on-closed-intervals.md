@@ -202,6 +202,6 @@ Complex-valued continuous integrands are integrated by their real and imaginary 
 
 ## Sources and next reading
 
-Jiří Lebl, [Basic Analysis: Introduction to Real Analysis](https://www.jirka.org/ra/), volume I, version 6.3. The [source and edition notice](assets/notices/real-analysis-source-notice.html) retains the licence, native source passages and programme provenance.
+Jiří Lebl, [Basic Analysis: Introduction to Real Analysis](https://www.jirka.org/ra/), volume I, version 6.3. The [source and edition notice](assets/notices/real-analysis-source-notice.html) retains the licence and native source passages.
 
 Continue with [The complex exponential and the circle](complex-exponential-and-the-circle.md).

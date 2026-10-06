@@ -1,6 +1,6 @@
 # Holonomy and the de Rham decomposition theorem
 
-**Draft.** The decomposition results, worked examples, Berger–Simons transitivity theorem and classical and exceptional representation constructions below are proved. The quaternionic-circle and Spin(9) exclusions are also proved. The reduction to transitive semisimple representations is proved. Their compact root-space and highest-weight foundations, and the complete finite root-system list, are proved. The possible highest weights are determined, including the highest-short-root exclusions. The identification of all remaining matrix representations and the final classification are not yet developed in this chapter.
+This chapter proves the local and global decomposition theorems, including products without simple connectivity and finite-rank metric products. It develops the algebraic and representation-theoretic arguments needed to classify irreducible Riemannian holonomy when curvature is not parallel.
 
 Parallel transport compares tangent spaces along a path. When a subspace survives transport around every loop, it determines a distribution throughout the manifold. For a Riemannian metric, two orthogonal parallel distributions then give product coordinates in which each block of the metric depends only on its own coordinates. We establish that chain of implications below, including the topology and completeness of the leaves.
 
@@ -3909,7 +3909,7 @@ its first column is a unit vector \((a,b)\), its orthogonal unit second column i
 
 Finally these matrices act transitively on the unit circle: for unit vectors \(u,v\), let \(A_u,A_v\) be the displayed matrices with those first columns. Then \(A_vA_u^{-1}\in\mathrm{SO}(2)\) sends \(u\) to \(v\). Thus nontransitivity is impossible in dimension two. The conclusions of the theorem follow in all the stated dimensions. □
 
-Theorem X.2 supplies a transitivity condition for irreducible holonomy with nonparallel curvature. The further classification of the transitive representations that can occur as such holonomy groups remains to be developed.
+Theorem X.2 supplies a transitivity condition for irreducible holonomy with nonparallel curvature. Sections Y–AG construct and classify the transitive representations, then apply the curvature exclusions to obtain the holonomy list.
 
 ## Y. Classical and quaternionic representations
 
@@ -6476,6 +6476,368 @@ To check that these are all roots in their plane, note that the first three coor
 
 Finally count the short roots in AE.3 and AE.5: \(2n\) for \(B_n\), \(2n(n-1)\) for \(C_n\), \(24\) for \(F_4\), and \(6\) for \(G_2\). Adding the zero multiplicities proves (AF.46). The \(C_n\) weight \(\omega_2=e_1+e_2\) and \(F_4\) weight \(\omega_4=e_1\) in (AF.45) are exactly these highest short roots. Their zero multiplicities exceed one in the indicated ranks, contrary to AF.5, so they are excluded. □
 
+## AG. The matrix representations and the holonomy list
+
+We now identify the remaining representations from AF. This completes the first-order sphere-action argument in the free Gorodski–Thorbergsson article cited in Further reading. The identifications use the matrix groups and Clifford representations already constructed in Y–AB. We work with the actual acting Lie algebras and their modules; no existence theorem for arbitrary highest weights or isomorphism theorem for abstract simple Lie algebras is needed.
+
+**Lemma AG.1 (weights with rank-one strings of length at most one).** Let \(W\) be an irreducible unitary module of a compact centreless algebra, with highest weight \(\lambda\). Suppose
+\[
+\lambda(H_\alpha)\in\{0,1\}\quad(\alpha\in R^+).
+\tag{AG.1}
+\]
+Then its weights are precisely the Weyl orbit of \(\lambda\), all with multiplicity one. In the coordinate systems of AE, the following highest weights satisfy this condition and have the indicated dimensions:
+\[
+\begin{array}{c|c|c}
+\text{root type}&\lambda&\dim_{\mathbb C}W\\ \hline
+A_n&\omega_1,\omega_n&n+1\\
+A_3&\omega_2&6\\
+B_n&\omega_n&2^n\\
+C_n&\omega_1&2n\\
+D_n&\omega_1&2n\\
+D_4&\omega_3,\omega_4&8
+\end{array}
+\tag{AG.2}
+\]
+These statements describe any module with the displayed highest weight; they do not assume that a module exists for every dominant weight.
+
+**Proof.** AD.4 and AD.6 show that every weight in the orbit is present and that its weight space is a line. The unitary reflection representatives calculated in AF.2 carry the highest line to each of these lines. Conjugation carries a root operator to a nonzero scalar multiple of the appropriate reflected root operator: its Cartan weight is reflected, and its root space is one-dimensional by AD.3.
+
+It is therefore enough to examine root operators on a highest vector \(v\). Positive root operators kill it. For a negative root operator \(F_\alpha\), AD.2 gives a string of length \(\lambda(H_\alpha)\). If that length is zero the operator kills \(v\); if it is one, its image has weight \(\lambda-\alpha=s_\alpha\lambda\). Thus every root operator takes every orbit line into another orbit line or zero. Cartan operators preserve these lines. Their sum is a nonzero invariant subspace, hence all of \(W\).
+
+For the dimension assertions, use the explicit root lists and reflection groups of AE.3. In \(A_n\), put \(N=n+1\). The weight \(\omega_j\) has coordinate \(1-j/N\) on its first \(j\) indices and \(-j/N\) on the others. Pairing with a positive coroot \(e_r-e_s\), \(r<s\), gives zero or one. Its permutation orbit is indexed by the \(j\)-element subsets of the \(N\) indices: equal coordinates within each block make those choices distinct and exhaustive. For \(j=1,N-1\) this gives \(N\) weights, and for \(N=4,j=2\) it gives six.
+
+For the \(B_n\) half-sum \(\omega_n=\frac12(e_1+\cdots+e_n)\), positive long coroots are \(e_r\pm e_s\), \(r<s\), and positive short coroots are \(2e_r\). Their pairings are zero or one. Signed permutations give exactly all \(2^n\) half-sums with arbitrary signs. In \(C_n\), the weight \(e_1\) pairs by zero or one with the coroots \(e_r\) and \(e_r\pm e_s\); its signed-permutation orbit is \(\{\pm e_r\}\). In \(D_n\), the same assertion for \(e_1\) uses the coroots \(e_r\pm e_s\) and the even-sign permutation group; it is still transitive on the \(2n\) signed coordinate vectors, since an unwanted second sign change can be placed on another, zero coordinate.
+
+Finally, each half-sum weight of \(D_4\) pairs by zero or one with its positive coroots. This is immediate for all four plus signs. For the half-sum with its last sign negative, a positive root involving the last index gives either zero or one, and the other pairings are unchanged. Even sign changes give exactly the eight sign patterns of each fixed parity. This proves every orbit count and (AG.2). □
+
+**Lemma AG.2 (unitary coordinates and invariant real structures).** An antiunitary map \(J\) with \(J^2=-I\) on a finite-dimensional complex Hermitian space has an orthonormal basis
+\[
+u_1,\ldots,u_m,\ Ju_1,\ldots,Ju_m.
+\tag{AG.3}
+\]
+The unitary operators commuting with \(J\) form, in suitable ordering of this basis, exactly the compact group \(\mathrm{Sp}(m)\) of Y.3.
+
+If two complex irreducible unitary representations are isomorphic and have invariant antiunitary involutions, there is a unitary intertwiner that restricts to a real orthogonal isomorphism of their fixed real spaces. A connected matrix Lie group's image is determined by its image Lie algebra.
+
+**Proof.** Antiunitarity gives \(\langle Jx,Jy\rangle=\langle y,x\rangle\). Taking \(x=u,y=Ju\) and using \(J^2u=-u\) shows \(\langle Ju,u\rangle=-\langle Ju,u\rangle\), hence \(u\perp Ju\). Their complex span is \(J\)-invariant and its orthogonal complement is too: apply the antiunitary identity to test orthogonality to \(u,Ju\). Choose a unit vector in that complement and continue. This proves (AG.3) and even complex dimension. On each ordered pair \(u,Ju\), \(J\) has the antilinear coordinate expression
+\[
+(z,w)\longmapsto(-\bar w,\bar z).
+\tag{AG.4}
+\]
+Its centralizer is unchanged if this matrix is replaced by its negative. Interleaving the pairs therefore gives exactly the unitary commutation relation (Y.13), whose equivalence with the compact symplectic group was proved in Y.3.
+
+Let \(T\) be an invertible complex intertwiner between two irreducible unitary representations. Then \(T^*T\) is a positive Hermitian intertwiner. AD.1 makes it a positive scalar, so rescale \(T\) to be unitary. Transport the first antiunitary involution by \(T\), obtaining \(C_1\) on the second space, and write its given one as \(C_2\). The complex-linear intertwiner \(C_2C_1^{-1}\) is scalar, so
+\[
+C_2=aC_1,\qquad |a|=1.
+\tag{AG.5}
+\]
+Choose \(|b|=1\) with \(b^2=a\). Explicitly, if \(a\ne-1\) take \(b=(1+a)/|1+a|\), for which \(b/\bar b=a\); if \(a=-1\) take \(b=i\). Then \(bT\) intertwines the involutions because \(b=a\bar b\). Its restriction to their fixed real spaces is an orthogonal isomorphism.
+
+Those fixed spaces have real dimension equal to the complex dimension: for any antiunitary involution \(C\),
+\[
+z=\frac{z+Cz}{2}
+  +i\,\frac{z-Cz}{2i}
+\tag{AG.6}
+\]
+has both displayed components fixed by \(C\), and their intersection with their imaginary multiples is zero. The Hermitian form is real on fixed vectors, by antiunitarity. Real Gram–Schmidt from Y.2 consequently supplies the required real orthonormal coordinates.
+
+Finally F.1 proves that a connected Lie group is generated by its identity exponential neighbourhood, and that a representation carries exponentials to matrix exponentials of its differential. Two connected matrix images with the same image algebra are therefore both generated by those same exponentials, and are equal. This applies also when the original representation has a discrete kernel. □
+
+**Lemma AG.3 (the classical matrix images).** The candidates in AF.44 have the following underlying real matrix images: the two end weights of \(A_n\) give \(\mathrm{SU}(n+1)\); the \(B_2\) weight \(\omega_2\) gives \(\mathrm{Sp}(2)\); and \(C_n\)'s \(\omega_1\) gives \(\mathrm{Sp}(n)\). The \(A_1\) entry is also \(\mathrm{Sp}(1)=\mathrm{SU}(2)\).
+
+Among the real-form candidates of AF.45, the images are
+\[
+\begin{array}{c|c|c}
+\text{type and weight}&\dim_{\mathbb R}V&\text{matrix image}\\ \hline
+A_1,\ 2\omega_1&3&\mathrm{SO}(3)\\
+A_3,\ \omega_2&6&\mathrm{SO}(6)\\
+B_n,\ \omega_1&2n+1&\mathrm{SO}(2n+1)\\
+D_n,\ \omega_1&2n&\mathrm{SO}(2n)\\
+D_4,\ \omega_3\text{ or }\omega_4&8&\mathrm{SO}(8).
+\end{array}
+\tag{AG.7}
+\]
+Every identification is by an orthogonal change of real coordinates.
+
+**Proof.** A nontrivial representation of a simple Lie algebra is faithful: its kernel is an ideal and is not the whole algebra. AE.1 and AE.3 give the dimensions of the compact algebras from their Cartan and root spaces:
+\[
+\begin{aligned}
+\dim A_n&=n(n+2),\\
+\dim B_n=\dim C_n&=n(2n+1),\\
+\dim D_n&=n(2n-1).
+\end{aligned}
+\tag{AG.8}
+\]
+For an \(A_n\) end weight, AG.1 gives a complex space of dimension \(N=n+1\). The compact algebra acts by skew-Hermitian matrices. Its trace is zero: a nonabelian simple algebra equals its derived algebra, and \(\operatorname{tr}[A,B]=0\) by the trace identity of F.1. Thus its faithful image is contained in \(\mathfrak{su}(N)\). Both dimensions are \(N^2-1\), by (AG.8) and Y.2, so the inclusion is equality. AG.2 then identifies the connected group image with \(\mathrm{SU}(N)\). This proves the assertion for either end weight without choosing an outer automorphism.
+
+For \(B_2\)'s \(\omega_2\), \(C_n\)'s \(\omega_1\), and \(A_1\)'s \(\omega_1\), AF.3–AF.7 give an invariant antiunitary \(J\) squaring to \(-I\). AG.1 gives complex dimensions \(4,2n,2\), respectively. AG.2 puts the compact algebra in \(\mathfrak{sp}(2),\mathfrak{sp}(n),\mathfrak{sp}(1)\), whose dimensions in Y.2 agree with (AG.8). Faithfulness gives equality, and connected exponential generation gives the asserted group images. Y.6 identifies the last one with \(\mathrm{SU}(2)\).
+
+For the real forms, the real dimension equals the complex dimension by AG.2. The \(A_1\) module \(2\omega_1\) is its adjoint module by AE.6 and AD.6, so has dimension three. AG.1 gives dimensions six for \(A_3\)'s \(\omega_2\), \(2n\) for \(D_n\)'s \(\omega_1\), and eight for the \(D_4\) half-sums. AF.8 gives dimension \(2n+1\) for \(B_n\)'s highest short root \(\omega_1=e_1\). Each real compact image lies in the skew matrices of that dimension. Formula (AG.8) agrees in each case with \(\dim\mathfrak{so}(d)=d(d-1)/2\), proved in Y.2. The algebra and connected group image are therefore the full orthogonal ones in (AG.7). All coordinates used are orthonormal, so these are orthogonal identifications. □
+
+**Lemma AG.4 (uniqueness of the even-dimensional complex Clifford matrices).** Suppose \(2r\) Hermitian operators \(\Gamma_1,\ldots,\Gamma_{2r}\) on a complex Hermitian space of dimension \(2^r\) satisfy
+\[
+\Gamma_a\Gamma_b+\Gamma_b\Gamma_a=2\delta_{ab}I.
+\tag{AG.9}
+\]
+Any two such ordered systems are simultaneously unitarily conjugate. Their \(2^{2r}\) ordered subset products are a basis of the full complex endomorphism algebra. In particular their common complex commutant is scalar.
+
+**Proof.** Each \(\Gamma_a\) is unitary and Hermitian. A nonempty ordered subset product \(\Gamma_A\) has trace zero. If \(|A|\) is even, conjugation by a generator in \(A\) changes its sign. If \(|A|\) is odd, choose a generator outside \(A\), which is possible because \(2r\) is even; conjugation again changes its sign. Trace is unchanged by conjugation, by F.1, so the trace vanishes. For distinct subsets \(A,B\), the product \(\Gamma_A^*\Gamma_B\) is, up to sign, the product belonging to the nonempty symmetric difference. Therefore
+\[
+\operatorname{tr}(\Gamma_A^*\Gamma_B)=
+\begin{cases}
+2^r,&A=B,\\
+0,&A\ne B.
+\end{cases}
+\tag{AG.10}
+\]
+These \(2^{2r}\) matrices are independent and equal in number to the dimension of all endomorphisms. They are a basis. Commuting with them all is commuting with all matrix units, which forces a scalar by the elementary argument in Z.3.
+
+We prove the unitary conjugacy explicitly. Define
+\[
+E_j=\tfrac12(\Gamma_{2j-1}-i\Gamma_{2j}),\quad
+F_j=E_j^*,\quad H_j=E_jF_j-F_jE_j
+                 =i\Gamma_{2j-1}\Gamma_{2j}.
+\tag{AG.11}
+\]
+Expansion of (AG.9) gives
+\[
+E_j^2=F_j^2=0,\quad E_jF_j+F_jE_j=I,\quad H_j^2=I,
+\tag{AG.12}
+\]
+and all \(E_j,F_j\) anticommute with \(E_\ell,F_\ell\) when \(j\ne\ell\). The \(H_j\) are commuting Hermitian involutions. Their joint \(+1\) projection is
+\[
+P=2^{-r}\prod_{j=1}^r(I+H_j).
+\tag{AG.13}
+\]
+Each nonconstant product in its expansion has trace zero by the subset-product calculation. Hence \(\operatorname{tr}P=1\). A Hermitian projection has only eigenvalues zero and one by AD.1, so its image is a line. Choose a unit vector \(v\) on it. Then \(E_jv=0\), since
+\(\|E_jv\|^2=\langle F_jE_jv,v\rangle=0\) by \(F_jE_j=(I-H_j)/2\).
+
+For each subset \(A=\{a_1<\cdots<a_s\}\), put
+\[
+v_A=F_{a_1}\cdots F_{a_s}v.
+\tag{AG.14}
+\]
+These vectors have norm one: \(F_j\) is an isometry on the \(H_j=+1\) eigenspace because \(E_jF_j=(I+H_j)/2\), and each other \(F_\ell\) preserves that eigenspace. Their joint \(H\)-eigenvalues are \(-1\) exactly on \(A\), so the \(2^r\) vectors are mutually orthogonal by AD.1 and are a basis. In that basis \(F_j\) inserts \(j\), with sign \((-1)^{|\{a\in A:a<j\}|}\), if \(j\notin A\), and is zero otherwise. The operator \(E_j\) removes \(j\) with the same sign if it is present, and is zero otherwise; this follows by anticommuting it through the preceding factors and using (AG.12). These rules are independent of the original matrices. Sending one such orthonormal basis to the other intertwines every \(E_j,F_j\), and hence every \(\Gamma_a\) by (AG.11). □
+
+**Theorem AG.5 (identifying the two remaining spin images).** The real-form \(B_3\) module of highest weight \(\omega_3\) has the eight-dimensional \(\mathrm{Spin}(7)\) matrix image of Z.4. The real-form \(B_4\) module of highest weight \(\omega_4\) has the sixteen-dimensional \(\mathrm{Spin}(9)\) matrix image of AB.1. Both identifications are orthogonal conjugacies.
+
+**Proof.** We first work with the complex half-sum module for \(B_n\), for \(n=3\) or \(4\). AG.1 gives all weights
+\[
+\tfrac12(\varepsilon_1e_1+\cdots+\varepsilon_ne_n),
+\qquad \varepsilon_i\in\{1,-1\},
+\tag{AG.15}
+\]
+each once. For its short roots \(e_i\), write \(E_i,F_i,H_i\) for the normalized triples of AD.3. Each \(H_i\) has only the eigenvalues \(1,-1\). The rank-one decomposition AD.2 therefore consists entirely of strings of length one, and gives on the whole module
+\[
+E_i^2=F_i^2=0,\qquad E_iF_i+F_iE_i=I.
+\tag{AG.16}
+\]
+
+We must prove the anticommutation relations for different indices. Fix \(i\ne j\). The roots in the coordinate plane of \(e_i,e_j\) are precisely
+\[
+\pm e_i,\ \pm e_j,\ \pm e_i\pm e_j.
+\tag{AG.17}
+\]
+Their root spaces and their two-dimensional coroot span form a complex subalgebra stable under compact conjugation. Closure follows from the bracket rule in AD.3 and the coordinate list; its centre is zero, since its roots span the Cartan dual. Its Cartan centralizer and root spaces are exactly the displayed ones. AE.1 consequently makes its compact real algebra simple of type \(B_2\).
+
+Restrict the given unitary module to it and decompose by AD.1. The only restricted weights are the four half-sums \((\pm e_i\pm e_j)/2\), with possible multiplicities from the other coordinates. For the positive system with simple roots \(e_i-e_j,e_j\), the only dominant one among these four is \((e_i+e_j)/2\): pairing with those simple coroots requires first \(\varepsilon_i\geq\varepsilon_j\), and then \(\varepsilon_j\geq0\). Every irreducible summand therefore has that highest weight. AG.1 gives its complex dimension four. The \(B_2\) cascade degree is one by AF.6, so AF.3 gives its quaternionic type.
+
+On one such summand choose unit weight vectors \(u_1,u_2\) of weights \((+,+)/2,(+,-)/2\). Its invariant antiunitary quaternionic structure \(J\) gives the remaining unit vectors \(v_1=Ju_1,v_2=Ju_2\), of weights \((-,-)/2,(-,+)/2\). Distinct weights are orthogonal. In the ordered basis \(u_1,u_2,v_1,v_2\),
+\[
+H_i=\operatorname{diag}(1,1,-1,-1),\qquad
+H_j=\operatorname{diag}(1,-1,-1,1).
+\tag{AG.18}
+\]
+The complex bilinear form \(\Omega(x,y)=\langle x,Jy\rangle\) is alternating and nondegenerate. For example, antiunitarity and \(J^2=-I\) give
+\(\langle y,Jx\rangle=-\langle x,Jy\rangle\).
+It is invariant under the complexified algebra: for a compact skew-Hermitian \(X\) commuting with \(J\), the two terms in
+\(\Omega(Xx,y)+\Omega(x,Xy)\) cancel by the adjoint identity, and complex linearity extends the conclusion.
+
+Its matrix in this basis is the negative of
+\(\left(\begin{smallmatrix}0&I\\-I&0\end{smallmatrix}\right)\).
+Thus a complex infinitesimal symplectic matrix has block form
+\(\left(\begin{smallmatrix}A&B\\C&-A^T\end{smallmatrix}\right)\),
+with \(B,C\) symmetric, as follows by multiplying \(X^T\Omega+\Omega X=0\). The weight shifts by \(e_i,e_j\) now leave exactly
+\[
+E_i=a(E_{14}+E_{23}),\qquad
+E_j=b(E_{12}-E_{43}),
+\tag{AG.19}
+\]
+where \(E_{ab}\) is the matrix sending the \(b\)-th basis vector to the \(a\)-th and killing the others. Neither coefficient is zero, by the length-one strings. The identities \([E_i,E_i^*]=H_i\), \([E_j,E_j^*]=H_j\) give \(|a|=|b|=1\).
+
+The matrix-unit rule \(E_{ab}E_{cd}=\delta_{bc}E_{ad}\) explicitly gives
+\[
+\begin{aligned}
+E_iE_j&=-abE_{13},&E_jE_i&=abE_{13},\\
+E_iF_j&=-a\bar bE_{24},&F_jE_i&=a\bar bE_{24}.
+\end{aligned}
+\tag{AG.20}
+\]
+Taking adjoints gives the two remaining pairs. All cross anticommutators vanish on this summand, and hence on every summand of the restriction. We have proved them on the original module for every \(i\ne j\).
+
+Define
+\[
+\Gamma_{2i-1}=E_i+F_i,\qquad
+\Gamma_{2i}=i(E_i-F_i).
+\tag{AG.21}
+\]
+They are Hermitian, and (AG.16), (AG.20) give exactly (AG.9). The compact image contains \(E_i-F_i=-i\Gamma_{2i}\) and \(i(E_i+F_i)=i\Gamma_{2i-1}\). Their commutators contain every \(\Gamma_a\Gamma_b\), \(a<b\). By AG.4 these degree-one and degree-two Clifford products are complex-linearly independent. Their \(2n+\binom{2n}{2}=n(2n+1)\) skew-Hermitian matrices are therefore real-linearly independent. The original compact simple algebra is faithful and has that same dimension by (AG.8). Its image is exactly
+\[
+\operatorname{span}_{\mathbb R}
+\{\,i\Gamma_a,\ \Gamma_a\Gamma_b: a<b\,\}.
+\tag{AG.22}
+\]
+
+For \(n=3\), let \(c_a=L_{e_a}\), \(1\leq a\leq7\), be the real skew octonion multiplication matrices of Z.3. They satisfy \(c_ac_b+c_bc_a=-2\delta_{ab}I\). Put
+\[
+A_a=c_ac_7,\qquad \widetilde\Gamma_a=-iA_a
+\quad(1\leq a\leq6)
+\tag{AG.23}
+\]
+on the complexification of their real eight-dimensional space. These \(\widetilde\Gamma_a\) are Hermitian and satisfy (AG.9). For \(a\ne b\leq6\), \(A_aA_b=c_ac_b\), so their span (AG.22) is exactly the span of all \(c_ac_b\), \(1\leq a<b\leq7\). This is the \(\mathrm{Spin}(7)\) algebra established in Z.4.
+
+For \(n=4\), use the nine symmetric real matrices \(P_0,\ldots,P_8\) from AB.1, with \(P_aP_b+P_bP_a=2\delta_{ab}I\). Put
+\[
+A_a=P_aP_8,\qquad \widetilde\Gamma_{a+1}=-iA_a
+\quad(0\leq a\leq7).
+\tag{AG.24}
+\]
+Again these are eight Hermitian Clifford matrices on the complexification of a real sixteen-dimensional space. Here \(A_aA_b=-P_aP_b\) for distinct \(a,b<8\), and (AG.22) is precisely the span of all \(P_aP_b\), \(0\leq a<b\leq8\). AB.1 identifies it as the \(\mathrm{Spin}(9)\) algebra.
+
+AG.4 supplies a unitary conjugacy between each pair of ordered Clifford systems, hence between their compact image algebras. Both complex modules are irreducible: the original one is so by hypothesis, and in each constructed one the compact algebra contains all \(i\widetilde\Gamma_a\), whose associative algebra is all endomorphisms by AG.4. The given real forms and the ordinary real structures of the constructed matrices are invariant antiunitary involutions. AG.2 adjusts the unitary conjugacy by a scalar phase to intertwine these real structures, without changing conjugation on matrices. Its restriction is real orthogonal. Connected exponential generation then identifies the group images, proving both assertions. □
+
+**Theorem AG.6 (identifying the seven-dimensional exceptional image).** A compact simple algebra of type \(G_2\), acting in its real-form module of highest weight \(\omega_1\), has as its connected matrix image the octonion group \(G_2\subset\mathrm{SO}(7)\) constructed in Z.7, up to orthogonal conjugacy.
+
+**Proof.** AF.8 gives real dimension seven, with complex weights zero once and the six short roots once each. Faithfulness embeds the actual compact algebra \(\mathfrak k\) in \(\mathfrak{so}(V)\). Choose an orthogonal identification \(V=\operatorname{Im}\mathbb O\). The differential isomorphism
+\[
+d\pi:\mathfrak{spin}(7)\longrightarrow\mathfrak{so}(7)
+\tag{AG.25}
+\]
+proved in Z.4 lifts \(\mathfrak k\) to a compact Lie algebra of skew operators on the real eight-dimensional spin space \(\mathbb O\). We determine the weights of this restriction directly.
+
+A Cartan algebra of \(\mathfrak k\) acts on \(V\) as three mutually orthogonal rotation planes and a fixed real axis. To justify these real planes, diagonalize its commuting Hermitian operators on \(V_{\mathbb C}\) by AD.1. Conjugation pairs each nonzero weight line with the opposite line. A unit vector on one line and its conjugate give an orthogonal real two-plane by their real and imaginary parts; the zero line is the complexification of a real axis by (AG.6). Orient the three planes so that their positive weights are
+\[
+\mu_1=e_1-e_2,\qquad
+\mu_2=e_2-e_3,\qquad
+\mu_3=e_3-e_1,\qquad \mu_1+\mu_2+\mu_3=0.
+\tag{AG.26}
+\]
+These are one representative from each opposite pair of short \(G_2\) roots in AE.5.
+
+In a real orthonormal basis adapted to the planes, let \(B_j=c_{2j-1}c_{2j}\) for \(j=1,2,3\), using the Clifford multiplication operators of Z.3. Formula (Z.19) shows that \(d\pi(B_j)\) is twice the rotation generator in the \(j\)-th plane. If \(H=iX\) is in the Cartan space and \(\mu_j(H)\) is its Hermitian weight on that plane, its lift therefore acts on the complex spin space as
+\[
+\frac12\sum_{j=1}^3\mu_j(H)\,T_j,
+\qquad T_j=iB_j.
+\tag{AG.27}
+\]
+The \(T_j\) are commuting Hermitian involutions. For every sign triple \(\varepsilon\), their joint projection is
+\[
+P_\varepsilon=\frac18\prod_{j=1}^3(I+\varepsilon_jT_j).
+\tag{AG.28}
+\]
+Every nonconstant term in its expansion is a scalar multiple of a nonempty even Clifford product of length two, four or six. Z.3 proves its trace zero. Consequently \(\operatorname{tr}P_\varepsilon=8/8=1\), and AD.1 makes its eigenspace one-dimensional. The eight spin weights are exactly
+\[
+\frac12(\varepsilon_1\mu_1+\varepsilon_2\mu_2+\varepsilon_3\mu_3).
+\tag{AG.29}
+\]
+When all signs agree this is zero. Otherwise it is one of \(\pm\mu_1,\pm\mu_2,\pm\mu_3\), each exactly once. Thus the restricted spin module has zero weight twice and each short root once.
+
+Decompose this unitary module into complex irreducibles by AD.1. Its only possible nonzero dominant highest weight is the highest short root \(2\alpha_1+\alpha_2=\omega_1\). Explicitly, the three positive short roots \(\alpha_1,\alpha_1+\alpha_2,2\alpha_1+\alpha_2\) have simple-coroot pairings
+\[
+(2,-1),\qquad(-1,1),\qquad(1,0),
+\tag{AG.30}
+\]
+respectively. A negative root cannot be a nonzero dominant weight, by the norm argument in AF.5. Hence only the last positive one is dominant. A highest weight zero gives the trivial module, by the rank-one and highest-vector argument in AF.4. AF.8 says that an irreducible summand of highest weight \(\omega_1\) has dimension seven. There must be one because nonzero weights occur, and there can be only one because their multiplicities are one. The remaining one-dimensional summand is trivial.
+
+It follows that the real spin representation has a nonzero fixed vector for the lifted algebra. Indeed a nonzero fixed vector in its complexification has a nonzero real or imaginary part, and the real matrices kill both. Normalize that real vector to length one. Z.5 gives an element of \(\mathrm{Spin}(7)\) carrying it to \(1\in\mathbb O\). After this conjugation the lifted algebra lies in the stabilizer algebra of \(1\). By Z.7 that is the octonion automorphism algebra of dimension fourteen. The lifted algebra also has dimension \(2+12=14\), by AE.5 and the root-space decomposition. Thus the two algebras are equal.
+
+Project the conjugating element by \(\pi\). On the spin stabilizer, \(\pi\) is exactly the restriction of an octonion automorphism to \(\operatorname{Im}\mathbb O\), as proved in Z.5–Z.7. We obtain an orthogonal conjugacy of the original algebra with the standard seven-dimensional \(G_2\) algebra. Both connected group images are generated by its exponentials, so AG.2 proves equality of those images as well. □
+
+**Theorem AG.7 (the two-factor image).** A faithful irreducible real-form sphere action of a compact connected semisimple group with more than one simple Lie-algebra factor has, up to orthogonal conjugacy, the image
+\[
+\mathrm{Sp}(m)\mathrm{Sp}(1)\quad\hbox{on }\mathbb H^m,\qquad m\geq1.
+\tag{AG.31}
+\]
+Its action, kernel and low-dimensional identification are exactly Y.4 and Y.6.
+
+**Proof.** AF.5 gives exactly two quaternionic complex factors, both of degree one. By AF.7 and AG.3 their actual image algebras are the compact symplectic algebras on their standard modules \(W_a=\mathbb C^{2a}\), \(W_b=\mathbb C^{2b}\). AD.7 identifies the complexification of the real-form module with \(W_a\otimes W_b\).
+
+In the standard symplectic algebra choose the diagonal Cartan operators with weights \(\pm e_1,\ldots,\pm e_a\); this follows directly from the diagonal quaternionic matrices in Y.3. These operators form a maximal abelian algebra: an operator commuting with them preserves their distinct complex weight lines, and the skew-Hermitian and quaternionic commutation conditions leave exactly the same diagonal operators. Choose a Cartan element satisfying \(e_1(H)>e_2(H)>\cdots>e_a(H)>0\), avoiding the finitely many root hyperplanes by a small perturbation within these strict inequalities. The resulting positive system has highest module weight \(e_1\) and lowest weight \(-e_1\), by AD.6 and the strict maximum and minimum among the displayed weights. This argument applies also in ranks one and two. If \(a,b\geq2\), each standard module has an intermediate weight \(e_2\), different from these highest and lowest weights. Their tensor product therefore has a nonzero weight vector of weight \((e_2,e_2)\). But the first-order space of the highest tensor is contained in
+\[
+W_a\otimes\mathbb C v_b+\mathbb C v_a\otimes W_b,
+\tag{AG.32}
+\]
+whose weights have at least one coordinate equal to its highest weight. The first-order space of the lowest tensor has at least one coordinate equal to its lowest weight. The weight \((e_2,e_2)\) is in neither space. The direct weight decomposition contradicts the necessary equality (AF.23). Thus one of \(a,b\) is one. Relabel the other as \(m\).
+
+We identify the real representation, not only its dimensions. Complexify the real space \(\mathbb H^m\) in the action of Y.4. The map
+\[
+\Psi:\mathbb H^m\longrightarrow M_{2m,2}(\mathbb C),
+\qquad
+(q_1,\ldots,q_m)\longmapsto
+\begin{pmatrix}\chi(q_1)\\ \vdots\\ \chi(q_m)\end{pmatrix}
+\tag{AG.33}
+\]
+extends to a complex-linear isomorphism from that complexification. For one block, the four matrices \(\chi(1),\chi(i),\chi(j),\chi(k)\) are complex-linearly independent: their two diagonal coefficients distinguish \(1,i\), and their two off-diagonal coefficients distinguish \(j,k\), using the explicit matrices (Y.2). They form a basis of \(M_2(\mathbb C)\). Taking the \(m\) blocks proves the assertion.
+
+The quaternion multiplication formulas of Y.1–Y.3 give
+\[
+\Psi(Avq^{-1})=\chi_m(A)\Psi(v)\chi(q)^{-1}.
+\tag{AG.34}
+\]
+Thus this complexified representation is the tensor product of the standard \(\mathbb C^{2m}\) and the dual of the standard \(\mathbb C^2\). The alternating determinant form \(x^TJ_0y\) is preserved by \(\mathrm{SU}(2)=\mathrm{Sp}(1)\), as calculated in Y.6; its nondegeneracy identifies that dual with the standard module itself. This proves that (AG.33) gives exactly the same complex tensor representation as \(W_m\otimes W_1\).
+
+The standard modules are complex irreducible: a nonzero complex invariant subspace is a real invariant subspace, and the standard symplectic action is real irreducible by Y.2. Their tensor product is complex irreducible by AD.7. Both the given real form and the real form coming from \(\mathbb H^m\) have invariant positive metrics. AG.2 therefore turns the complex equivalence into an orthogonal equivalence of real representations. The connected images are equal by exponential generation. Y.4 already proves the kernel \(\{(I,1),(-I,-1)\}\), compactness and transitivity, and Y.6 identifies the case \(m=1\) with \(\mathrm{SO}(4)\). □
+
+**Theorem AG.8 (all connected linear sphere actions).** Let \(H\subseteq\mathrm{SO}(V)\) be a compact connected matrix group, where \(n=\dim_{\mathbb R}V\geq2\). It is transitive on the unit sphere if and only if, after an orthogonal change of coordinates, it is one of the following matrix groups in the stated real representation:
+
+| Group | Real dimension | Representation |
+| --- | --- | --- |
+| \(\mathrm{SO}(n)\), \(n\geq2\) | \(n\) | Standard orthogonal action |
+| \(\mathrm{SU}(m)\), \(m\geq2\) | \(2m\) | Standard complex action, regarded as real |
+| \(\mathrm U(m)\), \(m\geq2\) | \(2m\) | Standard complex action, regarded as real |
+| \(\mathrm{Sp}(m)\), \(m\geq2\) | \(4m\) | Standard quaternionic action |
+| \(\mathrm{Sp}(m)\mathrm U(1)\), \(m\geq2\) | \(4m\) | \(v\mapsto Avz^{-1}\), \(\lvert z\rvert=1\), \(z\in\mathbb C\) |
+| \(\mathrm{Sp}(m)\mathrm{Sp}(1)\), \(m\geq2\) | \(4m\) | \(v\mapsto Avq^{-1}\), \(\lvert q\rvert=1\), \(q\in\mathbb H\) |
+| \(G_2\) | \(7\) | Octonion automorphisms on \(\operatorname{Im}\mathbb O\) |
+| \(\mathrm{Spin}(7)\) | \(8\) | The real spin action of Z.4 |
+| \(\mathrm{Spin}(9)\) | \(16\) | The real spin action of AB.1 |
+
+The parameter ranges use the equal-image identifications of Y.6. The assertion classifies the matrix images, so it also classifies effective linear actions; a presentation by a larger group is reduced to its image by factoring out its kernel.
+
+**Proof.** For \(n=2\), AC.6 proves that the only transitive connected image is \(\mathrm{SO}(2)\). Suppose \(n\geq3\). Sphere transitivity makes the representation real irreducible, since an invariant subspace containing one unit vector must contain its whole orbit and hence all of \(V\). AC.3–AC.5 show that the connected compact semisimple commutator subgroup \(S\) is still transitive.
+
+Apply the complete representation-type alternatives of AC.2 to \(S\). In the realification cases, AF.5–AF.7 give exactly the highest weights in (AF.44); AG.3 identifies their images as the standard special unitary or symplectic ones. In the real-form case with simple algebra, AF.7 gives (AF.45), and AF.8 excludes its \(C_n\), \(n\geq3\), and \(F_4\) entries. AG.3 identifies all remaining classical images, AG.5 the \(B_3,B_4\) spin images, and AG.6 the \(G_2\) image. If the algebra is nonsimple, AG.7 gives the quaternionic product image. Thus every possible semisimple image has been identified, using the exhaustive root and highest-weight arguments of AE–AF.
+
+It remains to restore the centre of \(H\). All the real-form cases have real scalar commutant. One can see this directly from their irreducible complexifications: extend a real commuting endomorphism complex-linearly, use AD.1 to make it a complex scalar, and commute it with the invariant real conjugation to make that scalar real. For \(\mathrm{Sp}(m)\mathrm{Sp}(1)\) the same conclusion is also proved directly in Y.6. AC.6 allows no additional connected central circle in these cases.
+
+For the \(A_{m-1}\) end representations with \(m\geq3\), AF.6 says the two ends are distinct dual weights. Thus they have complex type, and AC.2 makes the real commutant exactly the complex scalars. AC.6 gives either \(\mathrm{SU}(m)\) or its product with the scalar unit circle. The latter is exactly \(\mathrm U(m)\): its Lie algebra contains \(\mathfrak{su}(m)\) and \(i\mathbb RI\), whose direct sum is all skew-Hermitian matrices, and both groups are connected by Y.2 and AC.6. Equality follows from AG.2.
+
+For a standard symplectic image, Y.6 computes the full real commutant as the right quaternionic scalar multiplications. AC.6 says that any extra circle in it is conjugate, by an orthogonal map commuting with \(S\), to right multiplication by the unit complex numbers. Its product image is exactly \(\mathrm{Sp}(m)\mathrm U(1)\) of Y.4. When \(m=1\), Y.6 gives \(\mathrm{Sp}(1)=\mathrm{SU}(2)\), \(\mathrm{Sp}(1)\mathrm U(1)=\mathrm U(2)\), and \(\mathrm{Sp}(1)\mathrm{Sp}(1)=\mathrm{SO}(4)\). These account for every low-dimensional overlap used in the table.
+
+This proves necessity, including every possible central extension. Conversely Y.2 proves compactness, connectedness and sphere transitivity for the classical groups; Y.4 proves them for both quaternionic products; Z.5 and Z.7 prove them for the spin-seven and octonion groups; and AB.1 proves them for the spin-nine action. Every row therefore has the asserted property. □
+
+**Theorem AG.9 (the irreducible nonsymmetric Riemannian holonomy list).** Let \(M\) be a nonempty connected Riemannian manifold whose restricted holonomy representation is irreducible. If its curvature is not parallel, then at every point its restricted holonomy representation is orthogonally conjugate to one of the following:
+
+| Group | Real dimension | Representation |
+| --- | --- | --- |
+| \(\mathrm{SO}(n)\), \(n\geq2\) | \(n\) | Standard orthogonal representation |
+| \(\mathrm U(m)\), \(m\geq2\) | \(2m\) | Standard complex representation, regarded as real |
+| \(\mathrm{SU}(m)\), \(m\geq2\) | \(2m\) | Standard complex representation, regarded as real |
+| \(\mathrm{Sp}(m)\), \(m\geq2\) | \(4m\) | Standard representation on \(\mathbb H^m\) |
+| \(\mathrm{Sp}(m)\mathrm{Sp}(1)\), \(m\geq2\) | \(4m\) | \(v\mapsto Avq^{-1}\) on \(\mathbb H^m\) |
+| \(G_2\) | \(7\) | The real representation on \(\operatorname{Im}\mathbb O\) |
+| \(\mathrm{Spin}(7)\) | \(8\) | The real eight-dimensional spin representation |
+
+No completeness or simple-connectivity assumption is required. Here “locally symmetric” means \(\nabla R=0\); the theorem gives the stated restriction when that condition fails. It is a statement about restricted holonomy and its linear representation.
+
+**Proof.** In dimension at most one, curvature is zero by antisymmetry in its first two tangent arguments, so the nonparallel-curvature hypothesis forces dimension at least two. F.2 proves that irreducible Riemannian restricted holonomy is a compact connected embedded subgroup of the special orthogonal group. The fully proved Berger–Simons conclusion X.2 makes it transitive on the tangent unit sphere when \(\nabla R\) is not identically zero. Hence AG.8 applies.
+
+Of its nine rows, the circle extension \(\mathrm{Sp}(m)\mathrm U(1)\), \(m\geq2\), cannot be the restricted holonomy image: AA.2 proves by Bianchi and the curvature-span theorem that its curvature-generated algebra is contained in \(\mathfrak{sp}(m)\). The sixteen-dimensional \(\mathrm{Spin}(9)\) row would give parallel curvature by AB.3, contrary to the hypothesis. These are exactly the two removed rows. The remaining seven are precisely the displayed list.
+
+The case \(\mathrm{Sp}(1)\mathrm U(1)=\mathrm U(2)\) is retained, since AA.2 explicitly requires quaternionic dimension at least two. The other small equal-image identifications are those in Y.6, and justify the parameter ranges. The quaternionic product has the two-element kernel and the actual real action proved in Y.4; the exceptional real actions are the constructions of Z.4 and Z.7.
+
+Finally parallel transport conjugates the restricted holonomy groups at different points and is an isometry, by the proved transport and holonomy results used in D.1 and F.2. Thus the conclusion holds in an orthonormal frame at every point. Neither X.2 nor either exclusion uses completeness or simple connectivity, so neither does this argument. □
+
 ## Further reading
 
 - Andrew Clarke and Bianca Santoro, [*Holonomy Groups in Riemannian Geometry*, arXiv:1206.3170v1](https://arxiv.org/abs/1206.3170v1), §4.2, especially Propositions 4.2.1 and 4.2.3, for the relation between invariant subspaces and local metric products; the chapter “Irreducible Riemannian Groups”, sections on Sp(n) and Sp(n)Sp(1), for the quaternionic representations. Section Y gives their scalar arithmetic, matrix models, actions, kernels and identifications.
@@ -6499,7 +6861,7 @@ Finally count the short roots in AE.3 and AE.5: \(2n\) for \(B_n\), \(2n(n-1)\) 
 
 - Marco Castrillón López, Pedro M. Gadea and Ihor Mykytyuk, [*The canonical 8-form on manifolds with holonomy group Spin(9)*, arXiv:0911.1079v1](https://arxiv.org/abs/0911.1079v1), §§2.1 and 4, for the octonionic Clifford operators and the curvature expression. AB.1–AB.3 prove the group construction, the required curvature-space bound and the parallel-curvature conclusion.
 
-- Claudio Gorodski and Gudlaugur Thorbergsson, [*Representations of compact Lie groups and the osculating spaces of their orbits*, arXiv:math/0203196v1](https://arxiv.org/abs/math/0203196v1), §4, the representation-type, lowering-degree and first-order tangent arguments, and Appendices A–B, root cascades and degrees. AC.1–AC.2 give full algebraic proofs of the three representation-type alternatives. AE verifies all the root coordinates used here, their axioms, simple bases and highest-root bounds. AF gives the complete cascade, type, exact-degree and tangent proofs, derives all necessary highest weights, and proves the zero-weight multiplicities used to exclude the remaining highest-short-root cases.
+- Claudio Gorodski and Gudlaugur Thorbergsson, [*Representations of compact Lie groups and the osculating spaces of their orbits*, arXiv:math/0203196v1](https://arxiv.org/abs/math/0203196v1), §4, the representation-type, lowering-degree and first-order tangent arguments; Appendices A–B, root cascades and degrees; and §8, transitive actions. AC.1–AC.2 give full algebraic proofs of the three representation-type alternatives. AE verifies all the root coordinates used here, their axioms, simple bases and highest-root bounds. AF gives the complete cascade, type, exact-degree and tangent proofs, derives all necessary highest weights, and proves the zero-weight multiplicities used to exclude the remaining highest-short-root cases. AG identifies every remaining matrix image, including both real spin representations and the seven-dimensional octonion representation, and proves the connected sphere-action classification and its Riemannian holonomy consequence.
 
 - Linus Kramer, [*Two-transitive Lie groups*, author-hosted article](https://www.uni-muenster.de/AGKramer/linuspub/23.pdf), Corollary 6.2. AC.3–AC.6 prove the semisimple-transitivity reduction and the central-extension alternatives; AC.5 gives the sphere exactness argument in full.
 

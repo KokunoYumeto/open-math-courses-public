@@ -27,7 +27,7 @@ g=\sum_i a_i^*a_i\in K,\qquad
 The common finite basis \(a_i\in K\) is the actual basis of52.1 or68.1. By50.5 and51.2, its cup sequence is normally trace-isomorphic, generator by generator, to the faithful path Markov model. Theorem11.5 proves \([K:K_1]=d\) without computing its relative commutant.
 
 The exact proposed expectation route is already established in the current course: Theorem82.5, with its complete proof, says
-\(E_Y(g)=E_Y(E_F^K(g))\) for every \(Y\subset K_1'\cap M\). The joint physical center \(D_0\), \(C\) and \(C_0\) are such algebras. Its proof uses the admitted norm averaging81.2 inside \(K_1\subset K\). We do not reprove that norm theorem.
+\(E_Y(g)=E_Y(E_F^K(g))\) for every \(Y\subset K_1'\cap M\). The joint physical center \(D_0\), \(C\) and \(C_0\) are such algebras. Its proof uses the norm averaging81.2 inside \(K_1\subset K\). We do not reprove that norm theorem.
 
 Put \(k_F=d^{-1}E_F^K(g)\). The finite basis trace computation63.11–63.13, equivalently82.1, identifies \(k_F\) with the positive invertible central density of the normalized commutant trace \(\rho_F\):
 \(\rho_F(x)=\tau(k_Fx)\) for \(x\in F\), and \(\tau(k_F)=1\).

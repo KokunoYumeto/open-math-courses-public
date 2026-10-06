@@ -133,6 +133,6 @@ All later centers lie in \(\overline B(z_j,r_j)\), so their mutual distances are
 
 ## Source and licence
 
-The selections above retain their original mathematical text and numbering. The full immutable source, exact line ranges and hashes are retained in the private provenance record. Original licence and attribution: [RIGHTS](notices/RIGHTS.md), [title page](notices/TITLE_PAGE.md), [history](notices/HISTORY.md), and [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). This selection is licensed under CC0 1.0, with no Invariant Sections, Front-Cover Texts or Back-Cover Texts. Its [selection history](notices/U008_SELECTION_HISTORY.md) records the changes and retained source credit.
+The selections above retain their original mathematical text and numbering. Original licence and attribution: [RIGHTS](notices/RIGHTS.md), [title page](notices/TITLE_PAGE.md), [history](notices/HISTORY.md), and [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). This selection is licensed under CC0 1.0, with no Invariant Sections, Front-Cover Texts or Back-Cover Texts. Its [selection history](notices/U008_SELECTION_HISTORY.md) records the changes and retained source credit.
 
 Free human sources for the compared arguments are Paul Garrett's [*Banach Spaces*](https://www-users.cse.umn.edu/~garrett/m/fun/notes_2016-17/02_banach.pdf), Section 9, and [*Review of metric spaces*](https://www-users.cse.umn.edu/~garrett/m/fun/notes_2012-13/01_metric_spaces.pdf), Theorem 4.0.1. Their external citations do not replace any of the included proofs.

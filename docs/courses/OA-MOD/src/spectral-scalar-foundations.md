@@ -10,7 +10,7 @@ The [spectral lesson](spectral-calculus-kernel.md) constructs the operator calcu
 - Measure tools, Theorem 1.1 proves Carathéodory's construction, source lines 16–30. Section 2 proves nonnegative integration, sequential MCT, countable integral sums, Fatou and real/complex sequential DCT, lines 36–69. Section 3 proves Hölder/Minkowski, scalar Lp completeness and simple density, lines 75–105. Its L2 pairing is already linear in the first entry.
 - Topology support, Proposition 4.2(2), Theorem 5.1 and Corollary 5.2, source lines 130–171, supplies the compact cutoffs and partitions used in the RMK proof.
 
-The download includes each complete unchanged reader and editable programme source, its required local assets and the owner notices. This is the exact selected proof route; unrelated theorem and navigation links in those full lessons can still require the online programme. The programme-proof record gives exact file hashes, original URLs and the retained component terms.
+The download includes each complete unchanged reader and editable programme source, its required local assets and its authorship and licence notices. This is the exact selected proof route; unrelated theorem and navigation links in those full lessons can still require the online programme. The programme-proof record gives exact file hashes, original URLs and the retained component terms.
 
 ## Retained pinned mathlib proof comparisons
 

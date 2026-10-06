@@ -736,7 +736,7 @@ Self-checked by the writing AI. The recorded finite controls verify specific con
 
 ## Sources and restoration
 
-The exact admitted purchased Hörmander IV copy, ISBN 978-3-642-00136-9, was read at PDF 54–63 / printed 43–52, from the Section 25.5 heading through its final endpoint estimate. Reading, proof construction and ordinary citations to that approved book are valid. The source supports the mathematics; the explanations, expanded arguments, examples and solutions are independently written.
+The source is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, ISBN 978-3-642-00136-9, PDF 54–63 / printed 43–52, from the Section 25.5 heading through its final endpoint estimate. Reading, proof construction and ordinary citations to that approved book are valid. The source supports the mathematics; the explanations, expanded arguments, examples and solutions are independently written.
 
 The [source record](source-provenance.json) and [proof map](proof-map.json) identify the exact source and programme providers. All seventeen original solved exercises remain, with only the stated endpoint-provider wording updated in Exercises 14 and 17. The original illustration is retained with its portable source and the [DejaVu](figures/notices/LICENSE_DEJAVU.txt), [STIX](figures/notices/LICENSE_STIX.txt) and [BaKoMa](figures/notices/BAKOMA_SECTION.txt) notices. The endpoint companion adds a reproducible illustration of its precise scaling and summation bounds.
 

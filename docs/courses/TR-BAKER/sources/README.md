@@ -1,6 +1,6 @@
 # Linear forms in logarithms: editable course
 
-Each `TR-BAKER-NN.tex` contains the complete corresponding lesson, including its proofs, examples, exercises, solutions and references. Its figures are in `../figures/`; no unpublished master or source body is required.
+Each `TR-BAKER-NN.tex` contains the complete corresponding lesson, including its proofs, examples, exercises, solutions and references. Its figures are in `../figures/`; no further files are required.
 
 To compile a lesson, change into this `sources` directory and run `pdflatex TR-BAKER-NN.tex` twice. Use a current TeX distribution with the packages named in the file. Pandoc 3.9.0.2 generated the editable LaTeX from the Markdown in `../src/`. The LaTeX itself does not require Pandoc.
 
