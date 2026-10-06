@@ -1,0 +1,7 @@
+# General auxiliary constructions
+
+Sections 11N–11Q of *K-theory of the leaf space* contain the complete proofs and Exercises 146–149. They construct a coarse embedding for every finitely generated abstract subgroup of a compact Lie group, the continuous varying affine Hilbert field and proper weak cone, the compact-resolvent weighted coefficient oscillator and its exact equivariant identity homotopy, and the universal proper half-mass measure base with its square-cutoff probability map. These constructions do not yet supply the proper Bott/Dirac factorization or an arbitrary holonomy graph representative.
+
+Figure 11P.1 presents these constructions, with an exact one-dimensional cone sample, exact two-mode energies and an integrable phase-bound shape. Figure 11Q.1 is the half-mass coordinate projection and exact probability map. The finite samples do not replace the full proofs. The exact sample values are in render-data.json.
+
+Use Python 3.13.9 and Pillow 12.2.0 with the bundled unmodified font and FONT-NOTICE.txt beside reproduce.py. Run `python -B reproduce.py --output OUTPUT`. The generator writes both PNG/SVG pairs and render-data.json; its default output is a figures folder beside the script. It requires no TeX installation, network data or source extracts. SVG files embed the complete font and its terms. The full Python and Pillow notices and original CC0 dedication accompany the generator.

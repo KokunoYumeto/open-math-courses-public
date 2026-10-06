@@ -1,6 +1,6 @@
 # Tensor independence and ideals
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A tensor product combines two systems, but a commuting action can identify some of their joint observables. This lesson studies when that happens. We first establish algebraic independence for a factor and its commutant, then use the smallest tensor norm to study simple algebras and ideals. A free-group example gives an explicit difference between separate and commuting actions.
 

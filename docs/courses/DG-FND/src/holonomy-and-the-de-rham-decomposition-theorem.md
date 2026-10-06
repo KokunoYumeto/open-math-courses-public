@@ -1,6 +1,6 @@
 # Holonomy and the de Rham decomposition theorem
 
-**Draft.** The decomposition results, worked examples, Berger–Simons transitivity theorem and classical and exceptional representation constructions below are proved. The quaternionic-circle and Spin(9) exclusions are also proved. The reduction to transitive semisimple representations is proved. Their compact root-space and highest-weight foundations, and the complete finite root-system list, are proved. The exhaustive list of those representations is not yet developed in this chapter.
+**Draft.** The decomposition results, worked examples, Berger–Simons transitivity theorem and classical and exceptional representation constructions below are proved. The quaternionic-circle and Spin(9) exclusions are also proved. The reduction to transitive semisimple representations is proved. Their compact root-space and highest-weight foundations, and the complete finite root-system list, are proved. The possible highest weights are determined, including the highest-short-root exclusions. The identification of all remaining matrix representations and the final classification are not yet developed in this chapter.
 
 Parallel transport compares tangent spaces along a path. When a subspace survives transport around every loop, it determines a distribution throughout the manifold. For a Riemannian metric, two orthogonal parallel distributions then give product coordinates in which each block of the metric depends only on its own coordinates. We establish that chain of implications below, including the topology and completeness of the leaves.
 
@@ -5993,6 +5993,489 @@ Thus each proposed \(\theta\) dominates every positive root. Two highest roots w
 
 For the adjoint assertion, AE.1 proves that the complexification of the compact simple algebra is simple. An invariant subspace of its adjoint module is an ideal, hence that module is irreducible. The root decomposition (AD.8) has zero space \(\mathfrak h\) of dimension \(r\) and one-dimensional nonzero root spaces by AD.3. No \(\theta+\alpha\) with positive \(\alpha\) can be a root: its simple coefficients would exceed those of the dominating \(\theta\). Therefore every positive root operator kills \(\mathfrak g_\theta\), and AD.6 identifies \(\theta\) as the adjoint highest weight. Counting the root spaces and the Cartan space gives \(r+|R|\). □
 
+## AF. Root cascades and the weights of sphere actions
+
+The first-order tangent space of an orbit puts a strong restriction on its highest weight. We develop that restriction using the strongly orthogonal roots and lowering-degree argument of Gorodski–Thorbergsson, in the exact free version listed in Further reading. The root calculations and all representation-theoretic steps used here have proofs below. Throughout, \(\mathfrak k\) is a compact centreless Lie algebra, \(\mathfrak g=\mathfrak k_{\mathbb C}\), and the roots, positive roots, Cartan space \(\mathfrak a=i\mathfrak t\), and normalized triples \((E_\alpha,F_\alpha,H_\alpha)\) have the conventions of AD.3. A highest vector is always nonzero. Products of operators act on the rightmost vector first.
+
+**Lemma AF.1 (the recursive root cascade).** In a finite reduced crystallographic root system \(R\), fix a positive system \(R^+\). Start with its irreducible components. Choose the highest root of one component, retain the roots perpendicular to it, and repeat on any of the remaining nonempty components. This ends with positive roots
+\[
+\mathcal B=(\beta_1,\ldots,\beta_s).
+\tag{AF.1}
+\]
+They are pairwise orthogonal, neither sum nor difference of two of them is a root, and
+\[
+w=s_{\beta_1}\cdots s_{\beta_s}
+\quad\hbox{satisfies}\quad wR^+=-R^+.
+\tag{AF.2}
+\]
+It acts as minus the identity on \(L=\operatorname{span}_{\mathbb R}\mathcal B\) and as the identity on \(L^\perp\). At each stage the chosen highest root has nonnegative inner product with every positive root still present.
+
+**Proof.** A perpendicular subsystem
+\[
+R\cap T^\perp
+\tag{AF.3}
+\]
+is a reduced crystallographic root system in its own span: reflection in one of its roots preserves both \(R\) and \(T^\perp\); the other axioms are inherited. Its positive system is the restriction of the original one. AE.1 supplies its simple basis and orthogonal irreducible components. The highest roots in AE.6 and the coordinate root lengths in AE.3–AE.5 show that the highest root of every irreducible system is long, of maximal root length, and dominates every positive root in the simple-root order.
+
+For its highest root \(\theta\), one has \((\theta,\alpha_i)\geq0\) for each simple root. Indeed, a negative pairing, together with the root-string calculation of AD.4, would make \(\theta+\alpha_i\) a root. To see this without using a Lie algebra for an abstract subsystem, the integral angle-product argument in AE.1 applied to \(\theta,-\alpha_i\) gives the same root. It contradicts the highest-root coefficient bounds. Positive expansion now gives \((\theta,\gamma)\geq0\) for every positive root \(\gamma\) of that component; the other components are perpendicular.
+
+The retained span loses at least one dimension each time, so the procedure terminates. A later \(\beta_j\) is perpendicular to every earlier \(\beta_i\). If \(\beta_i\pm\beta_j\) were a root, it would lie in the subsystem present when \(\beta_i\) was chosen and in the same component as \(\beta_i\): distinct component spans contain no root crossing between them, by AE.1. Its squared length would be
+\[
+|\beta_i|^2+|\beta_j|^2>|\beta_i|^2,
+\tag{AF.4}
+\]
+contradicting the maximal length of \(\beta_i\) in that component. This proves strong orthogonality.
+
+We prove (AF.2) by induction along the procedure. Suppose a positive root \(\gamma\) has positive pairing with the current highest root \(\theta\). Its reflection \(s_\theta\gamma\) has negative pairing with \(\theta\). Every positive root of the current subsystem has nonnegative pairing with \(\theta\), so \(s_\theta\gamma\) is negative. All subsequent reflections preserve its pairing with \(\theta\), hence keep it negative. If instead \(\gamma\perp\theta\), then \(s_\theta\gamma=\gamma\), and the induction in the retained subsystem makes its eventual image negative. This treats every positive root. Orthogonal reflections commute; their product negates each \(\beta_i\) and fixes the orthogonal complement of their span. □
+
+**Lemma AF.2 (unitary representatives and the extreme vector).** Let \(W\) be an irreducible unitary \(\mathfrak k\)-module of highest weight \(\lambda\), and choose a highest vector \(v\). Set
+\[
+n_i=\lambda(H_{\beta_i})=\frac{2(\lambda,\beta_i)}{|\beta_i|^2},
+\qquad k(\lambda)=\sum_i n_i,\qquad
+v_-=\prod_i F_{\beta_i}^{\,n_i}v.
+\tag{AF.5}
+\]
+Then \(n_i\) are nonnegative integers and \(v_-\ne0\). It spans the lowest-weight space, of weight
+\[
+w\lambda=\lambda-\sum_i n_i\beta_i.
+\tag{AF.6}
+\]
+The commuting unitary operators
+\[
+u_i=\exp\!\left(\frac{\pi}{2}(E_{\beta_i}-F_{\beta_i})\right),
+\qquad U=\prod_i u_i
+\tag{AF.7}
+\]
+represent the reflections on weights and satisfy
+\[
+Uv=\frac{(-1)^{k(\lambda)}}{\prod_i n_i!}\,v_-,
+\qquad U^2v=(-1)^{k(\lambda)}v.
+\tag{AF.8}
+\]
+For \(0\leq j_i\leq n_i\), the vector \(\prod_iF_{\beta_i}^{j_i}v\) is nonzero. If \(\lambda\ne0\), then \(k(\lambda)>0\).
+
+**Proof.** AD.6 gives the nonnegative integral values \(n_i\). Strong orthogonality and the bracket rule in AD.3 imply that the triples belonging to distinct \(\beta_i\) commute with each other. For one triple, AD.2 gives
+\[
+\|F^jv\|^2=\frac{j!\,n!}{(n-j)!}\,\|v\|^2
+\quad(0\leq j\leq n),\qquad F^{n+1}v=0.
+\tag{AF.9}
+\]
+Applying another commuting lowering operator leaves the other highest-vector equations and highest eigenvalues unchanged. Repeated use of (AF.9) proves all the nonvanishing assertions and gives
+\[
+\left\|\prod_iF_{\beta_i}^{j_i}v\right\|^2
+=\prod_i\frac{j_i!\,n_i!}{(n_i-j_i)!}\,\|v\|^2.
+\tag{AF.10}
+\]
+The weight calculation and the formula for commuting reflections give (AF.6). Since \(w\) reverses positive roots, AD.6 says that this is the lowest weight and that its space is one-dimensional.
+
+Here is the exponential calculation, including its sign. On the homogeneous polynomials of degree \(n\) in two variables put
+\[
+E=x\partial_y,\qquad F=y\partial_x,\qquad
+H=x\partial_x-y\partial_y.
+\tag{AF.11}
+\]
+The vectors \(F^jx^n\) satisfy exactly AD.2's string formulas and form a basis. Thus this string is isomorphic to the string generated by \(v\), with \(x^n\) mapped to \(v\). The derivation \(E-F\) sends \(x\) to \(-y\) and \(y\) to \(x\). Solving these two constant-coefficient differential equations and using the product rule gives
+\[
+\exp(t(E-F))x^n=(\cos t\,x-\sin t\,y)^n.
+\tag{AF.12}
+\]
+At \(t=\pi/2\) this equals \((-1)^ny^n=(-1)^nF^nx^n/n!\); at \(t=\pi\) it equals \((-1)^nx^n\). This proves (AF.8), first for each string and then for their commuting product.
+
+For completeness, these operators implement the reflections on every weight, not only on \(v\). For a fixed triple \(T=E-F\),
+\[
+[T,H]=-2(E+F),\qquad [T,E+F]=2H.
+\tag{AF.13}
+\]
+The corresponding two-dimensional exponential rotates \(H\) to \(-H\) at time \(\pi/2\). Every Cartan element in \(\ker\beta\) commutes with \(T\), and
+\[
+H_0=\left(H_0-\frac{\beta(H_0)}2H_\beta\right)
+       +\frac{\beta(H_0)}2H_\beta
+\tag{AF.14}
+\]
+separates the fixed and reversed parts. Conjugation by the exponential therefore acts on the Cartan by \(s_\beta\), and hence acts on weights by the same reflection. The matrix exponential and its conjugation equation are justified in F.1. Since \(F=E^*\), \(T\) is skew-adjoint, so the exponential is unitary. Moreover \(\sigma(E)=-F\) gives \(\sigma(T)=T\): it is the exponential of an element of the compact real algebra.
+
+Finally, if all \(n_i\) vanish, then \(w\lambda=\lambda\). The highest vector is also lowest, by the one-dimensionality just proved. Every positive and negative root operator kills it. Their brackets show \(\lambda(H_\alpha)=0\) for every root \(\alpha\). The roots span the Cartan dual by AD.3, so \(\lambda=0\). This proves the final assertion. □
+
+**Theorem AF.3 (type and exact lowering degree).** In the notation of AF.2, the irreducible module is self-dual if and only if \(\lambda\in L\). In that case it has real type for even \(k(\lambda)\) and quaternionic type for odd \(k(\lambda)\). Otherwise it has complex type.
+
+Let \(\mathcal U^m(\mathfrak g)v\) mean the span of products of at most \(m\) elements of \(\mathfrak g\) applied to \(v\), including the empty product. Then
+\[
+v_-\in\mathcal U^{k(\lambda)}(\mathfrak g)v,\qquad
+v_-\notin\mathcal U^{k(\lambda)-1}(\mathfrak g)v
+\quad\hbox{if }k(\lambda)>0.
+\tag{AF.15}
+\]
+The integer \(k\) is additive over the simple factors and linear in the highest weight.
+
+**Proof.** The conjugate unitary module has the negatives of the weights of \(W\). Indeed, for \(H=iX\in\mathfrak a\) with \(X\in\mathfrak t\), complex extension of the conjugate compact action gives
+\[
+\overline{\rho}(H)\,\bar z=-\overline{\rho(H)z}.
+\tag{AF.16}
+\]
+Its highest weight is therefore \(-w\lambda\). The Hermitian form identifies the conjugate module with the dual. The uniqueness theorem AD.6 shows that self-duality is equivalent to \(\lambda=-w\lambda\), which by AF.1 is precisely \(\lambda\in L\).
+
+In that case an isomorphism with the conjugate module gives an invertible antilinear map \(\epsilon:W\to W\) commuting with \(\mathfrak k\). The positive Hermitian form \((x,y)\mapsto\langle\epsilon y,\epsilon x\rangle\) is invariant. Its positive comparison operator with the given Hermitian form commutes with the representation, so AD.1 makes it a positive scalar. Rescale \(\epsilon\) to be antiunitary. Its square is a complex scalar by AD.1. If \(\epsilon^2=cI\), then \(\epsilon\epsilon^2=\epsilon^2\epsilon\) implies \(\bar c=c\), and antiunitarity implies \(|c|=1\). Thus \(c=1\) or \(-1\), the alternatives proved and interpreted in AC.2.
+
+Normalize \(v\) to unit length. Both \(\epsilon v\) and \(Uv\) are unit vectors of lowest weight \(-\lambda=w\lambda\). Write \(\epsilon v=aUv\), where \(|a|=1\). The map \(\epsilon\) commutes with each real compact exponential \(u_i\), so
+\[
+\epsilon^2v=\bar a\,U\epsilon v
+           =|a|^2U^2v=(-1)^{k(\lambda)}v.
+\tag{AF.17}
+\]
+This proves the type assertion. With our normalization the complex root operators obey
+\[
+\epsilon H_\alpha=-H_\alpha\epsilon,\qquad
+\epsilon E_\alpha=-F_\alpha\epsilon.
+\tag{AF.18}
+\]
+These signs follow by writing a complex element as \(X+iY\) with \(X,Y\in\mathfrak k\), and using \(\epsilon i=-i\epsilon\) and \(\sigma(E_\alpha)=-F_\alpha\).
+
+We next prove the degree assertion. We need the following balanced-word fact. If \(\delta_1,\ldots,\delta_N\) belong to the cascade, repetitions allowed, and \(\gamma_1,\ldots,\gamma_M\in R^+\), then
+\[
+N>M,\quad \sum_{a=1}^N\delta_a=\sum_{b=1}^M\gamma_b
+\quad\Longrightarrow\quad
+E_{\delta_N}\cdots E_{\delta_1}
+F_{\gamma_1}\cdots F_{\gamma_M}v=0.
+\tag{AF.19}
+\]
+The equality of weights is part of the hypothesis.
+
+First record explicitly the word-reordering fact needed for induction. Order negative root vectors before Cartan vectors and positive root vectors. Interchanging neighbouring factors uses \(XY=YX+[X,Y]\), whose bracket term has one fewer factor. Induction first on word length and then on the number of out-of-order pairs expresses every word of length at most \(q\) in that order, without increasing its length. On a highest vector, positive factors at the right kill the vector and Cartan factors become scalars. Thus only negative words of length at most \(q\) remain. This is the spanning argument of AD.6 and does not require linear independence of ordered words. If a word of length \(q\) already contains a Cartan or positive-root factor, while all its other factors are negative-root factors, every surviving negative word has length at most \(q-1\): a term with no bracket retains that nonnegative factor and either vanishes or loses it on evaluation; every bracket term has already lost a factor. All terms retain the total Cartan weight of the original word.
+
+We prove (AF.19) by induction on \(N\). For \(M=0\) the positive operators kill \(v\), so in particular the starting case \(N=1\) holds. Since the cascade raising operators commute, arrange that \(\delta_1=\beta_i\) has the earliest index occurring among them. Each \(\gamma_b\) lies in the subsystem perpendicular to all \(\beta_j\) with \(j<i\). To prove this, proceed successively through those earlier indices. The sum of the \(\delta_a\) is perpendicular to \(\beta_j\). By the balance hypothesis so is the sum of the \(\gamma_b\). In the subsystem retained so far, all the nonnegative numbers \((\beta_j,\gamma_b)\) sum to zero, by AF.1, so each vanishes.
+
+Consequently, whenever \(\beta_i-\gamma_b\) is a root it is positive. A root in the same remaining component as \(\beta_i\) is bounded by that highest root; a root in another remaining component has no root difference with it. Thus
+\[
+[E_{\beta_i},F_{\gamma_b}]
+\quad\hbox{is zero, a Cartan element, or a positive-root vector.}
+\tag{AF.20}
+\]
+Commute \(E_{\beta_i}\) to the right through the \(M\) negative factors. The term in which it reaches \(v\) vanishes. Each other term is a product of the \(N-1\) remaining cascade raising operators followed by a word of length \(M\), with exactly one of its slots replaced as in (AF.20). The reordering fact expresses that latter word on \(v\) as negative words of length \(M'\leq M-1\). Their total root weight is
+\[
+-\sum_b\gamma_b+\beta_i=-\sum_{a=2}^N\delta_a.
+\tag{AF.21}
+\]
+Therefore each satisfies the balance hypothesis for \(N-1\) raising factors, and \(N-1>M'\). The induction hypothesis kills every term. This proves (AF.19).
+
+AF.2 already puts \(v_-\) in degree \(k\). An arbitrary vector of degree at most \(k-1\) is a sum of negative words of that length by the reordering argument. For any such word, adjoints give
+\[
+\left\langle F_{\gamma_1}\cdots F_{\gamma_M}v,v_-\right\rangle
+=\left\langle
+\prod_iE_{\beta_i}^{\,n_i}
+F_{\gamma_1}\cdots F_{\gamma_M}v,v
+\right\rangle .
+\tag{AF.22}
+\]
+If the weights do not balance, the last inner product is zero by orthogonality of distinct Cartan weights. If they do, (AF.19), with \(N=k>M\), makes it zero. Hence \(v_-\) is orthogonal to the whole space of degree at most \(k-1\), proving (AF.15). The formula (AF.5) is linear in \(\lambda\), and the cascade of an orthogonal union is the union of its component cascades. Together with AD.7 this proves additivity for tensor factors. □
+
+**Lemma AF.4 (first-order sphere tests).** Let \(K\) be a compact connected semisimple matrix group. Suppose first that its nontrivial irreducible complex unitary module \(W\) has real type, with invariant real form \(V=\{z:\epsilon z=z\}\). Then \(K\) is transitive on the unit sphere of \(V\) if and only if
+\[
+W=\mathcal U^1(\mathfrak g)v+\mathcal U^1(\mathfrak g)\epsilon v.
+\tag{AF.23}
+\]
+Suppose instead that \(W\) has complex or quaternionic type. Then \(K\) is transitive on the unit sphere of its underlying real space if and only if
+\[
+W=\mathcal U^1(\mathfrak g)v.
+\tag{AF.24}
+\]
+
+**Proof.** A nontrivial highest weight is nonzero: if \(\lambda=0\), AD.2 makes every negative-root operator kill the highest vector, and AD.6 then gives the trivial module. For a real form, normalize \(v\) to unit length. The vectors \(v\) and \(\epsilon v\) have the distinct weights \(\lambda,-\lambda\), so they are perpendicular. Put \(p=v+\epsilon v\in V\).
+
+Complexifying the real orbit tangent \(\mathfrak k p\) gives exactly \(\mathfrak g p\). Cartan elements yield the line \(\mathbb C(v-\epsilon v)\), because \(Hp=\lambda(H)(v-\epsilon v)\) and some \(\lambda(H)\ne0\). Positive-root operators kill \(v\) and negative-root operators kill the lowest vector \(\epsilon v\). Consequently
+\[
+\mathfrak g p=
+\operatorname{span}_{\mathbb C}
+\{v-\epsilon v,\ F_\alpha v,\ E_\alpha\epsilon v:
+  \alpha\in R^+\}.
+\tag{AF.25}
+\]
+The complexification of the real orthogonal decomposition at \(p\) is
+\[
+W=\mathbb Cp\oplus(p^\perp_V)_{\mathbb C},
+\qquad \mathfrak g p\subset(p^\perp_V)_{\mathbb C}.
+\tag{AF.26}
+\]
+Here the complex bilinear extension of the real metric is nondegenerate, and its value at \((p,p)\) is the positive real number \(\|p\|^2\); thus the sum is direct. The right side of (AF.23) is exactly \(\mathbb Cp+\mathfrak g p\). Equality with \(W\) is therefore equivalent to the full real tangent condition \(\mathfrak k p=p^\perp_V\). The equivalence of that condition at one nonzero point with sphere transitivity was fully proved in AC.4.
+
+For the underlying real space of \(W\), use the actual highest vector \(v\) as the real point. The compact root-space generators are
+\[
+iH,\qquad E_\alpha-F_\alpha,\qquad
+i(E_\alpha+F_\alpha).
+\tag{AF.27}
+\]
+The Cartan part gives \(\mathbb R\,iv\), while the last two generators applied to \(v\) give \(-F_\alpha v\) and \(iF_\alpha v\). Thus, if \(A=\sum_{\alpha>0}\mathbb C F_\alpha v\),
+\[
+\mathfrak k v=\mathbb R\,iv\oplus A_{\mathbb R},
+\qquad
+\mathcal U^1(\mathfrak g)v=\mathbb Cv\oplus A.
+\tag{AF.28}
+\]
+Each summand in \(A\) has weight different from \(\lambda\), so \(A\perp v\) in the Hermitian sense. It follows that the real tangent is the full real hyperplane perpendicular to \(v\) precisely when \(\mathbb Cv+A=W\). Apply AC.4 again. □
+
+**Lemma AF.5 (degree, factor and zero-weight restrictions).** For a nontrivial irreducible module satisfying (AF.23), one has \(k(\lambda)\leq3\). If it has real type, then \(k(\lambda)=2\). If it satisfies (AF.24), then \(k(\lambda)=1\).
+
+For a self-dual module satisfying (AF.23), the zero-weight space has dimension at most one. In particular, an adjoint module of a compact simple algebra of rank at least two cannot satisfy (AF.23).
+
+For a faithful sphere action of a compact connected semisimple group, a complex or quaternionic irreducible realification has only one simple Lie-algebra factor. A real-form action has at most two simple factors. If there are two, each complex tensor factor is self-dual of quaternionic type and has \(k=1\).
+
+**Proof.** Suppose \(k\geq4\), and choose integers \(0\leq j_i\leq n_i\) with \(\sum_i j_i=2\). This is possible by taking two of the \(k\) lowering factors. AF.2 gives a nonzero vector
+\[
+z=\prod_iF_{\beta_i}^{j_i}v.
+\tag{AF.29}
+\]
+It is orthogonal to \(\mathcal U^1(\mathfrak g)v\): reorder any word of length at most one, take adjoints against \(z\), and use exactly (AF.19) with \(N=2>M\), or weight orthogonality if unbalanced.
+
+On the other hand, the commuting rank-one formulas show that \(z\) is a nonzero scalar multiple of
+\[
+\prod_iE_{\beta_i}^{\,n_i-j_i}v_-.
+\tag{AF.30}
+\]
+Use the opposite positive system, whose cascade is \(-\beta_1,\ldots,-\beta_s\), and whose highest vector is \(v_-\). Its highest coroot eigenvalues along that cascade are still \(n_i\). Since \(\sum_i(n_i-j_i)=k-2\geq2\), the same balanced-word argument makes (AF.30) orthogonal to \(\mathcal U^1(\mathfrak g)v_-\). Self-duality identifies the line of \(v_-\) with the line of \(\epsilon v\). Thus \(z\) is orthogonal to both summands of (AF.23), a contradiction. This proves \(k\leq3\). For real type, AF.3 gives even \(k\), and AF.2 gives positive \(k\), so \(k=2\). In (AF.24), \(v_-\) must be of degree at most one; AF.3 and positivity give \(k=1\).
+
+For the zero-weight assertion, the only possible zero-weight vectors among the generators of (AF.23) are
+\[
+F_\lambda v,\qquad E_\lambda\epsilon v,
+\tag{AF.31}
+\]
+and these are present only if \(\lambda\) is a root. It would then be positive: a negative expansion \(\lambda=-\sum c_i\alpha_i\), with \(c_i\geq0\), would contradict \(|\lambda|^2=-\sum c_i(\lambda,\alpha_i)\leq0\), since \(\lambda\) is dominant and nonzero. Its rank-one highest eigenvalue is \(\lambda(H_\lambda)=2\). The rank-one formulas give \(F_\lambda^2v\ne0\), of weight \(-\lambda\). That lowest-weight space is one-dimensional, so \(\epsilon v\) is a scalar multiple of \(F_\lambda^2v\). Applying \(E_\lambda\) makes the two vectors in (AF.31) proportional. The zero space is consequently at most one-dimensional. AE.6 identifies the adjoint zero-weight multiplicity with the rank, proving the exclusion.
+
+Finally AD.7 decomposes an irreducible complex module over the simple factors. Faithfulness implies that none is trivial. Each contributes a positive integer to \(k\), by AF.2–AF.3. Hence there is only one factor in (AF.24), and at most two in the real-form case. If there are two, both have \(k=1\). The highest-weight spaces of the different ideals are orthogonal summands, and the cascade span is their direct sum; self-duality of the full module therefore implies self-duality of each factor by AF.3. Odd \(k=1\) makes each quaternionic. □
+
+**Lemma AF.6 (explicit cascade degrees and duality).** Use exactly the simple-root numbering in AE.3–AE.5, and let \(\omega_i\) denote its fundamental weights. Then
+\[
+\begin{array}{c|c|c}
+\text{root type}&k(\omega_i)&\text{duality on the indices}\\ \hline
+A_n&\min(i,n+1-i)&i\longmapsto n+1-i\\
+B_n,\ i<n&2\lceil i/2\rceil&\text{identity}\\
+B_n,\ i=n&\lceil n/2\rceil&\text{identity}\\
+C_n&i&\text{identity}\\
+D_n,\ i\leq n-2&2\lceil i/2\rceil&
+ \text{identity except as below}\\
+D_n,\ i=n-1,n&\lfloor n/2\rfloor&
+ (n-1\ n)\text{ if }n\text{ is odd}\\
+G_2&(2,2)&\text{identity}\\
+F_4&(2,6,4,2)&\text{identity}\\
+E_6&(2,2,4,6,4,2)&(1\ 6)(3\ 5)\\
+E_7&(2,5,6,8,7,4,3)&\text{identity}\\
+E_8&(4,8,10,14,12,8,6,2)&\text{identity}
+\end{array}
+\tag{AF.32}
+\]
+An entry giving a tuple lists the values in increasing order of the node index. For \(\lambda=\sum_i a_i\omega_i\), compute \(k\) by linearity. The module is self-dual exactly when its coefficients \(a_i\) are unchanged by the indicated permutation.
+
+**Proof.** We verify the cascades and the arithmetic, rather than assuming a table of representations. In \(A_n\), put \(N=n+1\). Successively removing the highest root \(e_1-e_N\) leaves the roots on the middle coordinates. Thus the cascade is
+\[
+e_j-e_{N+1-j}\quad(1\leq j\leq\lfloor N/2\rfloor).
+\tag{AF.33}
+\]
+Its reflections reverse the coordinate order. Its coroot sum has coefficient \(1\) on the first \(\lfloor N/2\rfloor\) coordinates, coefficient \(-1\) on the last that many, and coefficient \(0\) on a middle coordinate if present. Pairing with the fundamental weights in AE.3 gives \(\min(i,N-i)\). Negative coordinate reversal sends \(\omega_i\) to \(\omega_{N-i}\).
+
+For \(B_n\) and \(D_n\), take the successive pairs
+\[
+e_1+e_2,\ e_1-e_2,\ e_3+e_4,\ e_3-e_4,\ \ldots.
+\tag{AF.34}
+\]
+After \(e_1+e_2\), the perpendicular roots consist of the isolated pair \(\pm(e_1-e_2)\) and the same coordinate root system on indices \(3,\ldots,n\). This follows immediately from the root lists in AE.3. In \(B_n\) with \(n\) odd, append the short root \(e_n\); in \(D_n\) with \(n\) odd, the remaining single coordinate contains no root. This proves that (AF.34) follows AF.1, including the terminal one- and two-pair cases. Each complete pair contributes \(2e_{2j-1}\) to the coroot sum. The appended short root in odd \(B_n\) contributes \(2e_n\). Pairing with the partial sums and half-sums in AE.3 gives the displayed ceilings and floors. The product reflection is \(-I\) in \(B_n\) and even \(D_n\); in odd \(D_n\) it changes the sign of the first \(n-1\) coordinates and fixes the last. Its negative therefore interchanges exactly the two half-sum weights.
+
+In \(C_n\), the successive highest roots are \(2e_1,\ldots,2e_n\); their coroot sum is \(\sum e_i\), giving \(k(\omega_i)=i\), and their reflection product is \(-I\).
+
+The exceptional cascades are as follows. Write \(T=e_8-e_7-e_6\) in the \(E_6\) row.
+\[
+\begin{array}{c|l}
+G_2&3\alpha_1+2\alpha_2,\ \alpha_1\\
+F_4&e_1+e_2,\ e_1-e_2,\ e_3+e_4,\ e_3-e_4\\
+E_6&\begin{aligned}
+ &\tfrac12(T+e_1+e_2+e_3+e_4+e_5),\\
+ &\tfrac12(T-e_1-e_2-e_3-e_4+e_5),\
+ e_4-e_1,\ e_3-e_2
+\end{aligned}\\
+E_7&\begin{aligned}
+ &e_8-e_7,\ e_6+e_5,\ e_6-e_5,\\
+ &e_4+e_3,\ e_4-e_3,\ e_2+e_1,\ e_2-e_1
+\end{aligned}\\
+E_8&\begin{aligned}
+ &e_8+e_7,\ e_8-e_7,\ e_6+e_5,\ e_6-e_5,\\
+ &e_4+e_3,\ e_4-e_3,\ e_2+e_1,\ e_2-e_1
+\end{aligned}
+\end{array}
+\tag{AF.35}
+\]
+Here is a verification of the successive highest-root property in each exceptional case. In \(G_2\), the positive-root list in AE.5 leaves only \(\alpha_1\) perpendicular to \(3\alpha_1+2\alpha_2\). In \(F_4\), the positive roots perpendicular to \(e_1+e_2\) are
+\[
+e_1-e_2,\ e_3\pm e_4,\ e_3,\ e_4,\
+\tfrac12(e_1-e_2\pm e_3\pm e_4).
+\tag{AF.36}
+\]
+They have the \(C_3\) simple basis
+\[
+u_1=\tfrac12(e_1-e_2-e_3-e_4),\quad u_2=e_4,\quad
+u_3=e_3-e_4.
+\tag{AF.37}
+\]
+Indeed, their nine positive vectors, in this basis, are \(u_1,u_2,u_3,u_1+u_2,u_2+u_3,u_1+u_2+u_3,u_1+2u_2+u_3,2u_2+u_3,2u_1+2u_2+u_3\), as direct substitution shows. The last one is \(e_1-e_2\) and dominates the others. Its perpendicular subsystem is \(B_2\) on coordinates \(3,4\), followed by the remaining root \(e_3-e_4\).
+
+For \(E_8\), the roots perpendicular to \(e_8+e_7\) are the \(E_7\) subsystem of AE.4. The roots of that subsystem perpendicular to its highest root \(e_8-e_7\) are exactly the \(D_6\) roots \(\pm e_i\pm e_j\) on indices \(1,\ldots,6\). Its inherited positives are \(\pm e_i+e_j\) for \(i<j\), so its highest root is \(e_6+e_5\). The \(D\)-pair argument above gives the remaining entries. This also verifies the \(E_7\) row.
+
+For \(E_6\), its positive roots are \(e_j\pm e_i\) for \(1\leq i<j\leq5\), together with
+\[
+\tfrac12(T+\textstyle\sum_{i=1}^5\varepsilon_i e_i),
+\quad \varepsilon_i=\pm1,\quad \prod_i\varepsilon_i=1.
+\tag{AF.38}
+\]
+This is precisely the coordinate list and positivity proved in AE.4. The first entry \(\theta\) in its row is the highest root from AE.6. A coordinate difference \(e_j-e_i\) is perpendicular to it, a coordinate sum is not, and a half-root with \(m\) minus signs has pairing \(2-m/2\) with it. Thus the positive perpendicular roots are the ten differences and the five vectors
+\[
+r_i=\tfrac12(T+2e_i-e_1-e_2-e_3-e_4-e_5).
+\tag{AF.39}
+\]
+These are the positive roots of an \(A_5\) chain with simple basis
+\[
+r_1,\ e_2-e_1,\ e_3-e_2,\ e_4-e_3,\ e_5-e_4.
+\tag{AF.40}
+\]
+Consecutive sums give all ten differences and all five \(r_i\), so its highest root is \(r_5\), the second entry of (AF.35). Perpendicularity to \(r_5\) leaves just the \(A_3\) differences on indices \(1,\ldots,4\). Their highest root is \(e_4-e_1\), followed by \(e_3-e_2\). This proves the \(E_6\) cascade.
+
+To verify the degree arithmetic efficiently, put \(h=\sum_{\beta\in\mathcal B}2\beta/|\beta|^2\). Then \(k(\omega_i)=(\omega_i,h)\). The exceptional coordinate sums are
+\[
+\begin{aligned}
+h_{G_2}&=\alpha_1+(3\alpha_1+2\alpha_2)/3,\\
+h_{F_4}&=2e_1+2e_3,\\
+h_{E_6}&=T-e_1-e_2+e_3+e_4+e_5,\\
+h_{E_7}&=e_8-e_7+2e_6+2e_4+2e_2,\\
+h_{E_8}&=2e_8+2e_6+2e_4+2e_2.
+\end{aligned}
+\tag{AF.41}
+\]
+In the \(G_2\) convention \(|\alpha_1|^2=2\), \(|\alpha_2|^2=6\); in \(E_6,E_7,E_8\) every simple root has squared length \(2\); the two long simple \(F_4\) roots have squared length \(2\) and the two short ones squared length \(1\). Substitution of the simple-root coordinates in AE.4–AE.5 into (AF.41) gives, respectively,
+\[
+\begin{gathered}
+h=\sum_i c_i\alpha_i^\vee,\\
+\begin{array}{c|l}
+G_2&(c_i)=(2,2)\\
+F_4&(c_i)=(2,6,4,2)\\
+E_6&(c_i)=(2,2,4,6,4,2)\\
+E_7&(c_i)=(2,5,6,8,7,4,3)\\
+E_8&(c_i)=(4,8,10,14,12,8,6,2)
+\end{array}
+\end{gathered}
+\tag{AF.42}
+\]
+Since \((\omega_j,\alpha_i^\vee)=\delta_{ij}\), these are exactly the five exceptional degree rows of (AF.32).
+
+The cascades span the full root space in \(G_2,F_4,E_7,E_8\), so \(w=-I\) there. In \(E_6\), apply the four orthogonal reflection formulas \(s_\beta x=x-(x,\beta)\beta\), since their squared lengths are \(2\), to its six simple roots. They give
+\[
+-w(\alpha_1,\alpha_2,\alpha_3,\alpha_4,\alpha_5,\alpha_6)
+=(\alpha_6,\alpha_2,\alpha_5,\alpha_4,\alpha_3,\alpha_1).
+\tag{AF.43}
+\]
+The same permutation acts on the dual fundamental-weight basis. The already computed classical actions and AF.3 now prove every duality assertion and the coefficient criterion. □
+
+**Corollary AF.7 (the remaining highest weights for a sphere action).** Assume the real sphere action is faithful and irreducible and the acting compact connected group is semisimple.
+
+If it is the realification of a complex irreducible module of complex or quaternionic type, its algebra has one simple factor. The only possible highest weights are
+\[
+A_n:\ \omega_1,\omega_n;\qquad
+B_2:\ \omega_2;\qquad
+C_n\ (n\geq3):\ \omega_1.
+\tag{AF.44}
+\]
+The \(A_1\) row contains just \(\omega_1\); it and the \(B_2,C_n\) entries are quaternionic. For \(A_n\), \(n\geq2\), the two entries are of complex type.
+
+If it is a real-form action and the algebra is simple, the only possible highest weights, after excluding the adjoint representations of rank at least two, are
+\[
+\begin{array}{c|l}
+A_1&2\omega_1\\
+A_3&\omega_2\\
+B_n\ (n\geq2)&\omega_1\\
+B_3,\ B_4&\omega_n\\
+C_n\ (n\geq3)&\omega_2\\
+D_n\ (n\geq4)&\omega_1\\
+D_4&\omega_3,\omega_4\\
+G_2&\omega_1\\
+F_4&\omega_4
+\end{array}
+\tag{AF.45}
+\]
+There are no other simple cases. A nonsimple real-form action has exactly two simple factors, each chosen from the quaternionic entries of (AF.44). These are necessary highest-weight restrictions; the identification of their matrix images is a further step.
+
+**Proof.** By AD.6 a highest weight has nonnegative integral coefficients in the fundamental-weight basis. AF.5 says that the realification case has \(k=1\). All coefficients in (AF.32) are positive. The only entries equal to \(1\) are the two ends of \(A_n\), the last node of \(B_2\), and the first node of \(C_n\). Thus exactly one of those fundamental weights can occur, and no sum or multiple can occur. AF.3 and the duality column give their stated types. The number of factors is given by AF.5.
+
+For a simple real-form action, \(k=2\) and the coefficients must satisfy the duality symmetry. In \(A_1\) this gives \(2\omega_1\). For \(A_n\), \(n\geq2\), a sum of the two end weights \(\omega_1+\omega_n\) is always possible at this stage; it is the highest root and hence the adjoint highest weight by AE.6 and AD.6. A single degree-two fundamental weight is self-dual only at the middle node of \(A_3\), namely \(\omega_2\). Twice an end weight is not self-dual for \(n\geq2\). These exhaust \(A\).
+
+In \(B_2\), the degree-two possibilities are \(\omega_1\) and \(2\omega_2\), the latter the highest root \(e_1+e_2\). In \(B_n\), \(n\geq3\), they are \(\omega_1,\omega_2\), and also the last weight only for \(n=3,4\). Here \(\omega_2=e_1+e_2\) is adjoint. In \(C_n\) they are \(2\omega_1\) and \(\omega_2\), the former the highest root \(2e_1\). In \(D_n\) the first two weights have degree two, with \(\omega_2=e_1+e_2\) adjoint; the two end weights have degree two only for \(n=4,5\), and in \(D_5\) they are exchanged by duality, so neither alone is self-dual. In \(D_4\) both are self-dual.
+
+The exceptional rows can be read without any representation-dimension formula. In \(G_2\), the two degree-two weights are \(\omega_1,\omega_2\), with \(\omega_2\) the highest root. In \(F_4\) they are \(\omega_1,\omega_4\), with \(\omega_1\) the highest root. In \(E_6\), the degree-two entries are \(\omega_1,\omega_2,\omega_6\), and duality leaves only \(\omega_2\). In \(E_7\) only \(\omega_1\) has degree two; in \(E_8\) only \(\omega_8\) does. These last three weights are the highest roots: pairing the highest-root vectors of AE.6 with the simple coroots gives respectively the single nonzero entry at nodes \(2,1,8\). AD.6 identifies each with its adjoint module.
+
+AF.5 excludes all those adjoint modules except \(A_1\). This leaves (AF.45). Finally, AF.5 gives two self-dual degree-one factors in the nonsimple real case. The self-dual entries of (AF.44) are precisely its stated quaternionic entries. □
+
+**Lemma AF.8 (the highest short-root modules).** Suppose the irreducible root system has type \(B_n,C_n,F_4\), or \(G_2\), and an irreducible unitary module has as its highest weight the highest short root. Its nonzero weights are exactly the short roots, each with multiplicity one. The multiplicity of zero and the complex dimension are
+\[
+\begin{array}{c|c|c}
+ \text{type}&\dim W_0&\dim_{\mathbb C}W\\ \hline
+B_n&1&2n+1\\
+C_n&n-1&n(2n-1)-1\\
+F_4&2&26\\
+G_2&1&7
+\end{array}
+\tag{AF.46}
+\]
+In particular, the \(C_n\) entries with \(n\geq3\) and the \(F_4\) entry in (AF.45) do not give sphere actions.
+
+**Proof.** The highest short roots in the four coordinate systems are respectively
+\[
+e_1,\qquad e_1+e_2,\qquad e_1,\qquad 2\alpha_1+\alpha_2.
+\tag{AF.47}
+\]
+They are dominant, as direct pairing with the simple coroots shows. The Weyl group is transitive on the short roots. For \(B_n,C_n\), this follows from the signed permutations in AE.3. In \(G_2\), the coordinate reflections in AE.5 permute its six short roots transitively. In \(F_4\), signed coordinate permutations are available by its axis and long-root reflections. They are transitive separately on the eight axis roots and the sixteen half-roots; reflection in \((e_1+e_2+e_3+e_4)/2\) sends \(e_1\) to \((e_1-e_2-e_3-e_4)/2\), joining the two sets. Thus every short root is an extremal weight \(w\lambda\), whose weight line is one-dimensional by AD.4 and AD.6.
+
+Consider the action of any root operator on such a line. Conjugate it by the unitary reflection representatives of AF.2 to the line of the highest weight \(\lambda\). The root operator becomes a nonzero scalar multiple of another root operator: conjugation preserves its Cartan weight and that root space is one-dimensional by AD.3. A positive raising operator kills the highest vector. A lowering operator for a positive root \(\gamma\) starts a rank-one string of length
+\[
+m=\lambda(H_\gamma)
+  =\frac{2(\lambda,\gamma)}{|\gamma|^2}\in\mathbb Z_{\geq0}.
+\tag{AF.48}
+\]
+Because \(\lambda\) is short, Cauchy–Schwarz, proved in [Local tools for bundles and transport, Lemma 0.0](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations), gives \(m\leq2\), and equality can hold only if \(\gamma=\lambda\). Indeed it is strict if \(\gamma\) is long; if both are short, equality forces them equal. For \(m=0\) the lowering operator vanishes. For \(m=1\) its output is on the reflected extremal line of weight \(s_\gamma\lambda=\lambda-\gamma\). For \(m=2\), \(\gamma=\lambda\), and the string has weights \(\lambda,0,-\lambda\). We have proved: a root operator on an extremal short-root line gives another such line, zero, or a vector of weight zero; the latter occurs only for the opposite root direction.
+
+Let \(Q\) be the direct sum of the short-root lines, and let \(Z\) be the span of \(F_\beta v_\beta\) for short roots \(\beta\), where \(v_\beta\) spans the line of weight \(\beta\) and \(F_\beta\) means an operator in the root space \(-\beta\). We show that \(Q+Z\) is invariant. Cartan operators preserve \(Q\) and kill \(Z\); root operators preserve \(Q+Z\) on \(Q\) by the preceding paragraph. For a root operator \(X_\alpha\) and \(z_\beta=F_\beta v_\beta\), write
+\[
+X_\alpha z_\beta
+=[X_\alpha,F_\beta]v_\beta+F_\beta X_\alpha v_\beta.
+\tag{AF.49}
+\]
+If \(\alpha=\beta\) or \(-\beta\), the rank-one string puts the result in the line of weight \(\alpha\). Otherwise \(X_\alpha v_\beta\), if nonzero, lies on an extremal short-root line; applying \(F_\beta\) to it again stays in \(Q+Z\). The bracket is zero or a root operator, so its action on \(v_\beta\) also lies there. Both terms have weight \(\alpha\ne0\), so in fact they belong to \(Q\). This proves invariance. It contains the highest vector, and irreducibility gives \(W=Q\oplus Z\). Thus there are no additional nonzero weights and no additional multiplicities.
+
+We next bound \(\dim Z\) from above by the number of short simple roots. The simple negative root vectors generate the whole negative-root algebra. To verify this, let \(\gamma\) be a nonsimple positive root. The descent argument in AD.5 supplies a simple \(\alpha_i\) with \(\gamma-\alpha_i\) positive and a root. AD.4 says the bracket of the two root lines \(-\alpha_i\) and \(-(\gamma-\alpha_i)\) is the nonzero line \(-\gamma\). Induction on the positive integral height proves the generation assertion. AD.6's negative-word spanning therefore becomes spanning by words in the simple negative generators.
+
+A word that ends at weight zero has a leftmost factor \(F_{\alpha_i}\) whose input has weight \(\alpha_i\). That input space is zero unless \(\alpha_i\) is short, and is one-dimensional when it is short. Sorting all words by that leftmost factor gives
+\[
+W_0=\sum_{\alpha_i\ \mathrm{short}} F_{\alpha_i}W_{\alpha_i},
+\qquad \dim W_0\leq\#\{\text{short simple roots}\}.
+\tag{AF.50}
+\]
+There is at least one zero vector: the rank-one string of the highest short root has highest eigenvalue two. For \(B_n\) and \(G_2\) there is only one short simple root, so their multiplicity is exactly one.
+
+For \(C_n\), consider the closed subsystem
+\[
+R'=\{e_i-e_j:i\ne j\},
+\tag{AF.51}
+\]
+of type \(A_{n-1}\). Its root spaces and coroot span form a compact complexified subalgebra: the bracket rule in AD.3 and the coordinate root list show closure, and compact conjugation preserves it. Its root-space description and simple-ideal proof are those of AE.1. The extremal line of weight \(e_1-e_n\) is a highest-vector line for this subalgebra. Raising by any positive root \(e_i-e_j\), \(i<j\), gives neither zero nor a short root in the \(C_n\) weight set just proved: cancellation to a difference would require \(j=1\) or \(i=n\), both impossible. Hence every such raising operator kills that line. Its restricted highest weight is the highest root of \(A_{n-1}\).
+
+Decompose the restricted unitary module into irreducibles by AD.1. A nonzero component of this highest vector generates an irreducible module of that highest weight. By AD.6 it is isomorphic to the adjoint module of this very subalgebra, whose highest weight and zero multiplicity \(n-1\) were proved in AE.6. More explicitly, the cyclic module generated by the chosen vector is one copy even if several identical summands occur: choose one nonzero component, identify all other nonzero components with it by AD.6 with their highest vectors matched, and the generated module is the image of the resulting diagonal intertwiner.
+
+Every full Cartan weight of that cyclic module is \(e_1-e_n\) plus an integral combination of roots in (AF.51), so it lies in their real span. A weight in that span vanishing on its coroot span is zero, by positive definiteness. The \(n-1\) restricted zero-weight vectors therefore have full weight zero. This proves \(\dim W_0\geq n-1\), and (AF.50) gives equality.
+
+For \(F_4\), its two short simple roots
+\[
+\alpha_3=e_4,\qquad
+\alpha_4=\tfrac12(e_1-e_2-e_3-e_4)
+\tag{AF.52}
+\]
+span a closed \(A_2\) root subsystem with roots
+\(\pm\alpha_3,\pm\alpha_4,\pm(\alpha_3+\alpha_4)\).
+To check that these are all roots in their plane, note that the first three coordinates of a vector in it are proportional to \((1,-1,-1)\). Among the \(F_4\) coordinate roots, an axis vector in that plane must be \(\pm e_4\), no long root can have that pattern, and a half-root must be \(\pm\alpha_4\) or \(\pm(\alpha_3+\alpha_4)\). All six are short. The extremal line of weight \(\alpha_3+\alpha_4\) is killed by the positive-root operators of this subsystem, since adding any of its three positive roots gives neither zero nor a short root. Its cyclic module is the adjoint \(A_2\) module by the same complete-reducibility and highest-weight uniqueness argument. Its two restricted zero vectors have full weight zero, because all generated weights lie in this two-dimensional root plane. Thus \(\dim W_0\geq2\), matching (AF.50).
+
+Finally count the short roots in AE.3 and AE.5: \(2n\) for \(B_n\), \(2n(n-1)\) for \(C_n\), \(24\) for \(F_4\), and \(6\) for \(G_2\). Adding the zero multiplicities proves (AF.46). The \(C_n\) weight \(\omega_2=e_1+e_2\) and \(F_4\) weight \(\omega_4=e_1\) in (AF.45) are exactly these highest short roots. Their zero multiplicities exceed one in the indicated ranks, contrary to AF.5, so they are excluded. □
+
 ## Further reading
 
 - Andrew Clarke and Bianca Santoro, [*Holonomy Groups in Riemannian Geometry*, arXiv:1206.3170v1](https://arxiv.org/abs/1206.3170v1), §4.2, especially Propositions 4.2.1 and 4.2.3, for the relation between invariant subspaces and local metric products; the chapter “Irreducible Riemannian Groups”, sections on Sp(n) and Sp(n)Sp(1), for the quaternionic representations. Section Y gives their scalar arithmetic, matrix models, actions, kernels and identifications.
@@ -6016,7 +6499,7 @@ For the adjoint assertion, AE.1 proves that the complexification of the compact 
 
 - Marco Castrillón López, Pedro M. Gadea and Ihor Mykytyuk, [*The canonical 8-form on manifolds with holonomy group Spin(9)*, arXiv:0911.1079v1](https://arxiv.org/abs/0911.1079v1), §§2.1 and 4, for the octonionic Clifford operators and the curvature expression. AB.1–AB.3 prove the group construction, the required curvature-space bound and the parallel-curvature conclusion.
 
-- Claudio Gorodski and Gudlaugur Thorbergsson, [*Representations of compact Lie groups and the osculating spaces of their orbits*, arXiv:math/0203196v1](https://arxiv.org/abs/math/0203196v1), the representation-type discussion at the start of §4 and Appendix A, root coordinates and bases. AC.1–AC.2 give full algebraic proofs of the three representation-type alternatives. AE verifies all the root coordinates used here, their axioms, simple bases and highest-root bounds.
+- Claudio Gorodski and Gudlaugur Thorbergsson, [*Representations of compact Lie groups and the osculating spaces of their orbits*, arXiv:math/0203196v1](https://arxiv.org/abs/math/0203196v1), §4, the representation-type, lowering-degree and first-order tangent arguments, and Appendices A–B, root cascades and degrees. AC.1–AC.2 give full algebraic proofs of the three representation-type alternatives. AE verifies all the root coordinates used here, their axioms, simple bases and highest-root bounds. AF gives the complete cascade, type, exact-degree and tangent proofs, derives all necessary highest weights, and proves the zero-weight multiplicities used to exclude the remaining highest-short-root cases.
 
 - Linus Kramer, [*Two-transitive Lie groups*, author-hosted article](https://www.uni-muenster.de/AGKramer/linuspub/23.pdf), Corollary 6.2. AC.3–AC.6 prove the semisimple-transitivity reduction and the central-extension alternatives; AC.5 gives the sphere exactness argument in full.
 

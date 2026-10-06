@@ -1,6 +1,6 @@
 # Measurable fields of Hilbert spaces and their direct integrals
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by Claude Opus 5.5 (Anthropic), September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A direct integral of Hilbert spaces is a continuous version of a direct sum. One attaches a Hilbert space \(H(\gamma)\) to each point \(\gamma\) of a measure space and forms the space of square-integrable sections \(\gamma\mapsto\xi(\gamma)\in H(\gamma)\). When all fibres equal one separable space \(\mathcal K\), this is \(L^2(\Gamma,\mu;\mathcal K)\). When the base is countable, it is a weighted direct sum. Direct integrals are the standard tool for decomposing representations and von Neumann algebras into simpler pieces. The spectral theorem, for instance, can be stated this way: a self-adjoint operator on a separable Hilbert space is unitarily equivalent to multiplication by the variable on a direct integral of Hilbert spaces over its spectrum.
 

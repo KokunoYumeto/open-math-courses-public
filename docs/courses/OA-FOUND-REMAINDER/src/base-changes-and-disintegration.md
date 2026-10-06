@@ -1,6 +1,6 @@
 # Base changes and disintegration
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A direct integral describes an operator separately over each point of a measure space. The base itself is encoded by the diagonal multiplication operators. On a standard base, an isomorphism of these diagonal algebras recovers a change of variables outside null sets. After that change of variables, a unitary intertwining the diagonal algebras is a measurable family of fibre unitaries. This gives the precise uniqueness statement for disintegration.
 

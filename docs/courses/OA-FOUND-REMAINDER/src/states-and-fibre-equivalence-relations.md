@@ -1,6 +1,6 @@
 # States and fibre equivalence relations
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 An orthogonal representing measure realizes the GNS representation as the full direct integral of the GNS representations of its states. The diagonal algebra then records which components are irreducible or factorial. A related question concerns the relation “these two fibre representations are unitarily equivalent.” We prove that this relation is independent, outside one common null set, of both the separable algebra used to describe a commutant and the faithful normal representation used for the ambient von Neumann algebra.
 

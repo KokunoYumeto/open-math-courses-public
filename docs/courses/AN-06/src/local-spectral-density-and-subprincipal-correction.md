@@ -6,7 +6,7 @@
 
 A short-time wave kernel contains the high-frequency spectral density. Its leading coefficient measures a cotangent sublevel set. The next coefficient also sees the subprincipal symbol and, before taking a spatial trace, the order of the two operators. We compute both coefficients, keeping the sign of the Fourier phase visible throughout.
 
-Hörmander's freely accessible spectral-function article [HS, Section 4] gives the passage from a short-time kernel to spectral asymptotics; its equation (4.12) is the amplitude expansion specialized below. We derive the scalar subprincipal and bracket terms here. Avetisyan, Fang and Vassiliev [AFV, Sections 2–3] provide a comparison for first-order systems, whose additional eigenvector terms must be retained in that setting. Guillemin and Sternberg [GS] supply a semiclassical comparison; the freely readable [DG] article provides the classical spectral setting. Our proof uses the small-time phase and complete amplitude recursion in [Wave evolution and cotangent flow, Sections 3–5](wave-evolution-and-cotangent-flow.md), with the finite parameter remainders proved in [Scalar transport and finite action on a phase, (T1)–(T12)](../providers/analysis/scalar-transport-and-phase-action.md#finite-phase-action). It uses the scalar half-density subprincipal rule in [Classical scalar symbols, summation and regularity, (FC9)–(FC15)](../providers/analysis/classical-scalar-calculus.md#scalar-coordinate-change), and the actual [qualified-pullback proof](../providers/analysis/wavefront-qualified-pullback.md#qualified-pullback) for the diagonal. The one-dimensional amplitude reduction is proved explicitly in Section 4. 
+Hörmander's spectral-function article [HS, Section 4] gives the passage from a short-time kernel to spectral asymptotics; its equation (4.12) is the amplitude expansion specialized below. We derive the scalar subprincipal and bracket terms here. Avetisyan, Fang and Vassiliev [AFV, Sections 2–3] provide a comparison for first-order systems, whose additional eigenvector terms must be retained in that setting. Guillemin and Sternberg [GS] supply a semiclassical comparison; the [DG] article provides the classical spectral setting. Our proof uses the small-time phase and complete amplitude recursion in [Wave evolution and cotangent flow, Sections 3–5](wave-evolution-and-cotangent-flow.md), with the finite parameter remainders proved in [Scalar transport and finite action on a phase, (T1)–(T12)](../providers/analysis/scalar-transport-and-phase-action.md#finite-phase-action). It uses the scalar half-density subprincipal rule in [Classical scalar symbols, summation and regularity, (FC9)–(FC15)](../providers/analysis/classical-scalar-calculus.md#scalar-coordinate-change), and the actual [qualified-pullback proof](../providers/analysis/wavefront-qualified-pullback.md#qualified-pullback) for the diagonal. The one-dimensional amplitude reduction is proved explicitly in Section 4. 
 
 Let \(X\) be compact, connected and without boundary, with dimension \(n\geq2\). Let \(P\) be the scalar symmetric classical elliptic operator of order one on half densities from the wave lesson, with positive principal symbol \(p\). Its self-adjoint domain is \(H^1\). Write
 \[
@@ -21,6 +21,8 @@ We distinguish an ordinary symbol from a classical expansion. An ordinary \(S^m\
 \tag{1}
 \]
 on compact coordinate sets. A classical symbol has, in addition, an expansion in homogeneous terms of degrees \(m,m-1,\ldots\). A primitive of a classical symbol can contain a logarithm. This distinction will matter in dimension two.
+
+<a id="density-energy-integrals"></a>
 
 ## 1. The two invariant symbols and an energy integral
 
@@ -62,6 +64,8 @@ I_g(y,\lambda)=\lambda^{n+d}I_g(y,1).
 \]
 The positive ellipticity of \(p\) makes its unit sublevel set bounded, and the degree assumption gives integrability at zero. In particular, \(I_b\) has degree \(n\), \(I_{b_s}\) has degree \(n-1\), and both \(I_{p_sb}\) and \(I_{\{b,p\}}\) have degree \(n\).
 
+<a id="density-divergence"></a>
+
 **Integration facts used below.** The [coordinate and surface proof, (CI4)–(CI7)](../providers/analysis/coordinate-inverses-and-integration.md#surface-coordinates), supplies change of variables, area and regular-level coarea. In general dimension its polar Jacobian is $r^{n-1}$: in a local unit-sphere chart the radial derivative is the unit normal, perpendicular to the angular derivatives, and each of the $n-1$ angular columns gains a factor $r$. The determinant and Gram-area formulas therefore give $d\eta=r^{n-1}dr\,d\omega$. This proves the polar formula used here in every dimension.
 
 We also need the divergence theorem, which can be proved with these same inputs. For a smooth vector field $V$ supported in a boundary chart where the domain is $z_n<h(z')$, the fundamental theorem gives
@@ -71,6 +75,8 @@ We also need the divergence theorem, which can be proved with these same inputs.
  \quad(j<n).
 \]
 For the second equality, differentiate the variable-upper-limit integral of $V_j$ and integrate its compactly supported total derivative in $z_j$. Their sum is $\int_{\partial D}V\cdot\nu\,dS$, because the outward area-normal is $(-\nabla h,1)\,dz'$. An orthogonal coordinate change gives each boundary graph; local inversion supplies it. A finite smooth partition reduces a compact smooth domain to these charts and interior charts. Interior derivative integrals vanish by the fundamental theorem, and the terms differentiating the partition cancel because its sum is one. This proves the formula on such domains, including annuli. In canonical cotangent charts the same calculation uses $dy\,d\eta$; its invariance and the same partition cancellation give the compact-manifold version. Complex vector fields are handled by their real and imaginary parts. Every later use below is on a compact annulus away from the zero covector, with its omitted inner flux estimated explicitly.
+
+<a id="density-moving-boundary"></a>
 
 ## 2. A moving energy boundary
 
@@ -135,6 +141,8 @@ The surface is regular since Euler's identity gives \(p_\eta\cdot\eta=p>0\). The
 
 Finally a homogeneous component of \(f\) of degree \(-n\) contributes a multiple of \(\lambda^{-1}\) to (9). Its primitive is a multiple of \(\log\lambda\). A smooth cutoff of \(|\eta|^{-n}\) is a direct example. Thus \(F_\lambda\) has a classical expansion even when \(F\) does not. ∎
 
+<a id="density-small-time-phase"></a>
+
 ## 3. A phase adapted to small time
 
 For small time the flow \((x,\xi)=\chi_t(y,\eta)\) can be parametrized by \((t,x,\eta)\). Indeed \(x=y\) at zero, so its derivative with respect to \(y\) is the identity there. The inverse function theorem and compact normalized cotangent patches give a common small time on each fixed chart piece.
@@ -164,7 +172,7 @@ The right side defines a smooth degree-one \(\mu\) through \(t=0\). Differentiat
 \]
 These identities give exactly (7). For sufficiently small time, \(\mu\) remains positive.
 
-The preceding wave lesson constructs the amplitude directly with no input-base dependence: solve its finite recursion (T11) with initial amplitude one, and solve every lower transport equation with initial value zero, then use its differentiated cutoff sum and smooth-residual argument. For an inner coordinate patch, compactness of the unit frequency sphere gives a common small time for the inverse base map above and for all its differentiated estimates. The phase $\psi=\eta\cdot y(t,x,\eta)$ is the same on angular overlaps, so the finitely many angular amplitudes sum in this one phase. Base cutoffs equal to one around the corresponding short trajectories affect the kernel on the smaller patch only by smooth terms, by the proved nonstationary estimates. Thus no unproved input-variable amplitude reduction is needed: that actual construction gives, modulo a jointly smooth kernel,
+The preceding wave lesson constructs the amplitude directly with no input-base dependence: solve its finite recursion (T11) with initial amplitude one, and solve every lower transport equation with initial value zero, then use its differentiated cutoff sum and smooth-residual argument. For an inner coordinate patch, compactness of the unit frequency sphere gives a common small time for the inverse base map above and for all its differentiated estimates. The phase $\psi=\eta\cdot y(t,x,\eta)$ is the same on angular overlaps, so the finitely many angular amplitudes sum in this one phase. Base cutoffs equal to one around the corresponding short trajectories affect the kernel on the smaller patch only by smooth terms, by the proved nonstationary estimates. The resulting amplitude is independent of the input base variable and gives, modulo a jointly smooth kernel,
 \[
 K_E(t,x,y)=(2\pi)^{-n}
 \int e^{i(\psi(t,x,\eta)-y\cdot\eta)}
@@ -186,6 +194,8 @@ In particular,
 \tag{14}
 \]
 This calculation uses the exact left symbol at the initial time; it does not replace that symbol by its principal part.
+
+<a id="density-amplitude-reduction"></a>
 
 ## 4. Remove time from the amplitude
 
@@ -231,6 +241,8 @@ The first sign can be checked directly:
 \(t e^{-it\lambda}=i\partial_\lambda e^{-it\lambda}\).
 Integration by parts therefore puts \(-i\partial_\lambda\) on the amplitude. A smooth compactly supported remainder in \(t\) contributes a rapidly decreasing \(q^\sharp\).
 
+<a id="density-primitive-remainder"></a>
+
 Apply (15) to \(q=F_\lambda\) from Lemma 2.1. It gives a classical symbol of order \(n-1\) and
 \[
 q^\sharp
@@ -254,6 +266,8 @@ where \(R\in S^{n-2}\) when \(n\geq3\). In dimension two it instead satisfies
 for \(\lambda\geq1\). Thus \(R\in S^\varepsilon\) for every \(\varepsilon>0\), and \(R=o(\lambda)\). The normalization adds a smooth density independent of \(\lambda\), compatible with these bounds.
 
 These estimates follow just by integrating a symbol of order \(n-3\). At \(n=2\) that order is \(-1\), whose integral can grow logarithmically. The derivative formulation (16) retains its ordinary symbol order in every dimension considered here.
+
+<a id="density-local-coefficients"></a>
 
 ## 5. The local coefficient calculation
 
@@ -350,6 +364,8 @@ All terms \(b,b_s,p_s,\{b,p\}\) are invariant scalar cotangent symbols. The symp
 
 The function \(A\) is a smooth high-frequency model for a time-localized spectral density. It is not the step function of the actual spectral projection. Passing from this local model to an unsmoothed counting estimate requires a separate Tauberian argument.
 
+<a id="density-trace"></a>
+
 ## 6. A trace and a logarithm
 
 The bracket term disappears after integrating over the whole compact manifold:
@@ -372,6 +388,8 @@ Thus a primitive for the distributional trace has its first two terms
 \]
 For \(B=I\), the principal term is cotangent volume and the next is the derivative of the integrated subprincipal symbol.
 
+<a id="density-torus-multipliers"></a>
+
 **The torus multipliers used in the examples.** We justify their local symbols. For $a(\eta)\in S^r(\mathbb R^n)$, let $k_a$ be its inverse Fourier distribution. Away from zero it and all its derivatives decrease faster than every power of the spatial distance at infinity. To see this, integrate repeatedly in $\eta$ using $z\cdot\partial_\eta/(i|z|^2)$; after more than $r+n$ transfers the differentiated symbol is integrable, and further transfers give any required inverse power of $|z|$. The same argument after a fixed $z$ derivative starts from a symbol of a correspondingly higher finite order and still works. Frequency cutoffs justify the limit by the Fourier distribution construction.
 
 The periodization $\sum_{m\in\mathbb Z^n}k_a(z+2\pi m)$ therefore converges as a periodic distribution. Near $z=0$ its terms with $m\ne0$ sum to a smooth function with every derivative, by the just-proved summable bounds. Its local kernel is consequently the ordinary pseudodifferential kernel with symbol $a$, modulo smooth terms. Its coefficient on the Fourier mode $e^{ik\cdot x}$ is $a(k)$: unfold the fundamental cell in the distributional pairing to $\mathbb R^n$ and use Fourier inversion. More explicitly, insert a growing smooth spatial cutoff in that unfolded pairing; its Fourier transform is an approximate identity at $k$, whose convolution with the smooth polynomially bounded $a$ tends to $a(k)$. The rapid kernel tails justify removing the cutoff. This proves the claimed multiplier and local-symbol identity with normalization $(2\pi)^{-n}$.
@@ -381,6 +399,8 @@ For completeness these modes span $L^2$ on the torus. In one variable the nonneg
  F_N(x)=\frac1N\left|\sum_{j=0}^{N-1}e^{ijx}\right|^2
 \]
 has integral $2\pi$, by integrating its finite expansion, and satisfies $F_N(x)\le [N\sin^2(x/2)]^{-1}$ off zero, by summing the geometric series. Its normalized convolution therefore tends uniformly to every continuous periodic function: split the integral into a small neighborhood where uniform continuity applies and its complement, whose mass tends to zero. Products of these kernels prove the same assertion in $n$ variables. The resulting convolutions are trigonometric polynomials. Continuous functions are dense in $L^2$ by the earlier compact smooth-approximation argument, so the modes are complete. In particular, bounded real multipliers are symmetric and bounded with norm at most the supremum of their mode values. These arguments supply the multiplier facts used both here and in Solution 7.4.
+
+<a id="density-logarithm"></a>
 
 **Example 6.1 (the two-dimensional logarithm).** Take a flat two-dimensional torus. Choose a positive scalar Fourier multiplier \(P\) whose symbol equals \(|\eta|\) for \(|\eta|\geq2\). Choose the order-\(-2\) multiplier \(B\) with symbol
 \[
@@ -411,6 +431,8 @@ A bounded \(S^0\) primitive is impossible. This example explains why the dimensi
 ### Use the conclusion
 
 Follow the Fourier-phase sign through the local calculation and separate the local coefficient from its spatial trace. Compare the moving energy boundary with the later boundary-wall calculation: they measure different boundaries.
+
+<a id="density-solutions"></a>
 
 ## 7. Exercises and complete solutions
 
@@ -499,13 +521,13 @@ It can be imaginary because the diagonal of \(E(t)B\) is not the diagonal of a s
 
 In dimension two, \(\log\lambda=o(\lambda)\), so the logarithmic primitive remainder is smaller than the second-term scale \(\lambda^{n-1}=\lambda\). It corrects a symbol-order assertion without changing the scale of a subsequent two-term counting result. It supplies no missing Tauberian estimate.
 
-**Comparison with the systems formula.** Theorems 2.1 and 3.1 in [AFV] concern a first-order differential operator with a Hermitian matrix principal symbol and simple eigenvalues. Its branches carry normalized eigenvectors; the second coefficient includes their derivatives and curvature as well as the projected subprincipal symbol. Those hypotheses and terms are essential. The review's two theorems refer to earlier proofs, so they are not a stand-alone proof of our scalar theorem. Equations (23)–(26) above derive our coefficient for an arbitrary scalar inserted operator, including its local Poisson bracket, directly. For \(B=I\), spatial integration removes that bracket and leaves precisely the scalar subprincipal contribution. This is the appropriate point of comparison with the systems result.
+**Comparison with the systems formula.** Theorems 2.1 and 3.1 in [AFV] concern a first-order differential operator with a Hermitian matrix principal symbol and simple eigenvalues. Its branches carry normalized eigenvectors; the second coefficient includes their derivatives and curvature as well as the projected subprincipal symbol. Those hypotheses and terms are essential. Equations (23)–(26) above derive our coefficient for an arbitrary scalar inserted operator, including its local Poisson bracket, directly. For \(B=I\), spatial integration removes that bracket and leaves precisely the scalar subprincipal contribution. This is the appropriate point of comparison with the systems result.
 
 The primitive estimate in [AFV, equation (3.7)] has a logarithmic remainder in dimension two. Our polar integration proves the same mechanism: an order \(-1\) derivative integrates to a logarithm. It justifies retaining (18) while (20) still has its claimed classical derivative order. Hörmander's Theorem 4.4 supplies the leading unsmoothed local remainder, and Theorem 4.5 treats Riesz means. Neither statement alone identifies our explicit scalar second coefficient or removes the return-time hypothesis needed for an unsmoothed two-term count.
 
 ## References
 
 - [HS] Lars Hörmander, “The spectral function of an elliptic operator,” *Acta Mathematica* 121 (1968), 193–218. Section 4, especially equation (4.12) and Theorems 4.4–4.5. [Full article](https://projecteuclid.org/journalArticle/Download?urlid=10.1007%2FBF02391913).
-- [AFV] Zhirayr Avetisyan, Yan-Long Fang and Dmitri Vassiliev, *Spectral asymptotics for first order systems*, arXiv:1512.06281v2 (2016). Sections 2–3; a review with its proof references identified in the text. [Author preprint](https://arxiv.org/abs/1512.06281v2).
+- [AFV] Zhirayr Avetisyan, Yan-Long Fang and Dmitri Vassiliev, *Spectral asymptotics for first order systems*, arXiv:1512.06281v2 (2016). Sections 2–3. [Author preprint](https://arxiv.org/abs/1512.06281v2).
 - [GS] Victor Guillemin and Shlomo Sternberg, *Semi-classical analysis*, author text dated April 25, 2012. Introduction Section 0.5, printed pages xi–xii, for the semiclassical functional-calculus and trace comparison. [Author PDF](https://people.math.harvard.edu/~shlomo/docs/Semi_Classical_Analysis_Start.pdf).
 - [DG] Johannes J. Duistermaat and Victor W. Guillemin, “The spectrum of positive elliptic operators and periodic bicharacteristics,” *Inventiones Mathematicae* 29 (1975), 39–79. Introduction for the classical positive-elliptic and wave-trace setting. [Freely readable complete GDZ scan](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0029/LOG_0010.pdf).

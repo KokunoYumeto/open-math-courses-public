@@ -1,6 +1,6 @@
 # Monotone approximation and semicontinuous operators
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 Lower semicontinuity on the quasi-state space has an operator interpretation: the element is a norm limit of bounded increasing limits from the original algebra. More precisely, every positive scalar shift of it is already one such increasing limit. The scalar shift matters for a nonunital algebra, where negative multiples of the bidual identity need not have this property.
 

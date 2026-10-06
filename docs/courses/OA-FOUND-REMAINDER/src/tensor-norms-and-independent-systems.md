@@ -1,6 +1,6 @@
 # Tensor norms and independent systems
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 Two algebras of observables can act on separate Hilbert spaces, or they can act on one Hilbert space with commuting ranges. These constructions answer different questions. The spatial tensor product records separate actions. The maximal tensor product allows every commuting action. Their comparison is a useful way to measure independence.
 

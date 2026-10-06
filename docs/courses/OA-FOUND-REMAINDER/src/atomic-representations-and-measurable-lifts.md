@@ -1,6 +1,6 @@
 # Atomic representations and measurable lifts
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 Pure states give irreducible representations. Taking all of them together produces the universal atomic representation. It may lose a large central part of the bidual, yet it preserves both order and norm on universally measurable self-adjoint elements.
 

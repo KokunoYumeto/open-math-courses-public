@@ -4799,20 +4799,21 @@ is a compact normal \(N\subset V\) such that \(K/N\) is a compact Lie
 group.
 
 \textbf{Proof.} Finite-dimensional unitary representations separate
-points of every compact Hausdorff group, by Theorem 4.1(2) of
-\href{https://kokunoyumeto.github.io/open-math-courses/courses/representations-of-compact-groups/reader/courses/representations-of-compact-groups/matrix-coefficients-and-the-peter-weyl-theorem.html}{\emph{Matrix
-coefficients and the Peter--Weyl theorem}}. Its proof uses continuous
-convolution eigenspaces and the full compact spectral argument; it
-applies to compact groups that are not Lie. For each
-\(x\in K\setminus V\), choose such a representation whose kernel misses
-\(x\). The complements of these kernels cover the compact set
-\(K\setminus V\). A finite subcover gives a direct sum
+points of every compact Hausdorff group by
+\hyperref[separation-and-the-exact-small-kernel-consequence]{Appendix
+A, Theorem PW.7}. That proof constructs the compact convolution
+operators, their finite eigenspaces and the detecting matrix
+representation without any countability assumption on the compact group.
+For each \(x\in K\setminus V\), choose such a representation whose
+kernel misses \(x\). The complements of these kernels cover the compact
+set \(K\setminus V\). A finite subcover gives a direct sum
 \(\rho:K\to U(d)\) with kernel \(N\subset V\). The kernel is closed and
 normal, hence compact. The quotient is homeomorphic to the compact
-closed matrix subgroup \(\rho(K)\). The closed-subgroup theorem, proved
-in \emph{Invariant connections on homogeneous bundles}, Theorem 1.1,
-makes it a Lie group. If \(K\setminus V\) is empty, take \(N=K\) and the
-trivial quotient. \(\square\)
+closed matrix subgroup \(\rho(K)\). The
+\href{supporting/representations-of-compact-groups/compact-lie-foundations.html\#cpt-l-004}{closed-subgroup
+theorem, CPT-L-004}, together with the unitary-group construction
+CPT-L-005, makes it a Lie group. If \(K\setminus V\) is empty, take
+\(N=K\) and the trivial quotient. \(\square\)
 
 For a symmetric identity neighbourhood \(V\) in a group, let
 \(\mathcal Q(V)\) be the union of all subgroups contained in \(V\).
@@ -6656,6 +6657,392 @@ notation this is (3.9), now with both vertical quotient classes
 represented by genuine isomorphisms. It proves equality of the two
 descent procedures through those identifications for every cycle and
 every degree.
+
+\subsection{Appendix A. Finite-dimensional representations separate
+every compact
+group}\label{appendix-a.-finite-dimensional-representations-separate-every-compact-group}
+
+Let \(G\) be a compact Hausdorff topological group. No countability
+assumption is made on \(G\), its topology or its Hilbert spaces.
+
+\textbf{Theorem PW.7 (Peter--Weyl separation).} For every \(a\ne e\) in
+\(G\), there is an integer \(d\geq1\) and a continuous homomorphism \[
+\rho:G\longrightarrow U(d)
+\qquad\text{with}\qquad \rho(a)\ne I_d.
+\] Consequently continuous finite-dimensional unitary representations
+separate any two distinct points of \(G\).
+
+We prove the theorem through continuous convolution kernels. Along the
+way we prove uniform approximation by finite sums of matrix
+coefficients. The finite-dimensional spaces used below are subspaces of
+the regular representation; a decomposition theorem for arbitrary
+representations is not a premise.
+
+\subsubsection{1. The foundation proofs and elementary
+topology}\label{the-foundation-proofs-and-elementary-topology}
+
+Use the normalized Haar measure \(\mu\) constructed in
+\href{supporting/representations-of-compact-groups/compact-foundations.html\#cpt-f-005}{Foundations
+for compact-group averaging and coefficient approximation, CPT-F-005}.
+That proof applies to every compact Hausdorff group. It proves left and
+right invariance, invariance under inversion, and \(\mu(O)>0\) for every
+nonempty open \(O\). Its integration construction, CPT-F-003--004,
+proves scalar Cauchy--Schwarz, continuous Fubini, continuous density in
+\(L^2(G,\mu)\), and completeness of this Hilbert space. CPT-F-006 proves
+orthogonal projections, adjoints, Bessel's inequality and orthonormal
+expansions on arbitrary Hilbert spaces. These are the only measure and
+Hilbert-space foundations used here. The inner product is linear in its
+first variable.
+
+Here are the topological tools needed for continuous kernels. A compact
+subset of a Hausdorff space is closed: separate a point outside it from
+each of its points and use a finite subcover on the compact side. If
+\(x\notin B\), with \(B\) closed in compact Hausdorff \(X\), the same
+argument produces an open neighbourhood \(W_x\) whose closure misses
+\(B\). For disjoint closed \(A,B\), finitely many such \(W_x\),
+\(x\in A\), give an open \(W\) containing \(A\) with
+\(\overline W\cap B=\varnothing\). Thus \(X\) is normal. In particular,
+for closed \(A\subset O\) open there is open \(W\) with \[
+A\subset W\subset\overline W\subset O.
+\tag{PW.1}
+\]
+
+Repeatedly applying (PW.1) constructs open sets \(O_r\), indexed by
+dyadic rationals in \([0,1]\), with \(A\subset O_0\),
+\(O_1=X\setminus B\), and \(\overline O_r\subset O_s\) for \(r<s\).
+Insert one open set between each adjacent pair at every finite dyadic
+stage. The function \[
+q(x)=\inf\bigl(\{r:x\in O_r\}\cup\{1\}\bigr)
+\] equals zero on \(A\) and one on \(B\). It is continuous because \[
+\{q<t\}=\bigcup_{r<t}O_r,\qquad
+\{q>t\}=\bigcup_{r>t}(X\setminus\overline O_r)
+\quad(0\leq t\leq1).
+\] Therefore continuous functions separate points. Moreover, if
+\(A\subset O\), first shrink \(O\) as in (PW.1) and apply this
+construction with \(B=X\setminus W\). Then \(b=1-q\) is between zero and
+one, equals one on \(A\), and has support contained in
+\(\overline W\subset O\).
+
+Every finite open cover \(U_1,\ldots,U_m\) of \(X\) admits a continuous
+partition of unity with supports in these sets. For each point choose a
+shrunk neighbourhood with closure in some \(U_i\); finitely many of them
+cover \(X\). Their closed closures \(K_j\) have cutoffs \(b_j=1\) on
+\(K_j\), supported in the corresponding \(U_{i(j)}\). The sum
+\(b=\sum_jb_j\) is positive everywhere. Set \[
+\chi_i=b^{-1}\sum_{i(j)=i}b_j.
+\] Then \(\chi_i\geq0\), \(\sum_i\chi_i=1\), and
+\(\operatorname{supp}\chi_i\subset U_i\). Only finite covers and finite
+sums occur.
+
+\subsubsection{2. The regular representation and its
+continuity}\label{the-regular-representation-and-its-continuity}
+
+Put \(H=L^2(G,\mu)\). Define \[
+(L_gf)(x)=f(g^{-1}x).
+\tag{PW.2}
+\] Left invariance makes this well defined on almost-everywhere classes
+and gives \(\|L_gf\|_2=\|f\|_2\). Direct substitution gives
+\(L_gL_h=L_{gh}\) and \(L_g^{-1}=L_{g^{-1}}\), so each \(L_g\) is
+unitary.
+
+For \(f\in C(G)\), the map \((g,x)\mapsto f(g^{-1}x)\) is continuous. At
+each \((e,x)\), choose a product neighbourhood on which its difference
+from \(f(x)\), allowing the nearby \(x\)-variable too, is small.
+Finitely many of the \(x\)-neighbourhoods cover \(G\); intersect their
+identity neighbourhoods. This proves \[
+\|L_gf-f\|_\infty\longrightarrow0\quad(g\longrightarrow e).
+\tag{PW.3}
+\] For \(v\in H\), choose \(f\in C(G)\) close in \(L^2\). Then \[
+\|L_gv-v\|_2\leq2\|v-f\|_2+\|L_gf-f\|_\infty.
+\] This proves strong continuity at \(e\), and multiplication proves it
+at every \(g\). This is the neighbourhood argument of CPT-F-008, with
+its estimate displayed here; it does not replace neighbourhoods by a
+countable sequence.
+
+If a finite-dimensional \(E\subset H\) is invariant under every \(L_g\),
+it is carried onto itself because \(L_{g^{-1}}\) also preserves it.
+Choose an orthonormal basis \(u_1,\ldots,u_d\) of \(E\). The
+restrictions \(\rho_E(g)=L_g|_E\) are unitary and satisfy \[
+\|\rho_E(g)-\rho_E(g_0)\|
+\leq
+\left(\sum_{j=1}^d\|(L_g-L_{g_0})u_j\|_2^2\right)^{1/2}
+\longrightarrow0.
+\tag{PW.4}
+\] Indeed expand a unit vector in that finite basis and apply scalar
+Cauchy--Schwarz. Thus \(\rho_E:G\to U(d)\) is continuous in the usual
+matrix topology.
+
+\subsubsection{3. Continuous kernels give compact
+operators}\label{continuous-kernels-give-compact-operators}
+
+\textbf{Lemma PW.3.} For \(K\in C(G\times G)\), the formula \[
+(A_Kf)(x)=\int_G K(x,y)f(y)\,d\mu(y)
+\tag{PW.5}
+\] defines a compact operator \(H\to H\), and its image has continuous
+representatives.
+
+\textbf{Proof.} Since \(\mu(G)=1\), Cauchy--Schwarz gives
+\(\|f\|_1\leq\|f\|_2\). Thus every integral in (PW.5) is defined and \[
+\|A_Kf\|_\infty\leq\|K\|_\infty\|f\|_2.
+\tag{PW.6}
+\] The map \(x\mapsto K(x,\cdot)\) is continuous in the uniform norm. To
+see this at \(x_0\), use joint continuity around each \((x_0,y)\), take
+a finite subcover in \(y\), and intersect the neighbourhoods of \(x_0\).
+The estimate \[
+|(A_Kf)(x)-(A_Kf)(x_0)|
+\leq\|K(x,\cdot)-K(x_0,\cdot)\|_\infty\|f\|_2
+\] proves continuity of the output.
+
+Given \(\eta>0\), cover \(G\) by finitely many open \(U_i\) with centres
+\(x_i\) such that \(\|K(x,\cdot)-K(x_i,\cdot)\|_\infty<\eta\) on
+\(U_i\). Use the partition just proved and set \[
+K_\eta(x,y)=\sum_i\chi_i(x)K(x_i,y).
+\] It has uniform error at most \(\eta\). Its operator has range in the
+finite span of the \(\chi_i\), and (PW.6) gives \[
+\|A_K-A_{K_\eta}\|_{H\to H}\leq\eta.
+\tag{PW.7}
+\] Finite-dimensional bounded sets have finite \(\eta\)-nets, by bounded
+coordinate grids. Consequently the image of the unit ball by \(A_K\) has
+finite \(2\eta\)-nets. Its closure in the complete metric space \(H\)
+has the same property. Successively retaining infinitely many terms in
+one ball of each finite \(2^{-n}\)-net gives a Cauchy subsequence of any
+sequence in that closure; completeness gives its limit there. To check
+the open-cover definition of compactness, an open cover must have a
+positive number \(r\) such that each ball of radius \(r\) about a point
+of the closure lies in some member. Otherwise choose counterexample
+centres for radii \(2^{-n}\); a convergent subsequence has limit in some
+open member, and the small balls about its sufficiently late centres lie
+in that member, a contradiction. A finite \(r/2\)-net then gives a
+finite subcover. Thus \(A_K\) is compact. No tensor-density assertion
+for a general product measure, and no separability of \(H\), has been
+used. \(\square\)
+
+\subsubsection{4. Symmetric convolution approximates the
+identity}\label{symmetric-convolution-approximates-the-identity}
+
+For a symmetric open identity neighbourhood \(U=U^{-1}\), choose a
+nonnegative continuous \(b\) with \(b(e)=1\) and support in \(U\). Full
+support of \(\mu\) gives \(\int b>0\). Define \[
+h(z)=\frac{b(z)+b(z^{-1})}{2\int_G b\,d\mu}.
+\tag{PW.8}
+\] Inversion invariance proves \[
+h\geq0,\quad h(z^{-1})=h(z),\quad
+\operatorname{supp}h\subset U,\quad \int h=1.
+\] Define right convolution, with the variables in this order, \[
+(S_hf)(x)=\int_G h(y^{-1}x)f(y)\,d\mu(y)
+=\int_G h(z)f(xz^{-1})\,d\mu(z).
+\tag{PW.9}
+\] The second equality follows from \(y=xz^{-1}\), using left and
+inversion invariance. The first formula is the continuous kernel
+\(K_h(x,y)=h(y^{-1}x)\), so PW.3 proves compactness and continuous
+output.
+
+For continuous \(f\), scalar Cauchy--Schwarz for the probability
+\(h\,d\mu\) gives \[
+|S_hf(x)|^2\leq\int h(z)|f(xz^{-1})|^2\,d\mu(z).
+\] Continuous Fubini and right invariance imply
+\(\|S_hf\|_2\leq\|f\|_2\). Continuous density extends this contraction
+estimate to \(H\); the extension agrees with the kernel formula by
+(PW.6). Also \(\|S_hf\|_\infty\leq\|f\|_\infty\) on \(C(G)\). A sharper
+smoothing bound is \[
+\|S_hf\|_\infty\leq\|h\|_2\|f\|_2,
+\tag{PW.10}
+\] because \(y\mapsto h(y^{-1}x)\) has \(L^2\) norm \(\|h\|_2\).
+
+The symmetry \(K_h(x,y)=\overline{K_h(y,x)}\), continuous Fubini for
+continuous test functions, and density show that \(S_h=S_h^*\).
+Substituting \(y=gw\) in the first formula gives \[
+S_hL_g=L_gS_h.
+\tag{PW.11}
+\] The calculation first holds for continuous functions and extends by
+boundedness.
+
+Put \(T_h=S_h^2\). It is positive, compact, a contraction, and commutes
+with all \(L_g\); moreover \[
+\ker T_h=\ker S_h,\qquad
+\langle T_hv,v\rangle=\|S_hv\|_2^2.
+\tag{PW.12}
+\] For \(f\in C(G)\), the finite-cover argument used in (PW.3), now for
+\(f(xz^{-1})\), gives an identity neighbourhood \(U\) with \[
+\sup_{x\in G,z\in U}|f(xz^{-1})-f(x)|<\varepsilon.
+\] Every \(h\) as in (PW.8), supported there, satisfies \[
+\|S_hf-f\|_\infty\leq\varepsilon,\qquad
+\|T_hf-f\|_\infty\leq2\varepsilon.
+\tag{PW.13}
+\] The second bound uses \(T_hf-f=S_h(S_hf-f)+(S_hf-f)\). Thus these
+convolutions approximate each continuous function uniformly as the
+support neighbourhood shrinks. The contraction estimate and continuous
+density give the corresponding strong approximation on all of \(H\).
+There is no requirement of a countable neighbourhood basis.
+
+\subsubsection{5. The compact spectral argument on an arbitrary Hilbert
+space}\label{the-compact-spectral-argument-on-an-arbitrary-hilbert-space}
+
+We give the positive compact argument in full; it is also the exact
+elementary branch of CPT-F-007.
+
+\textbf{Lemma PW.5.} If \(T\) is positive compact on a Hilbert space,
+its nonzero eigenspaces are finite dimensional and mutually orthogonal.
+There are finitely or countably many of them. Their orthogonal sum is
+\((\ker T)^\perp\), and in the infinite case their eigenvalues tend to
+zero.
+
+\textbf{Proof.} Positivity, by minimizing
+\(\langle T(v+zw),v+zw\rangle\) in the complex scalar \(z\), gives \[
+|\langle Tv,w\rangle|^2
+\leq\langle Tv,v\rangle\langle Tw,w\rangle.
+\] Let \(r=\sup_{\|v\|=1}\langle Tv,v\rangle\). Taking the supremum over
+unit \(w\) gives \(\|Tv\|^2\leq r\langle Tv,v\rangle\) for unit \(v\).
+Hence \(r=\|T\|\). If \(r>0\), choose unit \(v_n\) with
+\(\langle Tv_n,v_n\rangle\to r\). Then \[
+\|(T-rI)v_n\|^2
+\leq r\bigl(r-\langle Tv_n,v_n\rangle\bigr)\longrightarrow0.
+\tag{PW.14}
+\] Compactness gives a convergent subsequence of \(Tv_n\); (PW.14), with
+\(r>0\), gives a convergent subsequence of \(v_n\). Its unit limit is an
+\(r\)-eigenvector.
+
+The full \(r\)-eigenspace is finite dimensional. Otherwise successive
+orthogonal choices produce unit vectors whose \(T\)-images have pairwise
+distance \(r\sqrt2\), contrary to compactness. Self-adjointness makes
+distinct eigenspaces orthogonal and their orthogonal complements
+invariant. Split off this full maximum eigenspace and repeat on its
+orthogonal complement. Either the remaining operator becomes zero after
+finitely many steps, or the selected positive eigenvalues \(r_j\)
+decrease to zero: if infinitely many were at least some \(c>0\), unit
+vectors selected from their orthogonal eigenspaces would again have
+separated images.
+
+Let \(W\) be the common orthogonal complement of the selected spaces. If
+\(T|_W\ne0\), the first argument produces its positive maximum
+eigenvalue \(r\). This would be at most every \(r_j\), impossible when
+\(r_j\to0\). Thus \(T|_W=0\). Conversely every vector in \(\ker T\) is
+orthogonal to each positive eigenspace, so \(W=\ker T\). Orthogonal
+finite partial sums converge on every vector by Bessel's inequality and
+completeness, and their remaining component is its projection onto
+\(W\). This proves the asserted sum. Only the nonzero part of this
+single compact operator is countable; the kernel and the original
+Hilbert space may be nonseparable. \(\square\)
+
+For \(T=T_h\), write its positive eigenspaces as \(E_j\), and let
+\(P_N\) project onto \(E_1\oplus\cdots\oplus E_N\). In the finite case
+take all of them once \(N\) is large enough. Equation (PW.11) makes
+every \(E_j\) invariant under every \(L_g\). PW.4 supplies continuous
+finite-dimensional unitary representations on them.
+
+These spaces consist of continuous functions, with unique continuous
+representatives. If \(v\in E_j\) and its eigenvalue is \(\lambda_j>0\),
+then \(v=\lambda_j^{-1}T_hv\) in \(L^2\), and \(T_hv\) is continuous by
+PW.3. Two continuous representatives equal almost everywhere are equal
+everywhere: their nonzero difference would be bounded away from zero on
+a nonempty open set of positive Haar measure. The same observation
+transfers the representation identities to these representatives.
+
+\subsubsection{6. Uniform approximation by matrix
+coefficients}\label{uniform-approximation-by-matrix-coefficients}
+
+\textbf{Proposition PW.6.} Finite sums of coefficients of continuous
+finite-dimensional unitary representations are uniformly dense in
+\(C(G)\).
+
+\textbf{Proof.} Fix \(h\) and \(f\in C(G)\). Since \(S_h\) is
+self-adjoint, \(S_hf\perp\ker S_h=\ker T_h\). PW.5 therefore gives \[
+P_NS_hf\longrightarrow S_hf\quad\text{in }L^2.
+\] As \(S_hT_h=T_hS_h\), \(S_h\) preserves each \(E_j\).
+Self-adjointness also preserves its orthogonal complement, so
+\(S_hP_N=P_NS_h\). Thus \[
+w_N=S_hP_NS_hf\in E_1\oplus\cdots\oplus E_N,
+\qquad
+\|T_hf-w_N\|_\infty
+\leq\|h\|_2\|(I-P_N)S_hf\|_2\longrightarrow0.
+\tag{PW.15}
+\] Combined with (PW.13), this gives uniform approximation of \(f\) by
+continuous functions belonging to finite-dimensional invariant
+subspaces.
+
+Every function \(w\) in such a subspace \(E\) is a finite sum of matrix
+coefficients. To check the inverse convention explicitly, let
+\(u_1,\ldots,u_d\) be an orthonormal basis and put \[
+R(g)_{ij}=\langle L_gu_j,u_i\rangle,\qquad
+w=\sum_j c_ju_j,\qquad \ell_i=u_i(e).
+\] Evaluation of \(L_{g^{-1}}w\) at \(e\) gives \[
+w(g)=\sum_{i,j}\ell_i c_jR(g^{-1})_{ij}
+=\sum_{i,j}\ell_i c_j\,\overline{R(g)_{ji}}.
+\tag{PW.16}
+\] The entrywise conjugate matrices \(\overline{R(g)}\) form another
+continuous unitary representation, so the last expression is a finite
+linear combination of its matrix entries. No assertion that inversion
+itself is a representation is made. Equation (PW.15) and then (PW.13)
+prove the proposition. \(\square\)
+
+\subsubsection{7. Separation and the exact small-kernel
+consequence}\label{separation-and-the-exact-small-kernel-consequence}
+
+\textbf{Proof of Theorem PW.7.} Choose \(f\in C(G)\) with
+\(f(a^{-1})\ne f(e)\), using Section 1. Then \(L_af-f\) is continuous
+and nonzero at \(e\), so full support of Haar measure gives \[
+\delta=\|(L_a-I)f\|_2>0.
+\] Choose \(h\) through (PW.13) so that \(\|T_hf-f\|_2<\delta/4\). Since
+\(\|L_a-I\|\leq2\), \[
+\|(L_a-I)T_hf\|_2>\delta/2.
+\tag{PW.17}
+\] The vector \(T_hf\) is perpendicular to \(\ker T_h\). Take a finite
+spectral sum \(v=P_NT_hf\) with \(\|T_hf-v\|_2<\delta/8\). Then \[
+\|(L_a-I)v\|_2>\delta/4.
+\tag{PW.18}
+\] If \(L_a\) were the identity on each of the finitely many \(E_j\) in
+this sum, the left side would vanish. At least one \(E_j\) therefore
+supplies a continuous unitary \(\rho_{E_j}\) with
+\(\rho_{E_j}(a)\ne I\). For distinct \(g,h\), apply this to \(h^{-1}g\);
+a homomorphism detecting that element has \(\rho(g)\ne\rho(h)\).
+\(\square\)
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={Convolution and finite spectral detection}]{figures/KT-KK-18-separation-mechanism.png}}
+
+\emph{The diagram records the two error bounds in the proof: smoothing
+retains a displacement larger than \(\delta/2\), and one finite spectral
+sum retains a displacement larger than \(\delta/4\). The spaces \(E_j\)
+are finite-dimensional eigenspaces of the one positive compact operator
+\(T_h\); their sum need not exhaust a nonseparable \(L^2(G)\). Exact
+proof: (PW.17)--(PW.18) and PW.5.}
+
+\textbf{Corollary PW.8 (small common kernels).} For every identity
+neighbourhood \(V\) in \(G\), there are finitely many continuous
+finite-dimensional unitary representations whose common kernel \(N\) is
+a compact normal subgroup contained in \(V\). Moreover \(G/N\) is
+topologically isomorphic to a closed subgroup of a finite-dimensional
+unitary group.
+
+\textbf{Proof.} Choose an open identity neighbourhood \(V_0\subset V\).
+The compact set \(G\setminus V_0\) is covered by the open sets \[
+\{g:\rho(g)\ne I\},
+\] as \(\rho\) ranges over the representations supplied by PW.7. Choose
+a finite subcover and let \(\rho\) be their direct sum. Its kernel is
+closed and normal, hence compact, and is contained in \(V_0\). If the
+complement is empty, take the trivial one-dimensional representation and
+\(N=G\).
+
+The induced map \(G/N\to\rho(G)\) is a continuous bijection. The domain
+is compact because it is a continuous quotient of \(G\); the image is
+Hausdorff. A continuous bijection from a compact space to a Hausdorff
+space is a homeomorphism: closed subsets of the domain are compact and
+have compact, hence closed, images. The image \(\rho(G)\) is compact and
+thus closed in \(U(d)\). This proves the corollary. The separate
+closed-subgroup theorem converts this matrix subgroup into a Lie group
+in Lesson 18; that Lie theorem is not needed for PW.7 or PW.8.
+\(\square\)
+
+\subsubsection{Free mathematical
+reading}\label{free-mathematical-reading}
+
+Terence Tao,
+\href{https://terrytao.wordpress.com/2011/09/27/254a-notes-3-haar-measure-and-the-peter-weyl-theorem/}{\emph{254A,
+Notes 3: Haar measure and the Peter--Weyl theorem}}, Section 2, Theorems
+6--8, gives the classical compact-convolution approach. The argument
+above supplies its continuous-kernel compactness, positive spectral
+calculation, matrix continuity and uniform approximation explicitly.
+Haar measure and the elementary Hilbert and integration foundations have
+the complete programme proofs specified in Section 1.
 
 \subsection{References}\label{references}
 

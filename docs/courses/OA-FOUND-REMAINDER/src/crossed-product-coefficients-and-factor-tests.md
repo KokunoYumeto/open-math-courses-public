@@ -1,6 +1,6 @@
 # Crossed-product coefficients and factor tests
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A crossed-product operator determines one coefficient for each group element. The coefficients recover every matrix entry, so they determine the operator uniquely. They also compute products, adjoints, expectations and the centre. Recovering the matrix is a different assertion from convergence of the operator's unordered Fourier partial sums. Those partial sums can have unbounded norms.
 

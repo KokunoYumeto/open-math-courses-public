@@ -2202,7 +2202,7 @@ The uniform estimate (10.115) bounds every coefficient by the sum of all coeffic
 
 ### Positive polynomial majorants
 
-Let \(\Omega_j=\max_{\boldsymbol m\in\mathcal M}|\omega_j(\boldsymbol m)|\), for \(1\le j<r\), and let \(\Omega_\Sigma=\sum_{j<r}\Omega_j\). For an integer \(\Omega\ge0\), define \(E_0(\Omega)=1\), and, for \(h>0\), put \(E_h(0)=0\) and \(E_h(\Omega)=\binom{\Omega+h-1}{h}\) when \(\Omega\ge1\). Use empty products and sums when \(r=1\). Define the positive polynomial
+Let \(\Omega_j=\max_{\boldsymbol m\in\mathcal M}|\omega_j(\boldsymbol m)|\), for \(1\le j<r\), and let \(\Omega_\Sigma=\sum_{j<r}\Omega_j\). For integers \(\Omega,h\ge0\), define \(E_h(\Omega)=\binom{\Omega+h}{h}\). Thus \(E_0(\Omega)=E_h(0)=1\). Put \(\Gamma_0=1\); for \(h>0\), put \(\Gamma_h=0\) if \(r=1\), and \(\Gamma_h=\binom{\Omega_\Sigma+r-2+h}{h}\) if \(r\ge2\). Use empty products and sums when \(r=1\). Define the positive polynomial
 
 \[
 \begin{aligned}
@@ -2229,7 +2229,7 @@ Let \(\Omega_j=\max_{\boldsymbol m\in\mathcal M}|\omega_j(\boldsymbol m)|\), for
 \tag{10.123}
 \]
 
-An index with \(t_0>D\), or with \(t_j>0\) and \(\Omega_j=0\), has zero scalar. The maximum in (10.123) is at least one and satisfies
+An index with \(t_0>D\) has zero scalar. If \(\Omega_j=0\), its Euler factor is \(\Delta(0;t_j)=1\), so changing that index to zero leaves the scalar unchanged. The maximum in (10.123) is at least one and satisfies
 
 \[
 \begin{aligned}
@@ -2237,16 +2237,16 @@ An index with \(t_0>D\), or with \(t_j>0\) and \(\Omega_j=0\), has zero scalar. 
 \mathcal B_I^*(X,T)&\le
 \left(\mathrm e\left(2+\frac{q^{-I}X}{k}\right)\right)^D
 \max_{\substack{u,h\ge0\text{ integers}\\u\le D,\ u+h\le T}}
-v(k)^u E_h(\Omega_\Sigma).
+v(k)^u\Gamma_h.
 \end{aligned}
 \tag{10.124}
 \]
 
-Here \(\mathcal B_I\) is (10.115); the second bound retains the division of the total order between the additive and Euler directions. For \(h>0\), one may further bound \(E_h(\Omega_\Sigma)\) by \([\mathrm e(1+\Omega_\Sigma/h)]^h\).
+Here \(\mathcal B_I\) is (10.115); the second bound retains the division of the total order between the additive and Euler directions. For \(h>0\), one may further bound \(\Gamma_h\) by \([\mathrm e(1+(\Omega_\Sigma+r-1)/h)]^h\).
 
 **Proof.** At a given real or complex \(x\), replace each factor \(q^{-I}x+a+b\) by its absolute-value upper bound \(q^{-I}X+a+b\). Expansion of the product bounds the absolute value of each coefficient by the corresponding coefficient of this polynomial with nonnegative coefficients. Its constant coefficient after division by \(k!\) is at least one: each factor \(q^{-I}X+a+b\) is at least \(b\). Consequently increasing its power from \(\ell\) to \(L\) can only increase every coefficient. Increasing \(a\) to \(k-1\) has the same property. Taking the coefficient of \(Z^{t_0}\) gives \(\mathcal C_{I,t_0}(X)\).
 
-For an integer \(\omega\) with \(|\omega|\le\Omega\), the product defining \(\Delta(\omega;t)\) gives \(|\Delta(\omega;t)|\le E_t(\Omega)\). Indeed \(|\omega+b|\le\Omega+b\), for \(0\le b<t\), and the factorial \(t!\) is retained. If \(\Omega=0\) and \(t>0\), the first factor is zero. This proves (10.123) and the asserted zero cases. Every \(\mathcal C_{I,u}(X)\) is positive. At \(X=0\), it is the prepared Taylor coefficient at the integer \(k-1\), so it is an integer by Lemma 10.28 and is at least one. The coefficients increase with \(X\). In particular the index \(\boldsymbol t=0\) proves \(\mathcal B_I^*\ge1\).
+For an integer \(\omega\) with \(|\omega|\le\Omega\), the product defining \(\Delta(\omega;t)\) gives \(|\Delta(\omega;t)|\le E_t(\Omega)\). Indeed \(|\omega+b|\le\Omega+b\), for \(1\le b\le t\), and the factorial \(t!\) is retained. When \(\Omega=0\), the Euler argument is zero and every such binomial is one. This proves (10.123), the degree-zero case and the duplicate-direction assertion. Every \(\mathcal C_{I,u}(X)\) is positive. At \(X=0\), it is the prepared Taylor coefficient at the integer \(k-1\), so it is an integer by Lemma 10.28 and is at least one. The coefficients increase with \(X\). In particular the index \(\boldsymbol t=0\) proves \(\mathcal B_I^*\ge1\).
 
 For the first inequality in (10.124), each \(\mathcal C_{I,u}(X)\) is at most \(\mathcal P_{I,X}(1)\). Bounding each of its \(k\) factors by \(q^{-I}X+2k-1+v(k)\) gives the additive part of (10.115). Put \(\Omega=\max_j\Omega_j\), with \(\Omega=0\) for an empty index set. The Euler product is at most \(\max\{1,\Omega+T\}^T\), as in Theorem 10.32. Hence this sharper maximum never exceeds the earlier one.
 
@@ -2264,11 +2264,11 @@ We prove the additive estimate used for the second inequality. For every integer
 \]
 The first comparison takes absolute values in the differentiated product. The second uses \(\binom{k\ell}{u}\le(k\ell)^u/u!\) and \(|z|+k\ge k\). The last uses the factorial bound and \(\ell^u/u!\le\mathrm e^\ell\), since this is one nonnegative term of the exponential series. Derivatives above degree \(k\ell\) are zero. Apply (10.125) with \(z=q^{-I}x+a\), multiply by \(v(k)^u\), and increase \(\ell\) to \(L\). The base \(\mathrm e(2+q^{-I}X/k)\) is greater than one. The same bound applies to \(\mathcal C_{I,u}(X)\), by using \(x=X,a=k-1,\ell=L\).
 
-Finally, \(E_h(\Omega)\) is the coefficient of \(Z^h\) in the product of \(\Omega\) copies of \(1+Z+Z^2+\cdots\). The coefficient counts distributions of \(h\) objects among \(\Omega\) slots, giving its binomial formula; for zero slots only the constant coefficient remains. Multiplying these series for \(\Omega_j\) shows that every fixed Euler product of total order \(h\) is at most \(E_h(\Omega_\Sigma)\), because it is one of the nonnegative summands of that coefficient. This proves the second inequality in (10.124). For \(h>0,\Omega_\Sigma\ge1\), its numerator product is at most \((\Omega_\Sigma+h)^h\); the factorial bound gives the further stated estimate. For \(\Omega_\Sigma=0\) the left side is zero. \(\square\)
+Finally, \(E_h(\Omega)\) is the coefficient of \(Z^h\) in the product of \(\Omega+1\) copies of \(1+Z+Z^2+\cdots\). Distributing \(h\) objects among these slots gives \(\binom{\Omega+h}{h}\). Multiplying these series over the Euler directions uses \(\Omega_\Sigma+r-1\) slots, so every fixed Euler product of total order \(h\) is at most \(\Gamma_h\): it is one of the nonnegative summands of that coefficient. For no Euler directions only order zero occurs. This proves the second inequality in (10.124). When \(h>0,r\ge2\), the numerator product for \(\Gamma_h\) is at most \((\Omega_\Sigma+r-1+h)^h\); the factorial bound gives the further estimate. When \(r=1\), its left side is zero. \(\square\)
 
 ### Averaging the initial rows
 
-Keep the data of Theorem 10.32, and write \(H=\sum_i A_i h(\vartheta_i)\). Let \(r_0\) be the number of Euler indices with \(\Omega_j>0\). The potentially nonzero prepared indices and their row count are
+Keep the data of Theorem 10.32, and write \(H=\sum_i A_i h(\vartheta_i)\). Let \(r_0\) be the number of Euler indices with \(\Omega_j>0\). The representative prepared indices after removing duplicate zero directions, and their row count, are
 
 \[
 \begin{aligned}
@@ -2308,7 +2308,7 @@ h_2(c)\le&\ \tfrac12\log N+\frac{\log|\Delta_K|}{2d}\\
 
 When \(N>M\) in Theorem 10.32, the right side of (10.128) is no larger than the right side of (10.96).
 
-**Proof.** Removed indices have identically zero scalars by Theorem 10.44, so they impose no condition on \(c\). Fixing \(t_0=u\) leaves \(r_0\) Euler indices of total order at most \(T-u\). The divider argument from Theorem 10.32 counts them as \(\binom{T-u+r_0}{r_0}\), also when \(r_0=0\). This proves (10.126).
+**Proof.** An index above the additive degree has zero scalar. An index in a zero Euler direction duplicates the row with that index set to zero, by Theorem 10.44. Removing it therefore preserves every original vanishing condition. Fixing \(t_0=u\) leaves \(r_0\) Euler indices of total order at most \(T-u\). The divider argument from Theorem 10.32 counts them as \(\binom{T-u+r_0}{r_0}\), also when \(r_0=0\). This proves (10.126).
 
 At each retained row \((s,\boldsymbol t)\), the same adelic row-norm proof as in Theorem 10.32 now uses \(\mathcal H_0(|s|;\boldsymbol t)\). At finite places the prepared scalars are still integers. The row norm is therefore at most
 \(\sqrt N\mathcal H_0(|s|;\boldsymbol t)\exp(2|s|H)\).
@@ -2342,11 +2342,404 @@ For the integer target nodes in Theorem 10.43, define, at each \(\boldsymbol t\i
 
 force every zero asserted there. The analogous assertion holds with its larger normalizing scale and lower bound \((n\mu-D)\theta-D/(p-1)\). Moreover \(\mathcal A_I^*(X,T')\le\mathcal A_I(X,T')\).
 
-**Proof.** Repeating the product-formula proof of Theorem 10.41 uses the individual scalar bound \(\mathcal H_I(X;\boldsymbol t)\) instead of \(\mathcal B_I\), with its same exact clearing exponent. Thus a nonzero value at a retained index has valuation excess at most \(\mathcal A_{I,\boldsymbol t}^*\). The analytic lower bound contradicts (10.130). Every removed index is identically zero. The larger normalizing scale gives the stated second conclusion by the same argument. Finally \(\mathcal H_I(X;\boldsymbol t)\le\mathcal B_I(X,T')\) and \(\Xi_{I,0,t_0}\le Q_I\). Taking the maximum proves the comparison with (10.119). Fractional targets still require the field or common-factor conditions of Proposition 10.42. \(\square\)
+**Proof.** Repeating the product-formula proof of Theorem 10.41 uses the individual scalar bound \(\mathcal H_I(X;\boldsymbol t)\) instead of \(\mathcal B_I\), with its same exact clearing exponent. Thus a nonzero value at a retained index has valuation excess at most \(\mathcal A_{I,\boldsymbol t}^*\). The analytic lower bound contradicts (10.130). Every removed index either has zero scalar by additive degree or duplicates a retained index by setting its zero Euler directions to zero. The larger normalizing scale gives the stated second conclusion by the same argument. Finally \(\mathcal H_I(X;\boldsymbol t)\le\mathcal B_I(X,T')\) and \(\Xi_{I,0,t_0}\le Q_I\). Taking the maximum proves the comparison with (10.119). Fractional targets still require the field or common-factor conditions of Proposition 10.42. \(\square\)
 
 These refinements retain the exact factorials, lcm, derivative orders and mean node size. To obtain a numerical logarithm estimate, their bounds and the analytic slope and order conditions must all be checked for its chosen induction parameters.
 
-## 19. Exercises with solutions
+## 19. Passing to one exponent coset
+
+The next auxiliary function is obtained by retaining one coset of the exponent set and dividing its exponent differences by \(q\). Two facts justify this step: independent root monomials separate the cosets, and an invertible affine change preserves the filtered Euler jets. The saturated Kummer theorem and the Newton reparametrization have already been proved in Theorem 10.14 and Lemma 10.30. We now combine them, retaining the coefficient field and the condition on the integer node. This is the algebraic mechanism of the coset passage in Yu's free 2013 paper, Lemma 5.4.
+
+### Separating the root monomials
+
+**Theorem 10.47 (exact coset extraction).** Let \(F\) be a characteristic-zero field, \(q\) a prime, and \(\vartheta_i\in F^\times\), \(1\le i\le r\). Choose \(\eta_i^q=\vartheta_i\), and suppose
+\([F(\eta_1,\ldots,\eta_r):F]=q^r\).
+Take a finite set \(\mathcal M\subset\mathbb Z^r\), coefficients \(A_{\boldsymbol m}\in F\), and an integer \(s\) coprime to \(q\). If \(\sum_{\boldsymbol m}A_{\boldsymbol m}\boldsymbol\eta^{s\boldsymbol m}=0\), then for each residue vector \(\boldsymbol\rho\in\{0,\ldots,q-1\}^r\),
+
+\[
+\sum_{\boldsymbol m\equiv\boldsymbol\rho\ (q)}
+A_{\boldsymbol m}\boldsymbol\vartheta^{s(\boldsymbol m-\boldsymbol\rho)/q}=0.
+\tag{10.131}
+\]
+
+**Proof.** The \(q^r\) monomials \(\boldsymbol\eta^{\boldsymbol\rho}\) span the root field over \(F\): reduce every exponent modulo \(q\), using \(\eta_i^q=\vartheta_i\ne0\), also for negative exponents. The span is closed under multiplication. Every nonzero element of this finite-dimensional span has an inverse in it: multiplication by that element is injective in the surrounding field and thus surjective on the span. Hence it is the whole root field. Its degree is \(q^r\), so these spanning monomials are a basis.
+
+Group the given sum by \(\boldsymbol\rho\). Its coefficient after factoring \(\boldsymbol\eta^{s\boldsymbol\rho}\) is exactly the expression in (10.131), an element of \(F\). Let \(\boldsymbol\rho'\) be the least nonnegative residues of \(s\boldsymbol\rho\), and put \(\boldsymbol b=(s\boldsymbol\rho-\boldsymbol\rho')/q\). Then
+\(\boldsymbol\eta^{s\boldsymbol\rho}=\boldsymbol\vartheta^{\boldsymbol b}\boldsymbol\eta^{\boldsymbol\rho'}\).
+Multiplication by \(s\) permutes the residue vectors because \(q\nmid s\). Thus grouping gives a relation among distinct basis monomials, with each grouped coefficient multiplied by the nonzero scalar \(\boldsymbol\vartheta^{\boldsymbol b}\). Every coefficient vanishes, proving (10.131). \(\square\)
+
+This argument extracts exact zeros. A large finite valuation of the sum does not by itself supply that valuation for each coset.
+
+### The next prepared family
+
+**Theorem 10.48 (coset restriction and affine jet transfer).** Take a number field \(K\), a prime \(q\ne p\), local units \(\vartheta_i\in K^\times\), and the integer Euler forms \(\omega_j(\boldsymbol m)=\sum_iC_{ij}m_i\) in (10.92). Let \(c\in K^N\setminus\{0\}\). Suppose that a field \(F\supset K\) and chosen roots \(\eta_i^q=\vartheta_i\) satisfy the degree condition of Theorem 10.47. Let \(\mathcal E\) be any set of integers coprime to \(q\). Assume that all original prepared values at
+\((s/q,\eta_1^s,\ldots,\eta_r^s)\), \(s\in\mathcal E\), vanish through total order \(T\).
+
+Choose \(\boldsymbol m_*\) at which some coefficient attains \(\delta=\min v_p(c_j)\). Retain its exponent coset, and put
+
+\[
+\begin{aligned}
+\mathcal M'&=\{(\boldsymbol m-\boldsymbol m_*)/q:
+\boldsymbol m\in\mathcal M,\ \boldsymbol m\equiv\boldsymbol m_*\ (q)\},\\
+c'_{\boldsymbol n,a,\ell}&=c_{\boldsymbol m_*+q\boldsymbol n,a,\ell},\\
+Q'(X,Y)&=\sum_{\boldsymbol n,a,\ell}c'_{\boldsymbol n,a,\ell}
+\Delta(q^{-(I+1)}X+a;k)^\ell Y^{\boldsymbol n}.
+\end{aligned}
+\tag{10.132}
+\]
+
+Then \(Q'\ne0\). Its new prepared family, with stage \(I+1\) and the same Euler matrix \(C\), vanishes at \((s,\boldsymbol\vartheta^s)\), \(s\in\mathcal E\), through the same total order \(T\).
+
+The original prepared values restricted to this coset and the new prepared values are related by the affine changes
+
+\[
+\begin{aligned}
+\Delta(qZ+\omega_j(\boldsymbol m_*);t_j)
+&=\sum_{u_j=0}^{t_j}d_{t_j,u_j}^{(j)}\Delta(Z;u_j),
+\qquad d_{t_j,t_j}^{(j)}=q^{t_j},\\
+\min_{|\boldsymbol t|\le T}v_p(\text{original coset value at }s/q)
+&=\min_{|\boldsymbol t|\le T}v_p(\text{new prepared value at }s).
+\end{aligned}
+\tag{10.133}
+\]
+
+The minimum identity includes \(\infty\) when all values are zero. The coefficients satisfy
+
+\[
+\min v_p(c'_j)=\delta,\qquad
+h_\infty(c')\le h_\infty(c),\qquad h_2(c')\le h_2(c).
+\tag{10.134}
+\]
+
+Global integrality of \(c\) is retained by \(c'\). For any convex body \(\mathcal C\) and vector \(x_0\) with \(\mathcal M\subset q^{-I}\mathcal C-x_0\), one has
+
+\[
+\begin{aligned}
+\mathcal M'&\subset q^{-(I+1)}\mathcal C-(x_0+\boldsymbol m_*)/q,\\
+\deg_{Y_i}(\text{ordinary monomial shift of }Q')
+&\le\left\lfloor
+\frac{\max_{\boldsymbol m\in\mathcal M}m_i-
+\min_{\boldsymbol m\in\mathcal M}m_i}{q}\right\rfloor.
+\end{aligned}
+\tag{10.135}
+\]
+
+Its additive degree is at most \(D=kL\).
+
+**Proof.** Fix \(s\in\mathcal E\) and a prepared index. The rational additive and Euler factors, multiplied by the coefficients \(c\), belong to \(K\subset F\). Theorem 10.47 therefore extracts a zero separately in every exponent coset. For the chosen one, factoring \(\boldsymbol\eta^{s\boldsymbol m_*}\) gives a zero with torus monomials \(\boldsymbol\vartheta^{s\boldsymbol n}\).
+
+The additive scalar at \(s/q\) is exactly
+\(v(k)^{t_0}\Theta(q^{-(I+1)}s+a;k,\ell,t_0)\).
+The old Euler argument is
+\(\omega_j(\boldsymbol m_*+q\boldsymbol n)=
+q\omega_j(\boldsymbol n)+\omega_j(\boldsymbol m_*)\).
+Lemma 10.30 gives the first line of (10.133), and both its matrix and inverse have coefficients in \(\mathbb Z[1/q]\). The product changes only to indices with \(u_j\le t_j\), keeping \(t_0\) fixed. On the finite space of indices of total order at most \(T\), it is triangular with nonzero diagonal \(q^{\sum_{j<r}t_j}\); its inverse preserves the same filtration. Every new jet is therefore a linear combination of the extracted old coset jets, proving all the claimed zeros without reducing \(T\).
+
+The factored root monomial is a local unit, since every \(\vartheta_i\) is one. The affine matrix and inverse are p-integral because \(q\ne p\). Applying the ultrametric inequality to each change shows in both directions that the minimum valuation cannot decrease. This proves the second line of (10.133). It compares the jets of an individual coset; extraction from the whole sum used exact vanishing.
+
+The selected coefficient vector is nonzero and contains a coefficient of the original minimum valuation. This proves the first assertion of (10.134). At every place its maximum norm is at most the old one; at each archimedean embedding the same is true for its Euclidean norm. Summing logarithms in the projective height definitions proves the remaining two inequalities. Coordinates of an integral vector remain integral. Distinct exponents give distinct \(\boldsymbol n\), so Lemma 10.29 proves \(Q'\ne0\), as in Proposition 10.31.
+
+For the geometric inclusion, divide
+\(\boldsymbol m+x_0\in q^{-I}\mathcal C\) by \(q\) and subtract \((x_0+\boldsymbol m_*)/q\). Each coordinate width of the retained exponent set is divided by \(q\). Multiplying \(Q'\) by the inverse of its coordinatewise least Laurent monomial makes its torus exponents nonnegative, with exactly those widths. They are integers, proving (10.135). The additive degree is unchanged. \(\square\)
+
+Figure 10.7 shows the exponent change in Theorem 10.48 for a square support at \(q=2\).
+
+![A parity coset retained and recentered into a smaller integer support](../figures/coset-descent-geometry.png)
+
+*Figure 10.7. The exact support is \(\mathcal M=\{-2,-1,0,1,2,3\}^2\). The four colors mark its four classes modulo two. Selecting \(\boldsymbol m_*=(1,0)\) retains the nine orange points \(m_1\in\{-1,1,3\},m_2\in\{-2,0,2\}\); translating by \(-\boldsymbol m_*\) and dividing by two gives \(\{-1,0,1\}^2\). The original coordinate width five becomes retained width four and then new width two, exactly as in (10.135). For odd \(s\), full root-field degree separates the four root monomials in Theorem 10.47; their exact zero sums can then be treated separately. In the selected class the common local unit is \(\boldsymbol\eta^{s\boldsymbol m_*}\), and the remaining monomials are \(\boldsymbol\vartheta^{s\boldsymbol n}\), by (10.132)–(10.133). The displayed support illustrates that algebraic transformation; it does not assert a particular coefficient vector or numerical logarithm bound. Human-source context: Yu's free2013 Lemma5.4, cited below. [Figure program](../figure_sources/coset_descent_geometry.py).*
+
+### Root-of-unity phases and the coefficient field
+
+**Corollary 10.49 (q-primary phases).** Let \(\alpha_0,\theta_1,\ldots,\theta_r\) be the saturated generators of Theorem 10.14. Choose \(\xi^q=\alpha_0\) and \(\rho_i^q=\theta_i\), and put \(F=K(\xi)\). For an integer \(P\ge1\) coprime to \(q\) and integers \(d_i\), set
+
+\[
+\vartheta_i=\theta_i^P\alpha_0^{d_i},\qquad
+\eta_i=\rho_i^P\xi^{d_i},\qquad
+[F(\boldsymbol\eta):F]=q^r,\qquad
+h(\vartheta_i)=P h(\theta_i).
+\tag{10.136}
+\]
+
+Thus Theorems 10.47–10.48 apply to these phased torus coordinates. If the \(\theta_i\) are local units and \(q\ne p\), all the displayed roots are local units. In particular one may take \(P=p^a\), \(a\ge0\).
+
+**Proof.** Theorem 10.14 gives total root degree \(q^{r+1}\), and the same proved Kummer argument for \(\alpha_0\) alone gives \([F:K]=q\). Hence \([F(\boldsymbol\rho):F]=q^r\). Clearly \(F(\boldsymbol\eta)\subset F(\boldsymbol\rho)\). Choose integers \(A,B\) with \(AP+Bq=1\); integer division gives such a pair because \(P\) and \(q\) are coprime. Then
+\(\rho_i=(\eta_i\xi^{-d_i})^A\theta_i^B\),
+giving the reverse inclusion and the degree in (10.136). The q-th power identity follows directly. A root of unity has height zero; applying the product-height inequality in both directions shows that multiplying by it preserves height. The proved power identity then gives \(h(\vartheta_i)=P h(\theta_i)\). Finally taking valuations in the defining power equations proves every unit assertion. \(\square\)
+
+The coefficient field \(F\) holds the root-of-unity phase, while the selected new coefficients and torus bases in Theorem 10.48 remain in \(K\). The next zero set consists of the stated integer nodes coprime to \(q\); extension to further nodes uses the extrapolation results, with their slope and precision conditions.
+
+## 20. Retaining the phase congruence in the next support
+
+The phase used to make a local unit close to one need not belong to the global field \(K\). A support congruence controls its powers. After division by \(q\), the congruence has either one class or \(q\) classes; in the latter case the q-primary root separates them. We prove both cases, keeping all the new coefficients in \(K\). This supplies the phase and support passage of Yu's free 2013 paper, equations (5.51)–(5.61), before the separate analytic extension to further nodes.
+
+### The congruence and its phase classes
+
+**Lemma 10.50 (division of a phase congruence).** Let \(q\) be prime, \(G_0\ge1\) an integer, and \(a\in\mathbb Z\). The congruence \(qu+a\equiv0\pmod{G_0}\) has the following solutions:
+
+\[
+\begin{aligned}
+u&\equiv-q^{-1}a\pmod{G_0},
+&&\gcd(q,G_0)=1,\\
+u&\equiv-a/q+bG_0/q\pmod{G_0},
+\quad 0\le b<q,
+&&q\mid G_0,\ q\mid a.
+\end{aligned}
+\tag{10.137}
+\]
+
+In the second case there is no solution if \(q\nmid a\), and the displayed \(q\) classes are distinct. Suppose additionally that \(\alpha_0\in K^\times\) is not a q-th power, \(\mu_q\subset K\), and \(\beta^q=\alpha_0\). Then, for every integer \(s\) prime to \(q\), the \(q\) powers \(\beta^{sb}\), \(0\le b<q\), are linearly independent over \(K\).
+
+**Proof.** If \(q\) and \(G_0\) are coprime, integer division gives integers \(A,B\) with \(Aq+BG_0=1\). Multiplication by \(A\) solves the congruence, uniquely modulo \(G_0\). If \(q\mid G_0\), reduction modulo \(q\) first forces \(q\mid a\). Put \(H=G_0/q\). The original congruence is equivalent to \(u+a/q\equiv0\pmod H\), so \(u=-a/q+bH+G_0v\) for a unique \(b\) modulo \(q\). This proves the second formula and its distinctness.
+
+The complete Kummer argument of Theorem 10.14 applied to the one independent class \(\alpha_0\) proves \([K(\beta):K]=q\). Equivalently \(1,\beta,\ldots,\beta^{q-1}\) are a basis, since their span is the field and has that degree, as proved in Theorem 10.47. Multiplication by \(s\) permutes exponents modulo \(q\); reducing \(\beta^{sb}\) by \(\beta^q=\alpha_0\) multiplies those basis elements by nonzero scalars in \(K\). This proves the asserted independence, also for negative \(s\). \(\square\)
+
+### The phased prepared values
+
+Take the saturated generators \(\alpha_0,\theta_1,\ldots,\theta_r\) of Theorem 10.14, with \(\alpha_0\) of order \(q^u\). Let \(G_0\ge1\), put \(G=q^uG_0\), and choose roots of unity and algebraic roots in a fixed embedding such that
+
+\[
+\begin{aligned}
+\zeta^{G_0}&=\alpha_0,\quad \zeta\text{ has order }G,\quad
+\xi^q=\zeta,\quad \beta=\xi^{G_0},\quad \beta^q=\alpha_0,\\
+\rho_i^q&=\theta_i,\qquad
+\gamma_i=\theta_i^P\zeta^{d_i},\qquad
+\eta_i=\rho_i^P\xi^{d_i},\qquad \eta_i^q=\gamma_i ,
+\end{aligned}
+\tag{10.138}
+\]
+
+where \(P\ge1\) is prime to \(q\), and \(d_i\in\mathbb Z\). The existence of \(\zeta\) with the specified order is a hypothesis here; Lemma 10.53 constructs it for the local residue modulus. Write \(d\cdot m=\sum_i d_i m_i\), and let \(F=K(\beta)\). Theorem 10.14 gives \([F(\boldsymbol\rho):F]=q^r\).
+
+Let \(I\ge0,k,L\ge1,T\ge0\) be integers. Let a finite nonempty \(\Lambda\subset\mathbb Z^r\) satisfy \(d\cdot\iota\equiv\varepsilon\pmod{G_0}\). Fix \(\iota_0\in\Lambda\), an integer Euler matrix \(C\), and a nonzero coefficient vector \(c\in K^N\), with \(N=kL|\Lambda|\). The fractional prepared values are
+
+\[
+\begin{aligned}
+\Psi(s/q;\boldsymbol t)=
+\sum_{\iota,a,\ell}c_{\iota,a,\ell}
+v(k)^{t_0}\Theta(q^{-(I+1)}s+a;k,\ell,t_0)
+\prod_{j<r}\Delta(C_j(\iota-\iota_0);t_j)
+\boldsymbol\eta^{s(\iota-\iota_0)} .
+\end{aligned}
+\tag{10.139}
+\]
+
+Here \(C_j(m)=\sum_i C_{ij}m_i\), the indices \(a,\ell\) retain \(0\le a<k,1\le\ell\le L\), and the sum ranges over \(\iota\in\Lambda\).
+
+**Theorem 10.51 (complete phase and support passage).** Suppose that (10.139) is zero for every \(s\) in a set \(\mathcal E\subset\mathbb Z\) prime to \(q\), and every \(|\boldsymbol t|\le T\). Put \(\delta=\min_jv_p(c_j)\), where \(q\ne p\) and the \(\theta_i\) are units in a fixed embedding into \(\mathbb C_p\).
+
+Choose \(\iota_{\min}\) at which some coefficient has valuation \(\delta\), and let \(\lambda_*\in\{0,\ldots,q-1\}^r\) represent \(\iota_{\min}-\iota_0\) modulo \(q\). First retain the exponents in this q-coset, and write
+
+\[
+\iota-\iota_0=q\lambda+\lambda_*,
+\qquad a_*=d\cdot\lambda_*,
+\qquad q\,d\cdot\lambda+a_*\equiv0\pmod{G_0}.
+\tag{10.140}
+\]
+
+If \(\gcd(q,G_0)=1\), retain this whole coset and put \(\varepsilon'=-q^{-1}a_*\pmod{G_0}\). If \(q\mid G_0\), then \(q\mid a_*\). Put \(H=G_0/q\), \(a_0=-a_*/q\), and choose the unique \(b_{\min}\in\{0,\ldots,q-1\}\) for which the \(\lambda\) corresponding to \(\iota_{\min}\) satisfies \(d\cdot\lambda\equiv a_0+b_{\min}H\pmod{G_0}\). Retain only that subclass and put \(\varepsilon'=a_0+b_{\min}H\).
+
+The resulting nonempty set \(\Lambda'\) has \(d\cdot\lambda\equiv\varepsilon'\pmod{G_0}\). Select \(\lambda_0\in\Lambda'\) corresponding to \(\iota_{\min}\), retain the same coefficients \(c'_{\lambda,a,\ell}=c_{\iota,a,\ell}\), and form
+
+\[
+\begin{aligned}
+Q'(X,Y)&=\sum_{\lambda,a,\ell}c'_{\lambda,a,\ell}
+\Delta(q^{-(I+1)}X+a;k)^\ell
+Y^{\lambda-\lambda_0},\\
+\Psi'(s;\boldsymbol t)&=
+\sum_{\lambda,a,\ell}c'_{\lambda,a,\ell}
+v(k)^{t_0}\Theta(q^{-(I+1)}s+a;k,\ell,t_0)
+\prod_{j<r}\Delta(C_j(\lambda-\lambda_0);t_j)
+\boldsymbol\gamma^{s(\lambda-\lambda_0)} .
+\end{aligned}
+\tag{10.141}
+\]
+
+Then \(Q'\ne0\), and \(\Psi'(s;\boldsymbol t)=0\) for every \(s\in\mathcal E,|\boldsymbol t|\le T\). All those values belong to \(K\), although the individual \(\gamma_i\) need not belong to \(K\). The coefficients retain global integrality when present, satisfy \(\min v_p(c'_j)=\delta\), and have \(h_\infty(c')\le h_\infty(c)\), \(h_2(c')\le h_2(c)\).
+
+If \(\Lambda\subset q^{-I}\mathcal C-x\), the uncentered support satisfies
+
+\[
+\begin{aligned}
+\Lambda'&\subset q^{-(I+1)}\mathcal C-x',
+\qquad x'=(x+\iota_0+\lambda_*)/q,\\
+\deg_{Y_i}(\text{ordinary monomial shift of }Q')
+&\le
+\left\lfloor\frac{\max_{\iota\in\Lambda}\iota_i-
+\min_{\iota\in\Lambda}\iota_i}{q}\right\rfloor,
+\qquad \deg_XQ'\le kL .
+\end{aligned}
+\tag{10.142}
+\]
+
+**Proof.** Since \(d\cdot(\iota-\iota_0)\) is divisible by \(G_0\), let \(w_\iota=d\cdot(\iota-\iota_0)/G_0\in\mathbb Z\). The torus part of an old fractional term is
+\(\boldsymbol\rho^{Ps(\iota-\iota_0)}\beta^{s w_\iota}\).
+The latter factor belongs to \(F\), while its rational prepared scalar and coefficient belong to \(K\). Over \(F\), the monomials \(\boldsymbol\rho^{Ps\lambda_*}\), one for each q-residue vector, are independent: \([F(\boldsymbol\rho):F]=q^r\) and \(Ps\) is prime to \(q\), so Theorem 10.47 supplies exactly that basis permutation. Thus every original zero separates into a zero for each first q-coset.
+
+In the selected coset, substituting (10.140) into the zero and removing the common nonzero factor \(\boldsymbol\rho^{Ps\lambda_*}\xi^{s a_*}\) gives
+\[
+\sum_{\iota\text{ in the selected coset},a,\ell}
+c_{\iota,a,\ell}\mathcal S_\iota(s;\boldsymbol t)
+\boldsymbol\gamma^{s\lambda}=0,
+\]
+where \(\mathcal S_\iota\) contains the additive scalar and the original Euler arguments. This equality holds for every specified \(s,\boldsymbol t\). Lemma 10.50 proves that the divided support has exactly the stated phase congruence when \(q\) and \(G_0\) are coprime.
+
+Suppose \(q\mid G_0\). Lemma 10.50 gives the \(q\) subclasses \(d\cdot\lambda=a_0+bH+G_0v_\lambda\). Since \(q\mid G_0\), (10.138) implies \(\zeta^H=\xi^{qH}=\beta\). Multiply the last zero by \(\zeta^{-s a_0}\). The contribution of subclass \(b\) now belongs to
+\(\beta^{sb}K\): each term is its coefficient and rational scalar times
+\(\boldsymbol\theta^{Ps\lambda}\alpha_0^{s v_\lambda}\beta^{sb}\).
+The \(q\) powers \(\beta^{sb}\) are independent by Lemma 10.50, so every subclass sum is zero. In particular the subclass containing \(\iota_{\min}\) is zero for all the specified indices, not just at one node.
+
+Remove the common local unit \(\boldsymbol\gamma^{s\lambda_0}\). The old Euler arguments are
+\[
+C_j(\iota-\iota_0)=
+qC_j(\lambda-\lambda_0)+C_j(q\lambda_0+\lambda_*).
+\]
+The shift is an integer. Applying the invertible affine binomial change of Lemma 10.30 in every Euler direction converts the extracted zeros into the new ones in (10.141). Both changes preserve the total-order cutoff, as proved in Theorem 10.48. The additive scalar is already the stage \(I+1\) scalar and is unchanged.
+
+For \(\lambda\in\Lambda'\), the integer
+\(v'_\lambda=d\cdot(\lambda-\lambda_0)/G_0\) exists. Each new torus term is
+\(\boldsymbol\theta^{Ps(\lambda-\lambda_0)}\alpha_0^{s v'_\lambda}\in K\).
+This proves the coefficient-field assertion. All roots of unity are local units, since their finite powers are one; roots of the local units \(\theta_i\) are units too. Thus every removed common torus factor is a local unit. The coefficient subset contains a coefficient of valuation \(\delta\); the projective-height and integrality assertions follow from the proved subset inequalities in Theorem 10.48. Distinct new exponents and the binomial basis in Lemma 10.29 give \(Q'\ne0\).
+
+Finally divide \(\iota+x\in q^{-I}\mathcal C\) by \(q\) and use \(\iota=\iota_0+\lambda_*+q\lambda\) to obtain the inclusion in (10.142). Centering at \(\lambda_0\) changes no coordinate width. Every retained width is at most the original width divided by \(q\), and is an integer. The monomial shift and additive bound follow as in Theorem 10.48. \(\square\)
+
+Figure 10.8 gives the exact two-class split in the case \(q\mid G_0\).
+
+![A divided support with two phase classes separated by the basis one and i](../figures/phase-congruence-split.png)
+
+*Figure 10.8. Here \(q=2,G_0=6,d=(1,1)\), and the first residue vector is \(\lambda_*=(1,1)\), so \(a_*=2\). The divided support is the eight points \(\lambda\in\{-2,-1,0,1,2\}^2\) with \(2(\lambda_1+\lambda_2)+2\equiv0\pmod6\). The original support may be taken as \(\{(0,0)\}\cup\{2\lambda+(1,1)\}\), with reference \(\iota_0=(0,0)\); every original point has coordinate sum divisible by six. Put \(K=\mathbb Q,\alpha_0=-1\), choose a primitive twelfth root \(\zeta\) with \(\zeta^6=-1\), and write \(\beta=\zeta^3=i\) in a complex embedding. The normalized phase sum at a fixed odd node is \(Z_0+i^sZ_1\), with each \(Z_b\in\mathbb Q\). When that sum is zero, independence in Lemma 10.50 forces both coefficient sums to vanish. Red points have coordinate sum \(-1\), blue points have sum \(-4\) or \(2\). The circled reference \(\lambda_0=(-1,0)\) illustrates retaining the subclass containing a coefficient of minimum valuation; its normalized phase is one. Choosing a blue reference instead gives phases in \(\{\pm1\}\), also in \(\mathbb Q\). These are exactly the congruence, extraction and field-return mechanisms of Theorem 10.51 and (10.140)–(10.142). The plotted coefficient sums are formal variables. Human-source context: Yu's free2013 equations5.51–5.59, cited below. [Figure program](../figure_sources/phase_congruence_split.py).*
+
+### The analytic branch and arithmetic height
+
+**Corollary 10.52 (the phase does not enlarge the height field).** If \(v_p(\gamma_i-1)>1/(p-1)\), choose the fractional branch
+
+\[
+\eta_i=\exp\bigl(q^{-1}\log\gamma_i\bigr),\qquad
+\rho_i^q=\theta_i,\qquad
+\rho_i^P\xi^{d_i}=\eta_i .
+\tag{10.143}
+\]
+
+Such a choice of the \(\rho_i\) exists. It identifies (10.139) with the fractional values of the corresponding logarithmic curve. At an integer node \(|s|\le X\), a nonzero new value in (10.141) satisfies
+
+\[
+\begin{aligned}
+v_p(\Psi'(s;\boldsymbol t))-\delta
+\le\frac{[K:\mathbb Q]}{ef\ln p}\biggl(&
+\min\{h_\infty(c')+\ln N',h_2(c')+\tfrac12\ln N'\}\\
+&+\ln\mathcal H_{I+1}(X;\boldsymbol t)
++\Xi_{I+1,0,t_0}\ln q
++2PX\sum_i A'_i h(\theta_i)\biggr),
+\end{aligned}
+\tag{10.144}
+\]
+
+where \(N'=kL|\Lambda'|\), \(A'_i=\max_{\lambda\in\Lambda'}|\lambda_i-\lambda_{0,i}|\), and \(\mathcal H\) uses the new integer Euler arguments in Theorem 10.44. An index above the additive degree is already zero. Every local degree in (10.144) is that of \(K\), not the degree of a field containing all individual phases.
+
+**Proof.** The exponential laws proved in Proposition 9.4 give the q-th power of the chosen \(\eta_i\) as \(\gamma_i\), since \(q\ne p\) changes no slope valuation. Begin with any root \(\rho_i^q=\theta_i\). The quotient \(\eta_i/(\rho_i^P\xi^{d_i})\) is in \(\mu_q\). Raising to \(P\) permutes that cyclic group because \(q\nmid P\); multiplication of \(\rho_i\) by the appropriate q-th root of unity therefore gives (10.143). This proves the branch identification without a further root-existence assertion.
+
+Theorem 10.51 writes each new torus term over \(K\) as a power of \(\alpha_0\) times powers of the \(\theta_i\). At every place, a root of unity has absolute value one, because its order-th power is one. Thus these phases contribute zero to every local norm bound, including the chosen p-adic place. The prepared scalar has the order-dependent archimedean bound \(\mathcal H_{I+1}\) and the rational clearing factor of Theorem 10.41. Apply its complete normalized product-formula argument over \(K\), retaining the coefficient norms and using \(|Ps(\lambda_i-\lambda_{0,i})|\le PX A'_i\). The signed torus-height sum is \(2[K:\mathbb Q]PX\sum_i A'_ih(\theta_i)\). This proves (10.144). \(\square\)
+
+### Constructing the local phase
+
+**Lemma 10.53 (lifting the residue phase and its depth).** Let \(K_{\mathfrak p}\) be the completion at the chosen prime above \(p\), with ramification index \(e\) and residue field of order \(p^f\). Suppose \(q\ne p\), and let \(\alpha_0\in K\) have order \(q^u\), \(u\ge1\). Then \(q^u\mid G=p^f-1\), and there is a primitive G-th root \(\zeta\in K_{\mathfrak p}\) such that
+
+\[
+G_0=G/q^u,\qquad
+\zeta^{G_0}=\alpha_0,\qquad
+\theta_i\zeta^{-r_i}\equiv1\pmod{\mathfrak p}
+\tag{10.145}
+\]
+
+for suitable integers \(r_i\), whenever the \(\theta_i\in K^\times\) are local units. Given a real depth target \(\vartheta\ge0\), let \(t\) be the least nonnegative integer with \(p^t>e/(p-1)\). Choose an integer \(j\ge0\) with \(p^t/e+j>\vartheta+1/(p-1)\), put \(h=t+j\), and set
+
+\[
+\begin{aligned}
+P&=p^h,\qquad d_i=-Pr_i,\qquad
+\gamma_i=\theta_i^P\zeta^{d_i},\\
+v_p(\gamma_i-1)&\ge p^t/e+j>
+\vartheta+\frac1{p-1}.
+\end{aligned}
+\tag{10.146}
+\]
+
+Thus these phases supply the required analytic branch and supernormal slope depth. This is a sufficient explicit choice of \(P\); using a smaller prescribed \(P\) in a numerical estimate requires checking its depth separately.
+
+**Proof.** We first prove the lifting assertion directly. In a complete discretely valued field, take a polynomial \(f\) with integral coefficients and an integral \(x_0\) satisfying \(v_p(f(x_0))>0\), \(v_p(f'(x_0))=0\). Define \(x_{n+1}=x_n-f(x_n)/f'(x_n)\). A finite polynomial expansion gives
+\(f(x+y)=f(x)+f'(x)y+y^2R(x,y)\) with \(R\) integral when \(x,y\) are integral. The linear terms cancel at the Newton step, so
+\(v_p(f(x_{n+1}))\ge2v_p(f(x_n))\).
+Also \(f'(x_{n+1})-f'(x_n)\) has positive valuation, leaving the derivative a unit. Every step remains integral and in the original residue class. The successive differences have valuations tending to infinity, hence form a Cauchy sequence. Completeness gives its limit, and the polynomial difference identity proves that the limit is a root. If \(x,y\) are roots in that residue class, then
+\(0=f(y)-f(x)=(y-x)(f'(x)+(y-x)R(x,y))\).
+The factor in parentheses is a unit. Therefore \(x=y\). This proves existence and uniqueness of a simple-residue lift, including the case of a zero residual error where the iteration has already stopped.
+
+Apply this to \(X^m-1\), for \(p\nmid m\). Its derivative at a unit is a unit. In particular a prime-to-\(p\) root of unity reducing to one is one, by uniqueness in that residue class. Reduction is consequently injective on all prime-to-\(p\) roots of unity. The reduction of \(\alpha_0\) has its exact order \(q^u\): a smaller order would make a nontrivial prime-to-\(p\) root reduce to one. Since the finite multiplicative residue group has order \(G\), we get \(q^u\mid G\).
+
+The group of G-th roots in \(K_{\mathfrak p}\) maps bijectively to that residue group: every nonzero residue solves \(X^G-1\) and has its unique lift. Multiplication commutes with reduction, and the finite-field cyclicity proved in Section 1 therefore gives a primitive root \(z\). Write \(\alpha_0=z^{G_0a}\) with \(q\nmid a\), since its order is \(q^u\). Let \(n=G/q^{v_q(G)}\), so \(\gcd(n,q)=1\). Choose \(a'\equiv a\pmod{q^u}\) and \(a'\equiv1\pmod n\): Bezout's identity gives a solution by varying \(a'\) among \(a+q^u b\). Then \(\gcd(a',G)=1\). The primitive root \(\zeta=z^{a'}\) has \(\zeta^{G_0}=\alpha_0\). Its reduction generates the residue group, so every \(\overline{\theta_i}\) is \(\overline\zeta^{\,r_i}\). This proves (10.145).
+
+Put \(g_i=\theta_i\zeta^{-r_i}\). Its positive valuation distance from one is at least \(1/e\), unless it is already one. The proved p-power inequality of Lesson 9 is
+\[
+v_p(g_i^{p^{a+1}}-1)\ge
+\min\{p\,v_p(g_i^{p^a}-1),\,v_p(g_i^{p^a}-1)+1\}.
+\]
+The function on the right increases with its argument. For \(0\le a<t\), the lower bound \(p^a/e\) is at most \(1/(p-1)\), by the definition of \(t\). Induction therefore gives \(v_p(g_i^{p^t}-1)\ge p^t/e>1/(p-1)\). Each further p-power adds one by the exact power law already proved in Lesson 9; if a power is one its infinite valuation satisfies the same bound. After \(j\) further steps we obtain (10.146), because \(g_i^P=\gamma_i\). Finally \(P\) is prime to \(q\), so all the root-field and phase arguments above apply. Proposition 9.4 gives \(v_p(\log\gamma_i)=v_p(\gamma_i-1)\), including the infinite value when \(\gamma_i=1\); hence these logarithmic slopes have the stated depth. \(\square\)
+
+### Filling the missing integer nodes
+
+Theorem 10.51 gives the new zeros at nodes prime to \(q\). We can now prove a precise condition for filling the remaining nodes, while keeping the height comparison over \(K\).
+
+**Corollary 10.54 (phase-sensitive q-deleted-node closure).** Take the new family (10.141), with \(\gamma_i=\exp(u_i)\), and retain the slope, projection and selected integer Euler-basis hypotheses of Corollary 10.40 at stage \(I+1\). In particular \(v_p(w_i)>\theta+1/(p-1)\), \(v_p(\mathcal L)\ge U\), and \(U-v_p(b_n)>\theta+1/(p-1)\). Let \(R\ge1,\mu\ge1,T\ge0\) be integers with \(T'=T-\mu+1\ge0\). Suppose that \(\Psi'(s;\boldsymbol t)=0\) for every \(s\in[-R,R]\cap\mathbb Z\) prime to \(q\) and every \(|\boldsymbol t|\le T\). Put
+\(n=2R-2\lfloor R/q\rfloor\),
+\(B=\lfloor\log_p(2R)\rfloor\),
+\(C_0=\max\{v_p(v(k)),v_p(b_n)\}\),
+\(M_0=\max\{B,C_0\}\), and \(D=kL\).
+For \(X\ge0\), define the nonzero-value budget
+
+\[
+\begin{aligned}
+\mathcal A_{\mathrm{ph}}(X,T')=
+\max_{\substack{|\boldsymbol t|\le T'\\t_0\le D}}
+\frac{[K:\mathbb Q]}{ef\ln p}\biggl(&
+\min\{h_\infty(c')+\ln N',h_2(c')+\tfrac12\ln N'\}\\
+&+\ln\mathcal H_{I+1}(X;\boldsymbol t)
++\Xi_{I+1,0,t_0}\ln q
++2PX\sum_iA'_ih(\theta_i)\biggr).
+\end{aligned}
+\tag{10.147}
+\]
+
+If
+
+\[
+\begin{aligned}
+U+D\theta+Lv_p(k!)&\ge n\mu\theta+2\mu M_0,\\
+(n\mu-D)\theta-Lv_p(k!)&>\mathcal A_{\mathrm{ph}}(X,T'),
+\end{aligned}
+\tag{10.148}
+\]
+
+then \(\Psi'(x;\boldsymbol t)=0\) for every integer \(|x|\le X\) and every \(|\boldsymbol t|\le T'\). In particular \(X=R\) fills all the previously omitted integer nodes in the interval. With the larger normalizing scale, the alternative sufficient pair is
+
+\[
+\begin{aligned}
+U+D\left(\theta+\frac1{p-1}\right)&\ge n\mu\theta+2\mu M_0,\\
+(n\mu-D)\theta-\frac D{p-1}&>\mathcal A_{\mathrm{ph}}(X,T').
+\end{aligned}
+\tag{10.149}
+\]
+
+If \(q\mid R\), the node count is exactly \(n=2(1-1/q)R\). For a desired order \(0\le O\le T\), the choice \(\mu=T-O+1\) makes the output order exactly \(T'=O\).
+
+**Proof.** The q-deleted input set has the stated exact count and separation cost \(\kappa=1\), by Corollary 10.35. The complete analytic proof of Corollary 10.40 at the new stage applies to the local torus coordinates \(\gamma_i\). Its normality, prepared integrality, ordinary input jets and projection estimates use those local units and their logarithmic slopes; they do not require each \(\gamma_i\) to lie in \(K\). The first line of (10.148) is its exact sufficient precision budget, with \(\kappa+1=2\). Consequently
+\[
+v_p(\Psi'(x;\boldsymbol t))-\delta
+\ge(n\mu-D)\theta-Lv_p(k!)
+\]
+at every stated integer and derivative index.
+
+The support congruence in Theorem 10.51 does put each of these integer values in \(K\). If a value were nonzero, Corollary 10.52 would bound its valuation excess above by the corresponding summand of (10.147), and hence by \(\mathcal A_{\mathrm{ph}}\). The second line of (10.148) is a strict contradiction. An index with \(t_0>D\) is already zero. This proves the full conclusion. Using the larger scale and its proved lower bound (10.114) instead proves (10.149); the two scales have their respective conclusions. Finally \(q\mid R\) gives \(\lfloor R/q\rfloor=R/q\), and the asserted order choice is the identity \(T-(T-O+1)+1=O\). \(\square\)
+
+The phase and support passage, the local phase construction and the conditional closure of the missing nodes now have complete proofs. A numerical Yu estimate still requires a verified coefficient construction and a check of the slope, order and strict height comparisons at every stage with its actual parameters.
+
+## 21. Exercises with solutions
 
 1. **Easy.** Explain exactly how nonunit bases can be reduced to unit bases. Give an example showing that the conclusion of Theorem 10.8 cannot be extended unchanged to nonunits.
 2. **Medium.** Derive (10.34) from (10.22), including the maximum in \(H\).
@@ -2385,6 +2778,16 @@ These refinements retain the exact factorials, lcm, derivative orders and mean n
 21. **Medium.** Use \(I=0,k=2,L=1,X=2,r=2,\Omega_1=1,T=2\). Compute \(\mathcal P_{0,2}(Z)\), \(\mathcal B_0^*(2,2)\), and the earlier \(\mathcal B_0(2,2)\). At \(x=2,a=1,\ell=1,\omega_1=1\), show that the three additive bounds are attained.
 
 22. **Hard.** In Corollary 10.45, take \(K=\mathbb Q,r=1,k=2,L=1,S=2,T=0\), \(\vartheta=2\), and \(\mathcal M=\{0,1,2\}\), so \(A=2\). Compute the separate-row bound (10.127) and the uniform averaged bound (10.128). Order the six columns by \((m,a)=(0,0),(0,1),(1,0),(1,1),(2,0),(2,1)\). Verify that \((2,-18,-57,36,1,0)\) is an integral kernel vector at all five nodes, and compute its two projective heights. Explain why the zero row at \(s=-2\) does not invalidate either bound.
+
+23. **Medium.** In Theorem 10.47, take \(q=2,r=1,F=\mathbb Q,\vartheta=2,\eta=\sqrt2\). Show that at \(s=2\), the coefficients \(A_0=-2,A_1=1\) give a zero total sum whose separate coset coefficients are nonzero. Give a similar example with odd \(s\) in which the full-degree hypothesis fails. Finally, at \(p=7\), use the local square root \(\eta\equiv3\pmod7\) of two to show that finite valuation precision of a total sum need not transfer to its cosets.
+
+24. **Hard.** Let \(q=2,p=3,r=2\), use one Euler argument \(\omega(\boldsymbol m)=m_1\), and retain \(m\equiv1\pmod2\), with \(m_*=1\). Compute the affine binomial change \(\Delta(2Z+1;t)\) through order two and its inverse. Verify the minimum-valuation identity on the new jet vector \((1,3,9)\). Explain why it preserves total order when combined with an unchanged additive index. Then apply Corollary 10.49 over \(K=\mathbb Q\) with \(\alpha_0=-1,\theta_1=2,\theta_2=3,P=3,d_1=1,d_2=0\): identify \(F\), the two phased roots and bases, their heights, and the root degree over \(F\).
+
+25. **Hard.** Use the divided support in Figure 10.8. Compute \(a_0,H\), both subclasses and their phase factors after multiplication by \(\zeta^s\). If a coefficient of minimum valuation belongs to \(\lambda_0=(-1,0)\), state the retained phase congruence and normalized root-of-unity factor. Explain why the subclass is chosen independently of \(s\) and the derivative index. Compare the coprime case \(q=2,G_0=5,a_*=2\).
+
+26. **Hard.** Over \(\mathbb Q_5\), apply the Newton construction to \(f(X)=X^2+1\), starting at \(x_0=2\). Compute \(x_1,x_2\), the three error valuations and the primitive fourth root \(\zeta\) modulo \(625\). Take \(K=\mathbb Q,\alpha_0=-1,q=2,\theta_1=2\), and \(g=2/\zeta\). Prove \(v_5(g-1)=1\). For the target \(\vartheta=3\), verify the choices \(t=0,j=3,P=125,d_1=-125\) in Lemma 10.53 and compute the exact valuation of \(\gamma_1-1\).
+
+27. **Medium.** In Corollary 10.54, assume the other hypotheses and \(\mathcal A_{\mathrm{ph}}(4,4)=11\). Take \(p=3,q=2,R=4,T=5,\mu=2,k=L=2,\theta=3,C_0=0\). Compute the exact input node set, \(n,B,M_0,T'\), and the least \(U\) meeting the exact first budget. State the resulting zeros. Compare both lines of the alternative larger-scale budget; explain why its first line alone does not give the same zero conclusion.
 
 **Solution 1.** Put \(q_i=v(\alpha_i)\). If \(b_1q_1\ne b_2q_2\), the ultrametric inequality gives the exact valuation \(\min(b_1q_1,b_2q_2)\), so no cancellation estimate is needed. If they are equal, choose \(\pi=p^{1/e}\) in an algebraic extension and set \(\epsilon_i=\alpha_i\pi^{-e q_i}\). The exponents \(e q_i\) are integers, the \(\epsilon_i\) are units, and
 
@@ -2530,7 +2933,7 @@ Both bounds exceed the actual valuation three. The different local-degree coeffi
 \[
 \mathcal P_{0,2}(Z)=\frac{(4+2Z)(5+2Z)}2=10+9Z+2Z^2.
 \]
-Every \(E_h(1)=1\). The maximum over total order at most two is therefore \(\mathcal B_0^*(2,2)=10\). The old bound is
+Here \(E_h(1)=h+1\). The maximum over total order at most two is \(\mathcal B_0^*(2,2)=30\), attained at additive order zero and Euler order two. The other allocations give at most \(9\cdot2=18\) and \(2\). The old bound is
 \(\mathcal B_0(2,2)=(7^2/2)3^2=441/2\).
 At the specified row, the polynomial whose coefficients are the prepared additive derivatives is exactly the displayed polynomial. Thus the values for \(t_0=0,1,2\), with zero Euler order, are \(10,9,2\). The order-dependent bounds are attained.
 
@@ -2554,6 +2957,49 @@ At the five nodes the row matrix is
 \]
 Multiplication by the given vector gives zero in every row. Its coordinates have greatest common divisor one, so all finite maximum norms are one. Consequently
 \(h_\infty(c)=\ln57\) and \(h_2(c)=\tfrac12\ln4874\), which satisfy both bounds. The first row is zero because the two shifted additive polynomials share the root \(-2\). The weighted Siegel lemma allows dependent and zero rows; \(M_*=5\) remains a valid upper bound for the number of equations.
+
+**Solution 23.** At \(s=2\), the total sum is \(-2+\eta^2=0\). The coefficients in (10.131) are \(-2\) in the even class and \(1\) in the odd class; both are nonzero. Multiplication by the even node does not permute the residue classes. For failure of full degree take \(\vartheta=4,\eta=2,s=1\), with the same coefficients. Again the total sum is zero and the two coset coefficients are nonzero, while \([F(\eta):F]=1\).
+
+At seven, \(\eta=3\exp(\tfrac12\log(2/9))\in\mathbb Q_7\): the argument \(2/9\) lies in \(1+7\mathbb Z_7\), so Proposition 9.4 proves convergence and \(\eta^2=2,\eta\equiv3\pmod7\). The sum \(\eta-3\) has valuation one. Indeed \((\eta-3)(\eta+3)=-7\), and \(\eta+3\equiv6\pmod7\) is a unit. Its even and odd coset terms \(-3,\eta\) both have valuation zero. The degree over \(\mathbb Q\) is two, but a finite precision statement for their sum does not imply that precision for each term.
+
+**Solution 24.** The three changed binomials are
+\[
+1,\qquad 2\Delta(Z;1),\qquad
+4\Delta(Z;2)-\Delta(Z;1).
+\]
+Thus, with rows and columns ordered by \(0,1,2\), the change and inverse are
+\[
+D=\begin{pmatrix}1&0&0\\0&2&0\\0&-1&4\end{pmatrix},
+\qquad
+D^{-1}=\begin{pmatrix}1&0&0\\0&1/2&0\\0&1/8&1/4\end{pmatrix}.
+\]
+Both are 3-adically integral. The vector \((1,3,9)\) becomes \((1,6,33)\); both have minimum valuation zero. In general p-integrality in both directions proves the equality for every vector, not just this example. Each row uses only indices no larger than its own, so keeping the additive index fixed preserves the total-order cutoff.
+
+Here \(F=\mathbb Q(i)\). With \(\rho_1=\sqrt2,\rho_2=\sqrt3,\xi=i\), the phased roots are \(\eta_1=i\rho_1^3\) and \(\eta_2=\rho_2^3\), and their squares are \(\vartheta_1=-8,\vartheta_2=27\). Their heights are \(3\ln2,3\ln3\). The saturated Kummer theorem gives degree eight over \(\mathbb Q\), and Corollary 10.49 gives degree four over \(F\). Concretely \(\rho_1=(\eta_1/i)/2\) and \(\rho_2=\eta_2/3\), so the phased and unphased root fields over \(F\) coincide. The original two bases are local units at five or seven; at three the second one is not, so the local-unit version of Theorem 10.48 would require a different prime in this last example.
+
+**Solution 25.** Here \(a_0=-1,H=3\), and the possible coordinate sums are \(-4,-1,2\). The two classes are
+\[
+\begin{aligned}
+b=0:\ &(-2,1),(-1,0),(0,-1),(1,-2),\\
+b=1:\ &(-2,-2),(0,2),(1,1),(2,0).
+\end{aligned}
+\]
+For a point of sum \(u=-1+3b+6v\), multiplication of its original phase \(\zeta^{su}\) by \(\zeta^s\) gives \(i^{sb}(-1)^{sv}\). The red class has \(v=0\). In the blue class \(v=-1\) at \((-2,-2)\) and \(v=0\) at the other points. Thus the two grouped contributions are \(Z_0\) and \(i^sZ_1\), with the sign at the first blue point included in \(Z_1\).
+
+The chosen minimum coefficient belongs to the red class, so \(\varepsilon'=-1\pmod6\). Centering at \(\lambda_0=(-1,0)\) makes every red exponent difference have coordinate sum zero; its normalized phase is exactly one. The minimum coefficient and its congruence class are fixed data of the coefficient vector. Extraction proves its zeros for every specified \(s,\boldsymbol t\), so no new choice is made at each node or order. In the coprime example, \(2^{-1}=3\pmod5\), and \(u\equiv-3\cdot2\equiv4\pmod5\). There is just one divided phase class and no second extraction.
+
+**Solution 26.** Newton's formula gives
+\[
+x_1=2-\frac5{4}=\frac34,\qquad
+x_2=\frac34-\frac{25/16}{3/2}=-\frac7{24}.
+\]
+The errors \(f(x_0),f(x_1),f(x_2)\) are \(5,25/16,625/576\), with valuations \(1,2,4\). The unique root \(\zeta\equiv2\pmod5\) therefore satisfies \(\zeta\equiv-7/24\equiv182\pmod{625}\). It has order four, since its square is \(-1\) and its reduction is neither \(1\) nor \(-1\). Here \(G=4,G_0=2,\zeta^2=\alpha_0=-1\).
+
+The factorization \((2-\zeta)(2+\zeta)=5\) and the unit \(2+\zeta\equiv4\pmod5\) give \(v_5(2-\zeta)=1\). As \(\zeta\) is a unit, \(v_5(g-1)=1\). The least \(t\) with \(5^t>1/4\) is zero; with \(j=3\), the lower depth \(1+3=4\) is strictly greater than \(\vartheta+1/4=13/4\). Therefore \(P=5^3=125\), \(d_1=-125\), and \(\gamma_1=2^{125}\zeta^{-125}=g^{125}\). The exact p-power law, starting strictly above \(1/4\), gives \(v_5(\gamma_1-1)=1+3=4\), not merely its lower bound. The individual phase is algebraic outside \(\mathbb Q\); a support congruence modulo \(G_0=2\) makes its normalized powers rational, as Theorem 10.51 proves.
+
+**Solution 27.** The input nodes are \(-3,-1,1,3\), so \(n=4=2(1-1/2)R\). Here \(B=\lfloor\log_3 8\rfloor=1\), \(M_0=1\), \(T'=4\), \(D=4\), and \(Lv_3(k!)=0\). The exact first budget is \(U+12\ge24+4=28\), hence \(U\ge16\). The exact output lower bound is \((8-4)3=12>11\). Therefore every integer \(-4\le x\le4\) has all prepared zeros through total order four, including the previously omitted \(-4,-2,0,2,4\).
+
+For the larger scale, the first line is \(U+14\ge28\), requiring only \(U\ge14\). Its corresponding lower bound is \(12-4/2=10\), which does not exceed eleven. Thus the second line fails; this alternative pair does not certify the same zeros. These computations evaluate the stated conditional budgets, rather than construct their auxiliary coefficients.
 
 ## References
 

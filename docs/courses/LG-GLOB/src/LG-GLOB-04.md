@@ -1705,7 +1705,7 @@ V_{U_i}=V/\langle\pi(u)v-v:u\in U_i,\ v\in V\rangle .
 **Lemma 1.20a.** Let \(\pi\) be smooth admissible, and suppose
 \(V_{U_i}=0\) for all \(i<n\). Every smooth matrix coefficient of
 \(\pi\) has compact support modulo \(Z\). If \(\pi\) is also
-irreducible, then \(L_\pi=L_{\widetilde\pi}=1\).
+irreducible and \(n>1\), then \(L_\pi=L_{\widetilde\pi}=1\).
 
 **Proof.** Fix \(r\geq1\), and put \(E=V^{J_r}\). For
 \[
@@ -6753,8 +6753,8 @@ classification statement.
 
 Theorems 1.27–1.31 below prove principal-core occurrence and transfer
 the Gaussian package to every prescribed actual complete smooth
-moderate dual-pair realization. Abstract cores with no supplied
-realization still require a globalization. Explicit identification of
+moderate dual-pair realization. Theorems 1.32–1.34 below construct a compatible actual realization
+for every abstract irreducible admissible core. Explicit identification of
 \(P_Q\) and its scalar with the intended real character/discrete-series
 or complex angular standard gamma factors also remains required.
 LG-LLC-01's unproved classification and the rank-two kernel are not
@@ -6979,10 +6979,10 @@ irreducible admissible core. It does not assert that the first
 quotient is nonzero: an augmentation ideal is not automatically
 the Jacobson radical of its enveloping algebra, so a bare use of
 Nakayama's lemma here would be invalid.
-The radial argument below proves that nonvanishing for a core
-with an actual complete smooth moderate continuous dual-pair
-realization. Existence of such a realization for every arbitrary
-abstract module is a further assertion if no realization is supplied.
+Theorem 1.28 below proves that nonvanishing for a supplied actual
+dual pair. Theorems 1.32–1.34 then prove nonvanishing and construct a
+compatible complete smooth moderate realization for every abstract
+irreducible admissible core.
 
 The free primary locator is Casselman's *Canonical extensions of
 Harish-Chandra modules to representations of G*, §5, available as
@@ -7450,8 +7450,9 @@ Theorem 2.0y below supplies a selected continuous Borel eigenfunctional
 and the actual smooth injection in this complete moderate dual-pair
 class, using exact principal synthesis and the paired distribution
 embedding. The present subsection alone does not give that continuity.
-Existence for unrealized abstract cores and a continuous inverse or
-closed image remain separate globalization comparison obligations.
+Theorems 1.32–1.34 below construct a compatible realization of every
+abstract irreducible admissible core. A continuous inverse or closed
+image for comparison with another prescribed topology remains unproved.
 
 The free primary comparison locator is Casselman's freely accessible
 publisher paper, §§5,7–8:
@@ -8003,8 +8004,8 @@ To identify the prescribed model itself with that subquotient,
 one still needs an inverse seminorm estimate or surjectivity of
 these comparison maps. The existence of a full principal-core
 quotient in 1.34y does not establish that estimate.
-Universal occurrence for an abstract core without any supplied
-actual realization also remains distinct. No assertion here
+Theorems 1.32–1.34 below prove occurrence and construct a compatible
+actual realization for every abstract irreducible admissible core. No assertion here
 identifies the residual correction polynomial with the intended
 standard real/complex gamma factors.
 
@@ -8319,9 +8320,9 @@ scope. Theorem 1.30 gives further actual continuous dense comparison maps,
 but a topological isomorphism with the original model is not
 needed for the coefficient-and-density proof above.
 
-For an arbitrary abstract core with no supplied realization,
-Theorem 1.27 alone has not yet proved nonzero Jacquet quotient or
-globalization. Full continuous inverse/closed-image comparison
+Theorems 1.32–1.34 below prove nonzero Jacquet quotient and construct
+a compatible realization for every abstract irreducible admissible
+core. Full continuous inverse/closed-image comparison
 for arbitrary prescribed topologies also remains unproved.
 Finally, (1.37c) is monic relative to the inducing product chosen
 by Theorem 1.28. Computing \(P\) and the resulting scalar from all
@@ -8329,11 +8330,971 @@ intended standard-factor labels, including real discrete-series
 blocks and complex angular data, remains a precise mathematical
 obligation. The free classification statements in Goldfeld–Jacquet do not supply that proof.
 
+### Analytic coefficient germs of an arbitrary admissible general linear core
+
+Let \(F=\mathbb R\) or \(\mathbb C\), \(G=GL_n(F)\), and
+\(K=O(n)\) or \(U(n)\). Complexify the real Lie algebra of \(G\).
+Let \(V\) be an arbitrary irreducible admissible
+\((\mathfrak g,K)\)-module. No actual noncompact action or topology
+on \(V\) is assumed. Its algebraic admissible contragredient \(V^\vee\)
+is the direct sum of the duals of its finite compact packets, with
+the usual contragredient compact and Lie actions. Write
+\[
+ B(v,w)=w(v),\qquad
+ B(Xv,w)=-B(v,Xw).
+ \tag{1.38a}
+\]
+The second action preserves compact-finiteness. Indeed a functional
+supported in a finite set of compact types can, after a Lie
+generator is applied, meet only types in their tensor products with
+the finite compact representation \(\mathfrak g^*\). Those tensor
+products are finite-dimensional and have finite irreducible
+decompositions. Each compact packet remains finite-dimensional.
+The contragredient is irreducible: a nonzero proper submodule has a
+proper part in some finite dual packet, whose finite-dimensional
+annihilator gives a nonzero submodule of \(V\); irreducibility and
+the perfect packet pairing contradict its being proper.
+
+Theorem 1.27 above applies to both cores. In particular they are generated
+over \(U(\mathfrak g)\) by finite compact-stable spaces, and the
+selected invariant central trace operators act by scalars. These
+are written algebraic proofs, not assumptions about classification
+or globalization.
+
+**Theorem 1.32.** For every \(v\in V,\;w\in V^\vee\) there is a unique
+real analytic germ \(c_{v,w}\) on a neighborhood of \(K\) with the
+compact covariance in (1.38c) and the identity jets
+\[
+ (R_Dc_{v,w})(1)=B(Dv,w),\qquad D\in U(\mathfrak g).
+ \tag{1.38b}
+\]
+The germs are bilinear, compact-finite under left and right
+translations, and satisfy wherever both sides are defined
+\[
+ R_Xc_{v,w}=c_{Xv,w},\qquad
+ L_Xc_{v,w}=-c_{v,Xw},\qquad
+ c_{v,w}(k_1gk_2)=c_{k_2v,k_1^{-1}w}(g).
+ \tag{1.38c}
+\]
+Here \(R_Xf(g)=\frac d{dt}f(g\exp(tX))|_{0}\) and
+\(L_Xf(g)=\frac d{dt}f(\exp(tX)g)|_{0}\).
+The neighborhood may depend on the finite compact orbits of
+\(v,w\). This theorem asserts germs of scalar functions; it does
+not assume or construct a noncompact action on an abstract vector.
+
+#### Step 1: The formal germ and its identities
+
+We first justify the enveloping-algebra jet dictionary needed here,
+rather than importing an analytic-vector theorem. Choose a real
+matrix Lie basis \(X_1,\ldots,X_d\) and local analytic coordinates
+at identity. Their invariant vector fields have independent
+values there. Commuting an out-of-order pair of invariant fields
+introduces a single commutator and lowers total order. Therefore
+ordered monomials span the enveloping algebra. They are also
+independent as differential operators: the highest-order symbol
+at identity of the monomial of multi-index \(\alpha\) is the
+distinct commutative monomial in the basis of cotangent variables
+dual to \(X_i\). A relation of highest total order \(m\) has zero
+degree-\(m\) symbol only when every coefficient of that order is
+zero; induction removes all orders. This proves the required
+ordered-monomial independence directly in the actual matrix group.
+
+Consequently the evaluations at identity of invariant monomials
+of order at most \(m\) are a triangular invertible linear change
+from ordinary coordinate derivatives of order at most \(m\).
+The leading diagonal blocks are the change of symmetric basis
+just described. Specifying a linear functional on \(U(\mathfrak g)\)
+therefore specifies a unique compatible formal Taylor germ, and
+every formal germ specifies that functional.
+Apply this to \(D\mapsto B(Dv,w)\).
+Right differentiation gives the first identity of (1.38c).
+Left fields commute with right fields; at identity
+\[
+ (R_D L_Xc)(1)=B(XDv,w)=-B(Dv,Xw),
+\]
+which proves the second identity on formal jets. Compact changes
+of variables give the third identity on jets by compatibility
+of the given \(K\)-action with its Lie action. These computations
+also give bilinearity and the scalar central equations.
+
+These identities may be pulled back through any actual analytic
+matrix-coordinate map. They hold as formal identities there;
+after multiplying by the determinants of its differential, they
+also hold for rational lifts on a generically invertible
+coordinate map. This assertion is elementary: the chain rule for
+each finite jet is a polynomial identity in finitely many
+derivatives of the coordinate map. Its inverse uses the adjugate
+divided by its determinant, so multiplication clears its
+denominators. No convergence is used at this stage.
+
+On the diagonal \(a(x)=\operatorname{diag}(e^{x_i})\) the formal
+restriction is explicitly
+\[
+ F_{v,w}(x)=
+ \sum_{\alpha\in\mathbb N^n}
+       B(H_1^{\alpha_1}\cdots H_n^{\alpha_n}v,w)
+       \frac{x^\alpha}{\alpha!},\qquad H_i=E_{ii}.
+ \tag{1.38d}
+\]
+For a fixed pair, take the vector of all its finite left and right
+compact translates. It is a formal power series with values in
+one finite-dimensional space. All compact derivatives act there
+by fixed matrices.
+
+#### Step 2: A pole-order refinement of the written radial system
+
+The radial computation in Theorem 1.28, Step 3, equations (1.34j)–(1.34o), is a
+calculation with matrix vector fields. It applies to formal jets
+as well as to actual functions by the preceding chain rule.
+We need the following refinement at the origin.
+
+Fix a compact set of real diagonal directions \(h\) with all
+\(|h_i-h_j|\ge\eta>0\), and bounded \(|h_i|\). Then a coefficient
+of a radial derivative of order \(k\) in a central operator of
+degree \(r\), restricted to \(x=th\), has pole order at most
+\(r-k\) at \(t=0\). After that power of \(t\) is multiplied in,
+it is holomorphic in a disk whose radius and bounds are uniform
+on this compact set of \(h\).
+
+Here is the additional calculation. At \(a(x)\), an off-diagonal
+right field is a sum of left and right compact fields, with
+coefficients
+\[
+ \frac{1}{2\sinh(x_j-x_i)},\quad
+ -\frac{1}{e^{2(x_j-x_i)}-1},\quad
+ -\frac{e^{2(x_j-x_i)}}{e^{2(x_j-x_i)}-1}.
+ \tag{1.38e}
+\]
+Each has a simple pole along \(x_i=x_j\). Real diagonal fields
+are \(\partial_{x_i}\); imaginary diagonal fields for the complex
+group are compact fields. At \(k_1a(x)k_2\), first conjugate the
+Lie generator by \(k_2\) and use the same formulas. All angular
+coefficients and their angular derivatives are analytic and
+bounded on the compact factors. Off-diagonal compact coefficients
+have one pole, and a radial derivative of any such coefficient
+adds at most one pole. An angular derivative adds none.
+
+Induction on the number of fields in a word proves the assertion:
+creating a compact differentiation uses one field and at most
+one pole; creating a radial differentiation uses one field and
+raises \(k\) by one; differentiating an existing coefficient uses
+one field and raises its pole order by at most one. Thus the
+sum of radial derivative order and pole order is at most the
+word length. The finite compact derivatives can then be replaced
+by their matrices. Symmetrizing invariant trace words preserves
+this bound. Newton's finite polynomial construction and the
+product rule preserve it as well.
+
+More precisely, choose the normalizations used in Theorem 1.28:
+the real \(C_r\), or \(2^rC_r^{(1)}\) for the complex group.
+The factor \(2^r\) compensates exactly for the radial
+\(\frac12\partial_{x_i}\) in the first complexified summand.
+The resulting elementary-symmetric central equations are
+\[
+ e_r(\partial_x)F=\mu_rF-\mathcal L_rF,\qquad
+ \operatorname{ord}\mathcal L_r\le r-1.
+ \tag{1.38f}
+\]
+A coefficient of a derivative \(\partial^\beta\) on the right
+has pole order at most \(r-|\beta|\); the scalar term has order
+zero. Every fixed radial derivative of a coefficient adds at
+most its own order to this bound.
+These statements hold in the localized formal ring obtained by
+inverting the nonzero root linear forms \(x_j-x_i\).
+They follow from (1.38e), the matrix chain rule and the invariant
+trace symbol, not a general radial-part theorem.
+
+Use the constant-coefficient identity
+\[
+ \partial_{x_i}^{\,n}
+  =\sum_{r=1}^n(-1)^{r+1}
+      \partial_{x_i}^{\,n-r}e_r(\partial_x).
+ \tag{1.38g}
+\]
+Replacing \(e_r(\partial_x)F\) by (1.38f) expresses its left
+side as derivatives of total order at most \(n-1\), with a
+coefficient for \(\partial^\beta F\) of pole order at most
+\(n-|\beta|\). Differentiate and repeat to reduce every
+derivative having an index at least \(n\). Each replacement
+lowers total derivative order. The pole bound is preserved
+because the loss of derivative order pays for all coefficient
+derivatives and all subsequent substitutions.
+
+For
+\[
+ J_\alpha=\partial_x^\alpha F,\qquad 0\le\alpha_i<n,
+\]
+this gives
+\[
+ \partial_{x_i}J_\alpha
+       =\sum_\beta (A_i)_{\alpha\beta}(x)J_\beta,
+ \qquad
+ \operatorname{pole}_{t=0}
+       (A_i)_{\alpha\beta}(th)
+           \le |\alpha|+1-|\beta|.
+ \tag{1.38h}
+\]
+An entry with a negative upper bound is zero: the reduction
+never increases total derivative order. The entries with
+\(|\beta|=|\alpha|+1\) are the unreduced constant jet shifts.
+The formulas are those of the fixed finite compact array.
+Only finitely many differentiations and substitutions are
+required, so the holomorphic bounds along \(th\) are uniform
+on the fixed compact set of directions.
+
+Set
+\[
+ Y_\alpha(t)=t^{|\alpha|}J_\alpha(th).
+\]
+Equation (1.38h) gives a genuine Fuchsian formal system
+\[
+ tY'(t)=A_h(t)Y(t),
+ \tag{1.38i}
+\]
+where
+\[
+ (A_h)_{\alpha\beta}
+ =|\alpha|\delta_{\alpha\beta}
+  +\sum_i h_i\,t^{1+|\alpha|-|\beta|}
+                      (A_i)_{\alpha\beta}(th).
+\]
+Every entry is holomorphic at zero, uniformly for the selected
+directions. \(Y\) itself is an ordinary formal power series,
+since every \(J_\alpha\) comes from (1.38d).
+
+#### Step 3: Convergence of the formal Fuchsian solution
+
+We prove exactly the elementary ODE fact used here. Suppose
+\(A(t)=\sum_{k\ge0}A_kt^k\) is holomorphic on a disk, with
+\(\|A_k\|\le C R^{-k}\), and \(Y=\sum_{m\ge0}Y_mt^m\) formally
+satisfies \(tY'=AY\). Then
+\[
+ (mI-A_0)Y_m=\sum_{k=1}^m A_kY_{m-k}.
+ \tag{1.38j}
+\]
+For \(m>2\|A_0\|\), the geometric series gives
+\(\|(mI-A_0)^{-1}\|\le2/m\).
+Choose an integer \(m_0>2\|A_0\|+4C+1\) and \(S\ge2/R\).
+Choose \(M\) so that \(\|Y_m\|\le MS^m\) for \(m\le m_0\).
+For larger \(m\), induction and (1.38j) give
+\[
+ \|Y_m\|
+ \le \frac{2C}{m}MS^m
+        \sum_{k\ge1}(RS)^{-k}
+ \le MS^m.
+ \tag{1.38k}
+\]
+Thus the series converges. Resonant small integers cause no
+problem: the finitely many initial coefficients already
+satisfy the formal equation. The same choices work uniformly
+for a compact family of \(A_h\) whose finite initial coefficients
+are bounded.
+
+In (1.38i) the initial coefficients are fixed finite jets from
+(1.38d), hence polynomials in \(h\), with bounded compact
+matrices on the chosen array. They are uniformly bounded.
+In particular
+\[
+ \left|\frac{B((\sum h_iH_i)^m v,w)}{m!}\right|
+          \le M S^m
+ \tag{1.38l}
+\]
+uniformly for separated bounded diagonal \(h\), and for \(v,w\)
+in bounded parts of the fixed compact orbit spaces.
+The same conclusion holds in rank one directly from its scalar
+central equation.
+
+#### Finite-dimensional diagonalization
+
+**Lemma 1.32a.** A real symmetric matrix has an orthonormal real
+eigenbasis, and a complex Hermitian matrix has an orthonormal complex
+eigenbasis. A commuting family of complex Hermitian matrices has a
+common orthonormal eigenbasis. Consequently every unitary matrix,
+and every commuting family of unitary matrices, can be diagonalized
+by a unitary change of basis.
+
+*Proof.* For a symmetric or Hermitian matrix \(A\), the real function
+\(\langle Ax,x\rangle\) attains its maximum on the unit sphere.
+Let \(x\) be a maximizing unit vector. For every unit \(y\perp x\),
+differentiate this function at
+\(x\cos t+y\sin t\) when \(t=0\). The derivative is
+\(2\operatorname{Re}\langle Ax,y\rangle\), hence vanishes. Over
+\(\mathbb C\) replace \(y\) by \(iy\) as well, so
+\(\langle Ax,y\rangle=0\). Therefore \(Ax=\lambda x\), with
+\(\lambda=\langle Ax,x\rangle\) real. The orthogonal complement of
+\(x\) is invariant, since
+\(\langle Az,x\rangle=\langle z,Ax\rangle=0\) for \(z\perp x\).
+Induction on dimension supplies the asserted eigenbasis.
+
+For a commuting Hermitian family, every eigenspace of one member is
+invariant under all the others. Choose a nonscalar member, decompose
+into its mutually orthogonal proper eigenspaces, and apply induction
+on their dimensions. If every member is scalar there is nothing to
+do. This argument applies to an arbitrary family, since each
+nonscalar choice strictly lowers dimension.
+
+For a unitary matrix \(U\), its Hermitian real and imaginary parts
+\[
+ H=(U+U^*)/2,\qquad J=(U-U^*)/(2i)
+ \tag{1.38ak}
+\]
+commute: use \(U^*=U^{-1}\). A common eigenbasis for \(H,J\)
+diagonalizes \(U=H+iJ\). A commuting family of unitary matrices
+commutes also with every inverse, so all its Hermitian real and
+imaginary parts commute. The same common-eigenbasis argument
+diagonalizes the whole family. \(\square\)
+
+This proof also gives the singular-value factorizations used below:
+diagonalize the positive definite matrix \(g^*g\), take the positive
+square roots of its eigenvalues, and divide the corresponding
+columns of \(g\) by those square roots. Their orthonormality follows
+by taking inner products. Every positive-definite eigenspace has
+positive eigenvalue since
+\(\langle g^*gx,x\rangle=\|gx\|^2>0\) for \(x\ne0\).
+
+#### Step 4: From separated diagonal directions to a full local germ
+
+Let \(\mathfrak p_{\mathbb R}\) be the real symmetric or Hermitian
+matrices. For each \(m\) the expression
+\[
+ p_m(P)=B(P^m v,w)/m!
+ \tag{1.38m}
+\]
+is an ordinary homogeneous polynomial of degree \(m\) on this
+finite-dimensional real vector space. Choose a small closed cube
+\(Q\) about a matrix with simple eigenvalues, so that every
+matrix in \(Q\) has eigenvalue gaps at least \(\eta\), with
+bounded eigenvalues. Lemma 1.32a gives
+\(P=k(\sum h_iH_i)k^{-1}\). All \(k\)-translates of \(v,w\)
+stay in the fixed bounded compact orbit spaces, so (1.38l) gives
+\(\sup_Q|p_m|\le MS^m\).
+No smooth choice of eigenvectors is needed for this bound.
+
+We give the polynomial extrapolation which removes the gap
+restriction. After an affine change sending \(Q\) to
+\([-1,1]^b\), expand any polynomial \(p\) of total degree at
+most \(m\) in products of Chebyshev polynomials
+\(T_j(\cos\theta)=\cos(j\theta)\). Orthogonality on the product
+of circles bounds each coefficient by \(2^b\sup_Q|p|\).
+The triangular leading terms ensure that only multi-indices
+of total degree at most \(m\) occur. On any fixed complex
+coordinate box, the transformed coordinates have magnitude
+at most \(A\); the recurrence
+\(T_{j+1}(z)=2zT_j(z)-T_{j-1}(z)\) gives
+\(|T_j(z)|\le(2A+1)^j\).
+There are at most \((m+1)^b\le2^{bm}\) terms for \(m\ge1\).
+Therefore, on that fixed complex box,
+\[
+ \sup|p_m|\le M_1S_1^m.
+ \tag{1.38n}
+\]
+Because the original \(p_m\) is homogeneous, on a sufficiently
+small complex neighborhood of zero the series \(\sum_mp_m(P)\)
+converges normally. Cauchy's elementary one-variable integral
+estimate applied successively in the coordinates controls all
+derivatives on smaller boxes. In this use it follows directly
+by integrating a polynomial on a circle: the integral of
+\(z^j/z^{k+1}\) is zero unless \(j=k\), when it is \(2\pi i\).
+Normal convergence passes this coefficient identity to the
+series; a smaller circle gives the geometric bounds for every
+fixed differentiated series. The limit is analytic and its
+Taylor series is the given formal series.
+
+For \(g\) near \(K\), polar coordinates are analytic:
+\[
+ P=\tfrac12\log(g^*g),\qquad k=g\exp(-P),\qquad g=k\exp P.
+\]
+Near \(g^*g=I\), the convergent matrix logarithm series proves
+this directly; its adjoint entries are analytic real-coordinate
+functions. Compact finite-dimensional representations are
+analytic: in coordinates formed by finite products of small
+one-parameter exponentials their matrices are the ordinary
+finite matrix exponentials, by the finite-dimensional
+constant-coefficient differential equation. Both components
+of \(O(n)\) are included by its given compact action.
+Define
+\[
+ c_{v,w}(k\exp P)=\sum_{m\ge0}B(P^mv,k^{-1}w)/m!.
+ \tag{1.38o}
+\]
+The bounds above are uniform for the compact translates in
+this formula. It is therefore an actual analytic germ near \(K\).
+Its formal jets agree with the germ of Step 1: the pullback through
+\(k\exp P\) is exactly the iterated formal Lie exponential,
+and the invariant-jet dictionary makes this equality unique.
+All identities (1.38c) and the central equations have identical
+formal jets on their common neighborhoods. Analyticity
+therefore proves those identities there, and proves uniqueness.
+This completes Theorem 1.32 without a supplied realization.
+
+#### Proof dependencies
+
+The algebraic finite-generation and central-scalar input is the
+proof of Theorem 1.27; the exact root-frame and Newton radial calculation
+is the radial computation in Theorem 1.28, Step 3. The pole refinement, formal-germ
+dictionary, Fuchsian convergence and polynomial extrapolation
+are proved here. Neither a source's subrepresentation statement,
+a globalization theorem, an asymptotic expansion, nor an
+abstract analytic-vector theorem is used.
+
+### The nonzero minimal Jacquet quotient without a supplied realization
+
+Use the notation of Theorem 1.32 above. In particular
+\(V\) is an arbitrary irreducible admissible real or complex
+general linear Harish-Chandra core, \(V^\vee\) is its algebraic
+admissible contragredient, and its coefficient germs have been
+constructed and proved convergent without any actual
+noncompact representation.
+
+**Theorem 1.33.** For every \(n\ge1\), and \(F=\mathbb R\) or
+\(\mathbb C\),
+\[
+ V/\mathfrak n V\ne0,
+ \tag{1.38p}
+\]
+where \(\mathfrak n\) is the complexified upper unitriangular
+Lie algebra. The quotient is finite-dimensional by Theorem 1.27.
+The same conclusion holds for the lower unitriangular algebra.
+
+The proof first extends the scalar germs only to matrices
+with distinct singular values. It never assumes extension
+across the singular walls, or that those scalar functions
+already come from an actual representation.
+
+#### Step 1: Analytic continuation on the regular chamber
+
+Let
+\[
+ C=\{x\in\mathbb R^n:x_1<\cdots<x_n\}.
+ \tag{1.38q}
+\]
+For one fixed finite compact coefficient array, the analytic
+germ of Theorem 1.32 gives the jet \(J\) of (1.34n) on a neighborhood
+of zero intersected with \(C\). The matrix system
+\(\partial_iJ=A_i(x)J\) of (1.34o) has analytic coefficients
+everywhere in \(C\).
+The explicit coefficients consist of finite products,
+derivatives and quotients in (1.38e), whose denominators
+do not vanish there.
+
+For \(x\in C\) choose \(\delta>0\) small enough that
+\(\delta x\) lies in that germ neighborhood, and solve the
+ordinary linear equation
+\[
+ \frac{d}{dt}J(tx)=
+       \left(\sum_i x_iA_i(tx)\right)J(tx),
+ \qquad \delta\le t\le1,
+ \tag{1.38r}
+\]
+with its germ value at \(\delta x\).
+There is a unique solution on this compact interval.
+For completeness, on a small interval the iterated integral
+series has its \(m\)-th increment bounded by
+\(M^m|t-\delta|^m/m!\) times the initial norm.
+It converges uniformly, differentiates to the equation,
+and the same integral iteration proves uniqueness.
+Finitely many such intervals cover the path.
+Choosing a smaller admissible \(\delta\) gives the same
+solution, because the known germ already solves (1.38r)
+on their overlap.
+
+This construction is analytic in \(x\). Around any fixed
+path, the explicit matrix coefficients extend
+holomorphically to a small complex neighborhood of its
+compact parameter set, with uniform bounds. The initial
+germ is holomorphic there as well. The same iterated
+integral series converges normally in \(x,t\) on successive
+small intervals, so the endpoint is holomorphic in \(x\).
+Use a fixed sufficiently small \(\delta\) for each such
+parameter neighborhood; independence of \(\delta\)
+patches the results into an analytic \(J\) on all \(C\).
+
+The differences
+\(\partial_iJ-A_iJ\) and
+\(J_\alpha-\partial^\alpha J_0\) are analytic on \(C\).
+They are zero on its nonempty germ portion, so they are
+zero everywhere. Here the elementary identity principle
+requires no additional PDE theorem: an analytic function
+zero on a ball has all its Taylor derivatives zero there;
+overlapping analytic balls continue this fact along any
+path. The convex set \(C\) is connected.
+Thus the continued \(J\) is the genuine full finite jet
+of its zeroth component and solves every radial equation,
+not just the particular ray equation used to construct it.
+
+#### Step 2: Scalar functions on the regular part of the group
+
+Every matrix in
+\[
+ G_{\mathrm{reg}}
+ =\{g:g^*g\text{ has }n\text{ distinct eigenvalues}\}
+\]
+has an ordered singular-value factorization
+\(g=k_1a(x)k_2\), \(x\in C\), \(k_i\in K\).
+Lemma 1.32a supplies this factorization directly:
+diagonalize \(g^*g\), take positive square roots of the
+eigenvalues and normalize the resulting columns of \(g\).
+Define
+\[
+ c_{v,w}(k_1a(x)k_2)
+       =F_{k_2v,k_1^{-1}w}(x),
+ \tag{1.38s}
+\]
+where \(F\) is the continued zeroth radial component.
+The required compact translates form finite arrays, so
+this formula is well-defined by the preceding construction.
+Changing to a larger finite array gives exactly the same
+components: the analytic continuations agree on the initial
+germ portion of \(C\), hence everywhere in \(C\).
+The same argument preserves all bilinear relations between
+different pairs. Thus these separately constructed finite
+arrays define one consistent bilinear family.
+
+The only ambiguity with ordered distinct singular values
+is \((k_1,k_2)\mapsto(k_1m,m^{-1}k_2)\), where \(m\) is a
+diagonal sign matrix or diagonal unitary matrix. To check
+this, compare two factorizations and square the positive
+diagonal factor. A compact matrix commuting with a diagonal
+matrix of distinct eigenvalues is diagonal; its entries
+are signs or phases. Invariance of \(B\), and commutation
+of this \(m\) with all \(H_i\), give
+\[
+ F_{m^{-1}v,m^{-1}w}(x)=F_{v,w}(x)
+\]
+on the formal germ, then on all \(C\) by analyticity.
+This proves independence of the ambiguity in (1.38s).
+
+The functions are analytic locally on \(G_{\mathrm{reg}}\).
+Here a local analytic singular-value factorization can
+also be verified without a spectral perturbation theorem.
+At a simple eigenvalue, the characteristic polynomial has
+nonzero derivative. Its nearby root is given by the
+uniformly convergent Newton iteration on a sufficiently
+small complex coordinate neighborhood: its derivative
+stays bounded away from zero and the Newton error squares
+at each step. This gives an analytic root. The projectors
+\(\prod_{j\ne i}(g^*g-\lambda_j I)/(\lambda_i-\lambda_j)\)
+are analytic. Apply each to a fixed eigenvector which
+remains nonzero locally, and divide by the positive square
+root of its squared norm, using the branch positive at
+the starting point. These are analytic orthonormal
+eigenvectors in real coordinates. The left singular
+vectors are obtained by division by the nonzero singular
+values. This supplies the desired local coordinates.
+
+Each determinant component of \(G_{\mathrm{reg}}\) is
+connected. For the real group the factorization is the
+image of \(SO(n)\times C\times SO(n)\), or of the same
+space with one fixed compact reflection inserted.
+A simultaneous diagonal sign in the two compact factors
+changes both compact determinants, so these images cover
+the corresponding determinant component. \(SO(n)\) is
+connected: successive rotations in coordinate planes
+reduce an orthogonal matrix of determinant one to
+identity, and reversing those finite rotations gives a
+path. \(U(n)\) is connected by diagonalizing a unitary
+matrix and replacing its eigenphases by their multiples
+of a parameter between zero and one. Its unitary diagonalization is proved in Lemma 1.32a. Rank one is treated separately below.
+
+Consequently the Lie and compact identities (1.38c)
+extend from the germ to all \(G_{\mathrm{reg}}\).
+For a Lie identity, both sides are analytic on this open
+set, including the derivative of the analytic left side.
+They agree on a nonempty germ portion of each component,
+so the identity principle applies. Compact covariance
+also follows directly from (1.38s). The scalar central
+equations extend in the same way.
+
+#### Step 3: One exponential bound for all abstract core pairs
+
+This is the step that replaces the supplied moderate
+dual-pair topology used in Theorem 1.28, Step 2.
+Choose finite compact-stable algebraic generating spaces
+\(W\subset V\), \(U\subset V^\vee\), so that
+\[
+ U(\mathfrak g)W=V,\qquad
+ U(\mathfrak g)U=V^\vee.
+ \tag{1.38t}
+\]
+Such spaces exist by irreducibility, exactly as in Theorem 1.27, Step 1.
+Take the one finite coefficient array consisting of
+all pairs in fixed bases of \(W,U\).
+It contains every left and right compact translate of
+these pairs. Let \(J_{\mathrm{base}}\) be its central
+radial finite jet.
+
+Choose \(x^{(0)}\in C\) and
+\(H_1>\cdots>H_n\), and put
+\[
+ x(t)=x^{(0)}-tH,\qquad
+ a_t=a(x(t)),\qquad t\ge0.
+ \tag{1.38u}
+\]
+All gaps remain at least
+\(\eta=\min_i(x^{(0)}_{i+1}-x^{(0)}_i)>0\).
+The explicit 1.34o system is bounded on this fixed-gap
+chamber portion. Therefore its ordinary integral
+iteration gives
+\[
+ \|J_{\mathrm{base}}(x(t))\|
+       \le \|J_{\mathrm{base}}(x^{(0)})\|e^{Mt}
+ \tag{1.38v}
+\]
+for one finite \(M\), depending on this base array and ray.
+
+Every fixed radial derivative of every base component
+is a linear combination of that same finite jet with
+bounded coefficients along the ray. This follows by
+differentiating (1.38g)–(1.38h) and reducing total order,
+as in Theorem 1.28, Step 3: every required fixed derivative of the
+coefficients in (1.38e) is bounded when the gaps are
+at least \(\eta\).
+
+The same assertion holds for an arbitrary fixed left
+and right Lie differential word on a base component.
+To make its angular uniformity precise, lift right
+fields to \(K\times C\times K\). For
+\(g=k_1a(x)k_2\), conjugate a right generator by \(k_2\)
+and write \(a(x)\operatorname{Ad}(k_2)X\) as radial,
+left compact and right compact fields using (1.38e).
+The real diagonal is radial and the imaginary diagonal
+is compact. This is a global differential lift; the
+compact diagonal redundancy is harmless because the
+pulled-back function is invariant under it. Left
+fields are obtained by the analogous decomposition,
+or by the same computation on the inverse matrix.
+All angular coefficients are bounded with all fixed
+angular derivatives on the compact factors. Composition
+of finitely many fields and the product rule therefore
+give a finite sum of radial derivatives and compact
+derivatives with bounded coefficients on the fixed-gap
+portion. Compact derivatives act by matrices on the
+same base array; radial derivatives reduce to its same
+finite jet. Hence for every fixed \(D,E\),
+\[
+ |L_D R_E c_{w,u}(a_t)|\le C_{D,E,w,u}e^{Mt},
+ \quad w\in W,\ u\in U,
+ \tag{1.38w}
+\]
+with exactly the \(M\) of (1.38v). The constants may
+depend on the words; the exponential rate does not.
+
+By (1.38t) and the globally valid Lie identities,
+every \(c_{v,w}\) is a finite linear combination of
+such differentiated base components. We have proved
+\[
+ |c_{v,w}(a_t)|\le C_{v,w}e^{Mt}
+ \quad(v\in V,\ w\in V^\vee)
+ \tag{1.38x}
+\]
+with **one \(M\) for all pairs**, including all
+differentiated pairs. This is a bound on the specified
+regular ray. No global-growth theorem, topology,
+continuity of an abstract functional or classification
+is being presumed.
+
+#### Step 4: The contracting-root contradiction
+
+Suppose \(V=\mathfrak nV\). Induction then gives
+\(V=\mathfrak n^qV\) for every positive integer \(q\).
+Every core vector is a finite sum
+\(X_1\cdots X_qv'\), with \(X_j\) upper-root generators,
+including their imaginary companions for the complex
+field. For the ray (1.38u),
+\[
+ \operatorname{Ad}(a_t)X_{ij}
+  =e^{x^{(0)}_i-x^{(0)}_j}
+     e^{-t(H_i-H_j)}X_{ij}.
+ \tag{1.38y}
+\]
+Put \(\epsilon=\min_i(H_i-H_{i+1})>0\).
+The identity between left and right tangent vectors
+at a fixed \(g\), combined with (1.38c), gives
+\[
+ c_{Xv,w}(g)=-c_{v,\operatorname{Ad}(g)X\,w}(g).
+ \tag{1.38z}
+\]
+Iterate this pointwise identity; \(g\) stays fixed
+while the pairs are replaced, so no derivative of
+the coefficient \(\operatorname{Ad}(g)\) is introduced.
+For a word the dual order is reversed:
+\[
+ c_{X_1\cdots X_qv',w}(g)
+  =(-1)^q c_{v',
+       \operatorname{Ad}(g)X_q\cdots
+       \operatorname{Ad}(g)X_1w}(g).
+\]
+Equations (1.38x)–(1.38y) imply for every pair
+\[
+ |c_{v,w}(a_t)|
+       \le C_{q,v,w}e^{(M-q\epsilon)t}.
+ \tag{1.38aa}
+\]
+The constant may depend on \(q\); the \(M\) does not.
+
+Choose \(v,w\) with \(B(v,w)\ne0\).
+Its analytic diagonal germ is nonzero at identity,
+so choose a sufficiently small \(x^{(0)}\in C\)
+with \(F_{v,w}(x^{(0)})\ne0\).
+The finite compact array of this pair has nonzero
+initial jet \(J_0\). Its own bounded radial system
+along the ray gives, by the backwards integral
+iteration,
+\[
+ \|J(t)\|\ge e^{-M_0t}\|J_0\|,\qquad t\ge0.
+ \tag{1.38ab}
+\]
+Each component is a coefficient of fixed core pairs:
+compact translation stays in the core, and radial
+derivatives apply commuting diagonal Lie generators
+to the first member of the pair. Apply (1.38aa) to
+these finitely many components. Choose
+\(q\epsilon>M+M_0+1\). The resulting upper bound
+contradicts (1.38ab) as \(t\) tends to infinity.
+This proves (1.38p).
+
+For \(n=1\) there is no nilpotent algebra and
+\(V/\mathfrak nV=V\ne0\). The central Lie algebra
+and compact action make the irreducible admissible
+core one-dimensional by the same finite-packet
+eigenvector argument as in Theorem 1.27. No chamber argument
+is needed. Conjugating upper roots by the compact
+long permutation proves the lower version.
+
+#### Scope
+
+Theorem 1.33 is purely about arbitrary abstract
+irreducible admissible cores, in every rank for
+both archimedean fields. The auxiliary scalar
+functions have been proved analytic only on a
+neighborhood of \(K\) and on \(G_{\mathrm{reg}}\).
+Their use establishes a nonzero finite Jacquet
+quotient; it does not silently declare them
+matrix coefficients of an already globalized core.
+The compatible actual completion will instead be
+constructed from the algebraic Borel occurrence
+and the already written closed-principal-model
+proof.
+
+### Full Borel occurrence and an actual compatible realization of every core
+
+Let \(V\) be any irreducible admissible Harish-Chandra core of
+\(GL_n(\mathbb R)\) or \(GL_n(\mathbb C)\), in every rank.
+Theorems 1.27 and 1.33 prove that its upper minimal Jacquet
+quotient is finite-dimensional and nonzero. Those proofs
+require no pre-existing realization.
+
+**Theorem 1.34.** There is an explicit injective core map
+\[
+ T_0:V\hookrightarrow I_0(\chi_1,\ldots,\chi_n)
+ \tag{1.38ac}
+\]
+into a full normalized Borel induction, and a full inverse
+Borel core surjecting onto \(V\). The closure of (1.38ac) in
+the actual compact smooth induced model has exactly core
+\(V\). With the paired principal annihilator quotient it
+is a complete Fréchet smooth moderate-growth continuous
+dual-pair realization of \(V,V^\vee\), with jointly
+continuous nondegenerate invariant bilinear pairing.
+
+This asserts existence of a compatible actual realization
+for an arbitrary core, rather than identification with
+every independently prescribed smooth topology. The
+principal-core quotient is onto algebraically; no onto
+range for its extension to another topology is inferred.
+
+#### Step 1: The algebraic occurrence map
+
+Put \(d=[F:\mathbb R]\), \(M=K\cap B\), and
+\(\rho_i^0=(n+1)/2-i\).
+On the nonzero finite quotient \(V/\mathfrak nV\), the
+diagonal real Lie operators commute with one another
+and with the compact diagonal group \(M\). Average a
+positive Hermitian form over \(M\); by Lemma 1.32a, the commuting
+unitary compact matrices split the quotient into
+character spaces. On one nonzero such space, the
+commuting transposed diagonal operators have a common
+eigenvector: choose an eigenspace for one transpose and
+continue restricting to it when a remaining operator
+is not scalar. Its dimension strictly drops at such
+a step, so the procedure terminates. Pull it back to
+a nonzero algebraic functional \(\ell_0\) on \(V\):
+\[
+ \ell_0(\mathfrak nV)=0,\quad
+ \ell_0(H_iv)=\beta_i\ell_0(v),\quad
+ \ell_0(mv)=\sigma(m)\ell_0(v).
+ \tag{1.38ad}
+\]
+This is the same finite-dimensional construction as
+(1.34u), now with the nonzero quotient justified for
+an arbitrary core by Theorem 1.33.
+
+The character \(\sigma\) has sign exponents
+\(e_i\in\{0,1\}\) in the real case and integer circle
+exponents \(l_i\) in the complex case. The circle
+statement follows directly from the finite-dimensional
+smooth character differential equation and period
+\(2\pi\). Define
+\[
+ t_i=\beta_i/d-\rho_i^0,\qquad
+ \chi_i(x)=\operatorname{sgn}(x)^{e_i}|x|^{t_i}
+                   \quad(F=\mathbb R),
+ \quad
+ \chi_i(z)=(z/|z|)^{l_i}|z|_{\mathbb C}^{t_i}
+                   \quad(F=\mathbb C).
+ \tag{1.38ae}
+\]
+Thus the inducing character \(\delta_B^{1/2}\prod_i\chi_i\)
+has exactly the infinitesimal diagonal and compact
+characters of \(\ell_0\), including the factor \(d\).
+The actual full compact model \(I(\boldsymbol\chi)\)
+and its smooth action are the row-QR model constructed
+in Theorem 1.26 above.
+
+Set
+\[
+ (T_0v)(k)=\ell_0(kv),\qquad k\in K.
+ \tag{1.38af}
+\]
+Its compact orbit is finite; it is smooth and has the
+prescribed left \(M\)-covariance. For a real Lie generator
+\(X\), differentiate the actual factorization
+\(k\exp(tX)=b(t,k)k'(t,k)\).
+Its infinitesimal decomposition is
+\(\operatorname{Ad}(k)X=Y_B+Y_K\), with \(Y_B\)
+upper triangular with real diagonal and \(Y_K\) compact.
+The derivative of its multiplier equals the eigencharacter
+of \(\ell_0\) on \(Y_B\); the compact derivative contributes
+\(\ell_0(Y_Kkv)\). Therefore
+\[
+ (dI(X)T_0v)(k)
+       =\ell_0((Y_B+Y_K)kv)
+       =\ell_0(kXv)=(T_0Xv)(k).
+ \tag{1.38ag}
+\]
+This is a linear identity even where \(\ell_0(kv)=0\);
+no division is taken. Right compact translation gives
+the compact intertwining. \(T_0\) is nonzero because
+evaluation at identity is \(\ell_0\); its Lie- and
+compact-stable kernel is zero by irreducibility.
+
+Apply the same construction to the abstract \(V^\vee\).
+The compact integral pairing between full induction
+with characters \(\boldsymbol\eta\) and
+\(\boldsymbol\eta^{-1}\), proved in Theorem 1.26, pairs their
+finite packets perfectly. Transposing the injection
+of \(V^\vee\) on each finite packet gives an onto
+map of that packet onto its dual packet in \(V\).
+The algebraic direct sum of these maps is the onto
+core map
+\[
+ I_0(\boldsymbol\eta^{-1})\twoheadrightarrow V.
+ \tag{1.38ah}
+\]
+No global topological quotient is needed to justify
+this finite-packet transposition. It is precisely
+the interface (1.34y), now available for every core.
+
+#### Step 2: A concrete complete smooth paired model
+
+Let \(S_0=T_0(V)\subset I_0(\boldsymbol\chi)\), and put
+\[
+ E=\overline{S_0}^{\,C^\infty(K)},\qquad
+ E^\vee=
+ I(\boldsymbol\chi^{-1})/
+       \operatorname{Ann}(E).
+ \tag{1.38ai}
+\]
+The closure and annihilator are taken in the actual
+compact smooth induced spaces, with their countable
+derivative seminorms and the compact integral pairing.
+This is the special case \(W_0=0,V_0=S_0\) of the
+closure construction of Theorem 1.26a above.
+We state its concrete verified conclusions and the
+mechanisms relevant to this construction.
+
+First, compact-finite vectors in a full compact model
+are coordinate polynomials. This is proved using the
+positive polynomial compact approximate identities
+(1.32h), finite-dimensional compact decomposition and
+Schur orthogonality. Row-QR applied to
+\(k\exp(tX)\) gives a holomorphic exponential expansion
+in a disk whose radius is independent of that coordinate
+polynomial: its row-Gram pivots stay near one uniformly
+on compact \(K\). Thus its compact-smooth Taylor series
+converges on a common disk. Every Taylor coefficient
+of a vector in \(S_0\) stays in \(S_0\), by Lie stability.
+Continuity, the common radius, finite iteration and
+polar generation of \(G\) make its closure \(E\) an
+actual closed \(G\)-subrepresentation. This is the
+group-stability proof in Theorem 1.26a, Steps 2–3.
+
+Second, every compact projector has finite-dimensional
+range. Projecting the closure \(E\) puts its packet in
+the closure of the packet of \(S_0\), which is already
+a closed finite-dimensional subspace. Hence the
+core of \(E\) is exactly \(S_0\), and is identified
+with \(V\) through (1.38ac). The annihilator is closed
+and group-stable by the invariant continuous pairing.
+Finite packet duality gives exactly the core
+\(V^\vee\) in the quotient in (1.38ai), as proved in
+Theorem 1.26a, Steps 4–5. The quotient is Fréchet and complete:
+Theorem 1.26a gives the explicit summable lifting argument
+for a Cauchy sequence in a closed Fréchet quotient,
+not an assumed comparison theorem.
+
+Third, the full induced actions and all their
+derivatives are continuous and moderate, with
+polynomial matrix-height bounds on each compact
+derivative seminorm from Theorem 1.26. Restriction to a closed
+subspace and the quotient seminorm bounds preserve
+these properties; quotient smoothness and differentiation
+are verified by the actual smooth lift in Theorem 1.26a.
+The compact integral gives the jointly continuous
+invariant pairing
+\[
+ E\times E^\vee\longrightarrow\mathbb C.
+ \tag{1.38aj}
+\]
+It is nondegenerate in both variables: a nonzero
+compact packet has a detecting paired packet by
+finite-dimensional duality, and the compact polynomial
+approximate identities detect a nonzero vector.
+The same identities prove density of both cores.
+These are actual maps and actual complete spaces.
+
+Finally, core irreducibility makes \(E\) and \(E^\vee\)
+topologically irreducible. A nonzero closed invariant
+subspace has a nonzero compact-finite vector by the
+positive compact approximate identities. Its core
+is then the whole irreducible core, whose density
+makes that subspace the whole model.
+This completes Theorem 1.34.
+
+#### Step 3: Consequences and comparison
+
+Every irreducible admissible abstract core therefore has a compatible
+actual complete smooth moderate dual pair. Theorem 1.31 applies to
+this constructed pair and proves its attained Gaussian ideal, entire
+Schwartz division and paired Fourier equation.
+
+For a separately prescribed actual complete smooth moderate dual
+pair, Theorems 1.29–1.31 give coefficient comparison, a complete common
+refinement and the Gaussian package in that original topology.
+Theorems 2.0x–2.0y below extend a principal-core quotient continuously
+with dense range and embed the entire continuous dual. None of these
+dense-range statements proves surjectivity or an inverse seminorm
+estimate for a comparison with an independently prescribed topology.
+
+The integral-defined polynomial in Theorem 1.31 also requires a
+separate computation to identify it with every intended real
+discrete-series, parity and complex angular standard-factor label.
+
 ### The remaining canonical archimedean input
 
 Theorem 1.21 proves continuation, entire division by a common pole majorant and rapid strip bounds for every smooth coefficient and Schwartz test in the stated actual dual-pair models. Theorem 1.22 proves their scalar Fourier equation, including reflection and character scaling. Proposition 1.21b and Corollary 1.22e prove full-Schwartz canonical division and constant epsilon once the genuine Gaussian ideals have been established; Corollary 1.22f proves the scalar critical-line phase in compatible unitary models. Theorem 1.19 and Theorems 1.11–1.13 furnish the actual smooth pair for cuspidal automorphic constituents.
 
-Theorem 1.26 proves the exact Gaussian product and one-pair attainment for every full real/complex Borel induction in the actual compact model, including reducible inductions. Theorems 1.26a–1.26b construct actual closed subquotient/dual models for every supplied principal-core subquotient and prove its exact monic polynomial correction, finite attaining family, entire Schwartz division and Fourier equation. Theorem 1.28 proves all-rank principal-core occurrence for every prescribed actual smooth moderate dual pair; Theorems 1.29–1.31 prove coefficient comparison, a complete common refinement, and the full Gaussian package in that original realization. Full onto/closed-image comparison and existence for unrealized abstract cores remain open, together with explicit standard-factor identification of the correction polynomial and scalar. The generator normalization in Theorem 1.26b is monic relative to its supplied inducing product. Theorem 1.31 proves the paired dual and unitary conjugation normalization of these integral-defined factors. A supplied abstract module still requires an actual smooth dual-pair realization if it is not already given. Propositions 1.7 and 1.18 supply the complete canonical package for determinant characters over both real and complex fields. The majorant example (1.25t) shows why polynomial-module stability and an entire common-denominator quotient cannot replace the Gaussian-ideal proof.
+Theorem 1.26 proves the exact Gaussian product and one-pair attainment for every full real/complex Borel induction in the actual compact model, including reducible inductions. Theorems 1.26a–1.26b construct actual closed subquotient/dual models for every supplied principal-core subquotient and prove its exact monic polynomial correction, finite attaining family, entire Schwartz division and Fourier equation. Theorem 1.28 proves all-rank principal-core occurrence for every prescribed actual smooth moderate dual pair; Theorems 1.29–1.31 prove coefficient comparison, a complete common refinement, and the full Gaussian package in that original realization. Theorems 1.32–1.34 prove abstract-core existence and full Borel occurrence. Full onto/closed-image comparison with separately prescribed topologies remains open, together with explicit standard-factor identification of the correction polynomial and scalar. The generator normalization in Theorem 1.26b is monic relative to its supplied inducing product. Theorem 1.31 proves the paired dual and unitary conjugation normalization of these integral-defined factors. For every abstract irreducible admissible core, Theorem 1.34 supplies such an actual smooth dual pair. Propositions 1.7 and 1.18 supply the complete canonical package for determinant characters over both real and complex fields. The majorant example (1.25t) shows why polynomial-module stability and an entire common-denominator quotient cannot replace the Gaussian-ideal proof.
 
 The freely accessible [Goldfeld–Jacquet author notes, §3, Theorem 3.5 and Lemma 3.6, PDF pages 14–19](https://www.math.columbia.edu/~goldfeld/LanglandsBookChapter.pdf) describe the canonical archimedean package. Their induced-representation reduction and generator statements do not supply the missing full proof. The continuation, distributional descent and Fourier arguments above are proved here.
 
@@ -9094,7 +10055,7 @@ For \(\pi=|\cdot|^{it}\) in degree one, \(\mathcal L(s,\pi)=\mathcal L(s+it,1)\)
 
 ## 2. Rankin–Selberg factors and their reciprocals
 
-Let \(\pi\) and \(\pi'\) be unitary cuspidal automorphic representations of \(GL_n(\mathbb A)\) and \(GL_m(\mathbb A)\). The nonzero global Whittaker transform for every nonzero smooth cuspidal function, over every number field and in every rank, is proved in *Automorphic representations and automorphic L-functions*, Theorem 1.3. Corollary 1.4 there proves local Whittaker existence for an irreducible admissible cusp module with its specified smooth cuspidal realization: the full adelic right action, a finite-level Fréchet smooth topology of moderate growth, continuous inclusion for all derivatives on compact sets, the given \(K_\infty\)-finite core, and continuous differentiation and compact averaging. At infinity the resulting functional is continuous. Theorem 1.19 supplies this smooth realization for every abstract cuspidal subquotient. Thus Corollary 1.4 of that earlier lesson gives a continuous archimedean Whittaker functional for every such local factor. Theorem 2.0 below proves local uniqueness at every finite place in every rank; Theorem 2.0n proves the archimedean distributional-principal-series bound, with the general embedding needed for arbitrary archimedean uniqueness still open.
+Let \(\pi\) and \(\pi'\) be unitary cuspidal automorphic representations of \(GL_n(\mathbb A)\) and \(GL_m(\mathbb A)\). The nonzero global Whittaker transform for every nonzero smooth cuspidal function, over every number field and in every rank, is proved in *Automorphic representations and automorphic L-functions*, Theorem 1.3. Corollary 1.4 there proves local Whittaker existence for an irreducible admissible cusp module with its specified smooth cuspidal realization: the full adelic right action, a finite-level Fréchet smooth topology of moderate growth, continuous inclusion for all derivatives on compact sets, the given \(K_\infty\)-finite core, and continuous differentiation and compact averaging. At infinity the resulting functional is continuous. Theorem 1.19 supplies this smooth realization for every abstract cuspidal subquotient. Thus Corollary 1.4 of that earlier lesson gives a continuous archimedean Whittaker functional for every such local factor. Theorem 2.0 below proves local uniqueness at every finite place in every rank; Theorem 2.0n proves the archimedean distributional-principal-series bound; Theorems 2.0x–2.0z below construct the full continuous-dual embedding and prove uniqueness in every supplied actual complete smooth moderate dual-pair model. Theorem 1.34 supplies a compatible pair for every abstract irreducible admissible core.
 
 For a fixed nontrivial additive character \(\psi:F\backslash\mathbb A\to\mathbb C^\times\), local Rankin–Selberg integrals pair a \(\psi_v\)-Whittaker function with a \(\psi_v^{-1}\)-Whittaker function. For equal ranks a Schwartz function also enters. The opposite characters ensure that the integrand descends to the unipotent quotient. The defining integrals and their analytic factor construction are [Getz–Hahn, 22 April 2022 draft, §11.5]. Local Whittaker uniqueness, local factor identification and the general integral construction remain additional assertions, rather than consequences of the existence proofs.
 
@@ -9545,7 +10506,7 @@ has been constructed. Then \(\dim\operatorname{Hom}^{\mathrm{cont}}_N(V,\Psi)\le
 
 *Proof.* Such functionals are precisely the vectors \(\ell\in V'\) satisfying \(n\ell=\Psi(n)^{-1}\ell\). Equivariance and injectivity of (2.7m) put their space injectively into (2.7b), whose dimension is at most one by Theorem 2.0n. \(\square\)
 
-Theorems 2.0x–2.0y below construct (2.7m) for every prescribed actual complete smooth moderate dual-pair model with irreducible admissible core. Their exact synthesis and full continuous-dual transpose proofs supply the required embedding, and Theorem 2.0z gives the bound in every real and complex rank. Existence for unrealized abstract cores and full onto/closed-image comparison remain separate obligations.
+Theorems 2.0x–2.0y below construct (2.7m) for every prescribed actual complete smooth moderate dual-pair model with irreducible admissible core. Their exact synthesis and full continuous-dual transpose proofs supply the required embedding, and Theorem 2.0z gives the bound in every real and complex rank. Theorem 1.34 constructs a compatible actual model for every abstract irreducible admissible core. Full onto/closed-image comparison remains a separate obligation.
 
 ### Direct archimedean Whittaker uniqueness in compatible unitary realizations
 
@@ -9852,9 +10813,9 @@ irreducible; Lemma 2.0w below proves their equivalence here. A supplied
 dual-pair model additionally has a model \(\widetilde E\) with the same
 properties and a jointly continuous nondegenerate invariant bilinear
 pairing; its core is the admissible contragredient of \(E_0\).
-These hypotheses describe the actual spaces and actions. Existence
-of such models for an arbitrary abstract module is not part of this
-statement. The cuspidal models in Theorems 1.19 and 1.11–1.13 of this lesson have
+These hypotheses describe the actual spaces and actions. Theorem
+1.34 constructs one such pair for every abstract irreducible admissible
+core; these statements also apply to a separately prescribed pair. The cuspidal models in Theorems 1.19 and 1.11–1.13 of this lesson have
 these properties.
 
 The algebraic input used below is the written Theorem 1.28, equation
@@ -10660,13 +11621,14 @@ all compatible cuspidal models and nonunitary representations.
 The occurrence and scalar analytic estimates it uses are
 proved in Theorems 1.28 and 1.29 above.
 
-This proof does not manufacture a supplied dual pair for
-an arbitrary abstract Harish-Chandra module. Nor does it
-assert a general onto/closed-image globalization comparison,
+Theorem 1.34 supplies a compatible dual pair for every abstract
+irreducible admissible Harish-Chandra core. The present proof also
+applies to any separately prescribed pair with the stated hypotheses.
+It does not assert a general onto/closed-image globalization comparison,
 opposite Whittaker existence in nongeneric models, or that
 all continuous-dual convolutions land in a preselected
-smooth contragredient. The general existence and onto comparison assertions remain
-additional obligations; they are unnecessary for (2.10ai).
+smooth contragredient. Onto comparison remains an additional obligation; it is unnecessary
+for (2.10ai).
 
 The free primary comparison source is Bernstein–Krötz,
 *Smooth Fréchet globalizations of Harish-Chandra modules*,
@@ -10680,7 +11642,7 @@ transport and dual embedding are proved above.
 The full row-minor, synthesis and transport arguments have been
 given above.
 
-**Theorem 2.1 (Jacquet–Piatetski-Shapiro–Shalika, 1983; local factor identification; general multiplicativity and archimedean construction remain open).** Over a nonarchimedean local field, the Rankin–Selberg integrals for irreducible generic representations are rational functions of \(q^{-s}\). Their span over \(\mathbb C[q^s,q^{-s}]\) is a fractional ideal with a unique generator \(P(q^{-s})^{-1}\), where \(P(0)=1\); this generator defines the local L-factor. The factors are multiplicative in the essentially tempered constituents of the local Langlands data. In particular, when both representations are unramified and have Satake matrices \(t,t'\),
+**Theorem 2.1 (Jacquet–Piatetski-Shapiro–Shalika, 1983; local factor identification; ordered essentially tempered factor identification and archimedean construction remain open).** Over a nonarchimedean local field, the Rankin–Selberg integrals for irreducible generic representations are rational functions of \(q^{-s}\). Their span over \(\mathbb C[q^s,q^{-s}]\) is a fractional ideal with a unique generator \(P(q^{-s})^{-1}\), where \(P(0)=1\); this generator defines the local L-factor. When both representations are unramified and have Satake matrices \(t,t'\),
 
 \[
 L_v(s,\pi_v\times\pi'_v)
@@ -10688,9 +11650,9 @@ L_v(s,\pi_v\times\pi'_v)
 \tag{2.2}
 \]
 
-Proposition 2.3b and Proposition 2.3d below prove convergence, rationality, the whole normalized nonarchimedean ideal and finite test-sum attainment in every pair of ranks and every nonarchimedean field; Corollary 2.3f proves rectangular-index independence. Theorem 2.3h proves the full scalar functional equation, and Proposition 2.3i and Corollary 2.3j prove Laurent epsilon, exact character scaling and norm shifts. Theorems 2.3l–2.3n identify the complete rank-one ideal, gamma and epsilon with the twisted matrix package, including ramified characters and both finite-field characteristics. Their block formula gives rank-one gamma multiplicativity when the inducing blocks are generic. Higher-rank parabolic multiplicativity and ordered-data identification remain additional assertions, located in the freely accessible author version [Jacquet–Piatetski-Shapiro–Shalika, *Rankin–Selberg convolutions*, §9.4]. Propositions 2.1a and 2.1c below prove the spherical Whittaker formula and the good-place integral value in every rank and over every nonarchimedean field. Identification of that value with the full ideal generator remains an additional assertion; the free statement locators are [Getz–Hahn, 22 April 2022 draft, Theorems 11.6.1–11.6.2]. At archimedean places the factors have the form of finite products of shifted \(\Gamma_{\mathbb R}\) and \(\Gamma_{\mathbb C}\) functions, with nonzero exponential normalization factors. This shape belongs to the local factor construction; it does not assert that all the shifts are tempered.
+Proposition 2.3b and Proposition 2.3d below prove convergence, rationality, the whole normalized nonarchimedean ideal and finite test-sum attainment in every pair of ranks and every nonarchimedean field; Corollary 2.3f proves rectangular-index independence. Theorem 2.3h proves the full scalar functional equation, and Proposition 2.3i and Corollary 2.3j prove Laurent epsilon, exact character scaling and norm shifts. Theorems 2.3l–2.3n identify the complete rank-one ideal, gamma and epsilon with the twisted matrix package, including ramified characters and both finite-field characteristics. Their block formula gives rank-one gamma multiplicativity when the inducing blocks are generic. Theorem 2.3ac and Corollary 2.3ad below prove full finite-place parabolic gamma multiplicativity and its polynomial correction for actual generic inducing data and supplied actual generic irreducible subquotients. Theorem 2.3ae identifies the whole spherical generator. Ordered essentially tempered data identification remains an additional assertion, located in the freely accessible author version [Jacquet–Piatetski-Shapiro–Shalika, *Rankin–Selberg convolutions*, §9.4]. Propositions 2.1a and 2.1c below prove the spherical Whittaker formula and the good-place integral value in every rank and over every nonarchimedean field. Theorem 2.3ae proves that this value generates the whole ideal. The freely accessible draft [Getz–Hahn, 22 April 2022 draft, Theorems 11.6.1–11.6.2] provides further reading for these statements. At archimedean places the factors have the form of finite products of shifted \(\Gamma_{\mathbb R}\) and \(\Gamma_{\mathbb C}\) functions, with nonzero exponential normalization factors. This shape belongs to the local factor construction; it does not assert that all the shifts are tempered.
 
-The whole nonarchimedean fractional ideal is now constructed in Propositions 2.3b–2.3d. Evaluating one spherical integral does not by itself prove that it generates that ideal. That identification, and the archimedean factor construction, remain analytic assertions in Theorem 2.1. Once their factor shape is known, the following elementary property needs no boundary estimate.
+Propositions 2.3b–2.3d construct the whole nonarchimedean fractional ideal. Theorem 2.3ae combines the spherical test with the proved parabolic polynomial correction to identify its normalized generator. Identification with ordered essentially tempered constituent factors and the archimedean factor construction still require the indicated proofs. Once a factor has the stated shape, Lemma 2.2 proves the elementary entire-reciprocal property.
 
 ### Spherical Whittaker functions in every finite-place rank
 
@@ -10854,7 +11816,7 @@ Opposite characters make these integrands invariant under the left unipotent gro
 =\det(1-q^{-s}t\otimes t')^{-1}.
 \tag{2.5l}
 \]
-This proves the value of the spherical test, for every nonarchimedean \(k\). Identification as the normalized generator of the full Rankin–Selberg fractional ideal is a further assertion.
+This proves the value of the spherical test, for every nonarchimedean \(k\). Theorem 2.3ae below proves that this value is the normalized generator of the full Rankin–Selberg fractional ideal.
 
 **Proof.** For a left \(N_m\)-invariant, right \(K_m\)-invariant integrand, the proved Iwasawa formula in \(u a k\) order is the sum over \(\lambda\in\mathbb Z^m\) with weight \(\delta_m(a_\lambda)^{-1}\). Each torus-unit shell has volume one; \(K_m\) has volume one. This also gives the absolute integral by using absolute values.
 
@@ -12858,6 +13820,2401 @@ give its elementary Fourier step with
 the present positive *trace* convention.
 This is why (2.9cv) has \(g^tw_n\).
 
+### Whittaker induction and exact trailing-block insertion
+
+Let \(\rho,\tau\) be actual generic smooth admissible
+representations of \(G_a,G_b\), with one-dimensional
+generic coinvariants. Let
+\[
+ I=\operatorname{Ind}_{P_{a,b}}^{G_{a+b}}
+          (\rho\otimes\tau)
+ \tag{2.9bo}
+\]
+be normalized upper-parabolic induction. It is admissible
+by the complete compact-double-coset proof in Lemma 1.23a.
+
+**Lemma 2.3o.** Its generic coinvariant is the tensor
+product of those of \(\rho,\tau\), hence one-dimensional.
+For every \(W_\tau\) and every
+\(\Phi\in C_c^\infty(k^b)\), its Whittaker model contains
+a function satisfying
+\[
+ W\left(\operatorname{diag}(h,I_a)\right)
+       =W_\tau(h)\Phi(e_bh)|\det h|^{a/2},
+       \qquad h\in G_b.
+ \tag{2.9bp}
+\]
+
+**Proof of the induction assertion.** Ordinary upper
+Bruhat elimination, coarsened by the Levi permutation
+group, decomposes \(P_{a,b}\backslash G_{a+b}\) into
+the finitely many \(N_{a+b}\)-orbits indexed by words
+of \(a\) letters \(A\) and \(b\) letters \(B\).
+This follows directly from pivot elimination: each
+pivot records which of the two row blocks it belongs
+to, and permutations internal to either block are
+absorbed by the Levi. The nonzero-minor pivot charts
+also give local sections and the closure ordering
+by ranks of the initial column spans. Rank conditions
+are closed because their defining minors are
+continuous. Consequently there is a finite closed–open
+filtration of smooth section spaces by these orbits.
+Restriction on a closed stratum is exact: locally
+constant compactly supported sections extend from
+a compact-open coordinate partition, and a section
+vanishing there vanishes near its compact support.
+
+Except for the open word \(B^bA^a\), the word has
+an adjacent \(AB\). The corresponding simple upper
+root, conjugated by its pivot permutation, belongs
+to the upper radical of \(P_{a,b}\). It acts trivially
+on the inducing fibre; its prescribed generic character
+is nontrivial. The homogeneous fibre-averaging argument
+of Proposition 2.3g therefore kills that orbit's generic
+coinvariant. There are no transverse jets.
+For the open word the stabilizer consists of the
+two internal upper-unipotent groups; integrating
+the cross-block additive coordinates with their
+generic character leaves exactly the two inducing
+generic coinvariants. Exactness of twisted
+coinvariants, proved in the mirabolic spectral filtration above, now identifies the
+coinvariant of the entire induction with this open
+one. This proves the assertion and constructs its
+Whittaker functional, including on sections not
+supported in the open orbit.
+
+**The exact insertion formula.** In block rows
+\((a,b)\) and block columns \((b,a)\), put
+\[
+ w=\begin{pmatrix}0&I_a\\I_b&0\end{pmatrix},
+ \qquad u(Y)=\begin{pmatrix}I_b&Y\\0&I_a\end{pmatrix}.
+ \tag{2.9bq}
+\]
+An open-cell section with
+\(f(wu(Y))=\xi(Y)v_\rho\otimes v_\tau\),
+\(\xi\in C_c^\infty(M_{b,a}(k))\), extends by zero
+to an actual smooth induced section: its support
+is compact inside the open flag chart. Normalize
+the functional of \(\rho\) by
+\(\lambda_\rho(v_\rho)=1\). On these sections the
+Whittaker functional just constructed is exactly
+\[
+ \Lambda(f)=\int_{M_{b,a}(k)}
+   (\lambda_\rho\otimes\lambda_\tau)(f(wu(Y)))
+             \psi(-Y_{b,1})\,dY.
+ \tag{2.9br}
+\]
+The sign is checked by translating \(Y\); the two
+internal blocks use their original generic
+functionals. Since the open and full generic
+coinvariants agree, (2.9br) is its restriction,
+not an asserted convergent integral for arbitrary
+sections.
+
+For \(g=\operatorname{diag}(h,I_a)\), one has
+\[
+ wu(Y)g=\operatorname{diag}(I_a,h)\,
+            wu(h^{-1}Y).
+ \]
+The normalized inducing modulus contributes
+\(|\det h|^{-a/2}\); replacing \(Y\) by \(hY\)
+in its \(a\) columns contributes \(|\det h|^a\).
+Thus \(\Lambda(R(g)f)\) is
+\[
+ |\det h|^{a/2}W_\tau(h)
+       \int\xi(Y)\psi(-e_bhYe_1)\,dY.
+ \tag{2.9bs}
+\]
+Choose
+\(\xi(Y)=\widehat\Phi(Y e_1)\xi_0(Y_{\rm other})\),
+where the remaining \(b(a-1)\) additive coordinates
+have a compact Schwartz function of integral one.
+For \(a=1\) that factor is absent. Positive Fourier
+inversion makes the last integral precisely
+\(\Phi(e_bh)\). This proves (2.9bp), with all
+modulus powers and measures written. \(\square\)
+
+In particular, if the second Rankin–Selberg rank
+equals \(b\), the \(j=0\) integrals for \(I\) include
+every equal-rank integral for \(\tau\): the
+\(a/2\) factor in (2.9bp) cancels the unequal-rank
+shift. If the second rank is smaller than \(b\),
+choose \(\Phi(e_b)=1\) and embed its group in the
+first coordinates of \(G_b\); its last row is
+exactly \(e_b\). The same cancellation includes
+every \(j=0\) integral for that smaller-rank pair.
+This is an exact inducing test construction,
+without importing an induced-representation
+functional-equation theorem.
+
+### The required two-parabolic Jacquet calculation, with its proof
+
+This supplies central annihilators for induction. Its proof does
+not assume finite length, the noetherian property of a Hecke
+algebra, or a geometric-lemma statement from a reference.
+
+Let \(P=P_{a,b}\) and \(Q=P_{l,n-l}\), \(n=a+b\),
+be upper two-block parabolics. Write \(U_Q\) for the
+radical of \(Q\), and \(M_Q=G_l\times G_{n-l}\).
+For a two-block parabolic \(P_{c,d}\) write
+\(r_{c,d}=\delta_{P_{c,d}}^{-1/2}(\,\cdot\,)_{U_{c,d}}\).
+For \(c=0\) or \(d=0\) this is the original module
+in its single nonzero block.
+
+**Lemma 2.3p.** The normalized \(Q\)-Jacquet module of
+\(I=\operatorname{Ind}_{P_{a,b}}^{G_n}(\rho\otimes\tau)\)
+has a finite filtration with one quotient for each pair
+\[
+ 0\le i\le a,\quad 0\le j\le b,\qquad i+j=l.
+ \tag{2.9cc}
+\]
+That quotient is normalized induction on \(M_Q\) from
+the four-block module
+\[
+ r_{i,a-i}(\rho)\otimes r_{j,b-j}(\tau),
+ \tag{2.9cd}
+\]
+whose four factors are assigned, in order, to blocks
+\((i,j)\) in \(G_l\) and \((a-i,b-j)\) in \(G_{n-l}\).
+Expression (2.9cd) means the module of the indicated
+four-block product group; it does not assert a tensor
+decomposition of either individual Jacquet module
+into simple factors.
+
+**Proof of the orbit filtration.** The \(Q\)-orbits of
+\(P\backslash G_n\) are indexed by
+the dimension \(i\) of the intersection of the
+represented \(a\)-plane with the fixed first
+\(l\)-plane; the remaining first-plane dimension
+is \(j=l-i\). Elementary pivot elimination gives
+representatives which assign \(i\) coordinates
+of the \(\rho\)-block and \(j\) of the
+\(\tau\)-block to the first \(Q\)-block, and
+their complementary coordinates to the second.
+Here an \(a\)-plane can equivalently be represented
+by the rows or kernels defining the coset, after
+reversing all the choices consistently. The
+representatives are characterized invariantly
+by the block assignment just given.
+
+For completeness, eliminate a full-rank matrix
+representing that plane using changes of its
+basis, and column operations preserving the
+first \(l\)-plane. First choose a basis of its
+intersection with that plane and move its pivots
+to the first \(i\) available coordinates there.
+Project its complementary vectors to the quotient
+by the first plane; their independent images
+give the remaining \(a-i\) pivots. Subtract
+their components in the first plane and clear
+the other entries by the allowed operations.
+This produces the coordinate representative.
+The intersection dimension is unchanged by
+the operations and distinguishes the representatives.
+On a fixed nonzero-minor chart these operations
+are rational functions with nonzero denominators,
+so they also give local continuous sections of
+each orbit map. Rank inequalities describing
+its boundary are closed, being vanishing
+conditions on minors. Ordering the finitely
+many possible intersection dimensions therefore
+gives a closed–open filtration of the section
+space. Its orbit quotient is the compactly
+supported smooth section space on that orbit,
+with the inducing fibre.
+
+Restriction to each successive closed stratum
+is onto: at the right level of a section, use
+finitely many compact-open coordinate pieces
+to extend its finitely many fibre values.
+A section zero on that stratum is zero on
+a neighbourhood of its compact support there,
+and belongs to the section space of the
+remaining open set. This proves exactness.
+Ordinary \(U_Q\)-coinvariants are exact,
+by the compact-averaging proof of the mirabolic spectral filtration above with
+the trivial character; \(U_Q\) here is just
+an additive matrix group. It remains to
+compute the coinvariant of an individual
+orbit.
+
+**The orbit and its ordinary coinvariant.**
+Choose its permutation \(w\), and put
+\(H=Q\cap w^{-1}Pw\). It splits as
+\[
+ H=H_M H_U,\qquad
+ H_M=H\cap M_Q,\quad H_U=H\cap U_Q.
+ \tag{2.9ce}
+\]
+The group \(H_M\) is the upper parabolic
+of block types \((i,j)\) and
+\((a-i,b-j)\) in the two factors of \(M_Q\).
+Its radical acts trivially on the inducing
+fibre: its roots are from the \(\rho\)-block
+to the \(\tau\)-block in \(P\).
+The nontrivial \(H_U\)-actions on the fibre
+are precisely \(U_{i,a-i}\) in \(\rho\)
+and \(U_{j,b-j}\) in \(\tau\). Its other
+roots belong to the radical of \(P\).
+These descriptions follow by listing a
+root's source and target among the four
+blocks; a root from the first \(\tau\)
+block to the last \(\rho\) block is the
+only forbidden cross-block type.
+
+In particular \(U_Q\) is abelian, and
+\[
+ U_Q/H_U\simeq M_{j,a-i}(k).
+ \tag{2.9cf}
+\]
+The orbit section module is
+\(\mathrm{c\!-\!Ind}_H^Q F\), with
+\[
+ F(h)=\delta_P(whw^{-1})^{1/2}
+                     (\rho\otimes\tau)(whw^{-1}).
+ \]
+Taking its \(U_Q\)-coinvariant first
+takes the \(H_U\)-coinvariant of \(F\),
+then integrates the compactly supported
+coordinates (2.9cf). Here is an explicit
+proof that no kernel is omitted. On a
+compact-open local chart of \(H_M\backslash
+M_Q\), sections are finite sums of locally
+constant functions in the additive coordinate
+with finitely many fibre values. Divide the
+coordinate support into cosets of a common
+compact open additive lattice. A function
+with integral zero is a finite sum of
+differences between a coset indicator
+and a translate of it. These differences
+are exactly translation coinvariant
+relations. Taking the \(H_U\)-coinvariant
+of a finite collection of fibre values is
+also exact by compact averaging. Lift its
+finite relations, and then use these
+coset differences. This proves both
+surjectivity and the kernel assertion
+locally.
+
+There are finitely many such charts for
+the compact support of the section.
+Refine their compact-open partitions until
+all matrix-coordinate changes, translated
+coset indicators and fibre values have
+common open stabilizers. A fixed translation
+in \(U_Q\) then gives the required coordinate
+translation throughout each piece: differences
+inside the constancy lattice act trivially.
+Thus the local relations are actual
+\(U_Q\)-relations, not relations involving
+a variable group element. Adding the finitely
+many pieces proves the global assertion.
+The resulting section space on \(H_M\backslash
+M_Q\) is induction with a transformation
+character contributed by this integration.
+
+**The exact density calculation.** Write an
+element of the four-block Levi as
+\((A_1,B_1,A_2,B_2)\), with block dimensions
+\((i,j,a-i,b-j)\). Its action on (2.9cf) is
+\[
+ z\longmapsto B_1zA_2^{-1},
+ \qquad
+ dz\longmapsto
+       |\det B_1|^{a-i}|\det A_2|^{-j}\,dz.
+ \tag{2.9cg}
+\]
+If a section is integrated as
+\(\int f(u(z)m)\,dz\), replacing \(m\)
+by \(hm\), \(h\in H_M\), conjugates
+the variable by \(h^{-1}\). Changing it
+back gives the *positive* Jacobian in
+(2.9cg). The inducing half modulus has
+exponents \(b/2,b/2,-a/2,-a/2\) on
+\((A_1,A_2,B_1,B_2)\).
+Multiplying by (2.9cg), and then by
+\(\delta_Q^{-1/2}\) to normalize the
+Jacquet module, gives the exponents
+\[
+ \begin{array}{c|cccc}
+       &A_1&B_1&A_2&B_2\\ \hline
+       &\dfrac{j-a+i}{2}
+       &\dfrac{-i-b+j}{2}
+       &\dfrac{b-j+i}{2}
+       &\dfrac{-a+i+j}{2}.
+ \end{array}
+ \tag{2.9ch}
+\]
+These are exactly the sum of the half
+modulus for induction from \((i,j)\)
+and \((a-i,b-j)\), and the two negative
+half moduli normalizing the inducing
+Jacquet modules. This proves (2.9cd),
+including its density, and finishes
+the proof of the lemma. \(\square\)
+
+**Corollary 2.3q (global central polynomials for
+induced Whittaker models).** Suppose that \(\rho,\tau\)
+are actual irreducible smooth admissible representations.
+For \(0\le i\le a\), let \(p_{\rho,i}\) be the global
+raw Jacquet polynomial of Lemma 2.3, with the conventions
+\[
+ p_{\rho,0}(T)=T-1,\qquad
+ p_{\rho,a}(T)=T-\omega_\rho(\varpi),
+ \tag{2.9ci}
+\]
+and similarly for \(\tau\). The raw \(Q\)-Jacquet
+module of \(I\) is annihilated by the product,
+over the pairs (2.9cc), of the polynomials whose
+roots are
+\[
+ q^{\{i(a-i)+j(b-j)-l(n-l)\}/2}\alpha\beta,
+ \quad
+ p_{\rho,i}(\alpha)=p_{\tau,j}(\beta)=0.
+ \tag{2.9cj}
+\]
+If the respective root multiplicities are \(u,v\),
+give the product root multiplicity \(u+v-1\);
+combine repeated roots by adding these
+multiplicities. An empty root set means the
+corresponding Jacquet quotient is zero.
+
+**Proof.** The central element
+\(\operatorname{diag}(\varpi I_l,I_{n-l})\)
+acts on a normalized quotient (2.9cd)
+through the two partial scalar elements of
+the inducing Jacquet modules. Their normalization
+contributes
+\(q^{i(a-i)/2+j(b-j)/2}\).
+This element is central in \(M_Q\), so the
+inducing modulus on \(H_M\) is one: in each
+of its two blocks the same scalar appears
+on both subblocks. Returning to the raw
+Jacquet module contributes
+\(q^{-l(n-l)/2}\). This gives (2.9cj).
+On generalized root spaces write the
+two actions as \(\alpha+N\) and
+\(\beta+M\), with \(N^u=M^v=0\).
+After subtracting the product root,
+every summand contains at least one
+of \(N,M\). Its \((u+v-1)\)-st power
+is zero by the pigeonhole count of the
+two nilpotent powers. Bézout projections
+separate the finitely many roots exactly
+as in Lemma 2.3a. Thus the indicated polynomial
+annihilates each orbit quotient. Applying
+their polynomials successively down the
+finite filtration annihilates the
+whole module. \(\square\)
+
+In particular the convergence and uniform-denominator
+argument of the preceding uniform-recurrence and denominator proofs also works for this full induced
+Whittaker family. One uses (2.9cj) to see that
+the polynomial action is an actual finite
+sum of unipotent differences on each vector;
+one does not need finite generation of \(I\).
+Admissibility is Lemma 1.23a and its generic
+coinvariant is Lemma 2.3o. This observation prepares
+the induction-family calculation; it does
+not assert multiplicativity of its scalar
+functional equation.
+
+### Algebraic Whittaker families and coefficientwise continuation
+
+We construct the inducing family over a Laurent polynomial ring
+and prove specialization and uniform determinant-shell support.
+
+Let \(A=\mathbb C[z,z^{-1}]\), and let
+\(\chi_z\) denote the \(A^\times\)-valued unramified
+character \(a\mapsto z^{v(a)}\). For actual generic
+irreducible admissible \(\rho,\tau\), form the normalized
+induction over \(A\)
+\[
+ I_A=\operatorname{Ind}_{P_{a,b}}^{G_{a+b}}
+                  ((\rho\otimes\chi_z\circ\det)
+                                      \otimes\tau).
+ \tag{2.9di}
+\]
+Its compact picture consists of the same locally
+constant functions on \(K_{a+b}\) as before,
+now with fibre values in
+\((V_\rho\otimes V_\tau)\otimes_\mathbb C A\).
+The compatibility condition on \(P\cap K\) is
+independent of \(z\), since every Levi determinant
+there is a unit. Right translation by a fixed
+\(g\) produces an \(A\)-valued section: its
+restriction to \(K\) is computed on the compact
+set \(Kg\); only finitely many Iwasawa
+valuation patterns and compact fibre values
+occur, so only finitely many powers of \(z\)
+occur at any fixed right level.
+
+**Lemma 2.3r.** There is an \(A\)-linear generic
+functional
+\[
+ \Lambda_A:I_A\longrightarrow A
+ \tag{2.9dj}
+\]
+whose specialization at each \(z_0\in
+\mathbb C^\times\) is the generic functional
+normalized by the open-cell integral (2.9br).
+For a compact-picture section \(f\) and a
+fixed \(g\),
+\[
+ W_f(z,g)=\Lambda_A(R(g)f)\in A.
+ \tag{2.9dk}
+\]
+There is a common right compact open stabilizer
+of this family for all \(z_0\). Every Whittaker
+function in a specialized induction is obtained
+by specializing such a family.
+
+**Proof.** The exactness of ordinary and
+twisted unipotent coinvariants used in the mirabolic spectral filtration above
+is valid over \(A\): a compact weighted
+average is an idempotent whose coefficients
+are complex numbers, and the finite relations
+of a vector are killed by a sufficiently
+large compact average. The division involved
+is only by a nonzero Haar volume in
+\(\mathbb C^\times\), already a unit of \(A\).
+This gives the same finite averaging proof
+of injectivity, not an assertion that an
+arbitrary base change is exact.
+
+The pivot charts and closed–open orbit
+filtration of Lemma 2.3o likewise work with
+these fibres. Restriction and extension
+use finitely many compact-open pieces,
+not an infinite algebraic sum. Each
+non-open orbit is killed by an adjacent
+root \(AB\): the relevant radical acts
+trivially, while its nonzero prescribed
+character acts by a nontrivial complex
+unit. The open orbit's coinvariant is
+the tensor product of the two inducing
+generic coinvariants, which is \(A\).
+Thus the full generic coinvariant is
+canonically \(A\), with its generator
+fixed by the open integral. Composing
+its quotient map with this identification
+is (2.9dj).
+
+Specialization of coinvariants commutes
+with evaluation \(z=z_0\): both are
+quotients by the same action relations,
+and tensoring a quotient gives the
+specialized quotient. Specialization
+of the induction itself is the actual
+complex induction. At each right
+compact level its sections are
+determined by finitely many double-coset
+values, with the \(z\)-independent
+compatibility on \(P\cap K\); specialize
+these values or lift them as constants.
+Taking the union of levels proves
+surjectivity and the asserted
+identification of section modules.
+The open functional specializes to
+the normalized one in Lemma 2.3o and is
+nonzero. Formula (2.9dk) follows
+because every value of an \(A\)-linear
+map lies in \(A\). A right stabilizer
+of \(f\) fixes all its Whittaker
+functions. Conversely a specialized
+Whittaker function has a section at
+one such level; lift its finite
+compact-picture values as constants.
+This proves the last assertion.
+\(\square\)
+
+**Corollary 2.3s (uniform formal coefficients).**
+In each equal- or unequal-rank integral, replace an
+induced Whittaker function by (2.9dk). The coefficient
+of a fixed determinant shell is a Laurent polynomial
+in \(z\). The integral has only finitely many
+negative powers of \(X\), with a bound independent
+of \(z\). The same statements hold for its
+inverse-transpose Fourier family.
+
+**Proof.** The common right level gives a
+common upper bound for all simple torus
+ratios, by the nontrivial-character
+argument (2.9h), independently of \(z\).
+For the equal-rank family the vector
+test also bounds the central coordinate
+above. On a fixed determinant shell
+these upper bounds bound every coordinate
+below as well: solve for each valuation
+in the weighted sum of the fixed
+determinant valuation. Hence its
+support in \(N\backslash G\) lies
+in a compact set independent of \(z\).
+The finitely many inverse coordinates
+give a uniform lower bound on the
+determinant valuation, and hence on
+the occurring powers of \(X\).
+
+For unequal ranks the large-rank
+Whittaker support bounds the first
+smaller-rank ratios and its final
+smaller diagonal coordinate against
+the trailing identity. Thus every
+diagonal entry of its smaller-rank
+block is bounded above. Fixing that
+block's determinant bounds them all
+below, as before. The rectangular
+coordinates are in the common compact
+set proved in Proposition 2.3b; that proof uses
+only the common right level. The
+smaller compact coordinates are
+already compact. These observations
+again give a uniform compact set
+for each shell and a uniform bound
+on negative determinant valuations.
+
+On a compact set a right-level
+Whittaker family (2.9dk) takes
+only finitely many values in \(A\).
+Integrating their finitely many
+compact-open pieces is a finite
+sum of those Laurent polynomials
+times fixed complex volumes. This
+is the desired shell coefficient.
+Inverse transpose changes the common
+right level to its transpose-inverse;
+the fixed Weyl matrix and Fourier
+test have common levels too. Repeating
+the argument proves the dual statement.
+\(\square\)
+
+For several irreducible inducing blocks, iterate this construction
+over the same ring \(A\). At each stage the inducing generic
+coinvariant is free of rank one; the orbit filtration and weighted
+compact averages above require this fact and the given action, not
+irreducibility of the intermediate module. The compact picture is
+still independent of the unramified parameter on its unit
+compatibility subgroup. Thus constant compact-picture values lift
+every specialized section and the normalized open functional remains
+nonzero at every specialization. An overall norm twist multiplies a
+value at a fixed matrix by a Laurent monomial.
+
+If an intermediate block is its faithful Whittaker quotient, lift
+its finitely many section values to the full inducing module, using
+compact averaging to preserve their common stabilizer. Exactness of
+the generic coinvariant identifies the normalized functional of that
+quotient with the original one. Hence the resulting Whittaker
+functions are exactly the original functions. All uniform shell and
+specialization conclusions therefore hold for the iterated faithful
+models used in the following arguments as well.
+
+The global polynomials of Lemma 2.3p have an
+algebraic parameter version. In (2.9cj) a
+root belonging to the partial scalar
+on the first inducing block is
+multiplied by \(z^i\). The paired-root
+polynomials have coefficients in \(A\),
+and the products along the filtration
+have nonzero constant terms which are
+units of \(A\). They annihilate the
+whole universal Jacquet module by the
+same nilpotent calculation. In particular
+root collisions after specialization
+do not invalidate the common denominator.
+
+Suppose therefore that a proposed identity of
+Rankin–Selberg families has been multiplied by
+the actual child reciprocal polynomials and
+Laurent-unit epsilons, so that all its fixed
+\(X\)-coefficients are Laurent polynomials
+in \(z\). If it is proved for every \(z\)
+in a nonempty open annulus, all those
+coefficient identities hold for every
+nonzero \(z\): multiply a coefficient
+by a power of \(z\) and use that a
+nonzero complex polynomial has finitely
+many roots. This proves the coefficientwise
+continuation needed to move to a
+convergent inducing chamber. It supplies
+that continuation input; the unproved
+two-block functional-equation identity
+itself is still not inferred from it.
+
+### The exact inducing-family scope and removal of an auxiliary character
+
+For the following induction argument the representation
+need not be irreducible. Its *Whittaker function model*
+means the image of the map
+\(v\mapsto[g\mapsto\lambda(\rho(g)v)]\); it is a
+smooth admissible quotient of the representation and
+evaluation at one is faithful under all its translates.
+For a reducible inducing representation its reflected
+model means the functions \(\widetilde W\) in Theorem 2.3h.
+This definition does not assert that inverse transpose
+is an isomorphism with its ordinary contragredient.
+
+**Lemma 2.3t.** The preceding finite-place integral theory, including the scalar
+functional equation, hold for the Whittaker models
+of normalized parabolic inductions of finitely
+many actual generic irreducible admissible blocks.
+In the reflected equation each inducing block
+is dualized and the block order is reversed.
+The entire rank-one ideal and scalar comparisons
+the preceding rank-one ideal and Fourier comparisons hold for these function models too.
+
+**Proof.** Iterate Lemma 2.3o to obtain generic
+coinvariant of dimension one. Admissibility
+is the actual Lemma 1.23a. Iterate the
+two-parabolic calculation Lemma 2.3p to obtain
+global central polynomials on every
+ordinary two-block Jacquet module.
+The iteration does not require a
+tensor decomposition into irreducibles:
+its filtration modules are the original
+iterated Jacquet modules of the finitely
+many irreducible blocks, each with
+their global polynomials; exactness
+and the finite filtration give a product
+annihilator. Passing to the function
+model is an admissible quotient.
+Exactness of ordinary coinvariants
+preserves the annihilators, and its
+nonzero generic functional makes its
+generic coinvariant one-dimensional.
+
+In Lemma 2.3 finite generation was used only
+to obtain these global annihilators.
+Their polynomial action on a vector
+is already a finite sum of actual
+unipotent differences, by the definition
+of its zero Jacquet class. The proof
+of the eventual recurrences therefore
+goes through unchanged. the recurrence and denominator proofs use
+those recurrences and smoothness.
+the mirabolic spectral filtration above is an exact spectral filtration
+for arbitrary smooth modules. Its
+bottom fibre in the present model
+has dimension one, so Proposition 2.3d's compact
+test and Corollary 2.3f's root exchange apply.
+Proposition 2.3g uses global polynomials on
+ordinary Jacquet modules and the
+one-dimensional bottom fibre, not
+a composition series or a simple
+ambient module. Hence its uniqueness
+bound applies. The proof of Theorem 2.3h
+constructs the reflected integrals
+as functions and checks their
+covariance explicitly, so it also
+applies to these models. The
+one-dimensional bottom fibre
+in the reflected model is again
+Lemma 2.3o applied to the reversed dual
+blocks: inverse transpose changes
+an upper induction into a lower
+one, and the fixed Weyl permutation
+puts it in reversed upper-block
+order. The actual irreducible
+blocks' inverse-transpose/dual
+identification was proved by the
+preceding finite Whittaker theorem.
+There is no assertion here identifying
+the whole reducible induction
+with its ordinary dual.
+
+To be explicit about Theorem 2.3l, the
+spanning argument (2.9cn) remains
+valid in the faithful function
+model. A nonzero vector gives
+a function nonzero somewhere,
+so some translate is detected
+by evaluation. Compact-fixed
+admissibility then makes the
+evaluation translates span its
+entire fixed dual space. This
+replaces irreducibility at precisely
+that point of the argument.
+The direct inclusion Proposition 2.3k and the
+kernel 2.9cu use only a faithful
+Whittaker functional, smoothness
+and the already proved support
+bounds. Therefore both full
+ideals agree.
+
+The induced matrix scalar is the
+product of the actual block matrix
+scalars, by Theorem 1.23 above, iterated over blocks.
+Every coefficient of the function
+model is a coefficient of the
+original induction: lift its
+vector and compose its dual
+functional with the quotient map.
+Its inverse-coefficient equation
+is consequently the same whole-family
+matrix equation. The proof of
+(2.9dg) uses that inverse coefficient
+and the actual functions
+\(\widetilde W\); it requires no
+module isomorphism with an ordinary
+dual. 2.9cw and scalar uniqueness
+then prove the rank-one scalar
+comparison exactly as in Lemma 2.3m.
+This proves the lemma. \(\square\)
+
+**Lemma 2.3ta (characters of arbitrarily large conductor).**
+For every integer \(c\ge2\), there is a smooth character
+\(\mu:k^\times\to\mathbf C^\times\) of conductor \(c\).
+
+*Proof.* On \(U_{c-1}/U_c\), where
+\(U_j=1+\mathfrak p^j\), multiplication is the additive law of the
+residue field: the cross term belongs to \(\mathfrak p^c\).
+For the conductor-zero additive character fixed above,
+\[
+ 1+\varpi^{c-1}x\longmapsto\psi(\varpi^{-1}x)
+ \tag{2.9dm}
+\]
+is well-defined and nontrivial on that quotient. Extend it to the
+finite abelian group \(\mathcal O^\times/U_c\). Here is the extension
+argument: if a character is defined on a subgroup \(D\) and
+\(g\notin D\), let \(m\) be the least positive integer with
+\(g^m\in D\); choose an \(m\)-th root \(\lambda\) of its value at
+\(g^m\), and set \(\chi(dg^j)=\chi(d)\lambda^j\). The minimality of
+\(m\) makes this well-defined on the generated subgroup.
+Finitely many repetitions extend to the whole finite group.
+Finally set \(\mu(\varpi)=1\) and use
+\(k^\times=\varpi^{\mathbf Z}\mathcal O^\times\).
+The character is trivial on \(U_c\) and nontrivial on \(U_{c-1}\),
+so its conductor is exactly \(c\). \(\square\)
+
+**Proposition 2.3u (sufficiently ramified auxiliary
+twists have factor one).** Given finitely many
+actual irreducible admissible blocks, choose a
+character \(\mu\) with sufficiently large
+conductor, using Lemma 2.3ta. For every one of their induced
+Whittaker models \(\rho\),
+\[
+ L(s,\rho\times\mu)=1.
+ \tag{2.9dl}
+\]
+The quantifier concerns all tests in the
+entire family, not a vanishing spherical
+integral.
+
+**Proof.** The actual earlier Theorem
+1.23e embeds every irreducible block
+in a normalized induction of finitely
+many Jacquet-cuspidal irreducible
+blocks. Its proof terminates by
+decreasing ranks and constructs the
+actual embeddings; it does not invoke
+a classification. Exactness of
+induction and its elementary
+transitivity give an embedding of
+each induction under consideration
+in an induction of those terminal
+blocks. Transitivity follows by
+evaluating an induced section as
+a function on the two successive
+flag quotients, and combining their
+section laws: the moduli multiply
+to the modulus of the refined
+parabolic. Conversely restrict
+to its compact quotient and use
+the same finite double-coset values
+to recover the iterated section.
+The two maps are inverse at every
+compact level and commute with
+right translation.
+
+The higher-rank terminal blocks
+have matrix factor one, after
+every determinant-character twist,
+by the actual compact coefficient
+Lemma 1.20a and Proposition 1.4.
+Rank-one terminal blocks are a
+finite collection of characters
+\(\xi\). Take the conductor of
+\(\mu\) larger than all their
+conductors. Then \(\xi\mu\) is
+ramified: on the last nontrivial
+unit subgroup for \(\mu\), the
+character \(\xi\) is trivial.
+The complete Tate theory gives
+factor one for each such block.
+The whole refined inducing matrix
+ideal is therefore \(R\), by the
+actual Lemma 1.23b and its proof
+of both ideal inclusions.
+
+Every coefficient of the embedded
+original induction is a coefficient
+of this ambient representation:
+extend a compact-fixed dual functional
+linearly on the finite-dimensional
+ambient fixed space and compose
+with compact averaging. Quotient
+coefficients of its Whittaker
+model lift as just described.
+Thus their entire matrix ideal
+is contained in \(R\). The
+rank-one ideal comparison Lemma 2.3t
+puts the entire Rankin–Selberg
+family in \(R\). It contains
+one by Proposition 2.3d, hence equals \(R\).
+Its normalized factor is one.
+This proves (2.9dl). \(\square\)
+
+### Equal-rank parabolic multiplicativity
+
+Let \(r=a+b\), \(a,b\ge1\). Let \(\pi\) have rank \(r\), and let
+\(\sigma_a,\sigma_b\) have ranks \(a,b\). They may be actual irreducible
+generic admissible representations, or the faithful induced Whittaker
+models covered by Lemma 2.3t. Put
+\[
+ \sigma=\operatorname{Ind}_{Q^-}^{G_r}(\sigma_a\otimes\sigma_b),
+ \qquad
+ Q^-=\left\{\begin{pmatrix}A&0\\ C&D\end{pmatrix}\right\}.
+ \tag{2.11a}
+\]
+Induction is normalized. The blocks are realized with upper Whittaker
+character \(\psi^{-1}\); \(\pi\) uses \(\psi\). A section takes values in
+functions of \(h_a,h_b\), with the law
+\[
+ f\left(\begin{pmatrix}A&0\\ C&D\end{pmatrix}g;h_a,h_b\right)
+ =\nu(A)^{-b/2}\nu(D)^{a/2}
+       f(g;h_aA,h_bD).
+ \tag{2.11b}
+\]
+Here \(\nu(g)=|\det g|\), and all additive measures are self-dual.
+The Haar and quotient measures are those of Proposition 2.3b and Theorem 2.3h.
+
+#### The needed convergence chamber, with proof
+
+Twist the blocks to \(\sigma_a\nu^{-u},\sigma_b\nu^u\), first with \(u\)
+real and sufficiently positive. The compact picture of a section is fixed.
+Set
+\[
+ M(Y)=\max(1,|Y_{ij}|),\qquad
+ H(Y)=\max\bigl(1,|\text{all square minors of }Y|\bigr)
+ \quad(Y\in M_{a,b}(k)).
+ \tag{2.11c}
+\]
+In particular \(H(Y)\ge M(Y)\).
+
+**Lemma 2.3v.** For each fixed compact-picture section and each compact set
+of \(g\)'s, the integral
+\[
+ W_f(g)=\int_{M_{a,b}(k)}
+ f\left(\begin{pmatrix}I_a&Y\\0&I_b\end{pmatrix}g;e,e\right)
+                       \psi(Y_{a1})\,dY
+ \tag{2.11d}
+\]
+converges absolutely for all sufficiently positive \(u\), uniformly on that
+compact set. It is the Whittaker function defined by Lemma 2.3o and Lemma 2.3r.
+
+**Proof.** First record the polynomial growth bound already implicit in
+the proof of Lemma 2.3. For every fixed Whittaker vector \(V\) and fixed compact
+set of right translates there are \(C,D\) such that
+\[
+ |V(h)|\le C\,\mathcal H(h)^D,\qquad
+ \mathcal H(h)=\max(1,|h_{ij}|,|(h^{-1})_{ij}|).
+ \tag{2.11e}
+\]
+Here are the details connecting the torus recurrence to this assertion.
+Use upper Iwasawa \(h=ntk\). The bottom \(j\) rows have wedge norm
+\(|t_{r-j+1}\cdots t_r|\): the corresponding primitive wedge of a matrix
+in \(K_r\) has norm one, and the upper-unipotent bottom-row changes have
+determinant one. Every such wedge norm is at most a fixed power of
+\(\mathcal H(h)\). It is at least its reciprocal to a fixed power, since
+right multiplication by \(h^{-1}\) takes it to the coordinate wedge, and
+its exterior-power norm is at most \(\mathcal H(h)^j\). Thus the valuations
+of every \(t_i\) and every ratio \(t_i/t_{i+1}\) are bounded in absolute
+value by a constant times \(1+\log_q\mathcal H(h)\).
+Whittaker support gives the fixed lower valuation bounds for those ratios.
+The finitely many recurrences of Lemma 2.3 bound their remaining values by
+finite sums of exponential-polynomial sequences. The central recurrence
+does the same in both directions for the last coordinate. Such a bound,
+on this valuation interval, is at most a power of \(\mathcal H(h)\);
+increase \(D\) to absorb the polynomial in its logarithm. Smoothness
+leaves finitely many right-\(K_r\) vectors. Finally \(|\psi(n)|=1\).
+This proves (2.11e). The same proof uses the global central polynomials of
+Lemma 2.3p for an induced model.
+
+Take lower Iwasawa
+\[
+ \begin{pmatrix}I&Y\\0&I\end{pmatrix}
+ =\begin{pmatrix}A&0\\ C&D\end{pmatrix}k,\qquad k\in K_r.
+ \tag{2.11f}
+\]
+The top \(a\)-row wedge gives \(\nu(A)=H(Y)\): its minors are precisely
+the square minors of \(Y\), with signs and unit minors included. The first
+\(a\) rows of \(k\) have primitive wedge of norm one. Determinant one
+then gives \(\nu(D)=H(Y)^{-1}\).
+Both the left matrix of (2.11f) and its inverse have entries bounded by
+ \(M(Y)\). Multiplying by \(k^{\pm1}\) preserves this bound. In particular
+the entries of \(A,D,A^{-1},D^{-1}\), being diagonal blocks of these two
+matrices, have that bound.
+
+The untwisted section on \(K_r\) takes values in a fixed finite span of
+pure tensor Whittaker vectors, since it is right invariant under an open
+compact subgroup. Formula (2.11e), applied to those vectors and (2.11b),
+therefore bounds the integrand without its phase by
+\[
+ C H(Y)^{-r/2-2u}M(Y)^D
+ \le C M(Y)^{D-r/2-2u}.
+ \tag{2.11g}
+\]
+For sufficiently positive \(u\) this is integrable on the \(ab\)-dimensional
+additive space: the shell \(M(Y)=q^\ell\) has measure at most
+\(q^{ab\ell}\), and the resulting geometric series converges.
+
+For \(g\) in a fixed compact set, both \(g\) and \(g^{-1}\) have bounded
+entries. Exterior multiplication shows that the top wedge norm of
+\(\left(\begin{smallmatrix}I&Y\\0&I\end{smallmatrix}\right)g\)
+is comparable to \(H(Y)\), with uniform positive constants. Its determinant
+and inverse-entry bounds are uniformly comparable as well. This proves
+the asserted uniform version of (2.11g).
+
+Changing variables in (2.11d) proves the upper Whittaker law, including
+the sign: translation by an upper rectangular block \(Y_0\) multiplies
+the integral by \(\psi(-Y_{0,a1})\). Its restriction to a compactly
+supported open-cell section is the explicit nonzero functional of Lemma 2.3o.
+Uniqueness of that functional, proved there by the finite flag filtration,
+identifies (2.11d) with that construction. This proves the lemma. \(\square\)
+
+#### The intermediate partial Fourier integral
+
+Write \(w_j\) for the anti-diagonal permutation and set
+\[
+ S=w_r\operatorname{diag}(w_a,w_b),\qquad
+ H_{a,b}=\left\{\begin{pmatrix}n_a&0\\ x&n_b\end{pmatrix}:
+          n_a\in N_a,\ n_b\in N_b,\ x\in M_{b,a}(k)\right\}.
+ \tag{2.11h}
+\]
+Thus \(S H_{a,b}S^{-1}=N_r\), with measure preserved: its coordinate
+map is a permutation with signs of self-dual additive coordinates.
+For a row Schwartz function put
+\[
+ (g\Phi)^{[a]}(\xi,\eta)=
+       \int_{k^a}\Phi((v,\eta)g)\psi(v\xi^t)\,dv.
+ \tag{2.11i}
+\]
+Let \(\xi_a=e_1\in k^a,\eta_b=e_b\in k^b\). Define
+\[
+ B_f(s)=\int_{H_{a,b}\backslash G_r}
+ f(g;e,e)\,W(Sg)\,
+       (g\Phi)^{[a]}(\xi_a,\eta_b)\,\nu(g)^s\,dg.
+ \tag{2.11j}
+\]
+The integrand is well defined on the quotient. The internal \(N_a,N_b\)
+characters of \(f\) cancel those of \(W(Sg)\). For a lower rectangular
+translation \(x\), (2.11i) gains \(\psi(-x_{b1})\), which cancels the
+cross-block Whittaker character of \(W(Sg)\).
+
+Every determinant-shell coefficient of (2.11j) is absolutely integrable
+for sufficiently positive \(u\). This can be checked directly, as follows.
+Via \(g\mapsto Sg\), use \(N_r\backslash G_r\) Iwasawa coordinates \(tk\).
+A representative is \(g=S^{-1}tk\). Then
+\[
+ f(g;e,e)=
+ \nu(t_{b+1},\ldots,t_r)^{-b/2-u}
+ \nu(t_1,\ldots,t_b)^{a/2+u}
+ f(S^{-1}k;\operatorname{diag}(t_{b+1},\ldots,t_r),
+                    \operatorname{diag}(t_1,\ldots,t_b)).
+ \tag{2.11k}
+\]
+Polynomial growth of the finitely many block vectors bounds the last
+factor by a fixed product of powers of \(\max(|t_i|,|t_i|^{-1})\).
+
+Schwartz support and local constancy in (2.11i) give, uniformly in \(k\),
+\[
+ |t_b|\le C,\qquad |t_{b+1}|\ge c>0,\qquad
+ |(g\Phi)^{[a]}(\xi_a,\eta_b)|
+       \le C\prod_{i=b+1}^{r}|t_i|^{-1}.
+ \tag{2.11l}
+\]
+Indeed \((v,\eta_b)S^{-1}t=(0,\ldots,0,t_b,
+v_1t_{b+1},\ldots,v_at_r)\). Support bounds \(t_b\);
+after changing \(v_it_{b+i}\) to new coordinates, the phase frequency
+in the first of these coordinates is \(t_{b+1}^{-1}\).
+A Schwartz function's Fourier transform vanishes outside a fixed compact
+set: partition it into finitely many compact-open cosets and apply
+additive-character orthogonality. This gives the second bound and the
+displayed Jacobian. The same argument is uniform in \(k\), since
+\(\Phi(\,\cdot\,k)\) ranges through finitely many functions.
+
+Whittaker support for \(W(tk)\) gives \(|t_i/t_{i+1}|\le C'\).
+Consequently all of \(t_1,\ldots,t_b\) have bounded absolute value,
+and all of \(t_{b+1},\ldots,t_r\) have absolute value bounded below.
+The quotient density \(\delta_{B_r}(t)^{-1}\), (2.11k), (2.11l), and
+(2.11e) leave a bound of the form
+\[
+ C\prod_{i\le b}|t_i|^{u-D}
+       \prod_{i>b}|t_i|^{-u+D}
+ \tag{2.11m}
+\]
+on each determinant shell, after increasing the fixed \(D\).
+Its extension to the product of the indicated half-lines is integrable
+when \(u>D\), by independent geometric series in each valuation.
+The determinant factor is constant on a shell. This proves the claim.
+In particular no general intertwining-convergence theorem is a hidden
+premise of the partial Fourier calculation.
+
+#### A first-block identity with its exact Jacobians
+
+Abbreviate \(P_a(s)=L(s,\pi\times\sigma_a)^{-1}\), and
+\(P_a^\vee(1-s)=L(1-s,\pi^\vee\times\sigma_a^\vee)^{-1}\).
+Let \(Z_f(s)=Z(s,W,W_f,\Phi)\). The identity is
+\[
+ \epsilon_a(s)P_a(s) Z_f(s)
+   =\omega_{\sigma_a}(-1)^{r-1}
+          P_a^\vee(1-s)\, B_f(s).
+ \tag{2.11n}
+\]
+It is first an identity of determinant-shell formal Laurent series
+in the convergence chamber; polynomials act by finite coefficient shifts.
+
+Here is a direct derivation. Unfold (2.11d) in the equal-rank integral:
+the substitution \(g\mapsto u(Y)g\) supplies \(\psi(-Y_{a1})\) from
+\(W\), canceling its phase. The last row is fixed by \(u(Y)\).
+The result is integration over
+\((N_a\times N_b)\backslash G_r\) of \(W(g)f(g;e,e)\Phi(e_rg)\nu(g)^s\).
+Each shell of \(W(g)\Phi(e_rg)\) is compact modulo \(N_r\), by the
+support argument of Lemma 2.3r. Lemma 2.3v therefore justifies this unfolding
+absolutely in the stated chamber.
+
+Put \(G_j^0=\{g:\nu(g)=1\}\). Disintegrate first through
+\(\operatorname{diag}(G_a^0,N_b)\), and then through
+\[
+ L^0=\left\{\begin{pmatrix}A&0\\ z&n_b\end{pmatrix}:
+                          A\in G_a^0,\ n_b\in N_b\right\}.
+ \tag{2.11o}
+\]
+These groups are unimodular. Write \(z=\left(\begin{smallmatrix}Y\\x\end{smallmatrix}\right)\),
+\(Y\in M_{b-1,a},x\in k^a\).
+For fixed outer \(h\in L^0\backslash G_r^0\) and \(x\), the inner expression is
+\[
+ \int_{N_a\backslash G_a}\int_{M_{b-1,a}}
+ W\left[
+ \begin{pmatrix}A&0&0\\Y&I_{b-1}&0\\0&0&1\end{pmatrix}
+ \begin{pmatrix}I_a&0&0\\0&I_{b-1}&0\\x&0&1\end{pmatrix}h
+ \right] f(h;A,e)\,\nu(A)^{s-b/2}\,dY\,dA.
+ \tag{2.11p}
+\]
+The remaining weight is \(\Phi((x,\eta_b)h)\,dx\,dh\).
+Thus (2.11p) is precisely the already proved unequal-rank functional
+equation for \((\pi,\sigma_a)\), at index \(j=b-1\); its opposite index
+is zero.
+
+After that equation, replace its \(A\) by \(w_a A^{-t}\).
+This transformation preserves the \(N_a\backslash G_a\) measure: the
+induced automorphism on \(N_a\) permutes its additive coordinates with
+signs, while inverse transpose preserves Haar measure on \(G_a\).
+The reflected \(W\) becomes the **original** \(W\) evaluated at
+\[
+ S\operatorname{diag}(A,I_b)
+       \begin{pmatrix}I_a&0&0\\0&I_{b-1}&0\\x&0&1\end{pmatrix}h.
+ \tag{2.11q}
+\]
+The reflected block Whittaker function becomes \(f(h;A,e)\).
+The determinant power is \(\nu(A)^{s-1+b/2}\).
+The central-sign factor is \(\omega_{\sigma_a}(-1)^{r-1}\), exactly
+the conversion from the raw scalar to \(\gamma_a\) in Proposition 2.3i.
+
+Change \(x\) to \(xA\). Its additive Jacobian is \(\nu(A)\), so the
+power becomes \(\nu(A)^{s+b/2}\).
+The matrix equality
+\[
+ \operatorname{diag}(A,I_b)u_{\rm last}(xA)
+       =u_{\rm last}(x)\operatorname{diag}(A,I_b)
+ \tag{2.11r}
+\]
+and \(S u_{\rm last}(x)S^{-1}\in N_r\) give the multiplier
+\(\psi(x_1)\). Integrating \(x\) gives exactly
+\((\operatorname{diag}(A,I_b)h\Phi)^{[a]}(\xi_a,\eta_b)\),
+with the **positive** Fourier kernel.
+Finally (2.11b) gives
+\[
+ f(h;A,e)\nu(A)^{s+b/2}
+        =f(\operatorname{diag}(A,I_b)h;e,e)\nu(A)^{s+b}.
+ \tag{2.11s}
+\]
+Disintegration of \(H_{a,b}\backslash G_r\) through (2.11o) has density
+\(\nu(A)^b\,dA\,dh\). To verify the sign of this density, conjugation
+by \(\operatorname{diag}(A,I_b)\) takes \(z\) to \(zA^{-1}\),
+whose additive determinant is \(\nu(A)^{-b}\).
+Left Haar on the larger semidirect group consequently has density
+\(\nu(A)^b\,dA\,dz\,dn_b\). Division by the self-dual measures of
+\(N_a,N_b,z\) gives the asserted quotient formula. It converts (2.11s)
+to (2.11j) without an extra measure constant.
+
+All interchanges with \(P_a,P_a^\vee,\epsilon_a\) involve finitely many
+shell shifts. Within a fixed shell, the transformed inner \(A,x\) domain
+has compact support modulo \(N_a\). For fixed \(h\), write
+\(A=n\operatorname{diag}(t_1,\ldots,t_a)k\).
+The internal unipotent \(n\) moves through \(S\) into \(N_r\).
+The right factor \(\operatorname{diag}(k,I_b)h\) ranges over a compact set,
+so its finitely many Whittaker translates have a common ratio support
+bound. Applied to the diagonal
+\((1,\ldots,1,t_1,\ldots,t_a)\), this gives \(|t_1|\ge c_h\) and
+\(|t_i/t_{i+1}|\le C_h\). All \(t_i\) are consequently bounded below.
+Their fixed determinant-shell product bounds them above as well.
+Choose these compact representatives of \(N_a\backslash G_a\).
+Schwartz support of \(\Phi((xA,\eta_b)h)\) then bounds \(x\) in a
+compact set. These bounds justify commuting the polynomial with the
+\(x\)-integral before applying its Fourier transform. The remaining outer integration
+is absolutely convergent by (2.11m). One may equivalently apply compact
+cutoffs first and use these bounds to pass to the limit. This proves
+(2.11n) with the exact stated measures. \(\square\)
+
+#### Comparing the two partial transforms
+
+The reversed lower induction of
+\((\sigma_b^\vee,\sigma_a^\vee)\), with character \(\psi\), has section
+\[
+ f^\vee(g;h_b,h_a)=
+ f(S^{-1}g^{-t};w_a h_a^{-t},w_b h_b^{-t}).
+ \tag{2.11t}
+\]
+Its section law follows directly from (2.11b). Its Whittaker function
+is \(\widetilde W_f(g)=W_f(w_r g^{-t})\).
+Indeed, for its upper rectangular coordinate \(Z\in M_{b,a}\),
+put \(Y=-w_a Z^t w_b\) in (2.11d). The Jacobian is one,
+\(Y_{a1}=-Z_{b1}\), and the two block Weyl factors in (2.11t) move
+to the left using (2.11b); their product with \(S^{-1}\) is \(w_r\).
+This proves the assertion including its additive-character sign.
+
+Apply (2.11n) to \((\widetilde W,f^\vee,\widehat\Phi)\), at \(1-s\),
+with blocks reversed and additive character \(\psi^{-1}\).
+Its intermediate integral is the same \(B_f(s)\).
+To check this without a sign convention left implicit, substitute
+\(g=w_r h^{-t}\). Formula (2.11t) then gives
+\(f^\vee(g;e,e)=f(h;e,e)\), because
+\(S^{-1}w_r=\operatorname{diag}(w_a,w_b)\) and the block Weyl
+factors square to one. Also
+\(\widetilde W(S^{-1}g)=W(Sh)\).
+The change of quotient measure is one by the same permutation and
+inverse-transpose calculation as above.
+
+The remaining Fourier identity is
+\[
+ \bigl((w_r h^{-t})\widehat\Phi\bigr)^{[b]}_{\psi^{-1}}
+                                  (e_1,e_a)
+   =\nu(h)\,(h\Phi)^{[a]}_{\psi}(e_1,e_b).
+ \tag{2.11u}
+\]
+For proof let \(F(y)=\Phi(yh)\); then
+\(\widehat F(x)=\nu(h)^{-1}\widehat\Phi(xh^{-t})\).
+The left integral, divided by \(\nu(h)\), is
+\(\int_{k^b}\widehat F(e_1,u)\psi(-u_b)\,du\),
+after reversing the \(b\) coordinates. Expand the positive Fourier
+transform. Orthogonality in \(u\) sets the last \(b\) row coordinates
+equal to \(e_b\), leaving
+\(\int_{k^a}F(v,e_b)\psi(v_1)\,dv\), as required.
+This calculation is valid on compact-open coset indicators by finite
+additive orthogonality and hence for every Schwartz function by linearity.
+The factor \(\nu(h)\) changes \(\nu(g)^{1-s}=\nu(h)^{s-1}\)
+to precisely the determinant power of (2.11j).
+
+Both intermediate integrals are absolutely convergent in the same
+chamber: reversal and duality change the twisted blocks to
+\(\sigma_b^\vee\nu^{-u},\sigma_a^\vee\nu^u\).
+The above change of variables also verifies this directly.
+Consequently the second partial identity is
+\[
+ \epsilon_b^\vee(1-s,\psi^{-1})P_b^\vee(1-s)\,
+                   Z^\vee_f(1-s)
+ =\omega_{\sigma_b}(-1)^{r-1}P_b(s)\,B_f(s).
+ \tag{2.11v}
+\]
+Use the proved reflection identity 2.9aw,
+\(\epsilon_b^\vee(1-s,\psi^{-1})\epsilon_b(s,\psi)=1\),
+and (2.11n). We obtain
+\[
+ P_a^\vee(1-s)P_b^\vee(1-s)\,Z_f^\vee(1-s)
+ =\omega_\sigma(-1)^{r-1}
+       \epsilon_a(s)\epsilon_b(s)P_a(s)P_b(s) Z_f(s).
+ \tag{2.11w}
+\]
+
+#### The theorem and the polynomial correction
+
+**Theorem 2.3w.** For the entire induced Whittaker model in (2.11a),
+\[
+ \gamma(s,\pi\times\sigma,\psi)
+   =\gamma(s,\pi\times\sigma_a,\psi)
+                 \gamma(s,\pi\times\sigma_b,\psi),
+ \qquad
+ \frac{L(s,\pi\times\sigma)}
+ {L(s,\pi\times\sigma_a)L(s,\pi\times\sigma_b)}
+                         \in\mathbf C[q^{-s}].
+ \tag{2.11x}
+\]
+The quotient polynomial has constant term one.
+This theorem asserts the exact polynomial correction, not unconditional
+equality of the three \(L\)-factors.
+
+**Proof.** First in the chamber, the right side of (2.11w), as a formal
+series in \(X=q^{-s}\), is bounded below in exponent. Its left side is
+bounded above, since \(Z_f^\vee(1-s)\) is a series in \(q^{-1}X^{-1}\).
+Their equality therefore makes both sides finite Laurent polynomials.
+Since \(\epsilon_a\epsilon_b\) is a Laurent unit, this shows
+\[
+ P_a(s)P_b(s)\,Z_f(s)\in\mathbf C[X,X^{-1}]
+ \tag{2.11y}
+\]
+for every actual triple of tests.
+Comparing (2.11w) with the scalar equation of the preceding scalar-equation and normalization proofs and using a nonzero
+test gives the asserted product of \(\gamma\)'s.
+
+Finally remove the chamber restriction. Lemma 2.3r constructs the universal
+compact-picture sections over \(\mathbf C[z,z^{-1}]\), \(z=q^u\),
+with a common right level and Laurent-polynomial determinant-shell
+coefficients for their Whittaker functions and reflected functions.
+The two block polynomials in (2.11w) are the original polynomials with
+\(X\) replaced by \(z^{-1}X\) or \(zX\). Their epsilon factors have the
+same substitutions and are Laurent units. Thus each coefficient of
+the difference in (2.11w) is a Laurent polynomial in \(z\).
+It vanishes for every sufficiently large positive real \(z\), and so
+vanishes identically: multiply by a power of \(z\) and use that a
+nonzero polynomial has only finitely many roots. This proves (2.11w),
+and hence (2.11y) and the scalar identity, for every specialization,
+including the original induction and every collision of parameters.
+No analytic continuation theorem for induced representations is used.
+
+Let \(P_\sigma(0)=1\) be the reciprocal generator of the full ideal.
+By Proposition 2.3d the ideal is \(P_\sigma^{-1}\mathbf C[X,X^{-1}]\).
+Its finite test-data attainment and (2.11y) give
+\(P_\sigma\mid P_aP_b\) in the Laurent polynomial ring.
+All three polynomials have nonzero constant term one, so this is
+polynomial divisibility in \(\mathbf C[X]\). Consequently
+\(P_aP_b/P_\sigma\) is a polynomial of constant term one and is exactly
+the quotient in (2.11x). \(\square\)
+
+### Parabolic multiplicativity with a strictly larger fixed rank
+
+Let the fixed rank be \(r>t=a+b\), with \(a,b\ge1\).
+Put \(d=r-t\), and let \(\sigma\) be the full lower normalized induction
+of \(\sigma_a,\sigma_b\) as in (2.11a)–(2.11b). All representations have
+the scope of Theorem 2.3w. Write \(j=d-1\) initially, so the opposite index is zero.
+There is at least one intervening identity coordinate even when \(d=1\).
+The direct integral is
+\[
+ Z_j(s)=\int_{N_t\backslash G_t}\int_{M_{j,t}}
+ W(T_j(g,z))W_f(g)\nu(g)^{s-d/2}\,dz\,dg,
+ \quad
+ T_j(g,z)=\begin{pmatrix}g&0&0\\z&I_j&0\\0&0&I_{d-j}\end{pmatrix}.
+ \tag{2.12a}
+\]
+
+For bookkeeping, the following matrix notation also describes the
+opposite calculation at index zero. If \(j+k=d-1\), partition the \(r\)
+coordinates as \((a,k,1,j,b)\), and put
+\[
+ U_{a,k,1,j,b}(X,Y)=
+ \begin{pmatrix}
+ I_a&X&0&0&0\\
+ 0&I_k&0&0&0\\
+ 0&0&1&0&0\\
+ 0&0&0&I_j&Y\\
+ 0&0&0&0&I_b
+ \end{pmatrix},
+ \quad X\in M_{a,k},\quad Y\in M_{j,b}.
+ \tag{2.12b}
+\]
+Empty blocks and their integrals have the usual value one.
+Let \(D_a=\operatorname{diag}(w_a,w_{r-a})\), and define
+\[
+ B_{a,b;j,k}(s)=
+ \int_{H_{a,b}\backslash G_t}\int_{M_{a,k}}\int_{M_{j,b}}
+ f(g;e,e)\,
+ W\left[w_r U_{a,k,1,j,b}(X,Y)D_a
+                  \operatorname{diag}(g,I_d)\right]\,
+ \nu(g)^{s-d/2+j}\,dY\,dX\,dg.
+ \tag{2.12c}
+\]
+Here \(H_{a,b}\) is (2.11h) in \(G_t\). The formula is invariant under its
+left action, with the rectangular variables changed accordingly.
+One can also establish this directly from the quotient disintegration
+used in the next proof; that construction fixes its measures.
+Only \(k=0\), and the reflected \(j=0\) instance, are needed below.
+
+#### The first-block identity
+
+With the polynomial and epsilon notation of the first-block identity (2.11n), we have
+\[
+ \epsilon_a(s)P_a(s)\,Z_j(s)
+ =\omega_{\sigma_a}(-1)^{r-1}
+       P_a^\vee(1-s)\,B_{a,b;j,k}(s).
+ \tag{2.12d}
+\]
+For \(j=d-1,k=0\), this is an identity of absolutely integrable
+determinant-shell coefficients in the same positive-\(u\) chamber as Lemma 2.3v.
+The reflected identity at \(j=0,k=d-1\) has the same interpretation.
+
+**Matrix derivation.** Unfold the upper rectangular integral (2.11d).
+Its phase cancels the upper character of \(W\); changing \(z\) by the
+corresponding unipotent column operation has additive Jacobian one.
+The resulting outer quotient is \((N_a\times N_b)\backslash G_t\).
+Disintegrate through the unimodular groups (2.11o), now inside \(G_t^0\).
+Write a lower rectangular coordinate of its \(G_t\) variable as
+\(z_0\in M_{b,a}\). Split the original \(j\times t\) rectangle into
+its first \(a\) and last \(b\) columns. The former together with \(z_0\)
+gives a \((b+j)\times a\) rectangle. For fixed remaining variables,
+the inner integral is the Rankin–Selberg integral for
+\((\pi,\sigma_a)\) at index \(b+j\).
+Its determinant exponent is
+\[
+ s-d/2-b/2=s-(r-a)/2;
+ \tag{2.12e}
+\]
+the extra \(-b/2\) is exactly the section modulus (2.11b).
+Its opposite index is \(k=r-a-1-(b+j)\).
+
+For clarity the right translation in this integral is
+\[
+ h_*=
+ u_{\mathrm{lower},j,b}(Y_0)\operatorname{diag}(h,I_d),
+ \tag{2.12f}
+\]
+where \(u_{\mathrm{lower},j,b}\) has its entries in rows
+\(t+1,\ldots,t+j\) and columns \(a+1,\ldots,t\).
+The \(b+j\) first-column rectangle and (2.12f) multiply to precisely
+the unfolded matrix in (2.12a).
+In passing the original rectangular variable through \(h\), its Jacobian
+is \(\nu(h)^j=1\), because the outer representative is in \(G_t^0\).
+
+Apply the already proved equation 2.9ai to this inner integral.
+Its dual test uses the **right** translation
+\(\rho(w_{r,a})\widetilde W_{h_*}\), with
+\(w_{r,a}=\operatorname{diag}(I_a,w_{r-a})\).
+For a dual rectangle \(Z\in M_{k,a}\) its Whittaker value is
+\[
+ W\left[w_r T_k(B,Z)^{-t}w_{r,a}h_*\right].
+ \tag{2.12g}
+\]
+In particular the right translation cannot be moved to the left of
+\(T_k\) when \(k>0\).
+Replace \(B\) by \(w_a A^{-t}\), and change \(Z\) to
+\[
+ X=-w_a A Z^t\in M_{a,k}.
+ \tag{2.12h}
+\]
+The Jacobian in (2.12h) is \(\nu(A)^k\). Direct multiplication gives
+\[
+ w_r T_k(w_a A^{-t},Z)^{-t}w_{r,a}
+ =w_r U_{a,k}(X)D_a\operatorname{diag}(A,I_{r-a}).
+ \tag{2.12i}
+\]
+Conjugating the lower rectangle in (2.12f) by \(D_a\) converts it,
+by reversal of its row and column coordinates, into the \(Y\)-block
+of (2.12b). This reversal has Jacobian one, and it commutes with its
+disjoint \(X\)-block. The reflected block Whittaker function becomes
+\(f(h;A,e)\).
+
+After (2.12h) the determinant power is
+\(\nu(A)^{s-1+(r-a)/2-k}\).
+Using (2.11b) adds \(b/2\), and quotient disintegration adds the density
+\(\nu(A)^b\) on \(H_{a,b}\backslash G_t\). The remaining exponent is
+\[
+ s-1+(r-a)/2-k+b/2-b
+     =s-d/2+j.
+ \tag{2.12j}
+\]
+This verifies every determinant power and the rectangular Jacobian in
+(2.12c). Conversion from the raw functional-equation scalar supplies
+\(\omega_{\sigma_a}(-1)^{r-1}\), as in the first-block identity (2.11n).
+It proves (2.12d), provided the indicated coefficient integrals and
+interchanges are justified. They are justified next.
+
+#### Rectangular support and shellwise absolute convergence
+
+We prove the required bounds for \(j=d-1,k=0\).
+Conjugating the lower rectangle (2.12f) by
+\(S_{r,a}=w_rD_a\), instead of by \(D_a\) alone, puts it in rows
+\(b+1,\ldots,b+j\), columns \(1,\ldots,b\). Its coordinates may be
+reversed, with no change in measure. Use
+\(S_t=w_t\operatorname{diag}(w_a,w_b)\) to identify
+\(H_{a,b}\backslash G_t\) with \(N_t\backslash G_t\).
+In its Iwasawa coordinates \(g=S_t^{-1}\operatorname{diag}(t_1,\ldots,t_t)k\),
+the Whittaker matrix in (2.12c) is therefore
+\[
+ \operatorname{diag}(t_1,\ldots,t_b,I_d,
+                 t_{b+1},\ldots,t_t)\,
+ u_{\mathrm{lower}}(Y\operatorname{diag}(t_1,\ldots,t_b))\,k_*,
+ \tag{2.12k}
+\]
+where \(k_*\) ranges through a fixed compact subset of \(K_r\).
+The lower rectangle in (2.12k) has \(j\) rows; the final row of the
+middle \(I_d\) remains untouched.
+
+The following support implications are uniform for the finitely many
+right-\(k_*\) translates of \(W\):
+\[
+ \begin{split}
+ |Y_{\ell i}t_i|&\le C &&(\ell\le j,\ i\le b),\\
+ |t_i|&\le C &&(i\le b),\\
+ |t_i|&\ge c>0 &&(i>b).
+ \end{split}
+ \tag{2.12l}
+\]
+Here is the wedge proof, to make the constant in the identity block
+meaningful. Remove \(k_*\) by changing the Whittaker vector.
+The final \(a\) rows of the displayed matrix are the pure diagonal rows
+with entries \(t_{b+1},\ldots,t_t\). Their successive bottom-row wedges
+give precisely those Iwasawa diagonal absolute values.
+Adding the last middle identity row multiplies their wedge norm by one.
+Thus the last middle Iwasawa diagonal has absolute value one.
+The ratio support bound (2.9l), propagated upwards, bounds all preceding
+Iwasawa diagonal absolute values by a fixed constant.
+
+For each preceding middle row, its bottom-row wedge, divided by the
+product of the tail diagonal entries, has a coefficient equal, up to
+sign, to \(Y_{\ell i}t_i\). Choose column \(i\), all subsequent identity
+columns, and all tail columns; the identity and tail submatrix is
+triangular. The other entries in column \(i\) lie below the selected
+row and do not change that triangular determinant. The wedge bound
+therefore gives the first assertion of (2.12l), just as in (2.9m).
+Its bounded rectangle now ranges through one compact subset.
+Smoothness leaves finitely many right translates under that subset.
+Apply the ratio support bound again to the pure diagonal part of (2.12k).
+The last first-block coordinate is adjacent to a middle coordinate one,
+giving all first-block upper bounds. The last middle coordinate one is
+adjacent to the first tail coordinate, giving its lower bound and then
+the lower bounds for the remaining tail. This proves (2.12l).
+
+For fixed torus coordinates, the first line of (2.12l) bounds the measure
+of the \(Y\)-domain by
+\[
+ C\prod_{i\le b}|t_i|^{-j}.
+ \tag{2.12m}
+\]
+On this domain the rectangular right translates are in a fixed compact
+set. Formula (2.11e) bounds their Whittaker values by a fixed product of
+powers of \(\max(|t_i|,|t_i|^{-1})\).
+The section formula (2.11k), the quotient density, and (2.12m) give,
+after increasing a fixed \(D\), the bound
+\[
+ C\prod_{i\le b}|t_i|^{u-D}
+       \prod_{i>b}|t_i|^{-u+D}
+ \tag{2.12n}
+\]
+on each determinant shell. The remaining determinant factor is constant
+there. For \(u>D\) this is integrable over the product of the first-block
+bounded half-lines and the tail half-lines bounded away from zero.
+This proves shellwise absolute convergence of (2.12c).
+
+The original unfolding is justified by Lemma 2.3v. In (2.12a) the extra rectangle
+is uniformly compact by (2.9l)–(2.9m). On a fixed determinant shell the
+remaining Whittaker variable is compact modulo its full upper unipotent,
+by the same ratio bounds and its last fixed coordinate one. Thus Lemma 2.3v
+is used on a compact set of representatives.
+
+The polynomial interchanges in (2.12d) can also be made shell by shell.
+For fixed outer \(h\), the transformed \(A\)-variable has all its
+Iwasawa diagonal entries bounded on one side by a retained middle
+coordinate one. With its determinant shell fixed, their product bounds
+them on the other side. The associated rectangle is compact by the
+same bottom-wedge computation above; if rescaled by \(A\), its
+Jacobian is exactly (2.12h). Consequently this inner domain is compact
+modulo \(N_a\). Each polynomial shifts only finitely many shells, and
+the outer domain has the absolutely integrable bound (2.12n).
+Cutoffs and these bounds give the same justification without a choice
+of quotient representatives.
+
+#### The reflected rectangular integral is the same one
+
+The reflected equal-rank-\(t\) section is the actual section (2.11t),
+using \(S_t\). Its Whittaker function is \(\widetilde W_f\).
+Apply (2.12d) to the reversed blocks, parameter \(1-s\), additive character
+\(\psi^{-1}\), and first Whittaker test
+\(\rho(w_{r,t})\widetilde W\). Its direct index is \(k=0\);
+its opposite inner index is \(j=d-1\). This is exactly the dual integral
+in 2.9ai for the direct test (2.12a).
+
+Its intermediate integral is \(B_{a,b;j,0}(s)\), with no Fourier
+transform or determinant constant remaining. We verify that fact
+explicitly. Change \(g=w_t h^{-t}\). As in (2.11t),
+the section becomes \(f(h;e,e)\). The matrix value of \(W\) becomes
+\[
+ W\left[
+ U_{b,j,1,0,a}(X',Y')^{-t}
+  D_b\operatorname{diag}(w_t,w_d)
+                   \operatorname{diag}(h,I_d)\right].
+ \tag{2.12o}
+\]
+In this case \(Y'\) is empty. The general notation permits the following
+check for any \(j+k=d-1\), which also verifies that no zero-sized block
+convention causes an error. The permutation identity is
+\[
+ D_b\operatorname{diag}(w_t,w_d)=w_rD_a.
+ \tag{2.12p}
+\]
+Furthermore
+\[
+ w_r U_{b,j,1,k,a}(X',Y')^{-t}w_r
+       =U_{a,k,1,j,b}(X,Y),
+ \quad
+ X=-w_a(Y')^tw_k,\quad
+ Y=-w_j(X')^tw_b.
+ \tag{2.12q}
+\]
+Both off-diagonal blocks in (2.12b) are disjoint, so inverse transpose
+adds no cross term. Reversal, negative transpose and permutation have
+additive Jacobian one. Equations (2.12p)–(2.12q) turn (2.12o) into the
+Whittaker matrix in (2.12c).
+The determinant exponent also agrees:
+\[
+ \nu(g)^{\,1-s-d/2+k}
+     =\nu(h)^{\,s-1+d/2-k}
+     =\nu(h)^{\,s-d/2+j}.
+ \tag{2.12r}
+\]
+Inverse transpose and multiplication by \(w_t\) preserve the quotient
+measures; their maps on the unipotent coordinates have Jacobian one.
+This proves equality of the two intermediate integrals.
+It also proves their equal absolute bounds, including for the reflected
+index-zero calculation whose outer rectangle is an upper one.
+
+Thus the two block identities combine, by 2.9aw, to
+\[
+ P_a^\vee(1-s)P_b^\vee(1-s)
+ Z_0(1-s,\rho(w_{r,t})\widetilde W,\widetilde W_f)
+ =\omega_\sigma(-1)^{r-1}
+       \epsilon_a(s)\epsilon_b(s)P_a(s)P_b(s)Z_{d-1}(s).
+ \tag{2.12s}
+\]
+
+#### Conclusion
+
+**Theorem 2.3x.** For every fixed rank \(r\ge a+b\) and the entire
+normalized induced Whittaker model \(\sigma\),
+\[
+ \gamma(s,\pi\times\sigma,\psi)
+ =\gamma(s,\pi\times\sigma_a,\psi)
+                  \gamma(s,\pi\times\sigma_b,\psi),
+ \qquad
+ \frac{L(s,\pi\times\sigma)}
+ {L(s,\pi\times\sigma_a)L(s,\pi\times\sigma_b)}
+                 \in\mathbf C[q^{-s}],\quad P(0)=1.
+ \tag{2.12t}
+\]
+
+**Proof.** Equal rank is Theorem 2.3w. In strictly unequal rank use (2.12s).
+One side has exponents bounded above and the other exponents bounded
+below, so both are Laurent polynomials. Hence \(P_aP_b\) clears every
+direct integral at index \(d-1\). Its entire ideal is the full ideal,
+by the written root-exchange Corollary 2.3f. Finite test-data attainment therefore
+gives polynomial divisibility \(P_\sigma\mid P_aP_b\), with all constant
+terms one.
+Comparing (2.12s) with 2.9ai and a nonzero test gives the scalar product.
+Finally Lemma 2.3r's Laurent-polynomial shell families and norm-twist
+substitutions extend the cleared identity from sufficiently positive
+real \(u\) to every specialization, by the coefficientwise polynomial
+root argument in the proof of Theorem 2.3w. This proves (2.12t) for every original block
+parameter, without invoking an unproved induced analytic-family theorem.
+\(\square\)
+
+### The adjacent-rank character case
+
+Let \(\pi,\rho\) have rank \(r\ge1\), and let \(\mu:k^\times\to\mathbf C^\times\)
+be a smooth character. Let
+\[
+ \sigma=\operatorname{Ind}_{Q^-}^{G_{r+1}}(\rho\otimes\mu),
+ \qquad Q^-=\left\{\begin{pmatrix}A&0\\ c&a\end{pmatrix}\right\}.
+ \tag{2.13a}
+\]
+We use the entire faithful Whittaker model of this induction. The first
+representation \(\sigma\) uses \(\psi\), its rank-\(r\) inducing model
+\(\rho\) uses \(\psi\), and the second representation \(\pi\) uses
+\(\psi^{-1}\). Their inverse-transpose functions use the inverse
+characters. This choice makes the larger-rank ordering explicit.
+The scope permits actual irreducible generic admissible \(\pi,\rho\)
+and the admissible induced models proved in Lemma 2.3t.
+
+#### A rectangular Schwartz kernel
+
+Write \(E=k^{r\times(r+1)}\), with elements \([x,y]\), where
+\(x\in M_r(k)\) and \(y\in k^r\) is a column. Let \(e=e_r^t\).
+Define
+\[
+ T\Phi(x,\eta)=\int_{k^r}\Phi(x,y)\psi(-\eta^ty)\,dy,
+ \qquad R(g)\Phi(M)=\Phi(Mg),\qquad
+ \rho_0(g)=T R(g)T^{-1}.
+ \tag{2.13b}
+\]
+All measures are self-dual. Compact-open character orthogonality makes
+\(T\) a bijection of the Schwartz space. In particular
+\[
+ \begin{split}
+ \rho_0(\operatorname{diag}(h,1))\Phi(x,\eta)&=\Phi(xh,\eta),\\
+ \rho_0\left(\begin{pmatrix}I&v\\0&1\end{pmatrix}\right)\Phi(x,\eta)
+       &=\psi(\eta^txv)\Phi(x,\eta),\\
+ \rho_0(\operatorname{diag}(I,a))\Phi(x,\eta)
+       &=|a|^{-r}\Phi(x,a^{-1}\eta).
+ \end{split}
+ \tag{2.13c}
+\]
+Each identity follows by its indicated linear substitution in (2.13b);
+in particular the middle sign is positive.
+
+For a Whittaker vector \(V\) of \(\rho\), put
+\[
+ W_{\Psi,V,\mu}(g)=
+ \mu(\det g)\nu(g)^{r/2}
+ \int_{G_r}(\rho_0(g)\Psi)(h,h^{-t}e)
+      V(h^{-1})\mu(\det h)\nu(h)^{(r-1)/2}\,dh.
+ \tag{2.13d}
+\]
+The Haar measure on \(G_r\) has \(K_r\)-volume one.
+For a finite sum of pure tensor kernels sum (2.13d) by linearity.
+
+**Lemma 2.3y.** The integral (2.13d) is absolutely convergent for every
+fixed \(g,\Psi,V,\mu\). In a sufficiently positive unramified twist of
+\(\mu\), its functions span the entire Whittaker model in (2.13a).
+
+**Proof of convergence.** Reduce to \(g=e\), since \(\rho_0(g)\Psi\)
+is still Schwartz, and then to
+\(\Psi(x,y)=\Phi_1(x)\Phi_2(y)\).
+Use right-unipotent Iwasawa \(h=k an\).
+Then \(V(h^{-1})=V(n^{-1}a^{-1}k^{-1})\).
+Whittaker support gives
+\(|a_{i+1}/a_i|\le C\) on its support, uniformly in the finite
+set of \(k\)-translates. Moreover
+\(h^{-t}e=k^{-t}a^{-1}e\), because \(n^{-t}e=e\).
+The compact support of \(\Phi_2\) therefore gives
+\(|a_r|\ge c>0\), and the ratio bounds give lower bounds for all
+\(|a_i|\). Compact support of \(\Phi_1(h)\) bounds the entries of
+\(an\), so its diagonal entries \(a_i\) are bounded above, and,
+using their lower bounds, every entry of \(n\) is bounded.
+The integration is consequently over a compact subset of \(G_r\).
+This proves convergence, with no assumption on \(\mu\).
+
+**Proof of spanning in a chamber.** First use a Schwartz function
+\(\Phi\) supported in the open full-row-rank subset of \(E\), and set
+\(\mu_0=[I_r,0]\). Define a section with values in the \(\rho\) model by
+\[
+ f_\Phi(g;m)=\mu(\det g)\nu(g)^{r/2}
+ \int_{G_r}\Phi(h\mu_0g)V(mh^{-1})
+       \mu(\det h)\nu(h)^{(r+1)/2}\,dh.
+ \tag{2.13e}
+\]
+The integral is over a compact set: the support is compact inside the
+full-rank open subset, and the embedding \(h\mapsto h\mu_0g\) has
+compact inverse image there. A change \(h\mapsto hA^{-1}\) proves
+\[
+ f_\Phi\left(\begin{pmatrix}A&0\\c&a\end{pmatrix}g;m\right)
+ =\mu(a)|a|^{r/2}\nu(A)^{-1/2} f_\Phi(g;mA),
+ \tag{2.13f}
+\]
+the exact normalized lower-parabolic section law.
+
+These sections span the induction. To prove this concretely, cover its
+compact flag quotient by finitely many matrix charts where a specified
+row minor is invertible. The full-rank frame above such a chart is
+uniquely \(h\mu_0g(q)\), \(h\in G_r\), after choosing the chart section
+\(g(q)\). Partition an arbitrary smooth section into compact-open
+pieces in these charts; each piece has values in a finite span of
+fixed vectors. For a single vector \(V\) and a scalar compact-open
+chart function \(c(q)\), choose an open compact \(J\subset G_r\)
+fixing \(V\) with \(\mu(\det J)=1\). Prescribe
+\(\Phi(h\mu_0g(q))\) to equal its required scalar multiple of
+\(c(q)1_J(h)/\operatorname{vol}(J)\), absorbing the nonzero factor
+\(\mu(\det g(q))\nu(g(q))^{r/2}\).
+This is a locally constant compactly supported function on the chart
+of the full-rank open set and extends by zero to a Schwartz function
+on \(E\). Formula (2.13e) recovers that section piece exactly.
+Their finite sum proves spanning.
+
+For \(\mu=\mu_0\nu^u\) with sufficiently positive real \(u\), Lemma 2.3v,
+after separating the overall central norm twist, justifies its upper
+Jacquet integral absolutely. Its phase is \(\psi(-v_r)\), because this
+larger Whittaker model has character \(\psi\). Substitute (2.13e) and
+change \(y=hv\). The Jacobian is \(\nu(h)^{-1}\), the phase becomes
+\(\psi(-(h^{-t}e)^ty)\), and the power \((r+1)/2\) becomes \((r-1)/2\).
+The result is (2.13d) with \(\Psi=T\Phi\).
+This proves spanning of the Whittaker functions in that chamber.
+It uses the actual section construction, not a source assertion about
+generic newvectors. \(\square\)
+
+#### The exact rectangular Fourier identity
+
+Use the positive entrywise Fourier transform
+\[
+ \widehat\Psi(X,Y)=\int_E\Psi(A,B)
+                 \psi(\operatorname{tr}(A^tX)+B^tY)\,dA\,dB.
+ \tag{2.13g}
+\]
+It commutes with \(T\). Direct linear substitution gives
+\[
+ \widehat{\rho_0(g)\Psi}
+       =\nu(g)^{-r}\rho_0(g^{-t})\widehat\Psi.
+ \tag{2.13h}
+\]
+Let \(\zeta=\operatorname{diag}(-I_r,1)\). Then
+\[
+ \widetilde W_{\Psi,V,\mu}(g)
+       =W_{\widehat\Psi,\widetilde V,\mu^{-1}}(\zeta g),
+ \qquad \widetilde V(h)=V(w_rh^{-t}).
+ \tag{2.13i}
+\]
+This equality will be proved rather than imported from the source's
+“completely analogous” argument.
+The operator \(\rho_0\) on its right remains the operator (2.13b) for
+the original \(\psi\). With \(\widetilde V\) it has inverse internal
+root characters and a positive last root; evaluation at \(\zeta g\)
+negates that last root and gives the actual full inverse Whittaker
+character. Thus (2.13i) does not silently replace the last-column
+Fourier operator by one for \(\psi^{-1}\).
+
+First establish the affine Fourier identity, for every \(h\in G_r\):
+\[
+ \begin{split}
+ &\int_{N_r}
+   (\rho_0(w_{r+1})\Psi)(hn,h^{-t}e)\psi^{-1}(n)\,dn\\
+ &\qquad=\nu(h)^{-(r-1)}
+       \int_{N_r}\widehat\Psi(-h^{-t}w_rn,he_1)
+                                      \psi(n)\,dn.
+ \end{split}
+ \tag{2.13j}
+\]
+Here the \(e_1\) on the right is a column of length \(r\).
+For proof, expansion of the conjugated last-column transform in (2.13b)
+gives
+\[
+ (\rho_0(w_{r+1})\Psi)(X,Y)
+ =\int_{k^r}\int_{k^r}
+ \Psi([v,X_r,X_{r-1},\ldots,X_2],z)
+                 \psi(z^tX_1-Y^tv)\,dv\,dz.
+ \tag{2.13k}
+\]
+At \(X=hn,Y=h^{-t}e\), put \(v=hu,z=h^{-t}z'\).
+The two Jacobians cancel. Since \(n_1=e_1\), the left side of (2.13j)
+is integration of
+\[
+ \Psi\bigl(h[u,n_r,\ldots,n_2],h^{-t}z'\bigr)
+       \psi\left(z'_1-u_r-\sum_{i<r}n_{i,i+1}\right)
+ \tag{2.13l}
+\]
+over \(u,z',n\).
+
+Expand (2.13g) on the right, and put \(A=hA',B=h^{-t}B'\).
+Their Jacobian is \(\nu(h)^{r-1}\).
+Orthogonality in each upper entry \(n_{ij}\) imposes
+\[
+ A'_{r+1-i,j}=\delta_{j,i+1}\qquad(i<j).
+ \tag{2.13m}
+\]
+The remaining matrices are exactly
+\(A'=[u,n_r',\ldots,n_2']\) for a unique \(u\in k^r,n'\in N_r\):
+the prescribed entries are the reversed identity entries and their
+zeros; the free entries are the first column and the strict upper
+entries of \(n'\). This is an affine coordinate bijection with
+Jacobian one. Its constant phase is precisely
+\(\psi(B'_1-u_r-\sum n'_{i,i+1})\), proving (2.13l) and (2.13j).
+
+This orthogonality calculation is an ordinary Schwartz Fourier
+calculation. To avoid an implicit integral of a constant character on
+a noncompact space, prove it first for a product of compact-open coset
+indicators. Restrict all Fourier-coordinate integrations to a sufficiently
+large compact lattice; character orthogonality imposes (2.13m) modulo
+the annihilator lattice. The test is constant on that annihilator
+lattice, so integration over the remaining cosets gives the asserted
+affine measure exactly. The original Schwartz functions and their
+transforms have compact support on both affine spaces; a sufficiently
+large cutoff includes both. Finite linear combinations establish the
+identity for every Schwartz test. This also proves (2.13j) in residue
+characteristic two: signs may agree there, and the unit Jacobians remain one.
+
+Now prove (2.13i) at \(g=e\). In the expression for
+\(W_{\widehat\Psi,\widetilde V,\mu^{-1}}(\zeta)\), change
+the \(G_r\) variable to \(h^{-t}w_r\). Its vector value becomes
+\(V(h^{-1})\); its two test arguments become
+\((-h^{-t}w_r,he_1)\).
+The constant prefactor is
+\(\mu^{-1}(\det\zeta)\mu^{-1}(\det w_r)\), equal to
+\(\mu(\det w_{r+1})\), because
+\[
+ \det w_{r+1}\,\det w_r\,\det\zeta
+       =(-1)^{r(r+1)/2+r(r-1)/2+r}=1.
+ \tag{2.13n}
+\]
+Disintegrate the full \(G_r\) integral on the right by its right \(N_r\)
+cosets. Since \(V((hn)^{-1})=\psi^{-1}(n)V(h^{-1})\), the remaining
+test average is exactly the one in (2.13j); the change
+\(n\mapsto w_rn^{-t}w_r\) changes its character to \(\psi(n)\).
+The factor \(\nu(h)^{-(r-1)}\) in (2.13j) changes
+\((r-1)/2\) to \(-(r-1)/2\), which is the transformed kernel power.
+All original kernel integrations are over the compact sets proved
+in Lemma 2.3y. This proves (2.13i) at identity.
+For general \(g\), replace \(\Psi\) by \(\rho_0(g^{-t})\Psi\);
+(2.13h) supplies \(\nu(g)^r\), which combines with the kernel prefactor
+\(\mu^{-1}(\det g)\nu(g)^{-r/2}\) to give the correct
+\(\mu^{-1}(\det g)\nu(g)^{r/2}\) on the right. This proves (2.13i).
+\(\square\)
+
+#### Decomposing each local integral into two actual families
+
+Take a pure tensor
+\(\Psi(x,y)=\Phi_1(x)\Phi_2(y)\), and write
+\(\phi_2(v)=\Phi_2(v^t)\) for its row test.
+Substitute (2.13d) into the adjacent direct integral
+\[
+ Z(s)=\int_{N_r\backslash G_r}
+ W_{\Psi,V,\mu}(\operatorname{diag}(g,1))
+                               W'(g)\nu(g)^{s-1/2}\,dg,
+ \tag{2.13o}
+\]
+where \(W'\) is the \(\pi,\psi^{-1}\) vector.
+Change the kernel variable from \(h\) to \(hg^{-1}\), and then the
+quotient variable from \(g\) to \(gh\). The characters cancel and the
+determinant powers give
+\[
+ Z(s)=\int_{N_r\backslash G_r}
+ V(g)\phi_2(e_rg)\nu(g)^s
+ \int_{G_r}\Phi_1(h)W'(gh)
+            \mu(\det h)\nu(h)^{s+(r-1)/2}\,dh\,dg.
+ \tag{2.13p}
+\]
+
+Every coefficient of this double integral is absolutely convergent.
+Indeed \(\Phi_1(h)\) bounds all entries of \(h\) and hence \(\nu(h)\)
+above. In Iwasawa representatives for \(g\), \(V\)'s ratio support
+and \(\phi_2(e_rg)\)'s last-coordinate support bound every diagonal
+entry of \(g\) above. Thus \(\nu(g)\) is bounded above.
+On a fixed determinant shell \(\nu(gh)=q^{-m}\), these two upper
+bounds give lower bounds for both determinants. The diagonal entries
+of \(g\) are therefore bounded below as well, so \(g\) lies in a compact
+set modulo \(N_r\); \(h\) lies in a compact subset of \(G_r\), using
+its bounded entries, determinant lower bound, and the adjugate inverse
+formula. The \(N_r\) phases in \(V(g)W'(gh)\) cancel.
+Consequently all changes, compact averaging, and finite sums below are
+valid coefficient by coefficient, without a hidden absolute-convergence
+claim for a formal infinite series.
+
+Choose an open compact \(J\subset G_r\) making \(\Phi_1\) left invariant,
+with \(\mu(\det J)=1\); let \(e_J\) denote averaging with probability
+Haar measure. Admissibility makes \(\pi^J\) finite-dimensional.
+Choose a basis \(v_i\), and expand
+\[
+ e_J\pi(h)v'=\sum_i f_i(h)v_i,\qquad
+ W_i'(g)=\lambda_\pi(\pi(g)v_i).
+ \tag{2.13q}
+\]
+Each \(f_i\) is an actual smooth ordinary coefficient: its dual form is
+the basis functional composed with \(e_J\).
+Changing \(h\) by \(jh\) in (2.13p) and averaging gives
+\[
+ Z(s)=\sum_i
+ Z(s,V,W_i',\phi_2)\,
+ J(s,\Phi_1,f_i\otimes\mu),
+ \tag{2.13r}
+\]
+where the first factor is the equal-rank Rankin–Selberg family and
+\[
+ J(s,\Phi_1,f_i\otimes\mu)
+ =\int_{G_r}\Phi_1(h)f_i(h)\mu(\det h)
+                         \nu(h)^{s+(r-1)/2}\,dh
+ \tag{2.13s}
+\]
+is exactly the already proved standard matrix family. Its entire ideal
+and scalar agree with the rank-one Rankin–Selberg family by the preceding rank-one ideal and Fourier comparisons,
+also for the induced model scope of Lemma 2.3t.
+There is no compact subgroup required to fix a nonzero column vector
+pointwise; only Schwartz and character invariance of the stated functions
+is used.
+
+#### Functional equation and signs
+
+By (2.13i) the reflected \(\sigma\) test at
+\(\operatorname{diag}(g,1)\) is the kernel with
+\(\mu^{-1},\widetilde V,\widehat\Phi_1,\widehat\Phi_2\), evaluated at
+\(\operatorname{diag}(-g,1)\).
+It contributes the scalar \(\mu(\det\zeta)\) and replaces its matrix
+test by \(\widehat\Phi_1(-\,\cdot\,)\).
+Use \(J'=J^{-t}\) in its analogue of (2.13q). The original averaged
+identity, evaluated at \(w_rg^{-t},h^{-t}\), shows that its factors are
+exactly
+\(\widetilde W_i'(g)\) and \(f_i(h^{-t})\), respectively.
+Fourier invariance gives left \(J^{-t}\)-invariance of
+\(\widehat\Phi_1\), so this is the same permissible averaging.
+Thus its product decomposition is
+\[
+ Z^\vee(1-s)=\mu(\det\zeta)\sum_i
+ Z(1-s,\widetilde V,\widetilde W_i',\widehat\phi_2)\,
+ \int_{G_r}\widehat\Phi_1(-h)f_i(h^{-t})
+       \mu^{-1}(\det h)\nu(h)^{1-s+(r-1)/2}\,dh.
+ \tag{2.13t}
+\]
+
+The equal-rank equation converts its first factor with scalar
+\(\omega_\pi(-1)^{r-1}\gamma(s,\rho\times\pi,\psi)\).
+For the second factor recall that matrix Fourier uses
+\(\psi(\operatorname{tr}(XY))\). Therefore its matrix transform is
+\(\Phi_1^\#(h)=\widehat\Phi_1(h^t)\), with the transpose essential.
+The actual matrix equation followed by \(h\mapsto h^t\) gives
+\[
+ \int_{G_r}\widehat\Phi_1(h)f_i(h^{-t})
+   \mu^{-1}(\det h)\nu(h)^{1-s+(r-1)/2}\,dh
+ =\gamma(s,\pi\times\mu,\psi)\,J(s,\Phi_1,f_i\otimes\mu).
+ \tag{2.13u}
+\]
+Replacing \(h\) by \(-h\) gives for the negative matrix test in (2.13t)
+the additional factor \(\omega_\pi(-1)\mu(\det\zeta)\).
+The two \(\mu(\det\zeta)\)'s cancel because their square is one.
+The total remaining sign is consequently
+\(\omega_\pi(-1)^r\), exactly the conversion from the raw adjacent
+scalar to the normalized Rankin–Selberg gamma factor. We obtain
+\[
+ Z^\vee(1-s)=\omega_\pi(-1)^r
+ \gamma(s,\rho\times\pi,\psi)\gamma(s,\pi\times\mu,\psi)\,Z(s).
+ \tag{2.13v}
+\]
+All equal-rank and matrix equations can be cleared by their reciprocal
+polynomials and Laurent-unit epsilon factors before applying them to
+(2.13r)–(2.13t); every sum is finite and every shell has the proved compact
+integration domain. Thus this is a formal coefficient identity as well
+as a rational one.
+
+#### The theorem and continuation of the whole family
+
+**Theorem 2.3z.** For every rank \(r\ge1\) and the entire induction (2.13a),
+\[
+ \gamma(s,\sigma\times\pi,\psi)
+  =\gamma(s,\rho\times\pi,\psi)\gamma(s,\pi\times\mu,\psi),
+ \qquad
+ \frac{L(s,\sigma\times\pi)}
+ {L(s,\rho\times\pi)L(s,\pi\times\mu)}
+                  \in\mathbf C[q^{-s}],\quad P(0)=1.
+ \tag{2.13w}
+\]
+
+**Proof.** In the positive-twist chamber Lemma 2.3y spans every actual
+Whittaker test of the induction. Equation (2.13v), compared to the scalar
+equation 2.9ai with its only index zero, proves the gamma product.
+Equation (2.13r) shows that the product of the two child reciprocal
+polynomials clears every such entire-family integral.
+Finite test-data attainment gives the indicated polynomial correction,
+as in the proof of Theorem 2.3w.
+
+For an arbitrary original \(\mu\), use Lemma 2.3r's compact-picture family
+\(\mu\nu^u\). Clear (2.13v) with both child reciprocal polynomials and
+epsilon Laurent units. Each coefficient is a Laurent polynomial in
+\(z=q^u\); the block matrix factor uses the norm shift \(s+u\), while
+the equal-rank block is fixed. It vanishes for every sufficiently
+positive real \(z\), hence identically. The direct and reflected series
+have uniform lower and upper exponent bounds, respectively, by Lemma 2.3r.
+The degrees of the child polynomials and epsilon monomials are fixed
+under these substitutions. The cleared identity therefore also proves
+polynomial clearing at every specialization, not merely an equality of
+meromorphic scalar functions. A nonzero test and the whole-family ideal
+then prove both assertions of (2.13w). \(\square\)
+
+### Full finite parabolic multiplicativity and its polynomial correction
+
+Write \(\mathscr R=\mathbf C[X,X^{-1}]\), \(X=q^{-s}\).
+All pair notation uses the actual larger-rank integral of the preceding finite-place integral theory;
+the two labels of a pair may therefore be exchanged. At equal rank this
+is also the same normalized scalar, as verified in (2.14m) and its subsequent equal-rank symmetry calculation.
+The representations considered are actual generic irreducible admissible
+representations or their full faithful induced Whittaker models proved
+in Lemma 2.3t. No existence or classification of an unspecified Langlands
+decomposition is assumed.
+
+#### An actual opposite ideal insertion
+
+**Lemma 2.3aa.** Let \(\tau\) have rank \(N\), let \(\pi\) have rank \(r<N\),
+let \(\eta\) be any smooth character, and put
+\[
+ I=\operatorname{Ind}_{Q^-}^{G_{r+1}}(\pi\otimes\eta).
+ \tag{2.14a}
+\]
+Then
+\[
+ I(\tau\times\pi)\subset I(\tau\times I)
+ \tag{2.14b}
+\]
+as actual full fractional ideals. Each old pure integral is an actual new
+integral constructed below, after a specified nonzero scalar normalization.
+The equality case \(N=r+1\) uses the new equal-rank Schwartz test.
+
+**Proof.** The larger Whittaker function \(W_0\) uses \(\psi\), and the
+smaller model uses \(\psi^{-1}\).
+For any old smaller Whittaker vector \(V\), choose a lower-parabolic
+section supported in the open upper-unipotent chart by
+\[
+ f\left[
+ \begin{pmatrix}m&0\\ x&a\end{pmatrix}
+ \begin{pmatrix}I_r&y\\0&1\end{pmatrix};\,h\right]
+ =\nu(m)^{-1/2}|a|^{r/2}\eta(a)\,V(hm)\,\phi(y).
+ \tag{2.14c}
+\]
+Here \(\phi\) is any compactly supported locally constant function on
+\(k^r\), later chosen with sufficiently small support. Extending by zero
+outside the open chart gives an actual smooth induced section: its chart
+support is compact inside the open flag cell, and its values use the
+specified vector and its normalized section law.
+
+We fix the normalizations of its open-chart Haar measure explicitly.
+For conductor-zero \(\psi\), additive \(\mathcal O\)-volume is one.
+Let
+\[
+ \alpha_j=\prod_{i=1}^j(1-q^{-i}),\qquad
+ c_r=\frac{\alpha_r(1-q^{-1})}{\alpha_{r+1}}>0.
+ \tag{2.14d}
+\]
+The matrix chart
+\[
+ g=\begin{pmatrix}m&my\\x&a+xy\end{pmatrix}
+ \tag{2.14e}
+\]
+has additive Jacobian \(\nu(m)\) and determinant \(\det(m)a\).
+Since \(dg=\alpha_{r+1}^{-1}|\det g|^{-(r+1)}d_{\rm add}g\),
+\(d_{\rm add}m=\alpha_r\nu(m)^r\,dm\), and
+\(d_{\rm add}a=(1-q^{-1})|a|\,d^\times a\),
+the Haar measure of (2.14e) is
+\[
+ dg=c_r|a|^{-r}\,dm\,dx\,d^\times a\,dy.
+ \tag{2.14f}
+\]
+Dividing its \(m\)-variable by \(N_r\)'s self-dual measure gives the
+same formula with \(N_r\backslash G_r\). For another additive character,
+the identical calculation uses that character's additive volumes, gives
+its positive chart constant, and is normalized in exactly the same way;
+alternatively Proposition 2.3i transfers the ideal statement by character scaling.
+
+First suppose \(N\ge r+2\). The old full ideal may be computed with its
+index-one family by Corollary 2.3f. An old pure test is
+\[
+ Z_1(s,W_0,V)=
+ \int_{N_r\backslash G_r}\int_{k^r}
+ W_0\left[
+ \begin{pmatrix}m&0&0\\x&1&0\\0&0&I_{N-r-1}\end{pmatrix}\right]
+                 V(m)\nu(m)^{s-(N-r)/2}\,dx\,dm.
+ \tag{2.14g}
+\]
+Choose a compact open group \(J\) fixing \(W_0\), and choose a small
+unit neighbourhood \(S=1+\mathfrak p^\ell\) such that
+\(\operatorname{diag}(I_r,a,I)\in J\) and \(\eta(a)=1\) for \(a\in S\).
+Set \(b(a)=1_S(a)/\operatorname{vol}_\times(S)\), regarded also as a
+Schwartz function on the additive field. Define an actual Whittaker
+vector by Fourier averaging the upper simple root:
+\[
+ W(g)=\int_k\left(\int_k b(a)\psi(-au)\,da\right)
+                W_0(g(1+uE_{r+1,r+2}))\,du.
+ \tag{2.14h}
+\]
+The weight is Schwartz and hence supported on a compact set; averaging
+is a finite linear combination on the smooth representation.
+For the matrix
+\[
+ q(m,x,a)=
+ \begin{pmatrix}m&0&0\\x&a&0\\0&0&I_{N-r-1}\end{pmatrix}
+ \tag{2.14i}
+\]
+right multiplication by that root equals left multiplication by
+\(1+auE_{r+1,r+2}\). Self-dual Fourier inversion therefore gives
+\[
+ W(q(m,x,a))=b(a)W_0(q(m,x,a)).
+ \tag{2.14j}
+\]
+On \(S\) the second factor equals the same value with \(a=1\), by its
+right \(J\)-invariance. There is no determinant-dependent frequency
+or an unstated root sign in this cutoff.
+
+Choose the support of \(\phi\) in (2.14c) inside the right stabilizer of
+the **new** \(W\), and normalize \(\int\phi(y)\,dy=c_r^{-1}\).
+Unfold its upper Jacquet integral in the new index-zero family
+\((\tau,I)\). The Jacquet phase cancels the larger Whittaker character.
+Use (2.14f) and the small upper-chart support to remove \(y\).
+The resulting determinant powers are exactly
+\[
+ \nu(m)^{s-(N-r-1)/2-1/2}
+       =\nu(m)^{s-(N-r)/2},\qquad
+ |a|^{s-(N-r-1)/2+r/2-r}
+       =|a|^{s-(N-1)/2}.
+ \tag{2.14k}
+\]
+Equations (2.14j) and the choice of \(S\) make the \(a\)-integral one.
+Thus the new integral equals (2.14g) exactly.
+
+Now suppose \(N=r+1\). The old family has index zero. Use \(W=W_0\).
+Choose a small compact open additive lattice \(L\subset k^r\) such
+that the lower matrices
+\(\left(\begin{smallmatrix}I&0\\x&1\end{smallmatrix}\right)\)
+lie in its right stabilizer for \(x\in L\). Choose \(S\) as above and
+put \(\chi=1_L/\operatorname{vol}_{\rm add}(L)\).
+Use the new equal-rank row test
+\[
+ \Phi_{\rm new}(x,a)=\chi(x)b(a).
+ \tag{2.14l}
+\]
+Choose the upper-chart support of \(\phi(y)\) small enough to stabilize
+\(W_0\) and to make \(xy\in\mathfrak p^\ell\) for every \(x\in L\).
+Then (2.14l) is unchanged under \((x,a)\mapsto(x,a+xy)\).
+On its support the Whittaker value in (2.14i) is
+\(W_0(\operatorname{diag}(m,1))\).
+Unfold as before; the \(x\)- and \(a\)-integrals are both one.
+The \(m\)-power in (2.14k) is now \(s-1/2\), the required old adjacent
+power, and the new integral equals that old test exactly.
+
+For complete justification of unfolding, first replace \(\eta\) by
+\(\eta\nu^u\) with \(u\) sufficiently positive. Lemma 2.3v gives its
+actual absolutely convergent upper Jacquet integral and identifies it
+with the Whittaker model. The coupled unfolded integral is absolutely
+convergent for sufficiently right \(s\): \(y\) is compact, \(a\) lies
+in \(S\), and (2.14j), respectively (2.14l), leaves exactly the old
+absolutely convergent integral. Its old rectangle is uniformly compact
+by (2.9l)–(2.9m). Thus Fubini proves the exact equalities just derived.
+
+Finally remove \(u\). The section (2.14c), its compact chart support and
+its restriction to \(K_{r+1}\) define a Laurent-polynomial compact-picture
+family; on the small open chart in \(K_{r+1}\) all the relevant \(a\)'s
+are units, so its restriction is in fact independent of \(u\).
+The scalar cutoffs above use only \(a\in S\) and are also independent
+of \(u\). Lemma 2.3r proves that every new determinant-shell coefficient is
+Laurent polynomial in \(q^u\). The old coefficient is constant.
+Their equality for all sufficiently positive real \(u\) proves equality
+of each coefficient identically, hence at the original \(\eta\).
+This proves (2.14b) with actual tests. \(\square\)
+
+#### Equal-rank symmetry and cancellation convention
+
+At equal rank \(r\), interchanging the two representations and using
+base character \(\psi^{-1}\) preserves the direct integral. Its reflected
+Schwartz transform changes from \(\widehat\Phi_\psi\) to
+\(\widehat\Phi_{\psi^{-1}}(x)=\widehat\Phi_\psi(-x)\).
+Changing \(g\mapsto-g\) in that reflected integral gives
+\(\omega_\pi(-1)\omega_\rho(-1)\).
+Conversion of the two raw scalars and the character-scaling law Proposition 2.3i
+then give
+\[
+ \gamma(s,\pi\times\rho,\psi)=\gamma(s,\rho\times\pi,\psi).
+ \tag{2.14m}
+\]
+For detail, the comparison before changing the base character back is
+\(\gamma(s,\rho\times\pi,\psi^{-1})
+ =\omega_\pi(-1)^r\omega_\rho(-1)^r
+       \gamma(s,\pi\times\rho,\psi)\).
+Proposition 2.3i contributes exactly the same central factor, whose square is one.
+The ideals are similarly unchanged, and normalization gives equality
+of \(L\)-factors. For unequal ranks the notation in this fragment always
+uses the canonical larger-rank family; exchanging the labels introduces
+no independently chosen incompatible normalization.
+
+The rank-one polynomial correction used below also needs its actual
+scope spelled out. The whole ordinary matrix ideal of an induction
+has the product generator, by the preceding matrix theorem. Each
+coefficient of its faithful Whittaker quotient is a coefficient of
+the induction: lift its vector and compose its dual form with the
+quotient. Thus that quotient's matrix ideal is **contained** in the
+product matrix ideal. Lemma 2.3t identifies its own matrix ideal with its
+own entire rank-one Rankin–Selberg ideal. Finite test-data attainment
+therefore gives the rank-one **polynomial correction**, not unconditional
+equality of these two matrix ideals.
+In particular this proof does not confuse a reducible full induction
+with its possibly irreducible Whittaker quotient.
+
+#### All fixed ranks when the last lower inducing block is a character
+
+**Lemma 2.3ab.** For every rank of the fixed representation \(\pi\), and
+every \(t\ge2\), let
+\(\sigma=\operatorname{Ind}_{Q^-}(\rho_{t-1}\otimes\mu)\).
+Then
+\[
+ \gamma(\pi\times\sigma)=\gamma(\pi\times\rho)\gamma(\pi\times\mu),
+ \qquad
+ \frac{L(\pi\times\sigma)}
+ {L(\pi\times\rho)L(\pi\times\mu)}\in\mathbf C[X],\quad P(0)=1.
+ \tag{2.14n}
+\]
+All gamma arguments are the same \(s,\psi\).
+
+**Proof for gamma.** Fixed rank at least \(t\) is Theorem 2.3x, rank \(t-1\)
+is Theorem 2.3z, and rank one is the rank-one comparison and inducing-family extension. Fix \(t\) and descend in the
+remaining fixed rank \(r\le t-2\). Put
+\(I=\operatorname{Ind}_{Q^-}(\pi_r\otimes\eta)\).
+The induction hypothesis gives
+\(\gamma(\sigma\times I)=\gamma(\rho\times I)\gamma(I\times\mu)\).
+Theorem 2.3x applies to both \(\sigma\times I\) and \(\rho\times I\), because
+\(t\ge r+1\) and \(t-1\ge r+1\). Rank-one multiplicativity applies
+to \(I\times\mu\) and \(\sigma\times\eta\).
+After substitution, the identity is
+\[
+ \gamma(\sigma\times\pi)\gamma(\sigma\times\eta)
+ =\gamma(\rho\times\pi)\gamma(\rho\times\eta)
+                       \gamma(\pi\times\mu)\gamma(\eta\times\mu).
+ \tag{2.14o}
+\]
+But \(\gamma(\sigma\times\eta)
+ =\gamma(\rho\times\eta)\gamma(\mu\times\eta)\);
+all these rational scalars are nonzero. Cancel them to get (2.14n).
+The auxiliary character may be arbitrary in this scalar argument.
+
+**Proof for the polynomial correction.** Choose \(\eta\) sufficiently
+ramified that Proposition 2.3u gives
+\(L(\sigma\times\eta)=L(\rho\times\eta)=L(\mu\times\eta)=1\).
+Theorem 2.3x supplies polynomials of constant term one with
+\[
+ L(\sigma\times I)=L(\sigma\times\pi)P_3,\qquad
+ L(\rho\times I)=L(\rho\times\pi)P_2.
+ \tag{2.14p}
+\]
+Lemma 2.3aa supplies the opposite inclusion of the \(\sigma\)-ideals, so
+\(L(\sigma\times\pi)\in L(\sigma\times I)\mathscr R\).
+The first identity in (2.14p) thus makes \(P_3^{-1}\) a Laurent polynomial.
+A polynomial with constant term one whose inverse is Laurent polynomial
+is one: it is a Laurent unit, hence a monomial, and its constant term
+forces degree zero. Consequently \(P_3=1\).
+
+For the rank-one pair \(I\times\mu\), the rank-one polynomial correction
+just proved and \(L(\eta\times\mu)=1\) give
+\(L(I\times\mu)=L(\pi\times\mu)P_4\), with \(P_4\in\mathbf C[X]\)
+and \(P_4(0)=1\).
+The descending induction hypothesis for \(\sigma\times I\), together
+with (2.14p), now gives (2.14n), with its correction the product of the
+induction polynomial, \(P_2\), and \(P_4\). All constant terms are one.
+This proves the lemma. \(\square\)
+
+#### Arbitrary binary and multiple parabolic data
+
+**Theorem 2.3ac.** Let
+\(\sigma=\operatorname{Ind}_{Q^-}(\sigma_a\otimes\sigma_b)\), with
+both blocks of the indicated actual generic admissible scope.
+For every fixed rank and every nonarchimedean local field,
+\[
+ \gamma(s,\pi\times\sigma,\psi)=
+       \gamma(s,\pi\times\sigma_a,\psi)
+       \gamma(s,\pi\times\sigma_b,\psi),
+ \qquad
+ \frac{L(s,\pi\times\sigma)}
+ {L(s,\pi\times\sigma_a)L(s,\pi\times\sigma_b)}
+                  \in\mathbf C[q^{-s}],\quad P(0)=1.
+ \tag{2.14q}
+\]
+For several blocks the gamma is their product and the \(L\)-factor
+has the same product times a polynomial of constant term one.
+
+**Proof.** Fixed rank \(r\ge t=a+b\) is Theorem 2.3x and fixed rank one is Lemma 2.3t.
+Descend in \(r<t\), putting again
+\(I=\operatorname{Ind}_{Q^-}(\pi_r\otimes\eta)\).
+The induction hypothesis gives
+\(\gamma(\sigma\times I)
+ =\gamma(\sigma_a\times I)\gamma(\sigma_b\times I)\).
+Lemma 2.3ab, applied to the character-last induction \(I\), expands
+each of these three scalars in its two blocks \(\pi,\eta\), regardless
+of the three fixed ranks. Rank-one multiplicativity gives
+\(\gamma(\sigma\times\eta)
+ =\gamma(\sigma_a\times\eta)\gamma(\sigma_b\times\eta)\).
+Cancel these nonzero factors. This gives the scalar part of (2.14q).
+
+For \(L\), choose \(\eta\) sufficiently ramified for
+\(\sigma,\sigma_a,\sigma_b\), using Proposition 2.3u.
+The induction hypothesis and Lemma 2.3ab give polynomials of constant term one:
+\[
+ \begin{split}
+ L(\sigma\times I)
+   &=L(\sigma_a\times I)L(\sigma_b\times I)P,\\
+ L(\sigma_i\times I)&=L(\sigma_i\times\pi)P_i,\\
+ L(\sigma\times I)&=L(\sigma\times\pi)P_3 .
+ \end{split}
+ \tag{2.14r}
+\]
+Lemma 2.3aa applies because \(r<t\); it includes the equality \(r+1=t\).
+It forces \(P_3=1\) by the same reciprocal-unit argument as in Lemma 2.3ab.
+The first two identities in (2.14r) prove (2.14q) with correction
+\(PP_aP_b\), of constant term one.
+
+For multiple blocks, use actual transitivity of normalized induction,
+proved by the two inverse maps (1.27v)–(1.27w): the section laws on the two successive flag quotients
+multiply to the refined modulus, and the compact-level inverse gives
+the actual isomorphism. Group the last block and repeat the binary
+statement. No assertion reordering arbitrary inducing blocks is needed
+by this induction. This proves the theorem. \(\square\)
+
+#### Actual generic irreducible subquotients
+
+**Corollary 2.3ad.** Suppose an actual generic irreducible \(\tau\) is a specified subquotient
+\(U/V\) of one of these inductions. Its gamma is the same block product,
+and its \(L\)-factor divided by the block product is a polynomial of
+constant term one.
+
+Here is the proof, without assuming finite length or a classification.
+Twisted \(N\)-coinvariants are exact by the compact Fourier averaging
+proof in the mirabolic spectral filtration above. The full induction has generic coinvariant dimension one
+by Lemma 2.3o, and \(\tau\) has dimension one by the actual Whittaker uniqueness
+provider. The two exact sequences imply
+\(\dim U_{N,\psi}=1\) and \(V_{N,\psi}=0\).
+Thus the full induction's functional restricts nontrivially to \(U\)
+and descends to \(U/V\). Its functions give a well-defined actual
+inclusion of the \(\tau\) Whittaker model in the induced function model:
+changing a lift by a vector of \(V\) gives zero under every translate.
+The full scalar equation restricts to this model; its reflected
+functions are the same actual inverse-transpose functions.
+Theorem 2.3h's uniqueness and a nonzero test therefore give the same gamma.
+
+The inclusion of actual test families gives \(I(\tau\times\pi)
+\subset I(\operatorname{Ind}\times\pi)\).
+Writing their normalized generators as \(1/P_\tau,1/P_I\), finite
+test-data attainment gives \(P_\tau\mid P_I\) in \(\mathbf C[X]\);
+the quotient has constant term one. Hence
+\(L(\tau\times\pi)=L(\operatorname{Ind}\times\pi)(P_I/P_\tau)\).
+Combine with Theorem 2.3ac to get the claimed polynomial correction.
+This is an assertion about the supplied actual subquotient, not the
+existence or ordering of an unspecified decomposition.
+
+### The spherical value generates the whole local ideal
+
+**Theorem 2.3ae.** Let \(\pi,\sigma\) be actual irreducible unramified
+generic representations of \(GL_n(k),GL_m(k)\), with Satake tuples
+\(\alpha=(\alpha_i)\), \(\beta=(\beta_j)\). With conductor-zero additive
+character and the measure normalization preceding (2.9a),
+\[
+ L(s,\pi\times\sigma)=
+ \prod_{i=1}^n\prod_{j=1}^m(1-\alpha_i\beta_jq^{-s})^{-1}.
+ \tag{2.15a}
+\]
+The spherical tests in the preceding Proposition 2.1c attain the
+normalized generator of the **whole** family. This includes repeated
+Satake eigenvalues and every residue characteristic.
+
+**Proof.** The actual proof of
+*The Satake isomorphism for unramified groups and unramified L-factors*, Proposition 5.1 and Corollary 5.2
+supplies \(\pi\) as an actual
+subquotient of normalized induction of the unramified characters
+\(\chi_i\), with \(\chi_i(\varpi)=\alpha_i\); it also supplies the
+analogous \(\eta_j(\varpi)=\beta_j\) data for \(\sigma\).
+It does not assume those principal series are irreducible.
+The hypotheses here supply the actual nonzero generic functionals.
+The complete spherical Whittaker proof in the preceding
+Proposition 2.1a shows evaluation at the spherical vector is injective
+on those functionals, so each may be normalized to have \(W(1)=1\).
+
+Apply Theorem 2.3ac and Corollary 2.3ad to the supplied subquotients and then to all their
+rank-one inducing blocks. The full local factor has the form
+\[
+ L(s,\pi\times\sigma)=D(X)P(X),\qquad P\in\mathbf C[X],\quad P(0)=1,
+ \quad
+ D(X)=\prod_{i,j}(1-\alpha_i\beta_jX)^{-1}.
+ \tag{2.15b}
+\]
+The rank-one factors are the actually proved unramified Tate factors.
+No direct equality of inducing and constituent factors was assumed.
+
+The actual proofs of Lemma 2.1b and Proposition 2.1c give a pure
+spherical test with integral exactly \(D(X)\), using
+\(1_{\mathcal O^n}\) in equal rank and index zero in unequal rank.
+Since every actual test belongs to the full fractional ideal
+\(L(s,\pi\times\sigma)\mathbf C[X,X^{-1}]\), (2.15b) implies
+\(P(X)^{-1}\in\mathbf C[X,X^{-1}]\).
+Its constant term one makes a polynomial Laurent unit equal to one.
+Hence \(P=1\), proving (2.15a) and actual generator attainment.
+\(\square\)
+
+For a different additive character, Proposition 2.3i proves that the entire normalized
+ideal is unchanged. Thus the factor (2.15a) is independent of that choice;
+the corresponding changed-character spherical tests are obtained by
+the explicitly proved diagonal scaling and measure factors in Proposition 2.3i.
+
 ## 3. Global continuation, poles and nonvanishing
 
 **Theorem 3.1 (Jacquet–Piatetski-Shapiro–Shalika, 1979/1983; global Rankin–Selberg analytic theory; proof not yet supplied).** For unitary cuspidal \(\pi\) on \(GL_n(\mathbb A)\) and \(\pi'\) on \(GL_m(\mathbb A)\), the complete product (2.1) has meromorphic continuation and satisfies
@@ -13609,6 +16966,130 @@ The absolute angular shift \(5/2\) gives the Tate argument
 \(s-1\), as in the displayed dual product. Using a signed
 angular shift would produce the wrong factor. \(\square\)
 
+**Exercise 9.23 (medium).** A formal vector series \(Y=\sum_{m\ge0}Y_mt^m\)
+satisfies \(tY'=A(t)Y\), where \(\|A_k\|\le CR^{-k}\).
+Prove convergence even when \(A_0\) has a nonnegative integer
+eigenvalue. Explain which coefficients may be freely chosen.
+
+*Solution.* Comparing coefficients gives (1.38j). For every integer
+\(m>2\|A_0\|\), the Neumann series gives
+\(\|(mI-A_0)^{-1}\|\le2/m\). Choose \(S\ge2/R\) and an integer
+\(m_0>2\|A_0\|+4C+1\); bound the finitely many given initial
+coefficients by \(MS^m\). Induction then gives
+\(\|Y_m\|\le (2C/m)MS^m\sum_{k\ge1}(RS)^{-k}\le MS^m\).
+Thus the series converges for \(|t|<S^{-1}\). At a resonant integer,
+the formal equation requires compatibility and may leave a kernel
+component undetermined; it does not justify an arbitrary choice of
+the entire coefficient. Only those finite compatible kernel choices
+are free. The large-index estimate works for every such formal
+solution.
+
+**Exercise 9.24 (hard).** In the proof of Theorem 1.33, why is a
+separate exponential estimate for each differentiated coefficient
+insufficient? Prove that the one common exponent yields the required
+contradiction, without extending the coefficients across singular
+walls.
+
+*Solution.* Moving \(q\) contracting root factors to the second
+vector differentiates that vector \(q\) times. If the new growth
+exponent depended on \(q\), it could grow faster than \(q\epsilon\).
+The estimate (1.38x) instead uses one \(M\) for every core pair,
+because all fixed Lie words reduce to the same finite generating
+array and its bounded radial jet. Under \(V=\mathfrak nV\), iteration
+gives \(V=\mathfrak n^qV\), and (1.38aa) bounds every component of
+the chosen nonzero finite jet by \(C_qe^{(M-q\epsilon)t}\).
+Its own bounded first-order system gives
+\(\|J(t)\|\ge e^{-M_0t}\|J(0)\|\). Choosing
+\(q\epsilon>M+M_0\) contradicts both bounds as \(t\to\infty\).
+The ray stays in one fixed-gap regular chamber, so every identity and
+bound used holds where the analytic coefficients have actually been
+constructed.
+
+**Exercise 9.25 (medium).** Construct the complete paired realization
+of Theorem 1.34 from its injection \(T_0\), and explain why this does
+not prove that a dense continuous comparison with an arbitrary
+supplied topology is onto.
+
+*Solution.* Take \(E=\overline{T_0V}^{\,C^\infty(K)}\) in the full
+induced model and \(E^\vee=I(\boldsymbol\chi^{-1})/\operatorname{Ann}(E)\).
+Theorem 1.26a proves group stability, completeness, smoothness,
+moderate growth and the invariant nondegenerate compact-integral
+pairing. A finite compact projector sends the closure into the
+already closed finite-dimensional packet of \(T_0V\), so the core
+is exactly \(V\); finite packet duality gives exactly \(V^\vee\)
+in the quotient. These are statements about the constructed spaces.
+Density of a continuous comparison into a second complete space
+does not make its image closed: the inclusion of rapidly decreasing
+sequences, with seminorms \(\sup_j(1+j)^N|a_j|\), into \(\ell^2\)
+is continuous since
+\(\|a\|_2\le\sqrt2\sup_j(1+j)|a_j|\): the integral comparison
+\(\sum_{j\ge0}(1+j)^{-2}\le1+\int_1^\infty x^{-2}dx=2\)
+proves this bound. Finite sequences show density. The domain is
+complete: a Cauchy sequence for all the displayed seminorms converges
+coordinatewise, and passing each uniform Cauchy bound to the limit
+gives convergence in every seminorm. The inclusion still omits the
+\(\ell^2\) sequence \(a_j=(1+j)^{-1}\), whose seminorm for \(N=2\)
+is infinite. Completeness of the domain alone therefore
+provides no onto conclusion. An inverse seminorm estimate or an
+independent closed-range argument would still be needed.
+
+**Exercise 9.26 (medium).** Let \(P_1,P_2\in\mathbf C[X]\)
+have constant term one. Suppose the test ideals with generators
+\(1/P_1\) and \(1/P_2\) satisfy
+\((1/P_1)\mathscr R\subset(1/P_2)\mathscr R\), where
+\(\mathscr R=\mathbf C[X,X^{-1}]\). Determine the direction of
+divisibility and explain the subquotient correction in Corollary 2.3ad.
+
+*Solution.* Inclusion says \(P_2/P_1\in\mathscr R\).
+This rational function is regular at zero, so its Laurent polynomial
+has no negative powers and belongs to \(\mathbf C[X]\).
+Therefore \(P_1\mid P_2\), and
+\(L_1=L_2(P_2/P_1)\); its polynomial correction has value one at
+zero. With the irreducible subquotient as family 1 and the induction
+as family 2, this is precisely the correction in Corollary 2.3ad.
+Reversing the ideal inclusion would reverse the divisibility claim.
+
+**Exercise 9.27 (hard).** Derive the chart measure (2.14f) and explain
+why the extra row test is necessary when \(N=r+1\) in Lemma 2.3aa.
+
+*Solution.* In (2.14e), changing the upper-right column from \(y\)
+to \(my\) has additive Jacobian \(\nu(m)\); changing the bottom-right
+entry to \(a+xy\) has Jacobian one. The determinant is \(\det(m)a\).
+Multiplying the density \(\alpha_{r+1}^{-1}|\det g|^{-r-1}\)
+by \(\alpha_r\nu(m)^r\,dm\),
+\((1-q^{-1})|a|\,d^\times a\), and that Jacobian leaves
+\[
+ \frac{\alpha_r(1-q^{-1})}{\alpha_{r+1}}
+       |a|^{-r}\,dm\,dx\,d^\times a\,dy.
+\]
+Dividing \(dm\) by the prescribed measure of \(N_r\) gives
+(2.14f). When \(N\ge r+2\), the root \(E_{r+1,r+2}\) exists and
+its Fourier average cuts the \(a\)-variable down to a unit
+neighborhood. When \(N=r+1\) that root is absent. The equal-rank
+Schwartz test \(\chi(x)b(a)\) cuts both remaining variables down,
+and sufficiently small upper-chart support makes it invariant under
+\(a\mapsto a+xy\). Its two probability integrals and
+\(\int\phi=c_r^{-1}\) give the old test with exactly the old
+determinant exponent. Thus the equality-rank edge is an actual
+test construction.
+
+**Exercise 9.28 (medium).** Suppose parabolic multiplicativity gives
+\(L(X)=D(X)P(X)\), where \(P\) is a polynomial with \(P(0)=1\).
+Show that an actual test with value \(D(X)\) forces \(P=1\).
+Why would a gamma product alone be insufficient?
+
+*Solution.* The actual test belongs to the full ideal \(L\mathscr R\),
+so \(D/(DP)=P^{-1}\) is a Laurent polynomial. Hence \(P\) is a
+Laurent unit. For two nonzero Laurent polynomials, their smallest
+exponents add under multiplication and their largest exponents add
+as well: the two extreme coefficients are nonzero products.
+If their product is one, their nonnegative exponent widths sum to
+zero. Each factor is therefore a monomial. Since \(P\) is a
+polynomial with constant term one, it is the monomial 1.
+A gamma product compares a factor with its reflected dual factor;
+it alone does not determine that numerator correction. The actual
+test inclusion supplies the missing ideal information.
+
 ## 10. What this lesson does not prove
 
 The determinant computation, Landau's lemma, Cauchy's identity and coarse initial convergence are proved above. Assuming the analytic identification and complete pole theorem in Theorems 2.1 and 3.1, the subsequent proofs establish absolute convergence for \(\operatorname{Re}s>1\), the strict local bound, boundary nonvanishing, strong multiplicity one and uniqueness of the cuspidal constituent multiset. These are conditional deductions until those general analytic proofs are supplied.
@@ -13617,8 +17098,8 @@ The degree-one analytic theory has a preceding complete proof in *Hecke L-functi
 
 The following statements made in this lesson still require the indicated general-rank constructions.
 
-- For Theorem 1.1, the remaining local input 1.1c consists of standard-conductor and standard-factor identification for general finite-place irreducibles, and explicit archimedean standard-factor identification. Theorem 1.31 proves Gaussian-ideal existence, finite attainment, entire Schwartz division and compatible factor conjugation in every prescribed actual complete smooth moderate dual-pair model. Theorems 1.21–1.22 prove general archimedean full-Schwartz continuation, a common pole majorant with entire quotients and strip bounds, and the scalar Fourier equation in actual smooth dual-pair models; Proposition 1.21b and Corollary 1.22e prove canonical division and constant epsilon under the genuine Gaussian-ideal premise. Corollary 1.22f proves the unitary scalar critical-line phase. These results do not identify the canonical factor. Proposition 1.3 has proved the entire finite-place matrix ideal and its attaining generator in every rank, including ramification; Theorem 1.17 proves the scalar Fourier equation for every finite-place smooth admissible irreducible representation; the Laurent-unit, reflection-sign, character-scaling and compatible-unitary consequences in (1.7j)–(1.7m) therefore apply. Proposition 1.16 does prove the full finite-place theory and exact nonnegative conductor in the matrix/Tate-product normalization for determinant characters in every rank, including ramification. Lemma 1.20a proves compact-mod-center coefficient support from zero proper Jacquet modules. Theorem 1.20 proves strictly positive exponent for every irreducible admissible compact induction from finite-dimensional data on an open compact-mod-center subgroup, including positive-depth data; Corollary 1.20c constructs the depth-zero family and proves exponent n. Lemma 1.20d proves the polynomial degree correction, whose parabolic identities are now proved by Theorem 1.23 and Corollary 1.23c for the full induced matrix family and every irreducible subquotient. Theorem 1.23e proves general cuspidal-support embedding; Lemmas 1.23f–1.23g prove compact inducing realization from the stated finite-subspace or compact-intertwining criteria. Theorem 1.24 proves strict matrix-exponent positivity for every terminal higher-rank cuspidal block by finite spectral charts, full unipotent-fiber cancellation and the exact Fourier-shell extraction. Corollary 1.24c consequently proves the nonnegative matrix exponent for every irreducible, and Corollary 1.24d gives the factor-degree bound and exponent-zero consequence. Universal compact-induction data are unnecessary for these conclusions; standard-factor/conductor identifications remain open. Propositions 1.5–1.7 prove polynomial-module closure and the full Gaussian ideal for determinant characters over both real and complex fields, and Theorem 1.18 proves their full-Schwartz continuation, normalized division and Fourier equation with exact real/complex phases. Theorem 1.25 proves the full canonical Gaussian ideal, finite attainment, entire Schwartz division, Fourier equation and exact dual/conjugation formulas for every norm-twisted symmetric power in each rank, its complex antiholomorphic companion and their duals. Theorem 1.26 now proves the exact Gaussian product and whole-Schwartz Fourier package for every full Borel induction. Theorems 1.26a–1.26b construct actual closure, quotient and admissible dual models for every supplied principal-core subquotient, with an exact finite monic polynomial correction, finite attainment, entire division, Fourier reflection and unitary conjugation normalization. Theorems 1.27–1.31 prove nilpotent finite generation, nonzero Jacquet quotient, principal-core occurrence, analytic coefficient comparison, a complete common refinement and the full Gaussian package in every prescribed actual dual-pair realization. Abstract unrealized-core existence, full onto/closed-image comparison and explicit standard-factor/scalar identification remain required. Theorems 1.11 and 1.13 prove compatible unitary realization and tensor pairings for an actual admissible Hilbert cusp constituent; Proposition 1.14 and Lemma 1.15 give the stated reverse-comparison routes. Theorem 1.19 proves realization and admissibility for every abstract cuspidal subquotient: local elliptic estimates, rapid decay without a prior realization, bounded covering multiplicity, compact cusp energy embedding, finite-dimensional constrained cusp spaces, compact convolution and discrete Hilbert spectrum, constituent admissibility, and the positive-central Jordan filtration are all supplied. Proposition 1.1a proves general adelic reduction, and Proposition 1.2 proves the whole unramified matrix family and its Fourier equation with epsilon factor one. Lemmas 1.1b and 1.1d supply the cusp and matrix estimates; singular-orbit cancellation, Poisson, Mellin continuation, strip bounds, Euler-product recovery and the global functional-equation deduction are proved in §1 from the remaining precise inputs. The free readings are [Goldfeld–Jacquet, §§2–5 and 8–9] and [Getz–Hahn, 22 April 2022 draft, Theorem 6.5.1].
-- Theorem 2.1: identification of the finite-place Rankin–Selberg generator with the spherical tensor determinant and ordered constituent factors, parabolic multiplicativity, the general archimedean Rankin–Selberg local factors and their equation. Propositions 2.3b–2.3d prove the entire finite-place rational ideal and finite actual test-sum attainment in all ranks and both field characteristics. Corollary 2.3f proves index independence, Proposition 2.3g proves generic pairing uniqueness by orbit depth and global derivative polynomials, Theorem 2.3h proves the scalar functional equation, and Proposition 2.3i and Corollary 2.3j prove Laurent epsilon, reflection and exact character/norm laws. Theorems 2.3l–2.3n prove the complete finite-place rank-one ideal, gamma and epsilon identification with the twisted matrix factors and the stated generic-block multiplicativity. Higher-rank multiplicativity and ordered-data identification remain required. Theorem 2.0 proves finite-place Whittaker uniqueness for every irreducible smooth admissible representation, every nondegenerate character and every rank/field, including the zero Hom case. Its localization, Bruhat symmetry, contragredient identification and convolution-kernel proof are written in full. Theorem 2.0n proves the all-rank real/complex distributional-principal-series bound and kills every transverse boundary jet; Corollary 2.0o transports it through a specified continuous-dual embedding. Theorems 2.0x–2.0y now construct it for every prescribed actual complete smooth moderate dual-pair model, and Theorem 2.0z proves the general archimedean bound in that class, including nonunitary and nongeneric representations. Lemmas 2.0p–2.0r and Theorem 2.0s prove generic Casimir eigendistribution symmetry in every real and complex rank by finite transverse-order and explicit Bruhat normal-symbol arguments. Lemmas 2.0t–2.0u prove smoothing of Hilbert distribution vectors and the full smooth-space kernel argument. Theorem 2.0v proves uniqueness for every compatible unitary model with irreducible admissible compact-type core and all determinant twists; Theorems 1.19 and 1.11–1.13 supply these hypotheses for every actual archimedean cusp factor. Together with the preceding local existence proof their cusp-model functional spaces are exactly one-dimensional. No opposite-functional existence or onto model comparison is needed for this general uniqueness proof; unrealized abstract-core existence and full onto comparison remain separate obligations. Proposition 2.1a proves uniqueness for every unramified irreducible and the normalized spherical formula whenever it is generic. Lemma 2.1b and Proposition 2.1c prove the all-rank spherical integral values, including unequal ranks and repeated parameters; one spherical value is not a proof of full ideal-generator identification. Global cuspidal genericity and local Whittaker existence under the precise smooth-realization hypothesis have preceding proofs in *Automorphic representations and automorphic L-functions*, Theorem 1.3 and Corollary 1.4; Theorem 1.19 supplies that realization and comparison for every abstract cuspidal subquotient. The precise free sources for the remaining local assertions are [Jacquet–Piatetski-Shapiro–Shalika, *Rankin–Selberg convolutions*, §§2.7, 3 and 9.4] and [Getz–Hahn, 22 April 2022 draft, §§11.5–11.6]. Lemma 2.2 proves the entire-reciprocal property once the factor shape is established.
+- For Theorem 1.1, the remaining local input 1.1c consists of standard-conductor and standard-factor identification for general finite-place irreducibles, and explicit archimedean standard-factor identification. Theorem 1.31 proves Gaussian-ideal existence, finite attainment, entire Schwartz division and compatible factor conjugation in every prescribed actual complete smooth moderate dual-pair model. Theorems 1.21–1.22 prove general archimedean full-Schwartz continuation, a common pole majorant with entire quotients and strip bounds, and the scalar Fourier equation in actual smooth dual-pair models; Proposition 1.21b and Corollary 1.22e prove canonical division and constant epsilon under the genuine Gaussian-ideal premise. Corollary 1.22f proves the unitary scalar critical-line phase. These results do not identify the canonical factor. Proposition 1.3 has proved the entire finite-place matrix ideal and its attaining generator in every rank, including ramification; Theorem 1.17 proves the scalar Fourier equation for every finite-place smooth admissible irreducible representation; the Laurent-unit, reflection-sign, character-scaling and compatible-unitary consequences in (1.7j)–(1.7m) therefore apply. Proposition 1.16 does prove the full finite-place theory and exact nonnegative conductor in the matrix/Tate-product normalization for determinant characters in every rank, including ramification. Lemma 1.20a proves compact-mod-center coefficient support from zero proper Jacquet modules. Theorem 1.20 proves strictly positive exponent for every irreducible admissible compact induction from finite-dimensional data on an open compact-mod-center subgroup, including positive-depth data; Corollary 1.20c constructs the depth-zero family and proves exponent n. Lemma 1.20d proves the polynomial degree correction, whose parabolic identities are now proved by Theorem 1.23 and Corollary 1.23c for the full induced matrix family and every irreducible subquotient. Theorem 1.23e proves general cuspidal-support embedding; Lemmas 1.23f–1.23g prove compact inducing realization from the stated finite-subspace or compact-intertwining criteria. Theorem 1.24 proves strict matrix-exponent positivity for every terminal higher-rank cuspidal block by finite spectral charts, full unipotent-fiber cancellation and the exact Fourier-shell extraction. Corollary 1.24c consequently proves the nonnegative matrix exponent for every irreducible, and Corollary 1.24d gives the factor-degree bound and exponent-zero consequence. Universal compact-induction data are unnecessary for these conclusions; standard-factor/conductor identifications remain open. Propositions 1.5–1.7 prove polynomial-module closure and the full Gaussian ideal for determinant characters over both real and complex fields, and Theorem 1.18 proves their full-Schwartz continuation, normalized division and Fourier equation with exact real/complex phases. Theorem 1.25 proves the full canonical Gaussian ideal, finite attainment, entire Schwartz division, Fourier equation and exact dual/conjugation formulas for every norm-twisted symmetric power in each rank, its complex antiholomorphic companion and their duals. Theorem 1.26 now proves the exact Gaussian product and whole-Schwartz Fourier package for every full Borel induction. Theorems 1.26a–1.26b construct actual closure, quotient and admissible dual models for every supplied principal-core subquotient, with an exact finite monic polynomial correction, finite attainment, entire division, Fourier reflection and unitary conjugation normalization. Theorems 1.27–1.31 prove nilpotent finite generation, nonzero Jacquet quotient, principal-core occurrence, analytic coefficient comparison, a complete common refinement and the full Gaussian package in every prescribed actual dual-pair realization. Theorems 1.32–1.34 prove existence and full Borel occurrence for every abstract irreducible admissible core. Full onto/closed-image comparison and explicit standard-factor/scalar identification remain required. Theorems 1.11 and 1.13 prove compatible unitary realization and tensor pairings for an actual admissible Hilbert cusp constituent; Proposition 1.14 and Lemma 1.15 give the stated reverse-comparison routes. Theorem 1.19 proves realization and admissibility for every abstract cuspidal subquotient: local elliptic estimates, rapid decay without a prior realization, bounded covering multiplicity, compact cusp energy embedding, finite-dimensional constrained cusp spaces, compact convolution and discrete Hilbert spectrum, constituent admissibility, and the positive-central Jordan filtration are all supplied. Proposition 1.1a proves general adelic reduction, and Proposition 1.2 proves the whole unramified matrix family and its Fourier equation with epsilon factor one. Lemmas 1.1b and 1.1d supply the cusp and matrix estimates; singular-orbit cancellation, Poisson, Mellin continuation, strip bounds, Euler-product recovery and the global functional-equation deduction are proved in §1 from the remaining precise inputs. The free readings are [Goldfeld–Jacquet, §§2–5 and 8–9] and [Getz–Hahn, 22 April 2022 draft, Theorem 6.5.1].
+- Theorem 2.1: ordered essentially tempered constituent factors, and the general archimedean Rankin–Selberg local factors and their equation. Theorems 2.3ac–2.3ae prove finite-place parabolic gamma multiplicativity, the exact polynomial correction and the full spherical generator. Propositions 2.3b–2.3d prove the entire finite-place rational ideal and finite actual test-sum attainment in all ranks and both field characteristics. Corollary 2.3f proves index independence, Proposition 2.3g proves generic pairing uniqueness by orbit depth and global derivative polynomials, Theorem 2.3h proves the scalar functional equation, and Proposition 2.3i and Corollary 2.3j prove Laurent epsilon, reflection and exact character/norm laws. Theorems 2.3l–2.3n prove the complete finite-place rank-one ideal, gamma and epsilon identification with the twisted matrix factors and the stated generic-block multiplicativity. Theorem 2.3ac and Corollary 2.3ad below prove higher-rank finite-place multiplicativity with its exact polynomial correction; Theorem 2.3ae identifies the whole spherical generator. Ordered essentially tempered data identification remains required. Theorem 2.0 proves finite-place Whittaker uniqueness for every irreducible smooth admissible representation, every nondegenerate character and every rank/field, including the zero Hom case. Its localization, Bruhat symmetry, contragredient identification and convolution-kernel proof are written in full. Theorem 2.0n proves the all-rank real/complex distributional-principal-series bound and kills every transverse boundary jet; Corollary 2.0o transports it through a specified continuous-dual embedding. Theorems 2.0x–2.0y now construct it for every prescribed actual complete smooth moderate dual-pair model, and Theorem 2.0z proves the general archimedean bound in that class, including nonunitary and nongeneric representations. Lemmas 2.0p–2.0r and Theorem 2.0s prove generic Casimir eigendistribution symmetry in every real and complex rank by finite transverse-order and explicit Bruhat normal-symbol arguments. Lemmas 2.0t–2.0u prove smoothing of Hilbert distribution vectors and the full smooth-space kernel argument. Theorem 2.0v proves uniqueness for every compatible unitary model with irreducible admissible compact-type core and all determinant twists; Theorems 1.19 and 1.11–1.13 supply these hypotheses for every actual archimedean cusp factor. Together with the preceding local existence proof their cusp-model functional spaces are exactly one-dimensional. No opposite-functional existence or onto model comparison is needed for this general uniqueness proof; Theorem 1.34 proves abstract-core existence; full onto comparison remains a separate obligation. Proposition 2.1a proves uniqueness for every unramified irreducible and the normalized spherical formula whenever it is generic. Lemma 2.1b and Proposition 2.1c prove the all-rank spherical integral values, including unequal ranks and repeated parameters; Theorem 2.3ae now uses the full parabolic polynomial correction to prove that this spherical value is the generator of the whole ideal. Global cuspidal genericity and local Whittaker existence under the precise smooth-realization hypothesis have preceding proofs in *Automorphic representations and automorphic L-functions*, Theorem 1.3 and Corollary 1.4; Theorem 1.19 supplies that realization and comparison for every abstract cuspidal subquotient. The precise free sources for the remaining local assertions are [Jacquet–Piatetski-Shapiro–Shalika, *Rankin–Selberg convolutions*, §§2.7, 3–7 and 9.4] and [Getz–Hahn, 22 April 2022 draft, §§11.5–11.6]. Lemma 2.2 proves the entire-reciprocal property once the factor shape is established.
 - Theorem 3.1 for arbitrary number fields and arbitrary positive ranks: complete global continuation, the functional equation with conductor and root number, and the exact simple dual-pairing poles after split-central normalization and imaginary twists. The theorem is [Getz–Hahn, 22 April 2022 draft, Theorem 11.7.1]; the local twist identity extends the normalized statement. The unfolding, analytic estimates and pole calculation are not proved here. Boundary nonvanishing is proved in Theorem 4.6, rather than included among these assumptions.
 - Local and global isobaric existence in §6: local classification constructs the order-independent irreducible representation from essentially square-integrable data; the global sum is an automorphic subquotient; the unitary cuspidal norm normalization has now been proved in Theorem 1.19. The exact free statement locators for the remaining classification/existence assertions are [Getz–Hahn, 22 April 2022 draft, Theorem 6.5.1, Theorems 10.5.1–10.5.2, equation (10.21), and Theorem 10.6.5]. The proof of multiset uniqueness does not assume that existence is a consequence of the good-place Euler product.
 - Theorem 7.1: the discrete spectrum consists exactly of the unique Speh pairs, with multiplicity one, and \(m>1\) gives the residual part. [Mœglin–Waldspurger, *Le spectre résiduel de GL(n)*, théorème de l'introduction]; [Getz–Hahn, 22 April 2022 draft, Theorem 10.7.1]. The Eisenstein residues and their exhaustiveness are not constructed here.
@@ -13628,7 +17109,7 @@ For the modular-form example, the precise earlier \(GL_2/\mathbb Q\) dictionary 
 ## References
 
 - W. Casselman, [*Canonical extensions of Harish-Chandra modules to representations of G*, publisher open-access edition](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/90CFF3C365389AA3AEE897611EC8DE2D/S0008414X00000523a.pdf/canonical-extensions-of-harish-chandra-modules-to-representations-of-g.pdf), 1989, §§5, 7–8, printed pp.407–409 and 414–423.
-- J. Bernstein and B. Krötz, [*Smooth Fréchet globalizations of Harish-Chandra modules*, author version dated 3 August 2014](https://www.math.tau.ac.il/~bernstei/Publication_list/publication_texts/Bern-Kroetz-2014.pdf), §8, Theorem 8.1, and Appendix A, Theorems 12.2 and 12.8.
+- J. Bernstein and B. Krötz, [*Smooth Fréchet globalizations of Harish-Chandra modules*, author version dated 3 August 2014](https://www.math.tau.ac.il/~bernstei/Publication_list/publication_texts/Bern-Kroetz-2014.pdf), introduction and §5.1; §8, Theorem 8.1, and Appendix A, Theorems 12.2 and 12.8.
 - H. Jacquet, I. I. Piatetski-Shapiro and J. A. Shalika, [*Automorphic forms on GL(3), I*, author-hosted edition](https://www.math.columbia.edu/~hj/Automorphic%20forms%20on%20GL%283%29%20I.pdf), 1979, §§3.1 and 4.3–4.5, printed pp.185–198.
 
 - B. Rubin, [*Zeta integrals and integral geometry in the space of rectangular matrices*, arXiv:math/0406289](https://arxiv.org/pdf/math/0406289), Lemmas 2.7 and 4.2 and Theorem 4.3, for the real unsigned QR/Mellin and Fourier comparison.

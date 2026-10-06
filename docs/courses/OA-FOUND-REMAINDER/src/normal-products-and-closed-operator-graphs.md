@@ -1,6 +1,6 @@
 # Normal products and closed operator graphs
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 The spatial tensor product of von Neumann algebras supports normal maps and normal functionals. A commuting action need not realize that product normally. We will characterize normal factorization by a product functional, then use two-by-two operator matrices to recognize unbounded observables through their graphs.
 

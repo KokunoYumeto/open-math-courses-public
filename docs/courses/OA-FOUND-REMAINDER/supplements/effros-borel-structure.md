@@ -1,6 +1,6 @@
 # The Effros Borel structure
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by Claude Opus 5.5 (Anthropic), September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A direct integral of von Neumann algebras is assembled from a family \(\gamma\mapsto M(\gamma)\) of von Neumann algebras that depends measurably on a parameter \(\gamma\). To make sense of this, one needs a Borel structure on a set of von Neumann algebras, and workable tests for measurability. This lesson supplies both.
 

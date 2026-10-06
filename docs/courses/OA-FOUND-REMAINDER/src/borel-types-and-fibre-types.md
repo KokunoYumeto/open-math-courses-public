@@ -1,6 +1,6 @@
 # Borel types and fibre types
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 An algebra is finite precisely when it has a faithful normal tracial state, provided it acts on a separable Hilbert space. Its failure to be finite also has a witness: a proper isometry. Encoding both witnesses makes finiteness a Borel condition. A finite projection with full central carrier witnesses semifiniteness; a nonzero finite projection only witnesses the presence of a semifinite part. These distinctions matter when algebras have several central summands.
 

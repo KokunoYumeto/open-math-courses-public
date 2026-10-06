@@ -1,7 +1,7 @@
 <span id="orbit-representations-and-orthogonal-state-measures"></span>
 # Orbit representations and orthogonal state measures
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A free action on a compact space gives one irreducible representation for each orbit. Evaluating the identity coefficient at a point gives a pure state, and integrating those states recovers a vector state of the represented crossed-product algebra. We prove the norm bound that makes point evaluation legitimate on the completed algebra, then identify the abelian algebra associated with this representing measure.
 

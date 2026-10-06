@@ -1,6 +1,6 @@
 # Invertible components and exponential laws
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 An invertible element can move continuously without losing its inverse. The connected components of the invertible group record the obstructions to moving it to the identity. Exponentials describe the identity component; in C*-algebras the same components can be studied using unitaries. For continuous functions on a circle, the obstruction becomes an integer winding number.
 

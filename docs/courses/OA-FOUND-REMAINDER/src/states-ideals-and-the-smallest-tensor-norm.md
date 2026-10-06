@@ -1,6 +1,6 @@
 # States, ideals and the smallest tensor norm
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 The spatial tensor norm has a concrete operator formula. Its minimality is a different assertion: every C*-norm on the same algebraic tensor product must dominate that formula. The difficulty is that a positive algebraic product functional need not be continuous for an arbitrary norm merely because it is continuous for the maximal one.
 

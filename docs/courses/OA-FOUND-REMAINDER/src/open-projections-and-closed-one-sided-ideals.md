@@ -1,6 +1,6 @@
 # Open projections and closed one-sided ideals
 
-*Self-checked by the writing AI. Original text: CC0 1.0. The credited Kaneda–Schick example retains CC BY 4.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0. The credited Kaneda–Schick example retains CC BY 4.0.*
 
 Suppose a collection of operators is meant to act only on part of a system. A projection in the bidual describes such a part, but it need not be recoverable from the original algebra. This lesson asks how to recognize the parts that can be recovered: through positive approximations, through closed one-sided ideals, or through what states fail to see.
 

@@ -6,14 +6,16 @@
 
 An eigenvalue is a frequency of an evolution. Taking the Fourier transform of the spectral measure produces a wave kernel, and its singularities reveal where the classical Hamiltonian flow travels. This lesson constructs that connection for a scalar first-order elliptic operator on a closed manifold. The construction also explains why a smooth error in an approximate evolution does not alter its singularities.
 
-The freely accessible construction in Hörmander's 1968 spectral-function article [HS, Sections 2–3] supplies the local phase and successive amplitude equations. The original articles *Fourier integral operators I* [FI] and *II* [FII] supply their classical invariant symbols, composition and transport. The phase and principal-symbol proofs are now supplied by the programme reading below. The graph-composition and adjoint proofs are now supplied by the subsequent programme reading. The scalar-transport and qualified-pullback proofs are supplied by the two subsequent programme readings. Guillemin and Sternberg [GS, Section 8.7.5] explain the corresponding semiclassical transport; Wunsch [W, Sections 4.1 and 6] treats the metric half-wave construction. The operator prerequisites are the real Sobolev calculus in [Classical scalar symbols, summation and regularity](../providers/analysis/classical-scalar-calculus.md#finite-symbol-calculus), compact Sobolev inclusions in [Compact Sobolev inclusion and elliptic Fredholm maps](../providers/analysis/classical-scalar-calculus.md#compact-sobolev-inclusion), and the complete bundled [Compact positive inverses and diagonal domains](../providers/analysis/compact-spectrum-domains.md#compact-inverse-domains). The latter supplies the generic compact positive eigenbasis, the exact second-moment inverse domain and every diagonal multiplier domain; its full Hilbert-space input is Lemma 6.1 and Theorem 6.2 of the linked current programme proof. The PDE inverse and compact Sobolev inclusion are proved separately below.
+Hörmander's spectral-function article [HS, Sections 2–3] develops the local phase and successive amplitude equations. The articles *Fourier integral operators I* [FI] and *II* [FII] treat their classical invariant symbols, composition and transport. Guillemin and Sternberg [GS, Section 8.7.5] explain the corresponding semiclassical transport; Wunsch [W, Sections 4.1 and 6] treats the metric half-wave construction. The operator prerequisites are the real Sobolev calculus in [Classical scalar symbols, summation and regularity](../providers/analysis/classical-scalar-calculus.md#finite-symbol-calculus), [Compact Sobolev inclusion and elliptic Fredholm maps](../providers/analysis/classical-scalar-calculus.md#compact-sobolev-inclusion), and [Compact positive inverses and diagonal domains](../providers/analysis/compact-spectrum-domains.md#compact-inverse-domains). The last reading proves the compact positive eigenbasis theorem, the exact second-moment inverse domain and every diagonal multiplier domain. Section 1 below applies these results to the elliptic operator.
 
 
-Read the finite scalar calculus and its summation proof first, then [Phase geometry, stationary phase and the Maslov symbol](../providers/analysis/phase-geometry-and-stationary-phase.md#phase-foundations). Sections 1–9 of that reading prove the parameter-dependent quadratic reduction and Gaussian remainder, construction and equivalence of nondegenerate homogeneous phases including caustics, the normalized Maslov symbol and its realization/recovery, and the wavefront implication of a nonzero symbol. Next read [Transverse composition and graph operators](../providers/analysis/transverse-composition-and-graph-operators.md#transverse-composition), whose Sections 1–9 prove transverse composition, normalized symbol contraction, adjoints, graph Sobolev mapping and ordered Egorov. Then read [Wavefront-qualified pullback and restriction of phases](../providers/analysis/wavefront-qualified-pullback.md#qualified-pullback), which proves arbitrary smooth-map pullback, its convergence and the precise transverse restriction rule, and [Scalar transport and finite action on a phase](../providers/analysis/scalar-transport-and-phase-action.md#scalar-transport), which proves every finite phase-action remainder and the invariant half-density transport formula at caustics. Free references are comparisons, not substitutes for proofs. In a clean composition with excess zero, the required rank condition is transversality, and a connected zero-dimensional matching fiber is one point. The subsequent [Clean composition with positive excess](../providers/analysis/clean-composition-with-excess.md#clean-composition) proves the general proper clean theorem, including the order increase by half the excess and the normalized principal-symbol fiber integral. Its homogeneous reduction, density quotient and Maslov calculation are explicit programme proofs; the graph applications below still have excess zero.
+Read the finite scalar calculus and its summation proof first, then [Phase geometry, stationary phase and the Maslov symbol](../providers/analysis/phase-geometry-and-stationary-phase.md#phase-foundations). Sections 1–9 of that reading prove the parameter-dependent quadratic reduction and Gaussian remainder, construction and equivalence of nondegenerate homogeneous phases including caustics, the normalized Maslov symbol and its realization/recovery, and the wavefront implication of a nonzero symbol. Next read [Transverse composition and graph operators](../providers/analysis/transverse-composition-and-graph-operators.md#transverse-composition), whose Sections 1–9 prove transverse composition, normalized symbol contraction, adjoints, graph Sobolev mapping and ordered Egorov. Then read [Wavefront-qualified pullback and restriction of phases](../providers/analysis/wavefront-qualified-pullback.md#qualified-pullback), which proves arbitrary smooth-map pullback, its convergence and the precise transverse restriction rule, and [Scalar transport and finite action on a phase](../providers/analysis/scalar-transport-and-phase-action.md#scalar-transport), which proves every finite phase-action remainder and the invariant half-density transport formula at caustics. In a clean composition with excess zero, the required rank condition is transversality, and a connected zero-dimensional matching fiber is one point. The graph applications below have excess zero. For the later extension to larger matching fibers, see [Clean composition with positive excess](../providers/analysis/clean-composition-with-excess.md#clean-composition).
 
 The smooth-flow argument required here is written in Section 3, before its use. The later [Hamilton trajectories under a long-range force](hamilton-trajectories-under-a-long-range-force.md) gives a separate long-range application. Smooth coordinate inverses and finite smooth partitions are provided by [Coordinate inverses, integration and surface measure](../providers/analysis/coordinate-inverses-and-integration.md). The [graph Sobolev and ordered Egorov section](../providers/analysis/classical-scalar-calculus.md#graph-sobolev-mapping-and-ordered-egorov) links the actual graph-composition and mapping proofs. Fourier inversion and Plancherel are proved in [Fourier facts](../providers/analysis/finite-derivative-l2.md#fourier-normalization). The compact fiber-integration argument at the trace calculation below is proved there after verifying the general pullback hypotheses.
 
 Throughout, \(X\) is a compact connected smooth manifold without boundary, of dimension \(n\geq2\). We act on scalar half densities, use \(D=-i\partial\), and take the Hilbert pairing linear in its first argument. Symbols are classical \(S_{1,0}\) symbols with a step-one homogeneous expansion.
+
+<a id="wave-closed-domain"></a>
 
 ## 1. The closed operator and its frequencies
 
@@ -27,7 +29,7 @@ Let
 \[
 P\in\Psi^1_{\mathrm{cl}}(X;\Omega^{1/2})
 \]
-be elliptic and symmetric on smooth half densities. Its principal symbol \(p\) is real and homogeneous of degree one. The cosphere bundle is connected: its base is connected and each fiber \(S^{n-1}\) is connected. Thus the nowhere-zero \(p\) has one sign. We choose the sign of \(P\) so that
+be elliptic and symmetric on smooth half densities. Its principal symbol \(p\) is real and homogeneous of degree one. The cosphere bundle is connected. Indeed, any two nonantipodal points of \(S^{n-1}\) are joined by normalizing their straight segment; antipodal points can be joined through a third direction because \(n\geq2\). Thus every fiber is connected. If the bundle were the union of two disjoint nonempty open sets, each fiber would lie entirely in one of them. Their projections would then be disjoint nonempty open sets covering \(X\): the bundle projection is open in every local trivialization. This contradicts connectedness of \(X\). Consequently the nowhere-zero continuous function \(p\) has one sign on the cosphere bundle, and homogeneity gives that sign everywhere off the zero section. We choose the sign of \(P\) so that
 \[
 p(x,\xi)>0,\qquad \xi\neq0.
 \tag{1}
@@ -68,6 +70,8 @@ P\phi_j=\lambda_j\phi_j,\qquad
 \]
 The eigenvalue equation and elliptic regularity raise the regularity by one order repeatedly, so every \(\phi_j\) is smooth. The same prerequisite's closed graph argument gives the exact second-moment domain in this basis, and identifies every recursive integer power with its corresponding moment domain. ∎
 
+<a id="wave-spectral-group"></a>
+
 The eigensystem defines
 \[
 E(t)u=\sum_j e^{-it\lambda_j}(u,\phi_j)\phi_j.
@@ -87,6 +91,8 @@ H^s\longrightarrow H^{s-r}.
 \tag{7}
 \]
 Thus \(E\) also acts continuously on smooth half densities and distributions.
+
+<a id="wave-polynomial-kernel"></a>
 
 ## 2. Spectral kernels with polynomial growth
 
@@ -138,6 +144,8 @@ K_E(t,x,y)=\sum_j e^{-it\lambda_j}
 \]
 Pairing in \(t\) with a compact smooth test produces a rapidly decreasing function of \(\lambda_j\). Estimates (9) and the counting bound make the resulting differentiated spatial series absolutely convergent. The same estimates make it continuous, with values in distributions in \(t\), under every spatial derivative. In particular (12) is precisely the Fourier transform, with phase \(e^{-it\lambda}\), of the discrete spectral measure.
 
+<a id="wave-hamilton-flow"></a>
+
 ## 3. A flow whose time direction never stops
 
 **Local flow and preservation of the canonical forms.** We give the smooth-flow argument used here before applying it. On a compact coordinate ball, a smooth vector field $F$ has bounded size and derivative, say $M,L$. Choose $T>0$ so that $TM$ stays within the chosen ball and $TL<1$. For initial data in a smaller ball the integral map $z(t)=z_0+\int_0^t F(z(s))\,ds$ preserves a closed set of continuous paths. Its successive iterates have geometrically summable differences in the uniform norm. The uniform limit is a continuous path satisfying the integral equation, hence a differentiable solution. The contraction inequality proves uniqueness, for both positive and negative time. The uniform path space is complete because uniform limits of continuous paths are continuous.
@@ -170,6 +178,8 @@ In kernel covectors define
 \tag{15}
 \]
 
+<a id="wave-lagrangian"></a>
+
 **Lemma 3.1.** This is a closed embedded conic Lagrangian in
 \(T^*(\mathbb R\times X\times X)\setminus0\).
 Neither spatial covector nor its time covector vanishes. Restricting at a fixed time gives the twisted graph of \(\chi_t\).
@@ -184,6 +194,8 @@ Homogeneity of the Hamilton flow makes the relation conic. Each \(\chi_t\) prese
 For fixed \(t\) the last two terms cancel by Liouville invariance; their derivative in the time parameter is \(p\,dt\), which cancels the first term. Thus the pulled-back symplectic form vanishes. The parameter dimension is \(2n+1\), half the cotangent dimension, so the relation is Lagrangian. All its stated nonvanishing properties follow from \(p>0\). ∎
 
 The lifted characteristic field is \(W=\partial_t+H_p\). On \(\Lambda\) it advances \(t\) while keeping the initial \((y,\eta)\) fixed. Every one of its trajectories meets \(t=0\) exactly once. Periodic motion in \(X\) does not make this time coordinate periodic.
+
+<a id="wave-symbol-calculus"></a>
 
 ## 4. The symbol facts needed for an approximate evolution
 
@@ -231,7 +243,7 @@ The extra phase is required for the fourth-root transition convention. [Section 
 \]
 Equivalently one may put \(e^{-i\pi N/4}\) into the phase-integral normalization and use a rephased amplitude, as in [FI, (3.2.14)–(3.2.15)]. These conventions must not be mixed. The critical half density has degree \(N/2\), so the symbol has degree \(m+d/4\). The identity-graph frame is fixed by the actual identity kernel: with phase \((x-y)\cdot\eta\), the unshifted integral is precisely ordinary left quantization.
 
-[Section 8](../providers/analysis/phase-geometry-and-stationary-phase.md#principal-symbol-proof) proves realization by a homogeneous retraction and supported partition, lowers a vanishing critical amplitude by integration by parts, and proves the converse by an explicit transverse oscillatory test. It establishes both directions of the principal-symbol correspondence modulo one lower order. [Section 9](../providers/analysis/phase-geometry-and-stationary-phase.md#phase-wavefront) proves Fourier wavefront inclusion and shows that a nonzero principal symbol produces a wavefront point. Thus these phase and symbol assertions use actual earlier programme proofs, and the additional graph-composition proof is given next. The scalar-transport and qualified-pullback proofs are applied below with their exact hypotheses and normalization.
+[Section 8](../providers/analysis/phase-geometry-and-stationary-phase.md#principal-symbol-proof) proves realization by a homogeneous retraction and supported partition, lowers a vanishing critical amplitude by integration by parts, and proves the converse by an explicit transverse oscillatory test. It establishes both directions of the principal-symbol correspondence modulo one lower order. [Section 9](../providers/analysis/phase-geometry-and-stationary-phase.md#phase-wavefront) proves Fourier wavefront inclusion and shows that a nonzero principal symbol produces a wavefront point. The graph-composition formula is recalled next; scalar transport and qualified pullback are applied below with their exact hypotheses and normalization.
 
 Asymptotic summation can be constructed directly. For amplitudes \(a_j\) of orders \(q-j\), retain \(a_0\) separately and, for \(j\geq1\), choose radii \(R_j\) tending sufficiently rapidly to infinity and a radial cutoff \(\chi\) vanishing near zero and equal to one outside a larger ball. Choose \(R_j\) so that the first \(j\) symbol seminorms, on the first \(j\) compact coordinate sets, of
 \(\chi(\theta/R_j)a_j\) in order \(q-j/2\) are at most \(2^{-j}\). Such a choice is possible because the original order is lower by \(j/2\); derivatives of the cutoff satisfy the same estimates on its annulus. The sum is locally finite in bounded frequency sets. Its tail starting at \(j\geq2N\) converges in order \(q-N\), and its finitely many intervening terms already have the required lower orders. Removing the cutoff from any fixed finite prefix changes only a smooth compact-frequency amplitude. This proves the full asymptotic expansion with all derivatives. Fixed conic support and a locally finite phase partition preserve support. An amplitude in every negative order has an absolutely convergent integral after any prescribed number of base derivatives, hence a smooth kernel.
@@ -258,7 +270,7 @@ Writing $h=\sum_j(z_j-H_{\zeta_j})h_j$, integration by parts gives the leading a
  \quad\text{on }z=H_\zeta.
 \]
 
-The vector field there is $V=-\sum_jh_j^c\partial_{\zeta_j}$. Formulas (T7)–(T8) distinguish its total derivative along the critical graph from the fixed-base derivative above. Substitution gives $(1/i)(V+\tfrac12\operatorname{div}V)+h_{\mathrm{sub}}$, proving (17). The same reading proves the coordinate rule for the half-density derivative and uses the already proved invariant subprincipal formula (FC9)–(FC15). This establishes the statement intrinsically, with all lower remainders, also at caustics. Its (T12) supplies the inhomogeneous transport solution used below. The free comparison is [FII, Sections 5.2–5.3]; the written programme calculation is the proof used here.
+The vector field there is $V=-\sum_jh_j^c\partial_{\zeta_j}$. Formulas (T7)–(T8) distinguish its total derivative along the critical graph from the fixed-base derivative above. Substitution gives $(1/i)(V+\tfrac12\operatorname{div}V)+h_{\mathrm{sub}}$, proving (17). The same reading proves the coordinate rule for the half-density derivative and uses the already proved invariant subprincipal formula (FC9)–(FC15). This establishes the statement intrinsically, with all lower remainders, also at caustics. Its (T12) supplies the inhomogeneous transport solution used below. See also [FII, Sections 5.2–5.3].
 
 Time restriction needs the exact order shift. The kernel of evaluation at \(t=t_0\) is locally
 \(\delta(s-t_0)\delta(z-z')\), with \(z=(x,y)\).
@@ -277,6 +289,8 @@ V(t_0)\in I^0(\operatorname{graph}\chi_{t_0}).
 On compact time intervals all local support and matching conditions are proper. At \(t=0\), the restricted relation is the identity graph, so the restricted symbol supplies the ordinary order-zero principal symbol. For the explicit smooth phase families here, [the joint normalization in (G18)](../providers/analysis/transverse-composition-and-graph-operators.md#joint-parameters) fixes its constant as well: passing from the joint section to the fixed-time section removes \((2\pi)^{1/4}|dt|^{1/2}\). The order calculation alone would not determine that factor.
 
 To use (17), the partial operator \(P_x\) requires care: its symbol is not an ordinary symbol in all joint frequencies near the axis \(\xi=0\). The following elementary localization resolves this.
+
+<a id="wave-partial-operator"></a>
 
 **Lemma 4.1.** Microlocally on \(\Lambda\), the action of \(D_t+P_x\) on its Lagrangian kernels agrees, up to a smooth remainder, with an ordinary joint scalar pseudodifferential operator having principal symbol \(\tau+p(x,\xi)\) and subprincipal symbol \(p_{\mathrm{sub}}(x,\xi)\).
 
@@ -353,6 +367,8 @@ For any fixed finite time interval, choose an integer \(k\) so that \(|t/k|\) li
 
 The source conventions must be kept separate. The semiclassical order in [GS] is a power of \(h\), while our order is classical cotangent degree. In particular [GS, Section 10.2] constructs an unscaled-time pseudodifferential family; its formula alone is not the construction of \(e^{-itP_h/h}\). The classical recursion just given provides the needed bridge. Wunsch's Section 6 supplies the metric model, with density and global patching details left to its calculus. Neither comparison replaces the scalar half-density transport or the chart construction here.
 
+<a id="wave-smooth-residual"></a>
+
 ## 5. A smooth residual disappears from the singular kernel
 
 **Lemma 5.1 (evolution with a residual).** Suppose \(V(t)\) is an operator family on smooth half densities with \(V(0)=I\), and
@@ -374,6 +390,8 @@ Fix a compact time interval. A smooth kernel \(R(s)\), with every time derivativ
 
 They imply a smooth joint kernel directly. In a chart, \(y\mapsto\partial_y^\beta\delta_y\) is continuous into \(H^{-N}\), and differentiable to any prescribed finite order when \(N\) is chosen sufficiently large. This follows from its local Fourier expression and the integrability of sufficiently negative Sobolev weights. Apply the integral operator to these families, choose \(k>n/2+|\alpha|\), and evaluate \(\partial_x^\alpha\) by Sobolev embedding. The resulting mixed \(t,x,y\) derivatives are continuous. Since their orders were arbitrary, its kernel is smooth. ∎
 
+<a id="wave-parametrix"></a>
+
 **Theorem 5.2 (the wave kernel).** The kernel (12) belongs to
 \[
 I^{-1/4}(\mathbb R\times X\times X,\Lambda).
@@ -394,6 +412,8 @@ Each time restriction maps smooth inputs to smooth outputs by the FIO mapping th
 The symbol (22) never vanishes. In a local Fourier normal form, a smooth direction would force its symbol to decrease faster than every power. Its nonzero homogeneous leading term prevents that. Hence every point of \(\Lambda\) occurs in the wavefront set; the opposite inclusion is the FIO wavefront theorem. Finally (19) gives the fixed-time order and relation, with nonzero restricted principal symbol. ∎
 
 The construction is global in time but its symbol bounds are local on compact time intervals. It does not require a single generating phase through every caustic. Nor does it identify time modulo a classical period; the transported Maslov phase remains part of the symbol.
+
+<a id="wave-diagonal-trace"></a>
 
 ## 6. What a diagonal and a trace can detect
 
@@ -452,6 +472,8 @@ Thus the possible nonzero trace-singular times are
 ### Use the conclusion
 
 Check the time-covector component of the characteristic relation and the role of a smooth residual. The diagonal and the trace impose different restrictions; identify both before applying a return-time bound.
+
+<a id="wave-solutions"></a>
 
 ## 7. Exercises and complete solutions
 

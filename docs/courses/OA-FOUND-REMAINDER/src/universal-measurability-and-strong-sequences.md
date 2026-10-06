@@ -1,6 +1,6 @@
 # Universal measurability and strong sequences
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 Semicontinuous operators can bound an operator from above and below. Universal measurability asks that the gap between such bounds be arbitrarily small when measured by any given state. This produces a norm-closed real space larger than either semicontinuity cone. It is also closed under strong limits of sequences.
 

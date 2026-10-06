@@ -317,7 +317,7 @@ This proves the complete arbitrary-directed step used in [SH02-CB-NET-ACYCLICITY
 
 We now specify how these facts enter [SH02-CB-COSTALK-CONTINUITY](cohomological-biduality.md#SH02-CB-COSTALK-CONTINUITY). Let $X$ be locally compact Hausdorff, let $x\in X$, and let $F\in D^b(k_X)$. For this compatibility argument a common lower bound is enough. Compact neighborhoods $K$ of $x$ are ordered by shrinking. Their intersection is $\{x\}$, and they form a directed set; neither assertion uses a countable basis.
 
-The sheaf foundations used here are [exact filtered colimits and stalks](open-prerequisites.md#SH02-IMP-COLIMITS), [injective resolutions](open-prerequisites.md#SH02-IMP-INJECTIVE), and the [closed-support construction](open-prerequisites.md#SH02-IMP-LOCALIZATION). Write $k_K$ for the constant sheaf on the closed set $K$ extended to $X$, and use the restriction map $k_K\to k_L$ when $L\subset K$. These sheaves form a direct system with
+The sheaf foundations used here are exact filtered colimits and stalks, Theorems 2.1 and 3.1, injective resolutions, Theorems 2.3 and 4.1, and the closed-support adjunction and its derived construction. Write $k_K$ for the constant sheaf on the closed set $K$ extended to $X$, and use the restriction map $k_K\to k_L$ when $L\subset K$. These sheaves form a direct system with
 
 $$
 \varinjlim_K k_K=k_{\{x\}}.

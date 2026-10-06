@@ -1,6 +1,6 @@
 # Extreme points and matrix blocks
 
-*Self-checked by the writing AI. Original text: CC0 1.0. The credited subsection “States and mixtures on a matrix block” retains CC BY 4.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0. The credited subsection “States and mixtures on a matrix block” retains CC BY 4.0.*
 
 An extreme point of a convex set cannot move in two opposite directions while staying inside the set. For the unit ball of a C*-algebra, the directions that remain available are described by two defect projections. In finite dimensions those defects disappear, and the algebra itself separates into full matrix blocks. The same blocks then describe every representation, including representations on Hilbert spaces of arbitrary dimension.
 

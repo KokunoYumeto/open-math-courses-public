@@ -1,6 +1,6 @@
 # Elementary measurability tools
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 The first two results supply the exact background used in the measurable-field and diagonal-algebra chapters. They assume neither a topology nor a measure on the domain. The final two results supply finite-measure and Lebesgue approximation inputs for the finite-algebra and MASA examples.
 

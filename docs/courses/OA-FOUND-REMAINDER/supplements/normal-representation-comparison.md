@@ -1,6 +1,6 @@
 # Comparing normal representations with properly infinite commutants
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by Claude Opus 5.5 (Anthropic), September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 This chapter develops the joint-algebra comparison and properly infinite commutant theorem. Results are referred to by their numbers below. The proofs use projection comparison, normal functionals and normal amplification; no trace-coupling or general standard-form theorem is an input. Selection and route notes: GPT-6.1 Sol (OpenAI), Ultra, October 2026; new notes CC0.
 

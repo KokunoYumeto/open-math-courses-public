@@ -1,6 +1,6 @@
 # Tracial GNS representations and finite von Neumann algebras
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by Claude Opus 5.5 (Anthropic), September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 Definition 11.1 and Proposition 11.2(1)–(2) develop tracial GNS representations, with complete proofs. The auxiliary conjugate-linear isometry is used only to establish separation. The equality \(JMJ=M'\) and vector-state/spatial-automorphism theorems are separate assertions. Selection and route notes: GPT-6.1 Sol (OpenAI), Ultra, October 2026; new notes CC0.
 

@@ -42,7 +42,22 @@ The [manifold-duality lesson](manifold-duality.md) supplies `SH02-MD-SUBMERSION`
 
 For the local geometric models, `SH02-CA-CONSTANT` in the [convex acyclicity lesson](convex-acyclicity.md) proves that ordinary cohomology of a nonempty locally closed convex set with constant coefficients is exactly its coefficient module in degree zero. Compact-support cohomology of a ball is the orientation calculation in the manifold-duality lesson; proper-support base change and the projection formula give its product version.
 
-We also use the following sheaf foundations, owned by the prerequisite course: exact filtered colimits of sheaves; injective resolutions; compact-neighborhood continuity of sheaf cohomology; proper-support extension maps for open embeddings; and derived tensor–Hom adjunction. In the continuity statement, compact sets form a directed family; a countable local basis is not required.
+### SH02-CB-FOUNDATION-ROUTES — Resolutions and neighborhood comparisons
+
+The algebra of sheaves used here has explicit earlier proofs. *Sheaves of modules on a ringed space*, Theorems 2.1 and 3.1 proves exactness of stalks and of filtered colimits, for arbitrary small filtered diagrams. *Injective modules, flasque sheaves and bounded-below derived functors*, Theorems 2.3 and 4.1 constructs injective resolutions and proves the comparison with bounded-below complexes of acyclic terms. Neither proof assumes countable neighborhood bases or Noetherian coefficients.
+
+Here is the compact-neighborhood comparison, including its map. If $K\subset X$ is compact and $F\in D^+(k_X)$, restriction gives
+
+$$
+\varinjlim_{U\supset K}H^r(U;F)
+\xrightarrow{\sim}H^r(K;F|_K),
+$$
+
+where $U$ runs over all open neighborhoods, ordered by shrinking. Choose a bounded-below injective resolution $F\to I^\bullet$. The compact-germ lemma (GP2) identifies $\varinjlim_{U\supset K}\Gamma(U;I^n)$ with $\Gamma(K;I^n|_K)$ by restriction in every degree. Its hypotheses hold because $X$ is Hausdorff. Each $I^n$ restricts to an injective on an open set, by Lemma 1.1 of the injective-resolution lesson. On the compact set $K$, its restriction is c-soft and acyclic for ordinary sections by the restricted-injective calculation (GP6). The bounded-below acyclic-resolution comparison therefore computes the right side by $\Gamma(K;I^\bullet|_K)$. Exactness of filtered colimits commutes with the kernels and images defining cohomology and proves the displayed isomorphism. Every map used was restriction, so the comparison is natural in $F$ and in inclusions of compact sets and their open neighborhoods. No sequence of neighborhoods was selected.
+
+For $V\subset U$ open, the compact-support transition is the morphism $R\Gamma_c(V;F|_V)\to R\Gamma_c(U;F|_U)$ obtained from the counit $j_!j^{-1}(F|_U)\to F|_U$, with $j:V\hookrightarrow U$. Extension by zero, Lemma 5.1, proves exactness and the ordinary adjunction; composition and the open-embedding calculation identify the resulting derived map with extension of compact support. Thus the transition maps below are the specified maps, not arbitrary isomorphisms between their source and target complexes.
+
+Finally, *Hom complexes, internal derived Hom and Ext sheaves*, Lemma 1.1 and Theorem 3.1, proves the derived tensor–Hom adjunction on unbounded complexes. Its chain-level currying and evaluation formulas fix the signs and variances used in this lesson. The formal-system and derived-limit comparisons needed for costalks are treated separately below; exactness of filtered colimits is not an assertion that inverse limits are exact.
 
 ### SH02-CB-IMP-PRO-CALCULUS — Formal systems and their morphisms
 
@@ -148,7 +163,7 @@ R\Gamma_{\{x\}}(X;F)
 R\varprojlim_{K\in\mathcal K_x}R\Gamma_K(X;F).
 $$
 
-Indeed, restriction $k_K\to k_L$ for $L\subset K$ gives the filtered colimit $\varinjlim_Kk_K=k_{\{x\}}$. Check it on stalks: at $x$ the value remains $k$, while any other point is excluded by a sufficiently small compact neighborhood. Filtered colimits of sheaves are exact, so this is also the derived colimit. Apply derived Hom into an injective resolution of $F$. The direct-sum resolution for that colimit becomes the product resolution computing the derived inverse limit of $R\operatorname{Hom}(k_K,F)=R\Gamma_K(X;F)$. This gives the displayed isomorphism and identifies its component maps with extension of supports.
+Indeed, restriction $k_K\to k_L$ for $L\subset K$ gives the filtered colimit $\varinjlim_Kk_K=k_{\{x\}}$. Check it on stalks: at $x$ the value remains $k$, while any other point is excluded by a sufficiently small compact neighborhood. Filtered colimits of sheaves are exact, so this is also the derived colimit. Apply derived Hom into an injective resolution of $F$. The direct-sum resolution and its first-quadrant comparison become the product resolution computing the derived inverse limit of $R\operatorname{Hom}(k_K,F)=R\Gamma_K(X;F)$. This gives the displayed isomorphism and identifies its component maps with extension of supports.
 
 Suppose the pro-system is represented by $Q$. After applying $H^q$, it is pro-isomorphic to the constant system $H^q(Q)$. The preceding lemma says that its positive derived limits vanish and its ordinary limit is $H^q(Q)$. All the support complexes are bounded below by the same lower bound for $F$. The derived-limit spectral sequence
 
@@ -157,7 +172,7 @@ R^p\varprojlim_K H^q_K(X;F)
  \Longrightarrow H^{p+q}_{\{x\}}(X;F)
 $$
 
-therefore converges: after shifting that lower bound to zero, it is a first-quadrant spectral sequence. It collapses to its $p=0$ column. Consequently the canonical comparison from the costalk to the represented pro-object induces an isomorphism in every degree. $\square$
+therefore converges: after shifting that lower bound to zero, it is a first-quadrant spectral sequence. It collapses to its $p=0$ column. Compose the formal cone from the constant costalk system with the specified representing isomorphism to the constant system $Q$. The fully faithful constant embedding makes this an actual morphism $C_x(F)\to Q$ in $D(k)$. As checked in the costalk comparison, its cohomology map is the edge comparison above, so it is an isomorphism in every degree. $\square$
 
 The use of pro-zero systems in this proof matters. Surjectivity of all transition maps in an arbitrary uncountable inverse system does not, by itself, imply vanishing of its higher inverse limits; [Stacks, Tag 0ANX](https://stacks.math.columbia.edu/tag/0ANX) gives an explicit example. The argument proves a stronger, precisely applicable stabilization statement.
 

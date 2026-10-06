@@ -1,6 +1,6 @@
 # Expected maximal abelian algebras and factor types
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A normal expectation onto a maximal abelian algebra preserves every semifinite normal trace. This is stronger than saying that the expectation preserves one chosen trace. We prove it by averaging over the abelian algebra's unitaries, then use it to decide the type of a free ergodic crossed product from invariant traces on its coefficient algebra.
 

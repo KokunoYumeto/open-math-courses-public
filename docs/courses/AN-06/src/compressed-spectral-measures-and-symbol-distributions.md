@@ -6,7 +6,7 @@
 
 A spectral subspace contains all states below a chosen energy. Compressing an observable to that subspace gives a finite matrix. We will show that the eigenvalue distribution of this matrix approaches the distribution of the observable's principal symbol over a cotangent energy region.
 
-Laptev and Safarov [LS] supply the finite-projection comparison underlying this topic. Guillemin and Sternberg's open text [GS] explains the semiclassical interpretation, and the freely accessible article of Duistermaat and Guillemin [DG] develops the wave-trace setting. We use [Return times and spectral counting](return-times-and-spectral-counting.md) and [Local spectral density and the subprincipal correction](local-spectral-density-and-subprincipal-correction.md). Composition and Sobolev mapping come from [Classical scalar symbols, summation and regularity](../providers/analysis/classical-scalar-calculus.md#finite-symbol-calculus). The complete finite-dimensional spectral, singular-decomposition, trace-duality, ideal and cyclicity proofs are in [Finite-rank traces and the exact ideal bounds](../providers/analysis/finite-trace-ideals.md#finite-trace-ideals), starting from elementary Hilbert-space arguments. Every product requiring those bounds below has a finite-rank factor. Section 5 gives the complete Bernstein polynomial-approximation proof used for continuous tests, with the free source [Alt] as comparison. The bounded scalar spectral measures are supplied by [Self-adjoint spectral calculus with the original domain](../providers/analysis/self-adjoint-spectral-domains.md#self-adjoint-pvm-domain).
+Laptev and Safarov [LS] supply the finite-projection comparison underlying this topic. Guillemin and Sternberg's text [GS] explains the semiclassical interpretation, and the article of Duistermaat and Guillemin [DG] develops the wave-trace setting. We use [Return times and spectral counting](return-times-and-spectral-counting.md) and [Local spectral density and the subprincipal correction](local-spectral-density-and-subprincipal-correction.md). Composition and Sobolev mapping come from [Classical scalar symbols, summation and regularity](../providers/analysis/classical-scalar-calculus.md#finite-symbol-calculus). The complete finite-dimensional spectral, singular-decomposition, trace-duality, ideal and cyclicity proofs are in [Finite-rank traces and the exact ideal bounds](../providers/analysis/finite-trace-ideals.md#finite-trace-ideals), starting from elementary Hilbert-space arguments. Every product requiring those bounds below has a finite-rank factor. Section 5 gives the complete Bernstein polynomial-approximation proof used for continuous tests, as in [Alt]. The bounded scalar spectral measures are supplied by [Self-adjoint spectral calculus with the original domain](../providers/analysis/self-adjoint-spectral-domains.md#self-adjoint-pvm-domain).
 
 As before, \(X\) is compact, connected and without boundary, of dimension \(n\geq2\). The scalar operator \(P\in\Psi^1_{\mathrm{cl}}(X;\Omega^{1/2})\) is positive elliptic and self-adjoint on \(H^1\), with positive principal symbol \(p\). Let \(B\in\Psi^0_{\mathrm{cl}}\) be self-adjoint, with real principal symbol \(b\).
 
@@ -21,6 +21,8 @@ N(\lambda)=\dim H_\lambda.
  \tag{1}
 \]
 Every argument also works with the open endpoint. Symplectic volume on \(T^*X\) is denoted by \(dz\).
+
+<a id="compression-finite-measure"></a>
 
 ## 1. The finite matrix and its counting measure
 
@@ -58,6 +60,8 @@ Indeed the trace norm is the sum of the eigenvalues of \(|T|\), while the square
  \tag{6}
 \]
 These hold for the indicated source and target Hilbert spaces. All products used below have a finite-rank factor, so are trace class. The trace can be taken either on \(H_\lambda\) or on \(L^2\) after extension by zero.
+
+<a id="compression-weighted-moment"></a>
 
 ## 2. A weighted first moment
 
@@ -124,6 +128,8 @@ N(\lambda)=(2\pi)^{-n}\lambda^n\int_{p<1}dz
 since the inverse-period function is bounded. Subtract \(LN(\lambda)\) from (8)–(11), and use (12). This proves (7). Finite-rank trace cyclicity identifies this trace with that of \(\Pi_\lambda D\Pi_\lambda\) on \(H_\lambda\). ∎
 
 In particular (7) applies to \(D=B^j\) for every fixed integer \(j\geq1\): it is self-adjoint, classical of order zero and has principal symbol \(b^j\). What remains is to compare this uncompressed power with the power of the compressed matrix.
+
+<a id="compression-trace-leakage"></a>
 
 ## 3. How much can cross an energy cutoff?
 
@@ -201,6 +207,8 @@ Combine (17) and (20):
 \]
 Take \(\Delta=\lambda^{1/2}\). Both varying terms have order \(\lambda^{n-1/2}\), proving (13). This argument uses the full counting bound with \(O(\lambda^{n-1})\) remainder, but needs no measure-zero hypothesis on periodic covectors. ∎
 
+<a id="compression-unit-bands"></a>
+
 ## 4. Comparing the two powers
 
 The Hilbert–Schmidt leakage has a sharper bound that controls both crossings of the cutoff in each moment.
@@ -239,6 +247,8 @@ The output may be infinite-dimensional. Only the input rank enters the bound. Su
 
 When powers of \(B_\lambda\) are extended by zero to \(L^2\), we write them as \((\Pi_\lambda B\Pi_\lambda)^j\) for \(j\geq1\).
 
+<a id="compression-one-crossing"></a>
+
 **Lemma 4.2.** For each fixed integer \(j\geq1\),
 \[
  \begin{gathered}
@@ -265,6 +275,8 @@ All terms have finite rank. The ideal bound (6) gives
        +\|B\|^{j-1}\|QB\Pi\|_1.
 \]
 Induction proves (22), including \(B=0\), where all differences vanish. ∎
+
+<a id="compression-two-crossings"></a>
 
 **Lemma 4.3.** For every integer \(j\ge2\),
 \[
@@ -320,6 +332,8 @@ Together with (7), this gives every moment:
 \]
 For \(j=0\) the left side is \(\lambda^{-n}N(\lambda)\); the zeroth power is the identity on \(H_\lambda\). Equation (12) proves that case.
 
+<a id="compression-symbol-law"></a>
+
 ## 5. The limiting distribution
 
 Define the finite positive measure
@@ -353,6 +367,9 @@ Both measures are supported in the common compact interval \([-R,R]\). Their mas
  \end{gathered}
  \tag{29}
 \]
+
+<a id="compression-bernstein"></a>
+
 Here is the complete polynomial-approximation step. Put \(g(x)=f(2Rx-R)\) on \([0,1]\). A sequence in this interval has a convergent subsequence by nested bisection, as in the finite compactness proof in the trace provider. If \(g\) were unbounded, a sequence with \(|g(x_j)|>j\) would have such a subsequence, contradicting continuity at its limit. If \(g\) were not uniformly continuous, there would be \(\varepsilon_0>0\) and pairs \(x_j,y_j\) with \(|x_j-y_j|\to0\) but \(|g(x_j)-g(y_j)|\ge\varepsilon_0\). A convergent subsequence of \(x_j\) makes both points tend to the same limit, again contradicting continuity. Write \(M_g=\sup|g|\) and
 \[
  \omega_g(\delta)=\sup_{|x-y|\le\delta}|g(x)-g(y)|,
@@ -380,7 +397,7 @@ For \(m=1\) the second factorial moment is zero and these formulas follow direct
  \sup_{0\le x\le1}|\mathcal B_mg(x)-g(x)|
  \le\omega_g(\delta)+\frac{M_g}{2m\delta^2}.
 \]
-First choose \(\delta>0\) small, then \(m\) large. Composing with \(x=(s+R)/(2R)\) produces a polynomial \(q(s)\) with \(\sup_{[-R,R]}|f-q|<\varepsilon\). This proof works for complex-valued \(f\) as well, and gives real coefficients when \(f\) is real. The free comparison [Alt, §3, equation (3.5) and Theorem 3.6] supplies the Bernstein construction; the moment and error estimates just proved are the approximation used here. Now
+First choose \(\delta>0\) small, then \(m\) large. Composing with \(x=(s+R)/(2R)\) produces a polynomial \(q(s)\) with \(\sup_{[-R,R]}|f-q|<\varepsilon\). This proof works for complex-valued \(f\) as well, and gives real coefficients when \(f\) is real. This is the Bernstein construction [Alt, §3, equation (3.5) and Theorem 3.6], with an explicit error bound. Now
 \[
 \begin{aligned}
 |\lambda^{-n}\rho_\lambda(f)-\rho(f)|
@@ -390,6 +407,8 @@ First choose \(\delta>0\) small, then \(m\) large. Composing with \(x=(s+R)/(2R)
 \tag{30}
 \]
 The last term tends to zero by (25). Taking the upper limit and then \(\varepsilon\downarrow0\) proves (28). For a fixed polynomial, (7) and (24) give the stated rate, by summing its finitely many coefficients. Continuous approximation asserts convergence without a universal rate for arbitrary \(f\). ∎
+
+<a id="compression-normalization"></a>
 
 There is also a probability version. The coefficient
 \[
@@ -406,6 +425,8 @@ For a fixed polynomial, this probability-normalized convergence also has error \
 
 All conclusions remain valid for a lower-bounded \(P\) with the same positive principal symbol. To see this, choose \(c\) such that \(P+c>0\). Its projection at \(\lambda+c\) is exactly \(\Pi_\lambda\), and its commutator with \(B\) is still \([P,B]\). Its principal symbol is unchanged. Since \((\lambda+c)^n/\lambda^n\to1\), applying the positive results at energy \(\lambda+c\) proves (28) and (31). The weighted first-moment error and leakage estimates retain their stated orders under this fixed translation.
 
+
+<a id="compression-smooth-tests"></a>
 
 ## 5A. Smooth tests, compression error and stable distributions
 
@@ -435,14 +456,14 @@ The same statement holds for \(f\in C^{1,1}\), with \(\operatorname{Lip}(f')\) i
  \end{gathered}
 \]
 
-This is the same complete scalar-measure prerequisite identified at the start of the lesson, [Self-adjoint spectral calculus with the original domain](../providers/analysis/self-adjoint-spectral-domains.md#self-adjoint-pvm-domain). Only its bounded-operator restriction is needed here. Taylor's formula with integral remainder gives
+The scalar spectral measures come from [Self-adjoint spectral calculus with the original domain](../providers/analysis/self-adjoint-spectral-domains.md#self-adjoint-pvm-domain). Only its bounded-operator restriction is needed here. Taylor's formula with integral remainder gives
 
 \[
  |f(t)-f(\mu_j)-f'(\mu_j)(t-\mu_j)|
  \le\frac12\|f''\|_\infty(t-\mu_j)^2.
 \]
 
-For convex \(f\) the expression before the absolute value is nonnegative. Its linear term integrates to zero. Since \(\Pi Be_j=\mu_je_j\), one has \((B-\mu_j)e_j=QBe_j\). Sum over \(j\); the sum of these squared norms is exactly \(\|QB\Pi\|_{\mathrm{HS}}^2\). This proves both assertions. \(\square\)
+For convex \(f\), apply its defining inequality at \(\mu_j+\theta(t-\mu_j)\), subtract \(f(\mu_j)\), divide by \(\theta>0\), and let \(\theta\downarrow0\). Differentiability gives \(f(t)-f(\mu_j)\geq f'(\mu_j)(t-\mu_j)\), so the expression before the absolute value is nonnegative. Its linear term integrates to zero. Since \(\Pi Be_j=\mu_je_j\), one has \((B-\mu_j)e_j=QBe_j\). Sum over \(j\); the sum of these squared norms is exactly \(\|QB\Pi\|_{\mathrm{HS}}^2\). This proves both assertions. \(\square\)
 
 For the stated \(C^{1,1}\) extension, the fundamental theorem of calculus gives
 \[
@@ -450,6 +471,8 @@ For the stated \(C^{1,1}\) extension, the fundamental theorem of calculus gives
  =\int_\mu^t\bigl(f'(r)-f'(\mu)\bigr)\,dr.
 \]
 Its absolute value is at most \(\operatorname{Lip}(f')|t-\mu|^2/2\), for either order of the two endpoints. The preceding spectral-measure argument therefore applies unchanged. The constant \(1/2\) and the convex sign require no approximation of operators or differentiation of their spectral projections.
+
+<a id="compression-weak-representative"></a>
 
 Here is the asserted weak-Sobolev representative. On a bounded interval write the distributional derivatives as \(g=f'\in L^\infty\) and \(h=g'\in L^\infty\). Fix an interior point \(a\) and put \(G(t)=\int_a^t h(r)\,dr\). The scalar primitive identity in [Hilbert-valued integration, Section 3](../providers/analysis/hilbert-valued-integration.md) gives \(G'=h\) distributionally, and \(|G(t)-G(s)|\leq\|h\|_\infty|t-s|\). Thus \(g-G\) has zero distributional derivative. A locally integrable function with this property is a constant distribution: subtract a fixed integral-one test from any other test to make its integral zero, and use the compactly supported primitive of that difference. Consequently \(g\) has a Lipschitz representative \(\widetilde g\). Applying the same argument to \(f-\int_a^t\widetilde g(r)\,dr\) gives a \(C^1\) representative \(\widetilde f\), with \(\widetilde f'=\widetilde g\) and \(\operatorname{Lip}(\widetilde f')\leq\|f''\|_\infty\). Both representatives extend continuously to the endpoints. This proves the claimed \(W^{2,\infty}\) case with the same constant.
 
@@ -460,6 +483,8 @@ For \(f(t)=t^2\) equality holds with the positive sign:
 \]
 
 For the spectral cutoff of this lesson, the sharper squared Hilbert–Schmidt bound in Lemma 4.1 is \(\|Q_\lambda B\Pi_\lambda\|_{\mathrm{HS}}^2=O(\lambda^{n-1})\). Proposition 5.2 therefore gives a normalized compression defect \(O_f(\lambda^{-1})\) for every fixed \(C^2\) test. This controls the difference between the two operator traces. A rate for either trace against the classical symbol law still requires its separate symbol estimate; the defect bound does not create such an estimate.
+
+<a id="compression-stability"></a>
 
 **Theorem 5.3 (a limit law survives small trace-norm changes).** Let \(A_k,C_k\) be self-adjoint matrices of the same dimension \(d_k\geq1\), with \(\|A_k\|,\|C_k\|\le M<\infty\), and suppose
 
@@ -491,6 +516,8 @@ As a worked application, take \(A_\lambda=\Pi_\lambda B\Pi_\lambda\) and add a u
 ### Use the conclusion
 
 Check the cutoff-crossing estimate before taking higher moments. Identify the compact interval on which polynomial approximation is used, and then recover the distribution of the principal symbol rather than only its mean.
+
+<a id="compression-solutions"></a>
 
 ## 6. Exercises and complete solutions
 
@@ -572,10 +599,10 @@ Its endpoint singularities are integrable and give no endpoint atoms. Finitely m
 
 ## References
 
-[LS, §1, Theorems 1.2, 1.3 and 1.5–1.6; Appendix A] proves the compression inequality and the separated-band estimates. Its closed-manifold application [LS, §2, Theorem 2.2 and Lemma 2.3] uses an additional weighted spectral asymptotic and a smooth functional calculus. Here Proposition 2.1 supplies the weighted asymptotic from the preceding course proofs, while the moment argument supplies all continuous tests without invoking that additional smooth calculus. The trace-norm stability theorem is proved directly above. Zelditch [Z, §0] discusses the law of a single Zoll cluster; [Z, §4] computes its geometric band invariant. Those are different spectral subspaces from the cumulative cutoff in (1), and neither passage replaces the leakage proof here.
+[LS, §1, Theorems 1.2, 1.3 and 1.5–1.6; Appendix A] proves the compression inequality and the separated-band estimates. Its closed-manifold application [LS, §2, Theorem 2.2 and Lemma 2.3] uses an additional weighted spectral asymptotic and a smooth functional calculus. Here Proposition 2.1 supplies the weighted asymptotic from the preceding course proofs, while the moment argument supplies all continuous tests without invoking that additional smooth calculus. Zelditch [Z, §0] discusses the law of a single Zoll cluster; [Z, §4] computes its geometric band invariant. Those are different spectral subspaces from the cumulative cutoff in (1).
 
 - [LS] Ari Laptev and Yuri Safarov, [“Szegö type limit theorems,” freely accessible author manuscript](https://www.ma.ic.ac.uk/~alaptev/Papers/sz.pdf), §§1–2 and Appendix A, manuscript pages 3–5, 8 and 11–12. The published article appeared in *Journal of Functional Analysis* 138 (1996), 544–559.
-- [Alt] Francesco Altomare, [“Korovkin-type Theorems and Approximation by Positive Linear Operators,” free arXiv version 1](https://arxiv.org/pdf/1009.2601v1), §3 especially the Bernstein polynomials in (3.5) and Theorems 3.6–3.7. *Surveys in Approximation Theory* 5 (2010), 92–164.
+- [Alt] Francesco Altomare, [“Korovkin-type Theorems and Approximation by Positive Linear Operators,” free arXiv version 1](https://arxiv.org/pdf/1009.2601v1), §3 especially the Bernstein polynomials in (3.5) and Theorems 3.6–3.7. *Surveys in Approximation Theory* 6 (2010), 92–164.
 - [GS] Victor Guillemin and Shlomo Sternberg, [*Semi-classical Analysis*, freely accessible author text](https://people.math.harvard.edu/~shlomo/docs/Semi_Classical_Analysis_Start.pdf), Introduction §0.5, printed pages xi–xii, for the semiclassical spectral interpretation.
-- [DG] Johannes J. Duistermaat and Victor W. Guillemin, “The spectrum of positive elliptic operators and periodic bicharacteristics,” *Inventiones Mathematicae* 29 (1975), 39–79. [Freely accessible digitized full article](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0029/LOG_0010.pdf), Introduction for the relation between elliptic spectra and periodic flow. The weighted asymptotic used here is proved in Proposition 2.1 from the earlier programme arguments.
+- [DG] Johannes J. Duistermaat and Victor W. Guillemin, “The spectrum of positive elliptic operators and periodic bicharacteristics,” *Inventiones Mathematicae* 29 (1975), 39–79. [Freely accessible digitized full article](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0029/LOG_0010.pdf), Introduction for the relation between elliptic spectra and periodic flow.
 - [Z] Steve Zelditch, “Fine structure of Zoll spectra,” *Journal of Functional Analysis* 143 (1997), 415–460. [Elsevier open archive](https://doi.org/10.1006/jfan.1996.2981), §0 and §4. 

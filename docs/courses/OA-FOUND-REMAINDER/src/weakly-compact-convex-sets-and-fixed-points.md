@@ -1,6 +1,6 @@
 # Weakly compact convex sets and fixed points
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A Hilbert-space orbit has a distinguished point obtained by minimizing the norm of its closed convex hull. A general Banach norm can have flat faces, so this argument need not select a unique point. Weak compactness still supplies a common fixed point for a group of affine isometries. The proof below explains how a small portion near extreme points forces an averaged fixed point to be fixed by each of the maps being averaged.
 

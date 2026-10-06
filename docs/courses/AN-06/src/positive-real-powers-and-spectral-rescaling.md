@@ -6,9 +6,11 @@
 
 A positive elliptic operator of order \(m\) has a spectral \(m\)-th root. To use that root in a wave equation, we need to know that it is a classical pseudodifferential operator, and we need its second symbol term. We prove those facts by integrating a uniformly controlled resolvent. The root then transfers local spectral densities, counting estimates and compressed spectral distributions from order one to every positive order.
 
-The freely accessible complex-power construction of Ammann, Lauter, Nistor and Vasy [ALNV] and Hörmander's spectral-function article [H] give related results. Guillemin and Sternberg [GS] supplies semiclassical background. We use the scalar composition, asymptotic summation, real Sobolev mapping and elliptic regularity proved in [Classical scalar symbols, summation and regularity](../providers/analysis/classical-scalar-calculus.md#finite-symbol-calculus). Its underlying finite-seminorm estimates and summation proof are in [Classical scalar Sobolev calculus](../providers/analysis/classical-scalar-calculus.md#real-sobolev-mapping). Compact Sobolev inclusions are in [Compact Sobolev inclusion and elliptic Fredholm maps](../providers/analysis/classical-scalar-calculus.md#compact-sobolev-inclusion). The compact positive eigenbasis and every exact diagonal multiplier domain are proved in [Compact positive inverses and diagonal domains](../providers/analysis/compact-spectrum-domains.md#compact-inverse-domains); this is the generic Hilbert-space theorem, with no boundary regularity assumption imported.
+The complex-power construction of Ammann, Lauter, Nistor and Vasy [ALNV] and Hörmander's spectral-function article [H] give related results. Guillemin and Sternberg [GS] supplies semiclassical background. We use the scalar composition, asymptotic summation, real Sobolev mapping and elliptic regularity proved in [Classical scalar symbols, summation and regularity](../providers/analysis/classical-scalar-calculus.md#finite-symbol-calculus). Its underlying finite-seminorm estimates and summation proof are in [Classical scalar Sobolev calculus](../providers/analysis/classical-scalar-calculus.md#real-sobolev-mapping). Compact Sobolev inclusions are in [Compact Sobolev inclusion and elliptic Fredholm maps](../providers/analysis/classical-scalar-calculus.md#compact-sobolev-inclusion). The compact positive eigenbasis and every exact diagonal multiplier domain are proved in [Compact positive inverses and diagonal domains](../providers/analysis/compact-spectrum-domains.md#compact-inverse-domains); this is the generic Hilbert-space theorem, with no boundary regularity assumption imported.
 
 Sections 1–5 concern a compact smooth manifold \(X\) without boundary, of positive dimension, and scalar half densities. Section 6 assumes \(n=\dim X\geq2\), as in [Return times and spectral counting](return-times-and-spectral-counting.md) and [Compressed spectral measures and symbol distributions](compressed-spectral-measures-and-symbol-distributions.md). We use \(D=-i\partial\), left symbols and step-one classical expansions. A positive operator here satisfies \((Pu,u)>0\) for every nonzero smooth half density. In particular it has no zero eigenvector. This condition matters for negative powers.
+
+<a id="powers-realization"></a>
 
 ## 1. The realization and the moment domains
 
@@ -23,6 +25,8 @@ p_s=p_0+\frac i2\sum_\ell\partial_{x_\ell}\partial_{\xi_\ell}p.
  \tag{1}
 \]
 Here \(p,p_0\) have degrees \(m,m-1\). The half-density calculus makes \(p_s\) an invariant scalar symbol.
+
+<a id="powers-principal-positive"></a>
 
 Positivity implies \(p>0\) away from the zero section. Indeed a compactly supported oscillatory test \(u_r=e^{irx\cdot\theta}v(x)|dx|^{1/2}\) satisfies
 \[
@@ -68,6 +72,8 @@ P^au&=\sum_j\lambda_j^a(u,\phi_j)\phi_j,\qquad a\in\mathbb R.
 \]
 This is the existing discrete multiplier construction. Negative powers are bounded on all \(L^2\); finite eigenvector sums are a core for every power, by convergence of both tails in (5).
 
+<a id="powers-integer-domains"></a>
+
 Integer powers do not require a fractional-power theorem. Induction using the elliptic inverse and the mapping theorem gives
 \[
  \begin{gathered}
@@ -89,6 +95,8 @@ Consequently the resolvent \(R(t)=(P+t)^{-1}\), \(t\geq0\), obeys
  \tag{7}
 \]
 The second estimate follows by commuting \(R(t)\) with the integer multiplier \(P^k\) in (5), then using (6). Only these nonnegative integer graph scales will be needed to estimate a smoothing error.
+
+<a id="powers-resolvent-integral"></a>
 
 ## 2. A resolvent integral and its parameter estimates
 
@@ -124,6 +132,8 @@ Both tend to zero at the indicated endpoints, so the improper integral is a norm
 
 We make the parameter estimates explicit. A bounded family in \(\Psi^r\) means bounded local symbol seminorms of order \(r\), together with bounded smooth-kernel seminorms for the localized smoothing parts. Thus
 \((1+t)^{-\ell}\Psi^r\) means that multiplication by \((1+t)^\ell\) gives such a bounded family.
+
+<a id="powers-parameter-parametrix"></a>
 
 **Lemma 2.1.** There is a parameter family \(Q(t)\) such that
 \[
@@ -191,6 +201,8 @@ Q_0E^j\in(1+t)^{-2}\Psi^{m-j}.
 \tag{19}
 \]
 
+<a id="powers-uniform-summation"></a>
+
 Apply the existing asymptotic summation construction to
 \(Q_0+\sum_{j\geq1}Q_0E^j\), keeping \(Q_0\) unchanged. Choose its successive frequency cutoffs uniformly in \(t\). To justify this choice, enumerate the seminorms of all three bounded families (18)–(19); for term \(j\), make the first \(j\) weaker-order seminorms at most \(2^{-j}\), exactly as in the ordinary summation proof. The constants are uniform because the families are bounded after multiplication by their displayed weights. A finite atlas gives a countable list, including the smooth-kernel parts. Cutoffs of those smooth kernels satisfy the same estimates by their uniform rapid Fourier decrease. Thus the resulting \(Q\) has, for \(N\geq1\),
 \[
@@ -211,6 +223,8 @@ The finite geometric identity is
 \]
 The error \(E^N\) lies in \((1+t)^{-1}\Psi^{m-N}\), using the weighted estimate for one factor and the unweighted estimate for the others. Multiplication of (20) by \(P\) has that same bound. Multiplication by \(t\) also has it, now using the third estimate in (20). Hence \(W=I-(P+t)Q\) lies in \((1+t)^{-1}\Psi^{m-N}\) for every \(N\), proving (11).
 
+<a id="powers-joint-coefficients"></a>
+
 We finally identify the formal coefficients and their remainder bounds. In a fixed chart denote the homogeneous symbol terms by \(p_{m-k}\), with \(p_m=p\). The unique formal right inverse is
 \[
  \begin{gathered}
@@ -229,6 +243,8 @@ where \(p_m=p\). This recursion follows by equating the successive degree terms 
 Here the expansion uses the joint scaling of \((\xi,t)\), rather than a fixed-\(t\) classical expansion. To see the full remainder estimate, expand \((A_\nu+t)^{-1}\) around \((p+t)^{-1}\) at high frequency. The difference \(A_\nu-p\) is of order \(m-1\), and its ratio to \(p+t\) is \(O(\langle\xi\rangle^{-1})\), uniformly in \(t\). The finite reciprocal identity, with its differentiated remainder, gives the two bounds in (13) after any prescribed number of degrees. Apply the ordinary finite-seminorm composition remainder to the finitely many \(Q_0E^j\) contributing to those degrees. It preserves both bounds (18), with the corresponding further frequency loss. All remaining terms are covered by (20). Collecting coefficients gives exactly (22), because (11) has no formal error. Near zero frequency the cutoffs change only \((1+t)^{-1}\) smoothing terms, by (16). This proves (13) with all derivatives. ∎
 
 For nonintegral \(m\), the fixed operator \(P+t\) need not be classical with step-one degrees: its added term of degree zero need not lie in that sequence. The proof above uses ordinary parameter symbol estimates. Classicality of the integrated operator will follow from (12).
+
+<a id="powers-symbol-integration"></a>
 
 ## 3. Integrating the symbols and the smoothing error
 
@@ -288,6 +304,8 @@ The local integrated symbol therefore has a full step-one classical expansion
 \]
 Equations (23)–(26) identify its operator with the true norm-convergent integral (10). Local oscillatory integrals can first be paired with smooth tests; their rapidly decreasing Fourier factors and (25) justify this identification before passage to distributions. The integrated smoothing error has already been controlled. Thus (29) proves classicality, including every differentiated remainder.
 
+<a id="powers-subprincipal"></a>
+
 ## 4. The principal and subprincipal terms
 
 Return to the notation of (1), so \(p_0\) now means the term of degree \(m-1\). The first correction in (22) is
@@ -327,6 +345,8 @@ To obtain the subprincipal symbol, add \((i/2)\sum_\ell\partial_{x_\ell}\partial
 \tag{33}
 \]
 This is an invariant half-density identity.
+
+<a id="powers-all-real-domains"></a>
 
 ## 5. Every real power, with its actual domain
 
@@ -375,6 +395,8 @@ q_s=\frac1m p^{1/m-1}p_s.
  \tag{37}
 \]
 The spectral root is positive and has domain \(H^1\), so it satisfies the hypotheses of the first-order wave and spectral lessons.
+
+<a id="powers-spectral-rescaling"></a>
 
 ## 6. Spectral formulas at arbitrary positive order
 
@@ -453,12 +475,16 @@ B_P=(2\pi)^{-n}\int\delta(1-p)p_s\,dxd\xi.
 \]
 Without that measure-zero hypothesis the remainder is \(O(E^{(n-1)/m})\), since the inverse return function is bounded. The sign of \(B_P\) need not be positive.
 
+<a id="powers-return-clock"></a>
+
 The flow whose time appears in (41)–(42) is \(H_q\). On \(p=1\),
 \[
 H_q=\frac1m H_p,\qquad T_q^*=mT_p^*.
 \tag{44}
 \]
 The same proportionality holds for base returns of individual covectors on that normalized surface. The two fields have the same trajectories, since their proportionality factor is constant along each energy surface, but their times differ. The degree-one field \(H_q\) is the one with return times invariant under radial rescaling.
+
+<a id="powers-compressed-rescaling"></a>
 
 For a self-adjoint \(B\in\Psi^0_{\mathrm{cl}}\) with real principal \(b\), let \(\rho_E^B\) count the eigenvalues of
 \(\Pi_E^P B\Pi_E^P\) on its finite-dimensional spectral subspace. The continuous-test theorem and (38) give
@@ -503,6 +529,8 @@ E^{-n/m}\rho_E^B(q_0)
 \]
 The probability-normalized polynomial moments have the same rate, by dividing by \(N_P(E)=A_PE^{n/m}+O(E^{(n-1)/m})\), with \(A_P>0\). The region remains \(p<1\), because \(p^{1/m}<1\) is equivalent to it. These conclusions need no periodic-measure-zero hypothesis. Equation (46) continues to concern one-sided trace-norm leakage; (46a) concerns squared Hilbert–Schmidt leakage and the two crossings in a moment.
 
+<a id="powers-differential-parity"></a>
+
 Finally suppose \(P\) is differential. Its positive elliptic principal polynomial forces the integer order \(m\) to be even: for odd \(m\), \(p(x,-\xi)=-p(x,\xi)\) cannot remain positive. Its term of degree \(m-1\) is odd in \(\xi\), and so is \(\sum\partial_x\partial_\xi p\). Hence \(p_s\) is odd while \(p\) is even. Reflection \(\xi\mapsto-\xi\) preserves each energy surface and its coarea density, giving
 \[
 \int\delta(E-p)p_s\,d\xi=0
@@ -513,6 +541,8 @@ in every fiber. Thus the subprincipal term disappears from both the local and gl
 ### Use the conclusion
 
 Check the parameter resolvent integral and the exact moment domain before rescaling a count. For a shifted positive operator, retain the shift in the subprincipal term; then compare with the round-sphere square root.
+
+<a id="powers-solutions"></a>
 
 ## 7. Five exercises with complete solutions
 
@@ -628,7 +658,7 @@ A positive \(c\) raises the eigenvalues and reduces the count, agreeing with the
 
 ## References
 
-The free article [ALNV, §7.3, Theorem 7.9] proves classical complex powers, with principal symbol \(p^z\), in an extended Weyl algebra. Its proof uses the uniform resolvent statements of §7.2 and the special holomorphic families of §7.1; the latter construction also invokes an external holomorphic cohomology result. For the real scalar powers needed here, Lemma 2.1 and (23)–(29) give a direct negative-axis construction from the stated composition, summation and elliptic prerequisites. Equations (30)–(36) additionally compute the exact subprincipal term and identify the spectral domains. [H, §1 and §5, Theorem 5.1] explains spectral rescaling through a positive root, but invokes a separate complex-power theorem for the root's classicality. Our root construction supplies that missing step before any rescaling is used. Neither comparison is a substitute for the parameter remainder estimates above.
+[ALNV, §7.3, Theorem 7.9] constructs complex powers with principal symbol \(p^z\) in an extended Weyl algebra. Sections 7.1–7.2 develop the holomorphic families and parameter resolvent estimates. The real scalar construction here uses the negative-axis integral (10), whose finite symbol remainders give classicality after integration. [H, §1 and §5, Theorem 5.1] applies a positive root to spectral asymptotics. The same change of energy appears in Section 6, with the exact subprincipal term (33), spectral domains and return-time normalization retained.
 
 - [ALNV] Bernd Ammann, Robert Lauter, Victor Nistor and András Vasy, “Complex powers and non-compact manifolds,” *Communications in Partial Differential Equations* 29 (2004), 671–705. [Freely accessible arXiv version](https://arxiv.org/abs/math/0211305v1), §7, especially §7.3, Theorem 7.9.
 - [H] Lars Hörmander, “The spectral function of an elliptic operator,” *Acta Mathematica* 121 (1968), 193–218. [Full article](https://projecteuclid.org/journalArticle/Download?urlid=10.1007%2FBF02391913), §§1 and 5.

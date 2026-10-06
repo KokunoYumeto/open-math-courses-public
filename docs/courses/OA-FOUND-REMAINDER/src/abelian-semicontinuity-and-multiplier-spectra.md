@@ -1,6 +1,6 @@
 # Abelian semicontinuity and multiplier spectra
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 For an abelian algebra, the monotone-limit classes can be read as functions on its ordinary spectrum. Bounded lower semicontinuous functions correspond to upper limits after adjoining the identity; bounded upper semicontinuous functions correspond to lower limits. Open and closed projections become indicators of open and closed subsets. Two-sided multipliers correspond to bounded continuous functions.
 

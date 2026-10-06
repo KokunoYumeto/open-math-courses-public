@@ -16713,6 +16713,2412 @@ the actual oscillator graph construction of Sections 11E.14–11E.19,
 and Exact Morita class, full coefficient and the positive local pairing,
 with their stated domains and hypotheses.
 
+## 11N. Coarse embeddings of finitely generated compact-Lie subgroups
+
+Groups below have their abstract discrete topology. We construct a coarse Hilbert embedding for every finitely generated subgroup of a compact Lie group, including dense subgroups. The argument uses valuations of a rational function field; no extension theorem for valuations in an algebraic extension is required.
+
+We use the complete earlier results Matrix coefficients and the Peter–Weyl theorem, Theorem 5.2, for a faithful finite-dimensional representation of a compact Lie group, and Amenability and the equality of full and reduced crossed products, the abelian and closed-normal-extension propositions and the compact-uniform Reiter implication. The latter supplies compactly supported almost invariant vectors for a finite-dimensional solvable Lie group.
+
+### 11N.1. Enough scalar valuations
+
+A multiplicative absolute value \(d\) is called discrete here if its nonzero range is \(e^{a\mathbb Z}\), \(a>0\), and \(d(x+y)\leq\max(d(x),d(y))\). An archimedean value is the usual absolute value through an embedding into \(\mathbb C\).
+
+Call a countable family \((d_j)\) **finite on bounded intersections for \(R\)** if, for every family of finite positive bounds \(B_j\),
+\[
+ \{r\in R:d_j(r)\leq B_j\text{ for all }j\}
+       \text{ is finite}.
+ \tag{UE.1}
+\]
+There is no requirement that only finitely many \(B_j\) are imposed.
+
+**Lemma 11N.1.** For every finitely generated subring \(R\) of
+\(K_r=\mathbb Q(t_1,\ldots,t_r)\), with algebraically independent \(t_i\), there is such a family consisting of discrete and archimedean values.
+
+**Proof.** For \(r=0\), every finitely generated subring of \(\mathbb Q\) lies in \(\mathbb Z[1/D]\) for some positive integer \(D\). Use the ordinary absolute value and all \(p\)-adic values. A bound for each of the finitely many primes dividing \(D\) bounds the exponent of that prime in a reduced denominator. The ordinary bound then bounds the integer numerator. This gives finitely many rationals.
+
+Suppose the result holds for a countable field \(K=K_{r-1}\), and let \(S\subset K(t)\) be finitely generated. Factor the finitely many denominators of its generators in the Euclidean ring \(K[t]\). After adjoining their leading coefficients and inverses and the coefficients of their finitely many monic irreducible factors to a finitely generated ring \(R\subset K\), we have
+\[
+ S\subset R[t][p_1^{-1},\ldots,p_l^{-1}],
+ \tag{UE.2}
+\]
+where \(p_i\) are distinct monic irreducibles with coefficients in \(R\). Let \((d_j)\) be a family for \(R\) from the induction hypothesis.
+
+Extend every discrete \(d_j\) by the Gauss rule
+\[
+ d_j\!\left(\sum_i a_it^i\right)=\max_i d_j(a_i).
+ \tag{UE.3}
+\]
+This rule is multiplicative: divide each of two polynomials by a coefficient of maximum value; their coefficients are then in the valuation ring and each reduction modulo its maximal ideal is a nonzero polynomial. Their product is nonzero over the residue field. The product consequently has maximum coefficient value \(1\). Undoing the two scalar divisions gives multiplicativity. Extend to rational functions by division. The nonarchimedean inequality and discreteness are retained.
+
+For an archimedean embedding \(\sigma_j:K\to\mathbb C\), choose countably many distinct complex numbers \(z_{j,n}\) transcendental over the countable field \(\sigma_j(K)\). The assignments \(t\mapsto z_{j,n}\) extend \(\sigma_j\) to injective maps \(K(t)\to\mathbb C\), giving countably many archimedean values. Such numbers exist because the algebraic closure of a countable field inside \(\mathbb C\) is countable.
+
+Add the degree value and the finitely many irreducible-factor values
+\[
+ d_\infty(a/b)=2^{\deg a-\deg b},\qquad
+ d_{p_i}(a/b)=2^{-\operatorname{ord}_{p_i}(a/b)}.
+ \tag{UE.4}
+\]
+Polynomial factorization proves their multiplicativity and the nonarchimedean inequality; their nonzero ranges are discrete.
+
+An element of (UE.2) can be written as
+\(s=a/\prod_i p_i^{k_i}\), \(a\in R[t]\), with no \(p_i\) dividing \(a\) when \(k_i>0\). Cancellation leaves the numerator in \(R[t]\): division by a monic polynomial with coefficients in \(R\) uses only additions and multiplications in \(R\). Bounds for \(d_{p_i}(s)=2^{k_i}\) bound every \(k_i\). The bound for \(d_\infty(s)\) then bounds \(\deg a\), say by \(m\).
+
+For a discrete \(d_j\), the rational-function bound and the finite possibilities for the denominator exponents bound \(d_j(a)\). Equation (UE.3) bounds every coefficient of \(a\). For an archimedean \(\sigma_j\), take any \(m+1\) of the distinct \(z_{j,n}\). Their bounds on \(s(z_{j,n})\), together with the bounded denominator exponents, bound the \(m+1\) values \(a(z_{j,n})\). Inverting their fixed Vandermonde matrix bounds every coefficient \(\sigma_j(a_i)\). Thus every coefficient of \(a\) is bounded under every original \(d_j\). By (UE.1) for \(R\), each coefficient belongs to a fixed finite set. With its degree bounded, \(a\) has only finitely many possibilities. The denominator also has finitely many possibilities. This proves the induction. \(\square\)
+
+### 11N.2. A Hilbert embedding for one value
+
+For a discrete value on a field \(K\), put
+\[
+ \ell_d(g)=\log\max_{i,j}\{d(g_{ij}),d((g^{-1})_{ij})\},
+       \qquad g\in GL(n,K).
+ \tag{UE.5}
+\]
+For an archimedean value, use its image in \(GL(n,\mathbb C)\) and put
+\[
+ \ell_d(g)=\log\max\{\|g\|,\|g^{-1}\|\}.
+ \tag{UE.6}
+\]
+These are nonnegative symmetric length functions. For (UE.5), matrix multiplication and the nonarchimedean inequality give subadditivity without a factor \(n\); \(gg^{-1}=1\) gives nonnegativity. For (UE.6), use the operator-norm product inequality.
+
+**Lemma 11N.2 (positive kernels give a pseudo-metric embedding).** Suppose a group with length \(\ell\) has normalized real positive kernels \(\phi_j(x,y)\in[0,1]\) such that
+\[
+ \ell(x^{-1}y)\leq j\ \Longrightarrow\
+       1-\phi_j(x,y)\leq2^{-j},
+ \qquad
+ \ell(x^{-1}y)>B_j\ \Longrightarrow\ \phi_j(x,y)=0.
+ \tag{UE.7}
+\]
+It has a map \(F\) to a real Hilbert space whose difference is uniformly bounded on each \(\ell\)-ball, and whose bounded difference implies a bound for \(\ell(x^{-1}y)\).
+
+**Proof.** A positive kernel is the Gram matrix of vectors \(v_x^j\): give the finite formal span of \(\delta_x\) the form \(\sum c_xc_y\phi_j(x,y)\), quotient its null space and complete. Cauchy–Schwarz justifies the quotient. The vectors have norm one. Define
+\[
+ F(x)=\bigoplus_j(v_x^j-v_e^j).
+ \tag{UE.8}
+\]
+For fixed \(x\), all sufficiently large \(j\) satisfy \(\ell(x)\leq j\), and their squared summands are
+\(2(1-\phi_j(x,e))\leq2^{1-j}\). Thus (UE.8) exists. If \(\ell(x^{-1}y)\leq A\), its difference has squared norm at most \(2\lceil A\rceil+\sum_{j>A}2^{1-j}\), a finite bound depending only on \(A\). If \(\ell(x^{-1}y)>\max_{j\leq m}B_j\), its first \(m\) squared summands each equal \(2\), so its squared difference is at least \(2m\). Choosing \(m\) above half any proposed squared-difference bound proves the converse. \(\square\)
+
+**Lemma 11N.3.** The group \(GL(n,K)\) has an embedding of the kind in Lemma 11N.2 for either value in (UE.5)–(UE.6).
+
+**Proof for an archimedean value.** Every complex invertible matrix has a decomposition \(g=ph\), with \(h\) unitary and \(p\) upper triangular with positive real diagonal. One obtains it by orthonormalizing its rows from the last row upwards, so multiplication on the right by \(h^{-1}\) is triangular and its diagonal can be made positive. The length (UE.6) is unchanged by multiplication on either side by a unitary matrix. Hence any chosen triangular representatives satisfy
+\(\ell(g_1^{-1}g_2)=\ell(p_1^{-1}p_2)\).
+
+The triangular group \(P\) is solvable and locally compact. Its strictly upper triangular unipotent part has the finite filtration by vanishing superdiagonals; its successive quotients are additive complex vector groups. Its quotient by that part is \((\mathbb R_{>0})^n\), an abelian group. Closed-normal-extension and abelian amenability in the cited lesson therefore make \(P\) amenable. The compact-uniform Reiter implication supplies nonnegative compactly supported unit \(L^2(P)\)-vectors \(\xi_j\) almost fixed on each prescribed compact set. Their coefficients
+\(\varphi_j(p)=\langle\xi_j,\lambda_p\xi_j\rangle\)
+are real, nonnegative, positive definite, and vanish off a compact set. The length balls of \(P\) have compact closure: both the matrix and its inverse are bounded, the positive diagonal entries are bounded above and away from zero, and a closed bounded matrix set is compact. Thus the coefficients may be chosen to satisfy (UE.7), and their compact supports have bounded length. Pull their Gram kernels back through \(g\mapsto p\) and apply Lemma 11N.2.
+
+**Proof for a discrete value.** Choose \(\pi\) with \(d(\pi)=e^{-a}\), \(a>0\), and let \(\mathcal O=\{z:d(z)\leq1\}\). Put
+\[
+ H=GL(n,\mathcal O),\quad
+ A=\{\operatorname{diag}(\pi^{k_1},\ldots,\pi^{k_n}):k_i\in\mathbb Z\},
+ \quad P=AN,
+ \tag{UE.9}
+\]
+where \(N\) is the upper unipotent group. Here \(GL(n,\mathcal O)\) means that both the matrix and its inverse have entries in \(\mathcal O\).
+We have \(GL(n,K)=PH\). To prove this, move an entry of largest value in the last row into the last column. Every other last-row entry divided by it belongs to \(\mathcal O\). Integral elementary column operations clear that row. Repeat on the upper block. Finally split each nonzero diagonal entry into a power of \(\pi\) times an \(\mathcal O\)-unit. All the column operations and diagonal units belong to \(H\).
+
+Every \(h\in H\) has length zero. Subadditivity on both sides consequently proves bi-\(H\) invariance of the length and, as before, equality of the lengths of differences of chosen triangular representatives.
+
+Let \(N_M\) be generated by the elements of \(N\) of length at most \(M\). Every such generator has
+\(d(n_{ij})\leq e^M\) for \(i<j\). All products and inverses lie in the subgroup described by
+\(d(n_{ij})\leq e^{(j-i)M}\).
+Matrix multiplication proves closure: each term in its \(ij\) entry has exponent bound \((k-i)M+(j-k)M=(j-i)M\), and the nonarchimedean sum retains the bound. The finite geometric series for the inverse of a unipotent matrix proves the same bound for inverses. Thus
+\[
+ \ell(n_0)\leq(n-1)M\qquad(n_0\in N_M).
+ \tag{UE.10}
+\]
+
+In the permutation representation of \(P\) on \(\ell^2(P/N_M)\), take the unit vector which is constant on the cosets represented by the finite box
+\[
+ A_M=\{\operatorname{diag}(\pi^{k_i}):a|k_i|\leq M/4\},
+ \tag{UE.11}
+\]
+and zero elsewhere. The cosets are distinct since \(A\cap N_M=\{e\}\). Its coefficient \(\varphi_M\) is normalized, nonnegative and positive definite. If \(\ell(n)\leq2C\) and \(M\geq4C\), then \(n\) fixes every coset in (UE.11): for its representative \(a_1\),
+\[
+ \ell(a_1^{-1}na_1)\leq M/2+2C\leq M,
+\]
+so that conjugate belongs to \(N_M\).
+
+For \(g=an\) with \(\ell(g)\leq C\), triangular diagonals give
+\(\ell(a)\leq C\), and then \(\ell(n)\leq2C\). For \(M\geq4C\),
+\(\varphi_M(an)=\varphi_M(a)\).
+Writing \(L=\lfloor M/(4a)\rfloor\), the overlap fraction for a diagonal exponent shift \(r\in\mathbb Z^n\) is
+\[
+ \prod_{i=1}^n
+       \max\left(0,1-\frac{|r_i|}{2L+1}\right).
+ \tag{UE.12}
+\]
+The bound \(a|r_i|\leq C\) makes this tend uniformly to \(1\) as \(M\to\infty\).
+If the coefficient is nonzero, then
+\(g=a_2n_0a_1^{-1}\) for \(a_1,a_2\in A_M\) and \(n_0\in N_M\).
+Equations (UE.10)–(UE.11) bound its length by
+\((n-\tfrac12)M\). Thus each coefficient has bounded length support. Choose \(M\) successively to meet (UE.7), pull the kernels back from \(P\), and apply Lemma 11N.2. \(\square\)
+
+### 11N.3. Assembly for all eligible subgroups
+
+**Theorem 11N.4.** Every finitely generated subgroup of a compact Lie group, with any finite word metric, admits a coarse embedding into a separable real Hilbert space.
+
+**Proof.** The faithful unitary representation from the cited Peter–Weyl lesson puts the compact Lie group in \(GL(n,\mathbb C)\). Let \(K\) be the subfield generated over \(\mathbb Q\) by the finitely many matrix entries of a symmetric generating set of \(\Gamma\). It is a finitely generated field of characteristic zero. Choose a maximal algebraically independent subset \(t_1,\ldots,t_r\) of a finite field-generating list. Every remaining generator is algebraic over \(K_0=\mathbb Q(t_1,\ldots,t_r)\); adjoining finitely many algebraic elements gives a finite extension \(K/K_0\), of some degree \(b\).
+
+Regard \(K^n\) as a vector space of dimension \(nb\) over \(K_0\), and choose a \(K_0\)-basis. The faithful action of \(GL(n,K)\) on this vector space gives an injective homomorphism to \(GL(nb,K_0)\). This regular-representation step avoids extending any valuation across \(K/K_0\).
+
+Let \(R\subset K_0\) be generated by the entries of the finitely many generator matrices and their inverses. It is finitely generated and contains every entry of every element of \(\Gamma\). Take the countable values \(d_j\) from Lemma 11N.1. For each, Lemma 11N.3 gives a Hilbert map \(F_j\), translated so \(F_j(e)=0\), whose differences are bounded on each \(\ell_j\)-ball and control \(\ell_j\) in the other direction. The finite set of generators has finite \(\ell_j\)-lengths. Hence there is a finite \(A_j\geq1\) such that
+\[
+ \|F_j(x)-F_j(xs)\|\leq A_j
+       \quad(x\in\Gamma,\ s\text{ a generator}).
+ \tag{UE.13}
+\]
+For a word of length \(l\), the triangle inequality gives
+\(\|F_j(x)-F_j(xg)\|\leq l A_j\).
+Put \(\varepsilon_j=2^{-j}/A_j\) and define
+\[
+ F(g)=\bigoplus_j\varepsilon_jF_j(g).
+ \tag{UE.14}
+\]
+The preceding word bound proves convergence at every \(g\) and the upper estimate
+\[
+ \|F(x)-F(xg)\|\leq |g|
+             \left(\sum_j4^{-j}\right)^{1/2}.
+ \tag{UE.15}
+\]
+
+If that difference is at most \(C\), every \(j\)-difference is at most \(C/\varepsilon_j\). The converse bound of Lemma 11N.2 bounds \(\ell_j(g)\) independently of \(x\). For a discrete value, (UE.5) directly bounds every entry of \(g\). For an archimedean value, (UE.6) bounds its operator norm and hence each entry. Thus (UE.1) bounds every entry to a finite set. Only finitely many matrices, hence group elements \(g\), are possible.
+
+This proves the uniform properness of differences. Define the lower control at radius \(r\) as the infimum of all differences with \(|g|\geq r\), capped above by \(r\); include \(0\) at \(r=0\). It is finite and nondecreasing, and tends to infinity because a bounded difference allows only a finite set of \(g\). The upper control is the finite linear bound (UE.15). These are the coarse controls in (CI.1). Only the countable span of the images of \(\Gamma\) in each summand is needed, so the receiving Hilbert space is separable. The proof did not use that the inclusion of the abstract group in the compact Lie group is closed or discrete in the Lie topology. \(\square\)
+
+### 11N. Reading
+
+Guentner, Higson and Weinberger, [The Novikov Conjecture for Linear Groups](https://math.hawaii.edu/~erik/papers/linear.pdf), author draft of 15 May 2003, Sections 2–4. The proof here uses only characteristic zero, factors the finite algebraic extension into a matrix representation, constructs its positive-kernel Hilbert maps directly, and retains the abstract group metric.
+
+
+## 11O. From a coarse embedding to a proper Hilbert-field cone
+
+The argument constructs the compact coefficient base and the proper locally compact space, including varying and infinite-dimensional fibres. It does not assert the existence of a Dirac inverse for the resulting field.
+
+Let \(\Gamma\) be finitely generated, with a finite symmetric generating set and word length \(|g|\). Suppose \(f:\Gamma\to H\) is a map to a real Hilbert space such that
+\[
+ \rho_-(|x^{-1}y|)\leq\|f(x)-f(y)\|
+      \leq\rho_+(|x^{-1}y|),
+ \qquad \lim_{r\to\infty}\rho_-(r)=\infty,
+ \tag{CI.1}
+\]
+where the two functions are finite, nonnegative and nondecreasing. The domain metric is the abstract discrete word metric. A bounded orbit in a compact Lie group is not itself a map satisfying (CI.1).
+
+### 11O.1. A compact coefficient base
+
+For \(g\in\Gamma\) set
+\[
+ a_g(x)=\|f(x)-f(xg)\|^2.
+ \tag{CI.2}
+\]
+These are bounded real functions, since \(|x^{-1}xg|=|g|\). Let \(B\) be the unital C*-subalgebra of \(\ell^\infty(\Gamma)\) generated by all right translates of all \(a_g\). This is separable: its generating set is countable. Its spectrum \(Y\) is compact metrizable, and the evaluations at the points of \(\Gamma\) have dense image. To see density directly, a continuous function vanishing at every evaluation would be the zero bounded function under the faithful inclusion \(B\subset\ell^\infty(\Gamma)\).
+
+Right translation extends to a right action \(y\mapsto yg\) on \(Y\). Write \(k(y,g)\) for the continuous extension of \(a_g\). For all \(y\),
+\[
+ \rho_-(|g|)^2\leq k(y,g)\leq\rho_+(|g|)^2,\qquad
+ k(y,e)=0,\qquad k(yg,g^{-1})=k(y,g).
+ \tag{CI.3}
+\]
+All these assertions hold on the dense evaluation image and then by continuity. Moreover, for real numbers \(c_1,\ldots,c_n\) with sum zero,
+\[
+ \sum_{i,j}c_ic_j k(yg_i,g_i^{-1}g_j)\leq0.
+ \tag{CI.4}
+\]
+At an evaluation \(y=x\), the expression is
+\[
+ \sum_{i,j}c_ic_j\|f(xg_i)-f(xg_j)\|^2
+       =-2\left\|\sum_i c_i f(xg_i)\right\|^2.
+\]
+The zero-sum condition cancels both single-index squared-norm terms. Taking continuous limits proves (CI.4).
+
+Let \(X=\operatorname{Prob}(Y)\), with its weak probability topology, and extend the right action by pushforward. This is a compact metrizable convex space. Define
+\[
+ K(\mu,g)=\int_Y k(y,g)\,d\mu(y),\qquad
+ q_\mu(h,l)=K(\mu h,h^{-1}l).
+ \tag{CI.5}
+\]
+Each function of \(\mu\) is continuous. Integration preserves (CI.3) and (CI.4); thus \(q_\mu\) is a symmetric conditionally negative kernel with zero diagonal, and
+\[
+ \rho_-(|h^{-1}l|)^2\leq q_\mu(h,l)
+       \leq\rho_+(|h^{-1}l|)^2.
+ \tag{CI.6}
+\]
+The parameter \(\mu\) is a probability, not an invariant probability under \(\Gamma\).
+
+For every finite subgroup \(F\), choose \(y_0\in Y\) and let
+\(\mu_F=|F|^{-1}\sum_{h\in F}\delta_{y_0h}\).
+This is \(F\)-fixed. The affine path
+\[
+ (\mu,t)\longmapsto(1-t)\mu+t\mu_F
+ \tag{CI.7}
+\]
+is an \(F\)-equivariant contraction of the entire \(X\). It does not produce a fixed point for an infinite nonamenable group.
+
+### 11O.2. The Hilbert field and its exact affine action
+
+For each \(\mu\), take the real vector space of finite formal combinations
+\(\sum_h c_h\delta_h\) with \(\sum_hc_h=0\), and put
+\[
+ \left\langle\sum_hc_h\delta_h,\sum_ld_l\delta_l\right\rangle_\mu
+       =-\frac12\sum_{h,l}c_hd_lq_\mu(h,l).
+ \tag{CI.8}
+\]
+Conditional negativity makes this positive semidefinite. Quotient its null space and complete to \(H_\mu\). The Cauchy–Schwarz inequality for the semidefinite form follows by requiring nonnegativity of the quadratic polynomial for \(v+tw\); a null vector is consequently orthogonal to every vector. The quotient is therefore well defined.
+
+Write \(e_h^\mu=[\delta_h-\delta_e]\). Then
+\[
+ \begin{aligned}
+ \langle e_h^\mu,e_l^\mu\rangle
+   &=\frac12\bigl(q_\mu(e,h)+q_\mu(e,l)-q_\mu(h,l)\bigr),\\
+ \|e_h^\mu-e_l^\mu\|^2&=q_\mu(h,l).
+ \end{aligned}
+ \tag{CI.9}
+\]
+Their finite spans are dense, and their Gram entries depend continuously on \(\mu\). This defines a separable continuous real Hilbert field: start with finite sums of these sections with continuous scalar coefficients, take local uniform limits in fibre norm, and use (CI.9) to see that all norm functions are continuous. The evaluation spans remain dense in each fibre. No constant-rank or locally trivial Hilbert-bundle assertion is needed.
+
+Use arrows \((\mu,g)\) with source \(\mu g\), range \(\mu\), and product
+\((\mu,g)(\mu g,h)=(\mu,gh)\).
+The formula
+\[
+ L_{\mu,g}e_h^{\mu g}=e_{gh}^{\mu}-e_g^\mu
+ \tag{CI.10}
+\]
+preserves all Gram products, because
+\(q_{\mu g}(h,l)=q_\mu(gh,gl)\).
+It is onto: each \(e_l^\mu\) is the image of
+\(e_{g^{-1}l}^{\mu g}-e_{g^{-1}}^{\mu g}\).
+Thus it extends to an orthogonal isomorphism \(H_{\mu g}\to H_\mu\).
+The affine maps
+\[
+ A_{\mu,g}v=L_{\mu,g}v+e_g^\mu
+ \tag{CI.11}
+\]
+compose exactly, since \(L_{\mu,g}e_h^{\mu g}+e_g^\mu=e_{gh}^\mu\).
+Their displacement at the origins has squared norm
+\[
+ \|e_g^\mu\|^2=K(\mu,g)\geq\rho_-(|g|)^2.
+ \tag{CI.12}
+\]
+This is a metrically proper affine action of the transformation groupoid over \(X\). It is not a proper affine isometric action of the abstract group on one Hilbert space with a fixed base point.
+
+### 11O.3. A locally compact proper space without finite fibre dimension
+
+Consider the set
+\[
+ Z=\{(\mu,v,t):\mu\in X,\ v\in H_\mu,\ 0\leq\|v\|^2\leq t\}.
+ \tag{CI.13}
+\]
+Give it the topology determined by \(\mu\), \(t\), and the real coordinates
+\(\langle v,e_h^\mu\rangle\), for \(h\in\Gamma\).
+The extra coordinate \(t\) is squared total height. In particular this is a weak-fibre cone topology; it is not the norm topology of an infinite-dimensional Hilbert ball.
+
+**Theorem 11O.1.** The space \(Z\) is second countable, locally compact Hausdorff and sigma-compact. The affine action extends continuously to \(Z\) by
+\[
+ (\mu g,v,t)\longmapsto
+ \left(\mu,A_{\mu,g}v,\
+ t+2\langle L_{\mu,g}v,e_g^\mu\rangle+\|e_g^\mu\|^2\right).
+ \tag{CI.14}
+\]
+Its action-relation map is proper.
+
+**Proof.** For \(R\geq0\), let \(Z_R=\{t\leq R\}\). Each coordinate has
+\(|\langle v,e_h^\mu\rangle|\leq\sqrt R\,\rho_+(|h|)\).
+View \(Z_R\) in the compact countable product
+\[
+ X\times[0,R]\times
+     \prod_{h\in\Gamma}
+       [-\sqrt R\,\rho_+(|h|),\sqrt R\,\rho_+(|h|)].
+ \tag{CI.15}
+\]
+Its image is exactly the set whose coordinates \(z_h\) satisfy, for every finite rational coefficient family,
+\[
+ \left|\sum_h c_h z_h\right|^2
+       \leq t\sum_{h,l}c_hc_l
+                       \langle e_h^\mu,e_l^\mu\rangle .
+ \tag{CI.16}
+\]
+One implication is Cauchy–Schwarz. Conversely the inequalities, extended to real coefficients by continuity, make
+\(\sum c_he_h^\mu\mapsto\sum c_hz_h\)
+a well-defined functional of norm at most \(\sqrt t\) on the dense span. Extension and the Hilbert-space representation of a bounded functional give a unique \(v\) of norm at most \(\sqrt t\) with these coordinates. The uniqueness follows from density. Thus (CI.16) also proves that the image is closed; each inequality has continuous Gram entries. Hence \(Z_R\) is compact metrizable. The coordinates separate points. Neighborhoods \(t<R\) have closure in \(Z_R\), proving local compactness. Countably many \(Z_n\) exhaust \(Z\), and the countable coordinate topology proves second countability.
+
+The final coordinate in (CI.14) is nonnegative and at least the squared norm of the new vector: their difference is exactly \(t-\|v\|^2\). All other coordinates are continuous. More explicitly, for an input vector \(v\in H_{\mu g}\) with coordinates \(z_h\), they are
+\[
+ \begin{aligned}
+ \langle A_{\mu,g}v,e_l^\mu\rangle
+   &=z_{g^{-1}l}-z_{g^{-1}}
+                    +\langle e_g^\mu,e_l^\mu\rangle,\\
+ t_{\rm out}&=t-2z_{g^{-1}}+K(\mu,g).
+ \end{aligned}
+ \tag{CI.17}
+\]
+These formulas follow by applying the inverse of (CI.10); in particular
+\(L_{\mu,g}^{-1}e_g^\mu=-e_{g^{-1}}^{\mu g}\).
+They prove continuity and the composition law, including the sign of the height correction.
+
+If both an input and its output belong to \(Z_R\), their vector norms are at most \(\sqrt R\). The triangle inequality in (CI.11) therefore gives
+\[
+ \rho_-(|g|)\leq\|e_g^\mu\|
+          \leq \|A_{\mu,g}v\|+\|v\|
+          \leq2\sqrt R.
+ \tag{CI.18}
+\]
+Only finitely many \(g\) satisfy this, because the word metric is proper and \(\rho_-\) tends to infinity. Every compact subset of \(Z\) has bounded continuous height, so the transporter of two compact sets is finite. The inverse image of their product under the action-relation map is a closed subset of a finite union of copies of the compact input set, and is compact. This proves properness. \(\square\)
+
+This theorem supplies a genuine proper locally compact central-space candidate. It does not supply the graded Bott algebra over that space, an equivariant Dirac class, or a Kasparov product inverse. Infinite-dimensional fibre compactness in (CI.15) relies on the weak cone topology and cannot be substituted for compact resolvent of an oscillator.
+
+### 11O. Reading
+
+For the broader source route see Guentner–Higson–Weinberger, [The Novikov Conjecture for Linear Groups](https://math.hawaii.edu/~erik/papers/linear.pdf), and Jean-Louis Tu, [La conjecture de Baum–Connes pour les feuilletages moyennables](https://citeseerx.ist.psu.edu/document?doi=486238991671dba031f9cb078eeba25443307a0a&repid=rep1&type=pdf), Section 6. The proof above constructs its compactification from the countable bounded kernels and proves compactness directly with Gram inequalities, retaining the varying-field and right-action conventions throughout.
+
+
+## 11P. A confining oscillator over a varying Hilbert field
+
+Inner products on complex modules are linear in the second variable. The operator is odd; its Kasparov cycle has even degree.
+
+Let \(X\) be compact metrizable, let \(E\) be the continuous-section module of a countably generated real Hilbert field over \(X\), and let a countable discrete group \(\Gamma\) act on that field by continuous affine isometries. Write the action, with range \(x\) and source \(xg\), as
+\[
+ v\longmapsto L_{x,g}v+b_g(x),\qquad
+ b_{gh}(x)=b_g(x)+L_{x,g}b_h(xg).
+ \tag{WF.1}
+\]
+Each \(b_g\) is a continuous section. The action need not be proper for this theorem. In the coarse-embedding application the field and cocycle are those constructed in Section 11O.
+
+We use the Hilbert-module completion and compact-operator proofs in Graded C*-algebras, Clifford algebras and graded Hilbert modules, Lemma 2.0 and Lemma 6.0a, and the completed regular-operator calculus in Unbounded Kasparov modules and spectral triples, Lemma 0.0. The convexity argument below proves the extra automorphism version of approximate-identity selection; it does not assume that a semilinear action is a module-linear multiplier.
+
+### 11P.1. A weight adapted to the entire countable action
+
+**Lemma 11P.1.** There is a positive regular operator \(\Theta\geq1\) on \(E\), commuting with real conjugation after complexification, such that
+\[
+ (1+\Theta)^{-1}\in\mathcal K(E),\quad
+ L_g\Theta L_g^{-1}-\Theta\in\mathcal K(E),\quad
+ b_g\in\operatorname{Dom}\Theta
+ \tag{WF.2}
+\]
+for every \(g\). The differences and the sections \(\Theta b_g\) are continuous in the base, in module norm. Domains transform covariantly.
+
+**Proof.** Choose real generating sections \(\xi_j\), rescaled to norm at most one, and let
+\(h=\sum_j2^{-j}\theta_{\xi_j,\xi_j}\).
+This is a positive compact operator. Its action has dense range: if \(r_\epsilon=\epsilon(h+\epsilon)^{-1}\), positive order gives
+\[
+ \|r_\epsilon\xi_j\|^2
+ =\|r_\epsilon\theta_{\xi_j,\xi_j}r_\epsilon\|
+ \leq2^j\|r_\epsilon h r_\epsilon\|
+ \leq2^j\epsilon/4.
+ \tag{WF.3}
+\]
+Thus \(r_\epsilon\to0\) on the generators and, by their density and the uniform bound, on all sections. Continuous scalar functions of \(h\) which vanish near zero and equal one on successively larger portions of its nonzero spectrum give a commuting compact approximate identity \(e_n\), with
+\(e_ne_{n+1}=e_n\).
+For example choose plateau cutoffs with the support of the \(n\)-th cutoff inside the one-region of the next.
+
+Conjugation by the semilinear \(L_g\) induces an automorphism \(\alpha_g\) of \(\mathcal K(E)\). Both \(e_n\) and \(\alpha_g(e_n)\) are approximate identities. Their difference tends weakly to zero. Here is the needed functional argument. Every positive functional has a GNS vector representation; an approximate identity tends strongly to the identity in that representation on its nondegenerate subspace. Hence its functional value tends to the norm of the functional. Write a bounded complex functional as a linear combination of four positive functionals, or apply the same argument in its vector-functional representation, to obtain weak convergence for every functional. This elementary functional decomposition is proved in the convex-quasicentrality proof of Kasparov's technical theorem, Theorem 1.1.
+
+For finitely many \(g\), the tuple \((\alpha_g(e_n)-e_n)_g\) therefore tends weakly to zero. Hahn–Banach separation says that zero lies in the norm-closed convex hull of every tail: a separating real functional would contradict that weak limit. Simultaneously impose \((1-e_n)b_g\to0\) and the approximate-identity tests on the first finitely many generators; these components already converge in norm. Their joint tuple also has zero in every tail's closed convex hull.
+
+Enumerate \(\Gamma\). Inductively choose a finite convex combination \(v_n\) from a tail beyond every index used in \(v_{n-1}\), so that, for the first \(n\) group elements,
+\[
+ \|\alpha_g(v_n)-v_n\|\leq2^{-n},
+ \qquad \|(1-v_n)b_g\|\leq2^{-n}.
+ \tag{WF.4}
+\]
+Let the least index tend to infinity. The \(v_n\) form a compact approximate identity, commute, and satisfy \(v_nv_{n+1}=v_n\). Their real scalar coefficients retain conjugation symmetry.
+
+Define \(\Theta=1+\sum_{n\geq1}(1-v_n)\) by functional calculus of \(h\). At each nonzero spectral value only finitely many terms survive; near zero the sum tends to infinity. Its reciprocal is a continuous function of \(h\) vanishing at zero, so is compact. Multiplication by this reciprocal has dense range by (WF.3); it defines a positive regular operator with that inverse and with \(\Theta\geq1\). Finite cutoff ranges are a core.
+
+For a fixed \(g\), the series
+\[
+ \alpha_g(\Theta)-\Theta
+       =\sum_n(v_n-\alpha_g(v_n)),\qquad
+ \Theta b_g=b_g+\sum_n(1-v_n)b_g
+ \tag{WF.5}
+\]
+converge in norm after their finitely many initial terms, by (WF.4). The first sum is compact. For the domain assertion use the bounded partial sums and their resolvents: both positive sums converge in strong resolvent sense by the scalar cutoff functional calculus, while their differences converge in norm. The resolvent identity consequently identifies the conjugated limit with the bounded self-adjoint perturbation of the original limit. Its domain is the original domain and its difference is exactly the first series in (WF.5). The second sum puts \(b_g\) in the closed operator's domain. All sums are in the section module or compact module algebra, so their stated base continuity is included. \(\square\)
+
+### 11P.2. The completed Fock operator
+
+Complexify \(E\) and form
+\[
+ \mathcal F=\bigoplus_{p,q\geq0}
+       \operatorname{Sym}^p(E_{\mathbb C})
+          \otimes_{C(X)}\Lambda^q(E_{\mathbb C}),
+ \qquad \text{parity}=q\bmod2.
+ \tag{WF.6}
+\]
+Symmetric and antisymmetric powers are the ranges of the finite permutation averaging projections on the completed interior tensor powers. Thus (WF.6) is a countably generated Hilbert \(C(X)\)-module. Its vacuum is a rank-one even copy of \(C(X)\).
+
+In a fibre diagonalize \(\Theta\), with eigenvalues \(\lambda_i\geq1\). Compactness in (WF.2) makes each bounded-eigenvalue subspace finite dimensional and \(\lambda_i\to\infty\) in an infinite fibre. Let \(a_i,a_i^*\) be bosonic annihilation and creation, and \(\varepsilon_i,\varepsilon_i^*\) exterior creation and annihilation. Set
+\[
+ Q_i=\sqrt2(a_i\varepsilon_i+a_i^*\varepsilon_i^*),
+ \quad
+ D=\sum_iQ_i,\quad B(A)=\sum_i\lambda_i(A)Q_i
+ \tag{WF.7}
+\]
+when \(A\) is a diagonal positive weight. The definition for an arbitrary self-adjoint \(A\) is obtained by orthogonal covariance of these sums; no eigenbasis is chosen continuously in \(X\).
+
+The bosonic and exterior relations give, on finite occupation vectors,
+\[
+ Q_i^2=2(N_i^{\mathrm b}+N_i^{\mathrm f}),\quad
+ Q_iQ_j+Q_jQ_i=0\ (i\ne j),\quad
+ D^2=2N,\quad B(\Theta)^2=2\sum_i\lambda_i^2N_i.
+ \tag{WF.8}
+\]
+Here \(N_i=N_i^{\mathrm b}+N_i^{\mathrm f}\) and \(N=\sum_iN_i\).
+For clarity, on exterior degree zero in the \(i\)-th mode, \(Q_i^2=2a_i^*a_i\); on degree one it is \(2a_ia_i^*=2(N_i^{\mathrm b}+1)\). This fixes the sign and the even vacuum.
+
+For \(0<s\leq1\), define the odd operator
+\[
+ C_s=sD^3+B(1+s\Theta).
+ \tag{WF.9}
+\]
+Use the algebraic finite-particle sections made from vectors in bounded spectral cutoff ranges of \(\Theta\) as a core. On a sector of total occupation \(N=n\), all its summands preserve that sector, and
+\[
+ C_s=\sum_i(1+2sn+s\lambda_i)Q_i,\qquad
+ C_s^2=2\sum_i(1+2sn+s\lambda_i)^2N_i.
+ \tag{WF.10}
+\]
+The operator \(D^2\) commutes with every term. Since all the scalar coefficients are positive,
+\[
+ C_s^2\geq s^2D^6+B(1+s\Theta)^2\geq D^2.
+ \tag{WF.11}
+\]
+
+**Lemma 11P.2.** Formula (WF.9) closes to a regular self-adjoint operator, has compact resolvent for \(s>0\), and has exactly the vacuum as its kernel. The stated finite-particle cutoff sections are a core.
+
+**Proof.** On any finite-particle, bounded-\(\Theta\) cutoff the sums define bounded operators and (WF.10) holds by the relations. Increasing both cutoffs exhausts a dense submodule. The operators and their squares agree on overlaps. On each occupation sector the resolvents defined by
+\[
+ (C_s\pm i)^{-1}=(C_s\mp i)(1+C_s^2)^{-1}
+ \tag{WF.12}
+\]
+are bounded by one; the formulas on cutoffs extend to bounded adjointable operators on their dense union and hence everywhere, with adjoints obtained by changing the sign. Their ranges are dense, since the cutoff union is contained in those ranges. These mutually adjoint resolvents define the closed self-adjoint regular operator. A section in its graph domain is approximated in graph norm first by total-occupation cutoffs, then by the single-particle spectral cutoffs, using (WF.10) and dominated convergence. This proves the core assertion and avoids a fibrewise-only domain claim.
+
+For compactness, a continuous spectral cutoff of \(C_s^2\) supported below \(R\) permits only \(N\leq R/2\). By (WF.10), every occupied mode then has \(\lambda_i\leq\sqrt{R/2}/s\). Choose a compact operator \(k=\chi(\Theta)\), with a continuous finite-support cutoff equal to one on that interval. On each permitted particle sector the energy cutoff equals its product with the corresponding tensor power of \(k\); that tensor power is compact. Indeed tensor products of rank-one maps are rank-one maps, their norm limits are compact, and compression by the symmetric/exterior projections retains compactness. There are only finitely many sectors. The spectral cutoff is therefore compact. Approximate \((1+C_s^2)^{-1}\) uniformly by these cutoffs to prove compact resolvent.
+
+Equation (WF.10) vanishes precisely when every \(N_i=0\). This is the even vacuum. The first nonzero sector has \(C_s^2\geq2\), giving the uniform gap \(\sqrt2\) on its orthogonal complement. \(\square\)
+
+The construction is a section-module construction: tensor operations and continuous functional calculus preserve sections, and all bounded cutoff computations use finitely many tensor factors. It remains valid when fibre ranks change or are infinite. Compactness here is compactness in \(\mathcal K(\mathcal F)\); a weakly compact Hilbert ball is not being treated as a compact-resolvent proof.
+
+### 11P.3. Affine covariance and compact phase defects
+
+The linear maps \(L_g\) act naturally on both Fock factors. A real translation \(b\) acts on the bosonic factor by the Weyl unitary \(T_b\). One can construct it without a Lebesgue measure in infinite dimensions: on exponential vectors \(e(z)=\bigoplus z^{\otimes n}/\sqrt{n!}\), use their inner product \(\langle e(z),e(w)\rangle=\exp\langle z,w\rangle\) and the formula
+\[
+ T_be(z)=\exp(-\|b\|^2/4-\langle b,z\rangle/\sqrt2)\,
+                    e(z+b/\sqrt2).
+ \tag{WF.13}
+\]
+Substitution in the exponential-vector inner product proves isometry; \(T_{-b}\) is its inverse. The real translations multiply exactly, \(T_bT_c=T_{b+c}\). Density of exponential vectors proves strong continuity. These identities also hold for continuous sections and give adjointable semilinear field maps.
+Define \(U_g=T_{b_g}L_g\). Equation (WF.1) proves the exact group law with no central phase.
+
+For a constant real vector \(b\), (WF.13) gives
+\[
+ T_bDT_b^{-1}=D-c_b,\quad
+ T_bB(A)T_b^{-1}=B(A)-c_{Ab},\quad
+ \|c_b\|=\|b\|,
+ \qquad c_b=\varepsilon_b+\varepsilon_b^*.
+ \tag{WF.14}
+\]
+The equality \(c_b^2=\|b\|^2\) proves the norm. In a finite-dimensional fibre the same normalization is the usual translation \(f(x)\mapsto f(x-b)\) of the exterior oscillator on Lebesgue \(L^2\); its even ground state is proportional to \(\exp(-\|x\|^2/2)\).
+
+For any bounded self-adjoint real \(S\), the relations prove
+\[
+ B(S)^2=2\,d\Gamma(S^2)\leq\|S\|^2D^2.
+ \tag{WF.15}
+\]
+Diagonalization proves this for finite rank and approximation on finite-particle vectors proves it for bounded \(S\). The comparison is \(\leq\), not \(\geq\).
+
+Put \(C=C_1\). Linear conjugation changes it by \(B(L_g\Theta L_g^{-1}-\Theta)\). Translation changes it by
+\[
+ (D-c_b)^3-D^3-c_{(1+\Theta)b}.
+ \tag{WF.16}
+\]
+The final term has norm \(\|(1+\Theta)b\|\), bounded by \(\|b\|+\|\Theta b\|\); the identity summand must be retained.
+
+Every \(c_b\) changes total particle number by at most one and has norm \(\|b\|\). Consequently
+\(\|D^kc_b\xi\|\leq\|b\|\|(D^2+2)^{k/2}\xi\|\)
+for \(k=1,2\). Expanding the cube in (WF.16), with the factors kept in their original order, proves
+\[
+ \|((D-c_b)^3-D^3)\xi\|
+ \leq C_b\|(1+D^2)\xi\|,
+ \tag{WF.17}
+\]
+where one may take a finite polynomial bound in \(\|b\|\), for example
+\(C_b=10(\|b\|+\|b\|^2+\|b\|^3)\).
+This follows term by term from
+\(-D^2c_b-Dc_bD-c_bD^2+Dc_b^2+c_bDc_b+c_b^2D-c_b^3\);
+the number-shift estimate bounds each of the first three by \(2\|b\|(1+D^2)\), and each remaining term by its stated polynomial times \(1+D^2\). Bounds are uniform over the compact base for a fixed \(g\).
+
+We use the following full phase estimate. If self-adjoint regular \(A,B\) have compact resolvents and their difference \(E=B-A\), initially on a common core, satisfies
+\(\|E(1+A^2)^{-p/2}\|\leq M\) for some \(p<1\), then
+\[
+ B(1+B^2)^{-1/2}-A(1+A^2)^{-1/2}
+                  \in\mathcal K.
+ \tag{WF.18}
+\]
+To prove it, set \(a=(1+t^2)^{1/2}\). The resolvent identity and spectral calculus give
+\(\|(B\pm ia)^{-1}E(A\pm ia)^{-1}\|
+ \leq C_pMa^{p-2}\).
+The integral representation
+\[
+ A(1+A^2)^{-1/2}
+ =\frac1\pi\int_0^\infty
+       \big((A-ia)^{-1}+(A+ia)^{-1}\big)\,dt
+\]
+holds strongly, by evaluating the scalar integral; its difference for \(A,B\) converges in norm because \(p<1\). Each resolvent difference is compact, since one resolvent is compact and the other factors are bounded. Norm integration proves (WF.18). The same estimates give norm continuity when the bound for \(E\) tends to zero.
+
+By (WF.11), and because \(D^2\) commutes with \(C\),
+\[
+ D(1+C^2)^{-1/6},\qquad
+ (1+D^2)(1+C^2)^{-1/3}
+                  \quad\text{are bounded}.
+ \tag{WF.19}
+\]
+Use \(p=1/3\) for (WF.15) and \(p=2/3\) for (WF.17). The completed-domain comparison needed for the resolvent identity can also be checked here. If \(E(1+C^2)^{-p/2}\) is bounded with \(p<1\), then \(\|E(C\pm i\lambda)^{-1}\|=O(\lambda^{p-1})\). For large \(\lambda\), the Neumann series for \(1+E(C\pm i\lambda)^{-1}\) gives both inverse resolvents of \(C+E\) on \(\operatorname{Dom}C\). The symmetry identity makes their adjoints agree; it proves that this operator is closed, self-adjoint and regular. Its graph norm is equivalent to that of \(C\), since the relative bound can be made less than one. The original cutoff core consequently remains a core. Linear conjugation contains this core in its domain by (WF.2). For translation, the Weyl image of a finite-particle vector is a polynomial times an exponential vector. Its number moments of every order are finite; its single-particle weighted moment is finite because \(b\in\operatorname{Dom}\Theta\). Expanding the exponential series gives \(\|\Theta b\|^2\) times its convergent factorial series, with only finitely many additional polynomial factors. Hence the original core is also in the translated domain and the translation formulas hold there. The unitarily conjugated self-adjoint operator extends the just constructed self-adjoint closure, so the two agree and their domains agree. Apply (WF.18) separately to these linear and translation comparisons. This proves every fixed-\(g\) compact phase defect. The domains of the conjugated operators are exactly the unitary images of the completed domains. No assertion that an arbitrary unbounded first-order perturbation has a compact phase defect is used.
+
+It follows that \((\mathcal F,C(1+C^2)^{-1/2})\) is an even \(\Gamma\)-equivariant Kasparov \(C(X),C(X)\)-cycle. Scalar base functions commute exactly; \(1-F^2\) is compact by Lemma 11P.2.
+
+### 11P.4. Its precise class
+
+**Theorem 11P.3.** This cycle has class \(1_{C(X)}\) in \(KK^\Gamma(C(X),C(X))\).
+
+**Proof.** First scale \(b_g\) to \(u b_g\), \(0\leq u\leq1\), keeping the operator \(C\) fixed. This is still an affine action by (WF.1). The Weyl maps are strongly continuous in \(u\). Estimates (WF.16)–(WF.19), applied to the difference of two scaled translations, show that the compact phase defects are norm continuous in \(u\). Hence the section module over \(X\times[0,1]\) is a Kasparov homotopy to the linear action.
+
+For the linear action remove the vacuum and replace the bounded phase by its exact sign, using the gap \(\sqrt2\). The difference is compact by functional calculus, so the class is unchanged. On this complement consider \(\operatorname{sign}(C_s)\) from (WF.9), \(0<s\leq1\), and at \(s=0\) use \(\operatorname{sign}(D)\).
+
+These signs are strongly continuous down to zero: on finite-particle, bounded-\(\Theta\) sections the operators converge in norm on their invariant sectors and retain the gap. Density and the common bound one prove strong and adjoint-strong continuity on all sections. For \(s_0>0\) they are norm continuous. Indeed (WF.10) reduces the sign on each joint occupation space to a normalized Clifford vector with coefficients \(1+2sn+s\lambda_i\). Their relative coefficient change is at most \(|s-s_0|/s_0\); the Clifford norm identity and normalization bound the sign change by \(2|s-s_0|/s_0\).
+
+The compact linear equivariance defects also tend to zero in norm at \(s=0\). To check the endpoint rather than merely assume it, write \(S=L_g\Theta L_g^{-1}-\Theta\). The conjugated \(C_s\) differs by \(sB(S)\). On the complement, \(|C_s|\geq\sqrt2\), \(|C_s|\geq|D|\), and \(|C_s|\geq s|D|^3\). In the sign-resolvent integral with parameter \(a\geq0\), the part \(0\leq a\leq1\) is bounded by a constant times \(s\|S\|\). For \(a\geq1\),
+\[
+ \|D(C_s\pm ia)^{-1}\|
+ \leq c\,s^{-1/3}a^{-2/3}.
+ \tag{WF.20}
+\]
+This is the scalar maximum of \(z/(s^2z^6+a^2)^{1/2}\), using commutation with \(D^2\). Multiplying by the other resolvent, of norm at most \(a^{-1}\), and by \(s\|S\|\), gives the integrable bound
+\(c\,s^{2/3}\|S\|a^{-5/3}\).
+The entire defect is therefore \(O(\|S\|(s+s^{2/3}))\). For every \(s>0\) it is compact by the same argument as (WF.18). Together with norm continuity away from zero, this proves a continuous compact-valued defect on the closed parameter interval.
+
+At \(s=0\), \(D\) is exactly invariant under the linear action. Its sign on the vacuum complement squares to one, is self-adjoint and commutes with \(C(X)\). The complement cycle is degenerate. The remaining vacuum line is even, with its natural action on \(C(X)\), and is the identity cycle. This proves the theorem. \(\square\)
+
+This identity has coefficients \(C(X)\) on both sides. It supplies neither a reduced scalar character nor a map \(KK^\Gamma(C(X),C(X))\to KK^\Gamma(\mathbb C,\mathbb C)\) by evaluation at an arbitrary point of \(X\). Such an evaluation is equivariant only at a fixed point. In particular the theorem by itself does not factor the identity through a proper Bott algebra.
+
+### 11P. Reading
+
+Jean-Louis Tu, [La conjecture de Baum–Connes pour les feuilletages moyennables](https://citeseerx.ist.psu.edu/document?doi=486238991671dba031f9cb078eeba25443307a0a&repid=rep1&type=pdf), K-Theory 17 (1999), 215–264, Sections 8.4 and 9. The proof above uses a section-module weight, states complete domains and resolvent bounds, retains the identity part of the translation potential, and proves the compact-defect homotopy endpoint. Its conclusion is the coefficient identity just stated, not the later proper-factorization theorem.
+
+### 11P. Figure
+
+![Coarse geometry, proper cone and the coefficient oscillator identity](../figures/coarse-field-unit.png)
+
+**Figure 11P.1.** The first two panels show the faithful characteristic-zero linearization and the kernel/probability construction, with their exact scope. The third is the one-dimensional sample \(g=3\), \(v=-1.5\), \(t=3\) of the squared-height action; its excess remains \(0.75\). The fourth gives the exact energies from (WF.10) at \(s=1\), \(\lambda=(1,3)\), including the unique even vacuum. The fifth plots the integrable bound shape at \(p=2/3\), rather than a measured operator error. The final panel distinguishes Theorem 11P.3’s coefficient identity from the still required proper scalar factorization. The complete accompanying proofs state all domains, supports and quantifiers. [Vector figure](../figures/coarse-field-unit.svg); [reproducible generator](../reproduction/general-auxiliary-providers/reproduce.py); [component terms](../reproduction/general-auxiliary-providers/COMPONENT-TERMS.md).
+
+
+## 11Q. A locally compact universal proper base and its probability map
+
+Let \(\Gamma\) be countable discrete. Its topology here is independent of any compact Lie group in which it embeds.
+
+### 11Q.1. The mass threshold
+
+Let \(Q\) be the space of positive functions \(\mu:\Gamma\to[0,\infty)\) with total mass at most one, in the topology of pointwise convergence. Set
+\[
+ M=\{\mu\in Q:1/2<\|\mu\|_1\leq1\},\qquad
+ (h\mu)(g)=\mu(h^{-1}g).
+ \tag{PM.1}
+\]
+The topology is the weak-* topology from \(c_0(\Gamma)^*=\ell^1(\Gamma)\); it is not the norm topology. The total mass need not be continuous.
+
+**Theorem 11Q.1.** The space \(M\) is second countable, locally compact Hausdorff and sigma-compact; its \(\Gamma\)-action is proper. It is convex and, for every finite subgroup \(F\), is \(F\)-equivariantly contractible. Every second-countable locally compact proper \(\Gamma\)-space has an equivariant map to \(M\), unique up to equivariant homotopy.
+
+**Proof.** The set \(Q\) is a closed subset of the compact countable product \([0,1]^\Gamma\): positivity is explicit, and the conditions \(\sum_{g\in E}\mu(g)\leq1\) for all finite \(E\) are closed and equivalent to the total bound. On \(Q\), pointwise convergence agrees with weak-* convergence, since a \(c_0\) function is uniformly approximable by finite-support functions and all masses are bounded by one. The function \(\|\mu\|_1=\sup_{E\ {\rm finite}}\sum_E\mu(g)\) is lower semicontinuous. Thus \(M\) is open in the compact metrizable \(Q\), so is locally compact, second countable and sigma-compact. All translations are homeomorphisms.
+
+For a compact \(K\subset M\), there is one finite \(E\subset\Gamma\) with
+\[
+ \mu(E)>1/2\qquad(\mu\in K).
+ \tag{PM.2}
+\]
+For each \(\mu\), choose such a finite set; its strict inequality defines an open coordinate neighborhood. A finite subcover of \(K\) gives a finite union \(E\), which has the required bound for all of \(K\). If \(\mu\in K\) and \(h\mu\in K\), then
+\(\mu(E)>1/2\) and \(\mu(h^{-1}E)>1/2\).
+Disjointness would give total mass greater than one. Therefore
+\[
+ E\cap h^{-1}E\ne\varnothing,\qquad h\in EE^{-1}.
+ \tag{PM.3}
+\]
+The transporter is finite. For two compact sets apply the argument to their union. The inverse image of their product under the action-relation map is closed inside finitely many copies of a compact input set, and hence compact. This is properness, including finite nontrivial stabilizers.
+
+Convex combinations of two positive measures in \(M\) have mass strictly greater than \(1/2\) and at most one. The combinations are continuous in the stated coordinate topology. For finite \(F\), let \(\nu_F=|F|^{-1}\sum_{f\in F}\delta_f\). It is fixed by \(F\), and
+\((\mu,t)\mapsto(1-t)\mu+t\nu_F\)
+is the required equivariant contraction.
+
+For a proper space \(Z\), take a continuous square cutoff \(c\) with
+\(\sum_g c(g^{-1}z)^2=1\) and translates locally finite over compact subsets. Such cutoffs are constructed in Lemma 11J.1 in Section 11J, the proper-factorization construction. Define
+\[
+ \mu_z(g)=c(g^{-1}z)^2.
+ \tag{PM.4}
+\]
+This is a probability in \(M\), its coordinates are continuous, and
+\(\mu_{hz}(g)=\mu_z(h^{-1}g)\).
+Thus it is an equivariant map. Any two equivariant maps \(Z\to M\) are joined by their pointwise convex combination, which is continuous and remains in \(M\). This proves the stated universal property without a finite-dimensional, free-action or closed-subgroup hypothesis. \(\square\)
+
+### 11Q.2. Mapping to the coefficient probability base
+
+Let \(Y\) be a nonempty compact metrizable \(\Gamma\)-space and \(X=\operatorname{Prob}(Y)\). Use left actions in this section; a right action from the coarse-field construction is converted by \(h\cdot y=yh^{-1}\).
+
+**Proposition 11Q.2.** Every second-countable locally compact proper \(\Gamma\)-space \(Z\), including \(M\), has a continuous equivariant map \(\Phi:Z\to X\).
+
+**Proof.** Fix \(y_0\in Y\) and a square cutoff \(c\) on \(Z\). Set
+\[
+ \Phi(z)=\sum_g c(g^{-1}z)^2\delta_{g\cdot y_0}.
+ \tag{PM.5}
+\]
+The coefficients are nonnegative and sum to one. On any compact subset of \(Z\) only finitely many of them occur. For each continuous function on \(Y\), its integral against (PM.5) is consequently a locally finite continuous sum; this is exactly weak probability continuity. Substituting \(g=hk\) in (PM.5) proves \(\Phi(hz)=h\Phi(z)\). No invariant probability for the whole group is used. \(\square\)
+
+The superficially simpler formula
+\(\|\mu\|_1^{-1}\sum_g\mu(g)\delta_{g\cdot y_0}\)
+is not a justified substitute for (PM.5): its denominator can fail to be continuous in \(M\). For example
+\(\mu_n=\tfrac34\delta_e+\tfrac14\delta_{g_n}\),
+with \(g_n\) escaping every finite set, tends to \(\tfrac34\delta_e\) in \(M\), while its masses are one and the limit's mass is \(3/4\). The square-cutoff formula avoids that defect.
+
+### 11Q.3. What this interface does and does not supply
+
+Theorem 11Q.1 and Proposition 11Q.2 supply the actual proper central space and the continuous equivariant probability-base map required in the compact-base transfer route. Pullback of \(C(X)\) along \(\Phi\) acts in \(C_b(Z)=M(C_0(Z))\), and is nondegenerate: on a compact support its continuous image in \(X\) is compact, so a function equal to one on that image acts as the identity there. For this unital \(C(X)\) the constant one already proves the assertion.
+
+They do not construct a proper coefficient algebra with a Dirac class. In particular an equivariant map \(M\to X\) gives a homomorphism \(C(X)\to M(C_0(M))\), not a scalar equivariant evaluation \(C(X)\to\mathbb C\). The still required interfaces in the source route are:
+
+1. a proper algebra \(A\), a class \(D\in KK^\Gamma(A,\mathbb C)\), and a family \(\theta\in RKK^\Gamma(M;\mathbb C,A)\) with \(\theta\otimes_A D=1\);
+2. a proper algebra \(B\) for the affine Hilbert field over \(X\), and classes \(\eta_X\in KK^\Gamma_X(C(X),B)\), \(d_X\in KK^\Gamma_X(B,C(X))\) with the supplied coefficient product identity.
+
+The existing coefficient oscillator identity proves the homotopy calibration needed for the second construction's eventual product. It is not either of these two factorization statements.
+
+### 11Q. Reading
+
+Jean-Louis Tu, *The Gamma Element for Groups which Admit a Uniform Embedding into Hilbert Space* (2004), pp.276 and 282–284, [complete freely readable original scan](https://www.yumpu.com/en/document/view/50923940/the-gamma-element-for-groups-which-admit-a-uniform-embedding-). The proof here establishes the proper measure base, its topology and the cutoff probability map directly; the Dirac and Bott factorization interfaces remain explicitly separate.
+
+### 11Q. Figure
+
+![The half-mass properness test and the cutoff probability map](../figures/proper-probability-base.png)
+
+**Figure 11Q.1.** The left panel is the coordinate projection \(a=\mu(E)\), \(b=\mu(h^{-1}E)\) when the two sets are disjoint. The total bound gives \(a+b\leq1\), which has no point with both coordinates strictly greater than \(1/2\). Thus two compact-set half-mass tests force overlap and the finite transporter bound. The right panel records the normalized square-cutoff coefficients and their locally finite, equivariant map to \(\operatorname{Prob}(Y)\). Neither panel treats total mass as continuous or supplies a scalar evaluation. [Vector figure](../figures/proper-probability-base.svg); [generator](../reproduction/general-auxiliary-providers/reproduce.py); [component terms](../reproduction/general-auxiliary-providers/COMPONENT-TERMS.md).
+
+
+## 11R. Coherent proper factorization and the local transverse restriction
+
+A scalar class for each countable return group is not yet a class for
+the holonomy groupoid. We give the exact groupoid transfer formula,
+prove its unit-space restriction on the actual descended modules,
+and identify an obstruction to turning a field oscillator's compact
+operator algebra into the missing proper coefficient. We also
+construct the proper weak cone from genuinely coherent groupoid
+kernel data. Sections 11S–11T construct one actual coherent proper extension throughout the eligible foliation scope. A compact auxiliary kernel route, original-unit-normalized Bott/Dirac factors and the physical graph operator remain distinct requirements.
+
+Throughout, \(\mathcal G\rightrightarrows T\) is second-countable,
+locally compact, Hausdorff and étale. A complete transversal of a
+compact foliation with invariant positive transverse metric has
+these properties, by Lemma 11M.5, the eligible metric separates holonomy arrows. No global discrete action replaces
+\(\mathcal G\). Write
+
+\[
+ C=C_0(T),\quad A_m=C^*(\mathcal G),\quad
+ A_r=C_r^*(\mathcal G),\quad q_A:A_m\longrightarrow A_r,
+ \quad i_m:C\longrightarrow A_m,\quad i_r:C\longrightarrow A_r.
+ \tag{CA.1}
+\]
+
+The unit inclusions are actual homomorphisms: compactly supported
+unit functions extend by zero on the open-and-closed unit space.
+Their full and reduced norms are the supremum norm. They are
+nondegenerate, by the unit approximate identity on compact
+convolution supports. Full and reduced groupoid descent below
+retain their coefficient algebras. Their existence, product law
+and natural quotient square are stated explicitly as inputs to
+the transfer theorem, rather than inferred from the corresponding
+discrete-group theorem.
+
+### 11R.1. The unit restriction of a descended field
+
+Let \(E\) be a countably generated graded Hilbert \(C\)-module with
+the canonical nondegenerate left \(C\)-action, and a continuous
+even unitary groupoid action \(U_g:E_{s g}\to E_{r g}\).
+Let \((E,F)\) be a base-linear equivariant Kasparov cycle.
+Thus \(F\) is odd, adjointable and \(C\)-linear; its localized
+square and adjoint defects are compact, and its localized
+groupoid covariance defects have the required compactness and
+continuity. Denote its ordinary forgetful class by
+\(\gamma_0\in KK(C,C)\). In particular forgetting means keeping
+the whole \(C\)-module, rather than selecting one fibre.
+
+**Theorem 11R.1 (unit restriction is extension of scalars).**
+For the full descent of this cycle,
+
+\[
+ [i_m]\otimes_{A_m}j_m(E,F)
+       =\gamma_0\otimes_C[i_m]
+       \quad\hbox{in }KK(C,A_m).
+ \tag{CA.2}
+\]
+
+The equality has an explicit unitary on the completed modules.
+No invariant measure, global scalar character or equivariant
+evaluation of \(T\) at a point is used.
+
+**Proof.** Use the descent core of continuous compactly supported
+sections \(\xi(g)\in E_{r g}\). Its right scalar convolution and
+inner product are
+
+\[
+ \begin{split}
+ (\xi*k)(g)&=\sum_{s h=s g}\xi(gh^{-1})k(h),\\
+ \langle\xi,\zeta\rangle(h)
+       &=\sum_{s g=r h}\langle\xi(g),\zeta(gh)\rangle_{E_{r g}}.
+ \end{split}
+ \tag{CA.3}
+\]
+
+All products are composable, and all arrow labels remain in the
+sums. In particular distinct isotropy arrows have not been
+identified. Define on elementary tensors
+
+\[
+ \Phi:E\otimes_{C,i_m}A_m\longrightarrow E\rtimes_m\mathcal G,
+ \qquad \Phi(e\otimes k)(g)=e(r g)k(g).
+ \tag{CA.4}
+\]
+
+Balancing is correct: multiplication of \(k\) on the left by
+\(i_m(a)\) is \(a(r g)k(g)\), the same as replacing \(e\)
+by \(ea\). The inner product of two such sections at \(h\) is
+
+\[
+ \sum_{s g=r h}\overline{k(g)}
+       \langle e(r g),f(r g)\rangle\,l(gh)
+       =\bigl(k^*i_m(\langle e,f\rangle)l\bigr)(h).
+ \tag{CA.5}
+\]
+
+This is exactly the interior-tensor inner product. It proves
+positivity on this dense core and that \(\Phi\) extends
+isometrically.
+
+It is onto. A compact arrow support has a finite bisection
+cover. Locally a continuous pullback section is approximated
+in norm by a unit section evaluated at the range, times a
+continuous arrow function; a finite partition of unity on
+the support gives finite sums of this form. The continuous
+Hilbert-field definition supplies the required unit sections,
+without a local trivialization or a fixed fibre rank. Uniform
+error \(\epsilon\) on a support covered by \(N\) bisections
+has module norm at most \(N\epsilon\): both absolute fibre
+sums for its inner product are at most \(N^2\epsilon^2\).
+Thus those elementary sections are dense in the completed
+descent module.
+
+The descended left action is
+
+\[
+ (\Lambda_E(f)\xi)(g)
+       =\sum_{r h=r g}f(h)U_h\xi(h^{-1}g).
+ \tag{CA.6}
+\]
+
+For a unit function \(a\), this is exactly
+\(a(r g)\xi(g)\). Hence pulling back by \(i_m\) gives the
+ordinary left \(C\)-action on the first factor of (CA.4).
+The descended operator is pointwise
+\((\widetilde F\xi)(g)=F_{r g}\xi(g)\); under \(\Phi\) it
+is \(F\otimes1\). Extension of scalars along the homomorphism
+\(i_m\) represents the ordinary Kasparov product on the
+right of (CA.2). To see that there is no loss of local
+compactness, localize a rank-one operator of \(E\) by a
+unit function: its tensor extension factors through
+left multiplication by \(i_m(a)\in A_m=\mathcal K(A_m)\),
+and is a compact operator on \(E\otimes_C A_m\).
+Approximation by these localized rank-one operators gives
+the same assertion for every compact defect. Thus this
+is equality of actual cycles, not merely equality of
+their fibre indices. This proves (CA.2). \(\square\)
+
+The same core identification works for reduced descent when
+that descent is supplied. The full statement is the one
+needed to evaluate the transfer formula.
+
+### 11R.2. The exact coherent transfer certificate
+
+Let \(P\) be a separable graded \(\mathcal G\)-algebra over
+\(T\), and set \(P_m=P\rtimes_m\mathcal G\),
+\(P_r=P\rtimes_r\mathcal G\). A proper coefficient structure
+means a nondegenerate equivariant central homomorphism
+\(C_0(Z)\to ZM(P)\), compatible with the anchor to \(T\),
+where \(Z\) is a second-countable locally compact Hausdorff
+proper \(\mathcal G\)-space.
+
+**Theorem 11R.2 (general groupoid transfer with its exact local premise).**
+Suppose all the following data are supplied.
+
+1. Classes \(\eta\in KK_{\mathcal G}^k(C,P)\) and
+   \(d\in KK_{\mathcal G}^k(P,C)\), for the same
+   \(k\in\mathbb Z/2\), with product
+   \(\gamma=\eta\otimes_P d\) represented as in Theorem 11R.1.
+2. Their full and reduced descents, the product law for
+   full descent, and the exact naturality identity
+   \([q_A]\otimes j_r(\eta)=j_m(\eta)\otimes[q_P]\).
+3. An actually proved inverse
+   \(v\in KK(P_r,P_m)\) to the coefficient quotient
+   \([q_P]\), in particular
+   \([q_P]\otimes_{P_r}v=1_{P_m}\).
+4. A supplied maximal normal class
+   \(d_m\in KK^q(A_m,\mathbb C)\), retaining the entire
+   inverse normal coefficient, and an original local
+   oriented disk class \(b_U\in KK^q(\mathbb C,C)\).
+
+Put \(d_N=[i_m]\otimes_{A_m}d_m\), and let
+\(\gamma_0=\operatorname{For}(\gamma)\). Define
+
+\[
+ d_r=j_r(\eta)\otimes_{P_r}v
+       \otimes_{P_m}j_m(d)\otimes_{A_m}d_m
+       \in KK^q(A_r,\mathbb C).
+ \tag{CA.7}
+\]
+
+Then
+
+\[
+ [i_r]\otimes_{A_r}d_r
+       =\gamma_0\otimes_C d_N
+       \quad\hbox{in }KK^q(C,\mathbb C).
+ \tag{CA.8}
+\]
+
+If \(\gamma_0=1_C\), the full ordinary normal restriction is
+preserved. For the original local Bott requirement the weaker
+precise premises
+
+\[
+ b_U\otimes_C\gamma_0=b_U,\qquad
+ b_U\otimes_C d_N=+1
+ \tag{CA.9}
+\]
+
+already suffice:
+\((b_U\otimes_C[i_r])\otimes_{A_r}d_r=+1\).
+Neither an equivariant unit nor invertibility of \(q_A\) is
+required.
+
+**Proof.** Track the factors of (CA.7) in their displayed
+order: they run from \(A_r\) to \(P_r\), then \(P_m\),
+then \(A_m\), then \(\mathbb C\), with degrees \(k,0,k,q\).
+No factors are interchanged and the total degree is \(q\).
+Naturality, cancellation of the supplied coefficient inverse
+and the full product law give
+
+\[
+ [q_A]\otimes_{A_r}d_r
+    =j_m(\eta)\otimes_{P_m}j_m(d)\otimes_{A_m}d_m
+    =j_m(\gamma)\otimes_{A_m}d_m.
+ \tag{CA.10}
+\]
+
+Since \(q_A i_m=i_r\), restriction of this equality to \(C\)
+and Theorem 11R.1 give
+\([i_r]\otimes d_r=\gamma_0\otimes[i_m]\otimes d_m\),
+which is (CA.8). Multiplication by \(b_U\), followed by the
+two exact equalities (CA.9), gives the claimed integer.
+The even \(\gamma\) changes no transverse degree or Clifford
+order. Nothing evaluates \(T\) at a point equivariantly.
+The full inverse line and finite right Clifford factor are
+still in the supplied \(d_m\); (CA.8) is a class equality
+and does not replace them by a determinant-only module.
+\(\square\)
+
+Properness of \(P\), by itself, is not a proof of every
+input just listed. In particular the arbitrary-groupoid
+descent and proper coefficient quotient provider must be
+supplied at that scope. The already proved discrete-group
+cutoff isomorphism is not silently its proof for this
+groupoid. A normalized holonomy Morita correspondence
+transfers the resulting transversal class and its Bott
+pairing to the smooth graph algebra when that exact
+correspondence is supplied. This abstract transfer does
+not establish a finite-order physical graph operator.
+
+The condition \(\gamma_0=1_C\) is optional for the historical
+local integer. For example a finite graded index bundle
+representative \(W^+-W^-\) is trivial over a sufficiently
+small disk \(U\). If its rank difference is one there,
+its action on \(b_U\) is
+\((\operatorname{rank}W^+-\operatorname{rank}W^-)b_U=b_U\):
+choose frames on that disk, tensor the Bott module by
+each frame, and obtain the indicated finite direct sum
+with its original sign. Such an index bundle can have
+nontrivial global transitions. Fibrewise rank one alone
+must not therefore be asserted to give the stronger
+whole-\(C\) identity.
+
+### 11R.3. An elementary compact algebra is proper exactly when its base is
+
+This result applies to general groupoid fields, not just
+to group actions or constant-rank bundles.
+
+**Theorem 11R.3 (the compact-operator coefficient criterion).**
+Let \(Y\) be a second-countable locally compact Hausdorff
+\(\mathcal G\)-space with anchor \(p:Y\to T\). Let
+\(\mathcal E\) be a full countably generated continuous
+Hermitian Hilbert field over \(Y\), with nonzero fibres
+and a continuous unitary \(\mathcal G\)-action. Put
+\(Q=\mathcal K(\mathcal E)\). Then \(Q\) has a proper
+\(\mathcal G\)-algebra structure as defined above if
+and only if the action on \(Y\) itself is proper.
+
+Thus an oscillator's elementary compact algebra over a
+nonproper compact probability base cannot be the missing
+proper coefficient, even when its oscillator cycle is
+the identity with those coefficients.
+
+**Proof: the centre.** A multiplier of
+\(\mathcal K(\mathcal E)\) is an adjointable field
+operator. Here is the needed identification. For a
+compact-operator approximate identity \(u_n\), the
+operators \(Mu_n\) have norm at most \(\|M\|\).
+On vectors \(a\xi\), \(a\in\mathcal K(\mathcal E)\),
+they converge to \((Ma)\xi\), since
+\(u_n a\to a\) in norm. Such vectors have dense span,
+because \(u_n\to1\) on the section module. Uniform
+boundedness therefore defines the limit operator
+on every section. Applying the same construction
+to \(M^*\) proves that the two limits are adjoints.
+Conversely each adjointable operator multiplies
+the rank-one operators on both sides, so gives
+a multiplier. This proves the identification.
+If it is central, its value at each \(y\) commutes with
+every compact operator on \(\mathcal E_y\). This value
+is scalar. Indeed commutation with each rank-one
+projection preserves every one-dimensional subspace;
+applying this to two vectors and their sum makes their
+scalars equal. The same proof covers finite and infinite
+dimension. Write that scalar \(c(y)\).
+
+Near any \(y_0\) choose a continuous section \(\xi\)
+nonzero there. Its norm stays positive nearby, and
+
+\[
+ c(y)=\frac{\langle\xi(y),M\xi(y)\rangle}
+              {\|\xi(y)\|^2}
+ \tag{CA.11}
+\]
+
+is continuous. Its supremum is bounded by \(\|M\|\).
+Conversely multiplication by any \(c\in C_b(Y)\) is a
+central adjointable operator. Thus
+\(ZM(Q)=C_b(Y)\), including when the field rank varies.
+
+Suppose a nondegenerate central homomorphism
+\(a:C_0(Z)\to ZM(Q)\) gives a proper coefficient
+structure. For every \(y\), its scalar value
+\(a(f)(y)\) is a nonzero character of \(C_0(Z)\).
+It cannot be zero: nondegeneracy on \(Q\) passes to
+the nonzero compact fibre \(Q_y\), so the central
+approximate identity acts there as one. A nonzero
+character of \(C_0(Z)\) is evaluation at a unique
+point \(z_y\). For instance extend it to the
+one-point compactification; its kernel is a
+codimension-one maximal ideal, whose common zero
+is a single point by the compact-space finite
+intersection argument and point separation. It
+cannot be the added point because the original
+character is nonzero.
+
+All \(f(z_y)=a(f)(y)\) are continuous in \(y\).
+Compactly supported functions supported in an
+arbitrary neighbourhood of \(z_y\) show that
+\(y\mapsto z_y\) is continuous. Compatibility
+with \(C_0(T)\) makes it an anchored map
+\(p_Z(z_y)=p(y)\); equivariance gives
+
+\[
+ z_{g y}=g z_y.
+ \tag{CA.12}
+\]
+
+Consequently every proposed proper central structure
+gives an actual continuous equivariant map
+\(z:Y\to Z\).
+
+**Proof: properness pulls back through that map.**
+For compact \(K,L\subset Y\), let
+
+\[
+ S_{K,L}=\{(g,y):y\in K,\ gy\in L\}.
+ \tag{CA.13}
+\]
+
+The proper action on \(Z\) has compact transporter
+between the compact sets \(z(K)\) and \(z(L)\).
+Its projection on the arrow space is a compact
+set \(B\subset\mathcal G\). By (CA.12), every
+element of \(S_{K,L}\) lies in \(B\times K\).
+The source-anchor composability condition is
+closed, since \(T\) is Hausdorff. The condition
+\(gy\in L\) is closed by action continuity and
+compactness of \(L\). Thus \(S_{K,L}\) is a
+closed subset of \(B\times K\), hence compact.
+Any compact subset of \(Y\times Y\) is closed
+and lies in the product of its two compact
+projections. Applying the same argument shows
+that the action-relation map is proper on all
+such compact sets. The action on \(Y\) is
+therefore proper.
+
+Conversely if \(Y\) is a proper \(\mathcal G\)-space,
+use \(Z=Y\) and its canonical central multiplication
+on \(Q\). A \(C_0(Y)\) approximate identity converges
+on the section module and hence on its compact
+rank-one operators, so this multiplication is
+nondegenerate. It is anchored and equivariant.
+This is a proper coefficient structure. Both
+directions are proved. \(\square\)
+
+No obstruction to a different, non-elementary
+proper Bott algebra is asserted. That is precisely
+where the additional geometry of a proper
+Hilbert-field cone has to enter the coefficient
+algebra and its Kasparov factors.
+
+### 11R.4. A coherent kernel supplies a proper groupoid cone
+
+We formulate the input on an actual groupoid
+\(\mathcal H\rightrightarrows Y\), which may be
+the transformation groupoid
+\(\mathcal G\ltimes Y\) of an auxiliary space.
+It is second-countable, locally compact,
+Hausdorff and étale. Suppose
+\(\psi:\mathcal H\to[0,\infty)\) is continuous,
+is zero on units, obeys
+\(\psi(h^{-1})=\psi(h)\), and satisfies:
+
+\[
+ \sum_{i,j}c_i c_j\psi(h_i^{-1}h_j)\le0
+ \quad(rh_i=y,\ \sum_i c_i=0).
+ \tag{CA.14}
+\]
+
+Also suppose it is proper relative to its two
+unit maps: for compact \(K,L\subset Y\) and
+finite \(R\), the set
+
+\[
+ \{h:s h\in K,\ r h\in L,\ \psi(h)\le R\}
+ \quad\hbox{is compact}.
+ \tag{CA.15}
+\]
+
+These are coherent continuous kernel assumptions,
+not consequences of separate coarse embeddings
+chosen on each orbit or isotropy group.
+
+**Theorem 11R.4 (the groupoid weak cone).**
+These data construct a continuous separable real
+Hilbert field \(H_y\), an affine unitary action
+of \(\mathcal H\), and a second-countable
+locally compact Hausdorff proper
+\(\mathcal H\)-space
+
+\[
+ Z=\{(y,v,t):v\in H_y,\ \|v\|^2\le t,\ t\ge0\}.
+ \tag{CA.16}
+\]
+
+The topology is the weak-field coordinate
+topology described below, not the norm
+topology of an infinite-dimensional ball.
+If \(\mathcal H=\mathcal G\ltimes Y\), the same
+space is a proper \(\mathcal G\)-space over
+the composite anchor to \(T\).
+
+**Proof: field and action.** For each \(y\),
+take finite zero-sum combinations of
+\(\delta_h\), \(h\in\mathcal H^y\), with
+semidefinite inner product
+
+\[
+ \left\langle\sum_h a_h\delta_h,\sum_k b_k\delta_k\right\rangle_y
+       =-\frac12\sum_{h,k}a_h b_k\psi(h^{-1}k).
+ \tag{CA.17}
+\]
+
+Positivity follows from (CA.14). Cauchy–Schwarz
+follows by applying positivity to the quadratic
+polynomial of \(u+\lambda v\). A null vector is
+orthogonal to all vectors, so quotienting by the
+null space and completing gives a real Hilbert
+space \(H_y\). Let
+\(e_h=[\delta_h-\delta_{1_y}]\). Direct expansion
+gives
+
+\[
+ \langle e_h,e_k\rangle_y
+       =\tfrac12(\psi(h)+\psi(k)-\psi(h^{-1}k)),
+ \qquad \|e_h\|^2=\psi(h).
+ \tag{CA.18}
+\]
+
+A countable bisection basis and countable
+compactly supported bump functions in its
+range domains produce countably many global
+sections \(\sigma_j\): on such a domain
+they are a bump times \(e_{h(y)}\), extended
+by zero. Gram entries are continuous by
+(CA.18). Their evaluation spans are dense
+in every fibre: a bisection through any
+arrow and a bump nonzero at its range
+recover its \(e_h\) up to a nonzero scalar.
+Finite linear combinations with continuous
+unit coefficients, followed by local uniform
+norm completion, define the continuous
+Hilbert field. No constant dimension or
+globally indexed arrow enumeration is assumed.
+
+For \(g:y\to z\), define
+
+\[
+ L_g e_h=e_{gh}-e_g,\qquad
+ A_g v=L_gv+e_g,\qquad
+ \|e_g\|^2=\psi(g).
+ \tag{CA.19}
+\]
+
+The Gram products are preserved because
+\((gh)^{-1}(gk)=h^{-1}k\). The map is onto:
+\(e_l=L_g(e_{g^{-1}l}-e_{g^{-1}})\).
+It extends to an orthogonal isomorphism
+\(H_y\to H_z\). The identities
+\(L_gL_h=L_{gh}\) and
+\(L_g e_h+e_g=e_{gh}\) prove exact affine
+composition. On bisection generators these
+maps are continuous by the displayed Gram
+formula; approximation by those generators
+proves continuous field action.
+
+**Proof: the topology and local compactness.**
+Give \(Z\) its initial topology from the
+unit \(y\), the height \(t\), and the
+coordinates \(\langle v,\sigma_j(y)\rangle\).
+For compact \(K\subset Y\) and \(R<\infty\),
+the set \(Z_{K,R}\) is a closed subspace of
+the compact countable product
+
+\[
+ K\times[0,R]\times
+   \prod_j[-\sqrt R\,M_j,\sqrt R\,M_j],
+ \qquad M_j=\sup_{y\in K}\|\sigma_j(y)\|.
+ \tag{CA.20}
+\]
+
+Indeed its coordinate image consists exactly
+of the inequalities, for every finite
+rational coefficient list,
+
+\[
+ \left|\sum_j a_j z_j\right|^2
+    \le t\sum_{j,k}a_j a_k
+                   \langle\sigma_j(y),\sigma_k(y)\rangle.
+ \tag{CA.21}
+\]
+
+Cauchy–Schwarz gives one implication.
+Conversely these inequalities, extended to
+real coefficients by continuity, define a
+well-defined bounded functional on the
+dense span of the \(\sigma_j(y)\), of norm
+at most \(\sqrt t\). Here one can construct its
+representing vector explicitly. Gram--Schmidt on
+those generators, omitting zero remainders,
+gives a finite or countable orthonormal dense
+family \(u_n\). If the functional is \(\ell\),
+put \(a_n=\ell(u_n)\). Applying the bound to
+\(\sum_{n\le N}a_nu_n\) gives
+\(\sum_{n\le N}a_n^2\le t\). Consequently
+\(v=\sum_na_nu_n\) converges, has squared
+norm at most \(t\), and represents the
+functional on the dense span and then on
+the entire fibre. Uniqueness follows from
+density. Thus (CA.21)
+characterizes the image and makes it
+closed. This proves compactness of
+\(Z_{K,R}\) and also separation of points
+by its coordinates.
+
+Around a point of \(Z\), choose a unit
+neighbourhood with compact closure and
+an upper height bound larger than its
+height. The resulting open neighbourhood
+has closure in one of these compact
+sets. This proves local compactness.
+The unit space and countable real
+coordinate product are second-countable;
+the subspace coordinate topology makes
+\(Z\) second-countable and Hausdorff.
+
+**Proof: action and properness.** Extend
+the affine action by
+
+\[
+ g\cdot(y,v,t)=
+ \bigl(z,L_gv+e_g,\,
+       t+2\langle L_gv,e_g\rangle+\psi(g)\bigr).
+ \tag{CA.22}
+\]
+
+The new height minus the new squared
+norm is exactly \(t-\|v\|^2\), so the
+point remains in \(Z\). This identity
+and (CA.19) prove the composition law,
+including the cross-term sign.
+
+The action is continuous in the weak
+coordinate topology. For a target
+section \(\sigma_j\), its output
+coordinate is
+\(\langle v,L_g^{-1}\sigma_j(rg)\rangle+
+ \langle e_g,\sigma_j(rg)\rangle\).
+The transported section is continuous
+on each arrow neighbourhood. Approximate
+it locally in norm by finite sums of
+the source sections \(\sigma_k(sg)\)
+with continuous arrow coefficients.
+On a convergent input, \(t\) is bounded,
+so the error of its pairing with \(v\)
+is at most \(\sqrt R\) times the norm
+error. Finite coordinate pairings are
+continuous, and approximation proves
+continuity of the output coordinate.
+The same argument with \(L_g^{-1}e_g\)
+proves continuity of the height cross
+term. This establishes continuity of
+every coordinate in (CA.22).
+
+If an input and its output lie in
+compact subsets with heights at most
+\(R_1,R_2\), then
+
+\[
+ \sqrt{\psi(g)}
+    =\|e_g\|
+    \le\|L_gv+e_g\|+\|v\|
+    \le\sqrt{R_2}+\sqrt{R_1}.
+ \tag{CA.23}
+\]
+
+Their unit projections are compact.
+By (CA.15) all such arrows belong
+to a compact set. The action
+transporter is a closed subset of
+that compact arrow set times the
+compact input set, hence compact.
+This proves properness, without
+finite fibre dimension or freeness.
+
+For a transformation groupoid
+\(\mathcal G\ltimes Y\), each such
+compact arrow set also has compact
+projection on \(\mathcal G\).
+The same closed-subset argument
+therefore proves properness of
+the underlying \(\mathcal G\)-action
+on \(Z\). All labels, anchors and
+isotropy are retained. \(\square\)
+
+![Coherent transfer and the exact proper-cone height](../figures/groupoid-compatible-auxiliary.png)
+
+**Figure 11R.1.** Theorem 11R.2's coefficient-retaining
+transfer and Theorem 11R.4's proper cone. The
+right panel is an exact one-dimensional fibre
+slice, not a drawing of an infinite-dimensional
+norm ball. Its affine translation has \(L=1\),
+\(b=1\), \((v,t)=(-1/2,3/4)\) and output
+\((1/2,3/4)\). Both have excess height \(1/2\);
+the cross term in (CA.22) is indispensable.
+The geometric illustration supplies no missing
+kernel or Kasparov factor. [Editable SVG](../figures/groupoid-compatible-auxiliary.svg)
+· [Generator](../reproduction/groupoid-compatible-auxiliary/draw_compatible.py)
+· [Component terms](../reproduction/groupoid-compatible-auxiliary/COMPONENT-TERMS.md).
+
+### 11R.5. Exact conclusion for the general holonomy problem
+
+The groupoid restriction identity in Theorem 11R.1 and
+the transfer certificate in Theorem 11R.2 are general;
+no chosen global acting group appears.
+Theorem 11R.4 constructs a proper central-space
+candidate from coherent kernel data,
+including variable infinite-dimensional
+fibres. Theorem 11R.3 proves that the elementary
+compact algebra of a field oscillator
+over a nonproper base cannot substitute
+for the required proper coefficient.
+
+Sections 11S–11T supply a single actual coherent proper extension on the full holonomy groupoid, with all arrow labels and isotropy retained. Its field source is \(C_0(M_{\mathcal G})\), rather than the original \(C_0(T)\). Section 11U supplies the proper-coefficient quotient isomorphism at this full groupoid scope. The original-unit-normalized Dirac factors and the needed groupoid descent product/naturality providers remain to be supplied. A route through a compact auxiliary kernel base also needs a coherent kernel on that appropriate extension. The physical finite-order graph expression, open transversal domain and ordinary localized compacts require their own proofs after class transfer. The original local disk Bott integer is the requirement; a stronger equivariant-unit identity has not been added to it.
+
+Human-source context: Connes, [*A survey of foliations and operator algebras*, pages 28–29](https://alainconnes.org/wp-content/uploads/foliationsfine.pdf),
+for the original local class, positive
+pairing and graph question. The
+complete arguments here are independently
+expressed. The discrete and field
+providers retain their own hypotheses;
+no proof of the full historical
+target is claimed here.
+
+## 11S. A universal proper base on the actual holonomy groupoid
+
+It generalizes the
+range-fibre measure construction, rather than replacing a pseudogroup
+by a global acting group. The groupoid is
+\(\mathcal G\rightrightarrows T\), second countable, locally compact,
+Hausdorff and étale. Its arrow labels, anchors and isotropy are retained.
+Every eligible metric holonomy transversal satisfies these hypotheses
+by the existing Lemma 11M.5. The construction in this section does not
+need that metric hypothesis once these topological properties hold.
+
+We use Haar measure on locally compact groups,
+Theorem 2.2 and the positive-norm paragraph preceding Theorem 2.4,
+for the positive-functional/Radon-measure bridge on arbitrary locally
+compact Hausdorff spaces. Its proof does not require a group structure.
+The weak-* compact
+unit ball used below can also be obtained directly: choose a countable
+dense set in \(C_0(\mathcal G)\); bounded functional values lie in a
+compact countable product, and the closed linearity, positivity and
+norm inequalities characterize its positive unit ball. Uniform
+approximation reconstructs its functional from those coordinates.
+Thus separability gives both compactness and a metrizable topology.
+
+### 11S.1. The range-fibre subprobability ball
+
+Let \(Q\) consist of pairs \((y,\mu)\), with \(y\in T\) and a
+positive Radon measure \(\mu\) on the arrow space of total mass at
+most one, supported on \(\mathcal G^y=r^{-1}(y)\). Give it the
+topology of its inclusion in \(T\) times the positive weak-* unit
+ball of \(C_0(\mathcal G)^*\). The anchor is
+\(p_Q(y,\mu)=y\). Define
+
+\[
+ M_{\mathcal G}=\{(y,\mu)\in Q: \tfrac12<\mu(\mathcal G)\le1\}.
+ \tag{GP.1}
+\]
+
+The measure has countably many possible atomic locations in each
+range fibre, because an étale second-countable fibre is countable
+and discrete. Its topology is nevertheless defined on the whole
+arrow space. No simultaneous continuous enumeration of all fibres
+is required. In particular different isotropy arrows give different
+locations in the measure.
+
+**Theorem 11S.1 (topology and the groupoid action).** The space
+\(Q\) is second countable, locally compact and Hausdorff; its
+anchor to \(T\) is proper. The space \(M_{\mathcal G}\) is open in
+\(Q\), hence second countable, locally compact, Hausdorff and
+sigma-compact. Left multiplication of arrows defines a continuous
+\(\mathcal G\)-action on both spaces:
+
+\[
+ g\cdot(y,\mu)=(r g,(L_g)_*\mu),\qquad
+ L_g(h)=gh,\quad y=s g.
+ \tag{GP.2}
+\]
+
+**Proof of the topology.** Support on the range fibre is equivalent
+to the identities
+
+\[
+ \mu((a\circ r)f)=a(y)\mu(f),
+ \qquad a\in C_c(T),\quad f\in C_c(\mathcal G).
+ \tag{GP.3}
+\]
+
+One direction follows from the support condition. For the other,
+if an arrow has range different from \(y\), choose a unit bump
+\(a\) equal to one near its range and zero near \(y\). Equation
+(GP.3), tested on nonnegative arrow bumps in that neighbourhood,
+forces its measure to be zero. A countable arrow cover proves that
+the complement of \(r^{-1}(y)\) has measure zero. All terms in
+(GP.3) are continuous in \((y,\mu)\). Consequently \(Q\) is
+closed in the stated product. Over a compact \(K\subset T\), it
+is closed in the compact product \(K\) times the positive weak-*
+unit ball, so \(p_Q^{-1}(K)\) is compact. Compact unit
+neighbourhoods then prove local compactness. The two factors have
+countable bases; so does \(Q\).
+
+The total mass equals
+
+\[
+ \mu(\mathcal G)=
+ \sup\{\mu(f):f\in C_c(\mathcal G),\ 0\le f\le1\}.
+ \tag{GP.4}
+\]
+
+This follows from Radon inner regularity and compact-set bump
+functions. It is a supremum of continuous functions, hence lower
+semicontinuous. The strict half-mass condition in (GP.1) is open.
+Second-countable locally compact spaces have countable compact
+exhaustions: cover by a countable family of relatively compact
+open sets and take successive finite unions of their closures.
+This also proves the stated sigma-compactness.
+
+**Proof of action continuity.** For fixed \(g\), left
+multiplication is a homeomorphism between the two closed discrete
+range fibres, with inverse \(L_{g^{-1}}\). It preserves total
+mass. The actions therefore stay in \(Q\) and \(M_{\mathcal G}\)
+and satisfy the exact composition law.
+
+Continuity with a varying arrow is the essential step. Choose an
+open bisection \(B\) through \(g_0\), with section
+\(b:s(B)\to B\), and a compactly supported bump
+\(\chi\in C_c(s(B))\) equal to one on a neighbourhood of
+\(s g_0\). For a test function \(f\in C_c(\mathcal G)\), set
+
+\[
+ \widetilde f(h)=
+ \begin{cases}
+ \chi(rh)f(b(rh)h),&rh\in s(B),\\
+ 0,&rh\notin s(B).
+ \end{cases}
+ \tag{GP.5}
+\]
+
+This is continuous. It has compact support: if its value is
+nonzero, \(b(rh)\) lies in the compact set
+\(b(\operatorname{supp}\chi)\), and \(b(rh)h\) lies in
+\(\operatorname{supp}f\). Thus \(h\) belongs to the product
+of the inverse of the former compact set and the latter compact
+set. Composable pairs form a closed subset because \(T\) is
+Hausdorff, and multiplication maps that compact subset to a
+compact set. Hence \(\widetilde f\in C_c(\mathcal G)\).
+
+On the neighbourhood of \(g_0\) where \(\chi(sg)=1\), for a
+measure anchored at \(s g\), we have the exact equality
+
+\[
+ ((L_g)_*\mu)(f)=\mu(\widetilde f).
+ \tag{GP.6}
+\]
+
+The right side is one fixed weak-* coordinate, independent of
+the varying arrow within this bisection neighbourhood. The output
+anchor is \(r g\), also continuous. Testing all \(C_c\) functions,
+then using uniform approximation and the mass bound one for
+\(C_0\) functions, proves action continuity. \(\square\)
+
+The anchor of \(M_{\mathcal G}\) need not be proper. Its fibres
+can contain measures with mass escaping to infinity. The
+continuous nonequivariant section
+\(y\mapsto(y,\tfrac34\delta_{1_y})\) proves that every unit
+fibre is nonempty; it is not used as an equivariant section.
+
+### 11S.2. Half mass proves properness without freeness
+
+**Theorem 11S.2 (proper action).** The action-relation map
+
+\[
+ \mathcal G* M_{\mathcal G}\longrightarrow
+ M_{\mathcal G}\times M_{\mathcal G},
+ \qquad (g,m)\longmapsto(gm,m)
+ \tag{GP.7}
+\]
+
+is proper.
+
+**Proof.** Let \(K,L\subset M_{\mathcal G}\) be compact. For
+each of their points, (GP.4) supplies a compactly supported
+function with values in \([0,1]\) whose integral exceeds
+\(1/2\). This inequality persists on an open neighbourhood.
+A finite subcover supplies \(f_1,\ldots,f_n\). The one
+compactly supported function
+\(f=1-\prod_{j=1}^n(1-f_j)\) dominates them all. Put
+\(E=\operatorname{supp}f\), a compact subset of the arrow
+space. Then every measure in \(K\cup L\) satisfies
+\(\mu(E)>1/2\).
+
+If \(m=(s g,\mu)\in K\) and \(gm\in L\), both
+\(\mu(E)>1/2\) and \(\mu(L_g^{-1}E)>1/2\) hold. They
+cannot have disjoint measured supports, since total mass is at
+most one. Choose \(h\in E\cap L_g^{-1}E\) in the relevant
+range fibre, and let \(k=gh\in E\). Consequently
+
+\[
+ g=kh^{-1}\in EE^{-1}:=
+ \{kh^{-1}:k,h\in E,\ s k=s h\}.
+ \tag{GP.8}
+\]
+
+The set on the right is compact: the composability constraint is
+closed in \(E\times E\), and the displayed product is
+continuous. The transporter is a closed subset of
+\(EE^{-1}\times K\): source-anchor composability is closed,
+and the condition \(gm\in L\) is closed by GP.1. It is
+therefore compact. Every compact subset of
+\(M_{\mathcal G}^2\) is closed and lies in the product of its
+compact projections, so the same argument proves properness on
+all compact subsets. No isotropy arrows were quotiented out and
+no freeness premise was used. \(\square\)
+
+At a unit \(y\), every finite subgroup \(F\subset\mathcal G_y^y\)
+has the fixed point
+\(|F|^{-1}\sum_{f\in F}\delta_f\). Convex combination with it
+contracts the entire fibre \((M_{\mathcal G})_y\)
+\(F\)-equivariantly. Both the strict half-mass bound and the
+upper mass bound persist under convex combination.
+
+### 11S.3. Universal maps from every proper groupoid space
+
+**Theorem 11S.3 (universal property).** Every second-countable
+locally compact Hausdorff proper \(\mathcal G\)-space \(Z\)
+has a continuous anchored equivariant map
+\(Z\to M_{\mathcal G}\). Any two such maps are joined by a
+continuous anchored equivariant homotopy.
+
+**Proof: the square cutoff with its exact support condition.**
+The proper action quotient \(Z/\mathcal G\) is Hausdorff and
+locally compact. For Hausdorffness, the proper action relation is
+closed and the quotient map is open: saturation by an étale
+bisection is a partial homeomorphism. Disjoint neighbourhoods in
+the product outside the relation have disjoint saturated images.
+Images of relatively compact open neighbourhoods give compact
+neighbourhoods in the quotient. The open quotient map also
+preserves second countability. Hence the quotient admits a
+countable locally finite subordinate partition of unity.
+
+Choose countably many nonnegative \(\xi_j\in C_c(Z)\) such
+that the open sets \(q(\{\xi_j>0\})\) cover the quotient, and
+choose a locally finite partition \(\tau_j\) with closed
+supports inside those open sets. The orbit sum
+
+\[
+ S_j(z)=\sum_{r h=p_Z(z)}\xi_j(h^{-1}z)^2
+ \tag{GP.9}
+\]
+
+is finite on every orbit evaluation and continuous. Locally over
+a compact neighbourhood in \(Z\), properness bounds all arrows
+which carry \(\operatorname{supp}\xi_j\) into that
+neighbourhood by a compact set. A finite bisection cover, with
+arrow bumps forming a partition, writes the sum locally as a
+finite sum of continuous bisection branches. Compact intersection
+with any fixed range fibre is finite, because that fibre is
+closed and discrete. This proves the two assertions.
+Reindexing left multiplication gives
+\(S_j(gz)=S_j(z)\). The sum is positive precisely on the
+saturation of \(\{\xi_j>0\}\).
+
+Define a term with \(S_j=0\) to be zero, and put
+
+\[
+ c(z)^2=\sum_j
+       \frac{\tau_j(q(z))\xi_j(z)^2}{S_j(z)}.
+ \tag{GP.10}
+\]
+
+The closed support of \(\tau_j\) lies where \(S_j>0\), so
+each term is continuous, including where it is extended by
+zero. Local finiteness makes \(c\) continuous. For a compact
+\(D\subset Z\), only finitely many indices occur over
+\(q(D)\). If \(c(h^{-1}z)\ne0\) for \(z\in D\), then
+\(h^{-1}z\) lies in the union of the compact supports of
+their \(\xi_j\). Properness of the action therefore bounds
+all pairs \((h,z)\) of this form in one compact subset of
+the inverse-composability space
+\(\{(h,z):r h=p_Z(z)\}\). Explicitly start with the
+compact proper-action transporter of pairs \((h,w)\)
+with \(s h=p_Z(w)\), \(w\) in that compact union and
+\(hw\in D\), and apply \((h,w)\mapsto(h,hw)\).
+This is the required support condition;
+it is stronger than merely having a finite sum at each point.
+Reindexing (GP.9) now gives exactly
+
+\[
+ \sum_{r h=p_Z(z)}c(h^{-1}z)^2=\sum_j\tau_j(q(z))=1.
+ \tag{GP.11}
+\]
+
+**Proof: map and uniqueness.** Put
+
+\[
+ \Phi(z)=\left(p_Z(z),
+   \sum_{r h=p_Z(z)}c(h^{-1}z)^2\delta_h\right).
+ \tag{GP.12}
+\]
+
+This is a probability measure on the actual range fibre, hence
+belongs to \(M_{\mathcal G}\). Its test against an arrow
+function is a locally finite continuous sum by the compact
+support condition and the bisection argument just proved.
+Thus it is continuous in exactly Theorem 11S.1's topology. For
+\(g:p_Z(z)\to y\), replace \(h\) by \(gk\) to obtain
+
+\[
+ \Phi(gz)=g\Phi(z).
+ \tag{GP.13}
+\]
+
+All products are composable and the coefficient
+\(c(k^{-1}z)^2\) is unchanged. Any two anchored maps take
+their values in the same range-fibre measure space. Their
+pointwise convex combination is continuous in every test
+coordinate, equivariant, and has mass in \((1/2,1]\).
+It is the asserted homotopy. \(\square\)
+
+### 11S.4. Exact contribution to the general graph interface
+
+Theorems 11S.1–11S.3 construct one genuine universal proper
+\(\mathcal G\)-space for the entire eligible holonomy scope.
+They supply the central proper space itself and all its
+topological, overlap and isotropy data. In particular
+\(C_0(M_{\mathcal G})\) is a separable proper groupoid algebra
+with its own canonical central structure. Theorem 11R.3 also
+makes the compact algebra of any full nonzero equivariant
+Hilbert field on this base proper.
+
+These statements do not supply classes
+\(\eta\in KK_{\mathcal G}(C_0(T),P)\) and
+\(d\in KK_{\mathcal G}(P,C_0(T))\) with the local product
+identity of Theorem 11R.2. The anchor only gives
+\(C_0(T)\to M(C_0(M_{\mathcal G}))\); it is not a reverse
+Dirac class. Contractibility of each convex fibre supplies
+no equivariant continuous choice of its contraction point.
+
+This proper base can be used in the universal proper Dirac
+construction. A compact auxiliary kernel base, if used to
+construct a different proper Bott coefficient and the required
+factors, must still have one continuous compatible kernel on the
+whole transformation groupoid. The compact-Lie discrete
+embedding provider does not by itself supply that continuous
+family. Thus the completed all-holonomy proper-space provider
+and the unfinished compact-kernel/factorization provider have
+different, explicit types.
+
+
+![The groupoid half-mass test and its typed overlap arrows](../figures/groupoid-proper-base.png)
+
+**Figure 11S.1.** Theorem 11S.2's left panel is the exact
+two-coordinate set-mass projection under the stated
+disjointness premise. The strict quadrant has no point
+in the unit-mass triangle. The right panel retains the
+three unit anchors and the actual composable arrows:
+\(h:x\to y\), \(g:y\to z\), \(k=gh:x\to z\).
+Thus \(g=kh^{-1}\), with both \(h,k\in E\).
+The arrows are a schematic of the composability identity,
+not an embedding of the groupoid in a plane. The bottom
+panel gives GP.3's actual cutoff map and the exact
+remaining Dirac-factor type.
+[Editable SVG](../figures/groupoid-proper-base.svg) ·
+[Generator](../reproduction/groupoid-proper-base/draw_proper_base.py) ·
+[Component terms](../reproduction/groupoid-proper-base/GP-COMPONENT-TERMS.md).
+
+Human-source context: Jean-Louis Tu,
+[*The Gamma Element for Groups which Admit a Uniform Embedding into Hilbert Space*](https://www.yumpu.com/en/document/view/50923940/the-gamma-element-for-groups-which-admit-a-uniform-embedding-)
+(2004), pp. 282–284, for the discrete measure-base route;
+Jean-Louis Tu,
+[*La conjecture de Baum–Connes pour les feuilletages moyennables*](https://citeseerx.ist.psu.edu/document?doi=486238991671dba031f9cb078eeba25443307a0a&repid=rep1&type=pdf),
+K-Theory 17 (1999), 215–264,
+Section 1, for proper groupoid spaces and cutoffs. The
+proofs above retain the actual varying range fibres and
+prove the displayed continuity and compact-transporter
+steps directly. These sources do not assert this packet
+closes the historical graph question.
+
+## 11T. A coherent affine field on the universal proper extension
+
+The Theorems 11S.1–11S.3 constructs \(M=M_{\mathcal G}\) for
+every second-countable locally compact Hausdorff étale groupoid
+\(\mathcal G\rightrightarrows T\). It is a locally compact
+proper \(\mathcal G\)-space. We now supply one actual coherent
+continuous conditionally negative kernel on the entire
+transformation groupoid \(\mathcal H=\mathcal G\ltimes M\).
+The base \(M\) is retained throughout; this is not a kernel
+on \(\mathcal G\) with its original unit space \(T\), or on a
+compact auxiliary extension. All arguments use the explicitly proved universal-base provider in Section 11S.
+
+### 11T.1. One proper continuous height on the entire base
+
+**Lemma 11T.1.** There is a continuous proper function
+\(a:M\to[0,\infty)\).
+
+**Proof.** A second-countable locally compact Hausdorff space
+has a compact exhaustion \(K_n\) with
+\(K_n\subset\operatorname{int}K_{n+1}\). To obtain it,
+start with a countable relatively compact open cover; at
+each stage cover the previous compact set and the next
+finitely many cover members by finitely many relatively
+compact open neighbourhoods, and take the union of their
+closures. Choose \(u_n\in C_c(M)\), with
+\(0\le u_n\le1\), equal to one on \(K_n\), and supported
+inside \(\operatorname{int}K_{n+1}\). Set
+
+\[
+ a(m)=\sum_{n\ge1}(1-u_n(m)).
+ \tag{UPL.1}
+\]
+
+Near any point, all sufficiently large \(u_n\) are one;
+therefore the sum is locally finite and continuous. If
+\(m\notin K_{N+1}\), its first \(N\) terms equal one,
+so \(a(m)\ge N\). For \(N>R\), the closed sublevel
+\(\{a\le R\}\) lies in the compact \(K_{N+1}\).
+It is compact. Thus \(a\) is proper. \(\square\)
+
+No equivariant height or fixed point is assumed. Such a
+height is chosen once on the whole \(M\), rather than
+independently on unit fibres.
+
+### 11T.2. The coherent kernel and literal affine line
+
+For an arrow \(h:m\to n\) of \(\mathcal H\), define
+
+\[
+ b_h=a(n)-a(m),\qquad \psi(h)=b_h^2.
+ \tag{UPL.2}
+\]
+
+**Theorem 11T.2.** The function \(\psi\) is continuous,
+symmetric, zero on units, conditionally negative in the
+exact (CA.14) convention, and proper relative to the two
+unit maps in the exact (CA.15) convention. The trivial
+real line field \(H_m=\mathbb R\), with linear action
+\(L_h=1\), has the continuous affine action
+
+\[
+ A_h(v)=v+b_h,
+ \qquad b_{hk}=b_h+b_k
+ \quad(s h=r k).
+ \tag{UPL.3}
+\]
+
+In particular this supplies coherent groupoid field data
+on a single actual extension for the whole eligible
+holonomy scope.
+
+**Proof.** The continuity, unit and inverse assertions
+follow directly from the two continuous unit maps and
+the one function \(a\). For arrows \(h_i:m_i\to n\)
+with one common range and real \(c_i\) with sum zero,
+
+\[
+ \begin{aligned}
+ \sum_{i,j}c_i c_j\psi(h_i^{-1}h_j)
+ &=\sum_{i,j}c_i c_j(a(m_i)-a(m_j))^2\\
+ &=-2\left(\sum_i c_i a(m_i)\right)^2\le0.
+ \end{aligned}
+ \tag{UPL.4}
+\]
+
+The two single-index square terms vanish exactly because
+\(\sum_i c_i=0\). No orbitwise choices are made.
+The transformation groupoid \(\mathcal H\) is proper
+by Theorem 11S.2. For compact \(K,L\subset M\), the entire
+transporter \(\{h:s h\in K,r h\in L\}\) is compact.
+Its intersection with the closed set \(\{\psi\le R\}\)
+is compact. This is precisely the relative properness
+needed in CA.15. It does not assert absolute properness
+of \(\psi\) on an arrow space with noncompact units.
+
+Composition telescopes the differences of \(a\), giving
+(UPL.3). Each affine map is an isometry of its specified
+real fibres, and its dependence on the arrow and vector
+is continuous. This proves the entire assertion.
+\(\square\)
+
+### 11T.3. The exact proper cone and its change of coordinates
+
+**Theorem 11T.3.** The space
+
+\[
+ Z=\{(m,v,t):m\in M,\ v\in\mathbb R,\ t\ge v^2\}
+ \tag{UPL.5}
+\]
+
+is second countable, locally compact and Hausdorff. It
+has the continuous proper \(\mathcal G\)-action
+
+\[
+ h\cdot(m,v,t)=
+ (n,v+b_h,t+2vb_h+b_h^2),\qquad h:m\to n.
+ \tag{UPL.6}
+\]
+
+**Proof.** The cone is a closed subset of
+\(M\times\mathbb R\times[0,\infty)\), so has the
+stated topological properties. The excess height is
+preserved:
+
+\[
+ (t+2vb_h+b_h^2)-(v+b_h)^2=t-v^2.
+ \tag{UPL.7}
+\]
+
+The action stays inside the cone, is continuous, and
+composes by (UPL.3). There is an exact global
+homeomorphism
+
+\[
+ (m,v,t)\longmapsto(m,w,e)
+       =(m,v-a(m),t-v^2),\qquad
+ Z\cong M\times\mathbb R\times[0,\infty).
+ \tag{UPL.8}
+\]
+
+Its inverse is
+\((m,w,e)\mapsto(m,w+a(m),e+(w+a(m))^2)\).
+Under it the action sends \((m,w,e)\) to
+\((hm,w,e)\): both added coordinates are invariant.
+For compact input and output subsets, their projections
+on \(M\) are compact. Theorem 11S.2 bounds all transporting
+arrows by a compact set. The cone transporter is then
+a closed subset of that compact arrow set times the
+compact input set. This proves properness of the
+original \(\mathcal G\)-action, with the composite
+anchor to \(T\). No arrow labels or isotropy are
+removed by the coordinate change. \(\square\)
+
+The finite-dimensional cone has its ordinary product
+topology. The general weak-field cone of Theorem 11R.4 remains
+available for infinite-dimensional kernels. Here the
+displayed literal line field supplies (UPL.5) directly,
+so no fibre-rank inference from a GNS construction is
+needed.
+
+### 11T.4. Exact coefficient type and remaining local index
+
+This completes an actual coherent proper-kernel and
+affine-field construction on
+\(\mathcal G\ltimes M_{\mathcal G}\) for every eligible
+holonomy groupoid. Both \(C_0(M)\) and \(C_0(Z)\)
+are separable proper coefficients, and the latter has
+the explicit central space \(Z\). The elementary
+compact algebra of a full nonzero equivariant Hilbert
+field over \(Z\) is proper by Theorem 11R.3.
+
+The source of a field Bott or oscillator identity on
+this extension is \(C_0(M)\). The original transfer
+requires source \(C_0(T)\). Pullback along the anchor
+\(M\to T\) is a multiplier homomorphism; it is not
+the class from \(C_0(T)\) through a proper algebra and
+back required in Theorem 11R.2. The affine action (UPL.3) is a
+coboundary on this proper base. It does not supply a
+compact-base coarse kernel for the original groupoid,
+a universal Dirac inverse, or the positive local Bott
+integer of the original graph. The deep universal
+Dirac construction therefore remains the distinct
+required provider rather than being asserted from
+the convexity of \(M\) or from this field alone.
+
+
+**Illustration for Theorem 11T.3.** The right panel of [Figure 11R.1](#11r-4-a-coherent-kernel-supplies-a-proper-groupoid-cone) is
+also the exact fibre slice of Theorem 11T.3 when \(b_h=1\).
+Its input \((-1/2,3/4)\), output \((1/2,3/4)\)
+and excess height \(1/2\) exhibit (UPL.6)–(UPL.7).
+For this new construction the affine displacement
+is the actual difference of the single global
+height function; the base is the universal proper
+\(M\). The existing figure's conditional-transfer
+panel keeps the separate original-unit Dirac
+requirement visible. Its generator, exact font
+notices and component terms are linked in Section 11R.
+
+## 11U. The full and reduced norms of every proper groupoid coefficient
+The argument works on the actual groupoid and completed Hilbert modules. It uses no groupoid disintegration theorem, invariant unit measure or discrete-group norm theorem.
+
+Let \(\mathcal G\rightrightarrows T\) be second countable,
+locally compact, Hausdorff and étale. Let \(P\) be a separable
+graded \(\mathcal G\)-algebra, with its nondegenerate
+\(C_0(T)\)-structure and continuous even fibre isomorphisms
+\(\alpha_g:P_{s g}\to P_{r g}\). Suppose it is proper in the
+precise central sense: a second-countable locally compact
+Hausdorff proper \(\mathcal G\)-space \(Z\), anchored by
+\(p:Z\to T\), and a nondegenerate even equivariant central
+homomorphism
+
+\[
+ \phi:C_0(Z)\longrightarrow ZM(P)
+ \tag{PN.1}
+\]
+
+compatible with the anchor are supplied. Faithfulness of
+\(\phi\), freeness, compactness of \(Z\), and constant
+fibre dimension are not assumed. Multipliers associated to
+functions on \(Z\) below always mean their images under
+the unique nondegenerate multiplier extension of \(\phi\).
+
+Write \(\mathcal A=C_c(\mathcal G,r^*P)\). Its convolution
+and involution are
+
+\[
+ \begin{aligned}
+ (f*a)(l)&=\sum_{r h=r l}f(h)\alpha_h(a(h^{-1}l)),\\
+ f^*(l)&=\alpha_l(f(l^{-1})^*).
+ \end{aligned}
+ \tag{PN.2}
+\]
+
+The full crossed product \(B_m\) is the universal completion
+for the \(I\)-bounded Hilbert-space star representations
+of this convolution algebra, where
+
+\[
+ \|f\|_I=\max\left\{
+ \sup_x\sum_{r g=x}\|f(g)\|,
+ \sup_x\sum_{s g=x}\|f(g)\|\right\}.
+ \tag{PN.3}
+\]
+
+We construct the reduced completion on a Hilbert \(P\)-module
+explicitly. This also fixes the reduced norm without a
+measure or representation-disintegration convention.
+
+### 11U.1. The source-column regular Hilbert module
+
+Let \(E_c=C_c(\mathcal G,s^*P)\). Define
+
+\[
+ (\xi p)(g)=\xi(g)p(sg),\qquad
+ \langle\xi,\zeta\rangle(x)
+       =\sum_{s g=x}\xi(g)^*\zeta(g).
+ \tag{PN.4}
+\]
+
+The sum is a continuous compactly supported unit section:
+a compact arrow support has a finite bisection cover,
+and a partition subordinate to that cover reduces the
+sum to finitely many continuous unit branches. It is
+positive in every coefficient fibre and hence in \(P\).
+Quotient by its zero norm and complete to the Hilbert
+\(P\)-module \(E\). Its fibre at \(x\) is the source
+column \(\ell^2(\mathcal G_x)\otimes P_x\). The module
+is countably generated: a countable relatively compact
+bisection basis and a countable dense set of unit
+sections of the separable \(P\) give a countable
+generating family by source pullback and arrow bumps.
+
+For \(f\in\mathcal A\), put
+
+\[
+ (\Lambda(f)\xi)(g)=
+   \sum_{r h=r g}\alpha_g^{-1}(f(h))\xi(h^{-1}g).
+ \tag{PN.5}
+\]
+
+Every summand lies in \(P_{s g}\), because
+\(s(h^{-1}g)=s g\). Products of the two compact arrow
+supports are compact, so the expression maps \(E_c\)
+to \(E_c\).
+
+**Lemma 11U.1 (regular norm and coefficient inclusion).**
+The operator in (PN.5) is adjointable, with adjoint
+\(\Lambda(f^*)\), is multiplicative, and satisfies
+\(\|\Lambda(f)\|\le\|f\|_I\). Let
+\(B_r=\overline{\Lambda(\mathcal A)}\subset\mathcal L(E)\).
+Then \(\|f\|_r=\|\Lambda(f)\|\le\|f\|_m\), and the
+unit coefficient inclusion \(i_P:P\to M(B_m)\) is
+faithful and nondegenerate.
+
+**Proof.** At a fixed source \(x\), the matrix indexed
+by \(g,l\in\mathcal G_x\) has entries
+
+\[
+ A_{g,l}=\alpha_g^{-1}(f(gl^{-1}))\in P_x.
+ \tag{PN.6}
+\]
+
+Its row sums of entry norms are bounded by the first
+quantity in (PN.3), say \(R\); its column sums are
+bounded by the second quantity, say \(S\). For a finite
+column \((\xi_l)\), the C*-module Cauchy–Schwarz
+inequality gives, row by row,
+
+\[
+ \left(\sum_l A_{g,l}\xi_l\right)^*
+ \left(\sum_l A_{g,l}\xi_l\right)
+ \le R\sum_l\|A_{g,l}\|\xi_l^*\xi_l.
+ \tag{PN.7}
+\]
+
+To verify it directly, form the row operator with
+entries \(A_{g,l}/\sqrt{\|A_{g,l}\|}\), omitting zero
+entries, and the column with entries
+\(\sqrt{\|A_{g,l}\|}\xi_l\). The row operator times
+its adjoint is at most \(R1\), which proves (PN.7)
+by positive operator order. Summing the rows gives
+\(\langle\Lambda(f)\xi,\Lambda(f)\xi\rangle
+\le RS\langle\xi,\xi\rangle\) in every unit fibre,
+therefore in \(P\). Thus the norm is at most
+\(\sqrt{RS}\le\|f\|_I\). Finite source columns are
+dense; the same bound extends the operator.
+
+The adjoint matrix entry is
+\(\alpha_l^{-1}(f(lg^{-1})^*)\), exactly the
+\((g,l)\)-entry of \(\Lambda(f^*)\). Reindexing finite
+convolution sums, using \(\alpha_{gh}=\alpha_g\alpha_h\),
+proves multiplication. These identities hold on the
+dense core and extend to \(E\).
+
+For the full-norm comparison take a faithful ordinary
+Hilbert-space representation \(\pi\) of \(P\), obtained
+as the direct sum of GNS representations of positive
+states separating its positive elements. On
+\(E\otimes_{P,\pi}H_\pi\), the operators
+\(\Lambda(f)\otimes1\) are \(I\)-bounded star
+representations. The induced representation of
+\(\mathcal L(E)\) is faithful: if \(T\xi\ne0\), the
+nonzero positive element \(\langle T\xi,T\xi\rangle\)
+has a nonzero value on some vector under faithful
+\(\pi\); the tensor \(T\xi\otimes v\) then has
+positive norm. Hence it is isometric. The universal
+full norm bounds \(\|\Lambda(f)\|\). This argument
+uses GNS for a single C*-algebra, not a decomposition
+of a groupoid representation.
+
+On unit-supported coefficient functions the \(I\)-norm
+is \(\sup_x\|p(x)\|=\|p\|\). A unit source-column
+vector at \(1_x\) shows the reverse bound for their
+regular operators. Unit functions extend by zero on
+the open-and-closed unit space. Completion therefore
+gives a faithful coefficient inclusion in \(B_m\)
+(and likewise in \(B_r\)). An approximate identity
+of \(P\) acts uniformly on the finite local unit
+sections covering any compact convolution support,
+so it converges on both sides of \(\mathcal A\).
+The coefficient inclusion is nondegenerate.
+\(\square\)
+
+### 11U.2. The correctly typed cutoff and a dense localized core
+
+Theorem 11S.3 supplies one continuous square cutoff
+\(c:Z\to[0,1]\), with
+
+\[
+ \sum_{r g=p(z)}c(g^{-1}z)^2=1.
+ \tag{PN.8}
+\]
+
+For each compact \(D\subset Z\), the pairs
+\((g,z)\) with \(z\in D\), \(r g=p(z)\) and
+\(c(g^{-1}z)\ne0\) lie in one compact subset of
+the inverse-composability space
+\(\{(g,z):r g=p(z)\}\). This is Theorem 11S.3's support
+condition; it is not a condition in the differently
+typed source action space. The bound \(c\le1\)
+also follows directly from the identity-arrow term
+in (PN.8).
+
+The central homomorphism extends to bounded continuous
+functions by a concrete strict multiplier extension.
+For a contractive approximate identity \(u_i\) in
+\(C_0(Z)\), the operators \(\phi(cu_i)\) have norm
+at most \(\|c\|_\infty\). On the dense span of
+\(\phi(f)p\) they converge to the rule
+\(\phi(f)p\mapsto\phi(cf)p\), since
+\(u_i f\to f\) in norm. Uniform boundedness extends
+this limit to every coefficient. Applying the same
+argument to \(\overline c\) gives its adjoint.
+Thus the limit is a central multiplier. The same construction applies
+fibrewise and commutes with transport. Thus (PN.8)
+becomes the strict multiplier identity
+
+\[
+ \sum_{r g=y}\alpha_g(c_{s g}^2)=1_{M(P_y)}.
+ \tag{PN.9}
+\]
+
+Here \(c_x\) is the central multiplier on \(P_x\)
+induced by \(c|_{Z_x}\). To check strict convergence,
+first localize a coefficient by a function supported
+on a compact subset of \(Z_y\). The cutoff support
+condition bounds all contributing arrows in a compact
+set, whose intersection with the closed discrete
+range fibre is finite. The sum is then exactly one
+on that localization. Those localizations are dense
+by nondegeneracy of (PN.1). The partial sums are
+positive contractions, so convergence extends
+strictly to every coefficient and its adjoint.
+
+Let \(\mathcal A_Z\subset\mathcal A\) consist of
+sections having compact central \(Z\)-support:
+\(a=\rho a\) for some \(\rho\in C_c(Z)\), where
+\((\rho a)(l)=\phi_{r l}(\rho|_{Z_{r l}})a(l)\).
+This core is \(I\)-norm dense. Indeed a central
+\(C_c(Z)\) approximate identity converges on every
+unit coefficient. On a compact arrow support,
+finitely many bisections and their local unit
+sections make the convergence uniform. A support
+covered by \(N\) bisections has \(I\)-norm at most
+\(N\) times its uniform coefficient bound. Multiplying
+by these central functions therefore approximates
+in \(I\)-norm, and a bump equal to one on their
+compact supports places each approximation in
+\(\mathcal A_Z\).
+
+This is a two-sided star ideal of \(\mathcal A\).
+For a left convolution by \(f\), the new central
+support lies in the compact image of the composable
+pairs in \(\operatorname{supp}f\times\operatorname{supp}\rho\)
+under the action. A right convolution retains the
+first factor's central support. Taking the adjoint
+transports the compact central support by the
+compact inverse arrow support. All three compactness
+claims concern continuous images of closed subsets
+of compact products. A bump equal to one on each
+resulting compact set supplies the required central
+localizer.
+
+### 11U.3. The completed double-arrow module and cutoff isometry
+
+Form the interior tensor product
+
+\[
+ \mathscr R=E\otimes_{P,i_P}B_m.
+ \tag{PN.10}
+\]
+
+The pair coordinates of an elementary tensor are
+
+\[
+ (\xi\otimes a)(g,k)=\xi(g)a(k)\in P_{s g},
+ \qquad s g=r k.
+ \tag{PN.11}
+\]
+
+This is balanced over \(P\): its left coefficient
+action on \(a\) is multiplication by \(p(rk)\),
+the same coefficient as the right action on \(\xi\).
+Every continuous compactly supported section of
+this pair space is in the completed span of these
+elementary sections. For a detailed local argument,
+choose bisections through \(g\) and \(k\). Their
+composable pair is parametrized by the middle unit
+\(x=s g=r k\). A supported section on this chart
+is a local section of \(P_x\); unit sections and
+scalar bumps approximate it in norm. Products of
+two unit sections span a dense subset of each
+\(P\), by its approximate identity. The two factors
+and the scalar bumps give exactly (PN.11). A finite
+partition on the compact pair support gives finite
+elementary approximations. No fibre trivialization
+or constant rank is involved.
+
+Their interior-tensor inner product, written in
+pair coordinates, is
+
+\[
+ \langle K,L\rangle(h)=
+ \sum_{s k=r h}\alpha_k^{-1}\left(
+       \sum_{s g=r k}K(g,k)^*L(g,kh)\right).
+ \tag{PN.12}
+\]
+
+For elementary tensors this follows by expanding
+\(a^*i_P(\langle\xi,\zeta\rangle)b\) with (PN.2).
+It also proves that uniform local approximations
+converge in the completed module. More explicitly,
+if a pair section has uniform norm at most
+\(\epsilon\), and its first and second arrow
+supports have covers by \(N_g\) and \(N_k\)
+bisections, respectively, its squared inner
+product has coefficient norm at most
+\(N_gN_k\epsilon^2\) at each arrow. Its support
+lies in the second-support product \(K_k^{-1}K_k\),
+covered by \(N_k^2\) bisections. Thus its module
+norm is at most
+\(\sqrt{N_gN_k^3}\,\epsilon\), by (PN.3).
+Consequently (PN.12) extends to the claimed pair
+sections without a new positivity assumption.
+
+For \(a\in\mathcal A_Z\), define
+
+\[
+ (Wa)(g,k)=c_{s g}\alpha_g^{-1}(a(gk)),
+ \qquad s g=r k.
+ \tag{PN.13}
+\]
+
+It is a continuous section on this exact pair
+space. It has compact support. To see this, let
+\(D\) be a compact central support for \(a\) and
+\(K_a\) its compact arrow support. A nonzero
+central product in (PN.13) requires a point
+\(z\in D\) with \(c(g^{-1}z)\ne0\) and
+\(r g=p(z)\). Theorem 11S.3 therefore bounds the first
+arrow \(g\) in one compact set \(B_D\).
+Since \(gk\in K_a\), the second arrow lies
+in the compact product \(B_D^{-1}K_a\).
+The support of the section is closed inside
+the resulting compact pair set. Hence (PN.13)
+is an actual vector of \(\mathscr R\), by the
+completed-core construction above.
+
+**Lemma 11U.2 (isometry and covariance).** The map
+\(W\) extends to an even isometric right
+\(B_m\)-module map
+\(B_m\to\mathscr R\), and for every
+\(f\in\mathcal A\) it intertwines left
+convolution with the regular tensor action:
+
+\[
+ W(f*a)=(\Lambda(f)\otimes1)Wa.
+ \tag{PN.14}
+\]
+
+**Proof: the norm.** Substitute (PN.13) into
+(PN.12) and put \(l=gk\). All products are
+composable, with \(s l=r h\), and one obtains
+
+\[
+ \begin{aligned}
+ \langle Wa,Wb\rangle(h)
+ &=\sum_{s l=r h}\alpha_l^{-1}\left[
+   a(l)^*\left(\sum_{r g=r l}
+      \alpha_g(c_{s g}^2)\right)b(lh)\right]\\
+ &=\sum_{s l=r h}\alpha_l^{-1}(a(l)^*b(lh))
+   =(a^**b)(h).
+ \end{aligned}
+ \tag{PN.15}
+\]
+
+The inner sum is (PN.9). On the compact central
+supports occurring here its localization has
+only finitely many contributing arrows at each
+fixed unit, and the strict identity justifies
+the same expression before localization. Thus
+the equality holds in \(B_m\), not only in
+individual fibres. It gives
+\(\|Wa\|^2=\|a^*a\|=\|a\|_m^2\).
+The dense core \(\mathcal A_Z\) completes to
+the isometric map on all of \(B_m\).
+
+The right action in pair coordinates is
+convolution in the second arrow. On the core,
+\[
+ \begin{aligned}
+ ((Wa)*b)(g,k)
+ &=\sum_{r l=s g}
+ c_{s g}\alpha_g^{-1}(a(gl))
+                 \alpha_l(b(l^{-1}k))\\
+ &=c_{s g}\alpha_g^{-1}((a*b)(gk))
+   =W(a*b)(g,k).
+ \end{aligned}
+ \tag{PN.16}
+\]
+
+This proves right module linearity and extends
+by continuity.
+
+**Proof: regular intertwining.** The regular
+tensor action in pair coordinates is
+\[
+ ((\Lambda(f)\otimes1)K)(g,k)=
+  \sum_{r h=r g}\alpha_g^{-1}(f(h))K(h^{-1}g,k).
+ \tag{PN.17}
+\]
+
+The two source units in this sum are both
+\(s g\). Its cutoff multiplier is therefore
+the same \(c_{s g}\) for every summand. It is
+central. Also
+\(\alpha_{h^{-1}g}^{-1}=\alpha_g^{-1}\alpha_h\).
+Consequently the expression at \(K=Wa\)
+is exactly
+
+\[
+ c_{s g}\alpha_g^{-1}
+    \left(\sum_{r h=r g}f(h)
+                    \alpha_h(a(h^{-1}gk))\right),
+ \tag{PN.18}
+\]
+
+which is \(W(f*a)(g,k)\). The ideal property
+ensures that this vector is defined on the
+localized core. This proves (PN.14), then
+extends it to the completed modules. No
+adjoint of the isometry is needed for the
+norm comparison. All cutoff multipliers
+are even; the coefficient grading and
+Clifford order are unchanged. \(\square\)
+
+### 11U.4. The actual quotient is an isomorphism
+
+**Theorem 11U.3 (full equals reduced for proper coefficients).**
+For every \(P\) satisfying (PN.1),
+\[
+ \|f\|_m=\|f\|_r\quad(f\in\mathcal A),
+ \qquad q_P:P\rtimes_m\mathcal G
+         \xrightarrow{\cong}P\rtimes_r\mathcal G.
+ \tag{PN.19}
+\]
+
+The isomorphism is graded. Its inverse gives
+an even class \(v=[q_P^{-1}]\in KK(B_r,B_m)\)
+with both inverse product identities.
+
+**Proof.** For \(a\in B_m\), the isometry and
+intertwining imply
+\[
+ \|f*a\|_m=\|W(f*a)\|
+     \le\|\Lambda(f)\otimes1\|\,\|Wa\|
+     \le\|\Lambda(f)\|\,\|a\|_m.
+ \tag{PN.20}
+\]
+
+Left multiplication on a C*-algebra has
+the norm of its multiplier: the reverse
+bound follows by applying a contractive
+approximate identity. Thus (PN.20) gives
+\(\|f\|_m\le\|\Lambda(f)\|=\|f\|_r\).
+Lemma 11U.1 gives the other inequality.
+Equality on the dense convolution core
+makes its quotient map an isometric onto
+star homomorphism after completion.
+
+The inverse homomorphism is even because
+the quotient is even and bijective.
+The Kasparov products of homomorphism
+classes are their compositions, so
+\([q_P]\otimes_{B_r}[q_P^{-1}]=1_{B_m}\)
+and
+\([q_P^{-1}]\otimes_{B_m}[q_P]=1_{B_r}\).
+\(\square\)
+
+This supplies exactly the proper-coefficient
+quotient input in Theorem 11R.2 at the actual
+groupoid scope. It does not assert that
+the coefficient-free quotient
+\(C^*(\mathcal G)\to C_r^*(\mathcal G)\)
+is invertible. Neither it nor the proper
+space alone provides the original-unit
+Dirac factors, the local Bott integer,
+or a physical graph operator. The full
+normal inverse and its grading remain
+in the other supplied factors of Theorem 11R.2.
+
+![The cutoff isometry and its exact middle-unit coefficient](../figures/groupoid-proper-coefficient-norm.png)
+
+**Figure 11U.1.** Lemma 11U.2's square commutes on the
+completed \(B_m\)-modules. The right panel retains
+\(k:x\to y\), \(g:y\to z\) and \(l=gk:x\to z\).
+Both \(c_y\) and \(\alpha_g^{-1}(a(gk))\) lie
+in the multiplier/coefficient algebra of the middle
+unit \(P_y\). In the convolution sum, an arrow
+\(h:w\to z\) changes \(g\) to
+\(h^{-1}g:y\to w\), retaining that same cutoff.
+The bottom panel displays the strict identity
+in \(M(P_y)\) and the actual norm comparison of
+Theorem 11U.3. This is a typed schematic; it does
+not replace \(\mathcal G\) by a planar graph or
+assert the existence of the remaining Dirac factors.
+[Editable SVG](../figures/groupoid-proper-coefficient-norm.svg) ·
+[Generator](../reproduction/groupoid-proper-coefficient-norm/draw_proper_norm.py) ·
+[Component terms](../reproduction/groupoid-proper-coefficient-norm/PN-COMPONENT-TERMS.md).
+
+Human-source context: Jean-Louis Tu,
+[*La conjecture de Baum–Connes pour les feuilletages moyennables*](https://citeseerx.ist.psu.edu/document?doi=486238991671dba031f9cb078eeba25443307a0a&repid=rep1&type=pdf),
+K-Theory 17 (1999), 215–264, Section 1,
+states the proper-groupoid norm equality
+and cutoff framework. The argument here
+constructs its source-column module,
+double-arrow completion and cutoff
+intertwiner explicitly. The complete
+Theorem 11S.3 cutoff proof is its exact geometric
+provider, and Theorem 11R.2 retains the other
+factorization inputs separately.
+
 ## 12. Exercises
 
 **Exercise 1 (basic).** In the product foliation \(\mathbb R\times S^1\), choose a real compactly supported function \(\psi\) with \(\int|\psi|^2=1\). Compute the square of the kernel \(e(t,t',u)=\psi(t)\psi(t')\), and its trace for transverse measure \(a\,du\), where \(du\) has total mass one.
@@ -18788,6 +21194,479 @@ eligible smooth graph. It does not refute the historical
 problem: the Section 11E translation oscillator repairs this
 same suspension. Award 3 points for all kernel properties,
 2 for the infinite-sequence proof and 1 for the exact scope.
+
+### Exercises 146–149. General auxiliary geometry and the coefficient identity (52 points)
+
+**Exercise 146 (12 points).** Explain why the compact inclusion itself does not prove Theorem 11N.4. Verify the rational-function induction for \(S=\mathbb Z[t,t^{-1}]\), and prove that the passage \(GL(n,K)\to GL(nb,K_0)\) is faithful.
+
+**Solution.** Any continuous compact orbit has bounded diameter, so differences cannot tend to infinity on an infinite word group; even a dense cyclic subgroup gives this failure (3 points). For \(S\), the \(t\)-valuation bounds the negative exponent, the degree-at-infinity value bounds the highest exponent after this negative bound, and finitely many distinct transcendental evaluations bound the integer coefficients by the inverse Vandermonde matrix. Thus a simultaneous bounded intersection contains only finitely many Laurent polynomials; the countable evaluation family accommodates every possible degree bound (5 points). Finally a matrix over \(K\) is an invertible \(K_0\)-linear map on \(K^n\). Equality of two such maps on the underlying vector space implies equality on its standard \(K\)-basis vectors, hence equality of their matrix columns. Products and inverses act as the corresponding products and inverses of the \(K_0\)-linear maps. This gives a faithful homomorphism in dimension \(nb\), without an assertion about extended valuations (4 points).
+
+**Exercise 147 (12 points).** Derive both identities in (CI.17), prove that (CI.14) preserves the excess height \(t-\|v\|^2\), and give the exact finite-transporter bound when \(\rho_-(r)=a\sqrt r\), \(a>0\).
+
+**Solution.** Formula (CI.10) gives
+\[
+ L_{\mu,g}^{-1}e_l^\mu
+       =e_{g^{-1}l}^{\mu g}-e_{g^{-1}}^{\mu g}.
+\]
+Taking its inner product with \(v\) and adding
+\(\langle e_g^\mu,e_l^\mu\rangle\) yields the first coordinate formula (4 points). For \(l=g\), the inverse vector is
+\(-e_{g^{-1}}^{\mu g}\), so the cross term in the new height is
+\(-2z_{g^{-1}}\), giving the second formula (3 points). Expansion of
+\(\|L_{\mu,g}v+e_g^\mu\|^2\), using orthogonality of \(L_{\mu,g}\), gives exactly the same two extra terms as the height update. Their subtraction leaves \(t-\|v\|^2\) (3 points). Finally (CI.18) becomes
+\(a\sqrt{|g|}\leq2\sqrt R\), or \(|g|\leq4R/a^2\).
+The transporter is contained in the finite word ball of that radius. This proves properness without assuming finite-dimensional fibres or free action (2 points).
+
+**Exercise 148 (16 points).** Prove the exact translation term in (WF.16), explain why \(B(\Theta)\) alone is not the asserted compact-phase construction, verify (WF.20), and distinguish the class in Theorem 11P.3 from a scalar reduced unit pairing.
+
+**Solution.** Weyl translation changes the coordinate potential by \(-b\) and leaves derivatives unchanged. Thus \(D\) becomes \(D-c_b\), while the weighted potential becomes \(B(1+\Theta)-c_{(1+\Theta)b}\). Cubing the former without commuting its factors gives exactly (WF.16). The bounded term includes both \(b\) and \(\Theta b\) (4 points). For the second claim take two modes and compare weights \(1,1\) and \(1,3\). Translate a fixed Gaussian packet to the position \(R(1,1)\), keeping a fixed exterior vector. After dividing either oscillator by \(R\), its error on that packet from the constant Clifford potential \(c_{(1,1)}\), respectively \(c_{(1,3)}\), tends to zero. Indeed derivatives and displacement from the packet centre have fixed norms, divided by \(R\). On each eigenspace of the corresponding constant Clifford matrix, Chebyshev’s inequality for the scalar spectral measure makes the normalized oscillator phase tend to the sign of that eigenvalue: the eigenvalues have a fixed nonzero gap and the norm error tends to zero. Thus the phase difference on a suitable fixed exterior vector tends to a nonzero value, since the two normalized Clifford directions \((1,1)/\sqrt2\) and \((1,3)/\sqrt{10}\) differ. The translated Gaussian packets tend weakly to zero, so this difference is not compact. A bounded difference of single-particle weights is still an unbounded first-order oscillator difference. The cubic term supplies the strict lower-order estimates (WF.19), which justify compactness (4 points). To verify (WF.20), put \(z=(a/s)^{1/3}w\); then
+\[
+ \frac{z}{(s^2z^6+a^2)^{1/2}}
+   =s^{-1/3}a^{-2/3}\frac{w}{(1+w^6)^{1/2}},
+\]
+whose final factor has a finite maximum. Joint commutation with \(D^2\) turns this scalar bound into the operator estimate (4 points). Finally the two algebras in Theorem 11P.3 are \(C(X)\), and its field action may move every proposed evaluation point. There is no supplied equivariant evaluation to \(\mathbb C\), no proved proper-algebra factorization, and no reduced-norm statement for the vacuum representation. None is implied by its integer index or by its coefficient identity (4 points).
+
+**Exercise 149 (12 points).** Prove the finite-transporter bound (PM.3), explain the topology needed for the escaping-mass example, and verify the equivariance of (PM.5).
+
+**Solution.** If \(a\in E\cap h^{-1}E\), then \(a\in E\) and \(ha=b\in E\), hence \(h=ba^{-1}\in EE^{-1}\). If the two sets were disjoint, the two strict half-mass inequalities would contradict the total bound one; this proves both the bound and its exact use of the threshold (4 points). Each fixed coordinate of \(\mu_n\) is eventually that of \(\tfrac34\delta_e\), since \(g_n\) escapes finite sets. Their mass difference \(1/4\) persists. Thus weak-* convergence is present and norm convergence is absent; treating the topology as the norm topology would lose the example and the local compactness proof (4 points). Finally
+\[
+ \Phi(hz)=\sum_g c(g^{-1}hz)^2\delta_{g y_0}
+ =\sum_k c(k^{-1}z)^2\delta_{hk y_0}=h\Phi(z).
+\]
+The substitution is legitimate because the sums are locally finite over compact sets and consist of nonnegative probability weights. It also proves the transformation convention for finite stabilizers (4 points).
+
+### Exercises 150–153. Coherent groupoid restriction and properness (44 points)
+
+**Exercise 150 — actual descended module restriction (10 points).**
+
+Let \(e,f\in E\) and \(k,l\in C_c(\mathcal G)\).
+Type the products in (CA.3), prove (CA.5), and prove that
+(CA.4) is onto. Identify both the unit-source action and
+the descended operator under this unitary.
+
+**Solution.** If \(s h=s g\), then \(g h^{-1}\) is
+composable and has range \(r g\), so the first formula of
+(CA.3) lies in \(E_{r g}\). If \(s g=r h\), then \(g h\)
+is composable and also has range \(r g\), so both vectors
+in the second formula have the same coefficient fibre.
+For the elementary sections their inner product is
+\(\sum_{s g=r h}\overline{k(g)}
+ \langle e(r g),f(r g)\rangle l(g h)\).
+Replacing \(g\) by the inverse in the first convolution
+factor identifies this as \(k^*i_m(\langle e,f\rangle)l\),
+exactly the interior-tensor norm (4 points).
+
+A compact support has a finite bisection cover. On a
+small range neighbourhood, continuous unit sections
+approximate each continuous pullback section. Partition
+the compact support into finitely many such pieces to
+approximate it uniformly by sums \(e(r g)k(g)\).
+The inner-product fibre-sum estimate
+\(\|\xi\|\le N\sup\|\xi(g)\|\) on an \(N\)-bisection
+support converts this to descent-module approximation.
+Thus the isometric map is onto (3 points).
+
+A unit function contributes only the identity arrow
+to (CA.6), and acts as \(a(r g)\). This is the
+canonical action on the first interior-tensor factor.
+Pointwise \(F_{r g}\) becomes \(F\otimes1\), so the
+restriction is exactly \(\gamma_0\otimes[i_m]\).
+No scalar augmentation or evaluation at a unit is
+needed (3 points).
+
+**Exercise 151 — the weaker exact local normalization (10 points).**
+
+Track all the sources, targets and degrees of (CA.7).
+Derive (CA.8) and the original positive local Bott
+integer. Explain both why the full quotient need not
+be invertible and why fibrewise rank one is weaker
+than a whole-base identity.
+
+**Solution.** The factors run from \(A_r\) to \(P_r\)
+(degree \(k\)), from \(P_r\) to \(P_m\) (degree zero),
+from \(P_m\) to \(A_m\) (degree \(k\)), and from \(A_m\)
+to \(\mathbb C\) (degree \(q\)). The total is \(q\);
+their order never changes, so there is no exchange
+sign or Clifford block permutation (3 points).
+
+Naturality moves \([q_A]\) across the reduced
+\(\eta\) to \([q_P]\). Its product with \(v\) is
+the supplied coefficient identity. Full descent's
+product law gives (CA.10). Restrict by \(i_m\)
+and apply Theorem 11R.1 to get
+\([i_r]d_r=\gamma_0 d_N\). Multiplication by the
+original \(b_U\), with \(b_U\gamma_0=b_U\) and
+\(b_Ud_N=+1\), gives the original sign \(+1\)
+(4 points).
+
+Only the proper coefficient quotient has an
+inverse in this argument; no \([q_A]^{-1}\)
+was inserted. A graded index bundle of rank
+difference one over each unit acts as one
+on a small disk Bott module after choosing
+local frames. Its global bundle transitions
+can still be nontrivial, so those ranks do
+not prove \(\gamma_0=1_C\). The local identity
+is sufficient for the historical integer;
+the stronger whole-base equality is optional
+(3 points).
+
+**Exercise 152 — no compact-algebra properness shortcut (12 points).**
+
+Prove the centre and anchored equivariant-map
+steps of Theorem 11R.3. Then prove the compact-transporter
+argument. Apply it to an infinite discrete
+group acting on a nonempty compact Hausdorff
+base, including when the action is free.
+
+**Solution.** A multiplier of the compact
+module algebra acts adjointably by its
+bounded approximate-identity limit. A
+central one commutes fibrewise with all
+rank-one projections, hence is a scalar
+on every nonzero fibre. Its scalar is
+continuous by (CA.11), and bounded by
+the multiplier norm, so the centre is
+\(C_b(Y)\). A nondegenerate central
+homomorphism from \(C_0(Z)\) gives a
+nonzero character at every \(y\), hence
+one point \(z_y\). Continuity of all
+\(f(z_y)\), tested on bumps supported
+in neighbourhoods, proves continuity
+of \(y\mapsto z_y\). Base compatibility
+and equivariance give its anchor and
+(CA.12) (5 points).
+
+For compact \(K,L\subset Y\), the
+proper action on \(Z\) has compact
+transporter between \(z(K),z(L)\).
+Its arrow projection is compact.
+The transporter on \(Y\) is a
+closed subset of that compact arrow
+set times \(K\); thus it is compact.
+This proves action properness, without
+requiring \(Y\to Z\) itself to be
+proper. Conversely a proper \(Y\)
+gives the central structure \(Z=Y\)
+(4 points).
+
+For an infinite group and compact
+nonempty \(Y\), the inverse image of
+the compact \(Y\times Y\) under the
+action-relation map is all
+\(\Gamma\times Y\), whose projection
+onto the infinite discrete group
+is not compact. The action is not
+proper, regardless of freeness.
+Theorem 11R.3 therefore excludes the elementary
+compact algebra over that base as
+a proper coefficient. It excludes
+neither a different proper Bott
+algebra nor a reduced normalized
+Dirac class (3 points).
+
+**Exercise 153 — coherent weak cone and its exact height (12 points).**
+
+Prove positivity of (CA.17), orthogonality
+and surjectivity in (CA.19), and the
+compact-coordinate characterization
+(CA.21). Derive the action's height
+and proper-transporter bound. Compute
+the exact one-dimensional slice in
+Figure 11R.1.
+
+**Solution.** The zero-sum conditional
+negativity makes (CA.17) positive.
+Positivity of the polynomial for
+\(u+\lambda v\) gives Cauchy–Schwarz,
+so a null vector is orthogonal to
+all vectors and the quotient is
+well defined. The equality
+\((gh)^{-1}(gk)=h^{-1}k\) preserves
+all Gram entries under left
+translation. Every \(e_l\) is
+\(L_g(e_{g^{-1}l}-e_{g^{-1}})\),
+giving surjectivity (3 points).
+
+The inequalities (CA.21) make the
+coordinate functional bounded on
+the dense span, of norm at most
+\(\sqrt t\). They annihilate each
+zero vector in that span. Extension
+and Hilbert-space representation
+give one vector of squared norm
+at most \(t\); the dense span makes
+it unique. Continuous Gram entries
+make every rational inequality
+closed, proving that the bounded
+coordinate image is compact.
+The countable generators are
+local bisection sections with
+bumps, not one global arrow
+enumeration (4 points).
+
+Expanding the squared norm of
+\(L_gv+e_g\) adds exactly
+\(2\langle L_gv,e_g\rangle+
+ \psi(g)\). Adding the same two
+terms to \(t\) preserves excess
+height. If both heights are
+bounded by \(R_1,R_2\), the
+triangle inequality gives
+\(\psi(g)\le(\sqrt{R_1}+
+ \sqrt{R_2})^2\). Relative
+properness (CA.15) supplies the
+compact arrow set; continuity
+and compact input/output sets
+complete the transporter proof
+(3 points).
+
+In the illustrated real fibre,
+\(L=1,b=1,v=-1/2,t=3/4\).
+The new vector is \(1/2\),
+and the new height is
+\(3/4+2(-1/2)(1)+1=3/4\).
+Both excess heights are
+\(3/4-1/4=1/2\). With both
+height bounds \(3/4\), the
+displacement estimate reads
+\(1\le\sqrt3\), or
+\(\psi=1\le3\). This slice
+checks the cross-term sign,
+not the existence of a
+general proper kernel (2 points).
+
+### Exercises 154–156. The actual groupoid proper base and coherent extension (36 points)
+
+**Exercise 154 (12 points).** Prove closedness of the range
+support condition, show why mass is only lower semicontinuous,
+and prove (GP.6) with the compact support of its fixed test
+function. Explain why distinct isotropy arrows remain distinct.
+
+**Solution.** Equation (GP.3) is a closed family of identities
+since \((a\circ r)f\in C_c(\mathcal G)\). Bumps separating
+a different range from \(y\), followed by a countable arrow
+cover, show its converse. This makes \(Q\) closed and makes
+the compact-unit inverse images compact (3 points). The mass
+is the supremum (GP.4), so is lower semicontinuous. On the
+one-unit groupoid of an infinite discrete group, the measures
+\(\tfrac34\delta_e+\tfrac14\delta_{h_n}\), with \(h_n\)
+escaping finite sets, converge vaguely to
+\(\tfrac34\delta_e\), while their masses are one. Thus
+mass need not be continuous (3 points). On a bisection,
+\(g=b(sg)\); on a measure supported at that source,
+\(\chi(rh)=1\), proving (GP.6). Its support is contained
+in \(b(\operatorname{supp}\chi)^{-1}\operatorname{supp}f\),
+a continuous product of a closed subset of two compact sets.
+Extension by zero is continuous because the bump is compactly
+supported inside \(s(B)\) (4 points). Every isotropy arrow
+is a separate point of the closed discrete range fibre;
+an arrow bump distinguishes its atom from the unit atom.
+The construction never replaces arrows by their unit endpoints
+(2 points).
+
+**Exercise 155 (14 points).** Derive the exact compact arrow
+bound in (GP.8). Check the normalization, support and
+equivariance in (GP.10)–(GP.13), and type the algebra map
+supplied by the anchor.
+
+**Solution.** The two strict half-mass tests force an actual
+overlap \(h\in E\cap L_g^{-1}E\). With \(k=gh\), the
+sources of \(k\) and \(h\) agree, and
+\(g=kh^{-1}\). The composable pair condition is closed
+in \(E^2\), so \(EE^{-1}\) is compact. Continuity of
+the action makes the transporter a closed subset of
+\(EE^{-1}\times K\), completing the properness proof
+(4 points). Over a compact input set, the quotient
+partition uses finitely many indices. A nonzero cutoff
+coefficient therefore forces its translated point into
+one fixed compact union of bump supports. Properness
+bounds all such arrows simultaneously (3 points).
+The quotient partition and \(S_j\) are invariant, so
+summing (GP.10) along the range fibre cancels its denominator
+using (GP.9), leaving \(\sum_j\tau_j=1\). In (GP.12)
+at \(gz\), substitution \(h=gk\) preserves the
+coefficient and pushes the arrow atom \(\delta_k\)
+to \(\delta_{gk}\). This proves both mass one and
+equivariance with every source and range retained
+(4 points). The anchor is continuous and gives a
+nondegenerate multiplier homomorphism
+\(C_0(T)\to M(C_0(M_{\mathcal G}))\). A unit
+approximate identity converges uniformly on the compact
+anchor image of any compact support. This map is
+neither a scalar evaluation nor an inverse Kasparov
+Dirac class (3 points).
+
+**Exercise 156 (10 points).** Check the common-range
+kernel convention and every sign in (UPL.4), derive
+the exact global coordinate change (UPL.8), and explain
+why relative properness holds while this supplies no
+original-unit scalar class. Compute the original
+cone slice for \(b_h=1,v=-1/2,t=3/4\).
+
+**Solution.** If \(h_i:m_i\to n\), then
+\(h_i^{-1}h_j:m_j\to m_i\), so its displacement
+is \(a(m_i)-a(m_j)\). Expanding its square cancels
+the two single-index terms and leaves precisely
+\(-2(\sum_i c_i a(m_i))^2\), with no exchange of
+arrows or sign convention (3 points). In (UPL.6),
+\(v+b_h-a(n)=v-a(m)\), while direct expansion
+gives (UPL.7). The inverse in the proof of Theorem 11T.3
+recovers both original coordinates and preserves
+the excess condition \(e\ge0\) (3 points).
+The proper action on \(M\) already makes each
+compact-endpoint arrow transporter compact;
+intersecting with \(\psi\le R\) gives CA.15.
+The unit algebra is \(C_0(M)\), and an anchored
+pullback from \(C_0(T)\) gives no reverse Dirac
+class or local index-one assertion (2 points).
+For the slice, \(v'=1/2\) and
+\(t'=3/4+2(-1/2)(1)+1=3/4\), with both excess
+heights \(1/2\). This checks the exact cross-term
+sign independently of any index-factor existence
+(2 points).
+
+### Exercises 157–159. Proper groupoid coefficient norms (36 points)
+
+**Exercise 157 (12 points).** regular module and its exact norm.
+
+Type each summand of (PN.5). Derive its source-column matrix,
+the two exact Schur bounds and its adjoint. Prove that tensoring
+with a faithful representation of \(P\) retains the operator
+norm, and explain why this proves \(\|f\|_r\le\|f\|_m\)
+without disintegration.
+
+**Solution.** If \(r h=r g\), then
+\(h^{-1}g\) is composable, has source \(s g\), and the
+coefficient \(\alpha_g^{-1}f(h)\) also lies in
+\(P_{s g}\). Fixing \(x=s g\) and writing
+\(l=h^{-1}g\) gives \(h=gl^{-1}\) and the matrix
+\(A_{g,l}=\alpha_g^{-1}f(gl^{-1})\) on
+\(\ell^2(\mathcal G_x)\otimes P_x\) (3 points).
+
+For fixed \(g\), \(l\mapsto gl^{-1}\) is a bijection
+from the source column to the range fibre at \(r g\),
+so the row sum is at most \(R\). For fixed \(l\),
+\(g\mapsto gl^{-1}\) is a bijection to the source
+fibre at \(r l\), so the column sum is at most
+\(S\). The row operator with entries
+\(A_{g,l}/\sqrt{\|A_{g,l}\|}\) has squared norm
+at most \(R\). Apply it to the column with entries
+\(\sqrt{\|A_{g,l}\|}\xi_l\), then sum over \(g\).
+This proves (PN.7) and the bound \(\sqrt{RS}\).
+The transpose-adjoint entry is
+\(\alpha_l^{-1}f(lg^{-1})^*\), exactly the regular
+entry for \(f^*\). Thus the extension is adjointable
+and \(I\)-bounded (5 points).
+
+If \(T\in\mathcal L(E)\) is nonzero, choose
+\(\xi\) with \(T\xi\ne0\). The positive coefficient
+\(\langle T\xi,T\xi\rangle\) is nonzero; a faithful
+representation \(\pi\) has a vector \(v\) on which
+it has positive expectation. Consequently
+\(T\xi\otimes v\ne0\), so the induced operator
+representation is faithful and hence isometric.
+The resulting \(I\)-bounded ordinary Hilbert-space
+representation of the convolution algebra is included
+in its defining universal full norm. No groupoid
+representation has been decomposed into unit fibres
+by a measure-theoretic theorem (4 points).
+
+**Exercise 158 (12 points).** the actual cutoff isometry.
+
+Derive (PN.12) from the interior tensor product,
+prove compact support of (PN.13) on the exact
+composable pair space, and reindex its inner product
+to obtain (PN.15). Explain why the resulting identity
+holds in \(B_m\), rather than merely at each unit.
+
+**Solution.** For elementary pair sections
+\(K(g,k)=\xi(g)a(k)\), \(L(g,k)=\zeta(g)b(k)\),
+the tensor inner product is
+\(a^*i_P(\langle\xi,\zeta\rangle)b\).
+Its convolution value at \(h\) is
+\[
+ \sum_{s k=r h}\alpha_k^{-1}\left(
+ a(k)^*\left[\sum_{s g=r k}\xi(g)^*\zeta(g)\right]
+ b(kh)\right),
+\]
+which is exactly (PN.12). Every bracket has
+coefficient \(P_{r k}=P_{s g}\), and the transport
+lands in \(P_{s k}=P_{r h}\) (3 points).
+
+Let \(D\) be a compact central support for
+\(a\). A nonzero cutoff product requires
+\(z\in D\), \(r g=p(z)\), and
+\(c(g^{-1}z)\ne0\). The Theorem 11S.3 inverse-composability
+support condition bounds \(g\) in a compact
+\(B_D\); it is not being applied to pairs
+satisfying \(s g=p(z)\). The condition
+\(gk\in K_a\) then bounds \(k\) in the compact
+\(B_D^{-1}K_a\). Thus the pair section has
+compact support and belongs to the completed
+interior module, by the bisection approximation
+and its explicit uniform-to-module estimate
+(4 points).
+
+In (PN.12) at \(Wa,Wb\), put \(l=gk\).
+The two transports become \(\alpha_l^{-1}\),
+and the cutoff square becomes
+\(\alpha_g(c_{s g}^2)\) between \(a(l)^*\)
+and \(b(lh)\). The source condition is
+\(s l=r h\); the remaining inner sum is over
+\(r g=r l\). Equation (PN.9) replaces that
+sum by one, leaving exactly \(a^**b\).
+This is equality of the continuous compactly
+supported convolution sections representing
+the interior-tensor inner product. Its
+completion is therefore an equality in
+\(B_m\). Positivity and isometry follow from
+the actual interior product, not from
+fibrewise indices or a scalar augmentation
+(5 points).
+
+**Exercise 159 (12 points).** norm equality and both inverse identities.
+
+Prove (PN.14) with its unchanged middle unit,
+deduce (PN.19), and give both typed inverse
+Kasparov products. State exactly what this
+proves for Theorem 11R.2 and what original graph
+requirements remain.
+
+**Solution.** In (PN.17), the changed first
+arrow is \(h^{-1}g\), whose source remains
+\(s g=r k\). Hence its cutoff is the same
+\(c_{s g}\). This is central and even, so
+commutes past \(\alpha_g^{-1}f(h)\) without
+a grading sign. The action composition gives
+\(\alpha_{h^{-1}g}^{-1}=\alpha_g^{-1}\alpha_h\).
+The remaining sum is the convolution
+\((f*a)(gk)\), which proves (PN.14)
+(4 points).
+
+The isometry gives
+\(\|f*a\|_m\le\|\Lambda(f)\|\|a\|_m\)
+for all \(a\in B_m\). A contractive
+approximate identity in \(B_m\) shows that
+left multiplication by \(f\) has norm
+\(\|f\|_m\). Thus \(\|f\|_m\le\|f\|_r\),
+and Lemma 11U.1 supplies the reverse inequality.
+Completion gives the onto isometric graded
+homomorphism \(q_P:B_m\to B_r\)
+(4 points).
+
+The class \(v=[q_P^{-1}]\) has type
+\(KK(B_r,B_m)\), degree zero. Its products
+are \([q_P]\otimes_{B_r}v=1_{B_m}\) and
+\(v\otimes_{B_m}[q_P]=1_{B_r}\), by
+composition of the two actual homomorphisms.
+This discharges Theorem 11R.2's proper-coefficient
+quotient inverse at the general groupoid
+scope. It supplies neither its
+original-unit Dirac factors nor their
+local Bott product, and says nothing
+about an inverse of the coefficient-free
+quotient or a finite-order graph operator
+(4 points).
 
 ## References
 

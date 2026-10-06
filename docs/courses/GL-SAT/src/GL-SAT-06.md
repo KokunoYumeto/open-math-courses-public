@@ -4,6 +4,8 @@
 
 The objects of the Satake category are perverse sheaves on the affine Grassmannian whose equivariance records the integral loop-group action. Each object has support in finitely many Schubert varieties. This makes the definition a finite-dimensional question, despite the infinite-dimensional notation. We construct that category, prove independence of the jet level, classify its simple objects, and establish duality and the exact faithful cohomology functor. We also prove the precise implication from IC parity to semisimplicity. General IC parity remains an unfinished assertion in this lesson; it is not used in the other constructions.
 
+Full classical characteristic-zero semisimplicity is proved later in Identifying the dual group, Theorem 8.3, using the convolution and reconstruction developed after this lesson and the vanishing of IC self-extensions. That proof also gives every standard-object equality. It is independent of general ordinary IC parity, which remains a separate geometric assertion. The later equivalence is not an input to the constructions in this lesson.
+
 We work with a connected reductive group \(G/\mathbb C\), a maximal torus \(T\subset B\), and a coefficient field \(\Lambda\). The category and finite-jet arguments work over every coefficient field. Statements conditional on characteristic-zero IC parity are identified explicitly. Put \(O=\mathbb C[[t]]\), \(K=\mathbb C((t))\),
 \[
 K^+=L^+G,\qquad O_\lambda=\operatorname{Gr}^{\lambda},\qquad
@@ -373,7 +375,7 @@ where the second equality identifies the boundary object with its closed extensi
 
 The Ext vanishing just used follows from derived Hom vanishing as follows. Gluing t-structures, Appendix A.3 proves that heart exact sequences are precisely triangles with three heart terms. Their connecting map is in degree-one derived Hom. If it is zero, the triangle's Hom exact sequence lifts the identity of its quotient to a section. Conversely, for any degree-one map \(A\to B[1]\), its rotated cone \(B\to E\to A\) has \(E\) in the heart by its degree bounds and cohomology sequence, hence is an extension. This constructs the two directions needed here; full faithfulness of §2 preserves their equivariance.
 
-For the second, the standard-object truncation gives \(i^*\Delta_\lambda\in{}^pD^{\le-2}\), as proved in Semi-infinite orbits and weight functors, equation (20.2). Apply \(i^*\) to the kernel triangle. Since \(i^*B_\lambda\) is the same perverse boundary object, the degree-\(-1,0\) sequence identifies \({}^pH^{-1}i^*IC_\lambda\) with \(B_\lambda\). If that kernel is nonzero, finite length supplies a simple boundary quotient; the first identification then supplies a nonzero extension. Thus vanishing of all \(B_\lambda\) is also necessary for semisimplicity. This proves an equivalent criterion, and locates its obstruction in one boundary perverse degree. It does not assert vanishing of that degree in general.
+For the second, the standard-object truncation gives \(i^*\Delta_\lambda\in{}^pD^{\le-2}\), as proved in Semi-infinite orbits and weight functors, equation (20.2). Apply \(i^*\) to the kernel triangle. Since \(i^*B_\lambda\) is the same perverse boundary object, the degree-\(-1,0\) sequence identifies \({}^pH^{-1}i^*IC_\lambda\) with \(B_\lambda\). If that kernel is nonzero, finite length supplies a simple boundary quotient; the first identification then supplies a nonzero extension. Thus vanishing of all \(B_\lambda\) is also necessary for semisimplicity. This proves an equivalent criterion, and locates its obstruction in one boundary perverse degree. The general vanishing is supplied later by Lesson 11; it is not assumed in this criterion's proof.
 
 ### 5.5. What the resolution's intersection map must prove
 
@@ -404,6 +406,35 @@ K_\lambda\simeq\bigoplus_a{}^pH^a(K_\lambda)[-a].
 \]
 
 The implication from those isomorphisms to (5.13) is proved in The decomposition theorem, §2. It does not itself establish the geometric Lefschetz hypothesis or semisimplicity of the terms. If, in addition, the maps in Lemma 5.4 are invertible at the successive strata for \(P={}^pH^0(K_\lambda)\), the lemma decomposes that term into ICs. On the dense cell the resolution is an isomorphism and \(K_\lambda\) restricts to a single \(\Lambda[d_\lambda]\). Hence the full-support IC occurs once in \(P\). Its inclusion and projection, composed with the degree-zero inclusion and projection in (5.13), give exactly the two maps in (5.9). This is a proved conditional reduction. Actual relative Lefschetz and the invertibility of those geometric intersection maps remain necessary premises; neither is inferred from the even fibre groups in (5.8).
+
+### 5.6. The boundary consequence of standard–IC equality
+
+The following deduction records precisely how much local parity follows from the standard-object equality proved later in Lesson 11. It is not an input to that proof.
+
+**Proposition 5.5.** Suppose \(\Delta_\lambda=IC_\lambda\). For the boundary inclusion \(i:\partial Z_\lambda\hookrightarrow Z_\lambda\),
+\[
+i^*IC_\lambda\in{}^pD^{\le-2},\qquad
+i^!IC_\lambda\in{}^pD^{\ge2}.
+\tag{5.14}
+\]
+If a boundary orbit \(O_\mu\) has codimension two, the restriction of \(IC_\lambda\) to it is concentrated in ordinary degree \(-d_\lambda\), and its exceptional restriction in degree \(d_\lambda-2d_\mu\). Both degrees have parity \(d_\lambda\).
+
+**Proof.** The first bound is (20.2) of Lesson 5 applied to the standard object, which now equals the IC. Alternatively (5.11) removes perverse degree \(-1\) from the strict IC bound. Verdier self-duality gives the second. On an orbit of dimension \(d_\mu\), these bounds give ordinary stalk degrees at most \(-d_\mu-2\) and costalk degrees at least \(-d_\mu+2\).
+
+There are no ordinary IC degrees below \(-d_\lambda\). To verify this rather than assume it, use Intermediate extensions, §1, (1.5)–(1.7). Starting with \(\Lambda[d_\lambda]\), that construction applies successive \(Rj_*\) and upper ordinary truncations \(\tau^{\le-s-1}\). A right-derived left-exact functor preserves the lower bound \(D^{\ge-d_\lambda}\), and those upper cutoffs are at least \(-d_\lambda\), so they introduce no lower degrees. Thus the entire IC lies in \(D^{\ge-d_\lambda}\). If \(d_\lambda-d_\mu=2\), the lower bound and the stalk upper bound coincide. Duality on the smooth \(d_\mu\)-dimensional orbit sends a local system in degree \(-d_\lambda\) to its dual in degree \(d_\lambda-2d_\mu\), proving the costalk assertion. \(\square\)
+
+For higher codimension, this proof leaves a specific local question. In that ordinary-truncation construction, let \(j_s:V_{s+1}\hookrightarrow V_s\) adjoin the strata of dimension \(s\), and for such an orbit put
+\[
+B_\mu=i_\mu^*Rj_{s*}(IC_\lambda|_{V_{s+1}}).
+\]
+The proved construction gives \(i_\mu^*IC_\lambda=\tau^{\le-s-1}B_\mu\). Since \(s\equiv d_\lambda\pmod2\) in the component, (5.14) removes the last wrong-parity degree \(-s-1\). General parity would follow if
+\[
+\mathcal H^q(B_\mu)=0
+\quad\text{for }q\le-s-3,
+\quad q\not\equiv d_\lambda\pmod2.
+\tag{5.15}
+\]
+This retained lower-degree vanishing has not been proved for general higher-codimension slices. Upper truncation cannot remove a surviving degree below its cutoff. Likewise, semisimplicity of spherical perverse objects does not split the derived rootwise resolution of §5.3: that resolution is Iwahori-equivariant and need not be spherical, and semisimple perverse cohomology alone does not supply its derived inclusions. Either (5.15) or the explicit identity-extension lift in (5.9) would supply the remaining geometric step.
 
 ## 6. Exact and faithful total cohomology
 
@@ -773,7 +804,7 @@ The other two slices lie in the smooth orbit: \(\mathbb A^2\) has shifted compac
 
 ## 10. Remaining general assertions
 
-The category, jet-level independence, characteristic-zero constructible-equivariant equivalence, simple classification, duality, orbit even cohomology, affine pavings of resolution fibres, exact faithful total cohomology, torus case, minuscule case, cyclic immediate-boundary charts, characteristic-zero type-three IC and bounded semisimplicity, quasi-minuscule surface calculation, and characteristic-two nonsplit extensions and slice connecting maps are proved above. Proposition 5.3 gives the additional standard-object criterion; Lemma 5.4 proves the precise intersection-map splitting step. The remaining general geometric assertion is the IC lift obstruction \(\partial\eta=0\), which would give characteristic-zero IC parity (P) and unconditional semisimplicity. The Lefschetz and nondegeneracy premises in §5.5 and the alternative dimension equalities in §5.4 are not established in general here. Convolution, tensor duals and the commutativity constraint require their separate constructions.
+The category, jet-level independence, characteristic-zero constructible-equivariant equivalence, simple classification, duality, orbit even cohomology, affine pavings of resolution fibres, exact faithful total cohomology, torus case, minuscule case, cyclic immediate-boundary charts, characteristic-zero type-three IC and bounded semisimplicity, quasi-minuscule surface calculation, and characteristic-two nonsplit extensions and slice connecting maps are proved above. Proposition 5.3 gives the standard-object criterion; Lemma 5.4 proves the intersection-map splitting step. General characteristic-zero semisimplicity and the vanishing of all standard-object boundary kernels are proved subsequently in Lesson 11, §§8.4–8.5. The remaining local geometric assertion is the IC lift obstruction \(\partial\eta=0\), which would prove ordinary IC parity (P). Semisimplicity alone does not supply the splitting of the entire derived resolution complex required for that deduction. The geometric Lefschetz and nondegeneracy premises in §5.5 remain unproved here. Convolution, tensor duals and the commutativity constraint have their separate proofs in Lessons 7–8.
 
 ## References
 

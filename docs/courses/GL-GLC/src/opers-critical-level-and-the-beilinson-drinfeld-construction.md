@@ -4,7 +4,7 @@
 
 An oper is a connection with a maximally transverse Borel reduction. The reduction produces scalar differential equations and gives concrete affine families of local systems. At critical level, an affine Lie algebra's center is described by functions on opers. Localization assigns to a global oper a system of differential equations on the bundle stack with a tensor-compatible Hecke eigenproperty.
 
-We construct the adjoint-semisimple principal slice, prove its unique gauge normal form in ordinary families, and derive the coordinate action and global affine oper space. We also prove the homogeneous invariant ring over the stated characteristic-zero field, identify its degrees with the principal heights and construct the weighted Kostant section. A separate scalar proof treats \(PGL_n\) through jets. We also prove the Schwarzian rule, algebraic \(PGL_2\) irreducibility and the critical \(\mathfrak{sl}_2\) invariant. Section 3.2 extends that calculation to the entire rank-one polynomial vacuum center and its coordinate-equivariant ordinary disc-oper comparison. Section 3.3 proves the general current-jet invariant algebra, PBW symbol bound, ordinary-family base change and vacuum commutativity; it constructs every basic type A lift and proves the whole type A polynomial vacuum algebra. The full center, localization, quantization and fundamental local equivalence theorems remain unproved; their precise statements below retain their complete scope.
+We construct the adjoint-semisimple principal slice, prove its unique gauge normal form in ordinary families, and derive the coordinate action and global affine oper space. We also prove the homogeneous invariant ring over the stated characteristic-zero field, identify its degrees with the principal heights and construct the weighted Kostant section. A separate scalar proof treats \(PGL_n\) through jets. We also prove the Schwarzian rule, algebraic \(PGL_2\) irreducibility and the critical \(\mathfrak{sl}_2\) invariant. Section 3.2 extends that calculation to the entire rank-one polynomial vacuum center and its coordinate-equivariant ordinary disc-oper comparison. Section 3.3 proves the general current-jet invariant algebra, PBW symbol bound, ordinary-family base change and vacuum commutativity; it constructs every basic type A lift and proves the whole type A polynomial vacuum algebra. Section 3.4 proves the exact quantum coordinate laws and the coordinate-equivariant ordinary disc-oper comparison for every type A factor, including nilpotent parameter families. Section 3.5 proves reductive vacuum factorization, the whole type A reductive polynomial algebra and its framed central coefficient comparison, and the exact algebraic distinction between central frames and gauges. The full center, localization, quantization and fundamental local equivalence theorems remain unproved; their precise statements below retain their complete scope.
 
 The classical calculations use a fixed smooth projective connected curve over an algebraically closed characteristic-zero field, \(g\ge2\). The regular singular example separately uses the punctured projective line. The classical center and eigenobject statements in §§4–5 have their stated complex semisimple or simply connected hypotheses. Their full-field and reductive extensions remain unproved. Connections are algebraic de Rham connections; localization uses left D-modules. Ordinary-family assertions concern the fixed curve. Analytic comparisons and full derived moduli retain separate foundations.
 
@@ -2599,13 +2599,13 @@ The proof separates the relevant statements as follows:
 | All classical current invariants | Polynomial Kostant section and the dominant finite conjugation map in §3.3.1 | The earlier explicit semisimple Lie and invariant-ring foundations remain. |
 | The upper bound on quantum symbols | The exact nonnegative-mode action and injection (GJ.P2)–(GJ.P3) | This is an inclusion, with no lifting assertion. |
 | Polynomial independence and exhaustion after quantum lifting | Translation (GJ.P7), unconditional commutativity (VC.20), and the finite degree induction in (GJ.Q1)–(GJ.Q2) | Actual invariant basic lifts with the prescribed leading symbols. |
-| Functions on dual-group opers with the full coordinate action | The ordinary oper construction in §§1.1–1.2 and the full rank-one comparison in §3.2 | In higher rank, identify the quantum generators and every lower-filtration coordinate term. |
+| Functions on dual-group opers with the full coordinate action | The ordinary oper construction in §§1.1–1.2, the rank-one comparison in §3.2 and the full type A comparison in §3.4 | In other simple types, construct the basic lifts and identify every lower-filtration coordinate term. |
 
 The general basic-lift hypothesis remains open for the other simple types; §3.3.5 supplies the full list for every type A factor. Once such lifts are supplied, the written argument proves the whole polynomial vacuum algebra and its ordinary coefficient extensions. The completed punctured-disc center, critical-level Poisson/chiral structures, Satake compatibility, derived parameter families and central-convention comparison also retain their separate complete-proof obligations in §4.
 
 #### 3.3.5. Basic critical \(\mathfrak{sl}_n\) lifts and the polynomial vacuum center
 
-Work over a field \(k\) of characteristic zero, with \(n\geq2\). For \(n=1\) the form is zero, the sole coefficient \(E_{11}[-1]\) is central, and the traceless quotient is zero, so the empty list of basic traceless lifts needs no separate argument. The determinant construction is due to Chervov–Molev, [*On higher order Sugawara operators*, arXiv:0808.1947v2, Theorem 3.1](https://arxiv.org/abs/0808.1947v2). The calculation below proves the required lift existence from the explicit affine relations. In particular, the determinant cancellation is proved here rather than inferred from a Manin-matrix or vertex-algebra theorem. Its conclusion concerns vacuum vectors and their affine-module endomorphisms; quantum commutativity and completed, coordinate, chiral, Satake and derived comparisons are separate assertions.
+Work over a field \(k\) of characteristic zero, with \(n\geq2\). For \(n=1\) the form is zero, the sole coefficient \(E_{11}[-1]\) is central, and the traceless quotient is zero, so the empty list of basic traceless lifts needs no separate argument. The determinant construction is due to Chervov–Molev, [*On higher order Sugawara operators*, arXiv:0808.1947v2, Theorem 3.1](https://arxiv.org/abs/0808.1947v2). The calculation below proves the required lift existence from the explicit affine relations. In particular, the determinant cancellation is proved here rather than inferred from a Manin-matrix or vertex-algebra theorem. Its conclusion concerns vacuum vectors and their affine-module endomorphisms. The commutativity argument of §3.3.3 and filtered reduction prove the polynomial vacuum algebra below; §3.4 proves its full ordinary coordinate comparison. Completed, chiral, Poisson, Satake and derived comparisons remain separate assertions.
 
 ##### SL.L1. Form, affine bracket and translation
 
@@ -2877,7 +2877,2263 @@ Give \(\tau\), \(u\), and \(E_{ab}[-j]\) energies \(1\), \(1\), and \(j\), respe
 \]
 All listed generators are algebraically independent. Equation (GJ.P5) extends this algebra identity to every ordinary \(k\)-algebra \(R\), including nonreduced ones. Each endomorphism is a finite polynomial; no completed polynomial algebra is asserted.
 
-For a direct sum of type A factors, the critical bracket has no cross-factor terms. A basic lift from one factor, with the vacuum in every other factor, is invariant for the entire sum. Its symbol is the corresponding basic polynomial of that factor. Thus the same general reduction proves (SL.C1) with the concatenated lists of generators. The zero Lie algebra gives the coefficient ring. Basic lifting in other simple types, the full higher-rank quantum coordinate law, the oper comparison with that law, and the completed/chiral/Poisson/Satake/derived comparisons remain separate proof obligations.
+For a direct sum of type A factors, the critical bracket has no cross-factor terms. A basic lift from one factor, with the vacuum in every other factor, is invariant for the entire sum. Its symbol is the corresponding basic polynomial of that factor. Thus the same general reduction proves (SL.C1) with the concatenated lists of generators. The zero Lie algebra gives the coefficient ring. Section 3.4 proves the full quantum coordinate law and ordinary oper comparison for these type A factors. Basic lifting and the coordinate comparison in other simple types, and the completed/chiral/Poisson/Satake/derived comparisons, remain separate proof obligations.
+
+
+### 3.4. Coordinate laws of scalar opers and critical vacuum centers
+
+#### 3.4.1. Coordinate derivations on the affine vacuum
+
+Use the affine bracket and vacuum of §§3 and 3.3.2. For every integer \(l\ge-1\), define
+\[
+D_l(x_m)=m x_{m+l},\qquad D_l(K)=0,\qquad D_lv=0.
+\tag{TC.A1}
+\]
+This is an affine derivation. The noncentral terms in its bracket identity have the common coefficient \(m+n\). Its possible central defect on \(x_m,y_n\) is
+\[
+m(m+l)\kappa(x,y)\delta_{m+n+l,0}
+ +nm\kappa(x,y)\delta_{m+n+l,0}=0.
+\]
+It preserves the induction relations: for \(m\ge0\), either \(m=0\) gives zero or \(m+l\ge0\). Hence it induces an operator on the actual vacuum. It preserves the PBW letter-length filtration, and lowers energy by \(l\), since a replacement of index \(-j\) by \(-j+l\) has that energy shift; further commutations preserve the total shift but can lower letter length. In particular
+\[
+D_0|_{V_E}=-E\operatorname{Id},\qquad D_{-1}=-T.
+\tag{TC.A2}
+\]
+
+Direct calculation on every current gives
+\[
+[D_l,D_q]=(q-l)D_{l+q},\qquad
+[D_l,T]=(l+1)D_{l-1}.
+\tag{TC.A3}
+\]
+In the first equality the sole case with \(l+q<-1\) has \(l=q=-1\) and a zero coefficient, so the equality means zero. In the second, \(l=-1\) likewise means zero. For all other indices, the first current calculation is
+\(m((m+q)-(m+l))x_{m+l+q}\); the second is \(m(l+1)x_{m+l-1}\). Any difference between the displayed operators and these calculations commutes with all currents and kills the cyclic vacuum, so it is zero on every state.
+
+These operators preserve invariant states. If \(x_mw=0\) for all \(m\ge0\), then
+\(x_mD_lw=-m x_{m+l}w=0\); the possible negative index at \(m=0,l=-1\) has zero coefficient. Smoothness extends this to formal nonnegative currents. On the endomorphism algebra, the action is the ordinary commutator:
+\[
+[D_l,E_w]=E_{D_lw}.
+\tag{TC.A4}
+\]
+Indeed Jacobi and the fact that \(E_w\) commutes with every current show that the left side is another affine endomorphism. Its vacuum image is \(D_lw\), and the induced-module bijection (K2.3) proves the equality. Commutators are derivations for endomorphism composition. All of these arguments hold after every ordinary coefficient extension.
+
+For a state \(w\), write its divided-translation series
+\[
+W(t)=\sum_{r\ge0}\frac{T^rw}{r!}t^r.
+\]
+This is a formal series of actual states, with individual finite coefficients. Iterating the second equality in (TC.A3) gives, for \(l\ge0\),
+\[
+D_l W(t)
+=e^{tT}\sum_{s=0}^{l+1}\binom{l+1}{s}t^sD_{l-s}w.
+\tag{TC.A5}
+\]
+To prove it, expand \(e^{-tT}D_le^{tT}\) as iterated commutators. The \(s\)-th commutator is \((l+1)l\cdots(l+2-s)D_{l-s}\), and subsequent terms vanish after \(s=l+1\). Dividing by \(s!\) yields (TC.A5). Equivalently, induction on a single power of \(T\) proves each coefficient, so no exponential convergence assertion is involved. For \(l=-1\), (TC.A2) gives \(D_{-1}W=-W'\).
+
+This reduces the all-coefficient quantum law to finitely many basic-vector calculations. Let \(w_0=v\), \(w_1=0\), and let \(w_k\) be the energy-\(k\) determinant states of §3.3.5. The calculation in §3.4.3 proves
+\[
+D_jw_k=(j+1)!C_{k,k-j}w_{k-j}
+ \quad(1\le j\le k),\qquad
+C_{ki}=\binom{n-i}{k-i+1}
+ +\frac{1-n}{2}\binom{n-i}{k-i}.
+\tag{TC.A6}
+\]
+Terms with an out-of-range lower index are zero. Modes \(j>k\) already give zero by energy. Then (TC.A5), with \(D_0w_k=-kw_k\) and \(D_{-1}w_k=-Tw_k\), proves
+\[
+D_lW_k(t)=-t^{l+1}W_k'(t)-k(l+1)t^lW_k(t)
+ +\sum_{i=0}^{k-1}C_{ki}
+   \bigl(t^{l+1}\bigr)^{(k-i+1)}W_i(t).
+\tag{TC.A7}
+\]
+For the term with \(j=k-i\ge1\), its coefficient in (TC.A5) is
+\(\binom{l+1}{j+1}t^{l-j}(j+1)!\), exactly the derivative of \(t^{l+1}\) of order \(j+1\). The two remaining terms are the displayed derivative and weight terms. Derivatives of order greater than \(l+1\) vanish. This proves every boundary case as well. By (TC.A4), the identical formula holds for the corresponding endomorphism series.
+
+The finite basic-vector identity (TC.A6) is proved by the quantum calculations (SL.X6), (SL.X10) and their positive-Witt induction (SL.X13). It is stronger than homogeneity and the classical symbol law (GJ.P10); it retains every lower-filtration term required by the oper comparison.
+
+#### 3.4.2. Full scalar-oper coordinate law
+
+##### Density transport on the full ordinary coordinate group
+
+Let \(k\) be a characteristic-zero field, \(R\) any ordinary commutative \(k\)-algebra, and \(n\geq2\). All derivatives below are relative to \(R\). The finite-jet construction in §§2.2–2.6 of [Opers, critical level and the Beilinson–Drinfeld construction](opers-critical-level-and-the-beilinson-drinfeld-construction.md), especially (O4.2)–(O4.6), gives the scalar presentation of an ordinary \(PGL_n\)-oper. In a density coordinate its operator is
+\[
+D_t=\partial_t^n+\sum_{i=2}^n s_i(t)\partial_t^{n-i},
+\qquad
+h=\frac{1-n}{2},
+\qquad
+D:F_h\longrightarrow F_{h+n}.
+\tag{SC.O1}
+\]
+Here \(F_h\) denotes the source density frame and \(F_{h+n}\) the target density frame. In the theta presentation these are \(\theta^{1-n}\) and \(\theta^{1+n}\). This notation specifies the two local weights; it does not choose a global trivialization of either line. The coefficient functor in this coordinate is
+\[
+R\longmapsto\prod_{i=2}^n R[[t]]
+=\operatorname{Hom}_{k\text{-alg}}
+ \bigl(k[s_{i,r}:2\leq i\leq n,\ r\geq0],R\bigr),
+\qquad
+s_i(t)=\sum_{r\geq0}s_{i,r}t^r.
+\tag{SC.O2}
+\]
+The finite product permits every power-series coefficient sequence. It uses the completed ring \(R[[t]]\).
+
+First consider a passive coordinate change \(t=\eta(u)\). Write
+\(\alpha=\eta'(u)\), so \(\alpha\in R[[u]]^\times\). The full continuous coordinate group also permits a nilpotent constant \(\eta(0)\); it is larger than the subgroup fixing the origin. Section 1.1.8 constructs these substitutions and their inverses over every ordinary \(R\). The finiteness assertion can be seen directly. If \(\eta(0)^\nu=0\), a term contributing to the coefficient of \(u^r\) in \(\eta(u)^m\) uses at least \(m-r\) constant factors. Thus
+\[
+[u^r]\eta(u)^m=0\quad(m\geq r+\nu),
+\qquad
+[u^r]F(\eta(u))
+=\sum_{m=0}^{r+\nu-1}[t^m]F(t)\,[u^r]\eta(u)^m.
+\tag{SC.O3}
+\]
+No reduction of the ring is involved.
+
+For completeness, the inverse construction also retains nilpotents. Put \(I=(\eta(0))\). Starting with \(a=0\), the iteration
+\(a\mapsto a-\eta(a)/\eta'(a)\) takes place in \(I\). Evaluation there is finite, and \(\eta'(a)\) is a unit modulo the nilpotent ideal \(I\), hence a unit. Taylor expansion shows that an error in \(I^d\) becomes an error in \(I^{2d}\). Finitely many steps give a root \(a\in I\). The difference \(\eta(a)-\eta(a')\) is \((a-a')\) times a unit for \(a,a'\in I\), so this root is unique. The pointed series \(\eta(u+a)\) has an inverse by coefficient recursion, using its unit linear coefficient. Adding back \(a\) gives the two-sided continuous inverse of \(\eta\). These formulas prove that the coordinate changes used below are actual automorphisms, including over nonreduced bases.
+
+A density coefficient transforms by
+\[
+P_w(\eta)f(u)=\alpha(u)^w f(\eta(u)).
+\]
+For integral \(w\) this is an ordinary formula. Half-integral weights will be justified below. Transporting both the source and target of the operator gives
+\[
+\begin{aligned}
+\mathcal T_\eta(D)
+&=P_{h+n}(\eta)\,D\,P_h(\eta)^{-1}\\
+&=\alpha^{h+n}
+ \left(\sum_{i=0}^n s_i(\eta(u))
+          (\alpha^{-1}\partial_u)^{n-i}\right)\alpha^{-h},
+\qquad s_0=1,\quad s_1=0.
+\end{aligned}
+\tag{SC.O4}
+\]
+The order of the factors matters: the derivative operators act on the factor to their right. Formula (SC.O4) follows by applying the operator to a section, expressing its input in the old density frame, and expressing its output in the new density frame. It is also the transition formula of the jet construction. The chain and product rules defining \(J^{n-1}F_h\) give the following comparison:
+\[
+\begin{array}{ccc}
+D_t:F_h(t)\longrightarrow F_{h+n}(t)
+&\xrightarrow{\ (O4.2)\text{--}(O4.6)\ }&
+(J^{n-1}F_h,\nabla_D,F_\bullet)_{\mathrm{proj}}\\
+\big\downarrow{\mathcal T_\eta}&&
+\big\downarrow{\,t=\eta(u)\,}\\
+D_u:F_h(u)\longrightarrow F_{h+n}(u)
+&\xrightarrow{\ (O4.2)\text{--}(O4.6)\ }&
+(J^{n-1}F_h,\nabla_{D_u},F_\bullet)_{\mathrm{proj}} .
+\end{array}
+\tag{SC.O5}
+\]
+Every arrow on the right is induced by the finite change-of-jet matrix, whose diagonal entries are units. The horizontal Taylor recursion in (O4.3) commutes with that matrix. Hence the square compares intrinsic connections and flags in ordinary families.
+
+There is no square-root choice in the resulting operator action. If \(n\) is odd, the weights are integral. If \(n\) is even, adjoin a square root of the unit \(\alpha(0)\). The extension \(R[z]/(z^2-\alpha(0))\) is free of rank two and faithfully flat; \(z\) and \(2z\) are units. Recursively solving \(q(u)^2=\alpha(u)\), with \(q(0)=z\), gives a unique series because each new equation has coefficient \(2z\). In this extension the factors in (SC.O4) are \(q^{n+1}\) and \(q^{n-1}\).
+
+If \(\widehat q\) is another root, \(a=\widehat q/q\) satisfies \(a^2=1\). Differentiation gives \(a'=0\), since \(2a\) is a unit. Thus \(a\) commutes with the derivative operators, and replacing \(q\) by \(\widehat q\) multiplies the full expression by \(a^{2n}=1\). This argument allows different signs on different idempotent components. In the jet presentation the source frame changes by the single relatively constant scalar \(a^{1-n}\), and every jet component changes by that same scalar. Its projectivization is unchanged. Section 2.6 supplies the corresponding flat-line comparison between different global theta presentations; the present coordinate calculation requires no global theta frame.
+
+The square-root-free formula below proves descent directly. It also proves the composition law
+\[
+\mathcal T_\zeta\bigl(\mathcal T_\eta(D)\bigr)
+=\mathcal T_{\eta\circ\zeta}(D).
+\tag{SC.O6}
+\]
+Indeed \((\eta\circ\zeta)'=(\eta'\circ\zeta)\zeta'\), and the density pullbacks compose with exactly these two factors. The signs cancel as just proved. Coefficient-finite substitution makes the same identity valid for nilpotent coordinate constants.
+
+##### A finite formula for every transported coefficient
+
+Put \(b=\alpha'/\alpha\). Conjugating one derivative in (SC.O4) gives
+\[
+\alpha^h(\alpha^{-1}\partial_u)\alpha^{-h}
+=\alpha^{-1}(\partial_u-hb)=L.
+\]
+Consequently
+\[
+\boxed{\quad
+\mathcal T_\eta(D)=
+\alpha^n\sum_{i=0}^n s_i(\eta(u))L^{n-i},
+\qquad
+L=\alpha^{-1}(\partial_u-hb).
+\quad}
+\tag{SC.O7}
+\]
+This expression uses integer powers of \(\alpha\), its inverse, relative derivatives and rational constants. It belongs to the original coefficient ring before any square root is adjoined.
+
+Here is an explicit finite coefficient recursion. Define differential operators
+\[
+B_a=\alpha^a L^a
+ =\sum_{d=0}^a C_{a,d}(b)\partial_u^{a-d},
+\qquad B_0=1 .
+\]
+Since
+\[
+B_{a+1}=(\partial_u-(h+a)b)B_a,
+\]
+their coefficients satisfy
+\[
+\begin{gathered}
+C_{0,0}=1,\qquad C_{a,d}=0\quad(d<0\text{ or }d>a),\\
+C_{a+1,d}
+=C_{a,d}+\partial_u C_{a,d-1}
+ -(h+a)b\,C_{a,d-1}.
+\end{gathered}
+\tag{SC.O8}
+\]
+All \(C_{a,d}\) are finite differential polynomials with rational coefficients. This recursion specifies every one of them, using only \(a\) steps. It also gives
+\[
+C_{a,0}=1,\qquad
+C_{a,1}=-\left(ah+\frac{a(a-1)}2\right)b.
+\tag{SC.O9}
+\]
+For the second identity, each successive factor contributes \(-(h+a)b\) to the next-to-leading coefficient. Their sum is the displayed coefficient.
+
+Write
+\(\mathcal T_\eta(D)=\sum_{i=0}^n\widetilde s_i(u)\partial_u^{n-i}\).
+Extracting each derivative order from (SC.O7) gives the complete formula
+\[
+\boxed{\quad
+\widetilde s_i(u)
+=\sum_{j=0}^i
+ \alpha(u)^j s_j(\eta(u))C_{n-j,i-j}(b)
+\quad(0\leq i\leq n).
+\quad}
+\tag{SC.O10}
+\]
+In particular \(\widetilde s_0=1\). For \(i=1\), the only possible contributions are \(C_{n,1}\) and \(\alpha s_1(\eta)\). They both vanish, because \(h=(1-n)/2\) and \(s_1=0\). This proves monicity and vanishing of the subprincipal coefficient for the full coordinate action.
+
+For \(i\geq2\), the formula has the following triangular structure:
+
+| Contribution to \(\widetilde s_i\) | Exact expression |
+|---|---|
+| The coefficient of the same order | \(\alpha^i s_i(\eta)\) |
+| Lower-index coefficients | \(\sum_{j=2}^{i-1}\alpha^j s_j(\eta)C_{n-j,i-j}(b)\) |
+| The coordinate correction of the leading derivative | \(C_{n,i}(b)\) |
+
+The table displays (SC.O10): a scalar coefficient has its weight-\(i\) term, mixing from lower-index coefficients, and a universal correction from the monic leading derivative. It describes the raw scalar coordinates rather than a chosen splitting of the global affine oper torsor.
+
+The quadratic correction has a useful closed form for every \(n\). Put
+\[
+K_n=\frac{n(n^2-1)}{12},
+\qquad
+\mathcal S(\eta)=b'-\frac12b^2.
+\]
+For fixed \(h=(1-n)/2\), set \(m_a=ah+a(a-1)/2=a(a-n)/2\). Summing the recurrence for \(C_{a+1,2}\) gives
+\[
+C_{n,2}=-\sum_{a=0}^{n-1}m_a\,b'
+ +\sum_{a=0}^{n-1}(h+a)m_a\,b^2.
+\]
+The first sum is \(-K_n\), by the sums of consecutive integers and their squares. For the second, pair \(a\) with \(n-a\): \(m_{n-a}=m_a\) and
+\((h+a)+(h+n-a)=1\). The zero endpoint terms allow the pairing over \(0\leq a\leq n\), so the second sum is one half of the first, namely \(-K_n/2\). Therefore
+\[
+C_{n,2}=K_n\mathcal S(\eta),
+\qquad
+\widetilde s_2=\alpha^2s_2(\eta)+K_n\mathcal S(\eta).
+\tag{SC.O10a}
+\]
+This proves the scalar Schwarzian coefficient in every order.
+
+The divided Taylor coefficients are
+\[
+s_{i,r}=[t^r]s_i(t)=\frac{1}{r!}s_i^{(r)}(0).
+\]
+Set \(s_{0,m}=\delta_{m,0}\) and \(s_{1,m}=0\). For a fixed nilpotence bound \(\eta(0)^\nu=0\), coefficient extraction from (SC.O10) is the finite formula
+\[
+\boxed{\quad
+\widetilde s_{i,r}
+=\sum_{j=0}^i
+ \sum_{\substack{a+c+d=r\\a,c,d\geq0}}
+ [u^a]\alpha^j\,
+ [u^d]C_{n-j,i-j}(b)\,
+ \sum_{m=0}^{c+\nu-1}s_{j,m}[u^c]\eta(u)^m .
+\quad}
+\tag{SC.O11}
+\]
+Thus a fixed transformed coefficient is a polynomial in finitely many original coefficients, coordinate coefficients and the inverse of the linear coordinate coefficient. The rational constants belong to \(k\). More explicitly, the original coefficients used have indices at most \(r+\nu-1\); the coordinate coefficients used have indices at most \(r+n+1\). The latter bound follows because \(C_{a,d}\) uses derivatives of \(b\) of order at most \(d-1\), and \(b=\eta''/\eta'\). Indeed (SC.O8) raises this maximum derivative order by at most one when \(d\) increases by one; its initial coefficient has no derivative. Inverse-series coefficients are determined by finite recursion from the unit \(\eta'(0)\).
+
+Every formula therefore commutes with \(R\to R'\), without flatness or reducedness assumptions. The nilpotence bound may depend on the individual coordinate; an algebra homomorphism preserves any bound already satisfied. On the coordinate chart with \(\eta(0)^\nu=0\), (SC.O11) is an ordinary polynomial formula with the linear coefficient inverted. These charts cover the full continuous coordinate functor. Together with (SC.O6), they give the full ordinary coordinate action, not only its first-order approximation. The same differential-operator formula is valid for finite-pole Laurent coefficients: the finite expansion of \((\eta(0)+u\,a(u))^{-1}\) from §1.1.8 supplies the required Laurent substitution.
+
+##### Inverse variation and all divided coefficient modes
+
+To specify the action on functions, let \(\phi\) be a coordinate automorphism and put \(\psi=\phi^{-1}\). The inverse-pullback action is
+\[
+(\phi\cdot f)(D)=f(\mathcal T_\psi(D)).
+\tag{SC.O12}
+\]
+This is the convention already used for the projective-connection coefficients in (RC.C4)–(RC.C5). In (SC.O7)–(SC.O11), take \(\eta=\psi\) to obtain its full finite substitution law.
+
+Let \(\phi(t)=t+\epsilon v(t)\), where \(\epsilon^2=0\) and \(v(t)\in R[[t]]\). The constant coefficient \(\epsilon v(0)\) is nilpotent, so this is a coordinate in the full group. Its inverse is \(t-\epsilon v(t)\). For any density weight \(w\),
+\[
+P_w(\phi)=1+\epsilon A_w(v),
+\qquad
+A_w(v)=v\partial_t+w v'.
+\]
+Expanding the source and target transports in (SC.O4) therefore gives
+\[
+\boxed{\quad
+\delta_vD
+=-(v\partial_t+(h+n)v')D
+  +D(v\partial_t+h v').
+\quad}
+\tag{SC.O13}
+\]
+This identity is an equality of finite-order differential operators over \(R[\epsilon]/(\epsilon^2)\).
+
+We calculate every coefficient. The product rule, proved by induction on \(q\), is
+\[
+\partial_t^q f
+=\sum_{a=0}^q\binom qa f^{(a)}\partial_t^{q-a}.
+\tag{SC.O14}
+\]
+The induction differentiates each coefficient and shifts each derivative order; the two contributions combine by Pascal's identity. In (SC.O13), the terms
+\(s_jv\partial_t^{n-j+1}\) from \(Dv\partial_t\) and \(-v\partial_tD\) cancel. The latter also contributes \(-v s_j'\partial_t^{n-j}\). At derivative order \(n-i\), the remaining coefficient is
+\[
+-v s_i'-(h+n)v's_i
++\sum_{j=0}^i s_j
+ \left(\binom{n-j}{i-j+1}
+       +h\binom{n-j}{i-j}\right)v^{(i-j+1)} .
+\]
+For \(j=i\), the term in parentheses is \(n-i+h\); combining it with the preceding \(v's_i\) term gives \(-i v's_i\). For \(j=0\), set
+\[
+\gamma_{n,i}
+=\binom n{i+1}+h\binom ni
+=-\frac{(i-1)(n+1)}{2(i+1)}\binom ni.
+\tag{SC.O15}
+\]
+The second equality uses
+\(\binom n{i+1}=\binom ni(n-i)/(i+1)\) and \(h=(1-n)/2\).
+For \(2\leq j<i\), put
+\[
+a_{n;i,j}
+=\binom{n-j}{i-j+1}
+   +h\binom{n-j}{i-j}.
+\]
+Then the full infinitesimal coefficient law is
+\[
+\boxed{\quad
+\delta_v s_i
+=-v s_i'-i v's_i
+ +\sum_{j=2}^{i-1}a_{n;i,j}s_j v^{(i-j+1)}
+ +\gamma_{n,i}v^{(i+1)}
+\qquad(2\leq i\leq n).
+\quad}
+\tag{SC.O16}
+\]
+The sum is empty for \(i=2\). Binomial coefficients outside their usual range are zero. The order \(n+1\) terms cancel as above; at order \(n\) the remaining coefficient is zero because \(s_0=1\); at order \(n-1\) it is
+\(\bigl(\binom n2+hn\bigr)v''=0\), since \(s_1=0\). Thus (SC.O13) preserves both normalized leading coefficients directly.
+
+For arbitrary \(v(t)=\sum_{a\geq0}v_at^a\), let
+\((a)_d=a(a-1)\cdots(a-d+1)\), with \((a)_0=1\). Taking the coefficient of \(t^r\) in (SC.O16) gives
+\[
+\begin{aligned}
+\delta_v s_{i,r}
+={}&-\sum_{\substack{a+b=r+1\\a,b\geq0}}
+       (b+ia)v_a s_{i,b}\\
+&+\sum_{j=2}^{i-1}a_{n;i,j}
+  \sum_{\substack{a+b=r+i-j+1\\a\geq i-j+1,\ b\geq0}}
+      (a)_{i-j+1}v_a s_{j,b}\\
+&+\gamma_{n,i}(r+i+1)_{i+1}v_{r+i+1}.
+\end{aligned}
+\tag{SC.O17}
+\]
+Each sum is finite. This is the exact law on the divided Taylor coefficients, valid over every ordinary \(R\).
+
+In particular, for \(v(t)=t^{l+1}\), \(l\geq-1\), define \(\delta_l=\delta_v\). The mode formula is
+\[
+\boxed{
+\begin{aligned}
+\delta_l s_{i,r}
+={}&-\bigl(r+i+(i-1)l\bigr)s_{i,r-l}\\
+&+\sum_{j=2}^{i-1}a_{n;i,j}(l+1)_{i-j+1}
+       s_{j,r-l+i-j}\\
+&+\gamma_{n,i}(l+1)_{i+1}\delta_{r,l-i}.
+\end{aligned}}
+\tag{SC.O18}
+\]
+Every coefficient with negative index is defined to be zero. A falling factorial is zero if its nonnegative first argument is smaller than its length. These conventions include all \(l=-1,0\) and all boundary cases. For example,
+\[
+\delta_{-1}s_{i,r}=-(r+1)s_{i,r+1},
+\qquad
+\delta_0s_{i,r}=-(r+i)s_{i,r}.
+\tag{SC.O19}
+\]
+Thus divided differentiation shifts the coefficient with its exact factor \(r+1\), and scaling gives weight \(r+i\).
+
+If un-divided jets \(j_{i,r}=s_i^{(r)}(0)=r!s_{i,r}\) are preferred, multiply (SC.O18) by \(r!\). The first term becomes
+\[
+-\bigl(r+i+(i-1)l\bigr)
+  \frac{r!}{(r-l)!}\,j_{i,r-l}
+\]
+when \(r-l\geq0\), and is zero otherwise. Each term of the inner sum becomes
+\[
+a_{n;i,j}(l+1)_{i-j+1}
+ \frac{r!}{(r-l+i-j)!}\,j_{j,r-l+i-j}
+\]
+when its index is nonnegative. The scalar term becomes
+\(\gamma_{n,i}r!(l+1)_{i+1}\delta_{r,l-i}\).
+This specifies both Taylor normalizations without changing the coordinate convention.
+
+##### Schwarzian, cubic mixing and nilpotent translations
+
+The first entries of (SC.O8) are
+\[
+C_{1,1}=-hb,\qquad
+C_{2,1}=-(2h+1)b,\qquad
+C_{2,2}=-h b'+h(h+1)b^2.
+\]
+For \(n=2\), \(h=-1/2\), write
+\[
+\mathcal S(\eta)=\frac{\eta'''}{\eta'}
+ -\frac32\left(\frac{\eta''}{\eta'}\right)^2
+=b'-\frac12b^2 .
+\]
+Then (SC.O10) gives
+\[
+\widetilde s_2=\alpha^2s_2(\eta)+\frac12\mathcal S(\eta).
+\]
+With the lesson's convention \(D=\partial^2-q\), so \(s_2=-q\), this is exactly
+\[
+\widetilde q=\alpha^2q(\eta)-\frac12\mathcal S(\eta),
+\qquad
+\delta_vq=-vq'-2v'q+\frac12v'''.
+\tag{SC.O20}
+\]
+The mode coefficient is
+\[
+\delta_lq_r=-(r+l+2)q_{r-l}
+ +\frac12(l^3-l)\delta_{r,l-2},
+\]
+with the same negative-index convention. This recovers the full Schwarzian sign and coefficient in (O7.2) and (RC.C5).
+
+For \(n=3\), \(h=-1\). The recursion gives
+\[
+\begin{gathered}
+B_1=\partial_u+b,\qquad
+B_2=\partial_u^2+b\partial_u+b',\\
+B_3=(\partial_u-b)B_2
+=\partial_u^3+(2b'-b^2)\partial_u+(b''-bb').
+\end{gathered}
+\]
+Since \(2b'-b^2=2\mathcal S(\eta)\) and
+\(b''-bb'=\mathcal S(\eta)'\), the entire coordinate law for
+\(D=\partial^3+s_2\partial+s_3\) is
+\[
+\boxed{\quad
+\widetilde s_2=\alpha^2s_2(\eta)+2\mathcal S(\eta),
+\qquad
+\widetilde s_3=\alpha^3s_3(\eta)
+ +\alpha\alpha's_2(\eta)+\mathcal S(\eta)'.
+\quad}
+\tag{SC.O21}
+\]
+Both lower derivative terms are required. They give
+\[
+\begin{aligned}
+\delta_vs_2&=-vs_2'-2v's_2-2v''',\\
+\delta_vs_3&=-vs_3'-3v's_3-s_2v''-v''''.
+\end{aligned}
+\tag{SC.O22}
+\]
+Equivalently, the divided coefficients satisfy
+\[
+\begin{aligned}
+\delta_l s_{2,r}
+&=-(r+l+2)s_{2,r-l}
+  -2(l^3-l)\delta_{r,l-2},\\
+\delta_l s_{3,r}
+&=-(r+2l+3)s_{3,r-l}
+  -(l+1)l\,s_{2,r-l+1}\\
+&\hspace{2em}
+  -(l+1)l(l-1)(l-2)\delta_{r,l-3}.
+\end{aligned}
+\]
+The corrected coefficient \(w_3=s_3-\tfrac12s_2'\) transforms as a cubic differential:
+\[
+\widetilde w_3=\alpha^3 w_3(\eta),
+\qquad
+\delta_vw_3=-vw_3'-3v'w_3.
+\tag{SC.O23}
+\]
+Indeed differentiating the first formula of (SC.O21) gives
+\(\tfrac12\widetilde s_2'
+=\alpha\alpha's_2(\eta)+\tfrac12\alpha^3s_2'(\eta)+\mathcal S(\eta)'\);
+subtract it from the second formula. This proves the cubic assertion and displays the derivative correction explicitly.
+
+Finally take \(R=k[a]/(a^\nu)\) and \(\eta(u)=u+a\). This is a genuine nonpointed continuous coordinate. Here \(\alpha=1\), \(b=0\), all \(C_{a,d}\) with \(d>0\) vanish, and the full transport is \(s_i(u+a)\). The coefficient formula becomes
+\[
+\widetilde s_{i,r}
+=\sum_{q=0}^{\nu-1}\binom{r+q}{r}a^q s_{i,r+q}.
+\tag{SC.O24}
+\]
+For the inverse action replace \(a\) by \(-a\). Thus nilpotent translations are finite on each coefficient even though they can involve coefficients beyond a fixed pointed jet truncation.
+
+For \(n=1\), the normalized operator is \(\partial_t:F_0\to F_1\); (SC.O7) gives \(\mathcal T_\eta(\partial_t)=\partial_u\). There are no scalar coefficients and the \(PGL_1\) coefficient functor is a point.
+
+These are complete algebraic coordinate formulas for the ordinary scalar-oper coefficient functor. Their identification with intrinsic opers uses the finite-jet, vector-lift and ordinary bundle-descent inputs specified in §§2.2–2.6. The recursive global curve/Picard foundations in §2.1 and the bundle-algebraization foundation in §2.8 remain unproved in their stated global uses. No such global theorem is needed for the coefficient recursion or its ordinary base change. The coefficients here are those of the scalar differential operator (SC.O1); Section 3.4.3 compares these coefficients with the quantum determinant generators. Completed centers, chiral or Poisson structures and derived parameter spaces require their separate mathematical arguments.
+
+#### 3.4.3. Quantum coordinate law of the critical determinant
+
+Let \(k\) have characteristic zero. We use the critical affine matrix bracket (SL.L1)–(SL.L3), the right-ordered determinant coefficients (SL.L4)–(SL.L7), and the proved exterior relations (SL.L8)–(SL.L12). The determinant construction is credited there to Chervov–Molev, [*On higher order Sugawara operators*, arXiv:0808.1947v2](https://arxiv.org/abs/0808.1947v2). The raw coefficients already have the law of an order-\(n\) scalar density operator from weight \(h=(1-n)/2\) to weight \(h+n\). No triangular derivative correction is required for this law. The calculation below includes the lower-filtration terms, the scalar anomaly, every divided translate, and ordinary coordinate substitutions with nilpotent constant coefficient.
+
+##### SL.X1. The operators and pinned minors
+
+Initially work in \(\mathfrak{gl}_n\), with
+\(\kappa(X,Y)=-n\operatorname{tr}(XY)+\operatorname{tr}(X)\operatorname{tr}(Y)\), \(K=1\), and \(T=\tau\) on the vacuum. Introduce the central parameter \(u\), and write
+\[
+M_{aj}(u)=\delta_{aj}(T+u)+E_{aj}[-1],\quad
+\theta_j=\sum_a\psi_aM_{aj}(u),\quad
+P=\theta_1\cdots\theta_n=\Psi D(u).
+\]
+\[
+\Psi=\psi_1\cdots\psi_n,\qquad
+F(u)=D(u)v=\sum_{k=0}^n w_k u^{n-k},\qquad w_0=v,\quad w_k=S_kv.
+\tag{SL.X1}
+\]
+Each \(\psi_a\) anticommutes with every exterior-odd expression and commutes with every ordinary operator coefficient. The \(\theta_j\) anticommute by the already proved explicit affine identity (SL.L8), not by an additional determinant theorem.
+
+For a set \(J\subseteq\{1,\ldots,n\}\), let \(P_J\) be the ordered product with \(\theta_j\) replaced by \(\psi_j\) at precisely its positions in \(J\), and let \(D_J(u)\) delete those same rows and columns from \(M(u)\). Expansion gives
+\[
+P_J=\Psi D_J(u),\qquad
+\partial_u^a P=a!\sum_{|J|=a}P_J.
+\tag{SL.X2}
+\]
+Here the pinned sign is positive. A surviving permutation fixes every index in \(J\). Moving those fixed rows to the front and moving those fixed columns to the front use the same sequence of index positions, so their signs multiply to \(+1\); the remaining sign is the permutation sign on the ordered complement. No operator coefficient is reordered in this argument. The derivative formula follows from the finite product rule: a factor can be differentiated only once, with derivative \(\psi_j\), and each chosen set of \(a\) factors occurs in its \(a!\) possible differentiation orders. We abbreviate \(P_{\{i,j\}}=P_{ij}\), and similarly for minors and triples.
+
+For \(l\geq-1\), current substitution has infinitesimal action
+\[
+[D_l,E_{ab}[r]]=rE_{ab}[r+l],\qquad D_lv=0.
+\tag{SL.X3}
+\]
+This is the ordinary affine derivation proved in (RC.C1). Directly, its possible central defect is \(r(r+s+l)\kappa(X,Y)\delta_{r+s+l,0}=0\). Nonnegative currents remain nonnegative; for \(l=-1,r=0\) the coefficient is zero. Thus it acts on the induced vacuum. Comparing on currents and on the cyclic vacuum proves
+\[
+[D_l,D_m]=(m-l)D_{l+m},\qquad
+[D_l,T]=(l+1)D_{l-1}\ (l\geq0),\qquad D_{-1}=-T.
+\tag{SL.X4}
+\]
+In particular \([D_0,\theta_j]=-\theta_j+u\psi_j\). The product rule already gives \(D_0F=(u\partial_u-n)F\), so \(D_0w_k=-kw_k\).
+
+##### SL.X2. The complete D1 calculation
+
+Put
+\[
+H_i=\sum_a\psi_a E_{ai}[0],\qquad
+Z_i=2\psi_iD_0-H_i.
+\]
+Then \([D_1,\theta_i]=Z_i\) and \(Z_iv=0\). Formula (SL.L12), summed against \(\psi_a\), proves
+\[
+\{H_i,\theta_j\}=-\psi_i\theta_j-\psi_j\theta_i,
+\qquad
+\{Z_i,\theta_j\}=-\psi_i\theta_j+\psi_j\theta_i+2u\psi_i\psi_j.
+\tag{SL.X5}
+\]
+For the first identity, the sum is
+\(\sum_a\psi_a(\psi_iM_{aj}-\delta_{aj}\theta_i)\), which is exactly its displayed right side. For the second, use
+\(2\psi_i[D_0,\theta_j]-\{H_i,\theta_j\}\).
+
+In the product-rule term inserting \(Z_i\) in column \(i\), move it through each later column until it reaches \(v\), where it is zero. Its interaction with a later column \(j\) has a sign \((-1)^m\), \(m=j-i-1\), from the intermediate odd factors. The three terms in (SL.X5) give
+\[
+-P_i-P_j+2uP_{ij}.
+\]
+The signs are explicit: moving \(\psi_i\) left past the \(m\) intermediate factors supplies \((-1)^m\), canceling the interaction sign in the first and third terms. In the second, first \(\psi_j\theta_i=-\theta_i\psi_j\), and then moving \(\theta_i\) left past those \(m\) factors supplies another \((-1)^m\). Its result is therefore \(-P_j\). Summing all pairs, each single pinned position belongs to \(n-1\) pairs. By (SL.X2),
+\[
+\boxed{D_1F(u)=uF''(u)-(n-1)F'(u).}
+\tag{SL.X6}
+\]
+This is an equality of actual vacuum vectors, before passage to symbols.
+
+##### SL.X3. The complete D2 calculation and its central correction
+
+Set
+\[
+R_i=\sum_a\psi_aE_{ai}[1],\qquad B_i=3\psi_iD_1-R_i.
+\]
+Then \([D_2,\theta_i]=B_i\) and \(B_iv=0\). Use the full entry bracket (SL.L14), including its trace and critical central terms. Summing it gives
+\[
+\{R_i,\theta_j\}=-2\psi_jH_i-\psi_iH_j+(n+1)\psi_i\psi_j.
+\tag{SL.X7}
+\]
+Indeed the four types of terms in that sum are
+\(\sum_a\psi_a\psi_jE_{ai}[0]=-\psi_jH_i\),
+\(\sum_a\psi_a\psi_iE_{aj}[0]=-\psi_iH_j\),
+\(-\psi_jH_i\), and
+\(\psi_i\psi_j-n\psi_j\psi_i=(n+1)\psi_i\psi_j\).
+Consequently
+\[
+\{B_i,\theta_j\}=K_{ij}-(n+1)\psi_i\psi_j,
+\quad
+K_{ij}=6\psi_i\psi_jD_0-2\psi_iH_j+2\psi_jH_i.
+\tag{SL.X8}
+\]
+The operator \(K_{ij}\) is even and kills \(v\). Its full commutator with a later column is
+\[
+[K_{ij},\theta_k]
+=-2\psi_i\psi_j\theta_k+2\psi_i\psi_k\theta_j
+-2\psi_j\psi_k\theta_i+6u\psi_i\psi_j\psi_k.
+\tag{SL.X9}
+\]
+To verify every coefficient, use
+\([D_0,\theta_k]=-\theta_k+u\psi_k\) and
+\([\psi_iH_j,\theta_k]=\psi_i\{H_j,\theta_k\}
+=-\psi_i\psi_j\theta_k-\psi_i\psi_k\theta_j\).
+The corresponding formula with \(i,j\) swapped gives the remaining terms of (SL.X9). The coefficients of \(\psi_i\psi_j\theta_k\) are \(-6+2+2=-2\). There is no uncomputed operator remainder.
+
+Move \(B_i\) through the later columns. At each \(i<j\), the scalar part of (SL.X8) gives \(-(n+1)P_{ij}\): its interaction sign \((-1)^{j-i-1}\) cancels the sign needed to pin \(\psi_i\). The even part \(K_{ij}\) is moved through each still later column, by its ordinary commutator (SL.X9), until it kills the vacuum. Thus these terms are indexed exactly by triples \(i<j<k\).
+
+For clarity, set \(m=j-i-1\), \(p=k-j-1\). A triple term has the initial interaction sign \((-1)^m\), with the ordered intervening blocks of lengths \(m\) and \(p\). The following table gives all its contributions; the common \(\Psi\) is suppressed in the last column.
+
+| Term in (SL.X9) | Sign from moving to the pinned column positions, before the interaction sign | Final contribution |
+|---|---|---|
+| \(-2\psi_i\psi_j\theta_k\) | \((-1)^{m+p}(-1)^p=(-1)^m\) | \(-2D_{ij}\) |
+| \(+2\psi_i\psi_k\theta_j\) | \(-(-1)^{m+p}(-1)^p=(-1)^{m+1}\) | \(-2D_{ik}\) |
+| \(-2\psi_j\psi_k\theta_i\) | \((-1)^{m+p}(-1)^p=(-1)^m\) | \(-2D_{jk}\) |
+| \(+6u\psi_i\psi_j\psi_k\) | \((-1)^{m+p}(-1)^p=(-1)^m\) | \(+6uD_{ijk}\) |
+
+In the second row the extra minus is moving \(\theta_j\) past \(\psi_k\); move \(\psi_i\) left across both intervening blocks and then \(\theta_j\) left across the second block. In the third row moving \(\theta_i\) past both pinned generators has sign \(+1\); move it left across both blocks and then move \(\psi_j\) left across the second block. The other rows move the first pinned generator across both blocks and the second across the second block. This accounts for every odd interchange and preserves the order of all unpinned operator coefficients.
+
+Every pair belongs to exactly \(n-2\) triples. Hence its total coefficient is
+\(-(n+1)-2(n-2)=-3(n-1)\). The triple coefficient is \(6u\). Formula (SL.X2) now proves
+\[
+\boxed{D_2F(u)=uF'''(u)-\frac32(n-1)F''(u).}
+\tag{SL.X10}
+\]
+The \(n+1\) in (SL.X7) is essential: it is the finite trace/critical correction, rather than a symbol-level calculation.
+
+##### SL.X4. Every basic vector and every positive Witt derivation
+
+Put \(h=(1-n)/2\), and define ordinary differential operators in the auxiliary variable
+\[
+\mathcal A_l=u\partial_u^{l+1}+(l+1)h\partial_u^l\qquad(l\geq1).
+\]
+Equations (SL.X6) and (SL.X10) say \(D_1F=\mathcal A_1F\) and \(D_2F=\mathcal A_2F\). The elementary rule
+\(\partial_u^a u=u\partial_u^a+a\partial_u^{a-1}\) gives
+\[
+[\mathcal A_1,\mathcal A_l]=-(l-1)\mathcal A_{l+1}.
+\]
+Here the coefficient of \(u\partial_u^{l+2}\) is \(2-(l+1)=-(l-1)\), and the constant coefficient of \(\partial_u^{l+1}\) is
+\(h(2-l(l+1))=-(l-1)(l+2)h\).
+Since \(D_l\) acts only on the vector coefficients and commutes with \(u,\partial_u\),
+\([D_1,D_l]F=(\mathcal A_l\mathcal A_1-\mathcal A_1\mathcal A_l)F\).
+Using (SL.X4), induction from \(l=2\), dividing by \(l-1\), proves
+\[
+\boxed{D_lF=u\partial_u^{l+1}F+(l+1)h\partial_u^lF\quad(l\geq1).}
+\tag{SL.X11}
+\]
+This argument is the actual finite positive-Witt generation proof; it assumes no coordinate law of the coefficients.
+
+Define binomial coefficients outside their usual nonnegative range to be zero, and set
+\[
+C_{ki}=\binom{n-i}{k-i+1}+h\binom{n-i}{k-i}\qquad(0\leq i<k\leq n).
+\tag{SL.X12}
+\]
+Reading the coefficient of \(u^{n-k}\) in (SL.X11) proves
+\[
+\boxed{D_lw_k=(l+1)!C_{k,k-l}w_{k-l}\quad(1\leq l\leq k),
+\qquad D_lw_k=0\quad(l>k).}
+\tag{SL.X13}
+\]
+Together with \(D_0w_k=-kw_k\) and \(D_{-1}w_k=-Tw_k\), this is the full basic-vector action. In particular,
+\[
+D_1w_k=-(k-1)(n-k+1)w_{k-1},
+\]
+\[
+D_2w_k=-\frac{(n-k+2)(n-k+1)(n+2k-3)}2w_{k-2}.
+\tag{SL.X14}
+\]
+These are exact quantum identities; their right sides give all lower-length corrections for the basic vectors.
+
+##### SL.X5. The traceless quotient does not remove the trace correction
+
+The ideal generated by \(I[r]=\sum_aE_{aa}[r]\) is stable under \(D_l\), since \(D_lI[r]=rI[r+l]\). Consequently all preceding identities pass to the traceless vacuum, with \(w_k=\overline S_kv\), \(w_0=v\), and \(w_1=0\).
+
+The central term \(+\delta_{ab}\delta_{ij}\) of (SL.L14) must remain in the traceless matrix notation. Indeed for
+\(F_{ab}=E_{ab}-\delta_{ab}I/n\),
+\[
+-n\operatorname{tr}(F_{ab}F_{ij})
+=-n\delta_{bi}\delta_{aj}+\delta_{ab}\delta_{ij}.
+\tag{SL.X15}
+\]
+Thus taking the quotient agrees with the same \(n+1\) in (SL.X7); dropping it would give a different and incorrect coordinate anomaly. Also
+\(C_{10}=\binom n2+hn=0\), so the resulting subprincipal coefficient remains zero under the whole law.
+
+##### SL.X6. Every divided translate and the complete coefficient series
+
+Let \(A_{k,r}\) be the endomorphism with vacuum image \(T^rw_k/r!\), and put
+\(A_{0,0}=\operatorname{Id}\), \(A_{0,r}=0\) for \(r>0\), \(A_{1,r}=0\), and \(A_{k,r}=0\) for \(r<0\). These conventions refer to the traceless quotient. The proved all-integer reconstruction (VC.17)–(VC.20) identifies its invariant field with the regular series
+\[
+s_k(t)=Y(w_k,t)=\sum_{r\geq0}A_{k,r}t^r,
+\qquad s_0=1,\quad s_1=0.
+\tag{SL.X16}
+\]
+All nonnegative field modes vanish as actual operators by (VC.18) and cyclicity. Thus (SL.X16) describes the entire reconstructed field, not a truncation imposed by hand.
+
+The conjugation action on an endomorphism satisfies
+\([D_l,E_w]=E_{D_lw}\). Its commutator with a current is zero by Jacobi and (SL.X3), and its vacuum image is \(D_lw\); the induction correspondence then proves the assertion. Repeated use of (SL.X4) gives, for \(l\geq0\),
+\[
+D_l\frac{T^rw_k}{r!}
+=\sum_{a=0}^{\min(r,l+1)}
+\frac{(l+1)_{\underline a}}{a!(r-a)!}\,
+T^{r-a}D_{l-a}w_k.
+\tag{SL.X17}
+\]
+Here \((b)_{\underline a}=b(b-1)\cdots(b-a+1)\). The formula follows by induction on \(r\): moving \(D_l\) across the last \(T\) supplies \((l+1)D_{l-1}\), and the two adjacent binomial terms combine. Equivalently, its iterated right commutators with \(T\) are \((l+1)_{\underline a}D_{l-a}\) through \(a=l+1\), after which the commutator of \(-T\) with \(T\) is zero. This proves both the finite sum and its last boundary term.
+
+Inserting (SL.X13) into (SL.X17) yields the following fully explicit action on the endomorphisms, for \(l\geq0\):
+\[
+\begin{split}
+[D_l,A_{k,r}]={}&
+-\mathbf1_{r\geq l}\bigl(r-l+k(l+1)\bigr)A_{k,r-l}\\
+&+\sum_{i=0}^{k-1} C_{ki}(l+1)_{\underline{k-i+1}}
+A_{i,r-l+k-i}.
+\end{split}
+\tag{SL.X18}
+\]
+A term with a negative coefficient index is zero. A falling factorial is zero if its order exceeds \(l+1\). To see the matching coefficients explicitly, in the first part of (SL.X17) put \(i=k-l+a\). Its factor becomes \((l+1)!/(l-k+i)!\), exactly the falling factorial in (SL.X18). The remaining terms \(a=l\) and \(a=l+1\) contribute \(-k(l+1)\) and \(-(r-l)\) when present. For \(l=0\) this gives \(-(k+r)A_{k,r}\). For \(l=-1\), directly \([D_{-1},A_{k,r}]=-(r+1)A_{k,r+1}\).
+
+Therefore, for \(v(t)=t^{l+1}\), \(l\geq-1\), summing the coefficients gives
+\[
+\boxed{
+\delta_v s_k=-v s_k'-kv's_k
++\sum_{i=0}^{k-1}C_{ki}v^{(k-i+1)}s_i.
+}
+\tag{SL.X19}
+\]
+For a general formal vector field the same formula is extended linearly. Each fixed generator has finite energy \(k+r\), so \(D_l\) vanishes on it for \(l>k+r\); thus this formal action uses actual finite sums on each generator. The formula lists every lower-filtration term. No additional term can be hidden by passage to symbols: (SL.X6), (SL.X10), positive-Witt induction and (SL.X17) were all exact operator/vector identities.
+
+##### SL.X7. Equality with the scalar density law
+
+Set
+\[
+\mathcal L=\partial_t^n+s_2(t)\partial_t^{n-2}+\cdots+s_n(t)
+=\sum_{i=0}^n s_i(t)\partial_t^{n-i}.
+\]
+As an operator from density weight \(h\) to weight \(h+n\), inverse coordinate pullback has variation
+\[
+\delta_v\mathcal L
+=-(v\partial_t+(h+n)v')\mathcal L
++\mathcal L(v\partial_t+hv').
+\tag{SL.X20}
+\]
+We can compare it without assuming any quantum–oper identification. The finite Leibniz rule
+\(\partial^m f=\sum_{a=0}^m\binom ma f^{(a)}\partial^{m-a}\)
+follows inductively by the ordinary product rule. Apply it with \(m=n-i\). At coefficient \(\partial^{n-k}\), the \(i=k\) terms are exactly
+\(-v s_k'-kv's_k\); for \(i<k\), the two coefficients are
+\(\binom{n-i}{k-i+1}v^{(k-i+1)}s_i\) and
+\(h\binom{n-i}{k-i}v^{(k-i+1)}s_i\).
+Their sum is (SL.X12). Thus (SL.X20) is precisely the proved quantum law (SL.X19).
+
+In particular
+\[
+C_{20}=\binom n3+h\binom n2=-\frac{n(n^2-1)}{12},
+\]
+\[
+\boxed{\delta_v s_2=-v s_2'-2v's_2-\frac{n(n^2-1)}{12}v'''.}
+\tag{SL.X21}
+\]
+For \(n=2\), \(w_2=-Q/2\) by (SL.L23)'s normalization check; the scalar operator is \(\partial^2-q\), so \(s_2=-q\). This reproduces the rank-one factor two and Schwarzian sign in (RC.C3)–(RC.C6).
+
+The raw coefficients are oper coefficients, not all primary tensor coefficients. For example, for \(n=3\), (SL.X19) gives
+\[
+\delta_v s_3=-v s_3'-3v's_3-v''s_2-v''''.
+\]
+Its lower terms agree exactly with the density calculation. The reparameterization
+\(s_3-s_2'/2\), equivalently \(w_3-Tw_2/2\), is a primary cubic coefficient. Substituting (SL.X21) and differentiating proves that its \(v''s_2\) and \(v''''\) terms cancel. This optional change produces a primary coordinate; it is not a correction needed to make the raw determinant a scalar oper.
+
+##### SL.X8. Finite substitutions and ordinary families
+
+Let \(t=\phi(s)\) be a continuous invertible ordinary coordinate substitution, with nilpotent constant coefficient, and let \(\lambda=\phi'(s)\) be its power-series unit. The scalar forward pullback is
+\[
+\mathcal P_\phi(\mathcal L)
+=\lambda^{h+n}\left.\mathcal L\right|_{t=\phi(s),\ \partial_t=\lambda^{-1}\partial_s}\lambda^{-h}.
+\tag{SL.X22}
+\]
+The apparent half powers need no chosen square root in the resulting coefficients. Here is an explicit algebraic recursion that removes them and also specifies every finite lower correction. Define \(B_{0,0}=1\), all out-of-range \(B_{m,r}=0\), and
+\[
+B_{m+1,r}=\lambda^{-1}
+\left(B_{m,r}'-h\frac{\lambda'}\lambda B_{m,r}+B_{m,r-1}\right).
+\tag{SL.X23}
+\]
+Induction by the product rule proves
+\((\lambda^{-1}\partial_s)^m\lambda^{-h}
+=\lambda^{-h}\sum_{r=0}^mB_{m,r}\partial_s^r\).
+It can be read formally using \((\lambda^a)'=a\lambda^a\lambda'/\lambda\); after the common \(\lambda^{-h}\) is removed, the recursion uses only \(\lambda^{\pm1}\) and its derivatives. Thus the complete coefficient formula is
+\[
+\boxed{
+\mathcal P_\phi(s_k)
+=\lambda^n\sum_{i=0}^k s_i(\phi(s))B_{n-i,n-k}.
+}
+\tag{SL.X24}
+\]
+It is a finite differential polynomial in the indicated coefficients and \(\lambda^{\pm1}\), valid in every ordinary coefficient algebra. In particular \(B_{m,m}=\lambda^{-m}\) and
+\(B_{m,m-1}=-\bigl(mh+m(m-1)/2\bigr)\lambda^{-m}\lambda'/\lambda\), by direct induction in (SL.X23). For \(m=n\) the latter coefficient is zero. Hence the leading coefficient remains one and \(s_1=0\) remains zero.
+
+For its quadratic term put \(q=\lambda'/\lambda\). The same recursion writes
+\(B_{m,m-2}=\lambda^{-m}(b_mq^2+c_mq')\), with
+\(b_{m+1}=b_m+a_m(m+h)\), \(c_{m+1}=c_m-a_m\), \(a_m=mh+m(m-1)/2\), and \(b_1=c_1=0\).
+With \(h=(1-n)/2\), the finite sums give
+\(c_n=n(n^2-1)/12\) and \(b_n=-n(n^2-1)/24\).
+For example, the first sum is
+\(-h n(n-1)/2-n(n-1)(n-2)/6\); the second is
+\(\tfrac14\sum_{m=1}^{n-1}m(m-n)(2m-n+1)\), giving the displayed value by expanding its three powers. Consequently
+\[
+\mathcal P_\phi(s_2)
+=\lambda^2s_2(\phi)+\frac{n(n^2-1)}{12}
+\left(\frac{\phi'''}{\phi'}-\frac32\left(\frac{\phi''}{\phi'}\right)^2\right).
+\tag{SL.X25}
+\]
+This has the negative scalar anomaly in (SL.X21) on inverse pullback, as required.
+
+Current substitution is \(xF(t)\mapsto xF(\phi(t))\). On the scalar coefficient ring its corresponding action is **inverse** pullback, \(f\mapsto f\circ\mathcal P_{\phi^{-1}}\); differentiating \(\phi=t+\epsilon v\) gives (SL.X20), with its specified minus signs. Both actions preserve the residue cocycle and the vacuum, by the finite nilpotent substitution and residue proof (RC.C7). They also satisfy the same substitution-composition law, since (SL.X22) is just conjugation of an actual operator between the two density weights.
+
+To prove that the infinitesimal equality integrates, factor an ordinary substitution as a nilpotent translation, a scaling, and a pointed unit-linear substitution, as constructed in §1.1.8 and (RC.C7). A translation acts by \(\exp(a_0D_{-1})\), a finite sum because \(a_0\) is nilpotent. A scaling \(t\mapsto at\) acts on \(A_{k,r}\) by \(a^{-k-r}\), equal to inverse density pullback. For the remaining substitution, successively remove its coefficients using \(\exp(c_l t^{l+1}\partial_t)\), \(l\geq1\): the first still-unmatched coefficient is exactly \(c_l\), so it is uniquely removed at that step. Each fixed coordinate coefficient needs finitely many steps. On the quantum or scalar polynomial ring, \(D_l\) lowers the positive energy \(k+r\) by \(l\), so is locally nilpotent, and \(l>k+r\) acts trivially on a generator. Equality of the exact derivations (SL.X18) therefore implies equality of their finite exponentials and their coefficientwise successive products. The translation and scaling factors complete the proof for every ordinary substitution, including nonreduced parameters.
+
+Finally, (SL.C1) gives the whole ordinary type-A polynomial vacuum algebra, and the scalar-oper construction (O3)–(O5) gives the polynomial ring on the coefficients of \(\mathcal L\). Write \(s_{k,r}\) for the independent coefficient coordinates in that scalar-oper ring. The map
+\[
+A_{k,r}\longmapsto s_{k,r}\qquad(2\leq k\leq n,\ r\geq0)
+\tag{SL.X26}
+\]
+is therefore an algebra isomorphism, with the specified determinant normalization. Equations (SL.X18)–(SL.X24) and the integration argument prove its coordinate equivariance over every ordinary parameter algebra. Products of type-A factors are handled componentwise. This establishes the type-A ordinary formal-disc coordinate comparison at the previously stated scalar-oper and invariant-theory foundations. It does not prove a punctured-disc completed center, chiral/Poisson/Satake compatibility, a derived-family comparison, or basic lifting and coordinate identification in other types.
+
+#### 3.4.4. General quadratic critical states and their coordinate action
+
+Let \(k\) be a field of characteristic zero and let \(\mathfrak g\) be a finite-dimensional split semisimple Lie algebra. Fix a nondegenerate symmetric invariant form \(B\), with dual bases \(a_\alpha,a^\alpha\). The form \(B\) identifies the current coordinates with their duals; it is separate from the affine form \(\kappa\). Write
+\[
+ [x_m,y_j]=[x,y]_{m+j}+m\kappa(x,y)\delta_{m+j,0}\,1.
+ \tag{GQ.1}
+\]
+The vacuum \(v\) is annihilated by \(\mathfrak g[[t]]\). The PBW construction, its smooth finite-energy bound, the induced-module universal property, and the ordinary-base-change result of §3.3.2 are the foundations used below. The endomorphism commutativity proved in §3.3.3 is available once a state is shown to be invariant. No assertion about the higher-degree generators of the centre is needed here.
+
+For an invariant form \(F\), define \(K_F\in\operatorname{End}_k(\mathfrak g)\) by
+\[
+ B(K_Fx,y)=F(x,y),\qquad C_B=K_{\mathrm{Kil}},
+ \quad \mathrm{Kil}(x,y)=\operatorname{tr}(\operatorname{ad}x\operatorname{ad}y).
+ \tag{GQ.2}
+\]
+Define the half-Casimir state and its normally ordered modes by
+\[
+ Q=\frac12\sum_\alpha(a_\alpha)_{-1}(a^\alpha)_{-1}v,
+ \qquad
+ S_n=\frac12\sum_{\alpha,j\in\mathbb Z}:(a_\alpha)_j(a^\alpha)_{n-j}:.
+ \tag{GQ.3}
+\]
+Our ordering convention places the first mode to the left when its index is negative and to the right when its index is nonnegative. The sum defining \(S_n\) is an operator on the smooth vacuum module: for each input vector, the positive mode at the right kills that vector once its index exceeds a fixed bound. All sums below have this meaning.
+
+**The inverse-form tensor and the Killing correction.** The tensor \(\sum a_\alpha\otimes a^\alpha\) is symmetric and invariant. Symmetry follows from the symmetric inverse Gram matrix. To prove invariance, pair its simultaneous adjoint variation with \(y\otimes z\), using \(B\) in each factor. The result is
+\[
+ -B([x,y],z)-B(y,[x,z])=0.
+\]
+Consequently
+\[
+ \sum_\alpha[a_\alpha,a^\alpha]=0,
+ \qquad
+ \sum_\alpha[[x,a_\alpha],a^\alpha]=C_Bx.
+ \tag{GQ.4}
+\]
+For the second identity, pairing with \(y\) gives
+\[
+ \begin{aligned}
+ B\left(\sum_\alpha[[x,a_\alpha],a^\alpha],y\right)
+ &=-\sum_\alpha B([x,a_\alpha],[y,a^\alpha])\\
+ &=\sum_\alpha B(\operatorname{ad}y\operatorname{ad}x(a_\alpha),a^\alpha)
+ =\mathrm{Kil}(x,y).
+ \end{aligned}
+\]
+This proves the required arbitrary-type Casimir identity directly from the invariant pairing. Two further contractions are
+\[
+ \sum_\alpha\kappa([x,a_\alpha],a^\alpha)=0,
+ \qquad
+ \sum_\alpha\kappa(a_\alpha,a^\alpha)=\operatorname{tr}(K_\kappa).
+ \tag{GQ.5}
+\]
+Indeed, interchange the two factors of the symmetric tensor in the first sum and use invariance of \(\kappa\): the sum becomes its own negative. The second equality is the dual-basis trace formula.
+
+**The all-integer current commutator.** Put \(\theta(j)=1\) for \(j\geq0\) and \(0\) otherwise. Moving the first factor across the ordering boundary gives
+\[
+ \begin{aligned}
+ [x_m,:a_jb_{n-j}:]
+ &=:[x_m,a_j]b_{n-j}:+:a_j[x_m,b_{n-j}]:\\
+ &\quad +(\theta(j+m)-\theta(j))[[x,a]_{j+m},b_{n-j}].
+ \end{aligned}
+ \tag{GQ.6}
+\]
+This identity follows by writing the two possible orders before and after the commutator. Their difference is precisely the bracket of the two factors when the first index crosses zero. Central terms in the inner current bracket cause no additional ordering difference.
+
+In the sum (GQ.3), reindexing the ordinary Lie terms in (GQ.6) makes them the simultaneous adjoint variation of the inverse-form tensor, hence zero. The two affine central terms contribute
+\[
+ \frac m2\sum_\alpha
+ \bigl(\kappa(x,a_\alpha)(a^\alpha)_{m+n}
+       +\kappa(x,a^\alpha)(a_\alpha)_{m+n}\bigr)
+ =m(K_\kappa x)_{m+n}.
+\]
+The boundary double bracket is \((C_Bx)_{m+n}\), by (GQ.4). Its possible scalar part is
+\((j+m)\delta_{m+n,0}\sum_\alpha\kappa([x,a_\alpha],a^\alpha)\), which vanishes by (GQ.5). Finally
+\[
+ \sum_{j\in\mathbb Z}(\theta(j+m)-\theta(j))=m
+\]
+for every integer \(m\): there are \(m\) positive crossings if \(m>0\), and \(-m\) negative crossings if \(m<0\). Thus
+\[
+ \boxed{[x_m,S_n]
+   =m\bigl((K_\kappa+\tfrac12C_B)x\bigr)_{m+n}}
+ \qquad(m,n\in\mathbb Z).
+ \tag{GQ.7}
+\]
+This is a finite normal-order calculation, not a manipulation of unconvergent sums. On a given input, choose a common cutoff for that input, its image under \(x_m\), both reindexed normally ordered families, the two scalar positions, and the finite crossing interval. Formula (GQ.6) can then be summed over a finite interval. Increasing its endpoints adds zero on both sides. This also proves (GQ.7) on every smooth vector.
+
+At the critical form
+\[
+ \kappa_{\mathrm{crit}}=-\frac12\mathrm{Kil},
+ \tag{GQ.8}
+\]
+we have \(K_\kappa=-C_B/2\), so every \(S_n\) commutes with every current. On the vacuum, only two negative indices survive in (GQ.3). Therefore
+\[
+ S_nv=0\ (n\geq-1),\qquad S_{-r-2}v=Q_r\ (r\geq0),
+ \qquad
+ Q_r=\frac12\sum_{\alpha,\ i,j\geq1,\ i+j=r+2}
+ (a_\alpha)_{-i}(a^\alpha)_{-j}v.
+ \tag{GQ.9}
+\]
+In particular, \(Q\) and all \(Q_r\) are critical vacuum invariants. By cyclicity, \(S_n=0\) as a critical vacuum operator when \(n\geq-1\). The negative \(S_n\) are the invariant endomorphisms corresponding to the states in (GQ.9). They commute with one another by the full invariant-endomorphism theorem of §3.3.3.
+
+The translation operator satisfies \(Tv=0\) and \([T,x_m]=-m x_{m-1}\). Expanding a product with this derivation gives
+\[
+ Q_r=\frac{T^rQ}{r!}.
+ \tag{GQ.10}
+\]
+For example, distributing \(r\) derivatives between the two factors of \(Q\) cancels the two factorials against the binomial coefficient and \(r!\); the resulting indices are exactly \(i+j=r+2\). This proof works at every affine form. Under the PBW pairing \(y_{-j}\leftrightarrow B(y,A_{j-1})\), the leading symbols of \(Q_r\) are the coefficients of \(\frac12B(A(t),A(t))\). Each \(Q_r\) has PBW degree two and energy \(r+2\).
+
+**The complete regular-coordinate action.** For \(l\geq-1\), the derivation
+\[
+ D_lx_m=m x_{m+l},\qquad D_lv=0
+ \tag{GQ.11}
+\]
+exists on the affine algebra and induced vacuum. Its central-bracket defect is a multiple of
+\(m(m+n+l)\kappa(x,y)\delta_{m+n+l,0}\), hence zero. It preserves the vacuum subalgebra, including for \(l=-1\), since the possible index \(-1\) comes only from \(m=0\) and has zero coefficient. Notice \(D_{-1}=-T\). Negative \(l<-1\) would not preserve this vacuum and are outside this statement.
+
+There is again an explicit ordering boundary:
+\[
+ \begin{aligned}
+ [D_l,:a_jb_{n-j}:]
+ &=j:a_{j+l}b_{n-j}:+(n-j):a_jb_{n-j+l}:\\
+ &\quad+j(\theta(j+l)-\theta(j))[a_{j+l},b_{n-j}].
+ \end{aligned}
+\]
+Reindexing the first ordinary sum changes its coefficient to \(j-l\); adding the second coefficient \(n-j\) leaves \(n-l\). The boundary Lie term contracts to zero by (GQ.4). Its scalar contribution is
+\[
+ \frac12\operatorname{tr}(K_\kappa)\delta_{n+l,0}
+ \sum_j j(j+l)(\theta(j+l)-\theta(j)).
+\]
+For \(l\geq1\), write \(j=-s\), \(1\leq s\leq l\), and evaluate
+\[
+ \sum_{s=1}^{l}(s^2-ls)
+ =\frac{l(l+1)(2l+1)}6-\frac{l^2(l+1)}2
+ =-\frac{l^3-l}{6}.
+\]
+For \(l=0\) the interval is empty; for \(l=-1\) its only possible index is \(j=0\), with zero coefficient. Define
+\[
+ \gamma_\kappa=-\frac{\operatorname{tr}(K_\kappa)}{12}.
+\]
+We have proved the complete mode identity
+\[
+ \boxed{[D_l,S_n]=(n-l)S_{n+l}
+   +\gamma_\kappa(l^3-l)\delta_{n+l,0}\,1}
+ \qquad(n\in\mathbb Z,\ l\geq-1).
+ \tag{GQ.12}
+\]
+As for (GQ.7), a common cutoff for the input, its image under \(D_l\), the reindexed sums, and this finite crossing interval makes the proof finite.
+
+Applying (GQ.12) to \(v\) gives, with a missing-index term interpreted as zero,
+\[
+ \boxed{D_lQ_r=-\mathbf1_{r\geq l}(r+l+2)Q_{r-l}
+      +\gamma_\kappa(l^3-l)\delta_{r,l-2}v.}
+ \tag{GQ.13}
+\]
+Here \(r\geq0\) and \(l\geq-1\), so the first term for \(l=-1\) is always present. In particular
+\[
+ D_0Q=-2Q,\quad D_1Q=0,\quad
+ D_2Q=-\frac12\operatorname{tr}(K_\kappa)v,
+ \quad D_lQ=0\ (l\geq3).
+\]
+At critical level put
+\[
+ \gamma_B=\frac{\operatorname{tr}(C_B)}{24}.
+ \tag{GQ.14}
+\]
+Then \(D_2Q=\operatorname{tr}(C_B)v/4=6\gamma_Bv\). The current anomaly in (GQ.7) has disappeared, while the coordinate anomaly (GQ.13) generally remains.
+
+Let \(\mathcal Q(t)=\sum_{r\geq0}Q_rt^r\) and let \(f(t)\partial_t\) be a regular formal vector field, with \(f(t)=\sum_{l\geq-1}f_lt^{l+1}\). Summing (GQ.13) gives
+\[
+ \boxed{D_f\mathcal Q=-f\mathcal Q'-2f'\mathcal Q
+                     +\gamma_\kappa f'''v.}
+ \tag{GQ.15}
+\]
+Each coefficient has only finitely many contributing \(l\): in its ordinary part \(l\leq r\), and its scalar part has \(l=r+2\). Thus this identity is defined over every ordinary coefficient ring.
+
+For completeness, this infinitesimal law has the following full formal-coordinate form. Let \(R\) be any ordinary \(k\)-algebra. Let \(\phi(t)\in R[[t]]\) define a continuous formal-disc automorphism, allowing a nilpotent constant term, and put \(\psi=\phi^{-1}\). On currents use substitution \(xF(t)\mapsto xF(\phi(t))\); its induced vacuum action is \(U_\phi\). Then
+\[
+ \boxed{U_\phi\mathcal Q(t)
+   =\psi'(t)^2\mathcal Q(\psi(t))
+           -\gamma_\kappa\operatorname{Sch}(\psi,t)v,}
+ \qquad
+ \operatorname{Sch}(\psi,t)=\frac{\psi'''}{\psi'}
+                  -\frac32\left(\frac{\psi''}{\psi'}\right)^2.
+ \tag{GQ.16}
+\]
+The inverse coordinate is essential: \(U_\phi\) acts on the coefficient functions. For \(\phi=t+\varepsilon f\), one has \(\psi=t-\varepsilon f\) and \(\operatorname{Sch}(\psi)=-\varepsilon f'''\), recovering (GQ.15).
+
+Here is an algebraic integration proof, including nonreduced \(R\). Substitution preserves the affine cocycle because it preserves residue. For a Laurent monomial of exponent other than \(-1\), the substituted differential is an exact derivative and has residue zero. In the remaining case factor \(\phi=(t-b)u(t)\), where \(b=\psi(0)\) is nilpotent and \(u\) is a unit power series. Then \(\phi'/\phi=1/(t-b)+u'/u\) has residue one. These facts prove the residue identity coefficientwise; nilpotence makes every negative-power substitution finite in the necessary direction. The induced vacuum action therefore exists.
+
+The candidate right side of (GQ.16) composes under substitution. Indeed, writing \(L_F=F''/F'\) gives
+\(L_{F\circ G}=G'(L_F\circ G)+L_G\); substituting into
+\(\operatorname{Sch}(F)=L_F'-L_F^2/2\) gives the Schwarzian chain rule. For a scaling \(\phi=at\), both actions send \(Q_r\) to \(a^{-r-2}Q_r\). For a nilpotent translation \(\phi=t+b\), both actions are the finite exponential \(\exp(bD_{-1})\) on each coefficient. Finally, a pointed coordinate with linear term one is a successive composition of
+\(\exp(c_nt^{n+1}\partial_t)\), \(n\geq1\): choose \(c_n\) to remove the first remaining coefficient, then proceed to the next degree. Every fixed coordinate coefficient is settled after finitely many steps. On each finite-energy state, \(D_n\) lowers energy by \(n\), so the operator exponentials and the necessary composition are also finite. Their infinitesimal actions agree by (GQ.15); termwise differentiation of the finite exponential proves equality. Scaling, translation, and these pointed coordinates give every \(\phi\), proving (GQ.16) over \(R\), without an inference from field-valued points.
+
+**Projective connections and the separate simple factors.** Our projective-connection coefficient is \(q\) in the scalar operator \(\partial_t^2-q(t)\). Its direct coordinate law and its induced law on coefficient functions are respectively
+\[
+ P_\phi(q)=\phi'^2q\circ\phi-\tfrac12\operatorname{Sch}(\phi),
+ \qquad
+ \delta_fq=-fq'-2f'q+\tfrac12f'''.
+ \tag{GQ.17}
+\]
+Thus, at critical level, the exact quadratic-sector assignment is
+\[
+ Q_r\longmapsto 2\gamma_Bq_r.
+ \tag{GQ.18}
+\]
+Whenever \(\gamma_B\ne0\), the normalized endomorphisms
+\(\widehat q_r=Q_r/(2\gamma_B)\) have precisely the projective-connection law. This assertion identifies the normalization and equivariance of the quadratic coefficient; it does not identify the full oper algebra or prove exhaustion of the affine centre.
+
+To state this safely for an arbitrary invariant \(B\), decompose
+\(\mathfrak g=\bigoplus_s\mathfrak g_s\) into split simple ideals. Cross terms of every invariant form vanish: each simple ideal is perfect, and
+\(B([x,y],z)=B(x,[y,z])=0\) when \(z\) lies in another ideal. The forms therefore restrict to each factor, and \(Q=\sum_sQ^{(s)}\). The map \(C_B\) commutes with the adjoint action. On an absolutely simple factor it is scalar: over an algebraic closure an eigenspace kernel is a nonzero adjoint-stable ideal, hence the whole factor; comparison of matrix entries descends the scalar to \(k\). Nondegeneracy of the Killing form on a semisimple characteristic-zero algebra, and the split-simple decomposition used here, are the retained structural Lie-algebra foundations. With \(C_B|_{\mathfrak g_s}=c_s\operatorname{id}\), its scalar \(c_s\) is nonzero, and
+\[
+ \gamma_s=\frac{c_s\dim\mathfrak g_s}{24}\ne0,
+ \qquad
+ Q_r^{(s)}\longmapsto2\gamma_sq_r^{(s)}.
+ \tag{GQ.19}
+\]
+Each of these scalars is a unit after extension to any ordinary \(k\)-algebra. There is no such guarantee for \(\gamma_B=\sum_s\gamma_s\): taking two equal simple factors with opposite Killing forms makes it zero. In that case the aggregate \(\mathcal Q\) transforms as a quadratic differential; one must retain and normalize the separate factors. The canonical choice \(B=\mathrm{Kil}\) gives \(C_B=\operatorname{id}\) and \(\gamma_B=\dim\mathfrak g/24\) for a nonzero semisimple algebra.
+
+The following square displays the mechanism with the exact scalar retained:
+\[
+ \begin{array}{ccc}
+ \mathcal Q^{(s)}(t)&\longmapsto&2\gamma_sq^{(s)}(t)\\[2pt]
+ D_f\downarrow&&\downarrow\,\delta_f\\[2pt]
+ -f(\mathcal Q^{(s)})'-2f'\mathcal Q^{(s)}+\gamma_sf'''v
+ &\longmapsto&
+ 2\gamma_s\bigl(-f(q^{(s)})'-2f'q^{(s)}+\tfrac12f'''\bigr).
+ \end{array}
+\]
+The top arrow is (GQ.19), the left arrow is (GQ.15), and the right arrow differentiates the displayed multiple using (GQ.17). Current invariance comes from the cancellation in (GQ.7), whereas the displayed coordinate scalar remains. Formula (GQ.16) is the full inverse-coordinate version of this square.
+
+**The trace normalization for \(\mathfrak{sl}_n\).** Take \(n\geq2\) and \(B(X,Y)=\operatorname{tr}(XY)\). The trace pairing is nondegenerate on \(\mathfrak{sl}_n\), since \(M_n=kI\oplus\mathfrak{sl}_n\) is an orthogonal decomposition and \(n\) is a unit. Write \(\operatorname{ad}X=L_X-R_X\) on \(M_n\). A matrix-unit calculation gives
+\[
+ \operatorname{tr}(L_XL_Y)=\operatorname{tr}(R_XR_Y)=n\operatorname{tr}(XY),
+ \qquad
+ \operatorname{tr}(L_XR_Y)=\operatorname{tr}(X)\operatorname{tr}(Y).
+\]
+For the last equality, the diagonal coefficient on \(E_{ij}\) is \(X_{ii}Y_{jj}\); summing proves it. The scalar line has zero adjoint action. On traceless matrices this yields
+\[
+ \mathrm{Kil}(X,Y)=2n\operatorname{tr}(XY),\quad
+ C_B=2n\operatorname{id},\quad
+ \kappa_{\mathrm{crit}}=-n\operatorname{tr},\quad
+ \gamma_B=\frac{n(n^2-1)}{12}.
+ \tag{GQ.20}
+\]
+In particular \(D_2Q=n(n^2-1)v/2\).
+
+We also derive the sign relating this \(Q\) to the raw coefficient of the column determinant. This deduction uses only the determinant ordering of SL.L2, not an unproved determinant-invariance theorem. Let \(a_{ij}=E_{ij}[-1]\), impose the trace-free quotient, and use
+\[
+ \operatorname{cdet}(\delta_{ij}\tau+a_{ij})
+   =\tau^n+\mathbb S_1\tau^{n-1}+\mathbb S_2\tau^{n-2}+\cdots,
+ \qquad [\tau,E_{ij}[-1]]=E_{ij}[-2],
+\]
+where column factors are multiplied in increasing column order and \(\tau\) is moved to the right. Put \(d_j=E_{jj}[-1]\) and \(d_j'=E_{jj}[-2]\). The coefficient state is
+\[
+ \mathbb S_2v=
+ \left(\sum_{i<j}(d_id_j-E_{ji}[-1]E_{ij}[-1])
+          +\sum_j(j-1)d_j'\right)v.
+ \tag{GQ.21}
+\]
+Indeed, two current factors give either a diagonal pair or a transposition pair. A single current factor must be diagonal; one commutation past the \(j-1\) preceding copies of \(\tau\) gives \((j-1)d_j'\). Three or more current factors begin at degree at most \(n-3\) in \(\tau\) and cannot contribute to this coefficient.
+
+The inverse trace tensor on traceless matrices is
+\(\sum_{i,j}E_{ij}\otimes E_{ji}-I\otimes I/n\); the scalar correction vanishes in the trace-free quotient. Therefore the half-Casimir there is
+\(Q=\tfrac12\sum_{i,j}E_{ij}[-1]E_{ji}[-1]v\), with the \(E_{ij}\) understood as their traceless images. Since \(\sum d_j=\sum d_j'=0\),
+\(\sum_{i<j}d_id_j=-\tfrac12\sum_jd_j^2\). Also
+\[
+ [E_{ij}[-1],E_{ji}[-1]]=d_i'-d_j'
+\]
+has no affine scalar. On reordering the off-diagonal terms in \(-Q\), the resulting derivative coefficient is
+\[
+ -\frac12\sum_{i<j}(d_i'-d_j')
+ =\sum_j\left(j-\frac{n+1}{2}\right)d_j'.
+\]
+Its difference from the derivative part of (GQ.21) is
+\((n-1)\sum_jd_j'/2=0\). We have thus proved
+\[
+ \boxed{\mathbb S_2v=-Q.}
+ \tag{GQ.22}
+\]
+Let \(\mathcal S_2(t)=\sum_{r\geq0}T^r(\mathbb S_2v)t^r/r!\). From (GQ.15), (GQ.20), and (GQ.22),
+\[
+ \begin{aligned}
+ D_2(\mathbb S_2v)&=-\frac{n(n^2-1)}2v,\\
+ D_f\mathcal S_2&=-f\mathcal S_2'-2f'\mathcal S_2
+                  -\frac{n(n^2-1)}{12}f'''v,\\
+ U_\phi\mathcal S_2(t)&=\psi'^2\mathcal S_2(\psi(t))
+                  +\frac{n(n^2-1)}{12}\operatorname{Sch}(\psi,t)v.
+ \end{aligned}
+ \tag{GQ.23}
+\]
+Thus the normalized projective coefficient in this trace convention is
+\(\widehat q=-6\mathcal S_2/[n(n^2-1)]\).
+
+For \(n=2\), the vector called \(Q\) in K3.1 is the **full** trace Casimir,
+\(Q_{\mathrm{K3}}=\tfrac12h[-1]^2v+e[-1]f[-1]v+f[-1]e[-1]v\).
+Consequently \(Q_{\mathrm{K3}}=2Q\), \(D_2Q=3v\), \(D_2Q_{\mathrm{K3}}=6v\), and
+\(\mathbb S_2v=-Q=-Q_{\mathrm{K3}}/2\). The half-Casimir corresponds to \(q\); the full Casimir corresponds to \(2q\). This accounts for the factor two without changing the Schwarzian convention.
+
+**Why the scalar-oper coefficient has the same anomaly.** The normalization can also be checked by a finite calculation with a monic scalar operator
+\[
+ \mathcal D_t=\partial_t^n+u_2(t)\partial_t^{n-2}+\text{lower-order terms},
+\]
+acting from \((1-n)/2\)-densities to \((1+n)/2\)-densities. Under \(t=\phi(s)\), put \(\lambda=\phi'\), \(L=\lambda'/\lambda\), and \(r=(n-1)/2\). Its transformed expression is
+\(\mathcal D_s=\lambda^{(n+1)/2}\mathcal D_t\lambda^r\), with \(\partial_t=\lambda^{-1}\partial_s\).
+
+Write the top three coefficients as
+\[
+ (\lambda^{-1}\partial_s)^n
+ =\lambda^{-n}\bigl(\partial_s^n+A_nL\partial_s^{n-1}
+                   +(B_nL'+C_nL^2)\partial_s^{n-2}+\cdots\bigr).
+\]
+Multiplication on the left by \(\lambda^{-1}\partial_s\) acts on the parenthesis as \(\partial_s-nL\). Starting at \(n=1\), the resulting recurrences are
+\[
+ A_{n+1}=A_n-n,\quad B_{n+1}=B_n+A_n,\quad C_{n+1}=C_n-nA_n.
+\]
+Summing them, or checking the induction explicitly, gives
+\[
+ A_n=-\frac{n(n-1)}2,\quad
+ B_n=-\frac{n(n-1)(n-2)}6,\quad
+ C_n=\frac{n(n-1)(n-2)(3n-1)}{24}.
+\]
+After right multiplication by \(\lambda^r\), the subleading coefficient is \(nr+A_n=0\). The coefficient at order \(n-2\), in addition to \(\lambda^2u_2\circ\phi\), is
+\[
+ \begin{aligned}
+ &\left(\binom n2r+B_n\right)L'
+ +\left(\binom n2r^2+A_n(n-1)r+C_n\right)L^2\\
+ &\hspace{18mm}=\frac{n(n^2-1)}{12}\left(L'-\frac12L^2\right).
+ \end{aligned}
+\]
+Thus
+\[
+ u_{2,s}=\lambda^2u_{2,t}\circ\phi
+                +\frac{n(n^2-1)}{12}\operatorname{Sch}(\phi,s).
+ \tag{GQ.24}
+\]
+This direct-coordinate law gives the coefficient-function infinitesimal law
+\(\delta_fu_2=-fu_2'-2f'u_2-n(n^2-1)f'''/12\), exactly (GQ.23). For \(n=2\), \(u_2=-q\), in agreement with (GQ.17). If a half-integral density trivialization is needed over an ordinary ring, adjoin a square root of the unit constant coefficient of \(\lambda\) by a finite free faithfully flat extension and take the binomial power-series root of its remaining unit factor. The final formula (GQ.24) involves only \(\lambda,L\) and rational constants, so it descends. It neither chooses nor asserts a global square root of a canonical bundle.
+
+Every construction and equality in this subsection extends to arbitrary ordinary \(k\)-algebras. Dual bases are obtained by tensoring an invertible Gram matrix, each fixed-energy identity is a finite identity in structure constants, and all integers divided by are units. The normal-order identities were proved on arbitrary smooth inputs with a common finite cutoff. The coordinate integration included nilpotent translations and arbitrary pointed formal families. Hence no reducedness, field-valued-point test, or boundedness restriction on the coefficient ring is hidden in these formulas. The conclusions are the critical quadratic invariants, their commuting vacuum endomorphisms, and their exact coordinate laws; construction or exhaustion of higher-degree central generators remains a separate theorem.
+
+#### 3.4.5. From infinitesimal agreement to the full ordinary coordinate action
+
+We state the integration argument with its precise input. Suppose an isomorphism between the polynomial vacuum algebra and the ordinary scalar-oper coefficient ring sends the energy-\(k+r\) generator to the matching scalar coefficient, and suppose the coordinate derivations agree on those generators, including every lower-degree term. Then the isomorphism intertwines the full continuous coordinate group over every ordinary \(k\)-algebra \(R\).
+
+The coordinate substitutions, their two-sided inverses and the finite evaluation of nilpotent constants were proved in §1.1.8. The residue identity (RC.C7) proves that current substitution preserves the central cocycle for every invariant \(\kappa\). It preserves the vacuum ideal, so its action is the actual induced map \(U_\phi(uv)=\sigma_\phi(u)v\), and its action on affine endomorphisms is conjugation. The scalar-oper action is the inverse-coordinate action on functions; both actions have the same substitution composition convention.
+
+First take a nilpotent translation \(\phi(t)=t+b\), \(b^N=0\). Its current action is the finite exponential \(\exp(bD_{-1})=\exp(-bT)\). The equality follows on each Laurent monomial by the binomial expansion, including negative exponents, whose terms with \(b^N\) vanish, and then on each finite word by the product rule. The inverse scalar translation is \(t\mapsto t-b\), with the same finite coefficient Taylor formula. Matching translation derivations therefore proves equivariance for this factor.
+
+For a scaling \(\phi(t)=at\), \(a\in R^\times\), a state of energy \(E\) is multiplied by \(a^{-E}\). The scalar coefficient of a degree-\(k\) operator term and order-\(r\) Taylor coefficient has the same weight \(a^{-k-r}\). Thus the generator isomorphism also intertwines arbitrary unit scalings; no logarithm of \(a\) is used.
+
+Finally consider a pointed substitution with linear coefficient one. It is a successively determined ordered product of flows
+\[
+\exp(c_lt^{l+1}\partial_t),\qquad l\ge1.
+\tag{TC.A8}
+\]
+At step \(l\), the lower coefficients have been removed. The flow has first new term \(c_lt^{l+1}\), so one choice of \(c_l\) removes the next coefficient. Each fixed coordinate coefficient uses only finitely many steps. This constructs the product and its inverse over \(R\), since all positive integers are invertible.
+
+On a vector of energy \(E\), the derivation \(D_l\) lowers energy by \(l\). Thus its exponential on the finite free subspace of energies at most \(E\) is a finite sum for \(l>0\). The substituted-current action of the flow is this exponential: on currents it is the exponential of the derivation \(F\mapsto t^{l+1}F'\), and the induced vacuum map has the same product expansion and vacuum value. Terms of energy below zero vanish. For any polynomial in scalar-oper coefficients of weighted energy \(E\), the matched derivation likewise lowers energy by \(l\); its finite exponential is the scalar-coordinate flow action. This last equality can also be checked by differentiating the exact density-conjugation formula with respect to the flow parameter. The resulting finite polynomial differential equation has a unique solution, coefficient by coefficient, because its recursion divides only by positive integers.
+
+There is no hidden infinite product on an individual vector or polynomial. All \(l>E\) act trivially, and the remaining positive flows lower energy, so only finitely many terms contribute. For completeness, a coordinate differing from \(t\) first in order \(E+2\) acts trivially on an energy-\(E\) vacuum word. Every new substituted term in a factor of index \(-j\) has index at least \(E+1-j\), larger than the sum of the other negative indices; commuting it to the right leaves a positive mode and no possible central remainder. It kills the vacuum. The corresponding scalar-coefficient statement follows either from its weighted formula or the finite flow factors. Thus the successive flow product equals the actual full substitution on both sides.
+
+A general continuous substitution is a nilpotent translation composed with a pointed substitution; factor its pointed linear coefficient as the scaling just treated. Equality for these factors proves the assertion for the entire ordinary continuous coordinate group, including nonreduced \(R\). The conclusion does not include derived parameter algebras, a completed punctured-disc center or a chiral/factorization construction.
+
+#### 3.4.6. Matched generators and the cubic correction
+
+Let \(A_{i,r}\) be the determinant endomorphisms of (SL.C1), whose basic-vector law (TC.A6) is proved in §3.4.3, and let \(s_{i,r}\) be the coefficients of the scalar oper operator
+\[
+\partial_t^n+\sum_{i=2}^n s_i(t)\partial_t^{n-i},
+\qquad s_i(t)=\sum_{r\ge0}s_{i,r}t^r.
+\]
+Both algebras are freely polynomial on these respective coefficient lists: (SL.C1) proves this for the vacuum algebra, and the scalar-oper and coefficient-functor proofs of §§2 and 1.1.8 prove it for ordinary \(PGL_n\) disc opers. Hence
+\[
+\Phi_R:A_{i,r}\longmapsto s_{i,r}
+\tag{TC.A9}
+\]
+is an algebra isomorphism for every ordinary \(R\). Equation (TC.A7) matches the exact scalar density law, and §3.4.5 proves that this isomorphism intertwines every continuous coordinate substitution. The resulting square is
+\[
+\begin{array}{ccc}
+\operatorname{End}_{\widehat{\mathfrak{sl}}_n,\mathrm{crit}}(V_R)
+ &\xrightarrow{\ \Phi_R\ }&R[\operatorname{Op}_{PGL_n}(D_R)]\\
+{\scriptstyle E\mapsto U_\phi E U_\phi^{-1}}\downarrow
+ &&\downarrow{\scriptstyle f\mapsto f\circ\mathcal P_{\phi^{-1}}}\\
+\operatorname{End}_{\widehat{\mathfrak{sl}}_n,\mathrm{crit}}(V_R)
+ &\xrightarrow{\ \Phi_R\ }&R[\operatorname{Op}_{PGL_n}(D_R)].
+\end{array}
+\tag{TC.A10}
+\]
+*The affine form is \(-n\operatorname{tr}(XY)\), with \(K=1\). Each horizontal map sends the divided translate of the right-ordered determinant coefficient to the identically indexed scalar-operator coefficient. The right vertical map uses the inverse coordinate on oper functions. The finite determinant laws, translation identity (TC.A5) and ordinary integration in §3.4.5 prove commutativity of the square, including nilpotent translations.*
+
+The quadratic coefficient makes its lower-filtration term visible. Set
+\(\gamma_n=n(n^2-1)/12\). The scalar coefficient law is
+\[
+\delta_v s_2=-v s_2'-2v's_2-\gamma_n v'''.
+\tag{TC.A11}
+\]
+At \(n=2\), (SL.L23) gives \(w_2=-Q/2\), while the scalar oper coefficient is \(s_2=-q\). Thus (TC.A9) recovers exactly \(Q_r\mapsto2q_r\), including the Schwarzian term in (RC.C6).
+
+For \(n\ge3\), the next coefficient obeys
+\[
+\delta_v s_3=-v s_3'-3v's_3
+ -(n-2)v''s_2-\frac{n-2}{2}\gamma_n v''''.
+\tag{TC.A12}
+\]
+Indeed the coefficient in front of \(v''s_2\) is
+\(\binom{n-2}{2}+\tfrac{1-n}{2}(n-2)=-(n-2)\); the constant coefficient is
+\(\binom n4+\tfrac{1-n}{2}\binom n3=-(n-2)\gamma_n/2\).
+Consequently
+\[
+b_3=s_3-\frac{n-2}{2}s_2',\qquad
+\delta_v b_3=-v b_3'-3v'b_3.
+\tag{TC.A13}
+\]
+To verify the second equality, differentiate (TC.A11), substitute it together with (TC.A12), and cancel the \(v''s_2\) and \(v''''\) terms. The remaining derivative and weight terms are exactly those displayed. Thus \(b_3\) transforms as a cubic differential under the full ordinary coordinate group, by the same integration argument. On the vacuum side its matching vector is
+\(w_3-\tfrac{n-2}{2}Tw_2\). The derivative correction has lower PBW degree than the cubic leading symbol. This example exhibits why the coordinate law of quantum generators cannot be read from their highest symbols alone.
+
+For products of type A factors, use the factor generators and scalar oper operators. Cross-factor currents commute and the critical form is their direct sum. The proved polynomial algebra (SL.C1), the coordinate laws and the map (TC.A9) therefore give the product comparison as well. The proof concerns the regular algebraic vacuum algebra and the ordinary disc-oper coefficient functor. Section 3.5 supplies reductive vacuum factorization and the framed central coefficient comparison. Non-type-A basic lifting, the completed punctured-disc center, Poisson/chiral/Satake compatibility, full derived families and intrinsic nonadjoint/global central conventions retain their separate proof obligations.
+
+
+### 3.5. Reductive vacuum algebras and central data
+
+#### 3.5.1. Reductive vacua, central invariants and one-form coordinates
+
+Let \(k\) be a characteristic-zero field. Fix a finite-dimensional split reductive Lie algebra with its decomposition
+\[
+\mathfrak g=\mathfrak s\oplus\mathfrak z,
+\qquad
+\mathfrak s=[\mathfrak g,\mathfrak g]
+=[\mathfrak s,\mathfrak s],
+\qquad
+[\mathfrak z,\mathfrak g]=0 .
+\tag{RV.1}
+\]
+The existence and properties of this structural decomposition are premises here. In particular, the semisimple factor is perfect and the central factor is abelian. We do not derive the reductive structure theorem from the affine calculation.
+
+Let \(\kappa\) be any invariant symmetric bilinear form on \(\mathfrak g\), with no nondegeneracy assumption. It is the effective form in the affine bracket: a separately specified scalar level can be absorbed into \(\kappa\). For every ordinary commutative \(k\)-algebra \(R\), use its fixed scalar extension \(\kappa_R\) and the bracket
+\[
+[x_m,y_j]=[x,y]_{m+j}
+ +m\kappa_R(x,y)\delta_{m+j,0}K .
+\tag{RV.2}
+\]
+The algebraic vacuum \(V_{\mathfrak g,R}\) is induced from the one-dimensional \(R\)-module on which \(K=1\) and \(\mathfrak g_R[t]\) kills \(v\). Its ordered negative-mode basis and extension to formal currents are the proofs of (K2.2)–(K2.3) in [Opers, critical level and the Beilinson–Drinfeld construction](opers-critical-level-and-the-beilinson-drinfeld-construction.md), §3. Their common-tail argument makes this a smooth module for \(\mathfrak g_R((t))\), not merely for Laurent polynomial modes. Sections 3.3.2–3.3.3 prove the finite-energy ordinary base change and algebraic field reconstruction for every finite-dimensional Lie algebra and every such form. We will use their actual endomorphism correspondence and commutativity proof below.
+
+Write \(\kappa_{\mathfrak s}\) and \(\kappa_{\mathfrak z}\) for the two restrictions, and put
+\[
+W=\operatorname{rad}(\kappa_{\mathfrak z})
+=\{w\in\mathfrak z:\kappa(w,\mathfrak z)=0\},
+\qquad
+\mathfrak z_- =t^{-1}\mathfrak z[t^{-1}],
+\qquad
+W_-=t^{-1}W[t^{-1}].
+\tag{RV.3}
+\]
+These are vector spaces over \(k\). All scalar extensions in this section extend this fixed form and this fixed radical.
+
+**The cross form and the vacuum tensor product.** For \(a,b\in\mathfrak s\) and \(z\in\mathfrak z\), invariance gives
+\[
+\kappa([a,b],z)=\kappa(a,[b,z])=0 .
+\]
+Perfectness in (RV.1) expresses every element of \(\mathfrak s\) as a finite sum of such brackets. Therefore
+\[
+\kappa(\mathfrak s,\mathfrak z)=0,
+\qquad
+\kappa=\kappa_{\mathfrak s}\oplus\kappa_{\mathfrak z}.
+\tag{RV.4}
+\]
+Both the ordinary bracket and the central cocycle vanish between the two current factors.
+
+On \(V_{\mathfrak s,R}\otimes_R V_{\mathfrak z,R}\), let
+\[
+(x+z)_m\longmapsto
+x_m\otimes1+1\otimes z_m,
+\qquad K\longmapsto1 .
+\tag{RV.5}
+\]
+The two summands commute. Their bracket within each factor is its restriction of (RV.2); the sum of the two scalar cocycles is precisely the cocycle for \(x+z\). Thus (RV.5) is a representation of the full affine algebra with one central generator acting as one. It does not require the two factor central generators to be independent on this tensor product. The vector \(v_{\mathfrak s}\otimes v_{\mathfrak z}\) satisfies the induction relations, giving an affine-module map
+\[
+\Theta_R:V_{\mathfrak g,R}
+\longrightarrow V_{\mathfrak s,R}\otimes_R V_{\mathfrak z,R},
+\qquad
+v\longmapsto v_{\mathfrak s}\otimes v_{\mathfrak z}.
+\tag{RV.6}
+\]
+Choose bases in the two summands and order all negative semisimple letters before all negative central letters. The ordered-word proof in §3 says that their ordered monomials form a basis. On the central negative part all brackets are zero: two negative indices cannot have sum zero, so no cocycle term occurs there. Its enveloping algebra is consequently the polynomial algebra \(\operatorname{Sym}_R(\mathfrak z_{-,R})\). Under \(\Theta_R\), the chosen ordered basis maps bijectively to the semisimple ordered basis tensored with these central monomials. Hence
+\[
+\boxed{\quad
+V_{\mathfrak g,R}
+\simeq V_{\mathfrak s,R}
+ \otimes_R\operatorname{Sym}_R(\mathfrak z_{-,R}).
+\quad}
+\tag{RV.7}
+\]
+The map itself is canonical; the bases prove its invertibility. The formal-current actions agree too. On a fixed tensor or finite sum of tensors, choose a common positive-mode annihilation bound in both factors and use the finite Laurent negative parts. The formal bracket and both compositions then reduce to the finite-mode identities, exactly as in §3. Thus (RV.7) is an isomorphism of the actual smooth affine modules.
+
+Giving \(x_{-r}\) energy \(r\), \(r\geq1\), makes (RV.7) preserve energy, including its sum decomposition
+\[
+(V_{\mathfrak g,R})_E
+=\bigoplus_{a+b=E}
+ (V_{\mathfrak s,R})_a
+ \otimes_R\operatorname{Sym}_R(\mathfrak z_{-,R})_b .
+\tag{RV.8}
+\]
+These are finite direct sums of finite free \(R\)-modules. It also preserves the filtration by the total number of negative letters.
+
+**Central nonnegative currents are ordinary polynomial derivatives.** Choose a basis \(z_1,\ldots,z_q\) of \(\mathfrak z\), and denote by
+\[
+Z_{a,r}= (z_a)_{-r}v_{\mathfrak z},
+\qquad r\geq1,
+\]
+the corresponding polynomial generators of its vacuum. A negative current acts by multiplication by its generator. A zero current commutes with all negative modes and kills the vacuum, hence acts as zero. For \(m\geq1\), commute \(z_m\) through a central monomial. The only bracket is the scalar \(m\kappa(z,z_a)\) when that letter has index \(-m\). The Leibniz rule for this commutator therefore gives the exact operator identity
+\[
+z_m
+=m\sum_{a=1}^q\kappa(z,z_a)
+       \frac{\partial}{\partial Z_{a,m}}
+\quad\text{on }R[Z_{a,r}:r\geq1],
+\qquad z_0=0.
+\tag{RV.9}
+\]
+Each polynomial has finitely many variables and factors, so the derivative sum and every formal-current action on it are finite. This is an identity on the entire central vacuum, with no appeal to field-valued points.
+
+Choose a vector-space complement \(C\) to \(W\) in \(\mathfrak z\). The restriction of \(\kappa\) to \(C\) is nondegenerate. Indeed an element of \(C\) orthogonal to \(C\) is also orthogonal to \(W\), by the definition of \(W\); it belongs to \(W\cap C=0\). The finite-dimensional pairing map is thus injective, hence bijective. For a basis \(c_1,\ldots,c_d\) of \(C\), choose \(\eta_1,\ldots,\eta_d\in C\) with \(\kappa(\eta_a,c_b)=\delta_{ab}\). Equation (RV.9) gives, for every \(m\geq1\),
+\[
+(\eta_a)_m=m\frac{\partial}{\partial C_{a,m}},
+\qquad
+C_{a,m}=(c_a)_{-m}v_{\mathfrak z}.
+\tag{RV.10}
+\]
+The constants \(m\) are units in every \(R\).
+
+If a polynomial over \(R\) has zero derivative in a variable \(X\), write it uniquely as \(\sum_{j=0}^N a_jX^j\), with coefficients in the other-variable polynomial ring. Its derivative is \(\sum_{j=1}^N ja_jX^{j-1}\); uniqueness of coefficients and invertibility of every positive integer imply \(a_j=0\) for \(j\geq1\). This argument remains valid when \(R\) has nilpotents or zero divisors. Applying it to each of the finitely many \(C\)-variables used by a polynomial proves
+\[
+\boxed{\quad
+V_{\mathfrak z,R}^{\mathfrak z_R[[t]]}
+=\operatorname{Sym}_R(W_{-,R}).
+\quad}
+\tag{RV.11}
+\]
+The reverse inclusion follows from (RV.9), since \(\kappa(\mathfrak z,W)=0\). Formal nonnegative currents impose the same equations as their individual modes, by the finite annihilation bounds. The complement was used only to prove the equality; its right side is the canonical subalgebra defined by \(W\).
+
+For example, let \(\mathfrak z=ka\oplus kb\) and let \(\kappa(a,a)=1\), \(\kappa(a,b)=\kappa(b,b)=0\). With \(A_r=a_{-r}v\) and \(B_r=b_{-r}v\), the central vacuum is \(R[A_r,B_r:r\geq1]\). Its positive currents are
+\[
+a_m=m\partial_{A_m},\qquad b_m=0 .
+\]
+Its invariant algebra is exactly \(R[B_r:r\geq1]\). In particular the negative \(a\)-modes do not supply vacuum endomorphisms at this form.
+
+The relation between the form and its invariant algebra can be read directly:
+
+| Restriction of the form to the center | Radical \(W\) | Central vacuum invariants |
+|---|---|---|
+| Nondegenerate | \(0\) | \(R\) |
+| Identically zero | \(\mathfrak z\) | \(\operatorname{Sym}_R(\mathfrak z_{-,R})\) |
+| Arbitrary rank | \(\operatorname{rad}(\kappa_{\mathfrak z})\) | \(\operatorname{Sym}_R(W_{-,R})\) |
+
+*The table is (RV.9)–(RV.11): paired directions are removed by ordinary derivatives, and radical directions remain free polynomial generators.*
+
+**All invariants and actual endomorphism products factor.** The central currents on (RV.7) act only on the polynomial factor. The derivative proof just given works with coefficients in the \(R\)-module \(V_{\mathfrak s,R}\): coefficient uniqueness and multiplication by the unit \(m\) still apply. Thus their joint kernel is
+\[
+V_{\mathfrak s,R}\otimes_R\operatorname{Sym}_R(W_{-,R}).
+\]
+The remaining semisimple currents act only on the first factor. Every tensor can be written uniquely as a finite sum
+\(\sum_p a_p\otimes p\), where \(p\) runs through distinct monomials in a chosen basis of \(W_-\). Acting by \(x_m\in\mathfrak s_R[[t]]\) yields \(\sum_p x_ma_p\otimes p\). Coefficient uniqueness makes this zero exactly when every \(a_p\) is invariant. Consequently
+\[
+V_{\mathfrak g,R}^{\mathfrak g_R[[t]]}
+\simeq
+V_{\mathfrak s,R}^{\mathfrak s_R[[t]]}
+\otimes_R\operatorname{Sym}_R(W_{-,R}).
+\tag{RV.12}
+\]
+This proves factorization of invariants directly; it is not an assertion that an arbitrary tensor product commutes with an arbitrary Hom functor.
+
+Put
+\[
+Z_{\mathfrak a,R}
+=\operatorname{End}_{\widehat{\mathfrak a}_{\kappa_{\mathfrak a},R}}
+       (V_{\mathfrak a,R})
+\qquad(\mathfrak a=\mathfrak s,\mathfrak g).
+\]
+By the actual induction proof (K2.3), an invariant \(a\) corresponds to the endomorphism \(E_a\), with \(E_av=a\) and \(E_a(uv)=ua\). It is well defined because \(a\) satisfies the same induction relations as \(v\). Conversely every endomorphism is determined by this vacuum image.
+
+For \(p\in\operatorname{Sym}_R(W_{-,R})\), multiplication \(M_p\) on the central vacuum commutes with every central current. It commutes with negative multiplications, with zero modes, and with (RV.9), since all the derivatives there are in complementary directions. It also commutes with the semisimple currents in (RV.7). We therefore have an actual algebra homomorphism
+\[
+\begin{aligned}
+\mathcal E_R:
+Z_{\mathfrak s,R}\otimes_R\operatorname{Sym}_R(W_{-,R})
+&\longrightarrow Z_{\mathfrak g,R},\\
+E_a\otimes p&\longmapsto E_a\otimes M_p .
+\end{aligned}
+\tag{RV.13}
+\]
+Here the map on the right is regarded as an endomorphism of (RV.7). Its vacuum image is \(a\otimes p\). Equations (RV.12) and (K2.3) make \(\mathcal E_R\) a bijection of modules. For products, compute on every simple tensor:
+\[
+(E_a\otimes M_p)(E_b\otimes M_q)
+=(E_aE_b)\otimes M_{pq}.
+\tag{RV.14}
+\]
+Thus it is a bijection of algebras, with their actual composition:
+\[
+\boxed{\quad
+Z_{\mathfrak g,R}
+\simeq Z_{\mathfrak s,R}
+ \otimes_R\operatorname{Sym}_R(W_{-,R}).
+\quad}
+\tag{RV.15}
+\]
+Section 3.3.3 applies to \(\mathfrak s\) with the present arbitrary form: (VC.17) proves every integer current commutator of an invariant field, and (VC.19)–(VC.20) prove commutation of all invariant-field modes and vacuum endomorphisms with common finite cutoffs. Its finite coefficient identities survive scalar extension; the finite-kernel argument (RV.16)–(RV.17) below also identifies every endomorphism over \(R\) with a finite \(R\)-linear combination of extended endomorphisms over \(k\). In particular \(Z_{\mathfrak s,R}\), and hence (RV.15), is commutative. This identifies the polynomial factor as an endomorphism algebra, rather than merely as a vector space of invariant states.
+
+**Ordinary base change by finite equations.** All these assertions can also be checked by the exact finite-energy mechanism, which identifies their compatibility with arbitrary ordinary scalar extension. Over \(k\), every energy space \((V_{\mathfrak a,k})_E\) is finite-dimensional. A current \(x_m\) has energy shift \(-m\), and vanishes there when \(m>E\). For a basis \(\mathcal B_{\mathfrak a}\), its invariant energy space is the kernel of
+\[
+(V_{\mathfrak a,k})_E
+\longrightarrow
+\bigoplus_{x\in\mathcal B_{\mathfrak a}}
+\ \bigoplus_{m=0}^E
+(V_{\mathfrak a,k})_{E-m},
+\qquad
+a\longmapsto(x_ma)_{x,m}.
+\tag{RV.16}
+\]
+This formula follows from the current brackets: a negative replacement subtracts \(m\) from the energy, and a scalar replacement is possible only when the removed indices sum to \(m\). Zero modes preserve energy. Distinct input energies have distinct output energies for each fixed \(m\), so invariance is energy graded. Every state has finite energy support.
+
+Tensoring (RV.16) with \(R\) is exact, since every \(k\)-module is a vector space and \(R\) is flat over \(k\). The ordered basis identifies its domain with \((V_{\mathfrak a,R})_E\), and its target and maps with the actual extended current action. Summing these finite kernel identities gives
+\[
+V_{\mathfrak a,R}^{\mathfrak a_R[[t]]}
+=R\otimes_kV_{\mathfrak a,k}^{\mathfrak a[[t]]},
+\qquad
+Z_{\mathfrak a,R}=R\otimes_kZ_{\mathfrak a,k}.
+\tag{RV.17}
+\]
+For the second equality use the induction correspondence and the product calculation \(E_a(uv)=ua\); the same operations extend scalars, so this is an equality of algebras. The radical also extends exactly: it is the kernel of the finite linear pairing map \(\mathfrak z\to\mathfrak z^*\). Hence
+\(\operatorname{rad}((\kappa_{\mathfrak z})_R)=W\otimes_kR\).
+The symmetric polynomial algebra and all maps in (RV.7)–(RV.15) extend scalars. This proves all ordinary-family claims using modules and equations, including nonreduced \(R\), rather than detection on field-valued points. It concerns the scalar extensions of the fixed \(k\)-form; a varying form with new coefficient-ring degeneracies is a different family.
+
+**Critical level and the central divided translates.** The Killing form is
+\(\operatorname{Kil}_{\mathfrak g}(x,y)=\operatorname{Tr}(\operatorname{ad}x\,\operatorname{ad}y)\). Since \(\operatorname{ad}z=0\) for \(z\in\mathfrak z\), it has zero central restriction and zero cross form. On \(\mathfrak s\), the action on the summand \(\mathfrak z\) is zero, so its restriction is \(\operatorname{Kil}_{\mathfrak s}\). Therefore at the critical effective form
+\[
+\kappa_{\mathrm{crit}}=-\frac12\operatorname{Kil}_{\mathfrak g},
+\qquad W=\mathfrak z,
+\qquad
+Z_{\mathfrak g,\mathrm{crit},R}
+\simeq Z_{\mathfrak s,\mathrm{crit},R}
+\otimes_R\operatorname{Sym}_R(\mathfrak z_{-,R}).
+\tag{RV.18}
+\]
+No nondegeneracy theorem for the Killing form is needed for its zero central restriction.
+
+For arbitrary \(\kappa\) and \(w\in W\), all modes \(w_m\) commute with every mode of \(\mathfrak g\): the ordinary bracket is zero, and the cocycle is zero by (RV.3)–(RV.4). Nonnegative \(w_m\) are therefore zero operators on the entire cyclic vacuum. Put
+\[
+X_{w,r}=w_{-r-1}v,\qquad
+A_{w,r}=E_{X_{w,r}},
+\qquad r\geq0.
+\tag{RV.19}
+\]
+The translation of (GJ.P6) satisfies
+\[
+\frac{T^r}{r!}(w_{-1}v)=w_{-r-1}v=X_{w,r},
+\qquad
+TX_{w,r}=(r+1)X_{w,r+1}.
+\tag{RV.20}
+\]
+Indeed each use of \([T,w_{-j}]=j w_{-j-1}\) multiplies by the next integer, and \(Tv=0\). The corresponding endomorphism is exactly multiplication by the negative central generator on (RV.7). The field reconstructed in (VC.8) from \(w_{-1}v\) is the actual current \(w(t)\); all its nonnegative modes vanish as operators, while its negative modes give
+\[
+Y(w_{-1}v,t)
+=\sum_{r\geq0}A_{w,r}t^r.
+\tag{RV.21}
+\]
+Creation (VC.18) identifies these same modes with the divided translates (RV.20). They commute with every invariant-field mode and every semisimple vacuum endomorphism by (VC.19), also directly by their multiplication description. Thus all products and divided translates in the central factor have the specified endomorphism interpretation.
+
+The full translation on (RV.7) is
+\[
+T_{\mathfrak g}=T_{\mathfrak s}\otimes1+1\otimes T_{\mathfrak z}.
+\tag{RV.22}
+\]
+Both sides kill the vacuum and have the same commutator \(-m(x+z)_{m-1}\) with every current, so cyclicity proves their equality. In particular translation on the central polynomial factor is the derivation given by (RV.20). On endomorphisms, (TC.A4) with \(D_{-1}=-T\) gives \([T,E_a]=E_{Ta}\); its product rule is consequently compatible with the algebra factorization.
+
+**The full central coordinate law.** Let \(\phi(t)\) be any continuous \(R\)-coordinate, with nilpotent constant coefficient and invertible linear coefficient, and let \(\psi=\phi^{-1}\). Section 1.1.8 constructs this inverse coefficientwise. The complete residue proof (RC.C7) shows that current substitution
+\(\sigma_\phi(xF(t))=xF(\phi(t))\) preserves (RV.2) for every \(\kappa\). It preserves nonnegative formal currents, so
+\[
+U_\phi(uv)=\sigma_\phi(u)v
+\]
+is the actual invertible vacuum map, with inverse \(U_\psi\). Its endomorphism action is conjugation. The two current factors are preserved separately, and the tensor map (RV.6) sends their vacuum to the tensor vacuum; hence
+\[
+U_{\phi,\mathfrak g}
+=U_{\phi,\mathfrak s}\otimes U_{\phi,\mathfrak z},
+\qquad
+U_\phi E_aU_\phi^{-1}=E_{U_\phi a}.
+\tag{RV.23}
+\]
+These identities follow on a finite negative word and then on every state. Formal tails use the common bounds already proved.
+
+For \(w\in W\), expand \(w\phi(t)^{-r-1}v\). Every nonnegative mode vanishes, and the remaining negative coefficients give
+\[
+U_\phi X_{w,r}
+=\sum_{j\geq0}
+[t^{-j-1}]\phi(t)^{-r-1}\,X_{w,j}.
+\tag{RV.24}
+\]
+This sum is finite. If \(\phi(0)^\nu=0\), write \(\phi(t)=\phi(0)+t a(t)\), with \(a(t)\) a unit. The expansion
+\[
+\phi(t)^{-r-1}
+=(ta(t))^{-r-1}
+\sum_{q=0}^{\nu-1}\binom{-r-1}{q}
+ \left(\frac{\phi(0)}{ta(t)}\right)^q
+\]
+has smallest possible exponent \(-r-\nu\). Therefore only \(j\leq r+\nu-1\) occurs. The infinite positive tail is irrelevant to its action on the vacuum.
+
+Residue change computes each coefficient without a chosen bilinear identification of the center with its dual:
+\[
+\begin{aligned}
+[t^{-j-1}]\phi(t)^{-r-1}
+&=\operatorname{Res}_t t^j\phi(t)^{-r-1}\,dt\\
+&=\operatorname{Res}_u
+ \psi(u)^j u^{-r-1}\psi'(u)\,du\\
+&=[u^r]\psi'(u)\psi(u)^j.
+\end{aligned}
+\tag{RV.25}
+\]
+The residue identity holds for arbitrary ordinary coefficients by the monomial proof of (RC.C7), including nilpotent coordinate constants. It thus proves a full exact coordinate formula, not only a symbol calculation. If
+\[
+X_w(t)=\sum_{r\geq0}X_{w,r}t^r,
+\qquad
+A_w(t)=\sum_{r\geq0}A_{w,r}t^r,
+\]
+then (RV.23)–(RV.25) are precisely
+\[
+\boxed{\quad
+U_\phi X_w(t)=\psi'(t)X_w(\psi(t)),
+\qquad
+U_\phi A_w(t)U_\phi^{-1}
+=\psi'(t)A_w(\psi(t)).
+\quad}
+\tag{RV.26}
+\]
+Each series has an individual algebraic state or endomorphism in every coefficient. If \(\psi(0)^\nu=0\), the coefficient formula is
+\[
+\boxed{\quad
+U_\phi X_{w,r}
+=\sum_{j=0}^{r+\nu-1}
+ \left([t^r]\psi'(t)\psi(t)^j\right)X_{w,j}.
+\quad}
+\tag{RV.27}
+\]
+There are no normal-order corrections: these are radical current modes themselves, and they commute with all currents. In particular there is no Schwarzian term.
+
+On the polynomial algebra, (RV.26) is inverse pullback of a one-form. To state this intrinsically, its coefficient functor is
+\[
+\operatorname{Hom}_{k\text{-alg}}
+ \bigl(\operatorname{Sym}_k(W_-),R\bigr)
+=W^*\otimes_k R[[t]]\,dt .
+\tag{RV.28}
+\]
+A functional sends \(w_{-r-1}\) to the \(w\)-evaluation of the coefficient of \(t^r\,dt\). Equation (RV.27) sends it to the corresponding coefficient of \(\psi'(t)\alpha(\psi(t))\,dt\). The dual \(W^*\) is required here; the possibly zero form \(\kappa\) is not used to identify \(W\) with its dual. All coefficient sums are finite for a fixed nilpotence bound, so (RV.26)–(RV.28) commute with every homomorphism \(R\to R'\).
+
+The tensor-product comparison and its coordinate action are displayed together:
+\[
+\begin{array}{ccc}
+Z_{\mathfrak g,R}
+&\xrightarrow[\ (RV.13)\text{--}(RV.15)\ ]{\ \simeq\ }&
+Z_{\mathfrak s,R}\otimes_R\operatorname{Sym}_R(W_{-,R})\\
+{\scriptstyle E\mapsto U_\phi EU_\phi^{-1}}\downarrow&&
+\downarrow{\scriptstyle (E_{\mathfrak s}\mapsto U_{\phi,\mathfrak s}E_{\mathfrak s}U_{\phi,\mathfrak s}^{-1})
+ \ \otimes\ (X_w(t)\mapsto\psi'X_w(\psi))}\\
+Z_{\mathfrak g,R}
+&\xrightarrow{\ \simeq\ }&
+Z_{\mathfrak s,R}\otimes_R\operatorname{Sym}_R(W_{-,R}) .
+\end{array}
+\tag{RV.29}
+\]
+*The horizontal maps compare actual endomorphism compositions. The right central action is the exact inverse one-form law (RV.25)–(RV.27), and (RV.23) proves commutation of the square.*
+
+Finally, the coordinate derivations from (TC.A1) act directly on the divided translates:
+\[
+D_lX_{w,r}=-(r+1)X_{w,r-l},
+\qquad
+[D_l,A_{w,r}]=-(r+1)A_{w,r-l},
+\qquad l\geq-1.
+\tag{RV.30}
+\]
+All negatively indexed generators mean zero. Indeed
+\(D_l(w_{-r-1}v)=-(r+1)w_{l-r-1}v\), and this vanishes when its index is nonnegative. The second identity follows from the induced endomorphism correspondence. Equivalently, for \(\phi(t)=t+\epsilon v(t)\), \(\epsilon^2=0\), expansion of (RV.26) gives
+\[
+\delta_vX_w=-vX_w'-v'X_w .
+\tag{RV.31}
+\]
+For an arbitrary \(v(t)=\sum_{a\geq0}v_at^a\), its divided coefficients obey
+\[
+\delta_vX_{w,r}
+=-(r+1)\sum_{a=0}^{r+1}v_aX_{w,r+1-a}.
+\tag{RV.32}
+\]
+This finite sum includes every infinitesimal constant direction. The same formula holds with \(X\) replaced by \(A\). For unit scaling and nilpotent translation it specializes to the full identities
+\[
+\begin{gathered}
+\phi(t)=a t:\qquad
+U_\phi X_{w,r}=a^{-r-1}X_{w,r}\quad(a\in R^\times),\\
+\phi(t)=t+b,\ b^\nu=0:\qquad
+U_\phi X_{w,r}
+=\sum_{q=0}^{\nu-1}
+ \binom{r+q}{r}(-b)^qX_{w,r+q}.
+\end{gathered}
+\tag{RV.33}
+\]
+The translation is \(\exp(-bT)\) on each generator, a finite sum because \(b^\nu=0\). Positive coordinate flows and their coefficient-finite ordered products act as in the exact integration proof of §3.4.5; alternatively (RV.24)–(RV.27) already give the full action directly. Thus the mode laws are the infinitesimal forms of a proved ordinary coordinate action.
+
+If the semisimple factor is zero, the whole statement is the central derivative calculation and its one-form action. If the center is zero, (RV.15) is the original semisimple vacuum algebra. If \(\mathfrak g=0\), the vacuum and its endomorphism algebra are \(R\), and all coordinate actions are the identity. The construction applies without change to any number of split simple factors in \(\mathfrak s\).
+
+This proves the reductive algebraic vacuum factorization for every fixed invariant form and every ordinary coefficient extension. At critical level it adjoins one free divided-translation family for each central direction, equivariantly with its inverse one-form action. It does not identify this coefficient space with the full intrinsic oper stack of a nonadjoint reductive group. Central bundles and their automorphisms, finite central-isogeny choices, the dual-group central convention, and any global or derived descent comparison retain their own geometric premises. Full non-type-A basic lifting and coordinate comparison, completed/chiral/Poisson/Satake/derived centers and the other original theorem obligations are also unaffected.
+
+#### 3.5.2. The trace splitting of the critical \(GL_n\) vacuum
+
+Let \(k\) be a characteristic-zero field, \(R\) any ordinary commutative \(k\)-algebra, and \(n\geq1\). Use the matrix-current form, central level and translation convention of SL.L1:
+\[
+ \kappa(X,Y)=-n\operatorname{tr}(XY)
+               +\operatorname{tr}(X)\operatorname{tr}(Y),\qquad K=1,
+ \qquad [T,X[m]]=-mX[m-1],\quad Tv=0.
+ \tag{TR.1}
+\]
+This is the critical form \(-\mathrm{Kil}_{\mathfrak{gl}_n}/2\), including its zero restriction to the scalar matrices. Indeed the matrix-unit trace calculations preceding (GQ.20) apply to arbitrary matrices: expanding \(\operatorname{ad}X=L_X-R_X\) gives \(\mathrm{Kil}_{\mathfrak{gl}_n}(X,Y)=2n\operatorname{tr}(XY)-2\operatorname{tr}(X)\operatorname{tr}(Y)\). Taking minus one half gives (TR.1). A nonzero level for the scalar currents would give a different vacuum problem. We use the proved traceless polynomial-vacuum theorem (SL.C1) and its full ordinary coordinate comparison (SL.X26). The trace factor and the passage from traceless to raw matrix coefficients will be proved here.
+
+**The vacuum and its entire invariant algebra split.** Set
+\[
+ J[m]=\sum_a E_{aa}[m],\qquad c[m]=J[m]/n,\qquad
+ F_{ij}[m]=E_{ij}[m]-\delta_{ij}c[m].
+ \tag{TR.2}
+\]
+Every \(J[m]\) commutes with every current: its matrix bracket is zero and
+\(\kappa(I,E_{ab})=-n\delta_{ab}+n\delta_{ab}=0\). The \(F\)-currents are traceless. Their form is \(-n\operatorname{tr}\), and they commute with the scalar currents. Thus the affine current representation separates into the critical traceless representation and the abelian scalar representation with zero cocycle.
+
+Write \(z_r=c[-r-1]\), \(r\geq0\). The PBW ordered negative-mode basis gives an actual \(R\)-module isomorphism, compatible with every current action,
+\[
+ V_{\mathfrak{gl}_n,R}
+   =V_{\mathfrak{sl}_n,R}\otimes_R R[z_0,z_1,\ldots].
+ \tag{TR.3}
+\]
+For \(n=1\), the first factor is \(R\). Every nonnegative scalar current acts as zero on (TR.3); every negative scalar current acts by multiplication by its corresponding variable. The traceless currents act on the first factor alone.
+
+Here is a direct invariant argument over \(R\), without a pointwise test or an exchange of an infinite intersection with tensor. Expand any state as a **finite** sum
+\(\sum_\beta w_\beta z^\beta\), using the polynomial monomial basis. A nonnegative traceless current kills this sum exactly when it kills every coefficient \(w_\beta\), since these monomials are \(R\)-linearly independent. Formal nonnegative series impose the same equations, by the vacuum smoothness bound. Hence
+\[
+ V_{\mathfrak{gl}_n,R}^{\mathfrak{gl}_n[[t]]}
+  =V_{\mathfrak{sl}_n,R}^{\mathfrak{sl}_n[[t]]}
+       \otimes_R R[z_0,z_1,\ldots].
+ \tag{TR.4}
+\]
+This is also an algebra factorization of endomorphisms. An endomorphism on the first factor, tensored with multiplication by a polynomial on the second, commutes with all currents. Its vacuum image is the corresponding invariant tensor. Such maps exhaust all invariant images by (TR.4), and the induced-module bijection (K2.3) makes the map both surjective and injective. Composition multiplies the two factors. Therefore
+\[
+ Z_{\mathfrak{gl}_n,R}
+ :=\operatorname{End}_{\widehat{\mathfrak{gl}}_n,\mathrm{crit}}
+                 (V_{\mathfrak{gl}_n,R})
+ =Z_{\mathfrak{sl}_n,R}\otimes_R R[C_r:r\geq0],
+ \tag{TR.5}
+\]
+where \(C_r\) is multiplication by \(z_r\). In particular no additional endomorphisms arise from arbitrary linear maps of the scalar polynomial module: commuting with its negative multiplication currents and the cyclic vacuum forces the maps just described.
+
+Let \(\overline S_i\) denote the right-ordered traceless determinant coefficients, embedded using the \(F\)-currents, and put
+\[
+ \overline S_0=1,\qquad \overline S_1=0,\qquad
+ \overline A_{i,r}(v)=\frac{T^r(\overline S_i v)}{r!}.
+\]
+By (SL.C1), for \(n\geq2\),
+\[
+ \boxed{Z_{\mathfrak{gl}_n,R}
+   =R[C_r,\overline A_{i,r}:r\geq0,\ 2\leq i\leq n].}
+ \tag{TR.6}
+\]
+All displayed generators are algebraically independent and every endomorphism is a finite polynomial. For \(n=1\), only the \(C_r\) occur. Thus (TR.6) proves exhaustion of the regular matrix vacuum algebra, using the actual traceless exhaustion theorem, rather than just constructing basic invariant states. Translation splits between the two factors and satisfies
+\(Tz_r=(r+1)z_{r+1}\); on endomorphisms it is the derivation determined by
+\([T,E_w]=E_{Tw}\).
+
+**The exact determinant shift and every triangular coefficient.** Work first in the negative-mode enveloping algebra with the Ore variable \(\tau\):
+\[
+ \tau a=a\tau+T(a).
+\]
+All scalar negative modes commute with the negative-mode algebra, though they need not commute with \(\tau\). Put \(c=z_0\), \(c'=T(c)=z_1\), and \(c^{(j)}=T^j(c)=j!z_j\). Entry by entry,
+\[
+ \delta_{ij}\tau+E_{ij}[-1]
+ =\delta_{ij}(\tau+c)+F_{ij}[-1].
+ \tag{TR.7}
+\]
+Moreover \([\tau+c,F_{ij}[m]]=[\tau,F_{ij}[m]]\). The substitution
+\(\tau\mapsto\tau+c\), fixing the negative currents, is an automorphism of this Ore algebra: it preserves its defining commutator, and \(\tau\mapsto\tau-c\) is its inverse. Applying it to the finite, increasing-column determinant identity yields
+\[
+ \begin{aligned}
+ \operatorname{cdet}(\delta_{ij}\tau+E_{ij}[-1])
+ &=\operatorname{cdet}(\delta_{ij}(\tau+c)+F_{ij}[-1])\\
+ &=\sum_{i=0}^n\overline S_i(\tau+c)^{n-i}.
+ \end{aligned}
+ \tag{TR.8}
+\]
+The coefficients \(\overline S_i\) are unchanged by this substitution, since they lie in the traceless negative-mode algebra. This argument takes place before application to \(v\). In particular it does not assume that \(\tau+c\) kills the vacuum; its vacuum value is \(cv\), which is generally nonzero.
+
+Define finite differential polynomials in the central variables by
+\[
+ H_0=1,\qquad H_{d+1}=T(H_d)+cH_d.
+ \tag{TR.9}
+\]
+Then
+\[
+ (\tau+c)^m=\sum_{d=0}^{m}\binom md H_d\,\tau^{m-d}.
+ \tag{TR.10}
+\]
+To prove this, multiply the expression for \(m\) on the left by \(\tau+c\). Moving \(\tau\) once to the right gives at deficit \(d\) the old coefficient
+\(\binom mdH_d\) and the new coefficient
+\(\binom m{d-1}(T+c)H_{d-1}=\binom m{d-1}H_d\). Pascal's identity gives (TR.10), starting from \(m=0\). This is a finite induction that retains every ordering derivative. The first terms are
+\[
+ H_1=c,\qquad H_2=c^2+c',\qquad
+ H_3=c^3+3cc'+c''.
+\]
+For an entirely explicit finite expression,
+\[
+ H_d
+ =d!\!\sum_{\substack{m_1,\ldots,m_d\geq0\\
+                     \sum_{j=1}^d jm_j=d}}
+   \prod_{j=1}^{d}
+   \frac{1}{m_j!}
+   \left(\frac{c^{(j-1)}}{j!}\right)^{m_j}.
+ \tag{TR.11}
+\]
+Indeed, the generating series of this expression is
+\(\exp(\sum_{j\geq1}c^{(j-1)}s^j/j!)\). Its \(s\)-derivative equals
+\((T+c)\) times the series: \(T\) differentiates every \(c^{(j-1)}\), while the missing constant term is \(c\). Its constant coefficient is one, so coefficient recursion gives exactly (TR.9). This proves (TR.11) in a polynomial differential ring and hence in the central-mode ring.
+
+Writing the raw matrix determinant as
+\(\tau^n+\sum_{k=1}^nS_k\tau^{n-k}\), equations (TR.8)–(TR.10) give
+\[
+ \boxed{S_k
+  =\sum_{i=0}^{k}\binom{n-i}{k-i}\overline S_i H_{k-i}
+  =\overline S_k+
+       \sum_{i=0}^{k-1}\binom{n-i}{k-i}\overline S_iH_{k-i}.}
+ \tag{TR.12}
+\]
+There is no derivative of \(\overline S_i\) in this formula: its position is to the left of the shifted power in (TR.8), and only that power is right ordered. In particular,
+\[
+ \begin{aligned}
+ S_1&=nc=J[-1],\\
+ S_2&=\overline S_2+\binom n2(c^2+c'),\\
+ S_3&=\overline S_3+(n-2)\overline S_2c
+                         +\binom n3(c^3+3cc'+c'').
+ \end{aligned}
+ \tag{TR.13}
+\]
+The second line applies when \(n\geq2\), and the last when \(n\geq3\). The coefficient of \(c'\) in \(S_2\) equals that of \(c^2\); omitting it would change both the determinant and its coordinate law.
+
+For states and their corresponding endomorphisms, let
+\[
+ A_{k,r}(v)=\frac{T^r(S_kv)}{r!},\quad
+ \mathcal S_k(t)=\sum_{r\geq0}A_{k,r}t^r,\quad
+ \overline{\mathcal S}_i(t)=\sum_{r\geq0}\overline A_{i,r}t^r,
+ \quad \mathcal C(t)=\sum_{r\geq0}C_rt^r.
+\]
+Use \(\mathcal S_0=\overline{\mathcal S}_0=1\) and
+\(\overline{\mathcal S}_1=0\). Exponentiating \(T\) coefficient by coefficient is multiplicative, by its finite Leibniz rule. The invariant tensor algebra in (TR.5) is commutative, so (TR.12) becomes the exact formal-series identity
+\[
+ \boxed{\mathcal S_k(t)=
+ \sum_{i=0}^{k}\binom{n-i}{k-i}
+       \overline{\mathcal S}_i(t)H_{k-i}(\mathcal C(t)),}
+ \qquad H_{d+1}=(\partial_t+\mathcal C)H_d.
+ \tag{TR.14}
+\]
+This includes every divided translate. Equivalently,
+\[
+ A_{k,r}=
+ \sum_{i=0}^{k}\binom{n-i}{k-i}
+       \sum_{a+b=r}\overline A_{i,a}
+                    [t^b]H_{k-i}(\mathcal C(t)).
+\]
+All terms are finite. The central coefficients needed in a deficit-\(d\) term have indices at most \(r+d-1\); a positive derivative can therefore require central modes beyond the pointed \(r\)-jet, and those terms must be retained.
+
+The inverse is triangular in \(k\): first recover
+\(C_r=A_{1,r}/n\), then recursively subtract the \(i<k\) terms of (TR.14) to recover every \(\overline A_{k,r}\). Each recovered coefficient is a finite polynomial. Consequently
+\[
+ \boxed{Z_{\mathfrak{gl}_n,R}
+      =R[A_{k,r}:1\leq k\leq n,\ r\geq0],}
+ \tag{TR.15}
+\]
+and the raw generators are algebraically independent. Formally, send independent raw variables into the polynomial ring (TR.6) by (TR.14). The coefficientwise inverse recursion defines an inverse homomorphism of polynomial rings, proving independence as well as generation. No completion is involved in either algebra, even though its coefficient-valued points permit arbitrary power-series sequences.
+
+**The scalar coefficient functor with a framed central form.** Let
+\[
+ h=\frac{1-n}{2},\qquad
+ \overline{\mathcal L}
+     =\partial_t^n+\sum_{i=2}^{n}\overline s_i(t)\partial_t^{n-i},
+ \qquad c(t)\,dt\in R[[t]]\,dt.
+\]
+For \(n=1\), the normalized operator is just \(\partial_t\). The normalized type-A scalar operator has source density weight \(h\) and target weight \(h+n\). The additional datum \(c(t)\,dt\) is a central connection coefficient in a **fixed central frame**.
+
+In the ordinary differential-operator ring, define the automorphism
+\(\Phi_c\) by fixing every coefficient and sending
+\(\partial_t\) to \(\partial_t+c(t)\). It preserves
+\([\partial_t,f]=f'\), and \(\Phi_{-c}\) is its inverse. Define
+\[
+ \mathcal L_c=\Phi_c(\overline{\mathcal L})
+       =(\partial_t+c)^n
+            +\sum_{i=2}^{n}\overline s_i(\partial_t+c)^{n-i}
+       =\partial_t^n+\sum_{k=1}^{n}s_k(t)\partial_t^{n-k}.
+ \tag{TR.16}
+\]
+The same finite induction as (TR.10) gives
+\[
+ s_k=\sum_{i=0}^{k}\binom{n-i}{k-i}\overline s_iH_{k-i}(c),
+ \qquad \overline s_0=1,\quad\overline s_1=0,\quad s_1=nc.
+ \tag{TR.17}
+\]
+Conversely set \(c=s_1/n\), and apply \(\Phi_{-c}\) to a raw monic operator. Its subprincipal coefficient is \(s_1-nc=0\); its other coefficients are the inverse triangular polynomials. Therefore, over every ordinary \(R\), (TR.16) is an isomorphism of coefficient functors
+\[
+ \left\{(\overline{\mathcal L},c(t)\,dt)\right\}
+       \ \simeq\
+ \left\{\partial_t^n+\sum_{k=1}^{n}s_k(t)\partial_t^{n-k}\right\}.
+ \tag{TR.18}
+\]
+The left side means the normalized scalar coefficient functor and a framed central form. Its identification of the normalized factor with intrinsic \(PGL_n\)-opers uses precisely the previously stated finite-jet, vector-lift and descent premises of §§2.2–2.6. Equation (TR.18) itself is proved entirely by finite differential algebra.
+
+Combining (SL.X26) with the identity of the central polynomial rings and (TR.14)–(TR.17) yields the entire vacuum-coefficient algebra comparison:
+\[
+ \begin{aligned}
+ Z_{\mathfrak{gl}_n,R}
+ &\xrightarrow{\sim}
+ R[\overline s_{i,r},c_r:2\leq i\leq n,\ r\geq0]\\
+ &\xrightarrow{\sim}
+ R[s_{k,r}:1\leq k\leq n,\ r\geq0],
+ \qquad
+ \overline A_{i,r}\mapsto\overline s_{i,r},\
+ C_r\mapsto c_r,\
+ A_{k,r}\mapsto s_{k,r}.
+ \end{aligned}
+ \tag{TR.19}
+\]
+For \(n=1\), the normalized coefficient list is empty. This is a regular vacuum theorem and a specified framed coefficient comparison.
+
+**Full coordinates, including the trace mixing.** Under the current substitution
+\(xF(t)\mapsto xF(\phi(t))\), let \(\psi=\phi^{-1}\). The scalar factor transforms exactly as an ordinary one-form on coefficient functions:
+\[
+ U_\phi\mathcal C(t)U_\phi^{-1}
+        =\psi'(t)\mathcal C(\psi(t)).
+ \tag{TR.20}
+\]
+To prove this directly, its \(r\)-th vacuum state is \(c[-r-1]v\). In its substituted current only negative modes survive, since nonnegative central modes act as zero on the whole vacuum. The coefficient of \(c[-s-1]\) is
+\(\operatorname{Res}_u u^s\phi(u)^{-r-1}du\). Residue substitution turns this into
+\(\operatorname{Res}_t \psi(t)^s\psi'(t)t^{-r-1}dt\), the coefficient of \(t^r\) on the right side of (TR.20). The existing residue proof applies also to nilpotent constant coordinates. In particular,
+\[
+ \delta_fc=-fc'-f'c,\qquad
+ [D_l,C_r]=-\mathbf1_{r\geq l}(r+1)C_{r-l}
+       \quad(l\geq-1),
+ \tag{TR.21}
+\]
+where the \(l=-1\) term is always present. There is no central scalar anomaly for this zero-level abelian factor.
+
+There is an exact finite-order transport identity behind the comparison. For a passive coordinate \(t=\eta(u)\), put \(\alpha=\eta'\) and
+\[
+ \mathcal T_\eta(D)=
+ \alpha^{h+n}
+    \left.D\right|_{t=\eta(u),\,\partial_t=\alpha^{-1}\partial_u}
+       \alpha^{-h}.
+\]
+Then
+\[
+ \boxed{\mathcal T_\eta\bigl(\Phi_c(D)\bigr)
+      =\Phi_{\widetilde c}\bigl(\mathcal T_\eta(D)\bigr),
+       \qquad \widetilde c=\alpha\,c\circ\eta.}
+ \tag{TR.22}
+\]
+To verify it, put \(b=\alpha'/\alpha\). Conjugation removes the apparent half powers and rewrites the two sides respectively as
+\[
+ \alpha^n\sum_i \overline s_i(\eta)
+   \left(\alpha^{-1}(\partial_u-hb)+c(\eta)\right)^{n-i},
+ \qquad
+ \Phi_{\widetilde c}\!
+ \left(\alpha^n\sum_i\overline s_i(\eta)
+             \left(\alpha^{-1}(\partial_u-hb)\right)^{n-i}\right).
+\]
+They agree term by term, because \(\Phi_{\widetilde c}\) fixes all coefficient series and
+\(\alpha^{-1}\widetilde c=c(\eta)\). This proves (TR.22) without interchanging noncommuting factors. Its expressions use only integer powers of \(\alpha\), its inverse, relative derivatives and rational constants. Thus they already descend to \(R\), also when the density weights are half-integral.
+
+For an explicit full raw-coefficient formula, define \(B_{0,0}=1\), set out-of-range entries to zero, and use the finite recursion
+\[
+ B_{m+1,j}=\alpha^{-1}
+   \left(B_{m,j}'-h\frac{\alpha'}{\alpha}B_{m,j}
+                         +B_{m,j-1}\right).
+\]
+Repeated product rules prove
+\((\alpha^{-1}\partial_u)^m\alpha^{-h}
+ =\alpha^{-h}\sum_{j=0}^{m}B_{m,j}\partial_u^j\).
+Consequently the complete transport is
+\[
+ \boxed{\widetilde s_k(u)=
+   \alpha(u)^n\sum_{i=0}^{k}s_i(\eta(u))B_{n-i,n-k}(u),
+      \qquad s_0=1.}
+ \tag{TR.23}
+\]
+Unlike the traceless specialization, \(s_1\) is retained. The cancellation
+\(B_{n,n-1}=-(nh+n(n-1)/2)\alpha^{-n}\alpha'/\alpha=0\)
+shows \(\widetilde s_1=\alpha s_1\circ\eta\). Each fixed Taylor coefficient is a finite polynomial in the original coefficients, coordinate coefficients and inverse linear coefficient. If \(\eta(0)^\nu=0\), the terms of \(s_i(\eta)\) needed at Taylor order \(r\) have original index at most \(r+\nu-1\), by (SC.O3). The recursion adds only finitely many derivatives. Thus (TR.23) commutes with every ordinary base change, without requiring reducedness or flatness.
+
+The matching quantum law holds for the raw determinant before quotienting out the trace. Indeed, the proved all-\(n\) identities (SL.X6), (SL.X10) and their positive-Witt induction (SL.X13) were obtained with
+\(w_k=S_kv\), \(w_0=v\) and the actual \(w_1=J[-1]v\). Applying the divided-translation identity (TC.A5) before the quotient, with
+\[
+ C_{ki}=\binom{n-i}{k-i+1}
+                  +h\binom{n-i}{k-i},
+\]
+gives
+\[
+ \boxed{\delta_f\mathcal S_k
+   =-f\mathcal S_k'-kf'\mathcal S_k
+       +\sum_{i=0}^{k-1}C_{ki}f^{(k-i+1)}\mathcal S_i,
+       \qquad 1\leq k\leq n.}
+ \tag{TR.24}
+\]
+The coefficient at any Taylor order is a finite sum. The \(k=1\) correction is zero since \(C_{10}=\binom n2+hn=0\), agreeing with (TR.20). On scalar operators the finite Leibniz rule applied to
+\(\delta_fD=-(f\partial+(h+n)f')D+D(f\partial+hf')\)
+gives precisely (TR.24), now retaining \(s_1\). This uses the full quantum identities, not merely their PBW symbols.
+
+For \(n\geq2\), a visible check of the derivative weight is obtained by setting
+\(\gamma_n=n(n^2-1)/12\). From (TR.13), (TR.20) and the normalized quadratic law,
+\[
+ \begin{aligned}
+ \delta_f\mathcal S_2
+ &=-f\mathcal S_2'-2f'\mathcal S_2
+       -\frac{n-1}{2}f''\mathcal S_1-\gamma_n f''' ,\\
+ \widetilde s_2
+ &=\alpha^2s_2(\eta)
+       +\frac{n-1}{2}\alpha's_1(\eta)
+       +\gamma_n\operatorname{Sch}(\eta).
+ \end{aligned}
+ \tag{TR.25}
+\]
+The scalar term in the first line is times the identity endomorphism.
+In fact \(\delta_f(c^2+c')=-f(c^2+c')'-2f'(c^2+c')-f''c\).
+This last term accounts exactly for the trace mixing. For \(n=2\),
+\(S_2=\overline S_2+c^2+c'\); setting \(c=0\) recovers
+\(\overline S_2=-Q_{\mathrm{K3}}/2\), with the factor and Schwarzian sign already checked in §3.4.4.
+
+Equations (TR.20), (TR.22) and the full traceless comparison (SL.X26) prove full coordinate equivariance of (TR.19). Equivalently, the exact raw derivations (TR.24) integrate by the finite nilpotent translations, unit scalings and positive formal flows proved in (TC.A8). Translation is finite because its parameter is nilpotent, scaling has weight \(k+r\), and a positive flow lowers this energy and has a finite exponential on each polynomial. The forward formula is (TR.23); the action on coefficient functions in (TR.19) uses \(\eta=\psi=\phi^{-1}\).
+
+The mechanism is displayed by the commuting square:
+\[
+ \begin{array}{ccc}
+ R[C_r,\overline A_{i,r}]
+ &\xleftarrow{\ \text{(TR.14)}\ }&R[A_{k,r}]\\[2pt]
+ \downarrow{\scriptstyle C_r\mapsto c_r,\
+                         \overline A_{i,r}\mapsto\overline s_{i,r}}
+ &&\downarrow{\scriptstyle A_{k,r}\mapsto s_{k,r}}\\[2pt]
+ R[c_r,\overline s_{i,r}]
+ &\xleftarrow{\ \partial\mapsto\partial+c,\ \text{(TR.17)}\ }
+ &R[s_{k,r}].
+ \end{array}
+\]
+*Both horizontal arrows send a raw coefficient on the right to its
+triangular expression in the split coefficients on the left, and are
+invertible. The top arrow is the actual right-ordered determinant shift (TR.8);
+the bottom arrow is the scalar shift (TR.16). The central coordinate is a
+one-form by (TR.20), and (TR.22) compares the full density transport.
+Thus every arrow respects the full inverse-coordinate action, including
+ordinary nonreduced parameters.*
+
+Finally, the central frame is part of the stated coefficient problem.
+In the gauge convention \(\nabla\mapsto g\nabla g^{-1}\) of (CF.5), changing that frame by a unit \(g(t)\) changes a connection coefficient:
+\[
+ g(\partial_t+c)g^{-1}
+    =\partial_t+c-\frac{g'}{g},
+ \qquad
+ g\mathcal L_cg^{-1}=\mathcal L_{c-g'/g}.
+ \tag{TR.26}
+\]
+For example \(g=\exp(at)\) changes \(c\) to \(c-a\). The framed functor in
+(TR.18) retains these as different coefficients. An intrinsic central
+gauge quotient would identify them and also retain the appropriate
+bundle and automorphism data; it is a different functor. No intrinsic
+\(GL_n\)-oper equivalence follows merely from (TR.19).
+The proved scope is the entire regular critical \(GL_n\) vacuum algebra
+and its full ordinary formal-disc comparison with a normalized type-A
+scalar operator plus a framed central one-form. Global nonadjoint
+bundle conventions, completed punctured-disc centres, chiral or Poisson
+structures, and derived coefficient algebras require their separate
+arguments.
+
+#### 3.5.3. Residue direction, the central line and critical normalization
+
+There are three pieces of an affine convention: the direction of the residue cocycle, its invariant form, and the scalar by which the chosen central generator acts. Their product determines the current commutator on a representation. Changing only the name of the central generator does not preserve its prescribed action. This distinction is necessary when comparing the critical vacuum here with a geometric source convention.
+
+##### The elementary comparison
+
+Let \(B\) be an invariant symmetric bilinear form on a finite-dimensional Lie algebra \(\mathfrak g\). For \(\epsilon\in\{1,-1\}\), define the central extension with an explicit bracket by
+\[
+\widehat{\mathfrak g}_{\epsilon,B}
+=\mathfrak g((t))\oplus k\mathsf K,
+\qquad
+[xf,yg]=[x,y]fg+
+\epsilon B(x,y)\operatorname{Res}_t((df)g)\mathsf K.
+\tag{CS.1}
+\]
+Here \(f,g\) are scalar Laurent series. Products and residues are coefficientwise finite because Laurent series have finite negative parts. The formal derivative has zero residue, so
+\[
+\operatorname{Res}((df)g)=-\operatorname{Res}(f\,dg).
+\tag{CS.2}
+\]
+Symmetry of \(B\) and (CS.2) prove skew symmetry. Invariance of \(B\) makes the three form coefficients in the central part of Jacobi equal; their residue factors sum to the residue of \(d(fgh)\), which is zero. Thus (CS.1) is a Lie bracket. For polynomial modes it reads
+\[
+[x_m,y_j]=[x,y]_{m+j}
++\epsilon mB(x,y)\delta_{m,-j}\mathsf K.
+\tag{CS.3}
+\]
+In particular a cocycle written with \(+\operatorname{Res}(f\,dg)\) has \(\epsilon=-1\), if the extension bracket adds the displayed cocycle.
+
+Consider two such extensions, with data \((\epsilon_s,B_s,\mathsf K_s)\) and \((\epsilon_t,B_t,\mathsf K_t)\). Fix \(a\in k^\times\). The map which is the identity on every current and sends \(\mathsf K_s\) to \(a\mathsf K_t\) is a Lie algebra isomorphism if and only if
+\[
+a\epsilon_s B_s=\epsilon_t B_t.
+\tag{CS.4}
+\]
+Indeed applying the map to the bracket in (CS.3) multiplies its central coefficient by \(a\), while the target bracket has the right side of (CS.4). Equality of these coefficients is sufficient for every pair of Laurent currents. It is necessary by choosing modes \(m=1,j=-1\) and arbitrary \(x,y\). The inverse map uses \(a^{-1}\). Hence this is a complete comparison of the specified central extensions, with no center theorem as a premise.
+
+Suppose the target central generator acts by \(\ell_t\). Pulling a target module back along this isomorphism makes the source central generator act by
+\[
+\ell_s=a\ell_t.
+\tag{CS.5}
+\]
+Combining (CS.4) and (CS.5), the effective form on the representation must satisfy
+\[
+\boxed{\epsilon_s\ell_sB_s=\epsilon_t\ell_tB_t.}
+\tag{CS.6}
+\]
+This condition is also the exact direct test at fixed levels. In the quotient of the enveloping algebra by \(\mathsf K-\ell\), relation (CS.3) depends only on \(\epsilon\ell B\). Equal effective forms therefore give identical current relations. The nonnegative-current induction relations agree as well, so the identity on negative current words gives the vacuum-module identification, using the ordered basis proved in §3. Conversely, applying \([x_1,y_{-1}]\) to the nonzero vacuum gives \(\epsilon\ell B(x,y)v\); an identification fixing the currents and vacuum forces (CS.6). This proves the necessary and sufficient representation comparison, including its normalization.
+
+For equal forms but opposite residue directions, (CS.4) requires
+\(a=-1\). Thus
+\[
+\mathsf K_s\mapsto-\mathsf K_t
+\quad\Longrightarrow\quad
+\ell_s=-\ell_t.
+\tag{CS.7}
+\]
+A change of central generator cannot both reverse the cocycle and keep the generator acting by \(+1\) on the same representation. Alternatively, reversing both residue direction and form, while keeping the central action \(+1\), satisfies (CS.6).
+
+##### The two exact source conventions
+
+Frenkel's [*Lectures on the Langlands program and conformal field theory*, arXiv:hep-th/0512172v1, §§7.1 and 8.1](https://arxiv.org/abs/hep-th/0512172v1) explicitly writes a current bracket with central term \(-\kappa_0(x,y)\int f\,dg\), and defines level \(k\) as the action of its generator \(\mathbf1\). Its displayed mode commutator in §8.1 is
+\[
+[J^a_m,J^b_j]=[J^a,J^b]_{m+j}
++m\kappa_0(J^a,J^b)\delta_{m,-j}\mathbf1.
+\tag{CS.8}
+\]
+This mode formula fixes the normalization of the formal integral: the source uses our \(df\)-first sign. It normalizes \(\kappa_0\) so that a long root has squared length two; for \(\mathfrak{sl}_n\), \(\kappa_0(X,Y)=\operatorname{tr}(XY)\). It gives critical level \(k=-h^\vee\) and also explicitly describes the same representation by replacing the form with
+\(\kappa_{\rm crit}=-\operatorname{Kil}/2\) and having \(\mathbf1\) act as the identity. Thus the source's normalization is
+\[
+(-h^\vee)\kappa_0=\kappa_{\rm crit}
+=-\frac12\operatorname{Kil}.
+\tag{CS.9}
+\]
+For general simple root systems, the equality in (CS.9) between the long-root normalization and the named dual Coxeter number is the source normalization premise; a general root-trace proof of that identity is not supplied here. With this explicit premise, (CS.6) proves the equality of the two vacuum conventions. In type A the needed identity is proved directly by the matrix trace calculation (GQ.20). At the level of extensions, the map from the normalized-form extension to the critical-form extension is the identity on currents and sends
+\(\mathbf1_0\mapsto-h^\vee\mathsf K_{\rm crit}\); pullback of \(\mathsf K_{\rm crit}=1\) has \(\mathbf1_0=-h^\vee\). For \(\mathfrak{sl}_n\), the matrix trace computation in (GQ.20) gives \(\operatorname{Kil}=2n\operatorname{tr}\), so this agrees with our form \(-n\operatorname{tr}\). In rank one the normalized level is \(-2\).
+
+Raskin's [*A geometric proof of the Feigin–Frenkel theorem*, arXiv:1106.3112v1, introduction §§1.2–1.4](https://arxiv.org/abs/1106.3112v1) records the following data: the extension is defined by the cocycle
+\(\operatorname{Res}\kappa(f,dg)\); the element \(1\) of the central copy of \(\mathbb C\) acts as the identity; and the form called critical is \(-\operatorname{Kil}/2\). The definition gives a cocycle rather than an explicit two-current bracket. Its residue direction is therefore accurately reported as \(f\)-first, but the relation between that reported cocycle and the bracket must be specified before a direct module comparison.
+
+If an extension bracket **adds** that listed cocycle, its mode central term and effective form are
+\[
+[x_m,y_j]_{\rm central}
+=-m\kappa(x,y)\delta_{m,-j}\mathsf K_R,
+\qquad
+\mathsf K_R=1,\quad \kappa=-\operatorname{Kil}/2
+\quad\Longrightarrow\quad
+B_{\rm eff}=+\operatorname{Kil}/2.
+\tag{CS.10}
+\]
+Under this explicit bracket interpretation, (CS.6) shows that these data do not identify the stated vacuum with our \(df\)-first, negative-half-Killing, central-action-one vacuum. The identity-current isomorphism with the same form sends our \(\mathsf K\) to \(-\mathsf K_R\), so the pulled-back central action is \(-1\), as in (CS.7). A matching convention with an added \(f\)-first cocycle must instead use one of the following equivalent data:
+\[
+\begin{array}{c|c|c}
+\text{residue direction}&\text{form}&\text{central action}\\\hline
+f\text{-first}&+\operatorname{Kil}/2&+1\\
+f\text{-first}&-\operatorname{Kil}/2&-1\\
+df\text{-first}&-\operatorname{Kil}/2&+1.
+\end{array}
+\tag{CS.11}
+\]
+All three have the same effective mode form \(-\operatorname{Kil}/2\). If, instead, the convention defining the extension **subtracts** Raskin's listed cocycle, its explicit bracket is \(df\)-first with his stated negative-half-Killing form and central action one, and it matches immediately. This alternative is a conditional interpretation; the cocycle-only definition does not supply this explicit bracket.
+
+Equations (CS.4)–(CS.7) give the complete algebraic comparison. Raskin's cocycle-only definition does not explicitly fix the bracket sign needed for the direct vacuum identification. Consequently a generator flip with central action one cannot by itself transfer the geometric vacuum assertion. The geometric line must be compared with the explicit commutator and central scalar; that identification remains a separate requirement.
+
+There is a concrete rank-one test for any proposed resolution. With the \(df\)-first mode form \(\ell\kappa_0\), the direct calculation of §3.1 gives
+\[
+e_1Q=2(\ell+2)e_{-1}v.
+\tag{CS.12}
+\]
+Our \(\ell=-2\) makes this zero. The literal added-cocycle reading of (CS.10) has effective \(\ell=+2\), giving \(8e_{-1}v\ne0\) by the ordered basis. Hence that reading cannot preserve our invariant quadratic vector. This is an elementary obstruction, not an argument imported from a Feigin–Frenkel theorem. It pinpoints the sign that a geometric comparison must resolve.
+
+##### Geometric line weights are part of the comparison
+
+Frenkel's §§7.4–7.5 describe localization at level \(k\) by differential operators on \(\mathcal L^{\otimes k}\), where \(\mathcal L\) is the line obtained from the central group extension and is the theta generator on \(\operatorname{Bun}_G\). The source notes that integral powers can be constructed as representation determinant lines; it does not make that footnote a formula for a particular determinant orientation. Its opening of §8 states
+\[
+K_{\operatorname{Bun}_G}\simeq\mathcal L^{-2h^\vee},
+\qquad
+\mathcal L^{-h^\vee}\simeq K_{\operatorname{Bun}_G}^{1/2},
+\tag{CS.13}
+\]
+under its simply connected simple hypotheses. Section 9.4 also says explicitly that the normalized affine central generator maps to \(-h^\vee\) in differential operators on the corresponding critical power on the affine Grassmannian. These are the source's geometric convention statements. Their line-bundle construction and canonical-line theorem are additional geometric inputs, not consequences of (CS.1)–(CS.7).
+
+Raskin's introduction §1.9 defines its critical line on \(\operatorname{Gr}_G\) through a central \(\mathbb G_m\)-extension split over \(G(O)\), with its Lie extension identified with the previously defined affine algebra. It assumes the simply connected semisimple group; its footnote records a gerbe of choices otherwise. Section 1.10 obtains global sections from the infinitesimal action on this line, and states that sections are taken as an ordinary \(\mathcal O\)-module. These passages specify no representation determinant formula, dual determinant choice, or explicit comparison to Frenkel's \(\widetilde{\mathcal L}^{-h^\vee}\). That missing identification must not be filled in by guessing a sign from the word “critical.”
+
+The elementary part of a line-weight comparison is also explicit. For a Lie algebra acting on a line \(L\), its induced action on \(L^\vee\) is defined by
+\[
+(\xi\cdot\varphi)(s)=\xi\bigl(\varphi(s)\bigr)-\varphi(\xi\cdot s).
+\tag{CS.14}
+\]
+A vertical central operator acting by \(a\) on \(L\) therefore acts by \(-a\) on \(L^\vee\). Tensor powers multiply that weight by their exponent. Similarly an endomorphism \(A\) of a finite vector space acts on its top exterior line by \(\operatorname{tr}A\), as follows by applying the product rule to a basis wedge; the dual determinant has the opposite scalar. Choosing
+\(\det H^0\otimes(\det H^1)^{-1}\) or its dual likewise reverses a determinant-character convention. This proves why a geometric determinant dual or central-character inverse must be tracked. It does not prove that either source's geometric critical line is a particular such determinant, nor identify geometric Lie actions without their construction.
+
+##### Oper objects and central frames
+
+Frenkel's §8.3 defines an oper for a simple Lie algebra using its adjoint group. Its intrinsic object is a group bundle with a connection and a Borel reduction satisfying the simple-root transversality condition. The local Borel trivialization is used to express the connection; it is not an additional frame retained in the oper object. Raskin's introduction §§1.5–1.6 similarly starts with a simply connected semisimple automorphic group and its adjoint dual, and defines the spectral oper by a dual Borel bundle and a connection on the associated dual group bundle. Its ordinary-family footnote uses a bundle on \(\operatorname{Spec}(A[[t]])\) with a connection along \(t\). Its canonical Borel bundle over the oper scheme records the fiber at zero; it is not a chosen trivialization of that fiber.
+
+The framing on the punctured disc in Raskin's affine-Grassmannian definition is a different object: it belongs to the automorphic group bundle parameterized by \(\operatorname{Gr}_G\), not to the spectral oper definition. The second transversal Borel reduction at zero in its generic-Miura remark is also a reduction, rather than a full frame. None of these passages supplies an all-reductive or torus oper definition with a retained torus framing.
+
+Frenkel's §9.5 says that the abelian analogue is a connection on the trivial line bundle. It does not specify whether an isomorphism from that bundle to the trivial one is part of the object, nor give a torus-family quotient/framing definition. The distinction has an elementary local test. In a fixed rank-one trivialization, a connection is
+\[
+\nabla=\partial_t+a(t).
+\]
+An automorphism \(g(t)\in R[[t]]^\times\) gives the operator gauge rule
+\[
+g\nabla g^{-1}=\partial_t+a(t)-\frac{g'(t)}{g(t)}.
+\tag{CS.15}
+\]
+This follows by applying both sides to a section and the product rule. Even fixing the fiber frame at zero only imposes \(g(0)=1\), and does not prevent this change. For example \(g(t)=\exp(ct)\) is a well-defined formal unit with \(g(0)=1\) over a characteristic-zero algebra, and sends \(a(t)\) to \(a(t)-c\). A retained trivialization along the entire disc instead allows only the identity as a frame-preserving gauge. These are different moduli conventions. No assertion that every torus torsor over every ordinary base is trivial is used here.
+
+Finally, for a reductive Lie algebra \(\mathfrak g=\mathfrak z\oplus\mathfrak g_{\rm ss}\), the Killing form vanishes on \(\mathfrak z\): every central adjoint operator is zero. Thus extending “minus half the Killing form” literally to the center gives zero central-current cocycle there. A separate nonzero invariant form on the torus would give a Heisenberg cocycle instead. Condition (CS.6) compares those center forms too; they cannot be identified merely from the semisimple critical convention. Those definitions concern simple or semisimple affine data, so they do not choose this additional reductive-center datum. The full reductive/torus framing and geometric critical-line comparison therefore retain their explicit foundations.
+
+#### 3.5.4. Central connection coefficients and the gauge groupoid
+
+Let \(k\) be a characteristic-zero field, \(R\) any ordinary commutative \(k\)-algebra, and \(T=(\mathbb G_m)^d\) a split torus. This subsection concerns a **trivial torus bundle with a chosen frame** on the formal disc. Its connection coefficients form the functor
+\[
+\mathcal C_T(R)=\operatorname{Lie}(T)\otimes_k R[[t]]\,dt.
+\tag{CF.1}
+\]
+Choose a basis \(e_1,\ldots,e_d\) of \(\operatorname{Lie}(T)\), and write
+\(a(t)=\sum_{i,r\ge0}a_{i,r}e_it^r\). Sending each variable \(a_{i,r}\) to the identically indexed coefficient proves directly that this functor is represented by
+\[
+\mathcal O(\mathcal C_T)=k[a_{i,r}:1\le i\le d,\ r\ge0].
+\tag{CF.2}
+\]
+The coefficient list can be infinite, while an element of the coordinate ring is a finite polynomial. The construction is natural in every ordinary parameter algebra. The chosen basis describes a coordinate ring; it does not form part of the connection itself.
+
+**Coordinate transport.** For \(t=\phi(s)\), the connection one-form has direct law
+\[
+\mathcal P_\phi(a)(s)=\phi'(s)a(\phi(s)).
+\tag{CF.3}
+\]
+It follows by applying the chain rule to \(\partial_t+a(t)\) and multiplying by \(\phi'\) to restore the coefficient of \(\partial_s\) to one. This is an ordinary one-form, with no density or Schwarzian correction. Formula (CF.3) composes by the chain rule. If \(\phi(0)^N=0\), its coefficient of order \(r\) uses only original coefficients of order less than \(r+N\): in a term \(\phi^m\), at least \(m-r\) factors must supply the constant coefficient. The multiplier \(\phi'\) changes this bound only by a finite convolution. Thus nilpotent translations and arbitrary ordinary parameter rings cause no infinite evaluation in a fixed coefficient.
+
+As throughout §3.4, current substitution corresponds to the inverse action on functions. For \(\psi=\phi^{-1}\), the algebraic action on the displayed coefficient series is
+\[
+a(t)\longmapsto\psi'(t)a(\psi(t)),\qquad
+\delta_fa=-fa'-f'a.
+\tag{CF.4}
+\]
+The second formula follows by substituting \(\psi=t-\varepsilon f\), \(\varepsilon^2=0\), in the first. These are the central-series laws proved on the actual vacuum in §3.5.1.
+
+**Changing the central frame.** A gauge \(u=(u_1,\ldots,u_d)\in T(R[[t]])\) has logarithmic derivative
+\[
+\operatorname{dlog}u=(u_i'/u_i)_{i=1}^d\,dt.
+\tag{CF.5}
+\]
+In the convention \(\nabla\mapsto u\nabla u^{-1}\), it sends the coefficient to
+\(a-\operatorname{dlog}u\). Indeed,
+\(u\partial_tu^{-1}=\partial_t-u'/u\). The logarithmic derivative is a group homomorphism because the torus is commutative.
+
+Every coefficient form is a logarithmic derivative over \(R\). For a scalar component
+\(a(t)=\sum_{r\ge0}a_rt^r\), put
+\[
+b(t)=\sum_{r\ge0}\frac{a_r}{r+1}t^{r+1},\qquad
+u(t)=\exp b(t)=\sum_{j\ge0}\frac{b(t)^j}{j!}.
+\tag{CF.6}
+\]
+Each coefficient of this exponential is finite because \(b(0)=0\). The formal product rule gives \(u'=b'u=a u\), and \(u(0)=1\). Thus \(\operatorname{dlog}u=a\,dt\). Alternatively, the coefficient recursion
+\[
+u_0=1,\qquad
+(r+1)u_{r+1}=\sum_{i+j=r}a_i u_j
+\tag{CF.7}
+\]
+proves existence and uniqueness with this initial value, without assuming reducedness of \(R\). If a unit series has zero logarithmic derivative, then \(u'=0\), and every nonconstant coefficient is zero because all positive integers are units. Its kernel is therefore precisely the constant units. Componentwise, we have proved the exact sequence
+\[
+1\longrightarrow T(R)\longrightarrow T(R[[t]])
+\xrightarrow{\operatorname{dlog}}\mathcal C_T(R)
+\longrightarrow0.
+\tag{CF.8}
+\]
+The subgroup of gauges with value one at the origin maps bijectively to \(\mathcal C_T(R)\). The inverse is (CF.6), and it is a group homomorphism because \(\exp(b+c)=\exp(b)\exp(c)\) for commuting formal series, as the finite coefficient binomial identity shows. No analytic exponential or logarithm is used.
+
+Consequently every framed connection is gauge equivalent to zero, and the automorphism group of the zero connection is \(T(R)\). The groupoid of connections on the trivial bundle, with arbitrary formal torus gauges, is equivalent to the one-object groupoid with this automorphism group. One explicit equivalence sends the zero connection to itself and regards constants as its automorphisms; it is fully faithful by the kernel assertion, and essentially surjective by (CF.6). If gauges must have value one at the origin, the quotient groupoid instead has a unique object and a unique arrow between any two presented connections. Both assertions are natural in \(R\).
+
+The algebra of framed coefficients therefore differs from its algebra of gauge-invariant functions. To prove the latter statement as a functor assertion, let \(F\) be a finite polynomial in the \(a_{i,r}\), invariant under all formal gauges after every ordinary extension of \(R\). Surjectivity in (CF.8) includes the universal translations of its finitely many variables. Hence
+\[
+F(X+Y)=F(X)\quad\Longrightarrow\quad F(Y)=F(0)
+\tag{CF.9}
+\]
+by setting \(X=0\). Thus the invariant polynomial algebra is \(R\). This argument remains valid if \(R\) has nilpotents. In particular, for the one-dimensional abelian Lie algebra with zero affine form, §3.5.1 gives the infinite polynomial vacuum algebra \(R[z_r:r\ge0]\); it cannot be identified with the polynomial gauge-invariant functions on the unframed trivial line-connection groupoid, which are just \(R\).
+
+| Central datum retained | Coefficients and arrows on the trivial formal bundle | Result of the proved gauge calculation |
+| --- | --- | --- |
+| A chosen formal frame | All \(a_{i,r}\) remain coordinates | The coefficient ring is (CF.2). |
+| Frames related by gauges equal to one at the origin | The coefficient forms are related by the unique solution (CF.7) | The quotient groupoid is contractible. |
+| Frames related by arbitrary formal gauges | The same solution leaves the constant gauge group | The quotient is the one-object groupoid with automorphisms \(T(R)\). |
+
+*The table concerns connections on a trivial torus bundle. It describes the effect of changing the frame, not a classification of all torus torsors over an arbitrary base or on a global curve. Its arrows and stabilizers are proved in (CF.5)–(CF.9).*
+
+#### 3.5.5. The dual central coefficient space and the reductive comparison
+
+For a split torus \(T\), let \(X^*(T)\) and \(X_*(T)\) be its character and cocharacter lattices. The elementary perfect lattice pairing identifies
+\[
+\operatorname{Lie}(T)=X_*(T)\otimes_{\mathbb Z}k,\qquad
+\operatorname{Lie}(\check T)=X^*(T)\otimes_{\mathbb Z}k
+ =\operatorname{Lie}(T)^*.
+\tag{CF.10}
+\]
+For completeness, choose a lattice basis. Characters are Laurent monomials, their derivatives at the identity evaluate the exponent on a cocharacter, and the two basis matrices pair as the identity. Changing the lattice basis changes one matrix by the inverse transpose of the other, so the identification is independent of that basis.
+
+The negative current \(x_{-r-1}\), \(x\in\operatorname{Lie}(T)\), is consequently a coefficient function on framed dual-torus connections: it evaluates the order-\(r\) coefficient against \(x\). Symmetric-algebra freeness proves, over every ordinary \(R\),
+\[
+\operatorname{End}_{\widehat{\operatorname{Lie}(T)},\,\kappa=0}(V_R)
+\simeq R[\mathcal C_{\check T}],\qquad
+x_{-r-1}v\longmapsto\bigl(a\mapsto\langle x,a_r\rangle\bigr).
+\tag{CF.11}
+\]
+This is precisely the abelian case of §3.5.1. That subsection and (CF.3)–(CF.4) prove the full ordinary coordinate equivariance, including nilpotent translations.
+
+For a split reductive group with maximal torus, its standard root-data premises give the corresponding Lie-algebra identification without choosing a form on the center. Its central Lie algebra is the annihilator of the span of the roots in \(X^*(T)\otimes k\). The dual of that annihilator is the quotient by the root span. In the dual root datum, the coroots are these original roots, so that quotient is the Lie algebra of the dual group's abelianization. This is a finite-dimensional annihilator/quotient identity: restricting linear functionals is surjective by extending a basis, and its kernel is exactly the root span. The root-data descriptions of the reductive decomposition and abelianization are the structural premises here; global central isogenies and their torsors are not inferred from the Lie-algebra identity.
+
+Combining the proved reductive vacuum factorization with the type A semisimple comparison gives the following explicit ordinary coefficient space. If
+\(\mathfrak g=\bigoplus_j\mathfrak{sl}_{n_j}\oplus\mathfrak z\) at the critical form, then
+\[
+\operatorname{End}_{\widehat{\mathfrak g},\mathrm{crit}}(V_R)
+\simeq
+R\left[\prod_j\operatorname{Op}_{PGL_{n_j}}(D_R)
+       \times\bigl(\mathfrak z^*\otimes R[[t]]\,dt\bigr)\right].
+\tag{CF.12}
+\]
+The notation on the right denotes the polynomial coefficient algebra of the displayed functor. Each horizontal factor is an actual isomorphism: §3.4.6 for the adjoint type A oper factors and (CF.11) for the framed central coefficient factor. Tensoring their polynomial generator maps proves the equality; §3.5.1 and the componentwise coordinate laws prove full coordinate equivariance. For a general split semisimple summand, the reductive factorization still holds, while its non-type-A oper identification remains a separate proof obligation.
+
+The central square showing the exact coordinate convention is
+\[
+\begin{array}{ccc}
+\operatorname{Sym}_R(\mathfrak z\otimes t^{-1}R[t^{-1}])
+ &\longrightarrow&R[\mathfrak z^*\otimes R[[t]]\,dt]\\[2pt]
+{\scriptstyle U_\phi}\downarrow
+ &&\downarrow{\scriptstyle a(t)\mapsto\psi'(t)a(\psi(t))}\\[2pt]
+\operatorname{Sym}_R(\mathfrak z\otimes t^{-1}R[t^{-1}])
+ &\longrightarrow&R[\mathfrak z^*\otimes R[[t]]\,dt],
+\qquad \psi=\phi^{-1}.
+\end{array}
+\tag{CF.13}
+\]
+*Each horizontal arrow evaluates a negative current against its equally indexed coefficient. The left vertical action is actual current substitution on the zero-form abelian vacuum. The right vertical label specifies the inverse one-form law on the generators of its coordinate ring. Section 3.5.1 and (CF.3)–(CF.4) prove that the square commutes over every ordinary parameter ring.*
+
+In the \(\mathfrak{gl}_n\) example, the trace current represents the central direction \(I\), and the determinant character of the dual group pairs with that direction by the trace. The coefficient called \(c\) in §3.5.2 is one \(n\)-th of the trace coefficient; the raw scalar operator has subprincipal coefficient \(s_1=nc\). Thus the trace decomposition gives a concrete realization of (CF.12). Its framed scalar operators are acted on by central gauge through \(c\mapsto c-u'/u\); the normalized trace-free oper is unchanged because scalar conjugation sends every \(\partial+c\) to \(\partial+c-u'/u\). The proof of (CF.8) shows exactly which central coefficients disappear if this gauge quotient is taken.
+
+These results establish the regular algebraic reductive vacuum factorization and its framed central coefficient comparison. A statement about intrinsic nonadjoint opers must specify its retained central data, gauge group and torsor descent. Completed punctured-disc centers, central-line geometry in localization, chiral or Poisson structures, Satake compatibility and derived parameter families also retain their separate mathematical requirements.
 
 ## 4. The exact center theorem (K4)
 
@@ -2892,7 +5148,7 @@ Z_{\rm vac}\simeq
 \]
 where \(\check G\) is adjoint for the dual root system. It includes commutativity of this endomorphism algebra and compatibility with formal changes of coordinate. For a semisimple algebra the corresponding statement uses its simple factors and the critical form on each.
 
-Frenkel's convention in *Lectures on the Langlands program and conformal field theory* is \(-\operatorname{Res}\kappa_0(f,dg)\), equal to our \(+\operatorname{Res}\kappa_0(df,g)\), with critical level \(-2\) in the normalization above. Raskin's *A geometric proof of the Feigin–Frenkel theorem* uses \(+\operatorname{Res}\kappa(f,dg)\), with the central element acting identically and critical form minus half the Killing form. The displayed cocycle directions differ. A comparison of the central line, forms and actions remains required before applying the refinement below under our convention.
+Frenkel's convention in *Lectures on the Langlands program and conformal field theory* is \(-\operatorname{Res}\kappa_0(f,dg)\), equal to our \(+\operatorname{Res}\kappa_0(df,g)\), with critical level \(-2\) in the normalization above. Raskin's *A geometric proof of the Feigin–Frenkel theorem* uses \(+\operatorname{Res}\kappa(f,dg)\), with the central element acting identically and critical form minus half the Killing form. The displayed cocycle directions differ. Section 3.5.3 proves the algebraic comparison of cocycle directions, central-line scalings and scalar actions. The geometric convention of that refinement still requires its own matching identification; changing the central-generator sign alone also changes its scalar action.
 
 The center statement is formulated in Frenkel's [*Lectures on the Langlands program and conformal field theory*, §8.4](https://arxiv.org/abs/hep-th/0512172v1). In the convention of Raskin's [*A geometric proof of the Feigin–Frenkel theorem*, introduction](https://arxiv.org/abs/1106.3112v1), its stronger tensor-compatible Satake assertion is
 \[
@@ -2902,7 +5158,7 @@ The center statement is formulated in Frenkel's [*Lectures on the Langlands prog
 \]
 where the superscript \(R\) retains that source's vacuum and center convention, \(\mathcal W_{\rm Op}\) comes from the universal dual-group bundle, and \(W\in\operatorname{Rep}(\check G)\). Its proof must construct that universal bundle and compatibility; the formula is not merely an equality of dimensions.
 
-Equations (K4.1)–(K4.2) in their full generality are **not yet proved in this lesson**. Section 3.2 proves (K4.1) for the rank-one vacuum, including all polynomial generators, ordinary base change and coordinate compatibility. The finite-mode, jet-invariant and filtered arguments for \(\mathfrak{sl}_2\) in §3.2 establish the full rank-one polynomial algebra and coordinate action. Section 3.3 proves the general classical current invariants, the PBW upper bound and unconditional vacuum commutativity. The finite-degree reduction to basic lifts and the determinant construction prove the entire type A polynomial vacuum algebra. Basic lifts in other simple types, the full higher-rank coordinate comparison and the Satake assertion (K4.2) remain unproved. The geometric route through affine Grassmannian global sections, semi-infinite cohomology and the birth of opers needs its complete argument and foundations. These classical statements are over \(\mathbb C\). The rank-one vacuum-center proof in §3.2 holds over the full characteristic-zero field convention and every ordinary parameter algebra. The type A polynomial vacuum algebra in §3.3.5 also holds over every characteristic-zero field and ordinary parameter algebra. Field descent for the full higher-rank center/oper comparison and treatment of reductive centers, as well as the completed, chiral, Satake and derived-family center comparisons, remain unproved.
+Equations (K4.1)–(K4.2) in their full generality are **not yet proved in this lesson**. Section 3.2 proves (K4.1) for the rank-one vacuum, including all polynomial generators, ordinary base change and coordinate compatibility. The finite-mode, jet-invariant and filtered arguments for \(\mathfrak{sl}_2\) in §3.2 establish the full rank-one polynomial algebra and coordinate action. Section 3.3 proves the general classical current invariants, the PBW upper bound and unconditional vacuum commutativity. The finite-degree reduction to basic lifts and the determinant construction prove the entire type A polynomial vacuum algebra. Section 3.4 proves the full coordinate-equivariant ordinary disc-oper comparison for every type A factor. Basic lifts and the coordinate comparison in other simple types, and the Satake assertion (K4.2), remain unproved. The geometric route through affine Grassmannian global sections, semi-infinite cohomology and the birth of opers needs its complete argument and foundations. These classical statements are over \(\mathbb C\). The rank-one vacuum-center proof in §3.2 holds over the full characteristic-zero field convention and every ordinary parameter algebra. The type A polynomial vacuum algebra in §3.3.5 and its full ordinary coordinate comparison in §3.4 hold over every characteristic-zero field and ordinary parameter algebra. Section 3.5 proves the reductive vacuum factorization and the full framed central coefficient comparison for type A reductive Lie algebras. The full center/oper comparison in other simple types and the intrinsic/global central-data comparison, as well as the completed, chiral, Poisson, Satake and derived-family center comparisons, remain unproved.
 
 Regular opers on \(D\) and meromorphic opers on \(D^\times\) also give different center statements: the vacuum center uses the first, and the completed enveloping-algebra center uses the second. Neither can silently replace the other.
 
@@ -3066,8 +5322,8 @@ Differences cancel the Schwarzian and are quadratic differentials. This fixes th
 
 ## 10. What this lesson does not yet prove
 
-The adjoint-semisimple argument proves the finite principal decomposition, unique ordinary-family gauge, coordinate cocycle, intrinsic oper classification, global affine parameter space and dimension from its explicit Lie/group and curve premises. It constructs regular and Laurent coefficient functors, including the continuous coordinate action over nilpotent bases. The independent scalar argument supplies intrinsic/scalar equivalence, normalized lifts, theta choices, ordinary-family representability, Schwarzian, nonsplit extension and algebraic irreducibility. The invariant-ring argument supplies characteristic-zero field transfer, arbitrary ordinary coaction base change, the Molien degree identities, a weighted polynomial Kostant section and the graded classical oper/Hitchin ring. The critical argument supplies the ordered basis, formal affine action, invariant/end correspondence and every-mode \(\mathfrak{sl}_2\) check. Section 3.2 proves the full rank-one polynomial vacuum center, current-jet invariant algebra, PBW exhaustion and coordinate-equivariant ordinary projective-connection identification. Section 3.3 proves the general classical current invariants, exact PBW upper bound, ordinary vacuum-invariant base change, coordinate action on symbols and unconditional vacuum commutativity. Its basic-lift reduction and all-n determinant construction prove the entire type A polynomial vacuum algebra over every ordinary parameter algebra.
+The adjoint-semisimple argument proves the finite principal decomposition, unique ordinary-family gauge, coordinate cocycle, intrinsic oper classification, global affine parameter space and dimension from its explicit Lie/group and curve premises. It constructs regular and Laurent coefficient functors, including the continuous coordinate action over nilpotent bases. The independent scalar argument supplies intrinsic/scalar equivalence, normalized lifts, theta choices, ordinary-family representability, Schwarzian, nonsplit extension and algebraic irreducibility. The invariant-ring argument supplies characteristic-zero field transfer, arbitrary ordinary coaction base change, the Molien degree identities, a weighted polynomial Kostant section and the graded classical oper/Hitchin ring. The critical argument supplies the ordered basis, formal affine action, invariant/end correspondence and every-mode \(\mathfrak{sl}_2\) check. Section 3.2 proves the full rank-one polynomial vacuum center, current-jet invariant algebra, PBW exhaustion and coordinate-equivariant ordinary projective-connection identification. Section 3.3 proves the general classical current invariants, exact PBW upper bound, ordinary vacuum-invariant base change, coordinate action on symbols and unconditional vacuum commutativity. Its basic-lift reduction and all-n determinant construction prove the entire type A polynomial vacuum algebra over every ordinary parameter algebra. Section 3.4 proves the full ordinary coordinate-equivariant type A disc-oper comparison and the arbitrary-type quadratic coordinate law, with every anomaly and normalization retained. Section 3.5 proves reductive affine-vacuum factorization, all abelian invariants at arbitrary affine form, the trace splitting and whole polynomial vacuum algebra in reductive type A, and their exact framed central coordinate laws. It also proves the ordinary central gauge groupoid and the algebraic cocycle comparison.
 
-Complete proofs remain required for the recursive root-space/pinning, split-unipotent and faithful adjoint-group constructions, ordinary bundle descent, and the recursive Serre/highest-weight and finite-algebra foundations of the invariant-ring proof; non-type-A basic quantum lifts and the full higher-rank coordinate-equivariant vacuum-center/oper comparison, completed punctured-disc center, chiral/Poisson/Satake and derived-family compatibility, and full central-convention comparison; half-root, uniformization, localization, nonzero specialization, holonomicity, tensor/fusion Hecke property and filtered quantization; full derived opers and full-field/reductive-center passages; and the critical FLE, Ran, factorization, determinant, convergence and \(\operatorname{IndCoh}^{*}/\operatorname{IndCoh}^{!}\) foundations. The fixed-curve Picard/coherent/local-algebra/Ext chains, bundle-stack algebraization and optional analytic comparison retain their explicit earlier unproved foundations. Each is a mathematical theorem or construction whose full proof is still required.
+Complete proofs remain required for the recursive root-space/pinning, split-unipotent and faithful adjoint-group constructions, ordinary bundle descent, and the recursive Serre/highest-weight and finite-algebra foundations of the invariant-ring proof; non-type-A basic quantum lifts and the non-type-A coordinate-equivariant vacuum-center/oper comparison, completed punctured-disc center, chiral/Poisson/Satake and derived-family compatibility, and the geometric/Satake/global central-convention comparison; half-root, uniformization, localization, nonzero specialization, holonomicity, tensor/fusion Hecke property and filtered quantization; full derived opers and full-field/reductive-center passages; and the critical FLE, Ran, factorization, determinant, convergence and \(\operatorname{IndCoh}^{*}/\operatorname{IndCoh}^{!}\) foundations. The fixed-curve Picard/coherent/local-algebra/Ext chains, bundle-stack algebraization and optional analytic comparison retain their explicit earlier unproved foundations. Each is a mathematical theorem or construction whose full proof is still required.
 
 Further reading: [Frenkel, *Lectures on the Langlands program and conformal field theory*, §§8–9](https://arxiv.org/abs/hep-th/0512172v1); [Raskin, *A geometric proof of the Feigin–Frenkel theorem*, introduction](https://arxiv.org/abs/1106.3112v1); [Frenkel–Gaitsgory, *Local geometric Langlands correspondence and affine Kac-Moody algebras*, introduction](https://arxiv.org/abs/math/0508382v3); [Beilinson–Drinfeld, *Quantization of Hitchin's integrable system and Hecke eigensheaves*, §§2.6, 3, 7.8 and 7.14](https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf); and [Arinkin, Beraldo, Campbell, Chen, Faergeman, Gaitsgory, Lin, Raskin and Rozenblyum, *Proof of the geometric Langlands conjecture II: Kac-Moody localization and the FLE*, introduction and §3](https://arxiv.org/abs/2405.03648v3).

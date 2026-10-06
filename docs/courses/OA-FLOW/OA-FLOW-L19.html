@@ -1,0 +1,670 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A spectral coordinate from a trace-scaling action · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L33.html">Previous lesson</a><a href="OA-FLOW-ET.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L19.md">Lesson source</a></nav><h1 id="OA-FLOW.L19.SETTING">A spectral coordinate from a trace-scaling action</h1>
+<p><em>Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.</em></p>
+<p>An action that rescales a trace exponentially has a continuous spectral coordinate. We construct it by integrating the action on bounded corners. A partition by discrete translates gives an explicit bound for that integral, and trace scaling produces the partition. The resulting invariant weight has a density whose imaginary powers give the coordinate at every real time.</p>
+<p><a id="l19-setting"></a></p>
+<h2 id="setting-and-conclusion">Setting and conclusion</h2>
+<p>Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be an arbitrary von Neumann algebra, let <span class="math" data-tex="\(\theta:\mathbb R\to\operatorname{Aut}(Q)\)">\(\theta:\mathbb R\to\operatorname{Aut}(Q)\)</span> be point-ultraweakly continuous, and suppose that <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is a faithful normal semifinite trace satisfying
+<span class="math math-display" data-tex="\[
+ \tau\circ\theta_s=e^{-s}\tau\qquad(s\in\mathbb R).
+\]">\[
+ \tau\circ\theta_s=e^{-s}\tau\qquad(s\in\mathbb R).
+\]</span>
+Trace equalities hold on the entire positive cone, including infinite values. Set <span class="math" data-tex="\(F=Q^\theta\)">\(F=Q^\theta\)</span>. All real-line integrals use Lebesgue measure. We will prove that the action integral is a faithful normal semifinite operator-valued weight from <span class="math" data-tex="\(Q\)">\(Q\)</span> to <span class="math" data-tex="\(F\)">\(F\)</span>, and construct a nonsingular positive self-adjoint operator <span class="math" data-tex="\(h\)">\(h\)</span> affiliated with <span class="math" data-tex="\(Q\)">\(Q\)</span> such that
+<span class="math math-display" data-tex="\[
+ \theta_s(h)=e^{-s}h,\qquad
+ v_t=h^{-it}\in Q,\qquad
+ \theta_s(v_t)=e^{ist}v_t.
+\]">\[
+ \theta_s(h)=e^{-s}h,\qquad
+ v_t=h^{-it}\in Q,\qquad
+ \theta_s(v_t)=e^{ist}v_t.
+\]</span>
+The group <span class="math" data-tex="\(t\mapsto v_t\)">\(t\mapsto v_t\)</span> is strongly continuous. No factor, commutativity, finite-trace, faithful-state, or countability assumption is imposed. If <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span>, every assertion has its unique zero-algebra interpretation; the proof below treats <span class="math" data-tex="\(Q\ne0\)">\(Q\ne0\)</span>.</p>
+<p>The construction uses the earlier <a href="OA-FLOW-AT.html#oa-flow.at.5">normal integrated action</a>, <a href="OA-FLOW-EP.html#oa-flow.ep.6">extended positive cone and weight composition</a>, <a href="OA-FLOW-FR.html#oa-flow.fr.1">faithful reference weight</a>, and <a href="OA-FLOW-TD.html#oa-flow.td.6">tracial density theorem</a>. The particular action integral and its semifiniteness are proved here.</p>
+<p><span id="OA-FLOW.L19.1"></span><a id="l19-1"></a></p>
+<h2 id="1-a-bounded-corner-criterion-for-averaging">1. A bounded-corner criterion for averaging</h2>
+<p>We first work with any point-ultraweakly continuous real action on <span class="math" data-tex="\(Q\)">\(Q\)</span>, without using the trace. For a bounded interval <span class="math" data-tex="\(J\)">\(J\)</span>, <a href="OA-FLOW-AT.html#oa-flow.at.5">AT5</a> supplies the normal positive map
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ B_J(x)&amp;=\int_J\theta_s(x)\,ds,\\
+ \omega(B_J(x))&amp;=\int_J\omega(\theta_s(x))\,ds,\\
+ 0\le B_J(x)&amp;\le |J|\|x\|1
+ \quad(x\in Q_+,\ \omega\in Q_*^+).
+ \end{aligned}
+ \tag{L19.1.a}
+\]">\[
+ \begin{aligned}
+ B_J(x)&amp;=\int_J\theta_s(x)\,ds,\\
+ \omega(B_J(x))&amp;=\int_J\omega(\theta_s(x))\,ds,\\
+ 0\le B_J(x)&amp;\le |J|\|x\|1
+ \quad(x\in Q_+,\ \omega\in Q_*^+).
+ \end{aligned}
+ \tag{L19.1.a}
+\]</span>
+Its preadjoint is the Bochner integral of <span class="math" data-tex="\(s\mapsto\omega\circ\theta_s\)">\(s\mapsto\omega\circ\theta_s\)</span>; AT5 proves its existence in the predual without separability of that predual. Define
+<span class="math math-display" data-tex="\[
+ E(x)=\sup_{j\ge1} B_{[-j,j]}(x)\in\widehat Q_+.
+ \tag{L19.1.b}
+\]">\[
+ E(x)=\sup_{j\ge1} B_{[-j,j]}(x)\in\widehat Q_+.
+ \tag{L19.1.b}
+\]</span>
+Increasing suprema and normal positive-functional evaluation have their full meaning from <a href="OA-FLOW-EP.html#oa-flow.ep.4">EP4</a>. The maps in (L19.1.a) increase on positives as the intervals increase. A common upper index proves additivity and positive homogeneity of (L19.1.b), including infinite values.</p>
+<p>For any bounded increasing net <span class="math" data-tex="\(x_i\uparrow x\)">\(x_i\uparrow x\)</span>, normality of each bounded-interval map gives
+<span class="math math-display" data-tex="\[
+ E(x)(\omega)
+ =\sup_j\sup_i\omega(B_{[-j,j]}(x_i))
+ =\sup_i E(x_i)(\omega).
+ \tag{L19.1.c}
+\]">\[
+ E(x)(\omega)
+ =\sup_j\sup_i\omega(B_{[-j,j]}(x_i))
+ =\sup_i E(x_i)(\omega).
+ \tag{L19.1.c}
+\]</span>
+This interchanges two numerical suprema. It does not assume a monotone-convergence theorem for arbitrary nets of measurable scalar functions.</p>
+<p>Translation invariance of the scalar Lebesgue integral proves both
+<span class="math math-display" data-tex="\[
+ E(\theta_r(x))=E(x),\qquad \theta_r(E(x))=E(x).
+ \tag{L19.1.d}
+\]">\[
+ E(\theta_r(x))=E(x),\qquad \theta_r(E(x))=E(x).
+ \tag{L19.1.d}
+\]</span>
+For example, evaluate either identity at a positive normal functional, use (L19.1.a), and exhaust the translated real line by bounded intervals. The action on the extended cone is the predual transport of <a href="OA-FLOW-EP.html#oa-flow.ep.4">EP4</a>. Uniqueness of its <a href="OA-FLOW-EP.html#oa-flow.ep.2">spectral pair</a> implies that the finite spectral projections and infinite-value projection of <span class="math" data-tex="\(E(x)\)">\(E(x)\)</span> are all fixed. Thus <span class="math" data-tex="\(E(x)\)">\(E(x)\)</span> belongs to <span class="math" data-tex="\(\widehat F_+\)">\(\widehat F_+\)</span>. Any positive normal functional on <span class="math" data-tex="\(F\)">\(F\)</span> extends to one on <span class="math" data-tex="\(Q\)">\(Q\)</span>: use its <a href="OA-FLOW-EP.html#oa-flow.ep.1">positive vector-series representation</a> in the same faithful concrete Hilbert space and evaluate those vectors on <span class="math" data-tex="\(Q\)">\(Q\)</span>. Consequently (L19.1.c) also proves normality with target <span class="math" data-tex="\(\widehat F_+\)">\(\widehat F_+\)</span>.</p>
+<p>For <span class="math" data-tex="\(b\in F\)">\(b\in F\)</span>, integration gives
+<span class="math math-display" data-tex="\[
+ E(b^*xb)=b^*E(x)b.
+ \tag{L19.1.e}
+\]">\[
+ E(b^*xb)=b^*E(x)b.
+ \tag{L19.1.e}
+\]</span>
+This holds in the whole extended cone by bounded conjugation in EP4. The map is faithful: if <span class="math" data-tex="\(E(x)=0\)">\(E(x)=0\)</span>, each continuous nonnegative function <span class="math" data-tex="\(s\mapsto\omega(\theta_s(x))\)">\(s\mapsto\omega(\theta_s(x))\)</span> has integral zero. Its value at zero must vanish. Positive normal functionals separate <span class="math" data-tex="\(Q_+\)">\(Q_+\)</span>, so <span class="math" data-tex="\(x=0\)">\(x=0\)</span>.</p>
+<p><strong>Bounded-corner criterion.</strong> Suppose that for some <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span> and projection <span class="math" data-tex="\(p\)">\(p\)</span>, the projections
+<span class="math math-display" data-tex="\[
+ q_n=\theta_{nT}(p),\qquad n\in\mathbb Z,
+ \qquad q_nq_k=0\ (n\ne k),\qquad
+ \sum_{n\in\mathbb Z}q_n=1
+ \tag{L19.1.f}
+\]">\[
+ q_n=\theta_{nT}(p),\qquad n\in\mathbb Z,
+ \qquad q_nq_k=0\ (n\ne k),\qquad
+ \sum_{n\in\mathbb Z}q_n=1
+ \tag{L19.1.f}
+\]</span>
+form a strong partition of the identity. Put <span class="math" data-tex="\(P_m=\sum_{|n|\le m}q_n\)">\(P_m=\sum_{|n|\le m}q_n\)</span>. Then
+<span class="math math-display" data-tex="\[
+ E(x)\le T(2m+1)\|x\|1
+ \quad\bigl(x\in(P_mQP_m)_+\bigr),
+ \tag{L19.1.g}
+\]">\[
+ E(x)\le T(2m+1)\|x\|1
+ \quad\bigl(x\in(P_mQP_m)_+\bigr),
+ \tag{L19.1.g}
+\]</span>
+and <span class="math" data-tex="\(E:Q_+\to\widehat F_+\)">\(E:Q_+\to\widehat F_+\)</span> is semifinite.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\rho=\theta_T\)">\(\rho=\theta_T\)</span>. In the positive strong sum
+<span class="math math-display" data-tex="\[
+ \sum_{k\in\mathbb Z}\rho^k(P_m)=(2m+1)1,
+ \tag{L19.1.h}
+\]">\[
+ \sum_{k\in\mathbb Z}\rho^k(P_m)=(2m+1)1,
+ \tag{L19.1.h}
+\]</span>
+each <span class="math" data-tex="\(q_j\)">\(q_j\)</span> occurs exactly once for each of the <span class="math" data-tex="\(2m+1\)">\(2m+1\)</span> possible indices <span class="math" data-tex="\(n\)">\(n\)</span> in <span class="math" data-tex="\(P_m\)">\(P_m\)</span>. Orthogonality justifies the sum by scalar vector evaluation. Since <span class="math" data-tex="\(0\le x\le\|x\|P_m\)">\(0\le x\le\|x\|P_m\)</span>, the increasing net of finite sums defining
+<span class="math math-display" data-tex="\[
+ A(x)=\sum_{k\in\mathbb Z}\rho^k(x)
+\]">\[
+ A(x)=\sum_{k\in\mathbb Z}\rho^k(x)
+\]</span>
+is bounded by <span class="math" data-tex="\((2m+1)\|x\|1\)">\((2m+1)\|x\|1\)</span>, hence has a bounded positive strong limit. Normality of <span class="math" data-tex="\(\theta_s\)">\(\theta_s\)</span>, countable nonnegative scalar integration, and the disjoint intervals <span class="math" data-tex="\([kT,(k+1)T)\)">\([kT,(k+1)T)\)</span> give
+<span class="math math-display" data-tex="\[
+ E(x)=\int_0^T\theta_s(A(x))\,ds
+ \le T(2m+1)\|x\|1.
+ \tag{L19.1.i}
+\]">\[
+ E(x)=\int_0^T\theta_s(A(x))\,ds
+ \le T(2m+1)\|x\|1.
+ \tag{L19.1.i}
+\]</span>
+Here the integral on the right is again AT5's bounded normal map. The scalar interchange is the earlier <a href="OA-FLOW-SC.html#sc-04">countable monotone-convergence theorem</a>. No diagonal expansion of <span class="math" data-tex="\(x\)">\(x\)</span> is made; all its off-diagonal corner entries remain in the operator inequality.</p>
+<p>For <span class="math" data-tex="\(a\in P_mQP_m\)">\(a\in P_mQP_m\)</span>, apply this bound to <span class="math" data-tex="\(a^*a\)">\(a^*a\)</span>. It puts <span class="math" data-tex="\(a\)">\(a\)</span> in the finite left ideal
+<span class="math math-display" data-tex="\[
+ \mathfrak n_E=\{a\in Q:E(a^*a)\in F_+\}.
+ \tag{L19.1.j}
+\]">\[
+ \mathfrak n_E=\{a\in Q:E(a^*a)\in F_+\}.
+ \tag{L19.1.j}
+\]</span>
+The bounded strong-star limit of <span class="math" data-tex="\(P_maP_m\)">\(P_maP_m\)</span> is <span class="math" data-tex="\(a\)">\(a\)</span> for every <span class="math" data-tex="\(a\in Q\)">\(a\in Q\)</span>; the <a href="OA-FLOW-ST12.html#oa-flow.st.2">bounded-topology comparison</a> gives ultraweak convergence too. Thus <span class="math" data-tex="\(\mathfrak n_E\)">\(\mathfrak n_E\)</span> is dense, exactly the semifiniteness criterion of <a href="OA-FLOW-EP.html#oa-flow.ep.6">EP6</a>. Together with the properties already proved, <span class="math" data-tex="\(E\)">\(E\)</span> is faithful normal semifinite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The translation example in Section 5 attains the bound in (L19.1.g). It also shows why a partition at time <span class="math" data-tex="\(T\)">\(T\)</span> should not itself be mistaken for a spectral coordinate at every real time.</p>
+<p><span id="OA-FLOW.L19.2"></span><a id="l19-2"></a></p>
+<h2 id="2-trace-scaling-supplies-the-partition">2. Trace scaling supplies the partition</h2>
+<p>Return to the trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span> in the setting. Fix any <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>, and write
+<span class="math math-display" data-tex="\[
+ \rho=\theta_T,\qquad \lambda=e^{-T}\in(0,1),
+ \qquad\tau\circ\rho=\lambda\tau.
+ \tag{L19.2.a}
+\]">\[
+ \rho=\theta_T,\qquad \lambda=e^{-T}\in(0,1),
+ \qquad\tau\circ\rho=\lambda\tau.
+ \tag{L19.2.a}
+\]</span>
+A projection <span class="math" data-tex="\(q\)">\(q\)</span> is wandering if all <span class="math" data-tex="\(\rho^n(q)\)">\(\rho^n(q)\)</span>, <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>, are pairwise orthogonal. Its saturation <span class="math" data-tex="\(z(q)=\sum_n\rho^n(q)\)">\(z(q)=\sum_n\rho^n(q)\)</span> is an invariant projection; centrality is not required.</p>
+<p><strong>Local construction.</strong> Every nonzero <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-invariant projection <span class="math" data-tex="\(e\)">\(e\)</span> contains a nonzero wandering projection.</p>
+<p>To start, choose <a href="OA-FLOW-GW.html#oa-flow.gw.4">finite positive contractions</a> <span class="math" data-tex="\(u_i\uparrow1\)">\(u_i\uparrow1\)</span> for <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Some <span class="math" data-tex="\(b=eu_i e\)">\(b=eu_i e\)</span> is nonzero, since these compressions converge strongly to <span class="math" data-tex="\(e\)">\(e\)</span>. The bounded trace identity gives
+<span class="math math-display" data-tex="\[
+ 0&lt;\tau(b)=\tau(u_i^{1/2}eu_i^{1/2})\le\tau(u_i)&lt;\infty.
+\]">\[
+ 0&lt;\tau(b)=\tau(u_i^{1/2}eu_i^{1/2})\le\tau(u_i)&lt;\infty.
+\]</span>
+The <a href="OA-FLOW-SF.html#oa-flow.sf1.spectral-calculus">spectral calculus</a> supplies an <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> such that <span class="math" data-tex="\(a=1_{[\varepsilon,\infty)}(b)\ne0\)">\(a=1_{[\varepsilon,\infty)}(b)\ne0\)</span>. Then <span class="math" data-tex="\(a\le e\)">\(a\le e\)</span> and <span class="math" data-tex="\(0&lt;\tau(a)\le\varepsilon^{-1}\tau(b)&lt;\infty\)">\(0&lt;\tau(a)\le\varepsilon^{-1}\tau(b)&lt;\infty\)</span>.</p>
+<p>Let <span class="math" data-tex="\(f=\bigvee_{n\ge0}\rho^n(a)\)">\(f=\bigvee_{n\ge0}\rho^n(a)\)</span>. The join estimate
+<span class="math math-display" data-tex="\[
+ 0&lt;\tau(f)\le\sum_{n\ge0}\tau(\rho^n(a))
+ =\frac{\tau(a)}{1-\lambda}&lt;\infty
+ \tag{L19.2.b}
+\]">\[
+ 0&lt;\tau(f)\le\sum_{n\ge0}\tau(\rho^n(a))
+ =\frac{\tau(a)}{1-\lambda}&lt;\infty
+ \tag{L19.2.b}
+\]</span>
+does not require commuting projections. Indeed, the polar join identity in <a href="OA-FLOW-PC.html#oa-flow.pc.3">PC3</a> gives
+<span class="math" data-tex="\((r\vee s)-r\sim s-(r\wedge s)\le s\)">\((r\vee s)-r\sim s-(r\wedge s)\le s\)</span>.
+The trace takes equal values on the initial and final projections of a partial isometry, so
+<span class="math" data-tex="\(\tau(r\vee s)\le\tau(r)+\tau(s)\)">\(\tau(r\vee s)\le\tau(r)+\tau(s)\)</span>.
+Finite induction and normality on increasing finite joins prove (L19.2.b).</p>
+<p>We have <span class="math" data-tex="\(\rho(f)\le f\le e\)">\(\rho(f)\le f\le e\)</span>, and
+<span class="math" data-tex="\(\tau(\rho(f))=\lambda\tau(f)&lt;\tau(f)\)">\(\tau(\rho(f))=\lambda\tau(f)&lt;\tau(f)\)</span>.
+Thus <span class="math" data-tex="\(q=f-\rho(f)\)">\(q=f-\rho(f)\)</span> is a nonzero projection. The projections <span class="math" data-tex="\(f_n=\rho^n(f)\)">\(f_n=\rho^n(f)\)</span> decrease for all integer <span class="math" data-tex="\(n\)">\(n\)</span>, and
+<span class="math math-display" data-tex="\[
+ \rho^n(q)=f_n-f_{n+1}.
+ \tag{L19.2.c}
+\]">\[
+ \rho^n(q)=f_n-f_{n+1}.
+ \tag{L19.2.c}
+\]</span>
+For <span class="math" data-tex="\(n&lt;m\)">\(n&lt;m\)</span>, <span class="math" data-tex="\(f_m\le f_{n+1}\)">\(f_m\le f_{n+1}\)</span>, so these two successive differences are orthogonal. Invariance of <span class="math" data-tex="\(e\)">\(e\)</span> puts their saturation below <span class="math" data-tex="\(e\)">\(e\)</span>. This proves the local construction.</p>
+<p><strong>Full partition.</strong> Choose a maximal family <span class="math" data-tex="\((p_i)_{i\in I}\)">\((p_i)_{i\in I}\)</span> of nonzero wandering projections with pairwise orthogonal saturations. Chain unions preserve the defining condition, so the <a href="OA-FLOW-CF.html#oa-flow.cf.1">maximal principle</a> applies. The strong sum
+<span class="math math-display" data-tex="\[
+ z=\sum_{i\in I}z(p_i)
+\]">\[
+ z=\sum_{i\in I}z(p_i)
+\]</span>
+is an invariant projection. If <span class="math" data-tex="\(1-z\ne0\)">\(1-z\ne0\)</span>, the local construction supplies another wandering projection whose entire saturation lies below <span class="math" data-tex="\(1-z\)">\(1-z\)</span>, contradicting maximality. Hence <span class="math" data-tex="\(z=1\)">\(z=1\)</span>.</p>
+<p>Set <span class="math" data-tex="\(p=\sum_{i\in I}p_i\)">\(p=\sum_{i\in I}p_i\)</span>. All these sums use finite subsets of the possibly uncountable index set, as in <a href="OA-FLOW-PC.html#oa-flow.pc.1">PC1</a>. Normality gives <span class="math" data-tex="\(\rho^n(p)=\sum_i\rho^n(p_i)\)">\(\rho^n(p)=\sum_i\rho^n(p_i)\)</span>. Terms with different <span class="math" data-tex="\(i\)">\(i\)</span> lie in orthogonal saturations; terms with equal <span class="math" data-tex="\(i\)">\(i\)</span> and different <span class="math" data-tex="\(n\)">\(n\)</span> are orthogonal by wandering. The supremum over finite subsets of pairs <span class="math" data-tex="\((i,n)\)">\((i,n)\)</span> is <span class="math" data-tex="\(z=1\)">\(z=1\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ q_n=\rho^n(p),\qquad q_nq_k=0\ (n\ne k),\qquad
+ \sum_n q_n=1.
+ \tag{L19.2.d}
+\]">\[
+ q_n=\rho^n(p),\qquad q_nq_k=0\ (n\ne k),\qquad
+ \sum_n q_n=1.
+ \tag{L19.2.d}
+\]</span>
+This is the hypothesis of Section 1. Therefore the action integral <span class="math" data-tex="\(E\)">\(E\)</span> is faithful normal semifinite. The countable time partition has been obtained without enumerating <span class="math" data-tex="\(I\)">\(I\)</span> or assuming that <span class="math" data-tex="\(Q\)">\(Q\)</span> has a faithful normal state.</p>
+<p>The partition also gives an intermediate unitary group
+<span class="math math-display" data-tex="\[
+ w_t=\sum_{n\in\mathbb Z}e^{-inTt}q_n,
+ \qquad\rho(w_t)=e^{iTt}w_t.
+ \tag{L19.2.e}
+\]">\[
+ w_t=\sum_{n\in\mathbb Z}e^{-inTt}q_n,
+ \qquad\rho(w_t)=e^{iTt}w_t.
+ \tag{L19.2.e}
+\]</span>
+The strong sums exist by orthogonality, have inverse <span class="math" data-tex="\(w_{-t}\)">\(w_{-t}\)</span>, and satisfy <span class="math" data-tex="\(w_tw_u=w_{t+u}\)">\(w_tw_u=w_{t+u}\)</span>. For each vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>,
+<span class="math math-display" data-tex="\[
+ \|(w_t-w_u)\xi\|^2
+ =\sum_n|e^{-inTt}-e^{-inTu}|^2\|q_n\xi\|^2.
+ \tag{L19.2.f}
+\]">\[
+ \|(w_t-w_u)\xi\|^2
+ =\sum_n|e^{-inTt}-e^{-inTu}|^2\|q_n\xi\|^2.
+ \tag{L19.2.f}
+\]</span>
+A finite part is continuous and the remaining tail is at most four times its summable vector mass. This proves strong continuity. Reindexing proves the displayed eigenrelation, and <span class="math" data-tex="\(w_{t+2\pi/T}=w_t\)">\(w_{t+2\pi/T}=w_t\)</span>. Only the discrete times <span class="math" data-tex="\(T\mathbb Z\)">\(T\mathbb Z\)</span> have been controlled at this stage.</p>
+<p><span id="OA-FLOW.L19.3"></span><a id="l19-3"></a></p>
+<h2 id="3-an-invariant-weight-and-the-exact-density-law">3. An invariant weight and the exact density law</h2>
+<p>Choose a faithful normal semifinite weight <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(F\)">\(F\)</span>, using the arbitrary-cardinality construction in <a href="OA-FLOW-FR.html#oa-flow.fr.1">FR1</a>, and define
+<span class="math math-display" data-tex="\[
+ \varphi(x)=\widehat\omega(E(x))\quad(x\in Q_+).
+ \tag{L19.3.a}
+\]">\[
+ \varphi(x)=\widehat\omega(E(x))\quad(x\in Q_+).
+ \tag{L19.3.a}
+\]</span>
+All hypotheses of <a href="OA-FLOW-EP.html#oa-flow.ep.6">EP6's composition theorem</a> were checked in Section 1 and its partition was supplied in Section 2. Thus <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is faithful normal semifinite. Also
+<span class="math math-display" data-tex="\[
+ \varphi\circ\theta_s=\varphi\qquad(s\in\mathbb R)
+ \tag{L19.3.b}
+\]">\[
+ \varphi\circ\theta_s=\varphi\qquad(s\in\mathbb R)
+ \tag{L19.3.b}
+\]</span>
+by (L19.1.d). The reference <span class="math" data-tex="\(\omega\)">\(\omega\)</span> need not be finite. Semifiniteness follows from the proved operator-valued finite domain and composition theorem, rather than an assumption about averaging a scalar weight.</p>
+<p>By <a href="OA-FLOW-TD.html#oa-flow.td.4">TD4–6</a>, there is a unique nonsingular positive self-adjoint <span class="math" data-tex="\(h\)">\(h\)</span> affiliated with <span class="math" data-tex="\(Q\)">\(Q\)</span> such that <span class="math" data-tex="\(\varphi=\tau_h\)">\(\varphi=\tau_h\)</span>, where
+<span class="math math-display" data-tex="\[
+ \tau_h(x)=\widehat\tau(x^{1/2}h x^{1/2})
+ =\sup_{j\ge1}\tau\bigl(x^{1/2}(h\wedge j)x^{1/2}\bigr),
+ \qquad x\in Q_+.
+ \tag{L19.3.c}
+\]">\[
+ \tau_h(x)=\widehat\tau(x^{1/2}h x^{1/2})
+ =\sup_{j\ge1}\tau\bigl(x^{1/2}(h\wedge j)x^{1/2}\bigr),
+ \qquad x\in Q_+.
+ \tag{L19.3.c}
+\]</span>
+Semifiniteness removes the infinite-value spectral summand; faithfulness removes the kernel, precisely as in <a href="OA-FLOW-TD.html#oa-flow.td.6">TD6</a>. The density is not assumed trace-measurable or central. The sandwich in (L19.3.c) is the extended-positive operation of EP4; it asserts no domain property of a formal unbounded operator product.</p>
+<p>Here is the covariance calculation with its scalar normalization. Suppose <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is a normal automorphism of <span class="math" data-tex="\(Q\)">\(Q\)</span> and <span class="math" data-tex="\(\tau\circ\beta=c\tau\)">\(\tau\circ\beta=c\tau\)</span>, <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. Transport of the <a href="OA-FLOW-EP.html#oa-flow.ep.4">spectral pair and bounded calculus</a> gives, for every <span class="math" data-tex="\(j\)">\(j\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ &amp;\tau\bigl(\beta(x)^{1/2}(h\wedge j)\beta(x)^{1/2}\bigr)\\
+ &amp;\hspace{1em}=c\,\tau\bigl(x^{1/2}(\beta^{-1}(h)\wedge j)x^{1/2}\bigr).
+ \end{aligned}
+ \tag{L19.3.d}
+\]">\[
+ \begin{aligned}
+ &amp;\tau\bigl(\beta(x)^{1/2}(h\wedge j)\beta(x)^{1/2}\bigr)\\
+ &amp;\hspace{1em}=c\,\tau\bigl(x^{1/2}(\beta^{-1}(h)\wedge j)x^{1/2}\bigr).
+ \end{aligned}
+ \tag{L19.3.d}
+\]</span>
+Pass to the increasing limits. Positive homogeneity of the density-to-weight map, proved on the entire cone in <a href="OA-FLOW-TD.html#oa-flow.td.2">TD2</a>, yields
+<span class="math math-display" data-tex="\[
+ \tau_h\circ\beta=\tau_{c\beta^{-1}(h)}.
+ \tag{L19.3.e}
+\]">\[
+ \tau_h\circ\beta=\tau_{c\beta^{-1}(h)}.
+ \tag{L19.3.e}
+\]</span>
+Apply this to <span class="math" data-tex="\(\beta=\theta_s\)">\(\beta=\theta_s\)</span> and <span class="math" data-tex="\(c=e^{-s}\)">\(c=e^{-s}\)</span>. Invariance (L19.3.b) and <a href="OA-FLOW-TD.html#oa-flow.td.5">whole-cone density uniqueness</a> give
+<span class="math math-display" data-tex="\[
+ h=e^{-s}\theta_{-s}(h),\qquad
+ \theta_s(h)=e^{-s}h.
+ \tag{L19.3.f}
+\]">\[
+ h=e^{-s}\theta_{-s}(h),\qquad
+ \theta_s(h)=e^{-s}h.
+ \tag{L19.3.f}
+\]</span>
+The comparison is between equal weights on all of <span class="math" data-tex="\(Q_+\)">\(Q_+\)</span>, not between their finite values alone. It never cancels infinite values.</p>
+<p><span id="OA-FLOW.L19.4"></span><a id="l19-4"></a></p>
+<h2 id="4-the-continuous-coordinate-and-the-two-signs">4. The continuous coordinate and the two signs</h2>
+<p>Since <span class="math" data-tex="\(h\)">\(h\)</span> has zero kernel, the <a href="OA-FLOW-SF.html#oa-flow.sf1.spectral-calculus">full affiliated spectral calculus</a> defines the self-adjoint operator <span class="math" data-tex="\(\log h\)">\(\log h\)</span> and its bounded imaginary powers. Explicitly, if <span class="math" data-tex="\(P_h\)">\(P_h\)</span> is its spectral measure, then
+<span class="math math-display" data-tex="\[
+ D(\log h)=\left\{\xi:\int_{(0,\infty)}|\log r|^2\,d\langle P_h(r)\xi,\xi\rangle&lt;\infty\right\}.
+ \tag{L19.4.a}
+\]">\[
+ D(\log h)=\left\{\xi:\int_{(0,\infty)}|\log r|^2\,d\langle P_h(r)\xi,\xi\rangle&lt;\infty\right\}.
+ \tag{L19.4.a}
+\]</span>
+The spectral bands <span class="math" data-tex="\(1_{[1/j,j]}(h)\)">\(1_{[1/j,j]}(h)\)</span> increase strongly to <span class="math" data-tex="\(1\)">\(1\)</span>, proving density of that domain. Set
+<span class="math math-display" data-tex="\[
+ v_t=\exp(-it\log h)=h^{-it}.
+ \tag{L19.4.b}
+\]">\[
+ v_t=\exp(-it\log h)=h^{-it}.
+ \tag{L19.4.b}
+\]</span>
+These bounded operators belong to <span class="math" data-tex="\(Q\)">\(Q\)</span> by affiliation and the commutant-unitary test, are unitary, and multiply according to <span class="math" data-tex="\(v_tv_u=v_{t+u}\)">\(v_tv_u=v_{t+u}\)</span>. For strong continuity, the squared vector norm of <span class="math" data-tex="\((v_t-v_u)\xi\)">\((v_t-v_u)\xi\)</span> is the spectral integral of <span class="math" data-tex="\(|r^{-it}-r^{-iu}|^2\)">\(|r^{-it}-r^{-iu}|^2\)</span>. That integrand tends pointwise to zero and is bounded by four; <a href="OA-FLOW-SC.html#sc-05">scalar dominated convergence</a> applies to the finite vector spectral measure. Naturality of this calculus and (L19.3.f) now give
+<span class="math math-display" data-tex="\[
+ \theta_s(v_t)=(e^{-s}h)^{-it}=e^{ist}v_t,
+ \qquad s,t\in\mathbb R.
+ \tag{L19.4.c}
+\]">\[
+ \theta_s(v_t)=(e^{-s}h)^{-it}=e^{ist}v_t,
+ \qquad s,t\in\mathbb R.
+ \tag{L19.4.c}
+\]</span>
+This proves the claimed coordinate for every real time. The opposite imaginary powers satisfy
+<span class="math math-display" data-tex="\[
+ \theta_s(h^{it})=e^{-ist}h^{it}.
+ \tag{L19.4.d}
+\]">\[
+ \theta_s(h^{it})=e^{-ist}h^{it}.
+ \tag{L19.4.d}
+\]</span>
+Thus changing the power changes the character sign; no Fourier sign is implicit.</p>
+<p>There is a useful central application with an exact hypothesis. Suppose <span class="math" data-tex="\(zN\)">\(zN\)</span> is an invariant central summand of a von Neumann algebra with a real action, and its center <span class="math" data-tex="\(Q=Z(zN)\)">\(Q=Z(zN)\)</span> carries a faithful normal semifinite weight <span class="math" data-tex="\(\tau\)">\(\tau\)</span> scaling by <span class="math" data-tex="\(e^{-s}\)">\(e^{-s}\)</span>. On this commutative algebra it is a trace, because <span class="math" data-tex="\(a^*a=aa^*\)">\(a^*a=aa^*\)</span>. The theorem therefore constructs <span class="math" data-tex="\(v_t\in Z(zN)\)">\(v_t\in Z(zN)\)</span> with unit <span class="math" data-tex="\(z\)">\(z\)</span> and character (L19.4.c). If <span class="math" data-tex="\(u_s\)">\(u_s\)</span> denotes the implementing unitary of <span class="math" data-tex="\((zN)\rtimes_\theta\mathbb R\)">\((zN)\rtimes_\theta\mathbb R\)</span>, the <a href="OA-FLOW-NR.html#oa-flow.nr.3">regular covariance relation</a> implies
+<span class="math math-display" data-tex="\[
+ u_sv_tu_s^*=e^{ist}v_t,
+ \qquad v_tu_sv_t^*=e^{-ist}u_s.
+ \tag{L19.4.e}
+\]">\[
+ u_sv_tu_s^*=e^{ist}v_t,
+ \qquad v_tu_sv_t^*=e^{-ist}u_s.
+ \tag{L19.4.e}
+\]</span>
+The second equality follows by moving the scalar factor across the first one. Each <span class="math" data-tex="\(v_t\)">\(v_t\)</span> commutes with <span class="math" data-tex="\(zN\)">\(zN\)</span>, so its conjugation fixes the coefficient algebra and acts on <span class="math" data-tex="\(u_s\)">\(u_s\)</span> by the displayed negative character. All units in these relations are <span class="math" data-tex="\(z\)">\(z\)</span>. The assertion assumes the scaling center weight; its existence in particular type decompositions requires a separate proof. For noncommutative <span class="math" data-tex="\(Q\)">\(Q\)</span>, no centrality of <span class="math" data-tex="\(h\)">\(h\)</span> or <span class="math" data-tex="\(v_t\)">\(v_t\)</span> follows, as Section 6 shows.</p>
+<p><span id="OA-FLOW.L19.5"></span><a id="l19-5"></a></p>
+<h2 id="5-translation-attains-the-integration-bound">5. Translation attains the integration bound</h2>
+<p>Take <span class="math" data-tex="\(Q=L^\infty(\mathbb R,dr)\)">\(Q=L^\infty(\mathbb R,dr)\)</span>, and define
+<span class="math math-display" data-tex="\[
+ [\theta_s(f)](r)=f(r+s),\qquad
+ \tau(f)=\int_{\mathbb R}f(r)e^r\,dr\quad(f\geq0).
+ \tag{L19.5.a}
+\]">\[
+ [\theta_s(f)](r)=f(r+s),\qquad
+ \tau(f)=\int_{\mathbb R}f(r)e^r\,dr\quad(f\geq0).
+ \tag{L19.5.a}
+\]</span>
+The normality of the translation automorphisms follows from <a href="OA-FLOW-ND.html#nd-multiplication">the multiplier predual</a>. Their predual orbits are norm continuous by <a href="OA-FLOW-FF.html#oa-flow.ff.2">translation continuity on <span class="math" data-tex="\(L^1\)">\(L^1\)</span></a>, so this is a point-ultraweakly continuous action. The weight is a trace because the algebra is commutative. It is normal: its restrictions to bounded intervals are positive <span class="math" data-tex="\(L^1\)">\(L^1\)</span> functionals, and their increasing supremum is <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. It is faithful because <span class="math" data-tex="\(e^r&gt;0\)">\(e^r&gt;0\)</span>; bounded interval cutoffs give semifiniteness. Substituting <span class="math" data-tex="\(u=r+s\)">\(u=r+s\)</span> gives the required full-cone identity
+<span class="math math-display" data-tex="\[
+ \tau(\theta_s(f))
+   =\int_{\mathbb R}f(u)e^{u-s}\,du
+   =e^{-s}\tau(f).
+ \tag{L19.5.b}
+\]">\[
+ \tau(\theta_s(f))
+   =\int_{\mathbb R}f(u)e^{u-s}\,du
+   =e^{-s}\tau(f).
+ \tag{L19.5.b}
+\]</span></p>
+<p>The fixed algebra is the constants. This holds for equality in <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span>, without choosing a common representative invariant at every point: <a href="OA-FLOW-ND.html#nd-weyl-proof">ND's convolution proof</a> shows that a translation-fixed multiplier is constant. The complete positive action integral is
+<span class="math math-display" data-tex="\[
+ E(f)=\left(\int_{\mathbb R}f(r)\,dr\right)1.
+ \tag{L19.5.c}
+\]">\[
+ E(f)=\left(\int_{\mathbb R}f(r)\,dr\right)1.
+ \tag{L19.5.c}
+\]</span>
+To verify the equality as an extended-positive value, test against any positive <span class="math" data-tex="\(L^1\)">\(L^1\)</span> function <span class="math" data-tex="\(g\)">\(g\)</span>. <a href="OA-FLOW-FF.html#oa-flow.ff.1">Nonnegative scalar interchange</a> gives
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}\int_{\mathbb R}g(r)f(r+s)\,dr\,ds
+ =\left(\int_{\mathbb R}g(r)\,dr\right)
+  \left(\int_{\mathbb R}f(u)\,du\right).
+ \tag{L19.5.d}
+\]">\[
+ \int_{\mathbb R}\int_{\mathbb R}g(r)f(r+s)\,dr\,ds
+ =\left(\int_{\mathbb R}g(r)\,dr\right)
+  \left(\int_{\mathbb R}f(u)\,du\right).
+ \tag{L19.5.d}
+\]</span>
+The product has the convention <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>. These tests determine the entire extended value, including infinity.</p>
+<p>The invariant weight <span class="math" data-tex="\(\varphi(f)=\int f(r)\,dr\)">\(\varphi(f)=\int f(r)\,dr\)</span> is normal semifinite and faithful by the same interval argument. Its density relative to <span class="math" data-tex="\(\tau\)">\(\tau\)</span> and its imaginary powers are
+<span class="math math-display" data-tex="\[
+ h(r)=e^{-r},\qquad
+ v_t(r)=h(r)^{-it}=e^{itr},\qquad
+ \theta_s(v_t)=e^{ist}v_t.
+ \tag{L19.5.e}
+\]">\[
+ h(r)=e^{-r},\qquad
+ v_t(r)=h(r)^{-it}=e^{itr},\qquad
+ \theta_s(v_t)=e^{ist}v_t.
+ \tag{L19.5.e}
+\]</span>
+The density equality holds on all positives: the bounded truncations
+<span class="math" data-tex="\(\min(e^{-r},k)\)">\(\min(e^{-r},k)\)</span> give integrands <span class="math" data-tex="\(e^r f(r)\min(e^{-r},k)\uparrow f(r)\)">\(e^r f(r)\min(e^{-r},k)\uparrow f(r)\)</span>, so monotone convergence proves <span class="math" data-tex="\(\tau_h(f)=\varphi(f)\)">\(\tau_h(f)=\varphi(f)\)</span>. Strong continuity of <span class="math" data-tex="\(v_t\)">\(v_t\)</span> on <span class="math" data-tex="\(L^2(\mathbb R)\)">\(L^2(\mathbb R)\)</span> follows by dominated convergence, with bound <span class="math" data-tex="\(4|\xi(r)|^2\)">\(4|\xi(r)|^2\)</span> for the squared vector difference.</p>
+<p>Now fix any <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>. The particular projection <span class="math" data-tex="\(p=1_{[0,T)}\)">\(p=1_{[0,T)}\)</span> has translates and finite partial sums
+<span class="math math-display" data-tex="\[
+ q_n=\theta_{nT}(p)=1_{[-nT,(1-n)T)},\qquad
+ P_m=\sum_{|n|\leq m}q_n
+     =1_{[-mT,(m+1)T)}.
+ \tag{L19.5.f}
+\]">\[
+ q_n=\theta_{nT}(p)=1_{[-nT,(1-n)T)},\qquad
+ P_m=\sum_{|n|\leq m}q_n
+     =1_{[-mT,(m+1)T)}.
+ \tag{L19.5.f}
+\]</span>
+The half-open intervals partition the whole line. Thus
+<span class="math math-display" data-tex="\[
+ E(P_m)=T(2m+1)1,\qquad \|P_m\|=1.
+ \tag{L19.5.g}
+\]">\[
+ E(P_m)=T(2m+1)1,\qquad \|P_m\|=1.
+ \tag{L19.5.g}
+\]</span>
+The bound <span class="math" data-tex="\(E(x)\leq T(2m+1)\|x\|1\)">\(E(x)\leq T(2m+1)\|x\|1\)</span> from <a href="OA-FLOW-L19.html#l19-1">Section 1</a> is attained by <span class="math" data-tex="\(x=P_m\)">\(x=P_m\)</span>; its constant cannot be reduced for this general class.</p>
+<p>The discrete group built from this partition is
+<span class="math math-display" data-tex="\[
+ w_t(r)=\exp\!\left(iTt\left\lfloor\frac rT\right\rfloor\right),
+ \qquad
+ \theta_T(w_t)=e^{iTt}w_t.
+ \tag{L19.5.h}
+\]">\[
+ w_t(r)=\exp\!\left(iTt\left\lfloor\frac rT\right\rfloor\right),
+ \qquad
+ \theta_T(w_t)=e^{iTt}w_t.
+ \tag{L19.5.h}
+\]</span>
+Indeed <span class="math" data-tex="\(r\in[-nT,(1-n)T)\)">\(r\in[-nT,(1-n)T)\)</span> gives <span class="math" data-tex="\(\lfloor r/T\rfloor=-n\)">\(\lfloor r/T\rfloor=-n\)</span>, agreeing with the coefficient <span class="math" data-tex="\(e^{-inTt}\)">\(e^{-inTt}\)</span> in the partition sum. Each <span class="math" data-tex="\(w_t\)">\(w_t\)</span> is unitary, the group law holds pointwise, and dominated convergence proves strong continuity in <span class="math" data-tex="\(t\)">\(t\)</span>. Its period is <span class="math" data-tex="\(2\pi/T\)">\(2\pi/T\)</span>. When <span class="math" data-tex="\(Tt\notin2\pi\mathbb Z\)">\(Tt\notin2\pi\mathbb Z\)</span>, its dependence on the spatial coordinate <span class="math" data-tex="\(r\)">\(r\)</span> is a staircase; strong continuity in the parameter <span class="math" data-tex="\(t\)">\(t\)</span> does not give covariance at every real translation time. The continuous coordinate <span class="math" data-tex="\(v_t(r)=e^{itr}\)">\(v_t(r)=e^{itr}\)</span> does have that full covariance.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The translated interval partition attains the integration bound; the continuous exponent and staircase exponent give different behavior at half a time step" src="assets/trace-scaling-eigenunitaries/trace-scaling-eigenunitaries.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p>The top panel specializes (L19.5.f)–(L19.5.g) to <span class="math" data-tex="\(T=1\)">\(T=1\)</span>, <span class="math" data-tex="\(m=2\)">\(m=2\)</span>. The selected intervals have union <span class="math" data-tex="\([-2,3)\)">\([-2,3)\)</span>, so <span class="math" data-tex="\(E(P_2)=5\,1\)">\(E(P_2)=5\,1\)</span>. The index decreases from left to right because <span class="math" data-tex="\(\theta_1(f)(r)=f(r+1)\)">\(\theta_1(f)(r)=f(r+1)\)</span> moves supports to the left. The lower panel plots the real exponents <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(\lfloor r\rfloor\)">\(\lfloor r\rfloor\)</span> before applying <span class="math" data-tex="\(x\mapsto e^{ix}\)">\(x\mapsto e^{ix}\)</span>; it does not plot complex unitary values as real numbers. Filled and open endpoints record the half-open staircase intervals. For <span class="math" data-tex="\(r=1/4\)">\(r=1/4\)</span>, <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span>, both staircase exponents are zero, whereas the continuous exponent increases by <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Thus <span class="math" data-tex="\(w_1(r+s)/w_1(r)=1\)">\(w_1(r+s)/w_1(r)=1\)</span>, while <span class="math" data-tex="\(v_1(r+s)/v_1(r)=e^{i/2}\)">\(v_1(r+s)/v_1(r)=e^{i/2}\)</span>. These are exact formulas; the displayed window is only a finite part of the infinite partition. The proof locators are (L19.5.f)–(L19.5.h) and <a href="OA-FLOW-L19.html#l19-7">Diagnostic 3</a>. For human-source context on trace scaling and eigenunitaries, see Takesaki II, XII.1, Lemma 1.2, printed pp. 366–367, in <a href="OA-FLOW-L19.html#l19-reading">Further reading</a>. Original diagram, data and renderer: CC0-1.0 to the extent of rights held; font terms are retained separately. <a href="assets/trace-scaling-eigenunitaries/trace-scaling-eigenunitaries.svg">Editable SVG</a>, <a href="assets/trace-scaling-eigenunitaries/trace-scaling-eigenunitaries-data.json">exact data</a>, <a href="assets/trace-scaling-eigenunitaries/render_trace_scaling_eigenunitaries.py">renderer</a>, and <a href="assets/trace-scaling-eigenunitaries/FONT-LICENSE.txt">font terms</a> are included.</p>
+<p><span id="OA-FLOW.L19.6"></span><a id="l19-6"></a></p>
+<h2 id="6-a-noncentral-density-with-rotating-matrix-entries">6. A noncentral density with rotating matrix entries</h2>
+<p>The density in the general theorem need not be central. To see this without any formal manipulation of unbounded products, take
+<span class="math math-display" data-tex="\[
+ Q=L^\infty(\mathbb R)\,\overline\otimes\,M_2(\mathbb C),\qquad
+ K=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\qquad
+ W_s=e^{isK},\qquad B=\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}.
+ \tag{L19.6.a}
+\]">\[
+ Q=L^\infty(\mathbb R)\,\overline\otimes\,M_2(\mathbb C),\qquad
+ K=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\qquad
+ W_s=e^{isK},\qquad B=\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}.
+ \tag{L19.6.a}
+\]</span>
+For bounded measurable matrix fields, define
+<span class="math math-display" data-tex="\[
+ [\theta_s(f)](r)=W_s f(r+s)W_s^*,\qquad
+ \tau(f)=\int_{\mathbb R}e^r\operatorname{Tr}(f(r))\,dr
+ \quad(f\geq0).
+ \tag{L19.6.b}
+\]">\[
+ [\theta_s(f)](r)=W_s f(r+s)W_s^*,\qquad
+ \tau(f)=\int_{\mathbb R}e^r\operatorname{Tr}(f(r))\,dr
+ \quad(f\geq0).
+ \tag{L19.6.b}
+\]</span>
+The group law follows from <span class="math" data-tex="\(W_{s+u}=W_sW_u\)">\(W_{s+u}=W_sW_u\)</span>. Translation is normal on each matrix entry, and conjugation by <span class="math" data-tex="\(W_s\)">\(W_s\)</span> is normal. Translation continuity on <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, together with norm continuity of this finite matrix group, gives point-ultraweak continuity. The positive matrix trace integral is faithful, normal and semifinite: on bounded intervals it is a normal positive functional, these functionals increase to the full weight, and interval cutoffs have finite value. Pointwise matrix cyclicity proves the trace identity. The same substitution as in (L19.5.b), and invariance of the matrix trace under <span class="math" data-tex="\(W_s\)">\(W_s\)</span>, give
+<span class="math math-display" data-tex="\[
+ \tau\circ\theta_s=e^{-s}\tau
+ \quad\hbox{on }Q_+.
+ \tag{L19.6.c}
+\]">\[
+ \tau\circ\theta_s=e^{-s}\tau
+ \quad\hbox{on }Q_+.
+ \tag{L19.6.c}
+\]</span></p>
+<p>Put
+<span class="math math-display" data-tex="\[
+ A(r)=W_{-r}BW_r
+ =\begin{pmatrix}2&amp;e^{-2ir}\\e^{2ir}&amp;2\end{pmatrix},
+ \qquad
+ \varphi(f)=\int_{\mathbb R}\operatorname{Tr}(A(r)f(r))\,dr.
+ \tag{L19.6.d}
+\]">\[
+ A(r)=W_{-r}BW_r
+ =\begin{pmatrix}2&amp;e^{-2ir}\\e^{2ir}&amp;2\end{pmatrix},
+ \qquad
+ \varphi(f)=\int_{\mathbb R}\operatorname{Tr}(A(r)f(r))\,dr.
+ \tag{L19.6.d}
+\]</span>
+The eigenvalues of <span class="math" data-tex="\(B\)">\(B\)</span>, and hence of <span class="math" data-tex="\(A(r)\)">\(A(r)\)</span>, are <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span>. Thus <span class="math" data-tex="\(I\leq A(r)\leq3I\)">\(I\leq A(r)\leq3I\)</span>. On each bounded interval the formula is a normal positive functional; their increasing supremum proves normality. The lower bound proves faithfulness, and the upper bound proves finiteness on bounded interval cutoffs, hence semifiniteness.</p>
+<p>The identity <span class="math" data-tex="\(A(r+s)=W_{-s}A(r)W_s\)">\(A(r+s)=W_{-s}A(r)W_s\)</span> gives invariance on the complete cone:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \varphi(\theta_s(f))
+ &amp;=\int_{\mathbb R}\operatorname{Tr}
+       \bigl(W_{-s}A(r)W_s f(r+s)\bigr)\,dr\\
+ &amp;=\int_{\mathbb R}\operatorname{Tr}(A(u)f(u))\,du
+ =\varphi(f).
+ \end{aligned}
+ \tag{L19.6.e}
+\]">\[
+ \begin{aligned}
+ \varphi(\theta_s(f))
+ &amp;=\int_{\mathbb R}\operatorname{Tr}
+       \bigl(W_{-s}A(r)W_s f(r+s)\bigr)\,dr\\
+ &amp;=\int_{\mathbb R}\operatorname{Tr}(A(u)f(u))\,du
+ =\varphi(f).
+ \end{aligned}
+ \tag{L19.6.e}
+\]</span>
+Each integrand is nonnegative; infinite values present no subtraction or integrability issue.</p>
+<p>The affiliated density is
+<span class="math math-display" data-tex="\[
+ h(r)=e^{-r}W_{-r}BW_r.
+ \tag{L19.6.f}
+\]">\[
+ h(r)=e^{-r}W_{-r}BW_r.
+ \tag{L19.6.f}
+\]</span>
+It is nonsingular: its two pointwise eigenvalues are <span class="math" data-tex="\(e^{-r}\)">\(e^{-r}\)</span> and <span class="math" data-tex="\(3e^{-r}\)">\(3e^{-r}\)</span>. Its bounded spectral projections are measurable matrix fields and belong to <span class="math" data-tex="\(Q\)">\(Q\)</span>; multiplication on <span class="math" data-tex="\(L^2(\mathbb R,\mathbb C^2)\)">\(L^2(\mathbb R,\mathbb C^2)\)</span> gives the positive self-adjoint affiliated operator. Compactly supported <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vectors lie in its domain because the matrix norm of <span class="math" data-tex="\(h(r)\)">\(h(r)\)</span> is bounded on each bounded interval. They form a core: for any domain vector, multiplication by <span class="math" data-tex="\(1_{[-n,n]}\)">\(1_{[-n,n]}\)</span> converges both in vector norm and in the norm of its image under <span class="math" data-tex="\(h\)">\(h\)</span>, by truncating the two square-integrable functions. The matrix field has a nonzero off-diagonal entry at every <span class="math" data-tex="\(r\)">\(r\)</span>, so it does not commute with the constant projection <span class="math" data-tex="\(e_{11}\)">\(e_{11}\)</span>. It is not central.</p>
+<p>For every <span class="math" data-tex="\(f\in Q_+\)">\(f\in Q_+\)</span>, finite matrix cyclicity and scalar monotone convergence give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ &amp;\lim_{k\to\infty}\int_{\mathbb R}e^r
+   \operatorname{Tr}\bigl(f(r)^{1/2}\min(h(r),k)f(r)^{1/2}\bigr)\,dr\\
+ &amp;\hspace{4em}=\int_{\mathbb R}\operatorname{Tr}(A(r)f(r))\,dr
+ =\varphi(f).
+ \end{aligned}
+ \tag{L19.6.g}
+\]">\[
+ \begin{aligned}
+ &amp;\lim_{k\to\infty}\int_{\mathbb R}e^r
+   \operatorname{Tr}\bigl(f(r)^{1/2}\min(h(r),k)f(r)^{1/2}\bigr)\,dr\\
+ &amp;\hspace{4em}=\int_{\mathbb R}\operatorname{Tr}(A(r)f(r))\,dr
+ =\varphi(f).
+ \end{aligned}
+ \tag{L19.6.g}
+\]</span>
+This verifies the density on the whole positive cone in the spectral-truncation convention of <a href="OA-FLOW-L19.html#l19-3">Section 3</a>. It does not assume that a product of two unbounded operators is densely defined.</p>
+<p>For an explicit formula for its imaginary powers, let
+<span class="math math-display" data-tex="\[
+ P_+=\frac12\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix},\qquad
+ P_-=\frac12\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix}.
+\]">\[
+ P_+=\frac12\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix},\qquad
+ P_-=\frac12\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix}.
+\]</span>
+These are complementary orthogonal projections, <span class="math" data-tex="\(B=3P_++P_-\)">\(B=3P_++P_-\)</span>, and therefore
+<span class="math math-display" data-tex="\[
+ v_t(r)=h(r)^{-it}
+       =e^{irt}W_{-r}B^{-it}W_r,\qquad
+ B^{-it}=3^{-it}P_++P_-.
+ \tag{L19.6.h}
+\]">\[
+ v_t(r)=h(r)^{-it}
+       =e^{irt}W_{-r}B^{-it}W_r,\qquad
+ B^{-it}=3^{-it}P_++P_-.
+ \tag{L19.6.h}
+\]</span>
+This is a unitary group. Its strong continuity follows by pointwise finite-dimensional continuity and dominated convergence on every <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vector. Direct substitution gives both the density and unitary covariance:
+<span class="math math-display" data-tex="\[
+ \theta_s(h)=e^{-s}h,\qquad
+ [\theta_s(v_t)](r)
+ =e^{i(r+s)t}W_{-r}B^{-it}W_r
+ =e^{ist}v_t(r).
+ \tag{L19.6.i}
+\]">\[
+ \theta_s(h)=e^{-s}h,\qquad
+ [\theta_s(v_t)](r)
+ =e^{i(r+s)t}W_{-r}B^{-it}W_r
+ =e^{ist}v_t(r).
+ \tag{L19.6.i}
+\]</span>
+Thus the eigenunitary mechanism works with noncommuting matrix coefficients. Commutativity is needed for the central conclusion in the central application, not for the general construction.</p>
+<p><span id="OA-FLOW.L19.7"></span><a id="l19-7"></a></p>
+<h2 id="7-five-diagnostics-with-complete-solutions">7. Five diagnostics with complete solutions</h2>
+<h3 id="1-a-different-nonzero-scaling-rate">1. A different nonzero scaling rate</h3>
+<p>Suppose an arbitrary von Neumann algebra has a point-ultraweakly continuous action and a normal semifinite faithful trace satisfying
+<span class="math" data-tex="\(\tau\circ\theta_s=e^{-cs}\tau\)">\(\tau\circ\theta_s=e^{-cs}\tau\)</span>, where <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>. Construct a strongly continuous unitary group <span class="math" data-tex="\(u_t\)">\(u_t\)</span> with <span class="math" data-tex="\(\theta_s(u_t)=e^{ist}u_t\)">\(\theta_s(u_t)=e^{ist}u_t\)</span>. Explain why the zero rate is different.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(\eta_r=\theta_{r/c}\)">\(\eta_r=\theta_{r/c}\)</span>. It is still a point-ultraweakly continuous action and scales the trace by <span class="math" data-tex="\(e^{-r}\)">\(e^{-r}\)</span>. Apply <a href="OA-FLOW-L19.html#l19-4">the eigenunitary conclusion of Section 4</a> to get a nonsingular affiliated <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(\eta_r(h)=e^{-r}h\)">\(\eta_r(h)=e^{-r}h\)</span>. Equivalently,
+<span class="math math-display" data-tex="\[
+ \theta_s(h)=e^{-cs}h,\qquad
+ u_t=h^{-it/c},\qquad
+ \theta_s(u_t)=(e^{-cs}h)^{-it/c}=e^{ist}u_t.
+ \tag{L19.7.a}
+\]">\[
+ \theta_s(h)=e^{-cs}h,\qquad
+ u_t=h^{-it/c},\qquad
+ \theta_s(u_t)=(e^{-cs}h)^{-it/c}=e^{ist}u_t.
+ \tag{L19.7.a}
+\]</span>
+Functional calculus supplies the group law and strong continuity. A negative <span class="math" data-tex="\(c\)">\(c\)</span> reverses the time parametrization and is fully included. At <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, take <span class="math" data-tex="\(Q=\mathbb C\)">\(Q=\mathbb C\)</span> with its usual trace and trivial action. For any fixed <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>, the relation would require <span class="math" data-tex="\(u_t=e^{ist}u_t\)">\(u_t=e^{ist}u_t\)</span> for every <span class="math" data-tex="\(s\)">\(s\)</span>, impossible for a unitary scalar <span class="math" data-tex="\(u_t\)">\(u_t\)</span>. Thus trace preservation alone does not imply the conclusion.</p>
+<h3 id="2-an-operator-with-off-diagonal-corner-entries">2. An operator with off-diagonal corner entries</h3>
+<p>For the complete partition in <a href="OA-FLOW-L19.html#l19-2">Section 2</a>, let <span class="math" data-tex="\(P_m=\sum_{|n|\leq m}q_n\)">\(P_m=\sum_{|n|\leq m}q_n\)</span> and let <span class="math" data-tex="\(a\in P_mQP_m\)">\(a\in P_mQP_m\)</span>. No commutation of <span class="math" data-tex="\(a\)">\(a\)</span> with the individual <span class="math" data-tex="\(q_n\)">\(q_n\)</span> is assumed. Bound <span class="math" data-tex="\(E(a^*a)\)">\(E(a^*a)\)</span>.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(a=P_maP_m\)">\(a=P_maP_m\)</span>,
+<span class="math" data-tex="\(0\leq a^*a\leq\|a\|^2P_m\)">\(0\leq a^*a\leq\|a\|^2P_m\)</span>. Positivity of the complete average and <a href="OA-FLOW-L19.html#l19-1">the corner estimate</a> give
+<span class="math math-display" data-tex="\[
+ E(a^*a)\leq T(2m+1)\|a\|^2\,1.
+ \tag{L19.7.b}
+\]">\[
+ E(a^*a)\leq T(2m+1)\|a\|^2\,1.
+ \tag{L19.7.b}
+\]</span>
+The proof applies automorphisms to this positive operator inequality and sums its translates. It keeps the full operator <span class="math" data-tex="\(a^*a\)">\(a^*a\)</span>, including every cross term; no diagonal expansion or discarded off-diagonal entry is needed. In particular <span class="math" data-tex="\(a\)">\(a\)</span> belongs to the bounded-output left ideal of <span class="math" data-tex="\(E\)">\(E\)</span>. The argument works with the full arbitrary-cardinal partition construction, because only the complete orthogonal family <span class="math" data-tex="\((q_n)_{n\in\mathbb Z}\)">\((q_n)_{n\in\mathbb Z}\)</span> enters this estimate.</p>
+<h3 id="3-why-integer-times-do-not-suffice">3. Why integer times do not suffice</h3>
+<p>In <a href="OA-FLOW-L19.html#l19-5">the scalar model</a>, take <span class="math" data-tex="\(T=1\)">\(T=1\)</span>. Verify the discrete eigenrelation for <span class="math" data-tex="\(w_t\)">\(w_t\)</span>, then test its proposed continuous eigenrelation at <span class="math" data-tex="\(t=1\)">\(t=1\)</span> and <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span>.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(\lfloor r+1\rfloor=\lfloor r\rfloor+1\)">\(\lfloor r+1\rfloor=\lfloor r\rfloor+1\)</span>, one has
+<span class="math math-display" data-tex="\[
+ \theta_1(w_t)(r)=e^{it}w_t(r).
+ \tag{L19.7.c}
+\]">\[
+ \theta_1(w_t)(r)=e^{it}w_t(r).
+ \tag{L19.7.c}
+\]</span>
+For every <span class="math" data-tex="\(0&lt;r&lt;1/2\)">\(0&lt;r&lt;1/2\)</span>, however, both <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(r+1/2\)">\(r+1/2\)</span> lie in <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>, so
+<span class="math math-display" data-tex="\[
+ [\theta_{1/2}(w_1)](r)=w_1(r+1/2)=1,\qquad
+ e^{i/2}w_1(r)=e^{i/2}\ne1.
+ \tag{L19.7.d}
+\]">\[
+ [\theta_{1/2}(w_1)](r)=w_1(r+1/2)=1,\qquad
+ e^{i/2}w_1(r)=e^{i/2}\ne1.
+ \tag{L19.7.d}
+\]</span>
+The failure occurs on a set of positive measure. It cannot be repaired by changing representatives at null sets. For the actual continuous coordinate,
+<span class="math" data-tex="\(v_1(r+1/2)=e^{i/2}v_1(r)\)">\(v_1(r+1/2)=e^{i/2}v_1(r)\)</span> for all <span class="math" data-tex="\(r\)">\(r\)</span>. The invariant-weight and affiliated-density steps supply the missing continuous-time covariance.</p>
+<h3 id="4-the-reverse-sign-and-the-corner-unit">4. The reverse sign and the corner unit</h3>
+<p>Let <span class="math" data-tex="\(z\)">\(z\)</span> be an invariant central projection in the central application. Let <span class="math" data-tex="\(\widetilde u_s\)">\(\widetilde u_s\)</span> implement the action in a larger crossed product, and write <span class="math" data-tex="\(u_s=z\widetilde u_s\)">\(u_s=z\widetilde u_s\)</span> for its compression to the <span class="math" data-tex="\(z\)">\(z\)</span>-corner. Suppose the constructed group in that corner satisfies
+<span class="math" data-tex="\(u_sv_tu_s^*=e^{ist}v_t\)">\(u_sv_tu_s^*=e^{ist}v_t\)</span>. Derive the reverse conjugation formula and identify its unit.</p>
+<p><strong>Solution.</strong> Invariance gives <span class="math" data-tex="\(z\widetilde u_s=\widetilde u_s z\)">\(z\widetilde u_s=\widetilde u_s z\)</span>, so each compressed <span class="math" data-tex="\(u_s\)">\(u_s\)</span> is a unitary with unit <span class="math" data-tex="\(z\)">\(z\)</span>. Multiplication of the given relation by <span class="math" data-tex="\(u_s\)">\(u_s\)</span> yields
+<span class="math" data-tex="\(u_sv_t=e^{ist}v_tu_s\)">\(u_sv_t=e^{ist}v_tu_s\)</span>. Rearranging this bounded identity and multiplying by <span class="math" data-tex="\(v_t^*\)">\(v_t^*\)</span> gives
+<span class="math math-display" data-tex="\[
+ v_tu_sv_t^*=e^{-ist}u_s,\qquad
+ v_0=z,\qquad v_tv_t^*=v_t^*v_t=z.
+ \tag{L19.7.e}
+\]">\[
+ v_tu_sv_t^*=e^{-ist}u_s,\qquad
+ v_0=z,\qquad v_tv_t^*=v_t^*v_t=z.
+ \tag{L19.7.e}
+\]</span>
+The sign is negative in this reverse formula and positive in the original implementation formula. All products here take place in the corner with identity <span class="math" data-tex="\(z\)">\(z\)</span>. Unless <span class="math" data-tex="\(z=1\)">\(z=1\)</span>, these are not unitaries with identity <span class="math" data-tex="\(1\)">\(1\)</span> in the larger algebra.</p>
+<h3 id="5-a-scaling-density-cannot-be-boundedly-invertible">5. A scaling density cannot be boundedly invertible</h3>
+<p>Let <span class="math" data-tex="\(Q\ne0\)">\(Q\ne0\)</span>, and let a nonsingular positive self-adjoint affiliated <span class="math" data-tex="\(h\)">\(h\)</span> satisfy
+<span class="math" data-tex="\(\theta_s(h)=e^{-s}h\)">\(\theta_s(h)=e^{-s}h\)</span>. Prove that <span class="math" data-tex="\(h\)">\(h\)</span> is unbounded and has no strictly positive lower bound.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(h\)">\(h\)</span> were bounded, the automorphisms would preserve its operator norm, whereas covariance would give
+<span class="math math-display" data-tex="\[
+ \|h\|=e^{-s}\|h\|\quad(s\in\mathbb R).
+ \tag{L19.7.f}
+\]">\[
+ \|h\|=e^{-s}\|h\|\quad(s\in\mathbb R).
+ \tag{L19.7.f}
+\]</span>
+Taking any <span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span> forces <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, contrary to nonsingularity on the nonzero algebra. If <span class="math" data-tex="\(h\geq\varepsilon1\)">\(h\geq\varepsilon1\)</span> for some <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, its spectral inverse would be a nonzero bounded positive operator, with
+<span class="math math-display" data-tex="\[
+ \theta_s(h^{-1})=e^s h^{-1}.
+ \tag{L19.7.g}
+\]">\[
+ \theta_s(h^{-1})=e^s h^{-1}.
+ \tag{L19.7.g}
+\]</span>
+The same norm argument would force <span class="math" data-tex="\(h^{-1}=0\)">\(h^{-1}=0\)</span>, again a contradiction. Nonsingularity means a zero kernel; it supplies neither boundedness nor a spectral gap at zero. In the scalar model <span class="math" data-tex="\(h(r)=e^{-r}\)">\(h(r)=e^{-r}\)</span>, its behavior at the two ends of the real line displays both conclusions.</p>
+<p><span id="OA-FLOW.L19.READING"></span><a id="l19-reading"></a></p>
+<h2 id="further-reading">Further reading</h2>
+<p>The trace-scaling eigenunitary theorem is Takesaki, <em>Theory of Operator Algebras II</em>, Chapter XII, §1, Lemma 1.2, printed pp.366–367. Its proof uses wandering projections, integration and a tracial density. Here the bounded-corner averaging criterion is proved first and supplies integrability directly; the scalar and matrix models then distinguish the discrete intermediate group from the continuous coordinate and show how a noncentral density behaves.</p>
+<p>For the full density theorem used in Section 3, <a href="OA-FLOW-TD.html#oa-flow.td.4">TD</a> provides the programme proof on the entire extended positive cone and links its freely accessible human-source context. <a href="OA-FLOW-EP.html#oa-flow.ep.6">EP6</a> gives the weight-composition proof, and <a href="OA-FLOW-AT.html#oa-flow.at.5">AT5</a> gives normality of the bounded-interval maps on arbitrary preduals.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L33.html">Previous lesson</a><a href="OA-FLOW-ET.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L19.md">Lesson source</a></nav></main></body></html>

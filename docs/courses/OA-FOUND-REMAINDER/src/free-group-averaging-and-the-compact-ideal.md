@@ -1,6 +1,6 @@
 # Free-group averaging and the compact ideal
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 The left and right regular actions of a free group commute. Their joint action on one Hilbert space has an ideal of compact operators, and removing that ideal gives the spatial tensor product of the two reduced group algebras. We will prove each part of this statement. The proof separates three mechanisms: an averaging argument proves simplicity of the factors; a spectral gap isolates a rank-one projection; and an average over word cuts compares the joint action with the spatial action modulo compact operators.
 

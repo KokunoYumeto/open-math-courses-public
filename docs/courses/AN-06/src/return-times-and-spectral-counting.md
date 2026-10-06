@@ -6,9 +6,9 @@
 
 The short-time wave kernel gives a smooth approximation to the spectral measure. To recover a count of eigenvalues, we need to control what smoothing has removed. Positivity supplies that control. A longer interval without a returning trajectory permits less smoothing and gives a smaller remainder.
 
-The freely accessible positive-window argument in Hörmander's spectral-function article [HS, Lemma 4.3 and Theorem 4.4], Wunsch's wave-trace discussion [W, Sections 7 and 9], and Ivrii's Tauberian and dynamical survey [I, Sections 2.1.3–2.1.4] identify the mechanisms used here. We prove the quantitative Tauberian comparison, its endpoint treatment, and the partition argument below, including the dependence on return time. The classical and semiclassical conventions are related explicitly after Theorem 5.1. Guillemin and Sternberg [GS] give further semiclassical context; the freely readable [DG] article provides the classical spectral setting. We use [Wave evolution and cotangent flow](wave-evolution-and-cotangent-flow.md) and [Local spectral density and the subprincipal correction](local-spectral-density-and-subprincipal-correction.md). Quantization, composition, adjoints, conic support and asymptotic summation are the scalar calculus of [Classical scalar symbols, summation and regularity](../providers/analysis/classical-scalar-calculus.md#finite-symbol-calculus).
+The positive-window argument in Hörmander's spectral-function article [HS, Lemma 4.3 and Theorem 4.4], Wunsch's wave-trace discussion [W, Sections 7 and 9], and Ivrii's Tauberian and dynamical survey [I, Sections 2.1.3–2.1.4] identify the mechanisms used here. We prove the quantitative Tauberian comparison, its endpoint treatment, and the partition argument below, including the dependence on return time. The classical and semiclassical conventions are related explicitly after Theorem 5.1. Guillemin and Sternberg [GS] give further semiclassical context; the [DG] article provides the classical spectral setting. We use [Wave evolution and cotangent flow](wave-evolution-and-cotangent-flow.md) and [Local spectral density and the subprincipal correction](local-spectral-density-and-subprincipal-correction.md). Quantization, composition, adjoints, conic support and asymptotic summation are the scalar calculus of [Classical scalar symbols, summation and regularity](../providers/analysis/classical-scalar-calculus.md#finite-symbol-calculus).
 
-More precisely, the wave lesson's Sections 1 and 6 provide the counting bound and the compact spatial-integration proof. [Qualified pullback, (R1)–(R8)](../providers/analysis/wavefront-qualified-pullback.md#qualified-pullback), and [transverse composition, (G1)–(G14)](../providers/analysis/transverse-composition-and-graph-operators.md#transverse-composition), supply the actual kernel operations used in Section 2. The preceding local coefficient lesson proves its full differentiated amplitude reduction in Section 4 and its real scalar coefficients in Sections 5–6. We also use the earlier [Euclidean measure/product proof](../providers/analysis/finite-derivative-l2.md#euclidean-products), [Fourier inversion](../providers/analysis/finite-derivative-l2.md#fourier-normalization), and [finite smooth partition construction](../providers/analysis/coordinate-inverses-and-integration.md#finite-partitions). 
+More precisely, the wave lesson's Sections 1 and 6 provide the counting bound and the compact spatial-integration proof. [Qualified pullback, (R1)–(R8)](../providers/analysis/wavefront-qualified-pullback.md#qualified-pullback), and [transverse composition, (G1)–(G14)](../providers/analysis/transverse-composition-and-graph-operators.md#transverse-composition), supply the kernel operations used in Section 2. The preceding local coefficient lesson proves its full differentiated amplitude reduction in Section 4 and its real scalar coefficients in Sections 5–6. We also use the earlier [Euclidean measure/product proof](../providers/analysis/finite-derivative-l2.md#euclidean-products), [Fourier inversion](../providers/analysis/finite-derivative-l2.md#fourier-normalization), and [finite smooth partition construction](../providers/analysis/coordinate-inverses-and-integration.md#finite-partitions). 
 
 Let \(X\) be compact, connected and without boundary, of dimension \(n\geq2\). Let \(P\) be a scalar classical elliptic operator of order one on half densities, self-adjoint on \(H^1\), with positive principal symbol \(p\) and subprincipal symbol \(p_s\). Initially assume \(P>0\). Section 6 removes this spectral positivity assumption.
 
@@ -19,6 +19,8 @@ e(x,x,\lambda)=\sum_{\lambda_j\leq\lambda}|\phi_j(x)|^2,
 \tag{1}
 \]
 The diagonal is a density. The wave lesson proves its \(O(\lambda^n)\) bound, uniformly on \(X\), and the same bound for \(N\). One may consistently use \(<\lambda\) in (1). The arguments below apply to either endpoint convention, including at an eigenvalue.
+
+<a id="counting-positive-window"></a>
 
 ## 1. A positive smoothing kernel
 
@@ -42,6 +44,8 @@ For \(a>0\), put
 \tag{3}
 \]
 Thus convolution on the energy axis uses only wave times \(|t|<1/a\).
+
+<a id="counting-tauberian"></a>
 
 **Lemma 1.1 (quantitative removal of smoothing).** Let \(\mu\) be an increasing tempered function with \(\mu(0)=0\). Let \(\nu\) be the locally absolutely continuous representative of a function of locally bounded variation, with \(\nu(0)=0\). Suppose
 \[
@@ -74,6 +78,8 @@ The constant depends only on \(n,\kappa\) and the fixed kernel (2). If \(g\) is 
 \tag{6}
 \]
 
+<a id="counting-stieltjes-measure"></a>
+
 **Proof.** We first justify the measure and growth facts, including their pointwise meaning. An increasing function has finite one-sided limits on every bounded interval. Its jumps are countable: on a fixed bounded interval there are only finitely many jumps of size at least $1/k$, since their sum is bounded by the total increment; take the countable union over $k$ and intervals. Replace it temporarily by its right-continuous representative $F$, equal to it almost everywhere. Put $\alpha=F(-\infty)$, $\beta=F(+\infty)$, allowing infinite endpoints. For $s\in(\alpha,\beta)$ define
 \[
  q(s)=\inf\{x:F(x)>s\}.
@@ -87,6 +93,8 @@ The possible ambiguity at $s=F(a),F(b)$ has measure zero: $s>F(a)$ forces $q(s)>
  -\int F(x)\psi'(x)\,dx=\int\psi(s)\,dm(s).
 \]
 This proves $d\mu=m\ge0$ as distributions. Its closed-interval mass is $m([a,b])=F(b)-F(a-)$, which bounds the increment between any allowed endpoint representatives.
+
+<a id="counting-unsmoothing"></a>
 
 Temperedness also gives the polynomial growth required below. For $x>1$, test $\mu$ against a fixed nonnegative unit-integral smooth bump translated into $(x,x+1)$. Monotonicity and $\mu(0)=0$ bound $0\le\mu(x)$ by this pairing; the tempered test estimate bounds the pairing by $C(1+x)^N$. Translating the bump into $(x-1,x)$ gives the corresponding bound for $-\mu(x)$ when $x<-1$. The measure mass on a unit interval is bounded by the increments on a slightly larger interval, hence has polynomial growth as well. The bound on $\nu'$ gives the same property for $\nu$ and $d\nu$. Consequently all Schwartz convolutions and differentiations below are justified by absolute majorants and the distributional integration-by-parts identity. From (2),
 \[
@@ -154,6 +162,8 @@ Multiply by \(\tau^{1-n}\) and let \(\tau\) tend to infinity. The bracket and bo
 
 The same proof is uniform over a compact family when \(a,a_0\) stay in bounded positive ranges, \(\|g\|_\infty+\|g\|_1\) is uniformly bounded, and the leading \(M_0\)'s have a positive lower bound. The constant multiplying \(aM_0\) in (6) remains dimensional; only the energy threshold depends on the family.
 
+<a id="counting-return-geometry"></a>
+
 ## 2. Which returns a kernel can see
 
 Define the first base return and the first full period by
@@ -180,6 +190,8 @@ For lower semicontinuity of \(T\), let \(x_j\to x\) and suppose the lower limit 
 
 The same argument with convergent normalized initial covectors proves the assertion for \(T_*\), now requiring equality of both final coordinates. Taking reciprocals of positive extended-valued lower semicontinuous functions proves (15). ∎
 
+<a id="counting-diagonal-trace"></a>
+
 For $B\in\Psi^0_{\mathrm{cl}}$, the diagonal of \(E(t)B\) has wavefront directions of the form
 \[
 (t,x;\,-p(x,\eta),\,\xi-\eta),
@@ -201,6 +213,8 @@ For \(B=I\), (16) makes the diagonal smooth when \(0<|t|<T(x)\). For a trace loc
 \tag{17}
 \]
 Negative time returns are equivalent to positive ones by reversing the flow. Smoothness holds jointly on open sets where the displayed return conditions are excluded. These are inclusions: cancellation can make a trace smooth even at some periods.
+
+<a id="counting-local-remainder"></a>
 
 ## 3. The local counting bound
 
@@ -282,6 +296,8 @@ For (20), fix $x_0$ and choose $L_{x_0}$ strictly between $J(x_0)$ and $T(x_0)$.
 
 The quantities \(a(x)=1/J(x)\) range in a compact positive interval. One can choose a common \(a_0\) in (23); \(I_1(x,1)\) has a positive lower bound in each fixed coordinate-density trivialization. The uniform form of (13) and uniform (22) give (20) after enlarging the dimensional constant. All bounded errors vanish uniformly on division by \(\lambda^{n-1}\); the threshold may depend on \(P\) and \(J\). No derivative of \(J\) is needed: only time derivatives of its cutoff enter this argument. ∎
 
+<a id="counting-positive-partition"></a>
+
 ## 4. A positive partition in cotangent space
 
 For global counting we can localize directions as well as base points. Positivity must survive that localization.
@@ -315,6 +331,8 @@ The first two terms have combined leading symbol \(-h_{-r}\), because the order-
 
 Apply the existing asymptotic summation theorem to the successive corrections. The resulting classical \(Q\) satisfies \(Q-Q_r\in\Psi^{-r-1}\) at every stage, so (27) follows from composition and the smooth-kernel ideal. Set \(C_j=QA_j\). The conic product rule preserves their microlocal supports, and (27) proves (25). Principal symbols are \(b_j=\beta_j^2\). Principal and subprincipal symbols are additive; those of \(I+R\) are one and zero. This proves both sum assertions. The recursive construction needs no convergence of an operator power series. ∎
 
+<a id="counting-projected-traces"></a>
+
 For these operators define positive cumulative measures
 \[
 \mu_j(\lambda)=\operatorname{Tr}(\Pi_\lambda B_j)
@@ -335,6 +353,8 @@ The \(O(\lambda^n)\) counting bound makes the series on the right summable: a dy
 \quad\hbox{uniformly in }\lambda.
 \tag{31}
 \]
+
+<a id="counting-global-remainder"></a>
 
 ## 5. The global remainder and periodic covectors
 
@@ -400,6 +420,8 @@ By (25) and (31), \(N=\sum_j\mu_j+O(1)\). In (36) the principal symbols sum to o
 \tag{39}
 \]
 
+<a id="counting-period-majorants"></a>
+
 It remains to approximate \(f=T_*^{-1}\) from above. This step must respect its possible discontinuities. Give the compact hypersurface \(Z=\{p=1\}\) a metric \(d\), and define
 \[
 f_m(z)=\sup_{w\in Z}\bigl(f(w)-m\,d(z,w)\bigr).
@@ -423,6 +445,8 @@ Extend this inequality radially to \(0<p<1\). Combining (39) and (42), then send
 
 Finally \(f\) is zero at every nonperiodic covector and is bounded. Under the stated measure-zero hypothesis its integral is zero. Equation (33) then gives (34). The usual equivalent energy-surface formulation follows from homogeneity: on each compact cotangent chart, write $\eta=r\omega/p(x,\omega)$ with $p=1$ at $r=1$. The change-of-variables and coarea proofs give a positive smooth angular density times $r^{n-1}dr$. The periodic set is conic because the degree-one Hamiltonian flow commutes with positive fiber dilation. Its measure on any annulus therefore vanishes exactly when its natural energy-surface measure vanishes. This justifies the comparison with the energy-surface hypothesis in [I]. ∎
 
+<a id="counting-semiclassical-scaling"></a>
+
 **The semiclassical scaling and the dynamical hypothesis.** To compare this theorem with [I], put \(h=\lambda^{-1}\) and \(P_h=hP\), in a fixed compact cotangent energy annulus. The semiclassical left symbol of \(P_h\) is
 \(p+h p_0+h^2p_{-1}+\cdots\): this follows by replacing the classical frequency by \(\xi/h\) in the symbol of \(hP\). The principal Hamiltonian is still \(p\), its semiclassical subprincipal coefficient is \(p_s\), and
 \[
@@ -439,9 +463,11 @@ Equation (34) is consequently a remainder \(o(h^{1-n})\) at fixed semiclassical 
 
 The local statement in [I, Theorem 2.1.12] requires negligible directions that return to the same base point. Its global statement requires negligible periodic phase points. Our distinction between \(T(x)\) and \(T_*(x,\eta)\) is exactly this distinction, and (25)–(42) prove the full-period version without replacing it by a condition on projected paths. The global error constant integrates \(T_*^{-1}\); the local one retains \(T(x)^{-1}\). A fixed short-time convolution alone gives neither improved remainder.
 
-These sources have different proof scopes. [HS] proves the positive interval-mass estimate and the leading local \(O(\lambda^{n-1})\) remainder. Wunsch's Section 7 gives the leading wave-trace/Tauberian argument, while Section 9 records the periodic-locus restriction and explains the nondegenerate closed-geodesic trace coefficient; its complete-symbol trace proof is referred elsewhere. Ivrii's Sections 2.1.3–2.1.4 describe the microhyperbolic Tauberian and dynamical steps, with deeper estimates referred to its monograph. They support the comparison, rather than replacing the explicit quantitative proof here. The stronger logarithmic or power improvements obtained there by times growing with \(h^{-1}\) also require control of long-time flow derivatives. We have proved (33)–(34) using fixed finite times and have introduced none of those additional long-time hypotheses.
+The leading local remainder in [HS] and the leading wave-trace argument in [W, Section 7] use positive spectral windows. Full periodic covectors enter the spatial trace in [W, Section 9] and [DG]. The logarithmic or power improvements discussed in [I, Sections 2.1.3–2.1.4] use times growing with the reciprocal semiclassical parameter and require control of long-time flow derivatives. Equations (33)–(34) use fixed finite times; no such additional long-time hypothesis is needed.
 
 The two return functions answer different geometric questions. A trajectory may revisit its starting point with a different covector. That revisit can affect a local diagonal while disappearing under the spatial trace, which requires the difference \(\xi-\eta\) in (16) to be zero. The refinement in (33) retains precisely this distinction.
+
+<a id="counting-spectral-shift"></a>
 
 ## 6. Shifting a lower-bounded operator
 
@@ -467,6 +493,8 @@ The terms involving \(c\partial_\lambda I_1\) cancel in (18). The same calculati
 ### Use the conclusion
 
 Use the positive kernel to bound a short spectral interval before extracting the global remainder. Keep localized return conditions, full periodic covectors and the lower-bounded spectral shift separate.
+
+<a id="counting-solutions"></a>
 
 ## 7. Exercises and complete solutions
 

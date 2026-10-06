@@ -1,6 +1,6 @@
 # Central averaging and maximal ideals
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 In a von Neumann algebra, finite averages of unitary conjugates can approach the centre in norm. They can do so simultaneously for finitely many elements, and successive averages can be arranged to converge. In a finite algebra the central limit is its centre-valued trace. In general the central limits need not be unique, but they still determine the maximal norm-closed ideals.
 

@@ -1,6 +1,6 @@
 # Proper infiniteness and automatic normality
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 Countable sums of projections detect normality. In a properly infinite algebra, a singular representation that kills a countable partition of the identity would produce an uncountable orthogonal family of nonzero projections in its range. This contradicts sigma-finiteness of the generated range. The same construction, combined with completeness of a von Neumann projection lattice, also proves automatic normality for surjective homomorphisms from properly infinite algebras with separable predual.
 

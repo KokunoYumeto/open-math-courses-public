@@ -1,6 +1,6 @@
 # Spectral calculus: measurable domains and self-adjoint operators
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Selection and annotations by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 The complete scope here is SK01–SK08: scalar cyclic models, arbitrary orthogonal cyclic families, bounded Borel calculus, unbounded measurable domains, the Cayley recovery of a self-adjoint operator, square roots and actual ranges, and transport/reduction. Operator convergence for general form nets and modular theory are outside this supplement.
 

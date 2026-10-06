@@ -1,6 +1,6 @@
 # Finite type II algebras and separable representations
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A representation need not preserve strong limits of projections. Nevertheless, a sigma-finite von Neumann algebra with no finite type I summand has no such failure on a separable Hilbert space: every representation there is normal. The properly infinite case was proved in [Proper infiniteness and automatic normality](../reader/proper-infiniteness-and-automatic-normality.html). Here we prove the finite type II case. The argument uses small projections twice: first to construct balanced signs, then to construct disjoint copies.
 

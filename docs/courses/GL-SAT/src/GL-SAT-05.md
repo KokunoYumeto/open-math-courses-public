@@ -707,6 +707,8 @@ F_\nu(\Delta_\lambda)
 \]
 This two-degree boundary margin eliminates the connecting map without an IC parity assumption.
 
+The corresponding IC basis is obtained after the convolution and group-reconstruction arguments: Identifying the dual group, §8.5 proves full classical semisimplicity, then \(\Delta_\lambda=IC_\lambda\), and transfers (20.3) to the IC weight space. That later result is not an input to the concentration or canonical cohomology decomposition proved here. In particular one must not replace the two-degree standard-object margin above by an unproved deletion of the IC boundary.
+
 The general identification
 \[
 F_\nu(IC_\lambda)\stackrel{?}{\simeq}

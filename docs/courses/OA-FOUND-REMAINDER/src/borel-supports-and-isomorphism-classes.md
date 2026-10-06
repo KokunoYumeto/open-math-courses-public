@@ -1,6 +1,6 @@
 # Borel supports and isomorphism classes
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 To choose a projection measurably, it helps to describe its range by countably many vectors. This simple method makes supports and central carriers Borel as the algebra varies. We then use a Borel choice from closed cosets to prove that each fixed unitary equivalence class of von Neumann algebras is Borel. Infinite amplification gives the corresponding result for each fixed abstract isomorphism class.
 

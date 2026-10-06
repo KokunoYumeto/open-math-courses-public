@@ -1,0 +1,7 @@
+# Universal proper groupoid base
+
+Section 11S of *K-theory of the leaf space* gives complete proofs of the range-fibre measure topology, continuous actual groupoid action, half-mass properness, properly supported square cutoff and universal anchored equivariant probability map. It applies to every Hausdorff second-countable locally compact etale groupoid and hence every eligible metric holonomy transversal. Section 11T constructs the coherent affine line and its exact proper cone over this whole extension. Exercises 154–156 supply complete solutions. Original-unit Dirac factors and the graph operator remain separate requirements.
+
+Figure 11S.1 is the exact two-set mass projection and typed composable arrow triangle h:x→y, g:y→z, k=gh:x→z. Its finite schematic does not replace the general continuity or properness proofs. groupoid-proper-base-data.json records the threshold, anchors and scope. The right panel of Figure 11R.1 also illustrates the exact line-cone slice in Section 11T.
+
+Use Python 3.13.9 with the versions in requirements.txt. Keep both bundled fonts and FONT-NOTICE.txt beside draw_proper_base.py. Run `python -B draw_proper_base.py --output-dir OUTPUT` to produce PNG, editable SVG and groupoid-proper-base-data.json. SVG glyphs are outlines. Both image formats retain the full font notice in metadata. No TeX installation, network data or source extracts are needed. Complete component and runtime notices accompany the generator.

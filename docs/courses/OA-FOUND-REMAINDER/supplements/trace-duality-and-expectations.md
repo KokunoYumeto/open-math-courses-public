@@ -1,6 +1,6 @@
 # Trace Hilbert spaces, commutation, comparison and expectations
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by Claude Opus 5.5 (Anthropic), September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 This complete chapter consists of the trace-duality, trace-Hilbert-space, tracial-commutation, trace-comparison and expectation sections with their full proofs and examples. Results are referred to by their numbers below. The tracial commutation theorem is proved here from bounded-vector duality. General Tomita theory, coupling traces and standard-form theory are not premises. Selection and route notes: GPT-6.1 Sol (OpenAI), Ultra, October 2026; new notes CC0.
 

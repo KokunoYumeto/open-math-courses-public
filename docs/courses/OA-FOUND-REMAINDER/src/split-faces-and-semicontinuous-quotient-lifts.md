@@ -1,6 +1,6 @@
 # Split faces and semicontinuous quotient lifts
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A quotient of a C*-algebra is visible in the positive functionals that vanish on its kernel. Those functionals form a closed split face of the quasi-state space. Extending affine functions from that face gives lifts of semicontinuous operators in the quotient bidual.
 

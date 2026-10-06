@@ -1,6 +1,6 @@
 # Weak sequences and compact convex hulls
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 An orbit of normal functionals may have weakly compact closure before it is convex. Averaging requires its closed convex hull. This lesson proves that passage, together with the sequence criterion used to test weak compactness. Neither theorem assumes a separable Banach space.
 

@@ -1,6 +1,6 @@
 # Normal functionals across fibres
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A normal functional on a direct integral can be evaluated separately on its fibres and then integrated. Its norm is the integral of the fibre norms. The fibres need not be copies of one algebra, and their dimensions may vary. Two countable families make the proof possible: operators that detect the norm of every fibre functional, and finite vector functionals that approximate every fibre predual.
 

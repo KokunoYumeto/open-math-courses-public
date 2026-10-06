@@ -1,6 +1,6 @@
 # Decomposable operators and the diagonal algebra
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by Claude Opus 5.5 (Anthropic), September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A direct integral of Hilbert spaces carries two natural algebras of operators. A *diagonal operator* multiplies each fibre by a scalar that depends measurably on the point. A *decomposable operator* acts on each fibre by a bounded operator that depends measurably on the point. Every decomposable operator commutes with every diagonal operator. The main result of this lesson is the converse: a bounded operator that commutes with every diagonal operator is decomposable (Theorem 5.1). The standard consequences follow. The diagonal algebra and the decomposable algebra are von Neumann algebras, each is the commutant of the other, and the diagonal algebra is the centre of the decomposable one (Theorem 7.1).
 

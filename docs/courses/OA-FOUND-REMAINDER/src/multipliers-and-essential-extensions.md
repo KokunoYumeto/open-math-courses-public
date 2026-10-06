@@ -1,6 +1,6 @@
 # Multipliers and essential extensions
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A nonunital C*-algebra can sit as an ideal in a larger algebra that supplies an identity and additional operators. The multiplier algebra is the largest such extension in which the original ideal detects every operator. Its self-adjoint elements also have a semicontinuity description: they admit bounded monotone approximation from both sides after adjoining the bidual identity.
 

@@ -1,16 +1,16 @@
 # Tensor positivity and nuclearity
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. New original text: public domain (CC0).*
 
 The minimal tensor product describes two algebras acting on separate Hilbert spaces. The maximal tensor product allows any two commuting actions on one Hilbert space. Nuclearity says that these two ways of coupling systems give the same norm. We will show that this condition is equivalent to approximation by finite-dimensional completely positive models.
 
 The difficult direction is to turn information about all commuting actions into maps with values in the algebra itself. We do this by first encoding operators as normal functionals, then correcting one distinguished functional, and finally using separation to bring the reconstruction maps back into the algebra.
 
-Prerequisites are [Completely positive finite models](completely-positive-finite-models.md), [Completely positive maps](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/completely-positive-maps.html), the enveloping von Neumann algebra \(A^{**}\), and [The positive cone of a standard representation](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-APPROX/prerequisites.html#standard-form-natural-cone). From the last lesson we use precisely these facts: every von Neumann algebra has a standard representation; every normal positive functional \(\psi\) has a unique cone vector \(\xi_\psi\); these vectors satisfy
+Prerequisites are [Completely positive finite models](completely-positive-finite-models.md), [Completely positive maps](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/completely-positive-maps.html), [the enveloping von Neumann algebra \(A^{**}\)](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html), and [the standard-form and cone construction](https://journals.msp.org/mscand/article/download/2067/2066/2098). For the cone we use precisely these facts: every von Neumann algebra has a standard representation; every normal positive functional \(\psi\) has a unique cone vector \(\xi_\psi\); these vectors satisfy
 \[
 \|\xi_\psi-\xi_\chi\|^2\le\|\psi-\chi\|;
 \]
-and their support in the commutant is obtained from their support in the algebra by the standard conjugation. No faithful normal state on the whole algebra is assumed. We also use Kaplansky density in the enveloping algebra and Hahn–Banach separation. The dilation, dominated-functional and standard-cone arguments are supported by the freely readable primary papers specified in the references.
+and their support in the commutant is obtained from their support in the algebra by the standard conjugation. No faithful normal state on the whole algebra is assumed. We also use [Kaplansky density](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/kaplansky-s-density-theorem-and-its-consequences.html) in the enveloping algebra and Hahn–Banach separation. The freely accessible primary arguments are [Araki, Theorem 4(6)–(8) and Theorem 6](https://msp.org/pjm/1974/50-2/pjm-v50-n2-p02-p.pdf), for the cyclic cone geometry and normal-functional representatives, and [Haagerup, Lemmas 2.6 and 2.10](https://journals.msp.org/mscand/article/download/2067/2066/2098), for corners and the arbitrary-algebra reduction. The programme construction gives the corresponding arguments in SF-05–SF-11 with WH-13. The dilation, dominated-functional and standard-cone arguments are supported by the freely readable primary papers specified in the references.
 
 Inner products in this lesson are linear in the second variable. Unital algebras in unital assertions are nonzero.
 
@@ -110,6 +110,8 @@ For the additional statement, the forward approximations from Lemma 1.2 already 
 
 ## 2. Keep a marginal exactly fixed
 
+Choose a weight-constructed standard representation \(N\subset B(H)\). The marginal-correction statement concerns the abstract algebra and its predual, so this choice adds no hypothesis on \(N\). The commutant standard representation uses the opposite right Hilbert algebra and has the same cone. In translating the programme construction’s first-variable inner product to the second-variable convention here, put \([u,v]=\langle v,u\rangle\); the norm, conjugation, cone and support projections are unchanged.
+
 Let \(N\subset B(H)\) be a von Neumann algebra in standard form. For \(\psi\in N_*^+\), write \(\xi_\psi\) for its cone vector and \(q_\psi\in N'\) for the projection onto \(\overline{N\xi_\psi}\).
 
 We recall an elementary consequence of the GNS dominated-functional theorem. The map
@@ -163,6 +165,8 @@ For the inverse, let \([f_{ij}]\) be positive in that inherited dual order and p
 =\sum_{i,j}f_{ij}(a_i^*a_j)\ge0,
 \]
 because \([a_i^*a_j]\) is positive. The tuples \((a_i\xi)_i\) are dense in \((qH)^m\), so \([z_{ij}]\ge0\). This proves complete positivity of the inverse without asserting any uniform inverse norm bound. It also explains why restricting to the actual support, rather than assuming a faithful state, is sufficient.
+
+The exact norm-additive decomposition of a self-adjoint normal functional used below is [Corollary 2.8 and its polar-decomposition proof](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#oa-fnd-pd-03). Its normal positive summands remain in the predual. The decomposition of a vector in a real self-dual cone is a separate statement.
 
 **Lemma 2.1 (Marginal correction).** Let \(A\) be unital, and suppose a completely positive map \(\theta:A\to N_*\) is in the pointwise norm closure of completely positive matrix factorizations. Put \(\psi=\theta(1)\). For every finite \(F\subset A\) and \(\varepsilon>0\), there is a completely positive factorization \(\theta_3=TS\) through a matrix algebra such that
 \[
@@ -295,7 +299,7 @@ Conversely, let \(\Omega\) be a positive functional of norm at most one on \(A\o
 
 Pointwise weak* convergence of \(TS\) is convergence of these functionals on all elementary tensors. Their norm bound extends convergence to all algebraic finite sums and ensures that the limit is minimal-norm bounded. Every positive unit-ball functional on the maximal tensor product is therefore minimal-norm bounded. Such functionals determine the C*-norm by evaluating positive elements, so the two norms agree. \(\square\)
 
-In the dual formulation, the middle space must carry the dual norm.
+In the dual formulation, the middle space must carry the dual norm. Section 7 proves the [coefficient complete-order identification](#coefficient-dual-order) and [adjoint positivity](#adjoint-dual-order); it also makes [matrix-level positivity of CP tensoring](#cp-tensor-positivity) explicit.
 
 **Corollary 4.2.** \(A\) is nuclear if and only if \(\operatorname{id}_{A^*}\) is a pointwise weak* limit of completely positive contractions factoring as
 \[
@@ -315,6 +319,8 @@ The coefficient pairing \(x\mapsto[y\mapsto\operatorname{Tr}(x^{\mathsf T}y)]\) 
 Here \(M_n^*\) is the trace-class matrix space, with its Banach dual norm. It is not the operator-norm matrix space. A complete order identification alone does not preserve a contractivity assertion.
 
 ## 5. Type I algebras
+
+The [spatial type I factor construction](#type-i-spatial-form) and [irreducible norm detection](#irreducible-norm-detection) used in the next proof are given in Section 7.
 
 **Theorem 5.1.** Every type I C*-algebra is nuclear.
 
@@ -361,6 +367,97 @@ The equality for the map norm holds because its domain is unital and the map is 
 **Exercise 7 (Ideal permanence; intermediate).** Use Theorem 3.1 and the ideal approximation argument in **Completely positive finite models** to prove that a closed ideal of a nuclear C*-algebra is nuclear.
 
 *Solution.* Nuclearity of \(A\) gives the completely positive approximation property by Theorem 3.1. Restrict the recording maps to the ideal and compress the reconstruction maps by a positive contraction from its approximate identity. This gives the same property for the ideal. The tensor-norm implication then gives nuclearity.
+
+## 7. Operator and matrix-order details
+
+The following proofs supply the representation and dual-order facts used above.
+
+<a id="type-i-spatial-form"></a>
+### Type I factors in their given representation
+
+Use the [Hilbert-space and kernel constructions H00–H02](regular-group-operator-foundations.md#h00), [bounded polar decomposition T04a](regular-group-operator-foundations.md#t04a), C*-functional calculus F01–F08, and the [projection lattice C02](projection-comparison-and-finite-traces.md#c02) and [central contact C04](projection-comparison-and-finite-traces.md#c04).
+
+Let \(M\subset B(H)\) be a nonzero type I factor. The defining condition for type I, applied to the nonzero central projection \(1\), supplies \(p\ne0\) with \(pMp\) commutative. A nonzero projection in a factor has central support one, because its central support is a nonzero central projection.
+
+If \(0<q<p\) were a projection, then \(qM(p-q)=q(pMp)(p-q)=0\), since \(pMp\) is commutative. The central-contact proof C04 gives \(c(q)c(p-q)=0\), contradicting both central supports being one. Thus \(p\) is minimal. Moreover \(pMp=\mathbb Cp\). Indeed, a self-adjoint \(a\in pMp\) with two distinct spectral values admits two disjoint nonnegative continuous functions, nonzero at the respective values. Their calculi are nonzero positive elements with orthogonal supports in \(pMp\), by H02. One of those supports is a nonzero proper subprojection of \(p\), impossible. Therefore every self-adjoint \(a\) has singleton spectrum and is scalar by the normal spectral-radius formula; splitting real and imaginary parts proves the assertion.
+
+By Zorn choose a maximal orthogonal family \((p_i)_{i\in I}\) of projections equivalent to \(p\), containing \(p\). Chain unions are admissible; all families lie in the fixed projection set of \(M\). Its join \(P\) belongs to \(M\) by the projection-lattice proof C02. If \(q=1-P\ne0\), then \(c(p)=c(q)=1\), so the central-contact proof C04 gives a nonzero element in \(qMp\). Its polar partial isometry has nonzero initial support below \(p\), hence initial support \(p\), and final support below \(q\). This supplies another orthogonal copy of \(p\), contradicting maximality. Consequently \(\sum_i p_i=1\), with arbitrary sums meaning strong limits of finite partial sums.
+
+Put \(L=pH\), \(K=\ell^2(I)\), and choose \(u_i\in M\) with \(u_i^*u_i=p\), \(u_i u_i^*=p_i\). The map
+\[
+W:L\otimes K\longrightarrow H,\qquad W(\zeta\otimes\delta_i)=u_i\zeta
+\]
+is isometric on finite-support vectors: the cross terms vanish since \(u_i^*u_j=0\) for \(i\ne j\). Its range contains every \(p_iH\), whose span is dense; hence it is unitary.
+
+For \(x\in M\), each matrix entry of \(W^*xW\) is \(u_i^*xu_j|_L\in pMp=\mathbb Cp\). Thus it is \(\lambda_{ij}1_L\). Choose a unit vector \(\zeta_0\in L\). Compression to \(\mathbb C\zeta_0\otimes K\) shows that \((\lambda_{ij})\) defines a bounded operator \(a\in B(K)\) with \(\|a\|\le\|x\|\). Equality of entries on finite tensors gives \(W^*xW=1_L\otimes a\).
+
+Conversely, for \(a\in B(K)\) and a finite subset \(F\subset I\), its coordinate compression \(a_F=P_FaP_F\) satisfies
+\[
+W(1_L\otimes a_F)W^*=\sum_{i,j\in F} a_{ij}u_i u_j^*\in M.
+\]
+The coordinate projections \(P_F\) tend strongly to \(1_K\), and the \(a_F\) are uniformly bounded by \(\|a\|\). Bounded strong multiplication gives \(a_F\to a\) strongly, and therefore \(1_L\otimes a_F\to1_L\otimes a\) strongly, first on finite elementary tensors and then on all vectors. Strong closedness yields \(W(1_L\otimes a)W^*\in M\). Thus \(W^*MW=1_L\otimes B(K)\).
+
+An operator commuting with all \(1_L\otimes E_{ij}\) has off-diagonal entries zero and equal diagonal entries, by multiplying the matrix units. It consequently has the form \(b\otimes1_K\) for a bounded \(b\in B(L)\). Conversely every such operator commutes with \(1_L\otimes B(K)\), first on entries and then by finite-coordinate density. Hence \(W^*M'W=B(L)\otimes1_K\). Flipping the two Hilbert factors gives the exact spatial form used by tensor Theorem 5.1. This proof includes every nonzero finite or infinite cardinal \(I\); no countability assumption is used.
+
+<a id="irreducible-norm-detection"></a>
+### Irreducible representations detect the C*-norm
+
+Use positive scalar Cauchy–Schwarz, C*-functional calculus, the [positive norm-preserving scalar extension](completely-positive-finite-models.md#lemma-2-2), and the GNS, separation and compactness proofs in [Hypertraces and finite injective algebras, Section 1](hypertraces-finite-injectivity.md). The compact-face argument below supplies the needed extreme point directly.
+
+For a possibly nonunital nonzero C*-algebra \(D\), let \(Q=\{f\in D^*:f\ge0,\ \|f\|\le1\}\). This is weak* compact: positivity is closed on every positive element, and COMPACT gives the compact dual unit ball. It is convex. A faithful representation supplies vector functionals in \(Q\), and the quadratic-form characterization and order calculus give
+\(\sup_{f\in Q}f(h)=\|h\|\) for \(h\ge0\).
+For \(x\ne0\), set \(h=x^*x\); then
+\[
+F=\{f\in Q:f(h)=\|h\|\}
+\]
+is a nonempty compact face. Nonemptiness follows by compactness and the displayed supremum. The face property follows because both values in any convex decomposition are at most \(\|h\|\).
+
+Every nonempty compact convex subset of a Hausdorff locally convex space has an extreme point: order its nonempty compact faces by reverse inclusion; a nested chain has nonempty intersection by compactness and that intersection is a face. Zorn gives a minimal compact face. If it had two distinct points, a continuous real linear functional separating them would attain its maximum on a proper nonempty compact face, a contradiction. Thus the minimal face is a singleton. Applied to \(F\), this gives an extreme point \(\varphi\) of \(F\), which is also extreme in \(Q\). It is nonzero.
+
+Its norm is one, since otherwise \(\varphi=\|\varphi\|(\varphi/\|\varphi\|)+(1-\|\varphi\|)0\) is a nontrivial convex decomposition in \(Q\). For positive functionals, the norm is the limit of their values on a positive contractive approximate identity \((e_i)\). One direct proof is
+\[
+|f(ae_i)|^2\le f(e_i^2)f(aa^*)
+\le f(e_i)\|f\|\|a\|^2.
+\]
+Take the limit on the left for each \(a\), then take a norming supremum. Together with \(f(e_i)\le\|f\|\), this proves \(f(e_i)\to\|f\|\). Therefore, if \(0\le g\le\varphi\), then
+\(\|g\|+\|\varphi-g\|=1\). Normalize the two nonzero summands. Extremality gives \(g=\lambda\varphi\). Thus \(\varphi\) is pure.
+
+In its cyclic GNS representation \((\pi,H,\xi)\), a positive contraction \(T\in\pi(D)'\) defines \(g(a)=\langle\xi,\pi(a)T\xi\rangle\), with \(0\le g\le\varphi\). Purity gives \(g=\lambda\varphi\). Evaluating at \(b^*a\) and using density of \(\pi(D)\xi\) gives \(T=\lambda1\). Every commutant element is a linear combination of positive contractions, so \(\pi(D)'=\mathbb C1\), equivalently \(\pi\) is irreducible. Finally
+\[
+\|\pi(x)\|\ge\|\pi(x)\xi\|=\varphi(x^*x)^{1/2}=\|x\|,
+\]
+and contractivity gives equality. For \(x=0\) no detection is needed. The zero algebra has no nonzero irreducible representation and all relevant norms are zero.
+
+For completeness, the nonunital cyclic-vector construction follows from positive extension and the unital GNS proof. Extend \(f\) by Hahn–Banach to a functional \(F\) on its forced unitization with \(\|F\|=r=\|f\|\). Since \(\|1-2e_i\|\le1\), we have \(|F(1)|\le r\) and \(|F(1)-2f(e_i)|\le r\). Letting \(f(e_i)\to r\), the two discs \(|z|\le r\), \(|z-2r|\le r\) meet only at \(z=r\); hence \(F(1)=r\). The norming-positivity lemma gives \(F\ge0\). Its unital GNS vector satisfies
+\(\|\xi-\pi(e_i)\xi\|^2\le\|f\|-f(e_i)\to0\).
+Consequently \(\xi\) belongs to the essential subspace of the restricted representation; its restriction is cyclic and nondegenerate. This uses no bidual.
+
+<a id="coefficient-dual-order"></a>
+### Complete order of the coefficient matrix dual
+
+Let \(I_n:M_n\to M_n^*\) be \(I_n(x)(y)=\operatorname{Tr}(x^{\mathsf T}y)=\sum_{a,b}x_{ab}y_{ab}\). It is a linear bijection by entry recovery. At level \(m\), identify \(X=[x_{ij}]\) and \(Y=[y_{ij}]\) with scalar matrices on the index set \(\{1,\ldots,m\}\times\{1,\ldots,n\}\). Their dual pairing is
+\[
+\sum_{i,j}I_n(x_{ij})(y_{ij})
+=\sum_{i,j,a,b}X_{(i,a),(j,b)}Y_{(i,a),(j,b)}
+=\operatorname{Tr}(X^{\mathsf T}Y).
+\]
+If \(X,Y\ge0\), then \(X^{\mathsf T}\ge0\) and
+\(\operatorname{Tr}(X^{\mathsf T}Y)
+=\operatorname{Tr}(Y^{1/2}X^{\mathsf T}Y^{1/2})\ge0\).
+Conversely, if this expression is nonnegative for every \(Y\ge0\), test rank-one \(Y=vv^*\). Then \(v^*X^{\mathsf T}v\ge0\) for every \(v\), forcing \(X^{\mathsf T}\), and hence \(X\), to be positive by finite polarization. Thus \(I_n\) and its inverse preserve positivity at every matrix level. This proves the exact complete-order assertion in Corollary 4.2 without asserting a Banach-norm isometry.
+
+<a id="adjoint-dual-order"></a>
+### Adjoint maps preserve the stated dual complete order
+
+If \(\phi:C\to D\) is completely positive, then \(\phi^*:D^*\to C^*\) is completely positive: for a positive functional matrix \(F=[f_{ij}]\) and \(X=[x_{ij}]\in M_m(C)_+\),
+\(\sum f_{ij}(\phi(x_{ij}))\ge0\), because \(\phi_m(X)\ge0\). Conversely, if \(\phi^*\) is completely positive, positive matrices in \(M_m(D)\) are separated from the complement of their closed convex cone by scalar positive functionals, so the same test forces \(\phi_m(X)\ge0\). Only the forward implication is consumed in Corollary 4.2. Norm equality of an adjoint follows from Hahn–Banach norming functionals, already provided in F01.
+
+<a id="cp-tensor-positivity"></a>
+### CP tensoring in the precise finite-model reverse route
+
+The [finite-model tensor lemma](completely-positive-finite-models.md#lemma-4-1) states contractivity; its written compression proof also proves complete positivity. In the minimal case its formula is compression of the tensor *-representation. At every matrix level, compressions of a positive operator matrix are positive. In the maximal case, the fully written commuting-action dilation in that same proof gives, for every commuting target representation, compression of a *-representation of the maximal source product. Testing positive elements in faithful representations gives positivity, and applying the identical construction to finite matrix amplifications gives complete positivity. Rescaling handles a bounded CP map whose norm is not one; the zero map is immediate.
+
+For a nonunital domain, the later approximate-identity paragraph of the same full Lemma 4.1 constructs its dilation operator by a bounded form and weak limit. That construction, with no second commuting action, also supplies the minimal-case dilation. The exact finite-model body and the unital dilation are public; the same formulas give the required positive compressions at every matrix level.
 
 ## References
 

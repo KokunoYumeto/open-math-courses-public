@@ -82,7 +82,10 @@ def convert(text):
                            '-t','latex','--top-level-division=chapter','--wrap=none'],
                            input=text,text=True,encoding='utf8',capture_output=True,check=True)
     if result.stderr:print(result.stderr.strip())
-    return result.stdout
+    # Keep a theorem's attribution paragraph with the start of its statement.
+    # Section headings already prohibit a break before the attribution.
+    return re.sub(r'(\\emph\{Adapted from the Stacks project,[^\n]*\}\n)\n',
+                  lambda m:m[1]+r'\nopagebreak[4]'+'\n\n',result.stdout)
 
 licence=(out/'assets/GFDL-1.2.txt').read_text(encoding='utf8')
 licence_appendix=r'''\appendix

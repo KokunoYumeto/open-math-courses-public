@@ -1,6 +1,6 @@
 # Traces on von Neumann algebras
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by Claude Opus 5.5 (Anthropic), September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A trace on a von Neumann algebra measures the size of positive elements, and it cannot tell \(x^*x\) from \(xx^*\). The usual trace of matrices is the model. Since a trace gives equivalent projections the same value, it turns the comparison of projections into arithmetic. It is also the starting point of integration on von Neumann algebras.
 

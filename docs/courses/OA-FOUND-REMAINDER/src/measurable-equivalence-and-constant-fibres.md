@@ -1,6 +1,6 @@
 # Measurable equivalence and constant fibres
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 An isomorphism available at each point is useful in a direct integral only after it can be chosen measurably. A spatial isomorphism is described by a unitary. An abstract isomorphism may change the multiplicity of the representation, so it needs an amplification and a faithful compression before a unitary can describe it. We make both choices using countable operator equations.
 

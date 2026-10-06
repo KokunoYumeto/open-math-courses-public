@@ -1,6 +1,6 @@
 # Invariant states and ergodic projections
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 An automorphism group can have many invariant normal states even when it is not compact as a group. Those states determine a unique averaging map onto its fixed algebra. They also control weak compactness of every orbit in the predual. We prove these equivalences without assuming a countable group, a separable predual, or a single faithful invariant state.
 

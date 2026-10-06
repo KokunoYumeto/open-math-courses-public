@@ -115,7 +115,7 @@ E\otimes_AE\xrightarrow{\sim}\prod_{\sigma\in\Gamma}E,
 \qquad x\otimes y\longmapsto\bigl(x\sigma(y)\bigr)_\sigma.
 \tag{3.2}
 \]
-Every torus has such a chart and residue point: choose an affine finite-presentation part of an etale splitting cover meeting the closed fibre, and a closed point of that fibre. Its residue field is finite over \(\kappa\) by the finite-type field-algebra argument in AG-RG-S04, Lemma P0.9. The quotient sequence for differentials gives \(\Omega_{K/\kappa}=0\), because the chart is formally unramified. The finite-field differential calculation in AG-CA-17, Lemma 7.1 then proves separability.
+Here a torus is etale locally a product of copies of \(\mathbf G_m\). Starting instead with the fpqc multiplicative-type definition gives this same condition by [AG-GS-05, Theorem 7.7](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-GS/AG-GS-05.html); its finite torsion-free character-group step is proved in [AG-RG-S04, Lemma P0.10](AG-RG-S04.md#finite-torsion-free-lattices). Every torus therefore has such a chart and residue point: choose an affine finite-presentation part of an etale splitting cover meeting the closed fibre, and a closed point of that fibre. Its residue field is finite over \(\kappa\) by the finite-type field-algebra argument in AG-RG-S04, Lemma P0.9. The quotient sequence for differentials gives \(\Omega_{K/\kappa}=0\), because the chart is formally unramified. The finite-field differential calculation in AG-CA-17, Lemma 7.1 then proves separability.
 
 Furthermore, a torus \(T_0/\kappa\), with character lattice split by \(L\), has a torus lift over \(A\) split by this same \(E\). Its character lattice and descent action reduce compatibly modulo every \(\mathfrak m^n\).
 

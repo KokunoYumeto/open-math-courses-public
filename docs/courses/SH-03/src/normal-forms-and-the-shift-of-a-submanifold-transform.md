@@ -2,9 +2,9 @@
 
 A submanifold transform can turn a hypersurface into a submanifold of higher codimension. Its cohomological shift records which fibre directions are integrated with compact support. We first obtain a local coordinate model from a clean conormal intersection, then compute every part of that shift. Positive, negative and null quadratic directions play different roles.
 
-Use Microlocal composition at prescribed covectors, the isolated-incidence direct-image theorem, compact-support base change, and the closed/open localization triangles. We prove the clean cotangent reduction and bind the exact written programme Morse lemma with parameters before applying them to the hypersurface. The smooth inverse, implicit, submersion and constant-rank theorems, differentiation of smooth parameter integrals, and finite-dimensional symmetric-form diagonalization are calculus prerequisites. We work over a commutative ring \(k\) of finite global dimension, and \(L\in D^b(k)\) may have arbitrary coefficient modules.
+The sheaf-operation inputs are the formal kernel-composition comparison, the direct-germ formula (MC.25), and proper-support base change. The fibre proof below uses the actual localization and trace maps specified at each step. We prove the clean cotangent reduction and bind the exact programme Morse lemma with parameters before applying them to the hypersurface. The smooth inverse, implicit, submersion and constant-rank theorems, differentiation of smooth parameter integrals, and finite-dimensional symmetric-form diagonalization are calculus prerequisites. We work over a commutative ring \(k\) of finite global dimension, and \(L\in D^b(k)\) may have arbitrary coefficient modules.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI), Ultra, September–October 2026. Independently written exposition is public domain (CC0); cited human works retain their own terms.*
 
 ## Clean intersection supplies the coordinate model
 
@@ -177,7 +177,24 @@ d=n_++n_-+n_0+r,
 \qquad\text{(9)}
 \]
 
-Fix the coordinate orientations for the \(s_-,w,u\) spaces. A nonempty open convex subset of an oriented \(a\)-dimensional space has compact cohomology \(L[-a]\), with the orientation trace identifying nested open-ball extension maps. Closed balls have ordinary cohomology \(L\) and are compact. These coefficient and trace statements are topology/duality prerequisites for arbitrary bounded \(L\), and do not assert global orientability of \(Y\).
+Fix the coordinate orientations for the \(s_-,w,u\) spaces. The compact-support generator, (M5)–(M6) starts with the increasing-interval boundary difference and takes ordered products. It gives \(R\Gamma_c(\mathbb R^a;L)=L[-a]\), with its actual normalization for arbitrary bounded \(L\).
+
+Here is the extension to the open convex fibres used below. Translate an interior point of a nonempty open convex \(O\subset\mathbb R^a\) to zero and choose a ball of radius \(\rho>0\) inside \(O\). Its gauge
+
+\[
+p(v)=\inf\{t>0:v\in tO\}
+\]
+
+is finite, nonnegative and positively homogeneous. Convexity gives subadditivity, and the interior ball gives \(p(v)\leq\lVert v\rVert/\rho\). Applying these bounds to \(v-w\) and \(w-v\) proves \(|p(v)-p(w)|\leq\lVert v-w\rVert/\rho\). Thus \(p\) is continuous, and openness and convexity give \(O=\{p<1\}\). The maps
+
+\[
+h(v)=\frac{v}{1+p(v)},\qquad
+h^{-1}(u)=\frac{u}{1-p(u)}
+\]
+
+are inverse homeomorphisms \(\mathbb R^a\leftrightarrow O\), by homogeneity. This includes unbounded directions where \(p=0\). Near zero, \(h(v)=v+O(\lVert v\rVert^2)\), so it preserves the positive local orientation class. Transporting the compact generator by \(h\) gives \(R\Gamma_c(O;L)=L[-a]\) with that orientation.
+
+The composition and open-extension identity for trace, (M27) says that extending a compact class from one such open convex set to another preserves its integral. Both oriented integrals are isomorphisms, so their extension map is the identity under the same \(L[-a]\) identification. The dual-generator normalization, (O9)–(O10) fixes its sign, and projection with arbitrary bounded coefficients carries the generator and the trace to \(L\). Closed balls instead have ordinary cohomology \(L\) by constant-coefficient convex acyclicity and are compact. The zero-dimensional ball is a point. No flatness or finite-generation condition on \(L\), or global orientability of \(Y\), is assumed.
 
 ## Four fibre integrations determine the shift
 
@@ -191,7 +208,7 @@ U_{\eta,\epsilon}=
 \qquad\text{(10)}
 \]
 
-Shrinking these parameters gives a neighborhood system at zero. Factor \(f\) into projections which forget \(s_-\), then \(s_+\), then \(w\), then \(u\). At each step compact-support base change calculates the fibre. We also identify the extension across its parameter boundaries, so that a stalk calculation alone is not asked to determine a sheaf.
+Shrinking these parameters gives a neighborhood system at zero. Factor \(f\) into projections which forget \(s_-\), then \(s_+\), then \(w\), then \(u\). At each step the derived proper-image fibre formula and composition of proper images calculate the fibre. We also identify the extension across its parameter boundaries, so that a stalk calculation alone is not asked to determine a sheaf.
 
 For the first projection put
 \(a=|s_+|^2+\langle x',u\rangle-x_1\).
@@ -235,6 +252,17 @@ L_{\{x_1\geq\epsilon|x'|,\ |x|<\eta\}}[\delta],
 \qquad\text{(13)}
 \]
 
+The support and the degree can be checked independently at each stage. In this table, the base restriction \(|x|<\eta\) and the cutoffs on variables not yet integrated are understood.
+
+| Variable forgotten | Fibre and comparison which select the support | Surviving closed condition | Additional shift |
+|---|---|---|---|
+| \(s_-\) | The open ball survives when \(a\leq0\); for \(0<a<\epsilon\), inner-ball extension is an isomorphism and kills the half-open shell. | \(x_1\geq \lVert s_+\rVert^2+\langle x',u\rangle\) | \([-n_-]\) |
+| \(s_+\) | The proper closed ball, including its radius-zero point, is identified by the constant-section unit. | \(x_1\geq\langle x',u\rangle\) | \([0]\) |
+| \(w\) | The independent open ball is integrated by its oriented trace. | \(x_1\geq\langle x',u\rangle\) | \([-n_0]\) |
+| \(u\) | The open convex cap has the same trace as the whole ball when nonempty; localization leaves its empty-cap locus. | \(x_1\geq\epsilon\lVert x'\rVert\) | \([-r]\) |
+
+Thus the positive variables alter support but add no degree, while the negative, null and \(u\) variables contribute exactly the three negative terms in (13). The table includes dimension-zero factors: their ball is a point, their shift is zero, and the same inequalities decide whether it remains. It also applies to \(L=0\), including the zero ring, since every comparison is a natural map of coefficient complexes.
+
 Nested neighborhoods use restriction and compact traces from these same triangles, so the comparisons are compatible. Notice that the output in (13) is a closed cone inside an open base neighborhood. It is not the coefficient on \(M\) as an ordinary sheaf.
 
 ## The comparison becomes an isomorphism at the selected covector
@@ -249,7 +277,13 @@ C_\epsilon^\circ=
 \qquad\text{(14)}
 \]
 
-The selected covector \(dx_1\) is in its interior. The unchanged \(x''\) factor carries zero tangential covector. The cone restriction is consequently invertible at \(f_\pi(p)=(0;dx_1)\). This is the actual cutoff comparison, with its positive sign; it is not inferred merely from equality of microsupport sets.
+The selected covector \(dx_1\) is in its interior. Here is the actual restriction map and its proof. In the normal variables \(E=\mathbb R^{r+1}\), put \(\gamma=-C_\epsilon\) and \(P_\gamma=\phi_\gamma^{-1}R\phi_{\gamma*}\). The correspondence projector (G10) and its vertex calculation give
+
+\[
+P_\gamma L_{\{0\}}\simeq L_{-\gamma}=L_{C_\epsilon}.
+\]
+
+Indeed, on the vertex-supported input its kernel condition is \(0-x\in\gamma\); projection identifies that support homeomorphically with \(-\gamma\). This calculation is exact for coefficient modules and hence for their bounded complexes. The adjunction counit is restriction to the vertex, with the identity map on its coefficient. The counit-cone estimate (T26) makes the cone of this specific map invisible on \(\operatorname{Int}\gamma^{\circ a}=\operatorname{Int}C_\epsilon^\circ\). Its parameter version retains the unchanged \(x''\) factor and gives exactly \(L_{C_\epsilon}\to L_M\); that factor carries zero tangential covector. Consequently this restriction is invertible at \(f_\pi(p)=(0;dx_1)\), including \(r=0\). This proves the positive sign and the actual cutoff comparison, rather than inferring a map from equality of microsupport sets.
 
 Combining it with (13) gives a morphism of pro-objects
 
@@ -261,9 +295,27 @@ Combining it with (13) gives a morphism of pro-objects
 \qquad\text{(15)}
 \]
 
-For an arbitrary neighborhood one first chooses a smaller neighborhood of the form (10) inside it; common smaller choices give the same pro-morphism. Its restriction to the point-localized category is an isomorphism. In particular the formal microlocal proper-support image of \(L_{N^+}\) is represented there by \(L_M[\delta]\). Neither an ordinary global inverse limit nor a global isomorphism with \(L_M[\delta]\) is asserted.
+For an arbitrary neighborhood one first chooses a smaller neighborhood of the form (10) inside it; common smaller choices give the same pro-morphism. Its restriction to the point-localized category is an isomorphism. By the direct-germ formula (MC.25), this neighborhood system computes the formal microlocal proper-support image. Thus the calculation itself represents that image by \(L_M[\delta]\), including the clean case with null directions. No isolated-incidence hypothesis is inserted here: the representation follows from the compatible explicit comparisons (13)–(15). Neither an ordinary global inverse limit nor a global isomorphism with \(L_M[\delta]\) is asserted.
 
-The boundary kernel \(L_N\) gives the same formal image at the selected conormal. The triangle from the open upper side to the closed upper side and then the boundary gives \(L_{N^+}\to L_N\). Its cone is invisible at the positive boundary conormal \(dx_1-dq-d\langle x',u\rangle\): the open upper side has the opposite nonzero boundary ray. Applying the germ direct-image calculus preserves this denominator. Thus (15) also supplies the local boundary-transform calculation needed when composing hypersurface kernels.
+The boundary kernel \(L_N\) gives the same formal image, by a direct comparison that retains all null directions. Write \(F=x_1-q(t)-\langle x',u\rangle\), \(O=\{F>0\}\), and let \(B_\epsilon\) be the product of the four open fibre balls in (10). Work over the interior target ball \(|x|<\eta\). There,
+
+\[
+L_{O\cap U_{\eta,\epsilon}}
+=L_O\otimes^L k_{B_\epsilon}.
+\]
+
+By the open-extension boundary estimate, the nonzero boundary covectors of \(L_O\) have the form \(a\,dF\) with \(a<0\), hence negative \(dx_1\) coefficient. All covectors of the independent fibre cutoff \(k_{B_\epsilon}\) have zero \(dx_1\) coefficient. The tensor is noncharacteristic: a cancellation \(a\,dF+b=0\) forces \(a=0\) from that component and then \(b=0\). The tensor estimate (MO21) consequently puts every microsupport covector of \(L_{O\cap U_{\eta,\epsilon}}\) in the half-space with nonpositive \(dx_1\) coefficient, including all fibre faces and corners.
+
+Choose the closures of the fibre balls inside the coordinate chart. The closed support is then proper over the retained base ball. The proper direct-image estimate (MO8) gives the same nonpositive coefficient bound for \(Rf_!L_{O\cap U_{\eta,\epsilon}}\), so it is invisible at \((0;dx_1)\). Applying \(Rf_!\) to the ordinary localization triangle
+
+\[
+L_{O\cap U_{\eta,\epsilon}}
+\longrightarrow L_{N^+\cap U_{\eta,\epsilon}}
+\longrightarrow L_{N\cap U_{\eta,\epsilon}}
+\xrightarrow{+1}
+\]
+
+makes this actual boundary restriction an isomorphism at the selected positive covector. These arrows commute with compact-support extension between nested neighborhoods, so they give the formal comparison with the same shift as (15). This verifies the comparison directly for every clean excess dimension.
 
 ## Expressing the shift by three Lagrangian planes
 
@@ -352,7 +404,38 @@ Q=Q_0(l_1,l_2,\overline w_0)
 +\omega(i_2-i_1,w)+\omega(l_2-l_1,w_{E_0}),
 \]
 
-where \(Q_0\) is the three-plane form on \(E_0\). The last term is a linear functional of \(w\) whose coefficients depend linearly on \((l_1,l_2)\). Perfect pairing lets us absorb it by translating the \(I/J\)-coordinate of \(i_2-i_1\). This triangular change of variables is invertible. What remains is \(Q_0\), a hyperbolic pairing of dimension \(2(d-j)\), and a radical of dimension \(d+2j\) from \(i_1\), the unused \(J\)-coordinate of \(i_2-i_1\), and the \(J\)-coordinate of \(w_0\). The hyperbolic pairing has equally many positive and negative directions. This proves the rule, including \(j>0\); alternation gives the same rule when \(I\) is contained in either other pair. No reduction assertion for an arbitrary isotropic plane is being used.
+where \(Q_0\) is the three-plane form on \(E_0\). The last term is a linear functional of \(w\) whose coefficients depend linearly on \((l_1,l_2)\). Perfect pairing lets us absorb it by translating the \(I/J\)-coordinate of \(i_2-i_1\). This triangular change of variables is invertible. What remains is \(Q_0\), a hyperbolic pairing of dimension \(2(d-j)\), and a radical of dimension \(d+2j\) from \(i_1\), the unused \(J\)-coordinate of \(i_2-i_1\), and the \(J\)-coordinate of \(w_0\). The hyperbolic pairing has equally many positive and negative directions. This proves the rule, including \(j>0\); alternation gives the same rule when \(I\) is contained in either other pair. This proves reduction for a constraint contained in one pair of arguments. The following argument proves the stronger rule for the sum of the pairwise intersections.
+
+**Reduction by a subspace of the sum of the pairwise intersections.** Set \(J_{ij}=\lambda_i\cap\lambda_j\) and \(J=J_{12}+J_{23}+J_{31}\). The sum \(J\) is isotropic: each summand is isotropic, and any two summands lie in one common Lagrangian. We claim that every \(I\subset J\) can be reduced without changing \(\tau\).
+
+First record reduction in stages. If \(I\subset J\) are isotropic and \(E_I=I^\omega/I\), then
+
+\[
+(J/I)^{\omega_{E_I}}=J^\omega/I,
+\qquad (E_I)_{J/I}=J^\omega/J=E_J.
+\]
+
+The reduced planes agree as well. Since \(I\subset J^\omega\subset I^\omega\),
+
+\[
+\bigl((\lambda\cap I^\omega)+I\bigr)\cap J^\omega
+=(\lambda\cap J^\omega)+I.
+\]
+
+To check this equality, write a vector on the left as \(l+i\). Both \(l+i\) and \(i\) belong to \(J^\omega\), hence \(l\) does too. The reverse inclusion is immediate. Adding \(J\) and quotienting by \(J\) gives the plane \(((\lambda\cap J^\omega)+J)/J\). Thus these are canonical identifications of the quotient spaces and their three reduced planes.
+
+Now reduce successively by \(J_{12}\), the image of \(J_{23}\), and the image of \(J_{31}\). Each constraint is still in the indicated pairwise intersection: all the original \(J_{ij}\) lie in the isotropic \(J\), so they are orthogonal to the constraints already removed. The common-pair proof applies at every stage, and reduction in stages identifies the final triple with its reduction in \(E_J\). Its index equals the original one.
+
+For an arbitrary \(I\subset J\), the images \((J_{ij}+I)/I\) in \(E_I\) belong to the corresponding pairwise intersections and span \(J/I\). Apply the same three common-pair reductions to this triple. Its final quotient and planes are again those in \(E_J\). Comparing the two routes proves
+
+\[
+\tau_E(\lambda_1,\lambda_2,\lambda_3)
+=\tau_{E_I}\bigl((\lambda_1)_I,(\lambda_2)_I,(\lambda_3)_I\bigr),
+\qquad I\subset
+(\lambda_1\cap\lambda_2)+(\lambda_2\cap\lambda_3)+(\lambda_3\cap\lambda_1).
+\]
+
+No complement to the pairwise intersections and no transversality among the three planes has been assumed. The restriction \(I\subset J\) is essential to this argument. \(\square\)
 
 ### The submanifold transform's ordered triple
 
@@ -477,4 +560,8 @@ It is \(1\) for \(t<0\), \(0\) at zero, and \(-1\) for \(t>0\). All pairwise int
 
 ## References
 
-The ordered inertia-index calculation for the shift of a submanifold transform belongs to Kashiwara and Schapira's theory of contact transformations and simple sheaves; see M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §7.1 and §7.4. Clean cotangent reduction, the full ordered signature calculation, the radical, parity, cocycle and continuity identities and common-pair isotropic reduction are proved here; parameter Morse coordinates use the lesson linked above.
+The ordered signature and its reduction laws are classical results of Masaki Kashiwara and Pierre Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985): Definition 7.1.1 and Proposition 7.1.2, printed pp. 121–122 (PDF pp. 124–125). Example 7.1.4, printed p. 123, uses the same symplectic form \(d\theta\). The matrix, radical and reduction arguments above prove the identities needed here, including degenerate intersections. The common-complement and parameter Morse arguments use the exact programme proofs linked in the text.
+
+The related proper direct-image theorem is Theorem 7.3.1, printed pp. 129–131 (PDF pp. 132–134). It assumes a transverse conormal incidence, an isolated contributing covector and properness on the sheaf's support. Its degree is a purity degree: Example 7.2.6(i), printed p. 128, assigns the constant sheaf on a codimension-\(c\) submanifold degree \(c/2\). Thus for a hypersurface input its source and target purity degrees are \(1/2\) and \(c/2+\delta\). Substitution into that theorem gives (18) when the excess is zero, with precisely the vertical/conormal/pulled-vertical order in (16).
+
+The clean excess, arbitrary bounded coefficient complex and represented local proper-support image in this lesson are established by the coordinate and four-integration proofs above. In particular the independent null variables contribute \(-n_0\), a term absent from the transverse theorem. The calculation follows the supports and their actual trace maps before recovering the invariant index; it does not infer a local clean theorem from a proper transverse statement.

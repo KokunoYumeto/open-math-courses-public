@@ -1,6 +1,6 @@
 # Finite maximal quotients
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A maximal C*-quotient of a finite von Neumann algebra is itself a finite von Neumann factor. Its quotient map can be singular, so ultraweak compactness cannot simply be passed through that map. We instead modify a Cauchy sequence on central projections invisible to the quotient. The modified sequence has uniformly small centre-valued \(L^2\) increments. A weak cluster point then realizes the prescribed GNS limit.
 

@@ -1,6 +1,6 @@
 # Direct integrals of von Neumann algebras
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by Claude Opus 5.5 (Anthropic), September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 A direct integral of Hilbert spaces \(\mathcal H=\int_\Gamma^\oplus H(\gamma)\,d\mu(\gamma)\) comes with two von Neumann algebras of its own. The *diagonal algebra* \(\mathcal A\) multiplies every fibre by a scalar that varies measurably with the point. The *decomposable algebra* \(\mathcal D\) acts on every fibre by a bounded operator. Each of the two is the commutant of the other. Many algebras lie between them. Pick, at each point \(\gamma\), a von Neumann algebra \(M(\gamma)\) on the fibre \(H(\gamma)\), and keep the decomposable operators whose fibres lie in \(M(\gamma)\) at almost every point. The resulting set is written \(\int_\Gamma^\oplus M(\gamma)\,d\mu(\gamma)\).
 

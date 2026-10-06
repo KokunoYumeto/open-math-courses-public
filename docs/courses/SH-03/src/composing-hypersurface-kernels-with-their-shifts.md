@@ -2,9 +2,9 @@
 
 Two hypersurfaces can define sheaf operators whose composite is again supported on a submanifold. The output coefficient complex is easy to predict: tensor the two input coefficients. The degree is subtler. It depends on the intermediate dimension, the codimension of the output submanifold, and an ordered inertia index of three Lagrangian planes.
 
-Use Normal forms and the shift of a submanifold transform and Microlocal composition at prescribed covectors. Coefficients lie in \(D^b(k)\) for a commutative ring \(k\) of finite global dimension. All statements concern local germs at the indicated covectors. Ordinary global convolution requires its own support and admissibility checks.
+Use Normal forms and the shift of a submanifold transform and the formal kernel-composition proof. Coefficients lie in \(D^b(k)\) for a commutative ring \(k\) of finite global dimension. All statements concern local germs at the indicated covectors. Ordinary global convolution requires its own support and admissibility checks.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI), Ultra, September–October 2026. Independently written exposition is public domain (CC0); cited human works retain their own terms.*
 
 ## Transverse cotangent projections give a local composition
 
@@ -37,7 +37,16 @@ We will also use the following consequence in the ambient product. Let
 \(\delta:X\times Y\times Z\hookrightarrow X\times Y\times Y\times Z\)
 be the middle diagonal. Pullback of \(\Lambda_1\times\Lambda_2\) through its cotangent correspondence is a smooth Lagrangian \(\Lambda_{12}\). The zero-middle-covector lift for \(q_{13}:X\times Y\times Z\to X\times Z\) is transverse to \(\Lambda_{12}\), and its projection gives \(\Lambda\).
 
-Here is why the stronger assertion follows from the same calculation. The diagonal cotangent correspondence imposes equality of the two middle base components and then sums their physical middle covectors. An obstruction to regularity of its first restriction is a vertical middle tangent vector \(v\) in the kernel just tested. The subsequent zero-middle-covector restriction has an obstruction which is a horizontal middle vector in that kernel. Both vanish because the entire kernel is zero. These are the usual annihilator criteria for the two linear transversality statements. Thus the successive cotangent restrictions are regular and have no residual middle tangent direction. Their symplectic reductions yield exactly the Lagrangian image already calculated. \(\square\)
+To verify both regular restrictions, put \(L=\lambda_1\oplus\lambda_2\) and use one middle cotangent chart. The linear map
+
+\[
+m:L\longrightarrow E_Y,\qquad
+\bigl((u,v_1),(v_2,w)\bigr)\longmapsto v_2-v_1
+\]
+
+is onto by (1). Its base component is therefore onto and imposes equality of the two middle base points regularly. The normal constraint for that cotangent restriction is \(I_D=0\oplus\Delta(V_Y)\oplus0\); its symplectic orthogonal imposes the same base equality. A vector in \(L\cap I_D\) has zero endpoints and equal middle components, so the preceding hidden-middle-kernel argument makes it zero. Thus the quotient map on \(L\cap I_D^\omega\) has injective derivative. After shrinking, its image is the smooth Lagrangian \(\Lambda_{12}\).
+
+On the kernel of the base component of \(m\), its fibre component remains onto \(V_Y\): for any vertical vector, surjectivity of \(m\) supplies a preimage with that fibre difference and zero base difference. This fibre component is unchanged by adding \(I_D\). In the physical cotangent quotient it is the sum of the two middle covectors, since the first middle factor was identified antipodally. Consequently the zero-middle-covector equation is regular on \(\Lambda_{12}\). Its endpoint reduction is the Lagrangian already calculated, with no residual middle tangent direction. \(\square\)
 
 This defines the local composition \(\Lambda_1\circ\Lambda_2\). Shrinking selects one germ of the projection; no global injectivity, properness or absence of distant branches has been asserted.
 
@@ -75,7 +84,9 @@ To define \(\tau\) precisely, let \(V_X,V_Y,V_Z\) be the vertical Lagrangian tan
 \qquad\text{(5)}
 \]
 
-The linear Lagrangian-relation composition theorem makes both subspaces Lagrangian; it applies also when these endpoint-plane intersections have excess. That precise linear statement is a geometric prerequisite. All middle planes in (5) are viewed in \(E_Y\), with its original symplectic form. The index in (4) is
+Both spaces in (5) are Lagrangian, including excess endpoint intersections. Here is the exact quotient calculation. For a Lagrangian \(A\) in a \(2n\)-dimensional symplectic space and an isotropic \(I\) of dimension \(d\), put \(e=\dim(A\cap I)\). The map \(A\to I^*\), \(a\mapsto\omega(a,\cdot)|_I\), has rank \(d-e\), since its transpose has kernel \(I\cap A^\omega=I\cap A\). Hence \(A\cap I^\omega\) has dimension \(n-d+e\), and its isotropic image in \(I^\omega/I\) has dimension \(n-d\). It is therefore Lagrangian. This is linear symplectic reduction, Proposition 2.3, with its rank argument retained.
+
+For \(\lambda_1\subset E_X\oplus E_Y^a\), use \(I=V_X\oplus0\). Then \(I^\omega=V_X\oplus E_Y^a\), the quotient is \(E_Y^a\), and the image is exactly \(\alpha_1^a\). For \(\lambda_2\subset E_Y\oplus E_Z^a\), use \(I=0\oplus V_Z^a\); its quotient is \(E_Y\), and the image is exactly \(\alpha_2\). These identifications require no zero-excess assumption. View both resulting middle planes in \(E_Y\) with its original symplectic form. The index in (4) is
 
 \[
 \tau=\tau_{E_Y}(V_Y,\alpha_2,\alpha_1),
@@ -97,7 +108,15 @@ W=q_{12}^{-1}S_1,
 
 If \(S_i\) is given by a local defining function \(h_i\), nonzero endpoint covectors imply \(d_Xh_1\ne0\) and \(d_Zh_2\ne0\). The two lifted hypersurfaces in \(B\) meet transversely, since a relation between their normals would first vanish in the \(X\) component and then in the \(Z\) component. Thus \(W\) is a hypersurface in \(B\) and \(N\) a hypersurface in \(W\).
 
-Nonzero \(p_Y\) also gives \(d_Yh_1\ne0\), making \(f\) a submersion near the chosen base point. This uses the middle covector as well as the endpoints. The cotangent transversality proved above descends through the closed embedding of \(W\): the pulled-back target cotangent bundle meets \(T_N^*W\) transversely, and its conormal image is (3). Its selected covector in \(T^*W\) is nonzero, since its ambient lift has a nonzero \(Z\) component whereas the normal of \(W\) has zero \(Z\) component.
+Nonzero \(p_Y\) also gives \(d_Yh_1\ne0\), making \(f\) a submersion near the chosen base point. This uses the middle covector as well as the endpoints. We check that the conormal transversality survives passage to \(W\). At the selected ambient cotangent point, let \(I_W\) be the vertical line generated by \(dh_1\). Its orthogonal is the tangent of \(T^*B|_W\). The ambient conormal plane \(A_N=T(T_N^*B)\) lies in \(I_W^\omega\) and contains \(I_W\), because \(N\subset W\); its reduction is \(T(T_N^*W)\).
+
+Let \(C_B\) be the tangent pulled-back target cotangent bundle for \(q_{13}\), defined by zero middle covector. Since \(d_Yh_1\ne0\), \(I_W\cap C_B=0\). The image of \(C_B\cap I_W^\omega\) in the quotient is precisely the pulled-back target cotangent bundle \(C_f\) for \(f\), with unique representatives in \(C_B\). Thus
+
+\[
+(A_N/I_W)\cap C_f \simeq A_N\cap C_B.
+\]
+
+Indeed, a representative in \(C_B\) of a class from \(A_N/I_W\) differs from a vector of \(A_N\) by \(I_W\subset A_N\), so belongs to \(A_N\) itself; injectivity uses \(I_W\cap C_B=0\). The ambient transversality already proved gives the right side dimension \(\dim X+\dim Z\). In \(T(T^*W)\), the plane \(C_f\) has codimension \(\dim Y-1\), whereas \(A_N/I_W\) has dimension \(\dim W=\dim X+\dim Y+\dim Z-1\). Their intersection has exactly the transverse dimension. This verifies the normal-form theorem's transverse hypothesis on \(W\), and the conormal image remains (3). Its selected covector is nonzero: the ambient lift has a nonzero \(Z\) component, while the normal of \(W\) has zero \(Z\) component.
 
 The constant sheaf on a closed subset is stalkwise flat as a \(k\)-module sheaf. Consequently the tensor of the two lifted hypersurface coefficients is
 
@@ -121,7 +140,7 @@ Apply the previous normal-form and direct-image calculation to \(N\subset W\), \
 
 The same selected conormal branch permits replacement of a boundary coefficient by its closed upper-side coefficient, as proved there.
 
-We must identify (9) with kernel-germ composition. Product base neighborhoods form a basis in \(B\), and their intersections with \(W\) form a basis in \(W\). For such a neighborhood the closed-embedding projection formula identifies its ordinary image in (9) with the ordinary convolution of the two restricted kernels, restricted to the endpoint base neighborhoods. The local conormal projection in the first part of this lesson is injective, so the chosen middle covector is isolated. Apply the refined cutoff and formal-comparison theorem of pointwise kernel composition. It makes the comparisons from these restricted images to the denominator convolution system invertible in the output germ category. As in that theorem, the identification is established after tensor and direct image, using common refinements; no false cofinality of ordinary base restrictions among all microlocal denominators is required. Thus (9) is precisely the left side of (4).
+We must identify (9) with kernel-germ composition. Product base neighborhoods form a basis in \(B\), and their intersections with \(W\) form a basis in \(W\). For such a neighborhood the closed-embedding projection formula and proper-image composition identify its ordinary image in (9) with the ordinary convolution of the two restricted kernels, restricted to the endpoint base neighborhoods. The local conormal projection in the first part of this lesson is injective, so the chosen middle covector is isolated. The isolated-incidence theorem, (MC.26)–(MC.28), supplies a confined representative with the actual direct-image comparisons. Applying the formal kernel-composition proof, (7)–(9), makes the comparisons from these restricted images to the denominator convolution system invertible in the output germ category. This identification is established after tensor and direct image, using common refinements; no cofinality of ordinary base restrictions among all microlocal denominators before those operations is assumed. Thus (9) is precisely the left side of (4).
 
 At this stage the normal-form formula already gives
 
@@ -135,9 +154,17 @@ since \(\dim W=\dim X+\dim Y+\dim Z-1\). Here \(\tau_W\) is the ordered vertical
 
 ## Keeping the index order through reduction
 
-Use the inertia-index reduction rule: an isotropic subspace contained in the sum of the three pairwise intersections may be reduced without changing the index. We also use its additivity under orthogonal sums and its sign change under reversal of the symplectic form. These are the exact index prerequisites, rather than a free choice of a Maslov sign convention.
+Use the full reduction rule proved in the preceding lesson: a subspace of the sum of the three pairwise intersections may be reduced without changing the index. Its proof includes the common-pair cases used below. The ordered-index calculation also proves orthogonal-sum additivity, sign reversal and the four-plane cocycle. All reductions retain the convention \(\omega=d\theta\).
 
-First lift the three planes defining \(\tau_W\) to the cotangent tangent space of \(B\). The isotropic line generated by the normal of the embedding \(W\hookrightarrow B\) lies in the vertical plane and in the conormal tangent of \(N\): it is the radial multiplier direction for the first hypersurface. It is consequently contained in one of the required pairwise intersections. Reducing it gives the three planes on \(T^*W\), so the index agrees before and after this reduction.
+First lift the three planes defining \(\tau_W\) to \(T(T^*B)\). They are the ambient vertical plane, \(A_N=T(T_N^*B)\), and \(A_Z=T(T_{Z_B}^*B)\), where \(Z_B=q_{13}^{-1}(x_0,z_0)\) is the middle fibre. The plane \(A_Z\) fixes the endpoint bases and has free middle base, zero middle momentum and free endpoint momenta. The normal line \(I_W\) belongs to the first and second planes: it is the radial multiplier direction for the first hypersurface. The common-pair rule therefore preserves the index.
+
+The first two reductions are the vertical plane of \(T^*W\) and \(T(T_N^*W)\). For the third, \(Z_B\) is transverse to \(W\) because \(d_Yh_1\ne0\). Restricting its conormal to \(W\) gives the conormal of \(Z_B\cap W=f^{-1}(x_0,z_0)\), with tangent
+
+\[
+\bigl((A_Z\cap I_W^\omega)+I_W\bigr)/I_W.
+\]
+
+This is exactly the pulled-back target vertical plane in the normal-form triple. To see that the restriction is regular, the two defining base constraints are transverse, and \(I_W\cap A_Z=0\) because a vector in \(A_Z\) has zero middle momentum whereas \(dh_1\) does not. Thus its cotangent quotient has no kernel. The third plane need not contain \(I_W\); membership in the first two is all the index proof requires.
 
 Next lift to the space
 
@@ -146,7 +173,7 @@ E_X\oplus E_Y^a\oplus E_Y\oplus E_Z^a
 \qquad\text{(11)}
 \]
 
-at the physical point \((p_X,p_Y^a,p_Y,p_Z^a)\). The middle diagonal cotangent correspondence is the other isotropic reduction. Its normal subspace lies in the vertical plane and in the lifted target-point/diagonal plane, which already suffices for the pairwise-intersection condition. The reduced triple is exactly the ambient triple just described on \(B\). Before reduction its planes can be written
+at the physical point \((p_X,p_Y^a,p_Y,p_Z^a)\). The middle-diagonal constraint is \(I_D=0\oplus\Delta(V_Y)\oplus0\). Before its reduction, the three planes are the vertical, the product conormal tangent, and the conormal tangent to \(\{x=x_0,\ y_1=y_2,\ z=z_0\}\). In the twisted middle coordinates, equality of the bases and cancellation of physical middle momenta both become equality in \(E_Y^a\oplus E_Y\). Thus they are
 
 \[
 V_X\oplus V_Y^a\oplus V_Y\oplus V_Z^a,
@@ -155,9 +182,9 @@ V_X\oplus V_Y^a\oplus V_Y\oplus V_Z^a,
 \qquad\text{(12)}
 \]
 
-in that order. Here \(\Delta_Y\) is the diagonal Lagrangian of \(E_Y^a\oplus E_Y\). The first is vertical; the second is the product conormal tangent; the third represents the pulled-back endpoint vertical plane with the middle equality constraint.
+in that order. Here \(\Delta_Y\) is the diagonal Lagrangian of \(E_Y^a\oplus E_Y\). The constraint \(I_D\) lies in the first and third planes, so their common-pair reduction preserves the index. The first reduces to the vertical of \(T^*B\). The second reduces to \(A_N\), by the regular cotangent pullback established above and the transverse intersection of the two hypersurfaces. The third reduces to \(A_Z\): after imposing middle base equality, quotienting the opposite physical middle momenta leaves precisely zero middle momentum and arbitrary middle base. Hence this is the ambient triple used in the preceding reduction to \(W\).
 
-Reduce the endpoint vertical subspaces \(V_X\) and \(V_Z^a\). They are common to the first and third planes, so the index rule applies. Formula (5) identifies the middle reduction of the second plane. We obtain
+Finally reduce \(V_X\oplus0\oplus0\oplus V_Z^a\). It is common to the first and third planes, and its symplectic quotient is \(E_Y^a\oplus E_Y\). The first plane reduces to \(V_Y^a\oplus V_Y\), the second to \(\alpha_1^a\oplus\alpha_2\) by the explicit quotients proving (5), and the third to \(\Delta_Y\). The index rule therefore gives
 
 \[
 \tau_W=\tau_{E_Y^a\oplus E_Y}
@@ -165,9 +192,27 @@ Reduce the endpoint vertical subspaces \(V_X\) and \(V_Z^a\). They are common to
 \qquad\text{(13)}
 \]
 
-The diagonal identity for the inertia index transforms this into the four-plane index
-\(\tau_{E_Y}(V_Y,V_Y,\alpha_2,\alpha_1)\).
-By its definition as the sum of two triangle indices, the first triangle with two equal planes is zero. The result is \(\tau_{E_Y}(V_Y,\alpha_2,\alpha_1)\), which is (6). This completes the proof of (4), with the index order unchanged through every reduction.
+For completeness, prove the diagonal identity in exactly this order. Let \(V,A,B\) be Lagrangians of \(E\), and in \(F=E^a\oplus E\) set
+
+\[
+P=V^a\oplus V,\qquad Q=A^a\oplus B,\qquad
+H=A^a\oplus V,\qquad D=\Delta_E.
+\]
+
+The ordered cocycle gives
+
+\[
+\tau_F(P,Q,D)=\tau_F(P,Q,H)+\tau_F(P,H,D)-\tau_F(Q,H,D).
+\]
+
+The first term is zero by orthogonal-sum additivity: its two summands are \(\tau_{E^a}(V,A,A)\) and \(\tau_E(V,B,V)\). For the second, reduce by \(0\oplus V\), common to \(P,H\). Its orthogonal is \(E^a\oplus V\), its quotient is \(E^a\), and the reduced triple is \((V^a,A^a,V^a)\), with zero index. For the last term, reduce by \(A^a\oplus0\), common to \(Q,H\). Its orthogonal is \(A^a\oplus E\), its quotient is \(E\), and its three planes reduce to \((B,V,A)\): the diagonal contributes \(A\). Hence
+
+\[
+\tau_{E^a\oplus E}(V^a\oplus V,A^a\oplus B,\Delta_E)
+=-\tau_E(B,V,A)=\tau_E(V,B,A).
+\]
+
+These quotients and the cocycle do not require transverse intersections. Apply the identity with \(V=V_Y\), \(A=\alpha_1\), \(B=\alpha_2\). Formula (13) becomes exactly (6), completing the proof of (4) with its index order unchanged through every reduction.
 
 The shift is an integer because it is the integer compact-support shift in the normal form. Thus the half in (4) does not allow arbitrary half-integer shifts of complexes. The geometrically realizable dimensions and index satisfy the corresponding parity relation.
 
@@ -192,7 +237,22 @@ K\circ_\mu K^{-1}\simeq k_{\Delta_X},
 
 For the first composition, the two planes \(\alpha_1,\alpha_2\) are identical: both are obtained by transporting the vertical plane at \(p_X\) through the inverse graph to \(E_Y\). Alternation therefore makes (6) zero. The middle dimension is \(n\), and the output diagonal has codimension \(n\). Formula (4) gives \(1-n\). The explicit shift \([n-1]\) in (14) cancels it. Reversing the roles of \(X,Y\) gives the other identity.
 
-A local graph kernel satisfies the fixed-output condition of the universal kernel class, so these are identities of composable kernel germs and give inverse functors on the two point-localized sheaf categories. On sufficiently small paired cotangent regions, the two selected-region containment and properness conditions of the contact-kernel criterion also hold. The constant hypersurface kernel is cohomologically constructible there and its actual microlocal identity map is the conormal coefficient identity. That criterion then supplies regional inverse equivalences and microlocal-Hom transport. This last extension uses the additional regional checks, rather than converting a point-germ statement into a global claim. \(\square\)
+A local graph kernel satisfies the fixed-output condition (14) of the universal kernel class, so it acts on every incoming sheaf germ. To use (15) for inverse functors, we also verify the required associativity of these graph actions.
+
+Let \(K\) be a graph kernel from \(Y\) to \(X\), \(H\) a graph kernel from \(Z\) to \(Y\), and \(F\) any bounded sheaf germ at \(p_Z\). Fixing \(p_X\), the first graph forces its middle witness to be \(p_Y\), and the second forces the next witness to be \(p_Z\). No smoothness or size condition on \(\operatorname{SS}(F)\) is needed. If \(F\) is invisible there, germ functoriality makes both actions zero. Otherwise the adjacent pairs and the pairs involving their composites have isolated witnesses at the fixed output covectors; the confined estimate (7) in the formal composition proof preserves this uniqueness for the composites.
+
+Use that proof's incoming replacements and common refinements simultaneously for the three factors. Both parenthesizations are compared, after tensor and proper-support image, with the joint system over the three denominators and neighborhoods of the two selected middle basepoints. Its ordinary terms integrate the three pulled-back factors on the same product. Tensor associativity, the projection map, and proper-image composition identify their two iterated integrals. These ordinary maps commute with every denominator and neighborhood refinement.
+
+Testing against an output germ therefore identifies both formal objects with the same filtered colimit over the joint choices: every finite set of choices has a common refinement. Representability gives the natural comparison
+
+\[
+(K\circ_\mu H)\circ_\mu F
+\simeq K\circ_\mu(H\circ_\mu F).
+\]
+
+Its identity coherence is inherited from the same ordinary maps. In particular the diagonal action is the identity, since restriction to the diagonal and projection from it compose to the identity map. Taking \(H=K^{-1}\) and using the two kernel identities (15) now proves that the two point-localized actions are inverse functors. This is the graph-action case needed here, proved with the output covector fixed.
+
+ For the regional assertion, first choose sufficiently small base neighborhoods and a confined representative of the selected conormal germ. Choose paired cotangent regions on which that representative satisfies both selected-region containments and the corresponding properness conditions in the contact-kernel criterion, (1)–(3). The two projections of the retained graph are inverse homeomorphisms, so their restricted projections are proper. The local constant hypersurface representative is cohomologically constructible there, and its actual identity-induced microlocal map is the conormal coefficient identity. The criterion supplies regional inverse equivalences and microlocal-Hom transport. These hypotheses apply to the confined representative; local graph projections at the chosen pair alone would not remove other branches of the original global hypersurface kernel. \(\square\)
 
 Coordinate orientations trivialize the coefficient lines locally in (14). A globally defined inverse on a larger manifold may retain a nontrivial relative orientation line, as in the dual-kernel lesson. The statement here concerns the normalized local constant hypersurface kernel and its selected germ.
 
@@ -240,4 +300,10 @@ For \(S_1=\{x=y^2\}\subset\mathbb R_x\times\mathbb R_y\), examine its conormal o
 
 ## References
 
-The composition of hypersurface kernels and the shift given by the inertia index are part of Kashiwara and Schapira's theory of simple sheaves; see M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §7.1 (the index of three Lagrangian planes) and §§7.2–7.4. The linear Lagrangian-composition and inertia-index reductions used here are proved in Appendix A.
+The index and simple-sheaf methods originate in Masaki Kashiwara and Pierre Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985). Definition 7.1.1 and Proposition 7.1.2, printed pp. 121–122 (PDF pp. 124–125), give the ordered signature, cocycle and isotropic-reduction law. Lemma 7.3.2, printed pp. 131–132, proves a general transport identity for Lagrangian relations. Here the endpoint planes are obtained by explicit isotropic reduction, and the diagonal identity is proved directly in the order required by (6).
+
+For the classical sheaf-operation statements, compare Theorem 7.3.1, printed pp. 129–131, and Corollaries 7.3.4–7.3.5, printed pp. 135–138. The latter distinguish a derived-Hom transform with an Ext-vanishing hypothesis from a tensor transform with a Tor-vanishing hypothesis. Both impose their stated support and isolated-incidence conditions. Their degrees use purity normalized so that a constant hypersurface has degree \(1/2\), and their antipodal convention must be retained when comparing index signs.
+
+This lesson instead computes the coefficient complex \(L'\otimes_k^L L''\) without Tor vanishing. Its shift is obtained by reducing the actual tensor convolution to the preceding lesson's compact-support normal form, then following the ordered planes through the middle diagonal. This proves the local statement (4), including coefficient tensors that vanish, with the exact denominator comparisons specified above.
+
+Theorem 7.4.1 and Corollary 7.4.2, printed pp. 138–139 (PDF pp. 141–142), give the classical simple-kernel equivalence and its action on conormal sheaves under the contact-transform hypotheses. The transpose formula here follows from (4) applied to the two inverse graph germs; the paragraph after (15) states the additional conditions used for its regional form.

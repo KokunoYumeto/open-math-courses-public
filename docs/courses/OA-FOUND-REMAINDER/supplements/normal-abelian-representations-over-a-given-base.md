@@ -1,6 +1,6 @@
 # Normal abelian representations over a given measure space
 
-*Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 This chapter constructs the diagonal field for a normal representation of an already specified \(L^\infty\) algebra. It supplies the concrete starting step in comparing representations that agree on a given abelian subalgebra.
 
